@@ -14,14 +14,7 @@ namespace KillerEngine
 //=======================================================================================================
 	void Renderer::_SetOrthoProjection(void) 
 	{
-		Matrix projection{};
-		projection.MakeOrthographic((F32)WinProgram::Instance()->GetWidth(), (F32)WinProgram::Instance()->GetHeight(), 200);
-
-		Matrix model(1.0f);
-
-		Matrix final = projection * model;
-
-		const F32* data = final.GetElems();
+		const F32* data = _final.GetElems();
 
 		GLint transform1 = glGetUniformLocation(_currentShader, "transform_mat");
 
@@ -67,7 +60,7 @@ namespace KillerEngine
 
 			glUseProgram(_currentShader);
 
-			//_SetOrthoProjection();
+			_SetOrthoProjection();
 			Camera::Instance()->SetUp(shader);
 		}
 
@@ -178,8 +171,24 @@ namespace KillerEngine
 //
 //=======================================================================================================
 	Renderer::Renderer(void): _maxBatchSize(1000), 
-							  _currentBatchSize(0)
+							  _currentBatchSize(0),
+							  _projection(),
+							  _model(1.0f),
+							  _final(),
+							  _vertices(0),
+							  _colors(0),
+							  _dimensions(0),
+							  _bottomTop(0),
+							  _leftRight(0),
+							  _renderingProgramColor(0),
+							  _renderingProgramTexture(0),
+							  _vertexArrayObject(0),
+							  _currentShader(0)
 	{ 
+		_projection.MakeOrthographic((F32)WinProgram::Instance()->GetWidth(), (F32)WinProgram::Instance()->GetHeight(), 200);
+
+		_final = _projection * _model;
+
 		glGenVertexArrays(1, &_vertexArrayObject);
 		glBindVertexArray(_vertexArrayObject);
 	}

@@ -99,6 +99,9 @@ namespace KillerEngine
 		static Renderer* 	 _instance;
 		U32 				 _maxBatchSize;
 		U32 				 _currentBatchSize;
+		Matrix				 _projection;
+		Matrix				 _model;
+		Matrix				 _final;
 		std::vector<F32> 	 _vertices;
 		std::vector<F32> 	 _colors;
 		std::vector<F32> 	 _dimensions;
