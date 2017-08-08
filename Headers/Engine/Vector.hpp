@@ -83,22 +83,6 @@ namespace KillerMath
 			_v[3] = 1;
 		}
 		
-		Vector2(T x, T y, T z)
-		{
-			_v[0] = x;
-			_v[1] = y;
-			_v[2] = z;
-			_v[3] = 1;
-		}
-		
-		Vector2(T x, T y, T z, T w)
-		{
-			_v[0] = x;
-			_v[1] = y;
-			_v[2] = z;
-			_v[3] = w;
-		}
-		
 		Vector2(const Vector2<T>& V)
 		{
 			_v[0] = V.GetX();
@@ -149,9 +133,7 @@ namespace KillerMath
 		Vector2<T> operator +(const Vector2<T>& V) 
 		{
 			return Vector2<T>( _v[0] + V.GetX(),
-							   _v[1] + V.GetY(),
-							   _v[2], 
-							   _v[3] );
+							   _v[1] + V.GetY() );
 		}
 
 		Vector2<T>& operator +=(const Vector2<T>& V) 
@@ -183,8 +165,7 @@ namespace KillerMath
 		Vector2<T> operator-(const Vector2<T>& V) 
 		{
 			return Vector2<T>( _v[0] - V.GetX(),
-							   _v[1] - V.GetY(),
-							   _v[2], _v[3] );
+							   _v[1] - V.GetY());
 		}
 
 		Vector2<T>& operator -=(const Vector2<T>& V) 
@@ -215,15 +196,13 @@ namespace KillerMath
 		Vector2<T> operator*(const T& m) 
 		{
 			return Vector2<T>( _v[0] * m,
-							   _v[1] * m,
-							   _v[2], _v[3] );
+							   _v[1] * m);
 		}
 
 		Vector2<T>& operator *=(const T& m) 
 		{
 			_v[0] *= m;
 			_v[1] *= m;
-			_v[2] = 0;
 			
 			return *this;
 		}
@@ -233,7 +212,6 @@ namespace KillerMath
 		{
 			_v[0] *= v.GetX();
 			_v[1] *= v.GetY();
-			_v[2] = 0;
 
 			return *this;
 		}
@@ -242,22 +220,11 @@ namespace KillerMath
 		T DotProduct(const Vector2<T>& V) 
 		{
 			return _v[0] * V.GetX() +
-			       _v[1] * V.GetY() +
-			       _v[2] * V.GetZ();
+			       _v[1] * V.GetY();
 		}
 
 		T operator *(const Vector2<T>& V) { return DotProduct(V); } 
 
-		//====Cross Product=====
-		Vector2<T> CrossProduct(const Vector2<T>& V) 
-		{ 
-			return Vector2<T>( _v[1] * V.GetZ() - _v[2] * V.GetY(), 
-							   _v[2] * V.GetX() - _v[0] * V.GetZ(), 
-							   _v[0] * V.GetY() - _v[1] * V.GetX(),
-							   _v[3] ); 
-	    }
-
-	    Vector2<T> operator%(const Vector2<T>& V) { return CrossProduct(V); }
 
 	    Vector2<T>& operator%=(const Vector2<T>& V) 
 	    {
@@ -274,8 +241,7 @@ namespace KillerMath
 			if(d == 0) { return *this; }
 
 			return Vector2<T>(_v[0] / d,
-							 _v[1] / d,
-							 _v[2], _v[3] );
+							 _v[1] / d);
 		}
 
 		Vector2<T>& operator /=(const T d) 

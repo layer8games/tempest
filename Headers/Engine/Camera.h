@@ -42,13 +42,13 @@ namespace KillerEngine
 		void SetPosition(Vec2& pos, F32 scale) 
 		{ 
 			_pos.AddScaledVector(pos, scale);
-			_translation.SetTranslation(pos); 
+			_translation.Translate(pos); 
 		}
 
 		void SetPosition(F32 x, F32 y, F32 scale) 
 		{ 
 			_pos.AddScaledVector(Vec2(x, y), scale);
-			_translation.SetTranslation(_pos); 
+			_translation.Translate(_pos); 
 		}
 
 		void SetColor(Col& col) { _background = col; }

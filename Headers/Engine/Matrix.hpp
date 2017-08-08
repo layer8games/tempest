@@ -214,22 +214,42 @@ namespace KillerMath
 			_m[11] = -1;
 		}
 
-		void SetTranslation(T x, T y, T z)
+		void Translate(T x, T y, T z)
 		{
+			ResetMatrix(0);
+
+			_m[0] = 1; 
+			_m[5] = 1; 
+			_m[10] = 1; 
+			_m[15] = 1; 			
+
 			_m[12] = x;
 			_m[13] = y;
 			_m[14] = z;
 		}
 
-		void SetTranslation(Vector2<T> vec)
+		void Translate(Vector2<T> vec)
 		{
+			ResetMatrix(0);
+
+			_m[0] = 1; 
+			_m[5] = 1; 
+			_m[10] = 1; 
+			_m[15] = 1; 
+
 			_m[12] = vec.GetX();
 			_m[13] = vec.GetY();
-			_m[14] = vec.GetZ();
 		}
 
-		void SetTranslation(Vector3<T> vec)
+		void Translate(Vector3<T> vec)
 		{
+			ResetMatrix(0);
+
+			_m[0] = 1; 
+			_m[5] = 1; 
+			_m[10] = 1; 
+			_m[15] = 1; 
+
 			_m[12] = vec.GetX();
 			_m[13] = vec.GetY();
 			_m[14] = vec.GetZ();
@@ -368,21 +388,33 @@ namespace KillerMath
 			return *this;
 		}
 
-		Vector2<T>& operator *(const Vector2<T>& RHV)
+		Vector2<T> operator *(const Vector2<T>& RHV)
 		{
+			T x = RHV.GetX();
+			T y = RHV.GetY();
+			T z = RHV. GetZ();
+			T w = RHV.GetW();
+
 			return Vector2<T>
 			(
-				RHV.GetX() * _m[0] + RHV.GetY() * _m[1],
-				RHV.GetX() * _m[4] + RHV.GetY() * _m[5]
+				x * _m[0] + y * _m[4] + z * _m[8] + w * _m[12],
+				x * _m[1] + y * _m[5] + z * _m[9] + w * _m[13]
 			);
 		}
 
-		Vector3<T>& operator *(const Vector3<T>& RHV)
+		Vector3<T> operator *(const Vector3<T>& RHV)
 		{
+			T x = RHV.GetX();
+			T y = RHV.GetY();
+			T z = RHV. GetZ();
+			T w = RHV.GetW();
+
 			return Vector3<T>
 			(
-				RHV.GetX() * _m[0] + RHV.GetY() * _m[1] + RHV.GetZ() * _m[2],
-				RHV.GetX() * _m[4] + RHV.GetY() * _m[5] + RHV.GetZ() * _m[6]
+				x * _m[0] + y * _m[4] + z * _m[8] + w * _m[12],
+				x * _m[1] + y * _m[5] + z * _m[9] + w * _m[13],
+				x * _m[2] + y * _m[6] + z * _m[10] + w * _m[14]
+
 			);
 		}
 	};
