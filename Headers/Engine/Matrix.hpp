@@ -44,14 +44,13 @@ Matrix::Orthographic(width, height, depth)
 
 Matrix::Perspective(width, height, depth)
 
-Features to add later:
+Transform and Scale will change the Matrix first into an idenity Matrix, 
+then will add the scale or transform to the matrix. This eseentially makes
+the matrix onlyi that scale or transform. 
 
-Perspective is planned, not to be implemenated until later. 
-
-Multiplication by Matrix. This needs to be check. 
-
-Multiplication by Vector (one column matrix). This will be added later in 
-the name of pragmatism. 
+AddScale and AddTransform will add the scale or transform to the matrix while
+preserving all other asepcts of the matrix. This will make for faster and more
+efficient combination of actions that a matrix and take. 
 
 Transpose. This may be useful later, but now so much now. 
 
@@ -214,45 +213,129 @@ namespace KillerMath
 			_m[11] = -1;
 		}
 
+		void Translate(T x, T y)
+		{
+			MakeIdentity();
+
+			_m[12] = x;
+			_m[13] = y;
+		}
+
 		void Translate(T x, T y, T z)
 		{
-			ResetMatrix(0);
-
-			_m[0] = 1; 
-			_m[5] = 1; 
-			_m[10] = 1; 
-			_m[15] = 1; 			
+			MakeIdentity();			
 
 			_m[12] = x;
 			_m[13] = y;
 			_m[14] = z;
 		}
 
-		void Translate(Vector2<T> vec)
+		void Translate(Vector2<T>& vec)
 		{
-			ResetMatrix(0);
-
-			_m[0] = 1; 
-			_m[5] = 1; 
-			_m[10] = 1; 
-			_m[15] = 1; 
+			MakeIdentity(); 
 
 			_m[12] = vec.GetX();
 			_m[13] = vec.GetY();
 		}
 
-		void Translate(Vector3<T> vec)
+		void Translate(Vector3<T>& vec)
 		{
-			ResetMatrix(0);
-
-			_m[0] = 1; 
-			_m[5] = 1; 
-			_m[10] = 1; 
-			_m[15] = 1; 
+			MakeIdentity();
 
 			_m[12] = vec.GetX();
 			_m[13] = vec.GetY();
 			_m[14] = vec.GetZ();
+		}
+
+		void AddTranslate(T x, T y)
+		{
+			_m[12] = x;
+			_m[13] = y;
+		}
+
+		void AddTranslate(T x, T y, T z)
+		{
+			_m[12] = x; 
+			_m[13] = y; 
+			_m[14] = z;
+		}
+
+		void AddTranslate(Vector2<T>& vec)
+		{
+			_m[12] = vec.GetX();
+			_m[13] = vec.GetY();
+		}
+
+		void AddTranslate(Vector3<T>& vec)
+		{
+			_m[12] = vec.GetX();
+			_m[13] = vec.GetY();
+			_m[14] = vec.GetZ();
+		}
+
+		void Scale(T x, T y)
+		{
+			MakeIdentity();
+
+			_m[0] = x;
+			_m[5] = y;
+		}
+
+		void Scale(T x, T y, T z)
+		{
+			MakeIdentity();
+
+			_m[0] = x;
+			_m[5] = y;
+			_m[10] = z;
+		}
+
+		void Scale(Vector2<T>& vec)
+		{
+			MakeIdentity();
+
+			_m[0] = vec.GetX();
+			_m[5] = vec.GetY();
+		}
+
+		void Scale(Vector3<T>& vec)
+		{
+			MakeIdentity();
+
+			_m[0] = vec.GetX();
+			_m[5] = vec.GetY();
+			_m[10] = vec.GetZ();
+		}
+
+		void AddScale(T x, T y)
+		{
+			_m[0] = x;
+			_m[5] = y;
+		}
+
+		void AddScale(T x, T y, T z)
+		{
+			_m[0] = x;
+			_m[5] = y;
+			_m[10] = z;
+		}
+
+		void AddScale(Vector2<T>& vec)
+		{
+			_m[0] = vec.GetX();
+			_m[5] = vec.GetY();
+		}
+
+		void AddScale(Vector3<T>& vec)
+		{
+			_m[0] = vec.GetX();
+			_m[5] = vec.GetY();
+			_m[10] = vec.GetZ();
+		}
+
+		void MakeIdentity(void)
+		{
+			ResetMatrix(1);
 		}
 
 		void ResetMatrix(T val)
