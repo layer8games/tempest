@@ -363,6 +363,8 @@ namespace KillerMath
 //=====Consider adding an AddRotateX() function here. This would preserve any existing values and add the rotation to it.=====
 		void RotateY(F32 y)
 		{
+			y = DegreeToRadian(y);
+
 			MakeIdentity();
 
 			_m[0] = cos(y);
@@ -373,6 +375,8 @@ namespace KillerMath
 
 		void RotateZ(F32 z)
 		{
+			z = DegreeToRadian(z);
+
 			MakeIdentity();
 
 			_m[0] = cos(z);
@@ -383,6 +387,10 @@ namespace KillerMath
 
 		void Rotate(F32 x, F32 y, F32 z)
 		{
+			x = DegreeToRadian(x);
+			y = DegreeToRadian(y);
+			z = DegreeToRadian(z);
+
 			MakeIdentity();
 
 			_m[0] = cos(y) * cos(z);
@@ -394,6 +402,11 @@ namespace KillerMath
 			_m[8] = sin(x) * sin(z) - cos(x) * sin(y) * cos(z);
 			_m[9] = sin(x) * cos(z) + cos(x) * sin(y) * sin(z);
 			_m[10] = cos(x) * cos(y);
+		}
+
+		void Rotate(Vec3& rotations)
+		{
+				
 		}
 		
 //==========================================================================================================================
