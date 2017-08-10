@@ -62,6 +62,8 @@ Written by Maxwell Miller
 #ifndef MATRIX_H
 #define MATRIX_H
 
+#define R_PI 3.14159265358979
+
 //=====Predefined=====
 typedef float  F32;
 
@@ -75,9 +77,6 @@ namespace KillerMath
 	template<typename T>
 	class Matrix4 
 	{
-	private:
-		T _m[16];
-
 	public:
 //==========================================================================================================================
 //
@@ -351,6 +350,8 @@ namespace KillerMath
 //==========================================================================================================================
 		void RotateX(F32 x)
 		{
+			x = DegreeToRadian(x);
+
 			MakeIdentity();
 
 			_m[5] = cos(x);
@@ -564,6 +565,14 @@ namespace KillerMath
 				x * _m[2] + y * _m[6] + z * _m[10] + w * _m[14]
 
 			);
+		}
+
+	private:
+		T _m[16];
+
+		F32 DegreeToRadian(F32 angle)
+		{
+			return angle * R_PI / 180.0f;
 		}
 	};
 
