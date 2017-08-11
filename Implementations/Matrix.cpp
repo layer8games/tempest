@@ -58,12 +58,12 @@ namespace KillerMath
 //==========================================================================================================================
 	void Matrix::MakeOrthographic(F32 width, F32 height, F32 depth) 
 	{
-	  	F32 right  = width;
-	  	F32 left   = 0;
-		F32 top    = height;
+	  	F32 right = width;
+	  	F32 left = 0;
+		F32 top = height;
 		F32 bottom = 0;
-		F32 far   = depth;
-		F32 near   = 0;
+		F32 farPlane = depth;
+		F32 nearPlane = 0;
 
 	  	//Reset Matrix
 		_m[0]  =  _m[1]  =  _m[2]  =  _m[3]  = 0;
@@ -76,18 +76,18 @@ namespace KillerMath
 
 		assert(right - left != 0);
 		assert(bottom - top != 0);
-		assert(near - far != 0);
+		assert(nearPlane - farPlane != 0);
 
 		//Diagnal
 		_m[0]  = 2 / (right - left);
 		_m[5]  = 2 / (top - bottom);
-		_m[10] = 2 / (near - far);
+		_m[10] = 2 / (nearPlane - farPlane);
 		_m[15] = 1;
 
 		//Transform "Vector"
 		_m[12] = (left + right) / (left - right);
 		_m[13] = (bottom + top) / (bottom - top);
-		_m[14] = (near + far)   / (far - near);
+		_m[14] = (nearPlane + farPlane)   / (farPlane - nearPlane);
 
 	}
 
@@ -97,8 +97,8 @@ namespace KillerMath
 		F32 left    = 0; 
 		F32 top     = height;
 		F32 bottom  = 0; 
-		F32 far     = depth; 
-		F32 near    = 0;
+		F32 farPlane     = depth; 
+		F32 nearPlane    = 0;
 
 		//Reset Matrix 
 		_m[0]  =  _m[1]  =  _m[2]  =  _m[3]  = 0;
@@ -111,18 +111,18 @@ namespace KillerMath
 
 		assert(right - left != 0);
 		assert(bottom - top != 0);
-		assert(near - far != 0);
+		assert(nearPlane - farPlane != 0);
 
 		//Diagnal
-		_m[0]  = (2 * near) / (right - left);
-		_m[5]  = (2 * near) / (top - bottom);
-		_m[10] = (near + far) / (near - far);
+		_m[0]  = (2 * nearPlane) / (right - left);
+		_m[5]  = (2 * nearPlane) / (top - bottom);
+		_m[10] = (nearPlane + farPlane) / (nearPlane - farPlane);
 		_m[15] = 0;
 
 		//Transform "Vector"
 		_m[8] = (right - left) / (right - left);
 		_m[9] = (top + bottom) / (top - bottom);
-		_m[14] = (2 * near * far) / (near - far);
+		_m[14] = (2 * nearPlane * farPlane) / (nearPlane - farPlane);
 		_m[11] = -1;
 	}
 
@@ -423,7 +423,7 @@ namespace KillerMath
 		F32 z = RHV. GetZ();
 		F32 w = RHV.GetW();
 
-		return Vec3<T>
+		return Vec3
 		(
 			x * _m[0] + y * _m[4] + z * _m[8] + w * _m[12],
 			x * _m[1] + y * _m[5] + z * _m[9] + w * _m[13],
