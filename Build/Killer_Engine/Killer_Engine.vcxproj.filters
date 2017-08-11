@@ -192,9 +192,6 @@
     <ClInclude Include="..\..\Headers\Engine\Sprite.h">
       <Filter>Components\Sprites\Sprite</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Matrix.hpp">
-      <Filter>Components\Math\LinearAlgebra\Matrix</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vector.hpp">
       <Filter>Components\Math\LinearAlgebra\Vector</Filter>
     </ClInclude>
@@ -248,6 +245,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Model.h">
       <Filter>Components\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Matrix.h">
+      <Filter>Components\Math\LinearAlgebra\Matrix</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -337,6 +337,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Model.cpp">
       <Filter>Components\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Matrix.cpp">
+      <Filter>Components\Math\LinearAlgebra\Matrix</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

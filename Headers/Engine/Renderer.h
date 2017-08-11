@@ -30,6 +30,9 @@ Written by Maxwell Miller
 #include <Engine/Texture.hpp>
 #include <Engine/ErrorManager.h>
 #include <Engine/Camera.h>
+#include <Engine/Matrix.h>
+
+namespace KM = KillerMath;
 
 //=====OGL includes=====
 #include <GL/gl.h>
@@ -99,9 +102,9 @@ namespace KillerEngine
 		static Renderer* 	 _instance;
 		U32 				 _maxBatchSize;
 		U32 				 _currentBatchSize;
-		Matrix				 _projection;
-		Matrix				 _model;
-		Matrix				 _final;
+		KM::Matrix				 _projection;
+		KM::Matrix				 _model;
+		KM::Matrix				 _final;
 		std::vector<F32> 	 _vertices;
 		std::vector<F32> 	 _colors;
 		std::vector<F32> 	 _dimensions;

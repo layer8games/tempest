@@ -18,6 +18,9 @@ Written by Maxwell Miller
 //=====Killer includes=====
 #include <Engine/Atom.h>
 #include <Engine/WinProgram.h>
+#include <Engine/Matrix.h>
+
+namespace KM = KillerMath;
 
 //=====OGL includes=====
 //=====OGL includes=====
@@ -67,8 +70,8 @@ namespace KillerEngine
 		static Camera* _instance;
 		Col    _background;
 		Vec2   _pos;
-		Matrix _projection;
-		Matrix _translation;
+		KM::Matrix _projection;
+		KM::Matrix _translation;
 
 	protected:
 //==========================================================================================================================

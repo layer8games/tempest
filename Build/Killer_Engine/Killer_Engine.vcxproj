@@ -135,6 +135,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Matrix.h" />
     <ClInclude Include="..\..\Headers\Engine\Model.h">
       <SubType>
       </SubType>
@@ -145,7 +146,6 @@
     <ClInclude Include="..\..\Headers\Engine\Particle2DForceGenerator.h" />
     <ClInclude Include="..\..\Headers\Engine\GameObject2D.h" />
     <ClInclude Include="..\..\Headers\Engine\KillerEngine2D.h" />
-    <ClInclude Include="..\..\Headers\Engine\Matrix.hpp" />
     <ClInclude Include="..\..\Headers\Engine\Particle2D.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle3D.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle2DForceRegistry.h" />
@@ -181,6 +181,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\Matrix.cpp" />
     <ClCompile Include="..\..\Implementations\Model.cpp">
       <SubType>
       </SubType>

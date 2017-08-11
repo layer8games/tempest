@@ -30,7 +30,7 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/WinProgram.h>
 #include <Engine/ErrorManager.h>
-#include <Engine/Matrix.hpp>
+#include <Engine/Matrix.h>
 namespace KM = KillerMath;
 
 
@@ -168,7 +168,7 @@ namespace KillerEngine
 		Vec2 					_leftClickCoordinates;
 		Vec2					_rightClickCoordinates;
 		static Controller*   	_instance;
-		KM::Matrix4<F32>		_transform;
+		KM::Matrix				_transform;
 	};
 }//End namespace
 
