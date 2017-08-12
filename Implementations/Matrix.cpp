@@ -332,6 +332,56 @@ namespace KillerMath
 	}
 
 //==========================================================================================================================
+//Misc
+//==========================================================================================================================
+	void Matrix::Transpose(void)
+	{
+		F32 newMatrix[16];
+
+		
+		newMatrix[0] = _m[0];
+		newMatrix[1] = _m[4];
+		newMatrix[2] = _m[8];
+		newMatrix[3] = _m[12];
+
+		newMatrix[4] = _m[1];
+		newMatrix[5] = _m[5];
+		newMatrix[6] = _m[9];
+		newMatrix[7] = _m[13];
+
+		newMatrix[8] = _m[2];
+		newMatrix[9] = _m[6];
+		newMatrix[10] = _m[10];
+		newMatrix[11] = _m[14];
+
+		newMatrix[12] = _m[3];
+		newMatrix[13] = _m[7];
+		newMatrix[14] = _m[11];
+		newMatrix[15] = _m[15];
+
+
+		_m[0] = newMatrix[0];
+		_m[1] = newMatrix[1];
+		_m[2] = newMatrix[2];
+		_m[3] = newMatrix[3];
+
+		_m[4] = newMatrix[4];
+		_m[5] = newMatrix[5];
+		_m[6] = newMatrix[6];
+		_m[7] = newMatrix[7];
+
+		_m[8] = newMatrix[8];
+		_m[9] = newMatrix[9];
+		_m[10] = newMatrix[10];
+		_m[11] = newMatrix[11];
+
+		_m[12] = newMatrix[12];
+		_m[13] = newMatrix[13];
+		_m[14] = newMatrix[14];
+		_m[15] = newMatrix[15];
+	}
+
+//==========================================================================================================================
 //
 //Operator Overloads
 //
