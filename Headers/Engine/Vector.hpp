@@ -119,7 +119,7 @@ namespace KillerMath
 //
 //==========================================================================================================================
 //=====Copy assignment=====
-		Vector2<T>& operator =(const Vector2<T>& V) 
+		Vector2<T>& operator=(const Vector2<T>& V) 
 		{
 			_v[0] = V.GetX();
 			_v[1] = V.GetY();
@@ -130,13 +130,13 @@ namespace KillerMath
 		}
 
 //=====Add by vector=====
-		Vector2<T> operator +(const Vector2<T>& V) 
+		Vector2<T> operator+(const Vector2<T>& V) 
 		{
 			return Vector2<T>( _v[0] + V.GetX(),
 							   _v[1] + V.GetY() );
 		}
 
-		Vector2<T>& operator +=(const Vector2<T>& V) 
+		Vector2<T>& operator+=(const Vector2<T>& V) 
 		{
 			_v[0] += V.GetX();
 			_v[1] += V.GetY();
@@ -145,7 +145,7 @@ namespace KillerMath
 		}
 
 //=====Add by scalar=====
-		Vector2<T> operator +(const T& a) 
+		Vector2<T> operator+(const T& a) 
 		{
 			return Vector2<T>( _v[0] + a,
 							   _v[1] + a,
@@ -153,7 +153,7 @@ namespace KillerMath
 							   _v[3] );
 		}
 
-		Vector2<T>& operator +=(const T& a) 
+		Vector2<T>& operator+=(const T& a) 
 		{
 			_v[0] += a;
 			_v[1] += a;
@@ -168,7 +168,7 @@ namespace KillerMath
 							   _v[1] - V.GetY());
 		}
 
-		Vector2<T>& operator -=(const Vector2<T>& V) 
+		Vector2<T>& operator-=(const Vector2<T>& V) 
 		{
 			_v[0] -= V.GetX();
 			_v[1] -= V.GetY();
@@ -208,32 +208,18 @@ namespace KillerMath
 		}
 
 //=====Straight Multiply by Vector2=====
-		Vector2<T>& operator *=(const Vector2<T> v)
+		Vector2<T> operator*(const Vector2<T>& V)
+		{
+			return Vector2<T>( _v[0] * V.GetX(), _v[1] * V.GetY() );
+		} 
+
+		Vector2<T>& operator*=(const Vector2<T> v)
 		{
 			_v[0] *= v.GetX();
 			_v[1] *= v.GetY();
 
 			return *this;
 		}
-
-//=====Dot Product=====
-		T DotProduct(const Vector2<T>& V) 
-		{
-			return _v[0] * V.GetX() +
-			       _v[1] * V.GetY();
-		}
-
-		T operator *(const Vector2<T>& V) { return DotProduct(V); } 
-
-
-	    Vector2<T>& operator%=(const Vector2<T>& V) 
-	    {
-	    	_v[1] *= V.GetZ() - _v[2] * V.GetY(); 
-			_v[2] *= V.GetX() - _v[0] * V.GetZ(); 
-			_v[0] *= V.GetY() - _v[1] * V.GetX();
-			
-			return *this;
-	    }
 
 //=====Division by scalar=====
 		Vector2<T> operator /(const T d) 
@@ -254,14 +240,46 @@ namespace KillerMath
 			return *this;
 		}
 
+//=====Component-wise Division=====
+		Vector2<T> operator/(const Vector2<T> V)
+		{
+			return Vector2<T>( _v[0] / V.GetX(), _v[1] / V.GetY()  );
+		}
+
+		Vector2<T>& operator/=(const Vector2<T> V)
+		{
+			T x = V.GetX();
+			T y = V.GetY();
+
+			assert(x != 0);
+			_v[0] /= x;
+			assert(y != 0);
+			_v[1] /= y;
+
+			return *this;
+		}
+
+//=====Dot Product=====
+		T DotProduct(const Vector2<T>& V) 
+		{
+			return _v[0] * V.GetX() +
+			       _v[1] * V.GetY();
+		}
+
 //==========================================================================================================================
 //
 //Vector Functions
 //
 //==========================================================================================================================
-		T Magnitude(void) { return sqrt(_v[0]*_v[0] + _v[1]*_v[1] + _v[2]*_v[2]); }
+		T Magnitude(void) 
+		{ 
+			return sqrt(_v[0]*_v[0] + _v[1]*_v[1] + _v[2]*_v[2]); 
+		}
 		
-		T SqrMagnitude(void) { return _v[0]*_v[0] + _v[1]*_v[1] + _v[2]*_v[2]; }
+		T SqrMagnitude(void) 
+		{ 
+			return _v[0]*_v[0] + _v[1]*_v[1] + _v[2]*_v[2]; 
+		}
 
 //=====Makes this vector Unit=====
 		void Normalize(void) 
@@ -291,18 +309,8 @@ namespace KillerMath
 			_v[1] += V.GetY() * scale;
 		}
 
-		
-		
-//=====Component Mulitplication=====
-		Vector2<T> ComponentProduct(const Vector2<T>& V) 
+		void ComponentProductUpdate(const Vector2<T>& V) 
 		{
-			return Vector2<T>( _v[0] * V.GetX(),
-							   _v[1] * V.GetY(),
-							   _v[2] * V.GetZ(),
-							   _v[3] );
-		}
-
-		void ComponentProductUpdate(const Vector2<T>& V) {
 			_v[0] *= V.GetX();
 			_v[1] *= V.GetY();
 			_v[2] *= V.GetZ();
