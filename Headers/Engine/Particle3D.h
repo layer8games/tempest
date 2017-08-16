@@ -16,6 +16,7 @@ Written by Maxwell Miller
 
 //=====Physics includes=====
 #include <Engine/Atom.h>
+#include <Engine/Vector3.h>
 
 //=====KillerMath includes=====
 #include <Engine/Timer.h>
@@ -44,17 +45,17 @@ namespace KillerPhysics
 //Accessors
 //
 //==========================================================================================================================
-		Vec3& GetPosition(void) { return position; }
+		KM::Vector3& GetPosition(void) { return position; }
 		
-		void  SetPosition(Vec3& pos) { position = pos; }
+		void  SetPosition(KM::Vector3& pos) { position = pos; }
 
-		Vec3& GetVelocity(void) { return velocity; }
+		KM::Vector3& GetVelocity(void) { return velocity; }
 		
-		void  SetVelocity(Vec3& vel) { velocity = vel; }
+		void  SetVelocity(KM::Vector3& vel) { velocity = vel; }
 
-		Vec3& GetAcceleration(void) { return acceleration; }
+		KM::Vector3& GetAcceleration(void) { return acceleration; }
 
-		void SetAcceleration(Vec3& acc) { acceleration = acc; }
+		void SetAcceleration(KM::Vector3& acc) { acceleration = acc; }
 
 		real GetDamping(void) { return damping; }
 
@@ -76,9 +77,9 @@ namespace KillerPhysics
 		void Update(void);
 
 	protected:
-		Vec3 position;
-		Vec3 velocity;
-		Vec3 acceleration;
+		KM::Vector3 position;
+		KM::Vector3 velocity;
+		KM::Vector3 acceleration;
 		real damping;
 		real inverseMass;
 

@@ -19,9 +19,6 @@ Written by Maxwell Miller
 //=====Killer1 Engine Includes=====
 #include <Engine/Color.hpp>
 
-//=====KillerMath Includes=====
-#include <Engine/Vector.hpp>
-
 //=====Windows Includes=====
 #include <windows.h>
 
@@ -59,10 +56,6 @@ typedef std::string string;
 
 //Color typedef
 typedef KillerEngine::Color<F32> Col;
-
-//Vector type
-typedef KillerMath::Vector2<F32> Vec2;
-typedef KillerMath::Vector3<F32> Vec3;
 
 typedef double real;
 #define DOUBLE_PRECISION

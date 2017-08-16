@@ -146,7 +146,7 @@ namespace KillerMath
 		_m[14] = z;
 	}
 
-	void Matrix::Translate(Vec2& vec)
+	void Matrix::Translate(Vector2& vec)
 	{
 		MakeIdentity(); 
 
@@ -154,7 +154,7 @@ namespace KillerMath
 		_m[13] = vec.GetY();
 	}
 
-	void Matrix::Translate(Vec3& vec)
+	void Matrix::Translate(Vector3& vec)
 	{
 		MakeIdentity();
 
@@ -176,13 +176,13 @@ namespace KillerMath
 		_m[14] = z;
 	}
 
-	void Matrix::AddTranslate(Vec2& vec)
+	void Matrix::AddTranslate(Vector2& vec)
 	{
 		_m[12] = vec.GetX();
 		_m[13] = vec.GetY();
 	}
 
-	void Matrix::AddTranslate(Vec3& vec)
+	void Matrix::AddTranslate(Vector3& vec)
 	{
 		_m[12] = vec.GetX();
 		_m[13] = vec.GetY();
@@ -209,7 +209,7 @@ namespace KillerMath
 		_m[10] = z;
 	}
 
-	void Matrix::Scale(Vec2& vec)
+	void Matrix::Scale(Vector2& vec)
 	{
 		MakeIdentity();
 
@@ -217,7 +217,7 @@ namespace KillerMath
 		_m[5] = vec.GetY();
 	}
 
-	void Matrix::Scale(Vec3& vec)
+	void Matrix::Scale(Vector3& vec)
 	{
 		MakeIdentity();
 
@@ -239,13 +239,13 @@ namespace KillerMath
 		_m[10] = z;
 	}
 
-	void Matrix::AddScale(Vec2& vec)
+	void Matrix::AddScale(Vector2& vec)
 	{
 		_m[0] = vec.GetX();
 		_m[5] = vec.GetY();
 	}
 
-	void Matrix::AddScale(Vec3& vec)
+	void Matrix::AddScale(Vector3& vec)
 	{
 		_m[0] = vec.GetX();
 		_m[5] = vec.GetY();
@@ -452,28 +452,28 @@ namespace KillerMath
 		return *this;
 	}
 
-	Vec2 Matrix::operator*(const Vec2& RHV)
+	Vector2 Matrix::operator*(const Vector2& RHV)
 	{
 		F32 x = RHV.GetX();
 		F32 y = RHV.GetY();
 		F32 z = RHV. GetZ();
 		F32 w = RHV.GetW();
 
-		return Vec2
+		return Vector2
 		(
 			x * _m[0] + y * _m[4] + z * _m[8] + w * _m[12],
 			x * _m[1] + y * _m[5] + z * _m[9] + w * _m[13]
 		);
 	}
 
-	Vec3 Matrix::operator*(const Vec3& RHV)
+	Vector3 Matrix::operator*(const Vector3& RHV)
 	{
 		F32 x = RHV.GetX();
 		F32 y = RHV.GetY();
 		F32 z = RHV. GetZ();
 		F32 w = RHV.GetW();
 
-		return Vec3
+		return Vector3
 		(
 			x * _m[0] + y * _m[4] + z * _m[8] + w * _m[12],
 			x * _m[1] + y * _m[5] + z * _m[9] + w * _m[13],

@@ -64,7 +64,8 @@ Written by Maxwell Miller
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
-#include <Engine/Vector.hpp>
+#include <Engine/Vector2.h>
+#include <Engine/Vector3.h>
 
 namespace KillerMath 
 {
@@ -125,17 +126,17 @@ namespace KillerMath
 
 		void Translate(F32 x, F32 y, F32 z);
 
-		void Translate(Vec2& vec);
+		void Translate(Vector2& vec);
 
-		void Translate(Vec3& vec);
+		void Translate(Vector3& vec);
 
 		void AddTranslate(F32 x, F32 y);
 
 		void AddTranslate(F32 x, F32 y, F32 z);
 
-		void AddTranslate(Vec2& vec);
+		void AddTranslate(Vector2& vec);
 
-		void AddTranslate(Vec3& vec);
+		void AddTranslate(Vector3& vec);
 
 //==========================================================================================================================
 //Scaling
@@ -144,17 +145,17 @@ namespace KillerMath
 
 		void Scale(F32 x, F32 y, F32 z);
 
-		void Scale(Vec2& vec);
+		void Scale(Vector2& vec);
 
-		void Scale(Vec3& vec);
+		void Scale(Vector3& vec);
 
 		void AddScale(F32 x, F32 y);
 
 		void AddScale(F32 x, F32 y, F32 z);
 
-		void AddScale(Vec2& vec);
+		void AddScale(Vector2& vec);
 
-		void AddScale(Vec3& vec);
+		void AddScale(Vector3& vec);
 
 //==========================================================================================================================
 //Rotations
@@ -286,9 +287,9 @@ namespace KillerMath
 		
 		Matrix& operator*=(Matrix& RHM);
 
-		Vec2 operator*(const Vec2& RHV);
+		Vector2 operator*(const Vector2& RHV);
 
-		Vec3 operator*(const Vec3& RHV);
+		Vector3 operator*(const Vector3& RHV);
 
 	private:
 		F32 _m[16];
