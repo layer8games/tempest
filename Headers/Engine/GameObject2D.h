@@ -33,6 +33,9 @@ Written by Maxwell Miller
 #include <Engine/Sprite.h>
 #include <Engine/Texture.hpp>
 #include <Engine/ErrorManager.h>
+#include <Engine/Vector2.h>
+
+namespace KM = KillerMath;
 
 namespace KillerEngine 
 {
@@ -181,12 +184,12 @@ namespace KillerEngine
 		}	
 
 //=====Position=====
-		const Vec2& GetPosition(void) 
+		const KM::Vector2& GetPosition(void) 
 		{ 
 			return _position; 
 		}
 		
-		void SetPosition(Vec2& pos) 
+		void SetPosition(KM::Vector2& pos) 
 		{ 
 			_position = pos;
 			_sprite->SetPosition(_position); 
@@ -194,22 +197,22 @@ namespace KillerEngine
 
 		void SetPosition(F32 x, F32 y) 
 		{ 
-			_position = Vec2(x, y);
+			_position = KM::Vector2(x, y);
 			_sprite->SetPosition(_position);
 		}
 
-		void SetScaledPosition(const Vec2& v, F32 scale)
+		void SetScaledPosition(const KM::Vector2& v, F32 scale)
 		{
 			_position.AddScaledVector(v, scale);
 			_sprite->SetPosition(_position);
 		}
 
-		void SetPositionNoSprite(Vec2& pos)
+		void SetPositionNoSprite(KM::Vector2& pos)
 		{
 			_position = pos;
 		}
 
-		void virtual v_SetPosition(Vec2& pos)
+		void virtual v_SetPosition(KM::Vector2& pos)
 		{
 			SetPosition(pos);
 		}
@@ -220,45 +223,45 @@ namespace KillerEngine
 		}
 
 //=====Velocity=====
-		const Vec2& GetVelocity(void) 
+		const KM::Vector2& GetVelocity(void) 
 		{ 
 			return _velocity; 
 		}
 
-		void SetVelocity(Vec2& v) 
+		void SetVelocity(KM::Vector2& v) 
 		{ 
 			_velocity = v; 
 		}
 
-		void SetScaledVelocity(const Vec2& vec, F32 scale)
+		void SetScaledVelocity(const KM::Vector2& vec, F32 scale)
 		{
 			_velocity.AddScaledVector(vec, scale);
 		}
 
 		void SetVelocity(F32 x, F32 y) 
 		{ 
-			_velocity = Vec2(x, y); 
+			_velocity = KM::Vector2(x, y); 
 		}
 
 //=====Acceleration=====
-		const Vec2& GetAcceleration(void) 
+		const KM::Vector2& GetAcceleration(void) 
 		{ 
 			return _acceleration; 
 		}
 
-		void SetAcceleration(Vec2& a) 
+		void SetAcceleration(KM::Vector2& a) 
 		{ 
 			_acceleration = a; 
 		}
 
-		void SetScaledAccelleration(const Vec2& vec, F32 scale)
+		void SetScaledAccelleration(const KM::Vector2& vec, F32 scale)
 		{
 			_acceleration.AddScaledVector(vec, scale);
 		}
 
 		void SetAcceleration(F32 x, F32 y) 
 		{
-		 	_acceleration = Vec2(x, y); 
+		 	_acceleration = KM::Vector2(x, y); 
 		}
 
 	protected:
@@ -269,7 +272,7 @@ namespace KillerEngine
 //==========================================================================================================================
 //=====Sprite Factories=====
 //==SqrSprite==
-		void CreateSqrSprite(Vec2& pos, Col& col, Texture& texture);
+		void CreateSqrSprite(KM::Vector2& pos, Col& col, Texture& texture);
 		
 		void CreateSqrSprite(void);
 
@@ -279,9 +282,9 @@ namespace KillerEngine
 		U32 		_ID;
 		bool 	 	_active;
 		Sprite*  	_sprite;
-		Vec2     	_position;
-		Vec2	 	_velocity;
-		Vec2	 	_acceleration;	
+		KM::Vector2 _position;
+		KM::Vector2	_velocity;
+		KM::Vector2	_acceleration;	
 	};
 
 	

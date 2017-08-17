@@ -19,6 +19,9 @@ Written by Maxwell Miller
 #include <Engine/GameObject2D.h>
 #include <Engine/Font.h>
 #include <Engine/CharSprite.h>
+#include <Engine/Vector2.h>
+
+namespace KM = KillerMath;
 
 //=====STL includes=====
 #include <vector>
@@ -48,7 +51,7 @@ namespace KillerEngine
 
 		void v_Render(void);
 
-		void v_SetPosition(Vec2 pos)
+		void v_SetPosition(KM::Vector2 pos)
 		{
 			GameObject2D::SetPositionNoSprite(pos);
 			SetTextPosition(pos);
@@ -61,7 +64,7 @@ namespace KillerEngine
 //==========================================================================================================================		
 		void AddText(string text);
 
-		void SetTextPosition(Vec2& pos);
+		void SetTextPosition(KM::Vector2& pos);
 
 		void SetTextColor(Col& col);
 
@@ -77,7 +80,7 @@ namespace KillerEngine
 
 		F32 GetTotalHeight(void) { return _totalHeight; }
 
-		Vec2& GetCenter(void) { return _center; }
+		KM::Vector2& GetCenter(void) { return _center; }
 
 	private:
 		string _text;
@@ -87,7 +90,7 @@ namespace KillerEngine
 		F32 _heightScaleFactor;
 		F32 _totalWidth;
 		F32 _totalHeight;
-		Vec2 _center;	
+		KM::Vector2 _center;	
 	};
 }
 

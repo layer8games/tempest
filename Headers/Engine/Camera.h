@@ -19,6 +19,7 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/WinProgram.h>
 #include <Engine/Matrix.h>
+#include <Engine/Vector2.h> 
 
 namespace KM = KillerMath;
 
@@ -42,7 +43,7 @@ namespace KillerEngine
 
 		void SetProjectionOrthographic(void);
 
-		void SetPosition(Vec2& pos, F32 scale) 
+		void SetPosition(KM::Vector2& pos, F32 scale) 
 		{ 
 			_pos.AddScaledVector(pos, scale);
 			_translation.Translate(pos); 
@@ -50,7 +51,7 @@ namespace KillerEngine
 
 		void SetPosition(F32 x, F32 y, F32 scale) 
 		{ 
-			_pos.AddScaledVector(Vec2(x, y), scale);
+			_pos.AddScaledVector(KM::Vector2(x, y), scale);
 			_translation.Translate(_pos); 
 		}
 
@@ -67,11 +68,11 @@ namespace KillerEngine
 //Private members
 //
 //==========================================================================================================================		
-		static Camera* _instance;
-		Col    _background;
-		Vec2   _pos;
-		KM::Matrix _projection;
-		KM::Matrix _translation;
+		static Camera* 	_instance;
+		Col    			_background;
+		KM::Vector2  	_pos;
+		KM::Matrix 		_projection;
+		KM::Matrix 		_translation;
 
 	protected:
 //==========================================================================================================================

@@ -17,6 +17,7 @@ Written by Maxwell Miller
 //=====Engine includes=====
 #include <Engine/Atom.h>
 #include <Engine/Particle2DForceGenerator.h>
+#include <Engine/Vector2.h>
 
 namespace KM = KillerMath;
 namespace KE = KillerEngine;

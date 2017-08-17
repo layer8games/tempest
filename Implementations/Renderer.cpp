@@ -51,7 +51,7 @@ namespace KillerEngine
 //=======================================================================================================
 //AddToBatch
 //=======================================================================================================
-	void Renderer::AddToBatch(GLuint shader, Vec2& pos, F32 w, F32 h, Col& c)
+	void Renderer::AddToBatch(GLuint shader, KM::Vector2& pos, F32 w, F32 h, Col& c)
 	{
 		if(_currentShader != shader)
 		{
@@ -82,7 +82,7 @@ namespace KillerEngine
 		++_currentBatchSize;
 	}
 
-	void Renderer::AddToBatch(GLuint shader, Vec2& pos, F32 w, F32 h, Col& c, U32 textureID)
+	void Renderer::AddToBatch(GLuint shader, KM::Vector2& pos, F32 w, F32 h, Col& c, U32 textureID)
 	{
 		if(TextureManager::Instance()->GetCurrentTextureID() != textureID)
 		{
@@ -97,7 +97,7 @@ namespace KillerEngine
 		AddToBatch(shader, pos, w, h, c);
 	}
 
-	void Renderer::AddToBatch(GLuint shader, Vec2& pos, F32 w, F32 h, Col& c, U32 textureID, Vec2& origin, Vec2& limit)
+	void Renderer::AddToBatch(GLuint shader, KM::Vector2& pos, F32 w, F32 h, Col& c, U32 textureID, KM::Vector2& origin, KM::Vector2& limit)
 	{
 		
 		if(TextureManager::Instance()->GetCurrentTextureID() != textureID)

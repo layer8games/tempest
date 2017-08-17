@@ -301,14 +301,14 @@ namespace KillerEngine {
                 POINT p;
                 if(!GetCursorPos(&p)) { ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to find Left Cursor Position in WinProgram!"); }
                 if(!ScreenToClient(_hwnd, &p)) { ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to convert Left Cursor to client in WinProgram!"); }
-                Controller::Instance()->LeftMouseClick(Vec2((F32)p.x, (F32)p.y));
+                Controller::Instance()->LeftMouseClick(KM::Vector2((F32)p.x, (F32)p.y));
                 Controller::Instance()->KeyDown(Keys::LEFT_MOUSE);
                 break; 
             }
             case WM_LBUTTONUP:
             {
                 Controller::Instance()->KeyUp(Keys::LEFT_MOUSE);
-                Controller::Instance()->LeftMouseClick(Vec2(0.0f, 0.0f));
+                Controller::Instance()->LeftMouseClick(KM::Vector2(0.0f, 0.0f));
                 break;
             }
             case WM_RBUTTONDOWN:
@@ -316,14 +316,14 @@ namespace KillerEngine {
                 POINT p;
                 if(!GetCursorPos(&p)) { ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to find Right Cursor Position in WinProgram!"); }
                 if(!ScreenToClient(_hwnd, &p)) { ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to convert Right Cursor to client in WinProgram!"); }
-                Controller::Instance()->RightMouseClick(Vec2((F32)p.x, (F32)p.y));
+                Controller::Instance()->RightMouseClick(KM::Vector2((F32)p.x, (F32)p.y));
                 Controller::Instance()->KeyDown(Keys::RIGHT_MOUSE);
                 break;
             }
             case WM_RBUTTONUP:
             {
                 Controller::Instance()->KeyUp(Keys::RIGHT_MOUSE);
-                Controller::Instance()->RightMouseClick(Vec2(0.0f, 0.0f));
+                Controller::Instance()->RightMouseClick(KM::Vector2(0.0f, 0.0f));
                 break;
             }
             default:

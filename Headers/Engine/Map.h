@@ -98,13 +98,13 @@ namespace KillerEngine
 			RenderObjects(); 
 		}
 
-/*		virtual GameObject2D* v_CreateObject(ObjectType type, Vec2& pos, F32 w, F32 h) 
+/*		virtual GameObject2D* v_CreateObject(ObjectType type, Vector2& pos, F32 w, F32 h) 
 		{
 			ErrorManager::Instance()->SetError(EC_Game, "CreateObject not defined in your Map");
 			return NULL; 
 		}
 */
-		virtual GameObject2D* v_CreateObject(ObjectType type, Vec2& pos, U32 textureID, F32 w, F32 h)
+		virtual GameObject2D* v_CreateObject(ObjectType type, Vector2& pos, U32 textureID, F32 w, F32 h)
 		{
 			ErrorManager::Instance()->SetError(EC_KillerEngine, "Attempted to call v_CreateObject without Map Implementation");
 			return NULL;

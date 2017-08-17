@@ -28,9 +28,9 @@ namespace KillerEngine
 //==========================================================================================================================
 		EnvironmentObject(void);
 
-		EnvironmentObject(Vec2& pos, F32 w, F32 h);
+		EnvironmentObject(Vector2& pos, F32 w, F32 h);
 
-		EnvironmentObject(Vec2& pos, U32 textureID, F32 w, F32 h);
+		EnvironmentObject(Vector2& pos, U32 textureID, F32 w, F32 h);
 
 		~EnvironmentObject(void);
 //==========================================================================================================================

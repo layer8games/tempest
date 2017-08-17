@@ -60,7 +60,7 @@ namespace KillerEngine
 			F32 xOffset = F32(sprite->GetXOffset() / 2);
 			F32 yOffset = F32(sprite->GetYOffset() / 2);
 
-			sprite->SetPosition(Vec2(currentX + xOffset, currentY - yOffset));			
+			sprite->SetPosition(KM::Vector2(currentX + xOffset, currentY - yOffset));			
 
 			currentX += F32(sprite->GetXAdvance()) * _widthScaleFactor;
 
@@ -91,10 +91,10 @@ namespace KillerEngine
 			_spriteList.push_back(sprite);
 		}
 
-		_center = Vec2(_totalWidth / 2.0f, _totalHeight / 2.0f);
+		_center = KM::Vector2(_totalWidth / 2.0f, _totalHeight / 2.0f);
 	}//End AddText
 
-	void RenderText::SetTextPosition(Vec2& pos)
+	void RenderText::SetTextPosition(KM::Vector2& pos)
 	{
 		F32 currentX = pos.GetX();
 		F32 currentY = pos.GetY();
@@ -104,7 +104,7 @@ namespace KillerEngine
 			F32 xOffset = F32(sprite->GetXOffset() / 2);
 			F32 yOffset = F32(sprite->GetYOffset() / 2);
 
-			sprite->SetPosition(Vec2(currentX + xOffset, currentY - yOffset));			
+			sprite->SetPosition(KM::Vector2(currentX + xOffset, currentY - yOffset));			
 
 			currentX += F32(sprite->GetXAdvance()) * _widthScaleFactor;
 		}

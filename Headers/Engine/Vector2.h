@@ -108,6 +108,67 @@ namespace KillerMath
 
 	Vector2& operator+=(const Vector2& V);		
 
+//=====Add by scalar=====
+	Vector2 operator+(F32 val);
+
+	Vector2& operator+=(F32 val);
+
+//=====Subtract from vector=====
+	Vector2 operator-(const Vector2& V);
+
+	Vector2& operator-=(const Vector2& V);
+
+//=====Subtract from scalar=====
+	Vector2 operator-(F32 val);
+
+	Vector2& operator-=(F32 val);
+
+//=====Component-wise multiply by vector=====
+	Vector2 operator*(const Vector2& V);
+
+	Vector2& operator*=(const Vector2& V);
+
+//=====Multiply by scalar=====
+	Vector2 operator*(F32 val);
+
+	Vector2& operator*=(F32 val);
+
+//=====Component-wise Divide by vector=====	
+	Vector2 operator/(const Vector2& V);
+
+	Vector2& operator/=(const Vector2& V);
+
+//=====Divide by scalar=====
+	Vector2 operator/(F32 val);
+
+	Vector2& operator/=(F32 val);
+
+//==========================================================================================================================
+//
+//Vector Functions
+//
+//==========================================================================================================================
+	F32 DotProduct(const Vector2& V);
+
+	F32 Magnitude(void);
+
+	F32 SqrMagnitude(void);
+
+	void Normalize(void);
+
+	void Reset(void);
+
+	void Reset(F32 val);
+
+//==========================================================================================================================
+//
+//Misc Math Helpers
+//
+//==========================================================================================================================
+	void AddScaledVector(const Vector2& V, F32 scale);
+
+
+
 	private:
 		F32 _x;
 		F32 _y; 

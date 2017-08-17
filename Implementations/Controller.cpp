@@ -83,7 +83,7 @@ namespace KillerEngine
 		else { return false; }
 	}
 
-	void Controller::LeftMouseClick(Vec2 coord)
+	void Controller::LeftMouseClick(KM::Vector2 coord)
 	{
 		_leftClickCoordinates.SetX(coord.GetX());// - (F32)WinProgram::Instance()->GetWidth() * -1.0f);
 		_leftClickCoordinates.SetY(-(coord.GetY() - (F32)WinProgram::Instance()->GetHeight()));

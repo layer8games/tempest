@@ -24,7 +24,7 @@ namespace KillerPhysics
 	void Particle2DSpringForce::v_UpdateForce(Particle2D* particle)
 	{
 //=====Calculate Vector of the spring=====
-		Vec2 force = particle->GetPosition();
+		KM::Vector2 force = particle->GetPosition();
 		force -= _otherEnd->GetPosition();
 
 //=====Calculate magnitude of force=====
