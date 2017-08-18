@@ -20,6 +20,10 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Controller.h>
+#include <Engine/Vector2.h>
+
+namespace KM = KillerMath; 
+
 
 //=====OGL includes=====
 #include <GL/gl.h>

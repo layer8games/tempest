@@ -30,7 +30,8 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/WinProgram.h>
 #include <Engine/ErrorManager.h>
-#include <Engine/Matrix.hpp>
+#include <Engine/Matrix.h>
+#include <Engine/Vector2.h>
 namespace KM = KillerMath;
 
 
@@ -128,17 +129,17 @@ namespace KillerEngine
 
 		void KeyUp(Keys k) { _curActiveKeys[k] = false; }
 
-		void LeftMouseClick(Vec2 coord);
+		void LeftMouseClick(KM::Vector2 coord);
 /*		{ 
 			_leftClickCoordinates = coord; 
 			//_leftClickCoordinates.SetY(-coord.GetY());
 		}
 */
-		Vec2 GetLeftMouseCoord(void) { return _leftClickCoordinates; }
+		KM::Vector2 GetLeftMouseCoord(void) { return _leftClickCoordinates; }
 
-		void RightMouseClick(Vec2 coord) { _rightClickCoordinates = coord; }
+		void RightMouseClick(KM::Vector2 coord) { _rightClickCoordinates = coord; }
 
-		Vec2 GetRightMouseCoord(void) { return _rightClickCoordinates; }
+		KM::Vector2 GetRightMouseCoord(void) { return _rightClickCoordinates; }
 
 		//KeyState GetKeyState(Keys k) { return _curKeyStates[k]; }
 
@@ -165,10 +166,10 @@ namespace KillerEngine
 		KeyStates   			_keyStates[_totalKeys];
 		bool 					_pastActiveKeys[_totalKeys];
 		bool					_curActiveKeys[_totalKeys];
-		Vec2 					_leftClickCoordinates;
-		Vec2					_rightClickCoordinates;
+		KM::Vector2 			_leftClickCoordinates;
+		KM::Vector2				_rightClickCoordinates;
 		static Controller*   	_instance;
-		KM::Matrix4<F32>		_transform;
+		KM::Matrix				_transform;
 	};
 }//End namespace
 

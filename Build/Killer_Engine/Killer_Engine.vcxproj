@@ -135,6 +135,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Matrix.h" />
     <ClInclude Include="..\..\Headers\Engine\Model.h">
       <SubType>
       </SubType>
@@ -145,7 +146,6 @@
     <ClInclude Include="..\..\Headers\Engine\Particle2DForceGenerator.h" />
     <ClInclude Include="..\..\Headers\Engine\GameObject2D.h" />
     <ClInclude Include="..\..\Headers\Engine\KillerEngine2D.h" />
-    <ClInclude Include="..\..\Headers\Engine\Matrix.hpp" />
     <ClInclude Include="..\..\Headers\Engine\Particle2D.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle3D.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle2DForceRegistry.h" />
@@ -156,6 +156,8 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\TriSprite.h" />
+    <ClInclude Include="..\..\Headers\Engine\Vector2.h" />
+    <ClInclude Include="..\..\Headers\Engine\Vector3.h" />
     <ClInclude Include="..\..\Headers\Engine\WinProgram.h" />
     <ClInclude Include="..\..\Headers\Engine\RandomGen.h" />
     <ClInclude Include="..\..\Headers\Engine\Renderer.h" />
@@ -165,7 +167,6 @@
     <ClInclude Include="..\..\Headers\Engine\Texture.hpp" />
     <ClInclude Include="..\..\Headers\Engine\TextureManager.h" />
     <ClInclude Include="..\..\Headers\Engine\Timer.h" />
-    <ClInclude Include="..\..\Headers\Engine\Vector.hpp" />
     <ClInclude Include="..\..\Headers\Engine\Map.h" />
     <ClInclude Include="..\..\Headers\Engine\MapManager.h" />
   </ItemGroup>
@@ -181,6 +182,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\Matrix.cpp" />
     <ClCompile Include="..\..\Implementations\Model.cpp">
       <SubType>
       </SubType>
@@ -199,6 +201,14 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\TriSprite.cpp" />
     <ClCompile Include="..\..\Implementations\Sprite.cpp" />
+    <ClCompile Include="..\..\Implementations\Vector2.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Vector3.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\WinProgram.cpp" />
     <ClCompile Include="..\..\Implementations\RandomGen.cpp" />
     <ClCompile Include="..\..\Implementations\Renderer.cpp" />

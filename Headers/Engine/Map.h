@@ -18,6 +18,9 @@ Written by Maxwell Miller
 #include <Engine/Renderer.h>
 #include <Engine/TextureManager.h>
 #include <Engine/EnvironmentObject.h>
+#include <Engine/Vector2.h>
+
+namespace KM = KillerMath;
 
 //=====STL includes=====
 #include <map>
@@ -98,13 +101,13 @@ namespace KillerEngine
 			RenderObjects(); 
 		}
 
-/*		virtual GameObject2D* v_CreateObject(ObjectType type, Vec2& pos, F32 w, F32 h) 
+/*		virtual GameObject2D* v_CreateObject(ObjectType type, Vector2& pos, F32 w, F32 h) 
 		{
 			ErrorManager::Instance()->SetError(EC_Game, "CreateObject not defined in your Map");
 			return NULL; 
 		}
 */
-		virtual GameObject2D* v_CreateObject(ObjectType type, Vec2& pos, U32 textureID, F32 w, F32 h)
+		virtual GameObject2D* v_CreateObject(ObjectType type, KM::Vector2& pos, U32 textureID, F32 w, F32 h)
 		{
 			ErrorManager::Instance()->SetError(EC_KillerEngine, "Attempted to call v_CreateObject without Map Implementation");
 			return NULL;

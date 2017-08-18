@@ -52,12 +52,12 @@ namespace KillerPhysics
 
 		F32 delta = KM::Timer::Instance()->DeltaTime();
 
-		Vec2 velocity = KE::GameObject2D::GetVelocity();
+		KM::Vector2 velocity = KE::GameObject2D::GetVelocity();
 		
 		//Update position
 		KE::GameObject2D::SetScaledPosition(velocity, delta);
 
-		Vec2 resultingAcc = KE::GameObject2D::GetAcceleration();
+		KM::Vector2 resultingAcc = KE::GameObject2D::GetAcceleration();
 
 		velocity.AddScaledVector(resultingAcc, delta);
 
@@ -70,10 +70,10 @@ namespace KillerPhysics
 
 	void Particle2D::ClearAccumulator(void)
 	{
-		_forceAccum.Clear();
+		_forceAccum.Reset();
 	}
 
-	void Particle2D::AddForce(const Vec2& force)
+	void Particle2D::AddForce(const KM::Vector2& force)
 	{
 		_forceAccum += force;
 	}

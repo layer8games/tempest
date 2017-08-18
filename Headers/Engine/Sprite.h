@@ -25,9 +25,12 @@ Written by Maxwell Miller
 
 //=====Killer1 inlucdes=====
 #include <Engine/Atom.h>
+#include <Engine/Vector2.h>
 #include <Engine/Texture.hpp>
 #include <Engine/Renderer.h>
 #include <Engine/ErrorManager.h>
+
+namespace KM = KillerMath;
 
 //=====OGL includes=====
 #include <GL/gl.h>
@@ -74,9 +77,9 @@ namespace KillerEngine
 				//v_SetVertexPositions();
 			}			
 
-			void SetPosition(Vec2& pos) { position = pos; }
+			void SetPosition(KM::Vector2& pos) { position = pos; }
 
-			Vec2& GetPosition(void) { return position; }
+			KM::Vector2& GetPosition(void) { return position; }
 
 			void SetColor(Col& col) { color = col; }
 
@@ -84,15 +87,15 @@ namespace KillerEngine
 
 			U32 GetTextureID(void) { return textureID; }
 
-			void SetUVs(Vec2& bottomTop, Vec2& leftRight)
+			void SetUVs(KM::Vector2& bottomTop, KM::Vector2& leftRight)
 			{
 				_bottomTop = bottomTop;
 				_leftRight = leftRight;
 			}
 
-			Vec2& GetUVBottomTop(void) { return _bottomTop; }
+			KM::Vector2& GetUVBottomTop(void) { return _bottomTop; }
 
-			Vec2& GetUVLeftRight(void) { return _leftRight; }
+			KM::Vector2& GetUVLeftRight(void) { return _leftRight; }
 
  
 //==========================================================================================================================
@@ -120,8 +123,8 @@ namespace KillerEngine
 		virtual void SetTexture(U32 tID, const F32 top, const F32 bottom, const F32 right, const F32 left)
 		{
 			textureID = tID;
-			_bottomTop = Vec2(bottom, top);
-			_leftRight  = Vec2(left, right);
+			_bottomTop = KM::Vector2(bottom, top);
+			_leftRight  = KM::Vector2(left, right);
 		}
 
 		virtual GLuint v_GetShader(void)=0;
@@ -133,12 +136,12 @@ namespace KillerEngine
 //==========================================================================================================================
 
 	private:
-		Vec2 			 _bottomTop;
-		Vec2 			 _leftRight;
+		KM::Vector2 			 _bottomTop;
+		KM::Vector2 			 _leftRight;
 		F32				 width;
 		F32				 height;
 		U32				 textureID;
-		Vec2			 position;
+		KM::Vector2			 position;
 		Col			 	 color;
 
 //==========================================================================================================================

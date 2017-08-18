@@ -17,6 +17,7 @@ Written by Maxwell Miller
 #include <Engine/Timer.h>
 #include <Engine/Atom.h>
 #include <Engine/GameObject2D.h>
+#include <Engine/Vector2.h>
 
 //=====STL and other includes=====
 #include <cassert>
@@ -67,7 +68,7 @@ namespace KillerPhysics
 
 		void ClearAccumulator(void);
 
-		void AddForce(const Vec2& force);
+		void AddForce(const KM::Vector2& force);
 
 	private:
 		//=====Description=====
@@ -81,7 +82,7 @@ namespace KillerPhysics
 		//where f is a force applied to the particle. 
 		real _inverseMass;
 
-		Vec2 _forceAccum;
+		KM::Vector2 _forceAccum;
 	};
 }//End namespace
 

@@ -32,7 +32,7 @@ namespace KillerPhysics
 
 		if(depth >= _liquidHeight + _maxDepth) return;
 		
-		Vec2 force(0.0f);
+		KM::Vector2 force(0.0f);
 
 		if(depth <= _liquidHeight - _maxDepth)
 		{

@@ -139,6 +139,12 @@
     <Filter Include="Components\Model">
       <UniqueIdentifier>{b052f8a3-7bd6-4da4-a4a5-cc4dd017486f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components\Math\LinearAlgebra\Vector\2D">
+      <UniqueIdentifier>{d87a1455-c2bf-429d-b0df-78a00d581b81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Math\LinearAlgebra\Vector\3D">
+      <UniqueIdentifier>{e21d2ed8-880a-4167-9193-42978d82d57d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -192,12 +198,6 @@
     <ClInclude Include="..\..\Headers\Engine\Sprite.h">
       <Filter>Components\Sprites\Sprite</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Matrix.hpp">
-      <Filter>Components\Math\LinearAlgebra\Matrix</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Vector.hpp">
-      <Filter>Components\Math\LinearAlgebra\Vector</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\TriSprite.h">
       <Filter>Components\Sprites\TriSprite</Filter>
     </ClInclude>
@@ -248,6 +248,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Model.h">
       <Filter>Components\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Matrix.h">
+      <Filter>Components\Math\LinearAlgebra\Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Vector2.h">
+      <Filter>Components\Math\LinearAlgebra\Vector\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Vector3.h">
+      <Filter>Components\Math\LinearAlgebra\Vector\3D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -337,6 +346,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Model.cpp">
       <Filter>Components\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Matrix.cpp">
+      <Filter>Components\Math\LinearAlgebra\Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Vector2.cpp">
+      <Filter>Components\Math\LinearAlgebra\Vector\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Vector3.cpp">
+      <Filter>Components\Math\LinearAlgebra\Vector\3D</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -31,6 +31,9 @@ Written by Maxwell Miller
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
+#include <Engine/Vector3.h>
+
+namespace KM = KillerMath;
 
 namespace KillerEngine
 {
@@ -90,12 +93,12 @@ namespace KillerEngine
 //==========================================================================================================================
 //Position
 //==========================================================================================================================		
-		const Vec3& GetPosition(void)
+		const KM::Vector3& GetPosition(void)
 		{
 			return _position;
 		}
 
-		void SetPosition(Vec3& pos)
+		void SetPosition(KM::Vector3& pos)
 		{
 			_position = pos; 
 		}
@@ -103,12 +106,12 @@ namespace KillerEngine
 //==========================================================================================================================
 //Vecocity [as heading]
 //==========================================================================================================================		
-		const Vec3& GetVelocity(void)
+		const KM::Vector3& GetVelocity(void)
 		{
 			return _velocity;
 		}
 
-		void SetVelocity(Vec3& vel)
+		void SetVelocity(KM::Vector3& vel)
 		{
 			_velocity = vel;
 		}
@@ -131,12 +134,12 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 	private:
-		static U32 _nextID;
-		U32		   _ID;
-		bool	   _active;
-		Vec3	   _position;
-		Vec3	   _velocity;
-		F32		   _acceleration;
+		static U32 		_nextID;
+		U32		   		_ID;
+		bool	   		_active;
+		KM::Vector3	   	_position;
+		KM::Vector3	   	_velocity;
+		F32		   		_acceleration;
 
 	};//end Class
 }//end Namespace

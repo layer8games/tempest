@@ -63,8 +63,7 @@ namespace KillerEngine
 
 			"void main(void) 																	\n"
 			"{																					\n"
-			"	gl_Position = perspective_mat * modelView_mat * position;						\n"
-			//"	gl_Position = transform_mat * position;											\n"
+			"	gl_Position = transform_mat * position;											\n"
 			"	gs_color = color;																\n"
 			"	gs_dimensions = perspective_mat * vec4(dimensions.x, dimensions.y, 0.0, 0.0);	\n"
 			"	gs_bottomTop = bottomTop;														\n"

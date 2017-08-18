@@ -15,6 +15,9 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/GameObject2D.h>
 #include <Engine/SqrSprite.h>
+#include <Engine/Vector2.h>
+
+namespace KM = KillerMath;
 
 namespace KillerEngine
 {
@@ -28,9 +31,9 @@ namespace KillerEngine
 //==========================================================================================================================
 		EnvironmentObject(void);
 
-		EnvironmentObject(Vec2& pos, F32 w, F32 h);
+		EnvironmentObject(KM::Vector2& pos, F32 w, F32 h);
 
-		EnvironmentObject(Vec2& pos, U32 textureID, F32 w, F32 h);
+		EnvironmentObject(KM::Vector2& pos, U32 textureID, F32 w, F32 h);
 
 		~EnvironmentObject(void);
 //==========================================================================================================================

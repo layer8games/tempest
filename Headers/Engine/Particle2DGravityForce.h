@@ -18,6 +18,7 @@ Written by Maxwell Miller
 //=====Engine includes=====
 #include <Engine/Atom.h>
 #include <Engine/Particle2DForceGenerator.h>
+#include <Engine/Vector2.h>
 
 namespace KM = KillerMath;
 namespace KE = KillerEngine;
@@ -34,7 +35,7 @@ namespace KillerPhysics
 //==========================================================================================================================		
 		Particle2DGravityForce(void);
 
-		Particle2DGravityForce(const Vec2& gravity);
+		Particle2DGravityForce(const KM::Vector2& gravity);
 
 		~Particle2DGravityForce(void);
 
@@ -46,7 +47,7 @@ namespace KillerPhysics
 		void v_UpdateForce(Particle2D& particle);
 
 	private:
-		Vec2 _gravityAcc;
+		KM::Vector2 _gravityAcc;
 	};//end class
 }//end namespace
 

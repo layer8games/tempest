@@ -21,7 +21,7 @@ namespace KillerPhysics
 //==========================================================================================================================
 	void Particle2DDragForce::v_UpdateForce(Particle2D& particle)
 	{
-		Vec2 force = particle.GetVelocity();
+		KM::Vector2 force = particle.GetVelocity();
 
 		real dragCoeff = force.Magnitude();
 		dragCoeff = _k1 * dragCoeff  + _k2 * dragCoeff * dragCoeff;
