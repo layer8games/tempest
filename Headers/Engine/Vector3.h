@@ -7,7 +7,7 @@ of KillerWave.
 Written by Maxwell Miller
 ========================================================================*/
 #ifndef VECTOR3_H
-#define VECTOR2_H
+#define VECTOR3_H
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>

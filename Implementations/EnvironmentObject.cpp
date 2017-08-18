@@ -13,7 +13,7 @@ namespace KillerEngine
 		GameObject2D::SetID();
 	}
 
-	EnvironmentObject::EnvironmentObject(Vector2& pos, F32 w, F32 h)
+	EnvironmentObject::EnvironmentObject(KM::Vector2& pos, F32 w, F32 h)
 	{
 		GameObject2D::SetSprite(new SqrSprite());
 		GameObject2D::SetID();
@@ -21,7 +21,7 @@ namespace KillerEngine
 		GameObject2D::SetPosition(pos);
 	}
 
-	EnvironmentObject::EnvironmentObject(Vector2& pos, U32 textureID, F32 w, F32 h)
+	EnvironmentObject::EnvironmentObject(KM::Vector2& pos, U32 textureID, F32 w, F32 h)
 	{
 		GameObject2D::SetSprite(new SqrSprite());
 		GameObject2D::SetID();

@@ -19,6 +19,9 @@ namespace KillerMath
 	Vector3::Vector3(F32 x, F32 y, F32 z) : _x(x), _y(y), _z(z), _w(1.0f)
 	{  }
 
+	Vector3::Vector3(F32 x, F32 y, F32 z, F32 w) : _x(x), _y(y), _z(z), _w(w)
+	{  }
+
 	Vector3::Vector3(const Vector3& V) : _x(V.GetX()), _y(V.GetY()), _z(V.GetZ()), _w(V.GetW())
 	{  }
 

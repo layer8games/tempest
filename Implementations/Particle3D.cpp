@@ -46,7 +46,7 @@ namespace KillerPhysics
 		//Update position
 		position.AddScaledVector(velocity, delta);
 
-		Vector3 resultingAcc = acceleration;
+		KM::Vector3 resultingAcc = acceleration;
 
 		velocity.AddScaledVector(resultingAcc, delta);
 

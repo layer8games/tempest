@@ -20,6 +20,7 @@ Written by Maxwell Miller
 
 //=====KillerMath includes=====
 #include <Engine/Timer.h>
+#include <Engine/Vector3.h>
 
 //=====STL and other includes=====
 #include <cassert>
