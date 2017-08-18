@@ -184,7 +184,7 @@ namespace KillerEngine
 		}	
 
 //=====Position=====
-		const KM::Vector2& GetPosition(void) 
+		KM::Vector2& GetPosition(void) 
 		{ 
 			return _position; 
 		}
