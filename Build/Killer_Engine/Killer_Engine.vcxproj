@@ -150,7 +150,6 @@
     <ClInclude Include="..\..\Headers\Engine\Particle3D.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle2DForceRegistry.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle2DSpringForce.h" />
-    <ClInclude Include="..\..\Headers\Engine\Point.hpp" />
     <ClInclude Include="..\..\Headers\Engine\Quaternion.h">
       <SubType>
       </SubType>
