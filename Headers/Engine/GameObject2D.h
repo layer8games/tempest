@@ -93,63 +93,29 @@ namespace KillerEngine
 //Can make sure to update its sprite, if it has one
 //with a default version in the case of no sprite.
 		
-		const F32 GetWidth(void) 
-		{ 
-			return _sprite->GetWidth(); 
-		}
+		virtual const F32 GetWidth(void);
 
-		virtual void SetWidth(F32 w) 
-		{ 
-			_sprite->SetWidth(w); 
-		}
+		virtual void SetWidth(F32 w);
 
-		const F32 GetHeight(void) 
-		{ 
-			return _sprite->GetHeight(); 
-		}
+		virtual const F32 GetHeight(void);
 
-		virtual void SetHeight(F32 h) 
-		{ 
-			_sprite->SetHeight(h); 
-		}
+		virtual void SetHeight(F32 h);
 
-		virtual void SetDimensions(const F32 w, const F32 h) 
-		{ 
-			_sprite->SetDimensions(w, h); 
-		}
+		virtual void SetDimensions(F32 w, F32 h);
 
 //=====Color=====
-		const Col& GetColor(void) 
-		{ 
-			return _sprite->GetColor();	 
-		}
+		const Col& GetColor(void);
 
-		void SetColor(Col& col) 
-		{ 
-			_sprite->SetColor(col); 
-		}
+		void SetColor(Col& col);
 
-		void SetColor(F32 red, F32 blue, F32 green) 
-		{ 
-			_sprite->SetColor(Col(red, blue, green)); 
-		}
+		void SetColor(F32 red, F32 blue, F32 green);
 
 //=====Texture=====
-		const  U32 GetTextureID(void) 
-		{ 
-			return _sprite->GetTextureID(); 
-		}
+		const  U32 GetTextureID(void);
 
-		void SetTexture(U32 tID, const F32 top, const F32 bottom, const F32 right, const F32 left) 
-		{ 
-			_sprite->SetTexture(tID, top, bottom, right, left);
-		}
+		void SetTexture(U32 id, const F32 top, const F32 bottom, const F32 right, const F32 left);
 
-		void SetTexture(U32 tID)
-		{
-			_sprite->SetTexture(tID, 0.0f, 1.0f, 0.0f, 1.0f);
-
-		}
+		void SetTexture(U32 id);
 
 //=====Active=====
 		const bool GetActive(void) 
@@ -168,20 +134,14 @@ namespace KillerEngine
 		}
 
 //=====Sprite=====
-		const Sprite* GetSprite(void) 
-		{ 
-			return _sprite; 
-		}
+		const Sprite* GetSprite(void);
 
 		void SetSprite(Sprite* s) 
 		{ 
 			_sprite = s; 
 		}	
 
-		void RenderSprite(void) 
-		{ 
-			_sprite->v_RenderSprite();  
-		}	
+		void RenderSprite(void);
 
 //=====Position=====
 		KM::Vector2& GetPosition(void) 
