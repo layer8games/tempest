@@ -9,13 +9,13 @@ namespace KillerEngine
 //==========================================================================================================================
 	EnvironmentObject::EnvironmentObject(void)
 	{
-		GameObject2D::SetSprite(new SqrSprite());
+		GameObject2D::SetSprite(std::shared_ptr<Sprite>(new SqrSprite()));
 		GameObject2D::SetID();
 	}
 
 	EnvironmentObject::EnvironmentObject(KM::Vector2& pos, F32 w, F32 h)
 	{
-		GameObject2D::SetSprite(new SqrSprite());
+		GameObject2D::SetSprite(std::shared_ptr<Sprite>(new SqrSprite()));
 		GameObject2D::SetID();
 		GameObject2D::SetDimensions(w, h);
 		GameObject2D::SetPosition(pos);
@@ -23,7 +23,7 @@ namespace KillerEngine
 
 	EnvironmentObject::EnvironmentObject(KM::Vector2& pos, U32 textureID, F32 w, F32 h)
 	{
-		GameObject2D::SetSprite(new SqrSprite());
+		GameObject2D::SetSprite(std::shared_ptr<Sprite>(new SqrSprite()));
 		GameObject2D::SetID();
 		GameObject2D::SetDimensions(w, h);
 		GameObject2D::SetPosition(pos);

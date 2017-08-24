@@ -11,13 +11,16 @@ Written by Maxwell Miller
 #ifndef ENVIRONMENT_OBJECT_H
 #define ENVIRONMENT_OBJECT_H
 
-//=====Engine Includes=====
+//===== Engine Includes =====
 #include <Engine/Atom.h>
 #include <Engine/GameObject2D.h>
 #include <Engine/SqrSprite.h>
 #include <Engine/Vector2.h>
 
 namespace KM = KillerMath;
+
+//===== STL Includes =====
+#include <memory>
 
 namespace KillerEngine
 {

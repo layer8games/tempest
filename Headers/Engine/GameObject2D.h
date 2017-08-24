@@ -28,7 +28,7 @@ Written by Maxwell Miller
 #ifndef GAME_OBJECT2D_H
 #define GAME_OBJECT2D_H
 
-//=====Engine Includes======
+//===== Engine Includes ======
 #include <Engine/Atom.h>
 #include <Engine/Sprite.h>
 #include <Engine/Texture.hpp>
@@ -36,6 +36,9 @@ Written by Maxwell Miller
 #include <Engine/Vector2.h>
 
 namespace KM = KillerMath;
+
+//===== STD includes =====
+#include <memory>
 
 namespace KillerEngine 
 {
@@ -50,8 +53,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		GameObject2D(void);
 
-
-		//~GameObject(void);
+		virtual ~GameObject2D(void);
 
 		//void v_ShutDown(void);		
 
@@ -134,11 +136,11 @@ namespace KillerEngine
 		}
 
 //=====Sprite=====
-		const Sprite* GetSprite(void);
+		const std::shared_ptr<Sprite> GetSprite(void);
 
-		void SetSprite(Sprite* s) 
+		void SetSprite(std::shared_ptr<Sprite> p_Sprite) 
 		{ 
-			_sprite = s; 
+			_sprite = p_Sprite; 
 		}	
 
 		void RenderSprite(void);
@@ -238,13 +240,13 @@ namespace KillerEngine
 
 
 	private:	
-		static U32 	_nextID;
-		U32 		_ID;
-		bool 	 	_active;
-		Sprite*  	_sprite;
-		KM::Vector2 _position;
-		KM::Vector2	_velocity;
-		KM::Vector2	_acceleration;	
+		static U32 				_nextID;
+		U32 					_ID;
+		bool 	 				_active;
+		std::shared_ptr<Sprite>	_sprite;
+		KM::Vector2 			_position;
+		KM::Vector2				_velocity;
+		KM::Vector2				_acceleration;	
 	};
 
 	
