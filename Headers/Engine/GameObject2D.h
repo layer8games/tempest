@@ -81,13 +81,6 @@ namespace KillerEngine
 		{
 			_ID = _nextID;
 			++_nextID;
-
-			//This is here to make sure that by this point the user has 
-			//added a sprite to the game object.
-			if(_sprite == NULL)
-			{
-				ErrorManager::Instance()->SetError(EC_GameObject, "Error! Sprite is Null, you must pass a pointer to the sprite you wish to use before you call GameObject::SetID().");
-			}
 		}
 
 //=====Dimensions=====
@@ -138,9 +131,9 @@ namespace KillerEngine
 //=====Sprite=====
 		const std::shared_ptr<Sprite> GetSprite(void);
 
-		void SetSprite(std::shared_ptr<Sprite> p_Sprite) 
+		void SetSprite(Sprite* p_Sprite) 
 		{ 
-			_sprite = p_Sprite; 
+			_sprite = std::shared_ptr<Sprite>(p_Sprite); 
 		}	
 
 		void RenderSprite(void);

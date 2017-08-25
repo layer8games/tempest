@@ -36,37 +36,8 @@ namespace KillerEngine
 	enum Keys;
 
 	class WinProgram
-	{
-private:
-		static WinProgram* _instance;
-		bool 		  _isFullScreen;
-		static S32    _totalWidth;
-		static S32    _totalHeight;
-		static S32    _right;
-		static S32    _left;
-		static S32    _top;
-		static S32    _bottom;
-		string 		  _wndName;
-		ErrorManager* _errorManager;
-		Controller*   _controller;
-		GLfloat 	  _bgColor[4];
-
-		//=====Windows Variables=====
-		HWND _hwnd;
-		HDC _hdc;
-		HGLRC _hglrc;
-		WNDCLASSEX _wndClass;
-
-//==========================================================================================================================
-//
-//Private WinProgram Functions
-//
-//==========================================================================================================================
-		void _SetTempPixelFormat(void);
-		
-		void _SetPixelFormat(void);
-		
-public:
+	{	
+	public:
 //==========================================================================================================================
 //
 //Constructors
@@ -74,29 +45,54 @@ public:
 //==========================================================================================================================
 		WinProgram(void);
 		
-		~WinProgram(void) {  }
+		~WinProgram(void);
+
+		void ShutDown(void);
 
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================
-		HINSTANCE GetHINSTANCE(void) 	{ return _wndClass.hInstance; }
+		HINSTANCE GetHINSTANCE(void) 	
+		{ 
+			return _wndClass.hInstance; 
+		}
 
-		HWND GetHWND(void)   			{ return _hwnd; }
+		HWND GetHWND(void)
+		{
+			return _hwnd; 
+		}
 		
-		static S32 GetWidth(void)	    { return _totalWidth; }
+		S32 GetWidth(void)
+		{ 
+			return _totalWidth; 
+		}
 		
-		static S32 GetRight(void) 		{ return _right; }
+		S32 GetRight(void)
+		{ 
+			return _right; 
+		}
 		
-		static S32 GetLeft(void)		{ return _left; }
+		S32 GetLeft(void)
+		{ 
+			return _left; 
+		}
 		
-		static S32 GetHeight(void) 	    { return _totalHeight; }
+		S32 GetHeight(void)
+		{ 
+			return _totalHeight; 
+		}
 		
-		static S32 GetTop(void) 		{ return _top; }
+		S32 GetTop(void)
+		{ 
+			return _top; 
+		}
 		
-		static S32 GetBottom(void) 		{ return _bottom; }
-
+		S32 GetBottom(void)
+		{ 
+			return _bottom; 
+		}
 
 //==========================================================================================================================
 //
@@ -129,6 +125,33 @@ public:
 		static LRESULT CALLBACK StaticWndProc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam);
 		
 		LRESULT CALLBACK WndProc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
+	private:
+		static WinProgram* _instance;
+		bool    _isFullScreen;
+		S32     _totalWidth;
+		S32     _totalHeight;
+		S32     _right;
+		S32     _left;
+		S32     _top;
+		S32     _bottom;
+		string  _wndName;
+		GLfloat _bgColor[4];
+
+		//=====Windows Variables=====
+		HWND _hwnd;
+		HDC _hdc;
+		HGLRC _hglrc;
+		WNDCLASSEX _wndClass;
+
+//==========================================================================================================================
+//
+//Private WinProgram Functions
+//
+//==========================================================================================================================
+		void _SetTempPixelFormat(void);
+		
+		void _SetPixelFormat(void);
 
 	};	
 }//End namespace

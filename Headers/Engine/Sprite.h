@@ -136,13 +136,13 @@ namespace KillerEngine
 //==========================================================================================================================
 
 	private:
-		KM::Vector2 			 _bottomTop;
-		KM::Vector2 			 _leftRight;
-		F32				 width;
-		F32				 height;
-		U32				 textureID;
-		KM::Vector2			 position;
-		Col			 	 color;
+		KM::Vector2 	_bottomTop;
+		KM::Vector2 	_leftRight;
+		F32				width;
+		F32				height;
+		U32				textureID;
+		KM::Vector2		position;
+		Col			 	color;
 
 //==========================================================================================================================
 //

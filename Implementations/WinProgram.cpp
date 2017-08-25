@@ -2,107 +2,28 @@
 
 namespace KillerEngine {
 
-//==========================================================================================================================
-//
-//Private WinProgram Functions
-//
-//==========================================================================================================================
-//=======================================================================================================
-//_SetTempPixelFormat
-//=======================================================================================================
-    void WinProgram::_SetTempPixelFormat(void) 
-    {
-        S32 pixelFormat;
-
-        PIXELFORMATDESCRIPTOR pfd =
-        {
-            sizeof(PIXELFORMATDESCRIPTOR),  //size
-            1,                              //version
-            PFD_SUPPORT_OPENGL |            //OpenGL window
-            PFD_DRAW_TO_WINDOW |            //render to window
-            PFD_DOUBLEBUFFER,               //support double buffer
-            PFD_TYPE_RGBA,                  //color type
-            32,                             //prefered color depth
-            0,0,0,0,0,0,                    //color bits (ignored)
-            0,                              //no alpha buffer
-            0,                              //alpha bits ignored
-            0,                              //no accumulation buffer
-            0,0,0,0,                        //accum bits (ignored)
-            16,                             //depth buffer
-            0,                              //no stencil buffer
-            0,                              //no aux buffers
-            PFD_MAIN_PLANE,                 //main layer
-            0,                              //reserved
-            0,0,0                           //no layer, visible, damage masks
-
-        };
-
-        pixelFormat = ChoosePixelFormat(_hdc, &pfd);    
-        SetPixelFormat(_hdc, pixelFormat, &pfd);
-    }
-
-//=======================================================================================================
-//_SetPixelFormat
-//=======================================================================================================
-    void WinProgram::_SetPixelFormat(void) 
-    {
-        bool worked = true;
-
-        //PFNWGLGETEXTENSIONSSTRINGARBPROC wglGetExtensionstextARB = NULL; 
-        //wglGetExtensionstextARB = (PFNWGLGETEXTENSIONSSTRINGARBPROC)wglGetProcAddress("wglGetExtensionstextARB");
-        //if (!wglGetExtensionstextARB){ worked = false; } //{ _errorManager->SetError(EC_OpenGL, "Unable to get wglGetExtensionstextARB function Vecer"); }
-
-        PFNWGLCHOOSEPIXELFORMATARBPROC wglChoosePixelFormatARB = NULL;
-        wglChoosePixelFormatARB = (PFNWGLCHOOSEPIXELFORMATARBPROC)wglGetProcAddress("wglChoosePixelFormatARB");
-        if (!wglChoosePixelFormatARB){ worked = false; } //{ _errorManager->SetError(EC_OpenGL, "Unable to get wglChoosePixelFormatARB function Vecer"); }
-
-        int pixCount    = 0;
-        int pixelFormat = 0;
-
-        int pixAtrb[] = {
-            WGL_SUPPORT_OPENGL_ARB, 1, //Support OGL rendering
-            WGL_DRAW_TO_WINDOW_ARB, 1, //pf that can run a window
-            WGL_RED_BITS_ARB,       8, //8 bits of RGB color
-            WGL_GREEN_BITS_ARB,     8,
-            WGL_BLUE_BITS_ARB,      8,
-            WGL_DEPTH_BITS_ARB,     16, //16 bits of depth
-            WGL_ACCELERATION_ARB,
-            WGL_FULL_ACCELERATION_ARB,
-            WGL_PIXEL_TYPE_ARB,
-            WGL_TYPE_RGBA_ARB,
-            0};
-
-        wglChoosePixelFormatARB(_hdc,              //device context
-                                &pixAtrb[0],       //desired attributes
-                                NULL,              //float attribute list
-                                1,                 //max returned formats
-                                &pixelFormat,      //list of returned formats
-                                (UINT*)&pixCount); //number of formats found
-
-        if(pixelFormat == -1) { _errorManager->SetError(EC_OpenGL, "Failed to load Pixel Format"); }
-
-    }
 
 //==========================================================================================================================
 //
 //Constructors
 //
-//==========================================================================================================================
-    S32 WinProgram::_totalWidth  = 0;
-    S32 WinProgram::_totalHeight = 0;
-    S32 WinProgram::_right       = 0;
-    S32 WinProgram::_left        = 0;
-    S32 WinProgram::_top         = 0;
-    S32 WinProgram::_bottom      = 0;
-    WinProgram::WinProgram(): _isFullScreen(false),
-    						  _wndName("WinProgram"),
-    						  _hwnd(NULL),
-                              _hglrc(NULL),
-                              _errorManager(ErrorManager::Instance()),
-                              _controller(Controller::Instance())
-    {
-    	
-    }
+//==========================================================================================================================   
+    WinProgram::WinProgram(void) : _isFullScreen(false),
+                                   _totalWidth(0), 
+                                   _totalHeight(0),
+                                   _right(0), 
+                                   _left(0),
+                                   _top(0), 
+                                   _bottom(0),
+    						       _wndName("WinProgram"),
+    						       _hwnd(NULL),
+                                   _hdc(NULL),
+                                   _hglrc(NULL),
+                                   _wndClass()
+    {  }
+
+    WinProgram::~WinProgram(void)
+    {  }
 //==========================================================================================================================
 //
 //WinProgram Functions
@@ -145,7 +66,7 @@ namespace KillerEngine {
     	_wndClass.lpszClassName = _wndName.c_str();
         _wndClass.hIconSm       = LoadIcon(NULL, IDI_WINLOGO);
 
-    	if (!RegisterClassEx(&_wndClass)) { _errorManager->SetError(EC_OpenGL, "Failed to register window class"); }
+    	if (!RegisterClassEx(&_wndClass)) { ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to register window class"); }
 
     	_hwnd = CreateWindowEx(WS_EX_APPWINDOW | WS_EX_WINDOWEDGE,
     				   		   _wndName.c_str(),					    //Window Class name
@@ -158,13 +79,13 @@ namespace KillerEngine {
     				   		   NULL, 									//Window Menu
     				   		   _wndClass.hInstance,						//hInstance,
     				   		   this); 									//lpParam
-    	if (!_hwnd) { _errorManager->SetError(EC_OpenGL, "Failed to create HWND"); }
+    	if (!_hwnd) { ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to create HWND"); }
 
     	SetWindowLong(_hwnd, GWL_STYLE, WS_BORDER);
 
         _hdc = GetDC(_hwnd);
 
-        if(!_hdc) { _errorManager->SetError(EC_OpenGL, "Failed to get HDC"); }
+        if(!_hdc) { ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to get HDC"); }
 
         ShowWindow(_hwnd, SW_SHOW);
         UpdateWindow(_hwnd);
@@ -244,7 +165,7 @@ namespace KillerEngine {
                 
     			PFNWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribsARB = NULL;
                 wglCreateContextAttribsARB = (PFNWGLCREATECONTEXTATTRIBSARBPROC)wglGetProcAddress("wglCreateContextAttribsARB");
-                if(!wglCreateContextAttribsARB) { _errorManager->SetError(EC_OpenGL, "Unable to get wglCreateContextAttribsARB function Vecer"); }
+                if(!wglCreateContextAttribsARB) { ErrorManager::Instance()->SetError(EC_OpenGL, "Unable to get wglCreateContextAttribsARB function Vecer"); }
 
                 GLint contextARBS[] = 
                 {
@@ -256,12 +177,12 @@ namespace KillerEngine {
 
                 _hglrc = wglCreateContextAttribsARB(_hdc, 0, contextARBS);
 
-                if(!_hglrc) { _errorManager->SetError(EC_OpenGL, "Failed to create wgl Context"); }
+                if(!_hglrc) { ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to create wgl Context"); }
 
                 wglMakeCurrent(_hdc, _hglrc);
                 wglDeleteContext(hrcTemp);
 
-                if (gl3wInit()) { _errorManager->SetError(EC_OpenGL, "gl3wInit() failed"); }
+                if (gl3wInit()) { ErrorManager::Instance()->SetError(EC_OpenGL, "gl3wInit() failed"); }
 
                 break;
             }
@@ -436,5 +357,82 @@ namespace KillerEngine {
                 return Keys::NO_KEY;
         }
     }
+
+//=======================================================================================================
+//_SetTempPixelFormat
+//=======================================================================================================
+    void WinProgram::_SetTempPixelFormat(void) 
+    {
+        S32 pixelFormat;
+
+        PIXELFORMATDESCRIPTOR pfd =
+        {
+            sizeof(PIXELFORMATDESCRIPTOR),  //size
+            1,                              //version
+            PFD_SUPPORT_OPENGL |            //OpenGL window
+            PFD_DRAW_TO_WINDOW |            //render to window
+            PFD_DOUBLEBUFFER,               //support double buffer
+            PFD_TYPE_RGBA,                  //color type
+            32,                             //prefered color depth
+            0,0,0,0,0,0,                    //color bits (ignored)
+            0,                              //no alpha buffer
+            0,                              //alpha bits ignored
+            0,                              //no accumulation buffer
+            0,0,0,0,                        //accum bits (ignored)
+            16,                             //depth buffer
+            0,                              //no stencil buffer
+            0,                              //no aux buffers
+            PFD_MAIN_PLANE,                 //main layer
+            0,                              //reserved
+            0,0,0                           //no layer, visible, damage masks
+
+        };
+
+        pixelFormat = ChoosePixelFormat(_hdc, &pfd);    
+        SetPixelFormat(_hdc, pixelFormat, &pfd);
+    }
+
+//=======================================================================================================
+//_SetPixelFormat
+//=======================================================================================================
+    void WinProgram::_SetPixelFormat(void) 
+    {
+        bool worked = true;
+
+        //PFNWGLGETEXTENSIONSSTRINGARBPROC wglGetExtensionstextARB = NULL; 
+        //wglGetExtensionstextARB = (PFNWGLGETEXTENSIONSSTRINGARBPROC)wglGetProcAddress("wglGetExtensionstextARB");
+        //if (!wglGetExtensionstextARB){ worked = false; } //{ ErrorManager::Instance()->SetError(EC_OpenGL, "Unable to get wglGetExtensionstextARB function Vecer"); }
+
+        PFNWGLCHOOSEPIXELFORMATARBPROC wglChoosePixelFormatARB = NULL;
+        wglChoosePixelFormatARB = (PFNWGLCHOOSEPIXELFORMATARBPROC)wglGetProcAddress("wglChoosePixelFormatARB");
+        if (!wglChoosePixelFormatARB){ worked = false; } //{ ErrorManager::Instance()->SetError(EC_OpenGL, "Unable to get wglChoosePixelFormatARB function Vecer"); }
+
+        int pixCount    = 0;
+        int pixelFormat = 0;
+
+        int pixAtrb[] = {
+            WGL_SUPPORT_OPENGL_ARB, 1, //Support OGL rendering
+            WGL_DRAW_TO_WINDOW_ARB, 1, //pf that can run a window
+            WGL_RED_BITS_ARB,       8, //8 bits of RGB color
+            WGL_GREEN_BITS_ARB,     8,
+            WGL_BLUE_BITS_ARB,      8,
+            WGL_DEPTH_BITS_ARB,     16, //16 bits of depth
+            WGL_ACCELERATION_ARB,
+            WGL_FULL_ACCELERATION_ARB,
+            WGL_PIXEL_TYPE_ARB,
+            WGL_TYPE_RGBA_ARB,
+            0};
+
+        wglChoosePixelFormatARB(_hdc,              //device context
+                                &pixAtrb[0],       //desired attributes
+                                NULL,              //float attribute list
+                                1,                 //max returned formats
+                                &pixelFormat,      //list of returned formats
+                                (UINT*)&pixCount); //number of formats found
+
+        if(pixelFormat == -1) { ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to load Pixel Format"); }
+
+    }
+
 
 }//End namespace    
