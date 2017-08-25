@@ -38,11 +38,6 @@ namespace KillerEngine
 
 	class TextureManager
 	{
-	private:
-		static TextureManager* _instance;
-		U32 			   	   _currentTextureID;
-		map<U32, Texture>      _loadedTextures;
-
 	public:
 //==========================================================================================================================
 //
@@ -50,7 +45,8 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 		static TextureManager* Instance(void);
-		void Shutdown(void);
+		
+		void ShutDown(void);
 		
 //==========================================================================================================================
 //
@@ -79,7 +75,13 @@ namespace KillerEngine
 //
 //==========================================================================================================================		
 		TextureManager(void): _currentTextureID(0) {  }
+		
 		~TextureManager(void) {  }
+
+	private:
+		static TextureManager* _instance;
+		U32 			   	   _currentTextureID;
+		map<U32, Texture>      _loadedTextures;
 
 	};
 }//End namespace

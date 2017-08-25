@@ -47,7 +47,10 @@ namespace KillerEngine
 		
 		~WinProgram(void);
 
-		void ShutDown(void);
+		void ShutDown(void)
+		{
+			delete _instance;
+		}
 
 //==========================================================================================================================
 //

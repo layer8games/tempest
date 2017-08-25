@@ -46,6 +46,8 @@ namespace KillerEngine
 //==========================================================================================================================
 		void Init(const S32 width, const S32 height, const string title, const bool fullscreen);
 
+		void ShutDown(void);
+		
 		bool Running(void) { return MapManager::Instance()->GetRunning(); }
 
 		void End(void) { MapManager::Instance()->SetRunning(false); }
