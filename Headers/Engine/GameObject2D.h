@@ -34,6 +34,7 @@ Written by Maxwell Miller
 #include <Engine/Texture.hpp>
 #include <Engine/ErrorManager.h>
 #include <Engine/Vector2.h>
+#include <Engine/Color.h>
 
 namespace KM = KillerMath;
 
@@ -99,9 +100,9 @@ namespace KillerEngine
 		virtual void SetDimensions(F32 w, F32 h);
 
 //=====Color=====
-		const Col& GetColor(void);
+		const Color& GetColor(void);
 
-		void SetColor(Col& col);
+		void SetColor(Color& col);
 
 		void SetColor(F32 red, F32 blue, F32 green);
 
@@ -227,7 +228,7 @@ namespace KillerEngine
 //==========================================================================================================================
 //=====Sprite Factories=====
 //==SqrSprite==
-		void CreateSqrSprite(KM::Vector2& pos, Col& col, Texture& texture);
+		void CreateSqrSprite(KM::Vector2& pos, Color& col, Texture& texture);
 		
 		void CreateSqrSprite(void);
 

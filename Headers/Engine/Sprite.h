@@ -29,6 +29,7 @@ Written by Maxwell Miller
 #include <Engine/Texture.hpp>
 #include <Engine/Renderer.h>
 #include <Engine/ErrorManager.h>
+#include <Engine/Color.h>
 
 namespace KM = KillerMath;
 
@@ -60,7 +61,10 @@ namespace KillerEngine
 				//v_SetVertexPositions(); 
 			}
 
-			F32 GetWidth(void) { return width; }
+			F32 GetWidth(void) 
+			{ 
+				return width; 
+			}
 
 			void SetHeight(F32 h) 
 			{ 
@@ -68,7 +72,10 @@ namespace KillerEngine
 				//v_SetVertexPositions();
 			}
 
-			F32 GetHeight(void) { return height; }
+			F32 GetHeight(void) 
+			{ 
+				return height; 
+			}
 
 			void SetDimensions(F32 w, F32 h) 
 			{ 
@@ -77,15 +84,30 @@ namespace KillerEngine
 				//v_SetVertexPositions();
 			}			
 
-			void SetPosition(KM::Vector2& pos) { position = pos; }
+			void SetPosition(KM::Vector2& pos) 
+			{ 
+				position = pos; 
+			}
 
-			KM::Vector2& GetPosition(void) { return position; }
+			KM::Vector2& GetPosition(void) 
+			{ 
+				return position; 
+			}
 
-			void SetColor(Col& col) { color = col; }
+			void SetColor(Color& col) 
+			{ 
+				color = col; 
+			}
 
-			Col& GetColor(void) { return color; }
+			Color& GetColor(void) 
+			{ 
+				return color; 
+			}
 
-			U32 GetTextureID(void) { return textureID; }
+			U32 GetTextureID(void) 
+			{ 
+				return textureID; 
+			}
 
 			void SetUVs(KM::Vector2& bottomTop, KM::Vector2& leftRight)
 			{
@@ -93,9 +115,15 @@ namespace KillerEngine
 				_leftRight = leftRight;
 			}
 
-			KM::Vector2& GetUVBottomTop(void) { return _bottomTop; }
+			KM::Vector2& GetUVBottomTop(void) 
+			{ 
+				return _bottomTop; 
+			}
 
-			KM::Vector2& GetUVLeftRight(void) { return _leftRight; }
+			KM::Vector2& GetUVLeftRight(void) 
+			{ 
+				return _leftRight; 
+			}
 
  
 //==========================================================================================================================
@@ -142,7 +170,7 @@ namespace KillerEngine
 		F32				height;
 		U32				textureID;
 		KM::Vector2		position;
-		Col			 	color;
+		Color		 	color;
 
 //==========================================================================================================================
 //
@@ -154,11 +182,11 @@ namespace KillerEngine
 
 		Sprite(const F32 width, const F32 height);
 
-		Sprite(const F32 width, const F32 height, Col& col);											      
+		Sprite(const F32 width, const F32 height, Color& col);											      
 
 		Sprite(const F32 width, const F32 height, U32 tID);													     
 
-		Sprite(const F32 width, const F32 height, Col& col, U32 tID);
+		Sprite(const F32 width, const F32 height, Color& col, U32 tID);
 
 		virtual void v_InitShader(void)=0;																   
 

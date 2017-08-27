@@ -38,6 +38,7 @@ namespace KillerEngine
 		MapManager::Instance()->ShutDown();
 		TextureManager::Instance()->ShutDown();
 		Controller::Instance()->ShutDown();
+		//Camera::Instance()->ShutDown();
 		KM::Timer::Instance()->ShutDown();
 
 		delete _instance;

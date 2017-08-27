@@ -21,6 +21,7 @@ Written by Maxwell Miller
 #include <Engine/ErrorManager.h>
 #include <Engine/Controller.h>
 #include <Engine/Vector2.h>
+#include <Engine/Color.h>
 
 namespace KM = KillerMath; 
 
@@ -112,7 +113,7 @@ namespace KillerEngine
 		
 		void BufferSwap(void);
 
-		void SetBackgroundColor(Col& c) 
+		void SetBackgroundColor(Color& c) 
 		{
 			_bgColor[0] = c.GetRed();
 			_bgColor[1] = c.GetGreen();

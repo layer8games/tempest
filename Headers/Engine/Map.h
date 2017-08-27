@@ -19,6 +19,7 @@ Written by Maxwell Miller
 #include <Engine/TextureManager.h>
 #include <Engine/EnvironmentObject.h>
 #include <Engine/Vector2.h>
+#include <Engine/Color.h>
 
 namespace KM = KillerMath;
 
@@ -37,6 +38,11 @@ namespace KillerEngine
 {
 	class Map
 	{
+//==========================================================================================================================
+//
+//Class structs and enums
+//
+//==========================================================================================================================	
 	protected:
 		enum ObjectType
 		{
@@ -62,11 +68,11 @@ namespace KillerEngine
 
 		struct MapData
 		{
-			int mapWidth;
-			int mapHeight;
-			int tileWidth;
-			int tileHeight;
-			Col color;
+			int   mapWidth;
+			int   mapHeight;
+			int   tileWidth;
+			int   tileHeight;
+			Color color;
 		};
 			
 
@@ -78,7 +84,7 @@ namespace KillerEngine
 //==========================================================================================================================		
 		Map(void);
 
-		~Map(void) {  }
+		~Map(void);
 
 //==========================================================================================================================
 //
@@ -86,7 +92,7 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 
-		virtual void v_InitMap(U32 id, S32 w, S32 h, Col& c)=0;
+		virtual void v_InitMap(U32 id, S32 w, S32 h, Color& c)=0;
 
 		virtual void v_InitMap(U32 id, string tmxFilePath)
 		{
@@ -126,7 +132,8 @@ namespace KillerEngine
 
 		void Remove3DObjectFromMap(U32 id);
 
-		void RenderObjects(void) {
+		void RenderObjects(void) 
+		{
 			for(auto i = _2DWorldObjects.begin(); i!=_2DWorldObjects.end(); ++i) 
 			{
 				i->second->v_Render();
@@ -138,27 +145,60 @@ namespace KillerEngine
 			}
 		}
 		
-		void SetBackgroundColor(Col& c) { _bgColor = c; }
+		void SetBackgroundColor(Color& c) 
+		{ 
+			_bgColor = c;
+		}
 		
-		void ActivateBackgroundColor(void) { Renderer::Instance()->SetBackgroundColor(_bgColor); }
+		void ActivateBackgroundColor(void) 
+		{ 
+			Renderer::Instance()->SetBackgroundColor(_bgColor); 
+		}
 		
-		S32  GetMapWidth(void) const { return _mapWidth; }
+		S32  GetMapWidth(void) const 
+		{ 
+			return _mapWidth; 
+		}
 		
-		S32  GetMapHeight(void) const { return _mapHeight; }
+		S32  GetMapHeight(void) const 
+		{ 
+			return _mapHeight; 
+		}
 		
-		void SetMapWidth(S32 w)  { _mapWidth = w; }
+		void SetMapWidth(S32 w)  
+		{ 
+			_mapWidth = w; 
+		}
 		
-		void SetMapHeight(S32 h) { _mapHeight = h; }
+		void SetMapHeight(S32 h) 
+		{ 
+			_mapHeight = h; 
+		}
 		
-		void SetMapDimensions(S32 w, S32 h) { _mapWidth  = w; _mapHeight = h; }
+		void SetMapDimensions(S32 w, S32 h) 
+		{ 
+			_mapWidth  = w; _mapHeight = h; 
+		}
 		
-		void SetTopBorder(S32 top) { _mapTopBorder = top; }
+		void SetTopBorder(S32 top) 
+		{ 
+			_mapTopBorder = top; 
+		}
 
-		void SetBottomBorder(S32 bottom) { _mapBottomBorder = bottom; }
+		void SetBottomBorder(S32 bottom) 
+		{ 
+			_mapBottomBorder = bottom; 
+		}
 
-		void SetRightBorder(S32 right) { _mapRightBorder = right; }
+		void SetRightBorder(S32 right) 
+		{ 
+			_mapRightBorder = right;
+		}
 
-		void SetLeftBorder(S32 left) { _mapLeftBorder = left; }
+		void SetLeftBorder(S32 left) 
+		{ 
+			_mapLeftBorder = left; 
+		}
 
 		void SetMapBorders(S32 top, S32 bottom, S32 right, S32 left)
 		{
@@ -168,17 +208,35 @@ namespace KillerEngine
 			_mapRightBorder = right;
 		}
 		
-		S32 GetTopBorder(void) const { return _mapTopBorder; }
+		S32 GetTopBorder(void) const 
+		{ 
+			return _mapTopBorder; 
+		}
 
-		S32 GetBottomBorder(void) const { return _mapBottomBorder; }
+		S32 GetBottomBorder(void) const 
+		{ 
+			return _mapBottomBorder; 
+		}
 		
-		S32 GetLeftBorder(void) const { return _mapLeftBorder; }
+		S32 GetLeftBorder(void) const 
+		{ 
+			return _mapLeftBorder; 
+		}
 
-		S32 GetRightBorder(void) const { return _mapRightBorder; }
+		S32 GetRightBorder(void) const 
+		{
+			return _mapRightBorder; 
+		}
 
-		void SetID(U32 id) { _ID = id; }
+		void SetID(U32 id) 
+		{ 
+			_ID = id; 
+		}
 
-		U32 GetID(void) const { return _ID; }
+		U32 GetID(void) const 
+		{ 
+			return _ID; 
+		}
 
 	protected:
 		void Importer2D(string tmxFilePath);
@@ -186,13 +244,13 @@ namespace KillerEngine
 		virtual ObjectType v_StringToTileData(string s);
 
 	private:
-		S32 _mapWidth;
-		S32 _mapHeight;
-		S32 _mapTopBorder;
-		S32 _mapBottomBorder;
-		S32 _mapRightBorder;
-		S32 _mapLeftBorder;
-		Col _bgColor;
+		S32   _mapWidth;
+		S32   _mapHeight;
+		S32   _mapTopBorder;
+		S32   _mapBottomBorder;
+		S32   _mapRightBorder;
+		S32   _mapLeftBorder;
+		Color _bgColor;
 		U32 _ID;
 		std::map<U32, GameObject2D*> _2DWorldObjects;
 		std::map<U32, GameObject3D*> _3DWorldObjects;

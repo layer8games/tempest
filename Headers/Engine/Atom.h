@@ -17,7 +17,6 @@ Written by Maxwell Miller
 
 //Includes. These will be the files that everything will need to have access to
 //=====Killer1 Engine Includes=====
-#include <Engine/Color.hpp>
 
 //=====Windows Includes=====
 #include <windows.h>
@@ -52,10 +51,8 @@ typedef float  F32;
 typedef double F64;
 
 //text type 
-typedef std::string string;
-
-//Color typedef
-typedef KillerEngine::Color<F32> Col;
+//typedef std::string string;
+using std::string;
 
 typedef double real;
 #define DOUBLE_PRECISION

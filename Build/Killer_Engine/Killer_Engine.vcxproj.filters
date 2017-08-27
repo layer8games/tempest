@@ -153,9 +153,6 @@
     <ClInclude Include="..\..\Headers\Engine\CharSprite.h">
       <Filter>Components\Sprites\CharSprite</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Color.hpp">
-      <Filter>Components\Color</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Controller.h">
       <Filter>Components\Controller</Filter>
     </ClInclude>
@@ -185,9 +182,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\RandomGen.h">
       <Filter>Components\Math\RandomGen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Point.hpp">
-      <Filter>Components\Math\Point</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\KillerEngine2D.h">
       <Filter>Components\KillerEngine</Filter>
@@ -257,6 +251,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vector3.h">
       <Filter>Components\Math\LinearAlgebra\Vector\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Color.h">
+      <Filter>Components\Color</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -355,6 +352,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector3.cpp">
       <Filter>Components\Math\LinearAlgebra\Vector\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Color.cpp">
+      <Filter>Components\Color</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

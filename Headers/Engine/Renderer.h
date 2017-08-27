@@ -32,6 +32,7 @@ Written by Maxwell Miller
 #include <Engine/Camera.h>
 #include <Engine/Matrix.h>
 #include <Engine/Vector2.h>
+#include <Engine/Color.h>
 
 namespace KM = KillerMath;
 
@@ -80,13 +81,16 @@ namespace KillerEngine
 //Renderer Funtions
 //
 //==========================================================================================================================
-		void SetBackgroundColor(Col& c) { WinProgram::Instance()->SetBackgroundColor(c); }
+		void SetBackgroundColor(Color& c) 
+		{ 
+			WinProgram::Instance()->SetBackgroundColor(c); 
+		}
 
-		void AddToBatch(const GLuint shader, KM::Vector2& pos, F32 w, F32 h, Col& c);
+		void AddToBatch(const GLuint shader, KM::Vector2& pos, F32 w, F32 h, Color& c);
 
-		void AddToBatch(const GLuint shader, KM::Vector2& pos, F32 w, F32 h, Col& c, U32 textureID);
+		void AddToBatch(const GLuint shader, KM::Vector2& pos, F32 w, F32 h, Color& c, U32 textureID);
 		
-		void AddToBatch(const GLuint shader, KM::Vector2& pos, F32 w, F32 h, Col& c, U32 textureID, KM::Vector2& origin, KM::Vector2& limit);
+		void AddToBatch(const GLuint shader, KM::Vector2& pos, F32 w, F32 h, Color& c, U32 textureID, KM::Vector2& origin, KM::Vector2& limit);
 
 		void AddToBatch(std::vector<F32> v, std::vector<F32> c);
 
@@ -106,9 +110,9 @@ namespace KillerEngine
 		static Renderer* 	 _instance;
 		U32 				 _maxBatchSize;
 		U32 				 _currentBatchSize;
-		KM::Matrix				 _projection;
-		KM::Matrix				 _model;
-		KM::Matrix				 _final;
+		KM::Matrix			 _projection;
+		KM::Matrix			 _model;
+		KM::Matrix			 _final;
 		std::vector<F32> 	 _vertices;
 		std::vector<F32> 	 _colors;
 		std::vector<F32> 	 _dimensions;

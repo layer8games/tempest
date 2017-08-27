@@ -23,12 +23,12 @@ namespace KillerEngine
 													     textureID()
 	{  }
 
-	Sprite::Sprite(const F32 width, const F32 height, Col& col) :  _bottomTop(),
-														 		   _leftRight(),
-															       width(width),
-															       height(height),
-															       color(col),
-															       textureID()
+	Sprite::Sprite(const F32 width, const F32 height, Color& col) :  _bottomTop(),
+														 		     _leftRight(),
+															         width(width),
+															         height(height),
+															         color(col),
+															         textureID()
 	{  }
 
 	Sprite::Sprite(const F32 width, const F32 height, U32 tID) :  _bottomTop(),
@@ -39,12 +39,12 @@ namespace KillerEngine
 														          textureID(tID)
 	{  }
 	
-	Sprite::Sprite(const F32 width, const F32 height, Col& col, U32 tID) :  _bottomTop(),
-														 		   			_leftRight(),
-																			width(width),
-																			height(height),
-																			color(col),
-																			textureID(tID)
+	Sprite::Sprite(const F32 width, const F32 height, Color& col, U32 tID) :  _bottomTop(),
+														 		   			  _leftRight(),
+																			  width(width),
+																			  height(height),
+																			  color(col),
+																			  textureID(tID)
 	{  }																		     
 //==========================================================================================================================
 //

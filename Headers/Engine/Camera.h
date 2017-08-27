@@ -20,6 +20,7 @@ Written by Maxwell Miller
 #include <Engine/WinProgram.h>
 #include <Engine/Matrix.h>
 #include <Engine/Vector2.h> 
+#include <Engine/Color.h>
 
 namespace KM = KillerMath;
 
@@ -34,6 +35,16 @@ namespace KillerEngine
 	class Camera
 	{
 	public:
+//==========================================================================================================================
+//
+//Constructors
+//
+//==========================================================================================================================
+		~Camera(void)
+		{
+			if(_instance)
+				delete _instance;
+		}
 //==========================================================================================================================
 //
 //Camera Functions
@@ -55,9 +66,18 @@ namespace KillerEngine
 			_translation.Translate(_pos); 
 		}
 
-		void SetColor(Col& col) { _background = col; }
+		void SetColor(Color& col) 
+		{ 
+			_background = col; 
+		}
 
 		void SetUp(GLuint shader);
+
+		void ShutDown(void)
+		{
+			if(_instance != NULL)
+				delete _instance;
+		}
 
 		//Will be implemented later
 		//void SetProjectionPerspective(void) { }
@@ -69,7 +89,7 @@ namespace KillerEngine
 //
 //==========================================================================================================================		
 		static Camera* 	_instance;
-		Col    			_background;
+		Color  			_background;
 		KM::Vector2  	_pos;
 		KM::Matrix 		_projection;
 		KM::Matrix 		_translation;

@@ -77,7 +77,7 @@ namespace KillerEngine
 	}
 
 //===== Color =====
-	const Col& GameObject2D::GetColor(void)
+	const Color& GameObject2D::GetColor(void)
 	{
 		if(!_sprite)
 		{
@@ -88,7 +88,7 @@ namespace KillerEngine
 		return _sprite->GetColor();
 	}
 
-	void GameObject2D::SetColor(Col& col)
+	void GameObject2D::SetColor(Color& col)
 	{
 		if(!_sprite)
 		{
@@ -107,7 +107,7 @@ namespace KillerEngine
 			return;
 		}
 
-		_sprite->SetColor(Col(red, blue, green));
+		_sprite->SetColor(Color(red, blue, green));
 	}
 
 //===== Texture =====
