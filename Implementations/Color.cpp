@@ -35,11 +35,9 @@ namespace KillerEngine
 		_alpha = alpha;
 	}
 	
-	Color::Color(const Color& c) 
-	{
-		_red = c.GetRed();
-		_green= c.GetGreen();
-		_blue = c.GetBlue();
-		_alpha = c.GetAlpha();
-		}
+	Color::Color(const Color& c) : _red(c.GetRed()), _green(c.GetGreen()), _blue(c.GetBlue()), _alpha(c.GetAlpha())
+	{  }
+
+	Color::~Color(void)
+	{  }
 }//end namespace
