@@ -3,13 +3,8 @@ A Vector class that will follow the rules of Mathematics. The equations
 that the Vectors use for each operation were taken from 3D Math Primer 
 for Graphics and Game Development by Dunn and Parberry. 
 
-There are two classes that are created in this file. They are the Vector2
-and the Vector3. The difference is whether the z can be changed or not. In
-a Vector2, once it is created the z will stay the same no matter what, where
-in the Vector3, the z will change dynamically as expected. 
-
-Both have 4 elements, but the difference is how the elements are allowed 
-to be changed throughout the life of the object. 
+A 2D vector, it is built to actually have 4 values, a z and w that will be
+unused and immutable by convention. 
 
 w is a special value that is used for computations convience. It is there
 so that the vector can be transformed by a 4x4 matrix. As such, it will 
@@ -53,7 +48,7 @@ namespace KillerMath
 //==========================================================================================================================
 		Vector2(void);
 
-		Vector2(F32 val);
+		explicit Vector2(F32 val);
 
 		Vector2(F32 x, F32 y);
 
@@ -102,6 +97,8 @@ namespace KillerMath
 //==========================================================================================================================
 //=====Copy assignment=====
 	Vector2& operator=(const Vector2& V);
+
+	Vector2& operator=(F32 val);
 
 //=====Add by vector=====
 	Vector2 operator+(const Vector2& V);
@@ -157,8 +154,6 @@ namespace KillerMath
 	void Normalize(void);
 
 	void Reset(void);
-
-	void Reset(F32 val);
 
 //==========================================================================================================================
 //

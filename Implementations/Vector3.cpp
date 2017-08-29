@@ -200,7 +200,7 @@ namespace KillerMath
 	{
 		return Vector3(_y * V.GetZ() - _z * V.GetY(),
 					   _z * V.GetX() - _x * V.GetZ(),
-					   _x * V.GetY() - _y * V.GetZ());
+					   _x * V.GetY() - _y * V.GetX());
 	}
 
 	F32 Vector3::Magnitude(void)
@@ -240,14 +240,6 @@ namespace KillerMath
 		_x = 0.0f; 
 		_y = 0.0f; 
 		_z = 0.0f; 
-		_w = 1.0f; 
-	}
-
-	void Vector3::Reset(F32 val)
-	{
-		_x = val; 
-		_y = val; 
-		_z = val; 
 		_w = 1.0f; 
 	}
 
