@@ -27,7 +27,7 @@ namespace KillerMath
 //==========================================================================================================================
 		Vector3(void);
 
-		Vector3(F32 val);
+		explicit Vector3(F32 val);
 
 		Vector3(F32 x, F32 y);
 
@@ -157,8 +157,6 @@ namespace KillerMath
 	void MakeBasis(Vector3& A, Vector3& B, Vector3& C);
 
 	void Reset(void);
-
-	void Reset(F32 val);
 
 	private:
 		F32 _x; 

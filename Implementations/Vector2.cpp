@@ -38,6 +38,14 @@ namespace KillerMath
 		return *this; 
 	}
 
+	Vector2& Vector2::operator=(F32 val)
+	{
+		_x = val; 
+		_y = val;
+
+		return *this;
+	}
+
 //=====Add by vector=====
 	Vector2 Vector2::operator+(const Vector2& V)
 	{
@@ -198,12 +206,6 @@ namespace KillerMath
 	{
 		_x = 0.0f; 
 		_y = 0.0f;
-	}
-
-	void Vector2::Reset(F32 val)
-	{
-		_x = val; 
-		_y = val; 
 	}
 
 //==========================================================================================================================
