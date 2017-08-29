@@ -110,7 +110,7 @@ namespace KillerEngine
 		}
 	}
 
-	void RenderText::SetTextColor(Col& col)
+	void RenderText::SetTextColor(Color& col)
 	{
 		for(CharSprite* sprite : _spriteList)
 		{

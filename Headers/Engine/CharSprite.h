@@ -83,15 +83,17 @@ namespace KillerEngine
 //CharacterData Accessors
 //
 //==========================================================================================================================		
-		void SetCharID(U32 id)          { _charID = id; }
+		U32 GetCharID(void)			{ return _charID; }
 
-		U32 GetCharX(void) 				{ return _charX; }
+		void SetCharID(U32 id)      { _charID = id; }
 
-		void SetCharX(U32 x) 			{ _charX =  x; }
+		U32 GetCharX(void) 			{ return _charX; }
 
-		U32 GetCharY(void) 				{ return _charY; }
+		void SetCharX(U32 x) 		{ _charX =  x; }
 
-		void SetCharY(U32 y) 			{ _charY =  y; }
+		U32 GetCharY(void) 			{ return _charY; }
+
+		void SetCharY(U32 y) 		{ _charY =  y; }
 
 		U32 GetCharWidth(void) 		{ return _charWidth; }
 

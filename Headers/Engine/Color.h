@@ -14,60 +14,33 @@ of KillerWave.
 Written by Maxwell Miller
 ========================================================================*/
 
-#ifndef COLOR_HPP
-#define COLOR_HPP
+#ifndef COLOR_H
+#define COLOR_H
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
 
 namespace KillerEngine
 {
-	
-	template <typename T>
-	struct Color {
-		T _values[4];
-
+	class Color 
+	{
+	public:
 //==========================================================================================================================
 //
 //Constructors
 //
 //==========================================================================================================================
-		Color(void) 
-		{
-			_values[0] = _values[1] = _values[2] = 0.0f;
-			_values[3] = 1.0f;
-		}
+		Color(void);
 		
-		Color(T col)
-		{
-			_values[0] = _values[1] = _values[2] = col;
-			_values[3] = 1.0f;
-		}
+		explicit Color(F32 col);
 
-		Color(T red, T green, T blue) 
-		{
-			_values[0] = red;
-			_values[1] = green;
-			_values[2] = blue;
-			_values[3] = 1.0f;
-		}
+		Color(F32 red, F32 green, F32 blue);
 		
-		Color(T red, T green, T blue, T alpha) 
-		{
-			_values[0] = red;
-			_values[1] = green;
-			_values[2] = blue;
-			_values[3] = alpha;
-		}
+		Color(F32 red, F32 green, F32 blue, F32 alpha);
 		
-		Color(const Color<T>& c) 
-		{
-			_values[0] = c.GetRed();
-			_values[1] = c.GetGreen();
-			_values[2] = c.GetBlue();
-			_values[3] = c.GetAlpha();
-		}
+		Color(const Color& c);
 
+		~Color(void);
 
 //==========================================================================================================================
 //
@@ -76,10 +49,10 @@ namespace KillerEngine
 //==========================================================================================================================
 		Color& operator=(const Color& c) 
 		{
-			_values[0] = c.GetRed();
-			_values[1] = c.GetGreen();
-			_values[2] = c.GetBlue();
-			_values[3] = c.GetAlpha();
+			_red = c.GetRed();
+			_green = c.GetGreen();
+			_blue = c.GetBlue();
+			_alpha = c.GetAlpha();
 
 			return *this;
 		}
@@ -89,23 +62,57 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-		const T* Get(void) 	 	const { return _values; }
+		const F32* Get(void) const 
+		{ 
+			F32 val[] = { _red, _green, _blue, _alpha };
+			return val; 
+		}
 		
-		const T  GetRed(void)   const { return _values[0]; }
+		const F32 GetRed(void) const 
+		{ 
+			return _red; 
+		}
 		
-		const T  GetGreen(void) const { return _values[1]; }
+		const F32 GetGreen(void) const 
+		{ 
+			return _green; 
+		}
 		
-		const T  GetBlue(void)  const { return _values[2]; }
+		const F32 GetBlue(void) const 
+		{ 
+			return _blue; 
+		}
 		
-		const T  GetAlpha(void) const { return _values[3]; }
+		const F32 GetAlpha(void) const 
+		{ 
+			return _alpha; 
+		}
 
-		void SetRed(const T r)   { _values[0] = r; }
+		void SetRed(const F32 r)   
+		{ 
+			_red = r; 
+		}
 		
-		void SetGree(const T g)  { _values[1] = g; }
+		void SetGree(const F32 g)  
+		{ 
+			_green = g; 
+		}
 		
-		void SetBlue(const T b)  { _values[2] = b; }
+		void SetBlue(const F32 b)  
+		{ 
+			_blue = b; 
+		}
 		
-		void SetAlpha(const T a) { _values[3] = a; }
+		void SetAlpha(const F32 a) 
+		{ 
+			_alpha = a; 
+		}
+
+	private:
+		F32 _red;
+		F32 _green;
+		F32 _blue;
+		F32 _alpha;
 
 	};
 }//End namespace

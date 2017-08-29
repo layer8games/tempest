@@ -35,6 +35,11 @@ namespace KillerEngine
 
 		static MapManager* Instance();
 
+		void ShutDown(void)
+		{
+			delete _instance;
+		}
+
 //==========================================================================================================================
 //
 //Accessors

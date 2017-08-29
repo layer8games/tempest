@@ -28,14 +28,18 @@ Written by Maxwell Miller
 #ifndef GAME_OBJECT2D_H
 #define GAME_OBJECT2D_H
 
-//=====Engine Includes======
+//===== Engine Includes ======
 #include <Engine/Atom.h>
 #include <Engine/Sprite.h>
 #include <Engine/Texture.hpp>
 #include <Engine/ErrorManager.h>
 #include <Engine/Vector2.h>
+#include <Engine/Color.h>
 
 namespace KM = KillerMath;
+
+//===== STD includes =====
+#include <memory>
 
 namespace KillerEngine 
 {
@@ -50,8 +54,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		GameObject2D(void);
 
-
-		//~GameObject(void);
+		virtual ~GameObject2D(void);
 
 		//void v_ShutDown(void);		
 
@@ -79,13 +82,6 @@ namespace KillerEngine
 		{
 			_ID = _nextID;
 			++_nextID;
-
-			//This is here to make sure that by this point the user has 
-			//added a sprite to the game object.
-			if(_sprite == NULL)
-			{
-				ErrorManager::Instance()->SetError(EC_GameObject, "Error! Sprite is Null, you must pass a pointer to the sprite you wish to use before you call GameObject::SetID().");
-			}
 		}
 
 //=====Dimensions=====
@@ -93,63 +89,29 @@ namespace KillerEngine
 //Can make sure to update its sprite, if it has one
 //with a default version in the case of no sprite.
 		
-		const F32 GetWidth(void) 
-		{ 
-			return _sprite->GetWidth(); 
-		}
+		virtual const F32 GetWidth(void);
 
-		virtual void SetWidth(F32 w) 
-		{ 
-			_sprite->SetWidth(w); 
-		}
+		virtual void SetWidth(F32 w);
 
-		const F32 GetHeight(void) 
-		{ 
-			return _sprite->GetHeight(); 
-		}
+		virtual const F32 GetHeight(void);
 
-		virtual void SetHeight(F32 h) 
-		{ 
-			_sprite->SetHeight(h); 
-		}
+		virtual void SetHeight(F32 h);
 
-		virtual void SetDimensions(const F32 w, const F32 h) 
-		{ 
-			_sprite->SetDimensions(w, h); 
-		}
+		virtual void SetDimensions(F32 w, F32 h);
 
 //=====Color=====
-		const Col& GetColor(void) 
-		{ 
-			return _sprite->GetColor();	 
-		}
+		const Color& GetColor(void);
 
-		void SetColor(Col& col) 
-		{ 
-			_sprite->SetColor(col); 
-		}
+		void SetColor(Color& col);
 
-		void SetColor(F32 red, F32 blue, F32 green) 
-		{ 
-			_sprite->SetColor(Col(red, blue, green)); 
-		}
+		void SetColor(F32 red, F32 blue, F32 green);
 
 //=====Texture=====
-		const  U32 GetTextureID(void) 
-		{ 
-			return _sprite->GetTextureID(); 
-		}
+		const  U32 GetTextureID(void);
 
-		void SetTexture(U32 tID, const F32 top, const F32 bottom, const F32 right, const F32 left) 
-		{ 
-			_sprite->SetTexture(tID, top, bottom, right, left);
-		}
+		void SetTexture(U32 id, const F32 top, const F32 bottom, const F32 right, const F32 left);
 
-		void SetTexture(U32 tID)
-		{
-			_sprite->SetTexture(tID, 0.0f, 1.0f, 0.0f, 1.0f);
-
-		}
+		void SetTexture(U32 id);
 
 //=====Active=====
 		const bool GetActive(void) 
@@ -168,20 +130,14 @@ namespace KillerEngine
 		}
 
 //=====Sprite=====
-		const Sprite* GetSprite(void) 
-		{ 
-			return _sprite; 
-		}
+		const std::shared_ptr<Sprite> GetSprite(void);
 
-		void SetSprite(Sprite* s) 
+		void SetSprite(Sprite* p_Sprite) 
 		{ 
-			_sprite = s; 
+			_sprite = std::shared_ptr<Sprite>(p_Sprite); 
 		}	
 
-		void RenderSprite(void) 
-		{ 
-			_sprite->v_RenderSprite();  
-		}	
+		void RenderSprite(void);
 
 //=====Position=====
 		KM::Vector2& GetPosition(void) 
@@ -272,19 +228,19 @@ namespace KillerEngine
 //==========================================================================================================================
 //=====Sprite Factories=====
 //==SqrSprite==
-		void CreateSqrSprite(KM::Vector2& pos, Col& col, Texture& texture);
+		void CreateSqrSprite(KM::Vector2& pos, Color& col, Texture& texture);
 		
 		void CreateSqrSprite(void);
 
 
 	private:	
-		static U32 	_nextID;
-		U32 		_ID;
-		bool 	 	_active;
-		Sprite*  	_sprite;
-		KM::Vector2 _position;
-		KM::Vector2	_velocity;
-		KM::Vector2	_acceleration;	
+		static U32 				_nextID;
+		U32 					_ID;
+		bool 	 				_active;
+		std::shared_ptr<Sprite>	_sprite;
+		KM::Vector2 			_position;
+		KM::Vector2				_velocity;
+		KM::Vector2				_acceleration;	
 	};
 
 	

@@ -2,33 +2,23 @@
 
 namespace KillerMath
 {
-
 //==========================================================================================================================
 //
-//Private Timer Functions
+//Constructor
 //
 //==========================================================================================================================
-//===============================================================================
-//_QueryHiResTimer
-//===============================================================================
-//=====Windows only implemenation=====
-	U64 Timer::_QueryHiResTimer(void) 
-	{ 
-		static LARGE_INTEGER _cycles;
-		QueryPerformanceCounter(&_cycles);
-		return _cycles.QuadPart;
-	}
+	Timer::Timer() : _frequency(_QueryFrequency()),
+					 _deltaTime(0.0f),
+					 _timeScale(1.0f),
+					 _totalTime(0.0f),
+					 _pastCycles(_QueryHiResTimer()),
+					 _curCycles(_pastCycles),
+					 _paused(false) 
+	{  }
 
-//===============================================================================
-//_QueryFrequence
-//===============================================================================
-//=====Windows only implemenation=====
-	F32 Timer::_QueryFrequency(void) 
-	{ 
-		static LARGE_INTEGER _freq;
-		QueryPerformanceFrequency(&_freq); 
-		return F32(_freq.QuadPart);
-	}
+	Timer::~Timer(void)
+	{  }
+
 
 //==========================================================================================================================
 //
@@ -80,19 +70,31 @@ namespace KillerMath
 		}
 	}
 
+//==========================================================================================================================
+//
+//Private Timer Functions
+//
+//==========================================================================================================================
+//===============================================================================
+//_QueryHiResTimer
+//===============================================================================
+//=====Windows only implemenation=====
+	U64 Timer::_QueryHiResTimer(void) 
+	{ 
+		static LARGE_INTEGER _cycles;
+		QueryPerformanceCounter(&_cycles);
+		return _cycles.QuadPart;
+	}
 
-//==========================================================================================================================
-//
-//Constructor
-//
-//==========================================================================================================================
-	Timer::Timer() : _frequency(_QueryFrequency()),
-					 _deltaTime(0.0f),
-					 _timeScale(1.0f),
-					 _totalTime(0.0f),
-					 _pastCycles(_QueryHiResTimer()),
-					 _curCycles(_pastCycles),
-					 _paused(false) 
-	{  }
+//===============================================================================
+//_QueryFrequence
+//===============================================================================
+//=====Windows only implemenation=====
+	F32 Timer::_QueryFrequency(void) 
+	{ 
+		static LARGE_INTEGER _freq;
+		QueryPerformanceFrequency(&_freq); 
+		return F32(_freq.QuadPart);
+	}
 
 }//End namespace

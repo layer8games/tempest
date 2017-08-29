@@ -19,7 +19,7 @@ namespace KillerEngine
 		return _instance;
 	}
 
-	void TextureManager::Shutdown(void) 
+	void TextureManager::ShutDown(void) 
 	{
 		map<U32, Texture>::iterator i;
 		
@@ -28,6 +28,8 @@ namespace KillerEngine
 			GLuint texture = i->second.GetID();
 			glDeleteTextures(1, &texture);
 		}
+
+		delete _instance;
 	}
 
 //==========================================================================================================================

@@ -64,29 +64,8 @@
     <Filter Include="Components\Physics\Particles\3D">
       <UniqueIdentifier>{63bcd68c-6905-4860-97d6-ee3ca171435d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Math">
-      <UniqueIdentifier>{4b9e6bed-5956-4340-8293-4302ef41d7fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Math\LinearAlgebra">
-      <UniqueIdentifier>{f7ce502c-f857-4759-98ab-dd273a5641ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Math\RandomGen">
-      <UniqueIdentifier>{1f3a7113-0f33-4da8-9c3d-2d1d584a3c1f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Math\Timer">
-      <UniqueIdentifier>{d95a6a48-7e2e-4741-b39d-f6a1c763e14d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Math\Point">
-      <UniqueIdentifier>{cee02548-231c-44eb-9305-256d775b11a6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\ProgramWindows">
       <UniqueIdentifier>{381d786c-065e-4c73-9294-7079cbccce17}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Math\LinearAlgebra\Matrix">
-      <UniqueIdentifier>{b47791cc-1241-40a1-9bf3-9df0eb96250c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Math\LinearAlgebra\Vector">
-      <UniqueIdentifier>{2d795523-a23d-4211-b17f-2919e5a6a30f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Components\Physics\Particles\2D\Forces">
       <UniqueIdentifier>{3ab69d62-709f-4749-9c69-23a2631242a6}</UniqueIdentifier>
@@ -133,17 +112,38 @@
     <Filter Include="Components\GameObjects\GameObject\3D">
       <UniqueIdentifier>{35b9d80d-2b32-4b04-b905-e2040b88907d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Math\Quaternion">
-      <UniqueIdentifier>{c515a409-dc39-49f7-98ad-057c2f9db072}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\Model">
       <UniqueIdentifier>{b052f8a3-7bd6-4da4-a4a5-cc4dd017486f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Math\LinearAlgebra\Vector\2D">
+    <Filter Include="Components\KillerMath">
+      <UniqueIdentifier>{4b9e6bed-5956-4340-8293-4302ef41d7fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerMath\LinearAlgebra">
+      <UniqueIdentifier>{f7ce502c-f857-4759-98ab-dd273a5641ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerMath\LinearAlgebra\Matrix">
+      <UniqueIdentifier>{b47791cc-1241-40a1-9bf3-9df0eb96250c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerMath\LinearAlgebra\Vector">
+      <UniqueIdentifier>{2d795523-a23d-4211-b17f-2919e5a6a30f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerMath\LinearAlgebra\Vector\2D">
       <UniqueIdentifier>{d87a1455-c2bf-429d-b0df-78a00d581b81}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Math\LinearAlgebra\Vector\3D">
+    <Filter Include="Components\KillerMath\LinearAlgebra\Vector\3D">
       <UniqueIdentifier>{e21d2ed8-880a-4167-9193-42978d82d57d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerMath\RandomGen">
+      <UniqueIdentifier>{1f3a7113-0f33-4da8-9c3d-2d1d584a3c1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerMath\Timer">
+      <UniqueIdentifier>{d95a6a48-7e2e-4741-b39d-f6a1c763e14d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerMath\Point">
+      <UniqueIdentifier>{cee02548-231c-44eb-9305-256d775b11a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerMath\Quaternion">
+      <UniqueIdentifier>{c515a409-dc39-49f7-98ad-057c2f9db072}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -152,9 +152,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\CharSprite.h">
       <Filter>Components\Sprites\CharSprite</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Color.hpp">
-      <Filter>Components\Color</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Controller.h">
       <Filter>Components\Controller</Filter>
@@ -181,13 +178,10 @@
       <Filter>Components\TextureManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Timer.h">
-      <Filter>Components\Math\Timer</Filter>
+      <Filter>Components\KillerMath\Timer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\RandomGen.h">
-      <Filter>Components\Math\RandomGen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Point.hpp">
-      <Filter>Components\Math\Point</Filter>
+      <Filter>Components\KillerMath\RandomGen</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\KillerEngine2D.h">
       <Filter>Components\KillerEngine</Filter>
@@ -244,19 +238,22 @@
       <Filter>Components\GameObjects\GameObject\3D</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Quaternion.h">
-      <Filter>Components\Math\Quaternion</Filter>
+      <Filter>Components\KillerMath\Quaternion</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Model.h">
       <Filter>Components\Model</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Matrix.h">
-      <Filter>Components\Math\LinearAlgebra\Matrix</Filter>
+      <Filter>Components\KillerMath\LinearAlgebra\Matrix</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vector2.h">
-      <Filter>Components\Math\LinearAlgebra\Vector\2D</Filter>
+      <Filter>Components\KillerMath\LinearAlgebra\Vector\2D</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vector3.h">
-      <Filter>Components\Math\LinearAlgebra\Vector\3D</Filter>
+      <Filter>Components\KillerMath\LinearAlgebra\Vector\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Color.h">
+      <Filter>Components\Color</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -285,10 +282,10 @@
       <Filter>Components\TextureManager</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Timer.cpp">
-      <Filter>Components\Math\Timer</Filter>
+      <Filter>Components\KillerMath\Timer</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\RandomGen.cpp">
-      <Filter>Components\Math\RandomGen</Filter>
+      <Filter>Components\KillerMath\RandomGen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\KillerEngine2D.cpp">
       <Filter>Components\KillerEngine</Filter>
@@ -342,19 +339,22 @@
       <Filter>Components\GameObjects\GameObject\3D</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Quaternion.cpp">
-      <Filter>Components\Math\Quaternion</Filter>
+      <Filter>Components\KillerMath\Quaternion</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Model.cpp">
       <Filter>Components\Model</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Matrix.cpp">
-      <Filter>Components\Math\LinearAlgebra\Matrix</Filter>
+      <Filter>Components\KillerMath\LinearAlgebra\Matrix</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector2.cpp">
-      <Filter>Components\Math\LinearAlgebra\Vector\2D</Filter>
+      <Filter>Components\KillerMath\LinearAlgebra\Vector\2D</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector3.cpp">
-      <Filter>Components\Math\LinearAlgebra\Vector\3D</Filter>
+      <Filter>Components\KillerMath\LinearAlgebra\Vector\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Color.cpp">
+      <Filter>Components\Color</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

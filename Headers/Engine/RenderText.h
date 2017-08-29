@@ -20,6 +20,7 @@ Written by Maxwell Miller
 #include <Engine/Font.h>
 #include <Engine/CharSprite.h>
 #include <Engine/Vector2.h>
+#include <Engine/Color.h>
 
 namespace KM = KillerMath;
 
@@ -47,7 +48,8 @@ namespace KillerEngine
 //Virtual Functions
 //
 //==========================================================================================================================
-		void v_Update(void) {  }
+		void v_Update(void) 
+		{  }
 
 		void v_Render(void);
 
@@ -66,7 +68,7 @@ namespace KillerEngine
 
 		void SetTextPosition(KM::Vector2& pos);
 
-		void SetTextColor(Col& col);
+		void SetTextColor(Color& col);
 
 		void SetWidthScaleFactor(F32 w) { _widthScaleFactor = w; }
 

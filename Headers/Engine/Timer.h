@@ -29,34 +29,13 @@ namespace KillerMath
 
 	class Timer 
 	{ 
-	private:
-		F32  		  _deltaTime;
-		F32  		  _timeScale;
-		F64  		  _totalTime;
-		U64  		  _pastCycles;
-		U64  		  _curCycles;
-		F32  		  _frequency;
-		bool 		  _paused;
-		static Timer* _instance;
-		
-//==========================================================================================================================
-//
-//Private Timer Functions
-//
-//==========================================================================================================================		 
-		 inline U64 _SecondsToCycles(F32 timeSeconds) { return (U64)(timeSeconds * _frequency); }
-		
-		//=====WARNING do not use this on big values, very system intensive=====
-		 inline F32 _CyclesToSeconds(U64 timeCycles) { return (F32)timeCycles / _frequency; }
-
-		U64 _QueryHiResTimer(void);
-		
-		F32 _QueryFrequency(void);
-
-
-
 	public:
-		~Timer(void){  }
+		~Timer(void);
+
+		void ShutDown(void)
+		{
+			delete _instance;
+		}
 
 //==========================================================================================================================
 //
@@ -71,17 +50,35 @@ namespace KillerMath
 //
 //==========================================================================================================================
 		//Setters and Getters
-		void SetPaused(bool paused)  { _paused = paused; }
+		void SetPaused(bool paused) 
+		{ 
+			_paused = paused; 
+		}
 		
-		bool GetPaused(void)         { return _paused; }
+		bool GetPaused(void)
+		{ 
+			return _paused; 
+		}
 
-		void SetTimeScale(F32 scale) { _timeScale = scale; }
+		void SetTimeScale(F32 scale)
+		{ 
+			_timeScale = scale; 
+		}
 		
-		F32  GetTimeScale(void)      { return _timeScale; }
+		F32  GetTimeScale(void)
+		{ 
+			return _timeScale; 
+		}
 
-		F32 DeltaTime(void) 		 { return _deltaTime; }
+		F32 DeltaTime(void)
+		{ 
+			return _deltaTime; 
+		}
 		
-		F64 TotalTime(void) 		 { return _totalTime; }
+		F64 TotalTime(void)
+		{ 
+			return _totalTime; 
+		}
 
 //==========================================================================================================================
 //
@@ -98,7 +95,37 @@ namespace KillerMath
 //Constructor
 //
 //==========================================================================================================================		
-		explicit Timer(void);		
+		explicit Timer(void);
+
+	private:
+		F32  		  _deltaTime;
+		F32  		  _timeScale;
+		F64  		  _totalTime;
+		U64  		  _pastCycles;
+		U64  		  _curCycles;
+		F32  		  _frequency;
+		bool 		  _paused;
+		static Timer* _instance;
+		
+//==========================================================================================================================
+//
+//Private Timer Functions
+//
+//==========================================================================================================================		 
+		inline U64 _SecondsToCycles(F32 timeSeconds)
+		{ 
+			return (U64)(timeSeconds * _frequency); 
+		}
+		
+		//=====WARNING do not use this on big values, very system intensive=====
+		inline F32 _CyclesToSeconds(U64 timeCycles)
+		{ 
+			return (F32)timeCycles / _frequency; 
+		}
+
+		U64 _QueryHiResTimer(void);
+		
+		F32 _QueryFrequency(void);	
 
 	};
 

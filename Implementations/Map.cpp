@@ -12,6 +12,9 @@ namespace KillerEngine
 			   		 _bgColor()
 	{  }
 
+	Map::~Map(void)
+	{  }
+
 //=============================================================================
 //
 //AddObjectToMap
@@ -110,7 +113,7 @@ namespace KillerEngine
 
 				std::cout << "color " << r << " " << g << " " << b << "\n";
 							 
-				mapData.color = Col(r, g, b);
+				mapData.color = Color(r, g, b);
 			}
 			else
 			{
