@@ -3,20 +3,14 @@
 namespace KillerEngine
 {
 	CharSprite::CharSprite(void) : _charX(0), _charY(0), _charWidth(0), _charHeight(0), _xoffset(0), _yoffset(0), _xadvance(0)
-	{
-		//v_InitShader();
-	}
+	{  }
 
 	CharSprite::CharSprite(U32 x, U32 y, U32 width, U32 height, U32 xoffset, U32 yoffset, U32 xadvance) 
 						     :_charX(x), _charY(y), _charWidth(width), _charHeight(height), _xoffset(xoffset), _yoffset(yoffset), _xadvance(xadvance)
-	{
-		//v_InitShader();
-	}
+	{  }
 
 	CharSprite::~CharSprite(void)
-	{
-		//delete _shaderProgram;
-	}
+	{  }
 
 //==========================================================================================================================
 //
@@ -25,10 +19,8 @@ namespace KillerEngine
 //==========================================================================================================================
 	void CharSprite::v_RenderSprite(void)
 	{
-		//Renderer::Instance()->AddToBatch(Sprite::vertexPositions, Sprite::vertexColors);
 		Renderer::Instance()->AddToBatch(_shaderProgram, Sprite::GetPosition(), Sprite::GetWidth(), Sprite::GetHeight(), Sprite::GetColor(), 
 							   			 Sprite::GetTextureID(), Sprite::GetUVBottomTop(), Sprite::GetUVLeftRight());
-		//Renderer::Instance()->AddToBatch(_shaderProgram, Sprite::GetPosition(), Sprite::GetWidth(), Sprite::GetHeight(), Sprite::GetColor());
 	}
 
 	GLuint CharSprite::_shaderProgram = NULL;

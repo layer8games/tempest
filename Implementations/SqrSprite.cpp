@@ -8,9 +8,7 @@ namespace KillerEngine
 //
 //==========================================================================================================================		
 		SqrSprite::SqrSprite(void)
-		{
-			v_InitShader();
-		}
+		{  }
 
 		SqrSprite::~SqrSprite(void) 
 		{  }
@@ -29,7 +27,9 @@ namespace KillerEngine
 	GLuint SqrSprite::_shaderProgram = NULL;
 	GLuint SqrSprite::v_GetShader(void)
 	{
-		if(_shaderProgram == NULL) { v_InitShader(); }
+		if(_shaderProgram == NULL) 
+			v_InitShader(); 
+
 		return _shaderProgram;
 	}
 
