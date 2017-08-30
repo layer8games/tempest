@@ -12,7 +12,8 @@ namespace KillerEngine
 			v_InitShader();
 		}
 
-		SqrSprite::~SqrSprite(void) {  }
+		SqrSprite::~SqrSprite(void) 
+		{  }
 
 //==========================================================================================================================
 //

@@ -71,6 +71,8 @@ namespace KillerEngine
 
 		CharSprite(U32 x, U32 y, U32 width, U32 height, U32 xoffset, U32 yoffset, U32 xadvance);
 
+		~CharSprite(void);
+
 //==========================================================================================================================
 //
 //CharSprite Accessors
@@ -83,37 +85,85 @@ namespace KillerEngine
 //CharacterData Accessors
 //
 //==========================================================================================================================		
-		U32 GetCharID(void)			{ return _charID; }
+		U32 GetCharID(void)	
+		{ 
+			return _charID; 
+		}
 
-		void SetCharID(U32 id)      { _charID = id; }
+		void SetCharID(U32 id)    
+		{ 
+			_charID = id; 
+		}
 
-		U32 GetCharX(void) 			{ return _charX; }
+		U32 GetCharX(void) 	
+		{ 
+			return _charX; 
+		}
 
-		void SetCharX(U32 x) 		{ _charX =  x; }
+		void SetCharX(U32 x) 
+		{ 
+			_charX =  x; 
+		}
 
-		U32 GetCharY(void) 			{ return _charY; }
+		U32 GetCharY(void) 	
+		{ 
+			return _charY; 
+		}
 
-		void SetCharY(U32 y) 		{ _charY =  y; }
+		void SetCharY(U32 y) 
+		{ 
+			_charY =  y; 
+		}
 
-		U32 GetCharWidth(void) 		{ return _charWidth; }
+		U32 GetCharWidth(void) 
+		{ 
+			return _charWidth; 
+		}
 
-		void SetCharWidth(U32 w) 	{ _charWidth =  w; }
+		void SetCharWidth(U32 w)
+		{ 
+			_charWidth =  w; 
+		}
 
-		U32 GetCharHeight(void) 	{ return _charHeight; }
+		U32 GetCharHeight(void)
+		{ 
+			return _charHeight; 
+		}
 
-		void SetCharHeight(U32 h) 	{ _charHeight =  h; }
+		void SetCharHeight(U32 h)
+		{ 
+			_charHeight =  h; 
+		}
 
-		U32 GetXOffset(void) 		{ return _xoffset; }
+		U32 GetXOffset(void) 
+		{ 
+			return _xoffset; 
+		}
 
-		void SetXOffset(U32 x) 		{ _xoffset =  x; }
+		void SetXOffset(U32 x) 
+		{ 
+			_xoffset =  x; 
+		}
 
-		U32 GetYOffset(void) 		{ return _yoffset; }
+		U32 GetYOffset(void) 
+		{ 
+			return _yoffset; 
+		}
 
-		void SetYOffset(U32 y) 		{ _yoffset =  y; }
+		void SetYOffset(U32 y) 
+		{ 
+			_yoffset =  y; 
+		}
 
-		U32 GetXAdvance(void) 		{ return _xadvance; }
+		U32 GetXAdvance(void) 
+		{ 
+			return _xadvance; 
+		}
 
-		void SetXAdvance(U32 x) 	{ _xadvance =  x; }
+		void SetXAdvance(U32 x)
+		{ 
+			_xadvance =  x; 
+		}
 
 //==========================================================================================================================
 //

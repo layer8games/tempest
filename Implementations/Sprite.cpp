@@ -45,7 +45,10 @@ namespace KillerEngine
 																			  height(height),
 																			  color(col),
 																			  textureID(tID)
-	{  }																		     
+	{  }
+
+	//Sprite::~Sprite(void)
+	//{  }																	     
 //==========================================================================================================================
 //
 //ShutDown
