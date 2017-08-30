@@ -85,9 +85,14 @@ namespace KillerEngine
 			return _active;
 		}
 
-		void SetActive(bool state)
+		void SetActive(void)
 		{
-			_active = state; 
+			_active = true; 
+		}
+
+		void SetInactive(void)
+		{
+			_active = false; 
 		}
 
 //==========================================================================================================================
@@ -119,12 +124,12 @@ namespace KillerEngine
 //==========================================================================================================================
 //Acceleration
 //==========================================================================================================================		
-		const F32 GetAcceleration(void)
+		const KM::Vector3& GetAcceleration(void)
 		{
 			return _acceleration;
 		}
 
-		void SetAcceleration(F32 acc)
+		void SetAcceleration(const KM::Vector3& acc)
 		{
 			_acceleration = acc; 
 		}
@@ -139,7 +144,7 @@ namespace KillerEngine
 		bool	   		_active;
 		KM::Vector3	   	_position;
 		KM::Vector3	   	_velocity;
-		F32		   		_acceleration;
+		KM::Vector3		_acceleration;
 
 	};//end Class
 }//end Namespace

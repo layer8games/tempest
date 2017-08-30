@@ -10,7 +10,9 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 	GameObject2D::GameObject2D(void) : _ID(0), _active(true), _sprite(NULL), _position(0), _velocity(0), _acceleration(0)
-	{  }
+	{
+		SetID();
+	}
 
 	GameObject2D::~GameObject2D(void)
 	{  }
