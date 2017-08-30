@@ -55,7 +55,7 @@ namespace KillerPhysics
 		KM::Vector2 velocity = KE::GameObject2D::GetVelocity();
 		
 		//Update position
-		KE::GameObject2D::SetScaledPosition(velocity, delta);
+		KE::GameObject2D::ScalePosition(velocity, delta);
 
 		KM::Vector2 resultingAcc = KE::GameObject2D::GetAcceleration();
 

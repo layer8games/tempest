@@ -157,15 +157,10 @@ namespace KillerEngine
 			_sprite->SetPosition(_position);
 		}
 
-		void SetScaledPosition(const KM::Vector2& v, F32 scale)
+		void ScalePosition(const KM::Vector2& v, F32 scale)
 		{
 			_position.AddScaledVector(v, scale);
 			_sprite->SetPosition(_position);
-		}
-
-		void SetPositionNoSprite(KM::Vector2& pos)
-		{
-			_position = pos;
 		}
 
 		void virtual v_SetPosition(KM::Vector2& pos)
@@ -176,6 +171,11 @@ namespace KillerEngine
 		void virtual v_SetPosition(F32 x, F32 y)
 		{
 			SetPosition(x, y);
+		}
+
+		void virtual v_ScalePosition(const KM::Vector2& v, F32 scale)
+		{
+			_position.AddScaledVector(v, scale);
 		}
 
 //=====Velocity=====
@@ -189,7 +189,7 @@ namespace KillerEngine
 			_velocity = v; 
 		}
 
-		void SetScaledVelocity(const KM::Vector2& vec, F32 scale)
+		void ScaleVelocity(const KM::Vector2& vec, F32 scale)
 		{
 			_velocity.AddScaledVector(vec, scale);
 		}
@@ -210,7 +210,7 @@ namespace KillerEngine
 			_acceleration = a; 
 		}
 
-		void SetScaledAccelleration(const KM::Vector2& vec, F32 scale)
+		void ScaleAcceleration(const KM::Vector2& vec, F32 scale)
 		{
 			_acceleration.AddScaledVector(vec, scale);
 		}

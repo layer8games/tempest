@@ -53,9 +53,18 @@ namespace KillerEngine
 
 		void v_Render(void);
 
+/* 		original version in case the new version breaks everything
 		void v_SetPosition(KM::Vector2 pos)
 		{
 			GameObject2D::SetPositionNoSprite(pos);
+			SetTextPosition(pos);
+		}
+*/
+
+
+		void v_SetPosition(KM::Vector2 pos)
+		{
+			GameObject2D::v_SetPosition(pos);
 			SetTextPosition(pos);
 		}
 
