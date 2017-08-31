@@ -84,7 +84,7 @@ namespace KillerEngine
 		if(!_sprite)
 		{
 			ErrorManager::Instance()->SetError(EC_GameObject, "GameObject2D::GetColor => Sprite not set when call to sprite was made.");
-			return Color(0.0f);
+			return _sprite->GetColor();
 		}
 
 		return _sprite->GetColor();
