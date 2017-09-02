@@ -28,6 +28,7 @@ Written by Maxwell Miller
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
+#include <Engine/Vertex.h>
 
 //=====OpenGL Includes=====
 #include <GL/gl.h>
@@ -49,9 +50,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		Model(void);
 
-		Model(std::vector<F32> vertices);
-
-		Model(F32* verticeArray, U32 length);
+		Model(std::vector<Vertex3D> vertices);
 
 		~Model(void);
 //==========================================================================================================================
@@ -59,9 +58,20 @@ namespace KillerEngine
 //Functions
 //
 //==========================================================================================================================
+		void AddVertice(Vertex3D vert)
+		{
+			_vertices.push_back(vert);
+		}
+
+		std::vector<Vertex3D> GetVertices(void)
+		{
+			return _vertices;
+		}
+
 	private:
 		static GLuint _shaderProgram;
-		std::vector<F32> _vertices;
+		S32 _numVertices;
+		std::vector<Vertex3D> _vertices;
 
 		
 	};//end Class

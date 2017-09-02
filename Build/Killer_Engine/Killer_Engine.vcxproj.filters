@@ -145,6 +145,9 @@
     <Filter Include="Components\KillerPhysics\Particles\3D\Particle3D">
       <UniqueIdentifier>{f6180fd1-cf89-4ce3-9baa-37af0e77b36c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components\Vertex">
+      <UniqueIdentifier>{2b6d07f5-9367-4b70-a35d-57e172e29178}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -254,6 +257,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Color.h">
       <Filter>Components\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Vertex.h">
+      <Filter>Components\Vertex</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

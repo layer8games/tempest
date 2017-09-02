@@ -11,16 +11,13 @@ namespace KillerEngine
 //Constructors	 	
 //
 //==========================================================================================================================
-	Model::Model(void) : _vertices()
+	Model::Model(void) : _numVertices(0), _vertices()
 	{  }
 
-	Model::Model(std::vector<F32> vertices) : _vertices(vertices)
+	Model::Model(std::vector<Vertex3D> vertices) : _vertices(vertices)
 	{
 
 	}
-
-	Model::Model(F32* verticeArray, U32 length) : _vertices(verticeArray, verticeArray + length)
-	{  }
 
 	Model::~Model(void)
 	{  }

@@ -157,6 +157,10 @@
     <ClInclude Include="..\..\Headers\Engine\TriSprite.h" />
     <ClInclude Include="..\..\Headers\Engine\Vector2.h" />
     <ClInclude Include="..\..\Headers\Engine\Vector3.h" />
+    <ClInclude Include="..\..\Headers\Engine\Vertex.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\WinProgram.h" />
     <ClInclude Include="..\..\Headers\Engine\RandomGen.h" />
     <ClInclude Include="..\..\Headers\Engine\Renderer.h" />
