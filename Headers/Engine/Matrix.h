@@ -283,7 +283,7 @@ namespace KillerMath
 
 		F32 DegreeToRadian(F32 angle)
 		{
-			return (F32)angle * R_PI / 180.0f;
+			return static_cast<F32>(angle * R_PI / 180.0f);
 		}
 	};
 

@@ -9,14 +9,10 @@ namespace KillerEngine
 //
 //==========================================================================================================================	
 	RenderText::RenderText(void) : _text(), _font(), _totalWidth(0), _totalHeight(0), _center(0.0f)
-	{
-		GameObject2D::SetID();
-	}
+	{  }
 
 	RenderText::RenderText(Font& font) : _text(), _font(font), _totalWidth(0), _totalHeight(0), _center(0.0f)
-	{
-		GameObject2D::SetID();
-	}
+	{  }
 
 	RenderText::RenderText(string text, Font& font) : _text(text), _font(font), _totalWidth(0), _totalHeight(0), _center(0.0f)
 	{

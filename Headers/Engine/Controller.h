@@ -126,25 +126,43 @@ namespace KillerEngine
 //==========================================================================================================================
 		void Update(void);
 
-		void Init(F32 w, F32 h, F32 d) { _transform.MakeOrthographic(w, h, d); }
+		void Init(F32 w, F32 h, F32 d) 
+		{ 
+			_transform.MakeOrthographic(w, h, d); 
+		}
 
-		void KeyDown(Keys k) { _curActiveKeys[k] = true; }
+		void KeyDown(Keys k) 
+		{ 
+			_curActiveKeys[k] = true; 
+		}
 
-		void KeyUp(Keys k) { _curActiveKeys[k] = false; }
+		void KeyUp(Keys k) 
+		{ 
+			_curActiveKeys[k] = false; 
+		}
 
 		void LeftMouseClick(KM::Vector2 coord);
-/*		{ 
-			_leftClickCoordinates = coord; 
-			//_leftClickCoordinates.SetY(-coord.GetY());
+
+		KM::Vector2 GetLeftMouseCoord(void) 
+		{ 
+			return _leftClickCoordinates; 
+		}
+
+		void RightMouseClick(KM::Vector2 coord) 
+		{ 
+			_rightClickCoordinates = coord; 
+		}
+
+		KM::Vector2 GetRightMouseCoord(void) 
+		{ 
+			return _rightClickCoordinates; 
+		}
+
+/*		KeyState GetKeyState(Keys k) 
+		{ 
+			return _curKeyStates[k]; 
 		}
 */
-		KM::Vector2 GetLeftMouseCoord(void) { return _leftClickCoordinates; }
-
-		void RightMouseClick(KM::Vector2 coord) { _rightClickCoordinates = coord; }
-
-		KM::Vector2 GetRightMouseCoord(void) { return _rightClickCoordinates; }
-
-		//KeyState GetKeyState(Keys k) { return _curKeyStates[k]; }
 
 		bool GetKeyDown(Keys k);
 
@@ -154,7 +172,10 @@ namespace KillerEngine
 
 		bool GetKeyReleased(Keys k);
 
-		Controller* operator =(Controller& c) { return &c; }
+		Controller* operator =(Controller& c) 
+		{ 
+			return &c; 
+		}
 
 	protected:
 //==========================================================================================================================

@@ -21,9 +21,11 @@ namespace KillerPhysics
 //==========================================================================================================================
 	real Particle2D::GetMass(void)
 	{
-		if(_inverseMass == 0) { return REAL_MAX; }
+		if(_inverseMass == 0) 
+			return REAL_MAX; 
 		
-		else { return real(1.0) / _inverseMass; }
+		else 
+			return static_cast<real>(1.0) / _inverseMass;
 	}
 
 	void Particle2D::SetMass(const real mass)
@@ -61,7 +63,7 @@ namespace KillerPhysics
 
 		velocity.AddScaledVector(resultingAcc, delta);
 
-		velocity *= (F32)real_pow(_damping, delta);
+		velocity *= real_pow(_damping, delta);
 
 		KE::GameObject2D::SetVelocity(velocity);
 

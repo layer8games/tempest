@@ -54,9 +54,9 @@ typedef double F64;
 //typedef std::string string;
 using std::string;
 
-typedef double real;
+typedef float real;
 #define DOUBLE_PRECISION
-#define REAL_MAX DBL_MAX
+#define REAL_MAX FLT_MAX
 #define real_sqrt sqrt	
 #define real_abs fabsf
 #define real_sin sin

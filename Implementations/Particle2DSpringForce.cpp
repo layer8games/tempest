@@ -14,7 +14,8 @@ namespace KillerPhysics
 		: _otherEnd(other), _springConstant(constatant), _restLength(length), _isBungie(false)
 	{  }
 
-	Particle2DSpringForce::~Particle2DSpringForce(void) {  }
+	Particle2DSpringForce::~Particle2DSpringForce(void) 
+	{  }
 
 //==========================================================================================================================
 //
@@ -33,11 +34,11 @@ namespace KillerPhysics
 		//=====Bungie Checke=====
 		if(magnitude <= _restLength) return;
 
-		magnitude = fabsf(magnitude - _restLength) * _springConstant;
+		magnitude = real_abs(magnitude - _restLength) * _springConstant;
 
 //=====Calculate final force=====
 		force.Normalize();
-		force *= -magnitude;
+		force *= static_cast<F32>(-magnitude);
 
 		particle->AddForce(force);
 	}
