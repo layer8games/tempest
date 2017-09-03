@@ -31,7 +31,7 @@ namespace KillerEngine
 	class MapManager
 	{
 	public:
-		~MapManager(void) {  }
+		~MapManager(void);
 
 		static MapManager* Instance();
 

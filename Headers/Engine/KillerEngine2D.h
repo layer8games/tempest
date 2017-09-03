@@ -48,18 +48,30 @@ namespace KillerEngine
 
 		void ShutDown(void);
 		
-		bool Running(void) { return MapManager::Instance()->GetRunning(); }
+		bool Running(void) 
+		{ 
+			return MapManager::Instance()->GetRunning(); 
+		}
 
-		void End(void) { MapManager::Instance()->SetRunning(false); }
+		void End(void) 
+		{ 
+			MapManager::Instance()->SetRunning(false); 
+		}
 
 		void LoadTexture(const string path, const U32 id, const S32 width, const S32 height) 
 		{ 
 			TextureManager::Instance()->LoadTexture(path, id, width, height); 
 		}
 		
-		void AddMapToManager(Map* world) { MapManager::Instance()->AddMap(world); }
+		void AddMapToManager(Map* world) 
+		{ 
+			MapManager::Instance()->AddMap(world); 
+		}
 
-		void SetActiveMap(const U32 id) { MapManager::Instance()->SetActiveMap(id); }
+		void SetActiveMap(const U32 id) 
+		{ 
+			MapManager::Instance()->SetActiveMap(id); 
+		}
 
 		void Update(void);
 

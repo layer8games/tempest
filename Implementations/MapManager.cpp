@@ -1,7 +1,11 @@
 #include <Engine/MapManager.h>
+#include <iostream>
 
 namespace KillerEngine 
 {
+	MapManager::~MapManager(void)
+	{  }
+
 
 //==========================================================================================================================
 //

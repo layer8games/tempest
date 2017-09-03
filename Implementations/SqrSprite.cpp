@@ -8,7 +8,9 @@ namespace KillerEngine
 //
 //==========================================================================================================================		
 		SqrSprite::SqrSprite(void)
-		{  }
+		{
+			v_InitShader();
+		}
 
 		SqrSprite::~SqrSprite(void) 
 		{  }

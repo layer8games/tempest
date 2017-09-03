@@ -36,6 +36,8 @@ Written by Maxwell Miller
 #include <Engine/Vector2.h>
 #include <Engine/Color.h>
 
+#include <iostream>
+
 namespace KM = KillerMath;
 
 //===== STD includes =====
@@ -158,7 +160,9 @@ namespace KillerEngine
 		}
 
 		void ScalePosition(const KM::Vector2& v, F32 scale)
-		{
+		{	
+			std::cout << "GameObject scale position : " << v.GetX() << ", " << v.GetY() << ", " << scale << "\n";
+			
 			_position.AddScaledVector(v, scale);
 			_sprite->SetPosition(_position);
 		}
