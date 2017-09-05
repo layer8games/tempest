@@ -49,17 +49,19 @@ namespace KillerEngine
 			"layout (location = 1) in vec4 color; 												\n"
 			"layout (location = 2) in vec2 dimensions;											\n"
 
-			"uniform mat4 perspective_mat;														\n"
-			"uniform mat4 modelView_mat;														\n"
+			"uniform mat4 projection_mat;														\n"
+			"uniform mat4 translation_mat;														\n"
+			//"uniform mat4 transform_mat;   														\n"
 			
 			"out vec4 gs_color;																	\n"
 			"out vec4 gs_dimensions;															\n"
 			
 			"void main(void) 																	\n"
 			"{																					\n"
-			"	gl_Position = perspective_mat * modelView_mat * position;						\n"
+			"	gl_Position = projection_mat * translation_mat * position;						\n"
+			//"	gl_Position = transform_mat * position;											\n"
 			"	gs_color = color;																\n"
-			"	gs_dimensions = perspective_mat * vec4(dimensions.x, dimensions.y, 0.0, 0.0);	\n"
+			"	gs_dimensions = projection_mat * vec4(dimensions.x, dimensions.y, 0.0, 0.0);	\n"
 			"}																					\n"
 		};
 

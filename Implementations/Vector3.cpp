@@ -25,6 +25,9 @@ namespace KillerMath
 	Vector3::Vector3(const Vector3& V) : _x(V.GetX()), _y(V.GetY()), _z(V.GetZ()), _w(V.GetW())
 	{  }
 
+	Vector3::Vector3(const Vector2& V) : _x(V.GetX()), _y(V.GetY()), _z(0.0f), _w(1.0f)
+	{  }
+
 	Vector3::~Vector3(void)
 	{  }
 
@@ -42,6 +45,16 @@ namespace KillerMath
 		_w = V.GetW();
 
 		return *this; 
+	}
+
+	Vector3& Vector3::operator=(const Vector2& V)
+	{
+		_x = V.GetX();
+		_y = V.GetY();
+		_z = 0.0f;
+		_w = 1.0f;
+
+		return *this;
 	}
 
 	Vector3& Vector3::operator=(F32 val)
@@ -184,6 +197,12 @@ namespace KillerMath
 		_x += V.GetX() * scale; 
 		_y += V.GetY() * scale; 
 		_z += V.GetZ() * scale; 
+	}
+
+	void Vector3::AddScaledVector(const Vector2& V, F32 scale)
+	{
+		_x += V.GetX() * scale;
+		_y += V.GetY() * scale;
 	}
 
 //==========================================================================================================================

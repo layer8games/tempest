@@ -32,12 +32,16 @@ Written by Maxwell Miller
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
+#include <Engine/Vector3.h>
 
 //=====Other Includes=====
 #include <cassert>
 
 namespace KillerMath
 {
+	//=====Declaration=====
+	class Vector3;
+
 	class Vector2
 	{
 	public:
@@ -53,6 +57,8 @@ namespace KillerMath
 		Vector2(F32 x, F32 y);
 
 		Vector2(const Vector2& V);
+
+		explicit Vector2(const Vector3& V);
 
 		~Vector2(void);
 //==========================================================================================================================
@@ -97,6 +103,8 @@ namespace KillerMath
 //==========================================================================================================================
 //=====Copy assignment=====
 	Vector2& operator=(const Vector2& V);
+
+	Vector2& operator=(const Vector3& V);
 
 	Vector2& operator=(F32 val);
 
@@ -161,6 +169,8 @@ namespace KillerMath
 //
 //==========================================================================================================================
 	void AddScaledVector(const Vector2& V, F32 scale);
+
+	void AddScaledVector(const Vector3& V, F32 scale);
 
 	private:
 		F32 _x;

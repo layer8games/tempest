@@ -20,6 +20,7 @@ Written by Maxwell Miller
 #include <Engine/WinProgram.h>
 #include <Engine/Matrix.h>
 #include <Engine/Vector2.h> 
+#include <Engine/Vector3.h>
 #include <Engine/Color.h>
 
 namespace KM = KillerMath;
@@ -52,19 +53,25 @@ namespace KillerEngine
 //==========================================================================================================================		
 		static Camera* Instance(void);
 
-		void SetProjectionOrthographic(void);
+		void SetOrthographic(void);
 
-		void SetPosition(KM::Vector2& pos, F32 scale) 
-		{ 
-			_pos.AddScaledVector(pos, scale);
-			_translation.Translate(pos); 
-		}
+		void SetPerspective(void);
 
-		void SetPosition(F32 x, F32 y, F32 scale) 
-		{ 
-			_pos.AddScaledVector(KM::Vector2(x, y), scale);
-			_translation.Translate(_pos); 
-		}
+		void SetPosition(F32 x, F32 y);
+
+		void SetPosition(const KM::Vector2& V);
+
+		void SetPosition(F32 x, F32 y, F32 z);
+
+		void SetPosition(const KM::Vector3& V);
+
+		void ScalePosition(F32 x, F32 y, F32 scale);
+
+		void ScalePosition(const KM::Vector2& v, F32 scale);
+
+		void ScalePosition(F32 x, F32 y, F32 z, F32 scale);
+
+		void ScalePosition(const KM::Vector3& V, F32 scale);
 
 		void SetColor(Color& col) 
 		{ 
@@ -90,7 +97,7 @@ namespace KillerEngine
 //==========================================================================================================================		
 		static Camera* 	_instance;
 		Color  			_background;
-		KM::Vector2  	_pos;
+		KM::Vector3  	_pos;
 		KM::Matrix 		_projection;
 		KM::Matrix 		_translation;
 

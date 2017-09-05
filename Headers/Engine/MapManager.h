@@ -51,11 +51,25 @@ namespace KillerEngine
 		
 		void SetActiveMap(U32 worldID);
 		
-		U32 GetActiveMapID(void) { return _activeMapID; }
+		U32 GetActiveMapID(void) 
+		{ 
+			return _activeMapID; 
+		}
 		
-		void SetRunning(bool r) { _running = r; }
+		void SetRunning(bool r) 
+		{ 
+			_running = r; 
+		}
 		
-		bool GetRunning(void) { return _running; } 
+		bool GetRunning(void) 
+		{ 
+			return _running; 
+		}
+
+		void EndGame(void)
+		{
+			_running = false; 
+		}
 
 		void AddObjectToMap(U32 id, GameObject2D* obj);
 
