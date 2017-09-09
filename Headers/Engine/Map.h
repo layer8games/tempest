@@ -177,7 +177,8 @@ namespace KillerEngine
 		
 		void SetMapDimensions(S32 w, S32 h) 
 		{ 
-			_mapWidth  = w; _mapHeight = h; 
+			_mapWidth  = w; 
+			_mapHeight = h; 
 		}
 		
 		void SetTopBorder(S32 top) 
