@@ -28,7 +28,11 @@ Written by Maxwell Miller
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
+#include <Engine/ErrorManager.h>
 #include <Engine/Vertex.h>
+#include <Engine/Vector3.h>
+
+namespace KM = KillerMath;
 
 //=====OpenGL Includes=====
 #include <GL/gl.h>
@@ -68,11 +72,38 @@ namespace KillerEngine
 			return _vertices;
 		}
 
+		void RenderModel(KM::Vector3& pos);
+
+//==========================================================================================================================
+//
+//Accessors
+//
+//==========================================================================================================================
+		GLuint GetShader(void)
+		{
+			return _shaderProgram;
+		}
+
+		bool HasShader(void)
+		{
+			if(_shaderProgram == 0)
+				return false;
+			
+			else
+				return true;
+		}
+
 	private:
-		static GLuint _shaderProgram;
+		GLuint _shaderProgram;
 		S32 _numVertices;
 		std::vector<Vertex3D> _vertices;
 
+		void InitShader(void);
+
+		void InitShader(GLuint shader)
+		{
+			_shaderProgram = shader;
+		}
 		
 	};//end Class
 }//end Namespace
