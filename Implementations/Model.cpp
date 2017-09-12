@@ -8,10 +8,14 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 	Model::Model(void) : _shaderProgram(0), _numVertices(0), _vertices()
-	{  }
+	{
+		_InitShader();
+	}
 
 	Model::Model(std::vector<Vertex3D> vertices) : _shaderProgram(0), _numVertices(0), _vertices(vertices)
-	{  }
+	{
+		_InitShader();
+	}
 
 	Model::~Model(void)
 	{  }
@@ -32,7 +36,7 @@ namespace KillerEngine
 
 	}
 
-	void Model::InitShader(void)
+	void Model::_InitShader(void)
 	{
 		const GLchar* vertexShaderSource[] =
 		{

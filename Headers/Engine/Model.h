@@ -98,9 +98,9 @@ namespace KillerEngine
 		S32 _numVertices;
 		std::vector<Vertex3D> _vertices;
 
-		void InitShader(void);
+		void _InitShader(void);
 
-		void InitShader(GLuint shader)
+		void _InitShader(GLuint shader)
 		{
 			_shaderProgram = shader;
 		}
