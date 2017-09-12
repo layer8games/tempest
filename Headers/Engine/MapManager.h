@@ -73,7 +73,7 @@ namespace KillerEngine
 
 		void AddObjectToMap(U32 id, GameObject2D* obj);
 
-		void AddObjectToMap(U32 id, GameObject3D* obj);
+		void AddObject3DToMap(U32 id, GameObject3D* obj);
 		
 		void Remove2DObjectFromMap(U32 worldID, U32 ojbId);
 

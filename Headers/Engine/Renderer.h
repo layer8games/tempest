@@ -33,6 +33,8 @@ Written by Maxwell Miller
 #include <Engine/Matrix.h>
 #include <Engine/Vector2.h>
 #include <Engine/Color.h>
+#include <Engine/Model.h>
+#include <Engine/Vertex.h>
 
 namespace KM = KillerMath;
 
@@ -53,6 +55,7 @@ namespace KillerEngine
 
 	//=====Foreward delcaration=====
 	class Sprite;
+	class Model;
 
 	class Renderer 
 	{
@@ -94,9 +97,13 @@ namespace KillerEngine
 
 		void AddToBatch(std::vector<F32> v, std::vector<F32> c);
 
+		void AddToBatch(Model& m);
+
 		void AddTextureToBatch(std::vector<F32> v, std::vector<F32> uv);
 		
 		void Draw(void);
+
+		//void Draw2(void);
 		
 	protected:
 //==========================================================================================================================

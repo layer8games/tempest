@@ -91,10 +91,16 @@ namespace KillerEngine
 		else ErrorManager::Instance()->SetError(EC_KillerEngine, "MapManager -> Tried to call the AddObjectToMap() function for a world that does not exist.");
 	}
 
-	void MapManager::AddObjectToMap(U32 id, GameObject3D* obj)
+	void MapManager::AddObject3DToMap(U32 id, GameObject3D* obj)
 	{
-		if(_worlds.find(id) != _worlds.end()) { _worlds[id]->AddObjectToMap(obj); } 
-		else ErrorManager::Instance()->SetError(EC_KillerEngine, "MapManager -> Tried to call the AddObjectToMap() function for a world that does not exist.");
+		if(_worlds.find(id) != _worlds.end()) 
+		{ 
+			_worlds[id]->AddObject3DToMap(obj); 
+		} 
+		else 
+		{
+			ErrorManager::Instance()->SetError(EC_KillerEngine, "MapManager -> Tried to call the AddObjectToMap() function for a world that does not exist.");
+		}
 	}
 
 	void MapManager::Remove2DObjectFromMap(U32 worldID, U32 objID)

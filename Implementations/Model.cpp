@@ -25,7 +25,7 @@ namespace KillerEngine
 //Model Functions
 //
 //==========================================================================================================================
-	void Model::RenderModel(KM::Vector3& pos)
+	void Model::Render(KM::Vector3& pos)
 	{	
 		if(_shaderProgram == 0)
 		{
@@ -33,7 +33,7 @@ namespace KillerEngine
 			return;
 		}
 
-
+		Renderer::Instance()->AddToBatch(*this);
 	}
 
 	void Model::_InitShader(void)
@@ -78,7 +78,7 @@ namespace KillerEngine
 		glShaderSource(vertexShaderProgram, 1, vertexShaderSource, NULL);
 		glCompileShader(vertexShaderProgram);
 
-		fragmentShaderProgram = glCreateShader(GL_VERTEX_SHADER);
+		fragmentShaderProgram = glCreateShader(GL_FRAGMENT_SHADER);
 		glShaderSource(fragmentShaderProgram, 1, fragmentShaderSource, NULL);
 		glCompileShader(fragmentShaderProgram);
 

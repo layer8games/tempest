@@ -30,7 +30,7 @@ namespace KillerEngine
 		}
 	}
 
-	void Map::AddObjectToMap(GameObject3D* obj)
+	void Map::AddObject3DToMap(GameObject3D* obj)
 	{
 		_3DWorldObjects.insert(std::map<U32, GameObject3D*>::value_type(obj->GetID(), obj));
 		

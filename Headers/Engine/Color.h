@@ -108,6 +108,13 @@ namespace KillerEngine
 			_alpha = a; 
 		}
 
+		void Set(F32 r, F32 g, F32 b)
+		{
+			_red = r;
+			_green = g;
+			_blue = b;
+		}
+
 	private:
 		F32 _red;
 		F32 _green;

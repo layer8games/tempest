@@ -29,6 +29,7 @@ Written by Maxwell Miller
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
+#include <Engine/Renderer.h>
 #include <Engine/Vertex.h>
 #include <Engine/Vector3.h>
 
@@ -72,7 +73,7 @@ namespace KillerEngine
 			return _vertices;
 		}
 
-		void RenderModel(KM::Vector3& pos);
+		void Render(KM::Vector3& pos);
 
 //==========================================================================================================================
 //
