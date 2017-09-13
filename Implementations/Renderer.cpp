@@ -61,6 +61,7 @@ namespace KillerEngine
 			glUseProgram(_currentShader);
 
 			//_SetOrthoProjection();
+			Camera::Instance()->SetOrthographic();
 			Camera::Instance()->SetUp(shader);
 		}
 
