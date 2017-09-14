@@ -117,17 +117,16 @@ namespace KillerEngine
 		static Renderer* 	 _instance;
 		U32 				 _maxBatchSize;
 		U32 				 _currentBatchSize;
-		KM::Matrix			 _projection;
-		KM::Matrix			 _model;
-		KM::Matrix			 _final;
 		std::vector<F32> 	 _vertices;
 		std::vector<F32> 	 _colors;
 		std::vector<F32> 	 _dimensions;
 		std::vector<F32> 	 _bottomTop;
 		std::vector<F32>     _leftRight;	
 		GLuint				 _renderingProgramColor;
+		
+		const static U32	 NUM_VOA = 2;
 		GLuint   			 _renderingProgramTexture;
-		GLuint   			 _vertexArrayObject;
+		GLuint   			 _vertexArrayObject[NUM_VOA];
 		
 		GLuint 				 _currentShader;
 		static const GLchar* _vertexShaderSourceColor[];
@@ -135,12 +134,6 @@ namespace KillerEngine
 		static const GLchar* _fragmentShaderSourceColor[];
 		static const GLchar* _fragmentShaderSourceTexture[];
 
-//==========================================================================================================================
-//
-//Private Renderer Functions
-//
-//==========================================================================================================================
-		void _SetOrthoProjection(void);
 	};
 
 }//End namespace

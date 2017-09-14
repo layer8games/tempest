@@ -52,7 +52,7 @@ namespace KillerEngine
 
 			"void main(void)															\n"
 			"{ 																			\n"
-			"	gl_Position = projection_mat * translation_mat * vertice;				\n"
+			"	gl_Position =  vertice;				\n"
 			"	fs_color = color;														\n"
 			"}																			\n"
 		};

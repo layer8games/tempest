@@ -66,7 +66,9 @@ namespace KillerEngine {
     	_wndClass.lpszClassName = _wndName.c_str();
         _wndClass.hIconSm       = LoadIcon(NULL, IDI_WINLOGO);
 
-    	if (!RegisterClassEx(&_wndClass)) { ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to register window class"); }
+    	if (!RegisterClassEx(&_wndClass))
+    		ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to register window class");
+
 
     	_hwnd = CreateWindowEx(WS_EX_APPWINDOW | WS_EX_WINDOWEDGE,
     				   		   _wndName.c_str(),					    //Window Class name
@@ -79,13 +81,15 @@ namespace KillerEngine {
     				   		   NULL, 									//Window Menu
     				   		   _wndClass.hInstance,						//hInstance,
     				   		   this); 									//lpParam
-    	if (!_hwnd) { ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to create HWND"); }
+    	if (!_hwnd)
+    		ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to create HWND");
 
     	SetWindowLong(_hwnd, GWL_STYLE, WS_BORDER);
 
         _hdc = GetDC(_hwnd);
 
-        if(!_hdc) { ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to get HDC"); }
+        if(!_hdc)
+        	ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to get HDC");
 
         ShowWindow(_hwnd, SW_SHOW);
         UpdateWindow(_hwnd);
@@ -138,7 +142,8 @@ namespace KillerEngine {
         {
             window = (WinProgram*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
 
-    		if (!window) { DefWindowProc(hWnd, uMsg, wParam, lParam); }
+    		if (!window)
+    			DefWindowProc(hWnd, uMsg, wParam, lParam);
         }
 
         return window->WndProc(hWnd, uMsg, wParam, lParam);
@@ -165,7 +170,9 @@ namespace KillerEngine {
                 
     			PFNWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribsARB = NULL;
                 wglCreateContextAttribsARB = (PFNWGLCREATECONTEXTATTRIBSARBPROC)wglGetProcAddress("wglCreateContextAttribsARB");
-                if(!wglCreateContextAttribsARB) { ErrorManager::Instance()->SetError(EC_OpenGL, "Unable to get wglCreateContextAttribsARB function Vecer"); }
+                
+                if(!wglCreateContextAttribsARB)
+                	ErrorManager::Instance()->SetError(EC_OpenGL, "Unable to get wglCreateContextAttribsARB function Vecer");
 
                 GLint contextARBS[] = 
                 {
@@ -177,12 +184,14 @@ namespace KillerEngine {
 
                 _hglrc = wglCreateContextAttribsARB(_hdc, 0, contextARBS);
 
-                if(!_hglrc) { ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to create wgl Context"); }
+                if(!_hglrc)
+                	ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to create wgl Context");
 
                 wglMakeCurrent(_hdc, _hglrc);
                 wglDeleteContext(hrcTemp);
 
-                if (gl3wInit()) { ErrorManager::Instance()->SetError(EC_OpenGL, "gl3wInit() failed"); }
+                if (gl3wInit())
+                	ErrorManager::Instance()->SetError(EC_OpenGL, "gl3wInit() failed");
 
                 break;
             }

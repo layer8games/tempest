@@ -9,18 +9,6 @@ namespace KillerEngine
 //Private Renderer Functions
 //
 //==========================================================================================================================
-//=======================================================================================================
-//_SetOrthoProjection
-//=======================================================================================================
-	void Renderer::_SetOrthoProjection(void) 
-	{
-		const F32* data = _final.GetElems();
-
-		GLint transform1 = glGetUniformLocation(_currentShader, "transform_mat");
-
-		glUniformMatrix4fv(transform1, 1, GL_FALSE, data);
-	}
-
 //==========================================================================================================================
 //
 //Singleton Functions
@@ -168,7 +156,7 @@ namespace KillerEngine
 //=======================================================================================================
 //Draw
 //=======================================================================================================
-
+/*
 	void Renderer::Draw(void)
 	{
 		if(_currentBatchSize == 0) return;
@@ -220,8 +208,8 @@ namespace KillerEngine
 		_leftRight.clear();
 		_currentBatchSize = 0;
 	}
+*/
 
-/*
 	void Renderer::Draw(void)
 	{
 		if(_currentBatchSize == 0) return;
@@ -239,14 +227,14 @@ namespace KillerEngine
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 		
-		glDrawArrays(GL_POINTS, 0, _currentBatchSize);
+		glDrawArrays(GL_TRIANGLES, 0, _currentBatchSize);
 
 		//=====Reset All Containers and Counters=====
 		_vertices.clear();
 		_colors.clear();
 		_currentBatchSize = 0;
 	}
-*/
+
 /*
 	void Renderer::Draw(void)
 	{
@@ -358,9 +346,6 @@ namespace KillerEngine
 //=======================================================================================================
 	Renderer::Renderer(void): _maxBatchSize(1000), 
 							  _currentBatchSize(0),
-							  _projection(),
-							  _model(1.0f),
-							  _final(),
 							  _vertices(0),
 							  _colors(0),
 							  _dimensions(0),
@@ -368,15 +353,10 @@ namespace KillerEngine
 							  _leftRight(0),
 							  _renderingProgramColor(0),
 							  _renderingProgramTexture(0),
-							  _vertexArrayObject(0),
 							  _currentShader(0)
 	{ 
-		_projection.MakeOrthographic((F32)WinProgram::Instance()->GetWidth(), (F32)WinProgram::Instance()->GetHeight(), 200);
-
-		_final = _projection * _model;
-
-		glGenVertexArrays(1, &_vertexArrayObject);
-		glBindVertexArray(_vertexArrayObject);
+		glGenVertexArrays(NUM_VOA, _vertexArrayObject);
+		glBindVertexArray(_vertexArrayObject[1]);
 	}
 
 }//End namespace		
