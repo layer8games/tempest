@@ -33,7 +33,7 @@ namespace KillerEngine
 			return;
 		}
 
-		Renderer::Instance()->AddToBatch(*this);
+		//Renderer::Instance()->AddToBatch(*this);
 	}
 
 	void Model::_InitShader(void)

@@ -18,7 +18,7 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/GameObject2D.h>
 #include <Engine/Font.h>
-#include <Engine/CharSprite.h>
+#include <Engine/Sprite.h>
 #include <Engine/Vector2.h>
 #include <Engine/Color.h>
 
@@ -26,6 +26,7 @@ namespace KM = KillerMath;
 
 //=====STL includes=====
 #include <vector>
+#include <memory>
 
 namespace KillerEngine
 {
@@ -61,13 +62,6 @@ namespace KillerEngine
 		}
 */
 
-
-		void v_SetPosition(KM::Vector2 pos)
-		{
-			GameObject2D::v_SetPosition(pos);
-			SetTextPosition(pos);
-		}
-
 //==========================================================================================================================
 //
 //RenderText Functions
@@ -94,9 +88,19 @@ namespace KillerEngine
 		KM::Vector2& GetCenter(void) { return _center; }
 
 	private:
+		struct Character
+		{
+			KM::Vector2 position;
+			F32 width;
+			F32 height;
+			Color color;
+			Sprite sprite;
+		};
+
+
 		string _text;
 		Font   _font;
-		std::vector<CharSprite*> _spriteList;
+		std::vector<Character> _characterList;
 		F32 _widthScaleFactor;
 		F32 _heightScaleFactor;
 		F32 _totalWidth;

@@ -101,7 +101,7 @@ namespace KillerEngine
 
 		void AddTextureToBatch(std::vector<F32> v, std::vector<F32> uv);
 		
-		void Draw(void);
+		//void Draw(void);
 
 		//void Draw2(void);
 		

@@ -67,7 +67,7 @@ namespace KillerEngine
 	{
 		MapManager::Instance()->Render();
 
-		Renderer::Instance()->Draw();
+		//Renderer::Instance()->Draw();
 
 		WinProgram::Instance()->BufferSwap();
 		

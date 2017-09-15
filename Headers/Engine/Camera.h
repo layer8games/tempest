@@ -100,6 +100,7 @@ namespace KillerEngine
 		KM::Vector3  	_pos;
 		KM::Matrix 		_projection;
 		KM::Matrix 		_translation;
+		GLuint			_currentShader;
 
 	protected:
 //==========================================================================================================================

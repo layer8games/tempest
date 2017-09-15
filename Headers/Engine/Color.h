@@ -93,7 +93,7 @@ namespace KillerEngine
 			_red = r; 
 		}
 		
-		void SetGree(const F32 g)  
+		void SetGreen(const F32 g)  
 		{ 
 			_green = g; 
 		}

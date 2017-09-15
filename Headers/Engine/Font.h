@@ -15,7 +15,8 @@ Written by Maxwell Miller
 //=====Engine includes=====
 #include <Engine/Atom.h>
 #include <Engine/Texture.hpp>
-#include <Engine/CharSprite.h>
+#include <Engine/Sprite.h>
+#include <Engine/CharacterData.h>
 #include <Engine/TextureManager.h>
 
 //=====STL includes=====
@@ -25,20 +26,11 @@ Written by Maxwell Miller
 #include <vector>
 #include <map>
 #include <list>
+#include <memory>
 
 namespace KillerEngine
 {
-	struct CharacterData
-	{
-		U32 id;
-		U32 x;
-		U32 y;
-		U32 width;
-		U32 height;
-		U32 xoffset;
-		U32 yoffset;
-		U32 xadvance;
-	};
+	
 
 	//Forward declare CharSprite
 	class CharSprite;
@@ -62,11 +54,14 @@ namespace KillerEngine
 //==========================================================================================================================
 		void InitFont(string fontName, string fontFile);
 
-		CharacterData* GetDataForCharacter(char c);
+		CharacterData GetDataForCharacter(char c);
 
-		std::map<U32, CharacterData*> GetDataMap(void) { return _fontCharData; }
+		std::map<U32, CharacterData> GetDataMap(void) 
+		{ 
+			return _fontCharData; 
+		}
 
-		CharSprite* CreateCharacter(char character);
+		std::shared_ptr<Sprite> CreateCharacter(char character);
 
 //==========================================================================================================================
 //
@@ -116,7 +111,7 @@ namespace KillerEngine
 		string  					 _fontFile;
 		string  					 _fontName;
 		U32     					 _headerSize = 26;
-		std::map<U32, CharacterData*> _fontCharData;
+		std::map<U32, CharacterData> _fontCharData;
 
 		void _AddNewCharacterData(string id,      string x, 		string y,
 							  	  string width,   string height,   string xoffset,

@@ -26,9 +26,9 @@ namespace KillerEngine
 //==========================================================================================================================
 	void RenderText::v_Render(void)
 	{
-		for(CharSprite* sprite : _spriteList)
+		for(Character character : _characterList)
 		{
-			sprite->v_RenderSprite();
+			character.sprite.Render(character.position, character.width, character.height, character.color);
 		}
 	}
 
@@ -39,7 +39,7 @@ namespace KillerEngine
 //==========================================================================================================================
 	void RenderText::AddText(string text)
 	{
-		_spriteList.clear();
+		_characterList.clear();
 
 		_text = text;
 
@@ -51,21 +51,25 @@ namespace KillerEngine
 
 		for(char& c : text)
 		{
-			CharSprite* sprite = _font.CreateCharacter(c);
+			Character character;
 
-			F32 xOffset = F32(sprite->GetXOffset() / 2);
-			F32 yOffset = F32(sprite->GetYOffset() / 2);
+			std::shared_ptr<Sprite> sprite = _font.CreateCharacter(c);
 
-			sprite->SetPosition(KM::Vector2(currentX + xOffset, currentY - yOffset));			
+			CharacterData data = sprite->GetCharData();
 
-			currentX += F32(sprite->GetXAdvance()) * _widthScaleFactor;
+			F32 xOffset = static_cast<F32>(data.xoffset) / 2.0f;
+			F32 yOffset = static_cast<F32>(data.yoffset) / 2.0f;
 
-			F32 charWidth  	  = F32(sprite->GetCharWidth());
-			F32 charHeight 	  = F32(sprite->GetCharHeight());
-			F32 charX 	 	  = F32(sprite->GetCharX());
-			F32 charY 	 	  = F32(sprite->GetCharY());
-			F32 textureWidth  = F32(texture.GetWidth());
-			F32 textureHeight = F32(texture.GetHeight());
+			character.position = KM::Vector2(currentX + xOffset, currentY - yOffset);
+
+			currentX += static_cast<F32>(data.xadvance * _widthScaleFactor);
+
+			F32 charWidth  	  = static_cast<F32>(data.width);
+			F32 charHeight 	  = static_cast<F32>(data.height);
+			F32 charX 	 	  = static_cast<F32>(data.x);
+			F32 charY 	 	  = static_cast<F32>(data.y);
+			F32 textureWidth  = static_cast<F32>(texture.GetWidth());
+			F32 textureHeight = static_cast<F32>(texture.GetHeight());
 
 			F32 rightCoord   = (charX / textureWidth);
 			F32 topCoord    = charY / textureHeight;
@@ -75,16 +79,22 @@ namespace KillerEngine
 			//std::cout << "Top=" << topCoord << "\nBottom=" << bottomCoord << "\nrRight=" << rightCoord << "\nLeft=" << leftCoord << "\n";
 
 			sprite->SetTexture(_font.GetTextureID(), topCoord, bottomCoord, rightCoord, leftCoord);
+			sprite->SetCharData(data);
 
 			F32 totalCharWidth = charWidth * _widthScaleFactor;
 			F32 totalCharHeight = charHeight * _heightScaleFactor;
 
-			sprite->SetDimensions(totalCharWidth, totalCharHeight);
+			character.width = totalCharWidth;
+			character.height = totalCharHeight;
 
 			_totalWidth += totalCharWidth;
-			if(_totalHeight <= totalCharHeight) { _totalHeight = totalCharHeight; } 
+			
+			if(_totalHeight <= totalCharHeight)
+			{
+				_totalHeight = totalCharHeight;
+			}
 
-			_spriteList.push_back(sprite);
+			_characterList.push_back(character);
 		}
 
 		_center = KM::Vector2(_totalWidth / 2.0f, _totalHeight / 2.0f);
@@ -92,25 +102,29 @@ namespace KillerEngine
 
 	void RenderText::SetTextPosition(KM::Vector2& pos)
 	{
+		GameObject2D::SetPosition(pos);
+
 		F32 currentX = pos.GetX();
 		F32 currentY = pos.GetY();
 
-		for(CharSprite* sprite : _spriteList)
+		for(Character character : _characterList)
 		{
-			F32 xOffset = F32(sprite->GetXOffset() / 2);
-			F32 yOffset = F32(sprite->GetYOffset() / 2);
+			CharacterData data = character.sprite.GetCharData();
 
-			sprite->SetPosition(KM::Vector2(currentX + xOffset, currentY - yOffset));			
+			F32 xOffset = static_cast<F32>(data.xoffset / 2);
+			F32 yOffset = static_cast<F32>(data.yoffset / 2);
 
-			currentX += F32(sprite->GetXAdvance()) * _widthScaleFactor;
+			character.position = KM::Vector2(currentX + xOffset, currentY - yOffset);
+
+			currentX += static_cast<F32>(data.xadvance) * _widthScaleFactor;
 		}
 	}
 
 	void RenderText::SetTextColor(Color& col)
 	{
-		for(CharSprite* sprite : _spriteList)
+		for(Character character : _characterList)
 		{
-			sprite->SetColor(col);
+			character.color = col;
 		}
 	}
 

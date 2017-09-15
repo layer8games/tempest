@@ -7,12 +7,6 @@
     <Filter Include="Components\Atom">
       <UniqueIdentifier>{cd2e098b-d0b5-443f-a980-bb5adc24d8b8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Sprites">
-      <UniqueIdentifier>{d0711876-6e25-4524-90f9-403826adba23}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Sprites\CharSprite">
-      <UniqueIdentifier>{5b41e7e3-94c3-44fe-b56a-f7799be0e4a8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\Color">
       <UniqueIdentifier>{5d83855b-baf9-4d27-bc54-347079ecb506}</UniqueIdentifier>
     </Filter>
@@ -40,12 +34,6 @@
     <Filter Include="Components\GameObjects\RenderText">
       <UniqueIdentifier>{7e0d93d1-f85e-4c81-9b66-d130c9d7e5df}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Sprites\Sprite">
-      <UniqueIdentifier>{e222f9d6-81c8-468c-b522-04aa743035a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Sprites\SqrSprite">
-      <UniqueIdentifier>{49894d25-2d14-493a-9687-b6f8bc51d4c4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\Texture">
       <UniqueIdentifier>{70216902-edb5-4822-8aec-ed808572d931}</UniqueIdentifier>
     </Filter>
@@ -54,9 +42,6 @@
     </Filter>
     <Filter Include="Components\ProgramWindows">
       <UniqueIdentifier>{381d786c-065e-4c73-9294-7079cbccce17}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Sprites\TriSprite">
-      <UniqueIdentifier>{0c6cd213-02b1-4316-83bb-ec602d3d99d7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Components\Map">
       <UniqueIdentifier>{3820084b-1115-47ff-b532-adca4671f2e9}</UniqueIdentifier>
@@ -145,16 +130,16 @@
     <Filter Include="Components\KillerPhysics\Particles\3D\Particle3D">
       <UniqueIdentifier>{f6180fd1-cf89-4ce3-9baa-37af0e77b36c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Vertex">
+    <Filter Include="Components\Structs">
       <UniqueIdentifier>{2b6d07f5-9367-4b70-a35d-57e172e29178}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Sprite">
+      <UniqueIdentifier>{e222f9d6-81c8-468c-b522-04aa743035a2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
       <Filter>Components\Atom</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\CharSprite.h">
-      <Filter>Components\Sprites\CharSprite</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Controller.h">
       <Filter>Components\Controller</Filter>
@@ -165,14 +150,8 @@
     <ClInclude Include="..\..\Headers\Engine\Font.h">
       <Filter>Components\Font</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Renderer.h">
-      <Filter>Components\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\RenderText.h">
       <Filter>Components\GameObjects\RenderText</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\SqrSprite.h">
-      <Filter>Components\Sprites\SqrSprite</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Texture.hpp">
       <Filter>Components\Texture</Filter>
@@ -193,10 +172,7 @@
       <Filter>Components\ProgramWindows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Sprite.h">
-      <Filter>Components\Sprites\Sprite</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\TriSprite.h">
-      <Filter>Components\Sprites\TriSprite</Filter>
+      <Filter>Components\Sprite</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Camera.h">
       <Filter>Components\Camera</Filter>
@@ -259,13 +235,16 @@
       <Filter>Components\Color</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vertex.h">
-      <Filter>Components\Vertex</Filter>
+      <Filter>Components\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\CharacterData.h">
+      <Filter>Components\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Renderer.h">
+      <Filter>Components\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Implementations\CharSprite.cpp">
-      <Filter>Components\Sprites\CharSprite</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
       <Filter>Components\Controller</Filter>
     </ClCompile>
@@ -280,9 +259,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\RenderText.cpp">
       <Filter>Components\GameObjects\RenderText</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\SqrSprite.cpp">
-      <Filter>Components\Sprites\SqrSprite</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\TextureManager.cpp">
       <Filter>Components\TextureManager</Filter>
@@ -300,10 +276,7 @@
       <Filter>Components\ProgramWindows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Sprite.cpp">
-      <Filter>Components\Sprites\Sprite</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\TriSprite.cpp">
-      <Filter>Components\Sprites\TriSprite</Filter>
+      <Filter>Components\Sprite</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Camera.cpp">
       <Filter>Components\Camera</Filter>

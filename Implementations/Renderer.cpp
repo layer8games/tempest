@@ -39,6 +39,7 @@ namespace KillerEngine
 //=======================================================================================================
 //AddToBatch
 //=======================================================================================================
+/*
 	void Renderer::AddToBatch(GLuint shader, KM::Vector2& pos, F32 w, F32 h, Color& c)
 	{
 		if(_currentShader != shader)
@@ -156,7 +157,7 @@ namespace KillerEngine
 //=======================================================================================================
 //Draw
 //=======================================================================================================
-/*
+	
 	void Renderer::Draw(void)
 	{
 		if(_currentBatchSize == 0) return;
@@ -209,6 +210,7 @@ namespace KillerEngine
 		_currentBatchSize = 0;
 	}
 */
+/*
 
 	void Renderer::Draw(void)
 	{

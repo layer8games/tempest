@@ -108,6 +108,6 @@ namespace KillerEngine
 //Constructors	 	
 //
 //==========================================================================================================================
-	Camera::Camera(void) : _background(1.0f), _projection(), _translation(1.0f)
+	Camera::Camera(void) : _background(1.0f), _projection(), _translation(1.0f), _currentShader(0)
 	{  }	
 }//end namespace
