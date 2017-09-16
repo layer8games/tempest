@@ -111,7 +111,8 @@ namespace KillerEngine
 	private:
 		struct Character
 		{
-			KM::Vector2 position;
+			F32 xpos;
+			F32 ypos;
 			F32 width;
 			F32 height;
 			Color color;

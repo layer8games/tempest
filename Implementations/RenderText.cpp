@@ -8,13 +8,13 @@ namespace KillerEngine
 //Constructors
 //
 //==========================================================================================================================	
-	RenderText::RenderText(void) : _text(), _font(), _totalWidth(0), _totalHeight(0), _center(0.0f)
+	RenderText::RenderText(void) : _text(), _font(), _characterList(), _totalWidth(0), _totalHeight(0), _center(0.0f)
 	{  }
 
-	RenderText::RenderText(Font& font) : _text(), _font(font), _totalWidth(0), _totalHeight(0), _center(0.0f)
+	RenderText::RenderText(Font& font) : _text(), _font(font), _characterList(), _totalWidth(0), _totalHeight(0), _center(0.0f)
 	{  }
 
-	RenderText::RenderText(string text, Font& font) : _text(text), _font(font), _totalWidth(0), _totalHeight(0), _center(0.0f)
+	RenderText::RenderText(string text, Font& font) : _text(text), _font(font), _characterList(), _totalWidth(0), _totalHeight(0), _center(0.0f)
 	{
 		AddText(_text);
 	}
@@ -28,7 +28,7 @@ namespace KillerEngine
 	{
 		for(Character character : _characterList)
 		{
-			character.sprite.Render(character.position, character.width, character.height, character.color);
+			character.sprite.Render(KM::Vector2(character.xpos, character.ypos), character.width, character.height, character.color);
 		}
 	}
 
@@ -60,7 +60,8 @@ namespace KillerEngine
 			F32 xOffset = static_cast<F32>(data.xoffset) / 2.0f;
 			F32 yOffset = static_cast<F32>(data.yoffset) / 2.0f;
 
-			character.position = KM::Vector2(currentX + xOffset, currentY - yOffset);
+			character.xpos = currentX + xOffset; 
+			character.ypos = currentY - yOffset;
 
 			currentX += static_cast<F32>(data.xadvance * _widthScaleFactor);
 
@@ -94,6 +95,8 @@ namespace KillerEngine
 				_totalHeight = totalCharHeight;
 			}
 
+			character.sprite = sprite;
+
 			_characterList.push_back(character);
 		}
 
@@ -104,19 +107,18 @@ namespace KillerEngine
 	{
 		GameObject2D::SetPosition(pos);
 
-		F32 currentX = pos.GetX();
-		F32 currentY = pos.GetY();
+		F32 currentX = GameObject2D::GetPosition().GetX();
+		F32 currentY = GameObject2D::GetPosition().GetY();
 
-		for(Character character : _characterList)
+		for(auto i = _characterList.begin(); i != _characterList.end(); ++i)
 		{
-			CharacterData data = character.sprite.GetCharData();
+			F32 xOffset = static_cast<F32>((*i).sprite.GetCharData().xoffset) / 2.0f;
+			F32 yOffset = static_cast<F32>((*i).sprite.GetCharData().yoffset) / 2.0f;
 
-			F32 xOffset = static_cast<F32>(data.xoffset) / 2;
-			F32 yOffset = static_cast<F32>(data.yoffset) / 2;
+			(*i).xpos = currentX + xOffset;
+			(*i).ypos = currentY - yOffset;
 
-			character.position = KM::Vector2(currentX + xOffset, currentY - yOffset);
-
-			currentX += static_cast<F32>(data.xadvance) * _widthScaleFactor;
+			currentX += static_cast<F32>((*i).sprite.GetCharData().xadvance) * _widthScaleFactor;
 		}
 	}
 

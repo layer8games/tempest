@@ -41,6 +41,7 @@ namespace KM = KillerMath;
 #include <GL/wglext.h>
 
 #include <vector>
+#include <memory>
 
 namespace KillerEngine 
 {
@@ -107,6 +108,8 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 		Sprite& operator=(Sprite& S);
+
+		Sprite& operator=(std::shared_ptr<Sprite> S);
 		
 //==========================================================================================================================
 //

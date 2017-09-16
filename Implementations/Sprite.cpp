@@ -38,6 +38,17 @@ namespace KillerEngine
 		return *this;
 	}
 
+	Sprite& Sprite::operator=(std::shared_ptr<Sprite> S)
+	{
+		_bottomTop = S->GetUVBottomTop();
+		_leftRight = S-> GetUVLeftRight();
+		_textureID = S->GetTextureID();
+		_characterData = S->GetCharData();
+		_shaderProgram = S->GetShader();
+
+		return *this;	
+	}
+
 //==========================================================================================================================
 //
 //Sprite Fucntions
