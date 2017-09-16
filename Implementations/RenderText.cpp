@@ -57,13 +57,10 @@ namespace KillerEngine
 
 			CharacterData data = sprite->GetCharData();
 
-			F32 xOffset = static_cast<F32>(data.xoffset) / 2.0f;
-			F32 yOffset = static_cast<F32>(data.yoffset) / 2.0f;
+			character.xpos = currentX; 
+			character.ypos = currentY;
 
-			character.xpos = currentX + xOffset; 
-			character.ypos = currentY - yOffset;
-
-			currentX += static_cast<F32>(data.xadvance * _widthScaleFactor);
+			currentX += static_cast<F32>(data.xadvance);
 
 			F32 charWidth  	  = static_cast<F32>(data.width);
 			F32 charHeight 	  = static_cast<F32>(data.height);
@@ -112,13 +109,12 @@ namespace KillerEngine
 
 		for(auto i = _characterList.begin(); i != _characterList.end(); ++i)
 		{
-			F32 xOffset = static_cast<F32>((*i).sprite.GetCharData().xoffset) / 2.0f;
-			F32 yOffset = static_cast<F32>((*i).sprite.GetCharData().yoffset) / 2.0f;
+			CharacterData data = (*i).sprite.GetCharData();
 
-			(*i).xpos = currentX + xOffset;
-			(*i).ypos = currentY - yOffset;
+			(*i).xpos = currentX + static_cast<F32>(data.xoffset);
+			(*i).ypos = currentY - static_cast<F32>(data.yoffset);
 
-			currentX += static_cast<F32>((*i).sprite.GetCharData().xadvance) * _widthScaleFactor;
+			currentX += static_cast<F32>(data.xadvance);// + static_cast<F32>(data.xoffset);
 		}
 	}
 

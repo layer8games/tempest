@@ -32,6 +32,8 @@ Written by Maxwell Miller
 #include <Engine/Renderer.h>
 #include <Engine/Vertex.h>
 #include <Engine/Vector3.h>
+#include <Engine/Camera.h>
+#include <Engine/Matrix.h>
 
 namespace KM = KillerMath;
 
@@ -63,9 +65,15 @@ namespace KillerEngine
 //Functions
 //
 //==========================================================================================================================
-		void AddVertice(Vertex3D vert)
+		void AddVertice(Vertex3D& vert)
 		{
 			_vertices.push_back(vert);
+			++_numVertices;
+		}
+
+		void AddColor(Color& col)
+		{
+			_colors.push_back(col);
 		}
 
 		std::vector<Vertex3D> GetVertices(void)
@@ -95,9 +103,17 @@ namespace KillerEngine
 		}
 
 	private:
-		GLuint _shaderProgram;
+	
 		S32 _numVertices;
 		std::vector<Vertex3D> _vertices;
+		std::vector<Color> _colors;
+
+		const static U32 NUM_VOA = 1; 
+		const static U32 NUM_BUFFERS = 2;
+		GLuint 			 _vertexArrayObject[NUM_VOA];
+		GLuint 			 _buffers[2];
+
+		GLuint _shaderProgram;
 
 		void _InitShader(void);
 

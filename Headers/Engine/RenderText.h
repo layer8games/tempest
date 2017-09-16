@@ -85,7 +85,8 @@ namespace KillerEngine
 
 		void SetScaleFactors(const F32 w, const F32 h) 
 		{ 
-			_widthScaleFactor = w; _heightScaleFactor = h; 
+			_widthScaleFactor = w; 
+			_heightScaleFactor = h; 
 		}
 
 		void SetFont(Font& font) 
