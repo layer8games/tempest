@@ -78,7 +78,7 @@ namespace KillerEngine
 
 			//std::cout << "Top=" << topCoord << "\nBottom=" << bottomCoord << "\nrRight=" << rightCoord << "\nLeft=" << leftCoord << "\n";
 
-			sprite->SetTexture(_font.GetTextureID(), topCoord, bottomCoord, rightCoord, leftCoord);
+			sprite->SetTexture(texture.GetID(), topCoord, bottomCoord, rightCoord, leftCoord);
 			sprite->SetCharData(data);
 
 			F32 totalCharWidth = charWidth * _widthScaleFactor;
@@ -111,8 +111,8 @@ namespace KillerEngine
 		{
 			CharacterData data = character.sprite.GetCharData();
 
-			F32 xOffset = static_cast<F32>(data.xoffset / 2);
-			F32 yOffset = static_cast<F32>(data.yoffset / 2);
+			F32 xOffset = static_cast<F32>(data.xoffset) / 2;
+			F32 yOffset = static_cast<F32>(data.yoffset) / 2;
 
 			character.position = KM::Vector2(currentX + xOffset, currentY - yOffset);
 

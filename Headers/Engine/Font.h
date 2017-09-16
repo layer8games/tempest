@@ -94,17 +94,35 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-		void SetFile(string fontFile) 	  { _fontFile = fontFile; }
+		void SetFile(string fontFile) 	  
+		{
+		 	_fontFile = fontFile; 
+		}
 
-		string GetFile(void) 		  	  { return _fontFile; }
+		string GetFile(void)
+		{ 
+			return _fontFile; 
+		}
 
-		void SetName(string fontName) 	  { _fontName = fontName; }
+		void SetName(string fontName)
+		{ 
+			_fontName = fontName; 
+		}
 
-		string GetName(void) 		  	  { return _fontName; }
+		string GetName(void)
+		{ 
+			return _fontName; 
+		}
 
-		void SetTexture(U32 tID) 		  { _textureID = tID; }
+		void SetTexture(U32 tID)
+		{ 
+			_textureID = tID; 
+		}
 
-		U32 GetTextureID(void)			  { return  _textureID; }
+		U32 GetTextureID(void)
+		{ 
+			return  _textureID; 
+		}
 
 	private:
 		U32 					 	 _textureID;

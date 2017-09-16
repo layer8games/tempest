@@ -108,7 +108,7 @@ namespace KillerEngine
 
 	std::shared_ptr<Sprite> Font::CreateCharacter(char character)
 	{
-		U32 id = U32(character);
+		U32 id = static_cast<U32>(character);
 
 		Sprite* sprite = new Sprite();
 
@@ -121,6 +121,8 @@ namespace KillerEngine
 							    	string width,   string height,  string xoffset,
 							    	string yoffset, string xadvance)
 	{
+		//CharacterData data;
+
 		//Make ID avilable first
  		id.erase(id.begin(), id.begin() + id.find_first_of("=")+1);
  		

@@ -73,19 +73,40 @@ namespace KillerEngine
 
 		void SetTextColor(Color& col);
 
-		void SetWidthScaleFactor(F32 w) { _widthScaleFactor = w; }
+		void SetWidthScaleFactor(F32 w) 
+		{ 
+			_widthScaleFactor = w; 
+		}
 
-		void SetHeightScaleFactor(F32 h) { _heightScaleFactor = h; }
+		void SetHeightScaleFactor(F32 h) 
+		{ 
+			_heightScaleFactor = h; 
+		}
 
-		void SetScaleFactors(const F32 w, const F32 h) { _widthScaleFactor = w; _heightScaleFactor = h; }
+		void SetScaleFactors(const F32 w, const F32 h) 
+		{ 
+			_widthScaleFactor = w; _heightScaleFactor = h; 
+		}
 
-		void SetFont(Font& font) { _font = font; }
+		void SetFont(Font& font) 
+		{ 
+			_font = font; 
+		}
 
-		F32 GetTotalWidth(void) { return _totalWidth; }
+		F32 GetTotalWidth(void) 
+		{ 
+			return _totalWidth; 
+		}
 
-		F32 GetTotalHeight(void) { return _totalHeight; }
+		F32 GetTotalHeight(void) 
+		{ 
+			return _totalHeight; 
+		}
 
-		KM::Vector2& GetCenter(void) { return _center; }
+		KM::Vector2& GetCenter(void) 
+		{ 
+			return _center; 
+		}
 
 	private:
 		struct Character

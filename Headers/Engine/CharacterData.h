@@ -13,7 +13,7 @@ Written by Maxwell Miller
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 
-namespace 
+namespace KillerEngine
 {
 	struct CharacterData
 	{

@@ -41,30 +41,52 @@ namespace KillerEngine
 //Constructors
 //
 //==========================================================================================================================		
-		Texture(void) : _id(0), _width(0), _height(0) {  }
+		Texture(void) : _id(0), _width(0), _height(0) 
+		{  }
 
-		Texture(GLuint id, S32 width, S32 height) : _id(id), _width(width), _height(height) {  }
+		Texture(GLuint id, S32 width, S32 height) : _id(id), _width(width), _height(height) 
+		{  }
 
-		Texture(const Texture& T) : _id(T.GetID()), _width(T.GetWidth()), _height(T.GetHeight()) {  }
+		Texture(const Texture& T) : _id(T.GetID()), _width(T.GetWidth()), _height(T.GetHeight()) 
+		{  }
 
-		Texture(const Texture* T) : _id(T->GetID()), _width(T->GetWidth()), _height(T->GetHeight()) {  }
+		Texture(const Texture* T) : _id(T->GetID()), _width(T->GetWidth()), _height(T->GetHeight()) 
+		{  }
 
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================
-		GLuint GetID(void) const { return _id; }
+		GLuint GetID(void) const 
+		{ 
+			return _id; 
+		}
 
-		void SetId(GLuint id) { _id = id; }
+		void SetId(GLuint id) 
+		{ 
+			_id = id; 
+		}
 
-		S32 GetWidth(void) const { return _width; }
+		S32 GetWidth(void) const 
+		{ 
+			return _width; 
+		}
 
-		void SetWidth(S32 w) { _width = w; }
+		void SetWidth(S32 w) 
+		{ 
+			_width = w; 
+		}
 
-		S32 GetHeight(void) const { return _height; }
+		S32 GetHeight(void) const 
+		{ 
+			return _height; 
+		}
 
-		void SetHeight(S32 h) { _height = h; }
+		void SetHeight(S32 h) 
+		{ 
+			_height = h; 
+		}
 
 //==========================================================================================================================
 //
