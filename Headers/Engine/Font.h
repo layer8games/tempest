@@ -56,7 +56,7 @@ namespace KillerEngine
 
 		CharacterData GetDataForCharacter(char c);
 
-		std::map<U32, CharacterData> GetDataMap(void) 
+		std::map<U32, CharacterData> GetDataLevel(void) 
 		{ 
 			return _fontCharData; 
 		}
@@ -74,7 +74,7 @@ namespace KillerEngine
 			_textureID = font->GetTextureID();
 			_fontFile = font->GetFile();
 			_fontName = font->GetName();
-			_fontCharData = font->GetDataMap();
+			_fontCharData = font->GetDataLevel();
 
 			return *this;
 		}
@@ -84,7 +84,7 @@ namespace KillerEngine
 			_textureID = font.GetTextureID();
 			_fontFile = font.GetFile();
 			_fontName = font.GetName();
-			_fontCharData = font.GetDataMap();
+			_fontCharData = font.GetDataLevel();
 
 			return *this;
 		}		

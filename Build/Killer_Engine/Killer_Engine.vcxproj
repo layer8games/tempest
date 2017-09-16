@@ -171,8 +171,8 @@
     <ClInclude Include="..\..\Headers\Engine\Texture.hpp" />
     <ClInclude Include="..\..\Headers\Engine\TextureManager.h" />
     <ClInclude Include="..\..\Headers\Engine\Timer.h" />
-    <ClInclude Include="..\..\Headers\Engine\Map.h" />
-    <ClInclude Include="..\..\Headers\Engine\MapManager.h" />
+    <ClInclude Include="..\..\Headers\Engine\Level.h" />
+    <ClInclude Include="..\..\Headers\Engine\LevelManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Color.cpp">
@@ -221,8 +221,8 @@
     <ClCompile Include="..\..\Implementations\RenderText.cpp" />
     <ClCompile Include="..\..\Implementations\TextureManager.cpp" />
     <ClCompile Include="..\..\Implementations\Timer.cpp" />
-    <ClCompile Include="..\..\Implementations\Map.cpp" />
-    <ClCompile Include="..\..\Implementations\MapManager.cpp" />
+    <ClCompile Include="..\..\Implementations\Level.cpp" />
+    <ClCompile Include="..\..\Implementations\LevelManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

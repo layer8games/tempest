@@ -100,7 +100,7 @@ namespace KillerPhysics
 	private:
 		//Consider using a GameObject2D here instead of a Particle2D
 		//This would allow for it to be more generic, and to be used
-		//With any kind of object that is rendered in the Map.
+		//With any kind of object that is rendered in the Level.
 		Particle2D* _otherEnd;
 		real 		_springConstant;
 		real 		_restLength;

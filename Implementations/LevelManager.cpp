@@ -1,9 +1,9 @@
-#include <Engine/MapManager.h>
+#include <Engine/LevelManager.h>
 #include <iostream>
 
 namespace KillerEngine 
 {
-	MapManager::~MapManager(void)
+	LevelManager::~LevelManager(void)
 	{  }
 
 
@@ -15,30 +15,30 @@ namespace KillerEngine
 //==========================================================================================================================
 //Singleton
 //==========================================================================================================================
-	MapManager* MapManager::_instance = NULL;
+	LevelManager* LevelManager::_instance = NULL;
 
-	MapManager* MapManager::Instance(void) 
+	LevelManager* LevelManager::Instance(void) 
 	{
-		if(_instance == NULL) { _instance = new MapManager; }
+		if(_instance == NULL) { _instance = new LevelManager; }
 		return _instance;
 	}
 
 //==========================================================================================================================
 //
-//Map Accessors
+//Level Accessors
 //
 //==========================================================================================================================
-	void MapManager::AddMap(Map* world) 
+	void LevelManager::AddLevel(Level* world) 
 	{
-		_worlds.insert(std::map<U32, Map*>::value_type(world->GetID(), world));
+		_worlds.insert(std::map<U32, Level*>::value_type(world->GetID(), world));
 		
 		if(_worlds.find(world->GetID()) == _worlds.end()) 
 		{ 
-			ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to AddMap to MapManager"); 
+			ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to AddLevel to LevelManager"); 
 		}
 	}
 
-	void MapManager::RemoveMap(U32 worldID) 
+	void LevelManager::RemoveLevel(U32 worldID) 
 	{
 		auto w = _worlds.find(worldID);
 		_worlds.erase(w);
@@ -46,15 +46,15 @@ namespace KillerEngine
 
 //==========================================================================================================================
 //
-//SetActiveMap
+//SetActiveLevel
 //
 //==========================================================================================================================
-	void MapManager::SetActiveMap(U32 worldID) 
+	void LevelManager::SetActiveLevel(U32 worldID) 
 	{
-		_activeMapID = worldID;
+		_activeLevelID = worldID;
 		auto w = _worlds.find(worldID);
-		_activeMap = w->second;
-		_activeMap->ActivateBackgroundColor();
+		_activeLevel = w->second;
+		_activeLevel->ActivateBackgroundColor();
 	}
 
 //==========================================================================================================================
@@ -62,9 +62,9 @@ namespace KillerEngine
 //Update
 //
 //==========================================================================================================================
-	void MapManager::Update(void) 
+	void LevelManager::Update(void) 
 	{
-		_activeMap->v_Update();
+		_activeLevel->v_Update();
 	}
 
 //==========================================================================================================================
@@ -72,45 +72,45 @@ namespace KillerEngine
 //Render
 //
 //==========================================================================================================================
-	void MapManager::Render(void) 
+	void LevelManager::Render(void) 
 	{
-		_activeMap->v_Render();
+		_activeLevel->v_Render();
 	}
 
 //==========================================================================================================================
 //
-//Add/Remove Objects from Map
+//Add/Remove Objects from Level
 //
 //This function will add a GameObject to an existing, registered world. It will check to make sure that the called worled
 //in fact is registered with the manager, and will throw and error if it is not. 
 //	
 //==========================================================================================================================
-	void MapManager::AddObjectToMap(U32 id, GameObject2D* obj)
+	void LevelManager::AddObjectToLevel(U32 id, GameObject2D* obj)
 	{
-		if(_worlds.find(id) != _worlds.end()) { _worlds[id]->AddObjectToMap(obj); } 
-		else ErrorManager::Instance()->SetError(EC_KillerEngine, "MapManager -> Tried to call the AddObjectToMap() function for a world that does not exist.");
+		if(_worlds.find(id) != _worlds.end()) { _worlds[id]->AddObjectToLevel(obj); } 
+		else ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddObjectToLevel() function for a world that does not exist.");
 	}
 
-	void MapManager::AddObject3DToMap(U32 id, GameObject3D* obj)
+	void LevelManager::AddObject3DToLevel(U32 id, GameObject3D* obj)
 	{
 		if(_worlds.find(id) != _worlds.end()) 
 		{ 
-			_worlds[id]->AddObject3DToMap(obj); 
+			_worlds[id]->AddObject3DToLevel(obj); 
 		} 
 		else 
 		{
-			ErrorManager::Instance()->SetError(EC_KillerEngine, "MapManager -> Tried to call the AddObjectToMap() function for a world that does not exist.");
+			ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddObjectToLevel() function for a world that does not exist.");
 		}
 	}
 
-	void MapManager::Remove2DObjectFromMap(U32 worldID, U32 objID)
+	void LevelManager::Remove2DObjectFromLevel(U32 worldID, U32 objID)
 	{
-		if(_worlds.find(worldID) != _worlds.end()) { _worlds[worldID]->Remove2DObjectFromMap(objID); }
+		if(_worlds.find(worldID) != _worlds.end()) { _worlds[worldID]->Remove2DObjectFromLevel(objID); }
 	}
 
-	void MapManager::Remove3DObjectFromMap(U32 worldID, U32 objID)
+	void LevelManager::Remove3DObjectFromLevel(U32 worldID, U32 objID)
 	{
-		if(_worlds.find(worldID) != _worlds.end()) { _worlds[worldID]->Remove3DObjectFromMap(objID); }
+		if(_worlds.find(worldID) != _worlds.end()) { _worlds[worldID]->Remove3DObjectFromLevel(objID); }
 	}
 
 }//End namsepace
