@@ -9,14 +9,16 @@ namespace KillerEngine
 //==========================================================================================================================
 	Model::Model(void) : _numVertices(0), 
 						_vertices(), 
-						_shaderProgram(0)
+						_shaderProgram(0),
+						_scale(0.0f)
 	{
 		_InitShader();
 	}
 
-	Model::Model(std::vector<Vertex3D> vertices) : _numVertices(0), 
-												   _vertices(vertices), 
-												   _shaderProgram(0)
+	Model::Model(std::vector<F32> vertices) : _numVertices(0), 
+											  _vertices(vertices), 
+											  _shaderProgram(0),
+											  _scale(0.0f)
 	{
 		_InitShader();
 	}
@@ -29,6 +31,21 @@ namespace KillerEngine
 //Model Functions
 //
 //==========================================================================================================================
+	void Model::AddVertice(Vertex3D& vert)
+	{
+		_vertices.push_back(vert.position.GetX() * vert.xscale);
+		_vertices.push_back(vert.position.GetY() * vert.yscale);
+		_vertices.push_back(vert.position.GetZ() * vert.zscale);
+		_vertices.push_back(vert.position.GetW());
+
+		_colors.push_back(vert.color.GetRed());
+		_colors.push_back(vert.color.GetGreen());
+		_colors.push_back(vert.color.GetBlue());
+		_colors.push_back(vert.color.GetAlpha());
+
+		++_numVertices;
+	}
+
 	void Model::Render(KM::Vector3& pos)
 	{	
 		if(_shaderProgram == 0)
@@ -39,12 +56,14 @@ namespace KillerEngine
 
 		glUseProgram(_shaderProgram);
 
+		glBindVertexArray(_vertexArrayObject[0]);
+
 		Camera::Instance()->SetPerspective();
 		Camera::Instance()->SetUp(_shaderProgram);
 
 		KM::Matrix M { 0.0f };
 
-		m.Translate(pos);
+		M.Translate(pos);
 
 		GLint shaderPosition = glGetUniformLocation(_shaderProgram, "position_mat");
 
@@ -54,16 +73,22 @@ namespace KillerEngine
 		glGenBuffers(2, buffersLocal);
 
 		glBindBuffer(GL_ARRAY_BUFFER, buffersLocal[0]);
-		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _vertices.size()), _vertices[0], GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _vertices.size()), &_vertices[0], GL_STATIC_DRAW);
 		glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 
-		glBindBuffer(buffersLocal[1]);
-		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _colors.size()), _colors[0], GL_STATIC_DRAW);
+		glBindBuffer(GL_ARRAY_BUFFER ,buffersLocal[1]);
+		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _colors.size()), &_colors[0], GL_STATIC_DRAW);
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 
-		glDrawArrays(GL_TRIANGLE, 0, _numVertices);		
+		glEnable(GL_DEPTH_TEST);
+
+		glClear(GL_DEPTH_BUFFER_BIT);
+		
+		glDrawArrays(GL_TRIANGLES, 0, _numVertices);
+
+		glDisable(GL_DEPTH_TEST);	
 	}
 
 	void Model::_InitShader(void)
@@ -82,13 +107,13 @@ namespace KillerEngine
 
 			"uniform mat4 projection_mat;												\n"
 			"uniform mat4 translation_mat;												\n"
-			"uniform vec4 position_mat;											\n"
+			"uniform mat4 position_mat;											\n"
 
 			"out vec4 fs_color;															\n"
 
 			"void main(void)															\n"
 			"{ 																			\n"
-			"	gl_Position = projection_mat * translation_mat * position_mat * vertice;\n"
+			"	gl_Position = projection_mat * position_mat * vertice;\n"
 			"	fs_color = color;														\n"
 			"}																			\n"
 		};

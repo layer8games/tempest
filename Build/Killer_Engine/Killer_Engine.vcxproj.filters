@@ -136,6 +136,9 @@
     <Filter Include="Components\LevelManager">
       <UniqueIdentifier>{0848391e-09fc-4949-ad36-3ea60b4741da}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components\Batches">
+      <UniqueIdentifier>{4983916f-5533-4441-a25f-d0bc4ec376f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">

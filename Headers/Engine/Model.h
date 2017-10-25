@@ -57,7 +57,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		Model(void);
 
-		Model(std::vector<Vertex3D> vertices);
+		Model(std::vector<F32> vertices);
 
 		~Model(void);
 //==========================================================================================================================
@@ -65,18 +65,9 @@ namespace KillerEngine
 //Functions
 //
 //==========================================================================================================================
-		void AddVertice(Vertex3D& vert)
-		{
-			_vertices.push_back(vert);
-			++_numVertices;
-		}
+		void AddVertice(Vertex3D& vert);
 
-		void AddColor(Color& col)
-		{
-			_colors.push_back(col);
-		}
-
-		std::vector<Vertex3D> GetVertices(void)
+		std::vector<F32> GetVertices(void)
 		{
 			return _vertices;
 		}
@@ -88,6 +79,16 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
+		F32 GetScale(void)
+		{
+			return _scale;
+		}
+
+		F32 SetScale(F32 s)
+		{
+			_scale = s; 
+		}
+
 		GLuint GetShader(void)
 		{
 			return _shaderProgram;
@@ -105,8 +106,9 @@ namespace KillerEngine
 	private:
 	
 		S32 _numVertices;
-		std::vector<Vertex3D> _vertices;
-		std::vector<Color> _colors;
+		std::vector<F32> _vertices;
+		std::vector<F32> _colors;
+		F32 _scale;
 
 		const static U32 NUM_VOA = 1; 
 		const static U32 NUM_BUFFERS = 2;

@@ -90,30 +90,30 @@ namespace KillerMath
 	void Matrix::MakeOrthographic(F32 width, F32 height, F32 depth) 
 	{
 	  	F32 right = width;
-	  	F32 left = 0;
+	  	F32 left = 0.0f;
 		F32 top = height;
-		F32 bottom = 0;
+		F32 bottom = 0.0f;
 		F32 farPlane = depth;
-		F32 nearPlane = 0;
+		F32 nearPlane = 0.0f;
 
 	  	//Reset Matrix
-		_m[0]  =  _m[1]  =  _m[2]  =  _m[3]  = 0;
+		_m[0]  =  _m[1]  =  _m[2]  =  _m[3]  = 0.0f;
 
-		_m[4]  =  _m[5]  =  _m[6]  =  _m[7]  = 0;
+		_m[4]  =  _m[5]  =  _m[6]  =  _m[7]  = 0.0f;
 
-		_m[8]  =  _m[9]  =  _m[10] =  _m[11] = 0;
+		_m[8]  =  _m[9]  =  _m[10] =  _m[11] = 0.0f;
 
-		_m[12] =  _m[13] =  _m[14] =  _m[15] = 0;
+		_m[12] =  _m[13] =  _m[14] =  _m[15] = 0.0f;
 
-		assert(right - left != 0);
-		assert(bottom - top != 0);
-		assert(nearPlane - farPlane != 0);
+		assert(right - left != 0.0f);
+		assert(bottom - top != 0.0f);
+		assert(nearPlane - farPlane != 0.0f);
 
 		//Diagnal
-		_m[0]  = 2 / (right - left);
-		_m[5]  = 2 / (top - bottom);
-		_m[10] = 2 / (nearPlane - farPlane);
-		_m[15] = 1;
+		_m[0]  = 2.0f / (right - left);
+		_m[5]  = 2.0f / (top - bottom);
+		_m[10] = 2.0f / (nearPlane - farPlane);
+		_m[15] = 1.0f;
 
 		//Transform "Vector"
 		_m[12] = (left + right) / (left - right);
@@ -125,36 +125,38 @@ namespace KillerMath
 	void Matrix::MakePerspective(F32 width, F32 height, F32 depth)
 	{
 		F32 right   = width; 
-		F32 left    = 0; 
+		F32 left    = 0.0f; 
 		F32 top     = height;
-		F32 bottom  = 0; 
+		F32 bottom  = 0.0f; 
 		F32 farPlane     = depth; 
-		F32 nearPlane    = 0;
+		//===== I don't know why this works. 0.0f will not... =====
+		F32 nearPlane    = 100.0f;
 
 		//Reset Matrix 
-		_m[0]  =  _m[1]  =  _m[2]  =  _m[3]  = 0;
+		_m[0]  =  _m[1]  =  _m[2]  =  _m[3]  = 0.0f;
 
-		_m[4]  =  _m[5]  =  _m[6]  =  _m[7]  = 0;
+		_m[4]  =  _m[5]  =  _m[6]  =  _m[7]  = 0.0f;
 
-		_m[8]  =  _m[9]  =  _m[10] =  _m[11] = 0;
+		_m[8]  =  _m[9]  =  _m[10] =  _m[11] = 0.0f;
 
-		_m[12] =  _m[13] =  _m[14] =  _m[15] = 0;
+		_m[12] =  _m[13] =  _m[14] =  _m[15] = 0.0f;
 
-		assert(right - left != 0);
-		assert(bottom - top != 0);
-		assert(nearPlane - farPlane != 0);
+		assert(right - left != 0.0f);
+		assert(top - bottom != 0.0f);
+		assert(nearPlane - farPlane != 0.0f);
 
 		//Diagnal
-		_m[0]  = (2 * nearPlane) / (right - left);
-		_m[5]  = (2 * nearPlane) / (top - bottom);
-		_m[10] = (nearPlane + farPlane) / (nearPlane - farPlane);
-		_m[15] = 0;
+		_m[0]  = (2.0f * nearPlane) / (right - left);
+		_m[5]  = (2.0f * nearPlane) / (top - bottom);
+		_m[15] = 0.0f;
 
 		//Transform "Vector"
-		_m[8] = (right - left) / (right - left);
+		_m[8] = (right + left) / (right - left);
 		_m[9] = (top + bottom) / (top - bottom);
-		_m[14] = (2 * nearPlane * farPlane) / (nearPlane - farPlane);
-		_m[11] = -1;
+		_m[10] = (nearPlane + farPlane) / (nearPlane - farPlane);
+		
+		_m[11] = -1.0f;
+		_m[14] = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
 	}
 
 //==========================================================================================================================

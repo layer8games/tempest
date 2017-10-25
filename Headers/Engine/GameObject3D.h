@@ -32,6 +32,7 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Vector3.h>
+#include <Engine/Model.h>
 
 namespace KM = KillerMath;
 
@@ -134,6 +135,31 @@ namespace KillerEngine
 			_acceleration = acc; 
 		}
 //==========================================================================================================================
+//Scale
+//==========================================================================================================================
+		F32 GetScale(void)
+		{
+			return _scale;
+		}
+
+		void SetScale(F32 s)
+		{
+			_scale = s; 
+		}
+
+//==========================================================================================================================
+//Model
+//==========================================================================================================================
+		Model& GetModel(void)
+		{
+			return _model;
+		}
+
+		void SetModel(Model& model)
+		{
+			_model = model;
+		}
+//==========================================================================================================================
 //
 //Functions
 //
@@ -145,6 +171,8 @@ namespace KillerEngine
 		KM::Vector3	   	_position;
 		KM::Vector3	   	_velocity;
 		KM::Vector3		_acceleration;
+		F32 			_scale;
+		Model			_model;
 
 	};//end Class
 }//end Namespace
