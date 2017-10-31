@@ -4,12 +4,13 @@
 namespace KillerEngine 
 {
 	Level::Level(void) : _mapWidth(0),
-			   		 _mapHeight(0),
-			   		 _mapTopBorder(0),
-			   		 _mapBottomBorder(0),
-			   		 _mapRightBorder(0),
-			   		 _mapLeftBorder(0),
-			   		 _bgColor()
+				   		 _mapHeight(0),
+				   		 _mapTopBorder(0),
+				   		 _mapBottomBorder(0),
+				   		 _mapRightBorder(0),
+				   		 _mapLeftBorder(0),
+				   		 _bgColor(),
+				   		 _batch(100)
 	{  }
 
 	Level::~Level(void)
@@ -69,6 +70,26 @@ namespace KillerEngine
 		_3DWorldObjects.erase(i);
 	}
 
+//==========================================================================================================================
+//
+//Render
+//
+//==========================================================================================================================	
+	void Level::RenderObjects(void)
+	{
+		for(auto i = _2DWorldObjects.begin(); i!=_2DWorldObjects.end(); ++i) 
+		{
+			i->second->v_Render();
+			//_batch.AddToBatch();
+		}
+
+		//_batch.DrawBatch();
+
+		for(auto i = _3DWorldObjects.begin(); i!=_3DWorldObjects.end(); ++i)
+		{
+			i->second->v_Render();
+		}
+	}
 //==========================================================================================================================
 //
 //TMX file Importer

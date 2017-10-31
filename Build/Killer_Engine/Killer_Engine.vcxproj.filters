@@ -246,6 +246,9 @@
     <ClInclude Include="..\..\Headers\Engine\LevelManager.h">
       <Filter>Components\LevelManager</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\SpriteBatch.h">
+      <Filter>Components\Batches</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -337,6 +340,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\LevelManager.cpp">
       <Filter>Components\LevelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\SpriteBatch.cpp">
+      <Filter>Components\Batches</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

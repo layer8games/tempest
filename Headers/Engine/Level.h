@@ -20,6 +20,7 @@ Written by Maxwell Miller
 #include <Engine/EnvironmentObject.h>
 #include <Engine/Vector2.h>
 #include <Engine/Color.h>
+#include <Engine/SpriteBatch.h>
 
 namespace KM = KillerMath;
 
@@ -132,18 +133,7 @@ namespace KillerEngine
 
 		void Remove3DObjectFromLevel(U32 id);
 
-		void RenderObjects(void) 
-		{
-			for(auto i = _2DWorldObjects.begin(); i!=_2DWorldObjects.end(); ++i) 
-			{
-				i->second->v_Render();
-			}
-
-			for(auto i = _3DWorldObjects.begin(); i!=_3DWorldObjects.end(); ++i)
-			{
-				i->second->v_Render();
-			}
-		}
+		void RenderObjects(void);
 		
 		void SetBackgroundColor(Color& c) 
 		{ 
@@ -256,6 +246,7 @@ namespace KillerEngine
 		std::map<U32, GameObject2D*> _2DWorldObjects;
 		std::map<U32, GameObject3D*> _3DWorldObjects;
 		std::map<U32, TileData> _2DTileData;
+		SpriteBatch _batch;
 
 		void _AddTile(TileData data);
 	};

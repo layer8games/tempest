@@ -116,9 +116,13 @@ namespace KillerEngine
 			glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * leftRight.size()), &leftRight[0], GL_STATIC_DRAW);
 			glEnableVertexAttribArray(4);
 			glVertexAttribPointer(4, 2, GL_FLOAT, GL_FALSE, 0, NULL);
-		}		
-		
+		}
 		glDrawArrays(GL_POINTS, 0, 1);
+	}
+
+	void Sprite::Draw(int count)
+	{
+		glDrawArrays(GL_POINTS, 0, count);
 	}
 
 	void Sprite::_InitShader(void)

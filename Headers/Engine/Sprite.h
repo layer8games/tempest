@@ -120,6 +120,8 @@ namespace KillerEngine
 
 		void Render(KM::Vector2& pos, F32 w, F32 h, Color& col);
 
+		static void Draw(int count);
+
 	private:
 		KM::Vector2 	_bottomTop;
 		KM::Vector2 	_leftRight;
