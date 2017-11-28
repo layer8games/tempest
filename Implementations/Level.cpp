@@ -79,8 +79,8 @@ namespace KillerEngine
 	{
 		for(auto i = _2DWorldObjects.begin(); i!=_2DWorldObjects.end(); ++i) 
 		{
-			i->second->v_Render();
-			//_batch.AddToBatch();
+			//i->second->v_Render();
+			_batch.AddToBatch(i->second->GetSprite(), i->second.GetWidth(), i->second.GetHeight());
 		}
 
 		//_batch.DrawBatch();

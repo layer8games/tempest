@@ -15,6 +15,12 @@ Written by Maxwell Miller
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/Sprite.h>
+#include <Engine/Color.h>
+#include <Engine/TextureManager.h>
+#include <Engine/GameObject2D.h>
+
+//=====STL includes=====
+#include <vector>
 
 namespace KillerEngine
 {
@@ -52,24 +58,19 @@ namespace KillerEngine
 			return _currentSize;
 		}
 
-		void AddToBatch(void)
-		{
-			++_currentSize;
-			if(_currentSize >= _maxBatchSize)
-			{
-				DrawBatch();
-			}
-		}
+		void AddToBatch(Sprite);
 
-		void DrawBatch(void)
-		{
-			Sprite::Draw(_currentSize);
-			_currentSize = 0;
-		}
+		void DrawBatch(void);
 
 	private:
 		S32 _maxBatchSize;
 		S32 _currentSize;
+		std::vector<F32> 	 _vertices;
+		std::vector<F32> 	 _colors;
+		std::vector<F32> 	 _dimensions;
+		std::vector<F32> 	 _bottomTop;
+		std::vector<F32>     _leftRight;
+		GLuint _shaderProgram;
 		
 	};//end Class
 }//end Namespace

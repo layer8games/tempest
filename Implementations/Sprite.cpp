@@ -119,12 +119,43 @@ namespace KillerEngine
 		}
 		glDrawArrays(GL_POINTS, 0, 1);
 	}
-
-	void Sprite::Draw(int count)
+/*
+	void Sprite::StaticDraw(S32 count, std::vector<F32> vertices, std::vector<F32> colors, std::vector<F32> dimensions, std::vector<F32> bottomTop, std::vector<F32>leftRight)
 	{
+		//if(_shaderProgram == 0)
+		//{
+		//	ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Sprite: NO shader set when Render is called");
+		//	return;
+		//}
+		
+		glUseProgram(_shaderProgram);
+		//===== Camera will check that the current this shader is in use =====
+		Camera::Instance()->SetOrthographic();
+		Camera::Instance()->SetUp(_shaderProgram);
+		
+		glBindVertexArray(_vertexArrayObject[0]);
+
+		GLuint buffersLocal[5];
+		glGenBuffers(NUM_BUFFERS, buffersLocal);
+
+		glBindBuffer(GL_ARRAY_BUFFER, buffersLocal[0]);
+		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertices.size()), &vertices[0], GL_STATIC_DRAW);
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+		
+		glBindBuffer(GL_ARRAY_BUFFER, buffersLocal[1]);
+		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * colors.size()), &colors[0], GL_STATIC_DRAW);
+		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+
+		glBindBuffer(GL_ARRAY_BUFFER, buffersLocal[2]);
+		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * dimensions.size()), &dimensions[0], GL_STATIC_DRAW);
+		glEnableVertexAttribArray(2);
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, NULL);
+
 		glDrawArrays(GL_POINTS, 0, count);
 	}
-
+*/
 	void Sprite::_InitShader(void)
 	{
 		if(_shaderProgram != NULL) return;

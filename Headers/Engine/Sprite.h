@@ -120,7 +120,7 @@ namespace KillerEngine
 
 		void Render(KM::Vector2& pos, F32 w, F32 h, Color& col);
 
-		static void Draw(int count);
+		//static void StaticDraw(S32 count, std::vector<F32> vertices, std::vector<F32> colors, std::vector<F32> dimensions, std::vector<F32> bottomTop, std::vector<F32>leftRight);
 
 	private:
 		KM::Vector2 	_bottomTop;
@@ -129,7 +129,7 @@ namespace KillerEngine
 		CharacterData   _characterData;
 
 		const static U32	 NUM_VOA = 1;
-		const static U32	 NUM_BUFFERS = 5;
+		const static U32	 NUM_BUFFERS = 4;
 		GLuint   			 _vertexArrayObject[NUM_VOA];
 		GLuint 				 _buffers[5];
 

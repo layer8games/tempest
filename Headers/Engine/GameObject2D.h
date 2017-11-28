@@ -67,7 +67,7 @@ namespace KillerEngine
 		
 		virtual void v_Render(void)
 		{
-			_sprite.Render(_position, _width, _height, _color);
+			//_sprite.Render(_position, _width, _height, _color);
 		}
 
 //==========================================================================================================================
@@ -122,6 +122,12 @@ namespace KillerEngine
 		void SetActive(void);
 		
 		void SetInactive(void);
+
+//=====Sprite=====
+		const Sprite& GetSprite(void)
+		{
+			return _sprite;
+		}
 
 //=====Position=====
 		KM::Vector2& GetPosition(void);
