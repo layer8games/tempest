@@ -246,7 +246,7 @@ namespace KillerEngine
 		std::map<U32, GameObject2D*> _2DWorldObjects;
 		std::map<U32, GameObject3D*> _3DWorldObjects;
 		std::map<U32, TileData> _2DTileData;
-		SpriteBatch _batch;
+		//SpriteBatch _batch;
 
 		void _AddTile(TileData data);
 	};

@@ -124,10 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h" />
-    <ClInclude Include="..\..\Headers\Engine\SpriteBatch.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\SpriteBatch.h" />
     <ClInclude Include="..\..\Headers\Engine\CharacterData.h">
       <SubType>
       </SubType>
@@ -211,10 +208,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Sprite.cpp" />
-    <ClCompile Include="..\..\Implementations\SpriteBatch.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
+    <ClCompile Include="..\..\Implementations\SpriteBatch.cpp" />
     <ClCompile Include="..\..\Implementations\Vector2.cpp">
       <SubType>
       </SubType>

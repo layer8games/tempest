@@ -63,6 +63,8 @@ namespace KillerEngine
 
 	void Sprite::Render(KM::Vector2& pos, F32 w, F32 h, Color& col)
 	{
+		
+/*
 		if(_shaderProgram == 0)
 		{
 			ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Sprite: NO shader set when Render is called");
@@ -118,6 +120,8 @@ namespace KillerEngine
 			glVertexAttribPointer(4, 2, GL_FLOAT, GL_FALSE, 0, NULL);
 		}
 		glDrawArrays(GL_POINTS, 0, 1);
+
+*/		
 	}
 /*
 	void Sprite::StaticDraw(S32 count, std::vector<F32> vertices, std::vector<F32> colors, std::vector<F32> dimensions, std::vector<F32> bottomTop, std::vector<F32>leftRight)

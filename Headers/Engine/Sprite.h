@@ -59,6 +59,10 @@ namespace KillerEngine
 //==========================================================================================================================
 		Sprite(void);
 
+		//Sprite(Sprite& sprite);
+
+		//Sprite(Sprite* sprite);
+
 		~Sprite(void);
 
 //==========================================================================================================================
@@ -97,7 +101,7 @@ namespace KillerEngine
 			return _characterData;
 		}
 
-		GLuint GetShader(void)
+		const GLuint GetShader(void)
 		{
 			return _shaderProgram;
 		}

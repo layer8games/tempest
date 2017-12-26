@@ -124,7 +124,7 @@ namespace KillerEngine
 		void SetInactive(void);
 
 //=====Sprite=====
-		const Sprite& GetSprite(void)
+		Sprite& GetSprite(void)
 		{
 			return _sprite;
 		}

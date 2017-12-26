@@ -9,8 +9,7 @@ namespace KillerEngine
 				   		 _mapBottomBorder(0),
 				   		 _mapRightBorder(0),
 				   		 _mapLeftBorder(0),
-				   		 _bgColor(),
-				   		 _batch(100)
+				   		 _bgColor()
 	{  }
 
 	Level::~Level(void)
@@ -79,16 +78,34 @@ namespace KillerEngine
 	{
 		for(auto i = _2DWorldObjects.begin(); i!=_2DWorldObjects.end(); ++i) 
 		{
+			//const Sprite sprite = i->second->GetSprite();
+			if(i->second->GetSprite().GetShader() != SpriteBatch::Instance()->GetShader())
+			{
+				SpriteBatch::Instance()->SetShader(i->second->GetSprite().GetShader());
+			}
 			//i->second->v_Render();
-			_batch.AddToBatch(i->second->GetSprite(), i->second.GetWidth(), i->second.GetHeight());
+			//_batch.AddToBatch(i->second->GetSprite(), i->second.GetWidth(), i->second.GetHeight());
+			SpriteBatch::Instance()->AddToBatch
+			(
+				i->second->GetPosition(), 
+				i->second->GetWidth(), 
+				i->second->GetHeight(), 
+				i->second->GetColor(),
+				i->second->GetTextureID(),
+				i->second->GetSprite().GetUVBottomTop(),
+				i->second->GetSprite().GetUVLeftRight()
+			);
 		}
 
-		//_batch.DrawBatch();
-
+/*
+//==========================================================================================================================
+//To be added again later, when 3d model rendering is added again
+//==========================================================================================================================		
 		for(auto i = _3DWorldObjects.begin(); i!=_3DWorldObjects.end(); ++i)
 		{
 			i->second->v_Render();
 		}
+*/		
 	}
 //==========================================================================================================================
 //
