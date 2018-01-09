@@ -28,9 +28,6 @@
     <Filter Include="Components\KillerEngine">
       <UniqueIdentifier>{66fd72d2-3739-4584-a963-04c6b35f6d8d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Renderer">
-      <UniqueIdentifier>{ff42337a-ce7b-447a-8fdd-338dba10e918}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\GameObjects\RenderText">
       <UniqueIdentifier>{7e0d93d1-f85e-4c81-9b66-d130c9d7e5df}</UniqueIdentifier>
     </Filter>
@@ -237,9 +234,6 @@
     <ClInclude Include="..\..\Headers\Engine\CharacterData.h">
       <Filter>Components\Structs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Renderer.h">
-      <Filter>Components\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Level.h">
       <Filter>Components\Level</Filter>
     </ClInclude>
@@ -259,9 +253,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Font.cpp">
       <Filter>Components\Font</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Renderer.cpp">
-      <Filter>Components\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\RenderText.cpp">
       <Filter>Components\GameObjects\RenderText</Filter>
