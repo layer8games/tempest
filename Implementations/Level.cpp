@@ -22,7 +22,7 @@ namespace KillerEngine
 //=============================================================================
 	void Level::AddObjectToLevel(GameObject2D* obj)
 	{
-		_2DWorldObjects.insert(std::map<U32, GameObject2D*>::value_type(obj->GetID(), obj));
+		_2DWorldObjects.insert(std::map<U32, std::shared_ptr<GameObject2D>>::value_type( obj->GetID(), std::shared_ptr<GameObject2D>(obj) ));
 		
 		if(_2DWorldObjects.find(obj->GetID()) == _2DWorldObjects.end()) 
 		{ 
@@ -32,7 +32,7 @@ namespace KillerEngine
 
 	void Level::AddObject3DToLevel(GameObject3D* obj)
 	{
-		_3DWorldObjects.insert(std::map<U32, GameObject3D*>::value_type(obj->GetID(), obj));
+		_3DWorldObjects.insert(std::map<U32, std::shared_ptr<GameObject3D>>::value_type( obj->GetID(), std::shared_ptr<GameObject3D>(obj) ));
 		
 		if(_3DWorldObjects.find(obj->GetID()) == _3DWorldObjects.end()) 
 		{ 
@@ -57,14 +57,14 @@ namespace KillerEngine
 //=============================================================================
 	void Level::Remove2DObjectFromLevel(U32 id)
 	{
-		std::map<U32, GameObject2D*>::iterator i = _2DWorldObjects.find(id);
+		std::map<U32, std::shared_ptr<GameObject2D>>::iterator i = _2DWorldObjects.find(id);
 
 		_2DWorldObjects.erase(i);
 	}
 
 	void Level::Remove3DObjectFromLevel(U32 id)
 	{
-		std::map<U32, GameObject3D*>::iterator i = _3DWorldObjects.find(id);
+		std::map<U32, std::shared_ptr<GameObject3D>>::iterator i = _3DWorldObjects.find(id);
 
 		_3DWorldObjects.erase(i);
 	}

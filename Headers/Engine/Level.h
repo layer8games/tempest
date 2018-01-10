@@ -28,6 +28,7 @@ namespace KM = KillerMath;
 #include <map>
 #include <fstream>
 #include <algorithm>
+#include <memory>
 
 #include <TinyXML/tinyxml2.h>
 
@@ -243,8 +244,8 @@ namespace KillerEngine
 		S32   _mapLeftBorder;
 		Color _bgColor;
 		U32 _ID;
-		std::map<U32, GameObject2D*> _2DWorldObjects;
-		std::map<U32, GameObject3D*> _3DWorldObjects;
+		std::map<U32, std::shared_ptr<GameObject2D>> _2DWorldObjects;
+		std::map<U32, std::shared_ptr<GameObject3D>> _3DWorldObjects;
 		std::map<U32, TileData> _2DTileData;
 		//SpriteBatch _batch;
 
