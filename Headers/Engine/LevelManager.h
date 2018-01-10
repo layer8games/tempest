@@ -24,6 +24,7 @@ Written by Maxwell Miller
 
 //=====STL includes=====
 #include <map>
+#include <memory>
 
 namespace KillerEngine 
 {
@@ -93,11 +94,11 @@ namespace KillerEngine
 		LevelManager(void) : _running(true) {  }
 
 	private:
-		std::map<U32, Level*>    _worlds;
-		Level* 				   _activeLevel;
-		U32 				   _activeLevelID;
-		bool				   _running;			
-		static LevelManager*     _instance;
+		std::map<U32, std::shared_ptr<Level>>   _levels;
+		std::shared_ptr<Level> 				   	_activeLevel;
+		U32 				   					_activeLevelID;
+		bool				   					_running;			
+		static LevelManager*     				_instance;
 
 	};
 

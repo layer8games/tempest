@@ -30,9 +30,9 @@ namespace KillerEngine
 //==========================================================================================================================
 	void LevelManager::AddLevel(Level* world) 
 	{
-		_worlds.insert(std::map<U32, Level*>::value_type(world->GetID(), world));
+		_levels.insert(std::map<U32, std::shared_ptr<Level>>::value_type( world->GetID(), std::shared_ptr<Level>(world) ));
 		
-		if(_worlds.find(world->GetID()) == _worlds.end()) 
+		if(_levels.find(world->GetID()) == _levels.end()) 
 		{ 
 			ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to AddLevel to LevelManager"); 
 		}
@@ -40,8 +40,8 @@ namespace KillerEngine
 
 	void LevelManager::RemoveLevel(U32 worldID) 
 	{
-		auto w = _worlds.find(worldID);
-		_worlds.erase(w);
+		auto w = _levels.find(worldID);
+		_levels.erase(w);
 	}
 
 //==========================================================================================================================
@@ -52,8 +52,8 @@ namespace KillerEngine
 	void LevelManager::SetActiveLevel(U32 worldID) 
 	{
 		_activeLevelID = worldID;
-		auto w = _worlds.find(worldID);
-		_activeLevel = w->second;
+		auto level = _levels.find(worldID);
+		_activeLevel = level->second;
 		_activeLevel->ActivateBackgroundColor();
 	}
 
@@ -87,15 +87,21 @@ namespace KillerEngine
 //==========================================================================================================================
 	void LevelManager::AddObjectToLevel(U32 id, GameObject2D* obj)
 	{
-		if(_worlds.find(id) != _worlds.end()) { _worlds[id]->AddObjectToLevel(obj); } 
-		else ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddObjectToLevel() function for a world that does not exist.");
+		if(_levels.find(id) != _levels.end()) 
+		{ 
+			_levels[id]->AddObjectToLevel(obj); 
+		} 
+		else
+		{
+			ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddObjectToLevel() function for a world that does not exist.");	
+		} 
 	}
 
 	void LevelManager::AddObject3DToLevel(U32 id, GameObject3D* obj)
 	{
-		if(_worlds.find(id) != _worlds.end()) 
+		if(_levels.find(id) != _levels.end()) 
 		{ 
-			_worlds[id]->AddObject3DToLevel(obj); 
+			_levels[id]->AddObject3DToLevel(obj); 
 		} 
 		else 
 		{
@@ -105,12 +111,18 @@ namespace KillerEngine
 
 	void LevelManager::Remove2DObjectFromLevel(U32 worldID, U32 objID)
 	{
-		if(_worlds.find(worldID) != _worlds.end()) { _worlds[worldID]->Remove2DObjectFromLevel(objID); }
+		if(_levels.find(worldID) != _levels.end()) 
+		{ 
+			_levels[worldID]->Remove2DObjectFromLevel(objID); 
+		}
 	}
 
 	void LevelManager::Remove3DObjectFromLevel(U32 worldID, U32 objID)
 	{
-		if(_worlds.find(worldID) != _worlds.end()) { _worlds[worldID]->Remove3DObjectFromLevel(objID); }
+		if(_levels.find(worldID) != _levels.end()) 
+		{ 
+			_levels[worldID]->Remove3DObjectFromLevel(objID); 
+		}
 	}
 
 }//End namsepace
