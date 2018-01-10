@@ -22,7 +22,6 @@ Written by Maxwell Miller
 #include <Engine/ErrorManager.h>
 #include <Engine/Controller.h>
 #include <Engine/WinProgram.h>
-#include <Engine/Renderer.h>
 #include <Engine/Timer.h>
 #include <Engine/LevelManager.h>
 #include <Engine/TextureManager.h>

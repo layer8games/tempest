@@ -34,7 +34,6 @@ namespace KillerEngine
 	{
 		WinProgram::Instance()->ShutDown();
 		ErrorManager::Instance()->ShutDown();
-		Renderer::Instance()->ShutDown();
 		LevelManager::Instance()->ShutDown();
 		TextureManager::Instance()->ShutDown();
 		Controller::Instance()->ShutDown();

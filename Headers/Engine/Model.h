@@ -29,7 +29,6 @@ Written by Maxwell Miller
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
-#include <Engine/Renderer.h>
 #include <Engine/Vertex.h>
 #include <Engine/Vector3.h>
 #include <Engine/Camera.h>

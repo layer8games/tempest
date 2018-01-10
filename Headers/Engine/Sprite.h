@@ -28,7 +28,7 @@ Written by Maxwell Miller
 #include <Engine/Vector2.h>
 #include <Engine/Texture.hpp>
 #include <Engine/TextureManager.h>
-#include <Engine/Renderer.h>
+//#include <Engine/Renderer.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Color.h>
 #include <Engine/CharacterData.h>
@@ -44,11 +44,7 @@ namespace KM = KillerMath;
 #include <memory>
 
 namespace KillerEngine 
-{
-
-//=====Foreward delcaration=====
-	class Renderer;
-
+{	
 	class Sprite 
 	{	
 	public:

@@ -15,7 +15,7 @@ Written by Maxwell Miller
 #include <Engine/ErrorManager.h>
 #include <Engine/GameObject2D.h>
 #include <Engine/GameObject3D.h>
-#include <Engine/Renderer.h>
+#include <Engine/WinProgram.h>
 #include <Engine/TextureManager.h>
 #include <Engine/EnvironmentObject.h>
 #include <Engine/Vector2.h>
@@ -142,7 +142,7 @@ namespace KillerEngine
 		
 		void ActivateBackgroundColor(void) 
 		{ 
-			Renderer::Instance()->SetBackgroundColor(_bgColor); 
+			WinProgram::Instance()->SetBackgroundColor(_bgColor); 
 		}
 		
 		S32  GetLevelWidth(void) const 
