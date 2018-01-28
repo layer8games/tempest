@@ -124,6 +124,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h" />
+    <ClInclude Include="..\..\Headers\Engine\RenderedCharacter.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\SpriteBatch.h" />
     <ClInclude Include="..\..\Headers\Engine\CharacterData.h">
       <SubType>
@@ -166,7 +170,7 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\WinProgram.h" />
     <ClInclude Include="..\..\Headers\Engine\RandomGen.h" />
-    <ClInclude Include="..\..\Headers\Engine\RenderText.h" />
+    <ClInclude Include="..\..\Headers\Engine\RenderedText.h" />
     <ClInclude Include="..\..\Headers\Engine\Sprite.h" />
     <ClInclude Include="..\..\Headers\Engine\Texture.hpp" />
     <ClInclude Include="..\..\Headers\Engine\TextureManager.h" />
@@ -206,6 +210,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\RenderedCharacter.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\Sprite.cpp" />
     <ClCompile Include="..\..\Implementations\SpriteBatch.cpp" />
     <ClCompile Include="..\..\Implementations\Vector2.cpp">
@@ -218,7 +226,7 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\WinProgram.cpp" />
     <ClCompile Include="..\..\Implementations\RandomGen.cpp" />
-    <ClCompile Include="..\..\Implementations\RenderText.cpp" />
+    <ClCompile Include="..\..\Implementations\RenderedText.cpp" />
     <ClCompile Include="..\..\Implementations\TextureManager.cpp" />
     <ClCompile Include="..\..\Implementations\Timer.cpp" />
     <ClCompile Include="..\..\Implementations\Level.cpp" />

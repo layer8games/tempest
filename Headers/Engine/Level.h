@@ -21,11 +21,14 @@ Written by Maxwell Miller
 #include <Engine/Vector2.h>
 #include <Engine/Color.h>
 #include <Engine/SpriteBatch.h>
+#include <Engine/RenderedText.h>
+#include <Engine/RenderedCharacter.h>
 
 namespace KM = KillerMath;
 
 //=====STL includes=====
 #include <map>
+#include <vector>
 #include <fstream>
 #include <algorithm>
 #include <memory>
@@ -129,6 +132,8 @@ namespace KillerEngine
 		void AddObjectToLevel(GameObject2D* obj);
 
 		void AddObject3DToLevel(GameObject3D* obj);
+
+		void AddTextToLevel(std::shared_ptr<RenderedText> text);
 		
 		void Remove2DObjectFromLevel(U32 id);
 
@@ -246,6 +251,7 @@ namespace KillerEngine
 		U32 _ID;
 		std::map<U32, std::shared_ptr<GameObject2D>> _2DWorldObjects;
 		std::map<U32, std::shared_ptr<GameObject3D>> _3DWorldObjects;
+		std::vector<std::shared_ptr<RenderedText>>	 _textList;
 		std::map<U32, TileData> _2DTileData;
 		//SpriteBatch _batch;
 

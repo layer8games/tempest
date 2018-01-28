@@ -28,9 +28,6 @@
     <Filter Include="Components\KillerEngine">
       <UniqueIdentifier>{66fd72d2-3739-4584-a963-04c6b35f6d8d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\GameObjects\RenderText">
-      <UniqueIdentifier>{7e0d93d1-f85e-4c81-9b66-d130c9d7e5df}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\Texture">
       <UniqueIdentifier>{70216902-edb5-4822-8aec-ed808572d931}</UniqueIdentifier>
     </Filter>
@@ -136,6 +133,12 @@
     <Filter Include="Components\Batches">
       <UniqueIdentifier>{4983916f-5533-4441-a25f-d0bc4ec376f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components\RenderText">
+      <UniqueIdentifier>{7e0d93d1-f85e-4c81-9b66-d130c9d7e5df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\RenderCharacter">
+      <UniqueIdentifier>{22c25915-f8de-4ccd-b648-edfd4f055e14}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -149,9 +152,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Font.h">
       <Filter>Components\Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\RenderText.h">
-      <Filter>Components\GameObjects\RenderText</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Texture.hpp">
       <Filter>Components\Texture</Filter>
@@ -243,6 +243,12 @@
     <ClInclude Include="..\..\Headers\Engine\SpriteBatch.h">
       <Filter>Components\Batches</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\RenderedCharacter.h">
+      <Filter>Components\RenderCharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\RenderedText.h">
+      <Filter>Components\RenderText</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -253,9 +259,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Font.cpp">
       <Filter>Components\Font</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\RenderText.cpp">
-      <Filter>Components\GameObjects\RenderText</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\TextureManager.cpp">
       <Filter>Components\TextureManager</Filter>
@@ -334,6 +337,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\SpriteBatch.cpp">
       <Filter>Components\Batches</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\RenderedCharacter.cpp">
+      <Filter>Components\RenderCharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\RenderedText.cpp">
+      <Filter>Components\RenderText</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

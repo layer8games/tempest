@@ -40,6 +40,11 @@ namespace KillerEngine
 		}
 	}
 
+	void Level::AddTextToLevel(std::shared_ptr<RenderedText> text)
+	{
+		_textList.push_back(text);
+	}
+
 	void Level::_AddTile(TileData data)
 	{
 		_2DTileData.insert(std::map<U32, TileData>::value_type(data.tileID, data));
@@ -95,6 +100,30 @@ namespace KillerEngine
 				i->second->GetSprite().GetUVBottomTop(),
 				i->second->GetSprite().GetUVLeftRight()
 			);
+		}
+
+		for(std::shared_ptr<RenderedText> text : _textList)
+		{
+			std::vector<std::shared_ptr<RenderedCharacter>> charList = text->GetCharacterList();
+
+			if(charList[0]->GetSprite().GetShader() != SpriteBatch::Instance()->GetShader())
+			{
+				SpriteBatch::Instance()->SetShader(charList[0]->GetSprite().GetShader());
+			}
+
+			for(std::shared_ptr<RenderedCharacter> character : charList)
+			{
+				SpriteBatch::Instance()->AddToBatch
+				(
+					character->GetPosition(),
+					character->GetWidth(),
+					character->GetHeight(),
+					character->GetColor(),
+					character->GetSprite().GetTextureID(),
+					character->GetSprite().GetUVBottomTop(),
+					character->GetSprite().GetUVLeftRight()
+				);
+			}
 		}
 
 /*

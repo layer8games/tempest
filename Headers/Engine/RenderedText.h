@@ -20,7 +20,7 @@ Written by Maxwell Miller
 #include <Engine/Font.h>
 #include <Engine/Sprite.h>
 #include <Engine/Vector2.h>
-#include <Engine/Color.h>
+#include <Engine/RenderedCharacter.h>
 
 namespace KM = KillerMath;
 
@@ -30,7 +30,7 @@ namespace KM = KillerMath;
 
 namespace KillerEngine
 {
-	class RenderText : public GameObject2D
+	class RenderedText
 	{
 	public:
 //==========================================================================================================================
@@ -38,21 +38,13 @@ namespace KillerEngine
 //Constructors
 //
 //==========================================================================================================================
-		RenderText(void);
+		RenderedText(void);
 
-		RenderText(Font& font);
+		RenderedText(Font& font);
 		
-		RenderText(string text, Font& font);
+		RenderedText(string text, Font& font);
 
-//==========================================================================================================================
-//
-//Virtual Functions
-//
-//==========================================================================================================================
-		void v_Update(void) 
-		{  }
-
-		void v_Render(void);
+		//void Render(void);
 
 /* 		original version in case the new version breaks everything
 		void v_SetPosition(KM::Vector2 pos)
@@ -64,14 +56,14 @@ namespace KillerEngine
 
 //==========================================================================================================================
 //
-//RenderText Functions
+//RenderedText Functions
 //
 //==========================================================================================================================		
 		void AddText(string text);
 
-		void SetTextPosition(KM::Vector2& pos);
+		void SetPosition(KM::Vector2& pos);
 
-		void SetTextColor(Color& col);
+		//void SetTextColor(Color& col);
 
 		void SetWidthScaleFactor(F32 w) 
 		{ 
@@ -109,21 +101,16 @@ namespace KillerEngine
 			return _center; 
 		}
 
-	private:
-		struct Character
+		std::vector<std::shared_ptr<RenderedCharacter>> GetCharacterList(void)
 		{
-			F32 xpos;
-			F32 ypos;
-			F32 width;
-			F32 height;
-			Color color;
-			Sprite sprite;
-		};
+			return _characterList;
+		}
 
-
+	private:
+		KM::Vector2 _pos;
 		string _text;
 		Font   _font;
-		std::vector<Character> _characterList;
+		std::vector<std::shared_ptr<RenderedCharacter>> _characterList;
 		F32 _widthScaleFactor;
 		F32 _heightScaleFactor;
 		F32 _totalWidth;
