@@ -87,10 +87,7 @@ namespace KillerEngine
 			return _leftRight; 
 		}
 
-		void SetCharData(CharacterData data)
-		{
-			_characterData = data;
-		}
+		void SetCharData(CharacterData data);
 
 		CharacterData GetCharData(void)
 		{

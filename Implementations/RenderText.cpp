@@ -51,7 +51,7 @@ namespace KillerEngine
 
 		for(char& c : text)
 		{
-			Character character;
+			Character character{ };
 
 			std::shared_ptr<Sprite> sprite = _font.CreateCharacter(c);
 
