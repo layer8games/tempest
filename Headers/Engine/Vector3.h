@@ -168,6 +168,8 @@ namespace KillerMath
 
 	void Reset(void);
 
+	void Set(F32 x, F32 y, F32 z);
+
 	private:
 		F32 _x; 
 		F32 _y;

@@ -19,8 +19,8 @@ of KillerWave.
 
 Written by Maxwell Miller
 ==========================================================================*/
-#ifndef RENDERER_H
-#define RENDERER_H
+#ifndef SPRITE_BATCH_H
+#define SPRITE_BATCH_H
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
@@ -33,6 +33,8 @@ Written by Maxwell Miller
 #include <Engine/Matrix.h>
 #include <Engine/Vector2.h>
 #include <Engine/Color.h>
+#include <Engine/Model.h>
+#include <Engine/Vertex.h>
 
 namespace KM = KillerMath;
 
@@ -53,8 +55,9 @@ namespace KillerEngine
 
 	//=====Foreward delcaration=====
 	class Sprite;
+	class Model;
 
-	class Renderer 
+	class SpriteBatch 
 	{
 	public:
 //==========================================================================================================================
@@ -62,14 +65,14 @@ namespace KillerEngine
 //Destructor
 //
 //==========================================================================================================================
-		~Renderer(void) {  };
+		~SpriteBatch(void);
 		
 //==========================================================================================================================
 //
 //Singleton Functions
 //
 //==========================================================================================================================
-		static Renderer* Instance(void);
+		static SpriteBatch* Instance(void);
 
 		void ShutDown(void)
 		{
@@ -78,7 +81,24 @@ namespace KillerEngine
 
 //==========================================================================================================================
 //
-//Renderer Funtions
+//Accessors
+//
+//==========================================================================================================================
+		void SetBatchSize(U32 size)
+		{
+			_maxBatchSize = size;
+		}
+
+		GLuint GetShader(void)
+		{
+			return _shader;
+		}
+
+		void SetShader(GLuint shader);
+
+//==========================================================================================================================
+//
+//SpriteBatch Funtions
 //
 //==========================================================================================================================
 		void SetBackgroundColor(Color& c) 
@@ -86,17 +106,21 @@ namespace KillerEngine
 			WinProgram::Instance()->SetBackgroundColor(c); 
 		}
 
-		void AddToBatch(const GLuint shader, KM::Vector2& pos, F32 w, F32 h, Color& c);
+		void AddToBatch(KM::Vector2& pos, F32 w, F32 h, const Color& c);
 
-		void AddToBatch(const GLuint shader, KM::Vector2& pos, F32 w, F32 h, Color& c, U32 textureID);
+		void AddToBatch(KM::Vector2& pos, F32 w, F32 h, const Color& c, U32 textureID);
 		
-		void AddToBatch(const GLuint shader, KM::Vector2& pos, F32 w, F32 h, Color& c, U32 textureID, KM::Vector2& origin, KM::Vector2& limit);
+		void AddToBatch(KM::Vector2& pos, F32 w, F32 h, const Color& c, U32 textureID, KM::Vector2& verticalLimit, KM::Vector2& horizontalLimit);
 
 		void AddToBatch(std::vector<F32> v, std::vector<F32> c);
+
+		//void AddToBatch(Model& m);
 
 		void AddTextureToBatch(std::vector<F32> v, std::vector<F32> uv);
 		
 		void Draw(void);
+
+		//void Draw2(void);
 		
 	protected:
 //==========================================================================================================================
@@ -104,36 +128,29 @@ namespace KillerEngine
 //Constructor
 //
 //==========================================================================================================================
-		Renderer(void);
+		SpriteBatch(void);
 
 	private:
-		static Renderer* 	 _instance;
+		static SpriteBatch*  _instance;
 		U32 				 _maxBatchSize;
 		U32 				 _currentBatchSize;
-		KM::Matrix			 _projection;
-		KM::Matrix			 _model;
-		KM::Matrix			 _final;
 		std::vector<F32> 	 _vertices;
 		std::vector<F32> 	 _colors;
 		std::vector<F32> 	 _dimensions;
 		std::vector<F32> 	 _bottomTop;
 		std::vector<F32>     _leftRight;	
 		GLuint				 _renderingProgramColor;
-		GLuint   			 _renderingProgramTexture;
-		GLuint   			 _vertexArrayObject;
 		
-		GLuint 				 _currentShader;
+		const static U32	 NUM_VOA = 2;
+		GLuint   			 _renderingProgramTexture;
+		GLuint   			 _vertexArrayObject[NUM_VOA];
+		
+		GLuint 				 _shader;
 		static const GLchar* _vertexShaderSourceColor[];
 		static const GLchar* _vertexShaderSourceTexture[];
 		static const GLchar* _fragmentShaderSourceColor[];
 		static const GLchar* _fragmentShaderSourceTexture[];
 
-//==========================================================================================================================
-//
-//Private Renderer Functions
-//
-//==========================================================================================================================
-		void _SetOrthoProjection(void);
 	};
 
 }//End namespace

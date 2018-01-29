@@ -7,12 +7,6 @@
     <Filter Include="Components\Atom">
       <UniqueIdentifier>{cd2e098b-d0b5-443f-a980-bb5adc24d8b8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Sprites">
-      <UniqueIdentifier>{d0711876-6e25-4524-90f9-403826adba23}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Sprites\CharSprite">
-      <UniqueIdentifier>{5b41e7e3-94c3-44fe-b56a-f7799be0e4a8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\Color">
       <UniqueIdentifier>{5d83855b-baf9-4d27-bc54-347079ecb506}</UniqueIdentifier>
     </Filter>
@@ -34,18 +28,6 @@
     <Filter Include="Components\KillerEngine">
       <UniqueIdentifier>{66fd72d2-3739-4584-a963-04c6b35f6d8d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Renderer">
-      <UniqueIdentifier>{ff42337a-ce7b-447a-8fdd-338dba10e918}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\GameObjects\RenderText">
-      <UniqueIdentifier>{7e0d93d1-f85e-4c81-9b66-d130c9d7e5df}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Sprites\Sprite">
-      <UniqueIdentifier>{e222f9d6-81c8-468c-b522-04aa743035a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Sprites\SqrSprite">
-      <UniqueIdentifier>{49894d25-2d14-493a-9687-b6f8bc51d4c4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\Texture">
       <UniqueIdentifier>{70216902-edb5-4822-8aec-ed808572d931}</UniqueIdentifier>
     </Filter>
@@ -54,15 +36,6 @@
     </Filter>
     <Filter Include="Components\ProgramWindows">
       <UniqueIdentifier>{381d786c-065e-4c73-9294-7079cbccce17}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Sprites\TriSprite">
-      <UniqueIdentifier>{0c6cd213-02b1-4316-83bb-ec602d3d99d7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Map">
-      <UniqueIdentifier>{3820084b-1115-47ff-b532-adca4671f2e9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\MapManager">
-      <UniqueIdentifier>{0848391e-09fc-4949-ad36-3ea60b4741da}</UniqueIdentifier>
     </Filter>
     <Filter Include="Components\GameObjects\EnvironmentObj">
       <UniqueIdentifier>{e34428c4-21e7-40f7-9fe0-9eb037b1e2e4}</UniqueIdentifier>
@@ -145,16 +118,31 @@
     <Filter Include="Components\KillerPhysics\Particles\3D\Particle3D">
       <UniqueIdentifier>{f6180fd1-cf89-4ce3-9baa-37af0e77b36c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Vertex">
+    <Filter Include="Components\Structs">
       <UniqueIdentifier>{2b6d07f5-9367-4b70-a35d-57e172e29178}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Sprite">
+      <UniqueIdentifier>{e222f9d6-81c8-468c-b522-04aa743035a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Level">
+      <UniqueIdentifier>{3820084b-1115-47ff-b532-adca4671f2e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\LevelManager">
+      <UniqueIdentifier>{0848391e-09fc-4949-ad36-3ea60b4741da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Batches">
+      <UniqueIdentifier>{4983916f-5533-4441-a25f-d0bc4ec376f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\RenderText">
+      <UniqueIdentifier>{7e0d93d1-f85e-4c81-9b66-d130c9d7e5df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\RenderCharacter">
+      <UniqueIdentifier>{22c25915-f8de-4ccd-b648-edfd4f055e14}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
       <Filter>Components\Atom</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\CharSprite.h">
-      <Filter>Components\Sprites\CharSprite</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Controller.h">
       <Filter>Components\Controller</Filter>
@@ -164,15 +152,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Font.h">
       <Filter>Components\Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Renderer.h">
-      <Filter>Components\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\RenderText.h">
-      <Filter>Components\GameObjects\RenderText</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\SqrSprite.h">
-      <Filter>Components\Sprites\SqrSprite</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Texture.hpp">
       <Filter>Components\Texture</Filter>
@@ -193,10 +172,7 @@
       <Filter>Components\ProgramWindows</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Sprite.h">
-      <Filter>Components\Sprites\Sprite</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\TriSprite.h">
-      <Filter>Components\Sprites\TriSprite</Filter>
+      <Filter>Components\Sprite</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Camera.h">
       <Filter>Components\Camera</Filter>
@@ -228,12 +204,6 @@
     <ClInclude Include="..\..\Headers\Engine\Particle2DBuoyantForce.h">
       <Filter>Components\KillerPhysics\Particles\2D\Forces\Bouyant</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Map.h">
-      <Filter>Components\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\MapManager.h">
-      <Filter>Components\MapManager</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GameObject2D.h">
       <Filter>Components\GameObjects\GameObject\2D</Filter>
     </ClInclude>
@@ -259,13 +229,28 @@
       <Filter>Components\Color</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vertex.h">
-      <Filter>Components\Vertex</Filter>
+      <Filter>Components\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\CharacterData.h">
+      <Filter>Components\Structs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Level.h">
+      <Filter>Components\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\LevelManager.h">
+      <Filter>Components\LevelManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\SpriteBatch.h">
+      <Filter>Components\Batches</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\RenderedCharacter.h">
+      <Filter>Components\RenderCharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\RenderedText.h">
+      <Filter>Components\RenderText</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Implementations\CharSprite.cpp">
-      <Filter>Components\Sprites\CharSprite</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
       <Filter>Components\Controller</Filter>
     </ClCompile>
@@ -274,15 +259,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Font.cpp">
       <Filter>Components\Font</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Renderer.cpp">
-      <Filter>Components\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\RenderText.cpp">
-      <Filter>Components\GameObjects\RenderText</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\SqrSprite.cpp">
-      <Filter>Components\Sprites\SqrSprite</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\TextureManager.cpp">
       <Filter>Components\TextureManager</Filter>
@@ -300,10 +276,7 @@
       <Filter>Components\ProgramWindows</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Sprite.cpp">
-      <Filter>Components\Sprites\Sprite</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\TriSprite.cpp">
-      <Filter>Components\Sprites\TriSprite</Filter>
+      <Filter>Components\Sprite</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Camera.cpp">
       <Filter>Components\Camera</Filter>
@@ -332,12 +305,6 @@
     <ClCompile Include="..\..\Implementations\Particle2DBuoyantForce.cpp">
       <Filter>Components\KillerPhysics\Particles\2D\Forces\Bouyant</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Map.cpp">
-      <Filter>Components\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\MapManager.cpp">
-      <Filter>Components\MapManager</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObject2D.cpp">
       <Filter>Components\GameObjects\GameObject\2D</Filter>
     </ClCompile>
@@ -361,6 +328,21 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Color.cpp">
       <Filter>Components\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Level.cpp">
+      <Filter>Components\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\LevelManager.cpp">
+      <Filter>Components\LevelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\SpriteBatch.cpp">
+      <Filter>Components\Batches</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\RenderedCharacter.cpp">
+      <Filter>Components\RenderCharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\RenderedText.cpp">
+      <Filter>Components\RenderText</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

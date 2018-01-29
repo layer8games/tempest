@@ -1,46 +1,51 @@
-#include <Engine/Map.h>
+#include <Engine/Level.h>
 #include <iostream>
 
 namespace KillerEngine 
 {
-	Map::Map(void) : _mapWidth(0),
-			   		 _mapHeight(0),
-			   		 _mapTopBorder(0),
-			   		 _mapBottomBorder(0),
-			   		 _mapRightBorder(0),
-			   		 _mapLeftBorder(0),
-			   		 _bgColor()
+	Level::Level(void) : _mapWidth(0),
+				   		 _mapHeight(0),
+				   		 _mapTopBorder(0),
+				   		 _mapBottomBorder(0),
+				   		 _mapRightBorder(0),
+				   		 _mapLeftBorder(0),
+				   		 _bgColor()
 	{  }
 
-	Map::~Map(void)
+	Level::~Level(void)
 	{  }
 
 //=============================================================================
 //
-//AddObjectToMap
+//AddObjectToLevel
 //
 //=============================================================================
-	void Map::AddObjectToMap(GameObject2D* obj)
+	void Level::AddObjectToLevel(GameObject2D* obj)
 	{
-		_2DWorldObjects.insert(std::map<U32, GameObject2D*>::value_type(obj->GetID(), obj));
+		_2DWorldObjects.insert(std::map<U32, std::shared_ptr<GameObject2D>>::value_type( obj->GetID(), std::shared_ptr<GameObject2D>(obj) ));
 		
 		if(_2DWorldObjects.find(obj->GetID()) == _2DWorldObjects.end()) 
 		{ 
-			ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to AddMap to _2DWorldObjects"); 
+			ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to AddLevel to _2DWorldObjects"); 
 		}
 	}
 
-	void Map::AddObjectToMap(GameObject3D* obj)
+	void Level::AddObject3DToLevel(GameObject3D* obj)
 	{
-		_3DWorldObjects.insert(std::map<U32, GameObject3D*>::value_type(obj->GetID(), obj));
+		_3DWorldObjects.insert(std::map<U32, std::shared_ptr<GameObject3D>>::value_type( obj->GetID(), std::shared_ptr<GameObject3D>(obj) ));
 		
 		if(_3DWorldObjects.find(obj->GetID()) == _3DWorldObjects.end()) 
 		{ 
-			ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to AddMap to _3DWorldObjects"); 
+			ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to AddLevel to _3DWorldObjects"); 
 		}
 	}
 
-	void Map::_AddTile(TileData data)
+	void Level::AddTextToLevel(std::shared_ptr<RenderedText> text)
+	{
+		_textList.push_back(text);
+	}
+
+	void Level::_AddTile(TileData data)
 	{
 		_2DTileData.insert(std::map<U32, TileData>::value_type(data.tileID, data));
 
@@ -52,29 +57,91 @@ namespace KillerEngine
 
 //=============================================================================
 //
-//RemoveObjectFromMap
+//RemoveObjectFromLevel
 //
 //=============================================================================
-	void Map::Remove2DObjectFromMap(U32 id)
+	void Level::Remove2DObjectFromLevel(U32 id)
 	{
-		std::map<U32, GameObject2D*>::iterator i = _2DWorldObjects.find(id);
+		std::map<U32, std::shared_ptr<GameObject2D>>::iterator i = _2DWorldObjects.find(id);
 
 		_2DWorldObjects.erase(i);
 	}
 
-	void Map::Remove3DObjectFromMap(U32 id)
+	void Level::Remove3DObjectFromLevel(U32 id)
 	{
-		std::map<U32, GameObject3D*>::iterator i = _3DWorldObjects.find(id);
+		std::map<U32, std::shared_ptr<GameObject3D>>::iterator i = _3DWorldObjects.find(id);
 
 		_3DWorldObjects.erase(i);
 	}
 
 //==========================================================================================================================
 //
+//Render
+//
+//==========================================================================================================================	
+	void Level::RenderObjects(void)
+	{
+		for(auto i = _2DWorldObjects.begin(); i!=_2DWorldObjects.end(); ++i) 
+		{
+			//const Sprite sprite = i->second->GetSprite();
+			if(i->second->GetSprite().GetShader() != SpriteBatch::Instance()->GetShader())
+			{
+				SpriteBatch::Instance()->SetShader(i->second->GetSprite().GetShader());
+			}
+			//i->second->v_Render();
+			//_batch.AddToBatch(i->second->GetSprite(), i->second.GetWidth(), i->second.GetHeight());
+			SpriteBatch::Instance()->AddToBatch
+			(
+				i->second->GetPosition(), 
+				i->second->GetWidth(), 
+				i->second->GetHeight(), 
+				i->second->GetColor(),
+				i->second->GetTextureID(),
+				i->second->GetSprite().GetUVBottomTop(),
+				i->second->GetSprite().GetUVLeftRight()
+			);
+		}
+
+		for(std::shared_ptr<RenderedText> text : _textList)
+		{
+			std::vector<std::shared_ptr<RenderedCharacter>> charList = text->GetCharacterList();
+
+			if(charList[0]->GetSprite().GetShader() != SpriteBatch::Instance()->GetShader())
+			{
+				SpriteBatch::Instance()->SetShader(charList[0]->GetSprite().GetShader());
+			}
+
+			for(std::shared_ptr<RenderedCharacter> character : charList)
+			{
+				SpriteBatch::Instance()->AddToBatch
+				(
+					character->GetPosition(),
+					character->GetWidth(),
+					character->GetHeight(),
+					character->GetColor(),
+					character->GetSprite().GetTextureID(),
+					character->GetSprite().GetUVBottomTop(),
+					character->GetSprite().GetUVLeftRight()
+				);
+			}
+		}
+
+/*
+//==========================================================================================================================
+//To be added again later, when 3d model rendering is added again
+//==========================================================================================================================		
+		for(auto i = _3DWorldObjects.begin(); i!=_3DWorldObjects.end(); ++i)
+		{
+			i->second->v_Render();
+		}
+*/		
+	}
+//==========================================================================================================================
+//
 //TMX file Importer
 //
 //==========================================================================================================================	
-	void Map::Importer2D(string tmxFilePath)
+	void Level::Importer2D(string tmxFilePath)
 	{
 
 		tinyxml2::XMLDocument doc;
@@ -85,7 +152,7 @@ namespace KillerEngine
 //==========================================================================================================================
 //Caputre map data
 //==========================================================================================================================			
-			MapData mapData;
+			LevelData mapData;
 			
 
 			tinyxml2::XMLElement* elem = doc.RootElement();
@@ -120,9 +187,9 @@ namespace KillerEngine
 				ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to open element or node");
 			}
 
-			//=====Set Map variables=====
-			SetMapWidth(mapData.mapWidth * mapData.tileWidth);
-			SetMapHeight(mapData.mapHeight * mapData.tileHeight);
+			//=====Set Level variables=====
+			SetLevelWidth(mapData.mapWidth * mapData.tileWidth);
+			SetLevelHeight(mapData.mapHeight * mapData.tileHeight);
 			SetBackgroundColor(mapData.color);
 //==========================================================================================================================
 //Capture Tile Data
@@ -234,12 +301,12 @@ namespace KillerEngine
 
 							y = mapData.mapHeight - ((i + 1) / mapData.mapHeight);
 
-							//=====Add Object to Map=====
+							//=====Add Object to Level=====
 							S32 tile = csvData[i] - '0';
 
 							TileData currentTile = _2DTileData.find(tile)->second;
 
-							AddObjectToMap(v_CreateObject(currentTile.type, 
+							AddObjectToLevel(v_CreateObject(currentTile.type, 
 										   KM::Vector2( (F32)(x * mapData.tileWidth)+(currentTile.width / 2), (F32)(y * mapData.tileHeight)+(currentTile.height / 2)),
 										   currentTile.textureID,
 										   (F32)currentTile.width, (F32)currentTile.height));
@@ -269,7 +336,7 @@ namespace KillerEngine
 //StringToEnum
 //
 //==========================================================================================================================
-	Map::ObjectType Map::v_StringToTileData(string s)
+	Level::ObjectType Level::v_StringToTileData(string s)
 	{
 		if(s == "Background") { return ObjectType::BACKGROUND; }
 		

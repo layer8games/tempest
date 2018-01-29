@@ -262,4 +262,11 @@ namespace KillerMath
 		_w = 1.0f; 
 	}
 
+	void Vector3::Set(F32 x, F32 y, F32 z)
+	{
+		_x = x;
+		_y = y;
+		_z = z;
+	}
+
 }//end namespace

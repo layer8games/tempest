@@ -28,7 +28,13 @@ Written by Maxwell Miller
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
+#include <Engine/ErrorManager.h>
 #include <Engine/Vertex.h>
+#include <Engine/Vector3.h>
+#include <Engine/Camera.h>
+#include <Engine/Matrix.h>
+
+namespace KM = KillerMath;
 
 //=====OpenGL Includes=====
 #include <GL/gl.h>
@@ -50,7 +56,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		Model(void);
 
-		Model(std::vector<Vertex3D> vertices);
+		Model(std::vector<F32> vertices);
 
 		~Model(void);
 //==========================================================================================================================
@@ -58,21 +64,64 @@ namespace KillerEngine
 //Functions
 //
 //==========================================================================================================================
-		void AddVertice(Vertex3D vert)
-		{
-			_vertices.push_back(vert);
-		}
+		void AddVertice(Vertex3D& vert);
 
-		std::vector<Vertex3D> GetVertices(void)
+		std::vector<F32> GetVertices(void)
 		{
 			return _vertices;
 		}
 
-	private:
-		static GLuint _shaderProgram;
-		S32 _numVertices;
-		std::vector<Vertex3D> _vertices;
+		void Render(KM::Vector3& pos);
 
+//==========================================================================================================================
+//
+//Accessors
+//
+//==========================================================================================================================
+		F32 GetScale(void)
+		{
+			return _scale;
+		}
+
+		F32 SetScale(F32 s)
+		{
+			_scale = s; 
+		}
+
+		GLuint GetShader(void)
+		{
+			return _shaderProgram;
+		}
+
+		bool HasShader(void)
+		{
+			if(_shaderProgram == 0)
+				return false;
+			
+			else
+				return true;
+		}
+
+	private:
+	
+		S32 _numVertices;
+		std::vector<F32> _vertices;
+		std::vector<F32> _colors;
+		F32 _scale;
+
+		const static U32 NUM_VOA = 1; 
+		const static U32 NUM_BUFFERS = 2;
+		GLuint 			 _vertexArrayObject[NUM_VOA];
+		GLuint 			 _buffers[2];
+
+		GLuint _shaderProgram;
+
+		void _InitShader(void);
+
+		void _InitShader(GLuint shader)
+		{
+			_shaderProgram = shader;
+		}
 		
 	};//end Class
 }//end Namespace

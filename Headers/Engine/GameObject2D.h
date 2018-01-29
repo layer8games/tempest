@@ -65,7 +65,10 @@ namespace KillerEngine
 //==========================================================================================================================
 		virtual void v_Update(void)=0;
 		
-		virtual void v_Render(void)=0;
+		virtual void v_Render(void)
+		{
+			//_sprite.Render(_position, _width, _height, _color);
+		}
 
 //==========================================================================================================================
 //
@@ -104,7 +107,7 @@ namespace KillerEngine
 
 		void SetColor(Color& col);
 
-		void SetColor(F32 red, F32 blue, F32 green);
+		void SetColor(F32 red, F32 green, F32 blue);
 
 //=====Texture=====
 		const  U32 GetTextureID(void);
@@ -114,111 +117,44 @@ namespace KillerEngine
 		void SetTexture(U32 id);
 
 //=====Active=====
-		const bool GetActive(void) 
-		{ 
-			return _active; 
-		}
+		const bool GetActive(void);
 
-		void SetActive(void)   
-		{ 
-			_active = true; 
-		}
+		void SetActive(void);
 		
-		void SetInactive(void) 
-		{ 
-			_active = false; 
-		}
+		void SetInactive(void);
 
 //=====Sprite=====
-		const std::shared_ptr<Sprite> GetSprite(void);
-
-		void SetSprite(Sprite* p_Sprite) 
-		{ 
-			_sprite = std::shared_ptr<Sprite>(p_Sprite); 
-		}	
-
-		void RenderSprite(void);
+		Sprite& GetSprite(void)
+		{
+			return _sprite;
+		}
 
 //=====Position=====
-		KM::Vector2& GetPosition(void) 
-		{ 
-			return _position; 
-		}
+		KM::Vector2& GetPosition(void);
 		
-		void SetPosition(KM::Vector2& pos) 
-		{ 
-			_position = pos;
-			_sprite->SetPosition(_position); 
-		}
+		void SetPosition(KM::Vector2& pos);
+		
+		void SetPosition(F32 x, F32 y);
 
-		void SetPosition(F32 x, F32 y) 
-		{ 
-			_position = KM::Vector2(x, y);
-			_sprite->SetPosition(_position);
-		}
-
-		void ScalePosition(const KM::Vector2& v, F32 scale)
-		{				
-			_position.AddScaledVector(v, scale);
-			_sprite->SetPosition(_position);
-		}
-
-		void virtual v_SetPosition(KM::Vector2& pos)
-		{
-			_position = pos;
-		}
-
-		void virtual v_SetPosition(F32 x, F32 y)
-		{
-			_position = KM::Vector2(x, y);
-		}
-
-		void virtual v_ScalePosition(const KM::Vector2& v, F32 scale)
-		{
-			_position.AddScaledVector(v, scale);
-		}
+		void ScalePosition(const KM::Vector2& v, F32 scale);
 
 //=====Velocity=====
-		const KM::Vector2& GetVelocity(void) 
-		{ 
-			return _velocity; 
-		}
+		KM::Vector2& GetVelocity(void);
+		
+		void SetVelocity(KM::Vector2& v);
 
-		void SetVelocity(KM::Vector2& v) 
-		{ 
-			_velocity = v; 
-		}
-
-		void ScaleVelocity(const KM::Vector2& vec, F32 scale)
-		{
-			_velocity.AddScaledVector(vec, scale);
-		}
-
-		void SetVelocity(F32 x, F32 y) 
-		{ 
-			_velocity = KM::Vector2(x, y); 
-		}
+		void ScaleVelocity(const KM::Vector2& vec, F32 scale);
+		
+		void SetVelocity(F32 x, F32 y);
 
 //=====Acceleration=====
-		const KM::Vector2& GetAcceleration(void) 
-		{ 
-			return _acceleration; 
-		}
-
-		void SetAcceleration(KM::Vector2& a) 
-		{ 
-			_acceleration = a; 
-		}
-
-		void ScaleAcceleration(const KM::Vector2& vec, F32 scale)
-		{
-			_acceleration.AddScaledVector(vec, scale);
-		}
-
-		void SetAcceleration(F32 x, F32 y) 
-		{
-		 	_acceleration = KM::Vector2(x, y); 
-		}
+		KM::Vector2& GetAcceleration(void);
+		
+		void SetAcceleration(KM::Vector2& a);
+		
+		void ScaleAcceleration(const KM::Vector2& vec, F32 scale);
+		
+		void SetAcceleration(F32 x, F32 y);
 
 	protected:
 //==========================================================================================================================
@@ -228,19 +164,22 @@ namespace KillerEngine
 //==========================================================================================================================
 //=====Sprite Factories=====
 //==SqrSprite==
-		void CreateSqrSprite(KM::Vector2& pos, Color& col, Texture& texture);
+		//void CreateSqrSprite(KM::Vector2& pos, Color& col, Texture& texture);
 		
-		void CreateSqrSprite(void);
+		//void CreateSqrSprite(void);
 
 
 	private:	
 		static U32 				_nextID;
 		U32 					_ID;
 		bool 	 				_active;
-		std::shared_ptr<Sprite>	_sprite;
+		Sprite					_sprite;
 		KM::Vector2 			_position;
 		KM::Vector2				_velocity;
 		KM::Vector2				_acceleration;	
+		F32						_width;
+		F32 					_height;
+		Color 					_color;
 	};
 
 	

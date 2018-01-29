@@ -22,9 +22,8 @@ Written by Maxwell Miller
 #include <Engine/ErrorManager.h>
 #include <Engine/Controller.h>
 #include <Engine/WinProgram.h>
-#include <Engine/Renderer.h>
 #include <Engine/Timer.h>
-#include <Engine/MapManager.h>
+#include <Engine/LevelManager.h>
 #include <Engine/TextureManager.h>
 
 //======Math includes=====
@@ -50,12 +49,12 @@ namespace KillerEngine
 		
 		bool Running(void) 
 		{ 
-			return MapManager::Instance()->GetRunning(); 
+			return LevelManager::Instance()->GetRunning(); 
 		}
 
 		void End(void) 
 		{ 
-			MapManager::Instance()->SetRunning(false); 
+			LevelManager::Instance()->SetRunning(false); 
 		}
 
 		void LoadTexture(const string path, const U32 id, const S32 width, const S32 height) 
@@ -63,14 +62,14 @@ namespace KillerEngine
 			TextureManager::Instance()->LoadTexture(path, id, width, height); 
 		}
 		
-		void AddMapToManager(Map* world) 
+		void AddLevelToManager(Level* world) 
 		{ 
-			MapManager::Instance()->AddMap(world); 
+			LevelManager::Instance()->AddLevel(world); 
 		}
 
-		void SetActiveMap(const U32 id) 
+		void SetActiveLevel(const U32 id) 
 		{ 
-			MapManager::Instance()->SetActiveMap(id); 
+			LevelManager::Instance()->SetActiveLevel(id); 
 		}
 
 		void Update(void);

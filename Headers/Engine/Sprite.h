@@ -27,9 +27,11 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/Vector2.h>
 #include <Engine/Texture.hpp>
-#include <Engine/Renderer.h>
+#include <Engine/TextureManager.h>
+//#include <Engine/Renderer.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Color.h>
+#include <Engine/CharacterData.h>
 
 namespace KM = KillerMath;
 
@@ -38,164 +40,104 @@ namespace KM = KillerMath;
 #include <GL/glu.h>
 #include <GL/wglext.h>
 
-//=====STD includes=====
 #include <vector>
+#include <memory>
 
 namespace KillerEngine 
-{
-
-//=====Foreward delcaration=====
-	class Renderer;
-
+{	
 	class Sprite 
 	{	
-		public:
+	public:
 //==========================================================================================================================
 //
-//Destructor
+//Constructors
 //
 //==========================================================================================================================
-			//virtual ~Sprite(void);
+		Sprite(void);
+
+		//Sprite(Sprite& sprite);
+
+		//Sprite(Sprite* sprite);
+
+		~Sprite(void);
 
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================
-			void SetWidth(F32 w)  
-			{ 
-				width = w;
-				//v_SetVertexPositions(); 
-			}
+		U32 GetTextureID(void) 
+		{ 
+			return _textureID; 
+		}
 
-			F32 GetWidth(void) 
-			{ 
-				return width; 
-			}
+		void SetUVs(KM::Vector2& bottomTop, KM::Vector2& leftRight)
+		{
+			_bottomTop = bottomTop;
+			_leftRight = leftRight;
+		}
 
-			void SetHeight(F32 h) 
-			{ 
-				height = h; 
-				//v_SetVertexPositions();
-			}
+		KM::Vector2& GetUVBottomTop(void) 
+		{ 
+			return _bottomTop; 
+		}
 
-			F32 GetHeight(void) 
-			{ 
-				return height; 
-			}
+		KM::Vector2& GetUVLeftRight(void) 
+		{ 
+			return _leftRight; 
+		}
 
-			void SetDimensions(F32 w, F32 h) 
-			{ 
-				width = w; 
-				height = h; 
-				//v_SetVertexPositions();
-			}			
+		void SetCharData(CharacterData data);
 
-			void SetPosition(KM::Vector2& pos) 
-			{ 
-				position = pos; 
-			}
+		CharacterData GetCharData(void)
+		{
+			return _characterData;
+		}
 
-			KM::Vector2& GetPosition(void) 
-			{ 
-				return position; 
-			}
-
-			void SetColor(Color& col) 
-			{ 
-				color = col; 
-			}
-
-			Color& GetColor(void) 
-			{ 
-				return color; 
-			}
-
-			U32 GetTextureID(void) 
-			{ 
-				return textureID; 
-			}
-
-			void SetUVs(KM::Vector2& bottomTop, KM::Vector2& leftRight)
-			{
-				_bottomTop = bottomTop;
-				_leftRight = leftRight;
-			}
-
-			KM::Vector2& GetUVBottomTop(void) 
-			{ 
-				return _bottomTop; 
-			}
-
-			KM::Vector2& GetUVLeftRight(void) 
-			{ 
-				return _leftRight; 
-			}
-
+		const GLuint GetShader(void)
+		{
+			return _shaderProgram;
+		}
  
 //==========================================================================================================================
 //
 //Operator Overloads
 //
 //==========================================================================================================================
-		Sprite& operator=(Sprite& sprite) 
-		{
-			width = sprite.GetWidth();
-			height = sprite.GetHeight();
-			SetPosition(sprite.GetPosition());
-			SetColor(sprite.GetColor());
+		Sprite& operator=(Sprite& S);
 
-			return *this;
-		}
+		Sprite& operator=(std::shared_ptr<Sprite> S);
 		
-//==========================================================================================================================
-//
-//Virtual
-//
-//==========================================================================================================================
-		virtual void v_RenderSprite(void)=0;
-		
-		virtual void SetTexture(U32 tID, const F32 top, const F32 bottom, const F32 right, const F32 left)
-		{
-			textureID = tID;
-			_bottomTop = KM::Vector2(bottom, top);
-			_leftRight  = KM::Vector2(left, right);
-		}
-
-		virtual GLuint v_GetShader(void)=0;
-
 //==========================================================================================================================
 //
 //Sprite Functions 	 	
 //
 //==========================================================================================================================
+		void SetTexture(U32 tID, const F32 top, const F32 bottom, const F32 right, const F32 left);
+
+		void Render(KM::Vector2& pos, F32 w, F32 h, Color& col);
+
+		//static void StaticDraw(S32 count, std::vector<F32> vertices, std::vector<F32> colors, std::vector<F32> dimensions, std::vector<F32> bottomTop, std::vector<F32>leftRight);
 
 	private:
 		KM::Vector2 	_bottomTop;
 		KM::Vector2 	_leftRight;
-		F32				width;
-		F32				height;
-		U32				textureID;
-		KM::Vector2		position;
-		Color		 	color;
+		U32				_textureID;
+		CharacterData   _characterData;
+
+		const static U32	 NUM_VOA = 1;
+		const static U32	 NUM_BUFFERS = 4;
+		GLuint   			 _vertexArrayObject[NUM_VOA];
+		GLuint 				 _buffers[5];
+
+		GLuint 		 _shaderProgram;
 
 //==========================================================================================================================
 //
-//Constructors
+//Private functions
 //
 //==========================================================================================================================
-		protected:
-		Sprite(void);
-
-		Sprite(const F32 width, const F32 height);
-
-		Sprite(const F32 width, const F32 height, Color& col);											      
-
-		Sprite(const F32 width, const F32 height, U32 tID);													     
-
-		Sprite(const F32 width, const F32 height, Color& col, U32 tID);
-
-		virtual void v_InitShader(void)=0;																   
+		void _InitShader(void);
 
 	};
 }//End namespace

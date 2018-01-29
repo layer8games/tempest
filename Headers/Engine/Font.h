@@ -15,7 +15,8 @@ Written by Maxwell Miller
 //=====Engine includes=====
 #include <Engine/Atom.h>
 #include <Engine/Texture.hpp>
-#include <Engine/CharSprite.h>
+#include <Engine/Sprite.h>
+#include <Engine/CharacterData.h>
 #include <Engine/TextureManager.h>
 
 //=====STL includes=====
@@ -25,20 +26,11 @@ Written by Maxwell Miller
 #include <vector>
 #include <map>
 #include <list>
+#include <memory>
 
 namespace KillerEngine
 {
-	struct CharacterData
-	{
-		U32 id;
-		U32 x;
-		U32 y;
-		U32 width;
-		U32 height;
-		U32 xoffset;
-		U32 yoffset;
-		U32 xadvance;
-	};
+	
 
 	//Forward declare CharSprite
 	class CharSprite;
@@ -62,11 +54,14 @@ namespace KillerEngine
 //==========================================================================================================================
 		void InitFont(string fontName, string fontFile);
 
-		CharacterData* GetDataForCharacter(char c);
+		CharacterData GetDataForCharacter(char c);
 
-		std::map<U32, CharacterData*> GetDataMap(void) { return _fontCharData; }
+		std::map<U32, CharacterData> GetDataLevel(void) 
+		{ 
+			return _fontCharData; 
+		}
 
-		CharSprite* CreateCharacter(char character);
+		std::shared_ptr<Sprite> CreateCharacter(char character);
 
 //==========================================================================================================================
 //
@@ -79,7 +74,7 @@ namespace KillerEngine
 			_textureID = font->GetTextureID();
 			_fontFile = font->GetFile();
 			_fontName = font->GetName();
-			_fontCharData = font->GetDataMap();
+			_fontCharData = font->GetDataLevel();
 
 			return *this;
 		}
@@ -89,7 +84,7 @@ namespace KillerEngine
 			_textureID = font.GetTextureID();
 			_fontFile = font.GetFile();
 			_fontName = font.GetName();
-			_fontCharData = font.GetDataMap();
+			_fontCharData = font.GetDataLevel();
 
 			return *this;
 		}		
@@ -99,24 +94,42 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-		void SetFile(string fontFile) 	  { _fontFile = fontFile; }
+		void SetFile(string fontFile) 	  
+		{
+		 	_fontFile = fontFile; 
+		}
 
-		string GetFile(void) 		  	  { return _fontFile; }
+		string GetFile(void)
+		{ 
+			return _fontFile; 
+		}
 
-		void SetName(string fontName) 	  { _fontName = fontName; }
+		void SetName(string fontName)
+		{ 
+			_fontName = fontName; 
+		}
 
-		string GetName(void) 		  	  { return _fontName; }
+		string GetName(void)
+		{ 
+			return _fontName; 
+		}
 
-		void SetTexture(U32 tID) 		  { _textureID = tID; }
+		void SetTexture(U32 tID)
+		{ 
+			_textureID = tID; 
+		}
 
-		U32 GetTextureID(void)			  { return  _textureID; }
+		U32 GetTextureID(void)
+		{ 
+			return  _textureID; 
+		}
 
 	private:
 		U32 					 	 _textureID;
 		string  					 _fontFile;
 		string  					 _fontName;
 		U32     					 _headerSize = 26;
-		std::map<U32, CharacterData*> _fontCharData;
+		std::map<U32, CharacterData> _fontCharData;
 
 		void _AddNewCharacterData(string id,      string x, 		string y,
 							  	  string width,   string height,   string xoffset,

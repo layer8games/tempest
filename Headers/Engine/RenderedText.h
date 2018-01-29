@@ -18,18 +18,19 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/GameObject2D.h>
 #include <Engine/Font.h>
-#include <Engine/CharSprite.h>
+#include <Engine/Sprite.h>
 #include <Engine/Vector2.h>
-#include <Engine/Color.h>
+#include <Engine/RenderedCharacter.h>
 
 namespace KM = KillerMath;
 
 //=====STL includes=====
 #include <vector>
+#include <memory>
 
 namespace KillerEngine
 {
-	class RenderText : public GameObject2D
+	class RenderedText
 	{
 	public:
 //==========================================================================================================================
@@ -37,21 +38,13 @@ namespace KillerEngine
 //Constructors
 //
 //==========================================================================================================================
-		RenderText(void);
+		RenderedText(void);
 
-		RenderText(Font& font);
+		RenderedText(Font& font);
 		
-		RenderText(string text, Font& font);
+		RenderedText(string text, Font& font);
 
-//==========================================================================================================================
-//
-//Virtual Functions
-//
-//==========================================================================================================================
-		void v_Update(void) 
-		{  }
-
-		void v_Render(void);
+		//void Render(void);
 
 /* 		original version in case the new version breaks everything
 		void v_SetPosition(KM::Vector2 pos)
@@ -61,42 +54,63 @@ namespace KillerEngine
 		}
 */
 
-
-		void v_SetPosition(KM::Vector2 pos)
-		{
-			GameObject2D::v_SetPosition(pos);
-			SetTextPosition(pos);
-		}
-
 //==========================================================================================================================
 //
-//RenderText Functions
+//RenderedText Functions
 //
 //==========================================================================================================================		
 		void AddText(string text);
 
-		void SetTextPosition(KM::Vector2& pos);
+		void SetPosition(KM::Vector2& pos);
 
-		void SetTextColor(Color& col);
+		//void SetTextColor(Color& col);
 
-		void SetWidthScaleFactor(F32 w) { _widthScaleFactor = w; }
+		void SetWidthScaleFactor(F32 w) 
+		{ 
+			_widthScaleFactor = w; 
+		}
 
-		void SetHeightScaleFactor(F32 h) { _heightScaleFactor = h; }
+		void SetHeightScaleFactor(F32 h) 
+		{ 
+			_heightScaleFactor = h; 
+		}
 
-		void SetScaleFactors(const F32 w, const F32 h) { _widthScaleFactor = w; _heightScaleFactor = h; }
+		void SetScaleFactors(const F32 w, const F32 h) 
+		{ 
+			_widthScaleFactor = w; 
+			_heightScaleFactor = h; 
+		}
 
-		void SetFont(Font& font) { _font = font; }
+		void SetFont(Font& font) 
+		{ 
+			_font = font; 
+		}
 
-		F32 GetTotalWidth(void) { return _totalWidth; }
+		F32 GetTotalWidth(void) 
+		{ 
+			return _totalWidth; 
+		}
 
-		F32 GetTotalHeight(void) { return _totalHeight; }
+		F32 GetTotalHeight(void) 
+		{ 
+			return _totalHeight; 
+		}
 
-		KM::Vector2& GetCenter(void) { return _center; }
+		KM::Vector2& GetCenter(void) 
+		{ 
+			return _center; 
+		}
+
+		std::vector<std::shared_ptr<RenderedCharacter>> GetCharacterList(void)
+		{
+			return _characterList;
+		}
 
 	private:
+		KM::Vector2 _pos;
 		string _text;
 		Font   _font;
-		std::vector<CharSprite*> _spriteList;
+		std::vector<std::shared_ptr<RenderedCharacter>> _characterList;
 		F32 _widthScaleFactor;
 		F32 _heightScaleFactor;
 		F32 _totalWidth;

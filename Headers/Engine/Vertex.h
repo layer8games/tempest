@@ -30,10 +30,20 @@ namespace KillerEngine
 	 struct Vertex3D
 	 {
 	 	KM::Vector3 position;
+	 	F32 		xscale;
+	 	F32			yscale;
+	 	F32			zscale;
 	 	KM::Vector3 normal;
 	 	KM::Vector2 texCoord;
 	 	Color color;
 	 	S32 texID;
+
+	 	void ScaleAll(F32 scale)
+	 	{
+	 		xscale = scale; 
+	 		yscale = scale; 
+	 		zscale = scale;
+	 	}
 	 };
 }//end Namespace
 #endif

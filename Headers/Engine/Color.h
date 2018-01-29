@@ -93,7 +93,7 @@ namespace KillerEngine
 			_red = r; 
 		}
 		
-		void SetGree(const F32 g)  
+		void SetGreen(const F32 g)  
 		{ 
 			_green = g; 
 		}
@@ -106,6 +106,13 @@ namespace KillerEngine
 		void SetAlpha(const F32 a) 
 		{ 
 			_alpha = a; 
+		}
+
+		void Set(F32 r, F32 g, F32 b)
+		{
+			_red = r;
+			_green = g;
+			_blue = b;
 		}
 
 	private:

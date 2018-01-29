@@ -14,7 +14,7 @@ Written by Maxwell Miller
 //===== Engine Includes =====
 #include <Engine/Atom.h>
 #include <Engine/GameObject2D.h>
-#include <Engine/SqrSprite.h>
+#include <Engine/Sprite.h>
 #include <Engine/Vector2.h>
 
 namespace KM = KillerMath;
@@ -45,8 +45,6 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 		void v_Update(void) {  }
-
-		void v_Render(void) { GameObject2D::RenderSprite(); }
 
 	private:
 		

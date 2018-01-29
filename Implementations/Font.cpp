@@ -1,4 +1,5 @@
 #include <Engine/Font.h>
+#include <iostream>
 
 namespace KillerEngine
 {
@@ -99,64 +100,79 @@ namespace KillerEngine
 			
 	}//InitFont
 
-	CharacterData* Font::GetDataForCharacter(char c)
+	CharacterData Font::GetDataForCharacter(char c)
 	{
 		U32 id = U32(c);
 
 		return _fontCharData[id];
 	}
 
-	CharSprite* Font::CreateCharacter(char character)
+	std::shared_ptr<Sprite> Font::CreateCharacter(char character)
 	{
-		U32 id = U32(character);
+//		std::cout << "FONT:: character=" << character << "\ntexture id =" << _textureID << "\nfont name=" << _fontName << "\n"; 
 
-		CharSprite* charSprite = new CharSprite();
+		U32 id = static_cast<U32>(character);
 
-		charSprite->SetCharID(id);
-		charSprite->SetCharX(_fontCharData[id]->x); 
-	    charSprite->SetCharY(_fontCharData[id]->y); 
-	    charSprite->SetCharWidth(_fontCharData[id]->width); 
-	    charSprite->SetCharHeight(_fontCharData[id]->height); 
-	    charSprite->SetXOffset(_fontCharData[id]->xoffset); 
-	    charSprite->SetYOffset(_fontCharData[id]->yoffset); 
-	    charSprite->SetXAdvance(_fontCharData[id]->xadvance);
+		Texture& texture = TextureManager::Instance()->GetTexture(_textureID);
+
+		CharacterData data = _fontCharData[id];
+
+		std::shared_ptr<Sprite> sprite{new Sprite()};
+
+		F32 charWidth  	  = static_cast<F32>(data.width);
+		F32 charHeight 	  = static_cast<F32>(data.height);
+		F32 charX 	 	  = static_cast<F32>(data.x);
+		F32 charY 	 	  = static_cast<F32>(data.y);
+		F32 textureWidth  = static_cast<F32>(texture.GetWidth());
+		F32 textureHeight = static_cast<F32>(texture.GetHeight());
+
+		F32 rightCoord   = (charX / textureWidth);
+		F32 topCoord    = charY / textureHeight;
+		F32 leftCoord  = rightCoord + charWidth / textureWidth;
+		F32 bottomCoord = topCoord + charHeight / textureHeight;
+
+		sprite->SetTexture(_textureID, topCoord, bottomCoord, rightCoord, leftCoord);
+
+		sprite->SetCharData(data);
 		
-		return charSprite;	 		
+		return sprite;	 		
 	}
 
 	void Font::_AddNewCharacterData(string id,      string x, 		string y,
 							    	string width,   string height,  string xoffset,
 							    	string yoffset, string xadvance)
 	{
+		//CharacterData data;
+
 		//Make ID avilable first
  		id.erase(id.begin(), id.begin() + id.find_first_of("=")+1);
  		
  		U32 charID = std::stoul(id);
 
- 		_fontCharData.insert(std::pair<U32, CharacterData*>(charID, new CharacterData()));
+ 		_fontCharData.insert(std::pair<U32, CharacterData>(charID, CharacterData()));
 
  		//Create CharacterData for the given character
- 		_fontCharData[charID]->id = std::stoi(id);
+ 		_fontCharData[charID].id = std::stoi(id);
 
  		x.erase(x.begin(), x.begin() + x.find_first_of("=")+1);
- 		_fontCharData[charID]->x = std::stoi(x);
+ 		_fontCharData[charID].x = std::stoi(x);
  		
  		y.erase(y.begin(), y.begin() + y.find_first_of("=")+1);
- 		_fontCharData[charID]->y = std::stoi(y);
+ 		_fontCharData[charID].y = std::stoi(y);
  		
  		width.erase(width.begin(), width.begin() + width.find_first_of("=")+1);
- 		_fontCharData[charID]->width = std::stoi(width);
+ 		_fontCharData[charID].width = std::stoi(width);
  		
  		height.erase(height.begin(), height.begin() + height.find_first_of("=")+1);
- 		_fontCharData[charID]->height = std::stoi(height);
+ 		_fontCharData[charID].height = std::stoi(height);
  		
  		xoffset.erase(xoffset.begin(), xoffset.begin() + xoffset.find_first_of("=")+1);
- 		_fontCharData[charID]->xoffset = std::stoi(xoffset);
+ 		_fontCharData[charID].xoffset = std::stoi(xoffset);
  		
  		yoffset.erase(yoffset.begin(), yoffset.begin() + yoffset.find_first_of("=")+1);
- 		_fontCharData[charID]->yoffset = std::stoi(yoffset);
+ 		_fontCharData[charID].yoffset = std::stoi(yoffset);
  		
  		xadvance.erase(xadvance.begin(), xadvance.begin() + xadvance.find_first_of("=")+1);
- 		_fontCharData[charID]->xadvance = std::stoi(xadvance);
+ 		_fontCharData[charID].xadvance = std::stoi(xadvance);
 	}
 }

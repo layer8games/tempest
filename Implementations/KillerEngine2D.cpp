@@ -34,8 +34,7 @@ namespace KillerEngine
 	{
 		WinProgram::Instance()->ShutDown();
 		ErrorManager::Instance()->ShutDown();
-		Renderer::Instance()->ShutDown();
-		MapManager::Instance()->ShutDown();
+		LevelManager::Instance()->ShutDown();
 		TextureManager::Instance()->ShutDown();
 		Controller::Instance()->ShutDown();
 		//Camera::Instance()->ShutDown();
@@ -55,7 +54,7 @@ namespace KillerEngine
 		
 		Controller::Instance()->Update();
 		
-		MapManager::Instance()->Update();
+		LevelManager::Instance()->Update();
 
 		ErrorManager::Instance()->DisplayErrors();
 	}
@@ -65,9 +64,9 @@ namespace KillerEngine
 //=======================================================================================================
 	void KillerEngine2D::Render(void) 
 	{
-		MapManager::Instance()->Render();
+		LevelManager::Instance()->Render();
 
-		Renderer::Instance()->Draw();
+		//Renderer::Instance()->Draw();
 
 		WinProgram::Instance()->BufferSwap();
 		

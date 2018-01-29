@@ -7,26 +7,31 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef WORLD_H
-#define WORLD_H
+#ifndef LEVEL_H
+#define LEVEL_H
 
 //===Killer1 includes===
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/GameObject2D.h>
 #include <Engine/GameObject3D.h>
-#include <Engine/Renderer.h>
+#include <Engine/WinProgram.h>
 #include <Engine/TextureManager.h>
 #include <Engine/EnvironmentObject.h>
 #include <Engine/Vector2.h>
 #include <Engine/Color.h>
+#include <Engine/SpriteBatch.h>
+#include <Engine/RenderedText.h>
+#include <Engine/RenderedCharacter.h>
 
 namespace KM = KillerMath;
 
 //=====STL includes=====
 #include <map>
+#include <vector>
 #include <fstream>
 #include <algorithm>
+#include <memory>
 
 #include <TinyXML/tinyxml2.h>
 
@@ -36,7 +41,7 @@ namespace KM = KillerMath;
 
 namespace KillerEngine 
 {
-	class Map
+	class Level
 	{
 //==========================================================================================================================
 //
@@ -66,7 +71,7 @@ namespace KillerEngine
 			int posX;
 		};
 
-		struct MapData
+		struct LevelData
 		{
 			int   mapWidth;
 			int   mapHeight;
@@ -82,9 +87,9 @@ namespace KillerEngine
 //Constructors
 //
 //==========================================================================================================================		
-		Map(void);
+		Level(void);
 
-		~Map(void);
+		~Level(void);
 
 //==========================================================================================================================
 //
@@ -92,9 +97,9 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 
-		virtual void v_InitMap(U32 id, S32 w, S32 h, Color& c)=0;
+		virtual void v_InitLevel(U32 id, S32 w, S32 h, Color& c)=0;
 
-		virtual void v_InitMap(U32 id, string tmxFilePath)
+		virtual void v_InitLevel(U32 id, string tmxFilePath)
 		{
 			SetID(id);
 			Importer2D(tmxFilePath);
@@ -109,13 +114,13 @@ namespace KillerEngine
 
 /*		virtual GameObject2D* v_CreateObject(ObjectType type, Vector2& pos, F32 w, F32 h) 
 		{
-			ErrorManager::Instance()->SetError(EC_Game, "CreateObject not defined in your Map");
+			ErrorManager::Instance()->SetError(EC_Game, "CreateObject not defined in your Level");
 			return NULL; 
 		}
 */
 		virtual GameObject2D* v_CreateObject(ObjectType type, KM::Vector2& pos, U32 textureID, F32 w, F32 h)
 		{
-			ErrorManager::Instance()->SetError(EC_KillerEngine, "Attempted to call v_CreateObject without Map Implementation");
+			ErrorManager::Instance()->SetError(EC_KillerEngine, "Attempted to call v_CreateObject without Level Implementation");
 			return NULL;
 		}
 
@@ -124,26 +129,17 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-		void AddObjectToMap(GameObject2D* obj);
+		void AddObjectToLevel(GameObject2D* obj);
 
-		void AddObjectToMap(GameObject3D* obj);
+		void AddObject3DToLevel(GameObject3D* obj);
+
+		void AddTextToLevel(std::shared_ptr<RenderedText> text);
 		
-		void Remove2DObjectFromMap(U32 id);
+		void Remove2DObjectFromLevel(U32 id);
 
-		void Remove3DObjectFromMap(U32 id);
+		void Remove3DObjectFromLevel(U32 id);
 
-		void RenderObjects(void) 
-		{
-			for(auto i = _2DWorldObjects.begin(); i!=_2DWorldObjects.end(); ++i) 
-			{
-				i->second->v_Render();
-			}
-
-			for(auto i = _3DWorldObjects.begin(); i!=_3DWorldObjects.end(); ++i)
-			{
-				i->second->v_Render();
-			}
-		}
+		void RenderObjects(void);
 		
 		void SetBackgroundColor(Color& c) 
 		{ 
@@ -152,32 +148,33 @@ namespace KillerEngine
 		
 		void ActivateBackgroundColor(void) 
 		{ 
-			Renderer::Instance()->SetBackgroundColor(_bgColor); 
+			WinProgram::Instance()->SetBackgroundColor(_bgColor); 
 		}
 		
-		S32  GetMapWidth(void) const 
+		S32  GetLevelWidth(void) const 
 		{ 
 			return _mapWidth; 
 		}
 		
-		S32  GetMapHeight(void) const 
+		S32  GetLevelHeight(void) const 
 		{ 
 			return _mapHeight; 
 		}
 		
-		void SetMapWidth(S32 w)  
+		void SetLevelWidth(S32 w)  
 		{ 
 			_mapWidth = w; 
 		}
 		
-		void SetMapHeight(S32 h) 
+		void SetLevelHeight(S32 h) 
 		{ 
 			_mapHeight = h; 
 		}
 		
-		void SetMapDimensions(S32 w, S32 h) 
+		void SetLevelDimensions(S32 w, S32 h) 
 		{ 
-			_mapWidth  = w; _mapHeight = h; 
+			_mapWidth  = w; 
+			_mapHeight = h; 
 		}
 		
 		void SetTopBorder(S32 top) 
@@ -200,7 +197,7 @@ namespace KillerEngine
 			_mapLeftBorder = left; 
 		}
 
-		void SetMapBorders(S32 top, S32 bottom, S32 right, S32 left)
+		void SetLevelBorders(S32 top, S32 bottom, S32 right, S32 left)
 		{
 			_mapTopBorder = top;
 			_mapBottomBorder = bottom;
@@ -252,9 +249,11 @@ namespace KillerEngine
 		S32   _mapLeftBorder;
 		Color _bgColor;
 		U32 _ID;
-		std::map<U32, GameObject2D*> _2DWorldObjects;
-		std::map<U32, GameObject3D*> _3DWorldObjects;
+		std::map<U32, std::shared_ptr<GameObject2D>> _2DWorldObjects;
+		std::map<U32, std::shared_ptr<GameObject3D>> _3DWorldObjects;
+		std::vector<std::shared_ptr<RenderedText>>	 _textList;
 		std::map<U32, TileData> _2DTileData;
+		//SpriteBatch _batch;
 
 		void _AddTile(TileData data);
 	};
