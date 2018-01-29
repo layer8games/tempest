@@ -119,7 +119,7 @@ namespace KillerEngine
 
 			currentX += static_cast<F32>(data.xadvance);// + static_cast<F32>(data.xoffset);
 
-			std::cout << "I am in the rendered text: " << character->GetSprite().GetTextureID() << "\n";
+			std::cout << "RENDEREDTEXT: data.xadvance=" << data.xadvance << "\ncurrentx=" << currentX <<  "\n";
 		}
 	}
 

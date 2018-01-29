@@ -109,7 +109,7 @@ namespace KillerEngine
 
 	std::shared_ptr<Sprite> Font::CreateCharacter(char character)
 	{
-		std::cout << "FONT:: character=" << character << "\ntexture id =" << _textureID << "\nfont name=" << _fontName << "\n"; 
+//		std::cout << "FONT:: character=" << character << "\ntexture id =" << _textureID << "\nfont name=" << _fontName << "\n"; 
 
 		U32 id = static_cast<U32>(character);
 
