@@ -28,10 +28,13 @@ namespace KillerMath
 //===============================================================================
 //Instance
 //===============================================================================
-	Timer* Timer::_instance = NULL;
-	Timer* Timer::Instance(void) 
+	shared_ptr<Timer> Timer::_instance = NULL;
+	shared_ptr<Timer> Timer::Instance(void) 
 	{
-		if(_instance == NULL) { _instance = new Timer(); }
+		if(_instance == NULL) 
+		{ 
+			_instance = shared_ptr<Timer>(new Timer()); 
+		}
 		return _instance;
 	}
 

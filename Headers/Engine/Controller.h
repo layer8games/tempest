@@ -34,6 +34,9 @@ Written by Maxwell Miller
 #include <Engine/Vector2.h>
 namespace KM = KillerMath;
 
+//=====STL Inlcudes=====
+#include <memory>
+using std::shared_ptr;
 
 //=====DirectInput includes=====
 //#include <dinput.h>
@@ -112,12 +115,9 @@ namespace KillerEngine
 //Singleton Functions
 //
 //==========================================================================================================================
-		static Controller* Instance();
+		static shared_ptr<Controller> Instance();
 		 
-		void ShutDown(void)
-		{
-			delete _instance;
-		}
+		~Controller(void);
 
 //==========================================================================================================================
 //
@@ -172,9 +172,9 @@ namespace KillerEngine
 
 		bool GetKeyReleased(Keys k);
 
-		Controller* operator =(Controller& c) 
+		shared_ptr<Controller> operator=(Controller& c) 
 		{ 
-			return &c; 
+			return shared_ptr<Controller>(&c); 
 		}
 
 	protected:
@@ -186,13 +186,14 @@ namespace KillerEngine
 		explicit Controller(void);		
 
 	private:
-		static const int 		_totalKeys = 51;
+		static shared_ptr<Controller>   	_instance;
+		static const int 						_totalKeys = 51;
+		
 		KeyStates   			_keyStates[_totalKeys];
 		bool 					_pastActiveKeys[_totalKeys];
 		bool					_curActiveKeys[_totalKeys];
 		KM::Vector2 			_leftClickCoordinates;
 		KM::Vector2				_rightClickCoordinates;
-		static Controller*   	_instance;
 		KM::Matrix				_transform;
 	};
 }//End namespace

@@ -49,6 +49,8 @@ namespace KM = KillerMath;
 
 //=====STL Includes=====
 #include <vector>
+#include <memory>
+using std::shared_ptr;
 
 namespace KillerEngine 
 {
@@ -72,12 +74,7 @@ namespace KillerEngine
 //Singleton Functions
 //
 //==========================================================================================================================
-		static SpriteBatch* Instance(void);
-
-		void ShutDown(void)
-		{
-			delete _instance;
-		}
+		static shared_ptr<SpriteBatch> Instance(void);
 
 //==========================================================================================================================
 //
@@ -131,7 +128,8 @@ namespace KillerEngine
 		SpriteBatch(void);
 
 	private:
-		static SpriteBatch*  _instance;
+		static shared_ptr<SpriteBatch>  _instance;
+		
 		U32 				 _maxBatchSize;
 		U32 				 _currentBatchSize;
 		std::vector<F32> 	 _vertices;

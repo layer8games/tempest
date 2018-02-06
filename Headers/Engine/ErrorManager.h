@@ -17,6 +17,8 @@ Written by Maxwell Miller
 //=====STL includes=====
 #include <map>
 using std::map;
+#include <memory>
+using std::shared_ptr;
 
 namespace KillerEngine 
 {
@@ -50,17 +52,12 @@ public:
 //==========================================================================================================================
 		~ErrorManager(void);
 
-		void ShutDown(void)
-		{
-			delete _instance;
-		}
-
 //==========================================================================================================================
 //
 //Singleton Functions
 //
 //==========================================================================================================================		
-		static ErrorManager* Instance(void);
+		static shared_ptr<ErrorManager> Instance(void);
 
 //==========================================================================================================================
 //
@@ -80,10 +77,11 @@ protected:
 		ErrorManager(void);
 
 private:
+		static shared_ptr<ErrorManager> _instance;
+
 		U32       			 _numErrors;
 		map<U32, ErrorCode>  _errorCodes;
 		map<U32, string>     _errorMessages;
-		static ErrorManager* _instance;
 	};//End class
 }//End namespace
 

@@ -23,6 +23,8 @@ Written by Maxwell Miller
 //=====STL includes=====
 #include <map>
 using std::map;
+#include <memory>
+using std::shared_ptr;
 
 
 //=====SOIL includes=====
@@ -41,12 +43,16 @@ namespace KillerEngine
 	public:
 //==========================================================================================================================
 //
+//Constructor
+//
+//==========================================================================================================================
+		~TextureManager(void);
+//==========================================================================================================================
+//
 //Singleton Functions
 //
 //==========================================================================================================================
-		static TextureManager* Instance(void);
-		
-		void ShutDown(void);
+		static shared_ptr<TextureManager> Instance(void);
 		
 //==========================================================================================================================
 //
@@ -65,7 +71,10 @@ namespace KillerEngine
 //==========================================================================================================================
 		void LoadTexture(string path, U32 id, S32 width, S32 height);
 		
-		Texture& GetTexture(U32 id) { return _loadedTextures.find(id)->second; }
+		Texture& GetTexture(U32 id) 
+		{ 
+			return _loadedTextures.find(id)->second; 
+		}
 
 
 	protected:
@@ -74,14 +83,15 @@ namespace KillerEngine
 //Constructors
 //
 //==========================================================================================================================		
-		TextureManager(void): _currentTextureID(0) {  }
+		TextureManager(void);
 		
-		~TextureManager(void) {  }
+		
 
 	private:
-		static TextureManager* _instance;
-		U32 			   	   _currentTextureID;
-		map<U32, Texture>      _loadedTextures;
+		static shared_ptr<TextureManager> _instance;
+
+		U32 			  _currentTextureID;
+		map<U32, Texture> _loadedTextures;
 
 	};
 }//End namespace

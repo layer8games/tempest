@@ -25,7 +25,10 @@ Written by Maxwell Miller
 
 namespace KM = KillerMath;
 
-//=====OGL includes=====
+//=====STD includes=====
+#include <memory>
+using std::shared_ptr;
+
 //=====OGL includes=====
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -41,17 +44,14 @@ namespace KillerEngine
 //Constructors
 //
 //==========================================================================================================================
-		~Camera(void)
-		{
-			if(_instance)
-				delete _instance;
-		}
+		~Camera(void);
+
 //==========================================================================================================================
 //
 //Camera Functions
 //
 //==========================================================================================================================		
-		static Camera* Instance(void);
+		static shared_ptr<Camera> Instance(void);
 
 		void SetOrthographic(void);
 
@@ -80,12 +80,6 @@ namespace KillerEngine
 
 		void SetUp(GLuint shader);
 
-		void ShutDown(void)
-		{
-			if(_instance != NULL)
-				delete _instance;
-		}
-
 		//Will be implemented later
 		//void SetProjectionPerspective(void) { }
 	
@@ -95,12 +89,12 @@ namespace KillerEngine
 //Private members
 //
 //==========================================================================================================================		
-		static Camera* 	_instance;
-		Color  			_background;
-		KM::Vector3  	_pos;
-		KM::Matrix 		_projection;
-		KM::Matrix 		_translation;
-		GLuint			_currentShader;
+		static shared_ptr<Camera> 	_instance;
+		Color  							_background;
+		KM::Vector3  					_pos;
+		KM::Matrix 						_projection;
+		KM::Matrix 						_translation;
+		GLuint							_currentShader;
 
 	protected:
 //==========================================================================================================================

@@ -18,11 +18,14 @@ namespace KillerEngine
 //Singleton Functions
 //
 //==========================================================================================================================
-	ErrorManager* ErrorManager::_instance = NULL;
+	shared_ptr<ErrorManager> ErrorManager::_instance = NULL;
 
-	ErrorManager* ErrorManager::Instance(void) 
+	shared_ptr<ErrorManager> ErrorManager::Instance(void) 
 	{
-		if(_instance == NULL) { _instance = new ErrorManager(); }
+		if(_instance == NULL) 
+		{ 
+			_instance = shared_ptr<ErrorManager>(new ErrorManager()); 
+		}
 		return _instance;
 	}
 

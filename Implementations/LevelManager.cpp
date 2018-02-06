@@ -28,19 +28,19 @@ namespace KillerEngine
 //Level Accessors
 //
 //==========================================================================================================================
-	void LevelManager::AddLevel(Level* world) 
+	void LevelManager::AddLevel(Level* level) 
 	{
-		_levels.insert(std::map<U32, std::shared_ptr<Level>>::value_type( world->GetID(), std::shared_ptr<Level>(world) ));
+		_levels.insert(std::map<U32, std::shared_ptr<Level>>::value_type( level->GetID(), std::shared_ptr<Level>(level) ));
 		
-		if(_levels.find(world->GetID()) == _levels.end()) 
+		if(_levels.find(level->GetID()) == _levels.end()) 
 		{ 
 			ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to AddLevel to LevelManager"); 
 		}
 	}
 
-	void LevelManager::RemoveLevel(U32 worldID) 
+	void LevelManager::RemoveLevel(U32 levelID) 
 	{
-		auto w = _levels.find(worldID);
+		auto w = _levels.find(levelID);
 		_levels.erase(w);
 	}
 
@@ -49,10 +49,10 @@ namespace KillerEngine
 //SetActiveLevel
 //
 //==========================================================================================================================
-	void LevelManager::SetActiveLevel(U32 worldID) 
+	void LevelManager::SetActiveLevel(U32 levelID) 
 	{
-		_activeLevelID = worldID;
-		auto level = _levels.find(worldID);
+		_activeLevelID = levelID;
+		auto level = _levels.find(levelID);
 		_activeLevel = level->second;
 		_activeLevel->ActivateBackgroundColor();
 	}
@@ -81,7 +81,7 @@ namespace KillerEngine
 //
 //Add/Remove Objects from Level
 //
-//This function will add a GameObject to an existing, registered world. It will check to make sure that the called worled
+//This function will add a GameObject to an existing, registered level. It will check to make sure that the called worled
 //in fact is registered with the manager, and will throw and error if it is not. 
 //	
 //==========================================================================================================================
@@ -93,7 +93,7 @@ namespace KillerEngine
 		} 
 		else
 		{
-			ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddObjectToLevel() function for a world that does not exist.");	
+			ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist.");	
 		} 
 	}
 
@@ -105,23 +105,23 @@ namespace KillerEngine
 		} 
 		else 
 		{
-			ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddObjectToLevel() function for a world that does not exist.");
+			ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist.");
 		}
 	}
 
-	void LevelManager::Remove2DObjectFromLevel(U32 worldID, U32 objID)
+	void LevelManager::Remove2DObjectFromLevel(U32 levelID, U32 objID)
 	{
-		if(_levels.find(worldID) != _levels.end()) 
+		if(_levels.find(levelID) != _levels.end()) 
 		{ 
-			_levels[worldID]->Remove2DObjectFromLevel(objID); 
+			_levels[levelID]->Remove2DObjectFromLevel(objID); 
 		}
 	}
 
-	void LevelManager::Remove3DObjectFromLevel(U32 worldID, U32 objID)
+	void LevelManager::Remove3DObjectFromLevel(U32 levelID, U32 objID)
 	{
-		if(_levels.find(worldID) != _levels.end()) 
+		if(_levels.find(levelID) != _levels.end()) 
 		{ 
-			_levels[worldID]->Remove3DObjectFromLevel(objID); 
+			_levels[levelID]->Remove3DObjectFromLevel(objID); 
 		}
 	}
 

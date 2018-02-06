@@ -24,9 +24,7 @@ namespace KillerEngine
 	}
 
 	SpriteBatch::~SpriteBatch(void)
-	{  
-		delete _instance;
-	}
+	{  }
 //==========================================================================================================================
 //
 //Accessors
@@ -55,11 +53,14 @@ namespace KillerEngine
 //=======================================================================================================
 //Instance
 //=======================================================================================================
-	SpriteBatch* SpriteBatch::_instance = NULL;
+	shared_ptr<SpriteBatch> SpriteBatch::_instance{NULL};
 
-	SpriteBatch* SpriteBatch::Instance(void) 
+	shared_ptr<SpriteBatch> SpriteBatch::Instance(void) 
 	{
-		if(_instance == NULL) { _instance = new SpriteBatch(); }
+		if(_instance == NULL) 
+		{ 
+			_instance = shared_ptr<SpriteBatch>(new SpriteBatch()); 
+		}
 		return _instance;
 	}
 

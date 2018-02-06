@@ -8,7 +8,7 @@ namespace KillerPhysics
 //Constructors
 //
 //==========================================================================================================================	
-	Particle3D::Particle3D(void) : _timer(KM::Timer::Instance())
+	Particle3D::Particle3D(void)
 	{  }
 
 	Particle3D::~Particle3D(void) {  }
@@ -41,7 +41,7 @@ namespace KillerPhysics
 		//if there no mass, there is no update
 		if(inverseMass == 0) return;
 
-		F32 delta = _timer->DeltaTime();
+		F32 delta = KM::Timer::Instance()->DeltaTime();
 
 		//Update position
 		position.AddScaledVector(velocity, delta);

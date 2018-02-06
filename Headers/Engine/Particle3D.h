@@ -46,25 +46,55 @@ namespace KillerPhysics
 //Accessors
 //
 //==========================================================================================================================
-		KM::Vector3& GetPosition(void) { return position; }
+		KM::Vector3& GetPosition(void) 
+		{ 
+			return position; 
+		}
 		
-		void  SetPosition(KM::Vector3& pos) { position = pos; }
+		void  SetPosition(KM::Vector3& pos) 
+		{ 
+			position = pos; 
+		}
 
-		KM::Vector3& GetVelocity(void) { return velocity; }
+		KM::Vector3& GetVelocity(void) 
+		{ 
+			return velocity; 
+		}
 		
-		void  SetVelocity(KM::Vector3& vel) { velocity = vel; }
+		void  SetVelocity(KM::Vector3& vel) 
+		{ 
+			velocity = vel; 
+		}
 
-		KM::Vector3& GetAcceleration(void) { return acceleration; }
+		KM::Vector3& GetAcceleration(void) 
+		{ 
+			return acceleration; 
+		}
 
-		void SetAcceleration(KM::Vector3& acc) { acceleration = acc; }
+		void SetAcceleration(KM::Vector3& acc) 
+		{ 
+			acceleration = acc; 
+		}
 
-		real GetDamping(void) { return damping; }
+		real GetDamping(void) 
+		{ 
+			return damping; 
+		}
 
-		void SetDamping(real damp) { damping = damp; }
+		void SetDamping(real damp) 
+		{ 
+			damping = damp; 
+		}
 
-		real GetInverseMass(void) { return damping; }
+		real GetInverseMass(void) 
+		{ 
+			return damping; 
+		}
 
-		void SetInverseMass(real mass) { inverseMass = mass; }
+		void SetInverseMass(real mass) 
+		{ 
+			inverseMass = mass; 
+		}
 
 		real GetMass(void);
 
@@ -83,9 +113,6 @@ namespace KillerPhysics
 		KM::Vector3 acceleration;
 		real damping;
 		real inverseMass;
-
-	private:
-		KM::Timer* _timer;
 	};
 }//End namespace
 

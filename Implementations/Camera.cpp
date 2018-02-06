@@ -7,11 +7,14 @@ namespace KillerEngine
 //Camera Functions
 //
 //==========================================================================================================================
-	Camera* Camera::_instance = NULL;
+	shared_ptr<Camera> Camera::_instance{NULL};
 
-	Camera* Camera::Instance(void)
+	shared_ptr<Camera> Camera::Instance(void)
 	{
-		if(_instance == NULL) { _instance = new Camera(); }
+		if(_instance == NULL) 
+		{
+		 	_instance = shared_ptr<Camera>{new Camera()}; 
+		}
 		return _instance;
 	}
 
@@ -109,5 +112,8 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 	Camera::Camera(void) : _background(1.0f), _projection(), _translation(1.0f), _currentShader(0)
-	{  }	
+	{  }
+
+	Camera::~Camera(void)
+	{  }
 }//end namespace
