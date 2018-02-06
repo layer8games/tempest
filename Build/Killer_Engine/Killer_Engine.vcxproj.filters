@@ -76,9 +76,6 @@
     <Filter Include="Components\KillerMath\Timer">
       <UniqueIdentifier>{d95a6a48-7e2e-4741-b39d-f6a1c763e14d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\KillerMath\Point">
-      <UniqueIdentifier>{cee02548-231c-44eb-9305-256d775b11a6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\KillerMath\Quaternion">
       <UniqueIdentifier>{c515a409-dc39-49f7-98ad-057c2f9db072}</UniqueIdentifier>
     </Filter>
