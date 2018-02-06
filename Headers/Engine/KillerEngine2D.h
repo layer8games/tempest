@@ -29,6 +29,10 @@ Written by Maxwell Miller
 //======Math includes=====
 //#include <Engine/RandomGen.h>
 
+//=====STL Includes=====
+#include <memory>
+using std::shared_ptr;
+
 namespace KM = KillerMath;
 
 namespace KillerEngine 
@@ -62,9 +66,9 @@ namespace KillerEngine
 			TextureManager::Instance()->LoadTexture(path, id, width, height); 
 		}
 		
-		void AddLevelToManager(Level* world) 
+		void AddLevelToManager(Level* level) 
 		{ 
-			LevelManager::Instance()->AddLevel(world); 
+			LevelManager::Instance()->AddLevel(level); 
 		}
 
 		void SetActiveLevel(const U32 id) 
@@ -80,7 +84,7 @@ namespace KillerEngine
 //Singleton functions
 //
 //==========================================================================================================================
-		static KillerEngine2D* Instance();		
+		static shared_ptr<KillerEngine2D> Instance();		
 
 	protected:
 //==========================================================================================================================
@@ -96,7 +100,7 @@ namespace KillerEngine
 //Members
 //
 //==========================================================================================================================
-		static KillerEngine2D* 	_instance;
+		static shared_ptr<KillerEngine2D> _instance;
 
 	};
 

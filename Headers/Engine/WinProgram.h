@@ -25,6 +25,9 @@ Written by Maxwell Miller
 
 namespace KM = KillerMath; 
 
+//=====STL Includes=====
+#include <memory>
+using std::shared_ptr;
 
 //=====OGL includes=====
 #include <GL/gl.h>
@@ -44,14 +47,7 @@ namespace KillerEngine
 //Constructors
 //
 //==========================================================================================================================
-		WinProgram(void);
-		
 		~WinProgram(void);
-
-		void ShutDown(void)
-		{
-			delete _instance;
-		}
 
 //==========================================================================================================================
 //
@@ -103,7 +99,7 @@ namespace KillerEngine
 //WinProgram Functions
 //
 //==========================================================================================================================
-		static WinProgram* Instance(void);
+		static shared_ptr<WinProgram> Instance(void);
 
 		void Init(S32 width, S32 height, string wndName, bool isFullScreen);
 		
@@ -131,7 +127,8 @@ namespace KillerEngine
 		LRESULT CALLBACK WndProc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 	private:
-		static WinProgram* _instance;
+		static shared_ptr<WinProgram> _instance;
+		
 		bool    _isFullScreen;
 		S32     _totalWidth;
 		S32     _totalHeight;
@@ -156,6 +153,14 @@ namespace KillerEngine
 		void _SetTempPixelFormat(void);
 		
 		void _SetPixelFormat(void);
+
+	protected:
+//==========================================================================================================================
+//
+//Constructor
+//
+//==========================================================================================================================
+		WinProgram(void);
 
 	};	
 }//End namespace

@@ -107,13 +107,13 @@ namespace KillerEngine
 
 			"uniform mat4 projection_mat;												\n"
 			"uniform mat4 translation_mat;												\n"
-			"uniform mat4 position_mat;											\n"
+			"uniform mat4 position_mat;													\n"
 
 			"out vec4 fs_color;															\n"
 
 			"void main(void)															\n"
 			"{ 																			\n"
-			"	gl_Position = projection_mat * position_mat * vertice;\n"
+			"	gl_Position = projection_mat * position_mat * vertice;					\n"
 			"	fs_color = color;														\n"
 			"}																			\n"
 		};

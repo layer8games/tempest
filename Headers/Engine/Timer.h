@@ -22,6 +22,10 @@ Written by Maxwell Miller
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
 
+//=====STL Includes=====
+#include <memory>
+using std::shared_ptr;
+
 //namespace KE = KillerEngine;
 
 namespace KillerMath 
@@ -32,17 +36,12 @@ namespace KillerMath
 	public:
 		~Timer(void);
 
-		void ShutDown(void)
-		{
-			delete _instance;
-		}
-
 //==========================================================================================================================
 //
 //Singleton Functions
 //
 //==========================================================================================================================		
-		static Timer* Instance(void);
+		static shared_ptr<Timer> Instance(void);
 
 //==========================================================================================================================
 //
@@ -98,14 +97,16 @@ namespace KillerMath
 		explicit Timer(void);
 
 	private:
-		F32  		  _deltaTime;
-		F32  		  _timeScale;
-		F64  		  _totalTime;
-		U64  		  _pastCycles;
-		U64  		  _curCycles;
-		F32  		  _frequency;
-		bool 		  _paused;
-		static Timer* _instance;
+		static shared_ptr<Timer> _instance;
+
+		F32  _deltaTime;
+		F32  _timeScale;
+		F64  _totalTime;
+		U64  _pastCycles;
+		U64  _curCycles;
+		F32  _frequency;
+		bool _paused;
+		
 		
 //==========================================================================================================================
 //

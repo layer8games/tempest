@@ -1,6 +1,6 @@
 /*========================================================================
-The holder and controller of the the world objects. This will act as 
-both a singleton and a state maching controller, where each world will
+The holder and controller of the the level objects. This will act as 
+both a singleton and a state maching controller, where each level will
 be a state that can be set to active. 
 
 For now, all of the states that are to be used will be instantiated 
@@ -46,11 +46,11 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-		void AddLevel(Level* world);
+		void AddLevel(Level* level);
 		
-		void RemoveLevel(U32 worldID);
+		void RemoveLevel(U32 levelID);
 		
-		void SetActiveLevel(U32 worldID);
+		void SetActiveLevel(U32 levelID);
 		
 		U32 GetActiveLevelID(void) 
 		{ 
@@ -76,9 +76,9 @@ namespace KillerEngine
 
 		void AddObject3DToLevel(U32 id, GameObject3D* obj);
 		
-		void Remove2DObjectFromLevel(U32 worldID, U32 ojbId);
+		void Remove2DObjectFromLevel(U32 levelID, U32 ojbId);
 
-		void Remove3DObjectFromLevel(U32 worldID, U32 ojbId);
+		void Remove3DObjectFromLevel(U32 levelID, U32 ojbId);
 
 //==========================================================================================================================
 //

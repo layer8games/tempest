@@ -1,6 +1,7 @@
 #include <Engine/WinProgram.h>
 
-namespace KillerEngine {
+namespace KillerEngine 
+{
 
 
 //==========================================================================================================================
@@ -32,11 +33,14 @@ namespace KillerEngine {
 //=======================================================================================================
 //Instance
 //=======================================================================================================
-    WinProgram* WinProgram::_instance = NULL;
+    shared_ptr<WinProgram> WinProgram::_instance = NULL;
 
-    WinProgram* WinProgram::Instance(void) 
+    shared_ptr<WinProgram> WinProgram::Instance(void) 
     {
-        if(_instance == NULL) { _instance = new WinProgram; }
+        if(_instance == NULL) 
+        { 
+            _instance = shared_ptr<WinProgram>(new WinProgram);
+        }
         return _instance;
     }
 
@@ -442,6 +446,4 @@ namespace KillerEngine {
         if(pixelFormat == -1) { ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to load Pixel Format"); }
 
     }
-
-
 }//End namespace    

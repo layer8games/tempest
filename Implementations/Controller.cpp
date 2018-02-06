@@ -11,11 +11,14 @@ namespace KillerEngine
 //=======================================================================================================
 //Instance
 //=======================================================================================================
-	Controller* Controller::_instance = NULL;
+	shared_ptr<Controller> Controller::_instance = NULL;
 
-	Controller* Controller::Instance(void) 
+	shared_ptr<Controller> Controller::Instance(void) 
 	{
-		if (_instance == NULL) { _instance = new Controller(); }
+		if (_instance == NULL) 
+		{ 
+			_instance = shared_ptr<Controller>(new Controller()); 
+		}
 		return _instance;
 	}		
 	
@@ -96,5 +99,8 @@ namespace KillerEngine
 		}
 	//	_transform = 
 	}
+
+	Controller::~Controller(void)
+	{  }
 
 }//End namespace	

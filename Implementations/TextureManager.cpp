@@ -3,23 +3,15 @@
 
 namespace KillerEngine 
 {
-
 //==========================================================================================================================
 //
-//Singleton Functions
+//Constructors
 //
 //==========================================================================================================================
-	TextureManager* TextureManager::_instance = NULL;
-	
-	TextureManager* TextureManager::Instance(void) 
-	{
-		if(_instance == NULL) 
-			{ _instance = new TextureManager(); }
-		
-		return _instance;
-	}
+	TextureManager::TextureManager(void) : _currentTextureID(0) 
+	{  }
 
-	void TextureManager::ShutDown(void) 
+	TextureManager::~TextureManager(void)
 	{
 		map<U32, Texture>::iterator i;
 		
@@ -29,7 +21,24 @@ namespace KillerEngine
 			glDeleteTextures(1, &texture);
 		}
 
-		delete _instance;
+		_loadedTextures.clear();
+	}
+
+//==========================================================================================================================
+//
+//Singleton Functions
+//
+//==========================================================================================================================
+	shared_ptr<TextureManager> TextureManager::_instance = NULL;
+	
+	shared_ptr<TextureManager> TextureManager::Instance(void) 
+	{
+		if(_instance == NULL) 
+		{ 
+			_instance = shared_ptr<TextureManager>(new TextureManager()); 
+		}
+		
+		return _instance;
 	}
 
 //==========================================================================================================================
@@ -53,7 +62,7 @@ namespace KillerEngine
 	{
 		if(_loadedTextures.find(id) != _loadedTextures.end())
 		{
-			std::cout << "TExture already loaded " << path << '\n';
+			std::cout << "Texture already loaded " << path << '\n';
 			return;
 		}
 

@@ -32,15 +32,7 @@ namespace KillerEngine
 //==========================================================================================================================
 	void KillerEngine2D::ShutDown(void)
 	{
-		WinProgram::Instance()->ShutDown();
-		ErrorManager::Instance()->ShutDown();
 		LevelManager::Instance()->ShutDown();
-		TextureManager::Instance()->ShutDown();
-		Controller::Instance()->ShutDown();
-		//Camera::Instance()->ShutDown();
-		KM::Timer::Instance()->ShutDown();
-
-		delete _instance;
 	}	
 
 //=======================================================================================================
@@ -78,11 +70,14 @@ namespace KillerEngine
 //Singleton functions
 //
 //==========================================================================================================================
-	KillerEngine2D* KillerEngine2D::_instance = NULL;
+	shared_ptr<KillerEngine2D> KillerEngine2D::_instance = NULL;
 
-	KillerEngine2D* KillerEngine2D::Instance(void) 
+	shared_ptr<KillerEngine2D> KillerEngine2D::Instance(void) 
 	{
-		if(_instance == NULL) { _instance = new KillerEngine2D(); }
+		if(_instance == NULL) 
+		{ 
+			_instance = shared_ptr<KillerEngine2D>(new KillerEngine2D()); 
+		}
 
 		return _instance;
 	}
