@@ -3,8 +3,6 @@ The Particle represents a point mass that will be used in physics calcula-
 tions. It is based on the Cyclone engine design found in "Game Physics En-
 gine Development, second edition" by Ian Millington.
 
-
-
 This is not free to use, and cannot be used without the express permission
 of KillerWave.
 
@@ -59,19 +57,19 @@ namespace KillerPhysics
 		KM::Vector2& GetVelocity(void);
 		
 		void SetVelocity(KM::Vector2& v);
-
-		void ScaleVelocity(const KM::Vector2& vec, F32 scale);
 		
 		void SetVelocity(F32 x, F32 y);
+
+		void AddScaledVelocity(const KM::Vector2& vec, F32 scale);
 
 //=====Acceleration=====
 		KM::Vector2& GetAcceleration(void);
 		
 		void SetAcceleration(KM::Vector2& a);
-		
-		void ScaleAcceleration(const KM::Vector2& vec, F32 scale);
 
 		void SetAcceleration(F32 x, F32 y);
+
+		void AddScaledAcceleration(const KM::Vector2& vec, F32 scale);
 		
 //=====Mass=====
 		real GetInverseMass(void) 

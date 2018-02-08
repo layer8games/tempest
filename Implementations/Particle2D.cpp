@@ -30,14 +30,14 @@ namespace KillerPhysics
 		_velocity = v; 
 	}
 
-	void Particle2D::ScaleVelocity(const KM::Vector2& vec, F32 scale)
-	{
-		_velocity.AddScaledVector(vec, scale);
-	}
-
 	void Particle2D::SetVelocity(F32 x, F32 y) 
 	{ 
 		_velocity = KM::Vector2(x, y); 
+	}
+
+	void Particle2D::AddScaledVelocity(const KM::Vector2& vec, F32 scale)
+	{
+		_velocity.AddScaledVector(vec, scale);
 	}
 
 //=====Acceleration=====
@@ -51,14 +51,14 @@ namespace KillerPhysics
 		_acceleration = a; 
 	}
 
-	void Particle2D::ScaleAcceleration(const KM::Vector2& vec, F32 scale)
-	{
-		_acceleration.AddScaledVector(vec, scale);
-	}
-
 	void Particle2D::SetAcceleration(F32 x, F32 y) 
 	{
 	 	_acceleration = KM::Vector2(x, y); 
+	}
+
+	void Particle2D::AddScaledAcceleration(const KM::Vector2& vec, F32 scale)
+	{
+		_acceleration.AddScaledVector(vec, scale);
 	}
 //=====Mass=====	
 	real Particle2D::GetMass(void)
@@ -98,14 +98,19 @@ namespace KillerPhysics
 		} 
 
 		F32 delta = KM::Timer::Instance()->DeltaTime();
-		
-		//Update position
-		KE::GameObject2D::ScalePosition(_velocity, delta);
 
+		//Update position
+		KE::GameObject2D::AddScaledPosition(_velocity, delta);
+
+		//Work out acceleration. 
+		//For now, only a use the current acceleration. 
+		//Once forces are added, this will change
 		KM::Vector2 resultingAcc = _acceleration;
 
+		//Work out new velocity based on acceleration
 		_velocity.AddScaledVector(resultingAcc, delta);
 
+		//Add damping
 		_velocity *= real_pow(_damping, delta);
 
 		ClearAccumulator();

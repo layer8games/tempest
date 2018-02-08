@@ -114,7 +114,7 @@ namespace KillerEngine
 		_position = KM::Vector2(x, y);
 	}
 
-	void GameObject2D::ScalePosition(const KM::Vector2& v, F32 scale)
+	void GameObject2D::AddScaledPosition(const KM::Vector2& v, F32 scale)
 	{				
 		_position.AddScaledVector(v, scale);
 	}

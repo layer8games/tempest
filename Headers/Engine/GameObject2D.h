@@ -137,7 +137,7 @@ namespace KillerEngine
 		
 		void SetPosition(F32 x, F32 y);
 
-		void ScalePosition(const KM::Vector2& v, F32 scale);
+		void AddScaledPosition(const KM::Vector2& v, F32 scale);
 /*
 //=====Velocity=====
 		KM::Vector2& GetVelocity(void);
