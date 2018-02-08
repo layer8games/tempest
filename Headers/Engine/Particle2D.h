@@ -44,13 +44,45 @@ namespace KillerPhysics
 //Accessors
 //
 //==========================================================================================================================
-		real GetDamping(void) { return _damping; }
+//=====Damping=====
+		real GetDamping(void) 
+		{ 
+			return _damping; 
+		}
 
-		void SetDamping(real damp) { _damping = damp; }
+		void SetDamping(real damp) 
+		{ 
+			_damping = damp; 
+		}
 
-		real GetInverseMass(void) { return _inverseMass; }
+//=====Velocity=====
+		KM::Vector2& GetVelocity(void);
+		
+		void SetVelocity(KM::Vector2& v);
 
-		void SetInverseMass(real mass) { _inverseMass = ((real)1.0f) / mass; }
+		void ScaleVelocity(const KM::Vector2& vec, F32 scale);
+		
+		void SetVelocity(F32 x, F32 y);
+
+//=====Acceleration=====
+		KM::Vector2& GetAcceleration(void);
+		
+		void SetAcceleration(KM::Vector2& a);
+		
+		void ScaleAcceleration(const KM::Vector2& vec, F32 scale);
+
+		void SetAcceleration(F32 x, F32 y);
+		
+//=====Mass=====
+		real GetInverseMass(void) 
+		{ 
+			return _inverseMass; 
+		}
+
+		void SetInverseMass(real inverseMass) 
+		{ 
+			_inverseMass = inverseMass; 
+		}
 
 		real GetMass(void);
 
@@ -58,13 +90,12 @@ namespace KillerPhysics
 
 		bool HasFiniteMass(void);
 
-
 //==========================================================================================================================
 //
 //Particle functions
 //
 //==========================================================================================================================
-		void Update(void);
+		virtual void v_Update(void);
 
 		void ClearAccumulator(void);
 
@@ -75,13 +106,20 @@ namespace KillerPhysics
 		//Used to simulate Newtons first law
 		real _damping;
 
-		//=====Description=====
-		//Mass stored over 1 in order to take
-		//advantage of the equation -> a = 1/m * f
-		//which is a transformed version of -> f = m * a
-		//where f is a force applied to the particle. 
-		real _inverseMass;
-
+//==========================================================================================================================
+//Descriptions
+//
+//Mass stored over 1 in order to take advantage of the equation -> 
+// a = 1/m * f
+//which is a transformed version of -> 
+// f = m * a
+//where f is a force applied to the particle.
+//m is the mass
+//a is the accerelation applied to the mass
+//==========================================================================================================================
+		real 		_inverseMass;
+		KM::Vector2 _velocity;
+		KM::Vector2 _acceleration;
 		KM::Vector2 _forceAccum;
 	};
 }//End namespace
