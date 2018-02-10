@@ -24,10 +24,6 @@ Written by Maxwell Miller
 
 namespace KM = KillerMath;
 
-//=====STD includes=====
-#include <memory>
-using std::shared_ptr;
-
 //=====OGL includes=====
 #include <GL/gl.h>
 #include <GL/glu.h>

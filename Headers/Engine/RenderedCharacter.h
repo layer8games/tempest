@@ -15,8 +15,6 @@ Written by Maxwell Miller
 #include <Engine/Sprite.h>
 #include <Engine/Color.h>
 
-#include <memory>
-
 namespace KM = KillerMath;
 
 namespace KillerEngine
@@ -87,7 +85,7 @@ namespace KillerEngine
 			_height = h;
 		}
 
-		void SetSprite(std::shared_ptr<Sprite> sprite)
+		void SetSprite(shared_ptr<Sprite> sprite)
 		{
 			_sprite = sprite;
 		}

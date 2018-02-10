@@ -16,8 +16,6 @@ Written by Maxwell Miller
 //=====STL includes=====
 #include <map>
 using std::map;
-#include <memory>
-using std::shared_ptr;
 
 namespace KillerEngine 
 {

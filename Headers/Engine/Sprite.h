@@ -37,8 +37,8 @@ namespace KM = KillerMath;
 #include <GL/glu.h>
 #include <GL/wglext.h>
 
+//=====STL Includes=====
 #include <vector>
-#include <memory>
 
 namespace KillerEngine 
 {	
@@ -103,7 +103,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		Sprite& operator=(Sprite& S);
 
-		Sprite& operator=(std::shared_ptr<Sprite> S);
+		Sprite& operator=(shared_ptr<Sprite> S);
 		
 //==========================================================================================================================
 //

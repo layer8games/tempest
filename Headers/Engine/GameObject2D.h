@@ -37,10 +37,6 @@ Written by Maxwell Miller
 
 namespace KM = KillerMath;
 
-//===== STD includes =====
-#include <memory>
-using std::shared_ptr;
-
 namespace KillerEngine 
 {
 	

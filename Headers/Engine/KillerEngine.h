@@ -24,13 +24,6 @@ Written by Maxwell Miller
 #include <Engine/LevelManager.h>
 #include <Engine/TextureManager.h>
 
-//======Math includes=====
-//#include <Engine/RandomGen.h>
-
-//=====STL Includes=====
-#include <memory>
-using std::shared_ptr;
-
 namespace KM = KillerMath;
 
 namespace KillerEngine 

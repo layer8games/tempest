@@ -48,7 +48,7 @@ namespace KillerEngine
 		return *this;
 	}
 
-	Sprite& Sprite::operator=(std::shared_ptr<Sprite> S)
+	Sprite& Sprite::operator=(shared_ptr<Sprite> S)
 	{
 		_bottomTop = S->GetUVBottomTop();
 		_leftRight = S-> GetUVLeftRight();

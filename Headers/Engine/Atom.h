@@ -27,6 +27,7 @@ Written by Maxwell Miller
 //=====STD Includes=====
 #include <string>
 #include <memory>
+using std::shared_ptr;
 
 //=====Global usings=====
 //template<typename T>
@@ -77,5 +78,3 @@ inline F32 DegreeToRadian(F32 angle)
 {
 	return static_cast<F32>(angle * R_PI / 180.0f);
 }
-
-#endif

@@ -20,10 +20,6 @@ Written by Maxwell Miller
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
 
-//=====STL Includes=====
-#include <memory>
-using std::shared_ptr;
-
 //namespace KE = KillerEngine;
 
 namespace KillerMath 

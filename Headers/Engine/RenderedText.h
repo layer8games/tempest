@@ -25,7 +25,6 @@ namespace KM = KillerMath;
 
 //=====STL includes=====
 #include <vector>
-#include <memory>
 
 namespace KillerEngine
 {
@@ -109,7 +108,7 @@ namespace KillerEngine
 		KM::Vector2 _pos;
 		string _text;
 		Font   _font;
-		std::vector<std::shared_ptr<RenderedCharacter>> _characterList;
+		std::vector<shared_ptr<RenderedCharacter>> _characterList;
 		F32 _widthScaleFactor;
 		F32 _heightScaleFactor;
 		F32 _totalWidth;

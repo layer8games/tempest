@@ -48,8 +48,6 @@ namespace KM = KillerMath;
 
 //=====STL Includes=====
 #include <vector>
-#include <memory>
-using std::shared_ptr;
 
 namespace KillerEngine 
 {
