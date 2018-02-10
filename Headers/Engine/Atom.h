@@ -11,9 +11,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-
-#ifndef ATOM_H
-#define ATOM_H
+#pragma once
 
 //Includes. These will be the files that everything will need to have access to
 //=====Killer1 Engine Includes=====

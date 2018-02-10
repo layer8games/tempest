@@ -6,9 +6,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef VERTEX_H
-#define VERTEX_H
-
+#pragma once
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/Vector2.h>
@@ -46,4 +44,3 @@ namespace KillerEngine
 	 	}
 	 };
 }//end Namespace
-#endif
