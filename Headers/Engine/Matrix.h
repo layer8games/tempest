@@ -280,11 +280,6 @@ namespace KillerMath
 
 	private:
 		F32 _m[16];
-
-		F32 DegreeToRadian(F32 angle)
-		{
-			return static_cast<F32>(angle * R_PI / 180.0f);
-		}
 	};
 
 }//End namespace
