@@ -65,7 +65,19 @@ typedef float real;
 #define real_pow pow
 #define real_fmod fmod
 #define real_epsilon DBL_EPSILON
-#define R_PI 3.14159265358979
+const real R_PI = static_cast<real>(3.14159265358979);
 
+//==========================================================================================================================
+//Global Helper functions
+//==========================================================================================================================
+inline real RealSqr(real x)
+{
+ 	return x * x;
+}
+
+inline F32 DegreeToRadian(F32 angle)
+{
+	return static_cast<F32>(angle * R_PI / 180.0f);
+}
 
 #endif

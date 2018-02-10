@@ -162,9 +162,6 @@
     <ClInclude Include="..\..\Headers\Engine\RandomGen.h">
       <Filter>Components\KillerMath\RandomGen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\KillerEngine2D.h">
-      <Filter>Components\KillerEngine</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\WinProgram.h">
       <Filter>Components\ProgramWindows</Filter>
     </ClInclude>
@@ -246,6 +243,9 @@
     <ClInclude Include="..\..\Headers\Engine\RenderedText.h">
       <Filter>Components\RenderText</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\KillerEngine.h">
+      <Filter>Components\KillerEngine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -265,9 +265,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\RandomGen.cpp">
       <Filter>Components\KillerMath\RandomGen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\KillerEngine2D.cpp">
-      <Filter>Components\KillerEngine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\WinProgram.cpp">
       <Filter>Components\ProgramWindows</Filter>
@@ -340,6 +337,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\RenderedText.cpp">
       <Filter>Components\RenderText</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\KillerEngine.cpp">
+      <Filter>Components\KillerEngine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -38,7 +38,7 @@ namespace KM = KillerMath;
 namespace KillerEngine 
 {
 
-	class KillerEngine2D 
+	class KillerEngine 
 	{
 
 	public:
@@ -84,7 +84,7 @@ namespace KillerEngine
 //Singleton functions
 //
 //==========================================================================================================================
-		static shared_ptr<KillerEngine2D> Instance();		
+		static shared_ptr<KillerEngine> Instance();		
 
 	protected:
 //==========================================================================================================================
@@ -92,7 +92,7 @@ namespace KillerEngine
 //Constructor
 //
 //==========================================================================================================================		
-		KillerEngine2D(void);
+		KillerEngine(void);
 
 	private:
 //==========================================================================================================================
@@ -100,7 +100,7 @@ namespace KillerEngine
 //Members
 //
 //==========================================================================================================================
-		static shared_ptr<KillerEngine2D> _instance;
+		static shared_ptr<KillerEngine> _instance;
 
 	};
 
