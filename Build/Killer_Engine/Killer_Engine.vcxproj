@@ -153,7 +153,7 @@
     <ClInclude Include="..\..\Headers\Engine\Particle2DGravityForce.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle2DForceGenerator.h" />
     <ClInclude Include="..\..\Headers\Engine\GameObject2D.h" />
-    <ClInclude Include="..\..\Headers\Engine\KillerEngine2D.h" />
+    <ClInclude Include="..\..\Headers\Engine\KillerEngine.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle2D.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle3D.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle2DForceRegistry.h" />
@@ -201,7 +201,7 @@
     <ClCompile Include="..\..\Implementations\Particle2DBuoyantForce.cpp" />
     <ClCompile Include="..\..\Implementations\Particle2DDragForce.cpp" />
     <ClCompile Include="..\..\Implementations\Particle2DGravityForce.cpp" />
-    <ClCompile Include="..\..\Implementations\KillerEngine2D.cpp" />
+    <ClCompile Include="..\..\Implementations\KillerEngine.cpp" />
     <ClCompile Include="..\..\Implementations\Particle2D.cpp" />
     <ClCompile Include="..\..\Implementations\Particle3D.cpp" />
     <ClCompile Include="..\..\Implementations\Particle2DForceRegistry.cpp" />

@@ -1,4 +1,4 @@
-#include <Engine/KillerEngine2D.h>
+#include <Engine/KillerEngine.h>
 
 namespace KillerEngine 
 {
@@ -7,7 +7,7 @@ namespace KillerEngine
 //Constructor
 //
 //==========================================================================================================================		
-	KillerEngine2D::KillerEngine2D(void) 
+	KillerEngine::KillerEngine(void) 
 	{  }
 
 //==========================================================================================================================
@@ -18,7 +18,7 @@ namespace KillerEngine
 //=======================================================================================================
 //Init
 //=======================================================================================================
-	void KillerEngine2D::Init(const S32 width, const S32 height, const string title, const bool fullscreen) 
+	void KillerEngine::Init(const S32 width, const S32 height, const string title, const bool fullscreen) 
 	{
 		WinProgram::Instance()->Init(width, height, title, fullscreen);
 
@@ -30,7 +30,7 @@ namespace KillerEngine
 //==========================================================================================================================
 //ShutDown
 //==========================================================================================================================
-	void KillerEngine2D::ShutDown(void)
+	void KillerEngine::ShutDown(void)
 	{
 		LevelManager::Instance()->ShutDown();
 	}	
@@ -38,7 +38,7 @@ namespace KillerEngine
 //=======================================================================================================
 //Update
 //=======================================================================================================
-	void KillerEngine2D::Update(void) 
+	void KillerEngine::Update(void) 
 	{
 		WinProgram::Instance()->ProcessWndEvents();
 
@@ -54,7 +54,7 @@ namespace KillerEngine
 //=======================================================================================================
 //FunctionName
 //=======================================================================================================
-	void KillerEngine2D::Render(void) 
+	void KillerEngine::Render(void) 
 	{
 		LevelManager::Instance()->Render();
 
@@ -70,13 +70,13 @@ namespace KillerEngine
 //Singleton functions
 //
 //==========================================================================================================================
-	shared_ptr<KillerEngine2D> KillerEngine2D::_instance = NULL;
+	shared_ptr<KillerEngine> KillerEngine::_instance = NULL;
 
-	shared_ptr<KillerEngine2D> KillerEngine2D::Instance(void) 
+	shared_ptr<KillerEngine> KillerEngine::Instance(void) 
 	{
 		if(_instance == NULL) 
 		{ 
-			_instance = shared_ptr<KillerEngine2D>(new KillerEngine2D()); 
+			_instance = shared_ptr<KillerEngine>(new KillerEngine()); 
 		}
 
 		return _instance;
