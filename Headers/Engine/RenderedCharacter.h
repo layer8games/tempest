@@ -6,8 +6,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef RENDERED_CHARACTER_H
-#define RENDERED_CHARACTER_H
+#pragma once
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
@@ -125,4 +124,3 @@ namespace KillerEngine
 		static U32 _nextId;
 	};//end Class
 }//end Namespace
-#endif

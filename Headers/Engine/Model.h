@@ -23,8 +23,7 @@ of Layer8 Games.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef MODEL_H
-#define MODEL_H
+#pragma once
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
@@ -56,7 +55,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		Model(void);
 
-		Model(std::vector<F32> vertices);
+		explicit Model(std::vector<F32> vertices);
 
 		~Model(void);
 //==========================================================================================================================
@@ -125,4 +124,3 @@ namespace KillerEngine
 		
 	};//end Class
 }//end Namespace
-#endif

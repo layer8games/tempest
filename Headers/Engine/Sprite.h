@@ -19,16 +19,13 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-
-#ifndef SPRITE_H
-#define SPRITE_H
+#pragma once
 
 //=====Killer1 inlucdes=====
 #include <Engine/Atom.h>
 #include <Engine/Vector2.h>
 #include <Engine/Texture.hpp>
 #include <Engine/TextureManager.h>
-//#include <Engine/Renderer.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Color.h>
 #include <Engine/CharacterData.h>
@@ -141,5 +138,3 @@ namespace KillerEngine
 
 	};
 }//End namespace
-
-#endif

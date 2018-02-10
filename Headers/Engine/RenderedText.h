@@ -11,8 +11,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef RENDER_TEXT_H
-#define RENDER_TEXT_H
+#pragma once
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
@@ -40,7 +39,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		RenderedText(void);
 
-		RenderedText(Font& font);
+		explicit RenderedText(Font& font);
 		
 		RenderedText(string text, Font& font);
 
@@ -118,5 +117,3 @@ namespace KillerEngine
 		KM::Vector2 _center;	
 	};
 }
-
-#endif

@@ -19,8 +19,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ==========================================================================*/
-#ifndef SPRITE_BATCH_H
-#define SPRITE_BATCH_H
+#pragma once
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
@@ -152,5 +151,3 @@ namespace KillerEngine
 	};
 
 }//End namespace
-
-#endif

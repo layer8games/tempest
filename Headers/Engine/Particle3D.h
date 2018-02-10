@@ -10,8 +10,6 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef PARTICLE3D_H
-#define PARTICLE3D_H
 #pragma once
 
 //=====Physics includes=====
@@ -115,5 +113,3 @@ namespace KillerPhysics
 		real inverseMass;
 	};
 }//End namespace
-
-#endif

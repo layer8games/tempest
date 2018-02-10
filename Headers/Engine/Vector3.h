@@ -6,8 +6,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef VECTOR3_H
-#define VECTOR3_H
+#pragma once
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
@@ -178,4 +177,3 @@ namespace KillerMath
 		
 	};//end Class
 }//end Namespace
-#endif

@@ -8,8 +8,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef ERROR_MANAGER_H
-#define ERROR_MANAGER_H
+#pragma once
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
@@ -84,5 +83,3 @@ private:
 		map<U32, string>     _errorMessages;
 	};//End class
 }//End namespace
-
-#endif

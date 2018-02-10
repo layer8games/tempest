@@ -7,8 +7,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef LEVEL_H
-#define LEVEL_H
+#pragma once
 
 //===Killer1 includes===
 #include <Engine/Atom.h>
@@ -258,5 +257,3 @@ namespace KillerEngine
 		void _AddTile(TileData data);
 	};
 }//End namespace
-
-#endif

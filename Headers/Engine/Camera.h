@@ -12,8 +12,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ==========================================================================*/
-#ifndef CAMERA_H
-#define CAMERA_H
+#pragma once
 
 //=====Killer includes=====
 #include <Engine/Atom.h>
@@ -105,4 +104,3 @@ namespace KillerEngine
 		Camera(void);
 	};
 }//end namespace
-#endif

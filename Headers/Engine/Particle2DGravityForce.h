@@ -12,8 +12,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef GRAVITY_2D_H
-#define GRAVITY_2D_H
+#pragma once
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
@@ -50,5 +49,3 @@ namespace KillerPhysics
 		KM::Vector2 _gravityAcc;
 	};//end class
 }//end namespace
-
-#endif

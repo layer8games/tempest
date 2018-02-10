@@ -8,8 +8,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef ENVIRONMENT_OBJECT_H
-#define ENVIRONMENT_OBJECT_H
+#pragma once
 
 //===== Engine Includes =====
 #include <Engine/Atom.h>
@@ -50,4 +49,3 @@ namespace KillerEngine
 		
 	};//end Class
 }//end Namespace
-#endif

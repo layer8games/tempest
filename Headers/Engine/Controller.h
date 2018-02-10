@@ -22,9 +22,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef CONTROLLER_H
-#define CONTROLLER_H
-//#define DIRECTINPUT_VERSION 0x0800
+#pragma once
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
@@ -183,7 +181,7 @@ namespace KillerEngine
 //Constructor
 //
 //==========================================================================================================================
-		explicit Controller(void);		
+		Controller(void);		
 
 	private:
 		static shared_ptr<Controller>   	_instance;
@@ -197,5 +195,3 @@ namespace KillerEngine
 		KM::Matrix				_transform;
 	};
 }//End namespace
-
-#endif

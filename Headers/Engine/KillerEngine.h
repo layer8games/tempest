@@ -13,8 +13,6 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef KILLER_ENGINE_H
-#define KILLER_ENGINE_H
 #pragma once
 
 //=====Engine includes=====
@@ -105,5 +103,3 @@ namespace KillerEngine
 	};
 
 }//End namespace
-
-#endif

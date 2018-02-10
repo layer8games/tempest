@@ -25,8 +25,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef GAME_OBJECT2D_H
-#define GAME_OBJECT2D_H
+#pragma once
 
 //===== Engine Includes ======
 #include <Engine/Atom.h>
@@ -187,5 +186,3 @@ namespace KillerEngine
 	
 
 }//End namespace
-
-#endif

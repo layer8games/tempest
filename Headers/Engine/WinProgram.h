@@ -13,8 +13,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ===========================================================================*/
-#ifndef WIN_PROGRAM_H
-#define WIN_PROGRAM_H
+#pragma once
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
@@ -164,5 +163,3 @@ namespace KillerEngine
 
 	};	
 }//End namespace
-
-#endif

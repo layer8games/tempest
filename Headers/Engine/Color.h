@@ -13,9 +13,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-
-#ifndef COLOR_H
-#define COLOR_H
+#pragma once
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
@@ -123,4 +121,3 @@ namespace KillerEngine
 
 	};
 }//End namespace
-#endif

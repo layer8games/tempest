@@ -7,8 +7,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef QUATERNION_H
-#define QUATERNION_H
+#pragma once
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
@@ -27,7 +26,7 @@ namespace KillerMath
 //==========================================================================================================================
 		Quaternion(void);
 		
-		Quaternion(real value);
+		explicit Quaternion(real value);
 
 		Quaternion(real w, real x, real y, real z);
 
@@ -109,4 +108,3 @@ namespace KillerMath
 		real _q[4];
 	};//end Class
 }//end Namespace
-#endif

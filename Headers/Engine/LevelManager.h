@@ -12,9 +12,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-
-#ifndef LEVEL_MANAGER_H
-#define LEVEL_MANAGER_H
+#pragma once
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
@@ -103,5 +101,3 @@ namespace KillerEngine
 	};
 
 }//End namespace
-
-#endif

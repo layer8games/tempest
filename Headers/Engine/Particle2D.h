@@ -8,8 +8,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef PARTICLE2D_H
-#define PARTICLE2D_H
+#pragma once
 
 //=====KillerMath includes=====
 #include <Engine/Timer.h>
@@ -121,5 +120,3 @@ namespace KillerPhysics
 		KM::Vector2 _forceAccum;
 	};
 }//End namespace
-
-#endif
