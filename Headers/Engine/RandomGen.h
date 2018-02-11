@@ -47,9 +47,7 @@
 	Adopted and used by Killer Wave Entertainment
 	Maxwell Miller
 */
-
-#ifndef RANDOM_GEN_H
-#define RANDOM_GEN_H
+#pragma once
 
 //Includes
 #include <Engine/Atom.h>
@@ -103,5 +101,3 @@ namespace KillerMath
 	};
 
 }//end namespace
-
-#endif

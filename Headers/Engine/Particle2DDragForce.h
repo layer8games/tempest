@@ -11,8 +11,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef P_DRAG_2D_H
-#define P_DRAG_2D_H
+#pragma once
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
@@ -52,5 +51,3 @@ namespace KillerPhysics
 		real _k2;
 	};//end class
 }//end namespace
-
-#endif

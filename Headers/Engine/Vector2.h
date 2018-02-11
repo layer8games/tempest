@@ -27,8 +27,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef VECTOR2_H
-#define VECTOR2_H
+#pragma once
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
@@ -58,7 +57,7 @@ namespace KillerMath
 
 		Vector2(const Vector2& V);
 
-		explicit Vector2(const Vector3& V);
+		Vector2(const Vector3& V);
 
 		~Vector2(void);
 //==========================================================================================================================
@@ -182,4 +181,3 @@ namespace KillerMath
 
 	};//end Class
 }//end Namespace
-#endif

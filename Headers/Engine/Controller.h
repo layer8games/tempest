@@ -22,9 +22,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef CONTROLLER_H
-#define CONTROLLER_H
-//#define DIRECTINPUT_VERSION 0x0800
+#pragma once
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
@@ -33,10 +31,6 @@ Written by Maxwell Miller
 #include <Engine/Matrix.h>
 #include <Engine/Vector2.h>
 namespace KM = KillerMath;
-
-//=====STL Inlcudes=====
-#include <memory>
-using std::shared_ptr;
 
 //=====DirectInput includes=====
 //#include <dinput.h>
@@ -183,19 +177,17 @@ namespace KillerEngine
 //Constructor
 //
 //==========================================================================================================================
-		explicit Controller(void);		
+		Controller(void);		
 
 	private:
-		static shared_ptr<Controller>   	_instance;
-		static const int 						_totalKeys = 51;
+		static shared_ptr<Controller> _instance;
+		static const int 			  _totalKeys = 51;
 		
-		KeyStates   			_keyStates[_totalKeys];
-		bool 					_pastActiveKeys[_totalKeys];
-		bool					_curActiveKeys[_totalKeys];
-		KM::Vector2 			_leftClickCoordinates;
-		KM::Vector2				_rightClickCoordinates;
-		KM::Matrix				_transform;
+		KeyStates 		_keyStates[_totalKeys];
+		bool 			_pastActiveKeys[_totalKeys];
+		bool			_curActiveKeys[_totalKeys];
+		KM::Vector2 	_leftClickCoordinates;
+		KM::Vector2		_rightClickCoordinates;
+		KM::Matrix		_transform;
 	};
 }//End namespace
-
-#endif

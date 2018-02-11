@@ -6,8 +6,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef RENDERED_CHARACTER_H
-#define RENDERED_CHARACTER_H
+#pragma once
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
@@ -15,8 +14,6 @@ Written by Maxwell Miller
 #include <Engine/Vector2.h>
 #include <Engine/Sprite.h>
 #include <Engine/Color.h>
-
-#include <memory>
 
 namespace KM = KillerMath;
 
@@ -88,7 +85,7 @@ namespace KillerEngine
 			_height = h;
 		}
 
-		void SetSprite(std::shared_ptr<Sprite> sprite)
+		void SetSprite(shared_ptr<Sprite> sprite)
 		{
 			_sprite = sprite;
 		}
@@ -125,4 +122,3 @@ namespace KillerEngine
 		static U32 _nextId;
 	};//end Class
 }//end Namespace
-#endif

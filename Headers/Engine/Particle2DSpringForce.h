@@ -47,8 +47,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef SPRING2D_H
-#define SPRING2D_H
+#pragma once
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
@@ -108,4 +107,3 @@ namespace KillerPhysics
 		
 	};//end Class
 }//end Namespace
-#endif

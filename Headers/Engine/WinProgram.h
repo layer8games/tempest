@@ -13,8 +13,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ===========================================================================*/
-#ifndef WIN_PROGRAM_H
-#define WIN_PROGRAM_H
+#pragma once
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
@@ -24,10 +23,6 @@ Written by Maxwell Miller
 #include <Engine/Color.h>
 
 namespace KM = KillerMath; 
-
-//=====STL Includes=====
-#include <memory>
-using std::shared_ptr;
 
 //=====OGL includes=====
 #include <GL/gl.h>
@@ -164,5 +159,3 @@ namespace KillerEngine
 
 	};	
 }//End namespace
-
-#endif

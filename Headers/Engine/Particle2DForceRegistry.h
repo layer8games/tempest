@@ -12,8 +12,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef P_FORCE_REGISTRY_2D_H
-#define P_FORCE_REGISTRY_2D_H
+#pragma once
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
@@ -76,6 +75,4 @@ namespace KillerPhysics
 		typedef std::vector<ParticleForceRegistration> Registry;
 		Registry _registrations;
 	};//end class
-}//end namespace
-
-#endif
+}//end namespacef

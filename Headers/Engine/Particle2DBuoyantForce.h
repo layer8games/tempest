@@ -24,8 +24,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef BUOYANT_H
-#define BUOYANT_H
+#pragma once
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
@@ -79,4 +78,3 @@ namespace KillerPhysics
 		
 	};//end Class
 }//end Namespace
-#endif

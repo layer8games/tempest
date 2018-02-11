@@ -13,8 +13,6 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef KILLER_ENGINE_H
-#define KILLER_ENGINE_H
 #pragma once
 
 //=====Engine includes=====
@@ -26,19 +24,12 @@ Written by Maxwell Miller
 #include <Engine/LevelManager.h>
 #include <Engine/TextureManager.h>
 
-//======Math includes=====
-//#include <Engine/RandomGen.h>
-
-//=====STL Includes=====
-#include <memory>
-using std::shared_ptr;
-
 namespace KM = KillerMath;
 
 namespace KillerEngine 
 {
 
-	class KillerEngine2D 
+	class KillerEngine 
 	{
 
 	public:
@@ -84,7 +75,7 @@ namespace KillerEngine
 //Singleton functions
 //
 //==========================================================================================================================
-		static shared_ptr<KillerEngine2D> Instance();		
+		static shared_ptr<KillerEngine> Instance();		
 
 	protected:
 //==========================================================================================================================
@@ -92,7 +83,7 @@ namespace KillerEngine
 //Constructor
 //
 //==========================================================================================================================		
-		KillerEngine2D(void);
+		KillerEngine(void);
 
 	private:
 //==========================================================================================================================
@@ -100,10 +91,8 @@ namespace KillerEngine
 //Members
 //
 //==========================================================================================================================
-		static shared_ptr<KillerEngine2D> _instance;
+		static shared_ptr<KillerEngine> _instance;
 
 	};
 
 }//End namespace
-
-#endif

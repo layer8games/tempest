@@ -12,8 +12,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ==========================================================================*/
-#ifndef CAMERA_H
-#define CAMERA_H
+#pragma once
 
 //=====Killer includes=====
 #include <Engine/Atom.h>
@@ -24,10 +23,6 @@ Written by Maxwell Miller
 #include <Engine/Color.h>
 
 namespace KM = KillerMath;
-
-//=====STD includes=====
-#include <memory>
-using std::shared_ptr;
 
 //=====OGL includes=====
 #include <GL/gl.h>
@@ -105,4 +100,3 @@ namespace KillerEngine
 		Camera(void);
 	};
 }//end namespace
-#endif

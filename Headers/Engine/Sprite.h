@@ -19,16 +19,13 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-
-#ifndef SPRITE_H
-#define SPRITE_H
+#pragma once
 
 //=====Killer1 inlucdes=====
 #include <Engine/Atom.h>
 #include <Engine/Vector2.h>
 #include <Engine/Texture.hpp>
 #include <Engine/TextureManager.h>
-//#include <Engine/Renderer.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Color.h>
 #include <Engine/CharacterData.h>
@@ -40,8 +37,8 @@ namespace KM = KillerMath;
 #include <GL/glu.h>
 #include <GL/wglext.h>
 
+//=====STL Includes=====
 #include <vector>
-#include <memory>
 
 namespace KillerEngine 
 {	
@@ -106,7 +103,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		Sprite& operator=(Sprite& S);
 
-		Sprite& operator=(std::shared_ptr<Sprite> S);
+		Sprite& operator=(shared_ptr<Sprite> S);
 		
 //==========================================================================================================================
 //
@@ -141,5 +138,3 @@ namespace KillerEngine
 
 	};
 }//End namespace
-
-#endif

@@ -19,8 +19,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ==========================================================================*/
-#ifndef SPRITE_BATCH_H
-#define SPRITE_BATCH_H
+#pragma once
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
@@ -49,8 +48,6 @@ namespace KM = KillerMath;
 
 //=====STL Includes=====
 #include <vector>
-#include <memory>
-using std::shared_ptr;
 
 namespace KillerEngine 
 {
@@ -152,5 +149,3 @@ namespace KillerEngine
 	};
 
 }//End namespace
-
-#endif

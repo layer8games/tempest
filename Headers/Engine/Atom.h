@@ -11,9 +11,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-
-#ifndef ATOM_H
-#define ATOM_H
+#pragma once
 
 //Includes. These will be the files that everything will need to have access to
 //=====Killer1 Engine Includes=====
@@ -29,6 +27,7 @@ Written by Maxwell Miller
 //=====STD Includes=====
 #include <string>
 #include <memory>
+using std::shared_ptr;
 
 //=====Global usings=====
 //template<typename T>
@@ -65,7 +64,17 @@ typedef float real;
 #define real_pow pow
 #define real_fmod fmod
 #define real_epsilon DBL_EPSILON
-#define R_PI 3.14159265358979
+const real R_PI = static_cast<real>(3.14159265358979);
 
+//==========================================================================================================================
+//Global Helper functions
+//==========================================================================================================================
+inline real RealSqr(real x)
+{
+ 	return x * x;
+}
 
-#endif
+inline F32 DegreeToRadian(F32 angle)
+{
+	return static_cast<F32>(angle * R_PI / 180.0f);
+}

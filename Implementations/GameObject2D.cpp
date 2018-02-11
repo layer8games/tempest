@@ -9,10 +9,19 @@ namespace KillerEngine
 //Constructors
 //
 //==========================================================================================================================
-	GameObject2D::GameObject2D(void) : _ID(0), _active(true), _sprite(), _position(0), _velocity(0), _acceleration(0)
+	GameObject2D::GameObject2D(void) : _ID(0), _active(true), _sprite(), _position(0), _width(0.0f), _height(0.0f), _color()
 	{
 		SetID();
 	}
+
+	GameObject2D::GameObject2D(GameObject2D& obj) : _ID(obj.GetID()),
+													_active(obj.GetActive()),
+													_sprite(obj.GetSprite()),
+													_position(obj.GetPosition()),
+													_width(obj.GetWidth()),
+													_height(obj.GetHeight()),
+													_color(obj.GetColor())
+	{  }
 
 	GameObject2D::~GameObject2D(void)
 	{  }
@@ -114,11 +123,11 @@ namespace KillerEngine
 		_position = KM::Vector2(x, y);
 	}
 
-	void GameObject2D::ScalePosition(const KM::Vector2& v, F32 scale)
+	void GameObject2D::AddScaledPosition(const KM::Vector2& v, F32 scale)
 	{				
 		_position.AddScaledVector(v, scale);
 	}
-
+/*
 //=====Velocity=====
 	KM::Vector2& GameObject2D::GetVelocity(void) 
 	{ 
@@ -160,4 +169,5 @@ namespace KillerEngine
 	{
 	 	_acceleration = KM::Vector2(x, y); 
 	}
+*/
 }

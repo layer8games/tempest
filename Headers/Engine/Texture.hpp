@@ -10,8 +10,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 =========================================================================*/
-#ifndef TEXTURE_HPP
-#define TEXTURE_HPP
+#pragma once
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
@@ -114,6 +113,3 @@ namespace KillerEngine
 	};
 
 }
-
-
-#endif

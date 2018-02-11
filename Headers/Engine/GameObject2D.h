@@ -25,8 +25,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef GAME_OBJECT2D_H
-#define GAME_OBJECT2D_H
+#pragma once
 
 //===== Engine Includes ======
 #include <Engine/Atom.h>
@@ -37,9 +36,6 @@ Written by Maxwell Miller
 #include <Engine/Color.h>
 
 namespace KM = KillerMath;
-
-//===== STD includes =====
-#include <memory>
 
 namespace KillerEngine 
 {
@@ -53,6 +49,8 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 		GameObject2D(void);
+
+		GameObject2D(GameObject2D& obj);
 
 		virtual ~GameObject2D(void);
 
@@ -136,8 +134,8 @@ namespace KillerEngine
 		
 		void SetPosition(F32 x, F32 y);
 
-		void ScalePosition(const KM::Vector2& v, F32 scale);
-
+		void AddScaledPosition(const KM::Vector2& v, F32 scale);
+/*
 //=====Velocity=====
 		KM::Vector2& GetVelocity(void);
 		
@@ -155,6 +153,7 @@ namespace KillerEngine
 		void ScaleAcceleration(const KM::Vector2& vec, F32 scale);
 		
 		void SetAcceleration(F32 x, F32 y);
+*/
 
 	protected:
 //==========================================================================================================================
@@ -175,8 +174,8 @@ namespace KillerEngine
 		bool 	 				_active;
 		Sprite					_sprite;
 		KM::Vector2 			_position;
-		KM::Vector2				_velocity;
-		KM::Vector2				_acceleration;	
+		//KM::Vector2				_velocity;
+		//KM::Vector2				_acceleration;
 		F32						_width;
 		F32 					_height;
 		Color 					_color;
@@ -185,5 +184,3 @@ namespace KillerEngine
 	
 
 }//End namespace
-
-#endif

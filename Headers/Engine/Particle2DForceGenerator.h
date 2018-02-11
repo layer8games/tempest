@@ -12,8 +12,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef P_FORCE_GENERATOR_2D_H
-#define P_FORCE_GENERATOR_2D_H
+#pragma once
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
@@ -48,5 +47,3 @@ namespace KillerPhysics
 
 	};//end class
 }//end namespace
-
-#endif

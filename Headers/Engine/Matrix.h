@@ -59,8 +59,7 @@ of KillerWave or Layer8, or whatever I am called now.
 
 Written by Maxwell Miller
 =========================================================================*/
-#ifndef MATRIX_H
-#define MATRIX_H
+#pragma once
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
@@ -79,11 +78,9 @@ namespace KillerMath
 //==========================================================================================================================
 		Matrix(void) ;
 		
-		Matrix(F32 val);
+		explicit Matrix(F32 val);
 		
-		
-		Matrix(const F32 mSrc[16]);
-		
+		explicit Matrix(const F32 mSrc[16]);
 		
 		Matrix( F32 m00, F32 m01, F32 m02, F32 m03,
 				 F32 m10, F32 m11, F32 m12, F32 m13,
@@ -280,13 +277,6 @@ namespace KillerMath
 
 	private:
 		F32 _m[16];
-
-		F32 DegreeToRadian(F32 angle)
-		{
-			return static_cast<F32>(angle * R_PI / 180.0f);
-		}
 	};
 
 }//End namespace
-
-#endif

@@ -15,16 +15,10 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-
-#ifndef TIMER_H
-#define TIMER_H
+#pragma once
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
-
-//=====STL Includes=====
-#include <memory>
-using std::shared_ptr;
 
 //namespace KE = KillerEngine;
 
@@ -131,5 +125,3 @@ namespace KillerMath
 	};
 
 }//End namespace
-
-#endif

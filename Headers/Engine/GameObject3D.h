@@ -25,8 +25,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef GAME_OBJECT3D_H
-#define GAME_OBJECT3D_H
+#pragma once
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
@@ -48,7 +47,9 @@ namespace KillerEngine
 //==========================================================================================================================
 		GameObject3D(void);
 
-		~GameObject3D(void);
+		GameObject3D(GameObject3D& obj);
+
+		 virtual ~GameObject3D(void);
 
 //==========================================================================================================================
 //
@@ -57,7 +58,8 @@ namespace KillerEngine
 //==========================================================================================================================
 		virtual void v_Update(void)=0;
 
-		virtual void v_Render(void)=0;
+		virtual void v_Render(void)
+		{  }
 
 //==========================================================================================================================
 //
@@ -81,75 +83,41 @@ namespace KillerEngine
 //==========================================================================================================================
 //Active
 //==========================================================================================================================
-		const bool GetActive(void)
-		{
-			return _active;
-		}
+		bool GetActive(void);
 
-		void SetActive(void)
-		{
-			_active = true; 
-		}
+		void SetActive(void);
 
-		void SetInactive(void)
-		{
-			_active = false; 
-		}
+		void SetInactive(void);
 
 //==========================================================================================================================
 //Position
 //==========================================================================================================================		
-		const KM::Vector3& GetPosition(void)
-		{
-			return _position;
-		}
+		KM::Vector3& GetPosition(void);
 
-		void SetPosition(KM::Vector3& pos)
-		{
-			_position = pos; 
-		}
+		void SetPosition(KM::Vector3& pos);
+
+		void SetPosition(F32 x, F32 y, F32 z);
+
+		void AddScaledPosition(const KM::Vector3& v, F32 scale);
 
 //==========================================================================================================================
-//Vecocity [as heading]
-//==========================================================================================================================		
-		const KM::Vector3& GetVelocity(void)
-		{
-			return _velocity;
-		}
-
-		void SetVelocity(KM::Vector3& vel)
-		{
-			_velocity = vel;
-		}
-
+//Dimensions
 //==========================================================================================================================
-//Acceleration
-//==========================================================================================================================		
-		const KM::Vector3& GetAcceleration(void)
-		{
-			return _acceleration;
-		}
+		F32 GetWidth(void);
 
-		void SetAcceleration(const KM::Vector3& acc)
-		{
-			_acceleration = acc; 
-		}
-//==========================================================================================================================
-//Scale
-//==========================================================================================================================
-		F32 GetScale(void)
-		{
-			return _scale;
-		}
+		void SetWidth(F32 w);
 
-		void SetScale(F32 s)
-		{
-			_scale = s; 
-		}
+		F32 GetHeight(void);
+
+		void SetHeight(F32 h);
+
+		void SetDimensions(F32 w, F32 h);
 
 //==========================================================================================================================
 //Model
 //==========================================================================================================================
+/*
+	Not Implemented yet
 		Model& GetModel(void)
 		{
 			return _model;
@@ -159,6 +127,7 @@ namespace KillerEngine
 		{
 			_model = model;
 		}
+*/
 //==========================================================================================================================
 //
 //Functions
@@ -168,12 +137,11 @@ namespace KillerEngine
 		static U32 		_nextID;
 		U32		   		_ID;
 		bool	   		_active;
+		//Not Implemetned
+		//Model			_model;
 		KM::Vector3	   	_position;
-		KM::Vector3	   	_velocity;
-		KM::Vector3		_acceleration;
-		F32 			_scale;
-		Model			_model;
+		F32 			_width;
+		F32 			_height;
 
 	};//end Class
 }//end Namespace
-#endif

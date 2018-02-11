@@ -1,5 +1,4 @@
 #include <Engine/RenderedText.h>
-#include <iostream>
 
 namespace KillerEngine
 {
@@ -55,9 +54,9 @@ namespace KillerEngine
 
 		for(char& c : text)
 		{
-			std::shared_ptr<RenderedCharacter> character{new RenderedCharacter()};
+			shared_ptr<RenderedCharacter> character{new RenderedCharacter()};
 
-			std::shared_ptr<Sprite> sprite = _font.CreateCharacter(c);
+			shared_ptr<Sprite> sprite = _font.CreateCharacter(c);
 
 			CharacterData data = sprite->GetCharData();
 
@@ -111,7 +110,7 @@ namespace KillerEngine
 		F32 currentX = _pos.GetX();
 		F32 currentY = _pos.GetY();
 
-		for(std::shared_ptr<RenderedCharacter> character : _characterList)
+		for(shared_ptr<RenderedCharacter> character : _characterList)
 		{
 			CharacterData data = character->GetSprite().GetCharData();
 

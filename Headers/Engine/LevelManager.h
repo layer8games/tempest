@@ -12,9 +12,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-
-#ifndef LEVEL_MANAGER_H
-#define LEVEL_MANAGER_H
+#pragma once
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
@@ -24,7 +22,6 @@ Written by Maxwell Miller
 
 //=====STL includes=====
 #include <map>
-#include <memory>
 
 namespace KillerEngine 
 {
@@ -94,14 +91,12 @@ namespace KillerEngine
 		LevelManager(void) : _running(true) {  }
 
 	private:
-		std::map<U32, std::shared_ptr<Level>>   _levels;
-		std::shared_ptr<Level> 				   	_activeLevel;
-		U32 				   					_activeLevelID;
-		bool				   					_running;			
-		static LevelManager*     				_instance;
+		std::map<U32, shared_ptr<Level>> _levels;
+		shared_ptr<Level> 				 _activeLevel;
+		U32 				   			_activeLevelID;
+		bool				   			_running;			
+		static LevelManager*     		_instance;
 
 	};
 
 }//End namespace
-
-#endif

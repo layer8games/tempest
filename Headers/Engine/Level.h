@@ -7,8 +7,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef LEVEL_H
-#define LEVEL_H
+#pragma once
 
 //===Killer1 includes===
 #include <Engine/Atom.h>
@@ -31,7 +30,6 @@ namespace KM = KillerMath;
 #include <vector>
 #include <fstream>
 #include <algorithm>
-#include <memory>
 
 #include <TinyXML/tinyxml2.h>
 
@@ -133,7 +131,7 @@ namespace KillerEngine
 
 		void AddObject3DToLevel(GameObject3D* obj);
 
-		void AddTextToLevel(std::shared_ptr<RenderedText> text);
+		void AddTextToLevel(shared_ptr<RenderedText> text);
 		
 		void Remove2DObjectFromLevel(U32 id);
 
@@ -249,14 +247,12 @@ namespace KillerEngine
 		S32   _mapLeftBorder;
 		Color _bgColor;
 		U32 _ID;
-		std::map<U32, std::shared_ptr<GameObject2D>> _2DWorldObjects;
-		std::map<U32, std::shared_ptr<GameObject3D>> _3DWorldObjects;
-		std::vector<std::shared_ptr<RenderedText>>	 _textList;
+		std::map<U32, shared_ptr<GameObject2D>> _2DWorldObjects;
+		std::map<U32, shared_ptr<GameObject3D>> _3DWorldObjects;
+		std::vector<shared_ptr<RenderedText>>	 _textList;
 		std::map<U32, TileData> _2DTileData;
 		//SpriteBatch _batch;
 
 		void _AddTile(TileData data);
 	};
 }//End namespace
-
-#endif

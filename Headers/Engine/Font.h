@@ -9,8 +9,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
-#ifndef FONT_H
-#define FONT_H
+#pragma once
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
@@ -45,7 +44,7 @@ namespace KillerEngine
 //==========================================================================================================================		
 		Font(void);
 
-		Font(U32 tID);
+		explicit Font(U32 tID);
 
 //==========================================================================================================================
 //
@@ -136,5 +135,3 @@ namespace KillerEngine
 							  	  string yoffset, string xadvance);
 	};
 }
-
-#endif

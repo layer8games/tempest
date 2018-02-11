@@ -12,9 +12,7 @@ of KillerWave.
 
 Written by Maxwell Miller
 =========================================================================*/
-#ifndef TEXTURE_MANAGER_H
-#define TEXTURE_MANAGER_H
-
+#pragma once
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
@@ -23,9 +21,6 @@ Written by Maxwell Miller
 //=====STL includes=====
 #include <map>
 using std::map;
-#include <memory>
-using std::shared_ptr;
-
 
 //=====SOIL includes=====
 #include <SOIL/SOIL.h>
@@ -95,5 +90,3 @@ namespace KillerEngine
 
 	};
 }//End namespace
-
-#endif
