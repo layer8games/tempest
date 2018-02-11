@@ -50,6 +50,8 @@ namespace KillerEngine
 //==========================================================================================================================
 		GameObject2D(void);
 
+		GameObject2D(GameObject2D& obj);
+
 		virtual ~GameObject2D(void);
 
 		//void v_ShutDown(void);		

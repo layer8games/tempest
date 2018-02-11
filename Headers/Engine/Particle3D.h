@@ -14,6 +14,7 @@ Written by Maxwell Miller
 
 //=====Physics includes=====
 #include <Engine/Atom.h>
+#include <Engine/GameObject3D.h>
 #include <Engine/Vector3.h>
 
 //=====KillerMath includes=====
@@ -23,11 +24,12 @@ Written by Maxwell Miller
 //=====STL and other includes=====
 #include <cassert>
 
+namespace KE = KillerEngine;
 namespace KM = KillerMath;
 
 namespace KillerPhysics 
 {
-	class Particle3D
+	class Particle3D : public KE::GameObject3D
 	{
 	public:
 //==========================================================================================================================
@@ -44,72 +46,71 @@ namespace KillerPhysics
 //Accessors
 //
 //==========================================================================================================================
-		KM::Vector3& GetPosition(void) 
-		{ 
-			return position; 
-		}
+//==========================================================================================================================
+//Velocity
+//==========================================================================================================================
+		KM::Vector3& GetVelocity(void);
 		
-		void  SetPosition(KM::Vector3& pos) 
-		{ 
-			position = pos; 
-		}
+		void  SetVelocity(KM::Vector3& vel);
 
-		KM::Vector3& GetVelocity(void) 
-		{ 
-			return velocity; 
-		}
-		
-		void  SetVelocity(KM::Vector3& vel) 
-		{ 
-			velocity = vel; 
-		}
+		void SetVelocity(F32 x, F32 y, F32 z);
 
-		KM::Vector3& GetAcceleration(void) 
-		{ 
-			return acceleration; 
-		}
+		void AddScaledVelocity(const KM::Vector3 v, F32 scale);
 
-		void SetAcceleration(KM::Vector3& acc) 
-		{ 
-			acceleration = acc; 
-		}
+//==========================================================================================================================
+//Acceleration
+//==========================================================================================================================		
+		KM::Vector3& GetAcceleration(void);
 
-		real GetDamping(void) 
-		{ 
-			return damping; 
-		}
+		void SetAcceleration(KM::Vector3& acc);
 
-		void SetDamping(real damp) 
-		{ 
-			damping = damp; 
-		}
+		void SetAcceleration(F32 x, F32 y, F32 z);
 
-		real GetInverseMass(void) 
-		{ 
-			return damping; 
-		}
+		void AddScaledAcceleration(const KM::Vector3& v, F32 scale);
 
-		void SetInverseMass(real mass) 
-		{ 
-			inverseMass = mass; 
-		}
+//==========================================================================================================================
+//Damping
+//==========================================================================================================================		
+		real GetDamping(void);
+
+		void SetDamping(real damp);
+
+//==========================================================================================================================
+//Mass
+//==========================================================================================================================		
+		real GetInverseMass(void);
+
+		void SetInverseMass(real mass);
 
 		real GetMass(void);
 
 		void SetMass(const real mass);
+
+		bool HasFiniteMass(void);
 
 //==========================================================================================================================
 //
 //Particle functions
 //
 //==========================================================================================================================
-		void Update(void);
+		virtual void v_Update(void);
 
-	protected:
-		KM::Vector3 position;
-		KM::Vector3 velocity;
-		KM::Vector3 acceleration;
-		real damping;
-		real inverseMass;
+	private:
+//==========================================================================================================================
+//Descriptions
+//
+//Mass stored over 1 in order to take advantage of the equation -> 
+// a = 1/m * f
+//which is a transformed version of -> 
+// f = m * a
+//where f is a force applied to the particle.
+//m is the mass
+//a is the accerelation applied to the mass
+//==========================================================================================================================
+		KM::Vector3 _velocity;
+		KM::Vector3 _acceleration;
+		real 		_inverseMass;
+		real 		_damping;
+		KM::Vector3 _forceAccum;
 	};
 }//End namespace

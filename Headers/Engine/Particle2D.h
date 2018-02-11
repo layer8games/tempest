@@ -71,15 +71,9 @@ namespace KillerPhysics
 		void AddScaledAcceleration(const KM::Vector2& vec, F32 scale);
 		
 //=====Mass=====
-		real GetInverseMass(void) 
-		{ 
-			return _inverseMass; 
-		}
+		real GetInverseMass(void);
 
-		void SetInverseMass(real inverseMass) 
-		{ 
-			_inverseMass = inverseMass; 
-		}
+		void SetInverseMass(real inverseMass);
 
 		real GetMass(void);
 
@@ -99,10 +93,6 @@ namespace KillerPhysics
 		void AddForce(const KM::Vector2& force);
 
 	private:
-		//=====Description=====
-		//Used to simulate Newtons first law
-		real _damping;
-
 //==========================================================================================================================
 //Descriptions
 //
@@ -114,9 +104,10 @@ namespace KillerPhysics
 //m is the mass
 //a is the accerelation applied to the mass
 //==========================================================================================================================
-		real 		_inverseMass;
 		KM::Vector2 _velocity;
 		KM::Vector2 _acceleration;
+		real 		_inverseMass;
+		real 		_damping;
 		KM::Vector2 _forceAccum;
 	};
 }//End namespace

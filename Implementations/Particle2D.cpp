@@ -8,7 +8,7 @@ namespace KillerPhysics
 //Constructors
 //
 //==========================================================================================================================	
-	Particle2D::Particle2D(void) : _damping(0.0f), _inverseMass(0.0f), _velocity(0.0f), _acceleration(0.0f), _forceAccum()
+	Particle2D::Particle2D(void) : _velocity(0.0f), _acceleration(0.0f), _inverseMass(0.0f), _damping(0.999f), _forceAccum()
 	{  }
 
 	Particle2D::~Particle2D(void) 
@@ -61,6 +61,16 @@ namespace KillerPhysics
 		_acceleration.AddScaledVector(vec, scale);
 	}
 //=====Mass=====	
+	real Particle2D::GetInverseMass(void)
+	{
+		return _inverseMass;
+	}
+
+	void Particle2D::SetInverseMass(real inverseMass)
+	{
+		_inverseMass = inverseMass;
+	}
+
 	real Particle2D::GetMass(void)
 	{
 		if(_inverseMass == 0) 
