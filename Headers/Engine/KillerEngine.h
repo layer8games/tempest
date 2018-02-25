@@ -22,7 +22,7 @@ Written by Maxwell Miller
 #include <Engine/WinProgram.h>
 #include <Engine/Timer.h>
 #include <Engine/LevelManager.h>
-#include <Engine/TextureManager.h>
+//#include <Engine/TextureManager.h>
 
 namespace KM = KillerMath;
 
@@ -54,7 +54,7 @@ namespace KillerEngine
 
 		void LoadTexture(const string path, const U32 id, const S32 width, const S32 height) 
 		{ 
-			TextureManager::Instance()->LoadTexture(path, id, width, height); 
+			//TextureManager::Instance()->LoadTexture(path, id, width, height); 
 		}
 		
 		void AddLevelToManager(Level* level) 

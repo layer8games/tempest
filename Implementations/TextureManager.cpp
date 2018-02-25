@@ -13,14 +13,6 @@ namespace KillerEngine
 
 	TextureManager::~TextureManager(void)
 	{
-		map<U32, Texture>::iterator i;
-		
-		for(i = _loadedTextures.begin(); i != _loadedTextures.end(); ++i) 
-		{
-			GLuint texture = i->second.GetID();
-			glDeleteTextures(1, &texture);
-		}
-
 		_loadedTextures.clear();
 	}
 
@@ -50,7 +42,7 @@ namespace KillerEngine
 	{ 
 		_currentTextureID = tID; 
 		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, _loadedTextures[tID].GetID());
+		glBindTexture(GL_TEXTURE_2D, _loadedTextures[tID]->GetID());
 	}
 
 //====================================================================================================
@@ -62,7 +54,7 @@ namespace KillerEngine
 	{
 		if(_loadedTextures.find(id) != _loadedTextures.end())
 		{
-			std::cout << "Texture already loaded " << path << '\n';
+			ErrorManager::Instance()->SetError(EC_TextureManager, "Texture already loaded " + path);
 			return;
 		}
 
@@ -96,14 +88,27 @@ namespace KillerEngine
 						 );
 			glGenerateMipmap(GL_TEXTURE_2D);
 
-			Texture* newTexture = new Texture(glTexture, width, height);
+			shared_ptr<Texture> newTexture{new Texture(glTexture, width, height)};
 
-			_loadedTextures.insert(std::map<U32, Texture*>::value_type(id, newTexture));
+			_loadedTextures.insert(std::map<U32, shared_ptr<Texture>>::value_type(id, newTexture));
 
 			SOIL_free_image_data(image);
 			glBindTexture(GL_TEXTURE_2D, 0);
 
 		}
+	}
+
+	shared_ptr<Texture> TextureManager::GetTexture(U32 id)
+	{ 
+		if(_loadedTextures.find(id) == _loadedTextures.end())
+		{
+			ErrorManager::Instance()->SetError(EC_KillerEngine, "TextureManager: Unable to find texture: " + std::to_string(id));
+			return nullptr;
+		}
+		else
+		{
+			return _loadedTextures.find(id)->second; 	
+		}		
 	}
 
 }//End namespace

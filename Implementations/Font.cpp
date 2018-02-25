@@ -113,18 +113,18 @@ namespace KillerEngine
 
 		U32 id = static_cast<U32>(character);
 
-		Texture& texture = TextureManager::Instance()->GetTexture(_textureID);
+		shared_ptr<Texture> texture = TextureManager::Instance()->GetTexture(_textureID);
 
 		CharacterData data = _fontCharData[id];
 
-		std::shared_ptr<Sprite> sprite{new Sprite()};
+		shared_ptr<Sprite> sprite{new Sprite()};
 
 		F32 charWidth  	  = static_cast<F32>(data.width);
 		F32 charHeight 	  = static_cast<F32>(data.height);
 		F32 charX 	 	  = static_cast<F32>(data.x);
 		F32 charY 	 	  = static_cast<F32>(data.y);
-		F32 textureWidth  = static_cast<F32>(texture.GetWidth());
-		F32 textureHeight = static_cast<F32>(texture.GetHeight());
+		F32 textureWidth  = static_cast<F32>(texture->GetWidth());
+		F32 textureHeight = static_cast<F32>(texture->GetHeight());
 
 		F32 rightCoord   = (charX / textureWidth);
 		F32 topCoord    = charY / textureHeight;
