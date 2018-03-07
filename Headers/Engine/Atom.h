@@ -17,7 +17,7 @@ Written by Maxwell Miller
 //=====Killer1 Engine Includes=====
 
 //=====Windows Includes=====
-#include <windows.h>
+#include <Windows.h>
 
 //=====OGL Includes=====
 #include <GL/gl3w.h>
@@ -34,16 +34,16 @@ using std::shared_ptr;
 //using shared_prt = std::shared_prt<T>;
 
 //Signed Typedefs
-typedef signed __int8   S8;
-typedef signed __int16  S16;
-typedef signed __int32  S32;
-typedef signed __int64  S64;
+typedef int8_t   S8;
+typedef int16_t  S16;
+typedef int32_t  S32;
+typedef int64_t  S64;
 
 //Unsigned Typedefs
-typedef unsigned __int8  U8;
-typedef unsigned __int16 U16;
-typedef unsigned __int32 U32;
-typedef unsigned __int64 U64;
+typedef uint8_t  U8;
+typedef uint16_t U16;
+typedef uint32_t U32;
+typedef uint64_t U64;
 
 //Floating types
 typedef float  F32;

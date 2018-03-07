@@ -185,6 +185,43 @@ namespace KillerMath
 		return *this; 
 	}
 
+//===== Comparison =====
+	bool Vector2::operator>(Vector2& vec)
+	{
+		return 	_x > vec.GetX() &&
+				_y > vec.GetY();
+	}
+
+	bool Vector2::operator<(Vector2& vec)
+	{
+		return 	_x < vec.GetX() &&
+				_y < vec.GetY();
+	}
+
+	bool Vector2::operator>=(Vector2& vec)
+	{
+		return 	_x >= vec.GetX() &&
+				_y >= vec.GetY();
+	}
+
+	bool Vector2::operator<=(Vector2& vec)
+	{
+		return 	_x <= vec.GetX() &&
+				_y <= vec.GetY();
+	}
+
+	bool Vector2::operator==(Vector2& vec)
+	{
+		return 	_x == vec.GetX() &&
+				_y == vec.GetY();
+	}
+
+	bool Vector2::operator!=(Vector2& vec)
+	{
+		return 	_x != vec.GetX() &&
+				_y != vec.GetY();
+	}
+
 //==========================================================================================================================
 //
 //Vector Functions

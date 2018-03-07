@@ -54,7 +54,10 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-		U32 GetCurrentTextureID(void) { return _currentTextureID; }
+		U32 GetCurrentTextureID(void) 
+		{ 
+			return _currentTextureID; 
+		}
 		
 		void SetCurrentTextureID(U32 textureId); 
 
@@ -66,11 +69,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		void LoadTexture(string path, U32 id, S32 width, S32 height);
 		
-		Texture& GetTexture(U32 id) 
-		{ 
-			return _loadedTextures.find(id)->second; 
-		}
-
+		shared_ptr<Texture> GetTexture(U32 id);
 
 	protected:
 //==========================================================================================================================
@@ -86,7 +85,7 @@ namespace KillerEngine
 		static shared_ptr<TextureManager> _instance;
 
 		U32 			  _currentTextureID;
-		map<U32, Texture> _loadedTextures;
+		map<U32, shared_ptr<Texture>> _loadedTextures;
 
 	};
 }//End namespace

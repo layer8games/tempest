@@ -147,6 +147,19 @@ namespace KillerMath
 
 	Vector2& operator/=(F32 val);
 
+//===== Comparison =====
+	bool operator>(Vector2& vec);
+
+	bool operator<(Vector2& vec);
+
+	bool operator>=(Vector2& vec);
+
+	bool operator<=(Vector2& vec);
+
+	bool operator==(Vector2& vec);
+
+	bool operator!=(Vector2& vec);
+
 //==========================================================================================================================
 //
 //Vector Functions

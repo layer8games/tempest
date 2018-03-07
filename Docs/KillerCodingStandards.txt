@@ -2,14 +2,14 @@ Coding Standards:
 
 1. Comments.
 
-All comments should be places as far to the left margin as they can be. Even if the relavant code is in the middle of the column, by placing all the comments to the furthermost left it allows for the comments to be easier to find in the IDE.
+All comments should be places as far to the left margin as they can be. Even if the relevant code is in the middle of the column, by placing all the comments to the furthermost left it allows for the comments to be easier to find in the IDE.
  
-Header comment. Begin each header file with a comment section which explains the use of the functions and any interface or design details that would be relevavant to understand in order for the someone new to know what choices you had made. 
+Header comment. Begin each header file with a comment section which explains the use of the functions and any interface or design details that would be relevant to understand in order for the someone new to know what choices you had made. 
 
 example: 
 
 /*========================================================================
-Explaination of interface and design here
+Explanation of interface and design here
 
 credit here:
 This is not free to use, and cannot be used without the express permission
@@ -28,7 +28,7 @@ example:
 //
 //==========================================================================================================================
 
-Function name comments. These are to lable the individual functions located in the files for ease of access. If the functions are in a header, or if they are grouped small enough that adding this comment would double the number of lines, then don't use it. It's meant more for very large files that many functions (ie the Renderer really needs this). 
+Function name comments. These are to label the individual functions located in the files for ease of access. If the functions are in a header, or if they are grouped small enough that adding this comment would double the number of lines, then don't use it. It's meant more for very large files that many functions (ie the Renderer really needs this). 
 
 example
 
@@ -42,7 +42,7 @@ These are used to make small, notation comments in the code for ease of use. Thi
 
 example
 
-//=====Comment=====
+//===== Comment =====
 
 End of scope comment.
 
@@ -50,6 +50,16 @@ This is used where the brackets may be misleading, and it could be difficult to 
 
 example
 {
+	if {
+		while() 
+		{
+
+		}
+	}
+	else if()
+	{
+
+	}
 };//end of scope
 
 
@@ -64,8 +74,7 @@ Explaination of interface and design here
 
 credit here
 ========================================================================/*
-#ifndef FILE_H 
-#define FILE_H
+#pragma once
 
 //=====lib includes=====
 #include <lib.h>
@@ -75,12 +84,14 @@ using lib::function;
 #include <stl_lib>
 using std::lib;
 
-namespace ProjectNamespace {
+namespace ProjectNamespace 
+{
 
 //=====Foreward class definition=====
 	class Forward;
 
-	class NewClass {
+	class NewClass 
+	{
 private:
 //==========================================================================================================================
 //
@@ -126,8 +137,6 @@ public:
 	};
 }//End namepace
 
-#endif
-
 3. Implementation (.cpp files). 
 
 All implemnations should have only a single include that links them to their header file. The header is where all other includes should be found. This is because implemantions are meant to be edited with the header open for reference. They should be implmenated in the same order they are delcared for ease of access and to make them more standard. The example would be for the header listed in item 2's example.
@@ -136,21 +145,42 @@ example:
 
 #include <file.h>
 
-namespace ProjectNamespace {
+namespace ProjectNamespace 
+{
+//==========================================================================================================================
+//
+//Constructor Example
+//
+//==========================================================================================================================
+	Class::Class() : thing(), thing2(), things3()
+	{  }
+
+	or 
+
+	Class::Class() : reallyLongThing(),
+					 otherReallyLongThing(),
+					 anotherReallyLongthing()
+	{
+		do something;
+	}
+
 //==========================================================================================================================
 //
 //Function group1
 //
 //==========================================================================================================================
-	void NewClass::functions1() {
+	void NewClass::functions1() 
+	{
 		implementation;
 	}
 
-	void NewClass::functions2() {
+	void NewClass::functions2() 
+	{
 		implementation;
 	}
 
-	void NewClass::functions2() {
+	void NewClass::functions2() 
+	{
 		implementation;
 	}
 
@@ -159,15 +189,18 @@ namespace ProjectNamespace {
 //Function group2
 //
 //==========================================================================================================================
-	void NewClass::functions4() {
+	void NewClass::functions4() 
+	{
 		implementation;
 	}
 
-	void NewClass::functions5() {
+	void NewClass::functions5() 
+	{
 		implementation;
 	}
 
-	void NewClass::functions6() {
+	void NewClass::functions6() 
+	{
 		implementation;
 	}
 
@@ -178,11 +211,7 @@ namespace ProjectNamespace {
 
 As has likely been clear throughout these example, I prefer the k and r style bracing over other types of bracing. There are some exceptions to this, when for readability it makes more sense to use a different style. Here are some exceptions that I would approve of. 
 
-One line code:
-
-if(condition) { return value; }
-
-Multiline declaration of variable:
+Multi-line declaration of variable:
 
 **this example is from the actual matrix class: 
 
@@ -214,14 +243,30 @@ Matrix4<T>
 
 There are several types of names, and I will cover how each should be handled. All names should prefer camel case to under scoring. 
 
-public or local variable names: simpleVariable1;
+public or local variable names use camel case:
 
-private variable names: _simpleNamedVariable2;
+simpleVariable1;
 
-public function names: FunctionName1(void); FunctionName2(int);
+private variable names use camel case proceeded with an _ (under score) 
 
-private function names: _FunctionName3(void);
+_simpleNamedVariable2;
 
-Classes are named like public functions. 
+public function names use camel Case starting with a cap: 
 
-virtual function names: vFunctionName4(void);
+FunctionName1(void);
+FunctionName2(int numberOfThings);
+
+private function names are the same, but proceeded with an _ (underscore): 
+
+_FunctionName3(void);
+
+virtual function names also use camel case, proceeded with a v_: 
+
+v_FunctionName4(void);
+
+Classes are named like public Functions.
+
+class NewMathClass
+{
+	
+} ;
