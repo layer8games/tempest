@@ -139,6 +139,19 @@ namespace KillerMath
 
 	Vector3& operator/=(F32 val);
 
+//===== Comparison =====
+	bool operator>(Vector3& vec);
+
+	bool operator<(Vector3& vec);
+
+	bool operator>=(Vector3& vec);
+
+	bool operator<=(Vector3& vec);
+
+	bool operator==(Vector3& vec);
+
+	bool operator!=(Vector3& vec);
+
 //==========================================================================================================================
 //
 //Math Helper functions
