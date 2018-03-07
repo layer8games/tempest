@@ -136,6 +136,9 @@
     <Filter Include="Components\RenderCharacter">
       <UniqueIdentifier>{22c25915-f8de-4ccd-b648-edfd4f055e14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Docs">
+      <UniqueIdentifier>{9ffff7b1-2917-4ec9-81fc-202787d11f86}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -341,5 +344,10 @@
     <ClCompile Include="..\..\Implementations\KillerEngine.cpp">
       <Filter>Components\KillerEngine</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\Docs\KillerCodingStandards.txt">
+      <Filter>Docs</Filter>
+    </Text>
   </ItemGroup>
 </Project>
