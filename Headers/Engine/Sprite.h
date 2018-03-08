@@ -117,17 +117,16 @@ namespace KillerEngine
 		//static void StaticDraw(S32 count, std::vector<F32> vertices, std::vector<F32> colors, std::vector<F32> dimensions, std::vector<F32> bottomTop, std::vector<F32>leftRight);
 
 	private:
-		KM::Vector2 	_bottomTop;
-		KM::Vector2 	_leftRight;
-		U32				_textureID;
-		CharacterData   _characterData;
+		KM::Vector2 		 _bottomTop;
+		KM::Vector2 		 _leftRight;
+		U32					 _textureID;
+		CharacterData   	 _characterData;
 
 		const static U32	 NUM_VOA = 1;
 		const static U32	 NUM_BUFFERS = 4;
 		GLuint   			 _vertexArrayObject[NUM_VOA];
 		GLuint 				 _buffers[5];
-
-		GLuint 		 _shaderProgram;
+		GLuint 		 		 _shaderProgram;
 
 //==========================================================================================================================
 //
