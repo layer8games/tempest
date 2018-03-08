@@ -30,7 +30,7 @@ Written by Maxwell Miller
 //===== Engine Includes ======
 #include <Engine/Atom.h>
 #include <Engine/Sprite.h>
-#include <Engine/Texture.hpp>
+#include <Engine/Texture.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Vector2.h>
 #include <Engine/Color.h>

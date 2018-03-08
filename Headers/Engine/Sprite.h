@@ -24,7 +24,7 @@ Written by Maxwell Miller
 //=====Killer1 inlucdes=====
 #include <Engine/Atom.h>
 #include <Engine/Vector2.h>
-#include <Engine/Texture.hpp>
+#include <Engine/Texture.h>
 #include <Engine/TextureManager.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Color.h>

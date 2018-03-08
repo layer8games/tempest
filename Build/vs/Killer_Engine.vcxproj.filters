@@ -153,9 +153,6 @@
     <ClInclude Include="..\..\Headers\Engine\Font.h">
       <Filter>Components\Font</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Texture.hpp">
-      <Filter>Components\Texture</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\TextureManager.h">
       <Filter>Components\TextureManager</Filter>
     </ClInclude>
@@ -248,6 +245,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\KillerEngine.h">
       <Filter>Components\KillerEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Texture.h">
+      <Filter>Components\Texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -343,6 +343,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\KillerEngine.cpp">
       <Filter>Components\KillerEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Texture.cpp">
+      <Filter>Components\Texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
