@@ -29,11 +29,6 @@ namespace KillerEngine
 
 	class Texture 
 	{
-	private:	
-		GLuint _id;
-		S32    _width;
-		S32    _height;
-
 	public:	
 //==========================================================================================================================
 //
@@ -76,6 +71,11 @@ namespace KillerEngine
 
 		Texture& operator=(Texture* T);
 
+	private:	
+		GLuint _id;
+		S32    _width;
+		S32    _height;
+		
 	};
 
 }

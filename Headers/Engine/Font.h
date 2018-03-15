@@ -29,11 +29,6 @@ Written by Maxwell Miller
 
 namespace KillerEngine
 {
-	
-
-	//Forward declare CharSprite
-	class CharSprite;
-
 	class Font
 	{
 	public:

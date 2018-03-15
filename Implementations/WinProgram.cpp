@@ -314,6 +314,8 @@ namespace KillerEngine
                 return Keys::U;
             case 'V':
                 return Keys::V;
+            case 'W':
+                return Keys::W;
             case 'X':
                 return Keys::X;
             case 'Y':
