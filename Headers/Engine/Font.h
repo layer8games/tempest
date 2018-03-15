@@ -13,7 +13,7 @@ Written by Maxwell Miller
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
-#include <Engine/Texture.hpp>
+#include <Engine/Texture.h>
 #include <Engine/Sprite.h>
 #include <Engine/CharacterData.h>
 #include <Engine/TextureManager.h>
@@ -29,11 +29,6 @@ Written by Maxwell Miller
 
 namespace KillerEngine
 {
-	
-
-	//Forward declare CharSprite
-	class CharSprite;
-
 	class Font
 	{
 	public:

@@ -172,7 +172,7 @@
     <ClInclude Include="..\..\Headers\Engine\RandomGen.h" />
     <ClInclude Include="..\..\Headers\Engine\RenderedText.h" />
     <ClInclude Include="..\..\Headers\Engine\Sprite.h" />
-    <ClInclude Include="..\..\Headers\Engine\Texture.hpp" />
+    <ClInclude Include="..\..\Headers\Engine\Texture.h" />
     <ClInclude Include="..\..\Headers\Engine\TextureManager.h" />
     <ClInclude Include="..\..\Headers\Engine\Timer.h" />
     <ClInclude Include="..\..\Headers\Engine\Level.h" />
@@ -190,6 +190,10 @@
     <ClCompile Include="..\..\Implementations\Font.cpp" />
     <ClCompile Include="..\..\Implementations\GameObject2D.cpp" />
     <ClCompile Include="..\..\Implementations\GameObject3D.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Texture.cpp">
       <SubType>
       </SubType>
     </ClCompile>

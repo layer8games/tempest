@@ -16,7 +16,7 @@ Written by Maxwell Miller
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
-#include <Engine/Texture.hpp>
+#include <Engine/Texture.h>
 
 //=====STL includes=====
 #include <map>

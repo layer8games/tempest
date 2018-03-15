@@ -29,87 +29,53 @@ namespace KillerEngine
 
 	class Texture 
 	{
-	private:	
-		GLuint _id;
-		S32    _width;
-		S32    _height;
-
 	public:	
 //==========================================================================================================================
 //
 //Constructors
 //
 //==========================================================================================================================		
-		Texture(void) : _id(0), _width(0), _height(0) 
-		{  }
+		Texture(void);
 
-		Texture(GLuint id, S32 width, S32 height) : _id(id), _width(width), _height(height) 
-		{  }
+		Texture(GLuint id, S32 width, S32 height);
 
-		Texture(const Texture& T) : _id(T.GetID()), _width(T.GetWidth()), _height(T.GetHeight()) 
-		{  }
+		Texture(const Texture& T);
 
-		Texture(const Texture* T) : _id(T->GetID()), _width(T->GetWidth()), _height(T->GetHeight()) 
-		{  }
+		Texture(const Texture* T);
+
+		~Texture(void);
 
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================
-		GLuint GetID(void) const 
-		{ 
-			return _id; 
-		}
+		GLuint GetID(void) const;
 
-		void SetId(GLuint id) 
-		{ 
-			_id = id; 
-		}
+		void SetID(GLuint id);
 
-		S32 GetWidth(void) const 
-		{ 
-			return _width; 
-		}
+		S32 GetWidth(void) const;
 
-		void SetWidth(S32 w) 
-		{ 
-			_width = w; 
-		}
+		void SetWidth(S32 w);
 
-		S32 GetHeight(void) const 
-		{ 
-			return _height; 
-		}
+		S32 GetHeight(void) const;
 
-		void SetHeight(S32 h) 
-		{ 
-			_height = h; 
-		}
+		void SetHeight(S32 h);
 
 //==========================================================================================================================
 //
 //Operator Overload
 //
 //==========================================================================================================================
-		Texture& operator=(const Texture& T) 
-		{
-			_id     = T.GetID();
-			_width  = T.GetWidth();
-			_height = T.GetHeight();
+		Texture& operator=(const Texture& T);
 
-			return *this;
-		}
+		Texture& operator=(Texture* T);
 
-		Texture& operator=(Texture* T)
-		{
-			_id     = T->GetID();
-			_width  = T->GetWidth();
-			_height = T->GetHeight();
-
-			return *this;
-		}
-
+	private:	
+		GLuint _id;
+		S32    _width;
+		S32    _height;
+		
 	};
 
 }

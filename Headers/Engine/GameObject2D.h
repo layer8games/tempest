@@ -30,7 +30,7 @@ Written by Maxwell Miller
 //===== Engine Includes ======
 #include <Engine/Atom.h>
 #include <Engine/Sprite.h>
-#include <Engine/Texture.hpp>
+#include <Engine/Texture.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Vector2.h>
 #include <Engine/Color.h>
@@ -64,9 +64,7 @@ namespace KillerEngine
 		virtual void v_Update(void)=0;
 		
 		virtual void v_Render(void)
-		{
-			//_sprite.Render(_position, _width, _height, _color);
-		}
+		{  }
 
 //==========================================================================================================================
 //
@@ -85,20 +83,16 @@ namespace KillerEngine
 			++_nextID;
 		}
 
-//=====Dimensions=====
-//Settings are virtual so that each GameObject
-//Can make sure to update its sprite, if it has one
-//with a default version in the case of no sprite.
-		
-		virtual const F32 GetWidth(void);
+//=====Dimensions=====		
+		const F32 GetWidth(void);
 
-		virtual void SetWidth(F32 w);
+		void SetWidth(F32 w);
 
-		virtual const F32 GetHeight(void);
+		const F32 GetHeight(void);
 
-		virtual void SetHeight(F32 h);
+		void SetHeight(F32 h);
 
-		virtual void SetDimensions(F32 w, F32 h);
+		void SetDimensions(F32 w, F32 h);
 
 //=====Color=====
 		const Color& GetColor(void);
@@ -135,38 +129,6 @@ namespace KillerEngine
 		void SetPosition(F32 x, F32 y);
 
 		void AddScaledPosition(const KM::Vector2& v, F32 scale);
-/*
-//=====Velocity=====
-		KM::Vector2& GetVelocity(void);
-		
-		void SetVelocity(KM::Vector2& v);
-
-		void ScaleVelocity(const KM::Vector2& vec, F32 scale);
-		
-		void SetVelocity(F32 x, F32 y);
-
-//=====Acceleration=====
-		KM::Vector2& GetAcceleration(void);
-		
-		void SetAcceleration(KM::Vector2& a);
-		
-		void ScaleAcceleration(const KM::Vector2& vec, F32 scale);
-		
-		void SetAcceleration(F32 x, F32 y);
-*/
-
-	protected:
-//==========================================================================================================================
-//
-//GameObject Functions
-//
-//==========================================================================================================================
-//=====Sprite Factories=====
-//==SqrSprite==
-		//void CreateSqrSprite(KM::Vector2& pos, Color& col, Texture& texture);
-		
-		//void CreateSqrSprite(void);
-
 
 	private:	
 		static U32 				_nextID;

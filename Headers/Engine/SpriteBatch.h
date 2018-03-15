@@ -26,7 +26,7 @@ Written by Maxwell Miller
 #include <Engine/Sprite.h>
 #include <Engine/WinProgram.h>
 #include <Engine/TextureManager.h>
-#include <Engine/Texture.hpp>
+#include <Engine/Texture.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Camera.h>
 #include <Engine/Matrix.h>
