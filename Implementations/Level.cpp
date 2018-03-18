@@ -83,23 +83,26 @@ namespace KillerEngine
 	{
 		for(auto i = _2DWorldObjects.begin(); i!=_2DWorldObjects.end(); ++i) 
 		{
-			//const Sprite sprite = i->second->GetSprite();
-			if(i->second->GetSprite().GetShader() != SpriteBatch::Instance()->GetShader())
+			if(i->second->GetActive())
 			{
-				SpriteBatch::Instance()->SetShader(i->second->GetSprite().GetShader());
+				//const Sprite sprite = i->second->GetSprite();
+				if(i->second->GetSprite().GetShader() != SpriteBatch::Instance()->GetShader())
+				{
+					SpriteBatch::Instance()->SetShader(i->second->GetSprite().GetShader());
+				}
+				//i->second->v_Render();
+				//_batch.AddToBatch(i->second->GetSprite(), i->second.GetWidth(), i->second.GetHeight());
+				SpriteBatch::Instance()->AddToBatch
+				(
+					i->second->GetPosition(), 
+					i->second->GetWidth(), 
+					i->second->GetHeight(), 
+					i->second->GetColor(),
+					i->second->GetTextureID(),
+					i->second->GetSprite().GetUVBottomTop(),
+					i->second->GetSprite().GetUVLeftRight()
+				);
 			}
-			//i->second->v_Render();
-			//_batch.AddToBatch(i->second->GetSprite(), i->second.GetWidth(), i->second.GetHeight());
-			SpriteBatch::Instance()->AddToBatch
-			(
-				i->second->GetPosition(), 
-				i->second->GetWidth(), 
-				i->second->GetHeight(), 
-				i->second->GetColor(),
-				i->second->GetTextureID(),
-				i->second->GetSprite().GetUVBottomTop(),
-				i->second->GetSprite().GetUVLeftRight()
-			);
 		}
 
 		for(std::shared_ptr<RenderedText> text : _textList)

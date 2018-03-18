@@ -1,5 +1,4 @@
 #include <Engine/Font.h>
-#include <iostream>
 
 namespace KillerEngine
 {
