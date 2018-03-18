@@ -93,7 +93,7 @@ namespace KillerEngine
 		} 
 		else
 		{
-			ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist.");	
+			ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
 		} 
 	}
 

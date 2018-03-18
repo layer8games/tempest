@@ -117,8 +117,6 @@ namespace KillerEngine
 			character->SetPosition(KM::Vector2( currentX + static_cast<F32>(data.xoffset), currentY - static_cast<F32>(data.yoffset) ));
 
 			currentX += static_cast<F32>(data.xadvance);// + static_cast<F32>(data.xoffset);
-
-			std::cout << "RENDEREDTEXT: data.xadvance=" << data.xadvance << "\ncurrentx=" << currentX <<  "\n";
 		}
 	}
 
