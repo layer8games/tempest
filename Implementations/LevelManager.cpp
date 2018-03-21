@@ -64,6 +64,7 @@ namespace KillerEngine
 //==========================================================================================================================
 	void LevelManager::Update(void) 
 	{
+		_activeLevel->UpdateObjects();
 		_activeLevel->v_Update();
 	}
 

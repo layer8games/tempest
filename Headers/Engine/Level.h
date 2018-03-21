@@ -138,6 +138,8 @@ namespace KillerEngine
 		void Remove3DObjectFromLevel(U32 id);
 
 		void RenderObjects(void);
+
+		void UpdateObjects(void);
 		
 		void SetBackgroundColor(Color& c) 
 		{ 
