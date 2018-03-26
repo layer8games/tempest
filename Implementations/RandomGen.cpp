@@ -50,23 +50,24 @@ namespace KillerMath
 {
 	//#define MAXINT (std::numeric_limits<int>::max)()
 
-	RandomGen* RandomGen::_instance = NULL;
+	shared_ptr<RandomGen> RandomGen::_instance = NULL;
 
 	RandomGen* RandomGen::Instance(void) 
 	{
-		if(_instance == NULL) { _instance = new RandomGen(); }
+		if(_instance == NULL) 
+		{ 
+			_instance = shared_ptr<RandomGen>(new RandomGen()); 
+		}
 
 		return _instance;
 	}
 
 	RandomGen::RandomGen(void)
-	{
-		rseed = 1;
-		//safe0 start	
-		rseed_sp = 0;
-		mti = CMATH_N + 1;
-		//safe0 end
-	}
+	:
+	rseed(std::chrono::system_clock::now()),
+	rseed_sp(0),
+	mti(CMATH_N + 1)
+	{  }
 
 	//Returns a number from 0 to n (excluding n)
 	U32 RandomGen::Random(U32 n)

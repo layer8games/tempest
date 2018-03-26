@@ -136,8 +136,6 @@ namespace KillerEngine
 		bool 	 				_active;
 		Sprite					_sprite;
 		KM::Vector2 			_position;
-		//KM::Vector2				_velocity;
-		//KM::Vector2				_acceleration;
 		F32						_width;
 		F32 					_height;
 		Color 					_color;

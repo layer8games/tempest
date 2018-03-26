@@ -152,17 +152,12 @@ namespace ProjectNamespace
 //Constructor Example
 //
 //==========================================================================================================================
-	Class::Class() : thing(), thing2(), things3()
+	Class::Class()
+	: 
+	thing(), 
+	thing2(), 
+	things3()
 	{  }
-
-	or 
-
-	Class::Class() : reallyLongThing(),
-					 otherReallyLongThing(),
-					 anotherReallyLongthing()
-	{
-		do something;
-	}
 
 //==========================================================================================================================
 //

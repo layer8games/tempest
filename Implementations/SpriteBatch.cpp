@@ -82,7 +82,10 @@ namespace KillerEngine
 	void SpriteBatch::AddToBatch(KM::Vector2& pos, F32 w, F32 h, const Color& c)
 	{
 
-		if(_currentBatchSize + 1 >= _maxBatchSize) { Draw(); }
+		if(_currentBatchSize + 1 >= _maxBatchSize) 
+		{ 
+			Draw(); 
+		}
 
 		_vertices.push_back(pos.GetX());
 		_vertices.push_back(pos.GetY());
@@ -102,7 +105,7 @@ namespace KillerEngine
 
 	void SpriteBatch::AddToBatch(KM::Vector2& pos, F32 w, F32 h, const Color& c, U32 textureID)
 	{
-		if(TextureManager::Instance()->GetCurrentTextureID() != textureID)
+		if(textureID != 0 && textureID != TextureManager::Instance()->GetCurrentTextureID())
 		{
 			Draw();
 			TextureManager::Instance()->SetCurrentTextureID(textureID);
@@ -117,7 +120,7 @@ namespace KillerEngine
 
 	void SpriteBatch::AddToBatch(KM::Vector2& pos, F32 w, F32 h, const Color& c, U32 textureID, KM::Vector2& verticalLimit, KM::Vector2& horizontalLimit)
 	{
-		if(TextureManager::Instance()->GetCurrentTextureID() != textureID)
+		if(textureID != 0 && TextureManager::Instance()->GetCurrentTextureID() != textureID)
 		{
 			Draw();
 			TextureManager::Instance()->SetCurrentTextureID(textureID);

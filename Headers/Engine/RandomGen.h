@@ -44,7 +44,7 @@
 ////
 ////========================================================================
 /*
-	Adopted and used by Killer Wave Entertainment
+	Adopted and used by Layer 8 Games
 	Maxwell Miller
 */
 #pragma once
@@ -55,6 +55,8 @@
 #include <vector>
 #include <time.h>
 #include <limits>
+#include <chrono>
+
 
 namespace KillerMath
 {
@@ -81,10 +83,10 @@ namespace KillerMath
 		U64 mt[CMATH_N]; //the array for the state vector
 		S32 mti; //mti == N+1 means mt[N] is not initialized
 
-		static RandomGen* _instance;
+		static shared_ptr<RandomGen> _instance;
 
 	public:
-		static RandomGen* Instance(void);
+		static shared_ptr<RandomGen> Instance(void);
 		
 		U32	Random(U32 n);
 		

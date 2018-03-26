@@ -39,7 +39,7 @@ namespace KillerEngine
     {
         if(_instance == NULL) 
         { 
-            _instance = shared_ptr<WinProgram>(new WinProgram);
+            _instance = shared_ptr<WinProgram>(new WinProgram());
         }
         return _instance;
     }

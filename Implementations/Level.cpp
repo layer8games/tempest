@@ -92,6 +92,7 @@ namespace KillerEngine
 				}
 				//i->second->v_Render();
 				//_batch.AddToBatch(i->second->GetSprite(), i->second.GetWidth(), i->second.GetHeight());
+				std::cout << i->second->GetTextureID() << "\n";
 				SpriteBatch::Instance()->AddToBatch
 				(
 					i->second->GetPosition(), 
