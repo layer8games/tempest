@@ -37,7 +37,7 @@ namespace KillerPhysics
 		magnitude = real_abs(magnitude - _restLength) * _springConstant;
 
 //=====Calculate final force=====
-		force.Normalize();
+		force.Normalise();
 		force *= static_cast<F32>(-magnitude);
 
 		particle->AddForce(force);

@@ -55,8 +55,6 @@
 #include <vector>
 #include <time.h>
 #include <limits>
-#include <chrono>
-
 
 namespace KillerMath
 {
@@ -88,18 +86,17 @@ namespace KillerMath
 	public:
 		static shared_ptr<RandomGen> Instance(void);
 		
-		U32	Random(U32 n);
+		RandomGen(void);
+
+		U32	RandomU32(U32 n);
 		
-		F32	Random(void);
+		F32	RandomF32(void);
 		
 		void SetRandomSeed(U32 n);
 		
 		U32	 GetRandomSeed(void);
 		
 		void Randomize(void);
-
-	private:
-		RandomGen(void);
 	};
 
 }//end namespace

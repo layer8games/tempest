@@ -174,7 +174,7 @@ namespace KillerMath
 
 	F32 SqrMagnitude(void);
 
-	void Normalize(void);
+	void Normalise(void);
 
 	void MakeBasis(Vector3& A, Vector3& B, Vector3& C);
 

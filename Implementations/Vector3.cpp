@@ -275,7 +275,7 @@ namespace KillerMath
 		return _x * _x + _y * _y + _z * _z;
 	}
 
-	void Vector3::Normalize(void)
+	void Vector3::Normalise(void)
 	{
 		F32 mag = Magnitude();
 
@@ -292,7 +292,7 @@ namespace KillerMath
 		if(C.SqrMagnitude() == 0.0) 
 			return;
 
-		C.Normalize();
+		C.Normalise();
 
 		B = C.CrossProduct(A);
 	}

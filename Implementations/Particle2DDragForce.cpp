@@ -26,7 +26,7 @@ namespace KillerPhysics
 		real dragCoeff = force.Magnitude();
 		dragCoeff = _k1 * dragCoeff  + _k2 * dragCoeff * dragCoeff;
 
-		force.Normalize();
+		force.Normalise();
 		force *= -dragCoeff;
 
 		particle.AddForce(force);

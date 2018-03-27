@@ -102,7 +102,7 @@ namespace KillerMath
 
 		Quaternion Opposite(void);
 
-		void Normalize(void);
+		void Normalise(void);
 		
 	private:
 		real _q[4];

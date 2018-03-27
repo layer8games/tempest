@@ -171,7 +171,7 @@ namespace KillerMath
 
 	F32 SqrMagnitude(void);
 
-	void Normalize(void);
+	void Normalise(void);
 
 	void Reset(void);
 

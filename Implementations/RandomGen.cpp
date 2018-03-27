@@ -52,7 +52,7 @@ namespace KillerMath
 
 	shared_ptr<RandomGen> RandomGen::_instance = NULL;
 
-	RandomGen* RandomGen::Instance(void) 
+	shared_ptr<RandomGen> RandomGen::Instance(void) 
 	{
 		if(_instance == NULL) 
 		{ 
@@ -64,7 +64,7 @@ namespace KillerMath
 
 	RandomGen::RandomGen(void)
 	:
-	rseed(std::chrono::system_clock::now()),
+	rseed(0),
 	rseed_sp(0),
 	mti(CMATH_N + 1)
 	{  }
