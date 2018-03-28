@@ -70,9 +70,6 @@
     <Filter Include="Components\KillerMath\LinearAlgebra\Vector\3D">
       <UniqueIdentifier>{e21d2ed8-880a-4167-9193-42978d82d57d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\KillerMath\RandomGen">
-      <UniqueIdentifier>{1f3a7113-0f33-4da8-9c3d-2d1d584a3c1f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\KillerMath\Timer">
       <UniqueIdentifier>{d95a6a48-7e2e-4741-b39d-f6a1c763e14d}</UniqueIdentifier>
     </Filter>
@@ -138,6 +135,9 @@
     </Filter>
     <Filter Include="Docs">
       <UniqueIdentifier>{9ffff7b1-2917-4ec9-81fc-202787d11f86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerMath\Random">
+      <UniqueIdentifier>{1f3a7113-0f33-4da8-9c3d-2d1d584a3c1f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -247,10 +247,7 @@
       <Filter>Components\Texture</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Random.h">
-      <Filter>Components\KillerMath\RandomGen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\RandomGen.h">
-      <Filter>Components\KillerMath\RandomGen</Filter>
+      <Filter>Components\KillerMath\Random</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -348,10 +345,7 @@
       <Filter>Components\Texture</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Random.cpp">
-      <Filter>Components\KillerMath\RandomGen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\RandomGen.cpp">
-      <Filter>Components\KillerMath\RandomGen</Filter>
+      <Filter>Components\KillerMath\Random</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

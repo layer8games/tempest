@@ -1,153 +1,83 @@
 /*========================================================================
-The MIT License
+Random number generator. It is based on the c++11 STL random, using the
+mersene twist algorithm. 
 
-Copyright (c) 2003-2009 Ian Millington
+Has an optional singleton. Unlike most singletons in the engine, Random is
+allowed to create other instances. The singleton is there for convience only
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+RandomInt -> Returns a 32 bit signed it between min and max.
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+RandomLong -> Returns a 64 bit signed it between min and max. 
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+RandomFloat -> Returns a random 32 bit floating point between min and max
+
+RandomDouble -> Returns a 64 bit floating point between min and max
+
+RandomVector2 -> Returns a Vector2 with x and y between min and max
+
+RandomVector3 -> Returns a Vector3 with x, y and z between min and max
+
+RandomQuaternion -> Returns a Quaternion with x,y,z and w between min and max
 
 This is not free to use, and cannot be used without the express permission
-of Layer 8 Games.
+of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
 #pragma once
 
-//=====Engine Includes=====
+//===== Engine Includes =====
 #include <Engine/Atom.h>
+#include <Engine/Vector2.h>
 #include <Engine/Vector3.h>
 #include <Engine/Quaternion.h>
 
+//===== STL includes =====
+#include <random>
+#include <functional>
+#include <ctime>
+
+
 namespace KillerMath
 {
-    /**
-     * Keeps track of one random stream: i.e. a seed and its output.
-     * This is used to get random numbers. Rather than a funcion, this
-     * allows there to be several streams of repeatable random numbers
-     * at the same time. Uses the RandRotB algorithm.
-     */
-    class Random
-    {
-    public:
-    	/**
-    	 * left bitwise rotation
-    	 */
+	class Random
+	{
+	public:
+//==========================================================================================================================
+//
+//Constructors	 	
+//
+//==========================================================================================================================
+		Random(void);
 
-    	unsigned rotl(unsigned n, unsigned r);
-    	/**
-    	 * right bitwise rotation
-    	 */
-    	unsigned rotr(unsigned n, unsigned r);
+		~Random(void);
 
-        /**
-         * Creates a new random number stream with a seed based on
-         * timing data.
-         */
-        Random();
+//==========================================================================================================================
+//Singleton Option
+//==========================================================================================================================
+		static shared_ptr<Random> Instance(void);
+//==========================================================================================================================
+//
+//Functions
+//
+//==========================================================================================================================
+		S32 RandomInt(S32 min, S32 max);
 
-        /**
-         * Creates a new random stream with the given seed.
-         */
-        explicit Random(unsigned seed);
+		S64 RandomLong(S64 min, S64 max);
 
-        static shared_ptr<Random> Instance(void);
+		F32 RandomFloat(F32 min, F32 max);
 
-        /**
-         * Sets the seed value for the random stream.
-         */
-        void Seed(unsigned seed);
+		F64 RandomDouble(F64 min, F64 max);
 
-        /**
-         * Returns the next random bitstring from the stream. This is
-         * the fastest method.
-         */
-        unsigned RandomBits();
+		Vector2 RandomVector2(F32 min, F32 max);
 
-        /**
-         * Returns a random floating point number between 0 and 1.
-         */
-        real RandomReal();
+		Vector3 RandomVector3(F32 min, F32 max);
 
-        /**
-         * Returns a random floating point number between 0 and scale.
-         */
-        real RandomReal(real scale);
+		Quaternion RandomQuaternion(F32 min, F32 max);
 
-        /**
-         * Returns a random floating point number between min and max.
-         */
-        real RandomReal(real min, real max);
-
-        /**
-         * Returns a random integer less than the given value.
-         */
-        unsigned RandomInt(unsigned max);
-
-        /**
-         * Returns a random binomially distributed number between -scale
-         * and +scale.
-         */
-        real RandomBinomial(real scale);
-
-        /**
-         * Returns a random vector where each component is binomially
-         * distributed in the range (-scale to scale) [mean = 0.0f].
-         */
-        Vector3& RandomVector3(real scale);
-
-        Vector2& RandomVector2(real scale);
-
-        /**
-         * Returns a random vector where each component is binomially
-         * distributed in the range (-scale to scale) [mean = 0.0f],
-         * where scale is the corresponding component of the given
-         * vector.
-         */
-        Vector3& RandomVector3(const Vector3& scale);
-
-        Vector2& RandomVector2(const Vector2& scale);
-
-        /**
-         * Returns a random vector in the cube defined by the given
-         * minimum and maximum vectors. The probability is uniformly
-         * distributed in this region.
-         */
-        Vector3& RandomVector3(const Vector3& min, const Vector3& max);
-
-        Vector2& RandomVector2(const Vector2& min, const Vector2& max);
-
-        /**
-         * Returns a random vector where each component is binomially
-         * distributed in the range (-scale to scale) [mean = 0.0f],
-         * except the y coordinate which is zero.
-         */
-        Vector3& RandomXZVector3(real scale);
-
-        /**
-         * Returns a random orientation (i.e. normalized) quaternion.
-         */
-        Quaternion& RandomQuaternion();
-
-    private:
-        // Internal mechanics
-        int p1, p2;
-        unsigned buffer[17];
-        static shared_ptr<Random> _instance;
-    };
-
-} // namespace KillerMath
+	private:
+		std::mt19937 	  		  _generator;
+		static shared_ptr<Random> _instance;
+		
+	};//end Class
+}//end Namespace
