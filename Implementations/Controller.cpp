@@ -1,8 +1,27 @@
 #include <Engine/Controller.h>
 
-namespace KillerEngine 
+using namespace KillerEngine;
+
+//==========================================================================================================================
+//
+//Constructor
+//
+//==========================================================================================================================
+Controller::Controller(void) 
+: 
+_transform()
 {
-	
+	for(int i = 0; i < _totalKeys; ++i)
+	{
+		_curActiveKeys[i] = false;//KeyStates::KEY_RELEASED;
+		_pastActiveKeys[i] = false; //KeyStates::KEY_RELEASED;
+	}
+//	_transform = 
+}
+
+Controller::~Controller(void)
+{  }
+
 //==========================================================================================================================
 //
 //Singleton Functions
@@ -11,96 +30,76 @@ namespace KillerEngine
 //=======================================================================================================
 //Instance
 //=======================================================================================================
-	shared_ptr<Controller> Controller::_instance = NULL;
+shared_ptr<Controller> Controller::_instance = NULL;
 
-	shared_ptr<Controller> Controller::Instance(void) 
-	{
-		if (_instance == NULL) 
-		{ 
-			_instance = shared_ptr<Controller>(new Controller()); 
-		}
-		return _instance;
-	}		
-	
+shared_ptr<Controller> Controller::Instance(void) 
+{
+	if (_instance == NULL) 
+	{ 
+		_instance = shared_ptr<Controller>(new Controller()); 
+	}
+	return _instance;
+}		
+
 //==========================================================================================================================
 //
 //Controller Functions
 //
 //==========================================================================================================================
-	void Controller::Update(void)
+void Controller::Update(void)
+{
+	for(int i = 0; i < _totalKeys; ++i)
 	{
-		for(int i = 0; i < _totalKeys; ++i)
-		{
-			//check if key was just pressed
-			if(!_pastActiveKeys[i] && _curActiveKeys[i])
-				_keyStates[i] = KeyStates::KEY_DOWN;
+		//check if key was just pressed
+		if(!_pastActiveKeys[i] && _curActiveKeys[i])
+			_keyStates[i] = KeyStates::KEY_DOWN;
 
-			//check if key is being held
-			if(_pastActiveKeys[i] && _curActiveKeys[i])
-				_keyStates[i] = KeyStates::KEY_HELD;
+		//check if key is being held
+		if(_pastActiveKeys[i] && _curActiveKeys[i])
+			_keyStates[i] = KeyStates::KEY_HELD;
 
-			//check if key has been release this frame
-			if(_pastActiveKeys[i] && !_curActiveKeys[i])
-				_keyStates[i] = KeyStates::KEY_UP;
+		//check if key has been release this frame
+		if(_pastActiveKeys[i] && !_curActiveKeys[i])
+			_keyStates[i] = KeyStates::KEY_UP;
 
-			//check if key is not being pressed
-			if(!_pastActiveKeys[i] && !_curActiveKeys[i] )
-				_keyStates[i] = KeyStates::KEY_RELEASED;
+		//check if key is not being pressed
+		if(!_pastActiveKeys[i] && !_curActiveKeys[i] )
+			_keyStates[i] = KeyStates::KEY_RELEASED;
 
-			//Save current state for next frame
-			_pastActiveKeys[i] = _curActiveKeys[i];
-		}
+		//Save current state for next frame
+		_pastActiveKeys[i] = _curActiveKeys[i];
 	}
+}
 
 //=======================================================================================================
 //KeyState Accessors
 //=======================================================================================================
-	bool Controller::GetKeyDown(Keys k)
-	{
-		if(_keyStates[k] == KeyStates::KEY_DOWN) { return true; }
-		else { return false; }
-	}
+bool Controller::GetKeyDown(Keys k)
+{
+	if(_keyStates[k] == KeyStates::KEY_DOWN) { return true; }
+	else { return false; }
+}
 
-	bool Controller::GetKeyHeld(Keys k)
-	{
-		if(_keyStates[k] == KeyStates::KEY_HELD) { return true; }
-		else { return false; }
-	}
+bool Controller::GetKeyHeld(Keys k)
+{
+	if(_keyStates[k] == KeyStates::KEY_HELD) { return true; }
+	else { return false; }
+}
 
-	bool Controller::GetKeyUp(Keys k)
-	{
-		if(_keyStates[k] == KeyStates::KEY_UP) { return true; }
-		else { return false; }
-	}
+bool Controller::GetKeyUp(Keys k)
+{
+	if(_keyStates[k] == KeyStates::KEY_UP) { return true; }
+	else { return false; }
+}
 
-	bool Controller::GetKeyReleased(Keys k)
-	{
-		if(_keyStates[k] == KeyStates::KEY_RELEASED) { return true; }
-		else { return false; }
-	}
+bool Controller::GetKeyReleased(Keys k)
+{
+	if(_keyStates[k] == KeyStates::KEY_RELEASED) { return true; }
+	else { return false; }
+}
 
-	void Controller::LeftMouseClick(KM::Vector2 coord)
-	{
-		_leftClickCoordinates.SetX(coord.GetX());// - (F32)WinProgram::Instance()->GetWidth() * -1.0f);
-		_leftClickCoordinates.SetY( -( coord.GetY() - static_cast<F32>( WinProgram::Instance()->GetHeight() ) ) );
-	} 
-
-//==========================================================================================================================
-//
-//Constructor
-//
-//==========================================================================================================================
-	Controller::Controller(void) : _transform()
-	{
-		for(int i = 0; i < _totalKeys; ++i)
-		{
-			_curActiveKeys[i] = false;//KeyStates::KEY_RELEASED;
-			_pastActiveKeys[i] = false; //KeyStates::KEY_RELEASED;
-		}
-	//	_transform = 
-	}
-
-	Controller::~Controller(void)
-	{  }
-
-}//End namespace	
+void Controller::LeftMouseClick(KM::Vector2 coord)
+{
+	_leftClickCoordinates.SetX(coord.GetX());// - (F32)WinProgram::Instance()->GetWidth() * -1.0f);
+	_leftClickCoordinates.SetY( -( coord.GetY() - static_cast<F32>( WinProgram::Instance()->GetHeight() ) ) );
+} 

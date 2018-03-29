@@ -1,45 +1,53 @@
 #include <Engine/Particle2DSpringForce.h>
 
-namespace KillerPhysics
-{
+using namespace KillerPhysics;
+
 //==========================================================================================================================
 //
 //Constructors	 	
 //
 //==========================================================================================================================
-	Particle2DSpringForce::Particle2DSpringForce(void) : _otherEnd(), _springConstant(1), _restLength(1), _isBungie(false)  
-	{  }
+Particle2DSpringForce::Particle2DSpringForce(void) 
+: 
+_otherEnd(), 
+_springConstant(1), 
+_restLength(1), 
+_isBungie(false)  
+{  }
 
-	Particle2DSpringForce::Particle2DSpringForce(Particle2D* other, real constatant, real length) 
-		: _otherEnd(other), _springConstant(constatant), _restLength(length), _isBungie(false)
-	{  }
+Particle2DSpringForce::Particle2DSpringForce(Particle2D* other, real constatant, real length) 
+: 
+_otherEnd(other), 
+_springConstant(constatant), 
+_restLength(length), 
+_isBungie(false)
+{  }
 
-	Particle2DSpringForce::~Particle2DSpringForce(void) 
-	{  }
+Particle2DSpringForce::~Particle2DSpringForce(void) 
+{  }
 
 //==========================================================================================================================
 //
 //Virtual Functions
 //
 //==========================================================================================================================
-	void Particle2DSpringForce::v_UpdateForce(Particle2D* particle)
-	{
+void Particle2DSpringForce::v_UpdateForce(Particle2D* particle)
+{
 //=====Calculate Vector of the spring=====
-		KM::Vector2 force = particle->GetPosition();
-		force -= _otherEnd->GetPosition();
+	KM::Vector2 force = particle->GetPosition();
+	force -= _otherEnd->GetPosition();
 
 //=====Calculate magnitude of force=====
-		real magnitude = force.Magnitude();
+	real magnitude = force.Magnitude();
 
-		//=====Bungie Checke=====
-		if(magnitude <= _restLength) return;
+	//=====Bungie Checke=====
+	if(magnitude <= _restLength) return;
 
-		magnitude = real_abs(magnitude - _restLength) * _springConstant;
+	magnitude = real_abs(magnitude - _restLength) * _springConstant;
 
 //=====Calculate final force=====
-		force.Normalise();
-		force *= static_cast<F32>(-magnitude);
+	force.Normalise();
+	force *= static_cast<F32>(-magnitude);
 
-		particle->AddForce(force);
-	}
-}//end namespace
+	particle->AddForce(force);
+}

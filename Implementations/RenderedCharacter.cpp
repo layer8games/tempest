@@ -1,7 +1,7 @@
 #include <Engine/RenderedCharacter.h>
 
-namespace KillerEngine
-{
+using namespace KillerEngine;
+
 //==========================================================================================================================
 //Static Init
 //==========================================================================================================================
@@ -11,16 +11,17 @@ namespace KillerEngine
 //Constructors	 	
 //
 //==========================================================================================================================
-	RenderedCharacter::RenderedCharacter(void) : _id(_nextID), 
-												 _pos(0.0f),
-												 _width(0.0f),
-												 _height(0.0f),
-												 _sprite(),
-												 _color()
-	{
-		++_nextID;
-	}
+RenderedCharacter::RenderedCharacter(void) 
+: 
+_id(_nextID), 
+_pos(0.0f),
+_width(0.0f),
+_height(0.0f),
+_sprite(),
+_color()
+{
+	++_nextID;
+}
 
-	RenderedCharacter::~RenderedCharacter(void)
-	{  }
-}//end namespace
+RenderedCharacter::~RenderedCharacter(void)
+{  }

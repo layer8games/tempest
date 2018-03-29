@@ -88,7 +88,7 @@ namespace KillerEngine
 		void Render(void);
 
 	protected:
-		LevelManager(void) : _running(true) {  }
+		LevelManager(void);
 
 	private:
 		std::map<U32, shared_ptr<Level>> _levels;

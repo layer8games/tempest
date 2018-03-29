@@ -88,6 +88,8 @@ namespace KillerPhysics
 //==========================================================================================================================
 		virtual void v_Update(void);
 
+		void Integrate();
+
 		void ClearAccumulator(void);
 
 		void AddForce(const KM::Vector2& force);

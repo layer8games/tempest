@@ -1,29 +1,33 @@
 #include <Engine/Particle2DGravityForce.h>
 
-namespace KillerPhysics
-{
+using namespace KillerPhysics;
+
 //==========================================================================================================================
 //
 //Constructors
 //
 //==========================================================================================================================
-	Particle2DGravityForce::Particle2DGravityForce(void) : _gravityAcc(KM::Vector2(0.0f, 1.0f))
-	{  }
+Particle2DGravityForce::Particle2DGravityForce(void) 
+: 
+_gravityAcc(KM::Vector2(0.0f, 1.0f))
+{  }
 
-	Particle2DGravityForce::Particle2DGravityForce(const KM::Vector2& gravity) : _gravityAcc(gravity) 
-	{  }
+Particle2DGravityForce::Particle2DGravityForce(const KM::Vector2& gravity) 
+: 
+_gravityAcc(gravity) 
+{  }
 
-	Particle2DGravityForce::~Particle2DGravityForce(void) {  }
+Particle2DGravityForce::~Particle2DGravityForce(void) 
+{  }
 
 //==========================================================================================================================
 //
 //Virtual Functions
 //
 //==========================================================================================================================
-	void Particle2DGravityForce::v_UpdateForce(Particle2D& particle)
-	{
-		if(!particle.HasFiniteMass()) return;
+void Particle2DGravityForce::v_UpdateForce(Particle2D& particle)
+{
+	if(!particle.HasFiniteMass()) return;
 
-		particle.AddForce(_gravityAcc * particle.GetMass());
-	}
-}//end namespace
+	particle.AddForce(_gravityAcc * particle.GetMass());
+}

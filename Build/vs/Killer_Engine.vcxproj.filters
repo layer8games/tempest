@@ -25,9 +25,6 @@
     <Filter Include="Components\GameObjects\GameObject">
       <UniqueIdentifier>{271c9817-2622-490e-9c17-2d9949d87bc9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\KillerEngine">
-      <UniqueIdentifier>{66fd72d2-3739-4584-a963-04c6b35f6d8d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\Texture">
       <UniqueIdentifier>{70216902-edb5-4822-8aec-ed808572d931}</UniqueIdentifier>
     </Filter>
@@ -139,6 +136,9 @@
     <Filter Include="Components\KillerMath\Random">
       <UniqueIdentifier>{1f3a7113-0f33-4da8-9c3d-2d1d584a3c1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components\Engine">
+      <UniqueIdentifier>{66fd72d2-3739-4584-a963-04c6b35f6d8d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -240,14 +240,14 @@
     <ClInclude Include="..\..\Headers\Engine\RenderedText.h">
       <Filter>Components\RenderText</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\KillerEngine.h">
-      <Filter>Components\KillerEngine</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Texture.h">
       <Filter>Components\Texture</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Random.h">
       <Filter>Components\KillerMath\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Engine.h">
+      <Filter>Components\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -338,14 +338,14 @@
     <ClCompile Include="..\..\Implementations\RenderedText.cpp">
       <Filter>Components\RenderText</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\KillerEngine.cpp">
-      <Filter>Components\KillerEngine</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Texture.cpp">
       <Filter>Components\Texture</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Random.cpp">
       <Filter>Components\KillerMath\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Engine.cpp">
+      <Filter>Components\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
