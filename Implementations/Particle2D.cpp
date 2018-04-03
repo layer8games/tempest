@@ -16,6 +16,34 @@ _damping(0.999f),
 _forceAccum()
 {  }
 
+Particle2D::Particle2D(const Particle2D* particle)
+:
+_velocity(0.0f), 
+_acceleration(0.0f), 
+_inverseMass(0.0f), 
+_damping(0.999f), 
+_forceAccum()
+{
+	_velocity = particle->GetVelocity();
+	_acceleration = particle->GetAcceleration();
+	_inverseMass = particle->GetInverseMass();
+	_damping = particle->GetDamping();
+}
+
+Particle2D::Particle2D(const Particle2D& particle)
+:
+_velocity(0.0f), 
+_acceleration(0.0f), 
+_inverseMass(0.0f), 
+_damping(0.999f), 
+_forceAccum()
+{
+	_velocity = particle.GetVelocity();
+	_acceleration = particle.GetAcceleration();
+	_inverseMass = particle.GetInverseMass();
+	_damping = particle.GetDamping();
+}
+
 Particle2D::~Particle2D(void) 
 {  }
 
@@ -25,12 +53,12 @@ Particle2D::~Particle2D(void)
 //
 //==========================================================================================================================
 //=====Velocity=====
-KM::Vector2& Particle2D::GetVelocity(void) 
+const KM::Vector2& Particle2D::GetVelocity(void) const
 { 
 	return _velocity; 
 }
 
-void Particle2D::SetVelocity(KM::Vector2& v) 
+void Particle2D::SetVelocity(KM::Vector2& v)
 { 
 	_velocity = v; 
 }
@@ -46,7 +74,7 @@ void Particle2D::AddScaledVelocity(const KM::Vector2& vec, F32 scale)
 }
 
 //=====Acceleration=====
-KM::Vector2& Particle2D::GetAcceleration(void)
+const KM::Vector2& Particle2D::GetAcceleration(void) const
 { 
 	return _acceleration; 
 }
@@ -66,7 +94,7 @@ void Particle2D::AddScaledAcceleration(const KM::Vector2& vec, F32 scale)
 	_acceleration.AddScaledVector(vec, scale);
 }
 //=====Mass=====	
-real Particle2D::GetInverseMass(void)
+const real Particle2D::GetInverseMass(void) const
 {
 	return _inverseMass;
 }
@@ -76,7 +104,7 @@ void Particle2D::SetInverseMass(real inverseMass)
 	_inverseMass = inverseMass;
 }
 
-real Particle2D::GetMass(void)
+const real Particle2D::GetMass(void) const
 {
 	if(_inverseMass == 0) 
 	{

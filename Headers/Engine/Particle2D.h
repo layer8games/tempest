@@ -33,6 +33,10 @@ namespace KillerPhysics
 //
 //==========================================================================================================================
 		Particle2D(void);
+
+		Particle2D(const Particle2D* particle);
+
+		Particle2D(const Particle2D& particle);
 	
 		virtual ~Particle2D(void);
 
@@ -42,7 +46,7 @@ namespace KillerPhysics
 //
 //==========================================================================================================================
 //=====Damping=====
-		real GetDamping(void) 
+		const real GetDamping(void) const
 		{ 
 			return _damping; 
 		}
@@ -53,7 +57,7 @@ namespace KillerPhysics
 		}
 
 //=====Velocity=====
-		KM::Vector2& GetVelocity(void);
+		const KM::Vector2& GetVelocity(void) const;
 		
 		void SetVelocity(KM::Vector2& v);
 		
@@ -62,7 +66,7 @@ namespace KillerPhysics
 		void AddScaledVelocity(const KM::Vector2& vec, F32 scale);
 
 //=====Acceleration=====
-		KM::Vector2& GetAcceleration(void);
+		const KM::Vector2& GetAcceleration(void) const;
 		
 		void SetAcceleration(KM::Vector2& a);
 
@@ -71,11 +75,11 @@ namespace KillerPhysics
 		void AddScaledAcceleration(const KM::Vector2& vec, F32 scale);
 		
 //=====Mass=====
-		real GetInverseMass(void);
+		const real GetInverseMass(void) const;
 
 		void SetInverseMass(real inverseMass);
 
-		real GetMass(void);
+		const real GetMass(void) const;
 
 		void SetMass(const real mass);
 
