@@ -53,6 +53,11 @@ namespace KillerEngine
 		{ 
 			return _activeLevelID; 
 		}
+
+		inline shared_ptr<Level> GetActiveLevel(void)
+		{
+			return _activeLevel;
+		}
 		
 		void SetRunning(bool r) 
 		{ 
