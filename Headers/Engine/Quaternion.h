@@ -77,11 +77,11 @@ namespace KillerMath
 
 		Quaternion operator* (real m);
 
-		Quaternion operator* (Quaternion q2);
+		Quaternion operator* (Quaternion& q2);
 
 		Quaternion& operator*= (real m);
 
-		Quaternion& operator*= (Quaternion q2);
+		Quaternion& operator*= (Quaternion& q2);
 
 //==========================================================================================================================
 //
@@ -94,9 +94,9 @@ namespace KillerMath
 
 		Quaternion Inverse(void);
 
-		Quaternion Difference(Quaternion Q);
+		Quaternion Difference(Quaternion& Q);
 
-		real Dot(Quaternion Q);
+		real Dot(Quaternion& Q);
 
 		void Negate(void);
 

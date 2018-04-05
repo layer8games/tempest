@@ -70,7 +70,7 @@ Quaternion Quaternion::operator* (real m)
 	return Quaternion(_q[0] *= m, _q[1] *= m, _q[2] *= m, _q[3] *= m);
 }
 
-Quaternion Quaternion::operator* (Quaternion q2)
+Quaternion Quaternion::operator* (Quaternion& q2)
 {
 	real w2 = q2.GetW();
 	real x2 = q2.GetX();
@@ -93,7 +93,7 @@ Quaternion& Quaternion::operator*= (real m)
 	return *this;
 }
 
-Quaternion& Quaternion::operator*= (Quaternion q2)
+Quaternion& Quaternion::operator*= (Quaternion& q2)
 {
 	real w1 = _q[0];
 	real x1 = _q[1];
@@ -138,14 +138,14 @@ Quaternion Quaternion::Inverse(void)
 	return conjugate / mag;
 }
 
-Quaternion Quaternion::Difference(Quaternion Q)
+Quaternion Quaternion::Difference(Quaternion& Q)
 {
 	Quaternion inverse = Inverse();
 
 	return Q * inverse;
 }
 
-real Quaternion::Dot(Quaternion Q)
+real Quaternion::Dot(Quaternion& Q)
 {
 	return _q[0] * Q.GetW() + _q[1] * Q.GetX() + _q[2] * Q.GetY() + _q[3] * Q.GetZ();
 }
