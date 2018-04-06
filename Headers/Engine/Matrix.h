@@ -108,17 +108,17 @@ namespace KillerMath
 
 		void Translate(F32 x, F32 y, F32 z);
 
-		void Translate(Vector2& vec);
+		void Translate(const Vector2& vec);
 
-		void Translate(Vector3& vec);
+		void Translate(const Vector3& vec);
 
 		void AddTranslate(F32 x, F32 y);
 
 		void AddTranslate(F32 x, F32 y, F32 z);
 
-		void AddTranslate(Vector2& vec);
+		void AddTranslate(const Vector2& vec);
 
-		void AddTranslate(Vector3& vec);
+		void AddTranslate(const Vector3& vec);
 
 //==========================================================================================================================
 //Scaling
@@ -127,17 +127,17 @@ namespace KillerMath
 
 		void Scale(F32 x, F32 y, F32 z);
 
-		void Scale(Vector2& vec);
+		void Scale(const Vector2& vec);
 
-		void Scale(Vector3& vec);
+		void Scale(const Vector3& vec);
 
 		void AddScale(F32 x, F32 y);
 
 		void AddScale(F32 x, F32 y, F32 z);
 
-		void AddScale(Vector2& vec);
+		void AddScale(const Vector2& vec);
 
-		void AddScale(Vector3& vec);
+		void AddScale(const Vector3& vec);
 
 //==========================================================================================================================
 //Rotations

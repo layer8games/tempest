@@ -97,7 +97,7 @@ namespace KillerEngine
 
 		virtual void v_InitLevel(U32 id, S32 w, S32 h, Color& c)=0;
 
-		virtual void v_InitLevel(U32 id, string tmxFilePath)
+		inline virtual void v_InitLevel(U32 id, string tmxFilePath)
 		{
 			SetID(id);
 			Importer2D(tmxFilePath);
@@ -105,10 +105,7 @@ namespace KillerEngine
 		
 		virtual void v_Update(void)=0;
 		
-		virtual void v_Render(void) 
-		{ 
-			RenderObjects(); 
-		}
+		virtual void v_Render(void);
 
 /*		virtual GameObject2D* v_CreateObject(ObjectType type, Vector2& pos, F32 w, F32 h) 
 		{
@@ -119,7 +116,7 @@ namespace KillerEngine
 		virtual GameObject2D* v_CreateObject(ObjectType type, KM::Vector2& pos, U32 textureID, F32 w, F32 h)
 		{
 			ErrorManager::Instance()->SetError(EC_KillerEngine, "Attempted to call v_CreateObject without Level Implementation");
-			return NULL;
+			return nullptr;
 		}
 
 //==========================================================================================================================
@@ -127,9 +124,11 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-		void AddObjectToLevel(GameObject2D* obj);
+		void AddObjectToLevel(const GameObject2D& obj);
 
-		void AddObject3DToLevel(GameObject3D* obj);
+		void AddObjectToLevel(shared_ptr<GameObject2D> obj);
+
+		void AddObject3DToLevel(const GameObject3D& obj);
 
 		void AddTextToLevel(shared_ptr<RenderedText> text);
 		

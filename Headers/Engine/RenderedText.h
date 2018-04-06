@@ -38,19 +38,11 @@ namespace KillerEngine
 //==========================================================================================================================
 		RenderedText(void);
 
-		explicit RenderedText(Font& font);
+		explicit RenderedText(const Font& font);
 		
-		RenderedText(string text, Font& font);
+		RenderedText(string text, const Font& font);
 
-		//void Render(void);
-
-/* 		original version in case the new version breaks everything
-		void v_SetPosition(KM::Vector2 pos)
-		{
-			GameObject2D::SetPositionNoSprite(pos);
-			SetTextPosition(pos);
-		}
-*/
+		~RenderedText(void);
 
 //==========================================================================================================================
 //
@@ -59,9 +51,9 @@ namespace KillerEngine
 //==========================================================================================================================		
 		void AddText(string text);
 
-		void SetPosition(KM::Vector2& pos);
+		void SetPosition(const KM::Vector2& pos);
 
-		//void SetTextColor(Color& col);
+		//void SetTextColor(const Color& col);
 
 		void SetWidthScaleFactor(F32 w) 
 		{ 
@@ -79,22 +71,22 @@ namespace KillerEngine
 			_heightScaleFactor = h; 
 		}
 
-		void SetFont(Font& font) 
+		void SetFont(const Font& font) 
 		{ 
 			_font = font; 
 		}
 
-		F32 GetTotalWidth(void) 
+		F32 GetTotalWidth(void) const
 		{ 
 			return _totalWidth; 
 		}
 
-		F32 GetTotalHeight(void) 
+		F32 GetTotalHeight(void) const
 		{ 
 			return _totalHeight; 
 		}
 
-		KM::Vector2& GetCenter(void) 
+		const KM::Vector2& GetCenter(void) const
 		{ 
 			return _center; 
 		}

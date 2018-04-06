@@ -46,44 +46,94 @@ namespace KillerPhysics
 //
 //==========================================================================================================================
 //=====Damping=====
-		const real GetDamping(void) const
+		inline const real GetDamping(void) const
 		{ 
 			return _damping; 
 		}
 
-		void SetDamping(real damp) 
+		inline void SetDamping(real damp) 
 		{ 
 			_damping = damp; 
 		}
 
 //=====Velocity=====
-		const KM::Vector2& GetVelocity(void) const;
+		inline const KM::Vector2& GetVelocity(void) const
+		{
+			return _velocity;
+		}
 		
-		void SetVelocity(KM::Vector2& v);
+		inline void SetVelocity(const KM::Vector2& v)
+		{
+			_velocity = v;
+		}
 		
-		void SetVelocity(F32 x, F32 y);
+		inline void SetVelocity(F32 x, F32 y)
+		{
+			_velocity = KM::Vector2(x, y);
+		}
 
-		void AddScaledVelocity(const KM::Vector2& vec, F32 scale);
+		inline void AddScaledVelocity(const KM::Vector2& vec, F32 scale)
+		{
+			_velocity.AddScaledVector(vec, scale);
+		}
 
 //=====Acceleration=====
-		const KM::Vector2& GetAcceleration(void) const;
+		inline const KM::Vector2& GetAcceleration(void) const
+		{
+			return _acceleration;
+		}
 		
-		void SetAcceleration(KM::Vector2& a);
+		inline void SetAcceleration(const KM::Vector2& a)
+		{
+			_acceleration = a;
+		}
 
-		void SetAcceleration(F32 x, F32 y);
+		inline void SetAcceleration(F32 x, F32 y)
+		{
+			_acceleration = KM::Vector2(x, y);
+		}
 
-		void AddScaledAcceleration(const KM::Vector2& vec, F32 scale);
+		inline void AddScaledAcceleration(const KM::Vector2& vec, F32 scale)
+		{
+			_acceleration.AddScaledVector(vec, scale);
+		}
 		
 //=====Mass=====
-		const real GetInverseMass(void) const;
+		inline const real GetInverseMass(void) const
+		{
+			return _inverseMass;
+		}
 
-		void SetInverseMass(real inverseMass);
+		inline void SetInverseMass(real inverseMass)
+		{
+			_inverseMass = inverseMass;
+		}
 
 		const real GetMass(void) const;
 
 		void SetMass(const real mass);
 
-		bool HasFiniteMass(void);
+		inline bool HasFiniteMass(void)
+		{
+			return _inverseMass >= 0.0f;
+		}
+
+//=====Forces=====
+		inline const KM::Vector2& GetForces(void)
+		{
+			return _forceAccum;
+		}
+
+//=====Gravity=====
+		inline const KM::Vector2& GetGravityForce(void)
+		{
+			return _gravityForce;
+		}
+
+		inline void SetGravityForce(const KM::Vector2 gravity)
+		{
+			_gravityForce = gravity;
+		}
 
 //==========================================================================================================================
 //
@@ -112,8 +162,9 @@ namespace KillerPhysics
 //==========================================================================================================================
 		KM::Vector2 _velocity;
 		KM::Vector2 _acceleration;
+		KM::Vector2 _forceAccum;
+		KM::Vector2 _gravityForce;
 		real 		_inverseMass;
 		real 		_damping;
-		KM::Vector2 _forceAccum;
 	};
 }//End namespace

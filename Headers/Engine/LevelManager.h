@@ -43,7 +43,7 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-		void AddLevel(Level* level);
+		void AddLevel(shared_ptr<Level> level);
 		
 		void RemoveLevel(U32 levelID);
 		
@@ -74,9 +74,11 @@ namespace KillerEngine
 			_running = false; 
 		}
 
-		void AddObjectToLevel(U32 id, GameObject2D* obj);
+		void AddObjectToLevel(U32 id, const GameObject2D& obj);
 
-		void AddObject3DToLevel(U32 id, GameObject3D* obj);
+		void AddObjectToLevel(U32 id, shared_ptr<GameObject2D> obj);
+
+		void AddObject3DToLevel(U32 id, const GameObject3D& obj);
 		
 		void Remove2DObjectFromLevel(U32 levelID, U32 ojbId);
 

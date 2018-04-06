@@ -44,12 +44,12 @@ namespace KillerEngine
 			return _id;
 		}
 
-		void SetPosition(KM::Vector2& pos)
+		void SetPosition(const KM::Vector2& pos)
 		{
 			_pos = pos;
 		}
 
-		KM::Vector2& GetPosition(void)
+		const KM::Vector2& GetPosition(void) const
 		{
 			return _pos;
 		}
@@ -90,23 +90,23 @@ namespace KillerEngine
 			_sprite = sprite;
 		}
 
-		void SetSprite(Sprite& sprite)
+		void SetSprite(const Sprite& sprite)
 		{
 			_sprite = sprite;
 		}
 
-		Sprite& GetSprite(void)
+		const Sprite& GetSprite(void) const
 		{
 			return _sprite;
 		}
 
 //		Not implemented yet in Sprite		
-		void SetColor(Color& col)
+		void SetColor(const Color& col)
 		{
 			_color = col;
 		}
 				
-		Color& GetColor(void)
+		const Color& GetColor(void) const
 		{
 			return _color;
 		}

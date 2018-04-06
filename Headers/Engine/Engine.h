@@ -57,7 +57,7 @@ namespace KillerEngine
 			TextureManager::Instance()->LoadTexture(path, id, width, height); 
 		}
 		
-		void AddLevelToManager(Level* level) 
+		void AddLevelToManager(shared_ptr<Level> level)
 		{ 
 			LevelManager::Instance()->AddLevel(level); 
 		}

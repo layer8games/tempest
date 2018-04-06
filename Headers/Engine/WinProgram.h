@@ -104,7 +104,7 @@ namespace KillerEngine
 		
 		void BufferSwap(void);
 
-		void SetBackgroundColor(Color& c) 
+		void SetBackgroundColor(const Color& c) 
 		{
 			_bgColor[0] = c.GetRed();
 			_bgColor[1] = c.GetGreen();

@@ -135,19 +135,19 @@ namespace KillerEngine
 			_curActiveKeys[k] = false; 
 		}
 
-		void LeftMouseClick(KM::Vector2 coord);
+		void LeftMouseClick(const KM::Vector2& coord);
 
-		KM::Vector2 GetLeftMouseCoord(void) 
+		const KM::Vector2 GetLeftMouseCoord(void) const
 		{ 
 			return _leftClickCoordinates; 
 		}
 
-		void RightMouseClick(KM::Vector2 coord) 
+		void RightMouseClick(const KM::Vector2& coord) 
 		{ 
 			_rightClickCoordinates = coord; 
 		}
 
-		KM::Vector2 GetRightMouseCoord(void) 
+		const KM::Vector2 GetRightMouseCoord(void) const
 		{ 
 			return _rightClickCoordinates; 
 		}

@@ -69,7 +69,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		void LoadTexture(string path, U32 id, S32 width, S32 height);
 		
-		shared_ptr<Texture> GetTexture(U32 id);
+		const shared_ptr<Texture> GetTexture(U32 id);
 
 	protected:
 //==========================================================================================================================

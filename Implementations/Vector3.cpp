@@ -319,8 +319,8 @@ void Vector3::Normalise(void)
 		(*this) *= 1 / mag;
 	}
 }
-
-void Vector3::MakeBasis(Vector3& A, Vector3& B, Vector3& C)
+/*
+void Vector3::MakeBasis(const Vector3& A, const Vector3& B, const Vector3& C)
 {
 	C = A.CrossProduct(B);
 
@@ -331,6 +331,7 @@ void Vector3::MakeBasis(Vector3& A, Vector3& B, Vector3& C)
 
 	B = C.CrossProduct(A);
 }
+*/
 
 void Vector3::Reset(void)
 {

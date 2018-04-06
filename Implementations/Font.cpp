@@ -2,6 +2,11 @@
 
 using namespace KillerEngine;
 
+//==========================================================================================================================
+//
+//Constructors
+//
+//==========================================================================================================================
 Font::Font(void) 
 : 
 _textureID(0), 
@@ -16,6 +21,25 @@ _fontFile(),
 _fontName() 
 {  }
 
+Font::Font(const Font& f)
+:
+_textureID(f.GetTextureID()), 
+_fontFile(f.GetFile()), 
+_fontName(f.GetName())
+{  }
+
+Font::Font(const Font* f)
+:
+_textureID(f->GetTextureID()), 
+_fontFile(f->GetFile()), 
+_fontName(f->GetName())
+{  }
+
+//==========================================================================================================================
+//
+//Functions
+//
+//==========================================================================================================================
 void Font::InitFont(string fontName, string fontFile)
 {
 	_fontName = fontName;

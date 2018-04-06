@@ -63,21 +63,21 @@ namespace KillerEngine
 //Functions
 //
 //==========================================================================================================================
-		void AddVertice(Vertex3D& vert);
+		void AddVertice(const Vertex3D& vert);
 
 		std::vector<F32> GetVertices(void)
 		{
 			return _vertices;
 		}
 
-		void Render(KM::Vector3& pos);
+		void Render(const KM::Vector3& pos);
 
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================
-		F32 GetScale(void)
+		F32 GetScale(void) const
 		{
 			return _scale;
 		}
@@ -87,7 +87,7 @@ namespace KillerEngine
 			_scale = s; 
 		}
 
-		GLuint GetShader(void)
+		GLuint GetShader(void) const
 		{
 			return _shaderProgram;
 		}

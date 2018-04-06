@@ -179,7 +179,7 @@ void Matrix::Translate(F32 x, F32 y, F32 z)
 	_m[14] = z;
 }
 
-void Matrix::Translate(Vector2& vec)
+void Matrix::Translate(const Vector2& vec)
 {
 	MakeIdentity(); 
 
@@ -187,7 +187,7 @@ void Matrix::Translate(Vector2& vec)
 	_m[13] = vec.GetY();
 }
 
-void Matrix::Translate(Vector3& vec)
+void Matrix::Translate(const Vector3& vec)
 {
 	MakeIdentity();
 
@@ -209,13 +209,13 @@ void Matrix::AddTranslate(F32 x, F32 y, F32 z)
 	_m[14] = z;
 }
 
-void Matrix::AddTranslate(Vector2& vec)
+void Matrix::AddTranslate(const Vector2& vec)
 {
 	_m[12] = vec.GetX();
 	_m[13] = vec.GetY();
 }
 
-void Matrix::AddTranslate(Vector3& vec)
+void Matrix::AddTranslate(const Vector3& vec)
 {
 	_m[12] = vec.GetX();
 	_m[13] = vec.GetY();
@@ -242,7 +242,7 @@ void Matrix::Scale(F32 x, F32 y, F32 z)
 	_m[10] = z;
 }
 
-void Matrix::Scale(Vector2& vec)
+void Matrix::Scale(const Vector2& vec)
 {
 	MakeIdentity();
 
@@ -250,7 +250,7 @@ void Matrix::Scale(Vector2& vec)
 	_m[5] = vec.GetY();
 }
 
-void Matrix::Scale(Vector3& vec)
+void Matrix::Scale(const Vector3& vec)
 {
 	MakeIdentity();
 
@@ -272,13 +272,13 @@ void Matrix::AddScale(F32 x, F32 y, F32 z)
 	_m[10] = z;
 }
 
-void Matrix::AddScale(Vector2& vec)
+void Matrix::AddScale(const Vector2& vec)
 {
 	_m[0] = vec.GetX();
 	_m[5] = vec.GetY();
 }
 
-void Matrix::AddScale(Vector3& vec)
+void Matrix::AddScale(const Vector3& vec)
 {
 	_m[0] = vec.GetX();
 	_m[5] = vec.GetY();

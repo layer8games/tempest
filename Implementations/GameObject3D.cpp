@@ -20,7 +20,7 @@ _height(0.0f)
 	SetID();
 }
 
-GameObject3D::GameObject3D(GameObject3D& obj)
+GameObject3D::GameObject3D(const GameObject3D& obj)
 : 
 _ID(obj.GetID()),
 _active(obj.GetActive()),
@@ -34,13 +34,21 @@ GameObject3D::~GameObject3D(void)
 
 //==========================================================================================================================
 //
+//Virtual Functions
+//
+//==========================================================================================================================
+void GameObject3D::v_Render(void)
+{  }
+
+//==========================================================================================================================
+//
 //Accessors
 //
 //==========================================================================================================================
 //==========================================================================================================================
 //Active
 //==========================================================================================================================	
-bool GameObject3D::GetActive(void)
+bool GameObject3D::GetActive(void) const
 {
 	return _active;
 }
@@ -58,12 +66,12 @@ void GameObject3D::SetInactive(void)
 //==========================================================================================================================
 //Position
 //==========================================================================================================================
-KM::Vector3& GameObject3D::GetPosition(void)
+const KM::Vector3& GameObject3D::GetPosition(void) const
 {
 	return _position;
 }
 
-void GameObject3D::SetPosition(KM::Vector3& pos)
+void GameObject3D::SetPosition(const KM::Vector3& pos)
 {
 	_position = pos;
 }
@@ -80,7 +88,7 @@ void GameObject3D::AddScaledPosition(const KM::Vector3& v, F32 scale)
 //==========================================================================================================================
 //Dimensions
 //==========================================================================================================================
-F32 GameObject3D::GetWidth(void)
+F32 GameObject3D::GetWidth(void) const
 {
 	return _width;
 }
@@ -90,7 +98,7 @@ void GameObject3D::SetWidth(F32 w)
 	_width = w;
 }
 
-F32 GameObject3D::GetHeight(void)
+F32 GameObject3D::GetHeight(void) const
 {
 	return _height;
 }

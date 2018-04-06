@@ -35,7 +35,7 @@ Model::~Model(void)
 //Model Functions
 //
 //==========================================================================================================================
-void Model::AddVertice(Vertex3D& vert)
+void Model::AddVertice(const Vertex3D& vert)
 {
 	_vertices.push_back(vert.position.GetX() * vert.xscale);
 	_vertices.push_back(vert.position.GetY() * vert.yscale);
@@ -50,7 +50,7 @@ void Model::AddVertice(Vertex3D& vert)
 	++_numVertices;
 }
 
-void Model::Render(KM::Vector3& pos)
+void Model::Render(const KM::Vector3& pos)
 {	
 	if(_shaderProgram == 0)
 	{

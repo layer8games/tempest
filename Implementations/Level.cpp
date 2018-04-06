@@ -22,14 +22,34 @@ _bgColor()
 Level::~Level(void)
 {  }
 
+//==========================================================================================================================
+//
+//Virtual Functions
+//
+//==========================================================================================================================
+void Level::v_Render(void)
+{ 
+	RenderObjects(); 
+}
+
 //=============================================================================
 //
 //AddObjectToLevel
 //
 //=============================================================================
-void Level::AddObjectToLevel(GameObject2D* obj)
+void Level::AddObjectToLevel(const GameObject2D& obj)
 {
-	_2DWorldObjects.insert(std::map<U32, std::shared_ptr<GameObject2D>>::value_type( obj->GetID(), std::shared_ptr<GameObject2D>(obj) ));
+	_2DWorldObjects.insert({obj.GetID(), std::shared_ptr<GameObject2D>( const_cast<GameObject2D*>(&obj) )});
+	
+	if(_2DWorldObjects.find(obj.GetID()) == _2DWorldObjects.end()) 
+	{ 
+		ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to AddLevel to _2DWorldObjects"); 
+	}
+}
+
+void Level::AddObjectToLevel(shared_ptr<GameObject2D> obj)
+{
+	_2DWorldObjects.insert({obj->GetID(), obj});
 	
 	if(_2DWorldObjects.find(obj->GetID()) == _2DWorldObjects.end()) 
 	{ 
@@ -37,11 +57,11 @@ void Level::AddObjectToLevel(GameObject2D* obj)
 	}
 }
 
-void Level::AddObject3DToLevel(GameObject3D* obj)
+void Level::AddObject3DToLevel(const GameObject3D& obj)
 {
-	_3DWorldObjects.insert(std::map<U32, std::shared_ptr<GameObject3D>>::value_type( obj->GetID(), std::shared_ptr<GameObject3D>(obj) ));
+	_3DWorldObjects.insert({obj.GetID(), std::shared_ptr<GameObject3D>( const_cast<GameObject3D*>(&obj) )});
 	
-	if(_3DWorldObjects.find(obj->GetID()) == _3DWorldObjects.end()) 
+	if(_3DWorldObjects.find(obj.GetID()) == _3DWorldObjects.end()) 
 	{ 
 		ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to AddLevel to _3DWorldObjects"); 
 	}
@@ -88,26 +108,26 @@ void Level::Remove3DObjectFromLevel(U32 id)
 //==========================================================================================================================	
 void Level::RenderObjects(void)
 {
-	for(auto i = _2DWorldObjects.begin(); i!=_2DWorldObjects.end(); ++i) 
+	for(auto i : _2DWorldObjects) 
 	{
-		if(i->second->GetActive())
+		if(i.second->GetActive())
 		{
-			//const Sprite sprite = i->second->GetSprite();
-			if(i->second->GetSprite().GetShader() != SpriteBatch::Instance()->GetShader())
+			//const Sprite& sprite = i.second->GetSprite();
+			if(i.second->GetSprite().GetShader() != SpriteBatch::Instance()->GetShader())
 			{
-				SpriteBatch::Instance()->SetShader(i->second->GetSprite().GetShader());
+				SpriteBatch::Instance()->SetShader(i.second->GetSprite().GetShader());
 			}
-			//i->second->v_Render();
-			//_batch.AddToBatch(i->second->GetSprite(), i->second.GetWidth(), i->second.GetHeight());
+			//i.second->v_Render();
+			//_batch.AddToBatch(i.second->GetSprite(), i.second.GetWidth(), i.second.GetHeight());
 			SpriteBatch::Instance()->AddToBatch
 			(
-				i->second->GetPosition(), 
-				i->second->GetWidth(), 
-				i->second->GetHeight(), 
-				i->second->GetColor(),
-				i->second->GetTextureID(),
-				i->second->GetSprite().GetUVBottomTop(),
-				i->second->GetSprite().GetUVLeftRight()
+				i.second->GetPosition(), 
+				i.second->GetWidth(), 
+				i.second->GetHeight(), 
+				i.second->GetColor(),
+				i.second->GetTextureID(),
+				i.second->GetSprite().GetUVBottomTop(),
+				i.second->GetSprite().GetUVLeftRight()
 			);
 		}
 	}
@@ -331,10 +351,11 @@ void Level::Importer2D(string tmxFilePath)
 
 						TileData currentTile = _2DTileData.find(tile)->second;
 
-						AddObjectToLevel(v_CreateObject(currentTile.type, 
-									   KM::Vector2( (F32)(x * mapData.tileWidth)+(currentTile.width / 2), (F32)(y * mapData.tileHeight)+(currentTile.height / 2)),
-									   currentTile.textureID,
-									   (F32)currentTile.width, (F32)currentTile.height));
+						//Broken for now anyway, need to find a better way to do this overall
+						//AddObjectToLevel(v_CreateObject(currentTile.type, 
+						//			   KM::Vector2( (F32)(x * mapData.tileWidth)+(currentTile.width / 2), (F32)(y * mapData.tileHeight)+(currentTile.height / 2)),
+						//			   currentTile.textureID,
+						//			   (F32)currentTile.width, (F32)currentTile.height));
 					}
 					}
 			}

@@ -83,7 +83,7 @@ namespace KillerEngine
 			_maxBatchSize = size;
 		}
 
-		GLuint GetShader(void)
+		inline const GLuint GetShader(void)
 		{
 			return _shader;
 		}
@@ -100,11 +100,12 @@ namespace KillerEngine
 			WinProgram::Instance()->SetBackgroundColor(c); 
 		}
 
-		void AddToBatch(KM::Vector2& pos, F32 w, F32 h, const Color& c);
+		void AddToBatch(const KM::Vector2& pos, F32 w, F32 h, const Color& c);
 
-		void AddToBatch(KM::Vector2& pos, F32 w, F32 h, const Color& c, U32 textureID);
+		void AddToBatch(const KM::Vector2& pos, F32 w, F32 h, const Color& c, U32 textureID);
 		
-		void AddToBatch(KM::Vector2& pos, F32 w, F32 h, const Color& c, U32 textureID, KM::Vector2& verticalLimit, KM::Vector2& horizontalLimit);
+		void AddToBatch(const KM::Vector2& pos, F32 w, F32 h, const Color& c, U32 textureID, 
+						const KM::Vector2& verticalLimit, const KM::Vector2& horizontalLimit);
 
 		void AddToBatch(std::vector<F32> v, std::vector<F32> c);
 

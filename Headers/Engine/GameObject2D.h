@@ -50,7 +50,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		GameObject2D(void);
 
-		GameObject2D(GameObject2D& obj);
+		GameObject2D(const GameObject2D& obj);
 
 		virtual ~GameObject2D(void);
 
@@ -72,7 +72,7 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 //=====ID=====		
-		const U32 GetID(void) 
+		const U32 GetID(void) const
 		{ 
 			return _ID; 
 		}
@@ -84,47 +84,47 @@ namespace KillerEngine
 		}
 
 //=====Dimensions=====		
-		const F32 GetWidth(void);
+		F32 GetWidth(void) const;
 
 		void SetWidth(F32 w);
 
-		const F32 GetHeight(void);
+		F32 GetHeight(void) const;
 
 		void SetHeight(F32 h);
 
 		void SetDimensions(F32 w, F32 h);
 
 //=====Color=====
-		const Color& GetColor(void);
+		const Color& GetColor(void) const;
 
-		void SetColor(Color& col);
+		void SetColor(const Color& col);
 
 		void SetColor(F32 red, F32 green, F32 blue);
 
 //=====Texture=====
-		const  U32 GetTextureID(void);
+		U32 GetTextureID(void) const;
 
 		void SetTexture(U32 id, const F32 top, const F32 bottom, const F32 right, const F32 left);
 
 		void SetTexture(U32 id);
 
 //=====Active=====
-		const bool GetActive(void);
+		bool GetActive(void) const;
 
 		void SetActive(void);
 		
 		void SetInactive(void);
 
 //=====Sprite=====
-		Sprite& GetSprite(void)
+		const Sprite& GetSprite(void) const
 		{
 			return _sprite;
 		}
 
 //=====Position=====
-		KM::Vector2& GetPosition(void);
+		const KM::Vector2& GetPosition(void) const;
 		
-		void SetPosition(KM::Vector2& pos);
+		void SetPosition(const KM::Vector2& pos);
 		
 		void SetPosition(F32 x, F32 y);
 

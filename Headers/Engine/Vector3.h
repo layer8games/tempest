@@ -176,7 +176,8 @@ namespace KillerMath
 
 	void Normalise(void);
 
-	void MakeBasis(Vector3& A, Vector3& B, Vector3& C);
+	//Need to rethink the purpose of this function
+	//void MakeBasis(const Vector3& A, const Vector3& B, const Vector3& C);
 
 	void Reset(void);
 

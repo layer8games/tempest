@@ -76,30 +76,54 @@ void Controller::Update(void)
 //=======================================================================================================
 bool Controller::GetKeyDown(Keys k)
 {
-	if(_keyStates[k] == KeyStates::KEY_DOWN) { return true; }
-	else { return false; }
+	if(_keyStates[k] == KeyStates::KEY_DOWN) 
+	{ 
+		return true; 
+	}
+	else 
+	{ 
+		return false; 
+	}
 }
 
 bool Controller::GetKeyHeld(Keys k)
 {
-	if(_keyStates[k] == KeyStates::KEY_HELD) { return true; }
-	else { return false; }
+	if(_keyStates[k] == KeyStates::KEY_HELD)
+	{ 
+		return true; 
+	}
+	else
+	{ 
+		return false; 
+	}
 }
 
 bool Controller::GetKeyUp(Keys k)
 {
-	if(_keyStates[k] == KeyStates::KEY_UP) { return true; }
-	else { return false; }
+	if(_keyStates[k] == KeyStates::KEY_UP)
+	{ 
+		return true; 
+	}
+	else
+	{ 
+		return false; 
+	}
 }
 
 bool Controller::GetKeyReleased(Keys k)
 {
-	if(_keyStates[k] == KeyStates::KEY_RELEASED) { return true; }
-	else { return false; }
+	if(_keyStates[k] == KeyStates::KEY_RELEASED)
+	{ 
+		return true; 
+	}
+	else
+	{ 
+		return false;
+	}
 }
 
-void Controller::LeftMouseClick(KM::Vector2 coord)
+void Controller::LeftMouseClick(const KM::Vector2& coord)
 {
-	_leftClickCoordinates.SetX(coord.GetX());// - (F32)WinProgram::Instance()->GetWidth() * -1.0f);
+	_leftClickCoordinates.SetX(coord.GetX());
 	_leftClickCoordinates.SetY( -( coord.GetY() - static_cast<F32>( WinProgram::Instance()->GetHeight() ) ) );
 } 

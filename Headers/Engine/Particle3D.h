@@ -49,9 +49,9 @@ namespace KillerPhysics
 //==========================================================================================================================
 //Velocity
 //==========================================================================================================================
-		KM::Vector3& GetVelocity(void);
+		const KM::Vector3& GetVelocity(void) const;
 		
-		void  SetVelocity(KM::Vector3& vel);
+		void  SetVelocity(const KM::Vector3& vel);
 
 		void SetVelocity(F32 x, F32 y, F32 z);
 
@@ -60,9 +60,9 @@ namespace KillerPhysics
 //==========================================================================================================================
 //Acceleration
 //==========================================================================================================================		
-		KM::Vector3& GetAcceleration(void);
+		const KM::Vector3& GetAcceleration(void) const;
 
-		void SetAcceleration(KM::Vector3& acc);
+		void SetAcceleration(const KM::Vector3& acc);
 
 		void SetAcceleration(F32 x, F32 y, F32 z);
 

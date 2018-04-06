@@ -36,9 +36,9 @@ LevelManager* LevelManager::Instance(void)
 //Level Accessors
 //
 //==========================================================================================================================
-void LevelManager::AddLevel(Level* level) 
+void LevelManager::AddLevel(shared_ptr<Level> level) 
 {
-	_levels.insert(std::map<U32, std::shared_ptr<Level>>::value_type( level->GetID(), std::shared_ptr<Level>(level) ));
+	_levels.insert({level->GetID(), level});
 	
 	if(_levels.find(level->GetID()) == _levels.end()) 
 	{ 
@@ -94,7 +94,7 @@ void LevelManager::Render(void)
 //in fact is registered with the manager, and will throw and error if it is not. 
 //	
 //==========================================================================================================================
-void LevelManager::AddObjectToLevel(U32 id, GameObject2D* obj)
+void LevelManager::AddObjectToLevel(U32 id, const GameObject2D& obj)
 {
 	if(_levels.find(id) != _levels.end()) 
 	{ 
@@ -106,7 +106,19 @@ void LevelManager::AddObjectToLevel(U32 id, GameObject2D* obj)
 	} 
 }
 
-void LevelManager::AddObject3DToLevel(U32 id, GameObject3D* obj)
+void LevelManager::AddObjectToLevel(U32 id, shared_ptr<GameObject2D> obj)
+{
+	if(_levels.find(id) != _levels.end()) 
+	{ 
+		_levels[id]->AddObjectToLevel(obj); 
+	} 
+	else
+	{
+		ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
+	} 
+}
+
+void LevelManager::AddObject3DToLevel(U32 id, const GameObject3D& obj)
 {
 	if(_levels.find(id) != _levels.end()) 
 	{ 

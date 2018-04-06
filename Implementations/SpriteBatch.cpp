@@ -80,7 +80,7 @@ shared_ptr<SpriteBatch> SpriteBatch::Instance(void)
 //AddToBatch
 //=======================================================================================================
 
-void SpriteBatch::AddToBatch(KM::Vector2& pos, F32 w, F32 h, const Color& c)
+void SpriteBatch::AddToBatch(const KM::Vector2& pos, F32 w, F32 h, const Color& c)
 {
 
 	if(_currentBatchSize + 1 >= _maxBatchSize) 
@@ -104,7 +104,7 @@ void SpriteBatch::AddToBatch(KM::Vector2& pos, F32 w, F32 h, const Color& c)
 	++_currentBatchSize;
 }
 
-void SpriteBatch::AddToBatch(KM::Vector2& pos, F32 w, F32 h, const Color& c, U32 textureID)
+void SpriteBatch::AddToBatch(const KM::Vector2& pos, F32 w, F32 h, const Color& c, U32 textureID)
 {
 	if(textureID != 0 && textureID != TextureManager::Instance()->GetCurrentTextureID())
 	{
@@ -119,7 +119,8 @@ void SpriteBatch::AddToBatch(KM::Vector2& pos, F32 w, F32 h, const Color& c, U32
 	AddToBatch(pos, w, h, c);
 }
 
-void SpriteBatch::AddToBatch(KM::Vector2& pos, F32 w, F32 h, const Color& c, U32 textureID, KM::Vector2& verticalLimit, KM::Vector2& horizontalLimit)
+void SpriteBatch::AddToBatch(const KM::Vector2& pos, F32 w, F32 h, const Color& c, U32 textureID, 
+							 const KM::Vector2& verticalLimit, const KM::Vector2& horizontalLimit)
 {
 	if(textureID != 0 && TextureManager::Instance()->GetCurrentTextureID() != textureID)
 	{

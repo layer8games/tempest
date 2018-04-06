@@ -68,7 +68,7 @@ namespace KillerEngine
 
 		void ScalePosition(const KM::Vector3& V, F32 scale);
 
-		void SetColor(Color& col) 
+		void SetColor(const Color& col) 
 		{ 
 			_background = col; 
 		}

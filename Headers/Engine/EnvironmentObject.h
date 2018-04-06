@@ -33,9 +33,9 @@ namespace KillerEngine
 //==========================================================================================================================
 		EnvironmentObject(void);
 
-		EnvironmentObject(KM::Vector2& pos, F32 w, F32 h);
+		EnvironmentObject(const KM::Vector2& pos, F32 w, F32 h);
 
-		EnvironmentObject(KM::Vector2& pos, U32 textureID, F32 w, F32 h);
+		EnvironmentObject(const KM::Vector2& pos, U32 textureID, F32 w, F32 h);
 
 		~EnvironmentObject(void);
 //==========================================================================================================================
@@ -43,7 +43,7 @@ namespace KillerEngine
 //Virtual Functions
 //
 //==========================================================================================================================
-		void v_Update(void) {  }
+		void v_Update(void);
 
 	private:
 		

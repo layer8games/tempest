@@ -39,13 +39,24 @@ void Sprite::SetCharData(CharacterData data)
 //Operator overloads
 //
 //==========================================================================================================================
-Sprite& Sprite::operator=(Sprite& S)
+Sprite& Sprite::operator=(const Sprite& S)
 {
 	_bottomTop = S.GetUVBottomTop();
 	_leftRight = S. GetUVLeftRight();
 	_textureID = S.GetTextureID();
 	_characterData = S.GetCharData();
 	_shaderProgram = S.GetShader();
+
+	return *this;
+}
+
+Sprite& Sprite::operator=(const Sprite* S)
+{
+	_bottomTop = S->GetUVBottomTop();
+	_leftRight = S-> GetUVLeftRight();
+	_textureID = S->GetTextureID();
+	_characterData = S->GetCharData();
+	_shaderProgram = S->GetShader();
 
 	return *this;
 }
@@ -73,7 +84,7 @@ void Sprite::SetTexture(U32 tID, const F32 top, const F32 bottom, const F32 righ
 	_leftRight  = KM::Vector2(left, right);
 }
 
-void Sprite::Render(KM::Vector2& pos, F32 w, F32 h, Color& col)
+void Sprite::Render(const KM::Vector2& pos, F32 w, F32 h, const Color& col)
 {
 	
 /*

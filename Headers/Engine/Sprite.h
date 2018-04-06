@@ -52,10 +52,6 @@ namespace KillerEngine
 //==========================================================================================================================
 		Sprite(void);
 
-		//Sprite(Sprite& sprite);
-
-		//Sprite(Sprite* sprite);
-
 		~Sprite(void);
 
 //==========================================================================================================================
@@ -63,35 +59,35 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-		U32 GetTextureID(void) 
+		const U32 GetTextureID(void)  const
 		{ 
 			return _textureID; 
 		}
 
-		void SetUVs(KM::Vector2& bottomTop, KM::Vector2& leftRight)
+		void SetUVs(const KM::Vector2& bottomTop, const KM::Vector2& leftRight)
 		{
 			_bottomTop = bottomTop;
 			_leftRight = leftRight;
 		}
 
-		KM::Vector2& GetUVBottomTop(void) 
+		inline const KM::Vector2& GetUVBottomTop(void) const
 		{ 
 			return _bottomTop; 
 		}
 
-		KM::Vector2& GetUVLeftRight(void) 
+		inline const KM::Vector2& GetUVLeftRight(void) const
 		{ 
 			return _leftRight; 
 		}
 
 		void SetCharData(CharacterData data);
 
-		CharacterData GetCharData(void)
+		inline const CharacterData& GetCharData(void) const
 		{
 			return _characterData;
 		}
 
-		const GLuint GetShader(void)
+		inline const GLuint GetShader(void) const
 		{
 			return _shaderProgram;
 		}
@@ -101,7 +97,9 @@ namespace KillerEngine
 //Operator Overloads
 //
 //==========================================================================================================================
-		Sprite& operator=(Sprite& S);
+		Sprite& operator=(const Sprite& S);
+
+		Sprite& operator=(const Sprite* S);
 
 		Sprite& operator=(shared_ptr<Sprite> S);
 		
@@ -112,7 +110,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		void SetTexture(U32 tID, const F32 top, const F32 bottom, const F32 right, const F32 left);
 
-		void Render(KM::Vector2& pos, F32 w, F32 h, Color& col);
+		void Render(const KM::Vector2& pos, F32 w, F32 h, const Color& col);
 
 		//static void StaticDraw(S32 count, std::vector<F32> vertices, std::vector<F32> colors, std::vector<F32> dimensions, std::vector<F32> bottomTop, std::vector<F32>leftRight);
 

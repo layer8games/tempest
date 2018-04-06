@@ -19,7 +19,7 @@ _totalHeight(0),
 _center(0.0f)
 {  }
 
-RenderedText::RenderedText(Font& font) 
+RenderedText::RenderedText(const Font& font) 
 : 
 _text(), 
 _font(font), 
@@ -29,7 +29,7 @@ _totalHeight(0),
 _center(0.0f)
 {  }
 
-RenderedText::RenderedText(string text, Font& font) 
+RenderedText::RenderedText(string text, const Font& font) 
 : 
 _text(text), 
 _font(font), 
@@ -40,6 +40,9 @@ _center(0.0f)
 {
 	AddText(_text);
 }
+
+RenderedText::~RenderedText(void)
+{  }
 
 //==========================================================================================================================
 //
@@ -120,7 +123,7 @@ void RenderedText::AddText(string text)
 	_center = KM::Vector2(_totalWidth / 2.0f, _totalHeight / 2.0f);
 }//End AddText
 
-void RenderedText::SetPosition(KM::Vector2& pos)
+void RenderedText::SetPosition(const KM::Vector2& pos)
 {
 	_pos = pos;;
 

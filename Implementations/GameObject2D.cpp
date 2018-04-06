@@ -22,7 +22,7 @@ _color()
 	SetID();
 }
 
-GameObject2D::GameObject2D(GameObject2D& obj) 
+GameObject2D::GameObject2D(const GameObject2D& obj) 
 : 
 _ID(obj.GetID()),
 _active(obj.GetActive()),
@@ -42,7 +42,7 @@ GameObject2D::~GameObject2D(void)
 //
 //==========================================================================================================================
 //===== Dimensions =====	
-const F32 GameObject2D::GetWidth(void)
+F32 GameObject2D::GetWidth(void) const
 {
 	return _width;
 }
@@ -52,7 +52,7 @@ void GameObject2D::SetWidth(F32 w)
 	_width = w;
 }
 
-const F32 GameObject2D::GetHeight(void)
+F32 GameObject2D::GetHeight(void) const
 {
 	return _height;
 }
@@ -69,12 +69,12 @@ void GameObject2D::SetDimensions(F32 w, F32 h)
 }
 
 //===== Color =====
-const Color& GameObject2D::GetColor(void)
+const Color& GameObject2D::GetColor(void) const
 {
 	return _color;
 }
 
-void GameObject2D::SetColor(Color& col)
+void GameObject2D::SetColor(const Color& col)
 {
 	_color = col;
 }
@@ -87,7 +87,7 @@ void GameObject2D::SetColor(F32 red, F32 green, F32 blue)
 }
 
 //===== Texture =====
-const U32 GameObject2D::GetTextureID(void)
+U32 GameObject2D::GetTextureID(void) const
 {
 	return _sprite.GetTextureID();
 }
@@ -102,7 +102,7 @@ void GameObject2D::SetTexture(U32 id)
 	_sprite.SetTexture(id, 0.0f, 1.0f, 0.0f, 1.0f);
 }
 
-const bool GameObject2D::GetActive(void) 
+bool GameObject2D::GetActive(void) const
 { 
 	return _active; 
 }
@@ -118,12 +118,12 @@ void GameObject2D::SetInactive(void)
 }
 
 //===== Position =====
-KM::Vector2& GameObject2D::GetPosition(void) 
+const KM::Vector2& GameObject2D::GetPosition(void) const
 { 
 	return _position; 
 }
 
-void GameObject2D::SetPosition(KM::Vector2& pos) 
+void GameObject2D::SetPosition(const KM::Vector2& pos) 
 { 
 	_position = pos;
 }
@@ -137,46 +137,3 @@ void GameObject2D::AddScaledPosition(const KM::Vector2& v, F32 scale)
 {				
 	_position.AddScaledVector(v, scale);
 }
-/*
-//=====Velocity=====
-KM::Vector2& GameObject2D::GetVelocity(void) 
-{ 
-	return _velocity; 
-}
-
-void GameObject2D::SetVelocity(KM::Vector2& v) 
-{ 
-	_velocity = v; 
-}
-
-void GameObject2D::ScaleVelocity(const KM::Vector2& vec, F32 scale)
-{
-	_velocity.AddScaledVector(vec, scale);
-}
-
-void GameObject2D::SetVelocity(F32 x, F32 y) 
-{ 
-	_velocity = KM::Vector2(x, y); 
-}
-
-//=====Acceleration=====
-KM::Vector2& GameObject2D::GetAcceleration(void) 
-{ 
-	return _acceleration; 
-}
-
-void GameObject2D::SetAcceleration(KM::Vector2& a) 
-{ 
-	_acceleration = a; 
-}
-
-void GameObject2D::ScaleAcceleration(const KM::Vector2& vec, F32 scale)
-{
-	_acceleration.AddScaledVector(vec, scale);
-}
-
-void GameObject2D::SetAcceleration(F32 x, F32 y) 
-{
- 	_acceleration = KM::Vector2(x, y); 
-}
-*/

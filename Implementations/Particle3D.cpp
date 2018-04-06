@@ -27,12 +27,12 @@ Particle3D::~Particle3D(void)
 //==========================================================================================================================
 //Velocity
 //==========================================================================================================================
-KM::Vector3& Particle3D::GetVelocity(void)
+const KM::Vector3& Particle3D::GetVelocity(void) const
 {
 	return _velocity;
 }
 
-void Particle3D::SetVelocity(KM::Vector3& vel)
+void Particle3D::SetVelocity(const KM::Vector3& vel)
 {
 	_velocity = vel;
 }
@@ -50,12 +50,12 @@ void Particle3D::AddScaledVelocity(const KM::Vector3 v, F32 scale)
 //==========================================================================================================================
 //Acceleration
 //==========================================================================================================================
-KM::Vector3& Particle3D::GetAcceleration(void)
+const KM::Vector3& Particle3D::GetAcceleration(void) const
 {
 	return _acceleration;
 }
 
-void Particle3D::SetAcceleration(KM::Vector3& acc)
+void Particle3D::SetAcceleration(const KM::Vector3& acc)
 {
 	_acceleration = acc;
 }
