@@ -43,7 +43,7 @@ namespace KillerPhysics
 //Virtual functions
 //
 //==========================================================================================================================		
-		void v_UpdateForce(Particle2D& particle);
+		void v_UpdateForce(shared_ptr<Particle2D> particle) final;
 
 	private:
 		KM::Vector2 _gravityAcc;

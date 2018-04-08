@@ -24,9 +24,9 @@ Particle2DDragForce::~Particle2DDragForce(void)
 //Virtual Functions
 //
 //==========================================================================================================================
-void Particle2DDragForce::v_UpdateForce(Particle2D& particle)
+void Particle2DDragForce::v_UpdateForce(shared_ptr<Particle2D> particle)
 {
-	KM::Vector2 force = particle.GetVelocity();
+	KM::Vector2 force = particle->GetVelocity();
 
 	real dragCoeff = force.Magnitude();
 	dragCoeff = _k1 * dragCoeff  + _k2 * dragCoeff * dragCoeff;
@@ -34,5 +34,5 @@ void Particle2DDragForce::v_UpdateForce(Particle2D& particle)
 	force.Normalise();
 	force *= -dragCoeff;
 
-	particle.AddForce(force);
+	particle->AddForce(force);
 }

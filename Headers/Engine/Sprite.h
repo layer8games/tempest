@@ -124,7 +124,7 @@ namespace KillerEngine
 		const static U32	 NUM_BUFFERS = 4;
 		GLuint   			 _vertexArrayObject[NUM_VOA];
 		GLuint 				 _buffers[5];
-		GLuint 		 		 _shaderProgram;
+		GLuint 		 _shaderProgram;
 
 //==========================================================================================================================
 //

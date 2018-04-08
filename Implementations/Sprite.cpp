@@ -15,8 +15,7 @@ Sprite::Sprite(void)
 :  
 _bottomTop(0),
 _leftRight(0),
-_textureID(0),
-_shaderProgram(0)
+_textureID(0)
 {
 	_InitShader();
 }
@@ -183,11 +182,16 @@ void Sprite::StaticDraw(S32 count, std::vector<F32> vertices, std::vector<F32> c
 	glDrawArrays(GL_POINTS, 0, count);
 }
 */
+
+//GLuint Sprite::_shaderProgram = NULL;
+
 void Sprite::_InitShader(void)
 {
-	if(_shaderProgram != NULL) return;
+	if(_shaderProgram != NULL) 
+	{
+		return;
+	}
 
-	
 	glGenVertexArrays(NUM_VOA, _vertexArrayObject);
 	glBindVertexArray(_vertexArrayObject[0]);
 

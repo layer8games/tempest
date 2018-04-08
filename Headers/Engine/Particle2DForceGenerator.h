@@ -24,6 +24,9 @@ namespace KE = KillerEngine;
 
 namespace KillerPhysics
 {
+//==========================================================================================================================
+//Force Generator
+//==========================================================================================================================	
 	class Particle2DForceGenerator
 	{
 	public:
@@ -32,9 +35,9 @@ namespace KillerPhysics
 //Constructors
 //
 //==========================================================================================================================
-		Particle2DForceGenerator(void) { }
+		Particle2DForceGenerator(void);
 
-		~Particle2DForceGenerator(void) { }
+		virtual ~Particle2DForceGenerator(void);
 
 
 //==========================================================================================================================
@@ -42,8 +45,61 @@ namespace KillerPhysics
 //Virtual Functions
 //
 //==========================================================================================================================	
-		virtual void v_UpdateForce(Particle2D& particle)=0;
+		virtual void v_UpdateForce(shared_ptr<Particle2D> particle)=0;
 	private:
 
 	};//end class
+
+/*
+//==========================================================================================================================
+//Force Registry
+//==========================================================================================================================
+
+	class Particle2DForceRegistry
+	{
+	public:
+//==========================================================================================================================
+//
+//Constructors
+//
+//==========================================================================================================================		
+		Particle2DForceRegistry(void);
+
+		~Particle2DForceRegistry(void);
+
+//==========================================================================================================================
+//
+//ParticleForceRegistry functions
+//
+//==========================================================================================================================		
+		void Add(shared_ptr<Particle2D> particle, shared_ptr<Particle2DForceGenerator> forceGen);
+
+		void Remove(shared_ptr<Particle2D> particle, shared_ptr<Particle2DForceGenerator> forceGen);
+
+		void Clear(void);
+
+		void UpdateForces(void);
+		
+	private:
+//==========================================================================================================================
+//This struct will keep track of one force generator, and the particle that uses it. 
+//==========================================================================================================================		
+		struct ParticleForceRegistration
+		{
+			shared_ptr<Particle2D> 			  	 particle;
+			shared_ptr<Particle2DForceGenerator> forceGen;
+
+			bool operator ==(ParticleForceRegistration p)
+			{
+				if(p.particle == particle && p.forceGen == forceGen)
+					return true;
+				else
+					return false;
+			}			
+		};//end struct
+
+		typedef std::vector<ParticleForceRegistration> Registry;
+		Registry _registrations;
+	};//end class
+*/
 }//end namespace

@@ -42,7 +42,7 @@ namespace KillerPhysics
 //Virtual Functions
 //
 //==========================================================================================================================		
-		void v_UpdateForce(Particle2D& particle);
+		void v_UpdateForce(shared_ptr<Particle2D> particle) final;
 
 	private:
 		//Drag Coefficient

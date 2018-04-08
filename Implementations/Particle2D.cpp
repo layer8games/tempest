@@ -86,26 +86,22 @@ void Particle2D::v_Update(void)
 
 void Particle2D::Integrate(void) 
 {
-	//if there no mass, there is no update
-	if(_inverseMass == 0)
-	{
-		return;
-	} 
+	if(_inverseMass == 0) return;
 
 	F32 delta = KM::Timer::Instance()->DeltaTime();
 
-	//Update position
+	assert(delta > 0.0f);
+
 	KE::GameObject2D::AddScaledPosition(_velocity, delta);
 
-	//Work out acceleration. 
-	//For now, only a use the current acceleration. 
-	//Once forces are added, this will change
 	KM::Vector2 resultingAcc = _acceleration;
+	
+	resultingAcc += _gravityForce;
 
-	//Work out new velocity based on acceleration
+	resultingAcc.AddScaledVector(_forceAccum, delta);
+
 	_velocity.AddScaledVector(resultingAcc, delta);
 
-	//Add damping
 	_velocity *= real_pow(_damping, delta);
 
 	ClearAccumulator();

@@ -9,7 +9,7 @@ using namespace KillerPhysics;
 //==========================================================================================================================
 Particle2DGravityForce::Particle2DGravityForce(void) 
 : 
-_gravityAcc(KM::Vector2(0.0f, 1.0f))
+_gravityAcc(KM::Vector2(0.0f, -1.0f))
 {  }
 
 Particle2DGravityForce::Particle2DGravityForce(const KM::Vector2& gravity) 
@@ -25,9 +25,9 @@ Particle2DGravityForce::~Particle2DGravityForce(void)
 //Virtual Functions
 //
 //==========================================================================================================================
-void Particle2DGravityForce::v_UpdateForce(Particle2D& particle)
+void Particle2DGravityForce::v_UpdateForce(shared_ptr<Particle2D> particle)
 {
-	if(!particle.HasFiniteMass()) return;
+	if(!particle->HasFiniteMass()) return;
 
-	particle.AddForce(_gravityAcc * particle.GetMass());
+	particle->AddForce(_gravityAcc * particle->GetMass());
 }

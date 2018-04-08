@@ -44,9 +44,9 @@ namespace KillerPhysics
 //ParticleForceRegistry functions
 //
 //==========================================================================================================================		
-		void Add(Particle2D* particle, Particle2DForceGenerator* forceGen);
+		void Add(shared_ptr<Particle2D> particle, shared_ptr<Particle2DForceGenerator> forceGen);
 
-		void Remove(Particle2D* particle, Particle2DForceGenerator* forceGen);
+		void Remove(shared_ptr<Particle2D> particle, shared_ptr<Particle2DForceGenerator> forceGen);
 
 		void Clear(void);
 
@@ -58,10 +58,8 @@ namespace KillerPhysics
 //==========================================================================================================================		
 		struct ParticleForceRegistration
 		{
-			Particle2D* 			  particle;
-			Particle2DForceGenerator* forceGen;
-
-			ParticleForceRegistration(void) {  }
+			shared_ptr<Particle2D> 			  	 particle;
+			shared_ptr<Particle2DForceGenerator> forceGen;
 
 			bool operator ==(ParticleForceRegistration p)
 			{

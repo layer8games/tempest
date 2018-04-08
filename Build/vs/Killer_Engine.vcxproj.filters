@@ -139,6 +139,9 @@
     <Filter Include="Components\Engine">
       <UniqueIdentifier>{66fd72d2-3739-4584-a963-04c6b35f6d8d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components\KillerPhysics\Particles\2D\ForceRegistry">
+      <UniqueIdentifier>{0b7fb099-81e9-43aa-8090-714b6099f722}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -176,9 +179,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Particle3D.h">
       <Filter>Components\KillerPhysics\Particles\3D\Particle3D</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Particle2DForceRegistry.h">
-      <Filter>Components\KillerPhysics\Particles\2D\ForceGenerator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Particle2DForceGenerator.h">
       <Filter>Components\KillerPhysics\Particles\2D\ForceGenerator</Filter>
@@ -249,6 +249,9 @@
     <ClInclude Include="..\..\Headers\Engine\Engine.h">
       <Filter>Components\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Particle2DForceRegistry.h">
+      <Filter>Components\KillerPhysics\Particles\2D\ForceRegistry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -283,9 +286,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Particle3D.cpp">
       <Filter>Components\KillerPhysics\Particles\3D\Particle3D</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Particle2DForceRegistry.cpp">
-      <Filter>Components\KillerPhysics\Particles\2D\ForceGenerator</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Particle2DSpringForce.cpp">
       <Filter>Components\KillerPhysics\Particles\2D\Forces\Spring</Filter>
@@ -346,6 +346,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Engine.cpp">
       <Filter>Components\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Particle2DForceGenerator.cpp">
+      <Filter>Components\KillerPhysics\Particles\2D\ForceGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Particle2DForceRegistry.cpp">
+      <Filter>Components\KillerPhysics\Particles\2D\ForceRegistry</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
