@@ -310,7 +310,7 @@ F32 Vector3::SqrMagnitude(void)
 	return _x * _x + _y * _y + _z * _z;
 }
 
-void Vector3::Normalise(void)
+void Vector3::Normalize(void)
 {
 	F32 mag = Magnitude();
 
@@ -327,7 +327,7 @@ void Vector3::MakeBasis(const Vector3& A, const Vector3& B, const Vector3& C)
 	if(C.SqrMagnitude() == 0.0) 
 		return;
 
-	C.Normalise();
+	C.Normalize();
 
 	B = C.CrossProduct(A);
 }

@@ -163,7 +163,7 @@ Quaternion Quaternion::Opposite(void)
 	return Quaternion(_q[0] * -1.0f, _q[1] * -1.0f, _q[2] * -1.0f, _q[3] * -1.0f);
 }
 
-void Quaternion::Normalise(void)
+void Quaternion::Normalize(void)
 {
 	*this /= Magnitude();
 }

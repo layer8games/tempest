@@ -267,7 +267,7 @@ F32 Vector2::SqrMagnitude(void)
 	return _x * _x + _y * _y;
 }
 
-void Vector2::Normalise(void)
+void Vector2::Normalize(void)
 {
 	F32 mag = Magnitude();
 

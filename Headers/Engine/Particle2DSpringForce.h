@@ -1,6 +1,5 @@
 /*========================================================================
-A force that can generate spring-like behaviors. The basic model is based
-on the information found in Game Physics Engine Development 2nd edition, 
+A collection of spring-like forces that can be used with the Killer Engine.
 
 It uses Hooks law to generate the amount of force based on the distance
 that the spring is extended. 
@@ -68,7 +67,7 @@ namespace KillerPhysics
 //==========================================================================================================================
 		Particle2DSpringForce(void);
 
-		Particle2DSpringForce(Particle2D* other, real constant, real length);
+		Particle2DSpringForce(shared_ptr<Particle2D> otherEnd, real springConstant, real restLength);
 
 		~Particle2DSpringForce(void);
 //==========================================================================================================================
@@ -76,34 +75,93 @@ namespace KillerPhysics
 //Virtual Functions
 //
 //==========================================================================================================================
-		void v_UpdateForce(Particle2D* particle);
+		void v_UpdateForce(shared_ptr<Particle2D> particle) final;
 
 //==========================================================================================================================
 //
 //Class Functions
 //
 //==========================================================================================================================		
-		void MakeBungie(bool state) { _isBungie = state; }
+		void MakeBungie(bool state) 
+		{ 
+			_isBungie = state; 
+		}
 
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================		
-		void SetOtherEnd(Particle2D* end) { _otherEnd = end; }
+		inline void SetOtherEnd(shared_ptr<Particle2D> end) 
+		{ 
+			_otherEnd = end; 
+		}
 
-		void SetSpringConstant(real constant) { _springConstant = constant; }
+		inline void SetSpringConstant(real constant) 
+		{ 
+			_springConstant = constant; 
+		}
 
-		void SetRestLength(real length) { _restLength = length; }
+		inline void SetRestLength(real length) 
+		{ 
+			_restLength = length; 
+		}
 	
 	private:
 		//Consider using a GameObject2D here instead of a Particle2D
 		//This would allow for it to be more generic, and to be used
 		//With any kind of object that is rendered in the Level.
-		Particle2D* _otherEnd;
-		real 		_springConstant;
-		real 		_restLength;
-		bool		_isBungie;
+		shared_ptr<Particle2D> _otherEnd;
+		real 				   _springConstant;
+		real 				   _restLength;
+		bool				   _isBungie;
 		
-	};//end Class
+	};//end SpringForce Class
+
+	class Particle2DAnchoredSpring : public Particle2DForceGenerator
+	{
+	public:
+//==========================================================================================================================
+//
+//Constructors
+//
+//==========================================================================================================================		
+		Particle2DAnchoredSpring(void);
+
+		Particle2DAnchoredSpring(KM::Vector2 anchor, real springConstant, real restLength);
+
+		~Particle2DAnchoredSpring(void);
+
+//==========================================================================================================================
+//
+//Virtual Functions
+//
+//==========================================================================================================================
+		void v_UpdateForce(shared_ptr<Particle2D> particle) final;
+
+//==========================================================================================================================
+//
+//Accessors
+//
+//==========================================================================================================================
+		inline void SetAnchor(KM::Vector2& anchor)
+		{
+			_anchor = anchor;
+		}
+
+		inline void SetSpringConstant(real constant)
+		{
+			_springConstant = constant;
+		}
+
+		inline void SetRestLength(real length)
+		{
+			_restLength = length;
+		}
+
+	private:
+		KM::Vector2	_anchor;
+		real 		_springConstant;
+		real		_restLength;
+	};
 }//end Namespace

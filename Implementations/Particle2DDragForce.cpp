@@ -31,7 +31,7 @@ void Particle2DDragForce::v_UpdateForce(shared_ptr<Particle2D> particle)
 	real dragCoeff = force.Magnitude();
 	dragCoeff = _k1 * dragCoeff  + _k2 * dragCoeff * dragCoeff;
 
-	force.Normalise();
+	force.Normalize();
 	force *= -dragCoeff;
 
 	particle->AddForce(force);
