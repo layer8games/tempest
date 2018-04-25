@@ -108,7 +108,7 @@ namespace KillerMath
 	Vector2& operator=(F32 val);
 
 //=====Add by vector=====
-	Vector2 operator+(const Vector2& V);
+	Vector2 operator+(const Vector2& V) const;
 
 	Vector2& operator+=(const Vector2& V);		
 

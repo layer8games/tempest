@@ -85,7 +85,7 @@ Vector2& Vector2::operator=(F32 val)
 }
 
 //=====Add by vector=====
-Vector2 Vector2::operator+(const Vector2& V)
+Vector2 Vector2::operator+(const Vector2& V) const
 {
 	return Vector2(_x + V.GetX(), _y + V.GetY());
 }
