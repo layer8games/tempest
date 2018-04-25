@@ -116,8 +116,11 @@ namespace KillerPhysics
 		real 				   _restLength;
 		bool				   _isBungie;
 		
-	};//end SpringForce Class
+	};//end Particle2DSpringForce
 
+//==========================================================================================================================
+//Anchored Spring
+//==========================================================================================================================
 	class Particle2DAnchoredSpring : public Particle2DForceGenerator
 	{
 	public:
@@ -163,5 +166,61 @@ namespace KillerPhysics
 		KM::Vector2	_anchor;
 		real 		_springConstant;
 		real		_restLength;
-	};
+	};//end Particle2DAnchoredSpring
+
+//==========================================================================================================================
+//Buoyant Force
+//==========================================================================================================================
+	class Particle2DBuoyantForce : public Particle2DForceGenerator
+	{
+	public:
+//==========================================================================================================================
+//
+//Constructors	 	
+//
+//==========================================================================================================================
+		Particle2DBuoyantForce(void);
+
+		Particle2DBuoyantForce::Particle2DBuoyantForce(real maxDepth, real objVolume, real liquidHeight, real liquidDensity = 1000.0f);
+
+		~Particle2DBuoyantForce(void);
+//==========================================================================================================================
+//
+//Virtual Functions
+//
+//==========================================================================================================================
+		void v_UpdateForce(shared_ptr<Particle2D> particle);
+
+//==========================================================================================================================
+//
+//Accessors
+//
+//==========================================================================================================================
+		inline void SetMaxDepth(real depth) 
+		{ 
+			_maxDepth = depth; 
+		}
+
+		inline void SetObjectVolume(real volume) 
+		{ 
+			_objectVolume = volume; 
+		}
+
+		inline void SetLiquidHeight(real hieght) 
+		{ 
+			_liquidHeight = hieght; 
+		}
+
+		inline void SetLiquidDensity(real density) 
+		{ 
+			_liquidDensity = density; 
+		}
+	
+	private:
+		real _maxDepth;
+		real _objectVolume;
+		real _liquidHeight;
+		real _liquidDensity;
+	};//end Particle2DBuoyantForce
+		
 }//end Namespace

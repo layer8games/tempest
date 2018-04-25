@@ -1,9 +1,10 @@
-#include <Engine/Particle2DSpringForce.h>
+#include <Engine/Particle2DSpringForces.h>
+#include <iostream>
 
 using namespace KillerPhysics;
 
 //==========================================================================================================================
-//SpringForce
+//Particle2DSpringForce
 //==========================================================================================================================
 //==========================================================================================================================
 //
@@ -44,7 +45,10 @@ void Particle2DSpringForce::v_UpdateForce(shared_ptr<Particle2D> particle)
 	real magnitude = force.Magnitude();
 
 	//=====Bungie Checke=====
-	if(magnitude <= _restLength) return;
+	if(_isBungie && magnitude <= _restLength) 
+	{
+		return;
+	}
 
 	magnitude = real_abs(magnitude - _restLength) * _springConstant;
 
@@ -56,7 +60,7 @@ void Particle2DSpringForce::v_UpdateForce(shared_ptr<Particle2D> particle)
 }
 
 //==========================================================================================================================
-//AnchoredSpring
+//Particle2DAnchoredSpring
 //==========================================================================================================================
 //==========================================================================================================================
 //
@@ -90,4 +94,60 @@ void Particle2DAnchoredSpring::v_UpdateForce(shared_ptr<Particle2D> particle)
 	force.Normalize();
 	force *= static_cast<F32>(magnitude);
 	particle->AddForce(force);
+}
+
+//==========================================================================================================================
+//Particle2DBuoyantForce
+//==========================================================================================================================
+//==========================================================================================================================
+//
+//Constructors	 	
+//
+//==========================================================================================================================
+Particle2DBuoyantForce::Particle2DBuoyantForce(void) 
+: 
+_maxDepth(0), 
+_objectVolume(0), 
+_liquidHeight(0), 
+_liquidDensity(1000.0f)
+{  }
+
+Particle2DBuoyantForce::Particle2DBuoyantForce(real maxDepth, real objVolume, real liquidHeight, real liquidDensity )
+: 
+_maxDepth(maxDepth), 
+_objectVolume(objVolume), 
+_liquidHeight(liquidHeight), 
+_liquidDensity(liquidDensity)
+{  }
+
+Particle2DBuoyantForce::~Particle2DBuoyantForce(void) 
+{  }
+
+//==========================================================================================================================
+//
+//Virtual Functions
+//
+//==========================================================================================================================
+void Particle2DBuoyantForce::v_UpdateForce(shared_ptr<Particle2D> particle)
+{
+//=====Calculate Depth of object=====
+	real depth = particle->GetPosition().GetY();
+
+	//Out of liquid check
+	if(depth >= _liquidHeight + _maxDepth) return;
+	
+	KM::Vector2 force(0.0f);
+
+	//Max Depth check
+	if(depth <= _liquidHeight - _maxDepth)
+	{
+		force.SetY(_liquidDensity * _objectVolume);
+
+		particle->AddForce(force);
+		return;
+	}
+
+	force.SetY(_liquidDensity * _objectVolume * (depth - _maxDepth - _liquidHeight) / 2 * _maxDepth);
+
+	particle->AddForce(force);	
 }

@@ -153,7 +153,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Particle2DBuoyantForce.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle2DDragForce.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle2DGravityForce.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle2DForceGenerator.h" />
@@ -161,7 +160,7 @@
     <ClInclude Include="..\..\Headers\Engine\Engine.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle2D.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle3D.h" />
-    <ClInclude Include="..\..\Headers\Engine\Particle2DSpringForce.h" />
+    <ClInclude Include="..\..\Headers\Engine\Particle2DSpringForces.h" />
     <ClInclude Include="..\..\Headers\Engine\Quaternion.h">
       <SubType>
       </SubType>
@@ -214,13 +213,12 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Particle2DBuoyantForce.cpp" />
     <ClCompile Include="..\..\Implementations\Particle2DDragForce.cpp" />
     <ClCompile Include="..\..\Implementations\Particle2DGravityForce.cpp" />
     <ClCompile Include="..\..\Implementations\Engine.cpp" />
     <ClCompile Include="..\..\Implementations\Particle2D.cpp" />
     <ClCompile Include="..\..\Implementations\Particle3D.cpp" />
-    <ClCompile Include="..\..\Implementations\Particle2DSpringForce.cpp" />
+    <ClCompile Include="..\..\Implementations\Particle2DSpringForces.cpp" />
     <ClCompile Include="..\..\Implementations\Quaternion.cpp">
       <SubType>
       </SubType>

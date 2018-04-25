@@ -94,9 +94,6 @@
     <Filter Include="Components\KillerPhysics\Particles\2D\Forces\Spring">
       <UniqueIdentifier>{90b3a85a-49e6-4ef0-b9f4-28445503896b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\KillerPhysics\Particles\2D\Forces\Bouyant">
-      <UniqueIdentifier>{792a4c9a-1a6b-4263-ab7b-9da00ab53439}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\KillerPhysics\Particles\2D\Particle2D">
       <UniqueIdentifier>{3d64720f-43fb-4473-909b-d82d14b0c021}</UniqueIdentifier>
     </Filter>
@@ -186,14 +183,8 @@
     <ClInclude Include="..\..\Headers\Engine\Particle2DGravityForce.h">
       <Filter>Components\KillerPhysics\Particles\2D\Forces\Gravity</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Particle2DSpringForce.h">
-      <Filter>Components\KillerPhysics\Particles\2D\Forces\Spring</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Particle2DDragForce.h">
       <Filter>Components\KillerPhysics\Particles\2D\Forces\Drag</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Particle2DBuoyantForce.h">
-      <Filter>Components\KillerPhysics\Particles\2D\Forces\Bouyant</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GameObject2D.h">
       <Filter>Components\GameObjects\GameObject\2D</Filter>
@@ -252,6 +243,9 @@
     <ClInclude Include="..\..\Headers\Engine\Particle2DForceRegistry.h">
       <Filter>Components\KillerPhysics\Particles\2D\ForceRegistry</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Particle2DSpringForces.h">
+      <Filter>Components\KillerPhysics\Particles\2D\Forces\Spring</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -287,17 +281,11 @@
     <ClCompile Include="..\..\Implementations\Particle3D.cpp">
       <Filter>Components\KillerPhysics\Particles\3D\Particle3D</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Particle2DSpringForce.cpp">
-      <Filter>Components\KillerPhysics\Particles\2D\Forces\Spring</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Particle2DGravityForce.cpp">
       <Filter>Components\KillerPhysics\Particles\2D\Forces\Gravity</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Particle2DDragForce.cpp">
       <Filter>Components\KillerPhysics\Particles\2D\Forces\Drag</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Particle2DBuoyantForce.cpp">
-      <Filter>Components\KillerPhysics\Particles\2D\Forces\Bouyant</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObject2D.cpp">
       <Filter>Components\GameObjects\GameObject\2D</Filter>
@@ -352,6 +340,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Particle2DForceRegistry.cpp">
       <Filter>Components\KillerPhysics\Particles\2D\ForceRegistry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Particle2DSpringForces.cpp">
+      <Filter>Components\KillerPhysics\Particles\2D\Forces\Spring</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
