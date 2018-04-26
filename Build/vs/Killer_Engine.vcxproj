@@ -199,7 +199,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Particle2DContct.cpp">
+    <ClCompile Include="..\..\Implementations\Particle2DContact.cpp">
       <SubType>
       </SubType>
     </ClCompile>

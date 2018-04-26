@@ -46,6 +46,12 @@ namespace KillerPhysics
 		{
 			_contactNormal = normal;
 		}
+
+		inline void SetContacts(shared_ptr<Particle2D> particle1, shared_ptr<Particle2D> particle2 = nullptr)
+		{
+			_particles[0] = particle1;
+			_particles[1] = particle2;
+		}
 //==========================================================================================================================
 //
 //Functions
@@ -70,8 +76,10 @@ namespace KillerPhysics
 //Data
 //
 //==========================================================================================================================
-		shared_ptr<Particle2D> _particles[2];
-		KM::Vector2			   _contactNormal;
-		real 				   _restitution;
+		shared_ptr<Particle2D>  _particles[2];
+		shared_ptr<KM::Vector2> _particleMovements[2];
+		KM::Vector2			    _contactNormal;
+		real 				    _restitution;
+		real				    _penetration;
 	};//end Class
 }//end Namespace

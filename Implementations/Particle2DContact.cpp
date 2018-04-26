@@ -9,8 +9,10 @@ using namespace KillerPhysics;
 Particle2DContact::Particle2DContact(void)
 :
 _particles{nullptr, nullptr},
+_particleMovements{nullptr, nullptr},
 _contactNormal(0.0f),
-_restitution(0.0f)
+_restitution(0.0f),
+_penetration(0.0f)
 {  }
 
 Particle2DContact::~Particle2DContact(void)
@@ -82,5 +84,38 @@ void Particle2DContact::_ResolveImpulseVelocity(void)
 
 void Particle2DContact::_ResolveInterpenetration(void)
 {
+	if(_penetration <= 0) return;
 
+	real totalInverseMass = _particles[0]->GetInverseMass();
+
+	if(_particles[1])
+	{
+		totalInverseMass += _particles[1]->GetInverseMass();
+	}
+
+	//if all particles have infinite mass, do nothing
+	if(totalInverseMass <= 0) return;
+
+	//Find amount of penetration per unit of inverse mass
+	KM::Vector2 movePerMass = _contactNormal * (_penetration / totalInverseMass);
+
+	//Calculate movement amounts
+	_particleMovements[0] = movePerMass * _particles[0]->GetInverseMass();
+
+	if(_particles[1])
+	{
+		_particleMovements[1] = movePerMass * -_particleMovements[1]->GetInverseMass();
+	}
+	else
+	{
+		_particleMovements[1] = nullptr;
+	}
+
+	//Apply penetration resolution
+	_particles[0]->SetPosition(_particles[0]->GetPosition() + _particleMovements[0]);
+
+	if(_particles[1])
+	{
+		_particles[1]->SetPosition(_particles[1]->GetPosition + _particleMovements[1]);
+	}
 }

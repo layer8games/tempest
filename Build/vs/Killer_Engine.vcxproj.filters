@@ -350,7 +350,7 @@
     <ClCompile Include="..\..\Implementations\Particle2DSpringForces.cpp">
       <Filter>Components\KillerPhysics\Particles\2D\Forces\Spring</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Particle2DContct.cpp">
+    <ClCompile Include="..\..\Implementations\Particle2DContact.cpp">
       <Filter>Components\KillerPhysics\Particles\2D\ContactResolution</Filter>
     </ClCompile>
   </ItemGroup>
