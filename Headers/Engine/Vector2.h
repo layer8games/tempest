@@ -110,40 +110,42 @@ namespace KillerMath
 //=====Add by vector=====
 	Vector2 operator+(const Vector2& V) const;
 
+	Vector2 operator+(shared_ptr<Vector2> V) const;
+
 	Vector2& operator+=(const Vector2& V);		
 
 //=====Add by scalar=====
-	Vector2 operator+(F32 val);
+	Vector2 operator+(F32 val) const;
 
 	Vector2& operator+=(F32 val);
 
 //=====Subtract from vector=====
-	Vector2 operator-(const Vector2& V);
+	Vector2 operator-(const Vector2& V) const;
 
 	Vector2& operator-=(const Vector2& V);
 
 //=====Subtract from scalar=====
-	Vector2 operator-(F32 val);
+	Vector2 operator-(F32 val) const;
 
 	Vector2& operator-=(F32 val);
 
 //=====Component-wise multiply by vector=====
-	Vector2 operator*(const Vector2& V);
+	Vector2 operator*(const Vector2& V) const;
 
 	Vector2& operator*=(const Vector2& V);
 
 //=====Multiply by scalar=====
-	Vector2 operator*(F32 val);
+	Vector2 operator*(F32 val) const;
 
 	Vector2& operator*=(F32 val);
 
 //=====Component-wise Divide by vector=====	
-	Vector2 operator/(const Vector2& V);
+	Vector2 operator/(const Vector2& V) const;
 
 	Vector2& operator/=(const Vector2& V);
 
 //=====Divide by scalar=====
-	Vector2 operator/(F32 val);
+	Vector2 operator/(F32 val) const;
 
 	Vector2& operator/=(F32 val);
 

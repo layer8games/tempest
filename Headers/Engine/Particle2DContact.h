@@ -19,6 +19,8 @@ Written by Maxwell Miller
 #include <Engine/Vector2.h>
 #include <Engine/Timer.h>
 
+namespace KM = KillerMath;
+
 namespace KillerPhysics
 {
 	class Particle2DContact

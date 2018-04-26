@@ -51,6 +51,28 @@ void Particle2DContact::_ResolveImpulseVelocity(void)
 
 	real newSeparatingVelocity = -separatingVelocity * _restitution;
 
+	//Check to see if velocity build up is due to acceleration only
+	KM::Vector2 accelCausedVel = _particles[0]->GetAcceleration();
+
+	if(_particles[1])
+	{
+		accelCausedVel -= _particles[1]->GetAcceleration();
+	}
+
+	real accelCausedSeparatingVel = accelCausedVel.DotProduct(_contactNormal * KM::Timer::Instance()->DeltaTime());
+
+	//If we have an acceleration, remove it. 
+	if(accelCausedSeparatingVel < 0)
+	{
+		newSeparatingVelocity += _restitution * accelCausedSeparatingVel;
+
+		//Make sure we didn't take too much
+		if(newSeparatingVelocity < 0 )
+		{
+			newSeparatingVelocity = 0;
+		}
+	}
+
 	real deltaVelocity = newSeparatingVelocity - separatingVelocity;
 
 	//Apply the change in velocity to each object in
@@ -100,11 +122,11 @@ void Particle2DContact::_ResolveInterpenetration(void)
 	KM::Vector2 movePerMass = _contactNormal * (_penetration / totalInverseMass);
 
 	//Calculate movement amounts
-	_particleMovements[0] = movePerMass * _particles[0]->GetInverseMass();
+	_particleMovements[0] = shared_ptr<KM::Vector2>(new KM::Vector2(movePerMass * _particles[0]->GetInverseMass()));
 
 	if(_particles[1])
 	{
-		_particleMovements[1] = movePerMass * -_particleMovements[1]->GetInverseMass();
+		_particleMovements[1] = shared_ptr<KM::Vector2>(new KM::Vector2(movePerMass * -_particles[1]->GetInverseMass()));
 	}
 	else
 	{
@@ -116,6 +138,6 @@ void Particle2DContact::_ResolveInterpenetration(void)
 
 	if(_particles[1])
 	{
-		_particles[1]->SetPosition(_particles[1]->GetPosition + _particleMovements[1]);
+		_particles[1]->SetPosition(_particles[1]->GetPosition() + _particleMovements[1]);
 	}
 }

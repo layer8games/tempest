@@ -90,6 +90,11 @@ Vector2 Vector2::operator+(const Vector2& V) const
 	return Vector2(_x + V.GetX(), _y + V.GetY());
 }
 
+Vector2 Vector2::operator+(shared_ptr<Vector2> V) const
+{
+	return Vector2(_x + V->GetX(), _y + V->GetY());
+}
+
 Vector2& Vector2::operator+=(const Vector2& V)
 {
 	_x += V.GetX();
@@ -99,7 +104,7 @@ Vector2& Vector2::operator+=(const Vector2& V)
 }
 
 //=====Add by scalar=====
-Vector2 Vector2::operator+(F32 val)
+Vector2 Vector2::operator+(F32 val) const
 {
 	return Vector2(_x + val, _y + val);
 }
@@ -113,7 +118,7 @@ Vector2& Vector2::operator+=(F32 val)
 }
 
 //=====Subtract by vector=====
-Vector2 Vector2::operator-(const Vector2& V)
+Vector2 Vector2::operator-(const Vector2& V) const
 {
 	return Vector2(_x - V.GetX(), _y - V.GetY());
 }
@@ -127,7 +132,7 @@ Vector2& Vector2::operator-=(const Vector2& V)
 }
 
 //=====Subtract by scalar=====
-Vector2 Vector2::operator-(F32 val)
+Vector2 Vector2::operator-(F32 val) const
 {
 	return Vector2(_x - val, _y - val);
 }
@@ -141,7 +146,7 @@ Vector2& Vector2::operator-=(F32 val)
 }
 
 //=====Component-wise multiply by vector=====
-Vector2 Vector2::operator*(const Vector2& V)
+Vector2 Vector2::operator*(const Vector2& V) const
 {
 	return Vector2(_x * V.GetX(), _y * V.GetY());
 }
@@ -155,7 +160,7 @@ Vector2& Vector2::operator*=(const Vector2& V)
 }
 
 //=====Multiply by scalar=====
-Vector2 Vector2::operator*(F32 val)
+Vector2 Vector2::operator*(F32 val) const
 {
 	return Vector2(_x * val, _y * val);
 }
@@ -169,7 +174,7 @@ Vector2& Vector2::operator*=(F32 val)
 }
 
 //=====Component-wise Divide by vector=====	
-Vector2 Vector2::operator/(const Vector2& V)
+Vector2 Vector2::operator/(const Vector2& V) const
 {
 	F32 vecX = V.GetX();
 	F32 vecY = V.GetY();
@@ -193,7 +198,7 @@ Vector2& Vector2::operator/=(const Vector2& V)
 }
 
 //=====Divide by scalar=====
-Vector2 Vector2::operator/(F32 val)
+Vector2 Vector2::operator/(F32 val) const
 {
 	assert(val != 0.0f);
 	
