@@ -72,6 +72,9 @@ void LevelManager::SetActiveLevel(U32 levelID)
 //==========================================================================================================================
 void LevelManager::Update(void) 
 {
+	//Update Physics, then level will update all registered Objects. 
+	//finally, the level can update anything custom
+	_activeLevel->v_Integrate();
 	_activeLevel->UpdateObjects();
 	_activeLevel->v_Update();
 }
@@ -115,6 +118,18 @@ void LevelManager::AddObjectToLevel(U32 id, shared_ptr<GameObject2D> obj)
 	else
 	{
 		ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
+	} 
+}
+
+void LevelManager::AddParticle2DToLevel(U32 id, shared_ptr<KP::Particle2D> particle, shared_ptr<KP::Particle2DForceGenerator> generator)
+{
+	if(_levels.find(id) != _levels.end()) 
+	{ 
+		_levels[id]->AddParticle2DToLevel(particle, generator); 
+	} 
+	else
+	{
+		ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddParticle2DToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
 	} 
 }
 

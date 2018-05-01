@@ -6,6 +6,9 @@ Will hold two pointers, one for each Particle2D involved. All calculation
 are made from the perspective of the first paticle. If there is only one,
 that implies that we are making a contact with an environmental object. 
 
+ParticleContact Resolver: This holds the code that will resolve the contact
+once it is found. 
+
 This is not free to use, and cannot be used without the express permission
 of KillerWave.
 
@@ -23,6 +26,9 @@ namespace KM = KillerMath;
 
 namespace KillerPhysics
 {
+//==========================================================================================================================
+//ParticleContact
+//==========================================================================================================================
 	class Particle2DContact
 	{
 	public:
@@ -54,6 +60,26 @@ namespace KillerPhysics
 			_particles[0] = particle1;
 			_particles[1] = particle2;
 		}
+
+		inline void SetPenetration(real penetration)
+		{
+			_penetration = penetration;
+		}
+
+		inline real GetPenetration(void)
+		{
+			return _penetration;
+		}
+
+		inline const shared_ptr<Particle2D> GetParticleOne(void)
+		{
+			return _particles[0];
+		}
+
+		inline const shared_ptr<Particle2D> GetParticleTwo(void)
+		{
+			return _particles[1];
+		}
 //==========================================================================================================================
 //
 //Functions
@@ -83,5 +109,46 @@ namespace KillerPhysics
 		KM::Vector2			    _contactNormal;
 		real 				    _restitution;
 		real				    _penetration;
-	};//end Class
+	};//end ParticleContact
+
+
+//==========================================================================================================================
+//ParticleContactResolver
+//==========================================================================================================================	
+	class Particle2DContactResolver
+	{
+	public:
+//==========================================================================================================================
+//
+//Constructors
+//
+//==========================================================================================================================
+		Particle2DContactResolver(void);
+
+		Particle2DContactResolver(U32 iterations);
+
+		~Particle2DContactResolver(void);
+//==========================================================================================================================
+//
+//Functions
+//
+//==========================================================================================================================
+		inline void SetIterations(U32 iterations)
+		{
+			_iterations = iterations;
+		}
+
+// Consider a different data structure here. Maybe a vector<Particl2DContact> instead		
+		void ResolveContacts(Particle2DContact* contactArray, U32 numContacts);
+
+	private:
+		U32 _iterations;
+		U32 _iterationsUsed;
+	};//end ParticleContactResolver
+
+//==========================================================================================================================
+//ParticleContactGenerator
+// I don't see the point of this class, and the book didn't cover it. I'll skip it for now. 
+//==========================================================================================================================	
+
 }//end Namespace

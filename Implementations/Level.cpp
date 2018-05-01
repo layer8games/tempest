@@ -16,7 +16,8 @@ _mapTopBorder(0),
 _mapBottomBorder(0),
 _mapRightBorder(0),
 _mapLeftBorder(0),
-_bgColor()
+_bgColor(),
+_2DForceRegistry()
 {  }
 
 Level::~Level(void)
@@ -27,6 +28,19 @@ Level::~Level(void)
 //Virtual Functions
 //
 //==========================================================================================================================
+void Level::v_Integrate(void)
+{
+	_2DForceRegistry.UpdateForces();
+
+	for(auto i : _2DParticles)
+	{
+		if(i.second->GetActive())
+		{
+			i.second->Integrate();
+		}
+	}
+}
+
 void Level::v_Render(void)
 { 
 	RenderObjects(); 
@@ -54,6 +68,21 @@ void Level::AddObjectToLevel(shared_ptr<GameObject2D> obj)
 	if(_2DWorldObjects.find(obj->GetID()) == _2DWorldObjects.end()) 
 	{ 
 		ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to AddLevel to _2DWorldObjects"); 
+	}
+}
+
+void Level::AddParticle2DToLevel(shared_ptr<KP::Particle2D> particle, shared_ptr<KP::Particle2DForceGenerator> generator)
+{
+	_2DParticles.insert({particle->GetID(), particle});
+
+	if(_2DParticles.find(particle->GetID()) == _2DParticles.end())
+	{
+		ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to Add Particle to Level. Level.h line 80");
+	}
+
+	if(generator != nullptr)
+	{
+		_2DForceRegistry.Add(particle, generator);
 	}
 }
 
@@ -132,6 +161,30 @@ void Level::RenderObjects(void)
 		}
 	}
 
+	for(auto i : _2DParticles) 
+	{
+		if(i.second->GetActive())
+		{
+			//const Sprite& sprite = i.second->GetSprite();
+			if(i.second->GetSprite().GetShader() != SpriteBatch::Instance()->GetShader())
+			{
+				SpriteBatch::Instance()->SetShader(i.second->GetSprite().GetShader());
+			}
+			//i.second->v_Render();
+			//_batch.AddToBatch(i.second->GetSprite(), i.second.GetWidth(), i.second.GetHeight());
+			SpriteBatch::Instance()->AddToBatch
+			(
+				i.second->GetPosition(), 
+				i.second->GetWidth(), 
+				i.second->GetHeight(), 
+				i.second->GetColor(),
+				i.second->GetTextureID(),
+				i.second->GetSprite().GetUVBottomTop(),
+				i.second->GetSprite().GetUVLeftRight()
+			);
+		}
+	}
+
 	for(std::shared_ptr<RenderedText> text : _textList)
 	{
 		std::vector<std::shared_ptr<RenderedCharacter>> charList = text->GetCharacterList();
@@ -169,11 +222,19 @@ void Level::RenderObjects(void)
 
 void Level::UpdateObjects(void)
 {
-	for(auto i = _2DWorldObjects.begin(); i!=_2DWorldObjects.end(); ++i) 
+	for(auto i : _2DWorldObjects)
 	{
-		if(i->second->GetActive())
+		if(i.second->GetActive())
 		{
-			i->second->v_Update();
+			i.second->v_Update();
+		}
+	}
+
+	for(auto i : _2DParticles )
+	{
+		if(i.second->GetActive())
+		{
+			i.second->v_Update();
 		}
 	}
 

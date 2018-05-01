@@ -1,6 +1,8 @@
 /*========================================================================
-A world is what the different states of game will be. Each world re-
+A Level is what the different states of game will be. Each Level re-
 presents  
+
+The Level can render 2D and 3D objects with and without physics. 
 
 This is not free to use, and cannot be used without the express permission
 of KillerWave.
@@ -22,8 +24,11 @@ Written by Maxwell Miller
 #include <Engine/SpriteBatch.h>
 #include <Engine/RenderedText.h>
 #include <Engine/RenderedCharacter.h>
+#include <Engine/Particle2D.h>
+#include <Engine/Particle2DForceRegistry.h>
 
 namespace KM = KillerMath;
+namespace KP =KillerPhysics;
 
 //=====STL includes=====
 #include <map>
@@ -43,9 +48,16 @@ namespace KillerEngine
 	{
 //==========================================================================================================================
 //
-//Class structs and enums
+//Class structs, enums and typedefs
 //
 //==========================================================================================================================	
+	public:
+		//typedef std::map<U32, shared_ptr<GameObject2D>> 2DObjectList;
+		//typedef std::map<U32, shared_ptr<GameObject3D>> 3DObjectList;
+		//typedef std::map<U32, shared_ptr<KP::Particle2D>>   2DParticleList;
+		//typedef std::vector<shared_ptr<RenderedText>> TextList;
+
+
 	protected:
 		enum ObjectType
 		{
@@ -77,7 +89,6 @@ namespace KillerEngine
 			int   tileHeight;
 			Color color;
 		};
-			
 
 	public:
 //==========================================================================================================================
@@ -104,6 +115,8 @@ namespace KillerEngine
 		}
 		
 		virtual void v_Update(void)=0;
+
+		virtual void v_Integrate(void);
 		
 		virtual void v_Render(void);
 
@@ -127,6 +140,8 @@ namespace KillerEngine
 		void AddObjectToLevel(const GameObject2D& obj);
 
 		void AddObjectToLevel(shared_ptr<GameObject2D> obj);
+
+		void AddParticle2DToLevel(shared_ptr<KP::Particle2D> particle, shared_ptr<KP::Particle2DForceGenerator> generator=nullptr);
 
 		void AddObject3DToLevel(const GameObject3D& obj);
 
@@ -240,6 +255,9 @@ namespace KillerEngine
 		virtual ObjectType v_StringToTileData(string s);
 
 	private:
+		void _AddTile(TileData data);
+
+
 		S32   _mapWidth;
 		S32   _mapHeight;
 		S32   _mapTopBorder;
@@ -248,12 +266,12 @@ namespace KillerEngine
 		S32   _mapLeftBorder;
 		Color _bgColor;
 		U32 _ID;
-		std::map<U32, shared_ptr<GameObject2D>> _2DWorldObjects;
-		std::map<U32, shared_ptr<GameObject3D>> _3DWorldObjects;
-		std::vector<shared_ptr<RenderedText>>	 _textList;
+		std::map<U32, shared_ptr<GameObject2D>>   _2DWorldObjects;
+		std::map<U32, shared_ptr<GameObject3D>>   _3DWorldObjects;
+		std::map<U32, shared_ptr<KP::Particle2D>> _2DParticles;
+		std::vector<shared_ptr<RenderedText>>     _textList;
 		std::map<U32, TileData> _2DTileData;
 		//SpriteBatch _batch;
-
-		void _AddTile(TileData data);
+		KP::Particle2DForceRegistry _2DForceRegistry;
 	};
 }//End namespace

@@ -81,7 +81,7 @@ void Particle2D::SetMass(const real mass)
 //==========================================================================================================================
 void Particle2D::v_Update(void)
 {
-	Integrate();
+	//Integrate();
 }
 
 void Particle2D::Integrate(void) 

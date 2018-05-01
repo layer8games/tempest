@@ -20,6 +20,8 @@ Written by Maxwell Miller
 #include <Engine/GameObject2D.h>
 #include <Engine/ErrorManager.h>
 
+namespace KP = KillerPhysics;
+
 //=====STL includes=====
 #include <map>
 
@@ -77,6 +79,8 @@ namespace KillerEngine
 		void AddObjectToLevel(U32 id, const GameObject2D& obj);
 
 		void AddObjectToLevel(U32 id, shared_ptr<GameObject2D> obj);
+
+		void AddParticle2DToLevel(U32 id, shared_ptr<KP::Particle2D>, shared_ptr<KP::Particle2DForceGenerator> generator=nullptr);
 
 		void AddObject3DToLevel(U32 id, const GameObject3D& obj);
 		

@@ -2,6 +2,9 @@
 
 using namespace KillerPhysics;
 //==========================================================================================================================
+//Particle2DContact
+//==========================================================================================================================
+//==========================================================================================================================
 //
 //Constructors	 	
 //
@@ -139,5 +142,61 @@ void Particle2DContact::_ResolveInterpenetration(void)
 	if(_particles[1])
 	{
 		_particles[1]->SetPosition(_particles[1]->GetPosition() + _particleMovements[1]);
+	}
+}
+
+//==========================================================================================================================
+//Particle2DContactResolver
+//==========================================================================================================================
+//==========================================================================================================================
+//
+//Constructors
+//
+//==========================================================================================================================
+Particle2DContactResolver::Particle2DContactResolver(void)
+:
+_iterations(0),
+_iterationsUsed(0)
+{  }
+
+Particle2DContactResolver::Particle2DContactResolver(U32 iterations)
+:
+_iterations(iterations),
+_iterationsUsed(0)
+{  }
+
+Particle2DContactResolver::~Particle2DContactResolver(void)
+{  }
+
+//==========================================================================================================================
+//
+//Functions
+//
+//==========================================================================================================================
+void Particle2DContactResolver::ResolveContacts(Particle2DContact* contactArray, U32 numContacts)
+{
+	U32 i;
+	_iterationsUsed = 0;
+
+	while(_iterationsUsed < _iterations)
+	{
+		//Find the contact with the largest closing velocity
+		real max = REAL_MAX;
+		U32 maxIndex = numContacts;
+		for(int i = 0; i < numContacts; ++i)
+		{
+			real sepVal = contactArray[i].CalculateSeparatingVelocity();
+			if(sepVal < max && (sepVal < 0 || contactArray[i].GetPenetration() > 0))
+			{
+				max = sepVal;
+				maxIndex = i;
+			}
+		}
+
+		//If nothing is found, end it
+		if(maxIndex == numContacts) break;
+
+		contactArray[maxIndex].Resolve();
+		++_iterationsUsed;
 	}
 }
