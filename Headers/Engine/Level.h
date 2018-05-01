@@ -143,6 +143,11 @@ namespace KillerEngine
 
 		void AddParticle2DToLevel(shared_ptr<KP::Particle2D> particle, shared_ptr<KP::Particle2DForceGenerator> generator=nullptr);
 
+		inline void RegisterParticle2DForce(shared_ptr<KP::Particle2D> particle, shared_ptr<KP::Particle2DForceGenerator> generator)
+		{
+			_2DForceRegistry.Add(particle, generator);
+		}
+
 		void AddObject3DToLevel(const GameObject3D& obj);
 
 		void AddTextToLevel(shared_ptr<RenderedText> text);
