@@ -22,9 +22,9 @@ or the values themselves.
 Since the matrix is column major, it is mapped as such: 
 
 | m00 | m10 | m20 | m30 |
-| m01 | m12 | m21 | m31 |
-| m03 | m13 | m22 | m32 |
-| m04 | m14 | m23 | m34 |
+| m01 | m11 | m21 | m31 |
+| m03 | m12 | m22 | m32 |
+| m04 | m13 | m23 | m33 |
 
 This means that _m[0] -> _m[3] == m00 -> m04
 
