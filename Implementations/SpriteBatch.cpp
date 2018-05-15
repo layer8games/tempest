@@ -1,4 +1,5 @@
 #include <Engine/SpriteBatch.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -18,10 +19,11 @@ _bottomTop(0),
 _leftRight(0),
 _renderingProgramColor(0),
 _renderingProgramTexture(0),
-_shader(0)
+_shader(0),
+_shaderSetCount(0)
 { 
 	glGenVertexArrays(NUM_VOA, _vertexArrayObject);
-	glBindVertexArray(_vertexArrayObject[1]);
+	glBindVertexArray(_vertexArrayObject[0]);
 }
 
 SpriteBatch::~SpriteBatch(void)
@@ -33,6 +35,9 @@ SpriteBatch::~SpriteBatch(void)
 //==========================================================================================================================
 void SpriteBatch::SetShader(GLuint shader)
 {
+	++_shaderSetCount;
+	std::cout << "Set Shader called " << _shaderSetCount << " times\r";
+
 	Draw();
 	_shader = shader;
 
@@ -193,8 +198,8 @@ void SpriteBatch::Draw(void)
 	if(_bottomTop.size() > 0)
 	{
 		
-		glEnable (GL_BLEND); 
-		glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glEnable(GL_BLEND); 
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		glBindBuffer(GL_ARRAY_BUFFER, buffers[3]);
 		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _bottomTop.size()), &_bottomTop[0], GL_STATIC_DRAW);
 		glEnableVertexAttribArray(3);

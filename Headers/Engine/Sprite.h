@@ -29,6 +29,7 @@ Written by Maxwell Miller
 #include <Engine/ErrorManager.h>
 #include <Engine/Color.h>
 #include <Engine/CharacterData.h>
+#include <Engine/Shader.h>
 
 namespace KM = KillerMath;
 
@@ -119,12 +120,7 @@ namespace KillerEngine
 		KM::Vector2 		 _leftRight;
 		U32					 _textureID;
 		CharacterData   	 _characterData;
-
-		const static U32	 NUM_VOA = 1;
-		const static U32	 NUM_BUFFERS = 4;
-		GLuint   			 _vertexArrayObject[NUM_VOA];
-		GLuint 				 _buffers[5];
-		GLuint 		 _shaderProgram;
+		GLuint 		 		 _shaderProgram;
 
 //==========================================================================================================================
 //

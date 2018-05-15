@@ -137,7 +137,7 @@ namespace KillerEngine
 		std::vector<F32>     _leftRight;	
 		GLuint				 _renderingProgramColor;
 		
-		const static U32	 NUM_VOA = 2;
+		const static U32	 NUM_VOA = 1;
 		GLuint   			 _renderingProgramTexture;
 		GLuint   			 _vertexArrayObject[NUM_VOA];
 		
@@ -146,6 +146,7 @@ namespace KillerEngine
 		static const GLchar* _vertexShaderSourceTexture[];
 		static const GLchar* _fragmentShaderSourceColor[];
 		static const GLchar* _fragmentShaderSourceTexture[];
+		U64 _shaderSetCount; 
 
 	};
 
