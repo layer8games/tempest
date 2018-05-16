@@ -1,25 +1,9 @@
 /*========================================================================
-Representation of a 3D model. 
-
-Has:
--Vertices
--Shader(s)
-
-Uses:
-Most of these will be stored in a GameObject with values
-passed when needed  
--Position
--Orientation
--Scale
--Color
--Texture
-
-Behaviors: 
--Render
--ImportModel
+An abstraction for the Rendering and Batching code needed to render any
+arbitrary 3D Model. 
 
 This is not free to use, and cannot be used without the express permission
-of Layer8 Games.
+of KillerWave.
 
 Written by Maxwell Miller
 ========================================================================*/
@@ -27,16 +11,17 @@ Written by Maxwell Miller
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
-#include <Engine/ErrorManager.h>
-#include <Engine/Vertex.h>
-#include <Engine/Vector3.h>
+#include <Engine/WinProgram.h>
+#include <Engine/Model.h>
 #include <Engine/Camera.h>
 #include <Engine/Matrix.h>
-#include <Engine/Shader.h>
+#include <Engine/Vector3.h>
+#include <Engine/Color.h>
+#include <Engine/Vertex.h>
 
 namespace KM = KillerMath;
 
-//=====OpenGL Includes=====
+//=====OGL includes=====
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/wglext.h>
@@ -46,70 +31,58 @@ namespace KM = KillerMath;
 
 namespace KillerEngine
 {
-	class Model
+	class ModelRenderer
 	{
-	public:
 //==========================================================================================================================
 //
 //Constructors	 	
 //
 //==========================================================================================================================
-		Model(void);
+	protected:
+		ModelRenderer(void);
 
-		Model(const Model& m);
-
-		explicit Model(std::vector<Vertex3D> vertices);
-
-		~Model(void);
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================
-		void AddVertex(const Vertex3D& vert);
-
-		void AddVertex(const KM::Vector3& pos, const Color& color);
-
-		inline std::vector<Vertex3D> GetVertices(void) const
-		{
-			return _vertices;
-		}
+	public:
+		~ModelRenderer(void);
 
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================
-		inline const KM::Vector3& GetScale(void) const
+		inline const GLuint GetShader(void)
 		{
-			return _scale;
+			return _shader;
 		}
 
-		inline void SetScale(KM::Vector3& s)
+		void SetShader(GLuint shader);
+//==========================================================================================================================
+//
+//Functions
+//
+//==========================================================================================================================
+		static shared_ptr<ModelRenderer> Instance(void);
+
+		inline void SetBackgroundColor(Color& c)
 		{
-			_scale = s; 
+			WinProgram::Instance()->SetBackgroundColor(c);
 		}
 
-		inline void SetShader(GLuint shader)
-		{
-			_shaderProgram = shader;
-		}
+		
 
-		inline GLuint GetShader(void) const
-		{
-			return _shaderProgram;
-		}
+		void AddToBatch(const Model& m);
 
-		inline S32 VertexCount(void) const
-		{
-			return _numVertices;
-		}
+		void Draw(void);
+
+		void DrawNow(const Model& m);
 
 	private:
-		S32 			 	  _numVertices;
-		std::vector<Vertex3D> _vertices;
-		KM::Vector3 		  _scale;
-		GLuint				  _shaderProgram;
+		static shared_ptr<ModelRenderer> _instance;
+		U32 							 _maxBatchSize;
+		U32								 _currentBatchSize;
+		std::vector<F32> 				 _vertices;
+		const static U32				 _NUM_VOA = 1;
+		GLuint							 _VOA[_NUM_VOA];
+		GLuint							 _shader;
 		
 	};//end Class
 }//end Namespace

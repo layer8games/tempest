@@ -111,7 +111,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		void SetTexture(U32 tID, const F32 top, const F32 bottom, const F32 right, const F32 left);
 
-		void Render(const KM::Vector2& pos, F32 w, F32 h, const Color& col);
+		//void Render(const KM::Vector2& pos, F32 w, F32 h, const Color& col);
 
 		//static void StaticDraw(S32 count, std::vector<F32> vertices, std::vector<F32> colors, std::vector<F32> dimensions, std::vector<F32> bottomTop, std::vector<F32>leftRight);
 

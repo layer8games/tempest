@@ -22,6 +22,7 @@ Written by Maxwell Miller
 #include <Engine/Vector2.h>
 #include <Engine/Color.h>
 #include <Engine/SpriteBatch.h>
+#include <Engine/ModelRenderer.h>
 #include <Engine/RenderedText.h>
 #include <Engine/RenderedCharacter.h>
 #include <Engine/Particle2D.h>

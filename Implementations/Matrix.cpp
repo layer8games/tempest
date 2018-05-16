@@ -89,10 +89,10 @@ Matrix::Matrix(const Matrix& M)
 //==========================================================================================================================
 void Matrix::MakeOrthographic(F32 width, F32 height, F32 depth) 
 {
-  	F32 right = width;
-  	F32 left = 0.0f;
-	F32 top = height;
-	F32 bottom = 0.0f;
+  	F32 right = width / 2.0f;
+  	F32 left = -width / 2.0f;
+	F32 top = height / 2.0f;
+	F32 bottom = -height / 2.0f;
 	F32 farPlane = depth;
 	F32 nearPlane = 0.0f;
 
@@ -124,13 +124,13 @@ void Matrix::MakeOrthographic(F32 width, F32 height, F32 depth)
 
 void Matrix::MakePerspective(F32 width, F32 height, F32 depth)
 {
-	F32 right   = width; 
-	F32 left    = 0.0f; 
-	F32 top     = height;
-	F32 bottom  = 0.0f; 
-	F32 farPlane     = depth; 
+	F32 right = width / 2.0f;
+  	F32 left = -width / 2.0f;
+	F32 top = height / 2.0f;
+	F32 bottom = -height / 2.0f;
+	F32 farPlane = depth; 
 	//===== I don't know why this works. 0.0f will not... =====
-	F32 nearPlane    = 100.0f;
+	F32 nearPlane    = 0.1f;
 
 	//Reset Matrix 
 	_m[0]  =  _m[1]  =  _m[2]  =  _m[3]  = 0.0f;
@@ -148,15 +148,14 @@ void Matrix::MakePerspective(F32 width, F32 height, F32 depth)
 	//Diagnal
 	_m[0]  = (2.0f * nearPlane) / (right - left);
 	_m[5]  = (2.0f * nearPlane) / (top - bottom);
-	_m[15] = 0.0f;
 
 	//Transform "Vector"
 	_m[8] = (right + left) / (right - left);
 	_m[9] = (top + bottom) / (top - bottom);
-	_m[10] = (nearPlane + farPlane) / (nearPlane - farPlane);
+	_m[10] = -(farPlane + nearPlane) / (farPlane - nearPlane);
 	
 	_m[11] = -1.0f;
-	_m[14] = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
+	_m[14] = -(2.0f * farPlane * nearPlane) / (farPlane - nearPlane);
 }
 
 //==========================================================================================================================

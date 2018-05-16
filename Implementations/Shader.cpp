@@ -8,13 +8,15 @@ using namespace KillerEngine;
 //==========================================================================================================================
 Shader::Shader(void)
 :
-_spriteShader(0)
+_spriteShader(0),
+_modelShader(0)
 {  }
 
 Shader::~Shader(void)
 {
 	glUseProgram(0);
-	glDeleteProgram(_spriteShader);	
+	glDeleteProgram(_spriteShader);
+	glDeleteProgram(_modelShader);
 }
 
 //==========================================================================================================================
@@ -161,7 +163,7 @@ void Shader::InitSpriteShader(void)
 	//=====Error Checking=====
 	if(isLinked == GL_FALSE)
 	{
-		string errorMessage("Compile Error in SqrSprite\n");
+		string errorMessage("Compile Error in Sprite Shader\n");
 		GLint maxLength = 0;
 		glGetProgramiv(_spriteShader, GL_INFO_LOG_LENGTH, &maxLength);
 
@@ -187,6 +189,89 @@ void Shader::InitSpriteShader(void)
 	glDeleteShader(fragmentShaderProgram);
 }
 
+void Shader::InitModelShader(void)
+{
+	const GLchar* vertexShaderSource[] =
+	{
+		"#version 430 core															\n"
+
+		"layout (location = 0) in vec4 position;									\n"
+		"layout (location = 1) in vec4 color; 										\n"
+
+		"uniform mat4 projection_mat;												\n"
+		"uniform mat4 translation_mat;												\n"
+		"uniform mat4 position_mat;													\n"
+
+		"out vec4 fs_color;															\n"
+
+		"void main(void)															\n"
+		"{ 																			\n"
+		"	gl_Position = projection_mat * position;				\n"
+		"	fs_color = color;														\n"
+		"}																			\n"
+	};
+
+	const GLchar* fragmentShaderSource[] =
+	{
+		"#version 430 core															\n"
+
+		"in vec4 fs_color;															\n"
+		"out vec4 color;															\n"
+
+		"void main(void)															\n"
+		"{																			\n"
+		"	color = fs_color;														\n"
+		"}																			\n"
+	};
+
+	//===== compile shader =====
+	GLuint vertexShaderProgram;
+	GLuint fragmentShaderProgram;
+
+	vertexShaderProgram = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(vertexShaderProgram, 1, vertexShaderSource, NULL);
+	glCompileShader(vertexShaderProgram);
+
+	fragmentShaderProgram = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fragmentShaderProgram, 1, fragmentShaderSource, NULL);
+	glCompileShader(fragmentShaderProgram);
+
+	//===== Link program =====
+	_modelShader = glCreateProgram();
+	glAttachShader(_modelShader, vertexShaderProgram);
+	glAttachShader(_modelShader, fragmentShaderProgram);
+	glLinkProgram(_modelShader);
+
+	//===== Error checking =====
+	GLint isLinked = 0; 
+	glGetProgramiv(_modelShader, GL_LINK_STATUS, &isLinked);
+
+	if(isLinked == GL_FALSE)
+	{
+		string errorMessage("Compile Error in Model\n");
+		GLint maxLength = 0;
+		glGetProgramiv(_modelShader, GL_INFO_LOG_LENGTH, &maxLength);
+
+		//The maxLength includes the NULL character
+		std::vector<GLchar> infoLog(maxLength);
+		glGetProgramInfoLog(_modelShader, maxLength, &maxLength, &infoLog[0]);
+
+		for(auto i = infoLog.begin(); i != infoLog.end(); ++i)
+		{
+			errorMessage += *i ;
+		}
+
+		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, errorMessage);
+
+		//The program is useless now. So delete it.
+		glDeleteProgram(_modelShader);
+	}
+
+	//===== clean up =====
+	glDeleteProgram(vertexShaderProgram);
+	glDeleteProgram(fragmentShaderProgram);
+}
+
 //==========================================================================================================================
 //
 //Accessors
@@ -200,4 +285,14 @@ GLuint Shader::GetSpriteShader(void)
 	}
 
 	return _spriteShader;
+}
+
+GLuint Shader::GetModelShader(void)
+{
+	if(_modelShader == 0)
+	{
+		InitModelShader();
+	}
+
+	return _modelShader;
 }

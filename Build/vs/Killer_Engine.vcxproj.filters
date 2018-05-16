@@ -118,9 +118,6 @@
     <Filter Include="Components\LevelManager">
       <UniqueIdentifier>{0848391e-09fc-4949-ad36-3ea60b4741da}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Batches">
-      <UniqueIdentifier>{4983916f-5533-4441-a25f-d0bc4ec376f0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\RenderText">
       <UniqueIdentifier>{7e0d93d1-f85e-4c81-9b66-d130c9d7e5df}</UniqueIdentifier>
     </Filter>
@@ -144,6 +141,9 @@
     </Filter>
     <Filter Include="Components\Shader">
       <UniqueIdentifier>{712aa763-23a4-43a6-8130-dd06474fa5a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Renderers">
+      <UniqueIdentifier>{4983916f-5533-4441-a25f-d0bc4ec376f0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -229,7 +229,7 @@
       <Filter>Components\LevelManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\SpriteBatch.h">
-      <Filter>Components\Batches</Filter>
+      <Filter>Components\Renderers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\RenderedCharacter.h">
       <Filter>Components\RenderCharacter</Filter>
@@ -257,6 +257,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Shader.h">
       <Filter>Components\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\ModelRenderer.h">
+      <Filter>Components\Renderers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -330,7 +333,7 @@
       <Filter>Components\LevelManager</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\SpriteBatch.cpp">
-      <Filter>Components\Batches</Filter>
+      <Filter>Components\Renderers</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\RenderedCharacter.cpp">
       <Filter>Components\RenderCharacter</Filter>
@@ -361,6 +364,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Shader.cpp">
       <Filter>Components\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\ModelRenderer.cpp">
+      <Filter>Components\Renderers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

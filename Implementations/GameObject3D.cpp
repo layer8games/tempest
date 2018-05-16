@@ -13,6 +13,7 @@ GameObject3D::GameObject3D(void)
 : 
 _ID(0), 
 _active(true),
+_model(),
 _position(KM::Vector3(0.0f)),
 _width(0.0f),
 _height(0.0f)
@@ -24,20 +25,13 @@ GameObject3D::GameObject3D(const GameObject3D& obj)
 : 
 _ID(obj.GetID()),
 _active(obj.GetActive()),
+_model(obj.GetModel()),
 _position(obj.GetPosition()),
 _width(obj.GetWidth()),
 _height(obj.GetHeight())
 {  }
 
 GameObject3D::~GameObject3D(void)
-{  }
-
-//==========================================================================================================================
-//
-//Virtual Functions
-//
-//==========================================================================================================================
-void GameObject3D::v_Render(void)
 {  }
 
 //==========================================================================================================================

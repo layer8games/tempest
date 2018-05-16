@@ -10,22 +10,25 @@ using namespace KillerEngine;
 Model::Model(void) 
 : 
 _numVertices(0), 
-_vertices(), 
-_shaderProgram(0),
-_scale(0.0f)
-{
-	_InitShader();
-}
+_vertices(),
+_shaderProgram(Shader::Instance()->GetModelShader()),
+_scale(1.0f, 1.0f, 1.0f)
+{  }
 
-Model::Model(std::vector<F32> vertices) 
+Model::Model(const Model& m)
+:
+_numVertices(m.VertexCount()),
+_vertices(m.GetVertices()),
+_scale(m.GetScale()),
+_shaderProgram(m.GetShader())
+{  }
+
+Model::Model(std::vector<Vertex3D> vertices) 
 : 
 _numVertices(0), 
 _vertices(vertices), 
-_shaderProgram(0),
-_scale(0.0f)
-{
-	_InitShader();
-}
+_shaderProgram(Shader::Instance()->GetModelShader())
+{  }
 
 Model::~Model(void)
 {  }
@@ -35,21 +38,23 @@ Model::~Model(void)
 //Model Functions
 //
 //==========================================================================================================================
-void Model::AddVertice(const Vertex3D& vert)
+void Model::AddVertex(const Vertex3D& vert)
 {
-	_vertices.push_back(vert.position.GetX() * vert.xscale);
-	_vertices.push_back(vert.position.GetY() * vert.yscale);
-	_vertices.push_back(vert.position.GetZ() * vert.zscale);
-	_vertices.push_back(vert.position.GetW());
-
-	_colors.push_back(vert.color.GetRed());
-	_colors.push_back(vert.color.GetGreen());
-	_colors.push_back(vert.color.GetBlue());
-	_colors.push_back(vert.color.GetAlpha());
-
+	_vertices.push_back(vert);
 	++_numVertices;
 }
 
+void Model::AddVertex(const KM::Vector3& pos, const Color& color)
+{
+	Vertex3D vert;
+	vert.position = pos; 
+	vert.color = color;
+
+	_vertices.push_back(vert);
+	++_numVertices;
+}
+
+/*
 void Model::Render(const KM::Vector3& pos)
 {	
 	if(_shaderProgram == 0)
@@ -94,91 +99,4 @@ void Model::Render(const KM::Vector3& pos)
 
 	glDisable(GL_DEPTH_TEST);	
 }
-
-void Model::_InitShader(void)
-{
-	glGenVertexArrays(NUM_VOA, _vertexArrayObject);
-	glBindVertexArray(_vertexArrayObject[0]);
-
-	glGenBuffers(NUM_BUFFERS, _buffers);
-
-	const GLchar* vertexShaderSource[] =
-	{
-		"#version 430 core															\n"
-
-		"layout (location = 0) in vec4 vertice; 									\n"
-		"layout (location = 1) in vec4 color;										\n"
-
-		"uniform mat4 projection_mat;												\n"
-		"uniform mat4 translation_mat;												\n"
-		"uniform mat4 position_mat;													\n"
-
-		"out vec4 fs_color;															\n"
-
-		"void main(void)															\n"
-		"{ 																			\n"
-		"	gl_Position = projection_mat * position_mat * vertice;					\n"
-		"	fs_color = color;														\n"
-		"}																			\n"
-	};
-
-	const GLchar* fragmentShaderSource[] =
-	{
-		"#version 430 core															\n"
-
-		"in vec4 fs_color;															\n"
-		"out vec4 color;															\n"
-
-		"void main(void)															\n"
-		"{																			\n"
-		"	color = fs_color;														\n"
-		"}																			\n"
-	};
-
-	//===== compile shader =====
-	GLuint vertexShaderProgram;
-	GLuint fragmentShaderProgram;
-
-	vertexShaderProgram = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShaderProgram, 1, vertexShaderSource, NULL);
-	glCompileShader(vertexShaderProgram);
-
-	fragmentShaderProgram = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShaderProgram, 1, fragmentShaderSource, NULL);
-	glCompileShader(fragmentShaderProgram);
-
-	//===== Link program =====
-	_shaderProgram = glCreateProgram();
-	glAttachShader(_shaderProgram, vertexShaderProgram);
-	glAttachShader(_shaderProgram, fragmentShaderProgram);
-	glLinkProgram(_shaderProgram);
-
-	//===== Error checking =====
-	GLint isLinked = 0; 
-	glGetProgramiv(_shaderProgram, GL_LINK_STATUS, &isLinked);
-
-	if(isLinked == GL_FALSE)
-	{
-		string errorMessage("Compile Error in Model\n");
-		GLint maxLength = 0;
-		glGetProgramiv(_shaderProgram, GL_INFO_LOG_LENGTH, &maxLength);
-
-		//The maxLength includes the NULL character
-		std::vector<GLchar> infoLog(maxLength);
-		glGetProgramInfoLog(_shaderProgram, maxLength, &maxLength, &infoLog[0]);
-
-		for(auto i = infoLog.begin(); i != infoLog.end(); ++i)
-		{
-			errorMessage += *i ;
-		}
-
-		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, errorMessage);
-
-		//The program is useless now. So delete it.
-		glDeleteProgram(_shaderProgram);
-	}
-
-	//===== clean up =====
-	glDeleteProgram(vertexShaderProgram);
-	glDeleteProgram(fragmentShaderProgram);
-}
+*/

@@ -124,6 +124,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h" />
+    <ClInclude Include="..\..\Headers\Engine\ModelRenderer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Particle2DContact.h">
       <SubType>
       </SubType>
@@ -200,6 +204,10 @@
     <ClCompile Include="..\..\Implementations\Font.cpp" />
     <ClCompile Include="..\..\Implementations\GameObject2D.cpp" />
     <ClCompile Include="..\..\Implementations\GameObject3D.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\ModelRenderer.cpp">
       <SubType>
       </SubType>
     </ClCompile>

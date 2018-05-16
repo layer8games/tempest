@@ -32,8 +32,6 @@ Written by Maxwell Miller
 #include <Engine/Matrix.h>
 #include <Engine/Vector2.h>
 #include <Engine/Color.h>
-#include <Engine/Model.h>
-#include <Engine/Vertex.h>
 
 namespace KM = KillerMath;
 
@@ -54,7 +52,6 @@ namespace KillerEngine
 
 	//=====Foreward delcaration=====
 	class Sprite;
-	class Model;
 
 	class SpriteBatch 
 	{
@@ -140,13 +137,9 @@ namespace KillerEngine
 		const static U32	 NUM_VOA = 1;
 		GLuint   			 _renderingProgramTexture;
 		GLuint   			 _vertexArrayObject[NUM_VOA];
-		
 		GLuint 				 _shader;
-		static const GLchar* _vertexShaderSourceColor[];
-		static const GLchar* _vertexShaderSourceTexture[];
-		static const GLchar* _fragmentShaderSourceColor[];
-		static const GLchar* _fragmentShaderSourceTexture[];
-		U64 _shaderSetCount; 
+		U32 				 _shaderSetCount;
+		U32 				 _drawCount;
 
 	};
 

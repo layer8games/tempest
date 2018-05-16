@@ -20,7 +20,8 @@ _leftRight(0),
 _renderingProgramColor(0),
 _renderingProgramTexture(0),
 _shader(0),
-_shaderSetCount(0)
+_shaderSetCount(0),
+_drawCount(0)
 { 
 	glGenVertexArrays(NUM_VOA, _vertexArrayObject);
 	glBindVertexArray(_vertexArrayObject[0]);
@@ -36,7 +37,7 @@ SpriteBatch::~SpriteBatch(void)
 void SpriteBatch::SetShader(GLuint shader)
 {
 	++_shaderSetCount;
-	std::cout << "Set Shader called " << _shaderSetCount << " times\r";
+	//std::cout << "Set Shader called " << _shaderSetCount << " times\r";
 
 	Draw();
 	_shader = shader;
@@ -174,6 +175,8 @@ void SpriteBatch::Draw(void)
 {
 	if(_currentBatchSize == 0) return;
 
+	glBindVertexArray(_vertexArrayObject[0]);
+
 	GLuint buffers[5];
 	glGenBuffers(5, buffers);
 
@@ -220,6 +223,10 @@ void SpriteBatch::Draw(void)
 	_bottomTop.clear();
 	_leftRight.clear();
 	_currentBatchSize = 0;
+
+	++_drawCount;
+
+	std::cout << "Draw count: " << _drawCount << "\r";
 }
 
 /*

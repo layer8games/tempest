@@ -82,5 +82,5 @@ void Sprite::SetTexture(U32 tID, const F32 top, const F32 bottom, const F32 righ
 	_leftRight  = KM::Vector2(left, right);
 }
 
-void Sprite::Render(const KM::Vector2& pos, F32 w, F32 h, const Color& col)
-{  }
+//void Sprite::Render(const KM::Vector2& pos, F32 w, F32 h, const Color& col)
+//{  }

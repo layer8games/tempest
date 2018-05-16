@@ -31,9 +31,6 @@ namespace KillerEngine
 	 	KM::Vector3 position;
 	 	KM::Vector3 normal;
 	 	KM::Vector2 texCoord;
-	 	float xscale;
-	 	float yscale;
-	 	float zscale;
 	 	Color color;
 	 	S32 texID;
 	 };

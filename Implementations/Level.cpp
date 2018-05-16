@@ -1,5 +1,4 @@
 #include <Engine/Level.h>
-#include <iostream>
 
 using namespace KillerEngine;
 
@@ -137,6 +136,9 @@ void Level::Remove3DObjectFromLevel(U32 id)
 //==========================================================================================================================	
 void Level::RenderObjects(void)
 {
+//==========================================================================================================================
+//Render Sprites
+//==========================================================================================================================	
 	for(auto i : _2DWorldObjects) 
 	{
 		if(i.second->GetActive())
@@ -161,6 +163,9 @@ void Level::RenderObjects(void)
 		}
 	}
 
+//==========================================================================================================================
+//Render Particle2Ds
+//==========================================================================================================================
 	for(auto i : _2DParticles) 
 	{
 		if(i.second->GetActive())
@@ -185,6 +190,26 @@ void Level::RenderObjects(void)
 		}
 	}
 
+//==========================================================================================================================
+//Render 3D Objects
+//==========================================================================================================================	
+	for(auto i : _3DWorldObjects)
+	{
+		if(i.second->GetActive())
+		{
+			if(i.second->GetModel().GetShader() != ModelRenderer::Instance()->GetShader())
+			{
+				ModelRenderer::Instance()->SetShader(i.second->GetModel().GetShader());
+			}
+
+			ModelRenderer::Instance()->DrawNow(i.second->GetModel());
+		}
+	}	
+
+//==========================================================================================================================
+//Render Text
+//==========================================================================================================================
+
 	for(std::shared_ptr<RenderedText> text : _textList)
 	{
 		std::vector<std::shared_ptr<RenderedCharacter>> charList = text->GetCharacterList();
@@ -208,16 +233,6 @@ void Level::RenderObjects(void)
 			);
 		}
 	}
-
-/*
-//==========================================================================================================================
-//To be added again later, when 3d model rendering is added again
-//==========================================================================================================================		
-	for(auto i = _3DWorldObjects.begin(); i!=_3DWorldObjects.end(); ++i)
-	{
-		i->second->v_Render();
-	}
-*/		
 }
 
 void Level::UpdateObjects(void)

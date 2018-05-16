@@ -58,7 +58,8 @@ namespace KillerEngine
 //==========================================================================================================================
 		virtual void v_Update(void)=0;
 
-		virtual void v_Render(void);
+		virtual void v_Render(void)
+		{  }
 
 //==========================================================================================================================
 //
@@ -73,7 +74,7 @@ namespace KillerEngine
 			return _ID; 
 		}
 
-		void SetID(void)
+		inline void SetID(void)
 		{
 			_ID = _nextID;
 			++_nextID;
@@ -115,18 +116,21 @@ namespace KillerEngine
 //==========================================================================================================================
 //Model
 //==========================================================================================================================
-/*
-	Not Implemented yet
-		Model& GetModel(void)
+		inline const Model& GetModel(void) const
 		{
 			return _model;
 		}
 
-		void SetModel(Model& model)
+		inline void SetModel(Model& model)
 		{
 			_model = model;
 		}
-*/
+
+		inline void AddVertex(Vertex3D vert)
+		{
+			_model.AddVertex(vert);
+		}
+
 //==========================================================================================================================
 //
 //Functions
@@ -136,8 +140,7 @@ namespace KillerEngine
 		static U32 		_nextID;
 		U32		   		_ID;
 		bool	   		_active;
-		//Not Implemetned
-		//Model			_model;
+		Model			_model;
 		KM::Vector3	   	_position;
 		F32 			_width;
 		F32 			_height;

@@ -51,6 +51,8 @@ namespace KillerEngine
 
 		void InitSpriteShader(void);
 
+		void InitModelShader(void);
+
 //==========================================================================================================================
 //
 //Accessors
@@ -58,9 +60,12 @@ namespace KillerEngine
 //==========================================================================================================================
 		GLuint GetSpriteShader(void);
 
+		GLuint GetModelShader(void);
+
 	private:
 		static shared_ptr<Shader> _instance;
-		GLuint _spriteShader;
+		GLuint 					  _spriteShader;
+		GLuint 					  _modelShader;
 
 	};//end Class
 }//end Namespace
