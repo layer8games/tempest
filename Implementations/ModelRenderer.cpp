@@ -41,8 +41,8 @@ void ModelRenderer::SetShader(GLuint shader)
 	_shader = shader;
 
 	glUseProgram(_shader);
-	Camera::Instance()->SetOrthographic();
-	//Camera::Instance()->SetPerspective();
+	//Camera::Instance()->SetOrthographic();
+	Camera::Instance()->SetPerspective();
 	Camera::Instance()->SetUp(_shader);
 }
 
@@ -94,7 +94,10 @@ void ModelRenderer::DrawNow(const Model& m)
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 
-	//glPointSize(25.0f);
+	//glPointSize(10.0f);
+
+	//glDisable(GL_CULL_FACE);
+	//glFrontFace(GL_CCW);
 
 	glDrawArrays(GL_TRIANGLES, 0, m.VertexCount());
 }

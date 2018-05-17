@@ -206,7 +206,7 @@ void Shader::InitModelShader(void)
 
 		"void main(void)															\n"
 		"{ 																			\n"
-		"	gl_Position = projection_mat * position;				\n"
+		"	gl_Position = projection_mat * position;							    \n"
 		"	fs_color = color;														\n"
 		"}																			\n"
 	};

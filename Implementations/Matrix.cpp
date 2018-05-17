@@ -1,4 +1,5 @@
 #include <Engine/Matrix.h>
+#include <iostream>
 
 using namespace KillerMath;
 
@@ -89,21 +90,26 @@ Matrix::Matrix(const Matrix& M)
 //==========================================================================================================================
 void Matrix::MakeOrthographic(F32 width, F32 height, F32 depth) 
 {
-  	F32 right = width / 2.0f;
-  	F32 left = -width / 2.0f;
-	F32 top = height / 2.0f;
-	F32 bottom = -height / 2.0f;
+
+/* 	
+  	F32 right = width;
+  	F32 left = 0.0f;
+	F32 top = height;
+	F32 bottom = 0.0f;
 	F32 farPlane = depth;
 	F32 nearPlane = 0.0f;
 
+*/	
+	
+	F32 right   = width / 2.0f; 
+	F32 left    = -width / 2.0f; 
+	F32 top     = height / 2.0f;
+	F32 bottom  = -height / 2.0f;
+	F32 farPlane = depth / 2.0f; 
+	F32 nearPlane    = 0.0f;
+
   	//Reset Matrix
-	_m[0]  =  _m[1]  =  _m[2]  =  _m[3]  = 0.0f;
-
-	_m[4]  =  _m[5]  =  _m[6]  =  _m[7]  = 0.0f;
-
-	_m[8]  =  _m[9]  =  _m[10] =  _m[11] = 0.0f;
-
-	_m[12] =  _m[13] =  _m[14] =  _m[15] = 0.0f;
+	MakeIdentity();
 
 	assert(right - left != 0.0f);
 	assert(bottom - top != 0.0f);
@@ -119,43 +125,61 @@ void Matrix::MakeOrthographic(F32 width, F32 height, F32 depth)
 	_m[12] = (left + right) / (left - right);
 	_m[13] = (bottom + top) / (bottom - top);
 	_m[14] = (nearPlane + farPlane)   / (farPlane - nearPlane);
-
 }
 
-void Matrix::MakePerspective(F32 width, F32 height, F32 depth)
+void Matrix::MakePerspective(F32 left, F32 right, F32 top, F32 bottom, F32 nearPlane, F32 farPlane)
 {
-	F32 right = width / 2.0f;
-  	F32 left = -width / 2.0f;
-	F32 top = height / 2.0f;
-	F32 bottom = -height / 2.0f;
-	F32 farPlane = depth; 
-	//===== I don't know why this works. 0.0f will not... =====
-	F32 nearPlane    = 0.1f;
+
+/*	
+	F32 r = width / 2.0f; 
+	F32 l = -width / 2.0f; 
+	F32 t = height / 2.0f;
+	F32 b = -height / 2.0f;
+	F32 f = depth; 
+	//Must be set away from the camera to create a frustum
+	F32 n = close;
+
+	std::cout << "data: " << "right " << r << "|" << "left " << l << "|" << "top " << t << "|" << "bottom " <<  b << "|" << "far " <<  f << "|" << "near" << n << "\n";
+*/
+/*
+	F32 r = width;
+  	F32 l = 0.0f;
+	F32 t = height;
+	F32 b = 0.0f;
+	F32 f = depth;
+	F32 n = close;
+*/
 
 	//Reset Matrix 
-	_m[0]  =  _m[1]  =  _m[2]  =  _m[3]  = 0.0f;
-
-	_m[4]  =  _m[5]  =  _m[6]  =  _m[7]  = 0.0f;
-
-	_m[8]  =  _m[9]  =  _m[10] =  _m[11] = 0.0f;
-
-	_m[12] =  _m[13] =  _m[14] =  _m[15] = 0.0f;
+	MakeIdentity();
 
 	assert(right - left != 0.0f);
 	assert(top - bottom != 0.0f);
 	assert(nearPlane - farPlane != 0.0f);
 
-	//Diagnal
 	_m[0]  = (2.0f * nearPlane) / (right - left);
 	_m[5]  = (2.0f * nearPlane) / (top - bottom);
-
-	//Transform "Vector"
-	_m[8] = (right + left) / (right - left);
-	_m[9] = (top + bottom) / (top - bottom);
-	_m[10] = -(farPlane + nearPlane) / (farPlane - nearPlane);
-	
+	_m[8]  = (right + left) / (right - left);
+	_m[9]  = (top + bottom) / (top - bottom);
+	_m[10] = (nearPlane + farPlane) / (nearPlane - farPlane);
 	_m[11] = -1.0f;
-	_m[14] = -(2.0f * farPlane * nearPlane) / (farPlane - nearPlane);
+	_m[14] = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
+}
+
+void Matrix::MakePerspective(F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F32 farPlane)
+{
+	assert(nearPlane - farPlane != 0.0f);
+
+	F32 S = 1.0f / tan(DegreeToRadian(0.5f * fieldOfView));
+
+	//Reset Matrix 
+	MakeIdentity();
+
+	_m[0] = S / aspectRatio;
+	_m[5] = S;
+	_m[10] = (nearPlane + farPlane) / (nearPlane - farPlane);
+	_m[11] = -1.0f;
+	_m[14] = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
 }
 
 //==========================================================================================================================

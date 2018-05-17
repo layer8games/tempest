@@ -1,4 +1,5 @@
 #include <Engine/Camera.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -71,7 +72,20 @@ void Camera::SetOrthographic(void)
 
 void Camera::SetPerspective(void)
 {
-	_projection.MakePerspective((F32)WinProgram::Instance()->GetWidth(), (F32)WinProgram::Instance()->GetHeight(), 200.0f);
+F32 w = static_cast<F32>(WinProgram::Instance()->GetWidth());
+F32 h = static_cast<F32>(WinProgram::Instance()->GetHeight());
+
+	_projection.MakePerspective(90.0f,  //field of view
+								w / h,  //aspect ratio
+								0.1f, 	//near
+								200.0f);//far
+
+//	_projection.MakePerspective(-w / 2.0f, //left
+//								 w / 2.0f, //right
+//								 h / 2.0f, //top
+//								-h / 2.0f, //bottom
+//								 0.1f,     //near
+//								 200.0f);  //far
 }
 
 void Camera::SetPosition(F32 x, F32 y)

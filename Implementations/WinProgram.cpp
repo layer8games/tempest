@@ -197,6 +197,8 @@ LRESULT WinProgram::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             if (gl3wInit())
             	ErrorManager::Instance()->SetError(EC_OpenGL, "gl3wInit() failed");
 
+           // glEnable(GL_DEPTH_TEST);
+
             break;
         }
         case WM_DESTROY: 
