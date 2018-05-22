@@ -63,6 +63,7 @@ void ModelRenderer::DrawNow(const Model& m, const KM::Matrix& modelView)
 	std::vector<Vertex3D> vertices = m.GetVertices();
 	std::vector<F32> vertexPositions;
 	std::vector<F32> vertexColors;
+	std::vector<U16>  indices = m.GetIndices();
 
 	int vertextCount = 0;
 
@@ -96,30 +97,10 @@ void ModelRenderer::DrawNow(const Model& m, const KM::Matrix& modelView)
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 
-	const F32* elems = modelView.GetElems();
-	U32 count = 0;
-	U32 count2 = 0;
-
-	for(int i = 0; i < 16; ++i)
-	{
-		std::cout << elems[i] << ",";
-		++count;
-
-		if(count == 4)
-		{
-			std::cout << "\n";
-			count = 0;
-			++count2;
-		}
-
-		if(count2 == 4)
-		{
-			std::cout << "\nEND MATRIX\n";
-		}
-	}
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffers[2]),
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(U16) * indices.size(), &indices[0], GL_STATIC_DRAW);
 
 	GLint transform1 = glGetUniformLocation(_shader, "modelView_mat");
-
 	glUniformMatrix4fv(transform1, 1, GL_FALSE, modelView.GetElems());
 
 	//glPointSize(10.0f);
@@ -127,5 +108,7 @@ void ModelRenderer::DrawNow(const Model& m, const KM::Matrix& modelView)
 	//glDisable(GL_CULL_FACE);
 	//glFrontFace(GL_CCW);
 
-	glDrawArrays(GL_TRIANGLES, 0, m.VertexCount());
+	//glDrawArrays(GL_TRIANGLES, 0, m.VertexCount());
+	glDrawElements(GL_TRIANGLES, m.VertexCount(), GL_UNSIGNED_SHORT, 0);
+
 }

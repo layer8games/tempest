@@ -11,6 +11,7 @@ Model::Model(void)
 : 
 _numVertices(0), 
 _vertices(),
+_indices(),
 _shaderProgram(Shader::Instance()->GetModelShader()),
 _scale(1.0f, 1.0f, 1.0f)
 {  }
@@ -19,14 +20,16 @@ Model::Model(const Model& m)
 :
 _numVertices(m.VertexCount()),
 _vertices(m.GetVertices()),
+_indices(m.GetIndices()),
 _scale(m.GetScale()),
 _shaderProgram(m.GetShader())
 {  }
 
-Model::Model(std::vector<Vertex3D> vertices) 
+Model::Model(std::vector<Vertex3D> vertices, std::vector<U16> indices) 
 : 
 _numVertices(0), 
-_vertices(vertices), 
+_vertices(vertices),
+_indices(indices),
 _shaderProgram(Shader::Instance()->GetModelShader())
 {  }
 
@@ -38,10 +41,20 @@ Model::~Model(void)
 //Model Functions
 //
 //==========================================================================================================================
+void Model::AddIndex(U16 index)
+{
+	_indices.push_back(index);
+	++_numVertices;
+}
+
+void Model::ClearIndices(void)
+{
+	_indices.clear();
+}
+
 void Model::AddVertex(const Vertex3D& vert)
 {
 	_vertices.push_back(vert);
-	++_numVertices;
 }
 
 void Model::AddVertex(const KM::Vector3& pos, const Color& color)
@@ -51,7 +64,6 @@ void Model::AddVertex(const KM::Vector3& pos, const Color& color)
 	vert.color = color;
 
 	_vertices.push_back(vert);
-	++_numVertices;
 }
 
 /*

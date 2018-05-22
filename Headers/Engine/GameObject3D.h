@@ -130,6 +130,18 @@ namespace KillerEngine
 		{
 			_model.AddVertex(vert);
 		}
+
+		inline void AddIndex(U16 index)
+		{
+			_model.AddIndex(index);
+		}
+
+		inline void AddIndex(std::vector<U16> indices)
+		{
+			_model.AddIndex(indices);
+		}
+
+
 //==========================================================================================================================
 //Model View Matrix
 //==========================================================================================================================
