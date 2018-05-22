@@ -16,7 +16,8 @@ _active(true),
 _model(),
 _position(KM::Vector3(0.0f)),
 _width(0.0f),
-_height(0.0f)
+_height(0.0f),
+_modelView(1.0f)
 {
 	SetID();
 }
@@ -28,7 +29,8 @@ _active(obj.GetActive()),
 _model(obj.GetModel()),
 _position(obj.GetPosition()),
 _width(obj.GetWidth()),
-_height(obj.GetHeight())
+_height(obj.GetHeight()),
+_modelView(obj.GetModelView())
 {  }
 
 GameObject3D::~GameObject3D(void)
@@ -68,16 +70,19 @@ const KM::Vector3& GameObject3D::GetPosition(void) const
 void GameObject3D::SetPosition(const KM::Vector3& pos)
 {
 	_position = pos;
+	_modelView.Translate(_position);
 }
 
 void GameObject3D::SetPosition(F32 x, F32 y, F32 z)
 {
 	_position = KM::Vector3(x, y, z);
+	_modelView.Translate(_position);
 }
 
 void GameObject3D::AddScaledPosition(const KM::Vector3& v, F32 scale)
 {
 	_position.AddScaledVector(v, scale);
+	_modelView.Translate(_position);
 }
 //==========================================================================================================================
 //Dimensions

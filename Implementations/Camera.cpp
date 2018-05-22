@@ -11,7 +11,7 @@ using namespace KillerEngine;
 Camera::Camera(void) 
 : 
 _background(1.0f), 
-_projection(), 
+_projection(1.0f), 
 _translation(1.0f), 
 _currentShader(0)
 {  }
@@ -37,19 +37,13 @@ shared_ptr<Camera> Camera::Instance(void)
 
 void Camera::SetUp(GLuint shader)
 {		
-	//temporary fix to get camera working for now. 
-	const F32* data = _projection.GetElems();
+	KM::Matrix finalMatrix = _projection * _translation;
+
+	const F32* data = finalMatrix.GetElems();
 
 	GLint transform1 = glGetUniformLocation(shader, "projection_mat");
 
 	glUniformMatrix4fv(transform1, 1, GL_FALSE, data);
-
-	const F32* data2 = _translation.GetElems();
-
-	GLint transform2 = glGetUniformLocation(shader, "translation_mat");
-
-	glUniformMatrix4fv(transform2, 1, GL_FALSE, data2);
-
 
 /*
 	//not working matrix multiplication. Will fix later
@@ -67,25 +61,25 @@ void Camera::SetUp(GLuint shader)
 
 void Camera::SetOrthographic(void)
 {
-	_projection.MakeOrthographic((F32)WinProgram::Instance()->GetWidth(), (F32)WinProgram::Instance()->GetHeight(), 200.0f);
+	_projection.MakeOrthographic((F32)WinProgram::Instance()->GetWidth(), (F32)WinProgram::Instance()->GetHeight(), 200.0f, false);
 }
 
 void Camera::SetPerspective(void)
 {
-F32 w = static_cast<F32>(WinProgram::Instance()->GetWidth());
-F32 h = static_cast<F32>(WinProgram::Instance()->GetHeight());
+	F32 w = static_cast<F32>(WinProgram::Instance()->GetWidth());
+	F32 h = static_cast<F32>(WinProgram::Instance()->GetHeight());
 
 	_projection.MakePerspective(90.0f,  //field of view
 								w / h,  //aspect ratio
-								0.1f, 	//near
-								200.0f);//far
+								2000.0f, 	//near
+								0.1f);//far
 
-//	_projection.MakePerspective(-w / 2.0f, //left
-//								 w / 2.0f, //right
-//								 h / 2.0f, //top
-//								-h / 2.0f, //bottom
-//								 0.1f,     //near
-//								 200.0f);  //far
+//	_projection.MakePerspective((F32)WinProgram::Instance()->GetWidth(), (F32)WinProgram::Instance()->GetHeight(), 2000.0f);
+}
+
+void Camera::SetDefaultMatrix(void)
+{
+	_projection.MakeIdentity();
 }
 
 void Camera::SetPosition(F32 x, F32 y)

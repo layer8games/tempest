@@ -130,6 +130,13 @@ namespace KillerEngine
 		{
 			_model.AddVertex(vert);
 		}
+//==========================================================================================================================
+//Model View Matrix
+//==========================================================================================================================
+		inline const KM::Matrix GetModelView(void) const
+		{
+			return _modelView;
+		}
 
 //==========================================================================================================================
 //
@@ -144,6 +151,7 @@ namespace KillerEngine
 		KM::Vector3	   	_position;
 		F32 			_width;
 		F32 			_height;
+		KM::Matrix		_modelView;
 
 	};//end Class
 }//end Namespace

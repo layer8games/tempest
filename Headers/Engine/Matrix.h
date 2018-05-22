@@ -97,9 +97,9 @@ namespace KillerMath
 //==========================================================================================================================
 //Projections
 //==========================================================================================================================		
-		void MakeOrthographic(F32 width, F32 height, F32 depth);
+		void MakeOrthographic(F32 width, F32 height, F32 depth, bool center=true);
 
-		void MakePerspective(F32 left, F32 right, F32 top, F32 bottom, F32 nearPlane, F32 farPlane);
+		void MakePerspective(F32 width, F32 height, F32 depth, bool center=true);
 
 		void MakePerspective(F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F32 farPlane);
 

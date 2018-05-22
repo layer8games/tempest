@@ -145,7 +145,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\SpriteBatch.h" />
+    <ClInclude Include="..\..\Headers\Engine\SpriteRenderer.h" />
     <ClInclude Include="..\..\Headers\Engine\CharacterData.h">
       <SubType>
       </SubType>
@@ -252,7 +252,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Sprite.cpp" />
-    <ClCompile Include="..\..\Implementations\SpriteBatch.cpp" />
+    <ClCompile Include="..\..\Implementations\SpriteRenderer.cpp" />
     <ClCompile Include="..\..\Implementations\Vector2.cpp">
       <SubType>
       </SubType>

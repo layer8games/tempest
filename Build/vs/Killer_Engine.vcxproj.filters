@@ -228,9 +228,6 @@
     <ClInclude Include="..\..\Headers\Engine\LevelManager.h">
       <Filter>Components\LevelManager</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\SpriteBatch.h">
-      <Filter>Components\Renderers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\RenderedCharacter.h">
       <Filter>Components\RenderCharacter</Filter>
     </ClInclude>
@@ -259,6 +256,9 @@
       <Filter>Components\Shader</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ModelRenderer.h">
+      <Filter>Components\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\SpriteRenderer.h">
       <Filter>Components\Renderers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -332,9 +332,6 @@
     <ClCompile Include="..\..\Implementations\LevelManager.cpp">
       <Filter>Components\LevelManager</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\SpriteBatch.cpp">
-      <Filter>Components\Renderers</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\RenderedCharacter.cpp">
       <Filter>Components\RenderCharacter</Filter>
     </ClCompile>
@@ -366,6 +363,9 @@
       <Filter>Components\Shader</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ModelRenderer.cpp">
+      <Filter>Components\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\SpriteRenderer.cpp">
       <Filter>Components\Renderers</Filter>
     </ClCompile>
   </ItemGroup>

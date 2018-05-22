@@ -52,6 +52,8 @@ namespace KillerEngine
 
 		void SetPerspective(void);
 
+		void SetDefaultMatrix(void);
+
 		void SetPosition(F32 x, F32 y);
 
 		void SetPosition(const KM::Vector2& V);
@@ -84,7 +86,7 @@ namespace KillerEngine
 //Private members
 //
 //==========================================================================================================================		
-		static shared_ptr<Camera> 	_instance;
+		static shared_ptr<Camera> 	    _instance;
 		Color  							_background;
 		KM::Vector3  					_pos;
 		KM::Matrix 						_projection;

@@ -1,4 +1,5 @@
 #include <Engine/ModelRenderer.h>
+#include <iostream>
 
 using namespace KillerEngine;
 //==========================================================================================================================
@@ -43,6 +44,7 @@ void ModelRenderer::SetShader(GLuint shader)
 	glUseProgram(_shader);
 	//Camera::Instance()->SetOrthographic();
 	Camera::Instance()->SetPerspective();
+	//Camera::Instance()->SetDefaultMatrix();
 	Camera::Instance()->SetUp(_shader);
 }
 
@@ -56,7 +58,7 @@ void ModelRenderer::Draw(void)
 
 }
 
-void ModelRenderer::DrawNow(const Model& m)
+void ModelRenderer::DrawNow(const Model& m, const KM::Matrix& modelView)
 {
 	std::vector<Vertex3D> vertices = m.GetVertices();
 	std::vector<F32> vertexPositions;
@@ -81,8 +83,8 @@ void ModelRenderer::DrawNow(const Model& m)
 
 	glBindVertexArray(_VOA[0]);
 
-	GLuint buffers[2];
-	glGenBuffers(2, buffers);
+	GLuint buffers[3];
+	glGenBuffers(3, buffers);
 
 	glBindBuffer(GL_ARRAY_BUFFER, buffers[0]);
 	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertexPositions.size()), &vertexPositions[0], GL_STATIC_DRAW);
@@ -93,6 +95,32 @@ void ModelRenderer::DrawNow(const Model& m)
 	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertexColors.size()), &vertexColors[0], GL_STATIC_DRAW);
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+
+	const F32* elems = modelView.GetElems();
+	U32 count = 0;
+	U32 count2 = 0;
+
+	for(int i = 0; i < 16; ++i)
+	{
+		std::cout << elems[i] << ",";
+		++count;
+
+		if(count == 4)
+		{
+			std::cout << "\n";
+			count = 0;
+			++count2;
+		}
+
+		if(count2 == 4)
+		{
+			std::cout << "\nEND MATRIX\n";
+		}
+	}
+
+	GLint transform1 = glGetUniformLocation(_shader, "modelView_mat");
+
+	glUniformMatrix4fv(transform1, 1, GL_FALSE, modelView.GetElems());
 
 	//glPointSize(10.0f);
 

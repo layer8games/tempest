@@ -144,13 +144,13 @@ void Level::RenderObjects(void)
 		if(i.second->GetActive())
 		{
 			//const Sprite& sprite = i.second->GetSprite();
-			if(i.second->GetSprite().GetShader() != SpriteBatch::Instance()->GetShader())
+			if(i.second->GetSprite().GetShader() != SpriteRenderer::Instance()->GetShader())
 			{
-				SpriteBatch::Instance()->SetShader(i.second->GetSprite().GetShader());
+				SpriteRenderer::Instance()->SetShader(i.second->GetSprite().GetShader());
 			}
 			//i.second->v_Render();
 			//_batch.AddToBatch(i.second->GetSprite(), i.second.GetWidth(), i.second.GetHeight());
-			SpriteBatch::Instance()->AddToBatch
+			SpriteRenderer::Instance()->AddToBatch
 			(
 				i.second->GetPosition(), 
 				i.second->GetWidth(), 
@@ -171,13 +171,13 @@ void Level::RenderObjects(void)
 		if(i.second->GetActive())
 		{
 			//const Sprite& sprite = i.second->GetSprite();
-			if(i.second->GetSprite().GetShader() != SpriteBatch::Instance()->GetShader())
+			if(i.second->GetSprite().GetShader() != SpriteRenderer::Instance()->GetShader())
 			{
-				SpriteBatch::Instance()->SetShader(i.second->GetSprite().GetShader());
+				SpriteRenderer::Instance()->SetShader(i.second->GetSprite().GetShader());
 			}
 			//i.second->v_Render();
 			//_batch.AddToBatch(i.second->GetSprite(), i.second.GetWidth(), i.second.GetHeight());
-			SpriteBatch::Instance()->AddToBatch
+			SpriteRenderer::Instance()->AddToBatch
 			(
 				i.second->GetPosition(), 
 				i.second->GetWidth(), 
@@ -202,7 +202,7 @@ void Level::RenderObjects(void)
 				ModelRenderer::Instance()->SetShader(i.second->GetModel().GetShader());
 			}
 
-			ModelRenderer::Instance()->DrawNow(i.second->GetModel());
+			ModelRenderer::Instance()->DrawNow(i.second->GetModel(), i.second->GetModelView());
 		}
 	}	
 
@@ -214,14 +214,14 @@ void Level::RenderObjects(void)
 	{
 		std::vector<std::shared_ptr<RenderedCharacter>> charList = text->GetCharacterList();
 
-		if(charList[0]->GetSprite().GetShader() != SpriteBatch::Instance()->GetShader())
+		if(charList[0]->GetSprite().GetShader() != SpriteRenderer::Instance()->GetShader())
 		{
-			SpriteBatch::Instance()->SetShader(charList[0]->GetSprite().GetShader());
+			SpriteRenderer::Instance()->SetShader(charList[0]->GetSprite().GetShader());
 		}
 
 		for(std::shared_ptr<RenderedCharacter> character : charList)
 		{
-			SpriteBatch::Instance()->AddToBatch
+			SpriteRenderer::Instance()->AddToBatch
 			(
 				character->GetPosition(),
 				character->GetWidth(),

@@ -73,7 +73,7 @@ namespace KillerEngine
 
 		void Draw(void);
 
-		void DrawNow(const Model& m);
+		void DrawNow(const Model& m, const KM::Matrix& modelView);
 
 	private:
 		static shared_ptr<ModelRenderer> _instance;

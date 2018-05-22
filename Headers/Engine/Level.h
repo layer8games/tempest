@@ -21,7 +21,7 @@ Written by Maxwell Miller
 #include <Engine/EnvironmentObject.h>
 #include <Engine/Vector2.h>
 #include <Engine/Color.h>
-#include <Engine/SpriteBatch.h>
+#include <Engine/SpriteRenderer.h>
 #include <Engine/ModelRenderer.h>
 #include <Engine/RenderedText.h>
 #include <Engine/RenderedCharacter.h>
@@ -277,7 +277,7 @@ namespace KillerEngine
 		std::map<U32, shared_ptr<KP::Particle2D>> _2DParticles;
 		std::vector<shared_ptr<RenderedText>>     _textList;
 		std::map<U32, TileData> _2DTileData;
-		//SpriteBatch _batch;
+		//SpriteRenderer _batch;
 		KP::Particle2DForceRegistry _2DForceRegistry;
 	};
 }//End namespace
