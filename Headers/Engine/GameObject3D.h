@@ -141,11 +141,10 @@ namespace KillerEngine
 			_model.AddIndex(indices);
 		}
 
-
 //==========================================================================================================================
 //Model View Matrix
 //==========================================================================================================================
-		inline const KM::Matrix GetModelView(void) const
+		inline const KM::Matrix& GetModelView(void) const
 		{
 			return _modelView;
 		}
@@ -164,6 +163,7 @@ namespace KillerEngine
 		F32 			_width;
 		F32 			_height;
 		KM::Matrix		_modelView;
+		KM::Matrix		_rotationX;
 
 	};//end Class
 }//end Namespace

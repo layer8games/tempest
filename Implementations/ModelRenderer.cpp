@@ -1,5 +1,4 @@
 #include <Engine/ModelRenderer.h>
-#include <iostream>
 
 using namespace KillerEngine;
 //==========================================================================================================================
@@ -42,6 +41,8 @@ void ModelRenderer::SetShader(GLuint shader)
 	_shader = shader;
 
 	glUseProgram(_shader);
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
 	//Camera::Instance()->SetOrthographic();
 	Camera::Instance()->SetPerspective();
 	//Camera::Instance()->SetDefaultMatrix();
@@ -103,12 +104,6 @@ void ModelRenderer::DrawNow(const Model& m, const KM::Matrix& modelView)
 	GLint transform1 = glGetUniformLocation(_shader, "modelView_mat");
 	glUniformMatrix4fv(transform1, 1, GL_FALSE, modelView.GetElems());
 
-	//glPointSize(10.0f);
-
-	//glDisable(GL_CULL_FACE);
-	//glFrontFace(GL_CCW);
-
-	//glDrawArrays(GL_TRIANGLES, 0, m.VertexCount());
 	glDrawElements(GL_TRIANGLES, m.VertexCount(), GL_UNSIGNED_SHORT, 0);
 
 }

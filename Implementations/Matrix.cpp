@@ -338,6 +338,16 @@ void Matrix::RotateX(F32 x)
 	_m[10] = cos(x);
 }
 
+void Matrix::AddRotateX(F32 x)
+{
+	x = DegreeToRadian(x);
+
+	_m[5] += cos(x);
+	_m[6] += -sin(x);
+	_m[9] += sin(x);
+	_m[10] += cos(x);
+}
+
 void Matrix::RotateY(F32 y)
 {
 	y = DegreeToRadian(y);
@@ -350,6 +360,16 @@ void Matrix::RotateY(F32 y)
 	_m[10] = cos(y);
 }
 
+void Matrix::AddRotateY(F32 y)
+{
+	y = DegreeToRadian(y);
+
+	_m[0] += cos(y);
+	_m[2] += sin(y);
+	_m[8] += -sin(y);
+	_m[10] += cos(y);	
+}
+
 void Matrix::RotateZ(F32 z)
 {
 	z = DegreeToRadian(z);
@@ -360,6 +380,16 @@ void Matrix::RotateZ(F32 z)
 	_m[1] = -sin(z);
 	_m[4] = sin(z);
 	_m[5] = cos(z);
+}
+
+void Matrix::AddRotateZ(F32 z)
+{
+	z = DegreeToRadian(z);
+
+	_m[0] += cos(z);
+	_m[1] += -sin(z);
+	_m[4] += sin(z);
+	_m[5] += cos(z);
 }
 
 void Matrix::Rotate(F32 x, F32 y, F32 z)
@@ -379,6 +409,23 @@ void Matrix::Rotate(F32 x, F32 y, F32 z)
 	_m[8] = sin(x) * sin(z) - cos(x) * sin(y) * cos(z);
 	_m[9] = sin(x) * cos(z) + cos(x) * sin(y) * sin(z);
 	_m[10] = cos(x) * cos(y);
+}
+
+void Matrix::AddRotation(F32 x, F32 y, F32 z)
+{
+	x = DegreeToRadian(x);
+	y = DegreeToRadian(y);
+	z = DegreeToRadian(z);
+
+	_m[0] += cos(y) * cos(z);
+	_m[1] += -cos(y) * sin(z);
+	_m[2] += sin(y);
+	_m[4] += cos(x) * sin(z) + sin(x) * sin(y) * cos(z);
+	_m[5] += cos(x) * cos(z) - sin(x) * sin(y) * sin(z);
+	_m[6] += -sin(x) * cos(y);
+	_m[8] += sin(x) * sin(z) - cos(x) * sin(y) * cos(z);
+	_m[9] += sin(x) * cos(z) + cos(x) * sin(y) * sin(z);
+	_m[10] += cos(x) * cos(y);
 }
 
 //==========================================================================================================================

@@ -71,10 +71,8 @@ void Camera::SetPerspective(void)
 
 	_projection.MakePerspective(90.0f,  //field of view
 								w / h,  //aspect ratio
-								2000.0f, 	//near
-								0.1f);//far
-
-//	_projection.MakePerspective((F32)WinProgram::Instance()->GetWidth(), (F32)WinProgram::Instance()->GetHeight(), 2000.0f);
+								0.1f, 	//near
+								200.0f);//far
 }
 
 void Camera::SetDefaultMatrix(void)

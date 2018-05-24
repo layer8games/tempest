@@ -146,12 +146,19 @@ namespace KillerMath
 //==========================================================================================================================
 		void RotateX(F32 x);
 
-//=====Consider adding an AddRotateX() function here. This would preserve any existing values and add the rotation to it.=====
+		void AddRotateX(F32 x);
+
 		void RotateY(F32 y);
+
+		void AddRotateY(F32 y);
 
 		void RotateZ(F32 z);
 
-		void Rotate(F32 x, F32 y, F32 z);		
+		void AddRotateZ(F32 z);
+
+		void Rotate(F32 x, F32 y, F32 z);
+
+		void AddRotation(F32 x, F32 y, F32 z);
 		
 //==========================================================================================================================
 //Resettings
