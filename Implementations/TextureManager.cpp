@@ -104,7 +104,7 @@ const shared_ptr<Texture> TextureManager::GetTexture(U32 id)
 { 
 	if(_loadedTextures.find(id) == _loadedTextures.end())
 	{
-		ErrorManager::Instance()->SetError(EC_KillerEngine, "TextureManager: Unable to find texture: " + std::to_string(id));
+		ErrorManager::Instance()->SetError(EC_Engine, "TextureManager: Unable to find texture: " + std::to_string(id));
 		return nullptr;
 	}
 	else

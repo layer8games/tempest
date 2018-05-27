@@ -56,7 +56,7 @@ void Level::AddObjectToLevel(const GameObject2D& obj)
 	
 	if(_2DWorldObjects.find(obj.GetID()) == _2DWorldObjects.end()) 
 	{ 
-		ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to AddLevel to _2DWorldObjects"); 
+		ErrorManager::Instance()->SetError(EC_Engine, "Unable to AddLevel to _2DWorldObjects"); 
 	}
 }
 
@@ -66,7 +66,7 @@ void Level::AddObjectToLevel(shared_ptr<GameObject2D> obj)
 	
 	if(_2DWorldObjects.find(obj->GetID()) == _2DWorldObjects.end()) 
 	{ 
-		ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to AddLevel to _2DWorldObjects"); 
+		ErrorManager::Instance()->SetError(EC_Engine, "Unable to AddLevel to _2DWorldObjects"); 
 	}
 }
 
@@ -76,7 +76,7 @@ void Level::AddParticle2DToLevel(shared_ptr<KP::Particle2D> particle, shared_ptr
 
 	if(_2DParticles.find(particle->GetID()) == _2DParticles.end())
 	{
-		ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to Add Particle to Level. Level.h line 80");
+		ErrorManager::Instance()->SetError(EC_Engine, "Unable to Add Particle to Level. Level.h line 80");
 	}
 
 	if(generator != nullptr)
@@ -91,7 +91,7 @@ void Level::AddObject3DToLevel(const GameObject3D& obj)
 	
 	if(_3DWorldObjects.find(obj.GetID()) == _3DWorldObjects.end()) 
 	{ 
-		ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to AddLevel to _3DWorldObjects"); 
+		ErrorManager::Instance()->SetError(EC_Engine, "Unable to AddLevel to _3DWorldObjects"); 
 	}
 }
 
@@ -106,7 +106,7 @@ void Level::_AddTile(TileData data)
 
 	if(_2DTileData.find(data.tileID) == _2DTileData.end())
 	{
-		ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to add tile to _2DTileData");
+		ErrorManager::Instance()->SetError(EC_Engine, "Unable to add tile to _2DTileData");
 	}
 }
 
@@ -305,7 +305,7 @@ void Level::Importer2D(string tmxFilePath)
 		}
 		else
 		{
-			ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to open element or node");
+			ErrorManager::Instance()->SetError(EC_Engine, "Unable to open element or node");
 		}
 
 		//=====Set Level variables=====
@@ -344,7 +344,7 @@ void Level::Importer2D(string tmxFilePath)
 				}
 				else
 				{
-					ErrorManager::Instance()->SetError(EC_KillerEngine, "In correct format for tile ObjectType.");
+					ErrorManager::Instance()->SetError(EC_Engine, "In correct format for tile ObjectType.");
 				}
 
 				//TextureID
@@ -358,7 +358,7 @@ void Level::Importer2D(string tmxFilePath)
 				}
 				else
 				{
-					ErrorManager::Instance()->SetError(EC_KillerEngine, "In correct format for tile TextureID");
+					ErrorManager::Instance()->SetError(EC_Engine, "In correct format for tile TextureID");
 				}
 
 				//=====Capture Image texData=====
@@ -437,18 +437,18 @@ void Level::Importer2D(string tmxFilePath)
 			}
 			else
 			{
-				ErrorManager::Instance()->SetError(EC_KillerEngine, "Incorrect encoding in imported file, not csv, " + name);
+				ErrorManager::Instance()->SetError(EC_Engine, "Incorrect encoding in imported file, not csv, " + name);
 			}
 		}
 		else
 		{
-			ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to open element or node");
+			ErrorManager::Instance()->SetError(EC_Engine, "Unable to open element or node");
 		}
 		
 	}
 	else
 	{
-		ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to open file path to .tmx file " + tmxFilePath);
+		ErrorManager::Instance()->SetError(EC_Engine, "Unable to open file path to .tmx file " + tmxFilePath);
 	}
 
 }//end Importer
@@ -470,7 +470,7 @@ Level::ObjectType Level::v_StringToTileData(string s)
 	
 	else
 	{	
-		ErrorManager::Instance()->SetError(EC_KillerEngine, "No such object tag during import of file " + s);
+		ErrorManager::Instance()->SetError(EC_Engine, "No such object tag during import of file " + s);
 		return ObjectType::END;
 	}
 }

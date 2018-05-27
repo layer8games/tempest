@@ -30,7 +30,7 @@ namespace KillerEngine
 		EC_NoError = 0,
 		EC_Unknown,
 		EC_Game,
-		EC_KillerEngine,
+		EC_Engine,
 		EC_Windows,
 		EC_OpenGL,
 		EC_OpenGL_Shader,

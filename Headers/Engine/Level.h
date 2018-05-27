@@ -129,7 +129,7 @@ namespace KillerEngine
 */
 		virtual GameObject2D* v_CreateObject(ObjectType type, KM::Vector2& pos, U32 textureID, F32 w, F32 h)
 		{
-			ErrorManager::Instance()->SetError(EC_KillerEngine, "Attempted to call v_CreateObject without Level Implementation");
+			ErrorManager::Instance()->SetError(EC_Engine, "Attempted to call v_CreateObject without Level Implementation");
 			return nullptr;
 		}
 

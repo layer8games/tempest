@@ -68,7 +68,7 @@ void ErrorManager::DisplayErrors(void)
 				MessageBox(NULL, _errorMessages[i].c_str(), "GAME", MB_ICONERROR | MB_OK);
 				break;
 			}
-			case EC_KillerEngine: {
+			case EC_Engine: {
 				MessageBox(NULL, _errorMessages[i].c_str(), "KILLER_ENGINE", MB_ICONERROR | MB_OK);
 				break;
 			}

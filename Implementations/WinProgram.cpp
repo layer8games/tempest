@@ -235,8 +235,8 @@ LRESULT WinProgram::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         case WM_LBUTTONDOWN:
         {
             POINT p;
-            if(!GetCursorPos(&p)) { ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to find Left Cursor Position in WinProgram!"); }
-            if(!ScreenToClient(_hwnd, &p)) { ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to convert Left Cursor to client in WinProgram!"); }
+            if(!GetCursorPos(&p)) { ErrorManager::Instance()->SetError(EC_Engine, "Unable to find Left Cursor Position in WinProgram!"); }
+            if(!ScreenToClient(_hwnd, &p)) { ErrorManager::Instance()->SetError(EC_Engine, "Unable to convert Left Cursor to client in WinProgram!"); }
             Controller::Instance()->LeftMouseClick(KM::Vector2((F32)p.x, (F32)p.y));
             Controller::Instance()->KeyDown(Keys::LEFT_MOUSE);
             break; 
@@ -250,8 +250,8 @@ LRESULT WinProgram::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         case WM_RBUTTONDOWN:
         {
             POINT p;
-            if(!GetCursorPos(&p)) { ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to find Right Cursor Position in WinProgram!"); }
-            if(!ScreenToClient(_hwnd, &p)) { ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to convert Right Cursor to client in WinProgram!"); }
+            if(!GetCursorPos(&p)) { ErrorManager::Instance()->SetError(EC_Engine, "Unable to find Right Cursor Position in WinProgram!"); }
+            if(!ScreenToClient(_hwnd, &p)) { ErrorManager::Instance()->SetError(EC_Engine, "Unable to convert Right Cursor to client in WinProgram!"); }
             Controller::Instance()->RightMouseClick(KM::Vector2((F32)p.x, (F32)p.y));
             Controller::Instance()->KeyDown(Keys::RIGHT_MOUSE);
             break;

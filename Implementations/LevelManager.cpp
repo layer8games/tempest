@@ -42,7 +42,7 @@ void LevelManager::AddLevel(shared_ptr<Level> level)
 	
 	if(_levels.find(level->GetID()) == _levels.end()) 
 	{ 
-		ErrorManager::Instance()->SetError(EC_KillerEngine, "Unable to AddLevel to LevelManager"); 
+		ErrorManager::Instance()->SetError(EC_Engine, "Unable to AddLevel to LevelManager"); 
 	}
 }
 
@@ -105,7 +105,7 @@ void LevelManager::AddObjectToLevel(U32 id, const GameObject2D& obj)
 	} 
 	else
 	{
-		ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
+		ErrorManager::Instance()->SetError(EC_Engine, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
 	} 
 }
 
@@ -117,7 +117,7 @@ void LevelManager::AddObjectToLevel(U32 id, shared_ptr<GameObject2D> obj)
 	} 
 	else
 	{
-		ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
+		ErrorManager::Instance()->SetError(EC_Engine, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
 	} 
 }
 
@@ -129,7 +129,7 @@ void LevelManager::AddParticle2DToLevel(U32 id, shared_ptr<KP::Particle2D> parti
 	} 
 	else
 	{
-		ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddParticle2DToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
+		ErrorManager::Instance()->SetError(EC_Engine, "LevelManager -> Tried to call the AddParticle2DToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
 	} 
 }
 
@@ -141,7 +141,7 @@ void LevelManager::AddObject3DToLevel(U32 id, const GameObject3D& obj)
 	} 
 	else 
 	{
-		ErrorManager::Instance()->SetError(EC_KillerEngine, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist.");
+		ErrorManager::Instance()->SetError(EC_Engine, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist.");
 	}
 }
 

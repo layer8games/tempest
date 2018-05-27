@@ -36,6 +36,8 @@ Written by Maxwell Miller
 
 namespace KM = KillerMath;
 
+#include <Extern/rapidxml.hpp>
+
 //=====OpenGL Includes=====
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -43,6 +45,10 @@ namespace KM = KillerMath;
 
 //=====STL Includes=====
 #include <vector>
+#include <map>
+#include <fstream>
+#include <sstream>
+#include <algorithm> 
 
 namespace KillerEngine
 {
@@ -66,9 +72,13 @@ namespace KillerEngine
 //Functions
 //
 //==========================================================================================================================
+		void LoadModel(string filepath);
+
 		void AddIndex(U16 index);
 
-		inline void AddIndex(std::vector<U16> indices)
+		void AddIndex(std::vector<U16> indices);
+
+		inline void SetIndex(std::vector<U16> indices)
 		{
 			_indices = indices;
 			_numVertices = _indices.size();
@@ -121,6 +131,10 @@ namespace KillerEngine
 		}
 
 	private:
+		
+		std::vector<U16> _SplitU16(string text, char delim) const;
+		std::vector<F32> _SplitF32(string text, char delim) const;
+
 		S32 			 	  _numVertices;
 		std::vector<Vertex3D> _vertices;
 		std::vector<U16> 	  _indices;
