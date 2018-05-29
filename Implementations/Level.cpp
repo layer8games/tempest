@@ -1,4 +1,5 @@
 #include <Engine/Level.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -139,17 +140,15 @@ void Level::RenderObjects(void)
 //==========================================================================================================================
 //Render Sprites
 //==========================================================================================================================	
+
 	for(auto i : _2DWorldObjects) 
 	{
 		if(i.second->GetActive())
 		{
-			//const Sprite& sprite = i.second->GetSprite();
 			if(i.second->GetSprite().GetShader() != SpriteRenderer::Instance()->GetShader())
 			{
 				SpriteRenderer::Instance()->SetShader(i.second->GetSprite().GetShader());
 			}
-			//i.second->v_Render();
-			//_batch.AddToBatch(i.second->GetSprite(), i.second.GetWidth(), i.second.GetHeight());
 			SpriteRenderer::Instance()->AddToBatch
 			(
 				i.second->GetPosition(), 
@@ -170,13 +169,10 @@ void Level::RenderObjects(void)
 	{
 		if(i.second->GetActive())
 		{
-			//const Sprite& sprite = i.second->GetSprite();
 			if(i.second->GetSprite().GetShader() != SpriteRenderer::Instance()->GetShader())
 			{
 				SpriteRenderer::Instance()->SetShader(i.second->GetSprite().GetShader());
 			}
-			//i.second->v_Render();
-			//_batch.AddToBatch(i.second->GetSprite(), i.second.GetWidth(), i.second.GetHeight());
 			SpriteRenderer::Instance()->AddToBatch
 			(
 				i.second->GetPosition(), 
