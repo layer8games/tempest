@@ -128,11 +128,11 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Particle2DContact.h">
+    <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Particle2DForceRegistry.h" />
+    <ClInclude Include="..\..\Headers\Engine\ParticleForceRegistry.h" />
     <ClInclude Include="..\..\Headers\Engine\Random.h">
       <SubType>
       </SubType>
@@ -165,14 +165,14 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Particle2DDragForce.h" />
-    <ClInclude Include="..\..\Headers\Engine\Particle2DGravityForce.h" />
-    <ClInclude Include="..\..\Headers\Engine\Particle2DForceGenerator.h" />
+    <ClInclude Include="..\..\Headers\Engine\ParticleDragForce.h" />
+    <ClInclude Include="..\..\Headers\Engine\ParticleGravityForce.h" />
+    <ClInclude Include="..\..\Headers\Engine\ParticleForceGenerator.h" />
     <ClInclude Include="..\..\Headers\Engine\GameObject2D.h" />
     <ClInclude Include="..\..\Headers\Engine\Engine.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle2D.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle3D.h" />
-    <ClInclude Include="..\..\Headers\Engine\Particle2DSpringForces.h" />
+    <ClInclude Include="..\..\Headers\Engine\ParticleSpringForces.h" />
     <ClInclude Include="..\..\Headers\Engine\Quaternion.h">
       <SubType>
       </SubType>
@@ -211,15 +211,15 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Particle2DContact.cpp">
+    <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Particle2DForceGenerator.cpp">
+    <ClCompile Include="..\..\Implementations\ParticleForceGenerator.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Particle2DForceRegistry.cpp" />
+    <ClCompile Include="..\..\Implementations\ParticleForceRegistry.cpp" />
     <ClCompile Include="..\..\Implementations\Random.cpp">
       <SubType>
       </SubType>
@@ -237,12 +237,12 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Particle2DDragForce.cpp" />
-    <ClCompile Include="..\..\Implementations\Particle2DGravityForce.cpp" />
+    <ClCompile Include="..\..\Implementations\ParticleDragForce.cpp" />
+    <ClCompile Include="..\..\Implementations\ParticleGravityForce.cpp" />
     <ClCompile Include="..\..\Implementations\Engine.cpp" />
     <ClCompile Include="..\..\Implementations\Particle2D.cpp" />
     <ClCompile Include="..\..\Implementations\Particle3D.cpp" />
-    <ClCompile Include="..\..\Implementations\Particle2DSpringForces.cpp" />
+    <ClCompile Include="..\..\Implementations\ParticleSpringForces.cpp" />
     <ClCompile Include="..\..\Implementations\Quaternion.cpp">
       <SubType>
       </SubType>

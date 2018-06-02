@@ -102,9 +102,14 @@ Vector3& Vector3::operator=(F32 val)
 }
 
 //=====Add by vector=====
-Vector3 Vector3::operator+(const Vector3& V)
+Vector3 Vector3::operator+(const Vector3& V) const
 {
 	return Vector3(_x + V.GetX(), _y + V.GetY(), _z + V.GetZ());
+}
+
+Vector3 Vector3::operator+(shared_ptr<Vector3> v) const
+{
+	return Vector3(_x + v->GetX(), _y + v->GetY(), _z + v->GetZ());
 }
 
 Vector3& Vector3::operator+=(const Vector3& V)
@@ -117,7 +122,7 @@ Vector3& Vector3::operator+=(const Vector3& V)
 }
 
 //=====Add by scalar===== 
-Vector3 Vector3::operator+(F32 val)
+Vector3 Vector3::operator+(F32 val) const
 {
 	return Vector3(_x + val, _y + val, _z + val);
 }

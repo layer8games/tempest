@@ -38,6 +38,10 @@ namespace KillerPhysics
 //
 //==========================================================================================================================
 		Particle3D(void);
+
+		Particle3D(const Particle3D* particle);
+
+		Particle3D(const Particle3D& particle);
 	
 		virtual ~Particle3D(void);
 
@@ -49,45 +53,102 @@ namespace KillerPhysics
 //==========================================================================================================================
 //Velocity
 //==========================================================================================================================
-		const KM::Vector3& GetVelocity(void) const;
-		
-		void  SetVelocity(const KM::Vector3& vel);
+		inline const KM::Vector3& GetVelocity(void) const
+		{
+			return _velocity;
+		}
 
-		void SetVelocity(F32 x, F32 y, F32 z);
+		inline void SetVelocity(const KM::Vector3& vel)
+		{
+			_velocity = vel;
+		}
 
-		void AddScaledVelocity(const KM::Vector3 v, F32 scale);
+		inline void SetVelocity(F32 x, F32 y, F32 z)
+		{
+			_velocity = KM::Vector3(x, y, z);
+		}
+
+		inline void AddScaledVelocity(const KM::Vector3 v, F32 scale)
+		{
+			_velocity.AddScaledVector(v, scale);
+		}
 
 //==========================================================================================================================
 //Acceleration
 //==========================================================================================================================		
-		const KM::Vector3& GetAcceleration(void) const;
+		inline const KM::Vector3& GetAcceleration(void) const
+		{
+			return _acceleration;
+		}
 
-		void SetAcceleration(const KM::Vector3& acc);
+		inline void SetAcceleration(const KM::Vector3& acc)
+		{
+			_acceleration = acc;
+		}
 
-		void SetAcceleration(F32 x, F32 y, F32 z);
+		inline void SetAcceleration(F32 x, F32 y, F32 z)
+		{
+			_acceleration = KM::Vector3(x, y, z);
+		}
 
-		void AddScaledAcceleration(const KM::Vector3& v, F32 scale);
-
+		inline void AddScaledAcceleration(const KM::Vector3& v, F32 scale)
+		{
+			_acceleration.AddScaledVector(v, scale);
+		}
+	
 //==========================================================================================================================
 //Damping
-//==========================================================================================================================		
-		real GetDamping(void);
+//==========================================================================================================================
+		inline const real GetDamping(void) const
+		{
+			return _damping;
+		}
 
-		void SetDamping(real damp);
-
+		inline void SetDamping(real damp)
+		{
+			_damping = damp;
+		}
 //==========================================================================================================================
 //Mass
 //==========================================================================================================================		
-		real GetInverseMass(void);
+		inline const real GetInverseMass(void) const
+		{
+			return _inverseMass;
+		}
 
-		void SetInverseMass(real mass);
+		inline void SetInverseMass(real inverseMass)
+		{
+			_inverseMass = inverseMass;
+		}
 
-		real GetMass(void);
+		const real GetMass(void) const;
 
 		void SetMass(const real mass);
 
-		bool HasFiniteMass(void);
+		inline bool Particle3D::HasFiniteMass(void)
+		{
+			return _inverseMass >= 0.0f;
+		}
 
+//==========================================================================================================================
+//Forces
+//==========================================================================================================================		
+//===== Accumulated Forces =====
+		inline const KM::Vector3& GetForces(void) const
+		{
+			return _forceAccum;
+		}
+
+//===== Gravity =====
+		inline const KM::Vector3& GetGravityForce(void) const
+		{
+			return _gravityForce;
+		}
+
+		inline void SetGravityForce(const KM::Vector3& gravity)
+		{
+			_gravityForce = gravity;
+		}
 //==========================================================================================================================
 //
 //Particle functions
@@ -96,6 +157,16 @@ namespace KillerPhysics
 		virtual void v_Update(void);
 
 		void Integrate(void);
+
+		inline void ClearAccumulator(void)
+		{
+			_forceAccum.Reset();
+		}
+
+		void AddForce(const KM::Vector3& force)
+		{
+			_forceAccum += force;
+		}
 
 	private:
 //==========================================================================================================================
@@ -111,8 +182,9 @@ namespace KillerPhysics
 //==========================================================================================================================
 		KM::Vector3 _velocity;
 		KM::Vector3 _acceleration;
+		KM::Vector3 _forceAccum;
+		KM::Vector3 _gravityForce;
 		real 		_inverseMass;
 		real 		_damping;
-		KM::Vector3 _forceAccum;
 	};
 }//End namespace

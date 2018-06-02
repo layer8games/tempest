@@ -19,33 +19,23 @@ _damping(0.999f)
 
 Particle2D::Particle2D(const Particle2D* particle)
 :
-_velocity(0.0f),
-_acceleration(0.0f),
-_forceAccum(),
-_gravityForce(0.0f),
-_inverseMass(0.0f),
-_damping(0.999f)
-{
-	_velocity = particle->GetVelocity();
-	_acceleration = particle->GetAcceleration();
-	_inverseMass = particle->GetInverseMass();
-	_damping = particle->GetDamping();
-}
+_velocity(particle->GetVelocity()),
+_acceleration(particle->GetAcceleration()),
+_forceAccum(particle->GetForces()),
+_gravityForce(particle->GetGravityForce()),
+_inverseMass(particle->GetInverseMass()),
+_damping(particle->GetDamping())
+{  }
 
 Particle2D::Particle2D(const Particle2D& particle)
 :
-_velocity(0.0f),
-_acceleration(0.0f),
-_forceAccum(),
-_gravityForce(0.0f),
-_inverseMass(0.0f),
-_damping(0.999f)
-{
-	_velocity = particle.GetVelocity();
-	_acceleration = particle.GetAcceleration();
-	_inverseMass = particle.GetInverseMass();
-	_damping = particle.GetDamping();
-}
+_velocity(particle.GetVelocity()),
+_acceleration(particle.GetAcceleration()),
+_forceAccum(particle.GetForces()),
+_gravityForce(particle.GetGravityForce()),
+_inverseMass(particle.GetInverseMass()),
+_damping(particle.GetDamping())
+{  }
 
 Particle2D::~Particle2D(void) 
 {  }

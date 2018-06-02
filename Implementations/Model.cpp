@@ -55,15 +55,16 @@ void Model::LoadModel(string filepath)
 	//xml file must be 0 terminating
 	buffer.push_back('\0');
 
+	file.close();
+
 	rapidxml::xml_document<char> doc;
 	doc.parse<0>(&buffer[0]);
 
 	//Set root node
-	rapidxml::xml_node<> * root_node = doc.first_node("COLLADA");
+	rapidxml::xml_node<>* root_node = doc.first_node("COLLADA");
 
 	//Get to geomtery data node
-	rapidxml::xml_node<>* data = root_node->first_node("library_geometries")->first_node("geometry")->
-						  first_node("mesh")->first_node("source")->first_node("float_array");
+	rapidxml::xml_node<>* data = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh")->first_node("source")->first_node("float_array");
 
 	//capture data
 	std::vector<F32> vertexData = _SplitF32(data->value(), ' ');
@@ -92,8 +93,7 @@ void Model::LoadModel(string filepath)
 
 	for(rapidxml::xml_node<>* i = data; i; i = i->next_sibling("effect"))
 	{
-		data = i->first_node("profile_COMMON")->first_node("technique")->first_node("phong")->first_node("diffuse")->
-			   first_node("color");
+		data = i->first_node("profile_COMMON")->first_node("technique")->first_node("phong")->first_node("diffuse")->first_node("color");
 
 		std::vector<F32> values = _SplitF32(data->value(), ' ');
 
@@ -104,13 +104,10 @@ void Model::LoadModel(string filepath)
 
 		if(materials.find(id) == materials.end())
 		{
-			std::cout << "I could not find the one I just tried to add";
 			ErrorManager::Instance()->SetError(EC_Engine, "Model::LoadModel, unable to load color from matrial");
 		}
-	}	
-
-
-
+	}
+	
 	//Get indices
 	data = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh")->first_node("polylist");
 
@@ -206,54 +203,3 @@ std::vector<F32> Model::_SplitF32(string text, char delim) const
 
 	return data;
 }
-
-
-/*
-
-Should probably be removed at some point
-
-void Model::Render(const KM::Vector3& pos)
-{	
-	if(_shaderProgram == 0)
-	{
-		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Model: NO shader initialized when render was attempted");
-		return;
-	}
-
-	glUseProgram(_shaderProgram);
-
-	glBindVertexArray(_vertexArrayObject[0]);
-
-	Camera::Instance()->SetPerspective();
-	Camera::Instance()->SetUp(_shaderProgram);
-
-	KM::Matrix M { 0.0f };
-
-	M.Translate(pos);
-
-	GLint shaderPosition = glGetUniformLocation(_shaderProgram, "position_mat");
-
-	glUniformMatrix4fv(shaderPosition, 1, GL_FALSE, M.GetElems());
-
-	GLuint buffersLocal[2];
-	glGenBuffers(2, buffersLocal);
-
-	glBindBuffer(GL_ARRAY_BUFFER, buffersLocal[0]);
-	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _vertices.size()), &_vertices[0], GL_STATIC_DRAW);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-
-	glBindBuffer(GL_ARRAY_BUFFER ,buffersLocal[1]);
-	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _colors.size()), &_colors[0], GL_STATIC_DRAW);
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-
-	glEnable(GL_DEPTH_TEST);
-
-	glClear(GL_DEPTH_BUFFER_BIT);
-	
-	glDrawArrays(GL_TRIANGLES, 0, _numVertices);
-
-	glDisable(GL_DEPTH_TEST);	
-}
-*/

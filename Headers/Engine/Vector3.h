@@ -100,12 +100,14 @@ namespace KillerMath
 	Vector3& operator=(F32 val);
 
 //=====Add by vector=====	
-	Vector3 operator+(const Vector3& V);
+	Vector3 operator+(const Vector3& V) const;
+
+	Vector3 operator+(shared_ptr<Vector3> v) const;
 
 	Vector3& operator+=(const Vector3& V);
 
 //=====Add by scalar=====
-	Vector3 operator+(F32 val);
+	Vector3 operator+(F32 val) const;
 
 	Vector3& operator+=(F32 val);
 

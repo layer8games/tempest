@@ -26,7 +26,7 @@ Written by Maxwell Miller
 #include <Engine/RenderedText.h>
 #include <Engine/RenderedCharacter.h>
 #include <Engine/Particle2D.h>
-#include <Engine/Particle2DForceRegistry.h>
+#include <Engine/ParticleForceRegistry.h>
 
 namespace KM = KillerMath;
 namespace KP =KillerPhysics;
@@ -142,9 +142,9 @@ namespace KillerEngine
 
 		void AddObjectToLevel(shared_ptr<GameObject2D> obj);
 
-		void AddParticle2DToLevel(shared_ptr<KP::Particle2D> particle, shared_ptr<KP::Particle2DForceGenerator> generator=nullptr);
+		void AddParticle2DToLevel(shared_ptr<KP::Particle2D> particle, shared_ptr<KP::ParticleForceGenerator> generator=nullptr);
 
-		inline void RegisterParticle2DForce(shared_ptr<KP::Particle2D> particle, shared_ptr<KP::Particle2DForceGenerator> generator)
+		inline void RegisterParticle2DForce(shared_ptr<KP::Particle2D> particle, shared_ptr<KP::ParticleForceGenerator> generator)
 		{
 			_2DForceRegistry.Add(particle, generator);
 		}
@@ -278,6 +278,6 @@ namespace KillerEngine
 		std::vector<shared_ptr<RenderedText>>     _textList;
 		std::map<U32, TileData> _2DTileData;
 		//SpriteRenderer _batch;
-		KP::Particle2DForceRegistry _2DForceRegistry;
+		KP::ParticleForceRegistry _2DForceRegistry;
 	};
 }//End namespace

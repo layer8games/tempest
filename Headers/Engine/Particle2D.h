@@ -119,13 +119,13 @@ namespace KillerPhysics
 		}
 
 //=====Forces=====
-		inline const KM::Vector2& GetForces(void)
+		inline const KM::Vector2& GetForces(void) const
 		{
 			return _forceAccum;
 		}
 
 //=====Gravity=====
-		inline const KM::Vector2& GetGravityForce(void)
+		inline const KM::Vector2& GetGravityForce(void) const
 		{
 			return _gravityForce;
 		}

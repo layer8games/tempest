@@ -121,7 +121,7 @@ void LevelManager::AddObjectToLevel(U32 id, shared_ptr<GameObject2D> obj)
 	} 
 }
 
-void LevelManager::AddParticle2DToLevel(U32 id, shared_ptr<KP::Particle2D> particle, shared_ptr<KP::Particle2DForceGenerator> generator)
+void LevelManager::AddParticle2DToLevel(U32 id, shared_ptr<KP::Particle2D> particle, shared_ptr<KP::ParticleForceGenerator> generator)
 {
 	if(_levels.find(id) != _levels.end()) 
 	{ 

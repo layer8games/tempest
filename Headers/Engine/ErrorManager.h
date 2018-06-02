@@ -31,6 +31,7 @@ namespace KillerEngine
 		EC_Unknown,
 		EC_Game,
 		EC_Engine,
+		EC_Physics,
 		EC_Windows,
 		EC_OpenGL,
 		EC_OpenGL_Shader,

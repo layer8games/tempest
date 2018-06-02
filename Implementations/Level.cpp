@@ -71,7 +71,7 @@ void Level::AddObjectToLevel(shared_ptr<GameObject2D> obj)
 	}
 }
 
-void Level::AddParticle2DToLevel(shared_ptr<KP::Particle2D> particle, shared_ptr<KP::Particle2DForceGenerator> generator)
+void Level::AddParticle2DToLevel(shared_ptr<KP::Particle2D> particle, shared_ptr<KP::ParticleForceGenerator> generator)
 {
 	_2DParticles.insert({particle->GetID(), particle});
 
