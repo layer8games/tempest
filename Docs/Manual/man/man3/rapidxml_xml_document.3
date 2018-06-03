@@ -1,0 +1,66 @@
+.TH "rapidxml::xml_document< Ch >" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+rapidxml::xml_document< Ch >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <rapidxml\&.hpp>\fP
+.PP
+Inherits \fBrapidxml::xml_node< Ch >\fP, and \fBrapidxml::memory_pool< Ch >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBxml_document\fP ()"
+.br
+.RI "Constructs empty XML document\&. "
+.ti -1c
+.RI "template<int Flags> void \fBparse\fP (Ch *text)"
+.br
+.ti -1c
+.RI "void \fBclear\fP ()"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class Ch = char>
+.br
+class rapidxml::xml_document< Ch >"
+This class represents root of the DOM hierarchy\&. It is also an \fBxml_node\fP and a \fBmemory_pool\fP through public inheritance\&. Use \fBparse()\fP function to build a DOM tree from a zero-terminated XML text string\&. \fBparse()\fP function allocates memory for nodes and attributes by using functions of \fBxml_document\fP, which are inherited from \fBmemory_pool\fP\&. To access root node of the document, use the document itself, as if it was an \fBxml_node\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fICh\fP Character type to use\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Ch  = char> void \fBrapidxml::xml_document\fP< Ch >::clear ()\fC [inline]\fP"
+Clears the document by deleting all nodes and clearing the memory pool\&. All nodes owned by document pool are destroyed\&. 
+.SS "template<class Ch  = char> template<int Flags> void \fBrapidxml::xml_document\fP< Ch >::parse (Ch * text)\fC [inline]\fP"
+Parses zero-terminated XML string according to given flags\&. Passed string will be modified by the parser, unless rapidxml::parse_non_destructive flag is used\&. The string must persist for the lifetime of the document\&. In case of error, \fBrapidxml::parse_error\fP exception will be thrown\&. 
+.br
+
+.br
+ If you want to parse contents of a file, you must first load the file into the memory, and pass pointer to its beginning\&. Make sure that data is zero-terminated\&. 
+.br
+
+.br
+ Document can be parsed into multiple times\&. Each new call to parse removes previous nodes and attributes (if any), but does not clear memory pool\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP XML data to parse; pointer is non-const to denote fact that this data may be modified by the parser\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

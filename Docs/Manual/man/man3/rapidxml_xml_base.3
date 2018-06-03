@@ -1,0 +1,202 @@
+.TH "rapidxml::xml_base< Ch >" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+rapidxml::xml_base< Ch >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <rapidxml\&.hpp>\fP
+.PP
+Inherited by \fBrapidxml::xml_attribute< Ch >\fP, and \fBrapidxml::xml_node< Ch >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "Ch * \fBname\fP () const"
+.br
+.ti -1c
+.RI "std::size_t \fBname_size\fP () const"
+.br
+.ti -1c
+.RI "Ch * \fBvalue\fP () const"
+.br
+.ti -1c
+.RI "std::size_t \fBvalue_size\fP () const"
+.br
+.ti -1c
+.RI "void \fBname\fP (const Ch *name, std::size_t size)"
+.br
+.ti -1c
+.RI "void \fBname\fP (const Ch *name)"
+.br
+.ti -1c
+.RI "void \fBvalue\fP (const Ch *value, std::size_t size)"
+.br
+.ti -1c
+.RI "void \fBvalue\fP (const Ch *value)"
+.br
+.ti -1c
+.RI "\fBxml_node\fP< Ch > * \fBparent\fP () const"
+.br
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static Ch * \fBnullstr\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "Ch * \fBm_name\fP"
+.br
+.ti -1c
+.RI "Ch * \fBm_value\fP"
+.br
+.ti -1c
+.RI "std::size_t \fBm_name_size\fP"
+.br
+.ti -1c
+.RI "std::size_t \fBm_value_size\fP"
+.br
+.ti -1c
+.RI "\fBxml_node\fP< Ch > * \fBm_parent\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class Ch = char>
+.br
+class rapidxml::xml_base< Ch >"
+Base class for \fBxml_node\fP and \fBxml_attribute\fP implementing common functions: \fBname()\fP, \fBname_size()\fP, \fBvalue()\fP, \fBvalue_size()\fP and \fBparent()\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fICh\fP Character type to use 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Ch  = char> Ch* \fBrapidxml::xml_base\fP< Ch >::name () const\fC [inline]\fP"
+Gets name of the node\&. Interpretation of name depends on type of node\&. Note that name will not be zero-terminated if rapidxml::parse_no_string_terminators option was selected during parse\&. 
+.br
+
+.br
+ Use \fBname_size()\fP function to determine length of the name\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Name of node, or empty string if node has no name\&. 
+.RE
+.PP
+
+.SS "template<class Ch  = char> void \fBrapidxml::xml_base\fP< Ch >::name (const Ch * name, std::size_t size)\fC [inline]\fP"
+Sets name of node to a non zero-terminated string\&. See \fBownership_of_strings\fP\&. 
+.br
+
+.br
+ Note that node does not own its name or value, it only stores a pointer to it\&. It will not delete or otherwise free the pointer on destruction\&. It is reponsibility of the user to properly manage lifetime of the string\&. The easiest way to achieve it is to use \fBmemory_pool\fP of the document to allocate the string - on destruction of the document the string will be automatically freed\&. 
+.br
+
+.br
+ Size of name must be specified separately, because name does not have to be zero terminated\&. Use \fBname(const Ch *)\fP function to have the length automatically calculated (string must be zero terminated)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP Name of node to set\&. Does not have to be zero terminated\&. 
+.br
+\fIsize\fP Size of name, in characters\&. This does not include zero terminator, if one is present\&. 
+.RE
+.PP
+
+.SS "template<class Ch  = char> void \fBrapidxml::xml_base\fP< Ch >::name (const Ch * name)\fC [inline]\fP"
+Sets name of node to a zero-terminated string\&. See also \fBownership_of_strings\fP and \fBxml_node::name(const Ch *, std::size_t)\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP Name of node to set\&. Must be zero terminated\&. 
+.RE
+.PP
+
+.SS "template<class Ch  = char> std::size_t \fBrapidxml::xml_base\fP< Ch >::name_size () const\fC [inline]\fP"
+Gets size of node name, not including terminator character\&. This function works correctly irrespective of whether name is or is not zero terminated\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Size of node name, in characters\&. 
+.RE
+.PP
+
+.SS "template<class Ch  = char> \fBxml_node\fP<Ch>* \fBrapidxml::xml_base\fP< Ch >::parent () const\fC [inline]\fP"
+Gets node parent\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to parent node, or 0 if there is no parent\&. 
+.RE
+.PP
+
+.SS "template<class Ch  = char> Ch* \fBrapidxml::xml_base\fP< Ch >::value () const\fC [inline]\fP"
+Gets value of node\&. Interpretation of value depends on type of node\&. Note that value will not be zero-terminated if rapidxml::parse_no_string_terminators option was selected during parse\&. 
+.br
+
+.br
+ Use \fBvalue_size()\fP function to determine length of the value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Value of node, or empty string if node has no value\&. 
+.RE
+.PP
+
+.SS "template<class Ch  = char> void \fBrapidxml::xml_base\fP< Ch >::value (const Ch * value, std::size_t size)\fC [inline]\fP"
+Sets value of node to a non zero-terminated string\&. See \fBownership_of_strings\fP\&. 
+.br
+
+.br
+ Note that node does not own its name or value, it only stores a pointer to it\&. It will not delete or otherwise free the pointer on destruction\&. It is reponsibility of the user to properly manage lifetime of the string\&. The easiest way to achieve it is to use \fBmemory_pool\fP of the document to allocate the string - on destruction of the document the string will be automatically freed\&. 
+.br
+
+.br
+ Size of value must be specified separately, because it does not have to be zero terminated\&. Use \fBvalue(const Ch *)\fP function to have the length automatically calculated (string must be zero terminated)\&. 
+.br
+
+.br
+ If an element has a child node of type node_data, it will take precedence over element value when printing\&. If you want to manipulate data of elements using values, use parser flag rapidxml::parse_no_data_nodes to prevent creation of data nodes by the parser\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP value of node to set\&. Does not have to be zero terminated\&. 
+.br
+\fIsize\fP Size of value, in characters\&. This does not include zero terminator, if one is present\&. 
+.RE
+.PP
+
+.SS "template<class Ch  = char> void \fBrapidxml::xml_base\fP< Ch >::value (const Ch * value)\fC [inline]\fP"
+Sets value of node to a zero-terminated string\&. See also \fBownership_of_strings\fP and \fBxml_node::value(const Ch *, std::size_t)\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Vame of node to set\&. Must be zero terminated\&. 
+.RE
+.PP
+
+.SS "template<class Ch  = char> std::size_t \fBrapidxml::xml_base\fP< Ch >::value_size () const\fC [inline]\fP"
+Gets size of node value, not including terminator character\&. This function works correctly irrespective of whether value is or is not zero terminated\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Size of node value, in characters\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

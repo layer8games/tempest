@@ -1,0 +1,61 @@
+.TH "KillerEngine::Font" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerEngine::Font
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFont\fP (const \fBFont\fP &f)"
+.br
+.ti -1c
+.RI "\fBFont\fP (const \fBFont\fP *f)"
+.br
+.ti -1c
+.RI "\fBFont\fP (U32 tID)"
+.br
+.ti -1c
+.RI "void \fBInitFont\fP (string fontName, string fontFile)"
+.br
+.ti -1c
+.RI "\fBCharacterData\fP \fBGetDataForCharacter\fP (char c)"
+.br
+.ti -1c
+.RI "std::map< U32, \fBCharacterData\fP > \fBGetDataLevel\fP (void) const"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBSprite\fP > \fBCreateCharacter\fP (char character)"
+.br
+.ti -1c
+.RI "\fBFont\fP & \fBoperator=\fP (const \fBFont\fP *font)"
+.br
+.ti -1c
+.RI "\fBFont\fP & \fBoperator=\fP (const \fBFont\fP &font)"
+.br
+.ti -1c
+.RI "void \fBSetFile\fP (string fontFile)"
+.br
+.ti -1c
+.RI "const string \fBGetFile\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetName\fP (string fontName)"
+.br
+.ti -1c
+.RI "const string \fBGetName\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetTexture\fP (U32 tID)"
+.br
+.ti -1c
+.RI "const U32 \fBGetTextureID\fP (void) const"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

@@ -1,0 +1,27 @@
+var class_killer_math_1_1_quaternion =
+[
+    [ "Quaternion", "class_killer_math_1_1_quaternion.html#a39a0971895c9e93ae338ed9ecbc18220", null ],
+    [ "Quaternion", "class_killer_math_1_1_quaternion.html#af6401e6d511916154c7f9a8b39a35ac8", null ],
+    [ "Quaternion", "class_killer_math_1_1_quaternion.html#a3bf1ae75628e4c4968e6d09248e791ec", null ],
+    [ "Quaternion", "class_killer_math_1_1_quaternion.html#a8f4361332496b2a598697f549f45429d", null ],
+    [ "~Quaternion", "class_killer_math_1_1_quaternion.html#a8809b583edcb51ece4d157d3341218ed", null ],
+    [ "Conjugate", "class_killer_math_1_1_quaternion.html#a2fc66a57315b6ce4292b957d7b4a4155", null ],
+    [ "Difference", "class_killer_math_1_1_quaternion.html#acdb395a5d27913b4acecae41df5de347", null ],
+    [ "Dot", "class_killer_math_1_1_quaternion.html#ac8ead1e7301d8e7a75b17946b0899166", null ],
+    [ "GetElems", "class_killer_math_1_1_quaternion.html#ad28d1253f0eb326c677759137ec49ade", null ],
+    [ "GetW", "class_killer_math_1_1_quaternion.html#a54757602be51abc9a5aa77d7a38c2c9a", null ],
+    [ "GetX", "class_killer_math_1_1_quaternion.html#a683cadc15bfd41ae99d1ef4e885152ed", null ],
+    [ "GetY", "class_killer_math_1_1_quaternion.html#a3e47aaec212f5bcf20256613a2d7f214", null ],
+    [ "GetZ", "class_killer_math_1_1_quaternion.html#ae430f484a02ff4076b185965236c1210", null ],
+    [ "Inverse", "class_killer_math_1_1_quaternion.html#a49de005c96ba16a4309c27288e84e327", null ],
+    [ "Magnitude", "class_killer_math_1_1_quaternion.html#aa560fa1eda8726e22cbe8cc1739204ca", null ],
+    [ "Negate", "class_killer_math_1_1_quaternion.html#acee1e1c18aefd86f0c3569015cb971f2", null ],
+    [ "Normalize", "class_killer_math_1_1_quaternion.html#a4499cb212b359d1590f8cc97ab0cbd24", null ],
+    [ "operator*", "class_killer_math_1_1_quaternion.html#ae8879c62e14462df937fa5dd551ea227", null ],
+    [ "operator*", "class_killer_math_1_1_quaternion.html#af156a4bfd18bbbc4559d54a9425c77e4", null ],
+    [ "operator*=", "class_killer_math_1_1_quaternion.html#af47abd91880cbc71c7f6bcc945616d75", null ],
+    [ "operator*=", "class_killer_math_1_1_quaternion.html#ac7d8a38448db1f57296daa644e62541f", null ],
+    [ "operator/", "class_killer_math_1_1_quaternion.html#a9d131d99e89806c24a839a888748fc2b", null ],
+    [ "operator/=", "class_killer_math_1_1_quaternion.html#a95c203a29038de4aa9d8e77d663b4aa2", null ],
+    [ "Opposite", "class_killer_math_1_1_quaternion.html#a0b2c87f482fda6a06321a7d04c99e0b4", null ]
+];

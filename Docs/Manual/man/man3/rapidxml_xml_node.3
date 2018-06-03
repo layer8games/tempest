@@ -1,0 +1,339 @@
+.TH "rapidxml::xml_node< Ch >" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+rapidxml::xml_node< Ch >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <rapidxml\&.hpp>\fP
+.PP
+Inherits \fBrapidxml::xml_base< Ch >\fP\&.
+.PP
+Inherited by \fBrapidxml::xml_document< Ch >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBxml_node\fP (\fBnode_type\fP \fBtype\fP)"
+.br
+.ti -1c
+.RI "\fBnode_type\fP \fBtype\fP () const"
+.br
+.ti -1c
+.RI "\fBxml_document\fP< Ch > * \fBdocument\fP () const"
+.br
+.ti -1c
+.RI "\fBxml_node\fP< Ch > * \fBfirst_node\fP (const Ch *\fBname\fP=0, std::size_t \fBname_size\fP=0, bool case_sensitive=true) const"
+.br
+.ti -1c
+.RI "\fBxml_node\fP< Ch > * \fBlast_node\fP (const Ch *\fBname\fP=0, std::size_t \fBname_size\fP=0, bool case_sensitive=true) const"
+.br
+.ti -1c
+.RI "\fBxml_node\fP< Ch > * \fBprevious_sibling\fP (const Ch *\fBname\fP=0, std::size_t \fBname_size\fP=0, bool case_sensitive=true) const"
+.br
+.ti -1c
+.RI "\fBxml_node\fP< Ch > * \fBnext_sibling\fP (const Ch *\fBname\fP=0, std::size_t \fBname_size\fP=0, bool case_sensitive=true) const"
+.br
+.ti -1c
+.RI "\fBxml_attribute\fP< Ch > * \fBfirst_attribute\fP (const Ch *\fBname\fP=0, std::size_t \fBname_size\fP=0, bool case_sensitive=true) const"
+.br
+.ti -1c
+.RI "\fBxml_attribute\fP< Ch > * \fBlast_attribute\fP (const Ch *\fBname\fP=0, std::size_t \fBname_size\fP=0, bool case_sensitive=true) const"
+.br
+.ti -1c
+.RI "void \fBtype\fP (\fBnode_type\fP type)"
+.br
+.ti -1c
+.RI "void \fBprepend_node\fP (\fBxml_node\fP< Ch > *child)"
+.br
+.ti -1c
+.RI "void \fBappend_node\fP (\fBxml_node\fP< Ch > *child)"
+.br
+.ti -1c
+.RI "void \fBinsert_node\fP (\fBxml_node\fP< Ch > *where, \fBxml_node\fP< Ch > *child)"
+.br
+.ti -1c
+.RI "void \fBremove_first_node\fP ()"
+.br
+.ti -1c
+.RI "void \fBremove_last_node\fP ()"
+.br
+.ti -1c
+.RI "void \fBremove_node\fP (\fBxml_node\fP< Ch > *where)"
+.br
+.RI "Removes specified child from the node\&. "
+.ti -1c
+.RI "void \fBremove_all_nodes\fP ()"
+.br
+.RI "Removes all child nodes (but not attributes)\&. "
+.ti -1c
+.RI "void \fBprepend_attribute\fP (\fBxml_attribute\fP< Ch > *attribute)"
+.br
+.ti -1c
+.RI "void \fBappend_attribute\fP (\fBxml_attribute\fP< Ch > *attribute)"
+.br
+.ti -1c
+.RI "void \fBinsert_attribute\fP (\fBxml_attribute\fP< Ch > *where, \fBxml_attribute\fP< Ch > *attribute)"
+.br
+.ti -1c
+.RI "void \fBremove_first_attribute\fP ()"
+.br
+.ti -1c
+.RI "void \fBremove_last_attribute\fP ()"
+.br
+.ti -1c
+.RI "void \fBremove_attribute\fP (\fBxml_attribute\fP< Ch > *where)"
+.br
+.ti -1c
+.RI "void \fBremove_all_attributes\fP ()"
+.br
+.RI "Removes all attributes of node\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class Ch = char>
+.br
+class rapidxml::xml_node< Ch >"
+Class representing a node of XML document\&. Each node may have associated name and value strings, which are available through \fBname()\fP and \fBvalue()\fP functions\&. Interpretation of name and value depends on type of the node\&. Type of node can be determined by using \fBtype()\fP function\&. 
+.br
+
+.br
+ Note that after parse, both name and value of node, if any, will point interior of source text used for parsing\&. Thus, this text must persist in the memory for the lifetime of node\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fICh\fP Character type to use\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class Ch = char> \fBrapidxml::xml_node\fP< Ch >::\fBxml_node\fP (\fBnode_type\fP type)\fC [inline]\fP"
+Constructs an empty node with the specified type\&. Consider using \fBmemory_pool\fP of appropriate document to allocate nodes manually\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP Type of node to construct\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Ch = char> void \fBrapidxml::xml_node\fP< Ch >::append_attribute (\fBxml_attribute\fP< Ch > * attribute)\fC [inline]\fP"
+Appends a new attribute to the node\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIattribute\fP Attribute to append\&. 
+.RE
+.PP
+
+.SS "template<class Ch = char> void \fBrapidxml::xml_node\fP< Ch >::append_node (\fBxml_node\fP< Ch > * child)\fC [inline]\fP"
+Appends a new child node\&. The appended child becomes the last child\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchild\fP Node to append\&. 
+.RE
+.PP
+
+.SS "template<class Ch = char> \fBxml_document\fP<Ch>* \fBrapidxml::xml_node\fP< Ch >::document () const\fC [inline]\fP"
+Gets document of which node is a child\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to document that contains this node, or 0 if there is no parent document\&. 
+.RE
+.PP
+
+.SS "template<class Ch = char> \fBxml_attribute\fP<Ch>* \fBrapidxml::xml_node\fP< Ch >::first_attribute (const Ch * name = \fC0\fP, std::size_t name_size = \fC0\fP, bool case_sensitive = \fCtrue\fP) const\fC [inline]\fP"
+Gets first attribute of node, optionally matching attribute name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP Name of attribute to find, or 0 to return first attribute regardless of its name; this string doesn't have to be zero-terminated if name_size is non-zero 
+.br
+\fIname_size\fP Size of name, in characters, or 0 to have size calculated automatically from string 
+.br
+\fIcase_sensitive\fP Should name comparison be case-sensitive; non case-sensitive comparison works properly only for ASCII characters 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to found attribute, or 0 if not found\&. 
+.RE
+.PP
+
+.SS "template<class Ch = char> \fBxml_node\fP<Ch>* \fBrapidxml::xml_node\fP< Ch >::first_node (const Ch * name = \fC0\fP, std::size_t name_size = \fC0\fP, bool case_sensitive = \fCtrue\fP) const\fC [inline]\fP"
+Gets first child node, optionally matching node name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP Name of child to find, or 0 to return first child regardless of its name; this string doesn't have to be zero-terminated if name_size is non-zero 
+.br
+\fIname_size\fP Size of name, in characters, or 0 to have size calculated automatically from string 
+.br
+\fIcase_sensitive\fP Should name comparison be case-sensitive; non case-sensitive comparison works properly only for ASCII characters 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to found child, or 0 if not found\&. 
+.RE
+.PP
+
+.SS "template<class Ch = char> void \fBrapidxml::xml_node\fP< Ch >::insert_attribute (\fBxml_attribute\fP< Ch > * where, \fBxml_attribute\fP< Ch > * attribute)\fC [inline]\fP"
+Inserts a new attribute at specified place inside the node\&. All attributes after and including the specified attribute are moved one position back\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwhere\fP Place where to insert the attribute, or 0 to insert at the back\&. 
+.br
+\fIattribute\fP Attribute to insert\&. 
+.RE
+.PP
+
+.SS "template<class Ch = char> void \fBrapidxml::xml_node\fP< Ch >::insert_node (\fBxml_node\fP< Ch > * where, \fBxml_node\fP< Ch > * child)\fC [inline]\fP"
+Inserts a new child node at specified place inside the node\&. All children after and including the specified node are moved one position back\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwhere\fP Place where to insert the child, or 0 to insert at the back\&. 
+.br
+\fIchild\fP Node to insert\&. 
+.RE
+.PP
+
+.SS "template<class Ch = char> \fBxml_attribute\fP<Ch>* \fBrapidxml::xml_node\fP< Ch >::last_attribute (const Ch * name = \fC0\fP, std::size_t name_size = \fC0\fP, bool case_sensitive = \fCtrue\fP) const\fC [inline]\fP"
+Gets last attribute of node, optionally matching attribute name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP Name of attribute to find, or 0 to return last attribute regardless of its name; this string doesn't have to be zero-terminated if name_size is non-zero 
+.br
+\fIname_size\fP Size of name, in characters, or 0 to have size calculated automatically from string 
+.br
+\fIcase_sensitive\fP Should name comparison be case-sensitive; non case-sensitive comparison works properly only for ASCII characters 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to found attribute, or 0 if not found\&. 
+.RE
+.PP
+
+.SS "template<class Ch = char> \fBxml_node\fP<Ch>* \fBrapidxml::xml_node\fP< Ch >::last_node (const Ch * name = \fC0\fP, std::size_t name_size = \fC0\fP, bool case_sensitive = \fCtrue\fP) const\fC [inline]\fP"
+Gets last child node, optionally matching node name\&. Behaviour is undefined if node has no children\&. Use \fBfirst_node()\fP to test if node has children\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP Name of child to find, or 0 to return last child regardless of its name; this string doesn't have to be zero-terminated if name_size is non-zero 
+.br
+\fIname_size\fP Size of name, in characters, or 0 to have size calculated automatically from string 
+.br
+\fIcase_sensitive\fP Should name comparison be case-sensitive; non case-sensitive comparison works properly only for ASCII characters 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to found child, or 0 if not found\&. 
+.RE
+.PP
+
+.SS "template<class Ch = char> \fBxml_node\fP<Ch>* \fBrapidxml::xml_node\fP< Ch >::next_sibling (const Ch * name = \fC0\fP, std::size_t name_size = \fC0\fP, bool case_sensitive = \fCtrue\fP) const\fC [inline]\fP"
+Gets next sibling node, optionally matching node name\&. Behaviour is undefined if node has no parent\&. Use \fBparent()\fP to test if node has a parent\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP Name of sibling to find, or 0 to return next sibling regardless of its name; this string doesn't have to be zero-terminated if name_size is non-zero 
+.br
+\fIname_size\fP Size of name, in characters, or 0 to have size calculated automatically from string 
+.br
+\fIcase_sensitive\fP Should name comparison be case-sensitive; non case-sensitive comparison works properly only for ASCII characters 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to found sibling, or 0 if not found\&. 
+.RE
+.PP
+
+.SS "template<class Ch = char> void \fBrapidxml::xml_node\fP< Ch >::prepend_attribute (\fBxml_attribute\fP< Ch > * attribute)\fC [inline]\fP"
+Prepends a new attribute to the node\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIattribute\fP Attribute to prepend\&. 
+.RE
+.PP
+
+.SS "template<class Ch = char> void \fBrapidxml::xml_node\fP< Ch >::prepend_node (\fBxml_node\fP< Ch > * child)\fC [inline]\fP"
+Prepends a new child node\&. The prepended child becomes the first child, and all existing children are moved one position back\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchild\fP Node to prepend\&. 
+.RE
+.PP
+
+.SS "template<class Ch = char> \fBxml_node\fP<Ch>* \fBrapidxml::xml_node\fP< Ch >::previous_sibling (const Ch * name = \fC0\fP, std::size_t name_size = \fC0\fP, bool case_sensitive = \fCtrue\fP) const\fC [inline]\fP"
+Gets previous sibling node, optionally matching node name\&. Behaviour is undefined if node has no parent\&. Use \fBparent()\fP to test if node has a parent\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP Name of sibling to find, or 0 to return previous sibling regardless of its name; this string doesn't have to be zero-terminated if name_size is non-zero 
+.br
+\fIname_size\fP Size of name, in characters, or 0 to have size calculated automatically from string 
+.br
+\fIcase_sensitive\fP Should name comparison be case-sensitive; non case-sensitive comparison works properly only for ASCII characters 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to found sibling, or 0 if not found\&. 
+.RE
+.PP
+
+.SS "template<class Ch = char> void \fBrapidxml::xml_node\fP< Ch >::remove_attribute (\fBxml_attribute\fP< Ch > * where)\fC [inline]\fP"
+Removes specified attribute from node\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwhere\fP Pointer to attribute to be removed\&. 
+.RE
+.PP
+
+.SS "template<class Ch = char> void \fBrapidxml::xml_node\fP< Ch >::remove_first_attribute ()\fC [inline]\fP"
+Removes first attribute of the node\&. If node has no attributes, behaviour is undefined\&. Use \fBfirst_attribute()\fP to test if node has attributes\&. 
+.SS "template<class Ch = char> void \fBrapidxml::xml_node\fP< Ch >::remove_first_node ()\fC [inline]\fP"
+Removes first child node\&. If node has no children, behaviour is undefined\&. Use \fBfirst_node()\fP to test if node has children\&. 
+.SS "template<class Ch = char> void \fBrapidxml::xml_node\fP< Ch >::remove_last_attribute ()\fC [inline]\fP"
+Removes last attribute of the node\&. If node has no attributes, behaviour is undefined\&. Use \fBfirst_attribute()\fP to test if node has attributes\&. 
+.SS "template<class Ch = char> void \fBrapidxml::xml_node\fP< Ch >::remove_last_node ()\fC [inline]\fP"
+Removes last child of the node\&. If node has no children, behaviour is undefined\&. Use \fBfirst_node()\fP to test if node has children\&. 
+.SS "template<class Ch = char> \fBnode_type\fP \fBrapidxml::xml_node\fP< Ch >::type () const\fC [inline]\fP"
+Gets type of node\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Type of node\&. 
+.RE
+.PP
+
+.SS "template<class Ch = char> void \fBrapidxml::xml_node\fP< Ch >::type (\fBnode_type\fP type)\fC [inline]\fP"
+Sets type of node\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP Type of node to set\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

@@ -1,0 +1,49 @@
+.TH "KillerEngine::Sprite" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerEngine::Sprite
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "const U32 \fBGetTextureID\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetUVs\fP (const \fBKM::Vector2\fP &bottomTop, const \fBKM::Vector2\fP &leftRight)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector2\fP & \fBGetUVBottomTop\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBKM::Vector2\fP & \fBGetUVLeftRight\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetCharData\fP (\fBCharacterData\fP data)"
+.br
+.ti -1c
+.RI "const \fBCharacterData\fP & \fBGetCharData\fP (void) const"
+.br
+.ti -1c
+.RI "const GLuint \fBGetShader\fP (void) const"
+.br
+.ti -1c
+.RI "\fBSprite\fP & \fBoperator=\fP (const \fBSprite\fP &S)"
+.br
+.ti -1c
+.RI "\fBSprite\fP & \fBoperator=\fP (const \fBSprite\fP *S)"
+.br
+.ti -1c
+.RI "\fBSprite\fP & \fBoperator=\fP (shared_ptr< \fBSprite\fP > S)"
+.br
+.ti -1c
+.RI "void \fBSetTexture\fP (U32 tID, const F32 top, const F32 bottom, const F32 right, const F32 left)"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

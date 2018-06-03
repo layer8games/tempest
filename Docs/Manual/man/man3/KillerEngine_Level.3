@@ -1,0 +1,135 @@
+.TH "KillerEngine::Level" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerEngine::Level
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBv_InitLevel\fP (U32 id, S32 w, S32 h, \fBColor\fP &c)=0"
+.br
+.ti -1c
+.RI "virtual void \fBv_InitLevel\fP (U32 id, string tmxFilePath)"
+.br
+.ti -1c
+.RI "virtual void \fBv_Update\fP (void)=0"
+.br
+.ti -1c
+.RI "virtual void \fBv_Integrate\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBv_Render\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fBGameObject2D\fP * \fBv_CreateObject\fP (ObjectType type, \fBKM::Vector2\fP &pos, U32 textureID, F32 w, F32 h)"
+.br
+.ti -1c
+.RI "void \fBAddObjectToLevel\fP (const \fBGameObject2D\fP &obj)"
+.br
+.ti -1c
+.RI "void \fBAddObjectToLevel\fP (shared_ptr< \fBGameObject2D\fP > obj)"
+.br
+.ti -1c
+.RI "void \fBAddParticle2DToLevel\fP (shared_ptr< \fBKP::Particle2D\fP > particle, shared_ptr< \fBKP::ParticleForceGenerator\fP > generator=nullptr)"
+.br
+.ti -1c
+.RI "void \fBRegisterParticle2DForce\fP (shared_ptr< \fBKP::Particle2D\fP > particle, shared_ptr< \fBKP::ParticleForceGenerator\fP > generator)"
+.br
+.ti -1c
+.RI "void \fBAddObject3DToLevel\fP (const \fBGameObject3D\fP &obj)"
+.br
+.ti -1c
+.RI "void \fBAddTextToLevel\fP (shared_ptr< \fBRenderedText\fP > text)"
+.br
+.ti -1c
+.RI "void \fBRemove2DObjectFromLevel\fP (U32 id)"
+.br
+.ti -1c
+.RI "void \fBRemove3DObjectFromLevel\fP (U32 id)"
+.br
+.ti -1c
+.RI "void \fBRenderObjects\fP (void)"
+.br
+.ti -1c
+.RI "void \fBUpdateObjects\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetBackgroundColor\fP (\fBColor\fP &c)"
+.br
+.ti -1c
+.RI "void \fBActivateBackgroundColor\fP (void)"
+.br
+.ti -1c
+.RI "S32 \fBGetLevelWidth\fP (void) const"
+.br
+.ti -1c
+.RI "S32 \fBGetLevelHeight\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetLevelWidth\fP (S32 w)"
+.br
+.ti -1c
+.RI "void \fBSetLevelHeight\fP (S32 h)"
+.br
+.ti -1c
+.RI "void \fBSetLevelDimensions\fP (S32 w, S32 h)"
+.br
+.ti -1c
+.RI "void \fBSetTopBorder\fP (S32 top)"
+.br
+.ti -1c
+.RI "void \fBSetBottomBorder\fP (S32 bottom)"
+.br
+.ti -1c
+.RI "void \fBSetRightBorder\fP (S32 right)"
+.br
+.ti -1c
+.RI "void \fBSetLeftBorder\fP (S32 left)"
+.br
+.ti -1c
+.RI "void \fBSetLevelBorders\fP (S32 top, S32 bottom, S32 right, S32 left)"
+.br
+.ti -1c
+.RI "S32 \fBGetTopBorder\fP (void) const"
+.br
+.ti -1c
+.RI "S32 \fBGetBottomBorder\fP (void) const"
+.br
+.ti -1c
+.RI "S32 \fBGetLeftBorder\fP (void) const"
+.br
+.ti -1c
+.RI "S32 \fBGetRightBorder\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetID\fP (U32 id)"
+.br
+.ti -1c
+.RI "U32 \fBGetID\fP (void) const"
+.br
+.in -1c
+.SS "Protected Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBObjectType\fP { \fBBACKGROUND\fP, \fBENVIRONMENT\fP, \fBPLAYER\fP, \fBENEMY\fP, \fBEND\fP }"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBImporter2D\fP (string tmxFilePath)"
+.br
+.ti -1c
+.RI "virtual ObjectType \fBv_StringToTileData\fP (string s)"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

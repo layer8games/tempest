@@ -1,0 +1,61 @@
+.TH "rapidxml::parse_error" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+rapidxml::parse_error
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <rapidxml\&.hpp>\fP
+.PP
+Inherits exception\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBparse_error\fP (const char *\fBwhat\fP, void *\fBwhere\fP)"
+.br
+.RI "Constructs parse error\&. "
+.ti -1c
+.RI "virtual const char * \fBwhat\fP () const  throw ()"
+.br
+.ti -1c
+.RI "template<class Ch > Ch * \fBwhere\fP () const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Parse error exception\&. This exception is thrown by the parser when an error occurs\&. Use \fBwhat()\fP function to get human-readable error message\&. Use \fBwhere()\fP function to get a pointer to position within source text where error was detected\&. 
+.br
+
+.br
+ If throwing exceptions by the parser is undesirable, it can be disabled by defining RAPIDXML_NO_EXCEPTIONS macro before \fBrapidxml\&.hpp\fP is included\&. This will cause the parser to call rapidxml::parse_error_handler() function instead of throwing an exception\&. This function must be defined by the user\&. 
+.br
+
+.br
+ This class derives from \fCstd::exception\fP class\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual const char* rapidxml::parse_error::what () const\fC [inline]\fP, \fC [virtual]\fP"
+Gets human readable description of error\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to null terminated description of the error\&. 
+.RE
+.PP
+
+.SS "template<class Ch > Ch* rapidxml::parse_error::where () const\fC [inline]\fP"
+Gets pointer to character data where error happened\&. Ch should be the same as char type of \fBxml_document\fP that produced the error\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to location within the parsed string where error occured\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

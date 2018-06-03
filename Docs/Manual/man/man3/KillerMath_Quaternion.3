@@ -1,0 +1,82 @@
+.TH "KillerMath::Quaternion" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerMath::Quaternion
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQuaternion\fP (real value)"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP (real w, real x, real y, real z)"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP (const \fBQuaternion\fP &Q)"
+.br
+.ti -1c
+.RI "real \fBGetW\fP (void) const"
+.br
+.ti -1c
+.RI "real \fBGetX\fP (void) const"
+.br
+.ti -1c
+.RI "real \fBGetY\fP (void) const"
+.br
+.ti -1c
+.RI "real \fBGetZ\fP (void) const"
+.br
+.ti -1c
+.RI "const real * \fBGetElems\fP (void) const"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP \fBoperator/\fP (real d)"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP & \fBoperator/=\fP (real d)"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP \fBoperator*\fP (real m)"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP \fBoperator*\fP (\fBQuaternion\fP &q2)"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP & \fBoperator*=\fP (real m)"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP & \fBoperator*=\fP (\fBQuaternion\fP &q2)"
+.br
+.ti -1c
+.RI "real \fBMagnitude\fP (void)"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP \fBConjugate\fP (void)"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP \fBInverse\fP (void)"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP \fBDifference\fP (\fBQuaternion\fP &Q)"
+.br
+.ti -1c
+.RI "real \fBDot\fP (\fBQuaternion\fP &Q)"
+.br
+.ti -1c
+.RI "void \fBNegate\fP (void)"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP \fBOpposite\fP (void)"
+.br
+.ti -1c
+.RI "void \fBNormalize\fP (void)"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

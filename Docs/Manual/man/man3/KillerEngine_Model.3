@@ -1,0 +1,64 @@
+.TH "KillerEngine::Model" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerEngine::Model
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBModel\fP (const \fBModel\fP &m)"
+.br
+.ti -1c
+.RI "\fBModel\fP (std::vector< \fBVertex3D\fP > vertices, std::vector< U16 > indices)"
+.br
+.ti -1c
+.RI "void \fBLoadModel\fP (string filepath)"
+.br
+.ti -1c
+.RI "void \fBAddIndex\fP (U16 index)"
+.br
+.ti -1c
+.RI "void \fBAddIndex\fP (std::vector< U16 > indices)"
+.br
+.ti -1c
+.RI "void \fBSetIndex\fP (std::vector< U16 > indices)"
+.br
+.ti -1c
+.RI "void \fBClearIndices\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAddVertex\fP (const \fBVertex3D\fP &vert)"
+.br
+.ti -1c
+.RI "void \fBAddVertex\fP (const \fBKM::Vector3\fP &pos, const \fBColor\fP &color)"
+.br
+.ti -1c
+.RI "std::vector< \fBVertex3D\fP > \fBGetVertices\fP (void) const"
+.br
+.ti -1c
+.RI "std::vector< U16 > \fBGetIndices\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBKM::Vector3\fP & \fBGetScale\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetScale\fP (\fBKM::Vector3\fP &s)"
+.br
+.ti -1c
+.RI "void \fBSetShader\fP (GLuint shader)"
+.br
+.ti -1c
+.RI "GLuint \fBGetShader\fP (void) const"
+.br
+.ti -1c
+.RI "S32 \fBVertexCount\fP (void) const"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

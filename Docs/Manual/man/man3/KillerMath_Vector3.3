@@ -1,0 +1,163 @@
+.TH "KillerMath::Vector3" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerMath::Vector3
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVector3\fP (F32 val)"
+.br
+.ti -1c
+.RI "\fBVector3\fP (F32 x, F32 y)"
+.br
+.ti -1c
+.RI "\fBVector3\fP (F32 x, F32 y, F32 z)"
+.br
+.ti -1c
+.RI "\fBVector3\fP (F32 x, F32 y, F32 z, F32 w)"
+.br
+.ti -1c
+.RI "\fBVector3\fP (const \fBVector3\fP &V)"
+.br
+.ti -1c
+.RI "\fBVector3\fP (const \fBVector2\fP &V)"
+.br
+.ti -1c
+.RI "F32 \fBGetX\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetX\fP (F32 val)"
+.br
+.ti -1c
+.RI "F32 \fBGetY\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetY\fP (F32 val)"
+.br
+.ti -1c
+.RI "F32 \fBGetZ\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetZ\fP (F32 val)"
+.br
+.ti -1c
+.RI "F32 \fBGetW\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetW\fP (F32 val)"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator=\fP (const \fBVector3\fP &V)"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator=\fP (const \fBVector2\fP &V)"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator=\fP (F32 val)"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator+\fP (const \fBVector3\fP &V) const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator+\fP (shared_ptr< \fBVector3\fP > v) const"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator+=\fP (const \fBVector3\fP &V)"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator+\fP (F32 val) const"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator+=\fP (F32 val)"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator\-\fP (const \fBVector3\fP &V)"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator\-=\fP (const \fBVector3\fP &V)"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator\-\fP (F32 val)"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator\-=\fP (F32 val)"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator*\fP (const \fBVector3\fP &V)"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator*=\fP (const \fBVector3\fP &V)"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator*\fP (F32 val)"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator*=\fP (F32 val)"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator/\fP (const \fBVector3\fP &V)"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator/=\fP (const \fBVector3\fP &V)"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator/\fP (F32 val)"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator/=\fP (F32 val)"
+.br
+.ti -1c
+.RI "bool \fBoperator>\fP (\fBVector3\fP &vec)"
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (\fBVector3\fP &vec)"
+.br
+.ti -1c
+.RI "bool \fBoperator>=\fP (\fBVector3\fP &vec)"
+.br
+.ti -1c
+.RI "bool \fBoperator<=\fP (\fBVector3\fP &vec)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBVector3\fP &vec)"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (\fBVector3\fP &vec)"
+.br
+.ti -1c
+.RI "void \fBAddScaledVector\fP (const \fBVector3\fP &V, F32 scale)"
+.br
+.ti -1c
+.RI "void \fBAddScaledVector\fP (const \fBVector2\fP &V, F32 scale)"
+.br
+.ti -1c
+.RI "F32 \fBDotProduct\fP (const \fBVector3\fP &V)"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBCrossProduct\fP (const \fBVector3\fP &V)"
+.br
+.ti -1c
+.RI "F32 \fBMagnitude\fP (void)"
+.br
+.ti -1c
+.RI "F32 \fBSqrMagnitude\fP (void)"
+.br
+.ti -1c
+.RI "void \fBNormalize\fP (void)"
+.br
+.ti -1c
+.RI "void \fBReset\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSet\fP (F32 x, F32 y, F32 z)"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

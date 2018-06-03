@@ -1,0 +1,62 @@
+.TH "KillerEngine::Controller" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerEngine::Controller
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBUpdate\fP (void)"
+.br
+.ti -1c
+.RI "void \fBInit\fP (F32 w, F32 h, F32 d)"
+.br
+.ti -1c
+.RI "void \fBKeyDown\fP (Keys k)"
+.br
+.ti -1c
+.RI "void \fBKeyUp\fP (Keys k)"
+.br
+.ti -1c
+.RI "void \fBLeftMouseClick\fP (const \fBKM::Vector2\fP &coord)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector2\fP \fBGetLeftMouseCoord\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBRightMouseClick\fP (const \fBKM::Vector2\fP &coord)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector2\fP \fBGetRightMouseCoord\fP (void) const"
+.br
+.ti -1c
+.RI "bool \fBGetKeyDown\fP (Keys k)"
+.br
+.ti -1c
+.RI "bool \fBGetKeyHeld\fP (Keys k)"
+.br
+.ti -1c
+.RI "bool \fBGetKeyUp\fP (Keys k)"
+.br
+.ti -1c
+.RI "bool \fBGetKeyReleased\fP (Keys k)"
+.br
+.ti -1c
+.RI "shared_ptr< \fBController\fP > \fBoperator=\fP (\fBController\fP &c)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBController\fP > \fBInstance\fP ()"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

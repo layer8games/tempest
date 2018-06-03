@@ -1,0 +1,267 @@
+.TH "F:/Projects/Killer_Engine/Headers/Extern/rapidxml.hpp" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/Projects/Killer_Engine/Headers/Extern/rapidxml.hpp \- This file contains rapidxml parser and DOM implementation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <cstdlib>\fP
+.br
+\fC#include <cassert>\fP
+.br
+\fC#include <new>\fP
+.br
+\fC#include <exception>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBrapidxml::parse_error\fP"
+.br
+.ti -1c
+.RI "class \fBrapidxml::xml_node< Ch >\fP"
+.br
+.ti -1c
+.RI "class \fBrapidxml::xml_attribute< Ch >\fP"
+.br
+.ti -1c
+.RI "class \fBrapidxml::xml_document< Ch >\fP"
+.br
+.ti -1c
+.RI "class \fBrapidxml::memory_pool< Ch >\fP"
+.br
+.ti -1c
+.RI "class \fBrapidxml::xml_base< Ch >\fP"
+.br
+.ti -1c
+.RI "class \fBrapidxml::xml_attribute< Ch >\fP"
+.br
+.ti -1c
+.RI "class \fBrapidxml::xml_node< Ch >\fP"
+.br
+.ti -1c
+.RI "class \fBrapidxml::xml_document< Ch >\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBRAPIDXML_PARSE_ERROR\fP(what,  where)   throw parse_error(what, where)"
+.br
+.ti -1c
+.RI "#define \fBRAPIDXML_STATIC_POOL_SIZE\fP   (64 * 1024)"
+.br
+.ti -1c
+.RI "#define \fBRAPIDXML_DYNAMIC_POOL_SIZE\fP   (64 * 1024)"
+.br
+.ti -1c
+.RI "#define \fBRAPIDXML_ALIGNMENT\fP   sizeof(void *)"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBrapidxml::node_type\fP { \fBrapidxml::node_document\fP, \fBrapidxml::node_element\fP, \fBrapidxml::node_data\fP, \fBrapidxml::node_cdata\fP, \fBrapidxml::node_comment\fP, \fBrapidxml::node_declaration\fP, \fBrapidxml::node_doctype\fP, \fBrapidxml::node_pi\fP }"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const int \fBrapidxml::parse_no_data_nodes\fP = 0x1"
+.br
+.ti -1c
+.RI "const int \fBrapidxml::parse_no_element_values\fP = 0x2"
+.br
+.ti -1c
+.RI "const int \fBrapidxml::parse_no_string_terminators\fP = 0x4"
+.br
+.ti -1c
+.RI "const int \fBrapidxml::parse_no_entity_translation\fP = 0x8"
+.br
+.ti -1c
+.RI "const int \fBrapidxml::parse_no_utf8\fP = 0x10"
+.br
+.ti -1c
+.RI "const int \fBrapidxml::parse_declaration_node\fP = 0x20"
+.br
+.ti -1c
+.RI "const int \fBrapidxml::parse_comment_nodes\fP = 0x40"
+.br
+.ti -1c
+.RI "const int \fBrapidxml::parse_doctype_node\fP = 0x80"
+.br
+.ti -1c
+.RI "const int \fBrapidxml::parse_pi_nodes\fP = 0x100"
+.br
+.ti -1c
+.RI "const int \fBrapidxml::parse_validate_closing_tags\fP = 0x200"
+.br
+.ti -1c
+.RI "const int \fBrapidxml::parse_trim_whitespace\fP = 0x400"
+.br
+.ti -1c
+.RI "const int \fBrapidxml::parse_normalize_whitespace\fP = 0x800"
+.br
+.ti -1c
+.RI "const int \fBrapidxml::parse_default\fP = 0"
+.br
+.ti -1c
+.RI "const int \fBrapidxml::parse_non_destructive\fP = parse_no_string_terminators | parse_no_entity_translation"
+.br
+.ti -1c
+.RI "const int \fBrapidxml::parse_fastest\fP = parse_non_destructive | parse_no_data_nodes"
+.br
+.ti -1c
+.RI "const int \fBrapidxml::parse_full\fP = parse_declaration_node | parse_comment_nodes | parse_doctype_node | parse_pi_nodes | parse_validate_closing_tags"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This file contains rapidxml parser and DOM implementation\&. 
+
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBrapidxml::node_type\fP"
+Enumeration listing all node types produced by the parser\&. Use xml_node::type() function to query node type\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fInode_document \fP\fP
+A document node\&. Name and value are empty\&. 
+.TP
+\fB\fInode_element \fP\fP
+An element node\&. Name contains element name\&. Value contains text of first data node\&. 
+.TP
+\fB\fInode_data \fP\fP
+A data node\&. Name is empty\&. Value contains data text\&. 
+.TP
+\fB\fInode_cdata \fP\fP
+A CDATA node\&. Name is empty\&. Value contains data text\&. 
+.TP
+\fB\fInode_comment \fP\fP
+A comment node\&. Name is empty\&. Value contains comment text\&. 
+.TP
+\fB\fInode_declaration \fP\fP
+A declaration node\&. Name and value are empty\&. Declaration parameters (version, encoding and standalone) are in node attributes\&. 
+.TP
+\fB\fInode_doctype \fP\fP
+A DOCTYPE node\&. Name is empty\&. Value contains DOCTYPE text\&. 
+.TP
+\fB\fInode_pi \fP\fP
+A PI node\&. Name contains target\&. Value contains instructions\&. 
+.SH "Variable Documentation"
+.PP 
+.SS "const int rapidxml::parse_comment_nodes = 0x40"
+Parse flag instructing the parser to create comments nodes\&. By default, comment nodes are not created\&. Can be combined with other flags by use of | operator\&. 
+.br
+
+.br
+ See xml_document::parse() function\&. 
+.SS "const int rapidxml::parse_declaration_node = 0x20"
+Parse flag instructing the parser to create XML declaration node\&. By default, declaration node is not created\&. Can be combined with other flags by use of | operator\&. 
+.br
+
+.br
+ See xml_document::parse() function\&. 
+.SS "const int rapidxml::parse_default = 0"
+Parse flags which represent default behaviour of the parser\&. This is always equal to 0, so that all other flags can be simply ored together\&. Normally there is no need to inconveniently disable flags by anding with their negated (~) values\&. This also means that meaning of each flag is a \fInegation\fP of the default setting\&. For example, if flag name is rapidxml::parse_no_utf8, it means that utf-8 is \fIenabled\fP by default, and using the flag will disable it\&. 
+.br
+
+.br
+ See xml_document::parse() function\&. 
+.SS "const int rapidxml::parse_doctype_node = 0x80"
+Parse flag instructing the parser to create DOCTYPE node\&. By default, doctype node is not created\&. Although W3C specification allows at most one DOCTYPE node, RapidXml will silently accept documents with more than one\&. Can be combined with other flags by use of | operator\&. 
+.br
+
+.br
+ See xml_document::parse() function\&. 
+.SS "const int rapidxml::parse_fastest = parse_non_destructive | parse_no_data_nodes"
+A combination of parse flags resulting in fastest possible parsing, without sacrificing important data\&. 
+.br
+
+.br
+ See xml_document::parse() function\&. 
+.SS "const int rapidxml::parse_full = parse_declaration_node | parse_comment_nodes | parse_doctype_node | parse_pi_nodes | parse_validate_closing_tags"
+A combination of parse flags resulting in largest amount of data being extracted\&. This usually results in slowest parsing\&. 
+.br
+
+.br
+ See xml_document::parse() function\&. 
+.SS "const int rapidxml::parse_no_data_nodes = 0x1"
+Parse flag instructing the parser to not create data nodes\&. Text of first data node will still be placed in value of parent element, unless rapidxml::parse_no_element_values flag is also specified\&. Can be combined with other flags by use of | operator\&. 
+.br
+
+.br
+ See xml_document::parse() function\&. 
+.SS "const int rapidxml::parse_no_element_values = 0x2"
+Parse flag instructing the parser to not use text of first data node as a value of parent element\&. Can be combined with other flags by use of | operator\&. Note that child data nodes of element node take precendence over its value when printing\&. That is, if element has one or more child data nodes \fIand\fP a value, the value will be ignored\&. Use rapidxml::parse_no_data_nodes flag to prevent creation of data nodes if you want to manipulate data using values of elements\&. 
+.br
+
+.br
+ See xml_document::parse() function\&. 
+.SS "const int rapidxml::parse_no_entity_translation = 0x8"
+Parse flag instructing the parser to not translate entities in the source text\&. By default entities are translated, modifying source text\&. Can be combined with other flags by use of | operator\&. 
+.br
+
+.br
+ See xml_document::parse() function\&. 
+.SS "const int rapidxml::parse_no_string_terminators = 0x4"
+Parse flag instructing the parser to not place zero terminators after strings in the source text\&. By default zero terminators are placed, modifying source text\&. Can be combined with other flags by use of | operator\&. 
+.br
+
+.br
+ See xml_document::parse() function\&. 
+.SS "const int rapidxml::parse_no_utf8 = 0x10"
+Parse flag instructing the parser to disable UTF-8 handling and assume plain 8 bit characters\&. By default, UTF-8 handling is enabled\&. Can be combined with other flags by use of | operator\&. 
+.br
+
+.br
+ See xml_document::parse() function\&. 
+.SS "const int rapidxml::parse_non_destructive = parse_no_string_terminators | parse_no_entity_translation"
+A combination of parse flags that forbids any modifications of the source text\&. This also results in faster parsing\&. However, note that the following will occur: 
+.PD 0
+
+.IP "\(bu" 2
+names and values of nodes will not be zero terminated, you have to use xml_base::name_size() and xml_base::value_size() functions to determine where name and value ends 
+.IP "\(bu" 2
+entities will not be translated 
+.IP "\(bu" 2
+whitespace will not be normalized 
+.PP
+See xml_document::parse() function\&. 
+.SS "const int rapidxml::parse_normalize_whitespace = 0x800"
+Parse flag instructing the parser to condense all whitespace runs of data nodes to a single space character\&. Trimming of leading and trailing whitespace of data is controlled by rapidxml::parse_trim_whitespace flag\&. By default, whitespace is not normalized\&. If this flag is specified, source text will be modified\&. Can be combined with other flags by use of | operator\&. 
+.br
+
+.br
+ See xml_document::parse() function\&. 
+.SS "const int rapidxml::parse_pi_nodes = 0x100"
+Parse flag instructing the parser to create PI nodes\&. By default, PI nodes are not created\&. Can be combined with other flags by use of | operator\&. 
+.br
+
+.br
+ See xml_document::parse() function\&. 
+.SS "const int rapidxml::parse_trim_whitespace = 0x400"
+Parse flag instructing the parser to trim all leading and trailing whitespace of data nodes\&. By default, whitespace is not trimmed\&. This flag does not cause the parser to modify source text\&. Can be combined with other flags by use of | operator\&. 
+.br
+
+.br
+ See xml_document::parse() function\&. 
+.SS "const int rapidxml::parse_validate_closing_tags = 0x200"
+Parse flag instructing the parser to validate closing tag names\&. If not set, name inside closing tag is irrelevant to the parser\&. By default, closing tags are not validated\&. Can be combined with other flags by use of | operator\&. 
+.br
+
+.br
+ See xml_document::parse() function\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

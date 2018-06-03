@@ -1,0 +1,74 @@
+.TH "KillerEngine::LevelManager" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerEngine::LevelManager
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBShutDown\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAddLevel\fP (shared_ptr< \fBLevel\fP > level)"
+.br
+.ti -1c
+.RI "void \fBRemoveLevel\fP (U32 levelID)"
+.br
+.ti -1c
+.RI "void \fBSetActiveLevel\fP (U32 levelID)"
+.br
+.ti -1c
+.RI "U32 \fBGetActiveLevelID\fP (void)"
+.br
+.ti -1c
+.RI "shared_ptr< \fBLevel\fP > \fBGetActiveLevel\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetRunning\fP (bool r)"
+.br
+.ti -1c
+.RI "bool \fBGetRunning\fP (void)"
+.br
+.ti -1c
+.RI "void \fBEndGame\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAddObjectToLevel\fP (U32 id, const \fBGameObject2D\fP &obj)"
+.br
+.ti -1c
+.RI "void \fBAddObjectToLevel\fP (U32 id, shared_ptr< \fBGameObject2D\fP > obj)"
+.br
+.ti -1c
+.RI "void \fBAddParticle2DToLevel\fP (U32 id, shared_ptr< \fBKP::Particle2D\fP >, shared_ptr< \fBKP::ParticleForceGenerator\fP > generator=nullptr)"
+.br
+.ti -1c
+.RI "void \fBAddObject3DToLevel\fP (U32 id, const \fBGameObject3D\fP &obj)"
+.br
+.ti -1c
+.RI "void \fBRemove2DObjectFromLevel\fP (U32 levelID, U32 ojbId)"
+.br
+.ti -1c
+.RI "void \fBRemove3DObjectFromLevel\fP (U32 levelID, U32 ojbId)"
+.br
+.ti -1c
+.RI "void \fBUpdate\fP (void)"
+.br
+.ti -1c
+.RI "void \fBRender\fP (void)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBLevelManager\fP * \fBInstance\fP ()"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

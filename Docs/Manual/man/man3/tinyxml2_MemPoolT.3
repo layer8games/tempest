@@ -1,0 +1,49 @@
+.TH "tinyxml2::MemPoolT< ITEM_SIZE >" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+tinyxml2::MemPoolT< ITEM_SIZE >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBtinyxml2::MemPool\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBITEMS_PER_BLOCK\fP = (4 * 1024) / ITEM_SIZE }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "virtual int \fBItemSize\fP () const"
+.br
+.ti -1c
+.RI "int \fBCurrentAllocs\fP () const"
+.br
+.ti -1c
+.RI "virtual void * \fBAlloc\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBFree\fP (void *mem)"
+.br
+.ti -1c
+.RI "void \fBTrace\fP (const char *name)"
+.br
+.ti -1c
+.RI "void \fBSetTracked\fP ()"
+.br
+.ti -1c
+.RI "int \fBUntracked\fP () const"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

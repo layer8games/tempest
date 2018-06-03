@@ -1,0 +1,90 @@
+.TH "KillerEngine::GameObject3D" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerEngine::GameObject3D
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBKillerPhysics::Particle3D\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGameObject3D\fP (const \fBGameObject3D\fP &obj)"
+.br
+.ti -1c
+.RI "virtual void \fBv_Update\fP (void)=0"
+.br
+.ti -1c
+.RI "virtual void \fBv_Render\fP (void)"
+.br
+.ti -1c
+.RI "const U32 \fBGetID\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetID\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBGetActive\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetActive\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetInactive\fP (void)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector3\fP & \fBGetPosition\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetPosition\fP (const \fBKM::Vector3\fP &pos)"
+.br
+.ti -1c
+.RI "void \fBSetPosition\fP (F32 x, F32 y, F32 z)"
+.br
+.ti -1c
+.RI "void \fBAddScaledPosition\fP (const \fBKM::Vector3\fP &v, F32 scale)"
+.br
+.ti -1c
+.RI "F32 \fBGetWidth\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetWidth\fP (F32 w)"
+.br
+.ti -1c
+.RI "F32 \fBGetHeight\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetHeight\fP (F32 h)"
+.br
+.ti -1c
+.RI "void \fBSetDimensions\fP (F32 w, F32 h)"
+.br
+.ti -1c
+.RI "const \fBModel\fP & \fBGetModel\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetModel\fP (\fBModel\fP &model)"
+.br
+.ti -1c
+.RI "void \fBAddVertex\fP (\fBVertex3D\fP vert)"
+.br
+.ti -1c
+.RI "void \fBAddIndex\fP (U16 index)"
+.br
+.ti -1c
+.RI "void \fBAddIndex\fP (std::vector< U16 > indices)"
+.br
+.ti -1c
+.RI "void \fBLoadModel\fP (string filepath)"
+.br
+.ti -1c
+.RI "const \fBKM::Matrix\fP & \fBGetModelView\fP (void) const"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

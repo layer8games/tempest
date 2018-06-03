@@ -1,4 +1,6 @@
-/*==========================================================================
+/*==========================================================================//!
+@file
+
 Framework that will open a window in the designated operating system which
 will be where the renderer will draw what it needs to for the game to be a
 game. There will be system specific code in this section which will be how
@@ -96,6 +98,13 @@ namespace KillerEngine
 //==========================================================================================================================
 		static shared_ptr<WinProgram> Instance(void);
 
+/*! \brief Sets up Windows Program
+	\details Makes all calls needed to start up a window. This is means to abstract away system specific callls
+	\param width S32: width of created window
+	\param height S32: height of created window
+	\param wndName string: title of window
+	\param isFullScreen bool: Sets if the system makes the window fullscreen
+*/		
 		void Init(S32 width, S32 height, string wndName, bool isFullScreen);
 		
 		void ProcessWndEvents(void);
