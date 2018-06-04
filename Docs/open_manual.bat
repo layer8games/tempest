@@ -1,0 +1,1 @@
+start "" "file://%cd%/Manual/html/index.html"

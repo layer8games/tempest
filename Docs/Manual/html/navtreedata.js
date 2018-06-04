@@ -23,31 +23,12 @@ for the JavaScript code in this file
 */
 var NAVTREE =
 [
-  [ "Killer Engine", "index.html", [
-    [ "Killer Engine Documentation.", "index.html#The", null ],
-    [ "Classes", "annotated.html", [
-      [ "Class List", "annotated.html", "annotated_dup" ],
-      [ "Class Index", "classes.html", null ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
-      [ "Class Members", "functions.html", [
-        [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ]
-      ] ]
-    ] ],
-    [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
-    ] ]
-  ] ]
+  [ "Killer Engine", "index.html", ]
 ];
 
 var NAVTREEINDEX =
 [
-".html",
-"class_killer_engine_1_1_level_manager.html#abc93aa295b82020232c00debe8dd70df",
-"class_killer_math_1_1_quaternion.html#acee1e1c18aefd86f0c3569015cb971f2",
-"class_killer_physics_1_1_particle_gravity_force.html#ad94d42efe96cef4a6bcc0613fe13b742",
-"classtinyxml2_1_1_x_m_l_element.html#a3fe5417d59eb8f5c4afe924b7d332736",
-"functions_s.html"
+"index.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
