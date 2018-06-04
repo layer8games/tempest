@@ -46,14 +46,28 @@ namespace KillerEngine
 //Camera Functions
 //
 //==========================================================================================================================		
+/*! Singleton function. Returns global camera object
+	\param none
+*/		
 		static shared_ptr<Camera> Instance(void);
 
+/*! Sets private Matrix to use an orthogrphic projection. This calls the WinProgram to get the demensions for the Matrix. 
+	\param none
+*/
 		void SetOrthographic(void);
 
+/*! Sets the private Matrix to use a perspective projection. Values are hard coded for now. 
+	\param none
+*/
 		void SetPerspective(void);
 
+/*! Helper function to set the projection Matrix to be an identity Matrix. 
+	\param none
+*/
 		void SetDefaultMatrix(void);
 
+/*! 
+*/
 		void SetPosition(F32 x, F32 y);
 
 		void SetPosition(const KM::Vector2& V);
