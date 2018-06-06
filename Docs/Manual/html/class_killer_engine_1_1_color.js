@@ -12,7 +12,7 @@ var class_killer_engine_1_1_color =
     [ "GetGreen", "class_killer_engine_1_1_color.html#a5a3404ae3b847483b438f420039a9781", null ],
     [ "GetRed", "class_killer_engine_1_1_color.html#a75a7586d6afc0f3192bc39d0eba09ca0", null ],
     [ "operator=", "class_killer_engine_1_1_color.html#a44575bc90833ae17226d240e70787c43", null ],
-    [ "Set", "class_killer_engine_1_1_color.html#a93ccced47750242dd36685a976bfd0e0", null ],
+    [ "Set", "class_killer_engine_1_1_color.html#a2d68c0cbdf58d9eac126c444a4037463", null ],
     [ "SetAlpha", "class_killer_engine_1_1_color.html#ae85d459c93a79df1ca8ed61a9d522553", null ],
     [ "SetBlue", "class_killer_engine_1_1_color.html#a9512495e64149fdd8a4aa34837bdea9e", null ],
     [ "SetGreen", "class_killer_engine_1_1_color.html#a66124feb26f32f4be641d60726f403e1", null ],

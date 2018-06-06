@@ -5,11 +5,9 @@ var dir_b570760f141a85ad0cc6e39d54356d6a =
     [ "CharacterData.h", "_character_data_8h_source.html", null ],
     [ "Color.h", "_color_8h_source.html", null ],
     [ "Controller.h", "_controller_8h_source.html", null ],
-    [ "Engine.h", "_engine_8h.html", [
-      [ "Engine", "class_killer_engine_1_1_engine.html", "class_killer_engine_1_1_engine" ]
-    ] ],
+    [ "Engine.h", "_engine_8h_source.html", null ],
     [ "EnvironmentObject.h", "_environment_object_8h_source.html", null ],
-    [ "ErrorManager.h", "_error_manager_8h_source.html", null ],
+    [ "ErrorManager.h", "_error_manager_8h.html", "_error_manager_8h" ],
     [ "Font.h", "_font_8h_source.html", null ],
     [ "GameObject2D.h", "_game_object2_d_8h_source.html", null ],
     [ "GameObject3D.h", "_game_object3_d_8h_source.html", null ],

@@ -97,8 +97,6 @@ void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen)
 
     ShowWindow(_hwnd, SW_SHOW);
     UpdateWindow(_hwnd);
-
-    Controller::Instance()->Init((F32)width, (F32)height, 200.0f);
 }
 
 //=======================================================================================================

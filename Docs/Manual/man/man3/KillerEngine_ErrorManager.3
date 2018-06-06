@@ -1,4 +1,4 @@
-.TH "KillerEngine::ErrorManager" 3 "Mon Jun 4 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::ErrorManager" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,11 +6,13 @@ KillerEngine::ErrorManager
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <ErrorManager\&.h>\fP
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
-.RI "void \fBSetError\fP (ErrorCode code, string message)"
+.RI "void \fBSetError\fP (\fBErrorCode\fP code, string message)"
 .br
 .ti -1c
 .RI "void \fBDisplayErrors\fP (void)"
@@ -23,6 +25,9 @@ KillerEngine::ErrorManager
 .RI "static shared_ptr< \fBErrorManager\fP > \fBInstance\fP (void)"
 .br
 .in -1c
+.SH "Detailed Description"
+.PP 
+A singleton class that will display any errors that can happen during the initialization of any of the components of the engine\&. It will be flushed out later to include more details\&. 
 
 .SH "Author"
 .PP 

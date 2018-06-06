@@ -8,8 +8,6 @@ using namespace KillerEngine;
 //
 //==========================================================================================================================
 Controller::Controller(void) 
-: 
-_transform()
 {
 	for(int i = 0; i < _totalKeys; ++i)
 	{

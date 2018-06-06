@@ -1,13 +1,3 @@
-/*========================================================================
-A singleton class that will display any errors that can happen during
-the initialization of any of the components of the engine. It will be
-flushed out later to include more details. 
-
-This is not free to use, and cannot be used without the express permission
-of KillerWave.
-
-Written by Maxwell Miller
-========================================================================*/
 #pragma once
 
 //=====Engine includes=====
@@ -25,21 +15,29 @@ namespace KillerEngine
 //Enum Error codes
 //
 //==========================================================================================================================
+/*! \file ErrorManager.h */
+/*! \enum ErrorCode Error codes that are used to give a hint as to where to code that is throwing the error is written. These are disaplyed
+	to the user in a pop up window when the end application is run. These are paired with a more detailed message when the
+	end error is set. */	
 	enum ErrorCode 
 	{
-		EC_NoError = 0,
-		EC_Unknown,
-		EC_Game,
-		EC_Engine,
-		EC_Physics,
-		EC_Windows,
-		EC_OpenGL,
-		EC_OpenGL_Shader,
-		EC_DirectInput,
-		EC_TextureManager,
-		EC_GameObject,
+		EC_NoError = 0, 		///< Default value. Shouldn't ever be used.
+		EC_Unknown,				///< Fall through code, indicates an error in the setting of an error.
+		EC_Game,				///< Indicates the error is in the end application, or the game, not the engine.
+		EC_Engine,				///< Indicates the error is in the engine's main code, not very specific.
+		EC_Physics,				///< Indicates the error is in the KillerPhysics namespace. 
+		EC_Windows,				///< Indicates that the error is related to the windowing system. 
+		EC_OpenGL,				///< Indicates that the error is in OpenGL related code.
+		EC_OpenGL_Shader,		///< Indicates that the error is caused by OpenGL shader compilation.
+		EC_DirectInput,			///< Depricated. Indicates that the error is with the DirectInput setup.
+		EC_TextureManager,		///< Indicates that the error occured when trying to load a texture into memory.
+		EC_GameObject,			///< Indicates that the issue is in a game object specifically. 
 	};
-
+//==========================================================================================================================
+//Documentation
+//==========================================================================================================================
+/*! A singleton class that will display any errors that can happen during the initialization of any of the components of the 
+	engine. It will be flushed out later to include more details.  */
 	class ErrorManager 
 	{
 public:

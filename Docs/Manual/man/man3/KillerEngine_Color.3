@@ -1,4 +1,4 @@
-.TH "KillerEngine::Color" 3 "Mon Jun 4 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Color" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,9 +6,14 @@ KillerEngine::Color
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <Color\&.h>\fP
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fBColor\fP (void)"
+.br
 .ti -1c
 .RI "\fBColor\fP (F32 col)"
 .br
@@ -55,6 +60,96 @@ KillerEngine::Color
 .RI "void \fBSet\fP (F32 r, F32 g, F32 b)"
 .br
 .in -1c
+.SH "Detailed Description"
+.PP 
+A structure to hold basic colors for all Sprites to sent to OGL in order to render things
+.PP
+There will be 4 values per color so that it can be sent to a vec4 in OGL before it is used to actually control the colors of anything in the shader\&. This is stored in an array for convience of passing the whole array out when the time comes\&. 
+.br
+ Where values are set, they are required to be normalized, that is between 0\&.0f and 1\&.0f\&. This is because the colors need to be represented this for OpenGL\&. Asserts are used at compile time to make sure that this is true\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Color::Color (void)"
+Default Constructor\&. Sets Red Green and Blue to 0\&.0f, and Alpha to 1\&.0f 
+.SS "Color::Color (F32 col)\fC [explicit]\fP"
+Single Value Constructor\&. Sets Red, Green and Blue to value\&. The value needs to be between 0\&.0f and 1\&.0f\&. Alpha is set to 1\&.0f by default\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcol\fP = F32: value used to set RGB values\&. 
+.RE
+.PP
+
+.SS "Color::Color (F32 red, F32 green, F32 blue)"
+Three value Constructor\&. Sets Red, Green and Blue accordingly\&. Values need to be between 0\&.0f and 1\&.0f\&. Alpha is set to 1\&.0f by default\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIred\fP = F32: value for Red\&. 
+.br
+\fIgreen\fP = F32: value for Green\&. 
+.br
+\fIblue\fP = F32: value for Blue\&. 
+.RE
+.PP
+
+.SS "Color::Color (F32 red, F32 green, F32 blue, F32 alpha)"
+Four value Constructor\&. Sets Red, Green and Blue accordingly\&. Values need to be between 0\&.0f and 1\&.0f by default\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIred\fP = F32: value for Red\&. 
+.br
+\fIgreen\fP = F32: value for Green\&. 
+.br
+\fIblue\fP = F32: value for Blue\&. 
+.br
+\fIalpha\fP = F32: value for Alpha\&. 
+.RE
+.PP
+
+.SS "Color::Color (const \fBColor\fP & c)"
+Copy constructor\&. Calls \fBColor::GetRed\fP \fBColor::GetGreen\fP \fBColor::GetBlue\fP \fBColor::GetAlpha\fP to set values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIc\fP = \fBColor\fP&: color to copy 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "const F32* KillerEngine::Color::Get (void) const\fC [inline]\fP"
+Creates and returns an array with the 4 color values in it as a pointer\&. 
+.SS "const F32 KillerEngine::Color::GetAlpha (void) const\fC [inline]\fP"
+Returns the Alpha color value\&. 
+.SS "const F32 KillerEngine::Color::GetBlue (void) const\fC [inline]\fP"
+Returns the Blue color value\&. 
+.SS "const F32 KillerEngine::Color::GetGreen (void) const\fC [inline]\fP"
+Returns the Green color value\&. 
+.SS "const F32 KillerEngine::Color::GetRed (void) const\fC [inline]\fP"
+Returns the Red color value\&. 
+.SS "void Color::Set (F32 r, F32 g, F32 b)"
+Sets Red Green and Blue color values at the same time\&. This value should be between 0\&.0 and 1\&.0 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP F32: Red value\&. 
+.br
+\fIg\fP F32: Green value\&. 
+.br
+\fIb\fP F32: Blue value\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Color::SetAlpha (const F32 a)\fC [inline]\fP"
+Sets the Alpha \fBColor\fP value\&.  r F32: new value for Alpha\&. 
+.SS "void KillerEngine::Color::SetBlue (const F32 b)\fC [inline]\fP"
+Sets the Blue \fBColor\fP value\&.  r F32: new value for Blue\&. 
+.SS "void KillerEngine::Color::SetGreen (const F32 g)\fC [inline]\fP"
+Sets the Green \fBColor\fP value\&.  r F32: new value for Green\&. 
+.SS "void KillerEngine::Color::SetRed (const F32 r)\fC [inline]\fP"
+Sets the Red \fBColor\fP value\&.  r F32: new value for Red\&. 
 
 .SH "Author"
 .PP 

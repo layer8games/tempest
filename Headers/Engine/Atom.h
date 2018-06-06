@@ -1,3 +1,7 @@
+/*! \mainpage Killer Engine
+	\section The Killer Engine Documentation. 
+*/
+
 /*========================================================================
 Call Atom because it is the most basic include file. This is the file
 to be included with all other files that are made. This contains the 

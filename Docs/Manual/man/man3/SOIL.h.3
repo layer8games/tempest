@@ -1,0 +1,437 @@
+.TH "F:/Projects/Killer_Engine/Headers/SOIL/SOIL.h" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+F:/Projects/Killer_Engine/Headers/SOIL/SOIL.h
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSOIL_DDS_CUBEMAP_FACE_ORDER\fP   'EWUDNS'"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBSOIL_LOAD_AUTO\fP = 0, \fBSOIL_LOAD_L\fP = 1, \fBSOIL_LOAD_LA\fP = 2, \fBSOIL_LOAD_RGB\fP = 3, \fBSOIL_LOAD_RGBA\fP = 4 }"
+.br
+.ti -1c
+.RI "enum { \fBSOIL_CREATE_NEW_ID\fP = 0 }"
+.br
+.ti -1c
+.RI "enum { \fBSOIL_FLAG_POWER_OF_TWO\fP = 1, \fBSOIL_FLAG_MIPMAPS\fP = 2, \fBSOIL_FLAG_TEXTURE_REPEATS\fP = 4, \fBSOIL_FLAG_MULTIPLY_ALPHA\fP = 8, \fBSOIL_FLAG_INVERT_Y\fP = 16, \fBSOIL_FLAG_COMPRESS_TO_DXT\fP = 32, \fBSOIL_FLAG_DDS_LOAD_DIRECT\fP = 64, \fBSOIL_FLAG_NTSC_SAFE_RGB\fP = 128, \fBSOIL_FLAG_CoCg_Y\fP = 256, \fBSOIL_FLAG_TEXTURE_RECTANGLE\fP = 512 }"
+.br
+.ti -1c
+.RI "enum { \fBSOIL_SAVE_TYPE_TGA\fP = 0, \fBSOIL_SAVE_TYPE_BMP\fP = 1, \fBSOIL_SAVE_TYPE_DDS\fP = 2 }"
+.br
+.ti -1c
+.RI "enum { \fBSOIL_HDR_RGBE\fP = 0, \fBSOIL_HDR_RGBdivA\fP = 1, \fBSOIL_HDR_RGBdivA2\fP = 2 }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "unsigned int \fBSOIL_load_OGL_texture\fP (const char *filename, int force_channels, unsigned int reuse_texture_ID, unsigned int \fBflags\fP)"
+.br
+.ti -1c
+.RI "unsigned int \fBSOIL_load_OGL_cubemap\fP (const char *x_pos_file, const char *x_neg_file, const char *y_pos_file, const char *y_neg_file, const char *z_pos_file, const char *z_neg_file, int force_channels, unsigned int reuse_texture_ID, unsigned int \fBflags\fP)"
+.br
+.ti -1c
+.RI "unsigned int \fBSOIL_load_OGL_single_cubemap\fP (const char *filename, const char face_order[6], int force_channels, unsigned int reuse_texture_ID, unsigned int \fBflags\fP)"
+.br
+.ti -1c
+.RI "unsigned int \fBSOIL_load_OGL_HDR_texture\fP (const char *filename, int fake_HDR_format, int rescale_to_max, unsigned int reuse_texture_ID, unsigned int \fBflags\fP)"
+.br
+.ti -1c
+.RI "unsigned int \fBSOIL_load_OGL_texture_from_memory\fP (const unsigned char *const \fBbuffer\fP, int buffer_length, int force_channels, unsigned int reuse_texture_ID, unsigned int \fBflags\fP)"
+.br
+.ti -1c
+.RI "unsigned int \fBSOIL_load_OGL_cubemap_from_memory\fP (const unsigned char *const x_pos_buffer, int x_pos_buffer_length, const unsigned char *const x_neg_buffer, int x_neg_buffer_length, const unsigned char *const y_pos_buffer, int y_pos_buffer_length, const unsigned char *const y_neg_buffer, int y_neg_buffer_length, const unsigned char *const z_pos_buffer, int z_pos_buffer_length, const unsigned char *const z_neg_buffer, int z_neg_buffer_length, int force_channels, unsigned int reuse_texture_ID, unsigned int \fBflags\fP)"
+.br
+.ti -1c
+.RI "unsigned int \fBSOIL_load_OGL_single_cubemap_from_memory\fP (const unsigned char *const \fBbuffer\fP, int buffer_length, const char face_order[6], int force_channels, unsigned int reuse_texture_ID, unsigned int \fBflags\fP)"
+.br
+.ti -1c
+.RI "unsigned int \fBSOIL_create_OGL_texture\fP (const unsigned char *const \fBdata\fP, int \fBwidth\fP, int \fBheight\fP, int channels, unsigned int reuse_texture_ID, unsigned int \fBflags\fP)"
+.br
+.ti -1c
+.RI "unsigned int \fBSOIL_create_OGL_single_cubemap\fP (const unsigned char *const \fBdata\fP, int \fBwidth\fP, int \fBheight\fP, int channels, const char face_order[6], unsigned int reuse_texture_ID, unsigned int \fBflags\fP)"
+.br
+.ti -1c
+.RI "int \fBSOIL_save_screenshot\fP (const char *filename, int image_type, int \fBx\fP, int \fBy\fP, int \fBwidth\fP, int \fBheight\fP)"
+.br
+.ti -1c
+.RI "unsigned char * \fBSOIL_load_image\fP (const char *filename, int *\fBwidth\fP, int *\fBheight\fP, int *channels, int force_channels)"
+.br
+.ti -1c
+.RI "unsigned char * \fBSOIL_load_image_from_memory\fP (const unsigned char *const \fBbuffer\fP, int buffer_length, int *\fBwidth\fP, int *\fBheight\fP, int *channels, int force_channels)"
+.br
+.ti -1c
+.RI "int \fBSOIL_save_image\fP (const char *filename, int image_type, int \fBwidth\fP, int \fBheight\fP, int channels, const unsigned char *const \fBdata\fP)"
+.br
+.ti -1c
+.RI "\fBvoid\fP \fBSOIL_free_image_data\fP (unsigned char *img_data)"
+.br
+.ti -1c
+.RI "const char * \fBSOIL_last_result\fP (\fBvoid\fP)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define SOIL_DDS_CUBEMAP_FACE_ORDER   'EWUDNS'"
+Defines the order of faces in a DDS cubemap\&. I recommend that you use the same order in single image cubemap files, so they will be interchangeable with DDS cubemaps when using SOIL\&. 
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "anonymous enum"
+The format of images that may be loaded (force_channels)\&. SOIL_LOAD_AUTO leaves the image in whatever format it was found\&. SOIL_LOAD_L forces the image to load as Luminous (greyscale) SOIL_LOAD_LA forces the image to load as Luminous with Alpha SOIL_LOAD_RGB forces the image to load as Red Green Blue SOIL_LOAD_RGBA forces the image to load as Red Green Blue Alpha 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISOIL_LOAD_AUTO \fP\fP
+.TP
+\fB\fISOIL_LOAD_L \fP\fP
+.TP
+\fB\fISOIL_LOAD_LA \fP\fP
+.TP
+\fB\fISOIL_LOAD_RGB \fP\fP
+.TP
+\fB\fISOIL_LOAD_RGBA \fP\fP
+.SS "anonymous enum"
+Passed in as reuse_texture_ID, will cause SOIL to register a new texture ID using \fBglGenTextures()\fP\&. If the value passed into reuse_texture_ID > 0 then SOIL will just re-use that texture ID (great for reloading image assets in-game!) 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISOIL_CREATE_NEW_ID \fP\fP
+.SS "anonymous enum"
+flags you can pass into \fBSOIL_load_OGL_texture()\fP and \fBSOIL_create_OGL_texture()\fP\&. (note that if SOIL_FLAG_DDS_LOAD_DIRECT is used the rest of the flags with the exception of SOIL_FLAG_TEXTURE_REPEATS will be ignored while loading already-compressed DDS files\&.)
+.PP
+SOIL_FLAG_POWER_OF_TWO: force the image to be POT SOIL_FLAG_MIPMAPS: generate mipmaps for the texture SOIL_FLAG_TEXTURE_REPEATS: otherwise will clamp SOIL_FLAG_MULTIPLY_ALPHA: for using (GL_ONE,GL_ONE_MINUS_SRC_ALPHA) blending SOIL_FLAG_INVERT_Y: flip the image vertically SOIL_FLAG_COMPRESS_TO_DXT: if the card can display them, will convert RGB to DXT1, RGBA to DXT5 SOIL_FLAG_DDS_LOAD_DIRECT: will load DDS files directly without \fIANY\fP additional processing SOIL_FLAG_NTSC_SAFE_RGB: clamps RGB components to the range [16,235] SOIL_FLAG_CoCg_Y: Google YCoCg; RGB=>CoYCg, RGBA=>CoCgAY SOIL_FLAG_TEXTURE_RECTANGE: uses ARB_texture_rectangle ; pixel indexed & no repeat or MIPmaps or cubemaps 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISOIL_FLAG_POWER_OF_TWO \fP\fP
+.TP
+\fB\fISOIL_FLAG_MIPMAPS \fP\fP
+.TP
+\fB\fISOIL_FLAG_TEXTURE_REPEATS \fP\fP
+.TP
+\fB\fISOIL_FLAG_MULTIPLY_ALPHA \fP\fP
+.TP
+\fB\fISOIL_FLAG_INVERT_Y \fP\fP
+.TP
+\fB\fISOIL_FLAG_COMPRESS_TO_DXT \fP\fP
+.TP
+\fB\fISOIL_FLAG_DDS_LOAD_DIRECT \fP\fP
+.TP
+\fB\fISOIL_FLAG_NTSC_SAFE_RGB \fP\fP
+.TP
+\fB\fISOIL_FLAG_CoCg_Y \fP\fP
+.TP
+\fB\fISOIL_FLAG_TEXTURE_RECTANGLE \fP\fP
+.SS "anonymous enum"
+The types of images that may be saved\&. (TGA supports uncompressed RGB / RGBA) (BMP supports uncompressed RGB) (DDS supports DXT1 and DXT5) 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISOIL_SAVE_TYPE_TGA \fP\fP
+.TP
+\fB\fISOIL_SAVE_TYPE_BMP \fP\fP
+.TP
+\fB\fISOIL_SAVE_TYPE_DDS \fP\fP
+.SS "anonymous enum"
+The types of internal fake HDR representations
+.PP
+SOIL_HDR_RGBE: RGB * pow( 2\&.0, A - 128\&.0 ) SOIL_HDR_RGBdivA: RGB / A SOIL_HDR_RGBdivA2: RGB / (A*A) 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISOIL_HDR_RGBE \fP\fP
+.TP
+\fB\fISOIL_HDR_RGBdivA \fP\fP
+.TP
+\fB\fISOIL_HDR_RGBdivA2 \fP\fP
+.SH "Function Documentation"
+.PP 
+.SS "unsigned int SOIL_create_OGL_single_cubemap (const unsigned char *const data, int width, int height, int channels, const char face_order[6], unsigned int reuse_texture_ID, unsigned int flags)"
+Creates an OpenGL cubemap texture by splitting up 1 image into 6 parts\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP the raw data to be uploaded as an OpenGL texture 
+.br
+\fIwidth\fP the width of the image in pixels 
+.br
+\fIheight\fP the height of the image in pixels 
+.br
+\fIchannels\fP the number of channels: 1-luminous, 2-luminous/alpha, 3-RGB, 4-RGBA 
+.br
+\fIface_order\fP the order of the faces in the file, and combination of NSWEUD, for North, South, Up, etc\&. 
+.br
+\fIreuse_texture_ID\fP 0-generate a new texture ID, otherwise reuse the texture ID (overwriting the old texture) 
+.br
+\fIflags\fP can be any of SOIL_FLAG_POWER_OF_TWO | SOIL_FLAG_MIPMAPS | SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_MULTIPLY_ALPHA | SOIL_FLAG_INVERT_Y | SOIL_FLAG_COMPRESS_TO_DXT | SOIL_FLAG_DDS_LOAD_DIRECT 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0-failed, otherwise returns the OpenGL texture handle 
+.RE
+.PP
+
+.SS "unsigned int SOIL_create_OGL_texture (const unsigned char *const data, int width, int height, int channels, unsigned int reuse_texture_ID, unsigned int flags)"
+Creates a 2D OpenGL texture from raw image data\&. Note that the raw data is \fINOT\fP freed after the upload (so the user can load various versions)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP the raw data to be uploaded as an OpenGL texture 
+.br
+\fIwidth\fP the width of the image in pixels 
+.br
+\fIheight\fP the height of the image in pixels 
+.br
+\fIchannels\fP the number of channels: 1-luminous, 2-luminous/alpha, 3-RGB, 4-RGBA 
+.br
+\fIreuse_texture_ID\fP 0-generate a new texture ID, otherwise reuse the texture ID (overwriting the old texture) 
+.br
+\fIflags\fP can be any of SOIL_FLAG_POWER_OF_TWO | SOIL_FLAG_MIPMAPS | SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_MULTIPLY_ALPHA | SOIL_FLAG_INVERT_Y | SOIL_FLAG_COMPRESS_TO_DXT 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0-failed, otherwise returns the OpenGL texture handle 
+.RE
+.PP
+
+.SS "\fBvoid\fP SOIL_free_image_data (unsigned char * img_data)"
+Frees the image data (note, this is just C's 'free()'\&.\&.\&.this function is present mostly so C++ programmers don't forget to use 'free()' and call 'delete []' instead [8^) 
+.SS "const char* SOIL_last_result (\fBvoid\fP)"
+This function resturn a pointer to a string describing the last thing that happened inside SOIL\&. It can be used to determine why an image failed to load\&. 
+.SS "unsigned char* SOIL_load_image (const char * filename, int * width, int * height, int * channels, int force_channels)"
+Loads an image from disk into an array of unsigned chars\&. Note that *channels return the original channel count of the image\&. If force_channels was other than SOIL_LOAD_AUTO, the resulting image has force_channels, but *channels may be different (if the original image had a different channel count)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if failed, otherwise returns 1 
+.RE
+.PP
+
+.SS "unsigned char* SOIL_load_image_from_memory (const unsigned char *const buffer, int buffer_length, int * width, int * height, int * channels, int force_channels)"
+Loads an image from memory into an array of unsigned chars\&. Note that *channels return the original channel count of the image\&. If force_channels was other than SOIL_LOAD_AUTO, the resulting image has force_channels, but *channels may be different (if the original image had a different channel count)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if failed, otherwise returns 1 
+.RE
+.PP
+
+.SS "unsigned int SOIL_load_OGL_cubemap (const char * x_pos_file, const char * x_neg_file, const char * y_pos_file, const char * y_neg_file, const char * z_pos_file, const char * z_neg_file, int force_channels, unsigned int reuse_texture_ID, unsigned int flags)"
+Loads 6 images from disk into an OpenGL cubemap texture\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx_pos_file\fP the name of the file to upload as the +x cube face 
+.br
+\fIx_neg_file\fP the name of the file to upload as the -x cube face 
+.br
+\fIy_pos_file\fP the name of the file to upload as the +y cube face 
+.br
+\fIy_neg_file\fP the name of the file to upload as the -y cube face 
+.br
+\fIz_pos_file\fP the name of the file to upload as the +z cube face 
+.br
+\fIz_neg_file\fP the name of the file to upload as the -z cube face 
+.br
+\fIforce_channels\fP 0-image format, 1-luminous, 2-luminous/alpha, 3-RGB, 4-RGBA 
+.br
+\fIreuse_texture_ID\fP 0-generate a new texture ID, otherwise reuse the texture ID (overwriting the old texture) 
+.br
+\fIflags\fP can be any of SOIL_FLAG_POWER_OF_TWO | SOIL_FLAG_MIPMAPS | SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_MULTIPLY_ALPHA | SOIL_FLAG_INVERT_Y | SOIL_FLAG_COMPRESS_TO_DXT | SOIL_FLAG_DDS_LOAD_DIRECT 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0-failed, otherwise returns the OpenGL texture handle 
+.RE
+.PP
+
+.SS "unsigned int SOIL_load_OGL_cubemap_from_memory (const unsigned char *const x_pos_buffer, int x_pos_buffer_length, const unsigned char *const x_neg_buffer, int x_neg_buffer_length, const unsigned char *const y_pos_buffer, int y_pos_buffer_length, const unsigned char *const y_neg_buffer, int y_neg_buffer_length, const unsigned char *const z_pos_buffer, int z_pos_buffer_length, const unsigned char *const z_neg_buffer, int z_neg_buffer_length, int force_channels, unsigned int reuse_texture_ID, unsigned int flags)"
+Loads 6 images from memory into an OpenGL cubemap texture\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx_pos_buffer\fP the image data in RAM to upload as the +x cube face 
+.br
+\fIx_pos_buffer_length\fP the size of the above buffer 
+.br
+\fIx_neg_buffer\fP the image data in RAM to upload as the +x cube face 
+.br
+\fIx_neg_buffer_length\fP the size of the above buffer 
+.br
+\fIy_pos_buffer\fP the image data in RAM to upload as the +x cube face 
+.br
+\fIy_pos_buffer_length\fP the size of the above buffer 
+.br
+\fIy_neg_buffer\fP the image data in RAM to upload as the +x cube face 
+.br
+\fIy_neg_buffer_length\fP the size of the above buffer 
+.br
+\fIz_pos_buffer\fP the image data in RAM to upload as the +x cube face 
+.br
+\fIz_pos_buffer_length\fP the size of the above buffer 
+.br
+\fIz_neg_buffer\fP the image data in RAM to upload as the +x cube face 
+.br
+\fIz_neg_buffer_length\fP the size of the above buffer 
+.br
+\fIforce_channels\fP 0-image format, 1-luminous, 2-luminous/alpha, 3-RGB, 4-RGBA 
+.br
+\fIreuse_texture_ID\fP 0-generate a new texture ID, otherwise reuse the texture ID (overwriting the old texture) 
+.br
+\fIflags\fP can be any of SOIL_FLAG_POWER_OF_TWO | SOIL_FLAG_MIPMAPS | SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_MULTIPLY_ALPHA | SOIL_FLAG_INVERT_Y | SOIL_FLAG_COMPRESS_TO_DXT | SOIL_FLAG_DDS_LOAD_DIRECT 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0-failed, otherwise returns the OpenGL texture handle 
+.RE
+.PP
+
+.SS "unsigned int SOIL_load_OGL_HDR_texture (const char * filename, int fake_HDR_format, int rescale_to_max, unsigned int reuse_texture_ID, unsigned int flags)"
+Loads an HDR image from disk into an OpenGL texture\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP the name of the file to upload as a texture 
+.br
+\fIfake_HDR_format\fP SOIL_HDR_RGBE, SOIL_HDR_RGBdivA, SOIL_HDR_RGBdivA2 
+.br
+\fIreuse_texture_ID\fP 0-generate a new texture ID, otherwise reuse the texture ID (overwriting the old texture) 
+.br
+\fIflags\fP can be any of SOIL_FLAG_POWER_OF_TWO | SOIL_FLAG_MIPMAPS | SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_MULTIPLY_ALPHA | SOIL_FLAG_INVERT_Y | SOIL_FLAG_COMPRESS_TO_DXT 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0-failed, otherwise returns the OpenGL texture handle 
+.RE
+.PP
+
+.SS "unsigned int SOIL_load_OGL_single_cubemap (const char * filename, const char face_order[6], int force_channels, unsigned int reuse_texture_ID, unsigned int flags)"
+Loads 1 image from disk and splits it into an OpenGL cubemap texture\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP the name of the file to upload as a texture 
+.br
+\fIface_order\fP the order of the faces in the file, any combination of NSWEUD, for North, South, Up, etc\&. 
+.br
+\fIforce_channels\fP 0-image format, 1-luminous, 2-luminous/alpha, 3-RGB, 4-RGBA 
+.br
+\fIreuse_texture_ID\fP 0-generate a new texture ID, otherwise reuse the texture ID (overwriting the old texture) 
+.br
+\fIflags\fP can be any of SOIL_FLAG_POWER_OF_TWO | SOIL_FLAG_MIPMAPS | SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_MULTIPLY_ALPHA | SOIL_FLAG_INVERT_Y | SOIL_FLAG_COMPRESS_TO_DXT | SOIL_FLAG_DDS_LOAD_DIRECT 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0-failed, otherwise returns the OpenGL texture handle 
+.RE
+.PP
+
+.SS "unsigned int SOIL_load_OGL_single_cubemap_from_memory (const unsigned char *const buffer, int buffer_length, const char face_order[6], int force_channels, unsigned int reuse_texture_ID, unsigned int flags)"
+Loads 1 image from RAM and splits it into an OpenGL cubemap texture\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP the image data in RAM just as if it were still in a file 
+.br
+\fIbuffer_length\fP the size of the buffer in bytes 
+.br
+\fIface_order\fP the order of the faces in the file, any combination of NSWEUD, for North, South, Up, etc\&. 
+.br
+\fIforce_channels\fP 0-image format, 1-luminous, 2-luminous/alpha, 3-RGB, 4-RGBA 
+.br
+\fIreuse_texture_ID\fP 0-generate a new texture ID, otherwise reuse the texture ID (overwriting the old texture) 
+.br
+\fIflags\fP can be any of SOIL_FLAG_POWER_OF_TWO | SOIL_FLAG_MIPMAPS | SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_MULTIPLY_ALPHA | SOIL_FLAG_INVERT_Y | SOIL_FLAG_COMPRESS_TO_DXT | SOIL_FLAG_DDS_LOAD_DIRECT 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0-failed, otherwise returns the OpenGL texture handle 
+.RE
+.PP
+
+.SS "unsigned int SOIL_load_OGL_texture (const char * filename, int force_channels, unsigned int reuse_texture_ID, unsigned int flags)"
+Loads an image from disk into an OpenGL texture\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP the name of the file to upload as a texture 
+.br
+\fIforce_channels\fP 0-image format, 1-luminous, 2-luminous/alpha, 3-RGB, 4-RGBA 
+.br
+\fIreuse_texture_ID\fP 0-generate a new texture ID, otherwise reuse the texture ID (overwriting the old texture) 
+.br
+\fIflags\fP can be any of SOIL_FLAG_POWER_OF_TWO | SOIL_FLAG_MIPMAPS | SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_MULTIPLY_ALPHA | SOIL_FLAG_INVERT_Y | SOIL_FLAG_COMPRESS_TO_DXT | SOIL_FLAG_DDS_LOAD_DIRECT 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0-failed, otherwise returns the OpenGL texture handle 
+.RE
+.PP
+
+.SS "unsigned int SOIL_load_OGL_texture_from_memory (const unsigned char *const buffer, int buffer_length, int force_channels, unsigned int reuse_texture_ID, unsigned int flags)"
+Loads an image from RAM into an OpenGL texture\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP the image data in RAM just as if it were still in a file 
+.br
+\fIbuffer_length\fP the size of the buffer in bytes 
+.br
+\fIforce_channels\fP 0-image format, 1-luminous, 2-luminous/alpha, 3-RGB, 4-RGBA 
+.br
+\fIreuse_texture_ID\fP 0-generate a new texture ID, otherwise reuse the texture ID (overwriting the old texture) 
+.br
+\fIflags\fP can be any of SOIL_FLAG_POWER_OF_TWO | SOIL_FLAG_MIPMAPS | SOIL_FLAG_TEXTURE_REPEATS | SOIL_FLAG_MULTIPLY_ALPHA | SOIL_FLAG_INVERT_Y | SOIL_FLAG_COMPRESS_TO_DXT | SOIL_FLAG_DDS_LOAD_DIRECT 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0-failed, otherwise returns the OpenGL texture handle 
+.RE
+.PP
+
+.SS "int SOIL_save_image (const char * filename, int image_type, int width, int height, int channels, const unsigned char *const data)"
+Saves an image from an array of unsigned chars (RGBA) to disk 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if failed, otherwise returns 1 
+.RE
+.PP
+
+.SS "int SOIL_save_screenshot (const char * filename, int image_type, int x, int y, int width, int height)"
+Captures the OpenGL window (RGB) and saves it to disk 
+.PP
+\fBReturns:\fP
+.RS 4
+0 if it failed, otherwise returns 1 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.
