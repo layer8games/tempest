@@ -53,10 +53,6 @@ namespace KillerEngine
 //
 //==========================================================================================================================	
 	public:
-		//typedef std::map<U32, shared_ptr<GameObject2D>> 2DObjectList;
-		//typedef std::map<U32, shared_ptr<GameObject3D>> 3DObjectList;
-		//typedef std::map<U32, shared_ptr<KP::Particle2D>>   2DParticleList;
-		//typedef std::vector<shared_ptr<RenderedText>> TextList;
 
 
 	protected:

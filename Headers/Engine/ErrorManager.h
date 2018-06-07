@@ -37,7 +37,7 @@ namespace KillerEngine
 //Documentation
 //==========================================================================================================================
 /*! A singleton class that will display any errors that can happen during the initialization of any of the components of the 
-	engine. It will be flushed out later to include more details.  */
+	engine. It will be flushed out later to include more details. */
 	class ErrorManager 
 	{
 public:
@@ -46,6 +46,7 @@ public:
 //Destructor
 //
 //==========================================================================================================================
+/*! Default destructor. No special actions taken */		
 		~ErrorManager(void);
 
 //==========================================================================================================================
@@ -53,6 +54,7 @@ public:
 //Singleton Functions
 //
 //==========================================================================================================================		
+/*! Singlton function. Returns pointer to global ErrorManager instance. */		
 		static shared_ptr<ErrorManager> Instance(void);
 
 //==========================================================================================================================
@@ -60,8 +62,14 @@ public:
 //ErrorManager Functions
 //
 //==========================================================================================================================
+/*! Adds an error into the Manager's map of errors. Any number of message can be in the Manager.
+	\param code ErrorCode: Displayed to hint where the error happened.
+	\param message string: A string that will be displayed to the user giving additional details about the nature of the 
+	error. */
 		void SetError(ErrorCode code, string message);
-		
+
+/*! Displays any errors that have been added to the manager. This function loops over all the errors that have been added
+	and displayed them one by one. Messages are never removed once they are thrown. */		
 		void DisplayErrors(void);
 
 protected:
@@ -70,6 +78,7 @@ protected:
 //Constructor
 //
 //==========================================================================================================================
+/*! Default constructor. No special actions are taken. Protected because this class follows the singleton pattern */		
 		ErrorManager(void);
 
 private:

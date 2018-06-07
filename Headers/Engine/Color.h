@@ -32,21 +32,21 @@ namespace KillerEngine
 		
 /*! Single Value Constructor. Sets Red, Green and Blue to value. The value needs to be between 0.0f and 1.0f. Alpha is set to 
 	1.0f by default.
-	\param col = F32: value used to set RGB values. */		
+	\param col F32: value used to set RGB values. */		
 		explicit Color(F32 col);
 
 /*! Three value Constructor. Sets Red, Green and Blue accordingly. Values need to be between 0.0f and 1.0f. Alpha is set to 1.0f 
 	by default.
-	\param red = F32: value for Red.
-	\param green = F32: value for Green.
-	\param blue = F32: value for Blue. */		
+	\param red F32: value for Red.
+	\param green F32: value for Green.
+	\param blue F32: value for Blue. */		
 		Color(F32 red, F32 green, F32 blue);
 		
 /*! Four value Constructor. Sets Red, Green and Blue accordingly. Values need to be between 0.0f and 1.0f by default.
-	\param red = F32: value for Red.
-	\param green = F32: value for Green.
-	\param blue = F32: value for Blue. 
-	\param alpha = F32: value for Alpha. */		
+	\param red F32: value for Red.
+	\param green F32: value for Green.
+	\param blue F32: value for Blue. 
+	\param alpha F32: value for Alpha. */		
 		Color(F32 red, F32 green, F32 blue, F32 alpha);
 		
 /*! Copy constructor. Calls Color::GetRed Color::GetGreen Color::GetBlue Color::GetAlpha to set values. 

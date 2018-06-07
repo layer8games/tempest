@@ -10,6 +10,7 @@ var searchData=
   ['setbom',['SetBOM',['../classtinyxml2_1_1_x_m_l_document.html#a14419b698f7c4b140df4e80f3f0c93b0',1,'tinyxml2::XMLDocument']]],
   ['setcdata',['SetCData',['../classtinyxml2_1_1_x_m_l_text.html#ad080357d76ab7cc59d7651249949329d',1,'tinyxml2::XMLText']]],
   ['setdefaultmatrix',['SetDefaultMatrix',['../class_killer_engine_1_1_camera.html#a1cce2e4ff8005cd6f77bdd3bbe6cd98b',1,'KillerEngine::Camera']]],
+  ['seterror',['SetError',['../class_killer_engine_1_1_error_manager.html#a1985ec212295b58c27d0377978b348cc',1,'KillerEngine::ErrorManager']]],
   ['setgreen',['SetGreen',['../class_killer_engine_1_1_color.html#a66124feb26f32f4be641d60726f403e1',1,'KillerEngine::Color']]],
   ['setname',['SetName',['../classtinyxml2_1_1_x_m_l_element.html#a97712009a530d8cb8a63bf705f02b4f1',1,'tinyxml2::XMLElement']]],
   ['setorthographic',['SetOrthographic',['../class_killer_engine_1_1_camera.html#a2a81d8b0ecf15683984f944739e5c48a',1,'KillerEngine::Camera']]],

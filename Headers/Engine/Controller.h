@@ -22,61 +22,63 @@ namespace KillerEngine
 		KEY_RELEASED
 	};
 
-/// Keycodes to access specific Key state
+/*! Keycodes to access specific Key state. Each value is used to represent keys that are pressed by the user.
+	These codes represent all possible key inputs. In order to add support for a new key, this enum must be 
+	updated */
 	enum Keys 
 	{
-		NO_KEY=0,
-		A=1,
-		B=2,
-		C=3,
-		D=4,
-		E=5,
-		F=6,
-		G=7,
-		H=8,
-		I=9,
-		J=10,
-		K=11,
-		L=12,
-		M=13,
-		N=14,
-		O=15,
-		P=16,
-		Q=17,
-		R=18,
-		S=19,
-		T=20,
-		U=21,
-		V=22,
-		W=23,
-		X=24,
-		Y=25,
-		Z=26,
-		UP_ARROW=27,
-		DOWN_ARROW=28,
-		LEFT_ARROW=29,
-		RIGHT_ARROW=30,
-		ZERO=31,
-		ONE=32,
-		TWO=33,
-		THREE=34,
-		FOUR=35,
-		FIVE=36,
-		SIX=37,
-		SEVEN=38,
-		EIGHT=39,
-		NINE=40,
-		MINUS=41,
-		PLUS=42,
-		SPACE=43,
-		ESCAPE=44,
-		TAB=45,
-		LSHIFT=46,
-		RSHIFT=47,
-		ENTER=48,
-		RIGHT_MOUSE=49,
-		LEFT_MOUSE=50,
-		MIDDLE_MOUSE=51,
+		NO_KEY=0, 				///<Used as a fall through to indicated an error 
+		A=1,					///< Alphabetic A key
+		B=2,					///< Alphabetic B key
+		C=3,					///< Alphabetic C key
+		D=4,					///< Alphabetic D key
+		E=5,					///< Alphabetic E key		
+		F=6,					///< Alphabetic F key
+		G=7,					///< Alphabetic G key
+		H=8,					///< Alphabetic H key
+		I=9,					///< Alphabetic I key
+		J=10,					///< Alphabetic J key
+		K=11,					///< Alphabetic K key
+		L=12,					///< Alphabetic L key
+		M=13,					///< Alphabetic M key
+		N=14,					///< Alphabetic N key
+		O=15,					///< Alphabetic O key
+		P=16,					///< Alphabetic P key
+		Q=17,					///< Alphabetic Q key
+		R=18,					///< Alphabetic R key
+		S=19,					///< Alphabetic S key
+		T=20,					///< Alphabetic T key
+		U=21,					///< Alphabetic U key
+		V=22,					///< Alphabetic V key
+		W=23,					///< Alphabetic W key
+		X=24,					///< Alphabetic X key
+		Y=25,					///< Alphabetic Y key
+		Z=26,					///< Alphabetic Z key
+		UP_ARROW=27,			///< Up Arrow key
+		DOWN_ARROW=28,			///< Down Arrow key
+		LEFT_ARROW=29,			///< Left Arrow key
+		RIGHT_ARROW=30,			///< Right Arrow key
+		ZERO=31,				///< 0 key
+		ONE=32,					///< 1 key
+		TWO=33,					///< 2 key
+		THREE=34,				///< 3 key
+		FOUR=35,				///< 4 key
+		FIVE=36,				///< 5 key
+		SIX=37,					///< 6 key
+		SEVEN=38,				///< 7 key
+		EIGHT=39,				///< 8 key
+		NINE=40,				///< 9 key
+		MINUS=41,				///< Minus key
+		PLUS=42,				///< Plus key
+		SPACE=43,				///< Spacebar
+		ESCAPE=44,				///< Escape key
+		TAB=45,					///< Tab key
+		LSHIFT=46,				///< Left Shift key
+		RSHIFT=47,				///< Right Shift key
+		ENTER=48,				///< Enter key
+		RIGHT_MOUSE=49,			///< Right Mouse click
+		LEFT_MOUSE=50,			///< Left Mouse click
+		MIDDLE_MOUSE=51,		///< Middle Mouse click
 	};
 //==========================================================================================================================
 //Documentation
@@ -101,8 +103,7 @@ namespace KillerEngine
 //Singleton Functions
 //
 //==========================================================================================================================
-/*! Singleton function to get global instance of Controller.
-	\param none */
+/*! Singleton function to get global instance of Controller. */
 		static shared_ptr<Controller> Instance();
 
 /*! Destructor. No special functions within it. */
