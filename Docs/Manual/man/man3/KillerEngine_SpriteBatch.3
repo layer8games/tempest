@@ -1,4 +1,4 @@
-.TH "KillerEngine::SpriteBatch" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::SpriteBatch" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -26,6 +26,34 @@ KillerEngine::SpriteBatch
 .br
 .ti -1c
 .RI "void \fBDrawBatch\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "S32 \fB_maxBatchSize\fP"
+.br
+.ti -1c
+.RI "S32 \fB_currentSize\fP"
+.br
+.ti -1c
+.RI "std::vector< F32 > \fB_vertices\fP"
+.br
+.ti -1c
+.RI "std::vector< F32 > \fB_colors\fP"
+.br
+.ti -1c
+.RI "std::vector< F32 > \fB_dimensions\fP"
+.br
+.ti -1c
+.RI "std::vector< F32 > \fB_bottomTop\fP"
+.br
+.ti -1c
+.RI "std::vector< F32 > \fB_leftRight\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_shaderProgram\fP"
 .br
 .in -1c
 

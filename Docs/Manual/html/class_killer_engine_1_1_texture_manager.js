@@ -5,5 +5,7 @@ var class_killer_engine_1_1_texture_manager =
     [ "GetCurrentTextureID", "class_killer_engine_1_1_texture_manager.html#ad0581065e372b157f6c471c1d52023a8", null ],
     [ "GetTexture", "class_killer_engine_1_1_texture_manager.html#ab10deccb4e13852ffbb4842539aaf653", null ],
     [ "LoadTexture", "class_killer_engine_1_1_texture_manager.html#a1fcb215930756cd904bef8ce9541ee24", null ],
-    [ "SetCurrentTextureID", "class_killer_engine_1_1_texture_manager.html#a1652dbed32efe051c854e3c4b78da900", null ]
+    [ "SetCurrentTextureID", "class_killer_engine_1_1_texture_manager.html#a1652dbed32efe051c854e3c4b78da900", null ],
+    [ "_currentTextureID", "class_killer_engine_1_1_texture_manager.html#a16d57a96ca8a225bb6de25d66124628f", null ],
+    [ "_loadedTextures", "class_killer_engine_1_1_texture_manager.html#aafb58e94573d999310abd256b86c48dd", null ]
 ];

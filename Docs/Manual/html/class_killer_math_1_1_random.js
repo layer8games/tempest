@@ -8,5 +8,6 @@ var class_killer_math_1_1_random =
     [ "RandomLong", "class_killer_math_1_1_random.html#a5dd460f00506300638dc4178f2b6f6d6", null ],
     [ "RandomQuaternion", "class_killer_math_1_1_random.html#ad50e00a6cf02e4afd15121253255bb80", null ],
     [ "RandomVector2", "class_killer_math_1_1_random.html#a32d6bf331418e03ad2709774dfc0b8ca", null ],
-    [ "RandomVector3", "class_killer_math_1_1_random.html#acf2919384866eed10b2c22066ce24e65", null ]
+    [ "RandomVector3", "class_killer_math_1_1_random.html#acf2919384866eed10b2c22066ce24e65", null ],
+    [ "_generator", "class_killer_math_1_1_random.html#a64dc6eb1d8a2ccd09d90a784997b3f0c", null ]
 ];

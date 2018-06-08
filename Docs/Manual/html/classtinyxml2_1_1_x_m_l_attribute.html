@@ -88,6 +88,9 @@ $(document).ready(function(){initNavTree('classtinyxml2_1_1_x_m_l_attribute.html
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="classtinyxml2_1_1_x_m_l_attribute-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -187,6 +190,45 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:ae95e843313aaf5d56c32530b6456df02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the attribute to value. <br /></td></tr>
 <tr class="separator:ae95e843313aaf5d56c32530b6456df02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a0bb6a7aebf74bde4d90dbc32b8b106b0"><td class="memItemLeft" align="right" valign="top"><a id="a0bb6a7aebf74bde4d90dbc32b8b106b0"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>BUF_SIZE</b> = 200
+ }</td></tr>
+<tr class="separator:a0bb6a7aebf74bde4d90dbc32b8b106b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a423410d8fb1b94f4514e34abf5432457"><td class="memItemLeft" align="right" valign="top"><a id="a423410d8fb1b94f4514e34abf5432457"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>XMLAttribute</b> (const <a class="el" href="classtinyxml2_1_1_x_m_l_attribute.html">XMLAttribute</a> &amp;)</td></tr>
+<tr class="separator:a423410d8fb1b94f4514e34abf5432457"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38e1d174a975bab27a70b4032e39a257"><td class="memItemLeft" align="right" valign="top"><a id="a38e1d174a975bab27a70b4032e39a257"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classtinyxml2_1_1_x_m_l_attribute.html">XMLAttribute</a> &amp;)</td></tr>
+<tr class="separator:a38e1d174a975bab27a70b4032e39a257"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a469c2363600007f49e62a8048a362d57"><td class="memItemLeft" align="right" valign="top"><a id="a469c2363600007f49e62a8048a362d57"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetName</b> (const char *name)</td></tr>
+<tr class="separator:a469c2363600007f49e62a8048a362d57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6759fed9f17242de6be926b4e2e3611c"><td class="memItemLeft" align="right" valign="top"><a id="a6759fed9f17242de6be926b4e2e3611c"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>ParseDeep</b> (char *p, bool processEntities, int *curLineNumPtr)</td></tr>
+<tr class="separator:a6759fed9f17242de6be926b4e2e3611c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a80850208963b536e9254a7fa1d4abe67"><td class="memItemLeft" align="right" valign="top"><a id="a80850208963b536e9254a7fa1d4abe67"></a>
+<a class="el" href="classtinyxml2_1_1_str_pair.html">StrPair</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_name</b></td></tr>
+<tr class="separator:a80850208963b536e9254a7fa1d4abe67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcf5c9b7f040ed71ed2a66557584b5b0"><td class="memItemLeft" align="right" valign="top"><a id="abcf5c9b7f040ed71ed2a66557584b5b0"></a>
+<a class="el" href="classtinyxml2_1_1_str_pair.html">StrPair</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_value</b></td></tr>
+<tr class="separator:abcf5c9b7f040ed71ed2a66557584b5b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ccce78440ebad696e6958cb51aead9e"><td class="memItemLeft" align="right" valign="top"><a id="a3ccce78440ebad696e6958cb51aead9e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_parseLineNum</b></td></tr>
+<tr class="separator:a3ccce78440ebad696e6958cb51aead9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bbf00f77131a8e83d648d32d090c564"><td class="memItemLeft" align="right" valign="top"><a id="a3bbf00f77131a8e83d648d32d090c564"></a>
+<a class="el" href="classtinyxml2_1_1_x_m_l_attribute.html">XMLAttribute</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_next</b></td></tr>
+<tr class="separator:a3bbf00f77131a8e83d648d32d090c564"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0a1130568dd9e985dd7753ae44fcdbf"><td class="memItemLeft" align="right" valign="top"><a id="ac0a1130568dd9e985dd7753ae44fcdbf"></a>
+<a class="el" href="classtinyxml2_1_1_mem_pool.html">MemPool</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_memPool</b></td></tr>
+<tr class="separator:ac0a1130568dd9e985dd7753ae44fcdbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:ac2fba9b6e452829dd892f7392c24e0eb"><td class="memItemLeft" align="right" valign="top"><a id="ac2fba9b6e452829dd892f7392c24e0eb"></a>
@@ -243,7 +285,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>XMLElement</b></td><
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Projects/Killer_Engine/Headers/TinyXML/<a class="el" href="tinyxml2_8h_source.html">tinyxml2.h</a></li>
+<li>F:/Projects/Killer_Engine/Headers/TinyXML/<a class="el" href="tinyxml2_8h_source.html">tinyxml2.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

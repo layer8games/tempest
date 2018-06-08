@@ -15,5 +15,11 @@ var class_killer_engine_1_1_rendered_character =
     [ "SetPosition", "class_killer_engine_1_1_rendered_character.html#a655d440598037ab0fd5d1591b42eef7c", null ],
     [ "SetSprite", "class_killer_engine_1_1_rendered_character.html#adb611067ab83d0075f8ecfea5ca0c33a", null ],
     [ "SetSprite", "class_killer_engine_1_1_rendered_character.html#a135c7af661f356f62b293618d335e5fd", null ],
-    [ "SetWidth", "class_killer_engine_1_1_rendered_character.html#a6fc7910c22ce7768c69cd0c43b22519a", null ]
+    [ "SetWidth", "class_killer_engine_1_1_rendered_character.html#a6fc7910c22ce7768c69cd0c43b22519a", null ],
+    [ "_color", "class_killer_engine_1_1_rendered_character.html#a1fca48e409655c83f8c51141b9e16dcb", null ],
+    [ "_height", "class_killer_engine_1_1_rendered_character.html#abe436ea324b175dec735b60068c67add", null ],
+    [ "_id", "class_killer_engine_1_1_rendered_character.html#a87f7c8ce38754d182d44ea77e801ddc6", null ],
+    [ "_pos", "class_killer_engine_1_1_rendered_character.html#ac7598aba009594c31d3f35ec5a90d798", null ],
+    [ "_sprite", "class_killer_engine_1_1_rendered_character.html#a616a3761d72dff382e28e4ffdbebfc57", null ],
+    [ "_width", "class_killer_engine_1_1_rendered_character.html#ab233ad64524c710b2ee5978de2d51100", null ]
 ];

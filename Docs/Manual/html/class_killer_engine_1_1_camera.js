@@ -14,5 +14,10 @@ var class_killer_engine_1_1_camera =
     [ "SetPosition", "class_killer_engine_1_1_camera.html#ab43cdd9877390d24c21bdd77768188f2", null ],
     [ "SetPosition", "class_killer_engine_1_1_camera.html#a3518b0a3a98c773280e30027ca140a91", null ],
     [ "SetPosition", "class_killer_engine_1_1_camera.html#a07f88baec7c9e6512acdb5f644ebb937", null ],
-    [ "SetUp", "class_killer_engine_1_1_camera.html#a50bf7a977604ff25b9a3daf9f8a7769a", null ]
+    [ "SetUp", "class_killer_engine_1_1_camera.html#a50bf7a977604ff25b9a3daf9f8a7769a", null ],
+    [ "_background", "class_killer_engine_1_1_camera.html#aadd0f8158d4c3246d0b2a0789628da74", null ],
+    [ "_currentShader", "class_killer_engine_1_1_camera.html#a16706888f0f7c81145af7d1e138a251c", null ],
+    [ "_pos", "class_killer_engine_1_1_camera.html#a240f5a55f9731c92ccc5469b9e57398e", null ],
+    [ "_projection", "class_killer_engine_1_1_camera.html#a5be1fe2534fdcc601897b080507244e8", null ],
+    [ "_translation", "class_killer_engine_1_1_camera.html#a607a7ff4f0659f3a5a6a832ba3883ca0", null ]
 ];

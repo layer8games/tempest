@@ -1,4 +1,4 @@
-.TH "KillerEngine::GameObject2D" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::GameObject2D" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -82,6 +82,38 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, and \fBKillerPhysics::Partic
 .br
 .ti -1c
 .RI "void \fBAddScaledPosition\fP (const \fBKM::Vector2\fP &v, F32 scale)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "U32 \fB_ID\fP"
+.br
+.ti -1c
+.RI "bool \fB_active\fP"
+.br
+.ti -1c
+.RI "\fBSprite\fP \fB_sprite\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector2\fP \fB_position\fP"
+.br
+.ti -1c
+.RI "F32 \fB_width\fP"
+.br
+.ti -1c
+.RI "F32 \fB_height\fP"
+.br
+.ti -1c
+.RI "\fBColor\fP \fB_color\fP"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static U32 \fB_nextID\fP = 1"
 .br
 .in -1c
 

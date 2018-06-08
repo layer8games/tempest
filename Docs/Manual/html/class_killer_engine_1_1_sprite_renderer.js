@@ -11,5 +11,18 @@ var class_killer_engine_1_1_sprite_renderer =
     [ "GetShader", "class_killer_engine_1_1_sprite_renderer.html#a6244d926fa0b4bcefb60fbe314074f3e", null ],
     [ "SetBackgroundColor", "class_killer_engine_1_1_sprite_renderer.html#a899fca5b3719fd8db531f2115fc048bd", null ],
     [ "SetBatchSize", "class_killer_engine_1_1_sprite_renderer.html#a316dead824caf1f602a3197ae262b85d", null ],
-    [ "SetShader", "class_killer_engine_1_1_sprite_renderer.html#a387208a001451a0181e84c1b9316dc59", null ]
+    [ "SetShader", "class_killer_engine_1_1_sprite_renderer.html#a387208a001451a0181e84c1b9316dc59", null ],
+    [ "_bottomTop", "class_killer_engine_1_1_sprite_renderer.html#af7c94d19d60b44e2a119028b5447de61", null ],
+    [ "_colors", "class_killer_engine_1_1_sprite_renderer.html#a236959642737af0f7080cae8c5c4a4a3", null ],
+    [ "_currentBatchSize", "class_killer_engine_1_1_sprite_renderer.html#a57916b1477518f8ef1d4901970499d49", null ],
+    [ "_dimensions", "class_killer_engine_1_1_sprite_renderer.html#a7c7bcdaa4bfc2f633c542254ba659109", null ],
+    [ "_drawCount", "class_killer_engine_1_1_sprite_renderer.html#a0fe80594914283a75cf1f7c5fde00ed1", null ],
+    [ "_leftRight", "class_killer_engine_1_1_sprite_renderer.html#ad0e826f11747c6430d1333e1d79c101d", null ],
+    [ "_maxBatchSize", "class_killer_engine_1_1_sprite_renderer.html#aeb59da1ae45cf84195ca8109edc4983c", null ],
+    [ "_renderingProgramColor", "class_killer_engine_1_1_sprite_renderer.html#adeaaa78a580432a48c0d16b84f486c4d", null ],
+    [ "_renderingProgramTexture", "class_killer_engine_1_1_sprite_renderer.html#a59edbc0ad5807db1bf21cd831d6d3aac", null ],
+    [ "_shader", "class_killer_engine_1_1_sprite_renderer.html#ae4fcb9aaabdaea1c7466b18cfe10fcad", null ],
+    [ "_shaderSetCount", "class_killer_engine_1_1_sprite_renderer.html#a7b3c392cd2ff912e130ccf8912e53126", null ],
+    [ "_vertexArrayObject", "class_killer_engine_1_1_sprite_renderer.html#a975c0d9647e032d270f7affaa0fdb2cc", null ],
+    [ "_vertices", "class_killer_engine_1_1_sprite_renderer.html#a6bade75f12b826543603d4adbff67cf5", null ]
 ];

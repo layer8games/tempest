@@ -1,4 +1,4 @@
-.TH "KillerEngine::WinProgram" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::WinProgram" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -61,6 +61,66 @@ KillerEngine::WinProgram
 .br
 .ti -1c
 .RI "static LRESULT CALLBACK \fBStaticWndProc\fP (HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fB_SetTempPixelFormat\fP (void)"
+.br
+.ti -1c
+.RI "void \fB_SetPixelFormat\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fB_isFullScreen\fP"
+.br
+.ti -1c
+.RI "S32 \fB_totalWidth\fP"
+.br
+.ti -1c
+.RI "S32 \fB_totalHeight\fP"
+.br
+.ti -1c
+.RI "S32 \fB_right\fP"
+.br
+.ti -1c
+.RI "S32 \fB_left\fP"
+.br
+.ti -1c
+.RI "S32 \fB_top\fP"
+.br
+.ti -1c
+.RI "S32 \fB_bottom\fP"
+.br
+.ti -1c
+.RI "string \fB_wndName\fP"
+.br
+.ti -1c
+.RI "GLfloat \fB_bgColor\fP [4]"
+.br
+.ti -1c
+.RI "HWND \fB_hwnd\fP"
+.br
+.ti -1c
+.RI "HDC \fB_hdc\fP"
+.br
+.ti -1c
+.RI "HGLRC \fB_hglrc\fP"
+.br
+.ti -1c
+.RI "WNDCLASSEX \fB_wndClass\fP"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBWinProgram\fP > \fB_instance\fP = NULL"
 .br
 .in -1c
 .SH "Member Function Documentation"

@@ -1,5 +1,9 @@
 var classtinyxml2_1_1_x_m_l_attribute =
 [
+    [ "BUF_SIZE", "classtinyxml2_1_1_x_m_l_attribute.html#a0bb6a7aebf74bde4d90dbc32b8b106b0a5c77cc230dc9e6f9011ba6baa5cf6aaa", null ],
+    [ "XMLAttribute", "classtinyxml2_1_1_x_m_l_attribute.html#ae001da9e4e0f727c44f2aadbfb325a7a", null ],
+    [ "~XMLAttribute", "classtinyxml2_1_1_x_m_l_attribute.html#a09f3de63524b73b846af8d8656b90d6c", null ],
+    [ "XMLAttribute", "classtinyxml2_1_1_x_m_l_attribute.html#a423410d8fb1b94f4514e34abf5432457", null ],
     [ "BoolValue", "classtinyxml2_1_1_x_m_l_attribute.html#a98ce5207344ad33a265b0422addae1ff", null ],
     [ "DoubleValue", "classtinyxml2_1_1_x_m_l_attribute.html#a4aa73513f54ff0087d3e804f0f54e30f", null ],
     [ "FloatValue", "classtinyxml2_1_1_x_m_l_attribute.html#a27797b45d21c981257720db94f5f8801", null ],
@@ -8,6 +12,8 @@ var classtinyxml2_1_1_x_m_l_attribute =
     [ "IntValue", "classtinyxml2_1_1_x_m_l_attribute.html#adfa2433f0fdafd5c3880936de9affa80", null ],
     [ "Name", "classtinyxml2_1_1_x_m_l_attribute.html#ab886c486ec19f02ed826f8dc129e5ad8", null ],
     [ "Next", "classtinyxml2_1_1_x_m_l_attribute.html#aee53571b21e7ce5421eb929523a8bbe6", null ],
+    [ "operator=", "classtinyxml2_1_1_x_m_l_attribute.html#a38e1d174a975bab27a70b4032e39a257", null ],
+    [ "ParseDeep", "classtinyxml2_1_1_x_m_l_attribute.html#a6759fed9f17242de6be926b4e2e3611c", null ],
     [ "QueryBoolValue", "classtinyxml2_1_1_x_m_l_attribute.html#a5f32e038954256f61c21ff20fd13a09c", null ],
     [ "QueryDoubleValue", "classtinyxml2_1_1_x_m_l_attribute.html#a2aa6e55e8ea03af0609cf6690bff79b9", null ],
     [ "QueryFloatValue", "classtinyxml2_1_1_x_m_l_attribute.html#a049dea6449a6259b6cfed44a9427b607", null ],
@@ -21,7 +27,13 @@ var classtinyxml2_1_1_x_m_l_attribute =
     [ "SetAttribute", "classtinyxml2_1_1_x_m_l_attribute.html#ab3516def4fe058fe328f2b89fc2d77da", null ],
     [ "SetAttribute", "classtinyxml2_1_1_x_m_l_attribute.html#a9a65ab3147abe8ccbbd373ce8791e818", null ],
     [ "SetAttribute", "classtinyxml2_1_1_x_m_l_attribute.html#ae95e843313aaf5d56c32530b6456df02", null ],
+    [ "SetName", "classtinyxml2_1_1_x_m_l_attribute.html#a469c2363600007f49e62a8048a362d57", null ],
     [ "UnsignedValue", "classtinyxml2_1_1_x_m_l_attribute.html#a0be5343b08a957c42c02c5d32c35d338", null ],
     [ "Value", "classtinyxml2_1_1_x_m_l_attribute.html#a1aab1dd0e43ecbcfa306adbcf3a3d853", null ],
-    [ "XMLElement", "classtinyxml2_1_1_x_m_l_attribute.html#ac2fba9b6e452829dd892f7392c24e0eb", null ]
+    [ "XMLElement", "classtinyxml2_1_1_x_m_l_attribute.html#ac2fba9b6e452829dd892f7392c24e0eb", null ],
+    [ "_memPool", "classtinyxml2_1_1_x_m_l_attribute.html#ac0a1130568dd9e985dd7753ae44fcdbf", null ],
+    [ "_name", "classtinyxml2_1_1_x_m_l_attribute.html#a80850208963b536e9254a7fa1d4abe67", null ],
+    [ "_next", "classtinyxml2_1_1_x_m_l_attribute.html#a3bbf00f77131a8e83d648d32d090c564", null ],
+    [ "_parseLineNum", "classtinyxml2_1_1_x_m_l_attribute.html#a3ccce78440ebad696e6958cb51aead9e", null ],
+    [ "_value", "classtinyxml2_1_1_x_m_l_attribute.html#abcf5c9b7f040ed71ed2a66557584b5b0", null ]
 ];

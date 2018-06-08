@@ -89,6 +89,8 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_level_manager.
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_level_manager-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">KillerEngine::LevelManager Class Reference</div>  </div>
@@ -154,10 +156,31 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ad3c02e1b837994023d935fc62df03291"><td class="memItemLeft" align="right" valign="top"><a id="ad3c02e1b837994023d935fc62df03291"></a>
 static <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Instance</b> ()</td></tr>
 <tr class="separator:ad3c02e1b837994023d935fc62df03291"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a2020be1f96ff6e4eff6611720702e6fb"><td class="memItemLeft" align="right" valign="top"><a id="a2020be1f96ff6e4eff6611720702e6fb"></a>
+std::map&lt; U32, shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_levels</b></td></tr>
+<tr class="separator:a2020be1f96ff6e4eff6611720702e6fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b79fae2c12a7c7b37244f447f7703dc"><td class="memItemLeft" align="right" valign="top"><a id="a2b79fae2c12a7c7b37244f447f7703dc"></a>
+shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_activeLevel</b></td></tr>
+<tr class="separator:a2b79fae2c12a7c7b37244f447f7703dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76ec2be9fde9f8e405dac36892d78b63"><td class="memItemLeft" align="right" valign="top"><a id="a76ec2be9fde9f8e405dac36892d78b63"></a>
+U32&#160;</td><td class="memItemRight" valign="bottom"><b>_activeLevelID</b></td></tr>
+<tr class="separator:a76ec2be9fde9f8e405dac36892d78b63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a418a040f87b6417cbb99389cc30b6406"><td class="memItemLeft" align="right" valign="top"><a id="a418a040f87b6417cbb99389cc30b6406"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_running</b></td></tr>
+<tr class="separator:a418a040f87b6417cbb99389cc30b6406"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a77e3ca8a7adc36630215ca774e77ceaf"><td class="memItemLeft" align="right" valign="top"><a id="a77e3ca8a7adc36630215ca774e77ceaf"></a>
+static <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_instance</b> = NULL</td></tr>
+<tr class="separator:a77e3ca8a7adc36630215ca774e77ceaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_level_manager_8h_source.html">LevelManager.h</a></li>
-<li>C:/Projects/Killer_Engine/Implementations/LevelManager.cpp</li>
+<li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_level_manager_8h_source.html">LevelManager.h</a></li>
+<li>F:/Projects/Killer_Engine/Implementations/LevelManager.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

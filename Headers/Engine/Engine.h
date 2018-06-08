@@ -111,7 +111,7 @@ namespace KillerEngine
 //Members
 //
 //==========================================================================================================================
-		static shared_ptr<Engine> _instance;
+		static shared_ptr<Engine> _instance;	///< Singleton global instance.
 
 	};
 

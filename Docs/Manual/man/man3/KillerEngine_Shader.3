@@ -1,4 +1,4 @@
-.TH "KillerEngine::Shader" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Shader" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -27,6 +27,23 @@ KillerEngine::Shader
 .in +1c
 .ti -1c
 .RI "static shared_ptr< \fBShader\fP > \fBInstance\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "GLuint \fB_spriteShader\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_modelShader\fP"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBShader\fP > \fB_instance\fP = NULL"
 .br
 .in -1c
 

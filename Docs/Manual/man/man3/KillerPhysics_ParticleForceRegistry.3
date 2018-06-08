@@ -1,4 +1,4 @@
-.TH "KillerPhysics::ParticleForceRegistry" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::ParticleForceRegistry" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,6 +6,16 @@ KillerPhysics::ParticleForceRegistry
 .SH SYNOPSIS
 .br
 .PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fB_Particle2DForceRegistration\fP"
+.br
+.ti -1c
+.RI "struct \fB_Particle3DForceRegistration\fP"
+.br
+.in -1c
 .SS "Public Member Functions"
 
 .in +1c
@@ -26,6 +36,26 @@ KillerPhysics::ParticleForceRegistry
 .br
 .ti -1c
 .RI "void \fBUpdateForces\fP (void)"
+.br
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "typedef std::vector< \fB_Particle2DForceRegistration\fP > \fBRegistry2D\fP"
+.br
+.ti -1c
+.RI "typedef std::vector< \fB_Particle3DForceRegistration\fP > \fBRegistry3D\fP"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "Registry2D \fB_registrations2D\fP"
+.br
+.ti -1c
+.RI "Registry3D \fB_registrations3D\fP"
 .br
 .in -1c
 

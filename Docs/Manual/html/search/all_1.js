@@ -7,5 +7,8 @@ var searchData=
   ['allocate_5fstring',['allocate_string',['../classrapidxml_1_1memory__pool.html#a171941b39d55b868358da97462185f58',1,'rapidxml::memory_pool']]],
   ['append_5fattribute',['append_attribute',['../classrapidxml_1_1xml__node.html#a33ce3386f8c42dd4db658b75cbb6e6c4',1,'rapidxml::xml_node']]],
   ['append_5fnode',['append_node',['../classrapidxml_1_1xml__node.html#a8696d098ecc9c4d2a646b43e91d58e31',1,'rapidxml::xml_node']]],
-  ['attribute',['Attribute',['../classtinyxml2_1_1_x_m_l_element.html#a70e49ed60b11212ae35f7e354cfe1de9',1,'tinyxml2::XMLElement']]]
+  ['attribute',['Attribute',['../classtinyxml2_1_1_x_m_l_element.html#a70e49ed60b11212ae35f7e354cfe1de9',1,'tinyxml2::XMLElement']]],
+  ['attribute_5fname_5fpred',['attribute_name_pred',['../structrapidxml_1_1xml__document_1_1attribute__name__pred.html',1,'rapidxml::xml_document']]],
+  ['attribute_5fvalue_5fpred',['attribute_value_pred',['../structrapidxml_1_1xml__document_1_1attribute__value__pred.html',1,'rapidxml::xml_document']]],
+  ['attribute_5fvalue_5fpure_5fpred',['attribute_value_pure_pred',['../structrapidxml_1_1xml__document_1_1attribute__value__pure__pred.html',1,'rapidxml::xml_document']]]
 ];

@@ -82,10 +82,10 @@ protected:
 		ErrorManager(void);
 
 private:
-		static shared_ptr<ErrorManager> _instance;
+		static shared_ptr<ErrorManager> _instance;	///< Global singleton instance.
 
-		U32       			 _numErrors;
-		map<U32, ErrorCode>  _errorCodes;
-		map<U32, string>     _errorMessages;
+		U32       			 _numErrors;			///< Total count of errors.
+		map<U32, ErrorCode>  _errorCodes;			///< List of active error codes.
+		map<U32, string>     _errorMessages;		///< List of active error messages.
 	};//End class
 }//End namespace

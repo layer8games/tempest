@@ -1,4 +1,4 @@
-.TH "KillerEngine::Engine" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Engine" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -45,6 +45,14 @@ KillerEngine::Engine
 .ti -1c
 .RI "static shared_ptr< \fBEngine\fP > \fBInstance\fP ()"
 .br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBEngine\fP > \fB_instance\fP = NULL"
+.br
+.RI "Singleton global instance\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 

@@ -1,4 +1,4 @@
-.TH "tinyxml2::XMLAttribute" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "tinyxml2::XMLAttribute" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -100,6 +100,48 @@ tinyxml2::XMLAttribute
 .RI "void \fBSetAttribute\fP (float value)"
 .br
 .RI "Set the attribute to value\&. "
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBBUF_SIZE\fP = 200 }"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBXMLAttribute\fP (const \fBXMLAttribute\fP &)"
+.br
+.ti -1c
+.RI "void \fBoperator=\fP (const \fBXMLAttribute\fP &)"
+.br
+.ti -1c
+.RI "void \fBSetName\fP (const char *name)"
+.br
+.ti -1c
+.RI "char * \fBParseDeep\fP (char *p, bool processEntities, int *curLineNumPtr)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBStrPair\fP \fB_name\fP"
+.br
+.ti -1c
+.RI "\fBStrPair\fP \fB_value\fP"
+.br
+.ti -1c
+.RI "int \fB_parseLineNum\fP"
+.br
+.ti -1c
+.RI "\fBXMLAttribute\fP * \fB_next\fP"
+.br
+.ti -1c
+.RI "\fBMemPool\fP * \fB_memPool\fP"
+.br
 .in -1c
 .SS "Friends"
 

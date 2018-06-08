@@ -57,5 +57,6 @@ var class_killer_math_1_1_matrix =
     [ "Translate", "class_killer_math_1_1_matrix.html#ae88fc8a187c6b15585a7c1ea15cd9d07", null ],
     [ "Translate", "class_killer_math_1_1_matrix.html#a93d7dbf5ef29308862894d28a5e133d5", null ],
     [ "Translate", "class_killer_math_1_1_matrix.html#a62abd26faf2e1c7d17b7d40add2fc37e", null ],
-    [ "Transpose", "class_killer_math_1_1_matrix.html#abaedae760f0ad9043afd89ee4137ccb8", null ]
+    [ "Transpose", "class_killer_math_1_1_matrix.html#abaedae760f0ad9043afd89ee4137ccb8", null ],
+    [ "_m", "class_killer_math_1_1_matrix.html#a282fdcd6317596e392f099d5a0c661fd", null ]
 ];

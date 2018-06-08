@@ -1,4 +1,4 @@
-.TH "KillerPhysics::Particle3D" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::Particle3D" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -82,6 +82,28 @@ Inherits \fBKillerEngine::GameObject3D\fP\&.
 .br
 .ti -1c
 .RI "void \fBAddForce\fP (const \fBKM::Vector3\fP &force)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBKM::Vector3\fP \fB_velocity\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector3\fP \fB_acceleration\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector3\fP \fB_forceAccum\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector3\fP \fB_gravityForce\fP"
+.br
+.ti -1c
+.RI "real \fB_inverseMass\fP"
+.br
+.ti -1c
+.RI "real \fB_damping\fP"
 .br
 .in -1c
 

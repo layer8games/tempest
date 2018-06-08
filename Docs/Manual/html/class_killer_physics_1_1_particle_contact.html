@@ -88,6 +88,8 @@ $(document).ready(function(){initNavTree('class_killer_physics_1_1_particle_cont
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_killer_physics_1_1_particle_contact-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">KillerPhysics::ParticleContact Class Reference</div>  </div>
@@ -129,10 +131,46 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Resolve</b> (void)</t
 <tr class="memitem:a299ebc97e10089b1187493d8abdab264"><td class="memItemLeft" align="right" valign="top"><a id="a299ebc97e10089b1187493d8abdab264"></a>
 real&#160;</td><td class="memItemRight" valign="bottom"><b>CalculateSeparatingVelocity</b> (void) const</td></tr>
 <tr class="separator:a299ebc97e10089b1187493d8abdab264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a55436c2df3012577e3309892c2320542"><td class="memItemLeft" align="right" valign="top"><a id="a55436c2df3012577e3309892c2320542"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_ResolveImpulseVelocity</b> (void)</td></tr>
+<tr class="separator:a55436c2df3012577e3309892c2320542"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea6415fc391353a06c3e4ab94745ab5c"><td class="memItemLeft" align="right" valign="top"><a id="aea6415fc391353a06c3e4ab94745ab5c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_ResolveInterpenetration</b> (void)</td></tr>
+<tr class="separator:aea6415fc391353a06c3e4ab94745ab5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:af8065e0081202c2e14ecd8bae5b08d59"><td class="memItemLeft" align="right" valign="top"><a id="af8065e0081202c2e14ecd8bae5b08d59"></a>
+shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle2_d.html">Particle2D</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_particles2D</b> [2]</td></tr>
+<tr class="separator:af8065e0081202c2e14ecd8bae5b08d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7230f71f8ad328fb78d263bcea94eb0f"><td class="memItemLeft" align="right" valign="top"><a id="a7230f71f8ad328fb78d263bcea94eb0f"></a>
+shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle3_d.html">Particle3D</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_particles3D</b> [2]</td></tr>
+<tr class="separator:a7230f71f8ad328fb78d263bcea94eb0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7007f149fad279cc7c0d33fbf1bb37e"><td class="memItemLeft" align="right" valign="top"><a id="ab7007f149fad279cc7c0d33fbf1bb37e"></a>
+shared_ptr&lt; <a class="el" href="class_killer_math_1_1_vector2.html">KM::Vector2</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_particle2DMovements</b> [2]</td></tr>
+<tr class="separator:ab7007f149fad279cc7c0d33fbf1bb37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab53819c8f53d4c80d75733c0f584eab9"><td class="memItemLeft" align="right" valign="top"><a id="ab53819c8f53d4c80d75733c0f584eab9"></a>
+shared_ptr&lt; <a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_particle3DMovements</b> [2]</td></tr>
+<tr class="separator:ab53819c8f53d4c80d75733c0f584eab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1dcfdf549cb154a23e0905e43845941"><td class="memItemLeft" align="right" valign="top"><a id="ae1dcfdf549cb154a23e0905e43845941"></a>
+<a class="el" href="class_killer_math_1_1_vector2.html">KM::Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_contactNormal2D</b></td></tr>
+<tr class="separator:ae1dcfdf549cb154a23e0905e43845941"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab32a9bcf334a752c81a5f09689692ade"><td class="memItemLeft" align="right" valign="top"><a id="ab32a9bcf334a752c81a5f09689692ade"></a>
+<a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_contactNormal3D</b></td></tr>
+<tr class="separator:ab32a9bcf334a752c81a5f09689692ade"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a311dd286b66d5931e83cc44e35341b48"><td class="memItemLeft" align="right" valign="top"><a id="a311dd286b66d5931e83cc44e35341b48"></a>
+real&#160;</td><td class="memItemRight" valign="bottom"><b>_restitution</b></td></tr>
+<tr class="separator:a311dd286b66d5931e83cc44e35341b48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0b7ce6ac33a66778369d8179d367f41"><td class="memItemLeft" align="right" valign="top"><a id="ab0b7ce6ac33a66778369d8179d367f41"></a>
+real&#160;</td><td class="memItemRight" valign="bottom"><b>_penetration</b></td></tr>
+<tr class="separator:ab0b7ce6ac33a66778369d8179d367f41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_particle_contact_8h_source.html">ParticleContact.h</a></li>
-<li>C:/Projects/Killer_Engine/Implementations/ParticleContact.cpp</li>
+<li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_particle_contact_8h_source.html">ParticleContact.h</a></li>
+<li>F:/Projects/Killer_Engine/Implementations/ParticleContact.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

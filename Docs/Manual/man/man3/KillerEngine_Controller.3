@@ -1,4 +1,4 @@
-.TH "KillerEngine::Controller" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Controller" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -54,6 +54,42 @@ KillerEngine::Controller
 .ti -1c
 .RI "static shared_ptr< \fBController\fP > \fBInstance\fP ()"
 .br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "KeyStates \fB_keyStates\fP [\fB_totalKeys\fP]"
+.br
+.RI "Array of states for each key, indexed by ID\&. "
+.ti -1c
+.RI "bool \fB_pastActiveKeys\fP [\fB_totalKeys\fP]"
+.br
+.RI "Array of keys in a pressed state as of last frame, indexed by ID\&. "
+.ti -1c
+.RI "bool \fB_curActiveKeys\fP [\fB_totalKeys\fP]"
+.br
+.RI "Array of keys in a pressed state as of this frame, indexed by ID\&. "
+.ti -1c
+.RI "\fBKM::Vector2\fP \fB_leftClickCoordinates\fP"
+.br
+.RI "Coordinates of last left click\&. "
+.ti -1c
+.RI "\fBKM::Vector2\fP \fB_rightClickCoordinates\fP"
+.br
+.RI "Coordinates of last right click\&. "
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBController\fP > \fB_instance\fP = NULL"
+.br
+.RI "Singleton Global instance\&. "
+.ti -1c
+.RI "static const int \fB_totalKeys\fP = 51"
+.br
+.RI "Total supported Keys from KeyCode\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 

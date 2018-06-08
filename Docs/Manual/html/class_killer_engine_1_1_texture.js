@@ -12,5 +12,8 @@ var class_killer_engine_1_1_texture =
     [ "operator=", "class_killer_engine_1_1_texture.html#a664b89690a383d0ff33b56c3865b9b9a", null ],
     [ "SetHeight", "class_killer_engine_1_1_texture.html#a050875d1a7fe05e151283c7e93594f07", null ],
     [ "SetID", "class_killer_engine_1_1_texture.html#ae43544a555bfa298ee9eab9e47f3e29e", null ],
-    [ "SetWidth", "class_killer_engine_1_1_texture.html#a5a27a1d6c687a55a7458ee47a0a94d90", null ]
+    [ "SetWidth", "class_killer_engine_1_1_texture.html#a5a27a1d6c687a55a7458ee47a0a94d90", null ],
+    [ "_height", "class_killer_engine_1_1_texture.html#a057fda065d6327a3020a1467422f7a33", null ],
+    [ "_id", "class_killer_engine_1_1_texture.html#ac455a50ac613d223487ec6349a661986", null ],
+    [ "_width", "class_killer_engine_1_1_texture.html#a4e35e0dea97cf8ce96d39870cb9045f9", null ]
 ];

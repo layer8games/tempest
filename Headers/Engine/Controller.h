@@ -187,13 +187,13 @@ BUG! This is not copying anything at all. It is only passing the new refalone
 		Controller(void);		
 
 	private:
-		static shared_ptr<Controller> _instance;
-		static const int 			  _totalKeys = 51;
+		static shared_ptr<Controller> _instance;		///< Singleton Global instance.
+		static const int 			  _totalKeys = 51;	///< Total supported Keys from KeyCode.
 		
-		KeyStates 		_keyStates[_totalKeys];
-		bool 			_pastActiveKeys[_totalKeys];
-		bool			_curActiveKeys[_totalKeys];
-		KM::Vector2 	_leftClickCoordinates;
-		KM::Vector2		_rightClickCoordinates;
+		KeyStates 		_keyStates[_totalKeys];			///< Array of states for each key, indexed by ID.
+		bool 			_pastActiveKeys[_totalKeys];	///< Array of keys in a pressed state as of last frame, indexed by ID.
+		bool			_curActiveKeys[_totalKeys];		///< Array of keys in a pressed state as of this frame, indexed by ID.
+		KM::Vector2 	_leftClickCoordinates;			///< Coordinates of last left click.
+		KM::Vector2		_rightClickCoordinates;			///< Coordinates of last right click.
 	};
 }//End namespace

@@ -1,4 +1,4 @@
-.TH "KillerEngine::ModelRenderer" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::ModelRenderer" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -33,6 +33,35 @@ KillerEngine::ModelRenderer
 .in +1c
 .ti -1c
 .RI "static shared_ptr< \fBModelRenderer\fP > \fBInstance\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "U32 \fB_maxBatchSize\fP"
+.br
+.ti -1c
+.RI "U32 \fB_currentBatchSize\fP"
+.br
+.ti -1c
+.RI "std::vector< F32 > \fB_vertices\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_VOA\fP [_NUM_VOA]"
+.br
+.ti -1c
+.RI "GLuint \fB_shader\fP"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBModelRenderer\fP > \fB_instance\fP = nullptr"
+.br
+.ti -1c
+.RI "static const U32 \fB_NUM_VOA\fP = 1"
 .br
 .in -1c
 

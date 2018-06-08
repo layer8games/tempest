@@ -10,7 +10,7 @@ var searchData=
   ['doubletext',['DoubleText',['../classtinyxml2_1_1_x_m_l_element.html#a81b1ff0cf2f2cd09be8badc08b39a2b7',1,'tinyxml2::XMLElement']]],
   ['doublevalue',['DoubleValue',['../classtinyxml2_1_1_x_m_l_attribute.html#a4aa73513f54ff0087d3e804f0f54e30f',1,'tinyxml2::XMLAttribute']]],
   ['dynarray',['DynArray',['../classtinyxml2_1_1_dyn_array.html',1,'tinyxml2']]],
-  ['dynarray_3c_20block_20_2a_2c_2010_20_3e',['DynArray&lt; Block *, 10 &gt;',['../classtinyxml2_1_1_dyn_array.html',1,'tinyxml2']]],
   ['dynarray_3c_20char_2c_2020_20_3e',['DynArray&lt; char, 20 &gt;',['../classtinyxml2_1_1_dyn_array.html',1,'tinyxml2']]],
-  ['dynarray_3c_20const_20char_20_2a_2c_2010_20_3e',['DynArray&lt; const char *, 10 &gt;',['../classtinyxml2_1_1_dyn_array.html',1,'tinyxml2']]]
+  ['dynarray_3c_20const_20char_20_2a_2c_2010_20_3e',['DynArray&lt; const char *, 10 &gt;',['../classtinyxml2_1_1_dyn_array.html',1,'tinyxml2']]],
+  ['dynarray_3c_20tinyxml2_3a_3amempoolt_3a_3ablock_20_2a_2c_2010_20_3e',['DynArray&lt; tinyxml2::MemPoolT::Block *, 10 &gt;',['../classtinyxml2_1_1_dyn_array.html',1,'tinyxml2']]]
 ];

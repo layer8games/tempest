@@ -1,4 +1,4 @@
-.TH "KillerPhysics::ParticleContact" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::ParticleContact" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -41,6 +41,44 @@ KillerPhysics::ParticleContact
 .br
 .ti -1c
 .RI "real \fBCalculateSeparatingVelocity\fP (void) const"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fB_ResolveImpulseVelocity\fP (void)"
+.br
+.ti -1c
+.RI "void \fB_ResolveInterpenetration\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "shared_ptr< \fBParticle2D\fP > \fB_particles2D\fP [2]"
+.br
+.ti -1c
+.RI "shared_ptr< \fBParticle3D\fP > \fB_particles3D\fP [2]"
+.br
+.ti -1c
+.RI "shared_ptr< \fBKM::Vector2\fP > \fB_particle2DMovements\fP [2]"
+.br
+.ti -1c
+.RI "shared_ptr< \fBKM::Vector3\fP > \fB_particle3DMovements\fP [2]"
+.br
+.ti -1c
+.RI "\fBKM::Vector2\fP \fB_contactNormal2D\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector3\fP \fB_contactNormal3D\fP"
+.br
+.ti -1c
+.RI "real \fB_restitution\fP"
+.br
+.ti -1c
+.RI "real \fB_penetration\fP"
 .br
 .in -1c
 

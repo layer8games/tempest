@@ -18,5 +18,9 @@ var class_killer_engine_1_1_level_manager =
     [ "SetActiveLevel", "class_killer_engine_1_1_level_manager.html#a19af362df8714408dd170f4fb641dd34", null ],
     [ "SetRunning", "class_killer_engine_1_1_level_manager.html#a0a4e83a90c8cc73ece08cff331b274d4", null ],
     [ "ShutDown", "class_killer_engine_1_1_level_manager.html#aa37c14507c6e5a8327e3c2653d7dd6bf", null ],
-    [ "Update", "class_killer_engine_1_1_level_manager.html#a4f1608d9c79fc20af8bd9df607f4955a", null ]
+    [ "Update", "class_killer_engine_1_1_level_manager.html#a4f1608d9c79fc20af8bd9df607f4955a", null ],
+    [ "_activeLevel", "class_killer_engine_1_1_level_manager.html#a2b79fae2c12a7c7b37244f447f7703dc", null ],
+    [ "_activeLevelID", "class_killer_engine_1_1_level_manager.html#a76ec2be9fde9f8e405dac36892d78b63", null ],
+    [ "_levels", "class_killer_engine_1_1_level_manager.html#a2020be1f96ff6e4eff6611720702e6fb", null ],
+    [ "_running", "class_killer_engine_1_1_level_manager.html#a418a040f87b6417cbb99389cc30b6406", null ]
 ];

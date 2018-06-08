@@ -1,4 +1,4 @@
-.TH "KillerEngine::LevelManager" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::LevelManager" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -66,6 +66,29 @@ KillerEngine::LevelManager
 .in +1c
 .ti -1c
 .RI "static \fBLevelManager\fP * \fBInstance\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::map< U32, shared_ptr< \fBLevel\fP > > \fB_levels\fP"
+.br
+.ti -1c
+.RI "shared_ptr< \fBLevel\fP > \fB_activeLevel\fP"
+.br
+.ti -1c
+.RI "U32 \fB_activeLevelID\fP"
+.br
+.ti -1c
+.RI "bool \fB_running\fP"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static \fBLevelManager\fP * \fB_instance\fP = NULL"
 .br
 .in -1c
 

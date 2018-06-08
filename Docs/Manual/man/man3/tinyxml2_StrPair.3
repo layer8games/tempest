@@ -1,4 +1,4 @@
-.TH "tinyxml2::StrPair" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "tinyxml2::StrPair" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -42,6 +42,39 @@ tinyxml2::StrPair
 .br
 .ti -1c
 .RI "void \fBReset\fP ()"
+.br
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBNEEDS_FLUSH\fP = 0x100, \fBNEEDS_DELETE\fP = 0x200 }"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCollapseWhitespace\fP ()"
+.br
+.ti -1c
+.RI "\fBStrPair\fP (const \fBStrPair\fP &other)"
+.br
+.ti -1c
+.RI "void \fBoperator=\fP (\fBStrPair\fP &other)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fB_flags\fP"
+.br
+.ti -1c
+.RI "char * \fB_start\fP"
+.br
+.ti -1c
+.RI "char * \fB_end\fP"
 .br
 .in -1c
 

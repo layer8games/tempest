@@ -90,6 +90,8 @@ $(document).ready(function(){initNavTree('classtinyxml2_1_1_mem_pool_t.html','')
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classtinyxml2_1_1_mem_pool_t-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">tinyxml2::MemPoolT&lt; ITEM_SIZE &gt; Class Template Reference</div>  </div>
@@ -103,6 +105,13 @@ Inheritance diagram for tinyxml2::MemPoolT&lt; ITEM_SIZE &gt;:</div>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtinyxml2_1_1_mem_pool_t_1_1_block.html">Block</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uniontinyxml2_1_1_mem_pool_t_1_1_item.html">Item</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:ad6d343fa8b216c77d62888389f3e639a"><td class="memItemLeft" align="right" valign="top"><a id="ad6d343fa8b216c77d62888389f3e639a"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>ITEMS_PER_BLOCK</b> = (4 * 1024) / ITEM_SIZE
@@ -135,9 +144,39 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetTracked</b> ()</td
 <tr class="memitem:a3bcdc302ae15d2810e11192321a8f5f1"><td class="memItemLeft" align="right" valign="top"><a id="a3bcdc302ae15d2810e11192321a8f5f1"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>Untracked</b> () const</td></tr>
 <tr class="separator:a3bcdc302ae15d2810e11192321a8f5f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:afa8770a0645d28bd849e7e5aefb326ed"><td class="memItemLeft" align="right" valign="top"><a id="afa8770a0645d28bd849e7e5aefb326ed"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MemPoolT</b> (const <a class="el" href="classtinyxml2_1_1_mem_pool_t.html">MemPoolT</a> &amp;)</td></tr>
+<tr class="separator:afa8770a0645d28bd849e7e5aefb326ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12ba6478e385244beb2ca3947879fd24"><td class="memItemLeft" align="right" valign="top"><a id="a12ba6478e385244beb2ca3947879fd24"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classtinyxml2_1_1_mem_pool_t.html">MemPoolT</a> &amp;)</td></tr>
+<tr class="separator:a12ba6478e385244beb2ca3947879fd24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a028d833de2bf5e6257b4b27a68702a84"><td class="memItemLeft" align="right" valign="top"><a id="a028d833de2bf5e6257b4b27a68702a84"></a>
+<a class="el" href="classtinyxml2_1_1_dyn_array.html">DynArray</a>&lt; <a class="el" href="structtinyxml2_1_1_mem_pool_t_1_1_block.html">Block</a> *, 10 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_blockPtrs</b></td></tr>
+<tr class="separator:a028d833de2bf5e6257b4b27a68702a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff60ad785be00814e442e53fb4462688"><td class="memItemLeft" align="right" valign="top"><a id="aff60ad785be00814e442e53fb4462688"></a>
+<a class="el" href="uniontinyxml2_1_1_mem_pool_t_1_1_item.html">Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_root</b></td></tr>
+<tr class="separator:aff60ad785be00814e442e53fb4462688"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa908fd62011c6e633d7af196d667e9d"><td class="memItemLeft" align="right" valign="top"><a id="afa908fd62011c6e633d7af196d667e9d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_currentAllocs</b></td></tr>
+<tr class="separator:afa908fd62011c6e633d7af196d667e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd5867e06ad91a655f3c9f95ca163e9b"><td class="memItemLeft" align="right" valign="top"><a id="acd5867e06ad91a655f3c9f95ca163e9b"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_nAllocs</b></td></tr>
+<tr class="separator:acd5867e06ad91a655f3c9f95ca163e9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf3960c9e30197aeb1c0af271c297db9"><td class="memItemLeft" align="right" valign="top"><a id="aaf3960c9e30197aeb1c0af271c297db9"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_maxAllocs</b></td></tr>
+<tr class="separator:aaf3960c9e30197aeb1c0af271c297db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5048ad99f7350f7224b13cf85fbff151"><td class="memItemLeft" align="right" valign="top"><a id="a5048ad99f7350f7224b13cf85fbff151"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_nUntracked</b></td></tr>
+<tr class="separator:a5048ad99f7350f7224b13cf85fbff151"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Projects/Killer_Engine/Headers/TinyXML/<a class="el" href="tinyxml2_8h_source.html">tinyxml2.h</a></li>
+<li>F:/Projects/Killer_Engine/Headers/TinyXML/<a class="el" href="tinyxml2_8h_source.html">tinyxml2.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

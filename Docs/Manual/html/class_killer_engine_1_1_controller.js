@@ -12,5 +12,10 @@ var class_killer_engine_1_1_controller =
     [ "KeyUp", "class_killer_engine_1_1_controller.html#aaaabcc05b940121152033d5401d9d2ea", null ],
     [ "LeftMouseClick", "class_killer_engine_1_1_controller.html#ae9c35a376ee04b7b2ffe7aa1d455268e", null ],
     [ "RightMouseClick", "class_killer_engine_1_1_controller.html#ab8c2c98a7462f4cbe2e0160cd2d08145", null ],
-    [ "Update", "class_killer_engine_1_1_controller.html#acd347bd6a27c7325441815729f92d730", null ]
+    [ "Update", "class_killer_engine_1_1_controller.html#acd347bd6a27c7325441815729f92d730", null ],
+    [ "_curActiveKeys", "class_killer_engine_1_1_controller.html#ae791278c017d9b26866d093061530197", null ],
+    [ "_keyStates", "class_killer_engine_1_1_controller.html#a860846feb0fc9d4d0b4c21f1eb36ee82", null ],
+    [ "_leftClickCoordinates", "class_killer_engine_1_1_controller.html#acca329525cf908d5a375ec6958547799", null ],
+    [ "_pastActiveKeys", "class_killer_engine_1_1_controller.html#a7696087080a20822989ff217da891201", null ],
+    [ "_rightClickCoordinates", "class_killer_engine_1_1_controller.html#a7ee22a35b1ad5c36c3e070af51f47c76", null ]
 ];

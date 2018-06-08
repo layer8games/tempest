@@ -89,6 +89,9 @@ $(document).ready(function(){initNavTree('class_killer_math_1_1_timer.html','');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_killer_math_1_1_timer-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">KillerMath::Timer Class Reference</div>  </div>
@@ -127,10 +130,55 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a1bfec43d7038bf3ac7770fa176b0b5bc"><td class="memItemLeft" align="right" valign="top"><a id="a1bfec43d7038bf3ac7770fa176b0b5bc"></a>
 static shared_ptr&lt; <a class="el" href="class_killer_math_1_1_timer.html">Timer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Instance</b> (void)</td></tr>
 <tr class="separator:a1bfec43d7038bf3ac7770fa176b0b5bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a5dfe2c88d42d187b54a38c9488f7c2bc"><td class="memItemLeft" align="right" valign="top"><a id="a5dfe2c88d42d187b54a38c9488f7c2bc"></a>
+U64&#160;</td><td class="memItemRight" valign="bottom"><b>_SecondsToCycles</b> (F32 timeSeconds)</td></tr>
+<tr class="separator:a5dfe2c88d42d187b54a38c9488f7c2bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20a9294a3c28ab2e12be094b1e99174c"><td class="memItemLeft" align="right" valign="top"><a id="a20a9294a3c28ab2e12be094b1e99174c"></a>
+F32&#160;</td><td class="memItemRight" valign="bottom"><b>_CyclesToSeconds</b> (U64 timeCycles)</td></tr>
+<tr class="separator:a20a9294a3c28ab2e12be094b1e99174c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c9e4da61cb6d533b7a09cf96a5da413"><td class="memItemLeft" align="right" valign="top"><a id="a3c9e4da61cb6d533b7a09cf96a5da413"></a>
+U64&#160;</td><td class="memItemRight" valign="bottom"><b>_QueryHiResTimer</b> (void)</td></tr>
+<tr class="separator:a3c9e4da61cb6d533b7a09cf96a5da413"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70c407e4bbf585a1dc2727659f0f8c12"><td class="memItemLeft" align="right" valign="top"><a id="a70c407e4bbf585a1dc2727659f0f8c12"></a>
+F32&#160;</td><td class="memItemRight" valign="bottom"><b>_QueryFrequency</b> (void)</td></tr>
+<tr class="separator:a70c407e4bbf585a1dc2727659f0f8c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a39ad61d5985f84391bbe90456b6fd8ba"><td class="memItemLeft" align="right" valign="top"><a id="a39ad61d5985f84391bbe90456b6fd8ba"></a>
+F32&#160;</td><td class="memItemRight" valign="bottom"><b>_deltaTime</b></td></tr>
+<tr class="separator:a39ad61d5985f84391bbe90456b6fd8ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf641913354639e66e1be9bbece81fdc"><td class="memItemLeft" align="right" valign="top"><a id="adf641913354639e66e1be9bbece81fdc"></a>
+F32&#160;</td><td class="memItemRight" valign="bottom"><b>_timeScale</b></td></tr>
+<tr class="separator:adf641913354639e66e1be9bbece81fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c2d4bc5f9bfe99e3eb8bd57397b4e8f"><td class="memItemLeft" align="right" valign="top"><a id="a1c2d4bc5f9bfe99e3eb8bd57397b4e8f"></a>
+F64&#160;</td><td class="memItemRight" valign="bottom"><b>_totalTime</b></td></tr>
+<tr class="separator:a1c2d4bc5f9bfe99e3eb8bd57397b4e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2c4dd43c60552eff7955f03a6e9ff9d"><td class="memItemLeft" align="right" valign="top"><a id="aa2c4dd43c60552eff7955f03a6e9ff9d"></a>
+U64&#160;</td><td class="memItemRight" valign="bottom"><b>_pastCycles</b></td></tr>
+<tr class="separator:aa2c4dd43c60552eff7955f03a6e9ff9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcdf476c4a35e438a57ea7403b52305f"><td class="memItemLeft" align="right" valign="top"><a id="afcdf476c4a35e438a57ea7403b52305f"></a>
+U64&#160;</td><td class="memItemRight" valign="bottom"><b>_curCycles</b></td></tr>
+<tr class="separator:afcdf476c4a35e438a57ea7403b52305f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4652d65987721225e1687ebf62a480cd"><td class="memItemLeft" align="right" valign="top"><a id="a4652d65987721225e1687ebf62a480cd"></a>
+F32&#160;</td><td class="memItemRight" valign="bottom"><b>_frequency</b></td></tr>
+<tr class="separator:a4652d65987721225e1687ebf62a480cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9276e4e6dafd5008197d8d669200daa0"><td class="memItemLeft" align="right" valign="top"><a id="a9276e4e6dafd5008197d8d669200daa0"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_paused</b></td></tr>
+<tr class="separator:a9276e4e6dafd5008197d8d669200daa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:ada940281137e2e1983d58ccc6a6266a7"><td class="memItemLeft" align="right" valign="top"><a id="ada940281137e2e1983d58ccc6a6266a7"></a>
+static shared_ptr&lt; <a class="el" href="class_killer_math_1_1_timer.html">Timer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_instance</b> = NULL</td></tr>
+<tr class="separator:ada940281137e2e1983d58ccc6a6266a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_timer_8h_source.html">Timer.h</a></li>
-<li>C:/Projects/Killer_Engine/Implementations/Timer.cpp</li>
+<li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_timer_8h_source.html">Timer.h</a></li>
+<li>F:/Projects/Killer_Engine/Implementations/Timer.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,4 +1,4 @@
-.TH "KillerEngine::SpriteRenderer" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::SpriteRenderer" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -45,6 +45,59 @@ KillerEngine::SpriteRenderer
 .in +1c
 .ti -1c
 .RI "static shared_ptr< \fBSpriteRenderer\fP > \fBInstance\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "U32 \fB_maxBatchSize\fP"
+.br
+.ti -1c
+.RI "U32 \fB_currentBatchSize\fP"
+.br
+.ti -1c
+.RI "std::vector< F32 > \fB_vertices\fP"
+.br
+.ti -1c
+.RI "std::vector< F32 > \fB_colors\fP"
+.br
+.ti -1c
+.RI "std::vector< F32 > \fB_dimensions\fP"
+.br
+.ti -1c
+.RI "std::vector< F32 > \fB_bottomTop\fP"
+.br
+.ti -1c
+.RI "std::vector< F32 > \fB_leftRight\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_renderingProgramColor\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_renderingProgramTexture\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_vertexArrayObject\fP [NUM_VOA]"
+.br
+.ti -1c
+.RI "GLuint \fB_shader\fP"
+.br
+.ti -1c
+.RI "U32 \fB_shaderSetCount\fP"
+.br
+.ti -1c
+.RI "U32 \fB_drawCount\fP"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBSpriteRenderer\fP > \fB_instance\fP {NULL}"
+.br
+.ti -1c
+.RI "static const U32 \fBNUM_VOA\fP = 1"
 .br
 .in -1c
 

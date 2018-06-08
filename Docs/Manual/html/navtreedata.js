@@ -31,7 +31,8 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ]
+        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -43,11 +44,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"class_killer_engine_1_1_level_manager.html#a3ca8cb0e378e7b8263c4669d9d8879e3",
-"class_killer_math_1_1_quaternion.html#a54757602be51abc9a5aa77d7a38c2c9a",
-"class_killer_physics_1_1_particle_force_registry.html#af186ea08495cda72d08afaf104f004f7",
-"classtinyxml2_1_1_x_m_l_element.html#a14c1bb77c39689838be01838d86ca872",
-"functions_func_x.html"
+"class_killer_engine_1_1_level.html#a3164b75538259d026c034927e977c43b",
+"class_killer_engine_1_1_texture_manager.html#a1652dbed32efe051c854e3c4b78da900",
+"class_killer_math_1_1_vector3.html#a27b674509751bfd070117b131e1850bf",
+"classrapidxml_1_1xml__attribute.html#a204438287a5ad384405584726a1d8559",
+"classtinyxml2_1_1_x_m_l_document.html#a5f1d330fad44c52f3d265338dd2a6dc2",
+"classtinyxml2_1_1_x_m_l_text.html#a1b2c1448f1a21299d0a7913f18b55206"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

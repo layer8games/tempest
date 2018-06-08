@@ -2,6 +2,8 @@ var class_killer_engine_1_1_win_program =
 [
     [ "~WinProgram", "class_killer_engine_1_1_win_program.html#a513faa7c01cdde8099b12dc9f6969f0e", null ],
     [ "WinProgram", "class_killer_engine_1_1_win_program.html#ab782c1fd306fb9660bbfe145e17bc513", null ],
+    [ "_SetPixelFormat", "class_killer_engine_1_1_win_program.html#a36d740d1294a365632304cb1b1625818", null ],
+    [ "_SetTempPixelFormat", "class_killer_engine_1_1_win_program.html#a2c088b973cfd9a11a4a0007825b1d90e", null ],
     [ "BufferSwap", "class_killer_engine_1_1_win_program.html#af2fbc4e18cf69cd925e9ec5272638594", null ],
     [ "ConvertKeyCodes", "class_killer_engine_1_1_win_program.html#a431120fc5e5d42454cc1bbb94f9088df", null ],
     [ "GetBottom", "class_killer_engine_1_1_win_program.html#abcabf2bc51a56f384a000d510fc15b93", null ],
@@ -15,5 +17,18 @@ var class_killer_engine_1_1_win_program =
     [ "Init", "class_killer_engine_1_1_win_program.html#a390478713355c57ea63b0923e59a3892", null ],
     [ "ProcessWndEvents", "class_killer_engine_1_1_win_program.html#afa6d9df181d956bb4a4c50d571be9d96", null ],
     [ "SetBackgroundColor", "class_killer_engine_1_1_win_program.html#a082614c6191c6df8eaadfe096e060d7f", null ],
-    [ "WndProc", "class_killer_engine_1_1_win_program.html#a28e31ea56cf9f3dd02693125f558c9e4", null ]
+    [ "WndProc", "class_killer_engine_1_1_win_program.html#a28e31ea56cf9f3dd02693125f558c9e4", null ],
+    [ "_bgColor", "class_killer_engine_1_1_win_program.html#a132d762887574c216c6ae74941c1295b", null ],
+    [ "_bottom", "class_killer_engine_1_1_win_program.html#a5689f1aa5f9f28f8f30b734254b4285b", null ],
+    [ "_hdc", "class_killer_engine_1_1_win_program.html#abd541c999159707c8b50192433298198", null ],
+    [ "_hglrc", "class_killer_engine_1_1_win_program.html#abe6325599a4f251e6023732e3240ef25", null ],
+    [ "_hwnd", "class_killer_engine_1_1_win_program.html#ab5afb17a7eacead71c04f159ff445521", null ],
+    [ "_isFullScreen", "class_killer_engine_1_1_win_program.html#aaacad996e56859ec2b79b77ad765b2e8", null ],
+    [ "_left", "class_killer_engine_1_1_win_program.html#a39d4a128b88724363a40e0e9e5ecca31", null ],
+    [ "_right", "class_killer_engine_1_1_win_program.html#abefba56c5b8b3c092dad75617add5779", null ],
+    [ "_top", "class_killer_engine_1_1_win_program.html#a76a1b573832cfba461f0ef8d61c66248", null ],
+    [ "_totalHeight", "class_killer_engine_1_1_win_program.html#add4781b314d60d5c2776c1aa878c60ca", null ],
+    [ "_totalWidth", "class_killer_engine_1_1_win_program.html#af9a0c14e58fe54fe87d7f0fa7abeb18e", null ],
+    [ "_wndClass", "class_killer_engine_1_1_win_program.html#a94ebe1b35bd46de0e8f78a13889af288", null ],
+    [ "_wndName", "class_killer_engine_1_1_win_program.html#a14bec8e61f5b59082b04cf90b409f104", null ]
 ];

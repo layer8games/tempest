@@ -1,4 +1,4 @@
-.TH "KillerEngine::ErrorManager" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::ErrorManager" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -34,6 +34,30 @@ KillerEngine::ErrorManager
 .ti -1c
 .RI "\fBErrorManager\fP (void)"
 .br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "U32 \fB_numErrors\fP"
+.br
+.RI "Total count of errors\&. "
+.ti -1c
+.RI "map< U32, \fBErrorCode\fP > \fB_errorCodes\fP"
+.br
+.RI "List of active error codes\&. "
+.ti -1c
+.RI "map< U32, string > \fB_errorMessages\fP"
+.br
+.RI "List of active error messages\&. "
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBErrorManager\fP > \fB_instance\fP = NULL"
+.br
+.RI "Global singleton instance\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 

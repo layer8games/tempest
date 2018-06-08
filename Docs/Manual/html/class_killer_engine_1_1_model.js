@@ -4,6 +4,8 @@ var class_killer_engine_1_1_model =
     [ "Model", "class_killer_engine_1_1_model.html#ad8cc8bf11424f2346749c16804559fb0", null ],
     [ "Model", "class_killer_engine_1_1_model.html#ab170bf881d4c362e7e611aa85b5fa7a2", null ],
     [ "~Model", "class_killer_engine_1_1_model.html#a0e850bac7d138c7ad5a33613dec940dc", null ],
+    [ "_SplitF32", "class_killer_engine_1_1_model.html#a5419100aec7030b4f9e8e5d8f40292c6", null ],
+    [ "_SplitU16", "class_killer_engine_1_1_model.html#aaa4658f6f0cbb83b54b603ac1b8d7222", null ],
     [ "AddIndex", "class_killer_engine_1_1_model.html#a51182dd6e517a11627cc17843eb985a5", null ],
     [ "AddIndex", "class_killer_engine_1_1_model.html#a790effc1339a84ea4c2af873d1ad707f", null ],
     [ "AddVertex", "class_killer_engine_1_1_model.html#a7b67da65594dc5689e71feb34d530489", null ],
@@ -17,5 +19,10 @@ var class_killer_engine_1_1_model =
     [ "SetIndex", "class_killer_engine_1_1_model.html#a43035c02a561d32c5154ac41d5d9062b", null ],
     [ "SetScale", "class_killer_engine_1_1_model.html#a4ae7fe037b17043b35c877e37a48b17f", null ],
     [ "SetShader", "class_killer_engine_1_1_model.html#ae222e9f6bf583a12c85defca9ac418e4", null ],
-    [ "VertexCount", "class_killer_engine_1_1_model.html#a9125e9d428f93cbf74da0a5567e9d73c", null ]
+    [ "VertexCount", "class_killer_engine_1_1_model.html#a9125e9d428f93cbf74da0a5567e9d73c", null ],
+    [ "_indices", "class_killer_engine_1_1_model.html#a70d50042516fb60b19774402cf805284", null ],
+    [ "_numVertices", "class_killer_engine_1_1_model.html#a6728d645816f0cc3e3bd363eb8944f79", null ],
+    [ "_scale", "class_killer_engine_1_1_model.html#a5b62b1a9a8fe97846b416e222d8aa5d2", null ],
+    [ "_shaderProgram", "class_killer_engine_1_1_model.html#a25f2f98059590c7eadd78ca64f104bd8", null ],
+    [ "_vertices", "class_killer_engine_1_1_model.html#a58ca11d51401f901505356385d592322", null ]
 ];

@@ -1,4 +1,4 @@
-.TH "rapidxml::xml_attribute< Ch >" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "rapidxml::xml_attribute< Ch >" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -24,6 +24,16 @@ Inherits \fBrapidxml::xml_base< Ch >\fP\&.
 .br
 .ti -1c
 .RI "\fBxml_attribute\fP< Ch > * \fBnext_attribute\fP (const Ch *\fBname\fP=0, std::size_t \fBname_size\fP=0, bool case_sensitive=true) const"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBxml_attribute\fP< Ch > * \fBm_prev_attribute\fP"
+.br
+.ti -1c
+.RI "\fBxml_attribute\fP< Ch > * \fBm_next_attribute\fP"
 .br
 .in -1c
 .SS "Friends"

@@ -1,6 +1,7 @@
 var classrapidxml_1_1xml__node =
 [
     [ "xml_node", "classrapidxml_1_1xml__node.html#a8bd9019960b90605a45998b661fb1b0e", null ],
+    [ "xml_node", "classrapidxml_1_1xml__node.html#af5f365f98059708e7180c0fbcf1412c5", null ],
     [ "append_attribute", "classrapidxml_1_1xml__node.html#a33ce3386f8c42dd4db658b75cbb6e6c4", null ],
     [ "append_node", "classrapidxml_1_1xml__node.html#a8696d098ecc9c4d2a646b43e91d58e31", null ],
     [ "document", "classrapidxml_1_1xml__node.html#af23d2d56182411e9261ca6974bfd767f", null ],
@@ -11,6 +12,7 @@ var classrapidxml_1_1xml__node =
     [ "last_attribute", "classrapidxml_1_1xml__node.html#a67db03d1568dc6891573210ddba61520", null ],
     [ "last_node", "classrapidxml_1_1xml__node.html#a524d427e32c72fba9de1857e02e82fa7", null ],
     [ "next_sibling", "classrapidxml_1_1xml__node.html#ad36aa4445ced578f93c3e06770cb3ef9", null ],
+    [ "operator=", "classrapidxml_1_1xml__node.html#aa9320e2dd58cfbe5fe4b43b9f0d8c788", null ],
     [ "prepend_attribute", "classrapidxml_1_1xml__node.html#a8b62ee76489faf8e2d1210869d547684", null ],
     [ "prepend_node", "classrapidxml_1_1xml__node.html#ae86e92908c3eab40bbed8216e4f3f3cb", null ],
     [ "previous_sibling", "classrapidxml_1_1xml__node.html#aebcc42042ded78fb7020e2783f7d5426", null ],
@@ -23,5 +25,12 @@ var classrapidxml_1_1xml__node =
     [ "remove_last_node", "classrapidxml_1_1xml__node.html#a9182512e948ec451a83f116cce7c7674", null ],
     [ "remove_node", "classrapidxml_1_1xml__node.html#a98289923eb9e8889418a9eb0207ea35c", null ],
     [ "type", "classrapidxml_1_1xml__node.html#a5f91729128856b0aaab598d4364ace60", null ],
-    [ "type", "classrapidxml_1_1xml__node.html#a499bbc9300c1b06821d5c08b24164c68", null ]
+    [ "type", "classrapidxml_1_1xml__node.html#a499bbc9300c1b06821d5c08b24164c68", null ],
+    [ "m_first_attribute", "classrapidxml_1_1xml__node.html#a5f7caf8d72d8fae634be6eb744ad8538", null ],
+    [ "m_first_node", "classrapidxml_1_1xml__node.html#a3c2a0b286724865b5c000e3333f60d4a", null ],
+    [ "m_last_attribute", "classrapidxml_1_1xml__node.html#ad82c1bdd1a5c94927cf8a627f18953b9", null ],
+    [ "m_last_node", "classrapidxml_1_1xml__node.html#adc211d26cfea2ba6fb51adb27694ff09", null ],
+    [ "m_next_sibling", "classrapidxml_1_1xml__node.html#a202e84dfdd34cb65557b64e31b7e205a", null ],
+    [ "m_prev_sibling", "classrapidxml_1_1xml__node.html#a571f24c86107f8442f46a514a7cc5d0d", null ],
+    [ "m_type", "classrapidxml_1_1xml__node.html#a33912a5ceef221d662bbac67c70e1397", null ]
 ];

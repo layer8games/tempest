@@ -1,4 +1,4 @@
-.TH "tinyxml2::XMLPrinter" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "tinyxml2::XMLPrinter" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -149,6 +149,51 @@ Inherits \fBtinyxml2::XMLVisitor\fP\&.
 .br
 .ti -1c
 .RI "\fBDynArray\fP< const char *, 10 > \fB_stack\fP"
+.br
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBENTITY_RANGE\fP = 64, \fBBUF_SIZE\fP = 200 }"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBPrintString\fP (const char *, bool restrictedEntitySet)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fB_firstElement\fP"
+.br
+.ti -1c
+.RI "FILE * \fB_fp\fP"
+.br
+.ti -1c
+.RI "int \fB_depth\fP"
+.br
+.ti -1c
+.RI "int \fB_textDepth\fP"
+.br
+.ti -1c
+.RI "bool \fB_processEntities\fP"
+.br
+.ti -1c
+.RI "bool \fB_compactMode\fP"
+.br
+.ti -1c
+.RI "bool \fB_entityFlag\fP [ENTITY_RANGE]"
+.br
+.ti -1c
+.RI "bool \fB_restrictedEntityFlag\fP [ENTITY_RANGE]"
+.br
+.ti -1c
+.RI "\fBDynArray\fP< char, 20 > \fB_buffer\fP"
 .br
 .in -1c
 .SH "Detailed Description"

@@ -90,6 +90,9 @@ $(document).ready(function(){initNavTree('classtinyxml2_1_1_x_m_l_node.html','')
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="classtinyxml2_1_1_x_m_l_node-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -291,6 +294,36 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_parseLineNum</b></td>
 <tr class="memitem:ac2d5cc463a6c95ec5907d57a119c56da"><td class="memItemLeft" align="right" valign="top"><a id="ac2d5cc463a6c95ec5907d57a119c56da"></a>
 void *&#160;</td><td class="memItemRight" valign="bottom"><b>_userData</b></td></tr>
 <tr class="separator:ac2d5cc463a6c95ec5907d57a119c56da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a9546e242b6a4f232415befb1cfe0fdd4"><td class="memItemLeft" align="right" valign="top"><a id="a9546e242b6a4f232415befb1cfe0fdd4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Unlink</b> (<a class="el" href="classtinyxml2_1_1_x_m_l_node.html">XMLNode</a> *child)</td></tr>
+<tr class="separator:a9546e242b6a4f232415befb1cfe0fdd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fd4d2e88fb22d46b5b1474b5b786e35"><td class="memItemLeft" align="right" valign="top"><a id="a0fd4d2e88fb22d46b5b1474b5b786e35"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>InsertChildPreamble</b> (<a class="el" href="classtinyxml2_1_1_x_m_l_node.html">XMLNode</a> *insertThis) const</td></tr>
+<tr class="separator:a0fd4d2e88fb22d46b5b1474b5b786e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e61e7c5c69c1f92e2aa4276ad18d775"><td class="memItemLeft" align="right" valign="top"><a id="a4e61e7c5c69c1f92e2aa4276ad18d775"></a>
+const <a class="el" href="classtinyxml2_1_1_x_m_l_element.html">XMLElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ToElementWithName</b> (const char *name) const</td></tr>
+<tr class="separator:a4e61e7c5c69c1f92e2aa4276ad18d775"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78be01384518a969da905548f318d75b"><td class="memItemLeft" align="right" valign="top"><a id="a78be01384518a969da905548f318d75b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>XMLNode</b> (const <a class="el" href="classtinyxml2_1_1_x_m_l_node.html">XMLNode</a> &amp;)</td></tr>
+<tr class="separator:a78be01384518a969da905548f318d75b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade79231d908e1f21862819e00e56ab6e"><td class="memItemLeft" align="right" valign="top"><a id="ade79231d908e1f21862819e00e56ab6e"></a>
+<a class="el" href="classtinyxml2_1_1_x_m_l_node.html">XMLNode</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classtinyxml2_1_1_x_m_l_node.html">XMLNode</a> &amp;)</td></tr>
+<tr class="separator:ade79231d908e1f21862819e00e56ab6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:af86facb14f441c2b91f3518f106dc943"><td class="memItemLeft" align="right" valign="top"><a id="af86facb14f441c2b91f3518f106dc943"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>DeleteNode</b> (<a class="el" href="classtinyxml2_1_1_x_m_l_node.html">XMLNode</a> *node)</td></tr>
+<tr class="separator:af86facb14f441c2b91f3518f106dc943"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a4e3ff179bc312480b6bc3e57014834f7"><td class="memItemLeft" align="right" valign="top"><a id="a4e3ff179bc312480b6bc3e57014834f7"></a>
+<a class="el" href="classtinyxml2_1_1_mem_pool.html">MemPool</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_memPool</b></td></tr>
+<tr class="separator:a4e3ff179bc312480b6bc3e57014834f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -660,7 +693,7 @@ Text:       the text string
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Projects/Killer_Engine/Headers/TinyXML/<a class="el" href="tinyxml2_8h_source.html">tinyxml2.h</a></li>
+<li>F:/Projects/Killer_Engine/Headers/TinyXML/<a class="el" href="tinyxml2_8h_source.html">tinyxml2.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

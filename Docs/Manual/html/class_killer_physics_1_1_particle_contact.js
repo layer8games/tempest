@@ -2,6 +2,8 @@ var class_killer_physics_1_1_particle_contact =
 [
     [ "ParticleContact", "class_killer_physics_1_1_particle_contact.html#a9a71502969faa58c20227dfe87b11571", null ],
     [ "~ParticleContact", "class_killer_physics_1_1_particle_contact.html#ac68625e0f02b2ef9aba065b6b41a7f3b", null ],
+    [ "_ResolveImpulseVelocity", "class_killer_physics_1_1_particle_contact.html#a55436c2df3012577e3309892c2320542", null ],
+    [ "_ResolveInterpenetration", "class_killer_physics_1_1_particle_contact.html#aea6415fc391353a06c3e4ab94745ab5c", null ],
     [ "CalculateSeparatingVelocity", "class_killer_physics_1_1_particle_contact.html#a299ebc97e10089b1187493d8abdab264", null ],
     [ "GetParticleOne", "class_killer_physics_1_1_particle_contact.html#a0bc05c74b63475265e44e5ec80d02326", null ],
     [ "GetParticleTwo", "class_killer_physics_1_1_particle_contact.html#a774160911b12e78011ec14fcf046d61b", null ],
@@ -12,5 +14,13 @@ var class_killer_physics_1_1_particle_contact =
     [ "SetContacts", "class_killer_physics_1_1_particle_contact.html#ad30e5069781eed1333c3cc159b0a3ecb", null ],
     [ "SetContacts", "class_killer_physics_1_1_particle_contact.html#ab76da391eaeda1f0763e14f27e4d1c2c", null ],
     [ "SetPenetration", "class_killer_physics_1_1_particle_contact.html#a4b91d359bd106c08bb66b338d4df29d6", null ],
-    [ "SetRestitution", "class_killer_physics_1_1_particle_contact.html#af555424dbbd3454b108e980b777c5cae", null ]
+    [ "SetRestitution", "class_killer_physics_1_1_particle_contact.html#af555424dbbd3454b108e980b777c5cae", null ],
+    [ "_contactNormal2D", "class_killer_physics_1_1_particle_contact.html#ae1dcfdf549cb154a23e0905e43845941", null ],
+    [ "_contactNormal3D", "class_killer_physics_1_1_particle_contact.html#ab32a9bcf334a752c81a5f09689692ade", null ],
+    [ "_particle2DMovements", "class_killer_physics_1_1_particle_contact.html#ab7007f149fad279cc7c0d33fbf1bb37e", null ],
+    [ "_particle3DMovements", "class_killer_physics_1_1_particle_contact.html#ab53819c8f53d4c80d75733c0f584eab9", null ],
+    [ "_particles2D", "class_killer_physics_1_1_particle_contact.html#af8065e0081202c2e14ecd8bae5b08d59", null ],
+    [ "_particles3D", "class_killer_physics_1_1_particle_contact.html#a7230f71f8ad328fb78d263bcea94eb0f", null ],
+    [ "_penetration", "class_killer_physics_1_1_particle_contact.html#ab0b7ce6ac33a66778369d8179d367f41", null ],
+    [ "_restitution", "class_killer_physics_1_1_particle_contact.html#a311dd286b66d5931e83cc44e35341b48", null ]
 ];

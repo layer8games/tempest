@@ -89,6 +89,8 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_sprite_rendere
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_sprite_renderer-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">KillerEngine::SpriteRenderer Class Reference</div>  </div>
@@ -133,10 +135,61 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a41b12df10cb48dac608bdacb0a20c15b"><td class="memItemLeft" align="right" valign="top"><a id="a41b12df10cb48dac608bdacb0a20c15b"></a>
 static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_sprite_renderer.html">SpriteRenderer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Instance</b> (void)</td></tr>
 <tr class="separator:a41b12df10cb48dac608bdacb0a20c15b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aeb59da1ae45cf84195ca8109edc4983c"><td class="memItemLeft" align="right" valign="top"><a id="aeb59da1ae45cf84195ca8109edc4983c"></a>
+U32&#160;</td><td class="memItemRight" valign="bottom"><b>_maxBatchSize</b></td></tr>
+<tr class="separator:aeb59da1ae45cf84195ca8109edc4983c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57916b1477518f8ef1d4901970499d49"><td class="memItemLeft" align="right" valign="top"><a id="a57916b1477518f8ef1d4901970499d49"></a>
+U32&#160;</td><td class="memItemRight" valign="bottom"><b>_currentBatchSize</b></td></tr>
+<tr class="separator:a57916b1477518f8ef1d4901970499d49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bade75f12b826543603d4adbff67cf5"><td class="memItemLeft" align="right" valign="top"><a id="a6bade75f12b826543603d4adbff67cf5"></a>
+std::vector&lt; F32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_vertices</b></td></tr>
+<tr class="separator:a6bade75f12b826543603d4adbff67cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a236959642737af0f7080cae8c5c4a4a3"><td class="memItemLeft" align="right" valign="top"><a id="a236959642737af0f7080cae8c5c4a4a3"></a>
+std::vector&lt; F32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_colors</b></td></tr>
+<tr class="separator:a236959642737af0f7080cae8c5c4a4a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c7bcdaa4bfc2f633c542254ba659109"><td class="memItemLeft" align="right" valign="top"><a id="a7c7bcdaa4bfc2f633c542254ba659109"></a>
+std::vector&lt; F32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_dimensions</b></td></tr>
+<tr class="separator:a7c7bcdaa4bfc2f633c542254ba659109"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7c94d19d60b44e2a119028b5447de61"><td class="memItemLeft" align="right" valign="top"><a id="af7c94d19d60b44e2a119028b5447de61"></a>
+std::vector&lt; F32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_bottomTop</b></td></tr>
+<tr class="separator:af7c94d19d60b44e2a119028b5447de61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0e826f11747c6430d1333e1d79c101d"><td class="memItemLeft" align="right" valign="top"><a id="ad0e826f11747c6430d1333e1d79c101d"></a>
+std::vector&lt; F32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_leftRight</b></td></tr>
+<tr class="separator:ad0e826f11747c6430d1333e1d79c101d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeaaa78a580432a48c0d16b84f486c4d"><td class="memItemLeft" align="right" valign="top"><a id="adeaaa78a580432a48c0d16b84f486c4d"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_renderingProgramColor</b></td></tr>
+<tr class="separator:adeaaa78a580432a48c0d16b84f486c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59edbc0ad5807db1bf21cd831d6d3aac"><td class="memItemLeft" align="right" valign="top"><a id="a59edbc0ad5807db1bf21cd831d6d3aac"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_renderingProgramTexture</b></td></tr>
+<tr class="separator:a59edbc0ad5807db1bf21cd831d6d3aac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a975c0d9647e032d270f7affaa0fdb2cc"><td class="memItemLeft" align="right" valign="top"><a id="a975c0d9647e032d270f7affaa0fdb2cc"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_vertexArrayObject</b> [NUM_VOA]</td></tr>
+<tr class="separator:a975c0d9647e032d270f7affaa0fdb2cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4fcb9aaabdaea1c7466b18cfe10fcad"><td class="memItemLeft" align="right" valign="top"><a id="ae4fcb9aaabdaea1c7466b18cfe10fcad"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_shader</b></td></tr>
+<tr class="separator:ae4fcb9aaabdaea1c7466b18cfe10fcad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b3c392cd2ff912e130ccf8912e53126"><td class="memItemLeft" align="right" valign="top"><a id="a7b3c392cd2ff912e130ccf8912e53126"></a>
+U32&#160;</td><td class="memItemRight" valign="bottom"><b>_shaderSetCount</b></td></tr>
+<tr class="separator:a7b3c392cd2ff912e130ccf8912e53126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fe80594914283a75cf1f7c5fde00ed1"><td class="memItemLeft" align="right" valign="top"><a id="a0fe80594914283a75cf1f7c5fde00ed1"></a>
+U32&#160;</td><td class="memItemRight" valign="bottom"><b>_drawCount</b></td></tr>
+<tr class="separator:a0fe80594914283a75cf1f7c5fde00ed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a860081de7557a84cbe88ac427189b76d"><td class="memItemLeft" align="right" valign="top"><a id="a860081de7557a84cbe88ac427189b76d"></a>
+static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_sprite_renderer.html">SpriteRenderer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_instance</b> {NULL}</td></tr>
+<tr class="separator:a860081de7557a84cbe88ac427189b76d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8bf8769f37d1a8f826fb1115779eeb4"><td class="memItemLeft" align="right" valign="top"><a id="ae8bf8769f37d1a8f826fb1115779eeb4"></a>
+static const U32&#160;</td><td class="memItemRight" valign="bottom"><b>NUM_VOA</b> = 1</td></tr>
+<tr class="separator:ae8bf8769f37d1a8f826fb1115779eeb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_sprite_renderer_8h_source.html">SpriteRenderer.h</a></li>
-<li>C:/Projects/Killer_Engine/Implementations/SpriteRenderer.cpp</li>
+<li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_sprite_renderer_8h_source.html">SpriteRenderer.h</a></li>
+<li>F:/Projects/Killer_Engine/Implementations/SpriteRenderer.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

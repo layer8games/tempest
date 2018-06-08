@@ -1,4 +1,4 @@
-.TH "KillerPhysics::ParticleSpringForce" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::ParticleSpringForce" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -34,6 +34,25 @@ Inherits \fBKillerPhysics::ParticleForceGenerator\fP\&.
 .br
 .ti -1c
 .RI "void \fBSetRestLength\fP (real length)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "shared_ptr< \fBParticle2D\fP > \fB_otherEnd2D\fP"
+.br
+.ti -1c
+.RI "shared_ptr< \fBParticle3D\fP > \fB_otherEnd3D\fP"
+.br
+.ti -1c
+.RI "real \fB_springConstant\fP"
+.br
+.ti -1c
+.RI "real \fB_restLength\fP"
+.br
+.ti -1c
+.RI "bool \fB_isBungie\fP"
 .br
 .in -1c
 

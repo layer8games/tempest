@@ -23,5 +23,6 @@ var class_killer_math_1_1_quaternion =
     [ "operator*=", "class_killer_math_1_1_quaternion.html#ac7d8a38448db1f57296daa644e62541f", null ],
     [ "operator/", "class_killer_math_1_1_quaternion.html#a9d131d99e89806c24a839a888748fc2b", null ],
     [ "operator/=", "class_killer_math_1_1_quaternion.html#a95c203a29038de4aa9d8e77d663b4aa2", null ],
-    [ "Opposite", "class_killer_math_1_1_quaternion.html#a0b2c87f482fda6a06321a7d04c99e0b4", null ]
+    [ "Opposite", "class_killer_math_1_1_quaternion.html#a0b2c87f482fda6a06321a7d04c99e0b4", null ],
+    [ "_q", "class_killer_math_1_1_quaternion.html#a57103a12d4cd282c010c60d8b9c42aeb", null ]
 ];

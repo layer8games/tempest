@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['engine',['Engine',['../class_killer_engine_1_1_engine.html',1,'KillerEngine']]],
-  ['environmentobject',['EnvironmentObject',['../class_killer_engine_1_1_environment_object.html',1,'KillerEngine']]],
-  ['errormanager',['ErrorManager',['../class_killer_engine_1_1_error_manager.html',1,'KillerEngine']]]
+  ['camera',['Camera',['../class_killer_engine_1_1_camera.html',1,'KillerEngine']]],
+  ['characterdata',['CharacterData',['../struct_killer_engine_1_1_character_data.html',1,'KillerEngine']]],
+  ['color',['Color',['../class_killer_engine_1_1_color.html',1,'KillerEngine']]],
+  ['controller',['Controller',['../class_killer_engine_1_1_controller.html',1,'KillerEngine']]]
 ];

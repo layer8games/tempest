@@ -1,17 +1,24 @@
 var classtinyxml2_1_1_x_m_l_element =
 [
+    [ "BUF_SIZE", "classtinyxml2_1_1_x_m_l_element.html#a8841e5b25f259c9b62d5d1ac92ad5726a21625cc023a5f905272d3f116cb9143e", null ],
     [ "OPEN", "classtinyxml2_1_1_x_m_l_element.html#aa5bc577a28e0edcbd54ca4ed59f414d9a78cf277c55b4655c86458dfecb11d349", null ],
     [ "CLOSED", "classtinyxml2_1_1_x_m_l_element.html#aa5bc577a28e0edcbd54ca4ed59f414d9aa2f1f384020d2d4538ad2ec84930a028", null ],
     [ "CLOSING", "classtinyxml2_1_1_x_m_l_element.html#aa5bc577a28e0edcbd54ca4ed59f414d9aa2857344b98a931536c443cd0cadc4b7", null ],
+    [ "XMLElement", "classtinyxml2_1_1_x_m_l_element.html#a52484940e20f3734e6edc5e5c3af2dbc", null ],
+    [ "~XMLElement", "classtinyxml2_1_1_x_m_l_element.html#aa8ac97860674d9f4d0e95383ceac134c", null ],
+    [ "XMLElement", "classtinyxml2_1_1_x_m_l_element.html#a1aa8ab977a1799bf118efb158248351b", null ],
     [ "Accept", "classtinyxml2_1_1_x_m_l_element.html#a3ea8a40e788fb9ad876c28a32932c6d5", null ],
     [ "Attribute", "classtinyxml2_1_1_x_m_l_element.html#a70e49ed60b11212ae35f7e354cfe1de9", null ],
     [ "BoolAttribute", "classtinyxml2_1_1_x_m_l_element.html#a53eda26131e1ad1031ef8ec8adb51bd8", null ],
     [ "BoolText", "classtinyxml2_1_1_x_m_l_element.html#a68569f59f6382bcea7f5013ec59736d2", null ],
     [ "ClosingType", "classtinyxml2_1_1_x_m_l_element.html#ac820806b6c14af6833dcbcf0957b6d61", null ],
+    [ "CreateAttribute", "classtinyxml2_1_1_x_m_l_element.html#a49a3007807f58a8d68884eba2c2160d1", null ],
     [ "DeleteAttribute", "classtinyxml2_1_1_x_m_l_element.html#aebd45aa7118964c30b32fe12e944628a", null ],
     [ "DoubleAttribute", "classtinyxml2_1_1_x_m_l_element.html#a10a90c505aea716bf073eea1c97f33b5", null ],
     [ "DoubleText", "classtinyxml2_1_1_x_m_l_element.html#a81b1ff0cf2f2cd09be8badc08b39a2b7", null ],
     [ "FindAttribute", "classtinyxml2_1_1_x_m_l_element.html#a2dcd4d5d6fb63396cd2f257c318b42c4", null ],
+    [ "FindAttribute", "classtinyxml2_1_1_x_m_l_element.html#ac2415a711ab18516cd7a8eb8eea01cd6", null ],
+    [ "FindOrCreateAttribute", "classtinyxml2_1_1_x_m_l_element.html#a4463788edbc3130f5f68eb732b9f323d", null ],
     [ "FirstAttribute", "classtinyxml2_1_1_x_m_l_element.html#a3e191704c8d499906ec11fe2f60c6686", null ],
     [ "FloatAttribute", "classtinyxml2_1_1_x_m_l_element.html#ab1f4be2332e27dc640e9b6abd01d64dd", null ],
     [ "FloatText", "classtinyxml2_1_1_x_m_l_element.html#a45444eb21f99ca46101545992dc2e927", null ],
@@ -21,6 +28,8 @@ var classtinyxml2_1_1_x_m_l_element =
     [ "IntAttribute", "classtinyxml2_1_1_x_m_l_element.html#a95a89b13bb14a2d4655e2b5b406c00d4", null ],
     [ "IntText", "classtinyxml2_1_1_x_m_l_element.html#a37b0636adebb8a1a1bc965f60824cb3e", null ],
     [ "Name", "classtinyxml2_1_1_x_m_l_element.html#a63e057fb5baee1dd29f323cb85907b35", null ],
+    [ "operator=", "classtinyxml2_1_1_x_m_l_element.html#ae300366701a54d4b6d1c287d9b5209a7", null ],
+    [ "ParseAttributes", "classtinyxml2_1_1_x_m_l_element.html#aed7b1dc1e5862824f9995687b05fa6eb", null ],
     [ "ParseDeep", "classtinyxml2_1_1_x_m_l_element.html#ad8a944409ae94398fa27a57f11808bd2", null ],
     [ "QueryAttribute", "classtinyxml2_1_1_x_m_l_element.html#a042fc30504347b84a56cf863ad528a4f", null ],
     [ "QueryAttribute", "classtinyxml2_1_1_x_m_l_element.html#a187e8b686fbe071732aea2e2ee766f86", null ],
@@ -61,5 +70,7 @@ var classtinyxml2_1_1_x_m_l_element =
     [ "ToElement", "classtinyxml2_1_1_x_m_l_element.html#afeb353047ab8532191709dcaef07337e", null ],
     [ "UnsignedAttribute", "classtinyxml2_1_1_x_m_l_element.html#afea43a1d4aa33e3703ddee5fc9adc26c", null ],
     [ "UnsignedText", "classtinyxml2_1_1_x_m_l_element.html#a49bad014ffcc17b0b6119d5b2c97dfb5", null ],
-    [ "XMLDocument", "classtinyxml2_1_1_x_m_l_element.html#a4eee3bda60c60a30e4e8cd4ea91c4c6e", null ]
+    [ "XMLDocument", "classtinyxml2_1_1_x_m_l_element.html#a4eee3bda60c60a30e4e8cd4ea91c4c6e", null ],
+    [ "_closingType", "classtinyxml2_1_1_x_m_l_element.html#ad6dbc2ecd157801ddc9bba7c3572796b", null ],
+    [ "_rootAttribute", "classtinyxml2_1_1_x_m_l_element.html#ad067115a9f42b2df1fcdf3e0355f2789", null ]
 ];

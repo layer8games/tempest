@@ -145,10 +145,10 @@ namespace KillerEngine
 		void Set(F32 r, F32 g, F32 b);
 
 	private:
-		F32 _red;
-		F32 _green;
-		F32 _blue;
-		F32 _alpha;
+		F32 _red;	///< Red Value
+		F32 _green;	///< Green Value
+		F32 _blue;	///< Blue Value
+		F32 _alpha;	///< Alpha Value
 
 	};
 }//End namespace

@@ -1,4 +1,4 @@
-.TH "KillerEngine::Font" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Font" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,9 +6,14 @@ KillerEngine::Font
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <Font\&.h>\fP
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fBFont\fP (void)"
+.br
 .ti -1c
 .RI "\fBFont\fP (const \fBFont\fP &f)"
 .br
@@ -25,7 +30,7 @@ KillerEngine::Font
 .RI "\fBCharacterData\fP \fBGetDataForCharacter\fP (char c)"
 .br
 .ti -1c
-.RI "std::map< U32, \fBCharacterData\fP > \fBGetDataLevel\fP (void) const"
+.RI "std::map< U32, \fBCharacterData\fP > \fBGetCharacterData\fP (void) const"
 .br
 .ti -1c
 .RI "std::shared_ptr< \fBSprite\fP > \fBCreateCharacter\fP (char character)"
@@ -55,6 +60,148 @@ KillerEngine::Font
 .RI "const U32 \fBGetTextureID\fP (void) const"
 .br
 .in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fB_AddNewCharacterData\fP (string id, string x, string y, string width, string height, string xoffset, string yoffset, string xadvance)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "U32 \fB_textureID\fP"
+.br
+.RI "ID for \fBTexture\fP loaded into the \fBTextureManager\fP\&. "
+.ti -1c
+.RI "string \fB_fontFile\fP"
+.br
+.RI "File path to the \&.fnt file the texture uses\&. "
+.ti -1c
+.RI "string \fB_fontName\fP"
+.br
+.RI "Name of the font\&. Not really used right now\&. "
+.ti -1c
+.RI "U32 \fB_headerSize\fP = 26"
+.br
+.RI "Size of the header section of the \&.fnt file\&. Soon to be deprectated\&. "
+.ti -1c
+.RI "std::map< U32, \fBCharacterData\fP > \fB_fontCharData\fP"
+.br
+.RI "All data from \&.fnt file stored in a RenderText can use for placement\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+The \fBFont\fP class is used to open a \&.fnt file, extract the needed character data, and then save that for text processing later on\&.
+.PP
+CreateCharacter is a CharSprite Factory\&. This may be important to know\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Font::Font (void)"
+Default Constructor\&. No special actions taken\&. 
+.SS "Font::Font (const \fBFont\fP & f)"
+Copy Constructor\&. Calls \fBGetTextureID()\fP, \fBGetFile()\fP and \fBGetName()\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP \fBFont\fP&: \fBFont\fP to be copied\&. 
+.RE
+.PP
+
+.SS "Font::Font (const \fBFont\fP * f)"
+Copy Constructor\&. Calls \fBGetTextureID()\fP, \fBGetFile()\fP and \fBGetName()\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP Font*: \fBFont\fP to be copied\&. 
+.RE
+.PP
+
+.SS "Font::Font (U32 tID)\fC [explicit]\fP"
+Single Value Constructor\&. No special actions taken\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItID\fP U32: \fBTexture\fP ID to be set\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Font::_AddNewCharacterData (string id, string x, string y, string width, string height, string xoffset, string yoffset, string xadvance)\fC [private]\fP"
+Used to add new data to _fontCharData\&. All ARGS are string that are cast into U32 values for consumption by engine\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP string: Single char used as ASCII id\&. 
+.br
+\fIx\fP string: x coord in \fBTexture\fP for character\&. 
+.br
+\fIy\fP string: y coord in \fBTexture\fP for character\&. 
+.br
+\fIwidth\fP string: Width of character in \fBTexture\fP 
+.br
+\fIheight\fP string: Height of character in \fBTexture\fP\&. 
+.br
+\fIxoffset\fP string: Amount of space on the x axis that should be padded into this charcter to look right when rendered 
+.br
+\fIyoffset\fP string: Amount of space on the y axis that should be padded into this character to look right when rendered 
+.br
+\fIxadvance\fP string: Amount of space this character needs to its right to look right when rendered\&. 
+.RE
+.PP
+
+.SS "std::map<U32, \fBCharacterData\fP> KillerEngine::Font::GetCharacterData (void) const\fC [inline]\fP"
+Returns the map containing all data for all characters found in the loaded font\&. The ID of each character is found in the \&.fnt file and is the ASCII int value of a char 
+.SS "const string KillerEngine::Font::GetFile (void) const\fC [inline]\fP"
+Returns the file path to the current \&.fnt file the font is using\&. 
+.SS "const string KillerEngine::Font::GetName (void) const\fC [inline]\fP"
+Returns the current name of the font\&. Not used in any major way\&. 
+.SS "const U32 KillerEngine::Font::GetTextureID (void) const\fC [inline]\fP"
+Returns the current texture ID for the texture\&. 
+.SS "void Font::InitFont (string fontName, string fontFile)"
+Initializes all data needed to be able to create RenderedCharacters as part of a \fBRenderedText\fP\&. Set's the fontName name, which is currently not used\&. Later this will be used with a manager to class to find the font you need\&. Opens fontFile, parses the file and extracts the needed character data\&. The only currently supported file format is a \&.fnt file\&. This class has only been tested with \&.fnt files generated by BMFont tool found at http://www.angelcode.com/products/bmfont/ 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfontName\fP string\&. Name of the font you are creating\&. 
+.br
+\fIfontFile\fP string\&. File Path to the \&.fnt file that is used to get the character data needed\&. 
+.RE
+.PP
+
+.SS "\fBFont\fP & Font::operator= (const \fBFont\fP * font)"
+Copies \fBFont\fP pointer\&. Calls \fBGetTextureID()\fP, \fBGetFile()\fP, \fBGetName()\fP and \fBGetCharacterData()\fP\&. 
+.SS "\fBFont\fP & Font::operator= (const \fBFont\fP & font)"
+Copies \fBFont\fP reference\&. Calls \fBGetTextureID()\fP, \fBGetFile()\fP, \fBGetName()\fP and \fBGetCharacterData()\fP\&. 
+.SS "void KillerEngine::Font::SetFile (string fontFile)\fC [inline]\fP"
+Set's the file that the font will read its data from\&. Does not re-initialize the font\&. TODO: Make sure that the font is re-initialized when this is called\&. TODO: Check that the file that is sent is a \&.fnt file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfontFile\fP string: File path to \&.fnt file\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Font::SetName (string fontName)\fC [inline]\fP"
+Set's the name of font\&. Not used actively in any major way\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfontName\fP string: New name of the font\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Font::SetTexture (U32 tID)\fC [inline]\fP"
+Set's the texture ID for the current font\&. This does not re-initialize the font\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItID\fP U32: Id from the \fBTextureManager\fP for the new texture\&. 
+.RE
+.PP
+
 
 .SH "Author"
 .PP 

@@ -89,6 +89,8 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_camera.html','
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_camera-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">KillerEngine::Camera Class Reference</div>  </div>
@@ -138,6 +140,36 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetUp</b> (GLuint sha
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:acd146aa1ed5410026e7c0de133402bf1"><td class="memItemLeft" align="right" valign="top">static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_camera.html">Camera</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_camera.html#acd146aa1ed5410026e7c0de133402bf1">Instance</a> (void)</td></tr>
 <tr class="separator:acd146aa1ed5410026e7c0de133402bf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aadd0f8158d4c3246d0b2a0789628da74"><td class="memItemLeft" align="right" valign="top"><a id="aadd0f8158d4c3246d0b2a0789628da74"></a>
+<a class="el" href="class_killer_engine_1_1_color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_camera.html#aadd0f8158d4c3246d0b2a0789628da74">_background</a></td></tr>
+<tr class="memdesc:aadd0f8158d4c3246d0b2a0789628da74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Background color of current level. <br /></td></tr>
+<tr class="separator:aadd0f8158d4c3246d0b2a0789628da74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a240f5a55f9731c92ccc5469b9e57398e"><td class="memItemLeft" align="right" valign="top"><a id="a240f5a55f9731c92ccc5469b9e57398e"></a>
+<a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_camera.html#a240f5a55f9731c92ccc5469b9e57398e">_pos</a></td></tr>
+<tr class="memdesc:a240f5a55f9731c92ccc5469b9e57398e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position of <a class="el" href="class_killer_engine_1_1_camera.html">Camera</a> in world space. <br /></td></tr>
+<tr class="separator:a240f5a55f9731c92ccc5469b9e57398e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5be1fe2534fdcc601897b080507244e8"><td class="memItemLeft" align="right" valign="top"><a id="a5be1fe2534fdcc601897b080507244e8"></a>
+<a class="el" href="class_killer_math_1_1_matrix.html">KM::Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_camera.html#a5be1fe2534fdcc601897b080507244e8">_projection</a></td></tr>
+<tr class="memdesc:a5be1fe2534fdcc601897b080507244e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Projection Matrix (Orthographic or Perspective). Not used. <br /></td></tr>
+<tr class="separator:a5be1fe2534fdcc601897b080507244e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a607a7ff4f0659f3a5a6a832ba3883ca0"><td class="memItemLeft" align="right" valign="top"><a id="a607a7ff4f0659f3a5a6a832ba3883ca0"></a>
+<a class="el" href="class_killer_math_1_1_matrix.html">KM::Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_camera.html#a607a7ff4f0659f3a5a6a832ba3883ca0">_translation</a></td></tr>
+<tr class="memdesc:a607a7ff4f0659f3a5a6a832ba3883ca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Amount of Translation needed to reflect Position. Should be opposite of _pos. <br /></td></tr>
+<tr class="separator:a607a7ff4f0659f3a5a6a832ba3883ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16706888f0f7c81145af7d1e138a251c"><td class="memItemLeft" align="right" valign="top"><a id="a16706888f0f7c81145af7d1e138a251c"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_camera.html#a16706888f0f7c81145af7d1e138a251c">_currentShader</a></td></tr>
+<tr class="memdesc:a16706888f0f7c81145af7d1e138a251c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fully compiled OpenGL <a class="el" href="class_killer_engine_1_1_shader.html">Shader</a> Program. <br /></td></tr>
+<tr class="separator:a16706888f0f7c81145af7d1e138a251c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a39196e3c70e62de29ae259e652fdf03f"><td class="memItemLeft" align="right" valign="top"><a id="a39196e3c70e62de29ae259e652fdf03f"></a>
+static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_camera.html">Camera</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_camera.html#a39196e3c70e62de29ae259e652fdf03f">_instance</a> {NULL}</td></tr>
+<tr class="memdesc:a39196e3c70e62de29ae259e652fdf03f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singleton global instance. <br /></td></tr>
+<tr class="separator:a39196e3c70e62de29ae259e652fdf03f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="acd146aa1ed5410026e7c0de133402bf1"></a>
@@ -245,8 +277,8 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_camera_8h_source.html">Camera.h</a></li>
-<li>C:/Projects/Killer_Engine/Implementations/Camera.cpp</li>
+<li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_camera_8h_source.html">Camera.h</a></li>
+<li>F:/Projects/Killer_Engine/Implementations/Camera.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

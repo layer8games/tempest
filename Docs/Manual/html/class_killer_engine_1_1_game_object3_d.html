@@ -88,6 +88,8 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_game_object3_d
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_game_object3_d-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">KillerEngine::GameObject3D Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -175,10 +177,43 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>LoadModel</b> (string
 <tr class="memitem:aa6e1ec03b6ba130b7f5903d09676760b"><td class="memItemLeft" align="right" valign="top"><a id="aa6e1ec03b6ba130b7f5903d09676760b"></a>
 const <a class="el" href="class_killer_math_1_1_matrix.html">KM::Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetModelView</b> (void) const</td></tr>
 <tr class="separator:aa6e1ec03b6ba130b7f5903d09676760b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a7a00cabc4cd3896b57f62a123ef878de"><td class="memItemLeft" align="right" valign="top"><a id="a7a00cabc4cd3896b57f62a123ef878de"></a>
+U32&#160;</td><td class="memItemRight" valign="bottom"><b>_ID</b></td></tr>
+<tr class="separator:a7a00cabc4cd3896b57f62a123ef878de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1102b6c6367ec908ec3d0c36f3377f0a"><td class="memItemLeft" align="right" valign="top"><a id="a1102b6c6367ec908ec3d0c36f3377f0a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_active</b></td></tr>
+<tr class="separator:a1102b6c6367ec908ec3d0c36f3377f0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01d1b1b9d9ce4023dbf297dbe7baa423"><td class="memItemLeft" align="right" valign="top"><a id="a01d1b1b9d9ce4023dbf297dbe7baa423"></a>
+<a class="el" href="class_killer_engine_1_1_model.html">Model</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_model</b></td></tr>
+<tr class="separator:a01d1b1b9d9ce4023dbf297dbe7baa423"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b4b98ebc15d3560b7afd149ccf5980b"><td class="memItemLeft" align="right" valign="top"><a id="a8b4b98ebc15d3560b7afd149ccf5980b"></a>
+<a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_position</b></td></tr>
+<tr class="separator:a8b4b98ebc15d3560b7afd149ccf5980b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac119de91d97b7e88e50743ef85aab51d"><td class="memItemLeft" align="right" valign="top"><a id="ac119de91d97b7e88e50743ef85aab51d"></a>
+F32&#160;</td><td class="memItemRight" valign="bottom"><b>_width</b></td></tr>
+<tr class="separator:ac119de91d97b7e88e50743ef85aab51d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26cbef5a44b1074746fdc531a7188896"><td class="memItemLeft" align="right" valign="top"><a id="a26cbef5a44b1074746fdc531a7188896"></a>
+F32&#160;</td><td class="memItemRight" valign="bottom"><b>_height</b></td></tr>
+<tr class="separator:a26cbef5a44b1074746fdc531a7188896"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c0d272e773fbc7fdc8f9ba5285dd1c8"><td class="memItemLeft" align="right" valign="top"><a id="a8c0d272e773fbc7fdc8f9ba5285dd1c8"></a>
+<a class="el" href="class_killer_math_1_1_matrix.html">KM::Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_modelView</b></td></tr>
+<tr class="separator:a8c0d272e773fbc7fdc8f9ba5285dd1c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2194066c81ef96d0f8fa869a4051d86"><td class="memItemLeft" align="right" valign="top"><a id="ab2194066c81ef96d0f8fa869a4051d86"></a>
+<a class="el" href="class_killer_math_1_1_matrix.html">KM::Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_rotationX</b></td></tr>
+<tr class="separator:ab2194066c81ef96d0f8fa869a4051d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:ab899dc601024755e8547aead65bae982"><td class="memItemLeft" align="right" valign="top"><a id="ab899dc601024755e8547aead65bae982"></a>
+static U32&#160;</td><td class="memItemRight" valign="bottom"><b>_nextID</b> = 1</td></tr>
+<tr class="separator:ab899dc601024755e8547aead65bae982"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_game_object3_d_8h_source.html">GameObject3D.h</a></li>
-<li>C:/Projects/Killer_Engine/Implementations/GameObject3D.cpp</li>
+<li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_game_object3_d_8h_source.html">GameObject3D.h</a></li>
+<li>F:/Projects/Killer_Engine/Implementations/GameObject3D.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

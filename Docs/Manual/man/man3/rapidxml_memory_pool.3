@@ -1,4 +1,4 @@
-.TH "rapidxml::memory_pool< Ch >" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "rapidxml::memory_pool< Ch >" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,6 +10,13 @@ rapidxml::memory_pool< Ch >
 \fC#include <rapidxml\&.hpp>\fP
 .PP
 Inherited by \fBrapidxml::xml_document< Ch >\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBheader\fP"
+.br
+.in -1c
 .SS "Public Member Functions"
 
 .in +1c
@@ -37,6 +44,44 @@ Inherited by \fBrapidxml::xml_document< Ch >\fP\&.
 .br
 .ti -1c
 .RI "void \fBset_allocator\fP (alloc_func *af, free_func *ff)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinit\fP ()"
+.br
+.ti -1c
+.RI "char * \fBalign\fP (char *ptr)"
+.br
+.ti -1c
+.RI "char * \fBallocate_raw\fP (std::size_t size)"
+.br
+.ti -1c
+.RI "void * \fBallocate_aligned\fP (std::size_t size)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "char * \fBm_begin\fP"
+.br
+.ti -1c
+.RI "char * \fBm_ptr\fP"
+.br
+.ti -1c
+.RI "char * \fBm_end\fP"
+.br
+.ti -1c
+.RI "char \fBm_static_memory\fP [RAPIDXML_STATIC_POOL_SIZE]"
+.br
+.ti -1c
+.RI "alloc_func * \fBm_alloc_func\fP"
+.br
+.ti -1c
+.RI "free_func * \fBm_free_func\fP"
 .br
 .in -1c
 .SH "Detailed Description"

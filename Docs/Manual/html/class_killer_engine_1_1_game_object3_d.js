@@ -25,5 +25,13 @@ var class_killer_engine_1_1_game_object3_d =
     [ "SetPosition", "class_killer_engine_1_1_game_object3_d.html#a8c02442e91be7607b3a9c06c1248fd89", null ],
     [ "SetWidth", "class_killer_engine_1_1_game_object3_d.html#ab742d8d4cee861ce14f36ff6aaf9a736", null ],
     [ "v_Render", "class_killer_engine_1_1_game_object3_d.html#ab831b0d6bbadf1c1056d390dcfa8094f", null ],
-    [ "v_Update", "class_killer_engine_1_1_game_object3_d.html#a969068777e137011c41df7fc0e1be766", null ]
+    [ "v_Update", "class_killer_engine_1_1_game_object3_d.html#a969068777e137011c41df7fc0e1be766", null ],
+    [ "_active", "class_killer_engine_1_1_game_object3_d.html#a1102b6c6367ec908ec3d0c36f3377f0a", null ],
+    [ "_height", "class_killer_engine_1_1_game_object3_d.html#a26cbef5a44b1074746fdc531a7188896", null ],
+    [ "_ID", "class_killer_engine_1_1_game_object3_d.html#a7a00cabc4cd3896b57f62a123ef878de", null ],
+    [ "_model", "class_killer_engine_1_1_game_object3_d.html#a01d1b1b9d9ce4023dbf297dbe7baa423", null ],
+    [ "_modelView", "class_killer_engine_1_1_game_object3_d.html#a8c0d272e773fbc7fdc8f9ba5285dd1c8", null ],
+    [ "_position", "class_killer_engine_1_1_game_object3_d.html#a8b4b98ebc15d3560b7afd149ccf5980b", null ],
+    [ "_rotationX", "class_killer_engine_1_1_game_object3_d.html#ab2194066c81ef96d0f8fa869a4051d86", null ],
+    [ "_width", "class_killer_engine_1_1_game_object3_d.html#ac119de91d97b7e88e50743ef85aab51d", null ]
 ];

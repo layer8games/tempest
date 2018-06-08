@@ -1,4 +1,4 @@
-.TH "KillerEngine::Sprite" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Sprite" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -41,6 +41,32 @@ KillerEngine::Sprite
 .br
 .ti -1c
 .RI "void \fBSetTexture\fP (U32 tID, const F32 top, const F32 bottom, const F32 right, const F32 left)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fB_InitShader\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBKM::Vector2\fP \fB_bottomTop\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector2\fP \fB_leftRight\fP"
+.br
+.ti -1c
+.RI "U32 \fB_textureID\fP"
+.br
+.ti -1c
+.RI "\fBCharacterData\fP \fB_characterData\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_shaderProgram\fP"
 .br
 .in -1c
 

@@ -100,12 +100,12 @@ namespace KillerEngine
 //Private members
 //
 //==========================================================================================================================		
-		static shared_ptr<Camera> 	    _instance;
-		Color  							_background;
-		KM::Vector3  					_pos;
-		KM::Matrix 						_projection;
-		KM::Matrix 						_translation;
-		GLuint							_currentShader;
+		static shared_ptr<Camera> 	    _instance;		///< Singleton global instance.
+		Color  							_background;	///< Background color of current level.
+		KM::Vector3  					_pos;			///< Position of Camera in world space.
+		KM::Matrix 						_projection;	///< Projection Matrix (Orthographic or Perspective). Not used
+		KM::Matrix 						_translation;	///< Amount of Translation needed to reflect Position. Should be opposite of _pos
+		GLuint							_currentShader;	///< Fully compiled OpenGL Shader Program. 
 
 	protected:
 //==========================================================================================================================
