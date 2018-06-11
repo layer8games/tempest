@@ -1,4 +1,4 @@
-.TH "KillerEngine::GameObject2D" 3 "Thu Jun 7 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::GameObject2D" 3 "Mon Jun 11 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -7,18 +7,23 @@ KillerEngine::GameObject2D
 .br
 .PP
 .PP
+\fC#include <GameObject2D\&.h>\fP
+.PP
 Inherited by \fBKillerEngine::EnvironmentObject\fP, and \fBKillerPhysics::Particle2D\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
+.RI "\fBGameObject2D\fP (void)"
+.br
+.ti -1c
 .RI "\fBGameObject2D\fP (const \fBGameObject2D\fP &obj)"
 .br
 .ti -1c
-.RI "virtual void \fBv_Update\fP (void)=0"
+.RI "virtual \fB~GameObject2D\fP (void)"
 .br
 .ti -1c
-.RI "virtual void \fBv_Render\fP (void)"
+.RI "virtual void \fBv_Update\fP (void)=0"
 .br
 .ti -1c
 .RI "const U32 \fBGetID\fP (void) const"
@@ -90,24 +95,31 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, and \fBKillerPhysics::Partic
 .ti -1c
 .RI "U32 \fB_ID\fP"
 .br
+.RI "ID for this instance of the \fBGameObject2D\fP\&. "
 .ti -1c
 .RI "bool \fB_active\fP"
 .br
+.RI "Tracks if the object should be updated and rendered\&. "
 .ti -1c
 .RI "\fBSprite\fP \fB_sprite\fP"
 .br
+.RI "Used for Rendering the object as a 2D \fBSprite\fP\&. "
 .ti -1c
 .RI "\fBKM::Vector2\fP \fB_position\fP"
 .br
+.RI "Position in World Space\&. "
 .ti -1c
 .RI "F32 \fB_width\fP"
 .br
+.RI "Width of the object\&. "
 .ti -1c
 .RI "F32 \fB_height\fP"
 .br
+.RI "Height of the object\&. "
 .ti -1c
 .RI "\fBColor\fP \fB_color\fP"
 .br
+.RI "\fBColor\fP of the object\&. "
 .in -1c
 .SS "Static Private Attributes"
 
@@ -115,7 +127,163 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, and \fBKillerPhysics::Partic
 .ti -1c
 .RI "static U32 \fB_nextID\fP = 1"
 .br
+.RI "Global member used to track the next unique ID for GambeObject2D\&. "
 .in -1c
+.SH "Detailed Description"
+.PP 
+The Game Object is the abstract class, (PURE VIRTUAL) that all objects that will be placed in the game will inherit from\&. It will hold and define the cell, and will include all calls for updating and rendering\&. Therewill be a component map which will hold anything that the object will need in the game\&.
+.PP
+All of the functions in this class are inlined becuase they are all trivial\&. The virtual functions are there so that the interface can be the same for all derived classes\&. By doing this, the world manager will be able to have a map of GameObjects to be rendered in a specific world\&.
+.PP
+The GameObject itself is an interface to generic functions that each object that will be rendered will need to be drawn to the screen\&. The GameObject holds a private \fBSprite\fP member that will contain all the logic for which rendering algorithm is used\&.
+.PP
+Accessors are created for the derived classes to access the cell, but the cell is to be accessed directly only by the GameObject itself\&.
+.PP
+\fBGameObject2D\fP will specifically apply to 2D game objects\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "GameObject2D::GameObject2D (void)"
+Default Constsructor\&. Set's all members to 0 and _active to true\&. 
+.SS "GameObject2D::GameObject2D (const \fBGameObject2D\fP & obj)"
+Copy Constructor\&. Calls GetID, GetActive, GetSprite, GetPosition, GetWidth, GetHeight, GetColor 
+.SS "GameObject2D::~GameObject2D (void)\fC [virtual]\fP"
+Destructor\&. No special functions 
+.SH "Member Function Documentation"
+.PP 
+.SS "void GameObject2D::AddScaledPosition (const \fBKM::Vector2\fP & v, F32 scale)"
+Scales the position of the object in World Space\&. Wrapper for Vector2::AddScaledVector\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP Vector2&\&. Vector to add to position\&. 
+.br
+\fIscale\fP F32\&. Scale to use when adding vector to position\&. 
+.RE
+.PP
+
+.SS "bool GameObject2D::GetActive (void) const"
+Returns if object is active or not\&. Determines if object will have v_Update called, and if it wlll be added to render in Level::UpdateObject and in Level::RenderObjects\&. True indicates that it will be updated and rendered\&. False indicates that it will not\&. 
+.SS "const \fBColor\fP & GameObject2D::GetColor (void) const"
+Returns the color of the object\&. This is stored exclusively in the \fBGameObject2D\fP and is not duplicated in the \fBSprite\fP\&. 
+.SS "F32 GameObject2D::GetHeight (void) const"
+Returns the height of the object\&. 
+.SS "const U32 KillerEngine::GameObject2D::GetID (void) const\fC [inline]\fP"
+Returns the ID used for the \fBGameObject2D\fP\&. 
+.SS "const \fBKM::Vector2\fP & GameObject2D::GetPosition (void) const"
+Returns the position of the object in World Space\&. 
+.SS "const \fBSprite\fP& KillerEngine::GameObject2D::GetSprite (void) const\fC [inline]\fP"
+Returns the \fBSprite\fP\&. This member cannot be set\&. 
+.SS "U32 GameObject2D::GetTextureID (void) const"
+Returns curren texture ID for object\&. Like \fBColor\fP, this value is not duplciated in the \fBSprite\fP\&. 
+.SS "F32 GameObject2D::GetWidth (void) const"
+Returns the width of the object\&. 
+.SS "void GameObject2D::SetActive (void)"
+Sets the active state of the object to true\&. 
+.SS "void GameObject2D::SetColor (const \fBColor\fP & col)"
+Sets the color of the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcol\fP \fBColor\fP&\&. New \fBColor\fP 
+.RE
+.PP
+
+.SS "void GameObject2D::SetColor (F32 red, F32 green, F32 blue)"
+Sets the color of the object\&. This version called \fBColor::SetRed\fP, \fBColor::SetGreen\fP and \fBColor::SetBlue\fP\&. Note that \fBColor::SetAlpha\fP is not called\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIred\fP F32\&. Red value passed to \fBColor::SetRed\fP 
+.br
+\fIgreen\fP F32\&. Green value passed to \fBColor::SetGreen\fP 
+.br
+\fIblue\fP F32\&. Blue value passed to \fBColor::SetBlue\fP 
+.RE
+.PP
+
+.SS "void GameObject2D::SetDimensions (F32 w, F32 h)"
+Sets both the width and height of the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIw\fP F32\&. New width 
+.br
+\fIh\fP F32\&. New height 
+.RE
+.PP
+
+.SS "void GameObject2D::SetHeight (F32 h)"
+Sets the height of the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIh\fP F32\&. New hieght of the object\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::GameObject2D::SetID (void)\fC [inline]\fP"
+Sets the ID for the object\&. Takes no params, the id is based on the static _nextID member\&. 
+.SS "void GameObject2D::SetInactive (void)"
+Sets the active state of the object to false\&. 
+.SS "void GameObject2D::SetPosition (const \fBKM::Vector2\fP & pos)"
+Sets the position of the object in World Space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP Vector2&\&. New position\&. 
+.RE
+.PP
+
+.SS "void GameObject2D::SetPosition (F32 x, F32 y)"
+Sets the position of the object in World Space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP F32\&. X value of new position\&. 
+.br
+\fIy\fP F32\&. Y value of new position\&. 
+.RE
+.PP
+
+.SS "void GameObject2D::SetTexture (U32 id, const F32 top, const F32 bottom, const F32 right, const F32 left)"
+Sets \fBTexture\fP for the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP U32\&. \fBTexture\fP id from \fBTextureManager\fP\&. 
+.br
+\fItop\fP F32\&. Used for setting up UV coordinates\&. Represents max 'y' in the UV\&. 
+.br
+\fIbottom\fP F32\&. Used for setting up UV coordinates\&. Represents min 'y' in uv\&. 
+.br
+\fIright\fP F32\&. Used for setting up UV coordinates\&. Represents max 'x' in uv\&. 
+.br
+\fIleft\fP F32\&. Used for setting up UV coordinates\&. Represents min 'x' in uv\&. 
+.RE
+.PP
+
+.SS "void GameObject2D::SetTexture (U32 id)"
+Sets \fBTexture\fP for object\&. UV's are set to be [0\&.0f, 1\&.0f], [0\&.0f, 1\&.0f]\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP U32\&. \fBTexture\fP id from \fBTextureManager\fP 
+.RE
+.PP
+
+.SS "void GameObject2D::SetWidth (F32 w)"
+Sets the width of the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIw\fP F32\&. New width of the object\&. 
+.RE
+.PP
+
+.SS "virtual void KillerEngine::GameObject2D::v_Update (void)\fC [pure virtual]\fP"
+Pure Virtual fucntion\&. Will be called on each object, which will define what needs to happen in the update section of the loop\&. 
+.PP
+Implemented in \fBKillerPhysics::Particle2D\fP, and \fBKillerEngine::EnvironmentObject\fP\&.
 
 .SH "Author"
 .PP 

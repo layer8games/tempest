@@ -1,6 +1,5 @@
 var NAVTREEINDEX6 =
 {
-"classtinyxml2_1_1_x_m_l_text.html#a1b2c1448f1a21299d0a7913f18b55206":[1,0,4,13,3],
 "classtinyxml2_1_1_x_m_l_text.html#a4094f6b6c942ef9c7254709b9ce409c8":[1,0,4,13,6],
 "classtinyxml2_1_1_x_m_l_text.html#a4eee3bda60c60a30e4e8cd4ea91c4c6e":[1,0,4,13,12],
 "classtinyxml2_1_1_x_m_l_text.html#a671ce22c7c5ef378f1ce31e6f827b9e2":[1,0,4,13,11],
@@ -44,8 +43,8 @@ var NAVTREEINDEX6 =
 "dir_d51b1ee0cd9d20f63d9e21c77a9d5ec7.html":[2,0,0,3],
 "dir_d7a8c3580a66cb9f51008755fd5db0bf.html":[2,0,1],
 "files.html":[2,0],
-"functions.html":[1,3,0],
 "functions.html":[1,3,0,0],
+"functions.html":[1,3,0],
 "functions_0x7e.html":[1,3,0,24],
 "functions_a.html":[1,3,0,1],
 "functions_b.html":[1,3,0,2],

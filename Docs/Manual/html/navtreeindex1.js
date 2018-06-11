@@ -1,6 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"class_killer_engine_1_1_level.html#a3164b75538259d026c034927e977c43b":[1,0,0,10,4],
 "class_killer_engine_1_1_level.html#a38e2a4fcf02c173bd9868a4b81641ba5":[1,0,0,10,46],
 "class_killer_engine_1_1_level.html#a39e93e9ba44dc88ec520ae2d6c56bf4a":[1,0,0,10,13],
 "class_killer_engine_1_1_level.html#a42115147f80a23e0210be077d27fc81c":[1,0,0,10,48],
@@ -249,5 +248,6 @@ var NAVTREEINDEX1 =
 "class_killer_engine_1_1_texture.html#ae43544a555bfa298ee9eab9e47f3e29e":[1,0,0,20,11],
 "class_killer_engine_1_1_texture.html#ae5c883dfb256502b0104230b7c2dffa5":[1,0,0,20,2],
 "class_killer_engine_1_1_texture.html#af2f4d15eedd146f199367c19814c9f24":[1,0,0,20,6],
-"class_killer_engine_1_1_texture_manager.html":[1,0,0,21]
+"class_killer_engine_1_1_texture_manager.html":[1,0,0,21],
+"class_killer_engine_1_1_texture_manager.html#a1652dbed32efe051c854e3c4b78da900":[1,0,0,21,5]
 };

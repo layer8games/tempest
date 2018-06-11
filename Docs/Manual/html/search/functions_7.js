@@ -1,15 +1,20 @@
 var searchData=
 [
+  ['gameobject2d',['GameObject2D',['../class_killer_engine_1_1_game_object2_d.html#a122d7cdfb0f36f65db980bd6b7b22274',1,'KillerEngine::GameObject2D::GameObject2D(void)'],['../class_killer_engine_1_1_game_object2_d.html#a1b3326c1e481e5a72b6a993dd32d5a27',1,'KillerEngine::GameObject2D::GameObject2D(const GameObject2D &amp;obj)']]],
   ['get',['Get',['../class_killer_engine_1_1_color.html#a20da8e5b2e42facfdb553a5f06aad825',1,'KillerEngine::Color']]],
+  ['getactive',['GetActive',['../class_killer_engine_1_1_game_object2_d.html#a3d03658487d0c791afce364012e4cd41',1,'KillerEngine::GameObject2D']]],
   ['getalpha',['GetAlpha',['../class_killer_engine_1_1_color.html#aef1e4e4464abdb1268999b18386ebe15',1,'KillerEngine::Color']]],
   ['getblue',['GetBlue',['../class_killer_engine_1_1_color.html#a5207f945902433e20d8a82f64705e2f4',1,'KillerEngine::Color']]],
   ['getcharacterdata',['GetCharacterData',['../class_killer_engine_1_1_font.html#ab8bf01c967333396f94f575cb990be59',1,'KillerEngine::Font']]],
+  ['getcolor',['GetColor',['../class_killer_engine_1_1_game_object2_d.html#a95d31191d765daf19a4a4b949b2b1924',1,'KillerEngine::GameObject2D']]],
   ['getdocument',['GetDocument',['../classtinyxml2_1_1_x_m_l_node.html#a2de84cfa4ec3fe249bad745069d145f1',1,'tinyxml2::XMLNode::GetDocument() const'],['../classtinyxml2_1_1_x_m_l_node.html#af343d1ef0b45c0020e62d784d7e67a68',1,'tinyxml2::XMLNode::GetDocument()']]],
   ['geterrorlinenum',['GetErrorLineNum',['../classtinyxml2_1_1_x_m_l_document.html#ad82d07e43e096e834dbdfd06312398c1',1,'tinyxml2::XMLDocument']]],
   ['geterrorstr1',['GetErrorStr1',['../classtinyxml2_1_1_x_m_l_document.html#a229494e30e5473237f3fa547eee4c43f',1,'tinyxml2::XMLDocument']]],
   ['geterrorstr2',['GetErrorStr2',['../classtinyxml2_1_1_x_m_l_document.html#a2d952f49c761bffd2903250680a8716b',1,'tinyxml2::XMLDocument']]],
   ['getfile',['GetFile',['../class_killer_engine_1_1_font.html#a91a32e13219329fd488a97cdbc87a12d',1,'KillerEngine::Font']]],
   ['getgreen',['GetGreen',['../class_killer_engine_1_1_color.html#a5a3404ae3b847483b438f420039a9781',1,'KillerEngine::Color']]],
+  ['getheight',['GetHeight',['../class_killer_engine_1_1_game_object2_d.html#a2dac999f5ff87a9bd0c9e83c030ba753',1,'KillerEngine::GameObject2D']]],
+  ['getid',['GetID',['../class_killer_engine_1_1_game_object2_d.html#a640498f1976d742ec51cd20c6c498e0d',1,'KillerEngine::GameObject2D']]],
   ['getkeydown',['GetKeyDown',['../class_killer_engine_1_1_controller.html#a9c2e9930dcfc803b5c4bc0391daf502b',1,'KillerEngine::Controller']]],
   ['getkeyheld',['GetKeyHeld',['../class_killer_engine_1_1_controller.html#ac106f4ee3509f553b4cf621a88000c4e',1,'KillerEngine::Controller']]],
   ['getkeyreleased',['GetKeyReleased',['../class_killer_engine_1_1_controller.html#a61d1debb2b8a6d47199e6c67abd1c762',1,'KillerEngine::Controller']]],
@@ -17,9 +22,12 @@ var searchData=
   ['getleftmousecoord',['GetLeftMouseCoord',['../class_killer_engine_1_1_controller.html#a0612bee7d52008961bafa7287d4ae07f',1,'KillerEngine::Controller']]],
   ['getlinenum',['GetLineNum',['../classtinyxml2_1_1_x_m_l_node.html#a9b5fc636646fda761d342c72e91cb286',1,'tinyxml2::XMLNode::GetLineNum()'],['../classtinyxml2_1_1_x_m_l_attribute.html#a02d5ea924586e35f9c13857d1671b765',1,'tinyxml2::XMLAttribute::GetLineNum()']]],
   ['getname',['GetName',['../class_killer_engine_1_1_font.html#a801f7154d3a09f20b159d201e489bc04',1,'KillerEngine::Font']]],
+  ['getposition',['GetPosition',['../class_killer_engine_1_1_game_object2_d.html#aed75700073563e02519e5ece04805da2',1,'KillerEngine::GameObject2D']]],
   ['getred',['GetRed',['../class_killer_engine_1_1_color.html#a75a7586d6afc0f3192bc39d0eba09ca0',1,'KillerEngine::Color']]],
   ['getrightmousecoord',['GetRightMouseCoord',['../class_killer_engine_1_1_controller.html#a4d2f17472616e268ca33fda8fba4ec00',1,'KillerEngine::Controller']]],
+  ['getsprite',['GetSprite',['../class_killer_engine_1_1_game_object2_d.html#abedcf28f04165adfa38ca9afd7e67ae4',1,'KillerEngine::GameObject2D']]],
   ['gettext',['GetText',['../classtinyxml2_1_1_x_m_l_element.html#a6d5c8d115561ade4e4456b71d91b6f51',1,'tinyxml2::XMLElement']]],
-  ['gettextureid',['GetTextureID',['../class_killer_engine_1_1_font.html#a5293eeca65871d27f646ac9f7d959fc3',1,'KillerEngine::Font']]],
-  ['getuserdata',['GetUserData',['../classtinyxml2_1_1_x_m_l_node.html#a7f0687574afa03bc479dc44f29db0afe',1,'tinyxml2::XMLNode']]]
+  ['gettextureid',['GetTextureID',['../class_killer_engine_1_1_font.html#a5293eeca65871d27f646ac9f7d959fc3',1,'KillerEngine::Font::GetTextureID()'],['../class_killer_engine_1_1_game_object2_d.html#a9f8c36d250fc49fff927ffdaa5e873bc',1,'KillerEngine::GameObject2D::GetTextureID()']]],
+  ['getuserdata',['GetUserData',['../classtinyxml2_1_1_x_m_l_node.html#a7f0687574afa03bc479dc44f29db0afe',1,'tinyxml2::XMLNode']]],
+  ['getwidth',['GetWidth',['../class_killer_engine_1_1_game_object2_d.html#a40cf397ea6fcddde52174218be72de1c',1,'KillerEngine::GameObject2D']]]
 ];
