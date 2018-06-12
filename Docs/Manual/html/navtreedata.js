@@ -25,6 +25,7 @@ var NAVTREE =
 [
   [ "Killer Engine", "index.html", [
     [ "Killer Engine Documentation.", "index.html#The", null ],
+    [ "Bug List", "bug.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -44,12 +45,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"class_killer_engine_1_1_level.html#a38e2a4fcf02c173bd9868a4b81641ba5",
-"class_killer_engine_1_1_texture_manager.html#a16d57a96ca8a225bb6de25d66124628f",
-"class_killer_math_1_1_vector3.html#a3d457ad1cb63e0e1ad41df207e2cba6b",
-"classrapidxml_1_1xml__attribute.html#a26be291103917d3e8de110d46dd83816",
-"classtinyxml2_1_1_x_m_l_document.html#a61270d643f810975656da2054e1e1622",
-"classtinyxml2_1_1_x_m_l_text.html#a4094f6b6c942ef9c7254709b9ce409c8"
+"class_killer_engine_1_1_level.html#a29500a40202e95e5f477cbfac0341655",
+"class_killer_engine_1_1_texture.html#af2f4d15eedd146f199367c19814c9f24",
+"class_killer_math_1_1_vector3.html#a21c92a4e971acef231f5fd86a7f4e892",
+"classrapidxml_1_1parse__error.html#aea12a301271c393fb627b368fb9f35c1",
+"classtinyxml2_1_1_x_m_l_document.html#a5385c937734ff6db9226ab707d2c7147",
+"classtinyxml2_1_1_x_m_l_text.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

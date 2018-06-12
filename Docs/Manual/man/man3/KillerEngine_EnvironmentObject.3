@@ -7,10 +7,15 @@ KillerEngine::EnvironmentObject
 .br
 .PP
 .PP
+\fC#include <EnvironmentObject\&.h>\fP
+.PP
 Inherits \fBKillerEngine::GameObject2D\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fBEnvironmentObject\fP (void)"
+.br
 .ti -1c
 .RI "\fBEnvironmentObject\fP (const \fBKM::Vector2\fP &pos, F32 w, F32 h)"
 .br
@@ -18,13 +23,29 @@ Inherits \fBKillerEngine::GameObject2D\fP\&.
 .RI "\fBEnvironmentObject\fP (const \fBKM::Vector2\fP &pos, U32 textureID, F32 w, F32 h)"
 .br
 .ti -1c
-.RI "void \fBv_Update\fP (void)"
+.RI "\fB~EnvironmentObject\fP (void)"
+.br
+.ti -1c
+.RI "void \fBv_Update\fP (void) final"
 .br
 .in -1c
+.SH "Detailed Description"
+.PP 
+This is an implementation of a GameObject which will reprents static, unmoving background objects which the player will not be allowed to pass through\&. These are things like rocks, trees, houses, etc\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "EnvironmentObject::EnvironmentObject (void)"
+Default Constructor\&. No special actions taken\&. 
+.SS "EnvironmentObject::EnvironmentObject (const \fBKM::Vector2\fP & pos, F32 w, F32 h)"
+Calls \fBGameObject2D::SetPosition\fP and \fBGameObject2D::SetDimensions\fP\&. 
+.SS "EnvironmentObject::EnvironmentObject (const \fBKM::Vector2\fP & pos, U32 textureID, F32 w, F32 h)"
+Calls \fBGameObject2D::SetPosition\fP, \fBGameObject2D::SetDimensions\fP and \fBGameObject2D::SetTexture\fP 
+.SS "EnvironmentObject::~EnvironmentObject (void)"
+Default Destructor\&. No special action taken\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void EnvironmentObject::v_Update (void)\fC [virtual]\fP"
-Pure Virtual fucntion\&. Will be called on each object, which will define what needs to happen in the update section of the loop\&. 
+.SS "void KillerEngine::EnvironmentObject::v_Update (void)\fC [inline]\fP, \fC [final]\fP, \fC [virtual]\fP"
+Empty function, needed because its a pure virtual function\&. 
 .PP
 Implements \fBKillerEngine::GameObject2D\fP\&.
 

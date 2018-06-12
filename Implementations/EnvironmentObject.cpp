@@ -25,6 +25,3 @@ EnvironmentObject::EnvironmentObject(const KM::Vector2& pos, U32 textureID, F32 
 
 EnvironmentObject::~EnvironmentObject(void)
 {  }
-
-void EnvironmentObject::v_Update(void)
-{  }

@@ -1,11 +1,3 @@
-/*========================================================================
-
-
-This is not free to use, and cannot be used without the express permission
-of KillerWave.
-
-Written by Maxwell Miller
-========================================================================*/
 #pragma once
 
 //===== Engine Includes ======
@@ -47,10 +39,10 @@ namespace KillerEngine
 //Constructors
 //
 //==========================================================================================================================
-/*! Default Constsructor. Set's all members to 0 and _active to true. */
+/*! Default Constsructor. Set's all members to 0 and _active to true. SetID() is called as part of the body */
 		GameObject2D(void);
 
-/*! Copy Constructor. Calls GetID, GetActive, GetSprite, GetPosition, GetWidth, GetHeight, GetColor */
+/*! Copy Constructor. Calls GetID(), GetActive(), GetSprite(), GetPosition(), GetWidth(), GetHeight(), GetColor() */
 		GameObject2D(const GameObject2D& obj);
 
 /*! Destructor. No special functions */
@@ -61,8 +53,8 @@ namespace KillerEngine
 //Virtual Functions
 //
 //==========================================================================================================================
-/*! Pure Virtual fucntion. Will be called on each object, which will define what needs to happen in the update section of the
-	loop. */
+/*! Pure Virtual fucntion. Will be called during Level::UpdateObjects on each object, which will define what needs to happen 
+	in the update section of the loop. */
 		virtual void v_Update(void)=0;
 
 //==========================================================================================================================
@@ -77,7 +69,8 @@ namespace KillerEngine
 			return _ID; 
 		}
 
-/*! Sets the ID for the object. Takes no params, the id is based on the static _nextID member. */		
+/*! Sets the id of this instance. The id is determind by _nextID. This insures that each GameObject3D will have a unique id
+	although there could be a collission with GameObject3D::_ID.  */		
 		inline void SetID(void) 
 		{
 			_ID = _nextID;
@@ -160,7 +153,7 @@ namespace KillerEngine
 	\param pos Vector2&. New position. */
 		void SetPosition(const KM::Vector2& pos);
 		
-/*! Sets the position of the object in World Space.
+/*! Sets the position of the object in World Space. Calls Vector2::SetX and Vector2::SetY
 	\param x F32. X value of new position.
 	\param y F32. Y value of new position. */
 		void SetPosition(F32 x, F32 y);

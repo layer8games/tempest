@@ -97,8 +97,8 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 /*! Set's the file that the font will read its data from. Does not re-initialize the font. 
-	TODO: Make sure that the font is re-initialized when this is called. 
-	TODO: Check that the file that is sent is a .fnt file.
+	\bug Make sure that the font is re-initialized when this is called. 
+	\bug Check that the file that is sent is a .fnt file.
 	\param fontFile string: File path to .fnt file. */
 		inline void SetFile(string fontFile)
 		{

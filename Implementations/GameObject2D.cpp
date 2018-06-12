@@ -130,7 +130,8 @@ void GameObject2D::SetPosition(const KM::Vector2& pos)
 
 void GameObject2D::SetPosition(F32 x, F32 y) 
 { 
-	_position = KM::Vector2(x, y);
+	_position.SetX(x);
+	_position.SetY(y);
 }
 
 void GameObject2D::AddScaledPosition(const KM::Vector2& v, F32 scale)

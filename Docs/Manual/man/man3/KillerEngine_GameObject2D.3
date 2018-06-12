@@ -143,9 +143,9 @@ Accessors are created for the derived classes to access the cell, but the cell i
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "GameObject2D::GameObject2D (void)"
-Default Constsructor\&. Set's all members to 0 and _active to true\&. 
+Default Constsructor\&. Set's all members to 0 and _active to true\&. \fBSetID()\fP is called as part of the body 
 .SS "GameObject2D::GameObject2D (const \fBGameObject2D\fP & obj)"
-Copy Constructor\&. Calls GetID, GetActive, GetSprite, GetPosition, GetWidth, GetHeight, GetColor 
+Copy Constructor\&. Calls \fBGetID()\fP, \fBGetActive()\fP, \fBGetSprite()\fP, \fBGetPosition()\fP, \fBGetWidth()\fP, \fBGetHeight()\fP, \fBGetColor()\fP 
 .SS "GameObject2D::~GameObject2D (void)\fC [virtual]\fP"
 Destructor\&. No special functions 
 .SH "Member Function Documentation"
@@ -222,7 +222,7 @@ Sets the height of the object\&.
 .PP
 
 .SS "void KillerEngine::GameObject2D::SetID (void)\fC [inline]\fP"
-Sets the ID for the object\&. Takes no params, the id is based on the static _nextID member\&. 
+Sets the id of this instance\&. The id is determind by _nextID\&. This insures that each \fBGameObject3D\fP will have a unique id although there could be a collission with \fBGameObject3D::_ID\fP\&. 
 .SS "void GameObject2D::SetInactive (void)"
 Sets the active state of the object to false\&. 
 .SS "void GameObject2D::SetPosition (const \fBKM::Vector2\fP & pos)"
@@ -235,7 +235,7 @@ Sets the position of the object in World Space\&.
 .PP
 
 .SS "void GameObject2D::SetPosition (F32 x, F32 y)"
-Sets the position of the object in World Space\&. 
+Sets the position of the object in World Space\&. Calls Vector2::SetX and Vector2::SetY 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -281,7 +281,7 @@ Sets the width of the object\&.
 .PP
 
 .SS "virtual void KillerEngine::GameObject2D::v_Update (void)\fC [pure virtual]\fP"
-Pure Virtual fucntion\&. Will be called on each object, which will define what needs to happen in the update section of the loop\&. 
+Pure Virtual fucntion\&. Will be called during Level::UpdateObjects on each object, which will define what needs to happen in the update section of the loop\&. 
 .PP
 Implemented in \fBKillerPhysics::Particle2D\fP, and \fBKillerEngine::EnvironmentObject\fP\&.
 

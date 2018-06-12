@@ -176,7 +176,14 @@ Copies \fBFont\fP pointer\&. Calls \fBGetTextureID()\fP, \fBGetFile()\fP, \fBGet
 .SS "\fBFont\fP & Font::operator= (const \fBFont\fP & font)"
 Copies \fBFont\fP reference\&. Calls \fBGetTextureID()\fP, \fBGetFile()\fP, \fBGetName()\fP and \fBGetCharacterData()\fP\&. 
 .SS "void KillerEngine::Font::SetFile (string fontFile)\fC [inline]\fP"
-Set's the file that the font will read its data from\&. Does not re-initialize the font\&. TODO: Make sure that the font is re-initialized when this is called\&. TODO: Check that the file that is sent is a \&.fnt file\&. 
+Set's the file that the font will read its data from\&. Does not re-initialize the font\&. 
+.PP
+\fBBug\fP
+.RS 4
+Make sure that the font is re-initialized when this is called\&. 
+.PP
+Check that the file that is sent is a \&.fnt file\&. 
+.RE
 .PP
 \fBParameters:\fP
 .RS 4

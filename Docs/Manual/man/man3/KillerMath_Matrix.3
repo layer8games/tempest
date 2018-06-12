@@ -6,9 +6,14 @@ KillerMath::Matrix
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <Matrix\&.h>\fP
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fBMatrix\fP (void)"
+.br
 .ti -1c
 .RI "\fBMatrix\fP (F32 val)"
 .br
@@ -187,7 +192,547 @@ KillerMath::Matrix
 .ti -1c
 .RI "F32 \fB_m\fP [16]"
 .br
+.RI "Array of values that represent the matrix\&. "
 .in -1c
+.SH "Detailed Description"
+.PP 
+The \fBMatrix\fP is meant to be mathematically sound\&. The functions found here have been tested and are built according to linear algebra rules\&. The
+.PP
+Matrices will be column major to ahdere to the format used within opengl, and only 4x4 Matrices will be supported\&. This is because I cannot find any useful reason to suport a dynamic type at this time\&. In the future if other Matrices appear to be useful, this class will basically be copied and will be turned into whatever other type of \fBMatrix\fP is needed, be it a 3x3 or 2x2 or whatever\&. This class will only be a 4x4\&.
+.PP
+All of the values in the \fBMatrix\fP are stores as a 16 length array of F32\&. This is a single dimensional array\&.
+.PP
+Since the matrix is column major, it is mapped as such:
+.PP
+.IP "\(bu" 2
+| m00 | m10 | m20 | m30 |
+.IP "\(bu" 2
+| m01 | m11 | m21 | m31 |
+.IP "\(bu" 2
+| m03 | m12 | m22 | m32 |
+.IP "\(bu" 2
+| m04 | m13 | m23 | m33 |
+.PP
+.PP
+This means that _m[0] -> _m[3] == m00 -> m04
+.PP
+What this looks like is this:
+.PP
+.IP "\(bu" 2
+| _m[0] | _m[4] | _m[8] | _m[12] |
+.IP "\(bu" 2
+| _m[1] | _m[5] | _m[9] | _m[13] |
+.IP "\(bu" 2
+| _m[2] | _m[6] | _m[10] | _m[14] |
+.IP "\(bu" 2
+| _m[3] | _m[7] | _m[11] | _m[15] |
+.PP
+.PP
+This is the way that the array mapping looks, for a quick reference\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Matrix::Matrix (void)"
+Default constructor\&. Sets all values to 0, except for the last in the \fBMatrix\fP\&. 
+.SS "Matrix::Matrix (F32 val)\fC [explicit]\fP"
+Single value constructor\&. Set's the diagnal of the \fBMatrix\fP to value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP F32\&. Value for elements 0, 5, 10 and 15\&. 
+.RE
+.PP
+
+.SS "Matrix::Matrix (const F32 mSrc[16])\fC [explicit]\fP"
+Array constructor\&. Set's all values of the \fBMatrix\fP to the cooresponding values in the array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImSrc\fP F32[16]\&. Array of 16 values, basically a raw \fBMatrix\fP\&. 
+.RE
+.PP
+
+.SS "Matrix::Matrix (F32 m00, F32 m01, F32 m02, F32 m03, F32 m10, F32 m11, F32 m12, F32 m13, F32 m20, F32 m21, F32 m22, F32 m23, F32 m30, F32 m31, F32 m32, F32 m33)"
+All value constructor\&. Takes a list of values and turns them into a matrix of the same mapping\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm00\fP F32\&. Value 0,0\&. 
+.br
+\fIm01\fP F32\&. Value 0,1\&. 
+.br
+\fIm02\fP F32\&. Value 0,2 
+.br
+\fIm03\fP F32\&. Value 0,3\&. 
+.br
+\fIm10\fP F32\&. Value 1,0\&. 
+.br
+\fIm11\fP F32\&. Value 1,1\&. 
+.br
+\fIm12\fP F32\&. Value 1,2 
+.br
+\fIm13\fP F32\&. Value 1,3\&. 
+.br
+\fIm20\fP F32\&. Value 2,0\&. 
+.br
+\fIm21\fP F32\&. Value 2,1\&. 
+.br
+\fIm22\fP F32\&. Value 2,2 
+.br
+\fIm23\fP F32\&. Value 2,3\&. 
+.br
+\fIm30\fP F32\&. Value 3,0\&. 
+.br
+\fIm31\fP F32\&. Value 3,1\&. 
+.br
+\fIm32\fP F32\&. Value 3,2 
+.br
+\fIm33\fP F32\&. Value 3,3\&. 
+.RE
+.PP
+
+.SS "Matrix::Matrix (const \fBMatrix\fP & M)"
+Copy Constructor\&. Calls \fBGetElems()\fP, then sets the values accordingly\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void Matrix::AddRotateX (F32 x)"
+Creates rotation around the x axis without resetting other values\&. 
+.PP
+\fBBug\fP
+.RS 4
+Completely untested and probably not working at all\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP F32\&. Degree of rotation around x axis\&. Calls DegreeToRadian() 
+.RE
+.PP
+
+.SS "void Matrix::AddRotateY (F32 y)"
+Creates rotation around the y axis without resetting other values\&. 
+.PP
+\fBBug\fP
+.RS 4
+Completely untested and probably not working at all\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIy\fP F32\&. Degree of rotation around y axis\&. Calls DegreeToRadian() 
+.RE
+.PP
+
+.SS "void Matrix::AddRotateZ (F32 z)"
+Creates rotation around the z axis without resetting other values\&. 
+.PP
+\fBBug\fP
+.RS 4
+Completely untested and probably not working at all\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIz\fP F32\&. Degree of rotation around z axis\&. Calls DegreeToRadian() 
+.RE
+.PP
+
+.SS "void Matrix::AddRotation (F32 x, F32 y, F32 z)"
+Creates rotation around the x, y and z axis, in that order, without resetting other values\&. 
+.PP
+\fBBug\fP
+.RS 4
+Not working at all\&. The math is wrong, and rotations are not working in general\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP F32\&. Degree of rotation around the x axis\&. Calls DegreeToRadian() 
+.br
+\fIy\fP F32\&. Degree of rotation around the y axis\&. Calls DegreeToRadian() 
+.br
+\fIz\fP F32\&. Degree of rotation around the z axis\&. Calls DegreeToRadian() 
+.RE
+.PP
+
+.SS "void Matrix::AddScale (F32 x, F32 y)"
+Creates a scaling \fBMatrix\fP on the x and y axes without resetting the other values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP F32\&. Value of scale on x axis\&. 
+.br
+\fIy\fP F32\&. Value of scale on y axis\&. 
+.RE
+.PP
+
+.SS "void Matrix::AddScale (F32 x, F32 y, F32 z)"
+Creates a scaling \fBMatrix\fP on the x, y and z axes without resetting the other values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP F32\&. Value of scale on x axis\&. 
+.br
+\fIy\fP F32\&. Value of scale on y axis\&. 
+.br
+\fIz\fP F32\&. Value of scale on z axis\&. 
+.RE
+.PP
+
+.SS "void Matrix::AddScale (const \fBVector2\fP & vec)"
+Creates a scaling \fBMatrix\fP on the x and y axes without resetting the other values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP \fBVector2\fP&\&. Calls Vector2::GetX and Vector2::GetY as values for scale on x and y axes\&. 
+.RE
+.PP
+
+.SS "void Matrix::AddScale (const \fBVector3\fP & vec)"
+Creates a scaling \fBMatrix\fP on the x, y and z axes without resetting the other values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP \fBVector2\fP&\&. Calls Vector3::GetX, Vector3::GetY and Vector3::GetZ as values for scale on x, y and z axes\&. 
+.RE
+.PP
+
+.SS "void Matrix::AddTranslate (F32 x, F32 y)"
+Creates a translation on the x and y axes without reseting the other values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP F32\&. Value of x axis translation\&. 
+.br
+\fIy\fP F32\&. Value of y axis translation\&. 
+.RE
+.PP
+
+.SS "void Matrix::AddTranslate (F32 x, F32 y, F32 z)"
+Creates a translation on the x, y and z axes without resetting the other values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP F32\&. Value of x axis translation\&. 
+.br
+\fIy\fP F32\&. Value of y axis translation\&. 
+.br
+\fIz\fP F32\&. Value of z axis translation\&. 
+.RE
+.PP
+
+.SS "void Matrix::AddTranslate (const \fBVector2\fP & vec)"
+Creates a translation on the x and y axes without reseting the other values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP \fBVector3\fP&\&. Calls Vector2::GetX and Vector2::GetY to get values for translation\&. 
+.RE
+.PP
+
+.SS "void Matrix::AddTranslate (const \fBVector3\fP & vec)"
+Creates a translation on the x, y and z axes without reseting the other values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP \fBVector3\fP&\&. Calls Vector3::GetX, Vector3::GetY and Vector3::GetZ to get values for translation\&. 
+.RE
+.PP
+
+.SS "void Matrix::ComponentMulti (const \fBMatrix\fP & M)"
+Also known as a straight multiplication\&. Multiplies each value of this \fBMatrix\fP by the matching value of M\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP \fBMatrix\fP&\&. Right hand value to multiply by\&. 
+.RE
+.PP
+
+.SS "F32 KillerMath::Matrix::Get11 (void) const\fC [inline]\fP"
+Returns 0,0 
+.SS "F32 KillerMath::Matrix::Get12 (void) const\fC [inline]\fP"
+Returns 0,1 
+.SS "F32 KillerMath::Matrix::Get13 (void) const\fC [inline]\fP"
+Returns 0,2 
+.SS "F32 KillerMath::Matrix::Get14 (void) const\fC [inline]\fP"
+Returns 0,3 
+.SS "F32 KillerMath::Matrix::Get21 (void) const\fC [inline]\fP"
+Returns 1,0 
+.SS "F32 KillerMath::Matrix::Get22 (void) const\fC [inline]\fP"
+Returns 1,1 
+.SS "F32 KillerMath::Matrix::Get23 (void) const\fC [inline]\fP"
+Returns 1,2 
+.SS "F32 KillerMath::Matrix::Get24 (void) const\fC [inline]\fP"
+Returns 1,3 
+.SS "F32 KillerMath::Matrix::Get31 (void) const\fC [inline]\fP"
+Returns 2,0 
+.SS "F32 KillerMath::Matrix::Get32 (void) const\fC [inline]\fP"
+Returns 2,1 
+.SS "F32 KillerMath::Matrix::Get33 (void) const\fC [inline]\fP"
+Returns 2,2 
+.SS "F32 KillerMath::Matrix::Get34 (void) const\fC [inline]\fP"
+Returns 2,3 
+.SS "F32 KillerMath::Matrix::Get41 (void) const\fC [inline]\fP"
+Returns 3,0 
+.SS "F32 KillerMath::Matrix::Get42 (void) const\fC [inline]\fP"
+Returns 3,1 
+.SS "F32 KillerMath::Matrix::Get43 (void) const\fC [inline]\fP"
+Returns 3,2 
+.SS "F32 KillerMath::Matrix::Get44 (void) const\fC [inline]\fP"
+Returns 3,3 
+.SS "const F32* KillerMath::Matrix::GetElems (void) const\fC [inline]\fP"
+Return the array containing all the elements\&. 
+.SS "void KillerMath::Matrix::MakeIdentity (void)\fC [inline]\fP"
+Wrapper for \fBResetMatrix()\fP\&. Sets all values of the \fBMatrix\fP to 0, with the diagnal set to 1\&. 
+.SS "void Matrix::MakeOrthographic (F32 width, F32 height, F32 depth, bool center = \fCtrue\fP)"
+Resets the \fBMatrix\fP, then sets the values up as an Orthographic projection\&. Calls MakeIdentiy()\&. The viewport values are usually based on the dimensions of the window, but could be made smaller\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwidth\fP F32\&. Width of viewport\&. 
+.br
+\fIheight\fP F32\&. Height of viewport\&. 
+.br
+\fIdepth\fP F32\&. Depth of the viewport\&. 
+.br
+\fIcenter\fP bool\&. Set to true by default\&. If true, the origin of the view port will be the middle of the screen\&. Otherwise it will be the bottom left corner of the screen\&. 
+.RE
+.PP
+
+.SS "void Matrix::MakePerspective (F32 width, F32 height, F32 depth, bool center = \fCtrue\fP)"
+Resets the \fBMatrix\fP, then sets the values up as a Perspective projection, using the more standard equation\&. Calls MakeIdenity()\&. The viewport values are usually based on the dimensions of the window, but could be made smaller\&. 
+.PP
+\fBBug\fP
+.RS 4
+I cannot get this to work for the life of me\&. I am not sure why, the math all looks right but the function wont work\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwidth\fP F32\&. Width of viewport\&. 
+.br
+\fIheight\fP F32\&. Height of viewport\&. 
+.br
+\fIdepth\fP F32\&. Depfth of viewport\&. 
+.br
+\fIcenter\fP bool\&. True by default\&. If true, the origin of the view port will be the middle of the screen\&. Otherwise it will be the bottom left corner of the screen\&. 
+.RE
+.PP
+
+.SS "void Matrix::MakePerspective (F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F32 farPlane)"
+Resets the \fBMatrix\fP, then sets the values up as a Perspective \fBMatrix\fP\&. Instead of using the dimensions of the viewport, this version uses slightly differently ideas\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfieldOfview\fP F32\&. Angle of the view fields of view\&. Good values include 90 or 120\&. Will change the skew of the view\&. 
+.br
+\fIaspectration\fP F32\&. Width/height of the screen, but can be set to more specifici values like 4:3 or 16:9\&. 
+.br
+\fInearPlane\fP F32\&. Near rendering plane of viewport\&. Must be at least 1\&.0f\&. 
+.br
+\fIfarPlane\fP F32\&. Similar to depth, this is the point at which culling will happen\&. Should be greater than nearPlane\&. 
+.RE
+.PP
+
+.SS "\fBMatrix\fP & Matrix::operator* (const \fBMatrix\fP & RightMatrix)"
+Performs a \fBMatrix\fP style multiplication\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIRightMatrix\fP \fBMatrix\fP&\&. Right hand value for multiplication\&. 
+.RE
+.PP
+
+.SS "\fBVector2\fP Matrix::operator* (const \fBVector2\fP & RHV)"
+Performs \fBMatrix\fP multiplication with Vector\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIRHV\fP \fBVector2\fP&\&. Right hand vector for multiplication\&. 
+.RE
+.PP
+
+.SS "\fBVector3\fP Matrix::operator* (const \fBVector3\fP & RHV)"
+Performs \fBMatrix\fP multiplication with Vector\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIRHV\fP \fBVector3\fP&\&. Right hand vector for multiplication\&. 
+.RE
+.PP
+
+.SS "\fBMatrix\fP & Matrix::operator*= (\fBMatrix\fP & RHM)"
+Performs a \fBMatrix\fP sytle multiplication\&. Changes object after multiplication\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIRHM\fP \fBMatrix\fP&\&. Right hand value for multiplication\&. 
+.RE
+.PP
+
+.SS "\fBMatrix\fP & Matrix::operator= (const \fBMatrix\fP & M)"
+Sets all the values of object to values of M\&. Call \fBGetElems()\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIM\fP \fBMatrix\fP& 
+.RE
+.PP
+
+.SS "void Matrix::ResetMatrix (F32 val)"
+Sets all the values of the \fBMatrix\fP to 0, with the diagnal set to val\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP F32\&. Value of the diagnal of the \fBMatrix\fP\&. 
+.RE
+.PP
+
+.SS "void Matrix::Rotate (F32 x, F32 y, F32 z)"
+Resets the \fBMatrix\fP and creates an \fBMatrix\fP which will perform a rotation around the x, y and z axis in that order\&. Calls \fBMakeIdentity()\fP 
+.PP
+\fBBug\fP
+.RS 4
+Not working at all\&. The math is wrong, and rotations are not working in general\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP F32\&. Degree of rotation around the x axis\&. Calls DegreeToRadian() 
+.br
+\fIy\fP F32\&. Degree of rotation around the y axis\&. Calls DegreeToRadian() 
+.br
+\fIz\fP F32\&. Degree of rotation around the z axis\&. Calls DegreeToRadian() 
+.RE
+.PP
+
+.SS "void Matrix::RotateX (F32 x)"
+Resets \fBMatrix\fP and creates rotation around the x axis\&. Call MakeIdentiy()\&. 
+.PP
+\fBBug\fP
+.RS 4
+This is not working at all\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP F32\&. Degree of rotation around x axis\&. Calls DegreeToRadian() 
+.RE
+.PP
+
+.SS "void Matrix::RotateY (F32 y)"
+Resets \fBMatrix\fP and creates rotation around the y axis\&. Call MakeIdentiy()\&. 
+.PP
+\fBBug\fP
+.RS 4
+This is not working at all\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIy\fP F32\&. Degree of rotation around y axis\&. Calls DegreeToRadian() 
+.RE
+.PP
+
+.SS "void Matrix::RotateZ (F32 z)"
+Resets \fBMatrix\fP and creates rotation around the z axis\&. Call MakeIdentiy()\&. 
+.PP
+\fBBug\fP
+.RS 4
+This is not working at all\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIz\fP F32\&. Degree of rotation around z axis\&. Calls DegreeToRadian() 
+.RE
+.PP
+
+.SS "void Matrix::Scale (F32 x, F32 y)"
+Resets the \fBMatrix\fP and creates a scaling \fBMatrix\fP on the x and y axes\&. Calls MakeIndentity() 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP F32\&. Length to scale on x axis\&. 
+.br
+\fIy\fP F32\&. Length to scale on y axis\&. 
+.RE
+.PP
+
+.SS "void Matrix::Scale (F32 x, F32 y, F32 z)"
+Resets the \fBMatrix\fP and creates a scaling \fBMatrix\fP on the x, y and z axes\&. MakeIndentity() 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP F32\&. Length to scale on the x axis\&. 
+.br
+\fIy\fP F32\&. Length to scale on the y axis\&. 
+.br
+\fIz\fP F32\&. Length to scale on the z axis\&. 
+.RE
+.PP
+
+.SS "void Matrix::Scale (const \fBVector2\fP & vec)"
+Resets the \fBMatrix\fP and creates a scaling \fBMatrix\fP on the x and y axes\&. Calls MakeIndentity()\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP \fBVector2\fP&\&. Calls Vector2::GetX and Vector2::GetY as values for scale on x and y axes\&. 
+.RE
+.PP
+
+.SS "void Matrix::Scale (const \fBVector3\fP & vec)"
+Resets the \fBMatrix\fP and creates a scaling \fBMatrix\fP on the x and y axes\&. Calls MakeIndentity()\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP \fBVector3\fP&\&. Calls Vector3::GetX, Vector3::GetY and Vector3::GetZ as values for scale on x, y and z axes\&. 
+.RE
+.PP
+
+.SS "void Matrix::Translate (F32 x, F32 y)"
+Resets \fBMatrix\fP, then creates a Translation on the x and y axes\&. Calls MakeIdentiy()\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP F32\&. Value of x axis translation\&. 
+.br
+\fIy\fP F32\&. Value of y axis translation\&. 
+.RE
+.PP
+
+.SS "void Matrix::Translate (F32 x, F32 y, F32 z)"
+Resets \fBMatrix\fP, thn creates a Translation on the x, y and z axes\&. Calls MakeIdentiy()\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP F32\&. Value of x axis translation\&. 
+.br
+\fIy\fP F32\&. Value of y axis translation\&. 
+.br
+\fIz\fP F32\&. Value of z axis translation\&. 
+.RE
+.PP
+
+.SS "void Matrix::Translate (const \fBVector2\fP & vec)"
+Resets \fBMatrix\fP, then creates translation based on the x and y values found in vec\&. Calls MakeIdentiy()\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP \fBVector2\fP&\&. Calls Vector2::GetX and Vector::GetY to get values for translation\&. 
+.RE
+.PP
+
+.SS "void Matrix::Translate (const \fBVector3\fP & vec)"
+Resets \fBMatrix\fP, then creates translation based on the x, y and z values found in vec\&. Calls MakeIdentiy()\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP \fBVector3\fP&\&. Calls Vector3::GetX, Vector3::GetY and Vector3::GetZ to get values for translation\&. 
+.RE
+.PP
+
+.SS "void Matrix::Transpose (void)"
+Reverses the Column/Row order of the \fBMatrix\fP\&. 
 
 .SH "Author"
 .PP 

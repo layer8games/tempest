@@ -218,7 +218,7 @@ static U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Default Constsructor. Set's all members to 0 and _active to true. </p>
+<p>Default Constsructor. Set's all members to 0 and _active to true. <a class="el" href="class_killer_engine_1_1_game_object2_d.html#a0bc7f82ec5ab1b8d1a8d802293b2d1a2">SetID()</a> is called as part of the body </p>
 
 </div>
 </div>
@@ -237,7 +237,7 @@ static U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copy Constructor. Calls GetID, GetActive, GetSprite, GetPosition, GetWidth, GetHeight, GetColor </p>
+<p>Copy Constructor. Calls <a class="el" href="class_killer_engine_1_1_game_object2_d.html#a640498f1976d742ec51cd20c6c498e0d">GetID()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#a3d03658487d0c791afce364012e4cd41">GetActive()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#abedcf28f04165adfa38ca9afd7e67ae4">GetSprite()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#aed75700073563e02519e5ece04805da2">GetPosition()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#a40cf397ea6fcddde52174218be72de1c">GetWidth()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#a2dac999f5ff87a9bd0c9e83c030ba753">GetHeight()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#a95d31191d765daf19a4a4b949b2b1924">GetColor()</a> </p>
 
 </div>
 </div>
@@ -639,7 +639,7 @@ static U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Sets the ID for the object. Takes no params, the id is based on the static _nextID member. </p>
+<p>Sets the id of this instance. The id is determind by _nextID. This insures that each <a class="el" href="class_killer_engine_1_1_game_object3_d.html">GameObject3D</a> will have a unique id although there could be a collission with <a class="el" href="class_killer_engine_1_1_game_object3_d.html#a7a00cabc4cd3896b57f62a123ef878de" title="ID for this instance of GameObject3D. ">GameObject3D::_ID</a>. </p>
 
 </div>
 </div>
@@ -711,7 +711,7 @@ static U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sets the position of the object in World Space. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Sets the position of the object in World Space. Calls Vector2::SetX and Vector2::SetY </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">x</td><td>F32. X value of new position. </td></tr>
     <tr><td class="paramname">y</td><td>F32. Y value of new position. </td></tr>
@@ -848,15 +848,15 @@ static U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Pure Virtual fucntion. Will be called on each object, which will define what needs to happen in the update section of the loop. </p>
+<p>Pure Virtual fucntion. Will be called during Level::UpdateObjects on each object, which will define what needs to happen in the update section of the loop. </p>
 
-<p>Implemented in <a class="el" href="class_killer_physics_1_1_particle2_d.html#aba18f811b3deee248da26d8a1dae1edb">KillerPhysics::Particle2D</a>, and <a class="el" href="class_killer_engine_1_1_environment_object.html#a63c84249559e03174e6a85e5ce1e96f2">KillerEngine::EnvironmentObject</a>.</p>
+<p>Implemented in <a class="el" href="class_killer_physics_1_1_particle2_d.html#aba18f811b3deee248da26d8a1dae1edb">KillerPhysics::Particle2D</a>, and <a class="el" href="class_killer_engine_1_1_environment_object.html#af71fcd9bf8fda70de97c24c2ab35b8fa">KillerEngine::EnvironmentObject</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_game_object2_d_8h_source.html">GameObject2D.h</a></li>
-<li>C:/Projects/Killer_Engine/Implementations/GameObject2D.cpp</li>
+<li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_game_object2_d_8h_source.html">GameObject2D.h</a></li>
+<li>F:/Projects/Killer_Engine/Implementations/GameObject2D.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

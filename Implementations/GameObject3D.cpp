@@ -17,6 +17,7 @@ _model(),
 _position(KM::Vector3(0.0f)),
 _width(0.0f),
 _height(0.0f),
+_depth(0.0f),
 _modelView(1.0f)
 {
 	SetID();
@@ -30,6 +31,7 @@ _model(obj.GetModel()),
 _position(obj.GetPosition()),
 _width(obj.GetWidth()),
 _height(obj.GetHeight()),
+_depth(obj.GetDepth()),
 _modelView(obj.GetModelView())
 {  }
 
@@ -75,7 +77,9 @@ void GameObject3D::SetPosition(const KM::Vector3& pos)
 
 void GameObject3D::SetPosition(F32 x, F32 y, F32 z)
 {
-	_position = KM::Vector3(x, y, z);
+	_position.SetX(x);
+	_position.SetY(y);
+	_position.SetZ(z);
 	_modelView.Translate(_position);
 }
 
@@ -107,8 +111,19 @@ void GameObject3D::SetHeight(F32 h)
 	_height = h;
 }
 
-void GameObject3D::SetDimensions(F32 w, F32 h)
+F32 GameObject3D::GetDepth(void) const
+{
+	return _depth;
+}
+
+void GameObject3D::SetDepth(F32 d)
+{
+	_depth = d;
+}
+
+void GameObject3D::SetDimensions(F32 w, F32 h, F32 d)
 {
 	_width = w;
 	_height = h;
+	_depth = d;
 }
