@@ -91,6 +91,11 @@ namespace KillerEngine
 
 		void SetUp(GLuint shader);
 
+		inline const KM::Matrix& GetViewMatrix(void)
+		{
+			return _translation;
+		}
+
 		//Will be implemented later
 		//void SetProjectionPerspective(void) { }
 	

@@ -236,28 +236,28 @@ void Matrix::Translate(const Vector3& vec)
 
 void Matrix::AddTranslate(F32 x, F32 y)
 {
-	_m[12] = x;
-	_m[13] = y;
+	_m[12] += x;
+	_m[13] += y;
 }
 
 void Matrix::AddTranslate(F32 x, F32 y, F32 z)
 {
-	_m[12] = x; 
-	_m[13] = y; 
-	_m[14] = z;
+	_m[12] += x; 
+	_m[13] += y; 
+	_m[14] += z;
 }
 
 void Matrix::AddTranslate(const Vector2& vec)
 {
-	_m[12] = vec.GetX();
-	_m[13] = vec.GetY();
+	_m[12] += vec.GetX();
+	_m[13] += vec.GetY();
 }
 
 void Matrix::AddTranslate(const Vector3& vec)
 {
-	_m[12] = vec.GetX();
-	_m[13] = vec.GetY();
-	_m[14] = vec.GetZ();
+	_m[12] += vec.GetX();
+	_m[13] += vec.GetY();
+	_m[14] += vec.GetZ();
 }
 
 //==========================================================================================================================

@@ -27,6 +27,7 @@ Written by Maxwell Miller
 #include <Engine/RenderedCharacter.h>
 #include <Engine/Particle2D.h>
 #include <Engine/ParticleForceRegistry.h>
+#include <Engine/Camera.h>
 
 namespace KM = KillerMath;
 namespace KP =KillerPhysics;

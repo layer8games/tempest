@@ -200,6 +200,7 @@ void Shader::InitModelShader(void)
 		"layout (location = 0) in vec4 position;									\n"
 		"layout (location = 1) in vec4 color; 										\n"
 		"uniform mat4 modelView_mat; 												\n"
+		"uniform mat4 viewport_mat; 												\n"
 
 		"uniform mat4 projection_mat;												\n"
 		
@@ -207,7 +208,7 @@ void Shader::InitModelShader(void)
 
 		"void main(void)															\n"
 		"{ 																			\n"
-		"	gl_Position = projection_mat * modelView_mat * position;			    \n"
+		"	gl_Position = projection_mat * viewport_mat * modelView_mat * position;	\n"
 		"	fs_color = color;														\n"
 		"}																			\n"
 	};

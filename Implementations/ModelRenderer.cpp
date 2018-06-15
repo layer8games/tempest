@@ -104,6 +104,9 @@ void ModelRenderer::DrawNow(const Model& m, const KM::Matrix& modelView)
 	GLint transform1 = glGetUniformLocation(_shader, "modelView_mat");
 	glUniformMatrix4fv(transform1, 1, GL_FALSE, modelView.GetElems());
 
+	GLint viewportLoc = glGetUniformLocation(_shader, "viewport_mat");
+	glUniformMatrix4fv(viewportLoc, 1, GL_FALSE, Camera::Instance()->GetViewMatrix().GetElems());
+
 	glDrawElements(GL_TRIANGLES, m.VertexCount(), GL_UNSIGNED_SHORT, 0);
 
 }

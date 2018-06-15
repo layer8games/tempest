@@ -37,6 +37,7 @@ shared_ptr<Camera> Camera::Instance(void)
 
 void Camera::SetUp(GLuint shader)
 {		
+/*
 	KM::Matrix finalMatrix = _projection * _translation;
 
 	const F32* data = finalMatrix.GetElems();
@@ -44,19 +45,16 @@ void Camera::SetUp(GLuint shader)
 	GLint transform1 = glGetUniformLocation(shader, "projection_mat");
 
 	glUniformMatrix4fv(transform1, 1, GL_FALSE, data);
-
-/*
+*/
 	//not working matrix multiplication. Will fix later
-	_translation = _projection * _translation;
+	//_translation = _projection * _translation;
 	//_translation *= _projection;
-	
-	const F32* data = _translation.GetElems();
 
-	GLint transform = glGetUniformLocation(shader, "transform_mat");
+	const F32* data = _projection.GetElems();
+
+	GLint transform = glGetUniformLocation(shader, "projection_mat");
 
 	glUniformMatrix4fv(transform, 1, GL_FALSE, data);
-*/
-	
 }
 
 void Camera::SetOrthographic(void)
