@@ -9,7 +9,8 @@ using namespace KillerEngine;
 //==========================================================================================================================
 LevelManager::LevelManager(void) 
 : 
-_running(true) 
+_running(true),
+_activeLevel(nullptr)
 {  }
 
 LevelManager::~LevelManager(void)
@@ -74,9 +75,13 @@ void LevelManager::Update(void)
 {
 	//Update Physics, then level will update all registered Objects. 
 	//finally, the level can update anything custom
-	_activeLevel->v_Integrate();
-	_activeLevel->UpdateObjects();
-	_activeLevel->v_Update();
+	
+	if(_activeLevel != nullptr)
+	{
+		_activeLevel->v_Integrate();
+		_activeLevel->UpdateObjects();
+		_activeLevel->v_Update();	
+	}
 }
 
 //==========================================================================================================================
@@ -86,7 +91,10 @@ void LevelManager::Update(void)
 //==========================================================================================================================
 void LevelManager::Render(void) 
 {
-	_activeLevel->v_Render();
+	if(_activeLevel != nullptr)
+	{
+		_activeLevel->v_Render();
+	}
 }
 
 //==========================================================================================================================

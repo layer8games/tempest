@@ -38,11 +38,6 @@ namespace KM = KillerMath;
 
 #include <Extern/rapidxml.hpp>
 
-//=====OpenGL Includes=====
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/wglext.h>
-
 //=====STL Includes=====
 #include <vector>
 #include <map>

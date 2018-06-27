@@ -26,11 +26,6 @@ Written by Maxwell Miller
 
 namespace KM = KillerMath; 
 
-//=====OGL includes=====
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/wglext.h>
-
 namespace KillerEngine 
 {
 	class Controller;
@@ -51,16 +46,6 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-		HINSTANCE GetHINSTANCE(void) 	
-		{ 
-			return _wndClass.hInstance; 
-		}
-
-		HWND GetHWND(void)
-		{
-			return _hwnd; 
-		}
-		
 		S32 GetWidth(void)
 		{ 
 			return _totalWidth; 
@@ -107,28 +92,11 @@ namespace KillerEngine
 */		
 		void Init(S32 width, S32 height, string wndName, bool isFullScreen);
 		
-		void ProcessWndEvents(void);
-
-		Keys ConvertKeyCodes(WPARAM wParam);
+		void ProcessEvents(void);
 		
 		void BufferSwap(void);
 
-		void SetBackgroundColor(const Color& c) 
-		{
-			_bgColor[0] = c.GetRed();
-			_bgColor[1] = c.GetGreen();
-			_bgColor[2] = c.GetBlue();
-			_bgColor[3] = c.GetAlpha();
-		}
-		
-//==========================================================================================================================
-//
-//System Windows Functions
-//
-//==========================================================================================================================	
-		static LRESULT CALLBACK StaticWndProc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam);
-		
-		LRESULT CALLBACK WndProc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam);
+		void SetBackgroundColor(const Color& c);
 
 	private:
 		static shared_ptr<WinProgram> _instance;
@@ -142,21 +110,7 @@ namespace KillerEngine
 		S32     _bottom;
 		string  _wndName;
 		GLfloat _bgColor[4];
-
-		//=====Windows Variables=====
-		HWND _hwnd;
-		HDC _hdc;
-		HGLRC _hglrc;
-		WNDCLASSEX _wndClass;
-
-//==========================================================================================================================
-//
-//Private WinProgram Functions
-//
-//==========================================================================================================================
-		void _SetTempPixelFormat(void);
-		
-		void _SetPixelFormat(void);
+		GLFWwindow* _window;
 
 	protected:
 //==========================================================================================================================

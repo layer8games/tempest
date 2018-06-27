@@ -24,11 +24,6 @@ Written by Maxwell Miller
 //=====STL includes=====
 #include <vector>
 
-//=====OGL includes=====
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/wglext.h>
-
 namespace KillerEngine
 {
 	class Shader

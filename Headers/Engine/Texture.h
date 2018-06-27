@@ -16,14 +16,6 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 
-//=====OGL includes=====
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/wglext.h>
-
-//=====OGL includes=====
-
-
 namespace KillerEngine 
 {
 

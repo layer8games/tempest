@@ -25,11 +25,6 @@ using std::map;
 //=====SOIL includes=====
 #include <SOIL/SOIL.h>
 
-//=====OGL includes=====
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/wglext.h>
-
 namespace KillerEngine 
 {
 

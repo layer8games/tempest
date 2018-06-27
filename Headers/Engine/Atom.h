@@ -23,8 +23,10 @@ Written by Maxwell Miller
 //=====Windows Includes=====
 #include <Windows.h>
 
-//=====OGL Includes=====
-#include <GL/gl3w.h>
+//=====OGL includes=====
+#define GLEW_STATIC
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
 
 

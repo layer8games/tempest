@@ -40,10 +40,6 @@ namespace KP =KillerPhysics;
 
 #include <TinyXML/tinyxml2.h>
 
-//=====OGL includes
-#include <GL/gl.h>
-#include <GL/glu.h>
-
 namespace KillerEngine 
 {
 	class Level

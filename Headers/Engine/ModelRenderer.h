@@ -21,11 +21,6 @@ Written by Maxwell Miller
 
 namespace KM = KillerMath;
 
-//=====OGL includes=====
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/wglext.h>
-
 //=====STL Includes=====
 #include <vector>
 
