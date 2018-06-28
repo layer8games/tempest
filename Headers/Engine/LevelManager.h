@@ -17,6 +17,7 @@ Written by Maxwell Miller
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
 #include <Engine/Level.h>
+#include <Engine/WinProgram.h>
 #include <Engine/GameObject2D.h>
 #include <Engine/ErrorManager.h>
 
@@ -60,20 +61,10 @@ namespace KillerEngine
 		{
 			return _activeLevel;
 		}
-		
-		void SetRunning(bool r) 
-		{ 
-			_running = r; 
-		}
-		
-		bool GetRunning(void) 
-		{ 
-			return _running; 
-		}
 
 		void EndGame(void)
 		{
-			_running = false; 
+			WinProgram::Instance()->EndRunning();
 		}
 
 		void AddObjectToLevel(U32 id, const GameObject2D& obj);
@@ -104,8 +95,7 @@ namespace KillerEngine
 	private:
 		std::map<U32, shared_ptr<Level>> _levels;
 		shared_ptr<Level> 				 _activeLevel;
-		U32 				   			_activeLevelID;
-		bool				   			_running;			
+		U32 				   			_activeLevelID;			
 		static LevelManager*     		_instance;
 
 	};

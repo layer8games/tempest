@@ -43,13 +43,13 @@ namespace KillerEngine
 /*! Check if simulation is still running. */
 		inline bool Running(void) 
 		{ 
-			return LevelManager::Instance()->GetRunning(); 
+			return WinProgram::Instance()->GetRunning(); 
 		}
 
 /*! Wrapper for LevelManager::SetRunning(). Sets Running to false. This stops the Main Game Loop from running. Calling this is the same as Quitting the program. */ 
 		inline void End(void) 
 		{ 
-			LevelManager::Instance()->SetRunning(false); 
+			WinProgram::Instance()->EndRunning(); 
 		}
 
 /*! Wrapper for TextureManager::LoadTexture(). Saves an handle to a loaded texture in OpenGL by ID
@@ -70,7 +70,6 @@ namespace KillerEngine
 
 /*! Wrapper for LevelManager::SetActive(). Sets level with id to be active level
 	\param id const U32: id of level. */
-
 		inline void SetActiveLevel(const U32 id) 
 		{ 
 			LevelManager::Instance()->SetActiveLevel(id); 
@@ -89,6 +88,7 @@ namespace KillerEngine
 	- WinProgram::BufferSwap()
 	- ErrorManager::DisplayErrors() */
 		void Render(void);
+
 //==========================================================================================================================
 //
 //Singleton functions

@@ -23,8 +23,12 @@ Written by Maxwell Miller
 #include <Engine/Controller.h>
 #include <Engine/Vector2.h>
 #include <Engine/Color.h>
+#include <Engine/Timer.h>
 
 namespace KM = KillerMath; 
+
+//===== STL Includes =====
+#include <sstream>
 
 namespace KillerEngine 
 {
@@ -46,34 +50,50 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-		S32 GetWidth(void)
+		inline void EndRunning(void) 
+		{ 
+			_running = false;
+			glfwSetWindowShouldClose(_window, GL_TRUE);
+		}
+		
+		inline bool GetRunning(void) 
+		{ 
+			return _running;
+		}
+
+		inline S32 GetWidth(void)
 		{ 
 			return _totalWidth; 
 		}
 		
-		S32 GetRight(void)
+		inline S32 GetRight(void)
 		{ 
 			return _right; 
 		}
 		
-		S32 GetLeft(void)
+		inline S32 GetLeft(void)
 		{ 
 			return _left; 
 		}
 		
-		S32 GetHeight(void)
+		inline S32 GetHeight(void)
 		{ 
 			return _totalHeight; 
 		}
 		
-		S32 GetTop(void)
+		inline S32 GetTop(void)
 		{ 
 			return _top; 
 		}
 		
-		S32 GetBottom(void)
+		inline S32 GetBottom(void)
 		{ 
 			return _bottom; 
+		}
+
+		inline void SetBackgroundColor(const Color& c)
+		{
+			_bgColor = c;
 		}
 
 //==========================================================================================================================
@@ -90,18 +110,23 @@ namespace KillerEngine
 	\param wndName string: title of window
 	\param isFullScreen bool: Sets if the system makes the window fullscreen
 */		
+		static void OnKey(GLFWwindow* window, int key, int scancode, int action, int mode);
+
 		void Init(S32 width, S32 height, string wndName, bool isFullScreen);
 		
 		void ProcessEvents(void);
 		
 		void BufferSwap(void);
 
-		void SetBackgroundColor(const Color& c);
+		static Keys ConvertKeyCodes(int key);
+
+		void DisplayFPS(void);
 
 	private:
 		static shared_ptr<WinProgram> _instance;
 		
 		bool    _isFullScreen;
+		bool 	_running;
 		S32     _totalWidth;
 		S32     _totalHeight;
 		S32     _right;
@@ -109,8 +134,9 @@ namespace KillerEngine
 		S32     _top;
 		S32     _bottom;
 		string  _wndName;
-		GLfloat _bgColor[4];
+		Color 	_bgColor;
 		GLFWwindow* _window;
+
 
 	protected:
 //==========================================================================================================================

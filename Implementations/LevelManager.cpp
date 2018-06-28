@@ -9,7 +9,6 @@ using namespace KillerEngine;
 //==========================================================================================================================
 LevelManager::LevelManager(void) 
 : 
-_running(true),
 _activeLevel(nullptr)
 {  }
 

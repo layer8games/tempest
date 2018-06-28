@@ -78,7 +78,7 @@ namespace KillerMath
 //Timer Functions
 //
 //==========================================================================================================================		
-		void Update    (void);
+		void Update (void);
 		
 		void SingleStep(void);
 

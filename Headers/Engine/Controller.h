@@ -69,7 +69,7 @@ namespace KillerEngine
 		EIGHT=39,				///< 8 key
 		NINE=40,				///< 9 key
 		MINUS=41,				///< Minus key
-		PLUS=42,				///< Plus key
+		EQUAL=42,				///< Plus key
 		SPACE=43,				///< Spacebar
 		ESCAPE=44,				///< Escape key
 		TAB=45,					///< Tab key
