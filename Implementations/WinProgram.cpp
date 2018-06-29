@@ -132,8 +132,6 @@ void WinProgram::ProcessEvents(void)
 void WinProgram::BufferSwap(void)
 { 
     glfwSwapBuffers(_window);
-
-    glClearColor(_bgColor.GetRed(), _bgColor.GetGreen(), _bgColor.GetBlue(), _bgColor.GetAlpha());
     glClear(GL_COLOR_BUFFER_BIT);
 }
 

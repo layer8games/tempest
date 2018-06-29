@@ -128,7 +128,6 @@ namespace KillerEngine
 		std::vector<F32> 	 _bottomTop;
 		std::vector<F32>     _leftRight;	
 		GLuint				 _renderingProgramColor;
-		
 		const static U32	 NUM_VOA = 1;
 		GLuint   			 _renderingProgramTexture;
 		GLuint   			 _vertexArrayObject[NUM_VOA];
