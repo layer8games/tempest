@@ -83,6 +83,23 @@ namespace KillerEngine
 			return _characterData;
 		}
 
+		inline const Color& GetColor(void) const
+		{
+			return _color;
+		}
+
+		inline void SetColor(const Color& col)
+		{
+			_color = col;
+		}
+
+		inline void SetColor(F32 red, F32 green, F32 blue)
+		{
+			_color.SetRed(red);
+			_color.SetGreen(green);
+			_color.SetBlue(blue);
+		}
+
 		inline const GLuint GetShader(void) const
 		{
 			return _shaderProgram;
@@ -115,7 +132,11 @@ namespace KillerEngine
 		KM::Vector2 		 _leftRight;
 		U32					 _textureID;
 		CharacterData   	 _characterData;
+		Color 				 _color;
 		GLuint 		 		 _shaderProgram;
+		const static int 	 NUM_BUFFERS = 2;
+		GLuint				 _vao;
+		GLuint 				 _vbo[NUM_BUFFERS];
 
 //==========================================================================================================================
 //

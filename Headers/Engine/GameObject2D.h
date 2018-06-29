@@ -171,7 +171,6 @@ namespace KillerEngine
 		KM::Vector2 			_position;		///< Position in World Space
 		F32						_width;			///< Width of the object. 
 		F32 					_height;		///< Height of the object.
-		Color 					_color;			///< Color of the object.
 	};
 
 	

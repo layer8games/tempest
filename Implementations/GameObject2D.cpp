@@ -16,8 +16,7 @@ _active(true),
 _sprite(), 
 _position(0), 
 _width(0.0f), 
-_height(0.0f), 
-_color()
+_height(0.0f)
 {
 	SetID();
 }
@@ -29,8 +28,7 @@ _active(obj.GetActive()),
 _sprite(obj.GetSprite()),
 _position(obj.GetPosition()),
 _width(obj.GetWidth()),
-_height(obj.GetHeight()),
-_color(obj.GetColor())
+_height(obj.GetHeight())
 {  }
 
 GameObject2D::~GameObject2D(void)
@@ -71,19 +69,17 @@ void GameObject2D::SetDimensions(F32 w, F32 h)
 //===== Color =====
 const Color& GameObject2D::GetColor(void) const
 {
-	return _color;
+	return _sprite.GetColor();
 }
 
 void GameObject2D::SetColor(const Color& col)
 {
-	_color = col;
+	_sprite.SetColor(col);
 }
 
 void GameObject2D::SetColor(F32 red, F32 green, F32 blue)
 {
-	_color.SetRed(red);
-	_color.SetGreen(green);
-	_color.SetBlue(blue);
+	_sprite.SetColor(red, green, blue);
 }
 
 //===== Texture =====

@@ -16,8 +16,36 @@ Sprite::Sprite(void)
 _bottomTop(0),
 _leftRight(0),
 _textureID(0),
-_shaderProgram(Shader::Instance()->GetSpriteShader())
-{  }
+_color(),
+_shaderProgram(Shader::Instance()->GetSpriteShader()),
+_vao(),
+_vbo()
+{
+	glGenVertexArrays(1, &_vao);
+	glBindVertexArray(_vao);
+
+	glGenBuffers(NUM_BUFFERS, _vbo);
+
+	F32 vertices[] = {
+		0.0f, 0.5f, 0.0f, 1.0f, //Top
+		0.5f, -0.5f, 0.0f, 1.0f, //Right
+		-0.5f, -0.5f, 0.0f, 1.0f //Left
+	};
+
+	glBindBuffer(GL_ARRAY_BUFFER, _vbo[0]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(0);
+
+	const F32* colors = _color.Get();
+
+	glBindBuffer(GL_ARRAY_BUFFER, _vbo[1]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_STATIC_DRAW);
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(1);
+
+	
+}
 
 Sprite::~Sprite(void)
 {  }																	     
