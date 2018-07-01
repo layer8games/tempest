@@ -1,4 +1,5 @@
 #include <Engine/Shader.h>
+#include <iostream>
 
 using namespace KillerEngine;
 //==========================================================================================================================
@@ -190,6 +191,25 @@ void Shader::InitSpriteShader(void)
 	glDeleteShader(geometryShaderProgram);
 	glDeleteShader(fragmentShaderProgram);
 }
+
+void Shader::InitSpriteShader(string filepath)
+{
+	std::cout << "Init sprite called from shader\n";
+
+	std::ifstream file(filepath);
+
+	std::vector<char> buffer(std::istreambuf_iterator<char>(file), {});
+
+	file.close();
+
+	GLchar* code = buffer.data();
+	
+	for(int i = 0; i < buffer.size(); ++i)
+	{
+		std::cout << code[i];
+	}
+}
+
 
 void Shader::InitModelShader(void)
 {

@@ -31,6 +31,8 @@ Written by Maxwell Miller
 #include <Engine/CharacterData.h>
 #include <Engine/Shader.h>
 
+#include <iostream>
+
 namespace KM = KillerMath;
 
 //=====STL Includes=====
@@ -88,21 +90,34 @@ namespace KillerEngine
 			return _color;
 		}
 
-		inline void SetColor(const Color& col)
-		{
-			_color = col;
-		}
+		void SetColor(const Color& col);
 
-		inline void SetColor(F32 red, F32 green, F32 blue)
-		{
-			_color.SetRed(red);
-			_color.SetGreen(green);
-			_color.SetBlue(blue);
-		}
+		void SetColor(F32 red, F32 green, F32 blue, F32 alpha=1.0f);
 
 		inline const GLuint GetShader(void) const
 		{
 			return _shaderProgram;
+		}
+
+		inline void InitShader(string filepath)
+		{
+			std::cout << "Init shader called from sprite\n";
+			Shader::Instance()->InitSpriteShader(filepath);
+		}
+
+		inline void SetVAO(GLuint vao)
+		{
+			_vao = vao;
+		}
+
+		inline GLuint GetVAO(void)
+		{
+			return _vao;
+		}
+
+		inline U32 GetVertexCount(void)
+		{
+			return _vertexCount;
 		}
  
 //==========================================================================================================================
@@ -134,9 +149,8 @@ namespace KillerEngine
 		CharacterData   	 _characterData;
 		Color 				 _color;
 		GLuint 		 		 _shaderProgram;
-		const static int 	 NUM_BUFFERS = 2;
 		GLuint				 _vao;
-		GLuint 				 _vbo[NUM_BUFFERS];
+		U32 				 _vertexCount;
 
 //==========================================================================================================================
 //

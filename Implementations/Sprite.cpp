@@ -1,4 +1,5 @@
 #include <Engine/Sprite.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -17,14 +18,18 @@ _bottomTop(0),
 _leftRight(0),
 _textureID(0),
 _color(),
-_shaderProgram(Shader::Instance()->GetSpriteShader()),
+_shaderProgram(0),
 _vao(),
-_vbo()
+_vertexCount(0)
 {
+	std::cout << "Sprite Default constructor called\n";
+
 	glGenVertexArrays(1, &_vao);
 	glBindVertexArray(_vao);
 
-	glGenBuffers(NUM_BUFFERS, _vbo);
+	GLuint vbo = 0;
+
+	glGenBuffers(1, &vbo);
 
 	F32 vertices[] = {
 		0.0f, 0.5f, 0.0f, 1.0f, //Top
@@ -32,23 +37,20 @@ _vbo()
 		-0.5f, -0.5f, 0.0f, 1.0f //Left
 	};
 
-	glBindBuffer(GL_ARRAY_BUFFER, _vbo[0]);
+	_vertexCount = 3;
+
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(0);
 
-	const F32* colors = _color.Get();
-
-	glBindBuffer(GL_ARRAY_BUFFER, _vbo[1]);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_STATIC_DRAW);
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-	glEnableVertexAttribArray(1);
-
-	
+	glDeleteBuffers(1, &vbo);
 }
 
 Sprite::~Sprite(void)
-{  }																	     
+{
+	glDeleteVertexArrays(1, &_vao);
+}																	     
 
 //==========================================================================================================================
 //
@@ -103,6 +105,45 @@ Sprite& Sprite::operator=(shared_ptr<Sprite> S)
 //Sprite Fucntions
 //
 //==========================================================================================================================
+void Sprite::SetColor(const Color& col)
+{
+	std::cout << "sprite set color calle\n";
+
+	_color = col;
+
+	const F32* colorData = _color.Get();
+
+	GLuint vbo = 0;
+
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(colorData), colorData, GL_STATIC_DRAW);
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(1);
+
+	glDeleteBuffers(1, &vbo);
+}
+
+void Sprite::SetColor(F32 red, F32 green, F32 blue, F32 alpha)
+{
+	std::cout << "sprite set color calle\n";
+
+	_color.SetRed(red);
+	_color.SetGreen(green);
+	_color.SetBlue(blue);
+	_color.SetAlpha(alpha);
+
+	const F32* colorData = _color.Get();
+
+	GLuint vbo = 0;
+
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(colorData), colorData, GL_STATIC_DRAW);
+	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(1);
+
+	glDeleteBuffers(1, &vbo);
+}
+
 void Sprite::SetTexture(U32 tID, const F32 top, const F32 bottom, const F32 right, const F32 left)
 {
 	_textureID = tID;

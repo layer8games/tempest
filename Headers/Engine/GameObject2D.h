@@ -57,6 +57,8 @@ namespace KillerEngine
 	in the update section of the loop. */
 		virtual void v_Update(void)=0;
 
+		virtual void v_Render(void);
+
 //==========================================================================================================================
 //
 //Accessors
@@ -109,7 +111,7 @@ namespace KillerEngine
 	\param red F32. Red value passed to Color::SetRed
 	\param green F32. Green value passed to Color::SetGreen
 	\param blue F32. Blue value passed to Color::SetBlue */
-		void SetColor(F32 red, F32 green, F32 blue);
+		void SetColor(F32 red, F32 green, F32 blue, F32 alpha=1.0f);
 
 //=====Texture=====
 /*! Returns curren texture ID for object. Like Color, this value is not duplciated in the Sprite. */

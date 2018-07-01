@@ -1,4 +1,5 @@
 #include <Engine/GameObject2D.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -19,6 +20,8 @@ _width(0.0f),
 _height(0.0f)
 {
 	SetID();
+	std::cout << "GameObject2D defautlt constructor called.\n";
+	_sprite.InitShader("..\\Assets\\Shaders\\sprite_vertex.h");
 }
 
 GameObject2D::GameObject2D(const GameObject2D& obj) 
@@ -33,6 +36,27 @@ _height(obj.GetHeight())
 
 GameObject2D::~GameObject2D(void)
 {  }
+
+//==========================================================================================================================
+//
+//Virtual Functions
+//
+//==========================================================================================================================
+void GameObject2D::v_Render(void)
+{
+	glUseProgram(_sprite.GetShader());
+
+	if(_sprite.GetTextureID() != 0)
+	{
+		TextureManager::Instance()->SetCurrentTextureID(_sprite.GetTextureID());
+	}
+
+	glBindVertexArray(_sprite.GetVAO());
+
+	//Set Position Attrib
+
+	glDrawArrays(GL_TRIANGLES, 0, 1);
+}
 
 //==========================================================================================================================
 //
@@ -77,9 +101,9 @@ void GameObject2D::SetColor(const Color& col)
 	_sprite.SetColor(col);
 }
 
-void GameObject2D::SetColor(F32 red, F32 green, F32 blue)
+void GameObject2D::SetColor(F32 red, F32 green, F32 blue, F32 alpha)
 {
-	_sprite.SetColor(red, green, blue);
+	_sprite.SetColor(red, green, blue, alpha);
 }
 
 //===== Texture =====

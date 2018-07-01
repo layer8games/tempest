@@ -23,6 +23,7 @@ Written by Maxwell Miller
 
 //=====STL includes=====
 #include <vector>
+#include <fstream>
 
 namespace KillerEngine
 {
@@ -45,6 +46,8 @@ namespace KillerEngine
 		static shared_ptr<Shader> Instance(void);
 
 		void InitSpriteShader(void);
+
+		void InitSpriteShader(string filepath);
 
 		void InitModelShader(void);
 
