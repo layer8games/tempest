@@ -1,5 +1,7 @@
 Before going through any of these steps, first you need to get the project set up. 
 
+here is a test
+
 1. Create a directory structure that suites you on your hard drive. 
 2. In visual studio, create a project, and select it to load out of the folder of your choice. Use /Build
 3. There are 2 ways to think about how the project will be. 
@@ -26,6 +28,7 @@ Note: The $(PlatformName) is for any project that is going to be supported by mo
 Configutation Properties -> General
 
 -> Output Directory: $(ProjectDir)..\..\Bin\$(PlatformName)$(Configuration)\ 
+!@Kwe@3104
 
 -> Intermediate Directory: $(ProjectDir)..\..\Temp\$(ProjectName)$(Configuration)\
 
