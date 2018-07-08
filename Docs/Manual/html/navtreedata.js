@@ -26,6 +26,7 @@ var NAVTREE =
   [ "Killer Engine", "index.html", [
     [ "Killer Engine Documentation.", "index.html#The", null ],
     [ "Bug List", "bug.html", null ],
+    [ "Modules", "modules.html", "modules" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -37,7 +38,13 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
+        [ "Macros", "globals_defs.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
@@ -45,12 +52,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"class_killer_engine_1_1_level.html#a29500a40202e95e5f477cbfac0341655",
-"class_killer_engine_1_1_texture.html#af2f4d15eedd146f199367c19814c9f24",
-"class_killer_math_1_1_vector3.html#a21c92a4e971acef231f5fd86a7f4e892",
-"classrapidxml_1_1parse__error.html#aea12a301271c393fb627b368fb9f35c1",
-"classtinyxml2_1_1_x_m_l_document.html#a5385c937734ff6db9226ab707d2c7147",
-"classtinyxml2_1_1_x_m_l_text.html"
+"class_killer_engine_1_1_level.html#a26cce8fb3e4c30fe2feb80bd0046cfd4",
+"class_killer_engine_1_1_texture.html#a5a27a1d6c687a55a7458ee47a0a94d90",
+"class_killer_math_1_1_vector3.html#a17e06fcbd9518268c92df8f628559e12",
+"classrapidxml_1_1parse__error.html#a41bffadc72eec238cf4b7d14c10c16ca",
+"classtinyxml2_1_1_x_m_l_document.html#a34e6318e182e40e3cc4f4ba5d59ed9ed",
+"classtinyxml2_1_1_x_m_l_printer.html#ae966b988a7a28c41e91c5ca17fb2054b",
+"group__input.html#ga0192a232a41e4e82948217c8ba94fdfd",
+"group__monitor.html#gac234b63ec525c70d7e18ac84aca088c6",
+"struct_killer_engine_1_1_character_data.html#a295501ce326a3083466aee6dd8eb2a94"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

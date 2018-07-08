@@ -2,6 +2,7 @@ var class_killer_engine_1_1_camera =
 [
     [ "~Camera", "class_killer_engine_1_1_camera.html#a06211f202c145b3ec8253f96e1e654a6", null ],
     [ "Camera", "class_killer_engine_1_1_camera.html#a5c68f1ee8348320a6c47419ae2d724fb", null ],
+    [ "GetViewMatrix", "class_killer_engine_1_1_camera.html#a9c85b6e12aeaa220b26bcc315e11e454", null ],
     [ "ScalePosition", "class_killer_engine_1_1_camera.html#a93b65afe2d8a0d0fd7b85dfe24c2cf2d", null ],
     [ "ScalePosition", "class_killer_engine_1_1_camera.html#a286b801ff8d4044d0440251b08add8bb", null ],
     [ "ScalePosition", "class_killer_engine_1_1_camera.html#aa8d41b085ce26a60c49cf330f9b7c3c9", null ],

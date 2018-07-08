@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['init',['Init',['../class_killer_engine_1_1_engine.html#a02b8dbb69195d8dced126750f72f4f88',1,'KillerEngine::Engine::Init()'],['../class_killer_engine_1_1_win_program.html#a390478713355c57ea63b0923e59a3892',1,'KillerEngine::WinProgram::Init()']]],
+  ['init',['Init',['../class_killer_engine_1_1_engine.html#a02b8dbb69195d8dced126750f72f4f88',1,'KillerEngine::Engine::Init()'],['../group__init.html',1,'(Global Namespace)']]],
   ['initfont',['InitFont',['../class_killer_engine_1_1_font.html#ae65dcfc3ea7678f2c031422d8ee3863b',1,'KillerEngine::Font']]],
+  ['input_20reference',['Input reference',['../group__input.html',1,'']]],
   ['insert_5fattribute',['insert_attribute',['../classrapidxml_1_1xml__node.html#a9fe659cdf4a5b3bbf5e8ffc98db5a84f',1,'rapidxml::xml_node']]],
   ['insert_5fnode',['insert_node',['../classrapidxml_1_1xml__node.html#a666880f42a7e486d78cc45ed51c7c46d',1,'rapidxml::xml_node']]],
   ['insertafterchild',['InsertAfterChild',['../classtinyxml2_1_1_x_m_l_node.html#a85adb8f0b7477eec30f9a41d420b09c2',1,'tinyxml2::XMLNode']]],

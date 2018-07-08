@@ -6,6 +6,7 @@ var class_killer_engine_1_1_shader =
     [ "GetSpriteShader", "class_killer_engine_1_1_shader.html#a9e7556e401c1f816d0e2060aac67524f", null ],
     [ "InitModelShader", "class_killer_engine_1_1_shader.html#a3f1d2eace779046ae3b9ecf60c72fcfd", null ],
     [ "InitSpriteShader", "class_killer_engine_1_1_shader.html#a2c1e8607413f3635aa171a2e9ddeb5ba", null ],
+    [ "InitSpriteShader", "class_killer_engine_1_1_shader.html#a3bc08f0ff69f1632fcbacae3957502e5", null ],
     [ "_modelShader", "class_killer_engine_1_1_shader.html#a32a95addc6a4896186d5ac1a501a1abc", null ],
     [ "_spriteShader", "class_killer_engine_1_1_shader.html#a66d8856bd99d0f332b5206190d21d652", null ]
 ];

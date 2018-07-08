@@ -1,11 +1,11 @@
 var searchData=
 [
+  ['_5f_5fglxevent',['__GLXEvent',['../union_____g_l_x_event.html',1,'']]],
   ['_5factive',['_active',['../class_killer_engine_1_1_game_object2_d.html#a84de7f701665851b9a736abae6a20f42',1,'KillerEngine::GameObject2D::_active()'],['../class_killer_engine_1_1_game_object3_d.html#a1102b6c6367ec908ec3d0c36f3377f0a',1,'KillerEngine::GameObject3D::_active()']]],
   ['_5faddnewcharacterdata',['_AddNewCharacterData',['../class_killer_engine_1_1_font.html#a21acf3595f87abae7f5a2bd4a3f80ad3',1,'KillerEngine::Font']]],
   ['_5falpha',['_alpha',['../class_killer_engine_1_1_color.html#aa163bfc9d6d17674963443d9dce56dfc',1,'KillerEngine::Color']]],
   ['_5fbackground',['_background',['../class_killer_engine_1_1_camera.html#aadd0f8158d4c3246d0b2a0789628da74',1,'KillerEngine::Camera']]],
   ['_5fblue',['_blue',['../class_killer_engine_1_1_color.html#adaac648afd95b66052e444f3a42ec360',1,'KillerEngine::Color']]],
-  ['_5fcolor',['_color',['../class_killer_engine_1_1_game_object2_d.html#aec9453763ccb181d51a072bdd6d49f88',1,'KillerEngine::GameObject2D']]],
   ['_5fcuractivekeys',['_curActiveKeys',['../class_killer_engine_1_1_controller.html#ae791278c017d9b26866d093061530197',1,'KillerEngine::Controller']]],
   ['_5fcurrentshader',['_currentShader',['../class_killer_engine_1_1_camera.html#a16706888f0f7c81145af7d1e138a251c',1,'KillerEngine::Camera']]],
   ['_5fdepth',['_depth',['../class_killer_engine_1_1_game_object3_d.html#a876046c14efe8009e3c9799a9d3e1d8a',1,'KillerEngine::GameObject3D']]],

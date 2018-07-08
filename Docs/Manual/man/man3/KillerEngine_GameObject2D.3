@@ -1,4 +1,4 @@
-.TH "KillerEngine::GameObject2D" 3 "Mon Jun 11 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::GameObject2D" 3 "Sat Jul 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -24,6 +24,9 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, and \fBKillerPhysics::Partic
 .br
 .ti -1c
 .RI "virtual void \fBv_Update\fP (void)=0"
+.br
+.ti -1c
+.RI "virtual void \fBv_Render\fP (void)"
 .br
 .ti -1c
 .RI "const U32 \fBGetID\fP (void) const"
@@ -53,7 +56,7 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, and \fBKillerPhysics::Partic
 .RI "void \fBSetColor\fP (const \fBColor\fP &col)"
 .br
 .ti -1c
-.RI "void \fBSetColor\fP (F32 red, F32 green, F32 blue)"
+.RI "void \fBSetColor\fP (F32 red, F32 green, F32 blue, F32 alpha=1\&.0f)"
 .br
 .ti -1c
 .RI "U32 \fBGetTextureID\fP (void) const"
@@ -116,10 +119,6 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, and \fBKillerPhysics::Partic
 .RI "F32 \fB_height\fP"
 .br
 .RI "Height of the object\&. "
-.ti -1c
-.RI "\fBColor\fP \fB_color\fP"
-.br
-.RI "\fBColor\fP of the object\&. "
 .in -1c
 .SS "Static Private Attributes"
 
@@ -188,7 +187,7 @@ Sets the color of the object\&.
 .RE
 .PP
 
-.SS "void GameObject2D::SetColor (F32 red, F32 green, F32 blue)"
+.SS "void GameObject2D::SetColor (F32 red, F32 green, F32 blue, F32 alpha = \fC1\&.0f\fP)"
 Sets the color of the object\&. This version called \fBColor::SetRed\fP, \fBColor::SetGreen\fP and \fBColor::SetBlue\fP\&. Note that \fBColor::SetAlpha\fP is not called\&. 
 .PP
 \fBParameters:\fP

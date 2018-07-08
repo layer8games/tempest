@@ -1,4 +1,4 @@
-.TH "KillerEngine::WinProgram" 3 "Mon Jun 11 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::WinProgram" 3 "Sat Jul 7 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,10 +10,10 @@ KillerEngine::WinProgram
 
 .in +1c
 .ti -1c
-.RI "HINSTANCE \fBGetHINSTANCE\fP (void)"
+.RI "void \fBEndRunning\fP (void)"
 .br
 .ti -1c
-.RI "HWND \fBGetHWND\fP (void)"
+.RI "bool \fBGetRunning\fP (void)"
 .br
 .ti -1c
 .RI "S32 \fBGetWidth\fP (void)"
@@ -34,23 +34,19 @@ KillerEngine::WinProgram
 .RI "S32 \fBGetBottom\fP (void)"
 .br
 .ti -1c
+.RI "void \fBSetBackgroundColor\fP (const \fBColor\fP &c)"
+.br
+.ti -1c
 .RI "void \fBInit\fP (S32 width, S32 height, string wndName, bool isFullScreen)"
 .br
-.RI "Sets up Windows Program\&. "
 .ti -1c
-.RI "void \fBProcessWndEvents\fP (void)"
-.br
-.ti -1c
-.RI "Keys \fBConvertKeyCodes\fP (WPARAM wParam)"
+.RI "void \fBProcessEvents\fP (void)"
 .br
 .ti -1c
 .RI "void \fBBufferSwap\fP (void)"
 .br
 .ti -1c
-.RI "void \fBSetBackgroundColor\fP (const \fBColor\fP &c)"
-.br
-.ti -1c
-.RI "LRESULT CALLBACK \fBWndProc\fP (HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)"
+.RI "void \fBDisplayFPS\fP (void)"
 .br
 .in -1c
 .SS "Static Public Member Functions"
@@ -60,17 +56,11 @@ KillerEngine::WinProgram
 .RI "static shared_ptr< \fBWinProgram\fP > \fBInstance\fP (void)"
 .br
 .ti -1c
-.RI "static LRESULT CALLBACK \fBStaticWndProc\fP (HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)"
+.RI "static void \fBOnKey\fP (\fBGLFWwindow\fP *window, int key, int scancode, int action, int mode)"
 .br
-.in -1c
-.SS "Private Member Functions"
-
-.in +1c
+.RI "Sets up Windows Program\&. "
 .ti -1c
-.RI "void \fB_SetTempPixelFormat\fP (void)"
-.br
-.ti -1c
-.RI "void \fB_SetPixelFormat\fP (void)"
+.RI "static Keys \fBConvertKeyCodes\fP (int key)"
 .br
 .in -1c
 .SS "Private Attributes"
@@ -78,6 +68,9 @@ KillerEngine::WinProgram
 .in +1c
 .ti -1c
 .RI "bool \fB_isFullScreen\fP"
+.br
+.ti -1c
+.RI "bool \fB_running\fP"
 .br
 .ti -1c
 .RI "S32 \fB_totalWidth\fP"
@@ -101,19 +94,10 @@ KillerEngine::WinProgram
 .RI "string \fB_wndName\fP"
 .br
 .ti -1c
-.RI "GLfloat \fB_bgColor\fP [4]"
+.RI "\fBColor\fP \fB_bgColor\fP"
 .br
 .ti -1c
-.RI "HWND \fB_hwnd\fP"
-.br
-.ti -1c
-.RI "HDC \fB_hdc\fP"
-.br
-.ti -1c
-.RI "HGLRC \fB_hglrc\fP"
-.br
-.ti -1c
-.RI "WNDCLASSEX \fB_wndClass\fP"
+.RI "\fBGLFWwindow\fP * \fB_window\fP"
 .br
 .in -1c
 .SS "Static Private Attributes"
@@ -125,7 +109,7 @@ KillerEngine::WinProgram
 .in -1c
 .SH "Member Function Documentation"
 .PP 
-.SS "void WinProgram::Init (S32 width, S32 height, string wndName, bool isFullScreen)"
+.SS "void WinProgram::OnKey (\fBGLFWwindow\fP * window, int key, int scancode, int action, int mode)\fC [static]\fP"
 
 .PP
 Sets up Windows Program\&. Makes all calls needed to start up a window\&. This is means to abstract away system specific callls 

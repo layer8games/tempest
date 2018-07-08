@@ -11,7 +11,7 @@ var searchData=
   ['setblue',['SetBlue',['../class_killer_engine_1_1_color.html#a9512495e64149fdd8a4aa34837bdea9e',1,'KillerEngine::Color']]],
   ['setbom',['SetBOM',['../classtinyxml2_1_1_x_m_l_document.html#a14419b698f7c4b140df4e80f3f0c93b0',1,'tinyxml2::XMLDocument']]],
   ['setcdata',['SetCData',['../classtinyxml2_1_1_x_m_l_text.html#ad080357d76ab7cc59d7651249949329d',1,'tinyxml2::XMLText']]],
-  ['setcolor',['SetColor',['../class_killer_engine_1_1_game_object2_d.html#a3f347cdd1bffbc1dc60992da799815e2',1,'KillerEngine::GameObject2D::SetColor(const Color &amp;col)'],['../class_killer_engine_1_1_game_object2_d.html#a6849aead1ccd1d4aea3e9f263d0a1995',1,'KillerEngine::GameObject2D::SetColor(F32 red, F32 green, F32 blue)']]],
+  ['setcolor',['SetColor',['../class_killer_engine_1_1_game_object2_d.html#a3f347cdd1bffbc1dc60992da799815e2',1,'KillerEngine::GameObject2D::SetColor(const Color &amp;col)'],['../class_killer_engine_1_1_game_object2_d.html#a1f19c1094692dfc9cf8c72a2195ad66c',1,'KillerEngine::GameObject2D::SetColor(F32 red, F32 green, F32 blue, F32 alpha=1.0f)']]],
   ['setdefaultmatrix',['SetDefaultMatrix',['../class_killer_engine_1_1_camera.html#a1cce2e4ff8005cd6f77bdd3bbe6cd98b',1,'KillerEngine::Camera']]],
   ['setdepth',['SetDepth',['../class_killer_engine_1_1_game_object3_d.html#a4d53151a2259b3685d3a92176b32a689',1,'KillerEngine::GameObject3D']]],
   ['setdimensions',['SetDimensions',['../class_killer_engine_1_1_game_object2_d.html#a4c0214ecfc1084d14a16fde19164b992',1,'KillerEngine::GameObject2D::SetDimensions()'],['../class_killer_engine_1_1_game_object3_d.html#a04b10e3a63ced9519b03bdf06f515d24',1,'KillerEngine::GameObject3D::SetDimensions()']]],

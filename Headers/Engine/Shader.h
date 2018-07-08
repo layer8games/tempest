@@ -64,6 +64,7 @@ namespace KillerEngine
 		static shared_ptr<Shader> _instance;
 		GLuint 					  _spriteShader;
 		GLuint 					  _modelShader;
+		string 					  _defaultFragmentShaderPath;
 
 	};//end Class
 }//end Namespace

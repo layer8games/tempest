@@ -10,17 +10,14 @@ var class_killer_engine_1_1_level_manager =
     [ "EndGame", "class_killer_engine_1_1_level_manager.html#aefaf5b1d035996cafe84fbefe8a416e2", null ],
     [ "GetActiveLevel", "class_killer_engine_1_1_level_manager.html#a54f5e55baf08df7baf315de2d79dcf21", null ],
     [ "GetActiveLevelID", "class_killer_engine_1_1_level_manager.html#a97b74d38bd42947b0acae30c5638994d", null ],
-    [ "GetRunning", "class_killer_engine_1_1_level_manager.html#ac9e38f1303aebe940bd977b73a3760b6", null ],
     [ "Remove2DObjectFromLevel", "class_killer_engine_1_1_level_manager.html#afdb67c5067442f15b357001fb07c9b55", null ],
     [ "Remove3DObjectFromLevel", "class_killer_engine_1_1_level_manager.html#a4dfc41f30affcfbbfb2400b304f03cb3", null ],
     [ "RemoveLevel", "class_killer_engine_1_1_level_manager.html#a3ca8cb0e378e7b8263c4669d9d8879e3", null ],
     [ "Render", "class_killer_engine_1_1_level_manager.html#a51683140c6c2b0823709275a1f862d2f", null ],
     [ "SetActiveLevel", "class_killer_engine_1_1_level_manager.html#a19af362df8714408dd170f4fb641dd34", null ],
-    [ "SetRunning", "class_killer_engine_1_1_level_manager.html#a0a4e83a90c8cc73ece08cff331b274d4", null ],
     [ "ShutDown", "class_killer_engine_1_1_level_manager.html#aa37c14507c6e5a8327e3c2653d7dd6bf", null ],
     [ "Update", "class_killer_engine_1_1_level_manager.html#a4f1608d9c79fc20af8bd9df607f4955a", null ],
     [ "_activeLevel", "class_killer_engine_1_1_level_manager.html#a2b79fae2c12a7c7b37244f447f7703dc", null ],
     [ "_activeLevelID", "class_killer_engine_1_1_level_manager.html#a76ec2be9fde9f8e405dac36892d78b63", null ],
-    [ "_levels", "class_killer_engine_1_1_level_manager.html#a2020be1f96ff6e4eff6611720702e6fb", null ],
-    [ "_running", "class_killer_engine_1_1_level_manager.html#a418a040f87b6417cbb99389cc30b6406", null ]
+    [ "_levels", "class_killer_engine_1_1_level_manager.html#a2020be1f96ff6e4eff6611720702e6fb", null ]
 ];

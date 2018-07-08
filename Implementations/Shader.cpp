@@ -10,8 +10,11 @@ using namespace KillerEngine;
 Shader::Shader(void)
 :
 _spriteShader(0),
-_modelShader(0)
-{  }
+_modelShader(0),
+_defaultFragmentShaderPath("..\\Assets\\Shaders\\sprite_fragment.glsl")
+{
+	InitSpriteShader(_defaultFragmentShaderPath);
+}
 
 Shader::~Shader(void)
 {
@@ -198,9 +201,25 @@ void Shader::InitSpriteShader(string filepath)
 
 	std::ifstream file(filepath);
 
-	std::vector<char> buffer(std::istreambuf_iterator<char>(file), {});
+	if(!file.is_open())
+	{
+		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Unable to open file path to fragment shader: " + filepath);
+	}
 
-	file.close();
+	string line;
+
+	std::cout << "I am getting ready to read through the file\n";
+
+	while(getline(file, line))
+	{
+		std::cout << line;
+	}
+
+	std::cout << "\n";
+
+	std::vector<char> buffer(std::istreambuf_iterator<char>(file), {});
+	
+	//file.close();
 
 	GLchar* code = buffer.data();
 	

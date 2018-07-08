@@ -1,4 +1,4 @@
-digraph "F:/Projects/Killer_Engine/Headers/Engine" {
+digraph "C:/Projects/Killer_Engine/Headers/Engine" {
   compound=true
   node [ fontsize="10", fontname="Helvetica"];
   edge [ labelfontsize="10", labelfontname="Helvetica"];
@@ -7,5 +7,7 @@ digraph "F:/Projects/Killer_Engine/Headers/Engine" {
   dir_b570760f141a85ad0cc6e39d54356d6a [shape=box, label="Engine", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_b570760f141a85ad0cc6e39d54356d6a.html"];
   }
   dir_467ddf618142fcffd39c5fc5f2e60db4 [shape=box label="Extern" URL="dir_467ddf618142fcffd39c5fc5f2e60db4.html"];
+  dir_2d4d78fa5cabd2d9517c3586dbd7baae [shape=box label="GLFW" URL="dir_2d4d78fa5cabd2d9517c3586dbd7baae.html"];
   dir_b570760f141a85ad0cc6e39d54356d6a->dir_467ddf618142fcffd39c5fc5f2e60db4 [headlabel="1", labeldistance=1.5 headhref="dir_000001_000002.html"];
+  dir_b570760f141a85ad0cc6e39d54356d6a->dir_2d4d78fa5cabd2d9517c3586dbd7baae [headlabel="1", labeldistance=1.5 headhref="dir_000001_000004.html"];
 }

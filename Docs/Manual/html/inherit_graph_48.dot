@@ -3,5 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="rapidxml::xml_document\l\< Ch \>::attribute_name_pred",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structrapidxml_1_1xml__document_1_1attribute__name__pred.html"];
+  Node0 [label="KillerPhysics::ParticleForce\lRegistry",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_killer_physics_1_1_particle_force_registry.html"];
 }

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_5f_5fgl_5fh_5f',['__gl_h_',['../gl3w_8h.html#a48a8940dccea5b6219320face7198075',1,'gl3w.h']]]
+  ['glfw_5ffalse',['GLFW_FALSE',['../glfw3_8h.html#ac877fe3b627d21ef3a0a23e0a73ba8c5',1,'glfw3.h']]],
+  ['glfw_5ftrue',['GLFW_TRUE',['../glfw3_8h.html#a2744fbb29b5631bb28802dbe0cf36eba',1,'glfw3.h']]]
 ];

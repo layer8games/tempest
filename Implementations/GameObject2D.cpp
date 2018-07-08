@@ -20,8 +20,6 @@ _width(0.0f),
 _height(0.0f)
 {
 	SetID();
-	std::cout << "GameObject2D defautlt constructor called.\n";
-	_sprite.InitShader("..\\Assets\\Shaders\\sprite_vertex.h");
 }
 
 GameObject2D::GameObject2D(const GameObject2D& obj) 

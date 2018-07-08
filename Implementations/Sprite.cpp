@@ -24,6 +24,8 @@ _vertexCount(0)
 {
 	std::cout << "Sprite Default constructor called\n";
 
+	Shader::Instance();
+
 	glGenVertexArrays(1, &_vao);
 	glBindVertexArray(_vao);
 

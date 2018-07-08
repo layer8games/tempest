@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "__GLXEvent", "union_____g_l_x_event.html", null ],
     [ "_GPU_DEVICE", "struct___g_p_u___d_e_v_i_c_e.html", null ],
     [ "KillerPhysics::ParticleForceRegistry::_Particle2DForceRegistration", "struct_killer_physics_1_1_particle_force_registry_1_1___particle2_d_force_registration.html", null ],
     [ "KillerPhysics::ParticleForceRegistry::_Particle3DForceRegistration", "struct_killer_physics_1_1_particle_force_registry_1_1___particle3_d_force_registration.html", null ],
@@ -28,8 +29,13 @@ var hierarchy =
     [ "KillerEngine::GameObject3D", "class_killer_engine_1_1_game_object3_d.html", [
       [ "KillerPhysics::Particle3D", "class_killer_physics_1_1_particle3_d.html", null ]
     ] ],
+    [ "GLFWgammaramp", "struct_g_l_f_wgammaramp.html", null ],
+    [ "GLFWimage", "struct_g_l_f_wimage.html", null ],
+    [ "GLFWvidmode", "struct_g_l_f_wvidmode.html", null ],
+    [ "GLXBufferClobberEventSGIX", "struct_g_l_x_buffer_clobber_event_s_g_i_x.html", null ],
     [ "GLXHyperpipeConfigSGIX", "struct_g_l_x_hyperpipe_config_s_g_i_x.html", null ],
     [ "GLXHyperpipeNetworkSGIX", "struct_g_l_x_hyperpipe_network_s_g_i_x.html", null ],
+    [ "GLXPbufferClobberEvent", "struct_g_l_x_pbuffer_clobber_event.html", null ],
     [ "GLXPipeRect", "struct_g_l_x_pipe_rect.html", null ],
     [ "GLXPipeRectLimits", "struct_g_l_x_pipe_rect_limits.html", null ],
     [ "GLXStereoNotifyEventEXT", "struct_g_l_x_stereo_notify_event_e_x_t.html", null ],

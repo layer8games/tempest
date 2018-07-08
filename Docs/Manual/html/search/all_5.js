@@ -18,5 +18,6 @@ var searchData=
   ['errorcode',['ErrorCode',['../_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7d',1,'KillerEngine']]],
   ['errorid',['ErrorID',['../classtinyxml2_1_1_x_m_l_document.html#afa3ed33b3107f920ec2b301f805ac17d',1,'tinyxml2::XMLDocument']]],
   ['errormanager',['ErrorManager',['../class_killer_engine_1_1_error_manager.html',1,'KillerEngine::ErrorManager'],['../class_killer_engine_1_1_error_manager.html#a9a690a2295078adc0f44d664037bdbaf',1,'KillerEngine::ErrorManager::ErrorManager()']]],
-  ['errormanager_2eh',['ErrorManager.h',['../_error_manager_8h.html',1,'']]]
+  ['errormanager_2eh',['ErrorManager.h',['../_error_manager_8h.html',1,'']]],
+  ['error_20codes',['Error codes',['../group__errors.html',1,'']]]
 ];
