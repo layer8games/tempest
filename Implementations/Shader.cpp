@@ -11,10 +11,11 @@ Shader::Shader(void)
 :
 _spriteShader(0),
 _modelShader(0),
-_defaultFragmentShaderPath("..\\Assets\\Shaders\\sprite_fragment.glsl")
-{
-	InitSpriteShader(_defaultFragmentShaderPath);
-}
+_vertexPath(),
+_tessellationPath(),
+_geometryPath(),
+_fragmentPath()
+{  }
 
 Shader::~Shader(void)
 {
@@ -195,40 +196,6 @@ void Shader::InitSpriteShader(void)
 	glDeleteShader(fragmentShaderProgram);
 }
 
-void Shader::InitSpriteShader(string filepath)
-{
-	std::cout << "Init sprite called from shader\n";
-
-	std::ifstream file(filepath);
-
-	if(!file.is_open())
-	{
-		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Unable to open file path to fragment shader: " + filepath);
-	}
-
-	string line;
-
-	std::cout << "I am getting ready to read through the file\n";
-
-	while(getline(file, line))
-	{
-		std::cout << line;
-	}
-
-	std::cout << "\n";
-
-	std::vector<char> buffer(std::istreambuf_iterator<char>(file), {});
-	
-	//file.close();
-
-	GLchar* code = buffer.data();
-	
-	for(int i = 0; i < buffer.size(); ++i)
-	{
-		std::cout << code[i];
-	}
-}
-
 
 void Shader::InitModelShader(void)
 {
@@ -311,6 +278,35 @@ void Shader::InitModelShader(void)
 	//===== clean up =====
 	glDeleteProgram(vertexShaderProgram);
 	glDeleteProgram(fragmentShaderProgram);
+}
+
+void Shader::InitShader(void)
+{
+	if(_vertexPath == "")
+	{
+		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Unable to create shader. No vertex shader path set.");
+	}
+
+	if(_fragmentPath == "")
+	{
+		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Unable to create shader. No fragment shader path set.");
+	}
+
+	std::ifstream file {};
+
+	file.open(_vertexPath.c_str());
+
+	if(!file.is_open())
+	{
+		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Unable to open file path to fragment shader: " + _vertexPath);
+	}
+
+	std::vector<char> buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+
+	for(auto i : buffer)
+	{
+		std::cout << i;
+	}
 }
 
 //==========================================================================================================================

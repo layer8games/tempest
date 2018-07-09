@@ -10,10 +10,10 @@ void main(void)
 {
 	if(fs_uvs == vec2(0, 0))
 	{ 
-		color = fs_color; 
+		color = fs_color;
 	}
 	else 
 	{ 
-		color = texture(tex, fs_uvs); 
+		color = texture(tex, fs_uvs);
 	}
 }

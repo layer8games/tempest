@@ -99,12 +99,6 @@ namespace KillerEngine
 			return _shaderProgram;
 		}
 
-		inline void InitShader(string filepath)
-		{
-			std::cout << "Init shader called from sprite\n";
-			Shader::Instance()->InitSpriteShader(filepath);
-		}
-
 		inline void SetVAO(GLuint vao)
 		{
 			_vao = vao;

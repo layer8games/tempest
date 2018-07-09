@@ -22,10 +22,6 @@ _shaderProgram(0),
 _vao(),
 _vertexCount(0)
 {
-	std::cout << "Sprite Default constructor called\n";
-
-	Shader::Instance();
-
 	glGenVertexArrays(1, &_vao);
 	glBindVertexArray(_vao);
 
@@ -109,8 +105,6 @@ Sprite& Sprite::operator=(shared_ptr<Sprite> S)
 //==========================================================================================================================
 void Sprite::SetColor(const Color& col)
 {
-	std::cout << "sprite set color calle\n";
-
 	_color = col;
 
 	const F32* colorData = _color.Get();

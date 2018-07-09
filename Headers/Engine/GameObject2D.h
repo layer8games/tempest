@@ -165,6 +165,7 @@ namespace KillerEngine
 	\param scale F32. Scale to use when adding vector to position. */
 		void AddScaledPosition(const KM::Vector2& v, F32 scale);
 
+
 	private:	
 		static U32 				_nextID;		///< Global member used to track the next unique ID for GambeObject2D
 		U32 					_ID;			///< ID for this instance of the GameObject2D

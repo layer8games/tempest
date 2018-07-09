@@ -38,6 +38,32 @@ namespace KillerEngine
 		Shader(void);
 
 		~Shader(void);
+
+//==========================================================================================================================
+//
+//Accessors
+//
+//==========================================================================================================================
+		void SetVertexPath(string path)
+		{
+			_vertexPath = path;
+		}
+
+		void SetTesselationPath(string path)
+		{
+			_tessellationPath = path;
+		}
+
+		void SetGeometryPath(string path)
+		{
+			_geometryPath = path;
+		}
+
+		void SetFragmentPath(string path)
+		{
+			_fragmentPath = path;
+		}
+
 //==========================================================================================================================
 //
 //Functions
@@ -47,9 +73,9 @@ namespace KillerEngine
 
 		void InitSpriteShader(void);
 
-		void InitSpriteShader(string filepath);
-
 		void InitModelShader(void);
+
+		void InitShader(void);
 
 //==========================================================================================================================
 //
@@ -64,7 +90,10 @@ namespace KillerEngine
 		static shared_ptr<Shader> _instance;
 		GLuint 					  _spriteShader;
 		GLuint 					  _modelShader;
-		string 					  _defaultFragmentShaderPath;
+		string 					  _vertexPath;
+		string 					  _tessellationPath;
+		string 					  _geometryPath;
+		string 					  _fragmentPath;
 
 	};//end Class
 }//end Namespace
