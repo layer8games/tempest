@@ -22,6 +22,8 @@ _shaderProgram(0),
 _vao(),
 _vertexCount(0)
 {
+	std::cout << "sprite default constructor called\n";
+
 	glGenVertexArrays(1, &_vao);
 	glBindVertexArray(_vao);
 
@@ -121,8 +123,6 @@ void Sprite::SetColor(const Color& col)
 
 void Sprite::SetColor(F32 red, F32 green, F32 blue, F32 alpha)
 {
-	std::cout << "sprite set color calle\n";
-
 	_color.SetRed(red);
 	_color.SetGreen(green);
 	_color.SetBlue(blue);

@@ -143,6 +143,10 @@ void Level::RenderObjects(void)
 	//Camera::Instance()->SetUp(SpriteRenderer::Instance()->GetShader());
 	for(auto i : _2DWorldObjects) 
 	{
+		i.second->v_Render();
+
+//old version
+/*
 		if(i.second->GetActive())
 		{
 			if(i.second->GetSprite().GetShader() != SpriteRenderer::Instance()->GetShader())
@@ -160,6 +164,7 @@ void Level::RenderObjects(void)
 				i.second->GetSprite().GetUVLeftRight()
 			);
 		}
+*/		
 	}
 
 //==========================================================================================================================
@@ -167,6 +172,9 @@ void Level::RenderObjects(void)
 //==========================================================================================================================
 	for(auto i : _2DParticles) 
 	{
+		i.second->v_Render();
+//old version
+/*		
 		if(i.second->GetActive())
 		{
 			if(i.second->GetSprite().GetShader() != SpriteRenderer::Instance()->GetShader())
@@ -184,6 +192,7 @@ void Level::RenderObjects(void)
 				i.second->GetSprite().GetUVLeftRight()
 			);
 		}
+*/		
 	}
 
 //==========================================================================================================================
@@ -192,6 +201,8 @@ void Level::RenderObjects(void)
 //	Camera::Instance()->SetUp(ModelRenderer::Instance()->GetShader());
 	for(auto i : _3DWorldObjects)
 	{
+//old version
+/*
 		if(i.second->GetActive())
 		{
 			if(i.second->GetModel().GetShader() != ModelRenderer::Instance()->GetShader())
@@ -201,6 +212,7 @@ void Level::RenderObjects(void)
 
 			ModelRenderer::Instance()->DrawNow(i.second->GetModel(), i.second->GetModelView());
 		}
+*/		
 	}	
 
 //==========================================================================================================================

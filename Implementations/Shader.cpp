@@ -282,6 +282,7 @@ void Shader::InitModelShader(void)
 
 GLuint Shader::CreateShader(void)
 {
+
 	if(_vertexPath == "")
 	{
 		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Unable to create shader. No vertex shader path set.");
@@ -309,26 +310,26 @@ GLuint Shader::CreateShader(void)
 
 	file.close();
 */
-	GLint shaderSize;
 
-	const string& vertexString = _GetFileString(_vertexPath);
+
+	GLint shaderSize;
+	const string vertexString = _GetFileString(_vertexPath);
 	const char* vertexCode = vertexString.c_str();
 	shaderSize = vertexString.size();
 
-	glShaderSource(vertexProgram, 1, (const GLchar**)&vertexCode, (GLint*)shaderSize);
+	glShaderSource(vertexProgram, 1, (const GLchar**)&vertexCode, (GLint*)&shaderSize);
 	glCompileShader(vertexProgram);
 
-	const string& fragmentString = _GetFileString(_fragmentPath);
+	const string fragmentString = _GetFileString(_fragmentPath);
 	const char* fragmentCode = fragmentString.c_str();
 	shaderSize = fragmentString.size();
 
-	glShaderSource(fragmentProgram, 1, (const GLchar**)fragmentCode, (GLint*)shaderSize);
+	glShaderSource(fragmentProgram, 1, (const GLchar**)&fragmentCode, (GLint*)&shaderSize);
 	glCompileShader(fragmentProgram);
 
 	glAttachShader(finalProgram, vertexProgram);
 	glAttachShader(finalProgram, fragmentProgram);
 	
-
 	glLinkProgram(finalProgram);
 
 	//===== Error checking =====
@@ -359,6 +360,8 @@ GLuint Shader::CreateShader(void)
 	//===== clean up =====
 	glDeleteProgram(vertexProgram);
 	glDeleteProgram(fragmentProgram);
+
+	std::cout << "final program is set to: " << finalProgram << "\n";
 
 	return finalProgram;
 }

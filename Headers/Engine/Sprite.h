@@ -31,8 +31,6 @@ Written by Maxwell Miller
 #include <Engine/CharacterData.h>
 #include <Engine/Shader.h>
 
-#include <iostream>
-
 namespace KM = KillerMath;
 
 //=====STL Includes=====

@@ -49,6 +49,8 @@ void GameObject2D::v_Render(void)
 		TextureManager::Instance()->SetCurrentTextureID(_sprite.GetTextureID());
 	}
 
+	std::cout << "vao is " << _sprite.GetVAO() << "\n";
+
 	glBindVertexArray(_sprite.GetVAO());
 
 	//Set Position Attrib
