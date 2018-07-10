@@ -297,20 +297,32 @@ GLuint Shader::CreateShader(void)
 	GLuint vertexProgram = glCreateShader(GL_VERTEX_SHADER);
 	GLuint fragmentProgram = glCreateShader(GL_FRAGMENT_SHADER);
 
-	string buffer = _GetFileString(_vertexPath);
+/*
+	std::ifstream file(_vertexPath.c_str());
+	if(!file)
+	{
+		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Unable to open file path to shader: " + _vertexPath);
+	}
 
-	const char* vertexData[1] = {buffer.c_str()};
+	std::stringstream vertexData;
+	vertexData << file.rdbuf();
 
-	glShaderSource(vertexProgram, 1, vertexData, NULL);
+	file.close();
+*/
+	GLint shaderSize;
+
+	const string& vertexString = _GetFileString(_vertexPath);
+	const char* vertexCode = vertexString.c_str();
+	shaderSize = vertexString.size();
+
+	glShaderSource(vertexProgram, 1, (const GLchar**)&vertexCode, (GLint*)shaderSize);
 	glCompileShader(vertexProgram);
 
-	buffer.erase();
+	const string& fragmentString = _GetFileString(_fragmentPath);
+	const char* fragmentCode = fragmentString.c_str();
+	shaderSize = fragmentString.size();
 
-	buffer = _GetFileString(_fragmentPath.c_str());
-
-	const char* fragmentData[1] = {buffer.c_str()};
-
-	glShaderSource(fragmentProgram, 1, fragmentData, NULL);
+	glShaderSource(fragmentProgram, 1, (const GLchar**)fragmentCode, (GLint*)shaderSize);
 	glCompileShader(fragmentProgram);
 
 	glAttachShader(finalProgram, vertexProgram);
@@ -379,6 +391,7 @@ GLuint Shader::GetModelShader(void)
 string Shader::_GetFileString(string path)
 {
 	std::ifstream file {};
+	std::stringstream shaderData;
 
 	file.open(path.c_str());
 
@@ -387,9 +400,11 @@ string Shader::_GetFileString(string path)
 		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Unable to open file path to shader: " + path);
 	}
 
-	string buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+	shaderData << file.rdbuf();
 
 	file.close();
 
-	return buffer;
+	string returnVal = shaderData.str();
+
+	return returnVal;
 }

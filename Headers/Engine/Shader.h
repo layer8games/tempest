@@ -24,6 +24,7 @@ Written by Maxwell Miller
 //=====STL includes=====
 #include <vector>
 #include <fstream>
+#include <sstream>
 
 namespace KillerEngine
 {
