@@ -280,7 +280,7 @@ void Shader::InitModelShader(void)
 	glDeleteProgram(fragmentShaderProgram);
 }
 
-void Shader::InitShader(void)
+GLuint Shader::CreateShader(void)
 {
 	if(_vertexPath == "")
 	{
@@ -292,21 +292,63 @@ void Shader::InitShader(void)
 		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Unable to create shader. No fragment shader path set.");
 	}
 
-	std::ifstream file {};
+	
+	GLuint finalProgram = glCreateProgram();
+	GLuint vertexProgram = glCreateShader(GL_VERTEX_SHADER);
+	GLuint fragmentProgram = glCreateShader(GL_FRAGMENT_SHADER);
 
-	file.open(_vertexPath.c_str());
+	string buffer = _GetFileString(_vertexPath);
 
-	if(!file.is_open())
+	const char* vertexData[1] = {buffer.c_str()};
+
+	glShaderSource(vertexProgram, 1, vertexData, NULL);
+	glCompileShader(vertexProgram);
+
+	buffer.erase();
+
+	buffer = _GetFileString(_fragmentPath.c_str());
+
+	const char* fragmentData[1] = {buffer.c_str()};
+
+	glShaderSource(fragmentProgram, 1, fragmentData, NULL);
+	glCompileShader(fragmentProgram);
+
+	glAttachShader(finalProgram, vertexProgram);
+	glAttachShader(finalProgram, fragmentProgram);
+	
+
+	glLinkProgram(finalProgram);
+
+	//===== Error checking =====
+	GLint isLinked = 0; 
+	glGetProgramiv(finalProgram, GL_LINK_STATUS, &isLinked);
+
+	if(isLinked == GL_FALSE)
 	{
-		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Unable to open file path to fragment shader: " + _vertexPath);
+		string errorMessage("Compile Error in shader\n");
+		GLint maxLength = 0;
+		glGetProgramiv(finalProgram, GL_INFO_LOG_LENGTH, &maxLength);
+
+		//The maxLength includes the NULL character
+		std::vector<GLchar> infoLog(maxLength);
+		glGetProgramInfoLog(finalProgram, maxLength, &maxLength, &infoLog[0]);
+
+		for(auto i = infoLog.begin(); i != infoLog.end(); ++i)
+		{
+			errorMessage += *i ;
+		}
+
+		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, errorMessage);
+
+		//The program is useless now. So delete it.
+		glDeleteProgram(finalProgram);
 	}
 
-	std::vector<char> buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+	//===== clean up =====
+	glDeleteProgram(vertexProgram);
+	glDeleteProgram(fragmentProgram);
 
-	for(auto i : buffer)
-	{
-		std::cout << i;
-	}
+	return finalProgram;
 }
 
 //==========================================================================================================================
@@ -332,4 +374,22 @@ GLuint Shader::GetModelShader(void)
 	}
 
 	return _modelShader;
+}
+
+string Shader::_GetFileString(string path)
+{
+	std::ifstream file {};
+
+	file.open(path.c_str());
+
+	if(!file.is_open())
+	{
+		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Unable to open file path to shader: " + path);
+	}
+
+	string buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+
+	file.close();
+
+	return buffer;
 }

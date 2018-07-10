@@ -99,6 +99,11 @@ namespace KillerEngine
 			return _shaderProgram;
 		}
 
+		inline void SetShader(GLuint shader)
+		{
+			_shaderProgram = shader;
+		}
+
 		inline void SetVAO(GLuint vao)
 		{
 			_vao = vao;

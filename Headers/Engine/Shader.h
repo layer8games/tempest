@@ -75,7 +75,7 @@ namespace KillerEngine
 
 		void InitModelShader(void);
 
-		void InitShader(void);
+		GLuint CreateShader(void);
 
 //==========================================================================================================================
 //
@@ -87,6 +87,8 @@ namespace KillerEngine
 		GLuint GetModelShader(void);
 
 	private:
+		string _GetFileString(string path);
+
 		static shared_ptr<Shader> _instance;
 		GLuint 					  _spriteShader;
 		GLuint 					  _modelShader;
