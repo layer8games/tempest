@@ -20,7 +20,9 @@ _width(0.0f),
 _height(0.0f),
 _shaderProgram(0),
 _vao(0),
-_vbo(0)
+_vbo{},
+_vertexCount(0),
+_color()
 {
 	SetID();
 
@@ -30,16 +32,20 @@ _vbo(0)
 		0.5f, -0.5f, 0.0f, 1.0f, //Right
 		-0.5f, -0.5f, 0.0f, 1.0f //Left
 	};
+
+	_vertexCount = 3;
 	
 	glGenVertexArrays(1, &_vao);
-	glGenBuffers(1, &_vbo);
+	glGenBuffers(2, _vbo);
 
 	glBindVertexArray(_vao);
-	glBindBuffer(GL_ARRAY_BUFFER, _vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	
-	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(VERTEX_POS);
+
+	_InitColor();
 }
 
 GameObject2D::GameObject2D(const GameObject2D& obj) 
@@ -53,7 +59,10 @@ _height(obj.GetHeight())
 {  }
 
 GameObject2D::~GameObject2D(void)
-{  }
+{
+	glDeleteBuffers(NUM_VBO, _vbo);
+	glDeleteProgram(_shaderProgram);
+}
 
 //==========================================================================================================================
 //
@@ -74,7 +83,7 @@ void GameObject2D::v_Render(void)
 	glBindVertexArray(_vao);
 	//glBindBuffer(GL_ARRAY_BUFFER, _vbo);
 
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_TRIANGLES, 0, _vertexCount);
 }
 
 //==========================================================================================================================
@@ -110,19 +119,19 @@ void GameObject2D::SetDimensions(F32 w, F32 h)
 }
 
 //===== Color =====
-const Color& GameObject2D::GetColor(void) const
-{
-	return _sprite.GetColor();
-}
-
 void GameObject2D::SetColor(const Color& col)
 {
-	_sprite.SetColor(col);
+	_color = col;
+	_InitColor();
 }
 
 void GameObject2D::SetColor(F32 red, F32 green, F32 blue, F32 alpha)
 {
-	_sprite.SetColor(red, green, blue, alpha);
+	_color.SetRed(red);
+	_color.SetGreen(green);
+	_color.SetBlue(blue);
+	_color.SetAlpha(alpha);
+	_InitColor();
 }
 
 //===== Texture =====
@@ -176,4 +185,24 @@ void GameObject2D::SetPosition(F32 x, F32 y)
 void GameObject2D::AddScaledPosition(const KM::Vector2& v, F32 scale)
 {				
 	_position.AddScaledVector(v, scale);
+}
+
+void GameObject2D::_InitColor(void)
+{
+	std::vector<F32> colors;
+	
+	for(int i = 0; i < _vertexCount; ++i)
+	{
+		colors.push_back(_color.GetRed());
+		colors.push_back(_color.GetGreen());
+		colors.push_back(_color.GetBlue());
+		colors.push_back(_color.GetAlpha());
+	}
+
+	glBindVertexArray(_vao);
+	glBindBuffer(GL_ARRAY_BUFFER, _vbo[FRAGMENT_BUFFER]);
+	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * colors.size()), &colors[0], GL_STATIC_DRAW);
+	
+	glVertexAttribPointer(FRAGMENT_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(FRAGMENT_POS);
 }

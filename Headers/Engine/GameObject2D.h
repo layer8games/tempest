@@ -101,7 +101,10 @@ namespace KillerEngine
 
 //=====Color=====
 /*! Returns the color of the object. This is stored exclusively in the GameObject2D and is not duplicated in the Sprite. */
-		const Color& GetColor(void) const;
+		inline const Color& GetColor(void) const
+		{
+			return _color;
+		}
 
 /*! Sets the color of the object.
 	\param col Color&. New Color */
@@ -173,6 +176,17 @@ namespace KillerEngine
 
 
 	private:	
+		void _InitColor(void);
+
+		enum
+		{
+			VERTEX_BUFFER = 0,
+			VERTEX_POS = 0,
+			FRAGMENT_BUFFER = 1,
+			FRAGMENT_POS = 1,
+			NUM_VBO = 2
+		};
+
 		static U32 				_nextID;		///< Global member used to track the next unique ID for GambeObject2D
 		U32 					_ID;			///< ID for this instance of the GameObject2D
 		bool 	 				_active;		///< Tracks if the object should be updated and rendered
@@ -182,7 +196,9 @@ namespace KillerEngine
 		F32 					_height;		///< Height of the object.
 		GLuint 					_shaderProgram;
 		GLuint 					_vao;
-		GLuint 					_vbo;
+		GLuint					_vbo[NUM_VBO];
+		U32						_vertexCount;
+		Color 					_color;
 	};
 
 	

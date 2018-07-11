@@ -314,44 +314,18 @@ GLuint Shader::CreateShader(void)
 
 	GLint shaderSize;
 	const string vertexString = _GetFileString(_vertexPath);
-	//const char* vertexCode = vertexString.c_str();
-	//shaderSize = vertexString.size();
+	const char* vertexCode = vertexString.c_str();
+	shaderSize = vertexString.size();
 
-	const GLchar* vertexCode[] =
-	{
-		"#version 430 core\n"
-
-		"layout (location = 0) in vec4 position;\n"
-
-		"void main()\n"
-		"{\n"
-			"gl_Position = position;\n"
-		"}\n"
-	};
-
-	//glShaderSource(vertexProgram, 1, (const GLchar**)&vertexCode, (GLint*)&shaderSize);
-	glShaderSource(vertexProgram, 1, vertexCode, NULL);
+	glShaderSource(vertexProgram, 1, (const GLchar**)&vertexCode, (GLint*)&shaderSize);
 	glCompileShader(vertexProgram);
 	_CheckCompileErrors(vertexProgram);
 
 	const string fragmentString = _GetFileString(_fragmentPath);
-	//const char* fragmentCode = fragmentString.c_str();
-	//shaderSize = fragmentString.size();
+	const char* fragmentCode = fragmentString.c_str();
+	shaderSize = fragmentString.size();
 
-	const GLchar* fragmentCode[] =
-	{
-		"#version 430 core\n"
-
-		"out vec4 frag_color;\n"
-
-		"void main()\n"
-		"{\n"
-			"frag_color = vec4(0.35f, 0.96f, 0.3f, 1.0f);\n"
-		"}\n"
-	};
-
-	//glShaderSource(fragmentProgram, 1, (const GLchar**)&fragmentCode, (GLint*)&shaderSize);
-	glShaderSource(fragmentProgram, 1, fragmentCode, NULL);
+	glShaderSource(fragmentProgram, 1, (const GLchar**)&fragmentCode, (GLint*)&shaderSize);
 	glCompileShader(fragmentProgram);
 	_CheckCompileErrors(fragmentProgram);
 
