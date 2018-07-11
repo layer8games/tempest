@@ -19,19 +19,14 @@ _leftRight(0),
 _textureID(0),
 _color(),
 _shaderProgram(0),
-_vao(),
+_vao(0),
+_vbo(0),
 _vertexCount(0)
 {
 	std::cout << "sprite default constructor called\n";
 
-	glGenVertexArrays(1, &_vao);
-	glBindVertexArray(_vao);
-
-	GLuint vbo = 0;
-
-	glGenBuffers(1, &vbo);
-
-	F32 vertices[] = {
+	F32 vertices[] = 
+	{
 		0.0f, 0.5f, 0.0f, 1.0f, //Top
 		0.5f, -0.5f, 0.0f, 1.0f, //Right
 		-0.5f, -0.5f, 0.0f, 1.0f //Left
@@ -39,12 +34,18 @@ _vertexCount(0)
 
 	_vertexCount = 3;
 
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
+	glGenVertexArrays(1, &_vao);
+	glGenBuffers(1, &_vbo);
+
+	glBindVertexArray(_vao);
+	glBindBuffer(GL_ARRAY_BUFFER, _vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(0);
-
-	glDeleteBuffers(1, &vbo);
+	
+	//glDeleteBuffers(1, &_vbo);
 }
 
 Sprite::~Sprite(void)

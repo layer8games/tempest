@@ -314,18 +314,46 @@ GLuint Shader::CreateShader(void)
 
 	GLint shaderSize;
 	const string vertexString = _GetFileString(_vertexPath);
-	const char* vertexCode = vertexString.c_str();
-	shaderSize = vertexString.size();
+	//const char* vertexCode = vertexString.c_str();
+	//shaderSize = vertexString.size();
 
-	glShaderSource(vertexProgram, 1, (const GLchar**)&vertexCode, (GLint*)&shaderSize);
+	const GLchar* vertexCode[] =
+	{
+		"#version 430 core\n"
+
+		"layout (location = 0) in vec4 position;\n"
+
+		"void main()\n"
+		"{\n"
+			"gl_Position = position;\n"
+		"}\n"
+	};
+
+	//glShaderSource(vertexProgram, 1, (const GLchar**)&vertexCode, (GLint*)&shaderSize);
+	glShaderSource(vertexProgram, 1, vertexCode, NULL);
 	glCompileShader(vertexProgram);
+	_CheckCompileErrors(vertexProgram);
 
 	const string fragmentString = _GetFileString(_fragmentPath);
-	const char* fragmentCode = fragmentString.c_str();
-	shaderSize = fragmentString.size();
+	//const char* fragmentCode = fragmentString.c_str();
+	//shaderSize = fragmentString.size();
 
-	glShaderSource(fragmentProgram, 1, (const GLchar**)&fragmentCode, (GLint*)&shaderSize);
+	const GLchar* fragmentCode[] =
+	{
+		"#version 430 core\n"
+
+		"out vec4 frag_color;\n"
+
+		"void main()\n"
+		"{\n"
+			"frag_color = vec4(0.35f, 0.96f, 0.3f, 1.0f);\n"
+		"}\n"
+	};
+
+	//glShaderSource(fragmentProgram, 1, (const GLchar**)&fragmentCode, (GLint*)&shaderSize);
+	glShaderSource(fragmentProgram, 1, fragmentCode, NULL);
 	glCompileShader(fragmentProgram);
+	_CheckCompileErrors(fragmentProgram);
 
 	glAttachShader(finalProgram, vertexProgram);
 	glAttachShader(finalProgram, fragmentProgram);
@@ -360,8 +388,6 @@ GLuint Shader::CreateShader(void)
 	//===== clean up =====
 	glDeleteProgram(vertexProgram);
 	glDeleteProgram(fragmentProgram);
-
-	std::cout << "final program is set to: " << finalProgram << "\n";
 
 	return finalProgram;
 }
@@ -410,4 +436,17 @@ string Shader::_GetFileString(string path)
 	string returnVal = shaderData.str();
 
 	return returnVal;
+}
+
+void Shader::_CheckCompileErrors(GLuint shader)
+{
+	GLint result = 0;
+	GLchar infoLog[512];
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &result);
+	if(!result)
+	{
+		glGetShaderInfoLog(shader, sizeof(infoLog), NULL, infoLog);
+		string errorMessage = infoLog;
+		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, errorMessage);
+	}
 }

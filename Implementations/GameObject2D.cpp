@@ -17,9 +17,29 @@ _active(true),
 _sprite(), 
 _position(0), 
 _width(0.0f), 
-_height(0.0f)
+_height(0.0f),
+_shaderProgram(0),
+_vao(0),
+_vbo(0)
 {
 	SetID();
+
+	F32 vertices[] = 
+	{
+		0.0f, 0.5f, 0.0f, 1.0f, //Top
+		0.5f, -0.5f, 0.0f, 1.0f, //Right
+		-0.5f, -0.5f, 0.0f, 1.0f //Left
+	};
+	
+	glGenVertexArrays(1, &_vao);
+	glGenBuffers(1, &_vbo);
+
+	glBindVertexArray(_vao);
+	glBindBuffer(GL_ARRAY_BUFFER, _vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	
+	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(0);
 }
 
 GameObject2D::GameObject2D(const GameObject2D& obj) 
@@ -42,20 +62,19 @@ GameObject2D::~GameObject2D(void)
 //==========================================================================================================================
 void GameObject2D::v_Render(void)
 {
-	glUseProgram(_sprite.GetShader());
+	//glUseProgram(_sprite.GetShader());
+	glUseProgram(_shaderProgram);
 
 	if(_sprite.GetTextureID() != 0)
 	{
 		TextureManager::Instance()->SetCurrentTextureID(_sprite.GetTextureID());
 	}
 
-	std::cout << "vao is " << _sprite.GetVAO() << "\n";
+	//glBindVertexArray(_sprite.GetVAO());
+	glBindVertexArray(_vao);
+	//glBindBuffer(GL_ARRAY_BUFFER, _vbo);
 
-	glBindVertexArray(_sprite.GetVAO());
-
-	//Set Position Attrib
-
-	glDrawArrays(GL_TRIANGLES, 0, 1);
+	glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 
 //==========================================================================================================================

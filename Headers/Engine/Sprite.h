@@ -147,6 +147,7 @@ namespace KillerEngine
 		Color 				 _color;
 		GLuint 		 		 _shaderProgram;
 		GLuint				 _vao;
+		GLuint				 _vbo;
 		U32 				 _vertexCount;
 
 //==========================================================================================================================
