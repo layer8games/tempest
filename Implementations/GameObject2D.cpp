@@ -15,7 +15,6 @@ GameObject2D::GameObject2D(void)
 : 
 _ID(0), 
 _active(true), 
-_sprite(), 
 _position(0), 
 _width(0.0f), 
 _height(0.0f),
@@ -67,7 +66,6 @@ GameObject2D::GameObject2D(const GameObject2D& obj)
 : 
 _ID(obj.GetID()),
 _active(obj.GetActive()),
-_sprite(obj.GetSprite()),
 _position(obj.GetPosition()),
 _width(obj.GetWidth()),
 _height(obj.GetHeight())
@@ -88,11 +86,6 @@ GameObject2D::~GameObject2D(void)
 void GameObject2D::v_Render(void)
 {
 	glUseProgram(_shaderProgram);
-
-	if(_sprite.GetTextureID() != 0)
-	{
-		TextureManager::Instance()->SetCurrentTextureID(_sprite.GetTextureID());
-	}
 
 	glBindVertexArray(_vao);
 
@@ -152,17 +145,17 @@ void GameObject2D::SetColor(F32 red, F32 green, F32 blue, F32 alpha)
 //===== Texture =====
 U32 GameObject2D::GetTextureID(void) const
 {
-	return _sprite.GetTextureID();
+	return 0;
 }
 
 void GameObject2D::SetTexture(U32 id, const F32 top, const F32 bottom, const F32 right, const F32 left)
 {
-	_sprite.SetTexture(id, top, bottom, right, left);
+	//implement later
 }
 
 void GameObject2D::SetTexture(U32 id)
 {
-	_sprite.SetTexture(id, 0.0f, 1.0f, 0.0f, 1.0f);
+	//implement later
 }
 
 bool GameObject2D::GetActive(void) const

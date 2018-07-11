@@ -143,13 +143,6 @@ namespace KillerEngine
 /*! Sets the active state of the object to false. */
 		void SetInactive(void);
 
-//=====Sprite=====
-/*! Returns the Sprite. This member cannot be set. */
-		inline const Sprite& GetSprite(void) const
-		{
-			return _sprite;
-		}
-
 //=====Position=====
 /*! Returns the position of the object in World Space. */
 		const KM::Vector2& GetPosition(void) const;
@@ -199,7 +192,6 @@ namespace KillerEngine
 		static U32 				_nextID;		///< Global member used to track the next unique ID for GambeObject2D
 		U32 					_ID;			///< ID for this instance of the GameObject2D
 		bool 	 				_active;		///< Tracks if the object should be updated and rendered
-		Sprite					_sprite;		///< Used for Rendering the object as a 2D Sprite. Deprecated. Refactor out.
 		KM::Vector2 			_position;		///< Position in World Space
 		F32						_width;			///< Width of the object. 
 		F32 					_height;		///< Height of the object.

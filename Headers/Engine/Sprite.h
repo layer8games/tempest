@@ -38,6 +38,7 @@ namespace KM = KillerMath;
 
 namespace KillerEngine 
 {	
+/*! Deprecated class. Do not use. All of this functionality has been moved directly into the GameObject2D */
 	class Sprite 
 	{	
 	public:
