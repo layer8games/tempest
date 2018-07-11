@@ -1,11 +1,20 @@
 var class_killer_engine_1_1_game_object2_d =
 [
+    [ "BufferData", "class_killer_engine_1_1_game_object2_d.html#a069eca9b2088b804fcaa3736fc5ff489", [
+      [ "VERTEX_BUFFER", "class_killer_engine_1_1_game_object2_d.html#a069eca9b2088b804fcaa3736fc5ff489ad542e85d049c63bf632fea42ff2d4075", null ],
+      [ "VERTEX_POS", "class_killer_engine_1_1_game_object2_d.html#a069eca9b2088b804fcaa3736fc5ff489a03b7b9f22a0f8b4f3ec20190c2cd0175", null ],
+      [ "FRAGMENT_BUFFER", "class_killer_engine_1_1_game_object2_d.html#a069eca9b2088b804fcaa3736fc5ff489a97bbff5ce536005c04717ef34d2753b7", null ],
+      [ "FRAGMENT_POS", "class_killer_engine_1_1_game_object2_d.html#a069eca9b2088b804fcaa3736fc5ff489a48ac37b6426ef3bf3ca8ca2b59f09c1c", null ],
+      [ "INDEX_BUFFER", "class_killer_engine_1_1_game_object2_d.html#a069eca9b2088b804fcaa3736fc5ff489a1043c4954d7902dd0e4cf9f4fb6e6532", null ],
+      [ "NUM_VBO", "class_killer_engine_1_1_game_object2_d.html#a069eca9b2088b804fcaa3736fc5ff489a066f35ca8ba4b3a2e9dcd6722fe6f887", null ]
+    ] ],
     [ "GameObject2D", "class_killer_engine_1_1_game_object2_d.html#a122d7cdfb0f36f65db980bd6b7b22274", null ],
     [ "GameObject2D", "class_killer_engine_1_1_game_object2_d.html#a1b3326c1e481e5a72b6a993dd32d5a27", null ],
     [ "~GameObject2D", "class_killer_engine_1_1_game_object2_d.html#ad899b230a406555d1fd355543167f08e", null ],
+    [ "_InitColor", "class_killer_engine_1_1_game_object2_d.html#ae498752f4af5cd760f8e11030a340f53", null ],
     [ "AddScaledPosition", "class_killer_engine_1_1_game_object2_d.html#aaffb0ed89245b65ab479de985bca5b4b", null ],
     [ "GetActive", "class_killer_engine_1_1_game_object2_d.html#a3d03658487d0c791afce364012e4cd41", null ],
-    [ "GetColor", "class_killer_engine_1_1_game_object2_d.html#a95d31191d765daf19a4a4b949b2b1924", null ],
+    [ "GetColor", "class_killer_engine_1_1_game_object2_d.html#ab2c3072bb8fbbeb332f6c0d29ea0fb72", null ],
     [ "GetHeight", "class_killer_engine_1_1_game_object2_d.html#a2dac999f5ff87a9bd0c9e83c030ba753", null ],
     [ "GetID", "class_killer_engine_1_1_game_object2_d.html#a640498f1976d742ec51cd20c6c498e0d", null ],
     [ "GetPosition", "class_killer_engine_1_1_game_object2_d.html#aed75700073563e02519e5ece04805da2", null ],
@@ -21,15 +30,21 @@ var class_killer_engine_1_1_game_object2_d =
     [ "SetInactive", "class_killer_engine_1_1_game_object2_d.html#ab8db75a068d9d8a98dcf2bdf13c088ed", null ],
     [ "SetPosition", "class_killer_engine_1_1_game_object2_d.html#aaada2281787a6b1d48ef5c5ea9c8bae4", null ],
     [ "SetPosition", "class_killer_engine_1_1_game_object2_d.html#a0ee14e150913e397935faa5cde870c1f", null ],
+    [ "SetShader", "class_killer_engine_1_1_game_object2_d.html#a2559a95298042152c3652688626fff83", null ],
     [ "SetTexture", "class_killer_engine_1_1_game_object2_d.html#a05babc2c7c75ca7118feebdacc7b6ad1", null ],
     [ "SetTexture", "class_killer_engine_1_1_game_object2_d.html#a595a31443193cfe7468d85ac70fb72ca", null ],
     [ "SetWidth", "class_killer_engine_1_1_game_object2_d.html#adada30af6a1b78955f0093deb967827f", null ],
     [ "v_Render", "class_killer_engine_1_1_game_object2_d.html#a0dcfb62e97cc54ae3b3e11a190454964", null ],
     [ "v_Update", "class_killer_engine_1_1_game_object2_d.html#a6513bf6734209f517e9b69aea470a8ba", null ],
     [ "_active", "class_killer_engine_1_1_game_object2_d.html#a84de7f701665851b9a736abae6a20f42", null ],
+    [ "_color", "class_killer_engine_1_1_game_object2_d.html#aec9453763ccb181d51a072bdd6d49f88", null ],
     [ "_height", "class_killer_engine_1_1_game_object2_d.html#a08911751c7bd3c2e7b2fbcf981ce0c79", null ],
     [ "_ID", "class_killer_engine_1_1_game_object2_d.html#ab7967e74f3f918e4049854716871d5af", null ],
     [ "_position", "class_killer_engine_1_1_game_object2_d.html#a8f27c94c08e5d3b8b72f336864dc44a9", null ],
+    [ "_shaderProgram", "class_killer_engine_1_1_game_object2_d.html#a161230977febce098292872b4c490300", null ],
     [ "_sprite", "class_killer_engine_1_1_game_object2_d.html#aa8642ce46041f89f3f0c60405536bf1a", null ],
+    [ "_vao", "class_killer_engine_1_1_game_object2_d.html#a1b546edf68d922a80da658e4b8062e57", null ],
+    [ "_vbo", "class_killer_engine_1_1_game_object2_d.html#aca66eef12f9ffe009e64818255b41b61", null ],
+    [ "_vertexCount", "class_killer_engine_1_1_game_object2_d.html#ad7916f36b8396ab16400e7fad9b089ae", null ],
     [ "_width", "class_killer_engine_1_1_game_object2_d.html#ae7956a48f55b6761238c29a37c159420", null ]
 ];

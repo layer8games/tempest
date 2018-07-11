@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['errorcode',['ErrorCode',['../_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7d',1,'KillerEngine']]]
+  ['bufferdata',['BufferData',['../class_killer_engine_1_1_game_object2_d.html#a069eca9b2088b804fcaa3736fc5ff489',1,'KillerEngine::GameObject2D']]]
 ];

@@ -11,13 +11,13 @@ var class_killer_engine_1_1_sprite =
     [ "GetUVLeftRight", "class_killer_engine_1_1_sprite.html#ae3a65ea087cc1dc059804c93394b4998", null ],
     [ "GetVAO", "class_killer_engine_1_1_sprite.html#a5b0529830777912530cccf9fdc55450d", null ],
     [ "GetVertexCount", "class_killer_engine_1_1_sprite.html#a78d32451d48c7982cefe3ba240c93b8e", null ],
-    [ "InitShader", "class_killer_engine_1_1_sprite.html#ae966f1ebc084909237cd1d7ee12f9f53", null ],
     [ "operator=", "class_killer_engine_1_1_sprite.html#ace209c932af7aea4b92673f392ba9ab2", null ],
     [ "operator=", "class_killer_engine_1_1_sprite.html#ac064f774d0783602bd55cc9f4eb0fe23", null ],
     [ "operator=", "class_killer_engine_1_1_sprite.html#aa64012b722c0330554c2f17eb665e006", null ],
     [ "SetCharData", "class_killer_engine_1_1_sprite.html#a6da882404869ceb8c5960c9e329b263f", null ],
     [ "SetColor", "class_killer_engine_1_1_sprite.html#a67b24b0d6bf412a0c3f8f858a708eda3", null ],
     [ "SetColor", "class_killer_engine_1_1_sprite.html#a3abb703dba6f211e7022e413a4f84405", null ],
+    [ "SetShader", "class_killer_engine_1_1_sprite.html#add53e1456cbbe52c9dacea4f120e5d66", null ],
     [ "SetTexture", "class_killer_engine_1_1_sprite.html#a343923e31217a150395cde075a53ce6f", null ],
     [ "SetUVs", "class_killer_engine_1_1_sprite.html#a9f6eb298d83466977798b87ebbe6cb88", null ],
     [ "SetVAO", "class_killer_engine_1_1_sprite.html#aefe98789be4e071bd18439f2deed8459", null ],
@@ -28,5 +28,6 @@ var class_killer_engine_1_1_sprite =
     [ "_shaderProgram", "class_killer_engine_1_1_sprite.html#ad98a1c9ddffa317582e6fab754f772bc", null ],
     [ "_textureID", "class_killer_engine_1_1_sprite.html#a633c3775793effe1ea7c1fa202982b55", null ],
     [ "_vao", "class_killer_engine_1_1_sprite.html#ad66232645ddef5713a54faf10bfdcc5f", null ],
+    [ "_vbo", "class_killer_engine_1_1_sprite.html#a03713bc5cbbf853df0d7ca356078e7b5", null ],
     [ "_vertexCount", "class_killer_engine_1_1_sprite.html#a13a4f0757bc7d7606d634a6afb231695", null ]
 ];

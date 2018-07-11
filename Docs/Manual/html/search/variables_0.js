@@ -4,6 +4,7 @@ var searchData=
   ['_5falpha',['_alpha',['../class_killer_engine_1_1_color.html#aa163bfc9d6d17674963443d9dce56dfc',1,'KillerEngine::Color']]],
   ['_5fbackground',['_background',['../class_killer_engine_1_1_camera.html#aadd0f8158d4c3246d0b2a0789628da74',1,'KillerEngine::Camera']]],
   ['_5fblue',['_blue',['../class_killer_engine_1_1_color.html#adaac648afd95b66052e444f3a42ec360',1,'KillerEngine::Color']]],
+  ['_5fcolor',['_color',['../class_killer_engine_1_1_game_object2_d.html#aec9453763ccb181d51a072bdd6d49f88',1,'KillerEngine::GameObject2D']]],
   ['_5fcuractivekeys',['_curActiveKeys',['../class_killer_engine_1_1_controller.html#ae791278c017d9b26866d093061530197',1,'KillerEngine::Controller']]],
   ['_5fcurrentshader',['_currentShader',['../class_killer_engine_1_1_camera.html#a16706888f0f7c81145af7d1e138a251c',1,'KillerEngine::Camera']]],
   ['_5fdepth',['_depth',['../class_killer_engine_1_1_game_object3_d.html#a876046c14efe8009e3c9799a9d3e1d8a',1,'KillerEngine::GameObject3D']]],
@@ -31,9 +32,13 @@ var searchData=
   ['_5fred',['_red',['../class_killer_engine_1_1_color.html#a967724e5cd286fb5dec1d4191947894d',1,'KillerEngine::Color']]],
   ['_5frightclickcoordinates',['_rightClickCoordinates',['../class_killer_engine_1_1_controller.html#a7ee22a35b1ad5c36c3e070af51f47c76',1,'KillerEngine::Controller']]],
   ['_5frotationx',['_rotationX',['../class_killer_engine_1_1_game_object3_d.html#ab2194066c81ef96d0f8fa869a4051d86',1,'KillerEngine::GameObject3D']]],
+  ['_5fshaderprogram',['_shaderProgram',['../class_killer_engine_1_1_game_object2_d.html#a161230977febce098292872b4c490300',1,'KillerEngine::GameObject2D']]],
   ['_5fsprite',['_sprite',['../class_killer_engine_1_1_game_object2_d.html#aa8642ce46041f89f3f0c60405536bf1a',1,'KillerEngine::GameObject2D']]],
   ['_5ftextureid',['_textureID',['../class_killer_engine_1_1_font.html#a409ab61eb07723f98424af0810ca297e',1,'KillerEngine::Font']]],
   ['_5ftotalkeys',['_totalKeys',['../class_killer_engine_1_1_controller.html#a44b19d01a7bddd681f3677d52c5b4f25',1,'KillerEngine::Controller']]],
   ['_5ftranslation',['_translation',['../class_killer_engine_1_1_camera.html#a607a7ff4f0659f3a5a6a832ba3883ca0',1,'KillerEngine::Camera']]],
+  ['_5fvao',['_vao',['../class_killer_engine_1_1_game_object2_d.html#a1b546edf68d922a80da658e4b8062e57',1,'KillerEngine::GameObject2D']]],
+  ['_5fvbo',['_vbo',['../class_killer_engine_1_1_game_object2_d.html#aca66eef12f9ffe009e64818255b41b61',1,'KillerEngine::GameObject2D']]],
+  ['_5fvertexcount',['_vertexCount',['../class_killer_engine_1_1_game_object2_d.html#ad7916f36b8396ab16400e7fad9b089ae',1,'KillerEngine::GameObject2D']]],
   ['_5fwidth',['_width',['../class_killer_engine_1_1_game_object2_d.html#ae7956a48f55b6761238c29a37c159420',1,'KillerEngine::GameObject2D::_width()'],['../class_killer_engine_1_1_game_object3_d.html#ac119de91d97b7e88e50743ef85aab51d',1,'KillerEngine::GameObject3D::_width()']]]
 ];

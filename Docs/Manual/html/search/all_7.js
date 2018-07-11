@@ -23,7 +23,7 @@ var searchData=
   ['getalpha',['GetAlpha',['../class_killer_engine_1_1_color.html#aef1e4e4464abdb1268999b18386ebe15',1,'KillerEngine::Color']]],
   ['getblue',['GetBlue',['../class_killer_engine_1_1_color.html#a5207f945902433e20d8a82f64705e2f4',1,'KillerEngine::Color']]],
   ['getcharacterdata',['GetCharacterData',['../class_killer_engine_1_1_font.html#ab8bf01c967333396f94f575cb990be59',1,'KillerEngine::Font']]],
-  ['getcolor',['GetColor',['../class_killer_engine_1_1_game_object2_d.html#a95d31191d765daf19a4a4b949b2b1924',1,'KillerEngine::GameObject2D']]],
+  ['getcolor',['GetColor',['../class_killer_engine_1_1_game_object2_d.html#ab2c3072bb8fbbeb332f6c0d29ea0fb72',1,'KillerEngine::GameObject2D']]],
   ['getdepth',['GetDepth',['../class_killer_engine_1_1_game_object3_d.html#a85adf9d369d87210c307f82bd3e6d811',1,'KillerEngine::GameObject3D']]],
   ['getdocument',['GetDocument',['../classtinyxml2_1_1_x_m_l_node.html#a2de84cfa4ec3fe249bad745069d145f1',1,'tinyxml2::XMLNode::GetDocument() const'],['../classtinyxml2_1_1_x_m_l_node.html#af343d1ef0b45c0020e62d784d7e67a68',1,'tinyxml2::XMLNode::GetDocument()']]],
   ['getelems',['GetElems',['../class_killer_math_1_1_matrix.html#a32fa43ac06f94fdcf57d088944dfd3ec',1,'KillerMath::Matrix']]],

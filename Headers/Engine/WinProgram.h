@@ -123,11 +123,14 @@ namespace KillerEngine
 
 		void DisplayFPS(void);
 
+		void ToggleWireFrame(void);
+
 	private:
 		static shared_ptr<WinProgram> _instance;
 		
 		bool    _isFullScreen;
 		bool 	_running;
+		bool 	_wireFrame;
 		S32     _totalWidth;
 		S32     _totalHeight;
 		S32     _right;

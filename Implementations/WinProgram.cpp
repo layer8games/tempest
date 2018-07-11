@@ -12,6 +12,7 @@ WinProgram::WinProgram(void)
 : 
 _isFullScreen(false),
 _running(false),
+_wireFrame(false),
 _totalWidth(0), 
 _totalHeight(0),
 _right(0), 
@@ -268,4 +269,18 @@ void WinProgram::DisplayFPS(void)
 	}
 
 	++frameCount;
+}
+
+void WinProgram::ToggleWireFrame(void)
+{
+    _wireFrame = !_wireFrame;
+
+    if(_wireFrame)
+    {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    }
+    else
+    {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);   
+    }
 }

@@ -88,6 +88,8 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_game_object2_d
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_game_object2_d-members.html">List of all members</a>  </div>
@@ -132,8 +134,8 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>v_Render</b> 
 <tr class="separator:ac2b5884710dd9c7e9d62031b8195c77a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c0214ecfc1084d14a16fde19164b992"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object2_d.html#a4c0214ecfc1084d14a16fde19164b992">SetDimensions</a> (F32 w, F32 h)</td></tr>
 <tr class="separator:a4c0214ecfc1084d14a16fde19164b992"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95d31191d765daf19a4a4b949b2b1924"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_killer_engine_1_1_color.html">Color</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object2_d.html#a95d31191d765daf19a4a4b949b2b1924">GetColor</a> (void) const</td></tr>
-<tr class="separator:a95d31191d765daf19a4a4b949b2b1924"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2c3072bb8fbbeb332f6c0d29ea0fb72"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_killer_engine_1_1_color.html">Color</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object2_d.html#ab2c3072bb8fbbeb332f6c0d29ea0fb72">GetColor</a> (void) const</td></tr>
+<tr class="separator:ab2c3072bb8fbbeb332f6c0d29ea0fb72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f347cdd1bffbc1dc60992da799815e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object2_d.html#a3f347cdd1bffbc1dc60992da799815e2">SetColor</a> (const <a class="el" href="class_killer_engine_1_1_color.html">Color</a> &amp;col)</td></tr>
 <tr class="separator:a3f347cdd1bffbc1dc60992da799815e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f19c1094692dfc9cf8c72a2195ad66c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object2_d.html#a1f19c1094692dfc9cf8c72a2195ad66c">SetColor</a> (F32 red, F32 green, F32 blue, F32 alpha=1.0f)</td></tr>
@@ -160,6 +162,28 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>v_Render</b> 
 <tr class="separator:a0ee14e150913e397935faa5cde870c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaffb0ed89245b65ab479de985bca5b4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object2_d.html#aaffb0ed89245b65ab479de985bca5b4b">AddScaledPosition</a> (const <a class="el" href="class_killer_math_1_1_vector2.html">KM::Vector2</a> &amp;v, F32 scale)</td></tr>
 <tr class="separator:aaffb0ed89245b65ab479de985bca5b4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2559a95298042152c3652688626fff83"><td class="memItemLeft" align="right" valign="top"><a id="a2559a95298042152c3652688626fff83"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetShader</b> (GLuint shader)</td></tr>
+<tr class="separator:a2559a95298042152c3652688626fff83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a069eca9b2088b804fcaa3736fc5ff489"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object2_d.html#a069eca9b2088b804fcaa3736fc5ff489">BufferData</a> { <br />
+&#160;&#160;<b>VERTEX_BUFFER</b> = 0, 
+<b>VERTEX_POS</b> = 0, 
+<b>FRAGMENT_BUFFER</b> = 1, 
+<b>FRAGMENT_POS</b> = 1, 
+<br />
+&#160;&#160;<b>INDEX_BUFFER</b> = 2, 
+<b>NUM_VBO</b> = 3
+<br />
+ }</td></tr>
+<tr class="separator:a069eca9b2088b804fcaa3736fc5ff489"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ae498752f4af5cd760f8e11030a340f53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object2_d.html#ae498752f4af5cd760f8e11030a340f53">_InitColor</a> (void)</td></tr>
+<tr class="separator:ae498752f4af5cd760f8e11030a340f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -173,7 +197,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="separator:a84de7f701665851b9a736abae6a20f42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8642ce46041f89f3f0c60405536bf1a"><td class="memItemLeft" align="right" valign="top"><a id="aa8642ce46041f89f3f0c60405536bf1a"></a>
 <a class="el" href="class_killer_engine_1_1_sprite.html">Sprite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object2_d.html#aa8642ce46041f89f3f0c60405536bf1a">_sprite</a></td></tr>
-<tr class="memdesc:aa8642ce46041f89f3f0c60405536bf1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used for Rendering the object as a 2D <a class="el" href="class_killer_engine_1_1_sprite.html">Sprite</a>. <br /></td></tr>
+<tr class="memdesc:aa8642ce46041f89f3f0c60405536bf1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used for Rendering the object as a 2D <a class="el" href="class_killer_engine_1_1_sprite.html">Sprite</a>. Deprecated. Refactor out. <br /></td></tr>
 <tr class="separator:aa8642ce46041f89f3f0c60405536bf1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f27c94c08e5d3b8b72f336864dc44a9"><td class="memItemLeft" align="right" valign="top"><a id="a8f27c94c08e5d3b8b72f336864dc44a9"></a>
 <a class="el" href="class_killer_math_1_1_vector2.html">KM::Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object2_d.html#a8f27c94c08e5d3b8b72f336864dc44a9">_position</a></td></tr>
@@ -187,6 +211,26 @@ F32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 F32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object2_d.html#a08911751c7bd3c2e7b2fbcf981ce0c79">_height</a></td></tr>
 <tr class="memdesc:a08911751c7bd3c2e7b2fbcf981ce0c79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Height of the object. <br /></td></tr>
 <tr class="separator:a08911751c7bd3c2e7b2fbcf981ce0c79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a161230977febce098292872b4c490300"><td class="memItemLeft" align="right" valign="top"><a id="a161230977febce098292872b4c490300"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object2_d.html#a161230977febce098292872b4c490300">_shaderProgram</a></td></tr>
+<tr class="memdesc:a161230977febce098292872b4c490300"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_killer_engine_1_1_shader.html">Shader</a> program used by OpenGL to render this object. <br /></td></tr>
+<tr class="separator:a161230977febce098292872b4c490300"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b546edf68d922a80da658e4b8062e57"><td class="memItemLeft" align="right" valign="top"><a id="a1b546edf68d922a80da658e4b8062e57"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object2_d.html#a1b546edf68d922a80da658e4b8062e57">_vao</a></td></tr>
+<tr class="memdesc:a1b546edf68d922a80da658e4b8062e57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vertex Array Object used by OpenGL for rendering. <br /></td></tr>
+<tr class="separator:a1b546edf68d922a80da658e4b8062e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca66eef12f9ffe009e64818255b41b61"><td class="memItemLeft" align="right" valign="top"><a id="aca66eef12f9ffe009e64818255b41b61"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object2_d.html#aca66eef12f9ffe009e64818255b41b61">_vbo</a> [NUM_VBO]</td></tr>
+<tr class="memdesc:aca66eef12f9ffe009e64818255b41b61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of Buffer Objects. Stores data that is passed to OpenGL. <br /></td></tr>
+<tr class="separator:aca66eef12f9ffe009e64818255b41b61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7916f36b8396ab16400e7fad9b089ae"><td class="memItemLeft" align="right" valign="top"><a id="ad7916f36b8396ab16400e7fad9b089ae"></a>
+U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object2_d.html#ad7916f36b8396ab16400e7fad9b089ae">_vertexCount</a></td></tr>
+<tr class="memdesc:ad7916f36b8396ab16400e7fad9b089ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total count of vertices for object. <br /></td></tr>
+<tr class="separator:ad7916f36b8396ab16400e7fad9b089ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec9453763ccb181d51a072bdd6d49f88"><td class="memItemLeft" align="right" valign="top"><a id="aec9453763ccb181d51a072bdd6d49f88"></a>
+<a class="el" href="class_killer_engine_1_1_color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object2_d.html#aec9453763ccb181d51a072bdd6d49f88">_color</a></td></tr>
+<tr class="memdesc:aec9453763ccb181d51a072bdd6d49f88"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_killer_engine_1_1_color.html">Color</a> of whole object. Will be refined later to be per vertex. <br /></td></tr>
+<tr class="separator:aec9453763ccb181d51a072bdd6d49f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -201,7 +245,31 @@ static U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 <p>The GameObject itself is an interface to generic functions that each object that will be rendered will need to be drawn to the screen. The GameObject holds a private <a class="el" href="class_killer_engine_1_1_sprite.html">Sprite</a> member that will contain all the logic for which rendering algorithm is used.</p>
 <p>Accessors are created for the derived classes to access the cell, but the cell is to be accessed directly only by the GameObject itself.</p>
 <p><a class="el" href="class_killer_engine_1_1_game_object2_d.html">GameObject2D</a> will specifically apply to 2D game objects. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a069eca9b2088b804fcaa3736fc5ff489"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a069eca9b2088b804fcaa3736fc5ff489">&#9670;&nbsp;</a></span>BufferData</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_killer_engine_1_1_game_object2_d.html#a069eca9b2088b804fcaa3736fc5ff489">KillerEngine::GameObject2D::BufferData</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Stores constant shader data used to set up arrays of Vertex Array Objects, as well as which position keeps which data. The number values set here are not arbitrary, but rather set up the schema for the array members. This is a rigid, non-dynamic system and should probably be refactored to be more dynmaic in the future, as this type of data could vary from object to object, since they could use different shaders. That is unless a class of shader is required that has certain attributes laid out in certain ways. However, I do think that this information can be found by making calls to OpenGL onces gl_UseProgram has been called. Doing it this way would mean some refactoring, but that could be a good thing in the long run. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a122d7cdfb0f36f65db980bd6b7b22274"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a122d7cdfb0f36f65db980bd6b7b22274">&#9670;&nbsp;</a></span>GameObject2D() <span class="overload">[1/2]</span></h2>
 
@@ -236,7 +304,7 @@ static U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copy Constructor. Calls <a class="el" href="class_killer_engine_1_1_game_object2_d.html#a640498f1976d742ec51cd20c6c498e0d">GetID()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#a3d03658487d0c791afce364012e4cd41">GetActive()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#abedcf28f04165adfa38ca9afd7e67ae4">GetSprite()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#aed75700073563e02519e5ece04805da2">GetPosition()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#a40cf397ea6fcddde52174218be72de1c">GetWidth()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#a2dac999f5ff87a9bd0c9e83c030ba753">GetHeight()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#a95d31191d765daf19a4a4b949b2b1924">GetColor()</a> </p>
+<p>Copy Constructor. Calls <a class="el" href="class_killer_engine_1_1_game_object2_d.html#a640498f1976d742ec51cd20c6c498e0d">GetID()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#a3d03658487d0c791afce364012e4cd41">GetActive()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#abedcf28f04165adfa38ca9afd7e67ae4">GetSprite()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#aed75700073563e02519e5ece04805da2">GetPosition()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#a40cf397ea6fcddde52174218be72de1c">GetWidth()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#a2dac999f5ff87a9bd0c9e83c030ba753">GetHeight()</a>, <a class="el" href="class_killer_engine_1_1_game_object2_d.html#ab2c3072bb8fbbeb332f6c0d29ea0fb72">GetColor()</a> </p>
 
 </div>
 </div>
@@ -268,6 +336,33 @@ static U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae498752f4af5cd760f8e11030a340f53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae498752f4af5cd760f8e11030a340f53">&#9670;&nbsp;</a></span>_InitColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameObject2D::_InitColor </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Loads color change into OpenGL buffer, and saves this data to the Vertex Array Object. </p>
+
+</div>
+</div>
 <a id="aaffb0ed89245b65ab479de985bca5b4b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaffb0ed89245b65ab479de985bca5b4b">&#9670;&nbsp;</a></span>AddScaledPosition()</h2>
 
@@ -322,20 +417,28 @@ static U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 
 </div>
 </div>
-<a id="a95d31191d765daf19a4a4b949b2b1924"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95d31191d765daf19a4a4b949b2b1924">&#9670;&nbsp;</a></span>GetColor()</h2>
+<a id="ab2c3072bb8fbbeb332f6c0d29ea0fb72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2c3072bb8fbbeb332f6c0d29ea0fb72">&#9670;&nbsp;</a></span>GetColor()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_killer_engine_1_1_color.html">Color</a> &amp; GameObject2D::GetColor </td>
+          <td class="memname">const <a class="el" href="class_killer_engine_1_1_color.html">Color</a>&amp; KillerEngine::GameObject2D::GetColor </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Returns the color of the object. This is stored exclusively in the <a class="el" href="class_killer_engine_1_1_game_object2_d.html">GameObject2D</a> and is not duplicated in the <a class="el" href="class_killer_engine_1_1_sprite.html">Sprite</a>. </p>
 
@@ -860,8 +963,8 @@ static U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_game_object2_d_8h_source.html">GameObject2D.h</a></li>
-<li>C:/Projects/Killer_Engine/Implementations/GameObject2D.cpp</li>
+<li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_game_object2_d_8h_source.html">GameObject2D.h</a></li>
+<li>F:/Projects/Killer_Engine/Implementations/GameObject2D.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

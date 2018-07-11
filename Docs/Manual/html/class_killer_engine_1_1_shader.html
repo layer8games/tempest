@@ -89,6 +89,7 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_shader.html','
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_shader-members.html">List of all members</a>  </div>
@@ -99,15 +100,27 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_shader.html','
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a627b94ae30337e3f8c3907c923474286"><td class="memItemLeft" align="right" valign="top"><a id="a627b94ae30337e3f8c3907c923474286"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetVertexPath</b> (string path)</td></tr>
+<tr class="separator:a627b94ae30337e3f8c3907c923474286"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4da3d044c9d23ede419eefd735816a4"><td class="memItemLeft" align="right" valign="top"><a id="ae4da3d044c9d23ede419eefd735816a4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetTesselationPath</b> (string path)</td></tr>
+<tr class="separator:ae4da3d044c9d23ede419eefd735816a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b40bf033106032a28b1c60ced599fbc"><td class="memItemLeft" align="right" valign="top"><a id="a4b40bf033106032a28b1c60ced599fbc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetGeometryPath</b> (string path)</td></tr>
+<tr class="separator:a4b40bf033106032a28b1c60ced599fbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae04d44fc98d0c9576410226d9be8fefb"><td class="memItemLeft" align="right" valign="top"><a id="ae04d44fc98d0c9576410226d9be8fefb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetFragmentPath</b> (string path)</td></tr>
+<tr class="separator:ae04d44fc98d0c9576410226d9be8fefb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c1e8607413f3635aa171a2e9ddeb5ba"><td class="memItemLeft" align="right" valign="top"><a id="a2c1e8607413f3635aa171a2e9ddeb5ba"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>InitSpriteShader</b> (void)</td></tr>
 <tr class="separator:a2c1e8607413f3635aa171a2e9ddeb5ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3bc08f0ff69f1632fcbacae3957502e5"><td class="memItemLeft" align="right" valign="top"><a id="a3bc08f0ff69f1632fcbacae3957502e5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>InitSpriteShader</b> (string filepath)</td></tr>
-<tr class="separator:a3bc08f0ff69f1632fcbacae3957502e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f1d2eace779046ae3b9ecf60c72fcfd"><td class="memItemLeft" align="right" valign="top"><a id="a3f1d2eace779046ae3b9ecf60c72fcfd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>InitModelShader</b> (void)</td></tr>
 <tr class="separator:a3f1d2eace779046ae3b9ecf60c72fcfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b7fcabe83aa8dfc23f3d513a079ff85"><td class="memItemLeft" align="right" valign="top"><a id="a4b7fcabe83aa8dfc23f3d513a079ff85"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>CreateShader</b> (void)</td></tr>
+<tr class="separator:a4b7fcabe83aa8dfc23f3d513a079ff85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e7556e401c1f816d0e2060aac67524f"><td class="memItemLeft" align="right" valign="top"><a id="a9e7556e401c1f816d0e2060aac67524f"></a>
 GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>GetSpriteShader</b> (void)</td></tr>
 <tr class="separator:a9e7556e401c1f816d0e2060aac67524f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,6 +134,15 @@ Static Public Member Functions</h2></td></tr>
 static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_shader.html">Shader</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Instance</b> (void)</td></tr>
 <tr class="separator:aeb75c3d763ceba653caba0d8895e654e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:addb3d61f86521289cfeee945f6243abb"><td class="memItemLeft" align="right" valign="top"><a id="addb3d61f86521289cfeee945f6243abb"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>_GetFileString</b> (string path)</td></tr>
+<tr class="separator:addb3d61f86521289cfeee945f6243abb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a944d1e80ee61a3da4de54c143e1cf4"><td class="memItemLeft" align="right" valign="top"><a id="a7a944d1e80ee61a3da4de54c143e1cf4"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_CheckCompileErrors</b> (GLuint shader)</td></tr>
+<tr class="separator:a7a944d1e80ee61a3da4de54c143e1cf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a66d8856bd99d0f332b5206190d21d652"><td class="memItemLeft" align="right" valign="top"><a id="a66d8856bd99d0f332b5206190d21d652"></a>
@@ -129,6 +151,18 @@ GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_spriteShader</b></
 <tr class="memitem:a32a95addc6a4896186d5ac1a501a1abc"><td class="memItemLeft" align="right" valign="top"><a id="a32a95addc6a4896186d5ac1a501a1abc"></a>
 GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_modelShader</b></td></tr>
 <tr class="separator:a32a95addc6a4896186d5ac1a501a1abc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd381147e94ec382911789aada8d6bf5"><td class="memItemLeft" align="right" valign="top"><a id="acd381147e94ec382911789aada8d6bf5"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>_vertexPath</b></td></tr>
+<tr class="separator:acd381147e94ec382911789aada8d6bf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95cdaf1f8b5047eaf4bde10b18988b6f"><td class="memItemLeft" align="right" valign="top"><a id="a95cdaf1f8b5047eaf4bde10b18988b6f"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>_tessellationPath</b></td></tr>
+<tr class="separator:a95cdaf1f8b5047eaf4bde10b18988b6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f0b5b9d795cf04b25d93dd82bb4e638"><td class="memItemLeft" align="right" valign="top"><a id="a7f0b5b9d795cf04b25d93dd82bb4e638"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>_geometryPath</b></td></tr>
+<tr class="separator:a7f0b5b9d795cf04b25d93dd82bb4e638"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc77b3d291dcb144b9b2f5f31734cf10"><td class="memItemLeft" align="right" valign="top"><a id="adc77b3d291dcb144b9b2f5f31734cf10"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>_fragmentPath</b></td></tr>
+<tr class="separator:adc77b3d291dcb144b9b2f5f31734cf10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -137,8 +171,8 @@ static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_shader.html">S
 <tr class="separator:a2559928ae783105d4ecf676a9afc1afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_shader_8h_source.html">Shader.h</a></li>
-<li>C:/Projects/Killer_Engine/Implementations/Shader.cpp</li>
+<li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_shader_8h_source.html">Shader.h</a></li>
+<li>F:/Projects/Killer_Engine/Implementations/Shader.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

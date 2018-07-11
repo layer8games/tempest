@@ -1,4 +1,4 @@
-.TH "KillerEngine::Shader" 3 "Sat Jul 7 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Shader" 3 "Tue Jul 10 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,13 +10,25 @@ KillerEngine::Shader
 
 .in +1c
 .ti -1c
+.RI "void \fBSetVertexPath\fP (string path)"
+.br
+.ti -1c
+.RI "void \fBSetTesselationPath\fP (string path)"
+.br
+.ti -1c
+.RI "void \fBSetGeometryPath\fP (string path)"
+.br
+.ti -1c
+.RI "void \fBSetFragmentPath\fP (string path)"
+.br
+.ti -1c
 .RI "void \fBInitSpriteShader\fP (void)"
 .br
 .ti -1c
-.RI "void \fBInitSpriteShader\fP (string filepath)"
+.RI "void \fBInitModelShader\fP (void)"
 .br
 .ti -1c
-.RI "void \fBInitModelShader\fP (void)"
+.RI "GLuint \fBCreateShader\fP (void)"
 .br
 .ti -1c
 .RI "GLuint \fBGetSpriteShader\fP (void)"
@@ -32,6 +44,16 @@ KillerEngine::Shader
 .RI "static shared_ptr< \fBShader\fP > \fBInstance\fP (void)"
 .br
 .in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fB_GetFileString\fP (string path)"
+.br
+.ti -1c
+.RI "bool \fB_CheckCompileErrors\fP (GLuint shader)"
+.br
+.in -1c
 .SS "Private Attributes"
 
 .in +1c
@@ -40,6 +62,18 @@ KillerEngine::Shader
 .br
 .ti -1c
 .RI "GLuint \fB_modelShader\fP"
+.br
+.ti -1c
+.RI "string \fB_vertexPath\fP"
+.br
+.ti -1c
+.RI "string \fB_tessellationPath\fP"
+.br
+.ti -1c
+.RI "string \fB_geometryPath\fP"
+.br
+.ti -1c
+.RI "string \fB_fragmentPath\fP"
 .br
 .in -1c
 .SS "Static Private Attributes"

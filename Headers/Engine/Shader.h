@@ -89,7 +89,7 @@ namespace KillerEngine
 
 	private:
 		string _GetFileString(string path);
-		void _CheckCompileErrors(GLuint shader);
+		bool _CheckCompileErrors(GLuint shader);
 
 		static shared_ptr<Shader> _instance;
 		GLuint 					  _spriteShader;

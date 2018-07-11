@@ -34,7 +34,8 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Enumerations", "functions_enum.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -52,15 +53,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"class_killer_engine_1_1_level.html#a26cce8fb3e4c30fe2feb80bd0046cfd4",
-"class_killer_engine_1_1_texture.html#a5a27a1d6c687a55a7458ee47a0a94d90",
-"class_killer_math_1_1_vector3.html#a17e06fcbd9518268c92df8f628559e12",
-"classrapidxml_1_1parse__error.html#a41bffadc72eec238cf4b7d14c10c16ca",
-"classtinyxml2_1_1_x_m_l_document.html#a34e6318e182e40e3cc4f4ba5d59ed9ed",
-"classtinyxml2_1_1_x_m_l_printer.html#ae966b988a7a28c41e91c5ca17fb2054b",
-"group__input.html#ga0192a232a41e4e82948217c8ba94fdfd",
-"group__monitor.html#gac234b63ec525c70d7e18ac84aca088c6",
-"struct_killer_engine_1_1_character_data.html#a295501ce326a3083466aee6dd8eb2a94"
+"class_killer_engine_1_1_game_object3_d.html#abf9459535f85a45007f523ab1aa06b47",
+"class_killer_engine_1_1_sprite_renderer.html#a6244d926fa0b4bcefb60fbe314074f3e",
+"class_killer_math_1_1_vector2.html#aa7463de858d32f1334fc37e2525e81c9",
+"class_killer_physics_1_1_particle_spring_force.html#a85fad4c67f4f32a29c8dec4b7c905ebe",
+"classtinyxml2_1_1_x_m_l_const_handle.html#aec3710e455f41014026ef17fbbb0efb3",
+"classtinyxml2_1_1_x_m_l_printer.html#a3e27c4b4fe791a96e4e139b5034e190b",
+"group__errors.html#gaaf2ef9aa8202c2b82ac2d921e554c687",
+"group__keys.html#gafdd01e38b120d67cf51e348bb47f3964",
+"struct_g_l_x_pbuffer_clobber_event.html#aed4e539c896bdad15217bf92c28f8520"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

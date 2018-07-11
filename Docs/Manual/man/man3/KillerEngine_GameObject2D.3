@@ -1,4 +1,4 @@
-.TH "KillerEngine::GameObject2D" 3 "Sat Jul 7 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::GameObject2D" 3 "Tue Jul 10 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -91,6 +91,23 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, and \fBKillerPhysics::Partic
 .ti -1c
 .RI "void \fBAddScaledPosition\fP (const \fBKM::Vector2\fP &v, F32 scale)"
 .br
+.ti -1c
+.RI "void \fBSetShader\fP (GLuint shader)"
+.br
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBBufferData\fP { \fBVERTEX_BUFFER\fP = 0, \fBVERTEX_POS\fP = 0, \fBFRAGMENT_BUFFER\fP = 1, \fBFRAGMENT_POS\fP = 1, \fBINDEX_BUFFER\fP = 2, \fBNUM_VBO\fP = 3 }"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fB_InitColor\fP (void)"
+.br
 .in -1c
 .SS "Private Attributes"
 
@@ -106,7 +123,7 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, and \fBKillerPhysics::Partic
 .ti -1c
 .RI "\fBSprite\fP \fB_sprite\fP"
 .br
-.RI "Used for Rendering the object as a 2D \fBSprite\fP\&. "
+.RI "Used for Rendering the object as a 2D \fBSprite\fP\&. Deprecated\&. Refactor out\&. "
 .ti -1c
 .RI "\fBKM::Vector2\fP \fB_position\fP"
 .br
@@ -119,6 +136,26 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, and \fBKillerPhysics::Partic
 .RI "F32 \fB_height\fP"
 .br
 .RI "Height of the object\&. "
+.ti -1c
+.RI "GLuint \fB_shaderProgram\fP"
+.br
+.RI "\fBShader\fP program used by OpenGL to render this object\&. "
+.ti -1c
+.RI "GLuint \fB_vao\fP"
+.br
+.RI "Vertex Array Object used by OpenGL for rendering\&. "
+.ti -1c
+.RI "GLuint \fB_vbo\fP [NUM_VBO]"
+.br
+.RI "Array of Buffer Objects\&. Stores data that is passed to OpenGL\&. "
+.ti -1c
+.RI "U32 \fB_vertexCount\fP"
+.br
+.RI "Total count of vertices for object\&. "
+.ti -1c
+.RI "\fBColor\fP \fB_color\fP"
+.br
+.RI "\fBColor\fP of whole object\&. Will be refined later to be per vertex\&. "
 .in -1c
 .SS "Static Private Attributes"
 
@@ -139,6 +176,10 @@ The GameObject itself is an interface to generic functions that each object that
 Accessors are created for the derived classes to access the cell, but the cell is to be accessed directly only by the GameObject itself\&.
 .PP
 \fBGameObject2D\fP will specifically apply to 2D game objects\&. 
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBKillerEngine::GameObject2D::BufferData\fP\fC [private]\fP"
+Stores constant shader data used to set up arrays of Vertex Array Objects, as well as which position keeps which data\&. The number values set here are not arbitrary, but rather set up the schema for the array members\&. This is a rigid, non-dynamic system and should probably be refactored to be more dynmaic in the future, as this type of data could vary from object to object, since they could use different shaders\&. That is unless a class of shader is required that has certain attributes laid out in certain ways\&. However, I do think that this information can be found by making calls to OpenGL onces gl_UseProgram has been called\&. Doing it this way would mean some refactoring, but that could be a good thing in the long run\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "GameObject2D::GameObject2D (void)"
@@ -149,6 +190,8 @@ Copy Constructor\&. Calls \fBGetID()\fP, \fBGetActive()\fP, \fBGetSprite()\fP, \
 Destructor\&. No special functions 
 .SH "Member Function Documentation"
 .PP 
+.SS "void GameObject2D::_InitColor (void)\fC [private]\fP"
+Loads color change into OpenGL buffer, and saves this data to the Vertex Array Object\&. 
 .SS "void GameObject2D::AddScaledPosition (const \fBKM::Vector2\fP & v, F32 scale)"
 Scales the position of the object in World Space\&. Wrapper for Vector2::AddScaledVector\&. 
 .PP
@@ -162,7 +205,7 @@ Scales the position of the object in World Space\&. Wrapper for Vector2::AddScal
 
 .SS "bool GameObject2D::GetActive (void) const"
 Returns if object is active or not\&. Determines if object will have v_Update called, and if it wlll be added to render in Level::UpdateObject and in Level::RenderObjects\&. True indicates that it will be updated and rendered\&. False indicates that it will not\&. 
-.SS "const \fBColor\fP & GameObject2D::GetColor (void) const"
+.SS "const \fBColor\fP& KillerEngine::GameObject2D::GetColor (void) const\fC [inline]\fP"
 Returns the color of the object\&. This is stored exclusively in the \fBGameObject2D\fP and is not duplicated in the \fBSprite\fP\&. 
 .SS "F32 GameObject2D::GetHeight (void) const"
 Returns the height of the object\&. 

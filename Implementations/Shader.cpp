@@ -41,6 +41,7 @@ shared_ptr<Shader> Shader::Instance(void)
 	return _instance;
 }
 
+//Refactor and remove
 void Shader::InitSpriteShader(void)
 {
 	//=====Vertex Shaders=====
@@ -196,7 +197,7 @@ void Shader::InitSpriteShader(void)
 	glDeleteShader(fragmentShaderProgram);
 }
 
-
+//Refactor and remove
 void Shader::InitModelShader(void)
 {
 	const GLchar* vertexShaderSource[] =
@@ -282,7 +283,6 @@ void Shader::InitModelShader(void)
 
 GLuint Shader::CreateShader(void)
 {
-
 	if(_vertexPath == "")
 	{
 		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Unable to create shader. No vertex shader path set.");
@@ -292,25 +292,10 @@ GLuint Shader::CreateShader(void)
 	{
 		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Unable to create shader. No fragment shader path set.");
 	}
-
 	
 	GLuint finalProgram = glCreateProgram();
 	GLuint vertexProgram = glCreateShader(GL_VERTEX_SHADER);
 	GLuint fragmentProgram = glCreateShader(GL_FRAGMENT_SHADER);
-
-/*
-	std::ifstream file(_vertexPath.c_str());
-	if(!file)
-	{
-		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Unable to open file path to shader: " + _vertexPath);
-	}
-
-	std::stringstream vertexData;
-	vertexData << file.rdbuf();
-
-	file.close();
-*/
-
 
 	GLint shaderSize;
 	const string vertexString = _GetFileString(_vertexPath);
@@ -319,7 +304,11 @@ GLuint Shader::CreateShader(void)
 
 	glShaderSource(vertexProgram, 1, (const GLchar**)&vertexCode, (GLint*)&shaderSize);
 	glCompileShader(vertexProgram);
-	_CheckCompileErrors(vertexProgram);
+	
+	if(!_CheckCompileErrors(vertexProgram))
+	{
+		glDeleteProgram(vertexProgram);
+	}
 
 	const string fragmentString = _GetFileString(_fragmentPath);
 	const char* fragmentCode = fragmentString.c_str();
@@ -327,11 +316,16 @@ GLuint Shader::CreateShader(void)
 
 	glShaderSource(fragmentProgram, 1, (const GLchar**)&fragmentCode, (GLint*)&shaderSize);
 	glCompileShader(fragmentProgram);
-	_CheckCompileErrors(fragmentProgram);
+	
+	if(!_CheckCompileErrors(fragmentProgram))
+	{
+		glDeleteProgram(fragmentProgram);
+	}
+
+	//Add checks for other shaders here
 
 	glAttachShader(finalProgram, vertexProgram);
 	glAttachShader(finalProgram, fragmentProgram);
-	
 	glLinkProgram(finalProgram);
 
 	//===== Error checking =====
@@ -412,15 +406,30 @@ string Shader::_GetFileString(string path)
 	return returnVal;
 }
 
-void Shader::_CheckCompileErrors(GLuint shader)
+bool Shader::_CheckCompileErrors(GLuint shader)
 {
 	GLint result = 0;
-	GLchar infoLog[512];
 	glGetShaderiv(shader, GL_COMPILE_STATUS, &result);
-	if(!result)
+	
+	if(result == GL_FALSE)
 	{
-		glGetShaderInfoLog(shader, sizeof(infoLog), NULL, infoLog);
-		string errorMessage = infoLog;
+		string errorMessage("Compile Error in shader\n");
+		GLint maxLength = 0;
+		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &maxLength);
+
+		//The maxLength includes the NULL character
+		std::vector<GLchar> infoLog(maxLength);
+		glGetProgramInfoLog(shader, maxLength, &maxLength, &infoLog[0]);
+
+		for(auto i = infoLog.begin(); i != infoLog.end(); ++i)
+		{
+			errorMessage += *i ;
+		}
+
 		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, errorMessage);
+
+		return false;
 	}
+
+	return true;
 }

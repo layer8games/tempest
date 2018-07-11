@@ -10,6 +10,7 @@ U32 GameObject2D::_nextID = 1;
 //Constructors
 //
 //==========================================================================================================================
+//Refactor needed. Probably should remove the hard coded vertices.
 GameObject2D::GameObject2D(void) 
 : 
 _ID(0), 
@@ -28,15 +29,23 @@ _color()
 
 	F32 vertices[] = 
 	{
-		0.0f, 0.5f, 0.0f, 1.0f, //Top
-		0.5f, -0.5f, 0.0f, 1.0f, //Right
-		-0.5f, -0.5f, 0.0f, 1.0f //Left
+		//tri0
+		-0.5f, 0.5f, 0.0f, 1.0f,
+		0.5f, 0.5f, 0.0f, 1.0f,
+		0.5f, -0.5f, 0.0f, 1.0f,
+		-0.5f, -0.5f, 0.0f, 1.0f
 	};
 
-	_vertexCount = 3;
+	U32 indices[] =
+	{
+		0, 1, 2,
+		0, 2, 3
+	};
+
+	_vertexCount = 6;
 	
 	glGenVertexArrays(1, &_vao);
-	glGenBuffers(2, _vbo);
+	glGenBuffers(NUM_VBO, _vbo);
 
 	glBindVertexArray(_vao);
 	glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
@@ -45,9 +54,15 @@ _color()
 	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(VERTEX_POS);
 
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[INDEX_BUFFER]);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
 	_InitColor();
+
+	glBindVertexArray(0);
 }
 
+//Refactor needed. Need to account for vbo and vao.
 GameObject2D::GameObject2D(const GameObject2D& obj) 
 : 
 _ID(obj.GetID()),
@@ -62,6 +77,7 @@ GameObject2D::~GameObject2D(void)
 {
 	glDeleteBuffers(NUM_VBO, _vbo);
 	glDeleteProgram(_shaderProgram);
+	glDeleteVertexArrays(1, &_vao);
 }
 
 //==========================================================================================================================
@@ -71,7 +87,6 @@ GameObject2D::~GameObject2D(void)
 //==========================================================================================================================
 void GameObject2D::v_Render(void)
 {
-	//glUseProgram(_sprite.GetShader());
 	glUseProgram(_shaderProgram);
 
 	if(_sprite.GetTextureID() != 0)
@@ -79,11 +94,11 @@ void GameObject2D::v_Render(void)
 		TextureManager::Instance()->SetCurrentTextureID(_sprite.GetTextureID());
 	}
 
-	//glBindVertexArray(_sprite.GetVAO());
 	glBindVertexArray(_vao);
-	//glBindBuffer(GL_ARRAY_BUFFER, _vbo);
 
-	glDrawArrays(GL_TRIANGLES, 0, _vertexCount);
+	glDrawElements(GL_TRIANGLES, _vertexCount, GL_UNSIGNED_INT, 0);
+
+	glBindVertexArray(0);
 }
 
 //==========================================================================================================================

@@ -170,35 +170,44 @@ namespace KillerEngine
 
 		inline void SetShader(GLuint shader)
 		{
-			//_sprite.SetShader(shader);
 			_shaderProgram = shader;
 		}
 
-
 	private:	
+/*! Loads color change into OpenGL buffer, and saves this data to the Vertex Array Object. */
 		void _InitColor(void);
 
-		enum
+/*! Stores constant shader data used to set up arrays of Vertex Array Objects, as well as 
+	which position keeps which data. The number values set here are not arbitrary, but 
+	rather set up the schema for the array members. This is a rigid, non-dynamic system
+	and should probably be refactored to be more dynmaic in the future, as this type of
+	data could vary from object to object, since they could use different shaders. 
+	That is unless a class of shader is required that has certain attributes laid out
+	in certain ways. However, I do think that this information can be found by making 
+	calls to OpenGL onces gl_UseProgram has been called. Doing it this way would mean
+	some refactoring, but that could be a good thing in the long run. */		
+		enum BufferData
 		{
 			VERTEX_BUFFER = 0,
 			VERTEX_POS = 0,
 			FRAGMENT_BUFFER = 1,
 			FRAGMENT_POS = 1,
-			NUM_VBO = 2
+			INDEX_BUFFER = 2,
+			NUM_VBO = 3
 		};
 
 		static U32 				_nextID;		///< Global member used to track the next unique ID for GambeObject2D
 		U32 					_ID;			///< ID for this instance of the GameObject2D
 		bool 	 				_active;		///< Tracks if the object should be updated and rendered
-		Sprite					_sprite;		///< Used for Rendering the object as a 2D Sprite.
+		Sprite					_sprite;		///< Used for Rendering the object as a 2D Sprite. Deprecated. Refactor out.
 		KM::Vector2 			_position;		///< Position in World Space
 		F32						_width;			///< Width of the object. 
 		F32 					_height;		///< Height of the object.
-		GLuint 					_shaderProgram;
-		GLuint 					_vao;
-		GLuint					_vbo[NUM_VBO];
-		U32						_vertexCount;
-		Color 					_color;
+		GLuint 					_shaderProgram; ///< Shader program used by OpenGL to render this object.
+		GLuint 					_vao;			///< Vertex Array Object used by OpenGL for rendering.
+		GLuint					_vbo[NUM_VBO];	///< Array of Buffer Objects. Stores data that is passed to OpenGL.
+		U32						_vertexCount;	///< Total count of vertices for object.
+		Color 					_color;			///< Color of whole object. Will be refined later to be per vertex.
 	};
 
 	

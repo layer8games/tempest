@@ -1,4 +1,4 @@
-.TH "KillerEngine::Sprite" 3 "Sat Jul 7 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Sprite" 3 "Tue Jul 10 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -40,7 +40,7 @@ KillerEngine::Sprite
 .RI "const GLuint \fBGetShader\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBInitShader\fP (string filepath)"
+.RI "void \fBSetShader\fP (GLuint shader)"
 .br
 .ti -1c
 .RI "void \fBSetVAO\fP (GLuint vao)"
@@ -94,6 +94,9 @@ KillerEngine::Sprite
 .br
 .ti -1c
 .RI "GLuint \fB_vao\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_vbo\fP"
 .br
 .ti -1c
 .RI "U32 \fB_vertexCount\fP"

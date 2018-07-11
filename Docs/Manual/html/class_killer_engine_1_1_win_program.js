@@ -15,6 +15,7 @@ var class_killer_engine_1_1_win_program =
     [ "Init", "class_killer_engine_1_1_win_program.html#a390478713355c57ea63b0923e59a3892", null ],
     [ "ProcessEvents", "class_killer_engine_1_1_win_program.html#a1e7caa302600352c3ca66301ead19032", null ],
     [ "SetBackgroundColor", "class_killer_engine_1_1_win_program.html#a082614c6191c6df8eaadfe096e060d7f", null ],
+    [ "ToggleWireFrame", "class_killer_engine_1_1_win_program.html#ad6d23bebf4af9ed1d8b35be5a2b9a1e7", null ],
     [ "_bgColor", "class_killer_engine_1_1_win_program.html#a1b52b7b0a135963ac9a6b2b9e6b0b841", null ],
     [ "_bottom", "class_killer_engine_1_1_win_program.html#a5689f1aa5f9f28f8f30b734254b4285b", null ],
     [ "_isFullScreen", "class_killer_engine_1_1_win_program.html#aaacad996e56859ec2b79b77ad765b2e8", null ],
@@ -25,5 +26,6 @@ var class_killer_engine_1_1_win_program =
     [ "_totalHeight", "class_killer_engine_1_1_win_program.html#add4781b314d60d5c2776c1aa878c60ca", null ],
     [ "_totalWidth", "class_killer_engine_1_1_win_program.html#af9a0c14e58fe54fe87d7f0fa7abeb18e", null ],
     [ "_window", "class_killer_engine_1_1_win_program.html#aa2828d40f4265f9d51c0ca28d6f12ce0", null ],
+    [ "_wireFrame", "class_killer_engine_1_1_win_program.html#a00b741c504381e23717772a0c36197e9", null ],
     [ "_wndName", "class_killer_engine_1_1_win_program.html#a14bec8e61f5b59082b04cf90b409f104", null ]
 ];
