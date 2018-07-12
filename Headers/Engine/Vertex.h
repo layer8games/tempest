@@ -24,6 +24,17 @@ namespace KillerEngine
 	 	KM::Vector2 texCoord;
 	 	Color color;
 	 	S32 texID;
+
+	 	Vertex2D(KM::Vector2 pos)
+	 	{
+	 		position = pos;
+	 	}
+
+	 	Vertex2D(KM::Vector2 pos, Color col)
+	 	{
+	 		position = pos;
+	 		color = col;
+	 	}
 	 };
 
 	 struct Vertex3D

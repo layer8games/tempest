@@ -7,6 +7,7 @@
 #include <Engine/ErrorManager.h>
 #include <Engine/Vector2.h>
 #include <Engine/Color.h>
+#include <Engine/Vertex.h>
 
 namespace KM = KillerMath;
 
@@ -58,6 +59,28 @@ namespace KillerEngine
 		virtual void v_Update(void)=0;
 
 		virtual void v_Render(void);
+
+//==========================================================================================================================
+//
+//Functions
+//
+//==========================================================================================================================
+		inline void AddVertex(Vertex2D& vert)
+		{
+			_vertices.push_back(vert);
+		}
+
+		inline void AddIndex(U32 index)
+		{
+			_indices.push_back(index);
+		}
+
+		inline void SetIndices(std::vector<U32> indices)
+		{
+			_indices = indices;
+		}
+
+		void InitRenderingData(void);
 
 //==========================================================================================================================
 //
@@ -198,8 +221,9 @@ namespace KillerEngine
 		GLuint 					_shaderProgram; ///< Shader program used by OpenGL to render this object.
 		GLuint 					_vao;			///< Vertex Array Object used by OpenGL for rendering.
 		GLuint					_vbo[NUM_VBO];	///< Array of Buffer Objects. Stores data that is passed to OpenGL.
-		U32						_vertexCount;	///< Total count of vertices for object.
 		Color 					_color;			///< Color of whole object. Will be refined later to be per vertex.
+		std::vector<Vertex2D> 	_vertices;
+		std::vector<U32> 		_indices;
 	};
 
 	

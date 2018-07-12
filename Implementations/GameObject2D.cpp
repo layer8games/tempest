@@ -21,44 +21,14 @@ _height(0.0f),
 _shaderProgram(0),
 _vao(0),
 _vbo{},
-_vertexCount(0),
-_color()
+_color(),
+_vertices(),
+_indices()
 {
 	SetID();
-
-	F32 vertices[] = 
-	{
-		//tri0
-		-0.5f, 0.5f, 0.0f, 1.0f,
-		0.5f, 0.5f, 0.0f, 1.0f,
-		0.5f, -0.5f, 0.0f, 1.0f,
-		-0.5f, -0.5f, 0.0f, 1.0f
-	};
-
-	U32 indices[] =
-	{
-		0, 1, 2,
-		0, 2, 3
-	};
-
-	_vertexCount = 6;
 	
 	glGenVertexArrays(1, &_vao);
 	glGenBuffers(NUM_VBO, _vbo);
-
-	glBindVertexArray(_vao);
-	glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	
-	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-	glEnableVertexAttribArray(VERTEX_POS);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[INDEX_BUFFER]);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-	_InitColor();
-
-	glBindVertexArray(0);
 }
 
 //Refactor needed. Need to account for vbo and vao.
@@ -89,7 +59,68 @@ void GameObject2D::v_Render(void)
 
 	glBindVertexArray(_vao);
 
-	glDrawElements(GL_TRIANGLES, _vertexCount, GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, _indices.size(), GL_UNSIGNED_INT, 0);
+
+	glBindVertexArray(0);
+}
+
+//==========================================================================================================================
+//
+//Fucntions
+//
+//==========================================================================================================================
+void GameObject2D::InitRenderingData(void)
+{
+	if(_vertices.size() <= 0)
+	{
+		ErrorManager::Instance()->SetError(EC_Engine, "GameObject2D::InitRenderingData Error. No vertices set when trying to init data.");
+	}
+	else if(_indices.size() <= 0)
+	{
+		ErrorManager::Instance()->SetError(EC_Engine, "GameObject2D::InitRenderingData Error. No indices set when trying to init data.");
+	}
+
+	std::vector<F32> vertPositions;
+	std::vector<F32> vertColors;
+
+	for(auto i : _vertices)
+	{
+		vertPositions.push_back(i.position.GetX());
+		vertPositions.push_back(i.position.GetY());
+		vertPositions.push_back(i.position.GetZ());
+		vertPositions.push_back(i.position.GetW());
+	}
+
+	for(auto i : _indices)
+	{
+		std::cout << "setting for " << i << "colors are "
+				  << _vertices[i].color.GetRed() << " "
+				  << _vertices[i].color.GetGreen() << " "
+				  << _vertices[i].color.GetBlue() << " "
+				  << "\n";
+
+		vertColors.push_back(_vertices[i].color.GetRed());
+		vertColors.push_back(_vertices[i].color.GetGreen());
+		vertColors.push_back(_vertices[i].color.GetBlue());
+		vertColors.push_back(_vertices[i].color.GetAlpha());
+	}
+
+	glBindVertexArray(_vao);
+
+	glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
+	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPositions.size()), &vertPositions[0], GL_STATIC_DRAW);
+	
+	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(VERTEX_POS);
+
+	glBindBuffer(GL_ARRAY_BUFFER, _vbo[FRAGMENT_BUFFER]);
+	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertColors.size()), &vertColors[0], GL_STATIC_DRAW);
+	
+	glVertexAttribPointer(FRAGMENT_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(FRAGMENT_POS);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[INDEX_BUFFER]);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (sizeof(U32) * _indices.size()), &_indices[0], GL_STATIC_DRAW);
 
 	glBindVertexArray(0);
 }
@@ -199,7 +230,7 @@ void GameObject2D::_InitColor(void)
 {
 	std::vector<F32> colors;
 	
-	for(int i = 0; i < _vertexCount; ++i)
+	for(int i = 0; i < _indices.size(); ++i)
 	{
 		colors.push_back(_color.GetRed());
 		colors.push_back(_color.GetGreen());
