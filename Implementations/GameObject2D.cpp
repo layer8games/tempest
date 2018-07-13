@@ -93,12 +93,6 @@ void GameObject2D::InitRenderingData(void)
 
 	for(auto i : _indices)
 	{
-		std::cout << "setting for " << i << "colors are "
-				  << _vertices[i].color.GetRed() << " "
-				  << _vertices[i].color.GetGreen() << " "
-				  << _vertices[i].color.GetBlue() << " "
-				  << "\n";
-
 		vertColors.push_back(_vertices[i].color.GetRed());
 		vertColors.push_back(_vertices[i].color.GetGreen());
 		vertColors.push_back(_vertices[i].color.GetBlue());

@@ -298,11 +298,11 @@ GLuint Shader::CreateShader(void)
 	GLuint fragmentProgram = glCreateShader(GL_FRAGMENT_SHADER);
 
 	GLint shaderSize;
-	const string vertexString = _GetFileString(_vertexPath);
-	const char* vertexCode = vertexString.c_str();
+	string vertexString = _GetFileString(_vertexPath);
+	const GLchar* vertexCode = vertexString.c_str();
 	shaderSize = vertexString.size();
 
-	glShaderSource(vertexProgram, 1, (const GLchar**)&vertexCode, (GLint*)&shaderSize);
+	glShaderSource(vertexProgram, 1, &vertexCode, (GLint*)&shaderSize);
 	glCompileShader(vertexProgram);
 	
 	if(!_CheckCompileErrors(vertexProgram))
@@ -310,11 +310,11 @@ GLuint Shader::CreateShader(void)
 		glDeleteProgram(vertexProgram);
 	}
 
-	const string fragmentString = _GetFileString(_fragmentPath);
-	const char* fragmentCode = fragmentString.c_str();
+	string fragmentString = _GetFileString(_fragmentPath);
+	const GLchar* fragmentCode = fragmentString.c_str();
 	shaderSize = fragmentString.size();
 
-	glShaderSource(fragmentProgram, 1, (const GLchar**)&fragmentCode, (GLint*)&shaderSize);
+	glShaderSource(fragmentProgram, 1, &fragmentCode, (GLint*)&shaderSize);
 	glCompileShader(fragmentProgram);
 	
 	if(!_CheckCompileErrors(fragmentProgram))
@@ -334,20 +334,14 @@ GLuint Shader::CreateShader(void)
 
 	if(isLinked == GL_FALSE)
 	{
-		string errorMessage("Compile Error in shader\n");
-		GLint maxLength = 0;
-		glGetProgramiv(finalProgram, GL_INFO_LOG_LENGTH, &maxLength);
+		GLint length = 0;
+		glGetProgramiv(finalProgram, GL_INFO_LOG_LENGTH, &length);
 
-		//The maxLength includes the NULL character
-		std::vector<GLchar> infoLog(maxLength);
-		glGetProgramInfoLog(finalProgram, maxLength, &maxLength, &infoLog[0]);
+		//The length includes the NULL character
+		string errorLog(length, ' ');
+		glGetProgramInfoLog(finalProgram, length, &length, &errorLog[0]);
 
-		for(auto i = infoLog.begin(); i != infoLog.end(); ++i)
-		{
-			errorMessage += *i ;
-		}
-
-		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, errorMessage);
+		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Compile Error in shader\n" + errorLog);
 
 		//The program is useless now. So delete it.
 		glDeleteProgram(finalProgram);
@@ -401,32 +395,24 @@ string Shader::_GetFileString(string path)
 
 	file.close();
 
-	string returnVal = shaderData.str();
-
-	return returnVal;
+	return shaderData.str();
 }
 
 bool Shader::_CheckCompileErrors(GLuint shader)
 {
-	GLint result = 0;
-	glGetShaderiv(shader, GL_COMPILE_STATUS, &result);
+	GLint status = 0;
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
 	
-	if(result == GL_FALSE)
+	if(status == GL_FALSE)
 	{
-		string errorMessage("Compile Error in shader\n");
-		GLint maxLength = 0;
-		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &maxLength);
+		GLint length = 0;
+		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
 
-		//The maxLength includes the NULL character
-		std::vector<GLchar> infoLog(maxLength);
-		glGetProgramInfoLog(shader, maxLength, &maxLength, &infoLog[0]);
+		//The length includes the NULL character
+		string errorLog(length, ' ');	
+		glGetProgramInfoLog(shader, length, &length, &errorLog[0]);
 
-		for(auto i = infoLog.begin(); i != infoLog.end(); ++i)
-		{
-			errorMessage += *i ;
-		}
-
-		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, errorMessage);
+		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Compile Error in shader\n" + errorLog);
 
 		return false;
 	}
