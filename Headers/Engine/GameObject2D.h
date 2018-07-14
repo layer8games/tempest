@@ -8,6 +8,7 @@
 #include <Engine/Vector2.h>
 #include <Engine/Color.h>
 #include <Engine/Vertex.h>
+#include <Engine/Shader.h>
 
 namespace KM = KillerMath;
 
@@ -224,6 +225,9 @@ namespace KillerEngine
 		Color 					_color;			///< Color of whole object. Will be refined later to be per vertex.
 		std::vector<Vertex2D> 	_vertices;
 		std::vector<U32> 		_indices;
+		
+	protected:
+		Shader 					shader;
 	};
 
 	
