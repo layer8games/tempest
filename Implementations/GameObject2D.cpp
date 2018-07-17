@@ -23,7 +23,8 @@ _vao(0),
 _vbo{},
 _color(),
 _vertices(),
-_indices()
+_indices(),
+shader()
 {
 	SetID();
 	
@@ -55,7 +56,9 @@ GameObject2D::~GameObject2D(void)
 //==========================================================================================================================
 void GameObject2D::v_Render(void)
 {
-	glUseProgram(_shaderProgram);
+	//glUseProgram(_shaderProgram);
+
+	shader.Use();
 
 	glBindVertexArray(_vao);
 

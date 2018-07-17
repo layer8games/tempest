@@ -13,7 +13,7 @@ Model::Model(void)
 _numVertices(0), 
 _vertices(),
 _indices(),
-_shaderProgram(Shader::Instance()->GetModelShader()),
+_shaderProgram(0),
 _scale(1.0f, 1.0f, 1.0f)
 {  }
 
@@ -31,7 +31,7 @@ Model::Model(std::vector<Vertex3D> vertices, std::vector<U16> indices)
 _numVertices(0), 
 _vertices(vertices),
 _indices(indices),
-_shaderProgram(Shader::Instance()->GetModelShader())
+_shaderProgram(0)
 {  }
 
 Model::~Model(void)

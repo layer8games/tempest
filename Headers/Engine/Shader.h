@@ -28,6 +28,18 @@ Written by Maxwell Miller
 
 namespace KillerEngine
 {
+	enum ShaderType
+	{
+		VERTEX,
+		FRAGMENT
+	};
+
+	struct ShaderData
+	{
+		string filePath;
+		ShaderType type;
+	};
+
 	class Shader
 	{
 	public:
@@ -42,62 +54,24 @@ namespace KillerEngine
 
 //==========================================================================================================================
 //
-//Accessors
-//
-//==========================================================================================================================
-		void SetVertexPath(string path)
-		{
-			_vertexPath = path;
-		}
-
-		void SetTesselationPath(string path)
-		{
-			_tessellationPath = path;
-		}
-
-		void SetGeometryPath(string path)
-		{
-			_geometryPath = path;
-		}
-
-		void SetFragmentPath(string path)
-		{
-			_fragmentPath = path;
-		}
-
-//==========================================================================================================================
-//
 //Functions
 //
 //==========================================================================================================================
-		static shared_ptr<Shader> Instance(void);
+		//void InitSpriteShader(void);
 
-		void InitSpriteShader(void);
+		//void InitModelShader(void);
 
-		void InitModelShader(void);
+		//GLuint CreateShader(void);
 
-		GLuint CreateShader(void);
+		void LoadShader(std::vector<ShaderData> shaders);
 
-//==========================================================================================================================
-//
-//Accessors
-//
-//==========================================================================================================================
-		GLuint GetSpriteShader(void);
-
-		GLuint GetModelShader(void);
+		void Use(void);
 
 	private:
 		string _GetFileString(string path);
 		bool _CheckCompileErrors(GLuint shader);
 
-		static shared_ptr<Shader> _instance;
-		GLuint 					  _spriteShader;
-		GLuint 					  _modelShader;
-		string 					  _vertexPath;
-		string 					  _tessellationPath;
-		string 					  _geometryPath;
-		string 					  _fragmentPath;
+		GLuint _shaderProgram;
 
 	};//end Class
 }//end Namespace
