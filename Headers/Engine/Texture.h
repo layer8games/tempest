@@ -41,6 +41,7 @@ namespace KillerEngine
 //
 //Accessors
 //
+// most of this will go. 
 //==========================================================================================================================
 		GLuint GetID(void) const;
 
@@ -64,9 +65,9 @@ namespace KillerEngine
 		Texture& operator=(Texture* T);
 
 	private:	
-		GLuint _id;
-		S32    _width;
-		S32    _height;
+		GLuint _id; // keep but change into handle for new texture. 
+		S32    _width; // not needed. ONly keep if you use SOIL, and you think it is something that may be useful to save. 
+		S32    _height; // not needed. Same
 		
 	};
 
