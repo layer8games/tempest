@@ -66,7 +66,7 @@ Texture& Texture::operator=(Texture* T)
 //Functions
 //
 //==========================================================================================================================
-void Texture::LoadTexture(string filePath)
+void Texture::LoadTexture(string filePath, bool generateMipMaps)
 {
 	//add call to texture manager here to see if an id is found.
 
@@ -78,10 +78,23 @@ void Texture::LoadTexture(string filePath)
 	}
 	else
 	{
-		GLuint texture;
-		glGenTextures(1, &texture);
-		glBindTexture(GL_TEXTURE_2D, texture);
+		glGenTextures(1, &_handle);
+		glBindTexture(GL_TEXTURE_2D, _handle);
 
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
+		//Args: target texture type, level of details (mipmaps), Internal format, dimensions, width of the border, resulting format, data type, image data
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, _width, _height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
+
+		if(generateMipMaps)
+		{
+			glGenerateMipMap(GL_TEXTURE_2D);
+		}
+
+		SOIL_free_image_data(imageData);
+		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 }

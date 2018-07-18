@@ -82,7 +82,7 @@ namespace KillerEngine
 //Functions
 //
 //==========================================================================================================================
-		void LoadTexture(string filePath);
+		void LoadTexture(string filePath, bool generateMipMaps=true);
 
 	private:	
 		GLuint _handle; // keep but change into handle for new texture. 
