@@ -9,6 +9,7 @@ using namespace KillerEngine;
 //==========================================================================================================================
 Shader::Shader(void)
 :
+_uniformLocations(),
 _shaderProgram(0)
 {
 	_shaderProgram = glCreateProgram();
@@ -109,6 +110,30 @@ void Shader::Use(void)
 	glUseProgram(_shaderProgram);
 }
 
+void Shader::SetUniform(const GLchar* name, Color col)
+{
+	GLuint location = _GetUniformLocation(name);
+	glUniform4f(location, col.GetRed(), col.GetGreen(), col.GetBlue(), col.GetAlpha());
+}
+
+void Shader::SetUniform(const GLchar* name, KM::Vector2 vec)
+{
+	GLuint location = _GetUniformLocation(name);
+	glUniform4f(location, vec.GetX(), vec.GetY(), vec.GetZ(), vec.GetW());
+}
+
+void Shader::SetUniform(const GLchar* name, KM::Vector3 vec)
+{
+	GLuint location = _GetUniformLocation(name);
+	glUniform4f(location, vec.GetX(), vec.GetY(), vec.GetZ(), vec.GetW());
+}
+
+void Shader::SetUniform(const GLchar* name, KM::Matrix mat)
+{
+	GLuint location = _GetUniformLocation(name);
+	glUniformMatrix4fv(location, 1, GL_FALSE, mat.GetElems());
+}
+
 //==========================================================================================================================
 //
 //Private Functions
@@ -153,4 +178,18 @@ bool Shader::_CheckCompileErrors(GLuint shader)
 	}
 
 	return true;
+}
+
+GLuint Shader::_GetUniformLocation(const GLchar* name)
+{
+	auto it = _uniformLocations.find(name);
+
+	if(it == _uniformLocations.end())
+	{
+		//this use. Make current program active if it is not.
+		Use();
+		_uniformLocations[name] = glGetUniformLocation(_shaderProgram, name);
+	}
+
+	return _uniformLocations[name];
 }

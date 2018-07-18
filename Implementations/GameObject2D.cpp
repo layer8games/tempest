@@ -84,7 +84,7 @@ void GameObject2D::InitRenderingData(void)
 	}
 
 	std::vector<F32> vertPositions;
-	std::vector<F32> vertColors;
+	//std::vector<F32> vertColors;
 
 	for(auto i : _vertices)
 	{
@@ -94,6 +94,7 @@ void GameObject2D::InitRenderingData(void)
 		vertPositions.push_back(i.position.GetW());
 	}
 
+/*
 	for(auto i : _indices)
 	{
 		vertColors.push_back(_vertices[i].color.GetRed());
@@ -101,6 +102,7 @@ void GameObject2D::InitRenderingData(void)
 		vertColors.push_back(_vertices[i].color.GetBlue());
 		vertColors.push_back(_vertices[i].color.GetAlpha());
 	}
+*/
 
 	glBindVertexArray(_vao);
 
@@ -110,11 +112,11 @@ void GameObject2D::InitRenderingData(void)
 	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(VERTEX_POS);
 
-	glBindBuffer(GL_ARRAY_BUFFER, _vbo[FRAGMENT_BUFFER]);
-	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertColors.size()), &vertColors[0], GL_STATIC_DRAW);
+	//glBindBuffer(GL_ARRAY_BUFFER, _vbo[FRAGMENT_BUFFER]);
+	//glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertColors.size()), &vertColors[0], GL_STATIC_DRAW);
 	
-	glVertexAttribPointer(FRAGMENT_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-	glEnableVertexAttribArray(FRAGMENT_POS);
+	//glVertexAttribPointer(FRAGMENT_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+	//glEnableVertexAttribArray(FRAGMENT_POS);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[INDEX_BUFFER]);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (sizeof(U32) * _indices.size()), &_indices[0], GL_STATIC_DRAW);

@@ -20,11 +20,20 @@ Written by Maxwell Miller
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
+#include <Engine/Color.h>
+#include <Engine/Vector2.h>
+#include <Engine/Vector3.h>
+#include <Engine/Matrix.h>
+
+namespace KM = KillerMath;
 
 //=====STL includes=====
 #include <vector>
+#include <map>
 #include <fstream>
 #include <sstream>
+
+using std::map;
 
 namespace KillerEngine
 {
@@ -67,11 +76,30 @@ namespace KillerEngine
 
 		void Use(void);
 
+		void SetUniform(const GLchar* name, Color col);
+
+		void SetUniform(const GLchar* name, KM::Vector2 vec);
+
+		void SetUniform(const GLchar* name, KM::Vector3 vec);
+
+		void SetUniform(const GLchar* name, KM::Matrix mat);
 	private:
+//==========================================================================================================================
+//
+//Private Functions
+//
+//==========================================================================================================================
 		string _GetFileString(string path);
+		
 		bool _CheckCompileErrors(GLuint shader);
 
-		GLuint _shaderProgram;
+		GLuint _GetUniformLocation(const GLchar* name);
+			
+//==========================================================================================================================
+//Data
+//==========================================================================================================================			
+		map<string, GLuint> 	_uniformLocations;
+		GLuint 					_shaderProgram;
 
 	};//end Class
 }//end Namespace
