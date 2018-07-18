@@ -42,9 +42,9 @@ shared_ptr<TextureManager> TextureManager::Instance(void)
 //==========================================================================================================================
 void TextureManager::SetCurrentTextureID(U32 tID)
 { 
-	_currentTextureID = tID; 
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, _loadedTextures[tID]->GetID());
+	//_currentTextureID = tID; 
+	//glActiveTexture(GL_TEXTURE0);
+	//glBindTexture(GL_TEXTURE_2D, _loadedTextures[tID]->GetID());
 }
 
 //====================================================================================================

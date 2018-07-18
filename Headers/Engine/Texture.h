@@ -16,6 +16,9 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 
+//===== Image Library =====
+#include <SOIL/SOIL.h>
+
 namespace KillerEngine 
 {
 
@@ -43,17 +46,27 @@ namespace KillerEngine
 //
 // most of this will go. 
 //==========================================================================================================================
-		GLuint GetID(void) const;
+		GLuint GetHandle(void) const;
 
-		void SetID(GLuint id);
+		inline S32 GetWidth(void) const 
+		{ 
+			return _width; 
+		}
 
-		S32 GetWidth(void) const;
+		inline void SetWidth(S32 w) 
+		{ 
+			_width = w; 
+		}
 
-		void SetWidth(S32 w);
+		inline S32 GetHeight(void) const 
+		{ 
+			return _height; 
+		}
 
-		S32 GetHeight(void) const;
-
-		void SetHeight(S32 h);
+		inline void SetHeight(S32 h) 
+		{ 
+			_height = h; 
+		}
 
 //==========================================================================================================================
 //
@@ -64,9 +77,16 @@ namespace KillerEngine
 
 		Texture& operator=(Texture* T);
 
+//==========================================================================================================================
+//
+//Functions
+//
+//==========================================================================================================================
+		void LoadTexture(string filePath);
+
 	private:	
-		GLuint _id; // keep but change into handle for new texture. 
-		S32    _width; // not needed. ONly keep if you use SOIL, and you think it is something that may be useful to save. 
+		GLuint _handle; // keep but change into handle for new texture. 
+		S32    _width; // not needed. Only keep if you use SOIL, and you think it is something that may be useful to save. 
 		S32    _height; // not needed. Same
 		
 	};
