@@ -83,6 +83,12 @@ namespace KillerEngine
 		void SetUniform(const GLchar* name, KM::Vector3 vec);
 
 		void SetUniform(const GLchar* name, KM::Matrix mat);
+
+		GLuint GetProgram(void) const
+		{
+			return _shaderProgram;
+		}
+	
 	private:
 //==========================================================================================================================
 //

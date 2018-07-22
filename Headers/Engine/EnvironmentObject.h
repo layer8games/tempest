@@ -40,9 +40,6 @@ namespace KillerEngine
 /*! Calls GameObject2D::SetPosition and GameObject2D::SetDimensions. */		
 		EnvironmentObject(const KM::Vector2& pos, F32 w, F32 h);
 
-/*! Calls GameObject2D::SetPosition, GameObject2D::SetDimensions and GameObject2D::SetTexture */		
-		EnvironmentObject(const KM::Vector2& pos, U32 textureID, F32 w, F32 h);
-
 /*! Default Destructor. No special action taken. */		
 		~EnvironmentObject(void);
 //==========================================================================================================================

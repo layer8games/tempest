@@ -83,6 +83,22 @@ namespace KillerEngine
 
 		void InitRenderingData(void);
 
+		inline void LoadTexture(string filePath)
+		{
+			_texture.LoadTexture(filePath);
+		}
+
+		void UseShader(void);
+
+		void BindVAO(void);
+
+		void LoadShader(std::vector<ShaderData> shaders);
+
+		GLuint GetProgram(void) const
+		{
+			return _shader.GetProgram();
+		}
+
 //==========================================================================================================================
 //
 //Accessors
@@ -141,24 +157,25 @@ namespace KillerEngine
 		void SetColor(F32 red, F32 green, F32 blue, F32 alpha=1.0f);
 
 //=====Texture=====
-/*! Returns curren texture ID for object. Like Color, this value is not duplciated in the Sprite. */
-		U32 GetTextureID(void) const;
+/*! Returns curren texture ID for object. Like Color, this value is not duplciated in the Sprite.
+	Soon to be deprecated */
+		//U32 GetTextureID(void) const;
 
-/*! Sets Texture for the object. 
+/*! Sets Texture for the object. Soon to be deprecated.
 	\param id U32. Texture id from TextureManager.
 	\param top F32. Used for setting up UV coordinates. Represents max "y" in the UV.
 	\param bottom F32. Used for setting up UV coordinates. Represents min "y" in uv.
 	\param right F32. Used for setting up UV coordinates. Represents max "x" in uv.
 	\param left F32. Used for setting up UV coordinates. Represents min "x" in uv. */
-		void SetTexture(U32 id, const F32 top, const F32 bottom, const F32 right, const F32 left);
+		//void SetTexture(U32 id, const F32 top, const F32 bottom, const F32 right, const F32 left);
 
 /*! Sets Texture for object. UV's are set to be [0.0f, 1.0f], [0.0f, 1.0f].
 	\param id U32. Texture id from TextureManager */
-		void SetTexture(U32 id);
+		//void SetTexture(U32 id);
 
 //=====Active=====
 /*! Returns if object is active or not. Determines if object will have v_Update called, and if it wlll be added to render in Level::UpdateObject
-	and in Level::RenderObjects. True indicates that it will be updated and rendered. False indicates that it will not. */
+	and in Level::RenderObjects. True indicates that it will be updated and rendered. False indicates that it will not. Soon to be deprecated. */
 		bool GetActive(void) const;
 
 /*! Sets the active state of the object to true. */
@@ -190,6 +207,17 @@ namespace KillerEngine
 			_shaderProgram = shader;
 		}
 
+//===== Texture =====
+		inline void SetTexture(const Texture& t)
+		{
+			_texture = t;
+		}
+
+		const Texture& GetTexture(void) const
+		{
+			return _texture;
+		}
+
 	private:	
 /*! Loads color change into OpenGL buffer, and saves this data to the Vertex Array Object. */
 		void _InitColor(void);
@@ -208,9 +236,11 @@ namespace KillerEngine
 			VERTEX_BUFFER = 0,
 			VERTEX_POS = 0,
 			FRAGMENT_BUFFER = 1,
-			FRAGMENT_POS = 1,
-			INDEX_BUFFER = 2,
-			NUM_VBO = 3
+			FRAGMENT_POS = 2,
+			TEX_COORD_BUFFER = 2,
+			TEX_COORD_POS = 1,
+			INDEX_BUFFER = 3,
+			NUM_VBO = 4
 		};
 
 		static U32 				_nextID;		///< Global member used to track the next unique ID for GambeObject2D
@@ -225,9 +255,8 @@ namespace KillerEngine
 		Color 					_color;			///< Color of whole object. Will be refined later to be per vertex.
 		std::vector<Vertex2D> 	_vertices;
 		std::vector<U32> 		_indices;
-		
-	protected:
-		Shader 					shader;
+		Texture 				_texture;
+		Shader 					_shader;
 	};
 
 	

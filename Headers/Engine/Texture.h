@@ -46,7 +46,10 @@ namespace KillerEngine
 //
 // most of this will go. 
 //==========================================================================================================================
-		GLuint GetHandle(void) const;
+		inline GLuint GetHandle(void) const
+		{
+			return _handle;
+		}
 
 		inline S32 GetWidth(void) const 
 		{ 
@@ -75,7 +78,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		Texture& operator=(const Texture& T);
 
-		Texture& operator=(Texture* T);
+		Texture& operator=(const Texture* T);
 
 //==========================================================================================================================
 //
@@ -83,6 +86,8 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 		void LoadTexture(string filePath, bool generateMipMaps=true);
+
+		void Bind(GLuint texUnit=0);
 
 	private:	
 		GLuint _handle; // keep but change into handle for new texture. 

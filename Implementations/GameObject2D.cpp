@@ -24,7 +24,8 @@ _vbo{},
 _color(),
 _vertices(),
 _indices(),
-shader()
+_texture(),
+_shader()
 {
 	SetID();
 	
@@ -39,13 +40,13 @@ _ID(obj.GetID()),
 _active(obj.GetActive()),
 _position(obj.GetPosition()),
 _width(obj.GetWidth()),
-_height(obj.GetHeight())
+_height(obj.GetHeight()),
+_texture(obj.GetTexture())
 {  }
 
 GameObject2D::~GameObject2D(void)
 {
 	glDeleteBuffers(NUM_VBO, _vbo);
-	glDeleteProgram(_shaderProgram);
 	glDeleteVertexArrays(1, &_vao);
 }
 
@@ -58,9 +59,13 @@ void GameObject2D::v_Render(void)
 {
 	//glUseProgram(_shaderProgram);
 
-	shader.Use();
+	//_texture.Bind();
 
-	glBindVertexArray(_vao);
+	UseShader();
+	BindVAO();
+
+	//glEnable(GL_BLEND); 
+	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glDrawElements(GL_TRIANGLES, _indices.size(), GL_UNSIGNED_INT, 0);
 
@@ -85,6 +90,7 @@ void GameObject2D::InitRenderingData(void)
 
 	std::vector<F32> vertPositions;
 	//std::vector<F32> vertColors;
+	std::vector<F32> vertTexCoords;
 
 	for(auto i : _vertices)
 	{
@@ -92,6 +98,9 @@ void GameObject2D::InitRenderingData(void)
 		vertPositions.push_back(i.position.GetY());
 		vertPositions.push_back(i.position.GetZ());
 		vertPositions.push_back(i.position.GetW());
+
+		vertTexCoords.push_back(i.texCoord.GetX());
+		vertTexCoords.push_back(i.texCoord.GetY());
 	}
 
 /*
@@ -108,7 +117,6 @@ void GameObject2D::InitRenderingData(void)
 
 	glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
 	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPositions.size()), &vertPositions[0], GL_STATIC_DRAW);
-	
 	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(VERTEX_POS);
 
@@ -118,10 +126,33 @@ void GameObject2D::InitRenderingData(void)
 	//glVertexAttribPointer(FRAGMENT_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 	//glEnableVertexAttribArray(FRAGMENT_POS);
 
+	glEnable(GL_BLEND); 
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
+	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertTexCoords.size()), &vertTexCoords[0], GL_STATIC_DRAW);
+	glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(TEX_COORD_POS);
+
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[INDEX_BUFFER]);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (sizeof(U32) * _indices.size()), &_indices[0], GL_STATIC_DRAW);
 
 	glBindVertexArray(0);
+}
+
+void GameObject2D::UseShader(void)
+{
+	_shader.Use();
+}
+
+void GameObject2D::BindVAO(void)
+{
+	glBindVertexArray(_vao);
+}
+
+void GameObject2D::LoadShader(std::vector<ShaderData> shaders)
+{
+	_shader.LoadShader(shaders);
 }
 
 //==========================================================================================================================
@@ -169,25 +200,10 @@ void GameObject2D::SetColor(F32 red, F32 green, F32 blue, F32 alpha)
 	_color.SetGreen(green);
 	_color.SetBlue(blue);
 	_color.SetAlpha(alpha);
-	_InitColor();
+	//_InitColor();
 }
 
 //===== Texture =====
-U32 GameObject2D::GetTextureID(void) const
-{
-	return 0;
-}
-
-void GameObject2D::SetTexture(U32 id, const F32 top, const F32 bottom, const F32 right, const F32 left)
-{
-	//implement later
-}
-
-void GameObject2D::SetTexture(U32 id)
-{
-	//implement later
-}
-
 bool GameObject2D::GetActive(void) const
 { 
 	return _active; 

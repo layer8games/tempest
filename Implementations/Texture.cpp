@@ -1,4 +1,5 @@
 #include <Engine/Texture.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -11,7 +12,7 @@ Texture::Texture(void)
 : 
 _handle(0), 
 _width(0), 
-_height(0) 
+_height(0)
 {  }
 
 Texture::Texture(GLuint id, S32 width, S32 height)
@@ -52,7 +53,7 @@ Texture& Texture::operator=(const Texture& T)
 	return *this;
 }
 
-Texture& Texture::operator=(Texture* T)
+Texture& Texture::operator=(const Texture* T)
 {
 	_handle = T->GetHandle();
 	_width  = T->GetWidth();
@@ -91,10 +92,16 @@ void Texture::LoadTexture(string filePath, bool generateMipMaps)
 
 		if(generateMipMaps)
 		{
-			glGenerateMipMap(GL_TEXTURE_2D);
+			glGenerateMipmap(GL_TEXTURE_2D);
 		}
 
 		SOIL_free_image_data(imageData);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
+}
+
+void Texture::Bind(GLuint texUnit)
+{
+	glActiveTexture(GL_TEXTURE0 + texUnit);
+	glBindTexture(GL_TEXTURE_2D, _handle);
 }

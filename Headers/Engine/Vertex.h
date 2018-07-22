@@ -35,6 +35,13 @@ namespace KillerEngine
 	 		position = pos;
 	 		color = col;
 	 	}
+
+	 	Vertex2D(KM::Vector2 pos, KM::Vector2 uvCoords, Color col)
+	 	{
+	 		position = pos;
+	 		texCoord = uvCoords;
+	 		color = col;
+	 	}
 	 };
 
 	 struct Vertex3D
