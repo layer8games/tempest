@@ -113,6 +113,8 @@ namespace KillerEngine
 */		
 		static void OnKey(GLFWwindow* window, int key, int scancode, int action, int mode);
 
+		static void OnResize(GLFWwindow* window, int width, int height);
+
 		void Init(S32 width, S32 height, string wndName, bool isFullScreen);
 		
 		void ProcessEvents(void);
