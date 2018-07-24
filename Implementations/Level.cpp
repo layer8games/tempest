@@ -143,8 +143,10 @@ void Level::RenderObjects(void)
 	//Camera::Instance()->SetUp(SpriteRenderer::Instance()->GetShader());
 	for(auto i : _2DWorldObjects) 
 	{
-		i.second->v_Render();
-
+		if(i.second->GetActive())
+		{
+			i.second->v_Render();
+		}
 //old version
 /*
 		if(i.second->GetActive())
@@ -201,6 +203,10 @@ void Level::RenderObjects(void)
 //	Camera::Instance()->SetUp(ModelRenderer::Instance()->GetShader());
 	for(auto i : _3DWorldObjects)
 	{
+		if(i.second->GetActive())
+		{
+			i.second->v_Render();
+		}
 //old version
 /*
 		if(i.second->GetActive())

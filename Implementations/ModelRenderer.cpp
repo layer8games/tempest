@@ -64,7 +64,7 @@ void ModelRenderer::DrawNow(const Model& m, const KM::Matrix& modelView)
 	std::vector<Vertex3D> vertices = m.GetVertices();
 	std::vector<F32> vertexPositions;
 	std::vector<F32> vertexColors;
-	std::vector<U16>  indices = m.GetIndices();
+	std::vector<U32>  indices = m.GetIndices();
 
 	int vertextCount = 0;
 

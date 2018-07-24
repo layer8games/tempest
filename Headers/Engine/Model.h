@@ -59,7 +59,7 @@ namespace KillerEngine
 
 		Model(const Model& m);
 
-		Model(std::vector<Vertex3D> vertices, std::vector<U16> indices);
+		Model(std::vector<Vertex3D> vertices, std::vector<U32> indices);
 
 		~Model(void);
 //==========================================================================================================================
@@ -69,11 +69,11 @@ namespace KillerEngine
 //==========================================================================================================================
 		void LoadModel(string filepath);
 
-		void AddIndex(U16 index);
+		void AddIndex(U32 index);
 
-		void AddIndex(std::vector<U16> indices);
+		void AddIndex(std::vector<U32> indices);
 
-		inline void SetIndex(std::vector<U16> indices)
+		inline void SetIndex(std::vector<U32> indices)
 		{
 			_indices = indices;
 			_numVertices = _indices.size();
@@ -95,7 +95,7 @@ namespace KillerEngine
 			return _vertices;
 		}
 
-		inline std::vector<U16> GetIndices(void) const
+		inline std::vector<U32> GetIndices(void) const
 		{
 			return _indices;
 		}
@@ -127,12 +127,12 @@ namespace KillerEngine
 
 	private:
 		
-		std::vector<U16> _SplitU16(string text, char delim) const;
+		std::vector<U32> _SplitU32(string text, char delim) const;
 		std::vector<F32> _SplitF32(string text, char delim) const;
 
 		S32 			 	  _numVertices;
 		std::vector<Vertex3D> _vertices;
-		std::vector<U16> 	  _indices;
+		std::vector<U32> 	  _indices;
 		KM::Vector3 		  _scale;
 		GLuint				  _shaderProgram;
 		

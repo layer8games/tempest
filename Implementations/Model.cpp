@@ -26,7 +26,7 @@ _scale(m.GetScale()),
 _shaderProgram(m.GetShader())
 {  }
 
-Model::Model(std::vector<Vertex3D> vertices, std::vector<U16> indices) 
+Model::Model(std::vector<Vertex3D> vertices, std::vector<U32> indices) 
 : 
 _numVertices(0), 
 _vertices(vertices),
@@ -42,7 +42,7 @@ Model::~Model(void)
 //Model Functions
 //
 //==========================================================================================================================
-void Model::AddIndex(std::vector<U16> i)
+void Model::AddIndex(std::vector<U32> i)
 {
 	_indices.insert(_indices.end(), i.begin(), i.end());
 	_numVertices += i.size();
@@ -118,10 +118,10 @@ void Model::LoadModel(string filepath)
 		Color mat = materials.find(id)->second;
 		data = i->first_node("p");
 
-		std::vector<U16> indices = _SplitU16(data->value(), ' ');
+		std::vector<U32> indices = _SplitU32(data->value(), ' ');
 
-		std::vector<U16> vertexIndices;
-		//std::vector<U16> normalIndices;
+		std::vector<U32> vertexIndices;
+		//std::vector<U32> normalIndices;
 		//split up the data
 		for(int i = 0; i < indices.size(); i+=2)
 		{
@@ -130,7 +130,7 @@ void Model::LoadModel(string filepath)
 		}
 
 		//Get only unique values for vertex creation
-		std::vector<U16> vertexNeeded = vertexIndices;
+		std::vector<U32> vertexNeeded = vertexIndices;
 		std::sort(vertexNeeded.begin(), vertexNeeded.end());
 		auto it = std::unique(vertexNeeded.begin(), vertexNeeded.end());
 		vertexNeeded.resize(std::distance(vertexNeeded.begin(), it));
@@ -148,7 +148,7 @@ void Model::LoadModel(string filepath)
 	}
 }
 
-void Model::AddIndex(U16 index)
+void Model::AddIndex(U32 index)
 {
 	_indices.push_back(index);
 	++_numVertices;
@@ -176,15 +176,15 @@ void Model::AddVertex(const KM::Vector3& pos, const Color& color)
 //==========================================================================================================================
 //Private
 //==========================================================================================================================
-std::vector<U16> Model::_SplitU16(string text, char delim) const
+std::vector<U32> Model::_SplitU32(string text, char delim) const
 {
-	std::vector<U16> data;
+	std::vector<U32> data;
 	std::stringstream stream(text);
 	string item;
 
 	while(std::getline(stream, item, delim))
 	{
-		data.push_back(static_cast<U16>(std::stoi(item.c_str())));
+		data.push_back(static_cast<U32>(std::stoi(item.c_str())));
 	}
 
 	return data;

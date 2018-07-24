@@ -110,6 +110,12 @@ void Shader::Use(void)
 	glUseProgram(_shaderProgram);
 }
 
+//==========================================================================================================================
+//
+//Accessors
+//
+//==========================================================================================================================
+
 void Shader::SetUniform(const GLchar* name, Color col)
 {
 	GLuint location = _GetUniformLocation(name);
@@ -132,6 +138,19 @@ void Shader::SetUniform(const GLchar* name, KM::Matrix mat)
 {
 	GLuint location = _GetUniformLocation(name);
 	glUniformMatrix4fv(location, 1, GL_FALSE, mat.GetElems());
+}
+
+//==========================================================================================================================
+//
+//Operator overloads
+//
+//==========================================================================================================================
+Shader& Shader::operator=(const Shader& shader)
+{
+	_uniformLocations = shader.GetUniformLocations();
+	_shaderProgram = shader.GetProgram();
+
+	return *this;
 }
 
 //==========================================================================================================================

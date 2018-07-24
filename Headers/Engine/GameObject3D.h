@@ -1,18 +1,14 @@
-/*========================================================================
-
-
-This is not free to use, and cannot be used without the express permission
-of KillerWave.
-
-Written by Maxwell Miller
-========================================================================*/
 #pragma once
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
+#include <Engine/Texture.h>
 #include <Engine/Vector3.h>
+#include <Engine/Color.h>
 #include <Engine/Model.h>
+#include <Engine/Vertex.h>
+#include <Engine/Shader.h>
 
 namespace KM = KillerMath;
 
@@ -61,6 +57,21 @@ namespace KillerEngine
 /*! Pure Virtual fucntion. Will be called during Level::UpdateObjects on each object, which will define what needs to happen 
 	in the update section of the loop. */	
 		virtual void v_Update(void)=0;
+
+		virtual void v_Render(void);
+
+//==========================================================================================================================
+//
+//Functions
+//
+//==========================================================================================================================
+		void InitRenderingData(void);
+
+		void LoadShader(std::vector<ShaderData> shaderData);
+
+		void UseShader(void);
+
+		void BindVAO(void);
 
 //==========================================================================================================================
 //
@@ -173,13 +184,13 @@ namespace KillerEngine
 		}
 
 /*! Wrapper. Adds new index to object Model. Calls Model::AddIndex */		
-		inline void AddIndex(U16 index)
+		inline void AddIndex(U32 index)
 		{
 			_model.AddIndex(index);
 		}
 
 /*! Wrapper. Adds collection of indices to object Model. Calls Model::AddIndex */		
-		inline void AddIndex(std::vector<U16> indices)
+		inline void AddIndex(std::vector<U32> indices)
 		{
 			_model.AddIndex(indices);
 		}
@@ -200,11 +211,55 @@ namespace KillerEngine
 		}
 
 //==========================================================================================================================
+//Shader
+//==========================================================================================================================
+		inline const Shader& GetShader(void) const
+		{
+			return _shader;
+		}
+
+		inline void SetShader(const Shader& shader)
+		{
+			_shader = shader;
+		}
+
+//==========================================================================================================================
+//Vertex Data
+//==========================================================================================================================		
+		inline GLuint GetVAO(void) const
+		{
+			return _vao;
+		}
+
+		inline void SetVAO(GLuint vao)
+		{
+			_vao = vao;
+		}
+
+//==========================================================================================================================
 //
 //Functions
 //
 //==========================================================================================================================
 	private:
+		enum BufferData
+		{
+			VERTEX_BUFFER = 0,
+			VERTEX_POS = 0,
+			COLOR_BUFFER = 1,
+			COLOR_POS = 1,
+			TEX_COORD_BUFFER = 2,
+			TEX_COORD_POS = 2,
+			INDEX_BUFFER = 3,
+			NUM_VBO = 4
+		};
+
+//==========================================================================================================================
+//
+//Data
+//
+//==========================================================================================================================
+
 		static U32 		_nextID;		///< Global member used to track the next unique ID for GambeObject3D
 		U32		   		_ID;			///< ID for this instance of GameObject3D
 		bool	   		_active;		///< Tracks if the object should be updated and rendered
@@ -215,6 +270,10 @@ namespace KillerEngine
 		F32				_depth;			///< Lenth of Z axis in model space.
 		KM::Matrix		_modelView;		///< Sent to Shader as uniform. Used to translate vertices of model from model to world space.
 		KM::Matrix		_rotationX;		///< Experimental member. Trying to get rotations to work
+		Shader 			_shader;
+		GLuint 			_vao;
+		GLuint			_vbo[NUM_VBO];
+
 
 	};//end Class
 }//end Namespace

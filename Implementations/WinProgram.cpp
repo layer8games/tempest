@@ -60,6 +60,14 @@ void WinProgram::OnKey(GLFWwindow* window, int key, int scancode, int action, in
 	}
 }
 
+void WinProgram::OnResize(GLFWwindow* window, int width, int height)
+{
+    //_totalWidth = width;
+    //_totalHeight = height;
+
+    //glViewPort(0, 0, _totalWidth, _totalHeight);
+}
+
 void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen) 
 {
 	_running = true;

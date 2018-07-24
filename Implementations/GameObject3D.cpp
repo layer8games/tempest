@@ -1,4 +1,5 @@
 #include <Engine/GameObject3D.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -18,9 +19,15 @@ _position(KM::Vector3(0.0f)),
 _width(0.0f),
 _height(0.0f),
 _depth(0.0f),
-_modelView(1.0f)
+_modelView(1.0f),
+_shader(),
+_vao(0),
+_vbo{}
 {
 	SetID();
+
+	glGenVertexArrays(1, &_vao);
+	glGenBuffers(NUM_VBO, _vbo);
 }
 
 GameObject3D::GameObject3D(const GameObject3D& obj)
@@ -32,11 +39,105 @@ _position(obj.GetPosition()),
 _width(obj.GetWidth()),
 _height(obj.GetHeight()),
 _depth(obj.GetDepth()),
-_modelView(obj.GetModelView())
+_modelView(obj.GetModelView()),
+_shader(obj.GetShader()),
+_vao(obj.GetVAO()),
+_vbo{}
 {  }
 
 GameObject3D::~GameObject3D(void)
-{  }
+{
+	glDeleteBuffers(NUM_VBO, _vbo);
+	glDeleteVertexArrays(1, &_vao);
+}
+
+//==========================================================================================================================
+//
+//Virtual Functions
+//
+//==========================================================================================================================
+
+void GameObject3D::v_Render(void)
+{
+	S32 count = _model.VertexCount();
+
+	std::cout << "I found " << count << " vertices to render\n";
+
+	UseShader();
+	BindVAO();
+
+	glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, 0);
+
+	glBindVertexArray(0);
+}
+
+void GameObject3D::InitRenderingData(void)
+{
+	std::vector<Vertex3D> vertices = _model.GetVertices();
+
+	std::vector<U32> indices = _model.GetIndices();
+
+	if(vertices.size() <= 0)
+	{
+		ErrorManager::Instance()->SetError(EC_Engine, "GameObject3D::InitRenderingData -> No vertices added to model yet!");
+	}
+	else if(indices.size() <= 0)
+	{
+		ErrorManager::Instance()->SetError(EC_Engine, "GameObject3D::InitRenderingData -> No indices added to model yet!");
+	}
+
+	std::vector<F32> vertPositions;
+	std::vector<F32> vertColors;
+	std::vector<F32> vertTexCoords;
+
+	for(auto i : vertices)
+	{
+		vertPositions.push_back(i.position.GetX());
+		vertPositions.push_back(i.position.GetY());
+		vertPositions.push_back(i.position.GetZ());
+		vertPositions.push_back(i.position.GetW());
+
+		vertColors.push_back(i.color.GetRed());
+		vertColors.push_back(i.color.GetGreen());
+		vertColors.push_back(i.color.GetBlue());
+		vertColors.push_back(i.color.GetAlpha());
+
+		vertTexCoords.push_back(i.texCoord.GetX());
+		vertTexCoords.push_back(i.texCoord.GetY());
+	}
+
+	BindVAO();
+
+	glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
+	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPositions.size()), &vertPositions[0], GL_STATIC_DRAW);
+	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(VERTEX_POS);
+
+	glBindBuffer(GL_ARRAY_BUFFER, _vbo[COLOR_BUFFER]);
+	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertColors.size()), &vertColors[0], GL_STATIC_DRAW);
+	glVertexAttribPointer(COLOR_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(COLOR_POS);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[INDEX_BUFFER]);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (sizeof(F32) * indices.size()), &indices[0], GL_STATIC_DRAW);
+
+	glBindVertexArray(0);
+}
+
+void GameObject3D::LoadShader(std::vector<ShaderData> shaderData)
+{
+	_shader.LoadShader(shaderData);
+}
+
+void GameObject3D::UseShader(void)
+{
+	_shader.Use();
+}
+
+void GameObject3D::BindVAO(void)
+{
+	glBindVertexArray(_vao);
+}
 
 //==========================================================================================================================
 //

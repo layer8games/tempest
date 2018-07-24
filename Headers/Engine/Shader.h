@@ -76,6 +76,12 @@ namespace KillerEngine
 
 		void Use(void);
 
+//==========================================================================================================================
+//
+//Accessors
+//
+//==========================================================================================================================		
+
 		void SetUniform(const GLchar* name, Color col);
 
 		void SetUniform(const GLchar* name, KM::Vector2 vec);
@@ -84,10 +90,32 @@ namespace KillerEngine
 
 		void SetUniform(const GLchar* name, KM::Matrix mat);
 
-		GLuint GetProgram(void) const
+		inline GLuint GetProgram(void) const
 		{
 			return _shaderProgram;
 		}
+
+		inline void SetProgram(GLuint program)
+		{
+			_shaderProgram = program;
+		}
+
+		inline map<string, GLuint> GetUniformLocations(void) const
+		{
+			return _uniformLocations;
+		}
+
+		inline void SetUniformLocations(map<string, GLuint> uniforms)
+		{
+			_uniformLocations = uniforms;
+		}
+
+//==========================================================================================================================
+//
+//Operator Overloads
+//
+//==========================================================================================================================		
+		Shader& operator=(const Shader& shader);
 	
 	private:
 //==========================================================================================================================
