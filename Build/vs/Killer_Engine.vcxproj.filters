@@ -258,6 +258,9 @@
     <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
       <Filter>Components\KillerPhysics\ContactResolution</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Vector.h">
+      <Filter>Components\KillerMath\LinearAlgebra\Vector</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -364,6 +367,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
       <Filter>Components\KillerPhysics\ContactResolution</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Vector.cpp">
+      <Filter>Components\KillerMath\LinearAlgebra\Vector</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

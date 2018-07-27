@@ -9,76 +9,41 @@ using namespace KillerMath;
 //
 //==========================================================================================================================
 Matrix::Matrix(void)
-{
-	_m[0]  = _m[1]  = _m[2]  = _m[3]  = 0;
-	_m[4]  = _m[5]  = _m[6]  = _m[7]  = 0;
-	_m[8]  = _m[9]  = _m[10] = _m[11] = 0;
-	_m[12] = _m[13] = _m[14] = 0;
-	_m[15] = 1;
-}
+:
+_columns{Vector(1.0f, 0.0f, 0.0f, 0.0f),
+		 Vector(0.0f, 1.0f, 0.0f, 0.0f),
+		 Vector(0.0f, 0.0f, 1.0f, 0.0f),
+		 Vector(0.0f, 0.0f, 0.0f, 1.0f)}
+{  }
 
-Matrix::Matrix(F32 val)
-{
-	_m[0] = _m[5] = _m[10] = _m[15] = val;
-
-	_m[1]  = _m[2]  = _m[3]  = 0;
-	_m[4]  = _m[6]  = _m[7]  = 0; 
-	_m[8]  = _m[9]  = _m[11] = 0;
-	_m[12] = _m[13] = _m[14] = 0;
-}
+Matrix::Matrix(const Vector& x, const Vector& y, const Vector& z)
+:
+_columns{x, y, z, Vector(0.0f, 0.0f, 0.0f, 1.0f)}
+{  }
 
 Matrix::Matrix(const F32 mSrc[16])
-{
-	_m[0]  = mSrc[0];  _m[1] = mSrc[1];   _m[2]  = mSrc[2];  _m[3]  = mSrc[3];
-	_m[4]  = mSrc[4];  _m[5] = mSrc[5];   _m[6]  = mSrc[6];  _m[7]  = mSrc[7];
-	_m[8]  = mSrc[8];  _m[9] = mSrc[9];   _m[10] = mSrc[10]; _m[11] = mSrc[11];
-	_m[12] = mSrc[12]; _m[13] = mSrc[13]; _m[14] = mSrc[14]; _m[15] = mSrc[15];
-}
+:
+_columns{Vector(mSrc[0], mSrc[1], mSrc[2], mSrc[3]),
+		 Vector(mSrc[4], mSrc[5], mSrc[6], mSrc[7]),
+		 Vector(mSrc[8], mSrc[9], mSrc[10], mSrc[11]),
+		 Vector(mSrc[12], mSrc[13], mSrc[14], mSrc[15])}
+{  }
 
 Matrix::Matrix( F32 m00, F32 m01, F32 m02, F32 m03,
-				 F32 m10, F32 m11, F32 m12, F32 m13,
-				 F32 m20, F32 m21, F32 m22, F32 m23,
-				 F32 m30, F32 m31, F32 m32, F32 m33)
-{
-	_m[0] = m00;  
-	_m[1] = m01;  
-	_m[2] = m02;  
-	_m[3] = m03;
-	_m[4] = m10;  
-	_m[5] = m11;   
-	_m[6] = m12;  
-	_m[7] = m13;
-	_m[8] = m20;  
-	_m[9] = m21;   
-	_m[10] = m22; 
-	_m[11] = m23;		
-	_m[12] = m30; 
-	_m[13] = m31;   
-	_m[14] = m32; 
-	_m[15] = m33;
-}
+				F32 m10, F32 m11, F32 m12, F32 m13,
+				F32 m20, F32 m21, F32 m22, F32 m23,
+				F32 m30, F32 m31, F32 m32, F32 m33)
+:
+_columns{Vector(m00, m01, m02, m03),
+		 Vector(m10, m11, m12, m13),
+		 Vector(m20, m21, m22, m23),
+		 Vector(m30, m31, m32, m33)}
+{  }
 
 Matrix::Matrix(const Matrix& M)
-{
-	const F32* m = M.GetElems();
-
-	_m[0] = m[0];  
-	_m[1] = m[1];   
-	_m[2] = m[2];  
-	_m[3] = m[3];
-	_m[4] = m[4]; 
-	_m[5] = m[5];   
-	_m[6] = m[6];  
-	_m[7] = m[7];
-	_m[8] = m[8];  
-	_m[9] = m[9];  
-	_m[10] = m[10]; 
-	_m[11] = m[11];
-	_m[12] = m[12];
-	_m[13] = m[13];   
-	_m[14] = m[14]; 
-	_m[15] = m[15];
-}
+:
+_columns{M[0], M[1], M[2], M[3]}
+{  }
 
 //==========================================================================================================================
 //
@@ -124,15 +89,15 @@ void Matrix::MakeOrthographic(F32 width, F32 height, F32 depth, bool center)
 	assert(nearPlane - farPlane != 0.0f);
 
 	//Diagnal
-	_m[0]  = 2.0f / (right - left);
-	_m[5]  = 2.0f / (top - bottom);
-	_m[10] = 2.0f / (nearPlane - farPlane);
-	_m[15] = 1.0f;
+	_columns[0][x]  = 2.0f / (right - left);
+	_columns[1][y]  = 2.0f / (top - bottom);
+	_columns[2][z] = 2.0f / (nearPlane - farPlane);
+	_columns[3][w] = 1.0f;
 
 	//Transform "Vector"
-	_m[12] = (left + right) / (left - right);
-	_m[13] = (bottom + top) / (bottom - top);
-	_m[14] = (nearPlane + farPlane)   / (farPlane - nearPlane);
+	_columns[3][x] = (left + right) / (left - right);
+	_columns[3][y] = (bottom + top) / (bottom - top);
+	_columns[3][z] = (nearPlane + farPlane)   / (farPlane - nearPlane);
 }
 
 void Matrix::MakePerspective(F32 width, F32 height, F32 depth, bool center)
@@ -172,13 +137,14 @@ void Matrix::MakePerspective(F32 width, F32 height, F32 depth, bool center)
 	assert(top - bottom != 0.0f);
 	assert(nearPlane - farPlane != 0.0f);
 
-	_m[0]  = (2.0f * nearPlane) / (right - left);
-	_m[5]  = (2.0f * nearPlane) / (top - bottom);
-	_m[8]  = (right + left) / (right - left);
-	_m[9]  = (top + bottom) / (top - bottom);
-	_m[10] = (nearPlane + farPlane) / (nearPlane - farPlane);
-	_m[11] = -1.0f;
-	_m[14] = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
+	
+	_columns[0][x]  = (2.0f * nearPlane) / (right - left);
+	_columns[1][y]  = (2.0f * nearPlane) / (top - bottom);
+	_columns[2][x]  = (right + left) / (right - left);
+	_columns[2][y]  = (top + bottom) / (top - bottom);
+	_columns[2][z] = (nearPlane + farPlane) / (nearPlane - farPlane);
+	_columns[2][w] = -1.0f;
+	_columns[3][z] = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
 }
 
 void Matrix::MakePerspective(F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F32 farPlane)
@@ -190,242 +156,242 @@ void Matrix::MakePerspective(F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F3
 	//Reset Matrix 
 	MakeIdentity();
 
-	_m[0] = S / aspectRatio;
-	_m[5] = S;
-	_m[10] = (nearPlane + farPlane) / (nearPlane - farPlane);
-	_m[11] = -1.0f;
-	_m[14] = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
+	_columns[0][x] = S / aspectRatio;
+	_columns[1][y] = S;
+	_columns[2][z] = (nearPlane + farPlane) / (nearPlane - farPlane);
+	_columns[2][w] = -1.0f;
+	_columns[3][z] = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
 }
 
 //==========================================================================================================================
 //Translations
 //==========================================================================================================================
-void Matrix::Translate(F32 x, F32 y)
+void Matrix::Translate(F32 xVal, F32 yVal)
 {
 	MakeIdentity();
 
-	_m[12] = x;
-	_m[13] = y;
+	_columns[3][x] = xVal;
+	_columns[3][y] = yVal;
 }
 
 void Matrix::Translate(F32 x, F32 y, F32 z)
 {
 	MakeIdentity();			
 
-	_m[12] = x;
-	_m[13] = y;
-	_m[14] = z;
+	_columns[3][x] = xVal;
+	_columns[3][y] = yVal;
+	_columns[3][z] = zVal;
 }
 
-void Matrix::Translate(const Vector2& vec)
+void Matrix::Translate2D(const Vector& vec)
 {
 	MakeIdentity(); 
 
-	_m[12] = vec.GetX();
-	_m[13] = vec.GetY();
+	_columns[3][x] = vec[x];
+	_columns[3][y] = vec[y];
 }
 
-void Matrix::Translate(const Vector3& vec)
+void Matrix::Translate(const Vector& vec)
 {
 	MakeIdentity();
 
-	_m[12] = vec.GetX();
-	_m[13] = vec.GetY();
-	_m[14] = vec.GetZ();
+	_columns[3][x] = vec[x];
+	_columns[3][y] = vec[y];
+	_columns[3][z] = vec[z];
 }
 
-void Matrix::AddTranslate(F32 x, F32 y)
+void Matrix::AddTranslate(F32 xVal, F32 yVal)
 {
-	_m[12] += x;
-	_m[13] += y;
+	_columns[3][x] += xVal;
+	_columns[3][y] += yVal;
 }
 
-void Matrix::AddTranslate(F32 x, F32 y, F32 z)
+void Matrix::AddTranslate(F32 xVal, F32 yVal, F32 zVal)
 {
-	_m[12] += x; 
-	_m[13] += y; 
-	_m[14] += z;
+	_columns[3][x] += xVal; 
+	_columns[3][y] += yVal; 
+	_columns[3][z] += zVal;
 }
 
-void Matrix::AddTranslate(const Vector2& vec)
+void Matrix::AddTranslate2D(const Vector& vec)
 {
-	_m[12] += vec.GetX();
-	_m[13] += vec.GetY();
+	_columns[3][x] += vec[x];
+	_columns[3][y] += vec[y];
 }
 
-void Matrix::AddTranslate(const Vector3& vec)
+void Matrix::AddTranslate(const Vector& vec)
 {
-	_m[12] += vec.GetX();
-	_m[13] += vec.GetY();
-	_m[14] += vec.GetZ();
+	_columns[3][x] += vec[x];
+	_columns[3][y] += vec[y];
+	_columns[3][z] += vec[z];
 }
 
 //==========================================================================================================================
 //Scaling
 //==========================================================================================================================
-void Matrix::Scale(F32 x, F32 y)
+void Matrix::Scale(F32 xVal, F32 yVal)
 {
 	MakeIdentity();
 
-	_m[0] = x;
-	_m[5] = y;
+	_columns[0][x] = xVal;
+	_columns[1][y] = yVal;
 }
 
-void Matrix::Scale(F32 x, F32 y, F32 z)
+void Matrix::Scale(F32 xVal, F32 yVal, F32 zVal)
 {
 	MakeIdentity();
 
-	_m[0] = x;
-	_m[5] = y;
-	_m[10] = z;
+	_columns[0][x] = xVal;
+	_columns[1][y] = yVal;
+	_columns[2][z] = zVal;
 }
 
-void Matrix::Scale(const Vector2& vec)
+void Matrix::Scale2D(const Vector& vec)
 {
 	MakeIdentity();
 
-	_m[0] = vec.GetX();
-	_m[5] = vec.GetY();
+	_columns[0][x] = vec[x];
+	_columns[1][y] = vec[y];
 }
 
-void Matrix::Scale(const Vector3& vec)
+void Matrix::Scale(const Vector& vec)
 {
 	MakeIdentity();
 
-	_m[0] = vec.GetX();
-	_m[5] = vec.GetY();
-	_m[10] = vec.GetZ();
+	_columns[0][x] = vec[x];
+	_columns[1][y] = vec[y];
+	_columns[2][z] = vec[z];
 }
 
-void Matrix::AddScale(F32 x, F32 y)
+void Matrix::AddScale(F32 xVal, F32 yVal)
 {
-	_m[0] = x;
-	_m[5] = y;
+	_columns[0][x] += xVal;
+	_columns[1][y] += yVal;
 }
 
-void Matrix::AddScale(F32 x, F32 y, F32 z)
+void Matrix::AddScale(F32 xVal, F32 yVal, F32 zVal)
 {
-	_m[0] = x;
-	_m[5] = y;
-	_m[10] = z;
+	_columns[0][x] += xVal;
+	_columns[1][y] += yVal;
+	_columns[2][z] += zVal;
 }
 
-void Matrix::AddScale(const Vector2& vec)
+void Matrix::AddScale2D(const Vector& vec)
 {
-	_m[0] = vec.GetX();
-	_m[5] = vec.GetY();
+	_columns[0][x] += vec[x];
+	_columns[1][y] += vec[y];
 }
 
-void Matrix::AddScale(const Vector3& vec)
+void Matrix::AddScale(const Vector& vec)
 {
-	_m[0] = vec.GetX();
-	_m[5] = vec.GetY();
-	_m[10] = vec.GetZ();
+	_columns[0][x] += vec[x];
+	_columns[1][y] += vec[y];
+	_columns[2][z] += vec[z];
 }
 
 //==========================================================================================================================
 //Rotations
 //==========================================================================================================================
-void Matrix::RotateX(F32 x)
+void Matrix::RotateX(F32 val)
 {
-	x = DegreeToRadian(x);
+	val = DegreeToRadian(val);
 
 	MakeIdentity();
 
-	_m[5] = cos(x);
-	_m[6] = -sin(x);
-	_m[9] = sin(x);
-	_m[10] = cos(x);
+	_columns[1][y] = cos(val);
+	_columns[1][z] = -sin(val);
+	_columns[2][y] = sin(val);
+	_columns[2][z] = cos(val);
 }
 
-void Matrix::AddRotateX(F32 x)
+void Matrix::AddRotateX(F32 val)
 {
-	x = DegreeToRadian(x);
+	val = DegreeToRadian(val);
 
-	_m[5] += cos(x);
-	_m[6] += -sin(x);
-	_m[9] += sin(x);
-	_m[10] += cos(x);
+	_columns[1][y] += cos(val);
+	_columns[1][z] += -sin(val);
+	_columns[2][y] += sin(val);
+	_columns[2][z] += cos(val);
 }
 
-void Matrix::RotateY(F32 y)
+void Matrix::RotateY(F32 val)
 {
-	y = DegreeToRadian(y);
+	val = DegreeToRadian(val);
 
 	MakeIdentity();
 
-	_m[0] = cos(y);
-	_m[2] = sin(y);
-	_m[8] = -sin(y);
-	_m[10] = cos(y);
+	_columns[0][x] = cos(val);
+	_columns[0][y] = sin(val);
+	_columns[2][x] = -sin(val);
+	_columns[2][y] = cos(val);
 }
 
-void Matrix::AddRotateY(F32 y)
+void Matrix::AddRotateY(F32 val)
 {
-	y = DegreeToRadian(y);
+	val = DegreeToRadian(val);
 
-	_m[0] += cos(y);
-	_m[2] += sin(y);
-	_m[8] += -sin(y);
-	_m[10] += cos(y);	
+	_columns[0][x] += cos(val);
+	_columns[0][y] += sin(val);
+	_columns[2][x] += -sin(val);
+	_columns[2][y] += cos(val);	
 }
 
-void Matrix::RotateZ(F32 z)
+void Matrix::RotateZ(F32 val)
 {
-	z = DegreeToRadian(z);
+	val = DegreeToRadian(val);
 
 	MakeIdentity();
 
-	_m[0] = cos(z);
-	_m[1] = -sin(z);
-	_m[4] = sin(z);
-	_m[5] = cos(z);
+	_columns[0][x] = cos(val);
+	_columns[0][y] = -sin(val);
+	_columns[1][x] = sin(val);
+	_columns[1][y] = cos(val);
 }
 
-void Matrix::AddRotateZ(F32 z)
+void Matrix::AddRotateZ(F32 val)
 {
-	z = DegreeToRadian(z);
+	val = DegreeToRadian(val);
 
-	_m[0] += cos(z);
-	_m[1] += -sin(z);
-	_m[4] += sin(z);
-	_m[5] += cos(z);
+	_columns[0][x] += cos(val);
+	_columns[0][y] += -sin(val);
+	_columns[1][x] += sin(val);
+	_columns[1][y] += cos(val);
 }
 
-void Matrix::Rotate(F32 x, F32 y, F32 z)
+void Matrix::Rotate(F32 xVal, F32 yVal, F32 zVal)
 {
-	x = DegreeToRadian(x);
-	y = DegreeToRadian(y);
-	z = DegreeToRadian(z);
+	xVal = DegreeToRadian(xVal);
+	yVal = DegreeToRadian(yVal);
+	zVal = DegreeToRadian(zVal);
 
 	MakeIdentity();
 
-	_m[0] = cos(y) * cos(z);
-	_m[1] = -cos(y) * sin(z);
-	_m[2] = sin(y);
-	_m[4] = cos(x) * sin(z) + sin(x) * sin(y) * cos(z);
-	_m[5] = cos(x) * cos(z) - sin(x) * sin(y) * sin(z);
-	_m[6] = -sin(x) * cos(y);
-	_m[8] = sin(x) * sin(z) - cos(x) * sin(y) * cos(z);
-	_m[9] = sin(x) * cos(z) + cos(x) * sin(y) * sin(z);
-	_m[10] = cos(x) * cos(y);
+	_columns[0][x] = cos(yVal) * cos(zVal);
+	_columns[0][y] = -cos(yVal) * sin(zVal);
+	_columns[0][z] = sin(yVal);
+	_columns[1][x] = cos(xVal) * sin(zVal) + sin(xVal) * sin(yVal) * cos(zVal);
+	_columns[1][y] = cos(xVal) * cos(zVal) - sin(xVal) * sin(yVal) * sin(zVal);
+	_columns[1][z] = -sin(xVal) * cos(yVal);
+	_columns[2][x] = sin(xVal) * sin(zVal) - cos(xVal) * sin(yVal) * cos(zVal);
+	_columns[2][y] = sin(xVal) * cos(zVal) + cos(xVal) * sin(yVal) * sin(zVal);
+	_columns[2][z] = cos(xVal) * cos(yVal);
 }
 
-void Matrix::AddRotation(F32 x, F32 y, F32 z)
+void Matrix::AddRotation(F32 xVal, F32 yVal, F32 zVal)
 {
-	x = DegreeToRadian(x);
-	y = DegreeToRadian(y);
-	z = DegreeToRadian(z);
+	xVal = DegreeToRadian(xVal);
+	yVal = DegreeToRadian(yVal);
+	zVal = DegreeToRadian(zVal);
 
-	_m[0] += cos(y) * cos(z);
-	_m[1] += -cos(y) * sin(z);
-	_m[2] += sin(y);
-	_m[4] += cos(x) * sin(z) + sin(x) * sin(y) * cos(z);
-	_m[5] += cos(x) * cos(z) - sin(x) * sin(y) * sin(z);
-	_m[6] += -sin(x) * cos(y);
-	_m[8] += sin(x) * sin(z) - cos(x) * sin(y) * cos(z);
-	_m[9] += sin(x) * cos(z) + cos(x) * sin(y) * sin(z);
-	_m[10] += cos(x) * cos(y);
+	_columns[0][x] += cos(yVal) * cos(zVal);
+	_columns[0][y] += -cos(yVal) * sin(zVal);
+	_columns[0][z] += sin(yVal);
+	_columns[1][x] += cos(xVal) * sin(zVal) + sin(xVal) * sin(yVal) * cos(zVal);
+	_columns[1][y] += cos(xVal) * cos(zVal) - sin(xVal) * sin(yVal) * sin(zVal);
+	_columns[1][z] += -sin(xVal) * cos(yVal);
+	_columns[2][x] += sin(xVal) * sin(zVal) - cos(xVal) * sin(yVal) * cos(zVal);
+	_columns[2][y] += sin(xVal) * cos(zVal) + cos(xVal) * sin(yVal) * sin(zVal);
+	_columns[2][z] += cos(xVal) * cos(yVal);
 }
 
 //==========================================================================================================================
@@ -434,19 +400,10 @@ void Matrix::AddRotation(F32 x, F32 y, F32 z)
 void Matrix::ResetMatrix(F32 val)
 {
 	//Reset Matrix
-	_m[0]  =  _m[1]  =  _m[2]  =  _m[3]  = 0;
-
-	_m[4]  =  _m[5]  =  _m[6]  =  _m[7]  = 0;
-
-	_m[8]  =  _m[9]  =  _m[10] =  _m[11] = 0;
-
-	_m[12] =  _m[13] =  _m[14] =  _m[15] = 0;
-
-	_m[0] = val;
-	_m[5] = val;
-	_m[10] = val;
-	_m[15] = val;
-
+	_columns[0] = Vector(val, 0.0f, 0.0f, 0.0f);
+	_columns[1] = Vector(0.0f, val, 0.0f, 0.0f);
+	_columns[2] = Vector(0.0f, 0.0f, val, 0.0f);
+	_columns[3] = Vector(0.0f, 0.0f, 0.0f, val);
 }
 
 //==========================================================================================================================
