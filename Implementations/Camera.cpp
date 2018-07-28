@@ -11,8 +11,8 @@ using namespace KillerEngine;
 Camera::Camera(void) 
 : 
 _background(1.0f), 
-_projection(1.0f), 
-_translation(1.0f), 
+_projection(), 
+_translation(), 
 _currentShader(0)
 {  }
 
@@ -50,11 +50,11 @@ void Camera::SetUp(GLuint shader)
 	//_translation = _projection * _translation;
 	//_translation *= _projection;
 
-	const F32* data = _projection.GetElems();
+	std::vector<F32> data = _projection.GetElems();
 
 	GLint transform = glGetUniformLocation(shader, "projection_mat");
 
-	glUniformMatrix4fv(transform, 1, GL_FALSE, data);
+	glUniformMatrix4fv(transform, 1, GL_FALSE, &data[0]);
 }
 
 void Camera::SetOrthographic(void)
@@ -80,23 +80,17 @@ void Camera::SetDefaultMatrix(void)
 
 void Camera::SetPosition(F32 x, F32 y)
 {
-	_pos = KM::Vector2(x, y);
-	_translation.Translate(_pos);
-}
-
-void Camera::SetPosition(const KM::Vector2& V)
-{
-	_pos = V;
+	_pos = KM::Vector(x, y);
 	_translation.Translate(_pos);
 }
 
 void Camera::SetPosition(F32 x, F32 y, F32 z)
 {
-	_pos = KM::Vector3(x, y, z);
+	_pos = KM::Vector(x, y, z);
 	_translation.Translate(_pos);
 }
 
-void Camera::SetPosition(const KM::Vector3& V)
+void Camera::SetPosition(const KM::Vector& V)
 {
 	_pos = V;
 	_translation.Translate(_pos);
@@ -104,23 +98,17 @@ void Camera::SetPosition(const KM::Vector3& V)
 
 void Camera::ScalePosition(F32 x, F32 y, F32 scale)
 {
-	_pos.AddScaledVector(KM::Vector2(x, y), scale);
-	_translation.Translate(_pos);
-}
-
-void Camera::ScalePosition(const KM::Vector2& V, F32 scale)
-{
-	_pos.AddScaledVector(V, scale);
+	_pos.AddScaledVector(KM::Vector(x, y), scale);
 	_translation.Translate(_pos);
 }
 
 void Camera::ScalePosition(F32 x, F32 y, F32 z, F32 scale)
 {
-	_pos.AddScaledVector(KM::Vector3(x, y, z), scale);
+	_pos.AddScaledVector(KM::Vector(x, y, z), scale);
 	_translation.Translate(_pos);
 }
 
-void Camera::ScalePosition(const KM::Vector3& V, F32 scale)
+void Camera::ScalePosition(const KM::Vector& V, F32 scale)
 {
 	_pos.AddScaledVector(V, scale);
 	_translation.Translate(_pos);

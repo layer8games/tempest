@@ -19,7 +19,7 @@ _position(KM::Vector3(0.0f)),
 _width(0.0f),
 _height(0.0f),
 _depth(0.0f),
-_modelView(1.0f),
+_modelView(),
 _shader(),
 _vao(0),
 _vbo{}
@@ -172,8 +172,8 @@ const KM::Vector3& GameObject3D::GetPosition(void) const
 
 void GameObject3D::SetPosition(const KM::Vector3& pos)
 {
-	_position = pos;
-	_modelView.Translate(_position);
+	//_position = pos;
+	//_modelView.Translate(_position);
 }
 
 void GameObject3D::SetPosition(F32 x, F32 y, F32 z)
@@ -181,13 +181,13 @@ void GameObject3D::SetPosition(F32 x, F32 y, F32 z)
 	_position.SetX(x);
 	_position.SetY(y);
 	_position.SetZ(z);
-	_modelView.Translate(_position);
+	//_modelView.Translate(_position);
 }
 
 void GameObject3D::AddScaledPosition(const KM::Vector3& v, F32 scale)
 {
-	_position.AddScaledVector(v, scale);
-	_modelView.Translate(_position);
+	//_position.AddScaledVector(v, scale);
+	//_modelView.Translate(_position);
 }
 //==========================================================================================================================
 //Dimensions

@@ -115,9 +115,6 @@
     <Filter Include="Components\Shader">
       <UniqueIdentifier>{712aa763-23a4-43a6-8130-dd06474fa5a2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Renderers">
-      <UniqueIdentifier>{4983916f-5533-4441-a25f-d0bc4ec376f0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\KillerPhysics\Forces">
       <UniqueIdentifier>{b3088a5e-674e-4070-880b-75d7bacedb04}</UniqueIdentifier>
     </Filter>
@@ -228,12 +225,6 @@
     <ClInclude Include="..\..\Headers\Engine\Shader.h">
       <Filter>Components\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\ModelRenderer.h">
-      <Filter>Components\Renderers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\SpriteRenderer.h">
-      <Filter>Components\Renderers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Particle2D.h">
       <Filter>Components\KillerPhysics\Particles\2D</Filter>
     </ClInclude>
@@ -337,12 +328,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Shader.cpp">
       <Filter>Components\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\ModelRenderer.cpp">
-      <Filter>Components\Renderers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\SpriteRenderer.cpp">
-      <Filter>Components\Renderers</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Particle2D.cpp">
       <Filter>Components\KillerPhysics\Particles\2D</Filter>

@@ -57,10 +57,24 @@ _columns{M[0], M[1], M[2], M[3]}
 //==========================================================================================================================
 const std::vector<F32> Matrix::GetElems(void) const
 {
-	const vector<F32> elems = (_columns[0][x], _columns[0][y], _columns[0][z], _columns[0][w],
-				   		 	_columns[1][x], _columns[1][y], _columns[1][z], _columns[1][w],
-				   		 	_columns[2][x], _columns[2][y], _columns[2][z], _columns[2][w],
-				   		 	_columns[3][x], _columns[3][y], _columns[3][z], _columns[3][w] );
+	std::vector<F32> elems;
+	
+	elems.push_back(_columns[0][x]);
+	elems.push_back(_columns[0][y]);
+	elems.push_back(_columns[0][z]);
+	elems.push_back(_columns[0][w]);
+	elems.push_back(_columns[1][x]);
+	elems.push_back(_columns[1][y]);
+	elems.push_back(_columns[1][z]);
+	elems.push_back(_columns[1][w]);
+	elems.push_back(_columns[2][x]);
+	elems.push_back(_columns[2][y]);
+	elems.push_back(_columns[2][z]);
+	elems.push_back(_columns[2][w]);
+	elems.push_back(_columns[3][x]);
+	elems.push_back(_columns[3][y]);
+	elems.push_back(_columns[3][z]);
+	elems.push_back(_columns[3][w]);
 
 	return elems;
 }

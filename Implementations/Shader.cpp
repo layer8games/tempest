@@ -137,7 +137,7 @@ void Shader::SetUniform(const GLchar* name, KM::Vector3 vec)
 void Shader::SetUniform(const GLchar* name, KM::Matrix mat)
 {
 	GLuint location = _GetUniformLocation(name);
-	glUniformMatrix4fv(location, 1, GL_FALSE, mat.GetElems());
+	glUniformMatrix4fv(location, 1, GL_FALSE, &mat.GetElems()[0]);
 }
 
 //==========================================================================================================================

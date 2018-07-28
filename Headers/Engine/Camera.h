@@ -18,9 +18,10 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/WinProgram.h>
 #include <Engine/Matrix.h>
-#include <Engine/Vector2.h> 
-#include <Engine/Vector3.h>
+#include <Engine/Vector.h>
 #include <Engine/Color.h>
+
+#include <vector>
 
 namespace KM = KillerMath;
 
@@ -65,19 +66,15 @@ namespace KillerEngine
 */
 		void SetPosition(F32 x, F32 y);
 
-		void SetPosition(const KM::Vector2& V);
-
 		void SetPosition(F32 x, F32 y, F32 z);
 
-		void SetPosition(const KM::Vector3& V);
+		void SetPosition(const KM::Vector& V);
 
 		void ScalePosition(F32 x, F32 y, F32 scale);
 
-		void ScalePosition(const KM::Vector2& v, F32 scale);
-
 		void ScalePosition(F32 x, F32 y, F32 z, F32 scale);
 
-		void ScalePosition(const KM::Vector3& V, F32 scale);
+		void ScalePosition(const KM::Vector& v, F32 scale);
 
 		void SetColor(const Color& col) 
 		{ 
@@ -102,7 +99,7 @@ namespace KillerEngine
 //==========================================================================================================================		
 		static shared_ptr<Camera> 	    _instance;		///< Singleton global instance.
 		Color  							_background;	///< Background color of current level.
-		KM::Vector3  					_pos;			///< Position of Camera in world space.
+		KM::Vector  					_pos;			///< Position of Camera in world space.
 		KM::Matrix 						_projection;	///< Projection Matrix (Orthographic or Perspective). Not used
 		KM::Matrix 						_translation;	///< Amount of Translation needed to reflect Position. Should be opposite of _pos
 		GLuint							_currentShader;	///< Fully compiled OpenGL Shader Program. 
