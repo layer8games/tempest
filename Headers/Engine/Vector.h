@@ -52,6 +52,11 @@ namespace KillerMath
 			return _2D;
 		}
 
+		inline const F32* GetElems(void) const
+		{
+			return _data;
+		}
+
 //===== Vector Special functions =====
 		F32 DotProduct(const Vector& vec);
 

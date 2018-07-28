@@ -21,6 +21,11 @@ Matrix::Matrix(const Vector& x, const Vector& y, const Vector& z)
 _columns{x, y, z, Vector(0.0f, 0.0f, 0.0f, 1.0f)}
 {  }
 
+Matrix::Matrix(const Vector& x, const Vector& y, const Vector& z, const Vector& w)
+:
+_columns{x, y, z, w}
+{  }
+
 Matrix::Matrix(const F32 mSrc[16])
 :
 _columns{Vector(mSrc[0], mSrc[1], mSrc[2], mSrc[3]),
@@ -50,6 +55,16 @@ _columns{M[0], M[1], M[2], M[3]}
 //Matrix functions
 //
 //==========================================================================================================================
+const std::vector<F32> Matrix::GetElems(void) const
+{
+	const vector<F32> elems = (_columns[0][x], _columns[0][y], _columns[0][z], _columns[0][w],
+				   		 	_columns[1][x], _columns[1][y], _columns[1][z], _columns[1][w],
+				   		 	_columns[2][x], _columns[2][y], _columns[2][z], _columns[2][w],
+				   		 	_columns[3][x], _columns[3][y], _columns[3][z], _columns[3][w] );
+
+	return elems;
+}
+
 //==========================================================================================================================
 //Projections
 //==========================================================================================================================
@@ -174,7 +189,7 @@ void Matrix::Translate(F32 xVal, F32 yVal)
 	_columns[3][y] = yVal;
 }
 
-void Matrix::Translate(F32 x, F32 y, F32 z)
+void Matrix::Translate(F32 xVal, F32 yVal, F32 zVal)
 {
 	MakeIdentity();			
 
@@ -411,72 +426,38 @@ void Matrix::ResetMatrix(F32 val)
 //==========================================================================================================================
 void Matrix::Transpose(void)
 {
-	F32 newMatrix[16];
+	Vector newCol0 {_columns[0][x], _columns[1][x], _columns[2][x], _columns[3][x]};
+	Vector newCol1 {_columns[0][y], _columns[1][y], _columns[2][y], _columns[3][y]};
+	Vector newCol2 {_columns[0][z], _columns[1][z], _columns[2][z], _columns[3][z]};
+	Vector newCol3 {_columns[0][w], _columns[1][w], _columns[2][w], _columns[3][w]};
 
-	
-	newMatrix[0] = _m[0];
-	newMatrix[1] = _m[4];
-	newMatrix[2] = _m[8];
-	newMatrix[3] = _m[12];
-
-	newMatrix[4] = _m[1];
-	newMatrix[5] = _m[5];
-	newMatrix[6] = _m[9];
-	newMatrix[7] = _m[13];
-
-	newMatrix[8] = _m[2];
-	newMatrix[9] = _m[6];
-	newMatrix[10] = _m[10];
-	newMatrix[11] = _m[14];
-
-	newMatrix[12] = _m[3];
-	newMatrix[13] = _m[7];
-	newMatrix[14] = _m[11];
-	newMatrix[15] = _m[15];
-
-
-	_m[0] = newMatrix[0];
-	_m[1] = newMatrix[1];
-	_m[2] = newMatrix[2];
-	_m[3] = newMatrix[3];
-
-	_m[4] = newMatrix[4];
-	_m[5] = newMatrix[5];
-	_m[6] = newMatrix[6];
-	_m[7] = newMatrix[7];
-
-	_m[8] = newMatrix[8];
-	_m[9] = newMatrix[9];
-	_m[10] = newMatrix[10];
-	_m[11] = newMatrix[11];
-
-	_m[12] = newMatrix[12];
-	_m[13] = newMatrix[13];
-	_m[14] = newMatrix[14];
-	_m[15] = newMatrix[15];
+	_columns[0] = newCol0;
+	_columns[1] = newCol1;
+	_columns[2] = newCol2;
+	_columns[3] = newCol3;
 }
 
-void Matrix::ComponentMulti(const Matrix& M)
+void Matrix::ComponentMulti(const Matrix& mat)
 {
-	const F32* elems = M.GetElems();
+	_columns[0][x] *= mat[0][x];
+	_columns[0][y] *= mat[0][y];
+	_columns[0][z] *= mat[0][z];
+	_columns[0][w] *= mat[0][w];
 
-	_m[0] *= elems[0];
-	_m[1] *= elems[1];
-	_m[2] *= elems[2];
-	_m[3] *= elems[3];
-	_m[4] *= elems[4];
-	_m[5] *= elems[5];
-	_m[6] *= elems[6];
-	_m[7] *= elems[7];
-	_m[8] *= elems[8];
-	_m[9] *= elems[9];
-	_m[10] *= elems[10];
-	_m[11] *= elems[11];
-	_m[12] *= elems[12];
-	_m[13] *= elems[13];
-	_m[14] *= elems[14];
-	_m[15] *= elems[15];
+	_columns[1][x] *= mat[1][x];
+	_columns[1][y] *= mat[1][y];
+	_columns[1][z] *= mat[1][z];
+	_columns[1][w] *= mat[1][w];
 
+	_columns[2][x] *= mat[2][x];
+	_columns[2][y] *= mat[2][y];
+	_columns[2][z] *= mat[2][z];
+	_columns[2][w] *= mat[2][w];
+
+	_columns[3][x] *= mat[3][x];
+	_columns[3][y] *= mat[3][y];
+	_columns[3][z] *= mat[3][z];
+	_columns[3][w] *= mat[3][w];
 }
 
 //==========================================================================================================================
@@ -484,98 +465,55 @@ void Matrix::ComponentMulti(const Matrix& M)
 //Operator Overloads
 //
 //==========================================================================================================================
-Matrix& Matrix::operator=(const Matrix& M) 
+Matrix& Matrix::operator=(const Matrix& mat) 
 {
-	const F32* elems = M.GetElems();
+	_columns[0][x] = mat[0][x];
+	_columns[0][y] = mat[0][y];
+	_columns[0][z] = mat[0][z];
+	_columns[0][w] = mat[0][w];
 
-	_m[0] = elems[0];
-	_m[1] = elems[1];
-	_m[2] = elems[2];
-	_m[3] = elems[3];
+	_columns[1][x] = mat[1][x];
+	_columns[1][y] = mat[1][y];
+	_columns[1][z] = mat[1][z];
+	_columns[1][w] = mat[1][w];
 
-	_m[4] = elems[4];
-	_m[5] = elems[5];
-	_m[6] = elems[6];
-	_m[7] = elems[7];
+	_columns[2][x] = mat[2][x];
+	_columns[2][y] = mat[2][y];
+	_columns[2][z] = mat[2][z];
+	_columns[2][w] = mat[2][w];
 
-
-	_m[8]  = elems[8];
-	_m[9]  = elems[9];
-	_m[10] = elems[10];
-	_m[11] = elems[11];
-
-	_m[12] = elems[12];
-	_m[13] = elems[13];
-	_m[14] = elems[14];
-	_m[15] = elems[15];
+	_columns[3][x] = mat[3][x];
+	_columns[3][y] = mat[3][y];
+	_columns[3][z] = mat[3][z];
+	_columns[3][w] = mat[3][w];
 
 	return *this;
 }
 
-Matrix& Matrix::operator*(const Matrix& RightMatrix) 
+Matrix Matrix::operator*(const Matrix& mat) 
 {
-	const F32* left = this->GetElems();
-	const F32* right = RightMatrix.GetElems();
+	Vector xCol = (*this) * mat[0];
+	Vector yCol = (*this) * mat[1];
+	Vector zCol = (*this) * mat[2];
+	Vector wCol = (*this) * mat[3];
 
-	Matrix newMatrix
-	(
-		left[0] * right[0] + left[4] * right[1] + left[8]  * right[2] + left[12] * right[3], //m00
-		left[1] * right[0] + left[5] * right[1] + left[9]  * right[2] + left[13] * right[3], //m01
-		left[2] * right[0] + left[6] * right[1] + left[10] * right[2] + left[14] * right[3], //m02
-		left[3] * right[0] + left[7] * right[1] + left[11] * right[2] + left[15] * right[3], //m03
+	return Matrix(xCol, yCol, zCol, wCol);
+}
 
-		left[0] * right[4] + left[4] * right[5] + left[8]  * right[6] + left[12] * right[7], //m10
-		left[1] * right[4] + left[5] * right[5] + left[9]  * right[6] + left[13] * right[7], //m11
-		left[2] * right[4] + left[6] * right[5] + left[10] * right[6] + left[14] * right[7], //m12
-		left[3] * right[4] + left[7] * right[5] + left[11] * right[6] + left[15] * right[7], //m13
+Matrix& Matrix::operator*=(Matrix& mat) 
+{
+	_columns[0] = (*this) * mat[0];
+	_columns[2] = (*this) * mat[1];
+	_columns[3] = (*this) * mat[2];
+	_columns[4] = (*this) * mat[3];
 
-		left[0] * right[8] + left[4] * right[9] + left[8]  * right[10] + left[12] * right[11], //m20
-		left[1] * right[8] + left[5] * right[9] + left[9]  * right[10] + left[13] * right[11], //m21
-		left[2] * right[8] + left[6] * right[9] + left[10] * right[10] + left[14] * right[11], //m22
-		left[3] * right[8] + left[7] * right[9] + left[11] * right[10] + left[15] * right[11], //m23
-
-		left[0] * right[12] + left[4] * right[13] + left[8]  * right[14] + left[12] * right[15], //m30
-		left[1] * right[12] + left[5] * right[13] + left[9]  * right[14] + left[13] * right[15], //m31
-		left[2] * right[12] + left[6] * right[13] + left[10] * right[14] + left[14] * right[15], //m32
-		left[3] * right[12] + left[7] * right[13] + left[11] * right[14] + left[15] * right[15]  //m33
-	);
-
-	*this = newMatrix;
 	return *this;
 }
 
-Matrix& Matrix::operator*=(Matrix& RHM) 
+Vector Matrix::operator*(const Vector& vec)
 {
-	*this = RHM * *this;
-	return *this;
-}
-
-Vector2 Matrix::operator*(const Vector2& RHV)
-{
-	F32 x = RHV.GetX();
-	F32 y = RHV.GetY();
-	F32 z = RHV. GetZ();
-	F32 w = RHV.GetW();
-
-	return Vector2
-	(
-		x * _m[0] + y * _m[4] + z * _m[8] + w * _m[12],
-		x * _m[1] + y * _m[5] + z * _m[9] + w * _m[13]
-	);
-}
-
-Vector3 Matrix::operator*(const Vector3& RHV)
-{
-	F32 x = RHV.GetX();
-	F32 y = RHV.GetY();
-	F32 z = RHV. GetZ();
-	F32 w = RHV.GetW();
-
-	return Vector3
-	(
-		x * _m[0] + y * _m[4] + z * _m[8] + w * _m[12],
-		x * _m[1] + y * _m[5] + z * _m[9] + w * _m[13],
-		x * _m[2] + y * _m[6] + z * _m[10] + w * _m[14]
-
-	);
+	return Vector( _columns[0][x] * vec[x] + _columns[1][x] * vec[y] + _columns[2][x] * vec[z] + _columns[3][x] * vec[w],
+				   _columns[0][y] * vec[x] + _columns[1][y] * vec[y] + _columns[2][y] * vec[z] + _columns[3][y] * vec[w],
+				   _columns[0][z] * vec[x] + _columns[1][z] + vec[y] + _columns[2][z] * vec[z] + _columns[3][z] * vec[w],
+				   _columns[0][w] * vec[x] + _columns[1][w] + vec[y] + _columns[2][w] + vec[z] + _columns[3][w] * vec[w] );
 }

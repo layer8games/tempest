@@ -6,6 +6,8 @@
 #include <Engine/Vector3.h>
 #include <Engine/Vector.h>
 
+#include <vector>
+
 namespace KillerMath 
 {
 //==========================================================================================================================
@@ -34,6 +36,8 @@ namespace KillerMath
 		Matrix(void);
 
 		Matrix(const Vector& x, const Vector& y, const Vector& z);
+
+		Matrix(const Vector& x, const Vector& y, const Vector& z, const Vector& w);
 		
 /*! Array constructor. Set's all values of the Matrix to the cooresponding values in the array.
 	\param mSrc F32[16]. Array of 16 values, basically a raw Matrix. */		
@@ -69,6 +73,9 @@ namespace KillerMath
 //Matrix functions
 //
 //==========================================================================================================================
+/*! Return the array containing all the elements. */
+		const std::vector<F32> GetElems(void) const;
+
 //==========================================================================================================================
 //Projections
 //==========================================================================================================================		
@@ -134,7 +141,7 @@ namespace KillerMath
 
 /*! Creates a translation on the x and y axes without reseting the other values. 
 	\param vec Vector3&. Calls Vector2::7GetX and Vector2::GetY to get values for translation. */	
-		void AddTranslate2D(const Vector vec);
+		void AddTranslate2D(const Vector& vec);
 
 /*! Creates a translation on the x, y and z axes without reseting the other values. 
 	\param vec Vector3&. Calls Vector3::GetX, Vector3::GetY and Vector3::GetZ to get values for translation. */	
@@ -175,7 +182,7 @@ namespace KillerMath
 
 /*! Creates a scaling Matrix on the x and y axes without resetting the other values.
 	\param vec Vector2&. Calls Vector2::GetX and Vector2::GetY as values for scale on x and y axes. */
-		void AddScale2D(const Vector2& vec);
+		void AddScale2D(const Vector& vec);
 
 /*! Creates a scaling Matrix on the x, y and z axes without resetting the other values.
 	\param vec Vector2&. Calls Vector3::GetX, Vector3::GetY and Vector3::GetZ as values for scale on x, y and z axes. */
@@ -252,9 +259,6 @@ namespace KillerMath
 	\param M Matrix&. Right hand value to multiply by. */		
 		void ComponentMulti(const Matrix& M);
 
-/*! Return the array containing all the elements. */
-		const F32* GetElems(void) const;
-
 //==========================================================================================================================
 //
 //Operator Overloads
@@ -272,23 +276,19 @@ namespace KillerMath
 
 /*! Sets all the values of object to values of M. Call GetElems().
 	\param M Matrix& */
-		Matrix& operator=(const Matrix& M);
+		Matrix& operator=(const Matrix& mat);
 		
 /*! Performs a Matrix style multiplication.
 	\param RightMatrix Matrix&. Right hand value for multiplication. */
-		Matrix& operator*(const Matrix& RightMatrix);
+		Matrix operator*(const Matrix& mat);
 		
 /*! Performs a Matrix sytle multiplication. Changes object after multiplication.
 	\param RHM Matrix&. Right hand value for multiplication. */
-		Matrix& operator*=(Matrix& RHM);
+		Matrix& operator*=(Matrix& mat);
 
 /*! Performs Matrix multiplication with Vector.
 	\param RHV Vector2&. Right hand vector for multiplication. */
-		Vector2 operator*(const Vector2& RHV);
-
-/*! Performs Matrix multiplication with Vector.
-	\param RHV Vector3&. Right hand vector for multiplication. */
-		Vector3 operator*(const Vector3& RHV);
+		Vector operator*(const Vector& vec);
 
 	private:
 		enum {
