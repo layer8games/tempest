@@ -24,7 +24,7 @@ namespace KillerEngine
 		KM::Vector position;
 		F32 	   uCoord;
 		F32		   vCoord;
-		Color 	   Color;
+		Color 	   color;
 
 		Vertex(KM::Vector pos)
 		: position(pos)

@@ -2,14 +2,16 @@
 
 //===== Engine Includes =====
 #include <Engine/Atom.h>
+#include <Engine/ErrorManager.h>
 #include <Engine/Shader.h>
 #include <Engine/Vector.h>
 #include <Engine/Matrix.h>
 #include <Engine/Color.h>
 #include <Engine/Vertex.h>
+#include <Engine/Texture.h>
 
 //===== STL inludes =====
-#include <vector>;
+#include <vector>
 
 namespace KM = KillerMath;
 
@@ -45,7 +47,7 @@ namespace KillerEngine
 //Functions
 //
 //==========================================================================================================================
-		inline void AddVertex(const Vertex&  vert);
+		inline void AddVertex(const Vertex&  vert)
 		{
 			_vertices.push_back(vert);
 		}
@@ -76,16 +78,53 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-		inline const Texture& GetTexture(void) const
+//===== ID =====
+		inline const U32 GetID(void) const
 		{
-			return _texture;
+			return _ID;
 		}
 
-		inline void SetTexture(const Texture& tex)
+//===== Active =====
+		inline const bool GetActive(void) const
 		{
-			_texture = tex;
+			return _active;
 		}
 
+		inline void SetActive(void)
+		{
+			_active = true;
+		}
+
+		inline void SetInactive(void)
+		{
+			_active = false;
+		}
+
+//===== Position =====
+		inline const KM::Vector& GetPosition(void) const
+		{
+			return _position;
+		}
+
+		inline void SetPosition(const KM::Vector& pos)
+		{
+			_position = pos;
+		}
+
+		inline void SetPosition(F32 x, F32 y)
+		{
+			_position[0] = x;
+			_position[1] = y;
+		}
+
+		inline void SetPosition(F32 x, F32 y, F32 z)
+		{
+			_position[0] = x;
+			_position[1] = y;
+			_position[2] = z;
+		}
+
+//===== Shader =====
 		inline const Shader& GetShader(void) const
 		{
 			return _shader;
@@ -96,8 +135,33 @@ namespace KillerEngine
 			_shader = shader;
 		}
 
+//===== Texture =====
+		inline const Texture& GetTexture(void) const
+		{
+			return _texture;
+		}
 
+		inline void SetTexture(const Texture& tex)
+		{
+			_texture = tex;
+		}
 
+//===== Vertex and Index =====
+		inline std::vector<Vertex> GetVertices(void) const
+		{
+			return _vertices;
+		}
+
+		inline std::vector<U32> GetIndices(void) const
+		{
+			return _indices;
+		}
+
+//===== VAO =====
+		inline GLuint GetVAO(void) const
+		{
+			return _vao;
+		}
 
 	private:
 		enum BufferData
@@ -117,7 +181,7 @@ namespace KillerEngine
 //Data
 //
 //==========================================================================================================================		
-		static U32				_nextID = 0;
+		static U32				_nextID;
 		U32 					_ID;
 		bool					_active;
 		KM::Vector				_position;
