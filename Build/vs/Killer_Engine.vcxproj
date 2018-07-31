@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h" />
     <ClInclude Include="..\..\Headers\Engine\GameObject.h" />
+    <ClInclude Include="..\..\Headers\Engine\ModelRenderer.h" />
     <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
       <SubType>
       </SubType>
@@ -173,6 +174,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\SpriteRenderer.h" />
     <ClInclude Include="..\..\Headers\Engine\Vector.h" />
     <ClInclude Include="..\..\Headers\Engine\Vector2.h" />
     <ClInclude Include="..\..\Headers\Engine\Vector3.h" />
@@ -205,6 +207,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\ModelRenderer.cpp" />
     <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
       <SubType>
       </SubType>
@@ -222,6 +225,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\SpriteRenderer.cpp" />
     <ClCompile Include="..\..\Implementations\Texture.cpp">
       <SubType>
       </SubType>

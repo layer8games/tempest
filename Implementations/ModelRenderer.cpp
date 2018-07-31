@@ -102,10 +102,10 @@ void ModelRenderer::DrawNow(const Model& m, const KM::Matrix& modelView)
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(U16) * indices.size(), &indices[0], GL_STATIC_DRAW);
 
 	GLint transform1 = glGetUniformLocation(_shader, "modelView_mat");
-	glUniformMatrix4fv(transform1, 1, GL_FALSE, modelView.GetElems());
+	//glUniformMatrix4fv(transform1, 1, GL_FALSE, modelView.GetElems());
 
 	GLint viewportLoc = glGetUniformLocation(_shader, "viewport_mat");
-	glUniformMatrix4fv(viewportLoc, 1, GL_FALSE, Camera::Instance()->GetViewMatrix().GetElems());
+	//glUniformMatrix4fv(viewportLoc, 1, GL_FALSE, Camera::Instance()->GetViewMatrix().GetElems());
 
 	glDrawElements(GL_TRIANGLES, m.VertexCount(), GL_UNSIGNED_SHORT, 0);
 

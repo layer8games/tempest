@@ -17,6 +17,8 @@ _mapBottomBorder(0),
 _mapRightBorder(0),
 _mapLeftBorder(0),
 _bgColor(),
+_ID(),
+_gameObjects(),
 _2DForceRegistry()
 {  }
 
@@ -51,6 +53,27 @@ void Level::v_Render(void)
 //AddObjectToLevel
 //
 //=============================================================================
+void Level::AddObjectToLevel(const GameObject& obj)
+{
+	_gameObjects.insert({ obj.GetID(), shared_ptr<GameObject>(const_cast<GameObject*>(&obj)) });
+
+	if(_gameObjects.find(obj.GetID()) == _gameObjects.end())
+	{
+		ErrorManager::Instance()->SetError(EC_Engine, "Level::AddObjectToLevel Unable to add GameObject to level.");
+	}
+}
+
+void Level::AddObjectToLevel(shared_ptr<GameObject> obj)
+{
+	_gameObjects.insert({obj->GetID(), obj});
+
+
+	if(_gameObjects.find(obj->GetID()) == _gameObjects.end())
+	{
+		ErrorManager::Instance()->SetError(EC_Engine, "Level::AddObjectToLevel Unable to add GameObject to level.");
+	}
+}
+
 void Level::AddObjectToLevel(const GameObject2D& obj)
 {
 	_2DWorldObjects.insert({obj.GetID(), std::shared_ptr<GameObject2D>( const_cast<GameObject2D*>(&obj) )});
@@ -140,6 +163,14 @@ void Level::RenderObjects(void)
 //==========================================================================================================================
 //Render Sprites
 //==========================================================================================================================	
+	for(auto i : _gameObjects)
+	{
+		if(i.second->GetActive())
+		{
+			i.second->v_Render();
+		}
+	}
+
 	//Camera::Instance()->SetUp(SpriteRenderer::Instance()->GetShader());
 	for(auto i : _2DWorldObjects) 
 	{
@@ -252,6 +283,14 @@ void Level::RenderObjects(void)
 
 void Level::UpdateObjects(void)
 {
+	for(auto i : _gameObjects)
+	{
+		if(i.second->GetActive())
+		{
+			i.second->v_Update();
+		}
+	}
+
 	for(auto i : _2DWorldObjects)
 	{
 		if(i.second->GetActive())

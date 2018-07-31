@@ -14,6 +14,7 @@ Written by Maxwell Miller
 //===Killer1 includes===
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
+#include <Engine/GameObject.h>
 #include <Engine/GameObject2D.h>
 #include <Engine/GameObject3D.h>
 #include <Engine/WinProgram.h>
@@ -131,6 +132,10 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
+		void AddObjectToLevel(const GameObject& obj);
+
+		void AddObjectToLevel(shared_ptr<GameObject> obj);
+
 		void AddObjectToLevel(const GameObject2D& obj);
 
 		void AddObjectToLevel(shared_ptr<GameObject2D> obj);
@@ -265,6 +270,7 @@ namespace KillerEngine
 		S32   _mapLeftBorder;
 		Color _bgColor;
 		U32 _ID;
+		std::map<U32, shared_ptr<GameObject>>	  _gameObjects;
 		std::map<U32, shared_ptr<GameObject2D>>   _2DWorldObjects;
 		std::map<U32, shared_ptr<GameObject3D>>   _3DWorldObjects;
 		std::map<U32, shared_ptr<KP::Particle2D>> _2DParticles;

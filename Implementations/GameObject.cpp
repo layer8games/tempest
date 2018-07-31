@@ -1,4 +1,5 @@
 #include <Engine/GameObject.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -20,7 +21,6 @@ _ID(_nextID),
 _active(true),
 _position(0.0f),
 _shader(),
-_texture(),
 _vertices(),
 _indices(),
 _vao(0),
@@ -38,7 +38,6 @@ _ID(obj.GetID()),
 _active(obj.GetActive()),
 _position(obj.GetPosition()),
 _shader(obj.GetShader()),
-_texture(obj.GetTexture()),
 _vertices(obj.GetVertices()),
 _indices(obj.GetIndices()),
 _vao(obj.GetVAO())
@@ -108,7 +107,7 @@ void GameObject::v_InitVertexData(void)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
-	glBufferData(GL_ARRAY_BUFFER, (sizeof(U32) * _indices.size()), &_indices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertTexCoords.size()), &vertTexCoords[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
 	glEnableVertexAttribArray(TEX_COORD_POS);
 

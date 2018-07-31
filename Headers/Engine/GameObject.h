@@ -135,15 +135,14 @@ namespace KillerEngine
 			_shader = shader;
 		}
 
-//===== Texture =====
-		inline const Texture& GetTexture(void) const
+		inline void LoadShader(std::vector<ShaderData> shaderData)
 		{
-			return _texture;
+			_shader.LoadShader(shaderData);
 		}
 
-		inline void SetTexture(const Texture& tex)
+		inline void UseShader(void)
 		{
-			_texture = tex;
+			_shader.Use();
 		}
 
 //===== Vertex and Index =====
@@ -186,7 +185,6 @@ namespace KillerEngine
 		bool					_active;
 		KM::Vector				_position;
 		Shader 					_shader;
-		Texture 				_texture;
 		std::vector<Vertex> 	_vertices;
 		std::vector<U32> 		_indices;
 		GLuint 					_vao;

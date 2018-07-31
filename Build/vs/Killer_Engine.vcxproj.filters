@@ -139,6 +139,9 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{aa5bec10-56de-4733-8db4-474ef1b217c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components\DELETE ME">
+      <UniqueIdentifier>{b70ec69c-e24d-4feb-8453-9012478dd384}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -255,6 +258,12 @@
     <ClInclude Include="..\..\Headers\Engine\GameObject.h">
       <Filter>Components\GameObjects\GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\ModelRenderer.h">
+      <Filter>Components\DELETE ME</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\SpriteRenderer.h">
+      <Filter>Components\DELETE ME</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -361,6 +370,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObject.cpp">
       <Filter>Components\GameObjects\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\ModelRenderer.cpp">
+      <Filter>Components\DELETE ME</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\SpriteRenderer.cpp">
+      <Filter>Components\DELETE ME</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
