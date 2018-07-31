@@ -252,6 +252,9 @@
     <ClInclude Include="..\..\Headers\Engine\Vector.h">
       <Filter>Components\KillerMath\LinearAlgebra\Vector</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\GameObject.h">
+      <Filter>Components\GameObjects\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -355,6 +358,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector.cpp">
       <Filter>Components\KillerMath\LinearAlgebra\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\GameObject.cpp">
+      <Filter>Components\GameObjects\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
