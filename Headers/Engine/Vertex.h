@@ -10,6 +10,7 @@ Written by Maxwell Miller
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
+#include <Engine/Vector.h>
 #include <Engine/Vector2.h>
 #include <Engine/Vector3.h>
 #include <Engine/Color.h>
@@ -18,6 +19,26 @@ namespace KM = KillerMath;
 
 namespace KillerEngine
 {
+	struct Vertex
+	{
+		KM::Vector position;
+		F32 	   uCoord;
+		F32		   vCoord;
+		Color 	   Color;
+
+		Vertex(KM::Vector pos)
+		: position(pos)
+		{  }
+
+		Vertex(KM::Vector pos, Color col)
+		: position(pos), color(col)
+		{  }
+
+		Vertex(KM::Vector pos, F32 u, F32 v)
+		: position(pos), uCoord(u), vCoord(v)
+		{  }
+	};
+
 	struct Vertex2D
 	 {
 	 	KM::Vector2 position;
