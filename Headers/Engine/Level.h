@@ -26,6 +26,7 @@ Written by Maxwell Miller
 #include <Engine/ModelRenderer.h>
 #include <Engine/RenderedText.h>
 #include <Engine/RenderedCharacter.h>
+#include <Engine/Particle.h>
 #include <Engine/Particle2D.h>
 #include <Engine/ParticleForceRegistry.h>
 #include <Engine/Camera.h>
@@ -139,6 +140,10 @@ namespace KillerEngine
 		void AddObjectToLevel(const GameObject2D& obj);
 
 		void AddObjectToLevel(shared_ptr<GameObject2D> obj);
+
+		void AddObjectToLevel(const KP::Particle& obj);
+
+		void AddObjectToLevel(shared_ptr<KP::Particle> obj);
 
 		void AddParticle2DToLevel(shared_ptr<KP::Particle2D> particle, shared_ptr<KP::ParticleForceGenerator> generator=nullptr);
 
@@ -273,6 +278,7 @@ namespace KillerEngine
 		std::map<U32, shared_ptr<GameObject>>	  _gameObjects;
 		std::map<U32, shared_ptr<GameObject2D>>   _2DWorldObjects;
 		std::map<U32, shared_ptr<GameObject3D>>   _3DWorldObjects;
+		std::map<U32, shared_ptr<KP::Particle>>   _particles;
 		std::map<U32, shared_ptr<KP::Particle2D>> _2DParticles;
 		std::vector<shared_ptr<RenderedText>>     _textList;
 		std::map<U32, TileData> _2DTileData;

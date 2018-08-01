@@ -19,6 +19,7 @@ _mapLeftBorder(0),
 _bgColor(),
 _ID(),
 _gameObjects(),
+_particles(),
 _2DForceRegistry()
 {  }
 
@@ -91,6 +92,26 @@ void Level::AddObjectToLevel(shared_ptr<GameObject2D> obj)
 	if(_2DWorldObjects.find(obj->GetID()) == _2DWorldObjects.end()) 
 	{ 
 		ErrorManager::Instance()->SetError(EC_Engine, "Unable to AddLevel to _2DWorldObjects"); 
+	}
+}
+
+void Level::AddObjectToLevel(const KP::Particle& obj)
+{
+	_particles.insert({obj.GetID(), shared_ptr<KP::Particle>( const_cast<KP::Particle*>(&obj) )});
+
+	if(_particles.find(obj.GetID()) == _particles.end())
+	{
+		ErrorManager::Instance()->SetError(EC_Engine, "Level::AddObjectToLevel, Unable to add KP::Particle to level. ID = " + obj.GetID());
+	}
+}
+
+void Level::AddObjectToLevel(shared_ptr<KP::Particle> obj)
+{
+	_particles.insert({obj->GetID(), obj});
+
+	if(_particles.find(obj->GetID()) == _particles.end())
+	{
+		ErrorManager::Instance()->SetError(EC_Engine, "Level::AddObjectToLevel, Unable to add KP::Particle to level. ID = " + obj->GetID());
 	}
 }
 
@@ -170,6 +191,20 @@ void Level::RenderObjects(void)
 			i.second->v_Render();
 		}
 	}
+
+	for(auto i : _particles)
+	{
+		if(i.second->GetActive())
+		{
+			i.second->v_Render();
+		}
+	}
+
+/*
+	
+	DELETE EVERYTHING IN THIS FUNCTION AFTER THIS
+
+*/
 
 	//Camera::Instance()->SetUp(SpriteRenderer::Instance()->GetShader());
 	for(auto i : _2DWorldObjects) 
@@ -290,6 +325,21 @@ void Level::UpdateObjects(void)
 			i.second->v_Update();
 		}
 	}
+
+	for(auto i : _particles)
+	{
+		if(i.second->GetActive())
+		{
+			i.second->Integrate();
+			i.second->v_Update();
+		}
+	}
+
+/*
+	
+	DELETE EVERYTHING IN THIS FUNCTION AFTER THIS
+
+*/
 
 	for(auto i : _2DWorldObjects)
 	{
