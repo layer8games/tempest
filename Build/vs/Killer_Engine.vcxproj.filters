@@ -40,12 +40,6 @@
     <Filter Include="Components\Camera">
       <UniqueIdentifier>{e63d13b7-e9e9-4c1b-8403-7f3d194c5129}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\GameObjects\GameObject\2D">
-      <UniqueIdentifier>{d0d12d87-de69-42af-9f30-fb68d307c6da}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\GameObjects\GameObject\3D">
-      <UniqueIdentifier>{35b9d80d-2b32-4b04-b905-e2040b88907d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\Model">
       <UniqueIdentifier>{b052f8a3-7bd6-4da4-a4a5-cc4dd017486f}</UniqueIdentifier>
     </Filter>
@@ -61,12 +55,6 @@
     <Filter Include="Components\KillerMath\LinearAlgebra\Vector">
       <UniqueIdentifier>{2d795523-a23d-4211-b17f-2919e5a6a30f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\KillerMath\LinearAlgebra\Vector\2D">
-      <UniqueIdentifier>{d87a1455-c2bf-429d-b0df-78a00d581b81}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\KillerMath\LinearAlgebra\Vector\3D">
-      <UniqueIdentifier>{e21d2ed8-880a-4167-9193-42978d82d57d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\KillerMath\Timer">
       <UniqueIdentifier>{d95a6a48-7e2e-4741-b39d-f6a1c763e14d}</UniqueIdentifier>
     </Filter>
@@ -78,12 +66,6 @@
     </Filter>
     <Filter Include="Components\KillerPhysics\Particles">
       <UniqueIdentifier>{57925e0b-6c1a-46f2-92b3-fb68a9630ebe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\KillerPhysics\Particles\2D">
-      <UniqueIdentifier>{b6fe0ea0-8fbd-4f8b-ac6e-f4a7ef34a949}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\KillerPhysics\Particles\3D">
-      <UniqueIdentifier>{63bcd68c-6905-4860-97d6-ee3ca171435d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Components\Structs">
       <UniqueIdentifier>{2b6d07f5-9367-4b70-a35d-57e172e29178}</UniqueIdentifier>
@@ -136,11 +118,35 @@
     <Filter Include="Components\KillerPhysics\ContactResolution">
       <UniqueIdentifier>{51060f2b-30e0-4b75-a6f5-ad0625443185}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shaders">
-      <UniqueIdentifier>{aa5bec10-56de-4733-8db4-474ef1b217c8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\DELETE ME">
       <UniqueIdentifier>{b70ec69c-e24d-4feb-8453-9012478dd384}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\GameObjects\GameObject\DELETME">
+      <UniqueIdentifier>{35390fe3-1bfd-4cba-a22e-441be79ba9d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\GameObjects\GameObject\DELETME\2D">
+      <UniqueIdentifier>{d0d12d87-de69-42af-9f30-fb68d307c6da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\GameObjects\GameObject\DELETME\3D">
+      <UniqueIdentifier>{35b9d80d-2b32-4b04-b905-e2040b88907d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerMath\LinearAlgebra\Vector\DELETEME">
+      <UniqueIdentifier>{7ced9d0d-78aa-4750-a904-2259c6455636}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerMath\LinearAlgebra\Vector\DELETEME\2D">
+      <UniqueIdentifier>{d87a1455-c2bf-429d-b0df-78a00d581b81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerMath\LinearAlgebra\Vector\DELETEME\3D">
+      <UniqueIdentifier>{e21d2ed8-880a-4167-9193-42978d82d57d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerPhysics\Particles\DELETEME">
+      <UniqueIdentifier>{ee24795e-3764-4633-827b-4eba2c00d004}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerPhysics\Particles\DELETEME\2D">
+      <UniqueIdentifier>{b6fe0ea0-8fbd-4f8b-ac6e-f4a7ef34a949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerPhysics\Particles\DELETEME\3D">
+      <UniqueIdentifier>{63bcd68c-6905-4860-97d6-ee3ca171435d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -174,12 +180,6 @@
     <ClInclude Include="..\..\Headers\Engine\EnvironmentObject.h">
       <Filter>Components\GameObjects\EnvironmentObj</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\GameObject2D.h">
-      <Filter>Components\GameObjects\GameObject\2D</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\GameObject3D.h">
-      <Filter>Components\GameObjects\GameObject\3D</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Quaternion.h">
       <Filter>Components\KillerMath\Quaternion</Filter>
     </ClInclude>
@@ -190,10 +190,10 @@
       <Filter>Components\KillerMath\LinearAlgebra\Matrix</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vector2.h">
-      <Filter>Components\KillerMath\LinearAlgebra\Vector\2D</Filter>
+      <Filter>Components\KillerMath\LinearAlgebra\Vector\DELETEME\2D</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vector3.h">
-      <Filter>Components\KillerMath\LinearAlgebra\Vector\3D</Filter>
+      <Filter>Components\KillerMath\LinearAlgebra\Vector\DELETEME\3D</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Color.h">
       <Filter>Components\Color</Filter>
@@ -228,11 +228,8 @@
     <ClInclude Include="..\..\Headers\Engine\Shader.h">
       <Filter>Components\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Particle2D.h">
-      <Filter>Components\KillerPhysics\Particles\2D</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Particle3D.h">
-      <Filter>Components\KillerPhysics\Particles\3D</Filter>
+      <Filter>Components\KillerPhysics\Particles\DELETEME\3D</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ParticleForceGenerator.h">
       <Filter>Components\KillerPhysics\Forces\Generator</Filter>
@@ -264,6 +261,18 @@
     <ClInclude Include="..\..\Headers\Engine\SpriteRenderer.h">
       <Filter>Components\DELETE ME</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\GameObject2D.h">
+      <Filter>Components\GameObjects\GameObject\DELETME</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\GameObject3D.h">
+      <Filter>Components\GameObjects\GameObject\DELETME</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Particle2D.h">
+      <Filter>Components\KillerPhysics\Particles\DELETEME</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Particle.h">
+      <Filter>Components\KillerPhysics\Particles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -293,12 +302,6 @@
     <ClCompile Include="..\..\Implementations\EnvironmentObject.cpp">
       <Filter>Components\GameObjects\EnvironmentObj</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\GameObject2D.cpp">
-      <Filter>Components\GameObjects\GameObject\2D</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\GameObject3D.cpp">
-      <Filter>Components\GameObjects\GameObject\3D</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Quaternion.cpp">
       <Filter>Components\KillerMath\Quaternion</Filter>
     </ClCompile>
@@ -309,10 +312,10 @@
       <Filter>Components\KillerMath\LinearAlgebra\Matrix</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector2.cpp">
-      <Filter>Components\KillerMath\LinearAlgebra\Vector\2D</Filter>
+      <Filter>Components\KillerMath\LinearAlgebra\Vector\DELETEME\2D</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector3.cpp">
-      <Filter>Components\KillerMath\LinearAlgebra\Vector\3D</Filter>
+      <Filter>Components\KillerMath\LinearAlgebra\Vector\DELETEME\3D</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Color.cpp">
       <Filter>Components\Color</Filter>
@@ -341,11 +344,8 @@
     <ClCompile Include="..\..\Implementations\Shader.cpp">
       <Filter>Components\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Particle2D.cpp">
-      <Filter>Components\KillerPhysics\Particles\2D</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Particle3D.cpp">
-      <Filter>Components\KillerPhysics\Particles\3D</Filter>
+      <Filter>Components\KillerPhysics\Particles\DELETEME\3D</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ParticleForceGenerator.cpp">
       <Filter>Components\KillerPhysics\Forces\Generator</Filter>
@@ -377,27 +377,22 @@
     <ClCompile Include="..\..\Implementations\SpriteRenderer.cpp">
       <Filter>Components\DELETE ME</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\GameObject2D.cpp">
+      <Filter>Components\GameObjects\GameObject\DELETME</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\GameObject3D.cpp">
+      <Filter>Components\GameObjects\GameObject\DELETME</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Particle2D.cpp">
+      <Filter>Components\KillerPhysics\Particles\DELETEME</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Particle.cpp">
+      <Filter>Components\KillerPhysics\Particles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\Docs\KillerCodingStandards.txt">
       <Filter>Docs</Filter>
     </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\Assets\Shaders\model_fragment.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Assets\Shaders\model_vertex.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Assets\Shaders\sprite_fragment.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Assets\Shaders\sprite_geometry.glsl">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="..\..\Assets\Shaders\sprite_vertex.glsl">
-      <Filter>Shaders</Filter>
-    </None>
   </ItemGroup>
 </Project>

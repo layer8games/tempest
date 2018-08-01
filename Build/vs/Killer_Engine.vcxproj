@@ -126,6 +126,7 @@
     <ClInclude Include="..\..\Headers\Engine\Atom.h" />
     <ClInclude Include="..\..\Headers\Engine\GameObject.h" />
     <ClInclude Include="..\..\Headers\Engine\ModelRenderer.h" />
+    <ClInclude Include="..\..\Headers\Engine\Particle.h" />
     <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
       <SubType>
       </SubType>
@@ -208,6 +209,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ModelRenderer.cpp" />
+    <ClCompile Include="..\..\Implementations\Particle.cpp" />
     <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
       <SubType>
       </SubType>
@@ -268,13 +270,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\Docs\KillerCodingStandards.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\Assets\Shaders\model_fragment.glsl" />
-    <None Include="..\..\Assets\Shaders\model_vertex.glsl" />
-    <None Include="..\..\Assets\Shaders\sprite_fragment.glsl" />
-    <None Include="..\..\Assets\Shaders\sprite_geometry.glsl" />
-    <None Include="..\..\Assets\Shaders\sprite_vertex.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

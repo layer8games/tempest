@@ -29,7 +29,7 @@ namespace KillerEngine
 
 		GameObject(const GameObject& obj);
 
-		~GameObject(void);
+		virtual ~GameObject(void);
 
 //==========================================================================================================================
 //
@@ -122,6 +122,11 @@ namespace KillerEngine
 			_position[0] = x;
 			_position[1] = y;
 			_position[2] = z;
+		}
+
+		inline void AddScaledPosition(const KM::Vector pos, F32 scale)
+		{
+			_position.AddScaledVector(pos, scale);
 		}
 
 //===== Shader =====
