@@ -11,12 +11,9 @@ using namespace KillerPhysics;
 //==========================================================================================================================
 ParticleContact::ParticleContact(void)
 :
-_particles2D{nullptr, nullptr},
-_particles3D{nullptr, nullptr},
-_particle2DMovements{nullptr, nullptr},
-_particle3DMovements{nullptr, nullptr},
-_contactNormal2D(0.0f),
-_contactNormal3D(0.0f),
+_particles{nullptr, nullptr},
+_particleMovements{nullptr, nullptr},
+_contactNormal(0.0f),
 _restitution(0.0f),
 _penetration(0.0f)
 {  }
@@ -24,33 +21,6 @@ _penetration(0.0f)
 ParticleContact::~ParticleContact(void)
 {  }
 
-//==========================================================================================================================
-//
-//Accessors
-//
-//==========================================================================================================================
-void ParticleContact::SetContacts(shared_ptr<Particle2D> particle1, shared_ptr<Particle2D> particle2)
-{
-	if(_particles3D[0])
-	{
-		KE::ErrorManager::Instance()->SetError(KE::ErrorCode::EC_Physics, "ParticleContact::SetContacts, Cannot set both 2D and 3D contacts with single ParticleContact.");
-		return;
-	}
-
-	_particles2D[0] = particle1;
-	_particles2D[1] = particle2;
-}
-
-void ParticleContact::SetContacts(shared_ptr<Particle3D> particle1, shared_ptr<Particle3D> particle2)
-{
-	if(_particles2D[0])
-	{
-		KE::ErrorManager::Instance()->SetError(KE::ErrorCode::EC_Physics, "ParticleContact::SetContacts, Cannot set both 2D and 3D contacts with single ParticleContact.");
-	}
-
-	_particles3D[0] = particle1;
-	_particles3D[1] = particle2;
-}
 //==========================================================================================================================
 //
 //Functions
@@ -64,27 +34,16 @@ void ParticleContact::Resolve(void)
 
 real ParticleContact::CalculateSeparatingVelocity(void) const
 {
-	if(_particles2D[0])
+	if(_particles[0])
 	{
-		KM::Vector2 relativeVelocity = _particles2D[0]->GetVelocity();
+		KM::Vector relativeVelocity = _particles[0]->GetVelocity();
 
-		if(_particles2D[1])
+		if(_particles[1])
 		{
-			relativeVelocity -= _particles2D[1]->GetVelocity();
+			relativeVelocity -= _particles[1]->GetVelocity();
 		}
 
-		return relativeVelocity.DotProduct(_contactNormal2D);
-	}
-	else if(_particles3D[0])
-	{
-		KM::Vector3 relativeVelocity = _particles3D[0]->GetVelocity();
-
-		if(_particles3D[1])
-		{
-			relativeVelocity -= _particles3D[1]->GetVelocity();
-		}
-
-		return relativeVelocity.DotProduct(_contactNormal3D);
+		return relativeVelocity.DotProduct(_contactNormal);
 	}		
 }
 
@@ -100,30 +59,18 @@ void ParticleContact::_ResolveImpulseVelocity(void)
 
 	real accelCausedSeparatingVel;
 
-	if(_particles2D[0])
+	if(_particles[0])
 	{
 		//Check to see if velocity build up is due to acceleration only
-		KM::Vector2 accelCausedVel = _particles2D[0]->GetAcceleration();
+		KM::Vector accelCausedVel = _particles[0]->GetAcceleration();
 
-		if(_particles2D[1])
+		if(_particles[1])
 		{
-			accelCausedVel -= _particles2D[1]->GetAcceleration();
+			accelCausedVel -= _particles[1]->GetAcceleration();
 		}
 
-		accelCausedSeparatingVel = accelCausedVel.DotProduct(_contactNormal2D * KM::Timer::Instance()->DeltaTime());
-	}
-	else if(_particles3D[0])
-	{
-		//Check to see if velocity build up is due to acceleration only
-		KM::Vector3 accelCausedVel = _particles3D[0]->GetAcceleration();
-
-		if(_particles3D[1])
-		{
-			accelCausedVel -= _particles3D[1]->GetAcceleration();
-		}
-
-		accelCausedSeparatingVel = accelCausedVel.DotProduct(_contactNormal3D * KM::Timer::Instance()->DeltaTime());
-	}		
+		accelCausedSeparatingVel = accelCausedVel.DotProduct(_contactNormal * KM::Timer::Instance()->DeltaTime());
+	}	
 
 	//If we have an acceleration, remove it. 
 	if(accelCausedSeparatingVel < 0)
@@ -141,26 +88,15 @@ void ParticleContact::_ResolveImpulseVelocity(void)
 
 	real totalInverseMass;
 
-	if(_particles2D[0])
+	if(_particles[0])
 	{
 		//Apply the change in velocity to each object in
 		//proportion to their inverse mass
-		totalInverseMass = _particles2D[0]->GetInverseMass();
+		totalInverseMass = _particles[0]->GetInverseMass();
 
-		if(_particles2D[1])
+		if(_particles[1])
 		{
-			totalInverseMass += _particles2D[1]->GetInverseMass();
-		}
-	}
-	else if(_particles3D[0])
-	{
-		//Apply the change in velocity to each object in
-		//proportion to their inverse mass
-		totalInverseMass = _particles3D[0]->GetInverseMass();
-
-		if(_particles3D[1])
-		{
-			totalInverseMass += _particles3D[1]->GetInverseMass();
+			totalInverseMass += _particles[1]->GetInverseMass();
 		}
 	}
 	
@@ -171,34 +107,19 @@ void ParticleContact::_ResolveImpulseVelocity(void)
 	real impulse = deltaVelocity / totalInverseMass;
 
 
-	if(_particles2D[0])
+	if(_particles[0])
 	{
 		//Find amount of impulse per unit of inverse mass
-		KM::Vector2 implusePerMass = _contactNormal2D * impulse;
+		KM::Vector implusePerMass = _contactNormal * impulse;
 
 		//Apply impulses: they are applied in the direction of the contact
 		//and are proportional to the inverse mass
-		_particles2D[0]->SetVelocity(_particles2D[0]->GetVelocity() + implusePerMass * _particles2D[0]->GetInverseMass());
+		_particles[0]->SetVelocity(_particles[0]->GetVelocity() + implusePerMass * _particles[0]->GetInverseMass());
 
-		if(_particles2D[1])
+		if(_particles[1])
 		{
 			//particle 1 goes in the opposite direciton
-			_particles2D[1]->SetVelocity(_particles2D[1]->GetVelocity() + implusePerMass * -_particles2D[1]->GetInverseMass());
-		}
-	}
-	else if(_particles3D[0])
-	{
-		//Find amount of impulse per unit of inverse mass
-		KM::Vector3 implusePerMass = _contactNormal3D * impulse;
-
-		//Apply impulses: they are applied in the direction of the contact
-		//and are proportional to the inverse mass
-		_particles3D[0]->SetVelocity(_particles3D[0]->GetVelocity() + implusePerMass * _particles3D[0]->GetInverseMass());
-
-		if(_particles3D[1])
-		{
-			//particle 1 goes in the opposite direciton
-			_particles3D[1]->SetVelocity(_particles3D[1]->GetVelocity() + implusePerMass * -_particles3D[1]->GetInverseMass());
+			_particles[1]->SetVelocity(_particles[1]->GetVelocity() + implusePerMass * -_particles[1]->GetInverseMass());
 		}
 	}		
 }
@@ -209,77 +130,43 @@ void ParticleContact::_ResolveInterpenetration(void)
 
 	real totalInverseMass;
 
-	if(_particles2D[0])
+	if(_particles[0])
 	{
-		totalInverseMass = _particles2D[0]->GetInverseMass();
+		totalInverseMass = _particles[0]->GetInverseMass();
 
-		if(_particles2D[1])
+		if(_particles[1])
 		{
-			totalInverseMass += _particles2D[1]->GetInverseMass();
-		}
-	}
-	else if(_particles3D[0])
-	{
-		totalInverseMass = _particles3D[0]->GetInverseMass();
-
-		if(_particles3D[1])
-		{
-			totalInverseMass += _particles3D[1]->GetInverseMass();
+			totalInverseMass += _particles[1]->GetInverseMass();
 		}
 	}
 
 	//if all particles have infinite mass, do nothing
 	if(totalInverseMass <= 0) return;
 
-	if(_particles2D[0])
+	if(_particles[0])
 	{
 		//Find amount of penetration per unit of inverse mass
-		KM::Vector2 movePerMass = _contactNormal2D * (_penetration / totalInverseMass);
+		KM::Vector movePerMass = _contactNormal * (_penetration / totalInverseMass);
 
 		//Calculate movement amounts
-		_particle2DMovements[0] = shared_ptr<KM::Vector2>(new KM::Vector2(movePerMass * _particles2D[0]->GetInverseMass()));
+		_particleMovements[0] = shared_ptr<KM::Vector>(new KM::Vector(movePerMass * _particles[0]->GetInverseMass()));
 
-		if(_particles2D[1])
+		if(_particles[1])
 		{
-			_particle2DMovements[1] = shared_ptr<KM::Vector2>(new KM::Vector2(movePerMass * -_particles2D[1]->GetInverseMass()));
+			_particleMovements[1] = shared_ptr<KM::Vector>(new KM::Vector(movePerMass * -_particles[1]->GetInverseMass()));
 		}
 		else
 		{
-			_particle2DMovements[1] = nullptr;
+			_particleMovements[1] = nullptr;
 		}
 
 		//Apply penetration resolution
-		_particles2D[0]->SetPosition(_particles2D[0]->GetPosition() + _particle2DMovements[0]);
+		_particles[0]->SetPosition(_particles[0]->GetPosition() + _particleMovements[0]);
 
-		if(_particles2D[1])
+		if(_particles[1])
 		{
-			_particles2D[1]->SetPosition(_particles2D[1]->GetPosition() + _particle2DMovements[1]);
+			_particles[1]->SetPosition(_particles[1]->GetPosition() + _particleMovements[1]);
 		}	
-	}
-	else if(_particles3D[0])
-	{
-		//Find amount of penetration per unit of inverse mass
-		KM::Vector3 movePerMass = _contactNormal3D * (_penetration / totalInverseMass);
-
-		//Calculate movement amounts
-		_particle3DMovements[0] = shared_ptr<KM::Vector3>(new KM::Vector3(movePerMass * _particles3D[0]->GetInverseMass()));
-
-		if(_particles3D[1])
-		{
-			_particle3DMovements[1] = shared_ptr<KM::Vector3>(new KM::Vector3(movePerMass * -_particles3D[1]->GetInverseMass()));
-		}
-		else
-		{
-			_particle3DMovements[1] = nullptr;
-		}
-
-		//Apply penetration resolution
-		_particles3D[0]->SetPosition(_particles3D[0]->GetPosition() + _particle3DMovements[0]);
-
-		if(_particles3D[1])
-		{
-			_particles3D[1]->SetPosition(_particles3D[1]->GetPosition() + _particle3DMovements[1]);
-		}
 	}	
 }
 

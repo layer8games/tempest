@@ -157,6 +157,21 @@ Vector& Vector::operator+=(const Vector& vec)
 	return *this;
 }
 
+Vector Vector::operator+(shared_ptr<Vector> vec) const
+{
+	F32* vals = vec->GetPointer();
+
+	if(_2D)
+	{
+		return Vector( _data[x] + vals[x],
+					   _data[y] + vals[y] );
+	}
+
+	return Vector( _data[x] + vals[x],
+				   _data[y] + vals[y],
+				   _data[z] + vals[z] );
+}
+
 //===== Add by scalar =====
 Vector Vector::operator+(F32 val) const
 {

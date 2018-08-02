@@ -113,6 +113,8 @@ namespace KillerMath
 
 		Vector& operator+=(F32 val);
 
+		Vector operator+(shared_ptr<Vector> vec) const;
+
 //===== Subtract by Vector =====
 		Vector operator-(const Vector& vec) const;
 

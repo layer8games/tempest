@@ -118,9 +118,6 @@
     <Filter Include="Components\KillerPhysics\ContactResolution">
       <UniqueIdentifier>{51060f2b-30e0-4b75-a6f5-ad0625443185}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\DELETE ME">
-      <UniqueIdentifier>{b70ec69c-e24d-4feb-8453-9012478dd384}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\GameObjects\GameObject\DELETME">
       <UniqueIdentifier>{35390fe3-1bfd-4cba-a22e-441be79ba9d6}</UniqueIdentifier>
     </Filter>
@@ -147,6 +144,9 @@
     </Filter>
     <Filter Include="Components\KillerPhysics\Particles\DELETEME\3D">
       <UniqueIdentifier>{63bcd68c-6905-4860-97d6-ee3ca171435d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Renders -- DELETE ME">
+      <UniqueIdentifier>{b70ec69c-e24d-4feb-8453-9012478dd384}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -246,9 +246,6 @@
     <ClInclude Include="..\..\Headers\Engine\ParticleSpringForces.h">
       <Filter>Components\KillerPhysics\Forces\Spring</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
-      <Filter>Components\KillerPhysics\ContactResolution</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vector.h">
       <Filter>Components\KillerMath\LinearAlgebra\Vector</Filter>
     </ClInclude>
@@ -256,10 +253,10 @@
       <Filter>Components\GameObjects\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ModelRenderer.h">
-      <Filter>Components\DELETE ME</Filter>
+      <Filter>Components\Renders -- DELETE ME</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\SpriteRenderer.h">
-      <Filter>Components\DELETE ME</Filter>
+      <Filter>Components\Renders -- DELETE ME</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GameObject2D.h">
       <Filter>Components\GameObjects\GameObject\DELETME</Filter>
@@ -272,6 +269,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Particle.h">
       <Filter>Components\KillerPhysics\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
+      <Filter>Components\KillerPhysics\ContactResolution</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -362,9 +362,6 @@
     <ClCompile Include="..\..\Implementations\ParticleSpringForces.cpp">
       <Filter>Components\KillerPhysics\Forces\Spring</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
-      <Filter>Components\KillerPhysics\ContactResolution</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector.cpp">
       <Filter>Components\KillerMath\LinearAlgebra\Vector</Filter>
     </ClCompile>
@@ -372,10 +369,10 @@
       <Filter>Components\GameObjects\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ModelRenderer.cpp">
-      <Filter>Components\DELETE ME</Filter>
+      <Filter>Components\Renders -- DELETE ME</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\SpriteRenderer.cpp">
-      <Filter>Components\DELETE ME</Filter>
+      <Filter>Components\Renders -- DELETE ME</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObject2D.cpp">
       <Filter>Components\GameObjects\GameObject\DELETME</Filter>
@@ -388,6 +385,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Particle.cpp">
       <Filter>Components\KillerPhysics\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
+      <Filter>Components\KillerPhysics\ContactResolution</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
