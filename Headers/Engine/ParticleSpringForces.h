@@ -51,7 +51,7 @@ Written by Maxwell Miller
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/ParticleForceGenerator.h>
-#include <Engine/Vector2.h>
+#include <Engine/Vector.h>
 
 namespace KM = KillerMath;
 
@@ -67,9 +67,7 @@ namespace KillerPhysics
 //==========================================================================================================================
 		ParticleSpringForce(void);
 
-		ParticleSpringForce(shared_ptr<Particle2D> otherEnd, real springConstant, real restLength);
-
-		ParticleSpringForce(shared_ptr<Particle3D> otherEnd, real springConstant, real restLength);
+		ParticleSpringForce(shared_ptr<Particle> otherEnd, real springConstant, real restLength);
 
 		~ParticleSpringForce(void);
 //==========================================================================================================================
@@ -77,9 +75,7 @@ namespace KillerPhysics
 //Virtual Functions
 //
 //==========================================================================================================================
-		void v_UpdateForce(shared_ptr<Particle2D> particle) final;
-
-		void v_UpdateForce(shared_ptr<Particle3D> particle) final;
+		void v_UpdateForce(shared_ptr<Particle> particle) final;
 
 //==========================================================================================================================
 //
@@ -96,9 +92,9 @@ namespace KillerPhysics
 //Accessors
 //
 //==========================================================================================================================		
-		inline void SetOtherEnd(shared_ptr<Particle2D> end) 
+		inline void SetOtherEnd(shared_ptr<Particle> end) 
 		{ 
-			_otherEnd2D = end; 
+			_otherEnd = end; 
 		}
 
 		inline void SetSpringConstant(real constant) 
@@ -112,14 +108,13 @@ namespace KillerPhysics
 		}
 	
 	private:
-		//Consider using a GameObject2D here instead of a Particle2D
+		//Consider using a GameObject2D here instead of a Particle
 		//This would allow for it to be more generic, and to be used
 		//With any kind of object that is rendered in the Level.
-		shared_ptr<Particle2D> _otherEnd2D;
-		shared_ptr<Particle3D> _otherEnd3D;
-		real 				   _springConstant;
-		real 				   _restLength;
-		bool				   _isBungie;
+		shared_ptr<Particle> _otherEnd;
+		real 				 _springConstant;
+		real 				 _restLength;
+		bool				 _isBungie;
 		
 	};//end ParticleSpringForce
 
@@ -136,9 +131,7 @@ namespace KillerPhysics
 //==========================================================================================================================		
 		ParticleAnchoredSpring(void);
 
-		ParticleAnchoredSpring(KM::Vector2 anchor, real springConstant, real restLength);
-
-		ParticleAnchoredSpring(KM::Vector3 anchor, real springConstant, real restLength);
+		ParticleAnchoredSpring(KM::Vector anchor, real springConstant, real restLength);
 
 		~ParticleAnchoredSpring(void);
 
@@ -147,23 +140,16 @@ namespace KillerPhysics
 //Virtual Functions
 //
 //==========================================================================================================================
-		void v_UpdateForce(shared_ptr<Particle2D> particle) final;
-
-		void v_UpdateForce(shared_ptr<Particle3D> particle) final;
+		void v_UpdateForce(shared_ptr<Particle> particle) final;
 
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================
-		inline void SetAnchor(KM::Vector2& anchor)
+		inline void SetAnchor(KM::Vector& anchor)
 		{
-			_anchor2D = anchor;
-		}
-
-		inline void SetAnchor(KM::Vector3& anchor)
-		{
-			_anchor3D = anchor;
+			_anchor = anchor;
 		}
 
 		inline void SetSpringConstant(real constant)
@@ -177,8 +163,7 @@ namespace KillerPhysics
 		}
 
 	private:
-		KM::Vector2	_anchor2D;
-		KM::Vector3	_anchor3D;
+		KM::Vector	_anchor;
 		real 		_springConstant;
 		real		_restLength;
 	};//end ParticleAnchoredSpring
@@ -204,9 +189,7 @@ namespace KillerPhysics
 //Virtual Functions
 //
 //==========================================================================================================================
-		void v_UpdateForce(shared_ptr<Particle2D> particle);
-
-		void v_UpdateForce(shared_ptr<Particle3D> particle);
+		void v_UpdateForce(shared_ptr<Particle> particle);
 
 //==========================================================================================================================
 //

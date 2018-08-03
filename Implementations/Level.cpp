@@ -20,7 +20,7 @@ _bgColor(),
 _ID(),
 _gameObjects(),
 _particles(),
-_2DForceRegistry()
+_forceRegistry()
 {  }
 
 Level::~Level(void)
@@ -33,9 +33,9 @@ Level::~Level(void)
 //==========================================================================================================================
 void Level::v_Integrate(void)
 {
-	_2DForceRegistry.UpdateForces();
+	_forceRegistry.UpdateForces();
 
-	for(auto i : _2DParticles)
+	for(auto i : _particles)
 	{
 		if(i.second->GetActive())
 		{
@@ -115,18 +115,18 @@ void Level::AddObjectToLevel(shared_ptr<KP::Particle> obj)
 	}
 }
 
-void Level::AddParticle2DToLevel(shared_ptr<KP::Particle2D> particle, shared_ptr<KP::ParticleForceGenerator> generator)
+void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP::ParticleForceGenerator> generator)
 {
-	_2DParticles.insert({particle->GetID(), particle});
+	_particles.insert({particle->GetID(), particle});
 
-	if(_2DParticles.find(particle->GetID()) == _2DParticles.end())
+	if(_particles.find(particle->GetID()) == _particles.end())
 	{
 		ErrorManager::Instance()->SetError(EC_Engine, "Unable to Add Particle to Level. Level.h line 80");
 	}
 
 	if(generator != nullptr)
 	{
-		_2DForceRegistry.Add(particle, generator);
+		_forceRegistry.Add(particle, generator);
 	}
 }
 
@@ -238,7 +238,7 @@ void Level::RenderObjects(void)
 //==========================================================================================================================
 //Render Particle2Ds
 //==========================================================================================================================
-	for(auto i : _2DParticles) 
+	for(auto i : _particles) 
 	{
 		i.second->v_Render();
 //old version
@@ -349,7 +349,7 @@ void Level::UpdateObjects(void)
 		}
 	}
 
-	for(auto i : _2DParticles )
+	for(auto i : _particles )
 	{
 		if(i.second->GetActive())
 		{

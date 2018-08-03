@@ -16,7 +16,7 @@ Written by Maxwell Miller
 //=====Engine includes=====
 #include <Engine/Atom.h>
 #include <Engine/ParticleForceGenerator.h>
-#include <Engine/Vector2.h>
+#include <Engine/Vector.h>
 
 namespace KM = KillerMath;
 namespace KE = KillerEngine;
@@ -33,7 +33,7 @@ namespace KillerPhysics
 //==========================================================================================================================
 		ParticleDragForce(void);
 
-		ParticleDragForce(real k1, real k2);
+		ParticleDragForce(real drag, real dragSqr);
 
 		~ParticleDragForce(void);
 
@@ -42,14 +42,12 @@ namespace KillerPhysics
 //Virtual Functions
 //
 //==========================================================================================================================		
-		void v_UpdateForce(shared_ptr<Particle2D> particle) final;
-
-		void v_UpdateForce(shared_ptr<Particle3D> particle) final;		
+		void v_UpdateForce(shared_ptr<Particle> particle) final;	
 
 	private:
 		//Drag Coefficient
-		real _k1;
+		real _drag;
 		//Drag Coefficient Squared
-		real _k2;
+		real _dragSqr;
 	};//end class
 }//end namespace

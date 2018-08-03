@@ -145,11 +145,11 @@ namespace KillerEngine
 
 		void AddObjectToLevel(shared_ptr<KP::Particle> obj);
 
-		void AddParticle2DToLevel(shared_ptr<KP::Particle2D> particle, shared_ptr<KP::ParticleForceGenerator> generator=nullptr);
+		void AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP::ParticleForceGenerator> generator=nullptr);
 
-		inline void RegisterParticle2DForce(shared_ptr<KP::Particle2D> particle, shared_ptr<KP::ParticleForceGenerator> generator)
+		inline void RegisterParticleForce(shared_ptr<KP::Particle> particle, shared_ptr<KP::ParticleForceGenerator> generator)
 		{
-			_2DForceRegistry.Add(particle, generator);
+			_forceRegistry.Add(particle, generator);
 		}
 
 		void AddObject3DToLevel(const GameObject3D& obj);
@@ -279,10 +279,9 @@ namespace KillerEngine
 		std::map<U32, shared_ptr<GameObject2D>>   _2DWorldObjects;
 		std::map<U32, shared_ptr<GameObject3D>>   _3DWorldObjects;
 		std::map<U32, shared_ptr<KP::Particle>>   _particles;
-		std::map<U32, shared_ptr<KP::Particle2D>> _2DParticles;
 		std::vector<shared_ptr<RenderedText>>     _textList;
 		std::map<U32, TileData> _2DTileData;
 		//SpriteRenderer _batch;
-		KP::ParticleForceRegistry _2DForceRegistry;
+		KP::ParticleForceRegistry _forceRegistry;
 	};
 }//End namespace

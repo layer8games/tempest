@@ -44,13 +44,9 @@ namespace KillerPhysics
 //ParticleForceRegistry functions
 //
 //==========================================================================================================================		
-		void Add(shared_ptr<Particle2D> particle, shared_ptr<ParticleForceGenerator> forceGen);
+		void Add(shared_ptr<Particle> particle, shared_ptr<ParticleForceGenerator> forceGen);
 
-		void Add(shared_ptr<Particle3D> particle, shared_ptr<ParticleForceGenerator> forceGen);
-
-		void Remove(shared_ptr<Particle2D> particle, shared_ptr<ParticleForceGenerator> forceGen);
-
-		void Remove(shared_ptr<Particle3D> particle, shared_ptr<ParticleForceGenerator> forceGen);
+		void Remove(shared_ptr<Particle> particle, shared_ptr<ParticleForceGenerator> forceGen);
 
 		void Clear(void);
 
@@ -60,12 +56,12 @@ namespace KillerPhysics
 //==========================================================================================================================
 //This struct will keep track of one force generator, and the particle that uses it. 
 //==========================================================================================================================		
-		struct _Particle2DForceRegistration
+		struct _ParticleForceRegistration
 		{
-			shared_ptr<Particle2D> 			   particle;
+			shared_ptr<Particle> 			   particle;
 			shared_ptr<ParticleForceGenerator> forceGen;
 
-			bool operator ==(_Particle2DForceRegistration p)
+			bool operator ==(_ParticleForceRegistration p)
 			{
 				if(p.particle == particle && p.forceGen == forceGen)
 					return true;
@@ -74,24 +70,8 @@ namespace KillerPhysics
 			}			
 		};//end struct
 
-		struct _Particle3DForceRegistration
-		{
-			shared_ptr<Particle3D> 			   particle;
-			shared_ptr<ParticleForceGenerator> forceGen;
-
-			bool operator ==(_Particle3DForceRegistration p)
-			{
-				if(p.particle == particle && p.forceGen == forceGen)
-					return true;
-				else
-					return false;
-			}			
-		};//end struct
-
-		typedef std::vector<_Particle2DForceRegistration> Registry2D;
-		typedef std::vector<_Particle3DForceRegistration> Registry3D;
+		typedef std::vector<_ParticleForceRegistration> Registry;
 		
-		Registry2D _registrations2D;
-		Registry3D _registrations3D;
+		Registry _registrations;
 	};//end class
 }//end namespacef
