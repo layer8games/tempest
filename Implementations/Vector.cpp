@@ -125,7 +125,11 @@ Vector& Vector::operator=(F32 val)
 {
 	_data[x] = val;
 	_data[y] = val;
-	_data[z] = val;
+	
+	if(!_2D) 
+	{
+		_data[z] = val;
+	}
 
 	return *this;
 }
