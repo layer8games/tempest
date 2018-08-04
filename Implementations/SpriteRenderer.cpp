@@ -112,11 +112,11 @@ void SpriteRenderer::AddToBatch(const KM::Vector2& pos, F32 w, F32 h, const Colo
 
 void SpriteRenderer::AddToBatch(const KM::Vector2& pos, F32 w, F32 h, const Color& c, U32 textureID)
 {
-	if(textureID != 0 && textureID != TextureManager::Instance()->GetCurrentTextureID())
-	{
-		Draw();
-		TextureManager::Instance()->SetCurrentTextureID(textureID);
-	}
+	//if(textureID != 0 && textureID != TextureManager::Instance()->GetCurrentTextureID())
+	//{
+	//	Draw();
+	//	TextureManager::Instance()->SetCurrentTextureID(textureID);
+	//}
 
 	_bottomTop.push_back(0.0f);
 	_bottomTop.push_back(0.0f);
@@ -128,11 +128,11 @@ void SpriteRenderer::AddToBatch(const KM::Vector2& pos, F32 w, F32 h, const Colo
 void SpriteRenderer::AddToBatch(const KM::Vector2& pos, F32 w, F32 h, const Color& c, U32 textureID, 
 							 const KM::Vector2& verticalLimit, const KM::Vector2& horizontalLimit)
 {
-	if(textureID != 0 && TextureManager::Instance()->GetCurrentTextureID() != textureID)
-	{
-		Draw();
-		TextureManager::Instance()->SetCurrentTextureID(textureID);
-	}
+	//if(textureID != 0 && TextureManager::Instance()->GetCurrentTextureID() != textureID)
+	//{
+	//	Draw();
+	//	TextureManager::Instance()->SetCurrentTextureID(textureID);
+	//}
 	
 	_bottomTop.push_back(verticalLimit.GetX());
 	_bottomTop.push_back(verticalLimit.GetY());

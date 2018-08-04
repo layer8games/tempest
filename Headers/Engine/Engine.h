@@ -51,16 +51,7 @@ namespace KillerEngine
 		{ 
 			WinProgram::Instance()->EndRunning(); 
 		}
-
-/*! Wrapper for TextureManager::LoadTexture(). Saves an handle to a loaded texture in OpenGL by ID
-	\param path string: filepath to the texture image
-	\param id U32: id for texture. Will be used to call it later. 
-	\param width S32: width in pixels of texture
-	\param height S32: height in pixels of texture */
-		inline void LoadTexture(const string path, const U32 id, const S32 width, const S32 height) 
-		{ 
-			TextureManager::Instance()->LoadTexture(path, id, width, height); 
-		}
+		
 /*!  Wrapper for LevelManager::AddLevel(). Adds level that can be set as active. 
 	\param level shared_ptr<Level>: Level to be added. */
 		inline void AddLevelToManager(shared_ptr<Level> level)

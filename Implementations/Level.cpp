@@ -369,6 +369,12 @@ void Level::UpdateObjects(void)
 void Level::Importer2D(string tmxFilePath)
 {
 
+
+/*
+
+	All of this is old an old version that needs to be deleted. Just keeping it as a reference. 
+
+
 	tinyxml2::XMLDocument doc;
 	doc.LoadFile(tmxFilePath.c_str());
 
@@ -554,7 +560,7 @@ void Level::Importer2D(string tmxFilePath)
 	{
 		ErrorManager::Instance()->SetError(EC_Engine, "Unable to open file path to .tmx file " + tmxFilePath);
 	}
-
+*/
 }//end Importer
 
 //==========================================================================================================================
