@@ -28,9 +28,10 @@ _columns{x, y, z, w}
 
 Matrix::Matrix(const F32 val)
 :
-_columns{Vector(val, 0.0f, 0.0f),
-		 Vector(0.0f, val, 0.0f),
-		 Vector(0.0f, 0.0f, val)}
+_columns{Vector(val, 0.0f, 0.0f, 0.0f),
+		 Vector(0.0f, val, 0.0f, 0.0f),
+		 Vector(0.0f, 0.0f, val, 0.0f),
+		 Vector(0.0f, 0.0f, 0.0f, 1.0f)}
 {  }
 
 Matrix::Matrix( F32 m00, F32 m01, F32 m02, F32 m03,
@@ -493,10 +494,38 @@ Matrix& Matrix::operator=(const Matrix& mat)
 
 Matrix Matrix::operator*(const Matrix& mat) 
 {
-	Vector xCol = (*this) * mat[0];
-	Vector yCol = (*this) * mat[1];
-	Vector zCol = (*this) * mat[2];
-	Vector wCol = (*this) * mat[3];
+	Vector xCol 
+	{
+		_columns[0][x] * mat[0][x] + _columns[1][x] * mat[0][y] + _columns[2][x] * mat[0][z] + _columns[3][x] * mat[0][w],
+		_columns[0][y] * mat[0][x] + _columns[1][y] * mat[0][y] + _columns[2][y] * mat[0][z] + _columns[3][y] * mat[0][w],
+		_columns[0][z] * mat[0][x] + _columns[1][z] * mat[0][y] + _columns[2][z] * mat[0][z] + _columns[3][z] * mat[0][w],
+		_columns[0][w] * mat[0][x] + _columns[1][w] * mat[0][y] + _columns[2][w] * mat[0][z] + _columns[3][w] * mat[0][w],
+
+	};
+
+	Vector yCol
+	{
+		_columns[0][x] * mat[1][x] + _columns[1][x] * mat[1][y] + _columns[2][x] * mat[1][z] + _columns[3][x] * mat[1][w],
+		_columns[0][y] * mat[1][x] + _columns[1][y] * mat[1][y] + _columns[2][y] * mat[1][z] + _columns[3][y] * mat[1][w],
+		_columns[0][z] * mat[1][x] + _columns[1][z] * mat[1][y] + _columns[2][z] * mat[1][z] + _columns[3][z] * mat[1][w],
+		_columns[0][w] * mat[1][x] + _columns[1][w] * mat[1][y] + _columns[2][w] * mat[1][z] + _columns[3][w] * mat[1][w],
+	};
+
+	Vector zCol
+	{
+		_columns[0][x] * mat[2][x] + _columns[1][x] * mat[2][y] + _columns[2][x] * mat[2][z] + _columns[3][x] * mat[2][w],
+		_columns[0][y] * mat[2][x] + _columns[1][y] * mat[2][y] + _columns[2][y] * mat[2][z] + _columns[3][y] * mat[2][w],
+		_columns[0][z] * mat[2][x] + _columns[1][z] * mat[2][y] + _columns[2][z] * mat[2][z] + _columns[3][z] * mat[2][w],
+		_columns[0][w] * mat[2][x] + _columns[1][w] * mat[2][y] + _columns[2][w] * mat[2][z] + _columns[3][w] * mat[2][w],
+	};
+
+	Vector wCol
+	{
+		_columns[0][x] * mat[3][x] + _columns[1][x] * mat[3][y] + _columns[2][x] * mat[3][z] + _columns[3][x] * mat[3][w],
+		_columns[0][y] * mat[3][x] + _columns[1][y] * mat[3][y] + _columns[2][y] * mat[3][z] + _columns[3][y] * mat[3][w],
+		_columns[0][z] * mat[3][x] + _columns[1][z] * mat[3][y] + _columns[2][z] * mat[3][z] + _columns[3][z] * mat[3][w],
+		_columns[0][w] * mat[3][x] + _columns[1][w] * mat[3][y] + _columns[2][w] * mat[3][z] + _columns[3][w] * mat[3][w],
+	};
 
 	return Matrix(xCol, yCol, zCol, wCol);
 }
