@@ -38,10 +38,8 @@ namespace KillerMath
 		Matrix(const Vector& x, const Vector& y, const Vector& z);
 
 		Matrix(const Vector& x, const Vector& y, const Vector& z, const Vector& w);
-		
-/*! Array constructor. Set's all values of the Matrix to the cooresponding values in the array.
-	\param mSrc F32[16]. Array of 16 values, basically a raw Matrix. */		
-		explicit Matrix(const F32 mSrc[16]);
+
+		explicit Matrix(const F32 val);
 		
 /*! All value constructor. Takes a list of values and turns them into a matrix of the same mapping. 
 	\param m00 F32. Value 0,0.
@@ -61,9 +59,9 @@ namespace KillerMath
 	\param m32 F32. Value 3,2
 	\param m33 F32. Value 3,3. */
 		Matrix( F32 m00, F32 m01, F32 m02, F32 m03,
-				 F32 m10, F32 m11, F32 m12, F32 m13,
-				 F32 m20, F32 m21, F32 m22, F32 m23,
-				 F32 m30, F32 m31, F32 m32, F32 m33);
+				F32 m10, F32 m11, F32 m12, F32 m13,
+				F32 m20, F32 m21, F32 m22, F32 m23,
+				F32 m30, F32 m31, F32 m32, F32 m33);
 
 /*! Copy Constructor. Calls GetElems(), then sets the values accordingly. */		
 		Matrix(const Matrix& M);
@@ -120,10 +118,6 @@ namespace KillerMath
 	\param z F32. Value of z axis translation. */		
 		void Translate(F32 xVal, F32 yVal, F32 zVal);
 
-/*! Resets Matrix, then creates translation based on the x and y values found in vec. Calls MakeIdentiy().
-	\param vec Vector2&. Calls Vector2::GetX and Vector::GetY to get values for translation. */
-		void Translate2D(const Vector& vec);
-
 /*! Resets Matrix, then creates translation based on the x, y and z values found in vec. Calls MakeIdentiy().
 	\param vec Vector3&. Calls Vector3::GetX, Vector3::GetY and Vector3::GetZ to get values for translation. */	
 		void Translate(const Vector& vec);
@@ -138,10 +132,6 @@ namespace KillerMath
 	\param y F32. Value of y axis translation.
 	\param z F32. Value of z axis translation. */
 		void AddTranslate(F32 xVal, F32 yVal, F32 zVal);
-
-/*! Creates a translation on the x and y axes without reseting the other values. 
-	\param vec Vector3&. Calls Vector2::7GetX and Vector2::GetY to get values for translation. */	
-		void AddTranslate2D(const Vector& vec);
 
 /*! Creates a translation on the x, y and z axes without reseting the other values. 
 	\param vec Vector3&. Calls Vector3::GetX, Vector3::GetY and Vector3::GetZ to get values for translation. */	
@@ -162,10 +152,6 @@ namespace KillerMath
 		void Scale(F32 xVal, F32 yVal, F32 zVal);
 
 /*! Resets the Matrix and creates a scaling Matrix on the x and y axes. Calls MakeIndentity().
-	\param vec Vector2&. Calls Vector2::GetX and Vector2::GetY as values for scale on x and y axes. */
-		void Scale2D(const Vector& vec);
-
-/*! Resets the Matrix and creates a scaling Matrix on the x and y axes. Calls MakeIndentity().
 	\param vec Vector3&. Calls Vector3::GetX, Vector3::GetY and Vector3::GetZ as values for scale on x, y and z axes. */
 		void Scale(const Vector& vec);
 
@@ -179,10 +165,6 @@ namespace KillerMath
 	\param y F32. Value of scale on y axis.
 	\param z F32. Value of scale on z axis. */
 		void AddScale(F32 xVal, F32 yVal, F32 zVal);
-
-/*! Creates a scaling Matrix on the x and y axes without resetting the other values.
-	\param vec Vector2&. Calls Vector2::GetX and Vector2::GetY as values for scale on x and y axes. */
-		void AddScale2D(const Vector& vec);
 
 /*! Creates a scaling Matrix on the x, y and z axes without resetting the other values.
 	\param vec Vector2&. Calls Vector3::GetX, Vector3::GetY and Vector3::GetZ as values for scale on x, y and z axes. */
@@ -239,15 +221,15 @@ namespace KillerMath
 //==========================================================================================================================
 //Resettings
 //==========================================================================================================================
-/*! Wrapper for ResetMatrix(). Sets all values of the Matrix to 0, with the diagnal set to 1. */
+/*! Wrapper for Reset(). Sets all values of the Matrix to 0, with the diagnal set to 1. */
 		void MakeIdentity(void)
 		{
-			ResetMatrix(1.0f);
+			Reset(1.0f);
 		}	
 
 /*! Sets all the values of the Matrix to 0, with the diagnal set to val.
 	\param val F32. Value of the diagnal of the Matrix. */		
-		void ResetMatrix(F32 val);
+		void Reset(F32 val=0.0f);
 
 //==========================================================================================================================
 //Misc

@@ -26,12 +26,11 @@ Matrix::Matrix(const Vector& x, const Vector& y, const Vector& z, const Vector& 
 _columns{x, y, z, w}
 {  }
 
-Matrix::Matrix(const F32 mSrc[16])
+Matrix::Matrix(const F32 val)
 :
-_columns{Vector(mSrc[0], mSrc[1], mSrc[2], mSrc[3]),
-		 Vector(mSrc[4], mSrc[5], mSrc[6], mSrc[7]),
-		 Vector(mSrc[8], mSrc[9], mSrc[10], mSrc[11]),
-		 Vector(mSrc[12], mSrc[13], mSrc[14], mSrc[15])}
+_columns{Vector(val, 0.0f, 0.0f),
+		 Vector(0.0f, val, 0.0f),
+		 Vector(0.0f, 0.0f, val)}
 {  }
 
 Matrix::Matrix( F32 m00, F32 m01, F32 m02, F32 m03,
@@ -212,21 +211,17 @@ void Matrix::Translate(F32 xVal, F32 yVal, F32 zVal)
 	_columns[3][z] = zVal;
 }
 
-void Matrix::Translate2D(const Vector& vec)
+void Matrix::Translate(const Vector& vec)
 {
 	MakeIdentity(); 
 
 	_columns[3][x] = vec[x];
 	_columns[3][y] = vec[y];
-}
 
-void Matrix::Translate(const Vector& vec)
-{
-	MakeIdentity();
-
-	_columns[3][x] = vec[x];
-	_columns[3][y] = vec[y];
-	_columns[3][z] = vec[z];
+	if(!vec.Is2D())
+	{
+		_columns[3][z] = vec[z];
+	}
 }
 
 void Matrix::AddTranslate(F32 xVal, F32 yVal)
@@ -242,17 +237,15 @@ void Matrix::AddTranslate(F32 xVal, F32 yVal, F32 zVal)
 	_columns[3][z] += zVal;
 }
 
-void Matrix::AddTranslate2D(const Vector& vec)
-{
-	_columns[3][x] += vec[x];
-	_columns[3][y] += vec[y];
-}
-
 void Matrix::AddTranslate(const Vector& vec)
 {
 	_columns[3][x] += vec[x];
 	_columns[3][y] += vec[y];
-	_columns[3][z] += vec[z];
+	
+	if(!vec.Is2D()) 
+	{
+		_columns[3][z] += vec[z];
+	}
 }
 
 //==========================================================================================================================
@@ -275,21 +268,17 @@ void Matrix::Scale(F32 xVal, F32 yVal, F32 zVal)
 	_columns[2][z] = zVal;
 }
 
-void Matrix::Scale2D(const Vector& vec)
-{
-	MakeIdentity();
-
-	_columns[0][x] = vec[x];
-	_columns[1][y] = vec[y];
-}
-
 void Matrix::Scale(const Vector& vec)
 {
 	MakeIdentity();
 
 	_columns[0][x] = vec[x];
 	_columns[1][y] = vec[y];
-	_columns[2][z] = vec[z];
+	
+	if(!vec.Is2D()) 
+	{
+		_columns[2][z] = vec[z];
+	}
 }
 
 void Matrix::AddScale(F32 xVal, F32 yVal)
@@ -305,17 +294,15 @@ void Matrix::AddScale(F32 xVal, F32 yVal, F32 zVal)
 	_columns[2][z] += zVal;
 }
 
-void Matrix::AddScale2D(const Vector& vec)
-{
-	_columns[0][x] += vec[x];
-	_columns[1][y] += vec[y];
-}
-
 void Matrix::AddScale(const Vector& vec)
 {
 	_columns[0][x] += vec[x];
 	_columns[1][y] += vec[y];
-	_columns[2][z] += vec[z];
+	
+	if(!vec.Is2D()) 
+	{
+		_columns[2][z] += vec[z];
+	}
 }
 
 //==========================================================================================================================
@@ -426,7 +413,7 @@ void Matrix::AddRotation(F32 xVal, F32 yVal, F32 zVal)
 //==========================================================================================================================
 //Resettings
 //==========================================================================================================================
-void Matrix::ResetMatrix(F32 val)
+void Matrix::Reset(F32 val)
 {
 	//Reset Matrix
 	_columns[0] = Vector(val, 0.0f, 0.0f, 0.0f);
