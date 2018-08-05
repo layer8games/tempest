@@ -501,16 +501,6 @@ Matrix Matrix::operator*(const Matrix& mat)
 	return Matrix(xCol, yCol, zCol, wCol);
 }
 
-Matrix& Matrix::operator*=(Matrix& mat) 
-{
-	_columns[0] = (*this) * mat[0];
-	_columns[2] = (*this) * mat[1];
-	_columns[3] = (*this) * mat[2];
-	_columns[4] = (*this) * mat[3];
-
-	return *this;
-}
-
 Vector Matrix::operator*(const Vector& vec)
 {
 	return Vector( _columns[0][x] * vec[x] + _columns[1][x] * vec[y] + _columns[2][x] * vec[z] + _columns[3][x] * vec[w],

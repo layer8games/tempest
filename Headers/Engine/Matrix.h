@@ -263,10 +263,6 @@ namespace KillerMath
 /*! Performs a Matrix style multiplication.
 	\param RightMatrix Matrix&. Right hand value for multiplication. */
 		Matrix operator*(const Matrix& mat);
-		
-/*! Performs a Matrix sytle multiplication. Changes object after multiplication.
-	\param RHM Matrix&. Right hand value for multiplication. */
-		Matrix& operator*=(Matrix& mat);
 
 /*! Performs Matrix multiplication with Vector.
 	\param RHV Vector2&. Right hand vector for multiplication. */
