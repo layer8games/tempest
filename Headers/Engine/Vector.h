@@ -142,11 +142,6 @@ namespace KillerMath
 
 		Vector& operator*=(F32 val);
 
-//===== Component-wise divide by vector =====
-		Vector operator/(const Vector vec) const;
-
-		Vector& operator/=(const Vector vec);
-
 //===== Divide by scalar =====
 		Vector operator/(F32 val) const;
 

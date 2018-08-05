@@ -22,7 +22,7 @@ _data{val, val, val, 1.0f}
 Vector::Vector(F32 x, F32 y)
 :
 _2D(true),
-_data{x, y, 1.0, 1.0f}
+_data{x, y, 0.0, 1.0f}
 {  }
 
 Vector::Vector(F32 x, F32 y, F32 z)
@@ -91,18 +91,18 @@ void Vector::Reset(F32 val)
 	_data[x] = val;
 	_data[y] = val;
 	_data[z] = val;
-	_data[w] = val;
+	_data[w] = 1.0f;
 }
 
 //===== Math Helper Functions =====
 void Vector::AddScaledVector(const Vector& vec, F32 scale)
 {
-	_data[x] *= vec[x] + scale;
-	_data[y] *= vec[y] + scale;
+	_data[x] += vec[x] * scale;
+	_data[y] += vec[y] * scale;
 
 	if(!_2D)
 	{
-		_data[w] += vec[w] + scale;
+		_data[z] += vec[z] * scale;
 	}
 }
 //==========================================================================================================================
@@ -311,47 +311,12 @@ Vector& Vector::operator*=(F32 val)
 	return *this;
 }
 
-//===== Component-wise divide by vector =====
-Vector Vector::operator/(const Vector vec) const
-{
-	assert(vec[x] != 0.0f);
-	assert(vec[y] != 0.0f);
-	assert(vec[z] != 0.0f);
-
-	if(_2D)
-	{
-		return Vector( _data[x] / vec[x],
-					   _data[y] / vec[y] );
-	}
-
-	return Vector( _data[x] / vec[x],
-				   _data[y] / vec[y],
-				   _data[z] / vec[z] );
-}
-
-Vector& Vector::operator/=(const Vector vec)
-{
-	assert(vec[x] != 0.0f);
-	assert(vec[y] != 0.0f);
-	assert(vec[z] != 0.0f);
-
-	_data[x] /= vec[x];
-	_data[y] /= vec[y];
-
-	if(!_2D)
-	{
-		_data[z] /= vec[z];
-	}
-
-	return *this;
-}
-
 //===== Divide by scalar =====
 Vector Vector::operator/(F32 val) const
 {
 	assert(val != 0.0f);
 
-	if(!_2D)
+	if(_2D)
 	{
 		return Vector( _data[x] / val,
 					   _data[y] / val );
