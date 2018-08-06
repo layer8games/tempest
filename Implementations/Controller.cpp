@@ -120,8 +120,8 @@ bool Controller::GetKeyReleased(Keys k)
 	}
 }
 
-void Controller::LeftMouseClick(const KM::Vector2& coord)
+void Controller::LeftMouseClick(const KM::Vector& coord)
 {
-	_leftClickCoordinates.SetX(coord.GetX());
-	_leftClickCoordinates.SetY( -( coord.GetY() - static_cast<F32>( WinProgram::Instance()->GetHeight() ) ) );
-} 
+	_leftClickCoordinates[0] = coord[0];
+	_leftClickCoordinates[1] = -(coord[1] - static_cast<F32>( WinProgram::Instance()->GetHeight() ));
+}  

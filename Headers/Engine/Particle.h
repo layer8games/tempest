@@ -72,7 +72,7 @@ namespace KillerPhysics
 			_velocity[2] = z;
 		}
 
-		inline void SetScaledVelocity(const KM::Vector& vec, F32 scale)
+		inline void AddScaledVelocity(const KM::Vector& vec, F32 scale)
 		{
 			_velocity.AddScaledVector(vec, scale);
 		}

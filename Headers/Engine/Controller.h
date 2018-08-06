@@ -5,7 +5,7 @@
 #include <Engine/WinProgram.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Matrix.h>
-#include <Engine/Vector2.h>
+#include <Engine/Vector.h>
 namespace KM = KillerMath;
 
 //=====DirectInput includes=====
@@ -132,24 +132,24 @@ namespace KillerEngine
 		}
 
 /*! Used by WinProgram to save the coordinates when a Left Mouse click is detected by the system. 
-	\param coord Vector2: x,y position on the screen of the click. */
-		void LeftMouseClick(const KM::Vector2& coord);
+	\param coord Vector: x,y position on the screen of the click. */
+		void LeftMouseClick(const KM::Vector& coord);
 
 /*! Returns the raw coordinates of a Left Click in screen space. */
-		const KM::Vector2 GetLeftMouseCoord(void) const
+		const KM::Vector GetLeftMouseCoord(void) const
 		{ 
 			return _leftClickCoordinates; 
 		}
 
 /*! Used by WinProgram to save the coordinates when a Right Mouse click is detected by the system.
-	\param coord Vector2: x.y position on the screen of the click */
-		void RightMouseClick(const KM::Vector2& coord) 
+	\param coord Vector: x.y position on the screen of the click */
+		void RightMouseClick(const KM::Vector& coord) 
 		{ 
 			_rightClickCoordinates = coord; 
 		}
 
 /*! Returns the raw coordinates of a Right click in screen space */		
-		const KM::Vector2 GetRightMouseCoord(void) const
+		const KM::Vector GetRightMouseCoord(void) const
 		{ 
 			return _rightClickCoordinates; 
 		}
@@ -193,7 +193,7 @@ BUG! This is not copying anything at all. It is only passing the new refalone
 		KeyStates 		_keyStates[_totalKeys];			///< Array of states for each key, indexed by ID.
 		bool 			_pastActiveKeys[_totalKeys];	///< Array of keys in a pressed state as of last frame, indexed by ID.
 		bool			_curActiveKeys[_totalKeys];		///< Array of keys in a pressed state as of this frame, indexed by ID.
-		KM::Vector2 	_leftClickCoordinates;			///< Coordinates of last left click.
-		KM::Vector2		_rightClickCoordinates;			///< Coordinates of last right click.
+		KM::Vector 	_leftClickCoordinates;			///< Coordinates of last left click.
+		KM::Vector		_rightClickCoordinates;			///< Coordinates of last right click.
 	};
 }//End namespace

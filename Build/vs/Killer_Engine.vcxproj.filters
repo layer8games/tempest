@@ -49,9 +49,6 @@
     <Filter Include="Components\KillerMath\LinearAlgebra">
       <UniqueIdentifier>{f7ce502c-f857-4759-98ab-dd273a5641ba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\KillerMath\LinearAlgebra\Matrix">
-      <UniqueIdentifier>{b47791cc-1241-40a1-9bf3-9df0eb96250c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\KillerMath\LinearAlgebra\Vector">
       <UniqueIdentifier>{2d795523-a23d-4211-b17f-2919e5a6a30f}</UniqueIdentifier>
     </Filter>
@@ -147,6 +144,9 @@
     </Filter>
     <Filter Include="Components\Renders -- DELETE ME">
       <UniqueIdentifier>{b70ec69c-e24d-4feb-8453-9012478dd384}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerMath\LinearAlgebra\Matrix">
+      <UniqueIdentifier>{b47791cc-1241-40a1-9bf3-9df0eb96250c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
