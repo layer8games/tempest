@@ -338,9 +338,9 @@ void Matrix::RotateY(F32 val)
 	MakeIdentity();
 
 	_columns[0][x] = cos(val);
-	_columns[0][y] = sin(val);
+	_columns[0][z] = sin(val);
 	_columns[2][x] = -sin(val);
-	_columns[2][y] = cos(val);
+	_columns[2][z] = cos(val);
 }
 
 void Matrix::AddRotateY(F32 val)
