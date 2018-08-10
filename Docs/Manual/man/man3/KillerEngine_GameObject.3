@@ -1,0 +1,132 @@
+.TH "KillerEngine::GameObject" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerEngine::GameObject
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBKillerPhysics::Particle\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGameObject\fP (const \fBGameObject\fP &obj)"
+.br
+.ti -1c
+.RI "virtual void \fBv_Update\fP (void)=0"
+.br
+.ti -1c
+.RI "virtual void \fBv_Render\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBv_InitVertexData\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAddVertex\fP (const \fBVertex\fP &vert)"
+.br
+.ti -1c
+.RI "void \fBAddIndex\fP (U32 index)"
+.br
+.ti -1c
+.RI "void \fBSetIndices\fP (std::vector< U32 > indices)"
+.br
+.ti -1c
+.RI "void \fBBindVAO\fP (void)"
+.br
+.ti -1c
+.RI "const U32 \fBGetID\fP (void) const"
+.br
+.ti -1c
+.RI "const bool \fBGetActive\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetActive\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetInactive\fP (void)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP & \fBGetPosition\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetPosition\fP (const \fBKM::Vector\fP &pos)"
+.br
+.ti -1c
+.RI "void \fBSetPosition\fP (F32 x, F32 y)"
+.br
+.ti -1c
+.RI "void \fBSetPosition\fP (F32 x, F32 y, F32 z)"
+.br
+.ti -1c
+.RI "void \fBAddScaledPosition\fP (const \fBKM::Vector\fP pos, F32 scale)"
+.br
+.ti -1c
+.RI "const \fBShader\fP & \fBGetShader\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetShader\fP (const \fBShader\fP &shader)"
+.br
+.ti -1c
+.RI "void \fBLoadShader\fP (std::vector< \fBShaderData\fP > shaderData)"
+.br
+.ti -1c
+.RI "void \fBUseShader\fP (void)"
+.br
+.ti -1c
+.RI "std::vector< \fBVertex\fP > \fBGetVertices\fP (void) const"
+.br
+.ti -1c
+.RI "std::vector< U32 > \fBGetIndices\fP (void) const"
+.br
+.ti -1c
+.RI "GLuint \fBGetVAO\fP (void) const"
+.br
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBBufferData\fP { \fBVERTEX_BUFFER\fP = 0, \fBVERTEX_POS\fP = 0, \fBFRAGMENT_BUFFER\fP = 1, \fBFRAGMENT_POS\fP = 2, \fBTEX_COORD_BUFFER\fP = 2, \fBTEX_COORD_POS\fP = 1, \fBINDEX_BUFFER\fP = 3, \fBNUM_VBO\fP = 4 }"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "U32 \fB_ID\fP"
+.br
+.ti -1c
+.RI "bool \fB_active\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_position\fP"
+.br
+.ti -1c
+.RI "\fBShader\fP \fB_shader\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBVertex\fP > \fB_vertices\fP"
+.br
+.ti -1c
+.RI "std::vector< U32 > \fB_indices\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_vao\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_vbo\fP [NUM_VBO]"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static U32 \fB_nextID\fP = 1"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

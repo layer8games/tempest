@@ -1,7 +1,7 @@
 var classtinyxml2_1_1_x_m_l_printer =
 [
-    [ "ENTITY_RANGE", "classtinyxml2_1_1_x_m_l_printer.html#ac367e03f6ca11989ca59ed739ac37d39a2ddc02813235fe451809606959166db5", null ],
-    [ "BUF_SIZE", "classtinyxml2_1_1_x_m_l_printer.html#ac367e03f6ca11989ca59ed739ac37d39a1f747a8fb39ceb2e711c3798058fb632", null ],
+    [ "ENTITY_RANGE", "classtinyxml2_1_1_x_m_l_printer.html#a6ad62ac682429f6e4a0b52dd4f8d1a53a2ddc02813235fe451809606959166db5", null ],
+    [ "BUF_SIZE", "classtinyxml2_1_1_x_m_l_printer.html#a6ad62ac682429f6e4a0b52dd4f8d1a53a1f747a8fb39ceb2e711c3798058fb632", null ],
     [ "XMLPrinter", "classtinyxml2_1_1_x_m_l_printer.html#aa6d3841c069085f5b8a27bc7103c04f7", null ],
     [ "~XMLPrinter", "classtinyxml2_1_1_x_m_l_printer.html#af4caefa48ea6436898fb1807de8d14c0", null ],
     [ "ClearBuffer", "classtinyxml2_1_1_x_m_l_printer.html#a216157765b7267bf389975b1cbf9a909", null ],

@@ -9,12 +9,12 @@ var searchData=
   ['remove_5flast_5fnode',['remove_last_node',['../classrapidxml_1_1xml__node.html#a9182512e948ec451a83f116cce7c7674',1,'rapidxml::xml_node']]],
   ['remove_5fnode',['remove_node',['../classrapidxml_1_1xml__node.html#a98289923eb9e8889418a9eb0207ea35c',1,'rapidxml::xml_node']]],
   ['render',['Render',['../class_killer_engine_1_1_engine.html#a0544104c7bffacec72851a2074ac8102',1,'KillerEngine::Engine']]],
-  ['resetmatrix',['ResetMatrix',['../class_killer_math_1_1_matrix.html#a0689faf815b52bcebc2fb7bb58f863fa',1,'KillerMath::Matrix']]],
-  ['rightmouseclick',['RightMouseClick',['../class_killer_engine_1_1_controller.html#ab8c2c98a7462f4cbe2e0160cd2d08145',1,'KillerEngine::Controller']]],
+  ['reset',['Reset',['../class_killer_math_1_1_matrix.html#a077757f722775e2641144e4d2197847e',1,'KillerMath::Matrix']]],
+  ['rightmouseclick',['RightMouseClick',['../class_killer_engine_1_1_controller.html#a4d1501b7aa493340c545b5d0528b1496',1,'KillerEngine::Controller']]],
   ['rootelement',['RootElement',['../classtinyxml2_1_1_x_m_l_document.html#ad2b70320d3c2a071c2f36928edff3e1c',1,'tinyxml2::XMLDocument']]],
-  ['rotate',['Rotate',['../class_killer_math_1_1_matrix.html#a0a58d82efeaacfd06bf15eb9ec12d07f',1,'KillerMath::Matrix']]],
-  ['rotatex',['RotateX',['../class_killer_math_1_1_matrix.html#a04512a62b1924f7aebc747777ce49cc9',1,'KillerMath::Matrix']]],
-  ['rotatey',['RotateY',['../class_killer_math_1_1_matrix.html#a9cf348fdd738f3060c91a0140d32d072',1,'KillerMath::Matrix']]],
-  ['rotatez',['RotateZ',['../class_killer_math_1_1_matrix.html#a4473cb8bf08b1c6c8bfbcae73003d82c',1,'KillerMath::Matrix']]],
+  ['rotate',['Rotate',['../class_killer_math_1_1_matrix.html#a34b833eb147f7594d0e091c4373c040a',1,'KillerMath::Matrix']]],
+  ['rotatex',['RotateX',['../class_killer_math_1_1_matrix.html#ad3e691336d707f55db2096d9eb77df96',1,'KillerMath::Matrix']]],
+  ['rotatey',['RotateY',['../class_killer_math_1_1_matrix.html#a67accec66c6bb1c21ba42f76397d844d',1,'KillerMath::Matrix']]],
+  ['rotatez',['RotateZ',['../class_killer_math_1_1_matrix.html#a2e42c60d5c8ff2ddd44e39344069e159',1,'KillerMath::Matrix']]],
   ['running',['Running',['../class_killer_engine_1_1_engine.html#a839aaf9ee031bb12b4f1d08453c2f068',1,'KillerEngine::Engine']]]
 ];

@@ -58,9 +58,9 @@ namespace KillerMath
 		}
 
 //===== Vector Special functions =====
-		F32 DotProduct(const Vector& vec);
+		F32 DotProduct(const Vector& vec) const;
 
-		Vector CrossProduct(const Vector& vec);
+		Vector CrossProduct(const Vector& vec) const;
 
 		F32 Magnitude(void);
 
@@ -171,5 +171,10 @@ namespace KillerMath
 
 		bool _2D;
 		F32  _data[4];
+		//This is an idea for later. 
+		//Find a value that you can invalidate if 
+		//x y or z changes, that allows you to cache 
+		//the mag and save on the sqrt call
+		//F32  _magCache;
 	};
 }

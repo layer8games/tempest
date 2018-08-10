@@ -2,8 +2,7 @@ var hierarchy =
 [
     [ "__GLXEvent", "union_____g_l_x_event.html", null ],
     [ "_GPU_DEVICE", "struct___g_p_u___d_e_v_i_c_e.html", null ],
-    [ "KillerPhysics::ParticleForceRegistry::_Particle2DForceRegistration", "struct_killer_physics_1_1_particle_force_registry_1_1___particle2_d_force_registration.html", null ],
-    [ "KillerPhysics::ParticleForceRegistry::_Particle3DForceRegistration", "struct_killer_physics_1_1_particle_force_registry_1_1___particle3_d_force_registration.html", null ],
+    [ "KillerPhysics::ParticleForceRegistry::_ParticleForceRegistration", "struct_killer_physics_1_1_particle_force_registry_1_1___particle_force_registration.html", null ],
     [ "rapidxml::xml_document< Ch >::attribute_name_pred", "structrapidxml_1_1xml__document_1_1attribute__name__pred.html", null ],
     [ "rapidxml::xml_document< Ch >::attribute_value_pred< Quote >", "structrapidxml_1_1xml__document_1_1attribute__value__pred.html", null ],
     [ "rapidxml::xml_document< Ch >::attribute_value_pure_pred< Quote >", "structrapidxml_1_1xml__document_1_1attribute__value__pure__pred.html", null ],
@@ -22,6 +21,9 @@ var hierarchy =
       [ "rapidxml::parse_error", "classrapidxml_1_1parse__error.html", null ]
     ] ],
     [ "KillerEngine::Font", "class_killer_engine_1_1_font.html", null ],
+    [ "KillerEngine::GameObject", "class_killer_engine_1_1_game_object.html", [
+      [ "KillerPhysics::Particle", "class_killer_physics_1_1_particle.html", null ]
+    ] ],
     [ "KillerEngine::GameObject2D", "class_killer_engine_1_1_game_object2_d.html", [
       [ "KillerEngine::EnvironmentObject", "class_killer_engine_1_1_environment_object.html", null ],
       [ "KillerPhysics::Particle2D", "class_killer_physics_1_1_particle2_d.html", null ]
@@ -74,6 +76,7 @@ var hierarchy =
     [ "KillerEngine::RenderedCharacter", "class_killer_engine_1_1_rendered_character.html", null ],
     [ "KillerEngine::RenderedText", "class_killer_engine_1_1_rendered_text.html", null ],
     [ "KillerEngine::Shader", "class_killer_engine_1_1_shader.html", null ],
+    [ "KillerEngine::ShaderData", "struct_killer_engine_1_1_shader_data.html", null ],
     [ "KillerEngine::Sprite", "class_killer_engine_1_1_sprite.html", null ],
     [ "KillerEngine::SpriteBatch", "class_killer_engine_1_1_sprite_batch.html", null ],
     [ "KillerEngine::SpriteRenderer", "class_killer_engine_1_1_sprite_renderer.html", null ],
@@ -85,8 +88,10 @@ var hierarchy =
     [ "KillerEngine::TextureManager", "class_killer_engine_1_1_texture_manager.html", null ],
     [ "KillerEngine::Level::TileData", "struct_killer_engine_1_1_level_1_1_tile_data.html", null ],
     [ "KillerMath::Timer", "class_killer_math_1_1_timer.html", null ],
+    [ "KillerMath::Vector", "class_killer_math_1_1_vector.html", null ],
     [ "KillerMath::Vector2", "class_killer_math_1_1_vector2.html", null ],
     [ "KillerMath::Vector3", "class_killer_math_1_1_vector3.html", null ],
+    [ "KillerEngine::Vertex", "struct_killer_engine_1_1_vertex.html", null ],
     [ "KillerEngine::Vertex2D", "struct_killer_engine_1_1_vertex2_d.html", null ],
     [ "KillerEngine::Vertex3D", "struct_killer_engine_1_1_vertex3_d.html", null ],
     [ "rapidxml::xml_document< Ch >::whitespace_pred", "structrapidxml_1_1xml__document_1_1whitespace__pred.html", null ],

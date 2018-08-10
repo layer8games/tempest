@@ -1,4 +1,4 @@
-.TH "KillerEngine::Engine" 3 "Tue Jul 10 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Engine" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -22,9 +22,6 @@ KillerEngine::Engine
 .br
 .ti -1c
 .RI "void \fBEnd\fP (void)"
-.br
-.ti -1c
-.RI "void \fBLoadTexture\fP (const string path, const U32 id, const S32 width, const S32 height)"
 .br
 .ti -1c
 .RI "void \fBAddLevelToManager\fP (shared_ptr< \fBLevel\fP > level)"
@@ -89,21 +86,6 @@ Wrapper for WinProgram::Init\&. Sets up the Window and OpenGL
 
 .SS "shared_ptr< \fBEngine\fP > Engine::Instance (void)\fC [static]\fP"
 Singleton function to get global instance of \fBEngine\fP\&. 
-.SS "void KillerEngine::Engine::LoadTexture (const string path, const U32 id, const S32 width, const S32 height)\fC [inline]\fP"
-Wrapper for TextureManager::LoadTexture()\&. Saves an handle to a loaded texture in OpenGL by ID 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIpath\fP string: filepath to the texture image 
-.br
-\fIid\fP U32: id for texture\&. Will be used to call it later\&. 
-.br
-\fIwidth\fP S32: width in pixels of texture 
-.br
-\fIheight\fP S32: height in pixels of texture 
-.RE
-.PP
-
 .SS "void Engine::Render (void)"
 Wrapper for steps needed to render\&. Calls the following in order
 .IP "\(bu" 2

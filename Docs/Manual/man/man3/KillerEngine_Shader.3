@@ -1,4 +1,4 @@
-.TH "KillerEngine::Shader" 3 "Tue Jul 10 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Shader" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,38 +10,37 @@ KillerEngine::Shader
 
 .in +1c
 .ti -1c
-.RI "void \fBSetVertexPath\fP (string path)"
+.RI "void \fBLoadShader\fP (std::vector< \fBShaderData\fP > shaders)"
 .br
 .ti -1c
-.RI "void \fBSetTesselationPath\fP (string path)"
+.RI "void \fBUse\fP (void)"
 .br
 .ti -1c
-.RI "void \fBSetGeometryPath\fP (string path)"
+.RI "void \fBSetUniform\fP (const GLchar *name, \fBColor\fP col)"
 .br
 .ti -1c
-.RI "void \fBSetFragmentPath\fP (string path)"
+.RI "void \fBSetUniform\fP (const GLchar *name, \fBKM::Vector2\fP vec)"
 .br
 .ti -1c
-.RI "void \fBInitSpriteShader\fP (void)"
+.RI "void \fBSetUniform\fP (const GLchar *name, \fBKM::Vector3\fP vec)"
 .br
 .ti -1c
-.RI "void \fBInitModelShader\fP (void)"
+.RI "void \fBSetUniform\fP (const GLchar *name, \fBKM::Matrix\fP mat)"
 .br
 .ti -1c
-.RI "GLuint \fBCreateShader\fP (void)"
+.RI "GLuint \fBGetProgram\fP (void) const"
 .br
 .ti -1c
-.RI "GLuint \fBGetSpriteShader\fP (void)"
+.RI "void \fBSetProgram\fP (GLuint program)"
 .br
 .ti -1c
-.RI "GLuint \fBGetModelShader\fP (void)"
+.RI "map< string, GLuint > \fBGetUniformLocations\fP (void) const"
 .br
-.in -1c
-.SS "Static Public Member Functions"
-
-.in +1c
 .ti -1c
-.RI "static shared_ptr< \fBShader\fP > \fBInstance\fP (void)"
+.RI "void \fBSetUniformLocations\fP (map< string, GLuint > uniforms)"
+.br
+.ti -1c
+.RI "\fBShader\fP & \fBoperator=\fP (const \fBShader\fP &shader)"
 .br
 .in -1c
 .SS "Private Member Functions"
@@ -53,34 +52,18 @@ KillerEngine::Shader
 .ti -1c
 .RI "bool \fB_CheckCompileErrors\fP (GLuint shader)"
 .br
+.ti -1c
+.RI "GLuint \fB_GetUniformLocation\fP (const GLchar *name)"
+.br
 .in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
-.RI "GLuint \fB_spriteShader\fP"
+.RI "map< string, GLuint > \fB_uniformLocations\fP"
 .br
 .ti -1c
-.RI "GLuint \fB_modelShader\fP"
-.br
-.ti -1c
-.RI "string \fB_vertexPath\fP"
-.br
-.ti -1c
-.RI "string \fB_tessellationPath\fP"
-.br
-.ti -1c
-.RI "string \fB_geometryPath\fP"
-.br
-.ti -1c
-.RI "string \fB_fragmentPath\fP"
-.br
-.in -1c
-.SS "Static Private Attributes"
-
-.in +1c
-.ti -1c
-.RI "static shared_ptr< \fBShader\fP > \fB_instance\fP = NULL"
+.RI "GLuint \fB_shaderProgram\fP"
 .br
 .in -1c
 

@@ -1,4 +1,4 @@
-.TH "KillerPhysics::ParticleForceRegistry" 3 "Tue Jul 10 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::ParticleForceRegistry" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,26 +10,17 @@ KillerPhysics::ParticleForceRegistry
 
 .in +1c
 .ti -1c
-.RI "struct \fB_Particle2DForceRegistration\fP"
-.br
-.ti -1c
-.RI "struct \fB_Particle3DForceRegistration\fP"
+.RI "struct \fB_ParticleForceRegistration\fP"
 .br
 .in -1c
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
-.RI "void \fBAdd\fP (shared_ptr< \fBParticle2D\fP > particle, shared_ptr< \fBParticleForceGenerator\fP > forceGen)"
+.RI "void \fBAdd\fP (shared_ptr< \fBParticle\fP > particle, shared_ptr< \fBParticleForceGenerator\fP > forceGen)"
 .br
 .ti -1c
-.RI "void \fBAdd\fP (shared_ptr< \fBParticle3D\fP > particle, shared_ptr< \fBParticleForceGenerator\fP > forceGen)"
-.br
-.ti -1c
-.RI "void \fBRemove\fP (shared_ptr< \fBParticle2D\fP > particle, shared_ptr< \fBParticleForceGenerator\fP > forceGen)"
-.br
-.ti -1c
-.RI "void \fBRemove\fP (shared_ptr< \fBParticle3D\fP > particle, shared_ptr< \fBParticleForceGenerator\fP > forceGen)"
+.RI "void \fBRemove\fP (shared_ptr< \fBParticle\fP > particle, shared_ptr< \fBParticleForceGenerator\fP > forceGen)"
 .br
 .ti -1c
 .RI "void \fBClear\fP (void)"
@@ -42,20 +33,14 @@ KillerPhysics::ParticleForceRegistry
 
 .in +1c
 .ti -1c
-.RI "typedef std::vector< \fB_Particle2DForceRegistration\fP > \fBRegistry2D\fP"
-.br
-.ti -1c
-.RI "typedef std::vector< \fB_Particle3DForceRegistration\fP > \fBRegistry3D\fP"
+.RI "typedef std::vector< \fB_ParticleForceRegistration\fP > \fBRegistry\fP"
 .br
 .in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
-.RI "Registry2D \fB_registrations2D\fP"
-.br
-.ti -1c
-.RI "Registry3D \fB_registrations3D\fP"
+.RI "Registry \fB_registrations\fP"
 .br
 .in -1c
 

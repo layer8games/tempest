@@ -6,7 +6,7 @@ var class_killer_engine_1_1_level_manager =
     [ "AddObject3DToLevel", "class_killer_engine_1_1_level_manager.html#ae26096aee14fa7c96a9c0894b71035b3", null ],
     [ "AddObjectToLevel", "class_killer_engine_1_1_level_manager.html#abc93aa295b82020232c00debe8dd70df", null ],
     [ "AddObjectToLevel", "class_killer_engine_1_1_level_manager.html#ab491d46b17756e0ae885b45b25a5771a", null ],
-    [ "AddParticle2DToLevel", "class_killer_engine_1_1_level_manager.html#a34a5f6dec888fd979cc947bc4d3f56bd", null ],
+    [ "AddParticleToLevel", "class_killer_engine_1_1_level_manager.html#a5274b4a3285a6ff8d081b8b17cf7758b", null ],
     [ "EndGame", "class_killer_engine_1_1_level_manager.html#aefaf5b1d035996cafe84fbefe8a416e2", null ],
     [ "GetActiveLevel", "class_killer_engine_1_1_level_manager.html#a54f5e55baf08df7baf315de2d79dcf21", null ],
     [ "GetActiveLevelID", "class_killer_engine_1_1_level_manager.html#a97b74d38bd42947b0acae30c5638994d", null ],

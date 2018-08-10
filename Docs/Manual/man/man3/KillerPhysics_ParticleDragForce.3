@@ -1,4 +1,4 @@
-.TH "KillerPhysics::ParticleDragForce" 3 "Tue Jul 10 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::ParticleDragForce" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,23 +12,20 @@ Inherits \fBKillerPhysics::ParticleForceGenerator\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBParticleDragForce\fP (real k1, real k2)"
+.RI "\fBParticleDragForce\fP (real drag, real dragSqr)"
 .br
 .ti -1c
-.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle2D\fP > particle) final"
-.br
-.ti -1c
-.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle3D\fP > particle) final"
+.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle\fP > particle) final"
 .br
 .in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
-.RI "real \fB_k1\fP"
+.RI "real \fB_drag\fP"
 .br
 .ti -1c
-.RI "real \fB_k2\fP"
+.RI "real \fB_dragSqr\fP"
 .br
 .in -1c
 

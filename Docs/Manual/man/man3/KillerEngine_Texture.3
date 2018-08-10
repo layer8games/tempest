@@ -1,4 +1,4 @@
-.TH "KillerEngine::Texture" 3 "Tue Jul 10 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Texture" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -19,10 +19,7 @@ KillerEngine::Texture
 .RI "\fBTexture\fP (const \fBTexture\fP *T)"
 .br
 .ti -1c
-.RI "GLuint \fBGetID\fP (void) const"
-.br
-.ti -1c
-.RI "void \fBSetID\fP (GLuint id)"
+.RI "GLuint \fBGetHandle\fP (void) const"
 .br
 .ti -1c
 .RI "S32 \fBGetWidth\fP (void) const"
@@ -40,14 +37,20 @@ KillerEngine::Texture
 .RI "\fBTexture\fP & \fBoperator=\fP (const \fBTexture\fP &T)"
 .br
 .ti -1c
-.RI "\fBTexture\fP & \fBoperator=\fP (\fBTexture\fP *T)"
+.RI "\fBTexture\fP & \fBoperator=\fP (const \fBTexture\fP *T)"
+.br
+.ti -1c
+.RI "void \fBLoadTexture\fP (string filePath, bool generateMipMaps=true)"
+.br
+.ti -1c
+.RI "void \fBBind\fP (GLuint texUnit=0)"
 .br
 .in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
-.RI "GLuint \fB_id\fP"
+.RI "GLuint \fB_handle\fP"
 .br
 .ti -1c
 .RI "S32 \fB_width\fP"

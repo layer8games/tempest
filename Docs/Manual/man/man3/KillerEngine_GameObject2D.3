@@ -1,4 +1,4 @@
-.TH "KillerEngine::GameObject2D" 3 "Tue Jul 10 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::GameObject2D" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -27,6 +27,33 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, and \fBKillerPhysics::Partic
 .br
 .ti -1c
 .RI "virtual void \fBv_Render\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAddVertex\fP (\fBVertex2D\fP &vert)"
+.br
+.ti -1c
+.RI "void \fBAddIndex\fP (U32 index)"
+.br
+.ti -1c
+.RI "void \fBSetIndices\fP (std::vector< U32 > indices)"
+.br
+.ti -1c
+.RI "void \fBInitRenderingData\fP (void)"
+.br
+.ti -1c
+.RI "void \fBLoadTexture\fP (string filePath)"
+.br
+.ti -1c
+.RI "void \fBUseShader\fP (void)"
+.br
+.ti -1c
+.RI "void \fBBindVAO\fP (void)"
+.br
+.ti -1c
+.RI "void \fBLoadShader\fP (std::vector< \fBShaderData\fP > shaders)"
+.br
+.ti -1c
+.RI "GLuint \fBGetProgram\fP (void) const"
 .br
 .ti -1c
 .RI "const U32 \fBGetID\fP (void) const"
@@ -59,15 +86,6 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, and \fBKillerPhysics::Partic
 .RI "void \fBSetColor\fP (F32 red, F32 green, F32 blue, F32 alpha=1\&.0f)"
 .br
 .ti -1c
-.RI "U32 \fBGetTextureID\fP (void) const"
-.br
-.ti -1c
-.RI "void \fBSetTexture\fP (U32 id, const F32 top, const F32 bottom, const F32 right, const F32 left)"
-.br
-.ti -1c
-.RI "void \fBSetTexture\fP (U32 id)"
-.br
-.ti -1c
 .RI "bool \fBGetActive\fP (void) const"
 .br
 .ti -1c
@@ -75,9 +93,6 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, and \fBKillerPhysics::Partic
 .br
 .ti -1c
 .RI "void \fBSetInactive\fP (void)"
-.br
-.ti -1c
-.RI "const \fBSprite\fP & \fBGetSprite\fP (void) const"
 .br
 .ti -1c
 .RI "const \fBKM::Vector2\fP & \fBGetPosition\fP (void) const"
@@ -94,12 +109,18 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, and \fBKillerPhysics::Partic
 .ti -1c
 .RI "void \fBSetShader\fP (GLuint shader)"
 .br
+.ti -1c
+.RI "void \fBSetTexture\fP (const \fBTexture\fP &t)"
+.br
+.ti -1c
+.RI "const \fBTexture\fP & \fBGetTexture\fP (void) const"
+.br
 .in -1c
 .SS "Private Types"
 
 .in +1c
 .ti -1c
-.RI "enum \fBBufferData\fP { \fBVERTEX_BUFFER\fP = 0, \fBVERTEX_POS\fP = 0, \fBFRAGMENT_BUFFER\fP = 1, \fBFRAGMENT_POS\fP = 1, \fBINDEX_BUFFER\fP = 2, \fBNUM_VBO\fP = 3 }"
+.RI "enum \fBBufferData\fP { \fBVERTEX_BUFFER\fP = 0, \fBVERTEX_POS\fP = 0, \fBFRAGMENT_BUFFER\fP = 1, \fBFRAGMENT_POS\fP = 2, \fBTEX_COORD_BUFFER\fP = 2, \fBTEX_COORD_POS\fP = 1, \fBINDEX_BUFFER\fP = 3, \fBNUM_VBO\fP = 4 }"
 .br
 .in -1c
 .SS "Private Member Functions"
@@ -121,10 +142,6 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, and \fBKillerPhysics::Partic
 .br
 .RI "Tracks if the object should be updated and rendered\&. "
 .ti -1c
-.RI "\fBSprite\fP \fB_sprite\fP"
-.br
-.RI "Used for Rendering the object as a 2D \fBSprite\fP\&. Deprecated\&. Refactor out\&. "
-.ti -1c
 .RI "\fBKM::Vector2\fP \fB_position\fP"
 .br
 .RI "Position in World Space\&. "
@@ -143,19 +160,27 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, and \fBKillerPhysics::Partic
 .ti -1c
 .RI "GLuint \fB_vao\fP"
 .br
-.RI "Vertex Array Object used by OpenGL for rendering\&. "
+.RI "\fBVertex\fP Array Object used by OpenGL for rendering\&. "
 .ti -1c
 .RI "GLuint \fB_vbo\fP [NUM_VBO]"
 .br
 .RI "Array of Buffer Objects\&. Stores data that is passed to OpenGL\&. "
 .ti -1c
-.RI "U32 \fB_vertexCount\fP"
-.br
-.RI "Total count of vertices for object\&. "
-.ti -1c
 .RI "\fBColor\fP \fB_color\fP"
 .br
 .RI "\fBColor\fP of whole object\&. Will be refined later to be per vertex\&. "
+.ti -1c
+.RI "std::vector< \fBVertex2D\fP > \fB_vertices\fP"
+.br
+.ti -1c
+.RI "std::vector< U32 > \fB_indices\fP"
+.br
+.ti -1c
+.RI "\fBTexture\fP \fB_texture\fP"
+.br
+.ti -1c
+.RI "\fBShader\fP \fB_shader\fP"
+.br
 .in -1c
 .SS "Static Private Attributes"
 
@@ -171,27 +196,27 @@ The Game Object is the abstract class, (PURE VIRTUAL) that all objects that will
 .PP
 All of the functions in this class are inlined becuase they are all trivial\&. The virtual functions are there so that the interface can be the same for all derived classes\&. By doing this, the world manager will be able to have a map of GameObjects to be rendered in a specific world\&.
 .PP
-The GameObject itself is an interface to generic functions that each object that will be rendered will need to be drawn to the screen\&. The GameObject holds a private \fBSprite\fP member that will contain all the logic for which rendering algorithm is used\&.
+The \fBGameObject\fP itself is an interface to generic functions that each object that will be rendered will need to be drawn to the screen\&. The \fBGameObject\fP holds a private \fBSprite\fP member that will contain all the logic for which rendering algorithm is used\&.
 .PP
-Accessors are created for the derived classes to access the cell, but the cell is to be accessed directly only by the GameObject itself\&.
+Accessors are created for the derived classes to access the cell, but the cell is to be accessed directly only by the \fBGameObject\fP itself\&.
 .PP
 \fBGameObject2D\fP will specifically apply to 2D game objects\&. 
 .SH "Member Enumeration Documentation"
 .PP 
 .SS "enum \fBKillerEngine::GameObject2D::BufferData\fP\fC [private]\fP"
-Stores constant shader data used to set up arrays of Vertex Array Objects, as well as which position keeps which data\&. The number values set here are not arbitrary, but rather set up the schema for the array members\&. This is a rigid, non-dynamic system and should probably be refactored to be more dynmaic in the future, as this type of data could vary from object to object, since they could use different shaders\&. That is unless a class of shader is required that has certain attributes laid out in certain ways\&. However, I do think that this information can be found by making calls to OpenGL onces gl_UseProgram has been called\&. Doing it this way would mean some refactoring, but that could be a good thing in the long run\&. 
+Stores constant shader data used to set up arrays of \fBVertex\fP Array Objects, as well as which position keeps which data\&. The number values set here are not arbitrary, but rather set up the schema for the array members\&. This is a rigid, non-dynamic system and should probably be refactored to be more dynmaic in the future, as this type of data could vary from object to object, since they could use different shaders\&. That is unless a class of shader is required that has certain attributes laid out in certain ways\&. However, I do think that this information can be found by making calls to OpenGL onces gl_UseProgram has been called\&. Doing it this way would mean some refactoring, but that could be a good thing in the long run\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "GameObject2D::GameObject2D (void)"
 Default Constsructor\&. Set's all members to 0 and _active to true\&. \fBSetID()\fP is called as part of the body 
 .SS "GameObject2D::GameObject2D (const \fBGameObject2D\fP & obj)"
-Copy Constructor\&. Calls \fBGetID()\fP, \fBGetActive()\fP, \fBGetSprite()\fP, \fBGetPosition()\fP, \fBGetWidth()\fP, \fBGetHeight()\fP, \fBGetColor()\fP 
+Copy Constructor\&. Calls \fBGetID()\fP, \fBGetActive()\fP, GetSprite(), \fBGetPosition()\fP, \fBGetWidth()\fP, \fBGetHeight()\fP, \fBGetColor()\fP 
 .SS "GameObject2D::~GameObject2D (void)\fC [virtual]\fP"
 Destructor\&. No special functions 
 .SH "Member Function Documentation"
 .PP 
 .SS "void GameObject2D::_InitColor (void)\fC [private]\fP"
-Loads color change into OpenGL buffer, and saves this data to the Vertex Array Object\&. 
+Loads color change into OpenGL buffer, and saves this data to the \fBVertex\fP Array Object\&. 
 .SS "void GameObject2D::AddScaledPosition (const \fBKM::Vector2\fP & v, F32 scale)"
 Scales the position of the object in World Space\&. Wrapper for Vector2::AddScaledVector\&. 
 .PP
@@ -204,7 +229,36 @@ Scales the position of the object in World Space\&. Wrapper for Vector2::AddScal
 .PP
 
 .SS "bool GameObject2D::GetActive (void) const"
-Returns if object is active or not\&. Determines if object will have v_Update called, and if it wlll be added to render in Level::UpdateObject and in Level::RenderObjects\&. True indicates that it will be updated and rendered\&. False indicates that it will not\&. 
+Returns curren texture ID for object\&. Like \fBColor\fP, this value is not duplciated in the \fBSprite\fP\&. Soon to be deprecated 
+.br
+
+.br
+
+.br
+ Sets \fBTexture\fP for the object\&. Soon to be deprecated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP U32\&. \fBTexture\fP id from \fBTextureManager\fP\&. 
+.br
+\fItop\fP F32\&. Used for setting up UV coordinates\&. Represents max 'y' in the UV\&. 
+.br
+\fIbottom\fP F32\&. Used for setting up UV coordinates\&. Represents min 'y' in uv\&. 
+.br
+\fIright\fP F32\&. Used for setting up UV coordinates\&. Represents max 'x' in uv\&. 
+.br
+\fIleft\fP F32\&. Used for setting up UV coordinates\&. Represents min 'x' in uv\&. 
+.br
+
+.br
+ Sets \fBTexture\fP for object\&. UV's are set to be [0\&.0f, 1\&.0f], [0\&.0f, 1\&.0f]\&. 
+.br
+\fIid\fP U32\&. \fBTexture\fP id from \fBTextureManager\fP 
+.br
+ Returns if object is active or not\&. Determines if object will have v_Update called, and if it wlll be added to render in Level::UpdateObject and in Level::RenderObjects\&. True indicates that it will be updated and rendered\&. False indicates that it will not\&. Soon to be deprecated\&. 
+.RE
+.PP
+
 .SS "const \fBColor\fP& KillerEngine::GameObject2D::GetColor (void) const\fC [inline]\fP"
 Returns the color of the object\&. This is stored exclusively in the \fBGameObject2D\fP and is not duplicated in the \fBSprite\fP\&. 
 .SS "F32 GameObject2D::GetHeight (void) const"
@@ -213,10 +267,6 @@ Returns the height of the object\&.
 Returns the ID used for the \fBGameObject2D\fP\&. 
 .SS "const \fBKM::Vector2\fP & GameObject2D::GetPosition (void) const"
 Returns the position of the object in World Space\&. 
-.SS "const \fBSprite\fP& KillerEngine::GameObject2D::GetSprite (void) const\fC [inline]\fP"
-Returns the \fBSprite\fP\&. This member cannot be set\&. 
-.SS "U32 GameObject2D::GetTextureID (void) const"
-Returns curren texture ID for object\&. Like \fBColor\fP, this value is not duplciated in the \fBSprite\fP\&. 
 .SS "F32 GameObject2D::GetWidth (void) const"
 Returns the width of the object\&. 
 .SS "void GameObject2D::SetActive (void)"
@@ -284,32 +334,6 @@ Sets the position of the object in World Space\&. Calls Vector2::SetX and Vector
 \fIx\fP F32\&. X value of new position\&. 
 .br
 \fIy\fP F32\&. Y value of new position\&. 
-.RE
-.PP
-
-.SS "void GameObject2D::SetTexture (U32 id, const F32 top, const F32 bottom, const F32 right, const F32 left)"
-Sets \fBTexture\fP for the object\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIid\fP U32\&. \fBTexture\fP id from \fBTextureManager\fP\&. 
-.br
-\fItop\fP F32\&. Used for setting up UV coordinates\&. Represents max 'y' in the UV\&. 
-.br
-\fIbottom\fP F32\&. Used for setting up UV coordinates\&. Represents min 'y' in uv\&. 
-.br
-\fIright\fP F32\&. Used for setting up UV coordinates\&. Represents max 'x' in uv\&. 
-.br
-\fIleft\fP F32\&. Used for setting up UV coordinates\&. Represents min 'x' in uv\&. 
-.RE
-.PP
-
-.SS "void GameObject2D::SetTexture (U32 id)"
-Sets \fBTexture\fP for object\&. UV's are set to be [0\&.0f, 1\&.0f], [0\&.0f, 1\&.0f]\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIid\fP U32\&. \fBTexture\fP id from \fBTextureManager\fP 
 .RE
 .PP
 

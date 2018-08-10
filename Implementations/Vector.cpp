@@ -52,14 +52,14 @@ Vector::~Vector(void)
 //
 //==========================================================================================================================
 //===== Vector Special functions =====
-F32 Vector::DotProduct(const Vector& vec)
+F32 Vector::DotProduct(const Vector& vec) const
 {
 	return _data[x] * vec[x] +
 		   _data[y] * vec[y] +
 		   _data[z] * vec[z];
 }
 
-Vector Vector::CrossProduct(const Vector& vec)
+Vector Vector::CrossProduct(const Vector& vec) const
 {
 	return Vector( _data[y] * vec[z] - _data[z] * vec[y],
 				   _data[z] * vec[x] - _data[x] * vec[z],
@@ -80,7 +80,7 @@ void Vector::Normalize(void)
 {
 	F32 mag = Magnitude();
 
-	if(mag > 0)
+	if(mag > 0 && mag != 1.0f)
 	{
 		(*this) *= 1 / mag;
 	}

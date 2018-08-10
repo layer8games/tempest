@@ -530,6 +530,69 @@ Matrix Matrix::operator*(const Matrix& mat)
 	return Matrix(xCol, yCol, zCol, wCol);
 }
 
+void Matrix::LookAt(const Vector& cameraPos, const Vector& target, const Vector& up)
+{
+	Vector zAxis = cameraPos - target;
+	zAxis.Normalize();
+
+	Vector xAxis = up.CrossProduct(zAxis);
+	xAxis.Normalize();
+
+	Vector yAxis = zAxis.CrossProduct(xAxis);
+	yAxis.Normalize();
+
+	_columns[0][0] = xAxis[0];
+	_columns[0][1] = yAxis[0];
+	_columns[0][2] = zAxis[0];
+	_columns[0][3] = 0.0f;
+
+	_columns[1][0] = xAxis[1];
+	_columns[1][1] = yAxis[1];
+	_columns[1][2] = zAxis[1];
+	_columns[1][3] = 0.0f;
+
+	_columns[2][0] = xAxis[2];
+	_columns[2][1] = yAxis[2];
+	_columns[2][2] = zAxis[2];
+	_columns[2][3] = 0.0f;
+
+	_columns[3] = Vector(-xAxis.DotProduct(cameraPos), -yAxis.DotProduct(cameraPos), -zAxis.DotProduct(cameraPos), 1.0f);		
+}
+
+void Matrix::FPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
+{
+	assert(pitch >= -90.0f);
+	assert(pitch <= 90.0f);
+	assert(yaw >= 0.0f);
+	assert(yaw <= 360.0f);
+
+	F32 cosPitch = cos(pitch);
+	F32 sinPitch = sin(pitch);
+	F32 cosYaw 	 = cos(yaw);
+	F32 sinYaw   = sin(yaw);
+
+	Vector xAxis{ cosYaw, 0.0f, -sinYaw };
+	Vector yAxis{ sinYaw * sinPitch, cosPitch, cosYaw * sinPitch };
+	Vector zAxis{ sinYaw * cosPitch, -sinPitch, cosPitch * cosYaw };
+
+	_columns[0][0] = xAxis[0];
+	_columns[0][1] = yAxis[0];
+	_columns[0][2] = zAxis[0];
+	_columns[0][3] = 0.0f;
+
+	_columns[1][0] = xAxis[1];
+	_columns[1][1] = yAxis[1];
+	_columns[1][2] = zAxis[1];
+	_columns[1][3] = 0.0f;
+
+	_columns[2][0] = xAxis[2];
+	_columns[2][1] = yAxis[2];
+	_columns[2][2] = zAxis[2];
+	_columns[2][3] = 0.0f;
+
+	_columns[3] = Vector(-xAxis.DotProduct(cameraPos), -yAxis.DotProduct(cameraPos), -zAxis.DotProduct(cameraPos), 1.0f);	
+}
+
 Vector Matrix::operator*(const Vector& vec)
 {
 	return Vector( _columns[0][x] * vec[x] + _columns[1][x] * vec[y] + _columns[2][x] * vec[z] + _columns[3][x] * vec[w],

@@ -88,6 +88,7 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_game_object3_d
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_game_object3_d-members.html">List of all members</a>  </div>
@@ -113,6 +114,21 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a880312fed6dca4ee481cbc2f99eb94c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a969068777e137011c41df7fc0e1be766"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a969068777e137011c41df7fc0e1be766">v_Update</a> (void)=0</td></tr>
 <tr class="separator:a969068777e137011c41df7fc0e1be766"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57084c4a3f913bd1d6b59fe0177a9a8d"><td class="memItemLeft" align="right" valign="top"><a id="a57084c4a3f913bd1d6b59fe0177a9a8d"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>v_Render</b> (void)</td></tr>
+<tr class="separator:a57084c4a3f913bd1d6b59fe0177a9a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab38e3e97a35e4b640a747ecf7371ff43"><td class="memItemLeft" align="right" valign="top"><a id="ab38e3e97a35e4b640a747ecf7371ff43"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>InitRenderingData</b> (void)</td></tr>
+<tr class="separator:ab38e3e97a35e4b640a747ecf7371ff43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab80e3d2747639f387375caad97d32236"><td class="memItemLeft" align="right" valign="top"><a id="ab80e3d2747639f387375caad97d32236"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>LoadShader</b> (std::vector&lt; <a class="el" href="struct_killer_engine_1_1_shader_data.html">ShaderData</a> &gt; shaderData)</td></tr>
+<tr class="separator:ab80e3d2747639f387375caad97d32236"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fc3d505036bb2b2f1ca6dbe493fcf77"><td class="memItemLeft" align="right" valign="top"><a id="a0fc3d505036bb2b2f1ca6dbe493fcf77"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>UseShader</b> (void)</td></tr>
+<tr class="separator:a0fc3d505036bb2b2f1ca6dbe493fcf77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ed54d15edb598fe99f01c77fc30017b"><td class="memItemLeft" align="right" valign="top"><a id="a8ed54d15edb598fe99f01c77fc30017b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>BindVAO</b> (void)</td></tr>
+<tr class="separator:a8ed54d15edb598fe99f01c77fc30017b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a3830915ae90307fb3f8c2cc16fde3d"><td class="memItemLeft" align="right" valign="top">const U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a6a3830915ae90307fb3f8c2cc16fde3d">GetID</a> (void) const</td></tr>
 <tr class="separator:a6a3830915ae90307fb3f8c2cc16fde3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a444eaa3264f5ab2f477ea8d9ca1a7d72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a444eaa3264f5ab2f477ea8d9ca1a7d72">SetID</a> (void)</td></tr>
@@ -151,14 +167,42 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1553fc2992e99cde13cde8d8f79d0ef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c13a93515246cee44233cde2abbaf60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a9c13a93515246cee44233cde2abbaf60">AddVertex</a> (<a class="el" href="struct_killer_engine_1_1_vertex3_d.html">Vertex3D</a> vert)</td></tr>
 <tr class="separator:a9c13a93515246cee44233cde2abbaf60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2dbc97381a41f65d731d6791b3bec6c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a2dbc97381a41f65d731d6791b3bec6c5">AddIndex</a> (U16 index)</td></tr>
-<tr class="separator:a2dbc97381a41f65d731d6791b3bec6c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a095838b894f1ecbce81db9cacf309099"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a095838b894f1ecbce81db9cacf309099">AddIndex</a> (std::vector&lt; U16 &gt; indices)</td></tr>
-<tr class="separator:a095838b894f1ecbce81db9cacf309099"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a365d7fd736008f6878ddf1b282869cee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a365d7fd736008f6878ddf1b282869cee">AddIndex</a> (U32 index)</td></tr>
+<tr class="separator:a365d7fd736008f6878ddf1b282869cee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a417a79276e300da079c86663af392b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a9a417a79276e300da079c86663af392b">AddIndex</a> (std::vector&lt; U32 &gt; indices)</td></tr>
+<tr class="separator:a9a417a79276e300da079c86663af392b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2bc3b57c8b2754f0f43efee0ac67d21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#ad2bc3b57c8b2754f0f43efee0ac67d21">LoadModel</a> (string filepath)</td></tr>
 <tr class="separator:ad2bc3b57c8b2754f0f43efee0ac67d21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6e1ec03b6ba130b7f5903d09676760b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_killer_math_1_1_matrix.html">KM::Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#aa6e1ec03b6ba130b7f5903d09676760b">GetModelView</a> (void) const</td></tr>
 <tr class="separator:aa6e1ec03b6ba130b7f5903d09676760b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfbb2097d7ce7696fefe942d7dd0367c"><td class="memItemLeft" align="right" valign="top"><a id="acfbb2097d7ce7696fefe942d7dd0367c"></a>
+const <a class="el" href="class_killer_engine_1_1_shader.html">Shader</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetShader</b> (void) const</td></tr>
+<tr class="separator:acfbb2097d7ce7696fefe942d7dd0367c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62540ac79b50d1ad2c841dd22173ab04"><td class="memItemLeft" align="right" valign="top"><a id="a62540ac79b50d1ad2c841dd22173ab04"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetShader</b> (const <a class="el" href="class_killer_engine_1_1_shader.html">Shader</a> &amp;shader)</td></tr>
+<tr class="separator:a62540ac79b50d1ad2c841dd22173ab04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62e1c93f0a8d71fc5583fe276b66e6b1"><td class="memItemLeft" align="right" valign="top"><a id="a62e1c93f0a8d71fc5583fe276b66e6b1"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>GetVAO</b> (void) const</td></tr>
+<tr class="separator:a62e1c93f0a8d71fc5583fe276b66e6b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58143a6ae4c179fd0955818de18833e0"><td class="memItemLeft" align="right" valign="top"><a id="a58143a6ae4c179fd0955818de18833e0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetVAO</b> (GLuint vao)</td></tr>
+<tr class="separator:a58143a6ae4c179fd0955818de18833e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:ae0d0d767ed22ba16b7f08ec5090cc4e4"><td class="memItemLeft" align="right" valign="top"><a id="ae0d0d767ed22ba16b7f08ec5090cc4e4"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>BufferData</b> { <br />
+&#160;&#160;<b>VERTEX_BUFFER</b> = 0, 
+<b>VERTEX_POS</b> = 0, 
+<b>COLOR_BUFFER</b> = 1, 
+<b>COLOR_POS</b> = 1, 
+<br />
+&#160;&#160;<b>TEX_COORD_BUFFER</b> = 2, 
+<b>TEX_COORD_POS</b> = 2, 
+<b>INDEX_BUFFER</b> = 3, 
+<b>NUM_VBO</b> = 4
+<br />
+ }</td></tr>
+<tr class="separator:ae0d0d767ed22ba16b7f08ec5090cc4e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -198,6 +242,15 @@ F32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 <a class="el" href="class_killer_math_1_1_matrix.html">KM::Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#ab2194066c81ef96d0f8fa869a4051d86">_rotationX</a></td></tr>
 <tr class="memdesc:ab2194066c81ef96d0f8fa869a4051d86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Experimental member. Trying to get rotations to work. <br /></td></tr>
 <tr class="separator:ab2194066c81ef96d0f8fa869a4051d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af477deffcb8aedcd3db52c6d32ca7e09"><td class="memItemLeft" align="right" valign="top"><a id="af477deffcb8aedcd3db52c6d32ca7e09"></a>
+<a class="el" href="class_killer_engine_1_1_shader.html">Shader</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_shader</b></td></tr>
+<tr class="separator:af477deffcb8aedcd3db52c6d32ca7e09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa57ecb054b9aa25abeab7494f6751630"><td class="memItemLeft" align="right" valign="top"><a id="aa57ecb054b9aa25abeab7494f6751630"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_vao</b></td></tr>
+<tr class="separator:aa57ecb054b9aa25abeab7494f6751630"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a347ca17bb24fa9f2856e72c36794ade9"><td class="memItemLeft" align="right" valign="top"><a id="a347ca17bb24fa9f2856e72c36794ade9"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_vbo</b> [NUM_VBO]</td></tr>
+<tr class="separator:a347ca17bb24fa9f2856e72c36794ade9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -209,8 +262,8 @@ static U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The Game Object is the abstract class, (PURE VIRTUAL) that all objects that will be placed in the game will inherit from. It will hold and define the cell, and will include all calls for updating and rendering. Therewill be a component map which will hold anything that the object will need in the game.</p>
 <p>All of the functions in this class are inlined becuase they are all trivial. The virtual functions are there so that the interface can be the same for all derived classes. By doing this, the world manager will be able to have a map of GameObjects to be rendered in a specific world.</p>
-<p>The GameObject itself is an interface to generic functions that each object that will be rendered will need to be drawn to the screen. The GameObject holds a private <a class="el" href="class_killer_engine_1_1_sprite.html">Sprite</a> member that will contain all the logic for which rendering algorithm is used.</p>
-<p>Accessors are created for the derived classes to access the cell, but the cell is to be accessed directly only by the GameObject itself.</p>
+<p>The <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> itself is an interface to generic functions that each object that will be rendered will need to be drawn to the screen. The <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> holds a private <a class="el" href="class_killer_engine_1_1_sprite.html">Sprite</a> member that will contain all the logic for which rendering algorithm is used.</p>
+<p>Accessors are created for the derived classes to access the cell, but the cell is to be accessed directly only by the <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> itself.</p>
 <p><a class="el" href="class_killer_engine_1_1_game_object3_d.html">GameObject3D</a> will specficially apply to 3D game objects. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac1acba34aada8330e4a8569f5f7b5c28"></a>
@@ -252,8 +305,8 @@ static U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a2dbc97381a41f65d731d6791b3bec6c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2dbc97381a41f65d731d6791b3bec6c5">&#9670;&nbsp;</a></span>AddIndex() <span class="overload">[1/2]</span></h2>
+<a id="a365d7fd736008f6878ddf1b282869cee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a365d7fd736008f6878ddf1b282869cee">&#9670;&nbsp;</a></span>AddIndex() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -264,7 +317,7 @@ static U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
         <tr>
           <td class="memname">void KillerEngine::GameObject3D::AddIndex </td>
           <td>(</td>
-          <td class="paramtype">U16&#160;</td>
+          <td class="paramtype">U32&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td></td>
         </tr>
@@ -279,8 +332,8 @@ static U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 
 </div>
 </div>
-<a id="a095838b894f1ecbce81db9cacf309099"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a095838b894f1ecbce81db9cacf309099">&#9670;&nbsp;</a></span>AddIndex() <span class="overload">[2/2]</span></h2>
+<a id="a9a417a79276e300da079c86663af392b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a417a79276e300da079c86663af392b">&#9670;&nbsp;</a></span>AddIndex() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -291,7 +344,7 @@ static U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
         <tr>
           <td class="memname">void KillerEngine::GameObject3D::AddIndex </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; U16 &gt;&#160;</td>
+          <td class="paramtype">std::vector&lt; U32 &gt;&#160;</td>
           <td class="paramname"><em>indices</em></td><td>)</td>
           <td></td>
         </tr>

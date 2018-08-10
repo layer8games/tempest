@@ -1,4 +1,4 @@
-.TH "KillerEngine::Model" 3 "Tue Jul 10 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Model" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -13,19 +13,19 @@ KillerEngine::Model
 .RI "\fBModel\fP (const \fBModel\fP &m)"
 .br
 .ti -1c
-.RI "\fBModel\fP (std::vector< \fBVertex3D\fP > vertices, std::vector< U16 > indices)"
+.RI "\fBModel\fP (std::vector< \fBVertex3D\fP > vertices, std::vector< U32 > indices)"
 .br
 .ti -1c
 .RI "void \fBLoadModel\fP (string filepath)"
 .br
 .ti -1c
-.RI "void \fBAddIndex\fP (U16 index)"
+.RI "void \fBAddIndex\fP (U32 index)"
 .br
 .ti -1c
-.RI "void \fBAddIndex\fP (std::vector< U16 > indices)"
+.RI "void \fBAddIndex\fP (std::vector< U32 > indices)"
 .br
 .ti -1c
-.RI "void \fBSetIndex\fP (std::vector< U16 > indices)"
+.RI "void \fBSetIndex\fP (std::vector< U32 > indices)"
 .br
 .ti -1c
 .RI "void \fBClearIndices\fP (void)"
@@ -40,7 +40,7 @@ KillerEngine::Model
 .RI "std::vector< \fBVertex3D\fP > \fBGetVertices\fP (void) const"
 .br
 .ti -1c
-.RI "std::vector< U16 > \fBGetIndices\fP (void) const"
+.RI "std::vector< U32 > \fBGetIndices\fP (void) const"
 .br
 .ti -1c
 .RI "const \fBKM::Vector3\fP & \fBGetScale\fP (void) const"
@@ -62,7 +62,7 @@ KillerEngine::Model
 
 .in +1c
 .ti -1c
-.RI "std::vector< U16 > \fB_SplitU16\fP (string text, char delim) const"
+.RI "std::vector< U32 > \fB_SplitU32\fP (string text, char delim) const"
 .br
 .ti -1c
 .RI "std::vector< F32 > \fB_SplitF32\fP (string text, char delim) const"
@@ -78,7 +78,7 @@ KillerEngine::Model
 .RI "std::vector< \fBVertex3D\fP > \fB_vertices\fP"
 .br
 .ti -1c
-.RI "std::vector< U16 > \fB_indices\fP"
+.RI "std::vector< U32 > \fB_indices\fP"
 .br
 .ti -1c
 .RI "\fBKM::Vector3\fP \fB_scale\fP"

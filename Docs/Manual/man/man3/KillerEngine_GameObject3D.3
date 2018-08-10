@@ -1,4 +1,4 @@
-.TH "KillerEngine::GameObject3D" 3 "Tue Jul 10 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::GameObject3D" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -21,6 +21,21 @@ Inherited by \fBKillerPhysics::Particle3D\fP\&.
 .br
 .ti -1c
 .RI "virtual void \fBv_Update\fP (void)=0"
+.br
+.ti -1c
+.RI "virtual void \fBv_Render\fP (void)"
+.br
+.ti -1c
+.RI "void \fBInitRenderingData\fP (void)"
+.br
+.ti -1c
+.RI "void \fBLoadShader\fP (std::vector< \fBShaderData\fP > shaderData)"
+.br
+.ti -1c
+.RI "void \fBUseShader\fP (void)"
+.br
+.ti -1c
+.RI "void \fBBindVAO\fP (void)"
 .br
 .ti -1c
 .RI "const U32 \fBGetID\fP (void) const"
@@ -80,16 +95,35 @@ Inherited by \fBKillerPhysics::Particle3D\fP\&.
 .RI "void \fBAddVertex\fP (\fBVertex3D\fP vert)"
 .br
 .ti -1c
-.RI "void \fBAddIndex\fP (U16 index)"
+.RI "void \fBAddIndex\fP (U32 index)"
 .br
 .ti -1c
-.RI "void \fBAddIndex\fP (std::vector< U16 > indices)"
+.RI "void \fBAddIndex\fP (std::vector< U32 > indices)"
 .br
 .ti -1c
 .RI "void \fBLoadModel\fP (string filepath)"
 .br
 .ti -1c
 .RI "const \fBKM::Matrix\fP & \fBGetModelView\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBShader\fP & \fBGetShader\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetShader\fP (const \fBShader\fP &shader)"
+.br
+.ti -1c
+.RI "GLuint \fBGetVAO\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetVAO\fP (GLuint vao)"
+.br
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBBufferData\fP { \fBVERTEX_BUFFER\fP = 0, \fBVERTEX_POS\fP = 0, \fBCOLOR_BUFFER\fP = 1, \fBCOLOR_POS\fP = 1, \fBTEX_COORD_BUFFER\fP = 2, \fBTEX_COORD_POS\fP = 2, \fBINDEX_BUFFER\fP = 3, \fBNUM_VBO\fP = 4 }"
 .br
 .in -1c
 .SS "Private Attributes"
@@ -131,6 +165,15 @@ Inherited by \fBKillerPhysics::Particle3D\fP\&.
 .RI "\fBKM::Matrix\fP \fB_rotationX\fP"
 .br
 .RI "Experimental member\&. Trying to get rotations to work\&. "
+.ti -1c
+.RI "\fBShader\fP \fB_shader\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_vao\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_vbo\fP [NUM_VBO]"
+.br
 .in -1c
 .SS "Static Private Attributes"
 
@@ -146,9 +189,9 @@ The Game Object is the abstract class, (PURE VIRTUAL) that all objects that will
 .PP
 All of the functions in this class are inlined becuase they are all trivial\&. The virtual functions are there so that the interface can be the same for all derived classes\&. By doing this, the world manager will be able to have a map of GameObjects to be rendered in a specific world\&.
 .PP
-The GameObject itself is an interface to generic functions that each object that will be rendered will need to be drawn to the screen\&. The GameObject holds a private \fBSprite\fP member that will contain all the logic for which rendering algorithm is used\&.
+The \fBGameObject\fP itself is an interface to generic functions that each object that will be rendered will need to be drawn to the screen\&. The \fBGameObject\fP holds a private \fBSprite\fP member that will contain all the logic for which rendering algorithm is used\&.
 .PP
-Accessors are created for the derived classes to access the cell, but the cell is to be accessed directly only by the GameObject itself\&.
+Accessors are created for the derived classes to access the cell, but the cell is to be accessed directly only by the \fBGameObject\fP itself\&.
 .PP
 \fBGameObject3D\fP will specficially apply to 3D game objects\&. 
 .SH "Constructor & Destructor Documentation"
@@ -159,9 +202,9 @@ Default constructor\&. Set's all members to 0, and _active to true\&. \fBSetID()
 Copy constructor\&. Calls \fBGetID()\fP, \fBGetActive()\fP, \fBGetModel()\fP, \fBGetPosition()\fP, \fBGetWidth()\fP, \fBGetHeight()\fP, and \fBGetModelView()\fP 
 .SH "Member Function Documentation"
 .PP 
-.SS "void KillerEngine::GameObject3D::AddIndex (U16 index)\fC [inline]\fP"
+.SS "void KillerEngine::GameObject3D::AddIndex (U32 index)\fC [inline]\fP"
 Wrapper\&. Adds new index to object \fBModel\fP\&. Calls Model::AddIndex 
-.SS "void KillerEngine::GameObject3D::AddIndex (std::vector< U16 > indices)\fC [inline]\fP"
+.SS "void KillerEngine::GameObject3D::AddIndex (std::vector< U32 > indices)\fC [inline]\fP"
 Wrapper\&. Adds collection of indices to object \fBModel\fP\&. Calls Model::AddIndex 
 .SS "void GameObject3D::AddScaledPosition (const \fBKM::Vector3\fP & v, F32 scale)"
 Scales the position of the object in World Space\&. Wrapper for Vector3::AddScaledVector\&. 

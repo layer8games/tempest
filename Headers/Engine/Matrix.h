@@ -2,11 +2,10 @@
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
-#include <Engine/Vector2.h>
-#include <Engine/Vector3.h>
 #include <Engine/Vector.h>
 
 #include <vector>
+#include <cassert>
 
 namespace KillerMath 
 {
@@ -119,7 +118,7 @@ namespace KillerMath
 		void Translate(F32 xVal, F32 yVal, F32 zVal);
 
 /*! Resets Matrix, then creates translation based on the x, y and z values found in vec. Calls MakeIdentiy().
-	\param vec Vector3&. Calls Vector3::GetX, Vector3::GetY and Vector3::GetZ to get values for translation. */	
+*/	
 		void Translate(const Vector& vec);
 
 /*! Creates a translation on the x and y axes without reseting the other values. 
@@ -134,7 +133,7 @@ namespace KillerMath
 		void AddTranslate(F32 xVal, F32 yVal, F32 zVal);
 
 /*! Creates a translation on the x, y and z axes without reseting the other values. 
-	\param vec Vector3&. Calls Vector3::GetX, Vector3::GetY and Vector3::GetZ to get values for translation. */	
+*/	
 		void AddTranslate(const Vector& vec);
 
 //==========================================================================================================================
@@ -152,7 +151,7 @@ namespace KillerMath
 		void Scale(F32 xVal, F32 yVal, F32 zVal);
 
 /*! Resets the Matrix and creates a scaling Matrix on the x and y axes. Calls MakeIndentity().
-	\param vec Vector3&. Calls Vector3::GetX, Vector3::GetY and Vector3::GetZ as values for scale on x, y and z axes. */
+*/
 		void Scale(const Vector& vec);
 
 /*! Creates a scaling Matrix on the x and y axes without resetting the other values.
@@ -167,7 +166,7 @@ namespace KillerMath
 		void AddScale(F32 xVal, F32 yVal, F32 zVal);
 
 /*! Creates a scaling Matrix on the x, y and z axes without resetting the other values.
-	\param vec Vector2&. Calls Vector3::GetX, Vector3::GetY and Vector3::GetZ as values for scale on x, y and z axes. */
+*/
 		void AddScale(const Vector& vec);
 
 //==========================================================================================================================
@@ -241,16 +240,34 @@ namespace KillerMath
 	\param M Matrix&. Right hand value to multiply by. */		
 		void ComponentMulti(const Matrix& M);
 
+/*! Creates a view matrix from the world position. Will set the view to "look at" the specified point. This assumes a Right
+	Handed Coordinate system. This means that the camera, by default at 0.0 is looking down the -z axis.
+	\param cameraPos Vector&. The world position of the camera. Can be thought of as the eye.
+	\param target Vector&. The target point to "look at".
+	\param up Vector&. The direction of UP space in the coordinate scheme. could be +y, for example. */
+		void LookAt(const Vector& cameraPos, const Vector& target, const Vector& up);
+
+/*! Uses Euler angles to compute a view matrix from the world position. This assumes a Right Handed Coordinate system. This 
+	means that the camera, by default at 0.0 is looking down the -z axis.
+	\param cameraPos Vector&. The position of the camera in world space. Can be thought of as the eye. 
+	\param pitch F32. Must be between -90 and 90. An assert checks for this.
+	\param yaw F32. Must be between 0 and 360. An assert checks for thisl */		
+		void FPSView(const Vector& cameraPos, F32 pitch, F32 yaw);
+
 //==========================================================================================================================
 //
 //Operator Overloads
 //
 //==========================================================================================================================
+/*! Used to access the ith column of the matrix.
+	\param i int. Cannot be greater than 3. There are only 4 columns. */
 		const Vector& operator[](int i) const
 		{
 			return _columns[i];
 		}
 
+/*! Used to access the ith column of the matrix. This version allows you to edit the values in the column.
+	\param i int. Cannot be greater than 3. There are only 4 columns. */
 		Vector& operator[](int i)
 		{
 			return _columns[i];
@@ -265,7 +282,7 @@ namespace KillerMath
 		Matrix operator*(const Matrix& mat);
 
 /*! Performs Matrix multiplication with Vector.
-	\param RHV Vector2&. Right hand vector for multiplication. */
+*/
 		Vector operator*(const Vector& vec);
 
 	private:

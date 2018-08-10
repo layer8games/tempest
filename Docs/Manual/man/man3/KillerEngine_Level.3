@@ -1,4 +1,4 @@
-.TH "KillerEngine::Level" 3 "Tue Jul 10 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Level" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -38,16 +38,28 @@ KillerEngine::Level
 .RI "virtual \fBGameObject2D\fP * \fBv_CreateObject\fP (ObjectType type, \fBKM::Vector2\fP &pos, U32 textureID, F32 w, F32 h)"
 .br
 .ti -1c
+.RI "void \fBAddObjectToLevel\fP (const \fBGameObject\fP &obj)"
+.br
+.ti -1c
+.RI "void \fBAddObjectToLevel\fP (shared_ptr< \fBGameObject\fP > obj)"
+.br
+.ti -1c
 .RI "void \fBAddObjectToLevel\fP (const \fBGameObject2D\fP &obj)"
 .br
 .ti -1c
 .RI "void \fBAddObjectToLevel\fP (shared_ptr< \fBGameObject2D\fP > obj)"
 .br
 .ti -1c
-.RI "void \fBAddParticle2DToLevel\fP (shared_ptr< \fBKP::Particle2D\fP > particle, shared_ptr< \fBKP::ParticleForceGenerator\fP > generator=nullptr)"
+.RI "void \fBAddObjectToLevel\fP (const \fBKP::Particle\fP &obj)"
 .br
 .ti -1c
-.RI "void \fBRegisterParticle2DForce\fP (shared_ptr< \fBKP::Particle2D\fP > particle, shared_ptr< \fBKP::ParticleForceGenerator\fP > generator)"
+.RI "void \fBAddObjectToLevel\fP (shared_ptr< \fBKP::Particle\fP > obj)"
+.br
+.ti -1c
+.RI "void \fBAddParticleToLevel\fP (shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ParticleForceGenerator\fP > generator=nullptr)"
+.br
+.ti -1c
+.RI "void \fBRegisterParticleForce\fP (shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ParticleForceGenerator\fP > generator)"
 .br
 .ti -1c
 .RI "void \fBAddObject3DToLevel\fP (const \fBGameObject3D\fP &obj)"
@@ -174,13 +186,16 @@ KillerEngine::Level
 .RI "U32 \fB_ID\fP"
 .br
 .ti -1c
+.RI "std::map< U32, shared_ptr< \fBGameObject\fP > > \fB_gameObjects\fP"
+.br
+.ti -1c
 .RI "std::map< U32, shared_ptr< \fBGameObject2D\fP > > \fB_2DWorldObjects\fP"
 .br
 .ti -1c
 .RI "std::map< U32, shared_ptr< \fBGameObject3D\fP > > \fB_3DWorldObjects\fP"
 .br
 .ti -1c
-.RI "std::map< U32, shared_ptr< \fBKP::Particle2D\fP > > \fB_2DParticles\fP"
+.RI "std::map< U32, shared_ptr< \fBKP::Particle\fP > > \fB_particles\fP"
 .br
 .ti -1c
 .RI "std::vector< shared_ptr< \fBRenderedText\fP > > \fB_textList\fP"
@@ -189,7 +204,7 @@ KillerEngine::Level
 .RI "std::map< U32, \fBTileData\fP > \fB_2DTileData\fP"
 .br
 .ti -1c
-.RI "\fBKP::ParticleForceRegistry\fP \fB_2DForceRegistry\fP"
+.RI "\fBKP::ParticleForceRegistry\fP \fB_forceRegistry\fP"
 .br
 .in -1c
 

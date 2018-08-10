@@ -1,4 +1,4 @@
-.TH "KillerEngine::Camera" 3 "Tue Jul 10 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Camera" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -22,25 +22,19 @@ KillerEngine::Camera
 .RI "void \fBSetPosition\fP (F32 x, F32 y)"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (const \fBKM::Vector2\fP &V)"
-.br
-.ti -1c
 .RI "void \fBSetPosition\fP (F32 x, F32 y, F32 z)"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (const \fBKM::Vector3\fP &V)"
+.RI "void \fBSetPosition\fP (const \fBKM::Vector\fP &V)"
 .br
 .ti -1c
 .RI "void \fBScalePosition\fP (F32 x, F32 y, F32 scale)"
 .br
 .ti -1c
-.RI "void \fBScalePosition\fP (const \fBKM::Vector2\fP &v, F32 scale)"
-.br
-.ti -1c
 .RI "void \fBScalePosition\fP (F32 x, F32 y, F32 z, F32 scale)"
 .br
 .ti -1c
-.RI "void \fBScalePosition\fP (const \fBKM::Vector3\fP &V, F32 scale)"
+.RI "void \fBScalePosition\fP (const \fBKM::Vector\fP &v, F32 scale)"
 .br
 .ti -1c
 .RI "void \fBSetColor\fP (const \fBColor\fP &col)"
@@ -67,7 +61,7 @@ KillerEngine::Camera
 .br
 .RI "Background color of current level\&. "
 .ti -1c
-.RI "\fBKM::Vector3\fP \fB_pos\fP"
+.RI "\fBKM::Vector\fP \fB_pos\fP"
 .br
 .RI "Position of \fBCamera\fP in world space\&. "
 .ti -1c
