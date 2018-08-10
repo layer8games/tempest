@@ -144,9 +144,9 @@ void Sprite::SetColor(F32 red, F32 green, F32 blue, F32 alpha)
 void Sprite::SetTexture(U32 tID, const F32 top, const F32 bottom, const F32 right, const F32 left)
 {
 	_textureID = tID;
-	_bottomTop = KM::Vector2(bottom, top);
-	_leftRight  = KM::Vector2(left, right);
+	_bottomTop = KM::Vector(bottom, top);
+	_leftRight  = KM::Vector(left, right);
 }
 
-//void Sprite::Render(const KM::Vector2& pos, F32 w, F32 h, const Color& col)
+//void Sprite::Render(const KM::Vector& pos, F32 w, F32 h, const Color& col)
 //{  }

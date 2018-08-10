@@ -71,6 +71,16 @@ namespace KillerMath
 //Operators
 //
 //==========================================================================================================================
+		inline const F32& operator[](int i) const
+		{
+			return _q[i];
+		}
+
+		inline F32& operator[](int i)
+		{
+			return _q[i];
+		}
+
 		Quaternion operator/ (real d);
 
 		Quaternion& operator/= (real d);

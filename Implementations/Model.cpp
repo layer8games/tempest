@@ -26,7 +26,7 @@ _scale(m.GetScale()),
 _shaderProgram(m.GetShader())
 {  }
 
-Model::Model(std::vector<Vertex3D> vertices, std::vector<U32> indices) 
+Model::Model(std::vector<Vertex> vertices, std::vector<U32> indices) 
 : 
 _numVertices(0), 
 _vertices(vertices),
@@ -68,11 +68,11 @@ void Model::LoadModel(string filepath)
 
 	//capture data
 	std::vector<F32> vertexData = _SplitF32(data->value(), ' ');
-	std::vector<KM::Vector3> vertexPositions;
+	std::vector<KM::Vector> vertexPositions;
 
 	for(int i = 0; i < vertexData.size(); i += 3)
 	{
-		vertexPositions.push_back(KM::Vector3(vertexData[i], vertexData[i+1], vertexData[i+2]));
+		vertexPositions.push_back(KM::Vector(vertexData[i], vertexData[i+1], vertexData[i+2]));
 	}
 
 //===== TO DO =====
@@ -137,7 +137,7 @@ void Model::LoadModel(string filepath)
 
 		for(auto i : vertexNeeded)
 		{
-			Vertex3D vert;
+			Vertex vert;
 			vert.position = vertexPositions[i];
 			vert.color = mat;
 
@@ -159,14 +159,14 @@ void Model::ClearIndices(void)
 	_indices.clear();
 }
 
-void Model::AddVertex(const Vertex3D& vert)
+void Model::AddVertex(const Vertex& vert)
 {
 	_vertices.push_back(vert);
 }
 
-void Model::AddVertex(const KM::Vector3& pos, const Color& color)
+void Model::AddVertex(const KM::Vector& pos, const Color& color)
 {
-	Vertex3D vert;
+	Vertex vert;
 	vert.position = pos; 
 	vert.color = color;
 

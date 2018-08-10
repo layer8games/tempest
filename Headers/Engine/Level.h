@@ -15,19 +15,14 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/GameObject.h>
-#include <Engine/GameObject2D.h>
-#include <Engine/GameObject3D.h>
 #include <Engine/WinProgram.h>
 #include <Engine/TextureManager.h>
 #include <Engine/EnvironmentObject.h>
-#include <Engine/Vector2.h>
+#include <Engine/Vector.h>
 #include <Engine/Color.h>
-#include <Engine/SpriteRenderer.h>
-#include <Engine/ModelRenderer.h>
 #include <Engine/RenderedText.h>
 #include <Engine/RenderedCharacter.h>
 #include <Engine/Particle.h>
-#include <Engine/Particle2D.h>
 #include <Engine/ParticleForceRegistry.h>
 #include <Engine/Camera.h>
 
@@ -116,13 +111,13 @@ namespace KillerEngine
 		
 		virtual void v_Render(void);
 
-/*		virtual GameObject2D* v_CreateObject(ObjectType type, Vector2& pos, F32 w, F32 h) 
+/*		virtual GameObject* v_CreateObject(ObjectType type, Vector& pos, F32 w, F32 h) 
 		{
 			ErrorManager::Instance()->SetError(EC_Game, "CreateObject not defined in your Level");
 			return NULL; 
 		}
 */
-		virtual GameObject2D* v_CreateObject(ObjectType type, KM::Vector2& pos, U32 textureID, F32 w, F32 h)
+		virtual GameObject* v_CreateObject(ObjectType type, KM::Vector& pos, U32 textureID, F32 w, F32 h)
 		{
 			ErrorManager::Instance()->SetError(EC_Engine, "Attempted to call v_CreateObject without Level Implementation");
 			return nullptr;
@@ -137,10 +132,6 @@ namespace KillerEngine
 
 		void AddObjectToLevel(shared_ptr<GameObject> obj);
 
-		void AddObjectToLevel(const GameObject2D& obj);
-
-		void AddObjectToLevel(shared_ptr<GameObject2D> obj);
-
 		void AddObjectToLevel(const KP::Particle& obj);
 
 		void AddObjectToLevel(shared_ptr<KP::Particle> obj);
@@ -152,13 +143,9 @@ namespace KillerEngine
 			_forceRegistry.Add(particle, generator);
 		}
 
-		void AddObject3DToLevel(const GameObject3D& obj);
-
 		void AddTextToLevel(shared_ptr<RenderedText> text);
 		
-		void Remove2DObjectFromLevel(U32 id);
-
-		void Remove3DObjectFromLevel(U32 id);
+		void RemoveObjectFromLevel(U32 id);
 
 		void RenderObjects(void);
 
@@ -276,8 +263,6 @@ namespace KillerEngine
 		Color _bgColor;
 		U32 _ID;
 		std::map<U32, shared_ptr<GameObject>>	  _gameObjects;
-		std::map<U32, shared_ptr<GameObject2D>>   _2DWorldObjects;
-		std::map<U32, shared_ptr<GameObject3D>>   _3DWorldObjects;
 		std::map<U32, shared_ptr<KP::Particle>>   _particles;
 		std::vector<shared_ptr<RenderedText>>     _textList;
 		std::map<U32, TileData> _2DTileData;

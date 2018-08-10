@@ -21,8 +21,7 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Color.h>
-#include <Engine/Vector2.h>
-#include <Engine/Vector3.h>
+#include <Engine/Vector.h>
 #include <Engine/Matrix.h>
 
 namespace KM = KillerMath;
@@ -84,9 +83,7 @@ namespace KillerEngine
 
 		void SetUniform(const GLchar* name, Color col);
 
-		void SetUniform(const GLchar* name, KM::Vector2 vec);
-
-		void SetUniform(const GLchar* name, KM::Vector3 vec);
+		void SetUniform(const GLchar* name, KM::Vector vec);
 
 		void SetUniform(const GLchar* name, KM::Matrix mat);
 

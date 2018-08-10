@@ -23,7 +23,7 @@ Written by Maxwell Miller
 
 //=====Killer1 inlucdes=====
 #include <Engine/Atom.h>
-#include <Engine/Vector2.h>
+#include <Engine/Vector.h>
 #include <Engine/Texture.h>
 #include <Engine/TextureManager.h>
 #include <Engine/ErrorManager.h>
@@ -61,18 +61,18 @@ namespace KillerEngine
 			return _textureID; 
 		}
 
-		void SetUVs(const KM::Vector2& bottomTop, const KM::Vector2& leftRight)
+		void SetUVs(const KM::Vector& bottomTop, const KM::Vector& leftRight)
 		{
 			_bottomTop = bottomTop;
 			_leftRight = leftRight;
 		}
 
-		inline const KM::Vector2& GetUVBottomTop(void) const
+		inline const KM::Vector& GetUVBottomTop(void) const
 		{ 
 			return _bottomTop; 
 		}
 
-		inline const KM::Vector2& GetUVLeftRight(void) const
+		inline const KM::Vector& GetUVLeftRight(void) const
 		{ 
 			return _leftRight; 
 		}
@@ -136,13 +136,13 @@ namespace KillerEngine
 //==========================================================================================================================
 		void SetTexture(U32 tID, const F32 top, const F32 bottom, const F32 right, const F32 left);
 
-		//void Render(const KM::Vector2& pos, F32 w, F32 h, const Color& col);
+		//void Render(const KM::Vector& pos, F32 w, F32 h, const Color& col);
 
 		//static void StaticDraw(S32 count, std::vector<F32> vertices, std::vector<F32> colors, std::vector<F32> dimensions, std::vector<F32> bottomTop, std::vector<F32>leftRight);
 
 	private:
-		KM::Vector2 		 _bottomTop;
-		KM::Vector2 		 _leftRight;
+		KM::Vector 		 _bottomTop;
+		KM::Vector 		 _leftRight;
 		U32					 _textureID;
 		CharacterData   	 _characterData;
 		Color 				 _color;

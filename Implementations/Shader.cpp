@@ -122,16 +122,10 @@ void Shader::SetUniform(const GLchar* name, Color col)
 	glUniform4f(location, col.GetRed(), col.GetGreen(), col.GetBlue(), col.GetAlpha());
 }
 
-void Shader::SetUniform(const GLchar* name, KM::Vector2 vec)
+void Shader::SetUniform(const GLchar* name, KM::Vector vec)
 {
 	GLuint location = _GetUniformLocation(name);
-	glUniform4f(location, vec.GetX(), vec.GetY(), vec.GetZ(), vec.GetW());
-}
-
-void Shader::SetUniform(const GLchar* name, KM::Vector3 vec)
-{
-	GLuint location = _GetUniformLocation(name);
-	glUniform4f(location, vec.GetX(), vec.GetY(), vec.GetZ(), vec.GetW());
+	glUniform4f(location, vec[0], vec[1], vec[2], vec[3]);
 }
 
 void Shader::SetUniform(const GLchar* name, KM::Matrix mat)

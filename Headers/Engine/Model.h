@@ -29,7 +29,7 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Vertex.h>
-#include <Engine/Vector3.h>
+#include <Engine/Vector.h>
 #include <Engine/Camera.h>
 #include <Engine/Matrix.h>
 #include <Engine/Shader.h>
@@ -59,7 +59,7 @@ namespace KillerEngine
 
 		Model(const Model& m);
 
-		Model(std::vector<Vertex3D> vertices, std::vector<U32> indices);
+		Model(std::vector<Vertex> vertices, std::vector<U32> indices);
 
 		~Model(void);
 //==========================================================================================================================
@@ -81,16 +81,16 @@ namespace KillerEngine
 
 		void ClearIndices(void);
 
-		void AddVertex(const Vertex3D& vert);
+		void AddVertex(const Vertex& vert);
 
-		void AddVertex(const KM::Vector3& pos, const Color& color);
+		void AddVertex(const KM::Vector& pos, const Color& color);
 
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================
-		inline std::vector<Vertex3D> GetVertices(void) const
+		inline std::vector<Vertex> GetVertices(void) const
 		{
 			return _vertices;
 		}
@@ -100,12 +100,12 @@ namespace KillerEngine
 			return _indices;
 		}
 
-		inline const KM::Vector3& GetScale(void) const
+		inline const KM::Vector& GetScale(void) const
 		{
 			return _scale;
 		}
 
-		inline void SetScale(KM::Vector3& s)
+		inline void SetScale(KM::Vector& s)
 		{
 			_scale = s; 
 		}
@@ -131,9 +131,9 @@ namespace KillerEngine
 		std::vector<F32> _SplitF32(string text, char delim) const;
 
 		S32 			 	  _numVertices;
-		std::vector<Vertex3D> _vertices;
+		std::vector<Vertex> _vertices;
 		std::vector<U32> 	  _indices;
-		KM::Vector3 		  _scale;
+		KM::Vector 		  	  _scale;
 		GLuint				  _shaderProgram;
 		
 	};//end Class

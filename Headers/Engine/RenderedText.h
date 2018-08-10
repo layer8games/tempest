@@ -15,10 +15,9 @@ Written by Maxwell Miller
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
-#include <Engine/GameObject2D.h>
+#include <Engine/GameObject.h>
 #include <Engine/Font.h>
-#include <Engine/Sprite.h>
-#include <Engine/Vector2.h>
+#include <Engine/Vector.h>
 #include <Engine/RenderedCharacter.h>
 
 namespace KM = KillerMath;
@@ -51,7 +50,7 @@ namespace KillerEngine
 //==========================================================================================================================		
 		void AddText(string text);
 
-		void SetPosition(const KM::Vector2& pos);
+		void SetPosition(const KM::Vector& pos);
 
 		//void SetTextColor(const Color& col);
 
@@ -86,7 +85,7 @@ namespace KillerEngine
 			return _totalHeight; 
 		}
 
-		const KM::Vector2& GetCenter(void) const
+		const KM::Vector& GetCenter(void) const
 		{ 
 			return _center; 
 		}
@@ -97,7 +96,7 @@ namespace KillerEngine
 		}
 
 	private:
-		KM::Vector2 _pos;
+		KM::Vector _pos;
 		string _text;
 		Font   _font;
 		std::vector<shared_ptr<RenderedCharacter>> _characterList;
@@ -105,6 +104,6 @@ namespace KillerEngine
 		F32 _heightScaleFactor;
 		F32 _totalWidth;
 		F32 _totalHeight;
-		KM::Vector2 _center;	
+		KM::Vector _center;	
 	};
 }

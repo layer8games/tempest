@@ -1,5 +1,4 @@
 #include <Engine/LevelManager.h>
-#include <iostream>
 
 using namespace KillerEngine;
 //==========================================================================================================================
@@ -104,7 +103,7 @@ void LevelManager::Render(void)
 //in fact is registered with the manager, and will throw and error if it is not. 
 //	
 //==========================================================================================================================
-void LevelManager::AddObjectToLevel(U32 id, const GameObject2D& obj)
+void LevelManager::AddObjectToLevel(U32 id, const GameObject& obj)
 {
 	if(_levels.find(id) != _levels.end()) 
 	{ 
@@ -116,7 +115,7 @@ void LevelManager::AddObjectToLevel(U32 id, const GameObject2D& obj)
 	} 
 }
 
-void LevelManager::AddObjectToLevel(U32 id, shared_ptr<GameObject2D> obj)
+void LevelManager::AddObjectToLevel(U32 id, shared_ptr<GameObject> obj)
 {
 	if(_levels.find(id) != _levels.end()) 
 	{ 
@@ -140,30 +139,10 @@ void LevelManager::AddParticleToLevel(U32 id, shared_ptr<KP::Particle> particle,
 	} 
 }
 
-void LevelManager::AddObject3DToLevel(U32 id, const GameObject3D& obj)
-{
-	if(_levels.find(id) != _levels.end()) 
-	{ 
-		_levels[id]->AddObject3DToLevel(obj); 
-	} 
-	else 
-	{
-		ErrorManager::Instance()->SetError(EC_Engine, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist.");
-	}
-}
-
-void LevelManager::Remove2DObjectFromLevel(U32 levelID, U32 objID)
+void LevelManager::RemoveObjectFromLevel(U32 levelID, U32 objID)
 {
 	if(_levels.find(levelID) != _levels.end()) 
 	{ 
-		_levels[levelID]->Remove2DObjectFromLevel(objID); 
-	}
-}
-
-void LevelManager::Remove3DObjectFromLevel(U32 levelID, U32 objID)
-{
-	if(_levels.find(levelID) != _levels.end()) 
-	{ 
-		_levels[levelID]->Remove3DObjectFromLevel(objID); 
+		_levels[levelID]->RemoveObjectFromLevel(objID); 
 	}
 }

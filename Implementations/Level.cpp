@@ -1,5 +1,4 @@
 #include <Engine/Level.h>
-#include <iostream>
 
 using namespace KillerEngine;
 
@@ -75,26 +74,6 @@ void Level::AddObjectToLevel(shared_ptr<GameObject> obj)
 	}
 }
 
-void Level::AddObjectToLevel(const GameObject2D& obj)
-{
-	_2DWorldObjects.insert({obj.GetID(), std::shared_ptr<GameObject2D>( const_cast<GameObject2D*>(&obj) )});
-	
-	if(_2DWorldObjects.find(obj.GetID()) == _2DWorldObjects.end()) 
-	{ 
-		ErrorManager::Instance()->SetError(EC_Engine, "Unable to AddLevel to _2DWorldObjects"); 
-	}
-}
-
-void Level::AddObjectToLevel(shared_ptr<GameObject2D> obj)
-{
-	_2DWorldObjects.insert({obj->GetID(), obj});
-	
-	if(_2DWorldObjects.find(obj->GetID()) == _2DWorldObjects.end()) 
-	{ 
-		ErrorManager::Instance()->SetError(EC_Engine, "Unable to AddLevel to _2DWorldObjects"); 
-	}
-}
-
 void Level::AddObjectToLevel(const KP::Particle& obj)
 {
 	_particles.insert({obj.GetID(), shared_ptr<KP::Particle>( const_cast<KP::Particle*>(&obj) )});
@@ -130,16 +109,6 @@ void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP:
 	}
 }
 
-void Level::AddObject3DToLevel(const GameObject3D& obj)
-{
-	_3DWorldObjects.insert({obj.GetID(), std::shared_ptr<GameObject3D>( const_cast<GameObject3D*>(&obj) )});
-	
-	if(_3DWorldObjects.find(obj.GetID()) == _3DWorldObjects.end()) 
-	{ 
-		ErrorManager::Instance()->SetError(EC_Engine, "Unable to AddLevel to _3DWorldObjects"); 
-	}
-}
-
 void Level::AddTextToLevel(std::shared_ptr<RenderedText> text)
 {
 	_textList.push_back(text);
@@ -160,18 +129,11 @@ void Level::_AddTile(TileData data)
 //RemoveObjectFromLevel
 //
 //=============================================================================
-void Level::Remove2DObjectFromLevel(U32 id)
+void Level::RemoveObjectFromLevel(U32 id)
 {
-	std::map<U32, std::shared_ptr<GameObject2D>>::iterator i = _2DWorldObjects.find(id);
+	std::map<U32, std::shared_ptr<GameObject>>::iterator i = _gameObjects.find(id);
 
-	_2DWorldObjects.erase(i);
-}
-
-void Level::Remove3DObjectFromLevel(U32 id)
-{
-	std::map<U32, std::shared_ptr<GameObject3D>>::iterator i = _3DWorldObjects.find(id);
-
-	_3DWorldObjects.erase(i);
+	_gameObjects.erase(i);
 }
 
 //==========================================================================================================================
@@ -199,98 +161,11 @@ void Level::RenderObjects(void)
 			i.second->v_Render();
 		}
 	}
-
-/*
-	
-	DELETE EVERYTHING IN THIS FUNCTION AFTER THIS
-
-*/
-
-	//Camera::Instance()->SetUp(SpriteRenderer::Instance()->GetShader());
-	for(auto i : _2DWorldObjects) 
-	{
-		if(i.second->GetActive())
-		{
-			i.second->v_Render();
-		}
-//old version
-/*
-		if(i.second->GetActive())
-		{
-			if(i.second->GetSprite().GetShader() != SpriteRenderer::Instance()->GetShader())
-			{
-				SpriteRenderer::Instance()->SetShader(i.second->GetSprite().GetShader());
-			}
-			SpriteRenderer::Instance()->AddToBatch
-			(
-				i.second->GetPosition(), 
-				i.second->GetWidth(), 
-				i.second->GetHeight(), 
-				i.second->GetColor(),
-				i.second->GetTextureID(),
-				i.second->GetSprite().GetUVBottomTop(),
-				i.second->GetSprite().GetUVLeftRight()
-			);
-		}
-*/		
-	}
-
-//==========================================================================================================================
-//Render Particle2Ds
-//==========================================================================================================================
-	for(auto i : _particles) 
-	{
-		i.second->v_Render();
-//old version
-/*		
-		if(i.second->GetActive())
-		{
-			if(i.second->GetSprite().GetShader() != SpriteRenderer::Instance()->GetShader())
-			{
-				SpriteRenderer::Instance()->SetShader(i.second->GetSprite().GetShader());
-			}
-			SpriteRenderer::Instance()->AddToBatch
-			(
-				i.second->GetPosition(), 
-				i.second->GetWidth(), 
-				i.second->GetHeight(), 
-				i.second->GetColor(),
-				i.second->GetTextureID(),
-				i.second->GetSprite().GetUVBottomTop(),
-				i.second->GetSprite().GetUVLeftRight()
-			);
-		}
-*/		
-	}
-
-//==========================================================================================================================
-//Render 3D Objects
-//==========================================================================================================================	
-//	Camera::Instance()->SetUp(ModelRenderer::Instance()->GetShader());
-	for(auto i : _3DWorldObjects)
-	{
-		if(i.second->GetActive())
-		{
-			i.second->v_Render();
-		}
-//old version
-/*
-		if(i.second->GetActive())
-		{
-			if(i.second->GetModel().GetShader() != ModelRenderer::Instance()->GetShader())
-			{
-				ModelRenderer::Instance()->SetShader(i.second->GetModel().GetShader());
-			}
-
-			ModelRenderer::Instance()->DrawNow(i.second->GetModel(), i.second->GetModelView());
-		}
-*/		
-	}	
-
 //==========================================================================================================================
 //Render Text
 //==========================================================================================================================
-
+/*
+Needs refactoring later. The whole text system needs some work
 	for(std::shared_ptr<RenderedText> text : _textList)
 	{
 		std::vector<std::shared_ptr<RenderedCharacter>> charList = text->GetCharacterList();
@@ -314,6 +189,7 @@ void Level::RenderObjects(void)
 			);
 		}
 	}
+*/	
 }
 
 void Level::UpdateObjects(void)
@@ -334,32 +210,6 @@ void Level::UpdateObjects(void)
 			i.second->v_Update();
 		}
 	}
-
-/*
-	
-	DELETE EVERYTHING IN THIS FUNCTION AFTER THIS
-
-*/
-
-	for(auto i : _2DWorldObjects)
-	{
-		if(i.second->GetActive())
-		{
-			i.second->v_Update();
-		}
-	}
-
-	for(auto i : _particles )
-	{
-		if(i.second->GetActive())
-		{
-			i.second->v_Update();
-		}
-	}
-
-//==========================================================================================================================
-//Later: Add code for the models here
-//==========================================================================================================================
 }
 //==========================================================================================================================
 //
@@ -368,8 +218,6 @@ void Level::UpdateObjects(void)
 //==========================================================================================================================	
 void Level::Importer2D(string tmxFilePath)
 {
-
-
 /*
 
 	All of this is old an old version that needs to be deleted. Just keeping it as a reference. 

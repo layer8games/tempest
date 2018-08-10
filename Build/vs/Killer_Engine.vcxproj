@@ -125,7 +125,6 @@
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h" />
     <ClInclude Include="..\..\Headers\Engine\GameObject.h" />
-    <ClInclude Include="..\..\Headers\Engine\ModelRenderer.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle.h" />
     <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
       <SubType>
@@ -154,10 +153,6 @@
     <ClInclude Include="..\..\Headers\Engine\Controller.h" />
     <ClInclude Include="..\..\Headers\Engine\ErrorManager.h" />
     <ClInclude Include="..\..\Headers\Engine\Font.h" />
-    <ClInclude Include="..\..\Headers\Engine\GameObject3D.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Matrix.h" />
     <ClInclude Include="..\..\Headers\Engine\Model.h">
       <SubType>
@@ -166,19 +161,13 @@
     <ClInclude Include="..\..\Headers\Engine\ParticleDragForce.h" />
     <ClInclude Include="..\..\Headers\Engine\ParticleGravityForce.h" />
     <ClInclude Include="..\..\Headers\Engine\ParticleForceGenerator.h" />
-    <ClInclude Include="..\..\Headers\Engine\GameObject2D.h" />
     <ClInclude Include="..\..\Headers\Engine\Engine.h" />
-    <ClInclude Include="..\..\Headers\Engine\Particle2D.h" />
-    <ClInclude Include="..\..\Headers\Engine\Particle3D.h" />
     <ClInclude Include="..\..\Headers\Engine\ParticleSpringForces.h" />
     <ClInclude Include="..\..\Headers\Engine\Quaternion.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\SpriteRenderer.h" />
     <ClInclude Include="..\..\Headers\Engine\Vector.h" />
-    <ClInclude Include="..\..\Headers\Engine\Vector2.h" />
-    <ClInclude Include="..\..\Headers\Engine\Vector3.h" />
     <ClInclude Include="..\..\Headers\Engine\Vertex.h">
       <SubType>
       </SubType>
@@ -203,12 +192,6 @@
     <ClCompile Include="..\..\Implementations\ErrorManager.cpp" />
     <ClCompile Include="..\..\Implementations\Font.cpp" />
     <ClCompile Include="..\..\Implementations\GameObject.cpp" />
-    <ClCompile Include="..\..\Implementations\GameObject2D.cpp" />
-    <ClCompile Include="..\..\Implementations\GameObject3D.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\ModelRenderer.cpp" />
     <ClCompile Include="..\..\Implementations\Particle.cpp" />
     <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
       <SubType>
@@ -227,7 +210,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\SpriteRenderer.cpp" />
     <ClCompile Include="..\..\Implementations\Texture.cpp">
       <SubType>
       </SubType>
@@ -240,8 +222,6 @@
     <ClCompile Include="..\..\Implementations\ParticleDragForce.cpp" />
     <ClCompile Include="..\..\Implementations\ParticleGravityForce.cpp" />
     <ClCompile Include="..\..\Implementations\Engine.cpp" />
-    <ClCompile Include="..\..\Implementations\Particle2D.cpp" />
-    <ClCompile Include="..\..\Implementations\Particle3D.cpp" />
     <ClCompile Include="..\..\Implementations\ParticleSpringForces.cpp" />
     <ClCompile Include="..\..\Implementations\Quaternion.cpp">
       <SubType>
@@ -253,14 +233,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Sprite.cpp" />
     <ClCompile Include="..\..\Implementations\Vector.cpp" />
-    <ClCompile Include="..\..\Implementations\Vector2.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Vector3.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\WinProgram.cpp" />
     <ClCompile Include="..\..\Implementations\RenderedText.cpp" />
     <ClCompile Include="..\..\Implementations\TextureManager.cpp" />

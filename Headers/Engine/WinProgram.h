@@ -21,7 +21,6 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Controller.h>
-#include <Engine/Vector2.h>
 #include <Engine/Color.h>
 #include <Engine/Timer.h>
 

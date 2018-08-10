@@ -60,19 +60,18 @@ F64 Random::RandomDouble(F64 min, F64 max)
 	return dist(_generator);
 }
 
-Vector2 Random::RandomVector2(F32 min, F32 max)
+Vector Random::RandomVector(F32 min, F32 max, bool is2d)
 {
 	std::uniform_real_distribution<F32> xVal(min, max);
 	std::uniform_real_distribution<F32> yVal(min, max);
-	return Vector2(xVal(_generator), yVal(_generator));
-}
 
-Vector3 Random::RandomVector3(F32 min, F32 max)
-{
-	std::uniform_real_distribution<F32> xVal(min, max);
-	std::uniform_real_distribution<F32> yVal(min, max);
+	if(is2d)
+	{
+		return Vector(xVal(_generator), yVal(_generator));
+	}
+
 	std::uniform_real_distribution<F32> zVal(min, max);	
-	return Vector3(xVal(_generator), yVal(_generator), zVal(_generator));
+	return Vector(xVal(_generator), yVal(_generator), zVal(_generator));
 }
 
 Quaternion Random::RandomQuaternion(F32 min, F32 max)

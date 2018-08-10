@@ -10,9 +10,9 @@ Written by Maxwell Miller
 
 //===== Engine Includes =====
 #include <Engine/Atom.h>
-#include <Engine/GameObject2D.h>
+#include <Engine/GameObject.h>
 #include <Engine/Sprite.h>
-#include <Engine/Vector2.h>
+#include <Engine/Vector.h>
 
 namespace KM = KillerMath;
 
@@ -26,7 +26,7 @@ namespace KillerEngine
 //==========================================================================================================================
 /*! This is an implementation of a GameObject which will reprents static, unmoving background objects which the player will 
 	not be allowed to pass through. These are things like rocks, trees, houses, etc.  */	
-	class EnvironmentObject : public GameObject2D
+	class EnvironmentObject : public GameObject
 	{
 	public:
 //==========================================================================================================================
@@ -37,8 +37,8 @@ namespace KillerEngine
 /*! Default Constructor. No special actions taken. */
 		EnvironmentObject(void);
 
-/*! Calls GameObject2D::SetPosition and GameObject2D::SetDimensions. */		
-		EnvironmentObject(const KM::Vector2& pos, F32 w, F32 h);
+/*! Calls GameObject::SetPosition and GameObject::SetDimensions. */		
+		EnvironmentObject(const KM::Vector& pos, F32 w, F32 h);
 
 /*! Default Destructor. No special action taken. */		
 		~EnvironmentObject(void);
