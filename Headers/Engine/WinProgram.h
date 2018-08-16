@@ -128,12 +128,12 @@ namespace KillerEngine
 
 	private:
 		static shared_ptr<WinProgram> _instance;
+		static S32     				  _totalWidth;
+		static S32     				  _totalHeight;
 		
 		bool    _isFullScreen;
 		bool 	_running;
 		bool 	_wireFrame;
-		S32     _totalWidth;
-		S32     _totalHeight;
 		S32     _right;
 		S32     _left;
 		S32     _top;

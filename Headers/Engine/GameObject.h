@@ -9,11 +9,15 @@
 #include <Engine/Color.h>
 #include <Engine/Vertex.h>
 #include <Engine/Texture.h>
+namespace KM = KillerMath;
+
+#include <Extern/rapidxml.hpp>
 
 //===== STL inludes =====
 #include <vector>
-
-namespace KM = KillerMath;
+#include <fstream>
+#include <sstream>
+#include <algorithm> 
 
 namespace KillerEngine
 {
@@ -47,6 +51,8 @@ namespace KillerEngine
 //Functions
 //
 //==========================================================================================================================
+		void LoadMesh(string filepath);
+
 		inline void AddVertex(const Vertex&  vert)
 		{
 			_vertices.push_back(vert);
@@ -55,11 +61,13 @@ namespace KillerEngine
 		inline void AddIndex(U32 index)
 		{
 			_indices.push_back(index);
+			++_numIndices;
 		}
 
 		inline void SetIndices(std::vector<U32> indices)
 		{
 			_indices = indices;
+			_numIndices = indices.size();
 		}
 
 
@@ -129,6 +137,17 @@ namespace KillerEngine
 			_position.AddScaledVector(pos, scale);
 		}
 
+//===== Scale =====
+		inline const KM::Vector& GetScale(void)
+		{
+			return _scale;
+		}
+
+		inline void SetScale(const KM::Vector& scale)
+		{
+			_scale = scale;
+		}
+
 //===== Shader =====
 		inline const Shader& GetShader(void) const
 		{
@@ -150,6 +169,12 @@ namespace KillerEngine
 			_shader.Use();
 		}
 
+//===== NumVertices =====
+		inline S32 GetNumVertices(void)
+		{
+			return _numIndices;
+		}
+
 //===== Vertex and Index =====
 		inline std::vector<Vertex> GetVertices(void) const
 		{
@@ -165,7 +190,10 @@ namespace KillerEngine
 		inline GLuint GetVAO(void) const
 		{
 			return _vao;
-		}
+		}	
+
+	protected:
+		Shader _shader;
 
 	private:
 		enum BufferData
@@ -180,6 +208,10 @@ namespace KillerEngine
 			NUM_VBO = 4
 		};
 
+		std::vector<U32> _SplitU32(string text, char delim) const;
+		
+		std::vector<F32> _SplitF32(string text, char delim) const;
+
 //==========================================================================================================================
 //
 //Data
@@ -189,7 +221,8 @@ namespace KillerEngine
 		U32 					_ID;
 		bool					_active;
 		KM::Vector				_position;
-		Shader 					_shader;
+		KM::Vector 				_scale;
+		S32						_numIndices;
 		std::vector<Vertex> 	_vertices;
 		std::vector<U32> 		_indices;
 		GLuint 					_vao;

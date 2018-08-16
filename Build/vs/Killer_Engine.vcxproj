@@ -154,10 +154,6 @@
     <ClInclude Include="..\..\Headers\Engine\ErrorManager.h" />
     <ClInclude Include="..\..\Headers\Engine\Font.h" />
     <ClInclude Include="..\..\Headers\Engine\Matrix.h" />
-    <ClInclude Include="..\..\Headers\Engine\Model.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ParticleDragForce.h" />
     <ClInclude Include="..\..\Headers\Engine\ParticleGravityForce.h" />
     <ClInclude Include="..\..\Headers\Engine\ParticleForceGenerator.h" />
@@ -215,10 +211,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Matrix.cpp" />
-    <ClCompile Include="..\..\Implementations\Model.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\ParticleDragForce.cpp" />
     <ClCompile Include="..\..\Implementations\ParticleGravityForce.cpp" />
     <ClCompile Include="..\..\Implementations\Engine.cpp" />

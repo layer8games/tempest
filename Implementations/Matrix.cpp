@@ -532,6 +532,8 @@ Matrix Matrix::operator*(const Matrix& mat)
 
 void Matrix::LookAt(const Vector& cameraPos, const Vector& target, const Vector& up)
 {
+	MakeIdentity();
+
 	Vector zAxis = cameraPos - target;
 	zAxis.Normalize();
 

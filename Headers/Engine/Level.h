@@ -35,8 +35,6 @@ namespace KP =KillerPhysics;
 #include <fstream>
 #include <algorithm>
 
-#include <TinyXML/tinyxml2.h>
-
 namespace KillerEngine 
 {
 	class Level

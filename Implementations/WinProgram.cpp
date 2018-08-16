@@ -13,8 +13,6 @@ WinProgram::WinProgram(void)
 _isFullScreen(false),
 _running(false),
 _wireFrame(false),
-_totalWidth(0), 
-_totalHeight(0),
 _right(0), 
 _left(0),
 _top(0), 
@@ -35,6 +33,8 @@ WinProgram::~WinProgram(void)
 //Instance
 //=======================================================================================================
 shared_ptr<WinProgram> WinProgram::_instance = NULL;
+int WinProgram::_totalWidth = 0;
+int WinProgram::_totalHeight = 0;
 
 shared_ptr<WinProgram> WinProgram::Instance(void) 
 {
@@ -46,7 +46,7 @@ shared_ptr<WinProgram> WinProgram::Instance(void)
 }
 
 //=======================================================================================================
-//InitWindow
+//OnKey
 //=======================================================================================================    
 void WinProgram::OnKey(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
@@ -60,14 +60,19 @@ void WinProgram::OnKey(GLFWwindow* window, int key, int scancode, int action, in
 	}
 }
 
+//==========================================================================================================================
+//OnResize
+//==========================================================================================================================
 void WinProgram::OnResize(GLFWwindow* window, int width, int height)
 {
-    //_totalWidth = width;
-    //_totalHeight = height;
-
-    //glViewPort(0, 0, _totalWidth, _totalHeight);
+    _totalWidth = width;
+    _totalHeight = height;
+    glViewport(0, 0, _totalWidth, _totalHeight);
 }
 
+//==========================================================================================================================
+//Init
+//==========================================================================================================================
 void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen) 
 {
 	_running = true;
@@ -122,12 +127,15 @@ void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen)
     glfwMakeContextCurrent(_window);
 
     glfwSetKeyCallback(_window, OnKey);
+    glfwSetWindowSizeCallback(_window, OnResize);
 
     glewExperimental = GL_TRUE;
     if(glewInit() != GLEW_OK)
     {
     	ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to init glew. WinProgram.");
     }
+
+    glViewport(0, 0, _totalWidth, _totalHeight);
 }
 
 void WinProgram::ProcessEvents(void)
