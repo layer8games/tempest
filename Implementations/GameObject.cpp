@@ -84,7 +84,6 @@ void GameObject::v_InitVertexData(void)
 	}
 
 	std::vector<F32> vertPosition;
-	std::vector<F32> vertTexCoords;
 
 	for(auto i : _vertices)
 	{
@@ -92,9 +91,6 @@ void GameObject::v_InitVertexData(void)
 		vertPosition.push_back(i.position[1]);
 		vertPosition.push_back(i.position[2]);
 		vertPosition.push_back(i.position[3]);
-
-		vertTexCoords.push_back(i.uCoord);
-		vertTexCoords.push_back(i.vCoord);
 	}
 
 	glBindVertexArray(_vao);
@@ -184,6 +180,10 @@ void GameObject::LoadMesh(string filepath)
 			ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadMesh, unable to load color from matrial");
 		}
 	}
+
+	//Get UV
+	std::vector<F32> uvData;
+	rapidxml::xml_note<>* uv_id = root_note->first_node("library_geometries")->first_node("geometry")->first_node("mesh");
 	
 	//Get indices
 	data = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh")->first_node("polylist");
@@ -200,6 +200,9 @@ void GameObject::LoadMesh(string filepath)
 		std::vector<U32> vertexIndices;
 		//std::vector<U32> normalIndices;
 		//split up the data
+		
+
+
 		for(U32 i = 0; i < indices.size(); i+=2)
 		{
 			vertexIndices.push_back(indices[i]);
