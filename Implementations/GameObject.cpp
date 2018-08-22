@@ -150,19 +150,15 @@ void GameObject::LoadMesh(string filepath)
 		string attrib = i->first_attribute("id")->value();
 		if(std::regex_match(attrib, match, vertexRegex))
 		{
-		 	data = i; 
-		 	data->first_node("float_array");
-		 	vertexData = _SplitF32(data->value(), ' ');
+		 	i =  i->first_node("float_array"); 
+		 	vertexData = _SplitF32(i->value(), ' ');
 
-		 	std::cout << "found a match for position array\n" << attrib << "\n";
+
+		 	string attrib2 = i->first_attribute("id")->value();
+		 	std::cout << "found a match for position array\n" << attrib << "\n" << attrib2 << "\n";
 		 	break;
 		}
 		std::cout << "Nothing found this time\n" << attrib << "\n";
-	}
-
-	for(auto i : vertexData)
-	{
-		std::cout << i << "\n";
 	}
 
 	//capture data 
@@ -226,12 +222,18 @@ void GameObject::LoadMesh(string filepath)
 		//std::vector<U32> normalIndices;
 		//split up the data
 		
-
+//==========================================================================================================================
+//
+//Problem is here!!!!!!!!
+//you need to find a way to get the data you need from the index array. Make it dynamic
+//
+//==========================================================================================================================
 
 		for(U32 i = 0; i < indices.size(); i+=2)
 		{
 			vertexIndices.push_back(indices[i]);
 			//normalIndices.push_back(indices[i+1]);
+			std::cout << i << '\n';
 		}
 
 		//Get only unique values for vertex creation
