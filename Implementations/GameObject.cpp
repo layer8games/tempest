@@ -135,12 +135,37 @@ void GameObject::LoadMesh(string filepath)
 
 	//Set root node
 	rapidxml::xml_node<>* root_node = doc.first_node("COLLADA");
-
+	
 	//Get to geomtery data node
-	rapidxml::xml_node<>* data = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh")->first_node("source")->first_node("float_array");
+	rapidxml::xml_node<>* data = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh")->first_node("source");
 
-	//capture data
-	std::vector<F32> vertexData = _SplitF32(data->value(), ' ');
+	std::smatch match{};
+	std::regex vertexRegex (".*mesh-positions");
+	//Other regex
+
+	std::vector<F32> vertexData;
+
+	for(rapidxml::xml_node<>* i = data; i; i = i->next_sibling("source"))
+	{
+		string attrib = i->first_attribute("id")->value();
+		if(std::regex_match(attrib, match, vertexRegex))
+		{
+		 	data = i; 
+		 	data->first_node("float_array");
+		 	vertexData = _SplitF32(data->value(), ' ');
+
+		 	std::cout << "found a match for position array\n" << attrib << "\n";
+		 	break;
+		}
+		std::cout << "Nothing found this time\n" << attrib << "\n";
+	}
+
+	for(auto i : vertexData)
+	{
+		std::cout << i << "\n";
+	}
+
+	//capture data 
 	std::vector<KM::Vector> vertexPositions;
 
 	for(U32 i = 0; i < vertexData.size(); i += 3)
@@ -183,7 +208,7 @@ void GameObject::LoadMesh(string filepath)
 
 	//Get UV
 	std::vector<F32> uvData;
-	rapidxml::xml_note<>* uv_id = root_note->first_node("library_geometries")->first_node("geometry")->first_node("mesh");
+	rapidxml::xml_node<>* uv_id = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh");
 	
 	//Get indices
 	data = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh")->first_node("polylist");

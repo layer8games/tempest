@@ -17,7 +17,8 @@ namespace KM = KillerMath;
 #include <vector>
 #include <fstream>
 #include <sstream>
-#include <algorithm> 
+#include <algorithm>
+#include <regex>
 
 namespace KillerEngine
 {
