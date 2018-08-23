@@ -19,6 +19,7 @@ namespace KM = KillerMath;
 #include <sstream>
 #include <algorithm>
 #include <regex>
+#include <stdlib.h>
 
 namespace KillerEngine
 {

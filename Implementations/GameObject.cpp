@@ -136,50 +136,43 @@ void GameObject::LoadMesh(string filepath)
 	//Set root node
 	rapidxml::xml_node<>* root_node = doc.first_node("COLLADA");
 	
-	//Get to geomtery data node
+//===== TO DO =====
+//Will need to be able to capture normal data. Here is the code that can do that.
+//I am just not sure what to do with that code yet. 
+
+//===== Get Data =====
 	rapidxml::xml_node<>* data = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh")->first_node("source");
 
 	std::smatch match{};
 	std::regex vertexRegex (".*mesh-positions");
-	//Other regex
-
+	std::regex uvRegex (".*mesh-map*");
+	
 	std::vector<F32> vertexData;
+	std::vector<KM::Vector> vertexPositions;
+	std::vector<F32> uvData;
 
 	for(rapidxml::xml_node<>* i = data; i; i = i->next_sibling("source"))
 	{
 		string attrib = i->first_attribute("id")->value();
+		
 		if(std::regex_match(attrib, match, vertexRegex))
 		{
-		 	i =  i->first_node("float_array"); 
-		 	vertexData = _SplitF32(i->value(), ' ');
+		 	rapidxml::xml_node<>* access = i->first_node("float_array"); 
+		 	vertexData = _SplitF32(access->value(), ' ');
 
-
-		 	string attrib2 = i->first_attribute("id")->value();
-		 	std::cout << "found a match for position array\n" << attrib << "\n" << attrib2 << "\n";
-		 	break;
+		 	for(U32 i = 0; i < vertexData.size(); i += 3)
+			{
+				vertexPositions.push_back(KM::Vector(vertexData[i], vertexData[i+1], vertexData[i+2]));
+			}
 		}
-		std::cout << "Nothing found this time\n" << attrib << "\n";
+		else if(std::regex_match(attrib, match, uvRegex))
+		{
+		 	rapidxml::xml_node<>* access = i->first_node("float_array"); 
+		 	uvData = _SplitF32(access->value(), ' ');
+		}
 	}
-
-	//capture data 
-	std::vector<KM::Vector> vertexPositions;
-
-	for(U32 i = 0; i < vertexData.size(); i += 3)
-	{
-		vertexPositions.push_back(KM::Vector(vertexData[i], vertexData[i+1], vertexData[i+2]));
-	}
-
-//===== TO DO =====
-//Will need to be able to capture normal data. Here is the code that can do that.
-//I am just not sure what to do with that code yet. 
-/*
-	data = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh")->first_node("source")->
-		   next_sibling("source")->first_node("float_array");
-
-	std::vector<F32> normals = _SplitF32(data->value(), ' ');
-*/
 	
-	//Get Materials
+//===== Get Materials =====
 	std::map<string, Color&> materials;
 
 	data = root_node->first_node("library_effects")->first_node("effect");
@@ -201,10 +194,6 @@ void GameObject::LoadMesh(string filepath)
 			ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadMesh, unable to load color from matrial");
 		}
 	}
-
-	//Get UV
-	std::vector<F32> uvData;
-	rapidxml::xml_node<>* uv_id = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh");
 	
 	//Get indices
 	data = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh")->first_node("polylist");
@@ -219,21 +208,51 @@ void GameObject::LoadMesh(string filepath)
 		std::vector<U32> indices = _SplitU32(data->value(), ' ');
 
 		std::vector<U32> vertexIndices;
-		//std::vector<U32> normalIndices;
-		//split up the data
+		std::vector<U32> uvIndices;
 		
-//==========================================================================================================================
-//
-//Problem is here!!!!!!!!
-//you need to find a way to get the data you need from the index array. Make it dynamic
-//
-//==========================================================================================================================
+		//count the stride
+		S32 stride = 0;
+		S32 vertexOffset = -1;
+		S32 uvOffset = -1;
 
-		for(U32 i = 0; i < indices.size(); i+=2)
+		std::regex vertexRegex ("VERTEX");
+		std::regex uvRegex ("TEXCOORD");
+
+		for(rapidxml::xml_node<>* j = i->first_node("input"); j; j = j->next_sibling("input"))
 		{
-			vertexIndices.push_back(indices[i]);
-			//normalIndices.push_back(indices[i+1]);
-			std::cout << i << '\n';
+			++stride;
+
+			string attrib = j->first_attribute("semantic")->value();
+
+			if(std::regex_match(attrib, match, vertexRegex))
+			{
+				vertexOffset = atoi(j->first_attribute("offset")->value());
+			}
+			else if(std::regex_match(attrib, match, uvRegex))
+			{
+				uvOffset = atoi(j->first_attribute("offset")->value());
+			}
+		}
+
+		if(stride == 0)
+		{
+			ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadMesh: No stride found. That means there is no input, and your xml file is wrong");
+		}
+
+		std::cout << vertexOffset << "\n";
+		std::cout << uvOffset << "\n";
+
+		for(S32 i = 0; i < indices.size(); i+=stride)
+		{
+			if(vertexOffset >= 0) 
+			{
+				vertexIndices.push_back(indices[i + vertexOffset]);
+			}
+			
+			if(uvOffset >= 0) 
+			{
+				uvIndices.push_back(indices[i + uvOffset]);
+			}
 		}
 
 		//Get only unique values for vertex creation
