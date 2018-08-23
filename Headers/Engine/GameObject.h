@@ -188,6 +188,11 @@ namespace KillerEngine
 			return _indices;
 		}
 
+		inline std::vector<F32> GetUVIndices(void) const
+		{
+			return _uvIndices;
+		}
+
 //===== VAO =====
 		inline GLuint GetVAO(void) const
 		{
@@ -227,6 +232,7 @@ namespace KillerEngine
 		S32						_numIndices;
 		std::vector<Vertex> 	_vertices;
 		std::vector<U32> 		_indices;
+		std::vector<F32> 		_uvIndices;
 		GLuint 					_vao;
 		GLuint 					_vbo[NUM_VBO];
 

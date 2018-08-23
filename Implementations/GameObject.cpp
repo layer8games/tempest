@@ -24,6 +24,7 @@ _shader(),
 _numIndices(0),
 _vertices(),
 _indices(),
+_uvIndices(),
 _vao(0),
 _vbo{0}
 {
@@ -41,6 +42,7 @@ _position(obj.GetPosition()),
 _shader(obj.GetShader()),
 _vertices(obj.GetVertices()),
 _indices(obj.GetIndices()),
+_uvIndices(obj.GetUVIndices()),
 _vao(obj.GetVAO())
 {
 	glGenBuffers(NUM_VBO, _vbo);
@@ -99,13 +101,13 @@ void GameObject::v_InitVertexData(void)
 	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPosition.size()), &vertPosition[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(VERTEX_POS);
+	
+	//glEnable(GL_BLEND);
+	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-/*	
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
+/*
 	glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
-	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertTexCoords.size()), &vertTexCoords[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _uvIndices.size()), &_uvIndices[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
 	glEnableVertexAttribArray(TEX_COORD_POS);
 */
@@ -208,7 +210,6 @@ void GameObject::LoadMesh(string filepath)
 		std::vector<U32> indices = _SplitU32(data->value(), ' ');
 
 		std::vector<U32> vertexIndices;
-		std::vector<U32> uvIndices;
 		
 		//count the stride
 		S32 stride = 0;
@@ -239,9 +240,6 @@ void GameObject::LoadMesh(string filepath)
 			ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadMesh: No stride found. That means there is no input, and your xml file is wrong");
 		}
 
-		std::cout << vertexOffset << "\n";
-		std::cout << uvOffset << "\n";
-
 		for(S32 i = 0; i < indices.size(); i+=stride)
 		{
 			if(vertexOffset >= 0) 
@@ -251,7 +249,7 @@ void GameObject::LoadMesh(string filepath)
 			
 			if(uvOffset >= 0) 
 			{
-				uvIndices.push_back(indices[i + uvOffset]);
+				_uvIndices.push_back(indices[i + uvOffset]);
 			}
 		}
 
