@@ -105,12 +105,10 @@ void GameObject::v_InitVertexData(void)
 	//glEnable(GL_BLEND);
 	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-/*
 	glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
 	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _uvIndices.size()), &_uvIndices[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
 	glEnableVertexAttribArray(TEX_COORD_POS);
-*/
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[INDEX_BUFFER]);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (sizeof(U32) * _indices.size()), &_indices[0], GL_STATIC_DRAW);
@@ -263,12 +261,25 @@ void GameObject::LoadMesh(string filepath)
 		{
 			Vertex vert;
 			vert.position = vertexPositions[i];
+			std::cout << "position: " << vert.position[0] << " : " 
+									  << vert.position[1] << " : " 
+									  << vert.position[2] << " : " 
+									  << vert.position[3] << "\n"; 
+
 			vert.color = mat;
 
 			AddVertex(vert);
 		}
 
 		SetIndices(vertexIndices);
+
+		std::cout << "indices : ";
+		for(auto i : _indices)
+		{
+			std::cout << i << " : ";
+		}
+
+		std::cout << "\n";
 	}
 }
 
