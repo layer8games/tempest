@@ -261,11 +261,14 @@ void GameObject::LoadMesh(string filepath)
 		{
 			Vertex vert;
 			vert.position = vertexPositions[i];
+
+/*
 			std::cout << "position: " << vert.position[0] << " : " 
 									  << vert.position[1] << " : " 
 									  << vert.position[2] << " : " 
 									  << vert.position[3] << "\n"; 
 
+*/
 			vert.color = mat;
 
 			AddVertex(vert);
