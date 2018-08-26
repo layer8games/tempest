@@ -55,24 +55,6 @@ namespace KillerEngine
 //==========================================================================================================================
 		void LoadMesh(string filepath);
 
-		inline void AddVertex(const Vertex&  vert)
-		{
-			_vertices.push_back(vert);
-		}
-
-		inline void AddIndex(U32 index)
-		{
-			_indices.push_back(index);
-			++_numIndices;
-		}
-
-		inline void SetIndices(std::vector<U32> indices)
-		{
-			_indices = indices;
-			_numIndices = indices.size();
-		}
-
-
 //==========================================================================================================================
 //
 //OpenGL Functions Wrappers
@@ -177,20 +159,38 @@ namespace KillerEngine
 			return _numIndices;
 		}
 
-//===== Vertex and Index =====
+//===== Vertex =====
+		inline void AddVertex(const Vertex&  vert)
+		{
+			_vertices.push_back(vert);
+		}
+
+		inline void SetVertices(std::vector<Vertex> vertices)
+		{
+			_vertices = vertices;
+		}
+
 		inline std::vector<Vertex> GetVertices(void) const
 		{
 			return _vertices;
 		}
 
+//===== Indices =====		
+		inline void AddIndex(U32 index)
+		{
+			_indices.push_back(index);
+			++_numIndices;
+		}
+
+		inline void SetIndices(std::vector<U32> indices)
+		{
+			_indices = indices;
+			_numIndices = _indices.size();
+		}
+
 		inline std::vector<U32> GetIndices(void) const
 		{
 			return _indices;
-		}
-
-		inline std::vector<F32> GetUVIndices(void) const
-		{
-			return _uvIndices;
 		}
 
 //===== VAO =====
@@ -232,7 +232,6 @@ namespace KillerEngine
 		S32						_numIndices;
 		std::vector<Vertex> 	_vertices;
 		std::vector<U32> 		_indices;
-		std::vector<F32> 		_uvIndices;
 		GLuint 					_vao;
 		GLuint 					_vbo[NUM_VBO];
 

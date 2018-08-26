@@ -24,7 +24,6 @@ _shader(),
 _numIndices(0),
 _vertices(),
 _indices(),
-_uvIndices(),
 _vao(0),
 _vbo{0}
 {
@@ -42,7 +41,6 @@ _position(obj.GetPosition()),
 _shader(obj.GetShader()),
 _vertices(obj.GetVertices()),
 _indices(obj.GetIndices()),
-_uvIndices(obj.GetUVIndices()),
 _vao(obj.GetVAO())
 {
 	glGenBuffers(NUM_VBO, _vbo);
@@ -76,6 +74,8 @@ void GameObject::v_Render(void)
 //==========================================================================================================================
 void GameObject::v_InitVertexData(void)
 {
+	std::cout << "GameObject::v_InitVertexData was called\n";
+
 	if(_vertices.size() <= 0)
 	{
 		ErrorManager::Instance()->SetError(EC_Engine, "GameObject::v_InitVertexData. No Vertices added to GameObject before init was called.");
@@ -86,6 +86,7 @@ void GameObject::v_InitVertexData(void)
 	}
 
 	std::vector<F32> vertPosition;
+	std::vector<F32> texCoords;
 
 	for(auto i : _vertices)
 	{
@@ -93,6 +94,9 @@ void GameObject::v_InitVertexData(void)
 		vertPosition.push_back(i.position[1]);
 		vertPosition.push_back(i.position[2]);
 		vertPosition.push_back(i.position[3]);
+
+		texCoords.push_back(i.texCoord.u);
+		texCoords.push_back(i.texCoord.v);
 	}
 
 	glBindVertexArray(_vao);
@@ -102,11 +106,11 @@ void GameObject::v_InitVertexData(void)
 	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(VERTEX_POS);
 	
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
-	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _uvIndices.size()), &_uvIndices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * texCoords.size()), &texCoords[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
 	glEnableVertexAttribArray(TEX_COORD_POS);
 
@@ -145,11 +149,12 @@ void GameObject::LoadMesh(string filepath)
 
 	std::smatch match{};
 	std::regex vertexRegex (".*mesh-positions");
-	std::regex uvRegex (".*mesh-map*");
+	std::regex uvRegex (".*mesh-map.*");
 	
 	std::vector<F32> vertexData;
-	std::vector<KM::Vector> vertexPositions;
+	std::vector<Vertex> vertices;
 	std::vector<F32> uvData;
+	std::vector<TexCoord> texCoordValues;
 
 	for(rapidxml::xml_node<>* i = data; i; i = i->next_sibling("source"))
 	{
@@ -162,13 +167,18 @@ void GameObject::LoadMesh(string filepath)
 
 		 	for(U32 i = 0; i < vertexData.size(); i += 3)
 			{
-				vertexPositions.push_back(KM::Vector(vertexData[i], vertexData[i+1], vertexData[i+2]));
+				vertices.push_back(Vertex(KM::Vector(vertexData[i], vertexData[i+1], vertexData[i+2])));
 			}
 		}
 		else if(std::regex_match(attrib, match, uvRegex))
 		{
 		 	rapidxml::xml_node<>* access = i->first_node("float_array"); 
 		 	uvData = _SplitF32(access->value(), ' ');
+	 	
+		 	for(U32 i = 0; i < uvData.size(); i += 2)
+		 	{
+		 		texCoordValues.push_back(TexCoord(uvData[1], uvData[i+1]));
+		 	}
 		}
 	}
 	
@@ -208,6 +218,7 @@ void GameObject::LoadMesh(string filepath)
 		std::vector<U32> indices = _SplitU32(data->value(), ' ');
 
 		std::vector<U32> vertexIndices;
+		std::vector<U32> uvIndices;
 		
 		//count the stride
 		S32 stride = 0;
@@ -247,42 +258,18 @@ void GameObject::LoadMesh(string filepath)
 			
 			if(uvOffset >= 0) 
 			{
-				_uvIndices.push_back(indices[i + uvOffset]);
+				uvIndices.push_back(indices[i + uvOffset]);
 			}
 		}
 
-		//Get only unique values for vertex creation
-		std::vector<U32> vertexNeeded = vertexIndices;
-		std::sort(vertexNeeded.begin(), vertexNeeded.end());
-		auto it = std::unique(vertexNeeded.begin(), vertexNeeded.end());
-		vertexNeeded.resize(std::distance(vertexNeeded.begin(), it));
-
-		for(auto i : vertexNeeded)
+		for(S32 i = 0; i > indices.size(); ++i)
 		{
-			Vertex vert;
-			vert.position = vertexPositions[i];
-
-/*
-			std::cout << "position: " << vert.position[0] << " : " 
-									  << vert.position[1] << " : " 
-									  << vert.position[2] << " : " 
-									  << vert.position[3] << "\n"; 
-
-*/
-			vert.color = mat;
-
-			AddVertex(vert);
+			S32 index = indices[i];
+			vertices[index].texCoord = texCoordValues[uvIndices[i]];
 		}
 
+		SetVertices(vertices);
 		SetIndices(vertexIndices);
-
-		std::cout << "indices : ";
-		for(auto i : _indices)
-		{
-			std::cout << i << " : ";
-		}
-
-		std::cout << "\n";
 	}
 }
 

@@ -17,27 +17,36 @@ namespace KM = KillerMath;
 
 namespace KillerEngine
 {
+	struct TexCoord
+	{
+		F32 u;
+		F32 v;
+
+		TexCoord(F32 s, F32 t)
+		: u(s), v(t)
+		{  }
+	};
+
 	struct Vertex
 	{
 		KM::Vector position;
-		F32 	   uCoord;
-		F32		   vCoord;
+		TexCoord   texCoord;
 		Color 	   color;
 
 		Vertex(void)
-		: position(), uCoord(0.0f), vCoord(0.0f), color()
+		: position(), texCoord(0.0f, 0.0f), color()
 		{  }
 
 		Vertex(KM::Vector pos)
-		: position(pos), uCoord(0.0f), vCoord(0.0f), color()
+		: position(pos), texCoord(0.0f, 0.0f), color()
 		{  }
 
 		Vertex(KM::Vector pos, Color col)
-		: position(pos), uCoord(0.0f), vCoord(0.0f), color(col)
+		: position(pos), texCoord(0.0f, 0.0f), color(col)
 		{  }
 
 		Vertex(KM::Vector pos, F32 u, F32 v)
-		: position(pos), uCoord(u), vCoord(v), color()
+		: position(pos), texCoord(u, v), color()
 		{  }
 	};
 }//end Namespace
