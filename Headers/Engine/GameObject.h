@@ -199,6 +199,12 @@ namespace KillerEngine
 			return _vao;
 		}	
 
+//===== Uv List =====
+		inline std::vector<F32> GetUVList(void) const
+		{
+			return _uvList;
+		}
+
 	protected:
 		Shader _shader;
 
@@ -234,6 +240,7 @@ namespace KillerEngine
 		std::vector<U32> 		_indices;
 		GLuint 					_vao;
 		GLuint 					_vbo[NUM_VBO];
+		std::vector<F32> 		_uvList;
 
 	};
 }
