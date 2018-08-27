@@ -101,12 +101,14 @@ void GameObject::v_InitVertexData(void)
 		texCoords.push_back(i.texCoord.v);
 	}
 
+/*
 	std::cout << "texCoords: ";
 
 	for(auto i : texCoords)
 	{
 		std::cout << i << "\n";
 	}
+*/
 
 	glBindVertexArray(_vao);
 
@@ -259,7 +261,7 @@ void GameObject::LoadMesh(string filepath)
 			ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadMesh: No stride found. That means there is no input, and your xml file is wrong");
 		}
 
-		for(S32 i = 0; i < indices.size(); i+=stride)
+		for(U32 i = 0; i < indices.size(); i+=stride)
 		{
 			if(vertexOffset >= 0) 
 			{
@@ -272,18 +274,22 @@ void GameObject::LoadMesh(string filepath)
 			}
 		}
 
-		for(S32 i = 0; i < indices.size(); ++i)
+		std::cout << "vertices: size = " << vertices.size() << "\n";
+
+		for(auto i : vertices)
+		{
+			std::cout << i.position[0] << " " << i.position[1] << " " << i.position[2] << "\n";
+		}
+
+		for(U32 i = 0; i < indices.size(); ++i)
 		{
 			S32 index = indices[i];
-//==========================================================================================================================
-//Re=think this shit
-//==========================================================================================================================			
-			vertices[index].texCoord = texCoordValues[uvIndices[i]];
-			//TexCoord tex = texCoordValues[uvIndices[i]];
-			//_uvList.push_back(e.u);
-			//_uvList.push_back(texCoordValues[uvIndices[i]].v);
+			S32 uvIndex = uvIndices[i];
 
-			std::cout << "uv added: " << vertices[index].texCoord.u << " " << vertices[index].texCoord.v << "\n";
+			std::cout << "i = " << i << "\nindex = " << index << "\n";
+
+			TexCoord coord = texCoordValues[uvIndex];			
+			vertices[index].texCoord = coord;
 		}
 
 		std::cout <<"uv list\n";
