@@ -88,7 +88,6 @@ void GameObject::v_InitVertexData(void)
 	}
 
 	std::vector<F32> vertPosition;
-	std::vector<F32> texCoords;
 
 	for(auto i : _vertices)
 	{
@@ -96,19 +95,8 @@ void GameObject::v_InitVertexData(void)
 		vertPosition.push_back(i.position[1]);
 		vertPosition.push_back(i.position[2]);
 		vertPosition.push_back(i.position[3]);
-
-		texCoords.push_back(i.texCoord.u);
-		texCoords.push_back(i.texCoord.v);
 	}
 
-/*
-	std::cout << "texCoords: ";
-
-	for(auto i : texCoords)
-	{
-		std::cout << i << "\n";
-	}
-*/
 
 	glBindVertexArray(_vao);
 
@@ -120,11 +108,13 @@ void GameObject::v_InitVertexData(void)
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
-	//glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _uvList.size()), &_uvList[0], GL_STATIC_DRAW);
-	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * texCoords.size()), &texCoords[0], GL_STATIC_DRAW);
-	glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
-	glEnableVertexAttribArray(TEX_COORD_POS);
+	if(_uvList.size() > 0) 
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
+		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _uvList.size()), &_uvList[0], GL_STATIC_DRAW);
+		glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
+		glEnableVertexAttribArray(TEX_COORD_POS);
+	}
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[INDEX_BUFFER]);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (sizeof(U32) * _indices.size()), &_indices[0], GL_STATIC_DRAW);
@@ -139,6 +129,8 @@ void GameObject::v_InitVertexData(void)
 //==========================================================================================================================
 void GameObject::LoadMesh(string filepath)
 {
+	std::cout << "Load mesh called\n";
+
 	std::ifstream file(filepath);
 	std::vector<char> buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 	//xml file must be 0 terminating
@@ -189,7 +181,7 @@ void GameObject::LoadMesh(string filepath)
 	 	
 		 	for(U32 i = 0; i < uvData.size(); i += 2)
 		 	{
-		 		texCoordValues.push_back(TexCoord(uvData[1], uvData[i+1]));
+		 		texCoordValues.push_back(TexCoord(uvData[i], uvData[i+1]));
 		 	}
 		}
 	}
@@ -273,31 +265,20 @@ void GameObject::LoadMesh(string filepath)
 				uvIndices.push_back(indices[i + uvOffset]);
 			}
 		}
-
-		std::cout << "vertices: size = " << vertices.size() << "\n";
-
-		for(auto i : vertices)
+	
+		for(U32 i = 0; i < vertexIndices.size(); ++i)
 		{
-			std::cout << i.position[0] << " " << i.position[1] << " " << i.position[2] << "\n";
-		}
-
-		for(U32 i = 0; i < indices.size(); ++i)
-		{
-			S32 index = indices[i];
+			S32 index = vertexIndices[i];
 			S32 uvIndex = uvIndices[i];
-
-			std::cout << "i = " << i << "\nindex = " << index << "\n";
 
 			TexCoord coord = texCoordValues[uvIndex];			
 			vertices[index].texCoord = coord;
-		}
 
-		std::cout <<"uv list\n";
+			std::cout << "Adding uv to list\n" << coord.u << " " << coord.v << "\n";
 
-		for(auto i : _uvList)
-		{
-			std::cout << i << "\n";
-		}
+			_uvList.push_back(coord.u);
+			_uvList.push_back(coord.v);
+		}	
 
 		SetVertices(vertices);
 		SetIndices(vertexIndices);
