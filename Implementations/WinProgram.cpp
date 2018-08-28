@@ -136,6 +136,7 @@ void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen)
     }
 
     glViewport(0, 0, _totalWidth, _totalHeight);
+    glEnable(GL_DEPTH_TEST);
 }
 
 void WinProgram::ProcessEvents(void)
@@ -149,7 +150,7 @@ void WinProgram::ProcessEvents(void)
 void WinProgram::BufferSwap(void)
 { 
     glfwSwapBuffers(_window);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 Keys WinProgram::ConvertKeyCodes(int key)

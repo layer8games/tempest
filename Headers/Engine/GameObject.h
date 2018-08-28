@@ -205,6 +205,11 @@ namespace KillerEngine
 			return _uvList;
 		}
 
+		inline void AddUV(F32 val)
+		{
+			_uvList.push_back(val);
+		}
+
 	protected:
 		Shader _shader;
 

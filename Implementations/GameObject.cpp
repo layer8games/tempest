@@ -76,8 +76,6 @@ void GameObject::v_Render(void)
 //==========================================================================================================================
 void GameObject::v_InitVertexData(void)
 {
-	std::cout << "GameObject::v_InitVertexData was called\n";
-
 	if(_vertices.size() <= 0)
 	{
 		ErrorManager::Instance()->SetError(EC_Engine, "GameObject::v_InitVertexData. No Vertices added to GameObject before init was called.");
@@ -88,6 +86,7 @@ void GameObject::v_InitVertexData(void)
 	}
 
 	std::vector<F32> vertPosition;
+	//std::vector<F32> uvCoords;
 
 	for(auto i : _vertices)
 	{
@@ -95,10 +94,14 @@ void GameObject::v_InitVertexData(void)
 		vertPosition.push_back(i.position[1]);
 		vertPosition.push_back(i.position[2]);
 		vertPosition.push_back(i.position[3]);
+
+		//uvCoords.push_back(i.texCoord.u);
+		//uvCoords.push_back(i.texCoord.u);
 	}
 
 
-	glBindVertexArray(_vao);
+	//glBindVertexArray(_vao);
+	BindVAO();
 
 	glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
 	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPosition.size()), &vertPosition[0], GL_STATIC_DRAW);
@@ -109,15 +112,17 @@ void GameObject::v_InitVertexData(void)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	if(_uvList.size() > 0) 
+	//if(uvCoords.size() > 0) 
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
 		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _uvList.size()), &_uvList[0], GL_STATIC_DRAW);
+		//glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * uvCoords.size()), &uvCoords[0], GL_STATIC_DRAW);
 		glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
 		glEnableVertexAttribArray(TEX_COORD_POS);
 	}
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[INDEX_BUFFER]);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (sizeof(U32) * _indices.size()), &_indices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (sizeof(U32) * _numIndices), &_indices[0], GL_STATIC_DRAW);
 
 	glBindVertexArray(0);
 }
@@ -129,8 +134,6 @@ void GameObject::v_InitVertexData(void)
 //==========================================================================================================================
 void GameObject::LoadMesh(string filepath)
 {
-	std::cout << "Load mesh called\n";
-
 	std::ifstream file(filepath);
 	std::vector<char> buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 	//xml file must be 0 terminating
@@ -171,7 +174,8 @@ void GameObject::LoadMesh(string filepath)
 
 		 	for(U32 i = 0; i < vertexData.size(); i += 3)
 			{
-				vertices.push_back(Vertex(KM::Vector(vertexData[i], vertexData[i+1], vertexData[i+2])));
+				//vertices.push_back(Vertex(KM::Vector(vertexData[i], vertexData[i+1], vertexData[i+2])));
+				AddVertex(Vertex(KM::Vector(vertexData[i], vertexData[i+1], vertexData[i+2])));
 			}
 		}
 		else if(std::regex_match(attrib, match, uvRegex))
@@ -187,6 +191,7 @@ void GameObject::LoadMesh(string filepath)
 	}
 	
 //===== Get Materials =====
+/*
 	std::map<string, Color&> materials;
 
 	data = root_node->first_node("library_effects")->first_node("effect");
@@ -208,15 +213,18 @@ void GameObject::LoadMesh(string filepath)
 			ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadMesh, unable to load color from matrial");
 		}
 	}
+*/
 	
 	//Get indices
 	data = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh")->first_node("polylist");
 
 	for(rapidxml::xml_node<>* i = data; i; i = i->next_sibling("polylist"))
 	{
+/*		
 		string id = i->first_attribute("material")->value();
 
 		Color mat = materials.find(id)->second;
+*/
 		data = i->first_node("p");
 
 		std::vector<U32> indices = _SplitU32(data->value(), ' ');
@@ -266,21 +274,12 @@ void GameObject::LoadMesh(string filepath)
 			}
 		}
 	
-		for(U32 i = 0; i < vertexIndices.size(); ++i)
+		for(U32 i = 0; i < uvIndices.size(); ++i)
 		{
-			S32 index = vertexIndices[i];
-			S32 uvIndex = uvIndices[i];
-
-			TexCoord coord = texCoordValues[uvIndex];			
-			vertices[index].texCoord = coord;
-
-			std::cout << "Adding uv to list\n" << coord.u << " " << coord.v << "\n";
-
-			_uvList.push_back(coord.u);
-			_uvList.push_back(coord.v);
+			_uvList.push_back(texCoordValues[i].u);
+			_uvList.push_back(texCoordValues[i].v);
 		}	
 
-		SetVertices(vertices);
 		SetIndices(vertexIndices);
 	}
 }
