@@ -205,6 +205,11 @@ namespace KillerEngine
 			return _uvList;
 		}
 
+		inline void SetUVList(std::vector<F32> list)
+		{
+			_uvList = list;
+		}
+
 		inline void AddUV(F32 val)
 		{
 			_uvList.push_back(val);

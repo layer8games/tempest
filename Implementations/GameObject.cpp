@@ -86,7 +86,7 @@ void GameObject::v_InitVertexData(void)
 	}
 
 	std::vector<F32> vertPosition;
-	//std::vector<F32> uvCoords;
+	std::vector<F32> uvCoords;
 
 	for(auto i : _vertices)
 	{
@@ -95,10 +95,15 @@ void GameObject::v_InitVertexData(void)
 		vertPosition.push_back(i.position[2]);
 		vertPosition.push_back(i.position[3]);
 
-		//uvCoords.push_back(i.texCoord.u);
-		//uvCoords.push_back(i.texCoord.u);
+		uvCoords.push_back(i.texCoord.u);
+		uvCoords.push_back(i.texCoord.u);
 	}
-
+	
+	std::cout << "coord size " << _uvList.size() << "\n";
+	for(auto i : _uvList)
+	{
+		std::cout << i << "\n";
+	}
 
 	//glBindVertexArray(_vao);
 	BindVAO();
@@ -107,16 +112,16 @@ void GameObject::v_InitVertexData(void)
 	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPosition.size()), &vertPosition[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(VERTEX_POS);
-	
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	if(_uvList.size() > 0) 
-	//if(uvCoords.size() > 0) 
+	//if(_uvList.size() > 0) 
+	if(uvCoords.size() > 0) 
 	{
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 		glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
-		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _uvList.size()), &_uvList[0], GL_STATIC_DRAW);
-		//glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * uvCoords.size()), &uvCoords[0], GL_STATIC_DRAW);
+		//glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _uvList.size()), &_uvList[0], GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * uvCoords.size()), &uvCoords[0], GL_STATIC_DRAW);
 		glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
 		glEnableVertexAttribArray(TEX_COORD_POS);
 	}
