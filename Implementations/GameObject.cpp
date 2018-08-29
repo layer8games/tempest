@@ -1,5 +1,4 @@
 #include <Engine/GameObject.h>
-#include <iostream>
 
 using namespace KillerEngine;
 
@@ -106,19 +105,7 @@ void GameObject::v_InitVertexData(void)
 	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(VERTEX_POS);
 
-	std::cout << "uv list size " << _uvList.size() << "\n";
-
-	if(_uvList.size() > 0)
-	{
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-		glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
-		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _uvList.size()), &_uvList[0], GL_STATIC_DRAW);
-		glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
-		glEnableVertexAttribArray(TEX_COORD_POS);		
-	}
-	else if(vertTexCoords.size() > 0)
+	if(vertTexCoords.size() > 0)
 	{
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -139,7 +126,17 @@ void GameObject::v_InitVertexData(void)
 //
 //Functions
 //
-//==========================================================================================================================
+/*
+	This whole second has some severe issues. First, the way that uv's are set is not working at all. The geometry (vertices)
+	are working pretty good, but they can't be colored at all, which is a big problem. 
+
+	Additionally, there needs to be more checks that the xml finds what its looking for so that elements that aren't there don't
+	crash the whole program. That is why the materials are commented out, if you happen to make a model that does not have any,
+	an exception will be thrown, which is not desired. 
+
+	The way that colors are used also needs to be refactored, so that colored materials can be added from blender and work. For 
+	now, this method should not be used at all. 
+*/
 void GameObject::LoadMesh(string filepath)
 {
 	std::ifstream file(filepath);
@@ -286,8 +283,6 @@ void GameObject::LoadMesh(string filepath)
 		{
 			S32 index = vertexIndices[i];
 			S32 uvIndex = uvIndices[i];
-
-			std::cout << "index: " << index << "\n";
 
 			TexCoord coord = texCoordValues[uvIndex];			
 			_vertices[index].texCoord = coord;
