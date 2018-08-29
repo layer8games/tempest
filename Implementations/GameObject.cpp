@@ -86,7 +86,7 @@ void GameObject::v_InitVertexData(void)
 	}
 
 	std::vector<F32> vertPosition;
-	std::vector<F32> uvCoords;
+	std::vector<F32> vertTexCoords;
 
 	for(auto i : _vertices)
 	{
@@ -95,39 +95,42 @@ void GameObject::v_InitVertexData(void)
 		vertPosition.push_back(i.position[2]);
 		vertPosition.push_back(i.position[3]);
 
-		uvCoords.push_back(i.texCoord.u);
-		uvCoords.push_back(i.texCoord.u);
-	}
-	
-	std::cout << "coord size " << _uvList.size() << "\n";
-	for(auto i : _uvList)
-	{
-		std::cout << i << "\n";
+		vertTexCoords.push_back(i.texCoord.u);
+		vertTexCoords.push_back(i.texCoord.v);
 	}
 
-	//glBindVertexArray(_vao);
-	BindVAO();
+	glBindVertexArray(_vao);
 
 	glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
 	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPosition.size()), &vertPosition[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(VERTEX_POS);
 
-	//if(_uvList.size() > 0) 
-	if(uvCoords.size() > 0) 
+	std::cout << "uv list size " << _uvList.size() << "\n";
+
+	if(_uvList.size() > 0)
 	{
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
-		//glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _uvList.size()), &_uvList[0], GL_STATIC_DRAW);
-		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * uvCoords.size()), &uvCoords[0], GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * _uvList.size()), &_uvList[0], GL_STATIC_DRAW);
 		glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
-		glEnableVertexAttribArray(TEX_COORD_POS);
+		glEnableVertexAttribArray(TEX_COORD_POS);		
 	}
+	else if(vertTexCoords.size() > 0)
+	{
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+		glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
+		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertTexCoords.size()), &vertTexCoords[0], GL_STATIC_DRAW);
+		glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
+		glEnableVertexAttribArray(TEX_COORD_POS);	
+	}
+	
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[INDEX_BUFFER]);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (sizeof(U32) * _numIndices), &_indices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (sizeof(U32) * _indices.size()), &_indices[0], GL_STATIC_DRAW);
 
 	glBindVertexArray(0);
 }
@@ -279,6 +282,17 @@ void GameObject::LoadMesh(string filepath)
 			}
 		}
 	
+		for(U32 i = 0; i < vertexIndices.size(); ++i)
+		{
+			S32 index = vertexIndices[i];
+			S32 uvIndex = uvIndices[i];
+
+			std::cout << "index: " << index << "\n";
+
+			TexCoord coord = texCoordValues[uvIndex];			
+			_vertices[index].texCoord = coord;
+		}
+
 		for(U32 i = 0; i < uvIndices.size(); ++i)
 		{
 			_uvList.push_back(texCoordValues[i].u);
