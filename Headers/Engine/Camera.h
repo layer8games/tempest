@@ -62,34 +62,89 @@ namespace KillerEngine
 */
 		void SetDefaultMatrix(void);
 
-/*! 
-*/
-		void SetPosition(F32 x, F32 y);
-
-		void SetPosition(F32 x, F32 y, F32 z);
-
-		void SetPosition(const KM::Vector& V);
-
-		void ScalePosition(F32 x, F32 y, F32 scale);
-
-		void ScalePosition(F32 x, F32 y, F32 z, F32 scale);
-
-		void ScalePosition(const KM::Vector& v, F32 scale);
-
-		void SetColor(const Color& col) 
-		{ 
-			_background = col; 
-		}
-
 		void SetUp(GLuint shader);
 
 		inline const KM::Matrix& GetViewMatrix(void)
 		{
-			return _translation;
+			return KM::Matrix::Translate(_position);
 		}
 
-		//Will be implemented later
-		//void SetProjectionPerspective(void) { }
+//==========================================================================================================================
+//
+//Accessors
+//
+//==========================================================================================================================
+//==========================================================================================================================
+//Position
+//==========================================================================================================================
+		inline void SetPosition(F32 x, F32 y)
+		{
+			_position[0] = x;
+			_position[1] = y;
+		}
+
+		inline void SetPosition(F32 x, F32 y, F32 z)
+		{
+			_position[0] = x;
+			_position[1] = y;
+			_position[2] = z;
+		}
+
+		inline void SetPosition(const KM::Vector& vec)
+		{
+			_position = vec;
+		}
+
+		inline void ScalePosition(F32 x, F32 y, F32 scale)
+		{
+			_position.AddScaledVector(KM::Vector(x, y), scale);
+		}
+
+		inline void ScalePosition(F32 x, F32 y, F32 z, F32 scale)
+		{
+			_position.AddScaledVector(KM::Vector(x, y, z), scale);
+		}
+
+		inline void ScalePosition(const KM::Vector& vec, F32 scale)
+		{
+			_position.AddScaledVector(vec, scale);
+		}
+
+		inline const KM::Vector& GetPosition(void) const
+		{
+			return _position;
+		}
+
+//==========================================================================================================================
+//Background Color
+//==========================================================================================================================
+		inline void SetColor(const Color& col) 
+		{ 
+			_background = col; 
+		}
+
+		inline const Color& GetBackgroundColor(void) const
+		{
+			return _background;
+		} 
+
+//==========================================================================================================================
+//Up
+//==========================================================================================================================		
+		inline void SetUpVector(F32 val)
+		{
+			_up[1] = val;
+		}
+
+		inline void SetUpVector(const KM::Vector& vec)
+		{
+			_up	 = vec;
+		}
+
+//==========================================================================================================================
+//Target
+//==========================================================================================================================
+
 	
 	private:
 //==========================================================================================================================
@@ -99,9 +154,10 @@ namespace KillerEngine
 //==========================================================================================================================		
 		static shared_ptr<Camera> 	    _instance;		///< Singleton global instance.
 		Color  							_background;	///< Background color of current level.
-		KM::Vector  					_pos;			///< Position of Camera in world space.
+		KM::Vector  					_position;		///< Position of Camera in world space.
+		KM::Vector 						_up;
+		KM::Vector 						_target;
 		KM::Matrix 						_projection;	///< Projection Matrix (Orthographic or Perspective). Not used
-		KM::Matrix 						_translation;	///< Amount of Translation needed to reflect Position. Should be opposite of _pos
 		GLuint							_currentShader;	///< Fully compiled OpenGL Shader Program. 
 
 	protected:

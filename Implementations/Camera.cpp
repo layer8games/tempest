@@ -11,8 +11,10 @@ using namespace KillerEngine;
 Camera::Camera(void) 
 : 
 _background(1.0f), 
-_projection(), 
-_translation(), 
+_position(),
+_up(0.0f, 1.0f, 0.0f),
+_target(),
+_projection(),
 _currentShader(0)
 {  }
 
@@ -76,40 +78,4 @@ void Camera::SetPerspective(void)
 void Camera::SetDefaultMatrix(void)
 {
 	_projection.MakeIdentity();
-}
-
-void Camera::SetPosition(F32 x, F32 y)
-{
-	_pos = KM::Vector(x, y);
-	_translation.Translate(_pos);
-}
-
-void Camera::SetPosition(F32 x, F32 y, F32 z)
-{
-	_pos = KM::Vector(x, y, z);
-	_translation.Translate(_pos);
-}
-
-void Camera::SetPosition(const KM::Vector& V)
-{
-	_pos = V;
-	_translation.Translate(_pos);
-}
-
-void Camera::ScalePosition(F32 x, F32 y, F32 scale)
-{
-	_pos.AddScaledVector(KM::Vector(x, y), scale);
-	_translation.Translate(_pos);
-}
-
-void Camera::ScalePosition(F32 x, F32 y, F32 z, F32 scale)
-{
-	_pos.AddScaledVector(KM::Vector(x, y, z), scale);
-	_translation.Translate(_pos);
-}
-
-void Camera::ScalePosition(const KM::Vector& V, F32 scale)
-{
-	_pos.AddScaledVector(V, scale);
-	_translation.Translate(_pos);
 }

@@ -195,7 +195,39 @@ void Matrix::MakePerspective(F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F3
 //==========================================================================================================================
 //Translations
 //==========================================================================================================================
-void Matrix::Translate(F32 xVal, F32 yVal)
+Matrix Matrix::Translate(F32 xVal, F32 yVal)
+{
+	Matrix mat{1.0f};
+
+	mat[3][x] = xVal;
+	mat[3][y] = yVal;
+
+	return mat;
+}
+
+Matrix Matrix::Translate(F32 xVal, F32 yVal, F32 zVal)
+{
+	Matrix mat{1.0f};
+
+	mat[3][x] = xVal;
+	mat[3][y] = yVal;
+	mat[3][z] = zVal;
+
+	return mat;	
+}
+
+Matrix Matrix::Translate(const Vector& vec)
+{
+	Matrix mat{1.0f};
+
+	mat[3][x] = vec[x];
+	mat[3][y] = vec[y];
+	mat[3][z] = vec[z];
+
+	return mat;	
+}
+
+void Matrix::SetTranslate(F32 xVal, F32 yVal)
 {
 	MakeIdentity();
 
@@ -203,7 +235,7 @@ void Matrix::Translate(F32 xVal, F32 yVal)
 	_columns[3][y] = yVal;
 }
 
-void Matrix::Translate(F32 xVal, F32 yVal, F32 zVal)
+void Matrix::SetTranslate(F32 xVal, F32 yVal, F32 zVal)
 {
 	MakeIdentity();			
 
@@ -212,7 +244,7 @@ void Matrix::Translate(F32 xVal, F32 yVal, F32 zVal)
 	_columns[3][z] = zVal;
 }
 
-void Matrix::Translate(const Vector& vec)
+void Matrix::SetTranslate(const Vector& vec)
 {
 	MakeIdentity(); 
 
@@ -252,7 +284,39 @@ void Matrix::AddTranslate(const Vector& vec)
 //==========================================================================================================================
 //Scaling
 //==========================================================================================================================
-void Matrix::Scale(F32 xVal, F32 yVal)
+Matrix Matrix::Scale(F32 xVal, F32 yVal)
+{
+	Matrix mat{1.0f};
+
+	mat[0][x] = xVal;
+	mat[1][y] = yVal;
+
+	return mat;
+}
+
+Matrix Matrix::Scale(F32 xVal, F32 yVal, F32 zVal)
+{
+	Matrix mat{1.0f};
+
+	mat[0][x] = xVal;
+	mat[1][y] = yVal;
+	mat[2][z] = zVal;
+
+	return mat;
+}
+
+Matrix Matrix::Scale(const Vector& vec)
+{
+	Matrix mat{1.0f};
+
+	mat[0][x] = vec[x];
+	mat[1][y] = vec[y];
+	mat[2][z] = vec[z];
+
+	return mat;
+}
+
+void Matrix::SetScale(F32 xVal, F32 yVal)
 {
 	MakeIdentity();
 
@@ -260,7 +324,7 @@ void Matrix::Scale(F32 xVal, F32 yVal)
 	_columns[1][y] = yVal;
 }
 
-void Matrix::Scale(F32 xVal, F32 yVal, F32 zVal)
+void Matrix::SetScale(F32 xVal, F32 yVal, F32 zVal)
 {
 	MakeIdentity();
 
@@ -269,7 +333,7 @@ void Matrix::Scale(F32 xVal, F32 yVal, F32 zVal)
 	_columns[2][z] = zVal;
 }
 
-void Matrix::Scale(const Vector& vec)
+void Matrix::SetScale(const Vector& vec)
 {
 	MakeIdentity();
 
@@ -309,7 +373,46 @@ void Matrix::AddScale(const Vector& vec)
 //==========================================================================================================================
 //Rotations
 //==========================================================================================================================
-void Matrix::RotateX(F32 val)
+Matrix Matrix::RotateX(F32 val)
+{
+	val = DegreeToRadian(val);
+	Matrix mat{1.0f};
+
+	mat[1][y] = cos(val);
+	mat[1][z] = -sin(val);
+	mat[2][y] = sin(val);
+	mat[2][z] = cos(val);
+
+	return mat;
+}
+
+Matrix Matrix::RotateY(F32 val)
+{
+	val = DegreeToRadian(val);
+	Matrix mat{1.0f};
+
+	mat[0][x] = cos(val);
+	mat[0][z] = sin(val);
+	mat[2][x] = -sin(val);
+	mat[2][z] = cos(val);
+
+	return mat;
+}
+
+Matrix Matrix::RotateZ(F32 val)
+{
+	val = DegreeToRadian(val);
+	Matrix mat{1.0f};
+
+	mat[0][x] = cos(val);
+	mat[0][y] = -sin(val);
+	mat[1][x] = sin(val);
+	mat[1][y] = cos(val);
+
+	return mat;
+}
+
+void Matrix::SetRotateX(F32 val)
 {
 	val = DegreeToRadian(val);
 
@@ -331,7 +434,7 @@ void Matrix::AddRotateX(F32 val)
 	_columns[2][z] += cos(val);
 }
 
-void Matrix::RotateY(F32 val)
+void Matrix::SetRotateY(F32 val)
 {
 	val = DegreeToRadian(val);
 
@@ -353,7 +456,7 @@ void Matrix::AddRotateY(F32 val)
 	_columns[2][y] += cos(val);	
 }
 
-void Matrix::RotateZ(F32 val)
+void Matrix::SetRotateZ(F32 val)
 {
 	val = DegreeToRadian(val);
 
@@ -375,7 +478,7 @@ void Matrix::AddRotateZ(F32 val)
 	_columns[1][y] += cos(val);
 }
 
-void Matrix::Rotate(F32 xVal, F32 yVal, F32 zVal)
+void Matrix::SetRotate(F32 xVal, F32 yVal, F32 zVal)
 {
 	xVal = DegreeToRadian(xVal);
 	yVal = DegreeToRadian(yVal);
@@ -530,7 +633,46 @@ Matrix Matrix::operator*(const Matrix& mat)
 	return Matrix(xCol, yCol, zCol, wCol);
 }
 
-void Matrix::LookAt(const Vector& cameraPos, const Vector& target, const Vector& up)
+//==========================================================================================================================
+//
+//Look At Matrices
+//
+//==========================================================================================================================
+
+Matrix Matrix::LookAt(const Vector& cameraPos, const Vector& target, const Vector& up)
+{
+	Matrix mat{1.0f};
+
+	Vector zAxis = cameraPos - target;
+	zAxis.Normalize();
+
+	Vector xAxis = up.CrossProduct(zAxis);
+	xAxis.Normalize();
+
+	Vector yAxis = zAxis.CrossProduct(xAxis);
+	yAxis.Normalize();
+
+	mat[0][0] = xAxis[0];
+	mat[0][1] = yAxis[0];
+	mat[0][2] = zAxis[0];
+	mat[0][3] = 0.0f;
+
+	mat[1][0] = xAxis[1];
+	mat[1][1] = yAxis[1];
+	mat[1][2] = zAxis[1];
+	mat[1][3] = 0.0f;
+
+	mat[2][0] = xAxis[2];
+	mat[2][1] = yAxis[2];
+	mat[2][2] = zAxis[2];
+	mat[2][3] = 0.0f;
+
+	mat[3] = Vector(-xAxis.DotProduct(cameraPos), -yAxis.DotProduct(cameraPos), -zAxis.DotProduct(cameraPos), 1.0f);
+
+	return mat;
+}
+
+void Matrix::SetLookAt(const Vector& cameraPos, const Vector& target, const Vector& up)
 {
 	MakeIdentity();
 
@@ -561,7 +703,45 @@ void Matrix::LookAt(const Vector& cameraPos, const Vector& target, const Vector&
 	_columns[3] = Vector(-xAxis.DotProduct(cameraPos), -yAxis.DotProduct(cameraPos), -zAxis.DotProduct(cameraPos), 1.0f);		
 }
 
-void Matrix::FPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
+Matrix Matrix::FPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
+{
+	assert(pitch >= -90.0f);
+	assert(pitch <= 90.0f);
+	assert(yaw >= 0.0f);
+	assert(yaw <= 360.0f);
+
+	F32 cosPitch = cos(pitch);
+	F32 sinPitch = sin(pitch);
+	F32 cosYaw 	 = cos(yaw);
+	F32 sinYaw   = sin(yaw);
+
+	Matrix mat{1.0f};
+
+	Vector xAxis{ cosYaw, 0.0f, -sinYaw };
+	Vector yAxis{ sinYaw * sinPitch, cosPitch, cosYaw * sinPitch };
+	Vector zAxis{ sinYaw * cosPitch, -sinPitch, cosPitch * cosYaw };
+
+	mat[0][0] = xAxis[0];
+	mat[0][1] = yAxis[0];
+	mat[0][2] = zAxis[0];
+	mat[0][3] = 0.0f;
+
+	mat[1][0] = xAxis[1];
+	mat[1][1] = yAxis[1];
+	mat[1][2] = zAxis[1];
+	mat[1][3] = 0.0f;
+
+	mat[2][0] = xAxis[2];
+	mat[2][1] = yAxis[2];
+	mat[2][2] = zAxis[2];
+	mat[2][3] = 0.0f;
+
+	mat[3] = Vector(-xAxis.DotProduct(cameraPos), -yAxis.DotProduct(cameraPos), -zAxis.DotProduct(cameraPos), 1.0f);
+
+	return mat;
+}
+
+void Matrix::SetFPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
 {
 	assert(pitch >= -90.0f);
 	assert(pitch <= 90.0f);
