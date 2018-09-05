@@ -84,3 +84,8 @@ inline F32 DegreeToRadian(F32 angle)
 {
 	return static_cast<F32>(angle * R_PI / 180.0f);
 }
+
+inline F32 RadianToDegree(F32 angle)
+{
+	return static_cast<F32>(angle * 180.0f / R_PI);
+}

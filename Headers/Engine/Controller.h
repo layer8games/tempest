@@ -193,7 +193,7 @@ BUG! This is not copying anything at all. It is only passing the new refalone
 		KeyStates 		_keyStates[_totalKeys];			///< Array of states for each key, indexed by ID.
 		bool 			_pastActiveKeys[_totalKeys];	///< Array of keys in a pressed state as of last frame, indexed by ID.
 		bool			_curActiveKeys[_totalKeys];		///< Array of keys in a pressed state as of this frame, indexed by ID.
-		KM::Vector 	_leftClickCoordinates;			///< Coordinates of last left click.
+		KM::Vector 		_leftClickCoordinates;			///< Coordinates of last left click.
 		KM::Vector		_rightClickCoordinates;			///< Coordinates of last right click.
 	};
 }//End namespace

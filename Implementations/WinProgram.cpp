@@ -45,31 +45,6 @@ shared_ptr<WinProgram> WinProgram::Instance(void)
     return _instance;
 }
 
-//=======================================================================================================
-//OnKey
-//=======================================================================================================    
-void WinProgram::OnKey(GLFWwindow* window, int key, int scancode, int action, int mode)
-{
-	if(action == GLFW_PRESS)
-	{
-		Controller::Instance()->KeyDown(ConvertKeyCodes(key));
-	}
-	else if(action == GLFW_RELEASE)
-	{
-		Controller::Instance()->KeyUp(ConvertKeyCodes(key));
-	}
-}
-
-//==========================================================================================================================
-//OnResize
-//==========================================================================================================================
-void WinProgram::OnResize(GLFWwindow* window, int width, int height)
-{
-    _totalWidth = width;
-    _totalHeight = height;
-    glViewport(0, 0, _totalWidth, _totalHeight);
-}
-
 //==========================================================================================================================
 //Init
 //==========================================================================================================================
@@ -128,6 +103,7 @@ void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen)
 
     glfwSetKeyCallback(_window, OnKey);
     glfwSetWindowSizeCallback(_window, OnResize);
+    glfwSetCursorPosCallback(_window, OnMouseMove);
 
     glewExperimental = GL_TRUE;
     if(glewInit() != GLEW_OK)
@@ -299,5 +275,63 @@ void WinProgram::ToggleWireFrame(void)
     else
     {
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);   
+    }
+}
+
+//==========================================================================================================================
+//
+//Callback Functions
+//
+//==========================================================================================================================
+//=======================================================================================================
+//OnKey
+//=======================================================================================================    
+void WinProgram::OnKey(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+    if(action == GLFW_PRESS)
+    {
+        Controller::Instance()->KeyDown(ConvertKeyCodes(key));
+    }
+    else if(action == GLFW_RELEASE)
+    {
+        Controller::Instance()->KeyUp(ConvertKeyCodes(key));
+    }
+}
+
+//==========================================================================================================================
+//OnResize
+//==========================================================================================================================
+void WinProgram::OnResize(GLFWwindow* window, int width, int height)
+{
+    _totalWidth = width;
+    _totalHeight = height;
+    glViewport(0, 0, _totalWidth, _totalHeight);
+}
+
+//==========================================================================================================================
+//OnMouseMove
+//==========================================================================================================================
+void WinProgram::OnMouseMove(GLFWwindow* window, F64 posX, F64 posY)
+{
+    if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+    {
+        Controller::Instance()->LeftMouseClick(KM::Vector(posX, posY));
+        Controller::Instance()->KeyDown(Keys::LEFT_MOUSE);
+    }
+    else if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE)
+    {
+        //Controller::Instance()->LeftMouseClick(KM::Vector(posX, posY));
+        Controller::Instance()->KeyUp(Keys::LEFT_MOUSE);
+    }
+
+    if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == 1)
+    {
+        Controller::Instance()->RightMouseClick(KM::Vector(posX, posY));
+        Controller::Instance()->KeyDown(Keys::RIGHT_MOUSE);
+    }
+    else if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_RELEASE)
+    {
+        //Controller::Instance()->LeftMouseClick(KM::Vector(posX, posY));
+        Controller::Instance()->KeyUp(Keys::RIGHT_MOUSE);
     }
 }

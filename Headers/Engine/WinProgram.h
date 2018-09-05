@@ -110,9 +110,6 @@ namespace KillerEngine
 	\param wndName string: title of window
 	\param isFullScreen bool: Sets if the system makes the window fullscreen
 */		
-		static void OnKey(GLFWwindow* window, int key, int scancode, int action, int mode);
-
-		static void OnResize(GLFWwindow* window, int width, int height);
 
 		void Init(S32 width, S32 height, string wndName, bool isFullScreen);
 		
@@ -125,6 +122,17 @@ namespace KillerEngine
 		void DisplayFPS(void);
 
 		void ToggleWireFrame(void);
+
+//==========================================================================================================================
+//
+//Callback Functions
+//
+//==========================================================================================================================
+		static void OnKey(GLFWwindow* window, int key, int scancode, int action, int mode);
+
+		static void OnResize(GLFWwindow* window, int width, int height);
+
+		static void OnMouseMove(GLFWwindow* window, F64 posX, F64 posY);
 
 	private:
 		static shared_ptr<WinProgram> _instance;
