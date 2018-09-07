@@ -69,6 +69,11 @@ void Camera::SetPerspective(void)
 								200.0f);//far
 }
 
+void Camera::SetPerspective(F32 fov, F32 aspect, F32 nearPlane, F32 farPlane)
+{
+	_projection.MakePerspective(fov, aspect, nearPlane, farPlane);
+}
+
 void Camera::SetDefaultMatrix(void)
 {
 	_projection.MakeIdentity();
@@ -84,7 +89,9 @@ void Camera::SetDefaultMatrix(void)
 //==========================================================================================================================
 OrbitCamera::OrbitCamera(void)
 :
-_radius(10.0f)
+_radius(10.0f),
+_mouseSensitivity(1.0f),
+_lastMouseCoords(0.0f)
 {  }
 
 OrbitCamera::~OrbitCamera(void)
@@ -103,6 +110,28 @@ void OrbitCamera::v_Rotate(F32 yaw, F32 pitch)
 	_pitch = _FloatClamp(pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
 
 	UpdateCameraVectors();
+}
+
+void OrbitCamera::v_Update(void)
+{
+	KM::Vector coords = Controller::Instance()->GetLeftMouseCoord();
+
+	//Change oribt with left click
+	if(Controller::Instance()->GetKeyDown(LEFT_MOUSE))
+	{
+		
+		_yaw -= (coords[0] - _lastMouseCoords[0]) * _mouseSensitivity;
+		_pitch += (coords[1] - _lastMouseCoords[1]) * _mouseSensitivity;
+	}
+
+	if(Controller::Instance()->GetKeyDown(RIGHT_MOUSE))
+	{
+		F32 dx = 0.01f * (coords[0] - _lastMouseCoords[0]);
+		F32 dy = 0.01f * (coords[1] - _lastMouseCoords[1]);
+		_radius += dx - dy;
+	}
+
+	_lastMouseCoords = coords;
 }
 
 void OrbitCamera::UpdateCameraVectors(void)

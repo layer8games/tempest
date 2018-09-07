@@ -20,6 +20,7 @@ Written by Maxwell Miller
 #include <Engine/Matrix.h>
 #include <Engine/Vector.h>
 #include <Engine/Color.h>
+#include <Engine/Controller.h>
 
 #include <vector>
 
@@ -52,6 +53,9 @@ namespace KillerEngine
 		virtual void v_Rotate(F32 yaw, F32 pitch)
 		{  }
 
+		virtual void v_Update(void)
+		{  }
+
 //==========================================================================================================================
 //
 //Camera Functions
@@ -67,6 +71,8 @@ namespace KillerEngine
 */
 		void SetPerspective(void);
 
+		void SetPerspective(F32 fov, F32 aspect, F32 nearPlane, F32 farPlane);
+
 /*! Helper function to set the projection Matrix to be an identity Matrix. 
 	\param none
 */
@@ -77,6 +83,11 @@ namespace KillerEngine
 		inline const KM::Matrix& GetViewMatrix(void)
 		{
 			return KM::Matrix::LookAt(_position, _target, _up);
+		}
+
+		inline const KM::Matrix& GetProjectionMatrix(void)
+		{
+			return _projection;
 		}
 
 //==========================================================================================================================
@@ -146,6 +157,13 @@ namespace KillerEngine
 			_up[1] = val;
 		}
 
+		inline void SetUpVector(F32 xVal, F32 yVal, F32 zVal)
+		{
+			_up[0] = xVal;
+			_up[1] = yVal;
+			_up[2] = zVal;
+		}
+
 		inline void SetUpVector(const KM::Vector& vec)
 		{
 			_up	 = vec;
@@ -159,19 +177,19 @@ namespace KillerEngine
 //==========================================================================================================================
 //Target
 //==========================================================================================================================
-		inline void SetLookAt(const KM::Vector& target)
+		inline void SetTarget(const KM::Vector& target)
 		{
 			_target = target;
 		}
 
-		inline void SetLookAt(F32 xVal, F32 yVal)
+		inline void SetTarget(F32 xVal, F32 yVal)
 		{
 			_target[0] = xVal;
 			_target[1] = yVal;
 			_target[2] = 0.0f;
 		}
 
-		inline void SetLookAt(F32 xVal, F32 yVal, F32 zVal)
+		inline void SetTarget(F32 xVal, F32 yVal, F32 zVal)
 		{
 			_target[0] = xVal;
 			_target[1] = yVal;
@@ -224,6 +242,8 @@ namespace KillerEngine
 //==========================================================================================================================		
 		virtual void v_Rotate(F32 yaw, F32 pitch);
 
+		virtual void v_Update(void);
+
 		void UpdateCameraVectors(void);
 
 //==========================================================================================================================
@@ -238,6 +258,16 @@ namespace KillerEngine
 			_radius = _FloatClamp(val, 2.0f, 80.0f);
 		}
 
+		inline void SetMouseSensitivity(F32 val)
+		{
+			_mouseSensitivity = val;
+		}
+
+		inline F32 GetMouseSensitivity(void)
+		{
+			return _mouseSensitivity;
+		}
+
 	private:
 
 		F32 _FloatClamp(F32 val, F32 min, F32 max);
@@ -246,7 +276,9 @@ namespace KillerEngine
 //Data
 //
 //==========================================================================================================================		
-		F32 _radius;
+		F32 		_radius;
+		F32			_mouseSensitivity;
+		KM::Vector 	_lastMouseCoords;
 	};
 
 }//end namespace

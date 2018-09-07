@@ -153,6 +153,21 @@ namespace KillerEngine
 			_shader.Use();
 		}
 
+		inline void SetShaderUniform(string name, Color col)
+		{
+			_shader.SetUniform(name.c_str(), col);
+		}
+
+		inline void SetShaderUniform(string name, KM::Vector vec)
+		{
+			_shader.SetUniform(name.c_str(), vec);
+		}
+
+		inline void SetShaderUniform(string name, KM::Matrix mat)
+		{
+			_shader.SetUniform(name.c_str(), mat);
+		}
+
 //===== NumVertices =====
 		inline S32 GetNumVertices(void)
 		{

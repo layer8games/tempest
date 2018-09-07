@@ -143,10 +143,7 @@ namespace KillerEngine
 
 /*! Used by WinProgram to save the coordinates when a Right Mouse click is detected by the system.
 	\param coord Vector: x.y position on the screen of the click */
-		void RightMouseClick(const KM::Vector& coord) 
-		{ 
-			_rightClickCoordinates = coord; 
-		}
+		void RightMouseClick(const KM::Vector& coord);
 
 /*! Returns the raw coordinates of a Right click in screen space */		
 		const KM::Vector GetRightMouseCoord(void) const

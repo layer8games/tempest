@@ -125,4 +125,10 @@ void Controller::LeftMouseClick(const KM::Vector& coord)
 	_leftClickCoordinates[0] = coord[0];
 	_leftClickCoordinates[1] = coord[1];
 	//_leftClickCoordinates[1] = -(coord[1] - static_cast<F32>( WinProgram::Instance()->GetHeight() ));
-}  
+} 
+
+void Controller::RightMouseClick(const KM::Vector& coord)
+{
+	_rightClickCoordinates[0] = coord[0];
+	_rightClickCoordinates[1] = coord[1];
+}
