@@ -50,10 +50,13 @@ namespace KillerEngine
 //Virtual Functions
 //
 //==========================================================================================================================
-		virtual void v_Rotate(F32 yaw, F32 pitch)
+		virtual void v_Rotate(void)
 		{  }
 
 		virtual void v_Update(void)
+		{  }
+
+		virtual void v_Move(void)
 		{  }
 
 //==========================================================================================================================
@@ -93,6 +96,19 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
+//==========================================================================================================================
+//Background Color
+//==========================================================================================================================
+		inline void SetColor(const Color& col) 
+		{ 
+			_background = col; 
+		}
+
+		inline const Color& GetBackgroundColor(void) const
+		{
+			return _background;
+		}
+
 //==========================================================================================================================
 //Position
 //==========================================================================================================================
@@ -135,44 +151,6 @@ namespace KillerEngine
 		}
 
 //==========================================================================================================================
-//Background Color
-//==========================================================================================================================
-		inline void SetColor(const Color& col) 
-		{ 
-			_background = col; 
-		}
-
-		inline const Color& GetBackgroundColor(void) const
-		{
-			return _background;
-		} 
-
-//==========================================================================================================================
-//Up
-//==========================================================================================================================		
-		inline void SetUpVector(F32 val)
-		{
-			_up[1] = val;
-		}
-
-		inline void SetUpVector(F32 xVal, F32 yVal, F32 zVal)
-		{
-			_up[0] = xVal;
-			_up[1] = yVal;
-			_up[2] = zVal;
-		}
-
-		inline void SetUpVector(const KM::Vector& vec)
-		{
-			_up	 = vec;
-		}
-
-		inline const KM::Vector& GetUpVector(void)
-		{
-			return _up;
-		}
-
-//==========================================================================================================================
 //Target
 //==========================================================================================================================
 		inline void SetTarget(const KM::Vector& target)
@@ -197,29 +175,150 @@ namespace KillerEngine
 		inline const KM::Vector& GetTarget(void)
 		{
 			return _target;
+		}		
+
+ 
+
+//==========================================================================================================================
+//Up
+//==========================================================================================================================		
+		inline void SetUpVector(F32 val)
+		{
+			_up[1] = val;
 		}
-	
+
+		inline void SetUpVector(F32 xVal, F32 yVal, F32 zVal)
+		{
+			_up[0] = xVal;
+			_up[1] = yVal;
+			_up[2] = zVal;
+		}
+
+		inline void SetUpVector(const KM::Vector& vec)
+		{
+			_up	 = vec;
+		}
+
+		inline const KM::Vector& GetUpVector(void) const
+		{
+			return _up;
+		}
+
+//==========================================================================================================================
+//Look
+//==========================================================================================================================
+		inline void SetLookVector(F32 val)
+		{
+			_look = val;
+		}
+
+		inline void SetLookVector(F32 xVal, F32 yVal)
+		{
+			_look[0] = xVal;
+			_look[1] = yVal;
+		}
+
+		inline void SetLookVector(F32 xVal, F32 yVal, F32 zVal)
+		{
+			_look[0] = xVal;
+			_look[1] = yVal;
+			_look[2] = zVal;
+		}
+
+		inline void SetLookVector(const KM::Vector& vec)
+		{
+			_look = vec;
+		}
+
+		inline const KM::Vector& GetLookVector(void) const
+		{
+			return _look;
+		}
+
+//==========================================================================================================================
+//Right
+//==========================================================================================================================
+		inline void SetRightVector(F32 val)
+		{
+			_right = val;
+		}
+
+		inline void SetRightVector(F32 xVal, F32 yVal)
+		{
+			_right[0] = xVal;
+			_right[1] = yVal;
+		}
+
+		inline void SetRightVector(F32 xVal, F32 yVal, F32 zVal)
+		{
+			_right[0] = xVal;
+			_right[1] = yVal;
+			_right[2] = zVal;
+		}
+
+		inline void SetRightVector(const KM::Vector& vec)
+		{
+			_right = vec;
+		}
+
+		inline const KM::Vector& GetRightVector(void) const
+		{
+			return _right;
+		}
+//==========================================================================================================================
+//Yaw
+//==========================================================================================================================
+		inline F32 GetYaw(void) const
+		{
+			return _yaw;
+		}
+
+//==========================================================================================================================
+//Pitch
+//==========================================================================================================================		
+		inline F32 GetPitch(void) const
+		{
+			return _pitch;
+		}
+
+//==========================================================================================================================
+//Field of View
+//==========================================================================================================================
+		inline void SetFOV(F32 val)
+		{
+			_fov = val;
+		}
+
+		inline F32 GetFOV(void) const
+		{
+			return _fov;
+		}
+
 	private:
+		virtual void _v_UpdateCameraVectors(void)
+		{  }
+
 //==========================================================================================================================
 //
-//Private members
+//Data
 //
 //==========================================================================================================================		
 		Color  							_background;	///< Background color of current level.
-		KM::Vector 						_up;
-		KM::Matrix 						_projection;	///< Projection Matrix (Orthographic or Perspective). Not used
-		GLuint							_currentShader;	///< Fully compiled OpenGL Shader Program. 
+		KM::Matrix 						_projection;	///< Projection Matrix (Orthographic or Perspective). Not used 
 		
 	protected:
 		KM::Vector  					_position;		///< Position of Camera in world space.
 		KM::Vector 						_target;
+		KM::Vector 						_up;
+		KM::Vector 						_look;
+		KM::Vector 						_right;
 		F32 							_yaw;			///< Euler angle in Radians
 		F32 							_pitch;			///< Euler angle in Radians
-	};
+		F32 							_fov;
+	};//end Camera
+
 //==========================================================================================================================
-//
 //Orbit Camera
-//
 //==========================================================================================================================
 	class OrbitCamera : public Camera
 	{
@@ -241,8 +340,6 @@ namespace KillerEngine
 		virtual void v_Rotate(void);
 
 		virtual void v_Update(void);
-
-		void UpdateCameraVectors(void);
 
 //==========================================================================================================================
 //
@@ -267,6 +364,7 @@ namespace KillerEngine
 		}
 
 	private:
+		virtual void _v_UpdateCameraVectors(void);
 
 		F32 _FloatClamp(F32 val, F32 min, F32 max);
 //==========================================================================================================================
@@ -280,6 +378,37 @@ namespace KillerEngine
 		F32			_newYaw;
 		F32			_newPitch;
 
-	};
+	};//end OrbitCamera
+
+//==========================================================================================================================
+//FPSCamera
+//==========================================================================================================================
+	class FPSCamera : public Camera
+	{
+	public:
+//==========================================================================================================================
+//
+//Constructors
+//
+//==========================================================================================================================		
+		FPSCamera(void);
+
+		FPSCamera(const KM::Vector position, F32 yaw, F32 pitch);
+
+		~FPSCamera(void);
+
+//==========================================================================================================================
+//
+//Virtual Functions
+//
+//==========================================================================================================================
+		virtual void v_Rotate(void);
+
+		virtual void v_Move(void);
+
+	private:
+		virtual void _v_UpdateCameraVectors(void);
+
+	};//end FPSCamera
 
 }//end namespace

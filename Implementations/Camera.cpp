@@ -13,13 +13,15 @@ using namespace KillerEngine;
 Camera::Camera(void) 
 : 
 _background(1.0f), 
+_projection(1.0f),
+_position(0.0f),
+_target(0.0f),
 _up(0.0f, 1.0f, 0.0f),
-_projection(),
-_currentShader(0),
-_position(),
-_target(),
+_look(0.0f),
+_right(0.0f),
 _yaw(0.0f), 
-_pitch(0.0f)
+_pitch(0.0f),
+_fov(45.0f)
 {  }
 
 Camera::~Camera(void)
@@ -88,7 +90,7 @@ void OrbitCamera::v_Rotate(void)
 
 	_pitch = _FloatClamp(_pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
 
-	UpdateCameraVectors();
+	_v_UpdateCameraVectors();
 }
 
 void OrbitCamera::v_Update(void)
@@ -112,18 +114,18 @@ void OrbitCamera::v_Update(void)
 	_lastMouseCoords = coords;
 }
 
-void OrbitCamera::UpdateCameraVectors(void)
+//==========================================================================================================================
+//
+//Private
+//
+//==========================================================================================================================
+void OrbitCamera::_v_UpdateCameraVectors(void)
 {
 	_position[0] = _target[0] + _radius * cos(_pitch) * sin(_yaw);
 	_position[1] = _target[1] + _radius * sin(_pitch);
 	_position[2] = _target[2] + _radius * cos(_pitch) * cos(_yaw);
 }
 
-//==========================================================================================================================
-//
-//Private
-//
-//==========================================================================================================================
 F32 OrbitCamera::_FloatClamp(F32 val, F32 min, F32 max)
 {
 	if(val < min)
@@ -138,4 +140,49 @@ F32 OrbitCamera::_FloatClamp(F32 val, F32 min, F32 max)
 	{
 		return val;
 	}
+}
+
+//==========================================================================================================================
+//FPS Camera
+//==========================================================================================================================
+//==========================================================================================================================
+//
+//Constructors
+//
+//==========================================================================================================================		
+FPSCamera::FPSCamera(void)
+{
+	_position = 0.0f;
+	_yaw = R_PI;
+	_pitch = 0.0f;
+}
+
+FPSCamera::FPSCamera(const KM::Vector position, F32 yaw, F32 pitch)
+{
+	_position = position;
+	_yaw = yaw;
+	_pitch = pitch;
+}
+
+FPSCamera::~FPSCamera(void)
+{  }
+
+//==========================================================================================================================
+//
+//Virtual Functions
+//
+//==========================================================================================================================
+void FPSCamera::v_Rotate(void)
+{
+
+}
+
+void FPSCamera::v_Move(void)
+{
+
+}
+
+void FPSCamera::_v_UpdateCameraVectors(void)
+{
+
 }
