@@ -105,3 +105,8 @@ void Texture::Bind(GLuint texUnit)
 	glActiveTexture(GL_TEXTURE0 + texUnit);
 	glBindTexture(GL_TEXTURE_2D, _handle);
 }
+
+void Texture::UnBind(void)
+{
+	glBindTexture(GL_TEXTURE_2D, 0);
+}

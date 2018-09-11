@@ -105,9 +105,16 @@ void Shader::LoadShader(std::vector<ShaderData> shaders)
 	glDeleteProgram(fragmentProgram);
 }
 
-void Shader::Use(void)
+void Shader::Use(bool state)
 {
-	glUseProgram(_shaderProgram);
+	if(state) 
+	{
+		glUseProgram(_shaderProgram);
+	}
+	else
+	{
+		glUseProgram(0);
+	}
 }
 
 //==========================================================================================================================

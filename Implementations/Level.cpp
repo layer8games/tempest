@@ -148,7 +148,7 @@ void Level::RenderObjects(void)
 //==========================================================================================================================	
 	for(auto i : _gameObjects)
 	{
-		if(i.second->GetActive())
+		if(i.second->GetActiveRender())
 		{
 			i.second->v_Render();
 		}
@@ -156,7 +156,7 @@ void Level::RenderObjects(void)
 
 	for(auto i : _particles)
 	{
-		if(i.second->GetActive())
+		if(i.second->GetActiveRender())
 		{
 			i.second->v_Render();
 		}
@@ -196,7 +196,7 @@ void Level::UpdateObjects(void)
 {
 	for(auto i : _gameObjects)
 	{
-		if(i.second->GetActive())
+		if(i.second->GetActiveUpdate())
 		{
 			i.second->v_Update();
 		}
@@ -204,7 +204,7 @@ void Level::UpdateObjects(void)
 
 	for(auto i : _particles)
 	{
-		if(i.second->GetActive())
+		if(i.second->GetActiveUpdate())
 		{
 			i.second->Integrate();
 			i.second->v_Update();

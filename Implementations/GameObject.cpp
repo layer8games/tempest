@@ -18,7 +18,9 @@ GameObject::GameObject(void)
 :
 _ID(_nextID),
 _active(true),
+_activeRender(true),
 _position(0.0f),
+_scale(1.0f),
 _shader(),
 _numIndices(0),
 _vertices(),
@@ -63,11 +65,14 @@ GameObject::~GameObject(void)
 //==========================================================================================================================
 void GameObject::v_Render(void)
 {
-	_shader.Use();
-	BindVAO();
+	_shader.Use(true);
+	BindVAO(true);
 
 	glDrawElements(GL_TRIANGLES, _numIndices, GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
+	
+	_shader.Use(false);
+	BindVAO(false);
 }
 
 //==========================================================================================================================
@@ -296,6 +301,11 @@ void GameObject::LoadMesh(string filepath)
 
 		SetIndices(vertexIndices);
 	}
+}//end LoadMesh
+
+const KM::Matrix GameObject::GetModelMatrix(void)
+{
+	return KM::Matrix::Translate(_position) * KM::Matrix::Scale(_scale);
 }
 
 //==========================================================================================================================

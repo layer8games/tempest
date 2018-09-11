@@ -55,15 +55,14 @@ namespace KillerEngine
 //==========================================================================================================================
 		void LoadMesh(string filepath);
 
+		const KM::Matrix GetModelMatrix(void);
+
 //==========================================================================================================================
 //
 //OpenGL Functions Wrappers
 //
 //==========================================================================================================================
-		inline void BindVAO(void)
-		{
-			glBindVertexArray(_vao);
-		}
+		
 
 //==========================================================================================================================
 //
@@ -76,20 +75,54 @@ namespace KillerEngine
 			return _ID;
 		}
 
-//===== Active =====
+//===== All Active =====
 		inline const bool GetActive(void) const
 		{
-			return _active;
+			return _active && _activeRender;
 		}
 
 		inline void SetActive(void)
 		{
 			_active = true;
+			_activeRender = true;
 		}
 
 		inline void SetInactive(void)
 		{
 			_active = false;
+			_activeRender = false;
+		}
+
+//===== Active Update =====		
+		inline const bool GetActiveUpdate(void) const
+		{
+			return _active;
+		}
+
+		inline void SetActiveUpdate(void)
+		{
+			_active = true;
+		}
+
+		inline void SetInactiveUpdate(void)
+		{
+			_active = false;
+		}
+
+//===== Active Render =====
+		inline const bool GetActiveRender(void)
+		{
+			return _activeRender;
+		}
+
+		inline void SetActiveRender(void)
+		{
+			_activeRender = true;
+		}
+
+		inline void SetInactiveRender(void)
+		{
+			_activeRender = false;
 		}
 
 //===== Position =====
@@ -132,6 +165,24 @@ namespace KillerEngine
 			_scale = scale;
 		}
 
+		inline void SetScale(F32 val)
+		{
+			_scale = val;
+		}
+
+		inline void SetScale(F32 xVal, F32 yVal)
+		{
+			_scale[0] = xVal;
+			_scale[1] = yVal;
+		}
+
+		inline void SetScale(F32 xVal, F32 yVal, F32 zVal)
+		{
+			_scale[0] = xVal;
+			_scale[1] = yVal;
+			_scale[2] = zVal;	
+		}
+
 //===== Shader =====
 		inline const Shader& GetShader(void) const
 		{
@@ -155,16 +206,19 @@ namespace KillerEngine
 
 		inline void SetShaderUniform(string name, Color col)
 		{
+			_shader.Use();
 			_shader.SetUniform(name.c_str(), col);
 		}
 
 		inline void SetShaderUniform(string name, KM::Vector vec)
 		{
+			_shader.Use();
 			_shader.SetUniform(name.c_str(), vec);
 		}
 
 		inline void SetShaderUniform(string name, KM::Matrix mat)
 		{
+			_shader.Use();
 			_shader.SetUniform(name.c_str(), mat);
 		}
 
@@ -212,6 +266,18 @@ namespace KillerEngine
 		inline GLuint GetVAO(void) const
 		{
 			return _vao;
+		}
+
+		inline void BindVAO(bool state=true)
+		{
+			if(state) 
+			{
+				glBindVertexArray(_vao);
+			}
+			else
+			{
+				glBindVertexArray(0);
+			}
 		}	
 
 //===== Uv List =====
@@ -258,6 +324,7 @@ namespace KillerEngine
 		static U32				_nextID;
 		U32 					_ID;
 		bool					_active;
+		bool					_activeRender;
 		KM::Vector				_position;
 		KM::Vector 				_scale;
 		S32						_numIndices;

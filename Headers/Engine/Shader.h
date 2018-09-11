@@ -73,7 +73,7 @@ namespace KillerEngine
 
 		void LoadShader(std::vector<ShaderData> shaders);
 
-		void Use(void);
+		void Use(bool state=true);
 
 //==========================================================================================================================
 //

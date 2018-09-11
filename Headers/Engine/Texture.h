@@ -89,6 +89,8 @@ namespace KillerEngine
 
 		void Bind(GLuint texUnit=0);
 
+		void UnBind(void);
+
 	private:	
 		GLuint _handle; // keep but change into handle for new texture. 
 		S32    _width; // not needed. Only keep if you use SOIL, and you think it is something that may be useful to save. 
