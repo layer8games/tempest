@@ -1,5 +1,4 @@
 #include <Engine/WinProgram.h>
-#include <iostream>
 
 using namespace KillerEngine;
 

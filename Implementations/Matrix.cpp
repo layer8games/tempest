@@ -1,5 +1,4 @@
 #include <Engine/Matrix.h>
-#include <iostream>
 
 using namespace KillerMath;
 

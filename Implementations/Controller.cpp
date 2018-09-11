@@ -1,5 +1,4 @@
 #include <Engine/Controller.h>
-#include <iostream>
 
 using namespace KillerEngine;
 
@@ -59,8 +58,6 @@ void Controller::KeyDown(Keys k)
 	}
 	else if(k == RIGHT_MOUSE)
 	{
-		std::cout << "right click\n" << 
-				  "mouse coords " << _mouseCoordinates[0] << " " << _mouseCoordinates[1] << "\n";
 		_rightClickCoordinates = _mouseCoordinates;
 	}
 }
