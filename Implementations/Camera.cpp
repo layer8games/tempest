@@ -31,28 +31,6 @@ Camera::~Camera(void)
 //Camera Functions
 //
 //==========================================================================================================================
-void Camera::SetUp(GLuint shader)
-{		
-/*
-	KM::Matrix finalMatrix = _projection * _translation;
-
-	const F32* data = finalMatrix.GetElems();
-
-	GLint transform1 = glGetUniformLocation(shader, "projection_mat");
-
-	glUniformMatrix4fv(transform1, 1, GL_FALSE, data);
-*/
-	//not working matrix multiplication. Will fix later
-	//_translation = _projection * _translation;
-	//_translation *= _projection;
-
-	std::vector<F32> data = _projection.GetElems();
-
-	GLint transform = glGetUniformLocation(shader, "projection_mat");
-
-	glUniformMatrix4fv(transform, 1, GL_FALSE, &data[0]);
-}
-
 void Camera::SetOrthographic(void)
 {
 	_projection.MakeOrthographic((F32)WinProgram::Instance()->GetWidth(), (F32)WinProgram::Instance()->GetHeight(), 200.0f, false);
@@ -91,7 +69,9 @@ OrbitCamera::OrbitCamera(void)
 :
 _radius(10.0f),
 _mouseSensitivity(1.0f),
-_lastMouseCoords(0.0f)
+_lastMouseCoords(0.0f),
+_newYaw(0.0f),
+_newPitch(0.0f)
 {  }
 
 OrbitCamera::~OrbitCamera(void)
@@ -102,29 +82,28 @@ OrbitCamera::~OrbitCamera(void)
 //Functions
 //
 //==========================================================================================================================
-void OrbitCamera::v_Rotate(F32 yaw, F32 pitch)
+void OrbitCamera::v_Rotate(void)
 {
-	_yaw = DegreeToRadian(yaw);
-	_pitch = DegreeToRadian(pitch);
+	_yaw = DegreeToRadian(_newYaw);
+	_pitch = DegreeToRadian(_newPitch);
 
-	_pitch = _FloatClamp(pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
+	_pitch = _FloatClamp(_pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
 
 	UpdateCameraVectors();
 }
 
 void OrbitCamera::v_Update(void)
 {
-	KM::Vector coords = Controller::Instance()->GetLeftMouseCoord();
+	KM::Vector coords = Controller::Instance()->GetMouseCoord();
 
 	//Change oribt with left click
-	if(Controller::Instance()->GetKeyDown(LEFT_MOUSE))
-	{
-		
-		_yaw -= (coords[0] - _lastMouseCoords[0]) * _mouseSensitivity;
-		_pitch += (coords[1] - _lastMouseCoords[1]) * _mouseSensitivity;
+	if(Controller::Instance()->GetKeyHeld(LEFT_MOUSE))
+	{	
+		_newYaw -= (coords[0] - _lastMouseCoords[0]) * _mouseSensitivity;
+		_newPitch += (coords[1] - _lastMouseCoords[1]) * _mouseSensitivity;
 	}
 
-	if(Controller::Instance()->GetKeyDown(RIGHT_MOUSE))
+	if(Controller::Instance()->GetKeyHeld(RIGHT_MOUSE))
 	{
 		F32 dx = 0.01f * (coords[0] - _lastMouseCoords[0]);
 		F32 dy = 0.01f * (coords[1] - _lastMouseCoords[1]);

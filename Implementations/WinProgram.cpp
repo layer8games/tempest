@@ -103,6 +103,7 @@ void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen)
 
     glfwSetKeyCallback(_window, OnKey);
     glfwSetWindowSizeCallback(_window, OnResize);
+    glfwSetMouseButtonCallback(_window, OnMouseClick);
     glfwSetCursorPosCallback(_window, OnMouseMove);
 
     glewExperimental = GL_TRUE;
@@ -311,27 +312,31 @@ void WinProgram::OnResize(GLFWwindow* window, int width, int height)
 //==========================================================================================================================
 //OnMouseMove
 //==========================================================================================================================
-void WinProgram::OnMouseMove(GLFWwindow* window, F64 posX, F64 posY)
+void WinProgram::OnMouseClick(GLFWwindow* window, int button, int action, int mods)
 {
-    if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+    if(button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
     {
-        Controller::Instance()->LeftMouseClick(KM::Vector(posX, posY));
         Controller::Instance()->KeyDown(Keys::LEFT_MOUSE);
     }
-    else if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE)
+    else if(button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
     {
-        //Controller::Instance()->LeftMouseClick(KM::Vector(posX, posY));
         Controller::Instance()->KeyUp(Keys::LEFT_MOUSE);
     }
 
-    if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == 1)
+    if(button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
     {
-        Controller::Instance()->RightMouseClick(KM::Vector(posX, posY));
         Controller::Instance()->KeyDown(Keys::RIGHT_MOUSE);
     }
-    else if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_RELEASE)
+    else if(button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_RELEASE)
     {
-        //Controller::Instance()->LeftMouseClick(KM::Vector(posX, posY));
         Controller::Instance()->KeyUp(Keys::RIGHT_MOUSE);
     }
+}
+
+//==========================================================================================================================
+//OnMouseMove
+//==========================================================================================================================
+void WinProgram::OnMouseMove(GLFWwindow* window, F64 posX, F64 posY)
+{
+    Controller::Instance()->SetMouseCoord(KM::Vector(static_cast<F32>(posX), static_cast<F32>(posY)));
 }

@@ -119,31 +119,27 @@ namespace KillerEngine
 
 /*! Used by WinProgram to set when a key is pressed down, based on system signals.
 	\param k Keys: Keycode for key that has been pressed down. */
-		inline void KeyDown(Keys k) 
-		{ 
-			_curActiveKeys[k] = true; 
-		}
+		void KeyDown(Keys k);
 
 /*! Used by WinProgram to set when a key is no longer detected to be held down. 
 	\param k Keys: Keycode for key that has been released. */
-		inline void KeyUp(Keys k) 
-		{ 
-			_curActiveKeys[k] = false; 
+		void KeyUp(Keys k);
+
+		void SetMouseCoord(const KM::Vector& coord)
+		{
+			_mouseCoordinates = coord;
 		}
 
-/*! Used by WinProgram to save the coordinates when a Left Mouse click is detected by the system. 
-	\param coord Vector: x,y position on the screen of the click. */
-		void LeftMouseClick(const KM::Vector& coord);
+		const KM::Vector& GetMouseCoord(void)
+		{
+			return _mouseCoordinates;
+		}
 
 /*! Returns the raw coordinates of a Left Click in screen space. */
 		const KM::Vector GetLeftMouseCoord(void) const
 		{ 
 			return _leftClickCoordinates; 
 		}
-
-/*! Used by WinProgram to save the coordinates when a Right Mouse click is detected by the system.
-	\param coord Vector: x.y position on the screen of the click */
-		void RightMouseClick(const KM::Vector& coord);
 
 /*! Returns the raw coordinates of a Right click in screen space */		
 		const KM::Vector GetRightMouseCoord(void) const
@@ -192,5 +188,6 @@ BUG! This is not copying anything at all. It is only passing the new refalone
 		bool			_curActiveKeys[_totalKeys];		///< Array of keys in a pressed state as of this frame, indexed by ID.
 		KM::Vector 		_leftClickCoordinates;			///< Coordinates of last left click.
 		KM::Vector		_rightClickCoordinates;			///< Coordinates of last right click.
+		KM::Vector 		_mouseCoordinates;
 	};
 }//End namespace

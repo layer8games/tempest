@@ -1,4 +1,5 @@
 #include <Engine/Controller.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -8,6 +9,10 @@ using namespace KillerEngine;
 //
 //==========================================================================================================================
 Controller::Controller(void) 
+:
+_leftClickCoordinates(0.0f), 
+_rightClickCoordinates(0.0f),
+_mouseCoordinates(0.0f)
 {
 	for(int i = 0; i < _totalKeys; ++i)
 	{
@@ -44,6 +49,28 @@ shared_ptr<Controller> Controller::Instance(void)
 //Controller Functions
 //
 //==========================================================================================================================
+void Controller::KeyDown(Keys k)
+{ 
+	_curActiveKeys[k] = true; 
+
+	if(k == LEFT_MOUSE)
+	{
+		_leftClickCoordinates = _mouseCoordinates;
+	}
+	else if(k == RIGHT_MOUSE)
+	{
+		std::cout << "right click\n" << 
+				  "mouse coords " << _mouseCoordinates[0] << " " << _mouseCoordinates[1] << "\n";
+		_rightClickCoordinates = _mouseCoordinates;
+	}
+}
+
+void Controller::KeyUp(Keys k)
+{ 
+	_curActiveKeys[k] = false; 
+
+}
+
 void Controller::Update(void)
 {
 	for(int i = 0; i < _totalKeys; ++i)
@@ -118,17 +145,4 @@ bool Controller::GetKeyReleased(Keys k)
 	{ 
 		return false;
 	}
-}
-
-void Controller::LeftMouseClick(const KM::Vector& coord)
-{
-	_leftClickCoordinates[0] = coord[0];
-	_leftClickCoordinates[1] = coord[1];
-	//_leftClickCoordinates[1] = -(coord[1] - static_cast<F32>( WinProgram::Instance()->GetHeight() ));
-} 
-
-void Controller::RightMouseClick(const KM::Vector& coord)
-{
-	_rightClickCoordinates[0] = coord[0];
-	_rightClickCoordinates[1] = coord[1];
 }

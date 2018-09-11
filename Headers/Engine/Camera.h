@@ -78,9 +78,7 @@ namespace KillerEngine
 */
 		void SetDefaultMatrix(void);
 
-		void SetUp(GLuint shader);
-
-		inline const KM::Matrix& GetViewMatrix(void)
+		inline const KM::Matrix GetViewMatrix(void)
 		{
 			return KM::Matrix::LookAt(_position, _target, _up);
 		}
@@ -240,7 +238,7 @@ namespace KillerEngine
 //Functions
 //
 //==========================================================================================================================		
-		virtual void v_Rotate(F32 yaw, F32 pitch);
+		virtual void v_Rotate(void);
 
 		virtual void v_Update(void);
 
@@ -279,6 +277,9 @@ namespace KillerEngine
 		F32 		_radius;
 		F32			_mouseSensitivity;
 		KM::Vector 	_lastMouseCoords;
+		F32			_newYaw;
+		F32			_newPitch;
+
 	};
 
 }//end namespace

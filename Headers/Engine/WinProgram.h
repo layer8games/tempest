@@ -132,6 +132,8 @@ namespace KillerEngine
 
 		static void OnResize(GLFWwindow* window, int width, int height);
 
+		static void OnMouseClick(GLFWwindow* window, int button, int action, int mods);
+
 		static void OnMouseMove(GLFWwindow* window, F64 posX, F64 posY);
 
 	private:
