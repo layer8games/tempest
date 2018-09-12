@@ -1,4 +1,5 @@
 #include <Engine/WinProgram.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -229,6 +230,28 @@ Keys WinProgram::ConvertKeyCodes(int key)
             return Keys::RSHIFT;
         case GLFW_KEY_ENTER:
             return Keys::ENTER;
+        case GLFW_KEY_F1:
+            return Keys::F1;
+        case GLFW_KEY_F2:
+            return Keys::F2;
+        case GLFW_KEY_F3:
+            return Keys::F3;
+        case GLFW_KEY_F4:
+            return Keys::F4;
+        case GLFW_KEY_F5:
+            return Keys::F5;
+        case GLFW_KEY_F6:
+            return Keys::F6;
+        case GLFW_KEY_F7:
+            return Keys::F7;
+        case GLFW_KEY_F8:
+            return Keys::F8;
+        case GLFW_KEY_F9:
+            return Keys::F9;
+        case GLFW_KEY_F10:
+            return Keys::F10;
+        case GLFW_KEY_F11:
+            return Keys::F11;           
         default:
             return Keys::NO_KEY;
     }
@@ -323,6 +346,11 @@ void WinProgram::OnKey(GLFWwindow* window, int key, int scancode, int action, in
     else if(action == GLFW_RELEASE)
     {
         Controller::Instance()->KeyUp(ConvertKeyCodes(key));
+    }
+
+    if(key == GLFW_KEY_F11 && action == GLFW_PRESS)
+    {
+        std::cout << "f11 hit\n";
     }
 }
 

@@ -79,6 +79,17 @@ namespace KillerEngine
 		RIGHT_MOUSE=49,			///< Right Mouse click
 		LEFT_MOUSE=50,			///< Left Mouse click
 		MIDDLE_MOUSE=51,		///< Middle Mouse click
+		F1=52,
+		F2=53,
+		F3=54,
+		F4=55,
+		F5=56,
+		F6=57,
+		F7=58,
+		F8=59,
+		F9=60,
+		F10=61,
+		F11=62
 	};
 //==========================================================================================================================
 //Documentation
@@ -178,7 +189,7 @@ BUG! This is not copying anything at all. It is only passing the new refalone
 
 	private:
 		static shared_ptr<Controller> _instance;		///< Singleton Global instance.
-		static const int 			  _totalKeys = 51;	///< Total supported Keys from KeyCode.
+		static const int 			  _totalKeys = 62;	///< Total supported Keys from KeyCode.
 		
 		KeyStates 		_keyStates[_totalKeys];			///< Array of states for each key, indexed by ID.
 		bool 			_pastActiveKeys[_totalKeys];	///< Array of keys in a pressed state as of last frame, indexed by ID.
