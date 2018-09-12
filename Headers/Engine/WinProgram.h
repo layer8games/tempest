@@ -23,6 +23,7 @@ Written by Maxwell Miller
 #include <Engine/Controller.h>
 #include <Engine/Color.h>
 #include <Engine/Timer.h>
+#include <Engine/Vector.h>
 
 namespace KM = KillerMath; 
 
@@ -122,6 +123,16 @@ namespace KillerEngine
 		void DisplayFPS(void);
 
 		void ToggleWireFrame(void);
+
+		void ResetMouseCursor(void);
+
+		void EnableMouseCursor(void);
+
+		void DisableMouseCursor(void);
+
+		void HideMouseCursor(void);
+
+		const KM::Vector GetMousePos(void);
 
 //==========================================================================================================================
 //

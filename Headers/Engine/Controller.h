@@ -125,15 +125,12 @@ namespace KillerEngine
 	\param k Keys: Keycode for key that has been released. */
 		void KeyUp(Keys k);
 
-		void SetMouseCoord(const KM::Vector& coord)
-		{
-			_mouseCoordinates = coord;
-		}
+		//void SetMouseCoord(const KM::Vector& coord)
+		//{
+		//	_mouseCoordinates = coord;
+		//}
 
-		const KM::Vector& GetMouseCoord(void)
-		{
-			return _mouseCoordinates;
-		}
+		const KM::Vector GetMouseCoord(void);
 
 /*! Returns the raw coordinates of a Left Click in screen space. */
 		const KM::Vector GetLeftMouseCoord(void) const
@@ -188,6 +185,5 @@ BUG! This is not copying anything at all. It is only passing the new refalone
 		bool			_curActiveKeys[_totalKeys];		///< Array of keys in a pressed state as of this frame, indexed by ID.
 		KM::Vector 		_leftClickCoordinates;			///< Coordinates of last left click.
 		KM::Vector		_rightClickCoordinates;			///< Coordinates of last right click.
-		KM::Vector 		_mouseCoordinates;
 	};
 }//End namespace

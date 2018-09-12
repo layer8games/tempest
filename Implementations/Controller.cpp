@@ -10,8 +10,7 @@ using namespace KillerEngine;
 Controller::Controller(void) 
 :
 _leftClickCoordinates(0.0f), 
-_rightClickCoordinates(0.0f),
-_mouseCoordinates(0.0f)
+_rightClickCoordinates(0.0f)
 {
 	for(int i = 0; i < _totalKeys; ++i)
 	{
@@ -54,11 +53,11 @@ void Controller::KeyDown(Keys k)
 
 	if(k == LEFT_MOUSE)
 	{
-		_leftClickCoordinates = _mouseCoordinates;
+		_leftClickCoordinates = WinProgram::Instance()->GetMousePos();
 	}
 	else if(k == RIGHT_MOUSE)
 	{
-		_rightClickCoordinates = _mouseCoordinates;
+		_rightClickCoordinates = WinProgram::Instance()->GetMousePos();
 	}
 }
 
@@ -66,6 +65,11 @@ void Controller::KeyUp(Keys k)
 { 
 	_curActiveKeys[k] = false; 
 
+}
+
+const KM::Vector Controller::GetMouseCoord(void)
+{
+	return WinProgram::Instance()->GetMousePos();
 }
 
 void Controller::Update(void)

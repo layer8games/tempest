@@ -21,6 +21,7 @@ Written by Maxwell Miller
 #include <Engine/Vector.h>
 #include <Engine/Color.h>
 #include <Engine/Controller.h>
+#include <Engine/Timer.h>
 
 #include <vector>
 
@@ -56,7 +57,7 @@ namespace KillerEngine
 		virtual void v_Update(void)
 		{  }
 
-		virtual void v_Move(void)
+		virtual void v_Move(const KM::Vector offset)
 		{  }
 
 //==========================================================================================================================
@@ -81,7 +82,7 @@ namespace KillerEngine
 */
 		void SetDefaultMatrix(void);
 
-		inline const KM::Matrix GetViewMatrix(void)
+		inline const virtual KM::Matrix GetViewMatrix(void)
 		{
 			return KM::Matrix::LookAt(_position, _target, _up);
 		}
@@ -266,6 +267,19 @@ namespace KillerEngine
 			return _right;
 		}
 //==========================================================================================================================
+//Mouse
+//==========================================================================================================================
+		inline void SetMouseSensitivity(F32 val)
+		{
+			_mouseSensitivity = val;
+		}
+
+		inline F32 GetMouseSensitivity(void)
+		{
+			return _mouseSensitivity;
+		}
+
+//==========================================================================================================================
 //Yaw
 //==========================================================================================================================
 		inline F32 GetYaw(void) const
@@ -312,8 +326,12 @@ namespace KillerEngine
 		KM::Vector 						_up;
 		KM::Vector 						_look;
 		KM::Vector 						_right;
-		F32 							_yaw;			///< Euler angle in Radians
-		F32 							_pitch;			///< Euler angle in Radians
+		KM::Vector 						_lastMouseCoords;
+		F32								_mouseSensitivity;
+		F32 							_yaw;
+		F32 							_pitch;
+		F32								_deltaYaw;
+		F32								_deltaPitch;
 		F32 							_fov;
 	};//end Camera
 
@@ -341,6 +359,16 @@ namespace KillerEngine
 
 		virtual void v_Update(void);
 
+		//to test later
+		//If you use this, make sure to comment out the vector update 
+		//in the implementation
+/*
+		inline const virtual KM::Matrix GetViewMatrix(void)
+		{
+			return KM::Matrix::FPSView(_position, _yaw, _pitch);
+		}
+*/
+
 //==========================================================================================================================
 //
 //Accessors
@@ -350,33 +378,17 @@ namespace KillerEngine
 		//that can be changed per instance
 		inline void SetRadius(F32 val)
 		{
-			_radius = _FloatClamp(val, 2.0f, 80.0f);
-		}
-
-		inline void SetMouseSensitivity(F32 val)
-		{
-			_mouseSensitivity = val;
-		}
-
-		inline F32 GetMouseSensitivity(void)
-		{
-			return _mouseSensitivity;
+			_radius = FLOAT_CLAMP(val, 2.0f, 80.0f);
 		}
 
 	private:
 		virtual void _v_UpdateCameraVectors(void);
-
-		F32 _FloatClamp(F32 val, F32 min, F32 max);
 //==========================================================================================================================
 //
 //Data
 //
 //==========================================================================================================================		
 		F32 		_radius;
-		F32			_mouseSensitivity;
-		KM::Vector 	_lastMouseCoords;
-		F32			_newYaw;
-		F32			_newPitch;
 
 	};//end OrbitCamera
 
@@ -402,12 +414,64 @@ namespace KillerEngine
 //Virtual Functions
 //
 //==========================================================================================================================
+		virtual void v_Update(void);
+
 		virtual void v_Rotate(void);
 
-		virtual void v_Move(void);
+		virtual void v_Move(const KM::Vector offset);
+
+//==========================================================================================================================
+//
+//Accessors
+//
+//==========================================================================================================================
+	 	inline void SetWorldUp(const KM::Vector vec)
+		{
+			_worldUp = vec;
+		}
+
+		inline const KM::Vector& GetWorldUp(void)
+		{
+			return _worldUp;
+		}
+
+		inline void SetZoom(F64 val)
+		{
+			_zoomSensitivity = val;
+		}
+
+		inline F64 GetZoom(void)
+		{
+			return _zoomSensitivity;
+		}
+
+		inline void SetMoveSpeed(F32 val)
+		{
+			_moveSpeed = val;
+		}
+
+		inline F32 GetMoveSpeed(void)
+		{
+			return _moveSpeed;
+		}
+
+		inline void SetDeadZone(F32 val)
+		{
+			_deadZone = val;
+		}
 
 	private:
 		virtual void _v_UpdateCameraVectors(void);
+
+//==========================================================================================================================
+//
+//Data
+//
+//==========================================================================================================================
+		KM::Vector _worldUp;
+		F64 	   _zoomSensitivity;
+		F32 	   _moveSpeed;
+		F32		   _deadZone;
 
 	};//end FPSCamera
 

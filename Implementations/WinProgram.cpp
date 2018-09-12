@@ -103,7 +103,7 @@ void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen)
     glfwSetKeyCallback(_window, OnKey);
     glfwSetWindowSizeCallback(_window, OnResize);
     glfwSetMouseButtonCallback(_window, OnMouseClick);
-    glfwSetCursorPosCallback(_window, OnMouseMove);
+    //glfwSetCursorPosCallback(_window, OnMouseMove);
 
     glewExperimental = GL_TRUE;
     if(glewInit() != GLEW_OK)
@@ -278,6 +278,34 @@ void WinProgram::ToggleWireFrame(void)
     }
 }
 
+void WinProgram::ResetMouseCursor(void)
+{
+    glfwSetCursorPos(_window, _totalWidth / 2.0f, _totalHeight / 2.0f);
+}
+
+void WinProgram::EnableMouseCursor(void)
+{
+    glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+}
+
+void WinProgram::DisableMouseCursor(void)
+{
+    glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+}
+
+void WinProgram::HideMouseCursor(void)
+{
+    glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+}
+
+const KM::Vector WinProgram::GetMousePos(void)
+{
+    F64 mouseX, mouseY;
+    glfwGetCursorPos(_window, &mouseX, &mouseY);
+
+    return KM::Vector(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
+}
+
 //==========================================================================================================================
 //
 //Callback Functions
@@ -312,7 +340,7 @@ void WinProgram::OnResize(GLFWwindow* window, int width, int height)
 //OnMouseMove
 //==========================================================================================================================
 void WinProgram::OnMouseClick(GLFWwindow* window, int button, int action, int mods)
-{
+{   
     if(button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
     {
         Controller::Instance()->KeyDown(Keys::LEFT_MOUSE);
@@ -337,5 +365,5 @@ void WinProgram::OnMouseClick(GLFWwindow* window, int button, int action, int mo
 //==========================================================================================================================
 void WinProgram::OnMouseMove(GLFWwindow* window, F64 posX, F64 posY)
 {
-    Controller::Instance()->SetMouseCoord(KM::Vector(static_cast<F32>(posX), static_cast<F32>(posY)));
+    //Controller::Instance()->SetMouseCoord(KM::Vector(static_cast<F32>(posX), static_cast<F32>(posY)));
 }

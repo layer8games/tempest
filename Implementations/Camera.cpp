@@ -1,4 +1,5 @@
 #include <Engine/Camera.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -19,8 +20,12 @@ _target(0.0f),
 _up(0.0f, 1.0f, 0.0f),
 _look(0.0f),
 _right(0.0f),
+_lastMouseCoords(0.0f),
+_mouseSensitivity(1.0f),
 _yaw(0.0f), 
 _pitch(0.0f),
+_deltaYaw(0.0f),
+_deltaPitch(0.0f),
 _fov(45.0f)
 {  }
 
@@ -68,11 +73,7 @@ void Camera::SetDefaultMatrix(void)
 //==========================================================================================================================
 OrbitCamera::OrbitCamera(void)
 :
-_radius(10.0f),
-_mouseSensitivity(1.0f),
-_lastMouseCoords(0.0f),
-_newYaw(0.0f),
-_newPitch(0.0f)
+_radius(10.0f)
 {  }
 
 OrbitCamera::~OrbitCamera(void)
@@ -85,10 +86,10 @@ OrbitCamera::~OrbitCamera(void)
 //==========================================================================================================================
 void OrbitCamera::v_Rotate(void)
 {
-	_yaw = DegreeToRadian(_newYaw);
-	_pitch = DegreeToRadian(_newPitch);
+	_yaw = DegreeToRadian(_deltaYaw);
+	_pitch = DegreeToRadian(_deltaPitch);
 
-	_pitch = _FloatClamp(_pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
+	_pitch = FLOAT_CLAMP(_pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
 
 	_v_UpdateCameraVectors();
 }
@@ -100,8 +101,8 @@ void OrbitCamera::v_Update(void)
 	//Change oribt with left click
 	if(Controller::Instance()->GetKeyHeld(LEFT_MOUSE))
 	{	
-		_newYaw -= (coords[0] - _lastMouseCoords[0]) * _mouseSensitivity;
-		_newPitch += (coords[1] - _lastMouseCoords[1]) * _mouseSensitivity;
+		_deltaYaw -= (coords[0] - _lastMouseCoords[0]) * _mouseSensitivity;
+		_deltaPitch += (coords[1] - _lastMouseCoords[1]) * _mouseSensitivity;
 	}
 
 	if(Controller::Instance()->GetKeyHeld(RIGHT_MOUSE))
@@ -112,6 +113,8 @@ void OrbitCamera::v_Update(void)
 	}
 
 	_lastMouseCoords = coords;
+
+	v_Rotate();
 }
 
 //==========================================================================================================================
@@ -126,22 +129,6 @@ void OrbitCamera::_v_UpdateCameraVectors(void)
 	_position[2] = _target[2] + _radius * cos(_pitch) * cos(_yaw);
 }
 
-F32 OrbitCamera::_FloatClamp(F32 val, F32 min, F32 max)
-{
-	if(val < min)
-	{
-		return min;
-	}
-	else if(val > max)
-	{
-		return max;
-	}
-	else
-	{
-		return val;
-	}
-}
-
 //==========================================================================================================================
 //FPS Camera
 //==========================================================================================================================
@@ -151,6 +138,11 @@ F32 OrbitCamera::_FloatClamp(F32 val, F32 min, F32 max)
 //
 //==========================================================================================================================		
 FPSCamera::FPSCamera(void)
+:
+_worldUp(0.0f, 1.0f, 0.0f),
+_zoomSensitivity(1.0f),
+_moveSpeed(1.0f),
+_deadZone(0.01f)
 {
 	_position = 0.0f;
 	_yaw = R_PI;
@@ -158,6 +150,11 @@ FPSCamera::FPSCamera(void)
 }
 
 FPSCamera::FPSCamera(const KM::Vector position, F32 yaw, F32 pitch)
+:
+_worldUp(0.0f, 1.0f, 0.0f),
+_zoomSensitivity(1.0f),
+_moveSpeed(1.0f),
+_deadZone(0.01f)
 {
 	_position = position;
 	_yaw = yaw;
@@ -172,17 +169,83 @@ FPSCamera::~FPSCamera(void)
 //Virtual Functions
 //
 //==========================================================================================================================
-void FPSCamera::v_Rotate(void)
+void FPSCamera::v_Update(void)
 {
+	KM::Vector mouseCoord = Controller::Instance()->GetMouseCoord();
+	S32 width = WinProgram::Instance()->GetWidth();
+	S32 height = WinProgram::Instance()->GetHeight();
 
+	//Set yaw and pitch for rotate
+	_deltaYaw = static_cast<F32>((width / 2.0f - mouseCoord[0])) * _mouseSensitivity;
+	_deltaPitch = static_cast<F32>((height / 2.0f - mouseCoord[1])) * _mouseSensitivity;
+
+	v_Rotate();
+
+	//Clamp cursor to screen
+	WinProgram::Instance()->ResetMouseCursor();
+
+	if(Controller::Instance()->GetKeyHeld(W))
+	{
+		v_Move(_look * _moveSpeed * KM::Timer::Instance()->DeltaTime()); //forward
+	}
+	else if(Controller::Instance()->GetKeyHeld(S))
+	{
+		v_Move(_look * -_moveSpeed * KM::Timer::Instance()->DeltaTime()); //back
+	}
+	
+	if(Controller::Instance()->GetKeyHeld(D))
+	{
+		v_Move(_right * _moveSpeed * KM::Timer::Instance()->DeltaTime()); //right
+	}
+	else if(Controller::Instance()->GetKeyHeld(A))
+	{
+		v_Move(_right * -_moveSpeed * KM::Timer::Instance()->DeltaTime()); //left
+	}
+
+	if(Controller::Instance()->GetKeyHeld(SPACE))
+	{
+		v_Move(_up * _moveSpeed * KM::Timer::Instance()->DeltaTime()); //up
+	}
+	else if(Controller::Instance()->GetKeyHeld(LSHIFT))
+	{
+		v_Move(_up * -_moveSpeed * KM::Timer::Instance()->DeltaTime()); //down
+	}
 }
 
-void FPSCamera::v_Move(void)
+void FPSCamera::v_Rotate(void)
 {
+	_yaw += DegreeToRadian(_deltaYaw);
+	_pitch += DegreeToRadian(_deltaPitch);
 
+	_pitch = FLOAT_CLAMP(_pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
+
+	_v_UpdateCameraVectors();
+
+	_deltaYaw = 0.0f;
+	_deltaPitch = 0.0f;
+}
+
+void FPSCamera::v_Move(const KM::Vector offset)
+{
+	_position += offset * _moveSpeed * KM::Timer::Instance()->DeltaTime();
+	_v_UpdateCameraVectors();
 }
 
 void FPSCamera::_v_UpdateCameraVectors(void)
 {
+	//Using spherical to cartesian
+	//Calculate the view direction
+	_look[0] = cos(_pitch) * sin(_yaw);
+	_look[1] = sin(_pitch);
+	_look[2] = cos(_pitch) * cos(_yaw);
+	_look.Normalize();
 
+	//Re-calculate the right and up vectors
+	_right = _look.CrossProduct(_worldUp);
+	_right.Normalize();
+
+	_up = _right.CrossProduct(_look);
+	_up.Normalize();
+
+	_target = _position + _look;
 }
