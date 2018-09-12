@@ -27,58 +27,70 @@ namespace KillerEngine
 	updated */
 	enum Keys 
 	{
-		NO_KEY=0, 				///<Used as a fall through to indicated an error 
-		A=1,					///< Alphabetic A key
-		B=2,					///< Alphabetic B key
-		C=3,					///< Alphabetic C key
-		D=4,					///< Alphabetic D key
-		E=5,					///< Alphabetic E key		
-		F=6,					///< Alphabetic F key
-		G=7,					///< Alphabetic G key
-		H=8,					///< Alphabetic H key
-		I=9,					///< Alphabetic I key
-		J=10,					///< Alphabetic J key
-		K=11,					///< Alphabetic K key
-		L=12,					///< Alphabetic L key
-		M=13,					///< Alphabetic M key
-		N=14,					///< Alphabetic N key
-		O=15,					///< Alphabetic O key
-		P=16,					///< Alphabetic P key
-		Q=17,					///< Alphabetic Q key
-		R=18,					///< Alphabetic R key
-		S=19,					///< Alphabetic S key
-		T=20,					///< Alphabetic T key
-		U=21,					///< Alphabetic U key
-		V=22,					///< Alphabetic V key
-		W=23,					///< Alphabetic W key
-		X=24,					///< Alphabetic X key
-		Y=25,					///< Alphabetic Y key
-		Z=26,					///< Alphabetic Z key
-		UP_ARROW=27,			///< Up Arrow key
-		DOWN_ARROW=28,			///< Down Arrow key
-		LEFT_ARROW=29,			///< Left Arrow key
-		RIGHT_ARROW=30,			///< Right Arrow key
-		ZERO=31,				///< 0 key
-		ONE=32,					///< 1 key
-		TWO=33,					///< 2 key
-		THREE=34,				///< 3 key
-		FOUR=35,				///< 4 key
-		FIVE=36,				///< 5 key
-		SIX=37,					///< 6 key
-		SEVEN=38,				///< 7 key
-		EIGHT=39,				///< 8 key
-		NINE=40,				///< 9 key
-		MINUS=41,				///< Minus key
-		EQUAL=42,				///< Plus key
-		SPACE=43,				///< Spacebar
-		ESCAPE=44,				///< Escape key
-		TAB=45,					///< Tab key
-		LSHIFT=46,				///< Left Shift key
-		RSHIFT=47,				///< Right Shift key
-		ENTER=48,				///< Enter key
-		RIGHT_MOUSE=49,			///< Right Mouse click
-		LEFT_MOUSE=50,			///< Left Mouse click
-		MIDDLE_MOUSE=51,		///< Middle Mouse click
+		NO_KEY, 				///<Used as a fall through to indicated an error 
+		A,					///< Alphabetic A key
+		B,					///< Alphabetic B key
+		C,					///< Alphabetic C key
+		D,					///< Alphabetic D key
+		E,					///< Alphabetic E key		
+		F,					///< Alphabetic F key
+		G,					///< Alphabetic G key
+		H,					///< Alphabetic H key
+		I,					///< Alphabetic I key
+		J,					///< Alphabetic J key
+		K,					///< Alphabetic K key
+		L,					///< Alphabetic L key
+		M,					///< Alphabetic M key
+		N,					///< Alphabetic N key
+		O,					///< Alphabetic O key
+		P,					///< Alphabetic P key
+		Q,					///< Alphabetic Q key
+		R,					///< Alphabetic R key
+		S,					///< Alphabetic S key
+		T,					///< Alphabetic T key
+		U,					///< Alphabetic U key
+		V,					///< Alphabetic V key
+		W,					///< Alphabetic W key
+		X,					///< Alphabetic X key
+		Y,					///< Alphabetic Y key
+		Z,					///< Alphabetic Z key
+		UP_ARROW,			///< Up Arrow key
+		DOWN_ARROW,			///< Down Arrow key
+		LEFT_ARROW,			///< Left Arrow key
+		RIGHT_ARROW,			///< Right Arrow key
+		ZERO,				///< 0 key
+		ONE,					///< 1 key
+		TWO,					///< 2 key
+		THREE,				///< 3 key
+		FOUR,				///< 4 key
+		FIVE,				///< 5 key
+		SIX,					///< 6 key
+		SEVEN,				///< 7 key
+		EIGHT,				///< 8 key
+		NINE,				///< 9 key
+		MINUS,				///< Minus key
+		EQUAL,				///< Plus key
+		SPACE,				///< Spacebar
+		ESCAPE,				///< Escape key
+		TAB,					///< Tab key
+		LSHIFT,				///< Left Shift key
+		RSHIFT,				///< Right Shift key
+		ENTER,				///< Enter key
+		RIGHT_MOUSE,			///< Right Mouse click
+		LEFT_MOUSE,			///< Left Mouse click
+		MIDDLE_MOUSE,		///< Middle Mouse click
+		F1,
+		F2,
+		F3,
+		F4,
+		F5,
+		F6,
+		F7,
+		F8,
+		F9,
+		F10,
+		F11,
+		TOTAL_KEYS
 	};
 //==========================================================================================================================
 //Documentation
@@ -178,11 +190,10 @@ BUG! This is not copying anything at all. It is only passing the new refalone
 
 	private:
 		static shared_ptr<Controller> _instance;		///< Singleton Global instance.
-		static const int 			  _totalKeys = 51;	///< Total supported Keys from KeyCode.
 		
-		KeyStates 		_keyStates[_totalKeys];			///< Array of states for each key, indexed by ID.
-		bool 			_pastActiveKeys[_totalKeys];	///< Array of keys in a pressed state as of last frame, indexed by ID.
-		bool			_curActiveKeys[_totalKeys];		///< Array of keys in a pressed state as of this frame, indexed by ID.
+		KeyStates 		_keyStates[TOTAL_KEYS];			///< Array of states for each key, indexed by ID.
+		bool 			_pastActiveKeys[TOTAL_KEYS];	///< Array of keys in a pressed state as of last frame, indexed by ID.
+		bool			_curActiveKeys[TOTAL_KEYS];		///< Array of keys in a pressed state as of this frame, indexed by ID.
 		KM::Vector 		_leftClickCoordinates;			///< Coordinates of last left click.
 		KM::Vector		_rightClickCoordinates;			///< Coordinates of last right click.
 	};

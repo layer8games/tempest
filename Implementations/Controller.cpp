@@ -12,7 +12,7 @@ Controller::Controller(void)
 _leftClickCoordinates(0.0f), 
 _rightClickCoordinates(0.0f)
 {
-	for(int i = 0; i < _totalKeys; ++i)
+	for(int i = 0; i < TOTAL_KEYS; ++i)
 	{
 		_curActiveKeys[i] = false;//KeyStates::KEY_RELEASED;
 		_pastActiveKeys[i] = false; //KeyStates::KEY_RELEASED;
@@ -74,7 +74,7 @@ const KM::Vector Controller::GetMouseCoord(void)
 
 void Controller::Update(void)
 {
-	for(int i = 0; i < _totalKeys; ++i)
+	for(int i = 0; i < TOTAL_KEYS; ++i)
 	{
 		//check if key was just pressed
 		if(!_pastActiveKeys[i] && _curActiveKeys[i])
