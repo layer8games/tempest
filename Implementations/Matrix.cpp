@@ -1,5 +1,4 @@
 #include <Engine/Matrix.h>
-#include <iostream>
 
 using namespace KillerMath;
 
@@ -9,82 +8,76 @@ using namespace KillerMath;
 //
 //==========================================================================================================================
 Matrix::Matrix(void)
-{
-	_m[0]  = _m[1]  = _m[2]  = _m[3]  = 0;
-	_m[4]  = _m[5]  = _m[6]  = _m[7]  = 0;
-	_m[8]  = _m[9]  = _m[10] = _m[11] = 0;
-	_m[12] = _m[13] = _m[14] = 0;
-	_m[15] = 1;
-}
+:
+_columns{Vector(1.0f, 0.0f, 0.0f, 0.0f),
+		 Vector(0.0f, 1.0f, 0.0f, 0.0f),
+		 Vector(0.0f, 0.0f, 1.0f, 0.0f),
+		 Vector(0.0f, 0.0f, 0.0f, 1.0f)}
+{  }
 
-Matrix::Matrix(F32 val)
-{
-	_m[0] = _m[5] = _m[10] = _m[15] = val;
+Matrix::Matrix(const Vector& x, const Vector& y, const Vector& z)
+:
+_columns{x, y, z, Vector(0.0f, 0.0f, 0.0f, 1.0f)}
+{  }
 
-	_m[1]  = _m[2]  = _m[3]  = 0;
-	_m[4]  = _m[6]  = _m[7]  = 0; 
-	_m[8]  = _m[9]  = _m[11] = 0;
-	_m[12] = _m[13] = _m[14] = 0;
-}
+Matrix::Matrix(const Vector& x, const Vector& y, const Vector& z, const Vector& w)
+:
+_columns{x, y, z, w}
+{  }
 
-Matrix::Matrix(const F32 mSrc[16])
-{
-	_m[0]  = mSrc[0];  _m[1] = mSrc[1];   _m[2]  = mSrc[2];  _m[3]  = mSrc[3];
-	_m[4]  = mSrc[4];  _m[5] = mSrc[5];   _m[6]  = mSrc[6];  _m[7]  = mSrc[7];
-	_m[8]  = mSrc[8];  _m[9] = mSrc[9];   _m[10] = mSrc[10]; _m[11] = mSrc[11];
-	_m[12] = mSrc[12]; _m[13] = mSrc[13]; _m[14] = mSrc[14]; _m[15] = mSrc[15];
-}
+Matrix::Matrix(const F32 val)
+:
+_columns{Vector(val, 0.0f, 0.0f, 0.0f),
+		 Vector(0.0f, val, 0.0f, 0.0f),
+		 Vector(0.0f, 0.0f, val, 0.0f),
+		 Vector(0.0f, 0.0f, 0.0f, 1.0f)}
+{  }
 
 Matrix::Matrix( F32 m00, F32 m01, F32 m02, F32 m03,
-				 F32 m10, F32 m11, F32 m12, F32 m13,
-				 F32 m20, F32 m21, F32 m22, F32 m23,
-				 F32 m30, F32 m31, F32 m32, F32 m33)
-{
-	_m[0] = m00;  
-	_m[1] = m01;  
-	_m[2] = m02;  
-	_m[3] = m03;
-	_m[4] = m10;  
-	_m[5] = m11;   
-	_m[6] = m12;  
-	_m[7] = m13;
-	_m[8] = m20;  
-	_m[9] = m21;   
-	_m[10] = m22; 
-	_m[11] = m23;		
-	_m[12] = m30; 
-	_m[13] = m31;   
-	_m[14] = m32; 
-	_m[15] = m33;
-}
+				F32 m10, F32 m11, F32 m12, F32 m13,
+				F32 m20, F32 m21, F32 m22, F32 m23,
+				F32 m30, F32 m31, F32 m32, F32 m33)
+:
+_columns{Vector(m00, m01, m02, m03),
+		 Vector(m10, m11, m12, m13),
+		 Vector(m20, m21, m22, m23),
+		 Vector(m30, m31, m32, m33)}
+{  }
 
 Matrix::Matrix(const Matrix& M)
-{
-	const F32* m = M.GetElems();
-
-	_m[0] = m[0];  
-	_m[1] = m[1];   
-	_m[2] = m[2];  
-	_m[3] = m[3];
-	_m[4] = m[4]; 
-	_m[5] = m[5];   
-	_m[6] = m[6];  
-	_m[7] = m[7];
-	_m[8] = m[8];  
-	_m[9] = m[9];  
-	_m[10] = m[10]; 
-	_m[11] = m[11];
-	_m[12] = m[12];
-	_m[13] = m[13];   
-	_m[14] = m[14]; 
-	_m[15] = m[15];
-}
+:
+_columns{M[0], M[1], M[2], M[3]}
+{  }
 
 //==========================================================================================================================
 //
 //Matrix functions
 //
 //==========================================================================================================================
+const std::vector<F32> Matrix::GetElems(void) const
+{
+	std::vector<F32> elems;
+	
+	elems.push_back(_columns[0][x]);
+	elems.push_back(_columns[0][y]);
+	elems.push_back(_columns[0][z]);
+	elems.push_back(_columns[0][w]);
+	elems.push_back(_columns[1][x]);
+	elems.push_back(_columns[1][y]);
+	elems.push_back(_columns[1][z]);
+	elems.push_back(_columns[1][w]);
+	elems.push_back(_columns[2][x]);
+	elems.push_back(_columns[2][y]);
+	elems.push_back(_columns[2][z]);
+	elems.push_back(_columns[2][w]);
+	elems.push_back(_columns[3][x]);
+	elems.push_back(_columns[3][y]);
+	elems.push_back(_columns[3][z]);
+	elems.push_back(_columns[3][w]);
+
+	return elems;
+}
+
 //==========================================================================================================================
 //Projections
 //==========================================================================================================================
@@ -124,15 +117,15 @@ void Matrix::MakeOrthographic(F32 width, F32 height, F32 depth, bool center)
 	assert(nearPlane - farPlane != 0.0f);
 
 	//Diagnal
-	_m[0]  = 2.0f / (right - left);
-	_m[5]  = 2.0f / (top - bottom);
-	_m[10] = 2.0f / (nearPlane - farPlane);
-	_m[15] = 1.0f;
+	_columns[0][x]  = 2.0f / (right - left);
+	_columns[1][y]  = 2.0f / (top - bottom);
+	_columns[2][z] = 2.0f / (nearPlane - farPlane);
+	_columns[3][w] = 1.0f;
 
 	//Transform "Vector"
-	_m[12] = (left + right) / (left - right);
-	_m[13] = (bottom + top) / (bottom - top);
-	_m[14] = (nearPlane + farPlane)   / (farPlane - nearPlane);
+	_columns[3][x] = (left + right) / (left - right);
+	_columns[3][y] = (bottom + top) / (bottom - top);
+	_columns[3][z] = (nearPlane + farPlane)   / (farPlane - nearPlane);
 }
 
 void Matrix::MakePerspective(F32 width, F32 height, F32 depth, bool center)
@@ -172,13 +165,14 @@ void Matrix::MakePerspective(F32 width, F32 height, F32 depth, bool center)
 	assert(top - bottom != 0.0f);
 	assert(nearPlane - farPlane != 0.0f);
 
-	_m[0]  = (2.0f * nearPlane) / (right - left);
-	_m[5]  = (2.0f * nearPlane) / (top - bottom);
-	_m[8]  = (right + left) / (right - left);
-	_m[9]  = (top + bottom) / (top - bottom);
-	_m[10] = (nearPlane + farPlane) / (nearPlane - farPlane);
-	_m[11] = -1.0f;
-	_m[14] = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
+	
+	_columns[0][x]  = (2.0f * nearPlane) / (right - left);
+	_columns[1][y]  = (2.0f * nearPlane) / (top - bottom);
+	_columns[2][x]  = (right + left) / (right - left);
+	_columns[2][y]  = (top + bottom) / (top - bottom);
+	_columns[2][z] = (nearPlane + farPlane) / (nearPlane - farPlane);
+	_columns[2][w] = -1.0f;
+	_columns[3][z] = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
 }
 
 void Matrix::MakePerspective(F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F32 farPlane)
@@ -190,263 +184,345 @@ void Matrix::MakePerspective(F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F3
 	//Reset Matrix 
 	MakeIdentity();
 
-	_m[0] = S / aspectRatio;
-	_m[5] = S;
-	_m[10] = (nearPlane + farPlane) / (nearPlane - farPlane);
-	_m[11] = -1.0f;
-	_m[14] = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
+	_columns[0][x] = S / aspectRatio;
+	_columns[1][y] = S;
+	_columns[2][z] = (nearPlane + farPlane) / (nearPlane - farPlane);
+	_columns[2][w] = -1.0f;
+	_columns[3][z] = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
 }
 
 //==========================================================================================================================
 //Translations
 //==========================================================================================================================
-void Matrix::Translate(F32 x, F32 y)
+Matrix Matrix::Translate(F32 xVal, F32 yVal)
+{
+	Matrix mat{1.0f};
+
+	mat[3][x] = xVal;
+	mat[3][y] = yVal;
+
+	return mat;
+}
+
+Matrix Matrix::Translate(F32 xVal, F32 yVal, F32 zVal)
+{
+	Matrix mat{1.0f};
+
+	mat[3][x] = xVal;
+	mat[3][y] = yVal;
+	mat[3][z] = zVal;
+
+	return mat;	
+}
+
+Matrix Matrix::Translate(const Vector& vec)
+{
+	Matrix mat{1.0f};
+
+	mat[3][x] = vec[x];
+	mat[3][y] = vec[y];
+	mat[3][z] = vec[z];
+
+	return mat;	
+}
+
+void Matrix::SetTranslate(F32 xVal, F32 yVal)
 {
 	MakeIdentity();
 
-	_m[12] = x;
-	_m[13] = y;
+	_columns[3][x] = xVal;
+	_columns[3][y] = yVal;
 }
 
-void Matrix::Translate(F32 x, F32 y, F32 z)
+void Matrix::SetTranslate(F32 xVal, F32 yVal, F32 zVal)
 {
 	MakeIdentity();			
 
-	_m[12] = x;
-	_m[13] = y;
-	_m[14] = z;
+	_columns[3][x] = xVal;
+	_columns[3][y] = yVal;
+	_columns[3][z] = zVal;
 }
 
-void Matrix::Translate(const Vector2& vec)
+void Matrix::SetTranslate(const Vector& vec)
 {
 	MakeIdentity(); 
 
-	_m[12] = vec.GetX();
-	_m[13] = vec.GetY();
+	_columns[3][x] = vec[x];
+	_columns[3][y] = vec[y];
+
+	if(!vec.Is2D())
+	{
+		_columns[3][z] = vec[z];
+	}
 }
 
-void Matrix::Translate(const Vector3& vec)
+void Matrix::AddTranslate(F32 xVal, F32 yVal)
 {
-	MakeIdentity();
-
-	_m[12] = vec.GetX();
-	_m[13] = vec.GetY();
-	_m[14] = vec.GetZ();
+	_columns[3][x] += xVal;
+	_columns[3][y] += yVal;
 }
 
-void Matrix::AddTranslate(F32 x, F32 y)
+void Matrix::AddTranslate(F32 xVal, F32 yVal, F32 zVal)
 {
-	_m[12] = x;
-	_m[13] = y;
+	_columns[3][x] += xVal; 
+	_columns[3][y] += yVal; 
+	_columns[3][z] += zVal;
 }
 
-void Matrix::AddTranslate(F32 x, F32 y, F32 z)
+void Matrix::AddTranslate(const Vector& vec)
 {
-	_m[12] = x; 
-	_m[13] = y; 
-	_m[14] = z;
-}
-
-void Matrix::AddTranslate(const Vector2& vec)
-{
-	_m[12] = vec.GetX();
-	_m[13] = vec.GetY();
-}
-
-void Matrix::AddTranslate(const Vector3& vec)
-{
-	_m[12] = vec.GetX();
-	_m[13] = vec.GetY();
-	_m[14] = vec.GetZ();
+	_columns[3][x] += vec[x];
+	_columns[3][y] += vec[y];
+	
+	if(!vec.Is2D()) 
+	{
+		_columns[3][z] += vec[z];
+	}
 }
 
 //==========================================================================================================================
 //Scaling
 //==========================================================================================================================
-void Matrix::Scale(F32 x, F32 y)
+Matrix Matrix::Scale(F32 xVal, F32 yVal)
+{
+	Matrix mat{1.0f};
+
+	mat[0][x] = xVal;
+	mat[1][y] = yVal;
+
+	return mat;
+}
+
+Matrix Matrix::Scale(F32 xVal, F32 yVal, F32 zVal)
+{
+	Matrix mat{1.0f};
+
+	mat[0][x] = xVal;
+	mat[1][y] = yVal;
+	mat[2][z] = zVal;
+
+	return mat;
+}
+
+Matrix Matrix::Scale(const Vector& vec)
+{
+	Matrix mat{1.0f};
+
+	mat[0][x] = vec[x];
+	mat[1][y] = vec[y];
+	mat[2][z] = vec[z];
+
+	return mat;
+}
+
+void Matrix::SetScale(F32 xVal, F32 yVal)
 {
 	MakeIdentity();
 
-	_m[0] = x;
-	_m[5] = y;
+	_columns[0][x] = xVal;
+	_columns[1][y] = yVal;
 }
 
-void Matrix::Scale(F32 x, F32 y, F32 z)
+void Matrix::SetScale(F32 xVal, F32 yVal, F32 zVal)
 {
 	MakeIdentity();
 
-	_m[0] = x;
-	_m[5] = y;
-	_m[10] = z;
+	_columns[0][x] = xVal;
+	_columns[1][y] = yVal;
+	_columns[2][z] = zVal;
 }
 
-void Matrix::Scale(const Vector2& vec)
+void Matrix::SetScale(const Vector& vec)
 {
 	MakeIdentity();
 
-	_m[0] = vec.GetX();
-	_m[5] = vec.GetY();
+	_columns[0][x] = vec[x];
+	_columns[1][y] = vec[y];
+	
+	if(!vec.Is2D()) 
+	{
+		_columns[2][z] = vec[z];
+	}
 }
 
-void Matrix::Scale(const Vector3& vec)
+void Matrix::AddScale(F32 xVal, F32 yVal)
 {
-	MakeIdentity();
-
-	_m[0] = vec.GetX();
-	_m[5] = vec.GetY();
-	_m[10] = vec.GetZ();
+	_columns[0][x] += xVal;
+	_columns[1][y] += yVal;
 }
 
-void Matrix::AddScale(F32 x, F32 y)
+void Matrix::AddScale(F32 xVal, F32 yVal, F32 zVal)
 {
-	_m[0] = x;
-	_m[5] = y;
+	_columns[0][x] += xVal;
+	_columns[1][y] += yVal;
+	_columns[2][z] += zVal;
 }
 
-void Matrix::AddScale(F32 x, F32 y, F32 z)
+void Matrix::AddScale(const Vector& vec)
 {
-	_m[0] = x;
-	_m[5] = y;
-	_m[10] = z;
-}
-
-void Matrix::AddScale(const Vector2& vec)
-{
-	_m[0] = vec.GetX();
-	_m[5] = vec.GetY();
-}
-
-void Matrix::AddScale(const Vector3& vec)
-{
-	_m[0] = vec.GetX();
-	_m[5] = vec.GetY();
-	_m[10] = vec.GetZ();
+	_columns[0][x] += vec[x];
+	_columns[1][y] += vec[y];
+	
+	if(!vec.Is2D()) 
+	{
+		_columns[2][z] += vec[z];
+	}
 }
 
 //==========================================================================================================================
 //Rotations
 //==========================================================================================================================
-void Matrix::RotateX(F32 x)
+Matrix Matrix::RotateX(F32 val)
 {
-	x = DegreeToRadian(x);
+	val = DegreeToRadian(val);
+	Matrix mat{1.0f};
+
+	mat[1][y] = cos(val);
+	mat[1][z] = -sin(val);
+	mat[2][y] = sin(val);
+	mat[2][z] = cos(val);
+
+	return mat;
+}
+
+Matrix Matrix::RotateY(F32 val)
+{
+	val = DegreeToRadian(val);
+	Matrix mat{1.0f};
+
+	mat[0][x] = cos(val);
+	mat[0][z] = sin(val);
+	mat[2][x] = -sin(val);
+	mat[2][z] = cos(val);
+
+	return mat;
+}
+
+Matrix Matrix::RotateZ(F32 val)
+{
+	val = DegreeToRadian(val);
+	Matrix mat{1.0f};
+
+	mat[0][x] = cos(val);
+	mat[0][y] = -sin(val);
+	mat[1][x] = sin(val);
+	mat[1][y] = cos(val);
+
+	return mat;
+}
+
+void Matrix::SetRotateX(F32 val)
+{
+	val = DegreeToRadian(val);
 
 	MakeIdentity();
 
-	_m[5] = cos(x);
-	_m[6] = -sin(x);
-	_m[9] = sin(x);
-	_m[10] = cos(x);
+	_columns[1][y] = cos(val);
+	_columns[1][z] = -sin(val);
+	_columns[2][y] = sin(val);
+	_columns[2][z] = cos(val);
 }
 
-void Matrix::AddRotateX(F32 x)
+void Matrix::AddRotateX(F32 val)
 {
-	x = DegreeToRadian(x);
+	val = DegreeToRadian(val);
 
-	_m[5] += cos(x);
-	_m[6] += -sin(x);
-	_m[9] += sin(x);
-	_m[10] += cos(x);
+	_columns[1][y] += cos(val);
+	_columns[1][z] += -sin(val);
+	_columns[2][y] += sin(val);
+	_columns[2][z] += cos(val);
 }
 
-void Matrix::RotateY(F32 y)
+void Matrix::SetRotateY(F32 val)
 {
-	y = DegreeToRadian(y);
+	val = DegreeToRadian(val);
 
 	MakeIdentity();
 
-	_m[0] = cos(y);
-	_m[2] = sin(y);
-	_m[8] = -sin(y);
-	_m[10] = cos(y);
+	_columns[0][x] = cos(val);
+	_columns[0][z] = sin(val);
+	_columns[2][x] = -sin(val);
+	_columns[2][z] = cos(val);
 }
 
-void Matrix::AddRotateY(F32 y)
+void Matrix::AddRotateY(F32 val)
 {
-	y = DegreeToRadian(y);
+	val = DegreeToRadian(val);
 
-	_m[0] += cos(y);
-	_m[2] += sin(y);
-	_m[8] += -sin(y);
-	_m[10] += cos(y);	
+	_columns[0][x] += cos(val);
+	_columns[0][y] += sin(val);
+	_columns[2][x] += -sin(val);
+	_columns[2][y] += cos(val);	
 }
 
-void Matrix::RotateZ(F32 z)
+void Matrix::SetRotateZ(F32 val)
 {
-	z = DegreeToRadian(z);
+	val = DegreeToRadian(val);
 
 	MakeIdentity();
 
-	_m[0] = cos(z);
-	_m[1] = -sin(z);
-	_m[4] = sin(z);
-	_m[5] = cos(z);
+	_columns[0][x] = cos(val);
+	_columns[0][y] = -sin(val);
+	_columns[1][x] = sin(val);
+	_columns[1][y] = cos(val);
 }
 
-void Matrix::AddRotateZ(F32 z)
+void Matrix::AddRotateZ(F32 val)
 {
-	z = DegreeToRadian(z);
+	val = DegreeToRadian(val);
 
-	_m[0] += cos(z);
-	_m[1] += -sin(z);
-	_m[4] += sin(z);
-	_m[5] += cos(z);
+	_columns[0][x] += cos(val);
+	_columns[0][y] += -sin(val);
+	_columns[1][x] += sin(val);
+	_columns[1][y] += cos(val);
 }
 
-void Matrix::Rotate(F32 x, F32 y, F32 z)
+void Matrix::SetRotate(F32 xVal, F32 yVal, F32 zVal)
 {
-	x = DegreeToRadian(x);
-	y = DegreeToRadian(y);
-	z = DegreeToRadian(z);
+	xVal = DegreeToRadian(xVal);
+	yVal = DegreeToRadian(yVal);
+	zVal = DegreeToRadian(zVal);
 
 	MakeIdentity();
 
-	_m[0] = cos(y) * cos(z);
-	_m[1] = -cos(y) * sin(z);
-	_m[2] = sin(y);
-	_m[4] = cos(x) * sin(z) + sin(x) * sin(y) * cos(z);
-	_m[5] = cos(x) * cos(z) - sin(x) * sin(y) * sin(z);
-	_m[6] = -sin(x) * cos(y);
-	_m[8] = sin(x) * sin(z) - cos(x) * sin(y) * cos(z);
-	_m[9] = sin(x) * cos(z) + cos(x) * sin(y) * sin(z);
-	_m[10] = cos(x) * cos(y);
+	_columns[0][x] = cos(yVal) * cos(zVal);
+	_columns[0][y] = -cos(yVal) * sin(zVal);
+	_columns[0][z] = sin(yVal);
+	_columns[1][x] = cos(xVal) * sin(zVal) + sin(xVal) * sin(yVal) * cos(zVal);
+	_columns[1][y] = cos(xVal) * cos(zVal) - sin(xVal) * sin(yVal) * sin(zVal);
+	_columns[1][z] = -sin(xVal) * cos(yVal);
+	_columns[2][x] = sin(xVal) * sin(zVal) - cos(xVal) * sin(yVal) * cos(zVal);
+	_columns[2][y] = sin(xVal) * cos(zVal) + cos(xVal) * sin(yVal) * sin(zVal);
+	_columns[2][z] = cos(xVal) * cos(yVal);
 }
 
-void Matrix::AddRotation(F32 x, F32 y, F32 z)
+void Matrix::AddRotation(F32 xVal, F32 yVal, F32 zVal)
 {
-	x = DegreeToRadian(x);
-	y = DegreeToRadian(y);
-	z = DegreeToRadian(z);
+	xVal = DegreeToRadian(xVal);
+	yVal = DegreeToRadian(yVal);
+	zVal = DegreeToRadian(zVal);
 
-	_m[0] += cos(y) * cos(z);
-	_m[1] += -cos(y) * sin(z);
-	_m[2] += sin(y);
-	_m[4] += cos(x) * sin(z) + sin(x) * sin(y) * cos(z);
-	_m[5] += cos(x) * cos(z) - sin(x) * sin(y) * sin(z);
-	_m[6] += -sin(x) * cos(y);
-	_m[8] += sin(x) * sin(z) - cos(x) * sin(y) * cos(z);
-	_m[9] += sin(x) * cos(z) + cos(x) * sin(y) * sin(z);
-	_m[10] += cos(x) * cos(y);
+	_columns[0][x] += cos(yVal) * cos(zVal);
+	_columns[0][y] += -cos(yVal) * sin(zVal);
+	_columns[0][z] += sin(yVal);
+	_columns[1][x] += cos(xVal) * sin(zVal) + sin(xVal) * sin(yVal) * cos(zVal);
+	_columns[1][y] += cos(xVal) * cos(zVal) - sin(xVal) * sin(yVal) * sin(zVal);
+	_columns[1][z] += -sin(xVal) * cos(yVal);
+	_columns[2][x] += sin(xVal) * sin(zVal) - cos(xVal) * sin(yVal) * cos(zVal);
+	_columns[2][y] += sin(xVal) * cos(zVal) + cos(xVal) * sin(yVal) * sin(zVal);
+	_columns[2][z] += cos(xVal) * cos(yVal);
 }
 
 //==========================================================================================================================
 //Resettings
 //==========================================================================================================================
-void Matrix::ResetMatrix(F32 val)
+void Matrix::Reset(F32 val)
 {
 	//Reset Matrix
-	_m[0]  =  _m[1]  =  _m[2]  =  _m[3]  = 0;
-
-	_m[4]  =  _m[5]  =  _m[6]  =  _m[7]  = 0;
-
-	_m[8]  =  _m[9]  =  _m[10] =  _m[11] = 0;
-
-	_m[12] =  _m[13] =  _m[14] =  _m[15] = 0;
-
-	_m[0] = val;
-	_m[5] = val;
-	_m[10] = val;
-	_m[15] = val;
-
+	_columns[0] = Vector(val, 0.0f, 0.0f, 0.0f);
+	_columns[1] = Vector(0.0f, val, 0.0f, 0.0f);
+	_columns[2] = Vector(0.0f, 0.0f, val, 0.0f);
+	_columns[3] = Vector(0.0f, 0.0f, 0.0f, val);
 }
 
 //==========================================================================================================================
@@ -454,72 +530,38 @@ void Matrix::ResetMatrix(F32 val)
 //==========================================================================================================================
 void Matrix::Transpose(void)
 {
-	F32 newMatrix[16];
+	Vector newCol0 {_columns[0][x], _columns[1][x], _columns[2][x], _columns[3][x]};
+	Vector newCol1 {_columns[0][y], _columns[1][y], _columns[2][y], _columns[3][y]};
+	Vector newCol2 {_columns[0][z], _columns[1][z], _columns[2][z], _columns[3][z]};
+	Vector newCol3 {_columns[0][w], _columns[1][w], _columns[2][w], _columns[3][w]};
 
-	
-	newMatrix[0] = _m[0];
-	newMatrix[1] = _m[4];
-	newMatrix[2] = _m[8];
-	newMatrix[3] = _m[12];
-
-	newMatrix[4] = _m[1];
-	newMatrix[5] = _m[5];
-	newMatrix[6] = _m[9];
-	newMatrix[7] = _m[13];
-
-	newMatrix[8] = _m[2];
-	newMatrix[9] = _m[6];
-	newMatrix[10] = _m[10];
-	newMatrix[11] = _m[14];
-
-	newMatrix[12] = _m[3];
-	newMatrix[13] = _m[7];
-	newMatrix[14] = _m[11];
-	newMatrix[15] = _m[15];
-
-
-	_m[0] = newMatrix[0];
-	_m[1] = newMatrix[1];
-	_m[2] = newMatrix[2];
-	_m[3] = newMatrix[3];
-
-	_m[4] = newMatrix[4];
-	_m[5] = newMatrix[5];
-	_m[6] = newMatrix[6];
-	_m[7] = newMatrix[7];
-
-	_m[8] = newMatrix[8];
-	_m[9] = newMatrix[9];
-	_m[10] = newMatrix[10];
-	_m[11] = newMatrix[11];
-
-	_m[12] = newMatrix[12];
-	_m[13] = newMatrix[13];
-	_m[14] = newMatrix[14];
-	_m[15] = newMatrix[15];
+	_columns[0] = newCol0;
+	_columns[1] = newCol1;
+	_columns[2] = newCol2;
+	_columns[3] = newCol3;
 }
 
-void Matrix::ComponentMulti(const Matrix& M)
+void Matrix::ComponentMulti(const Matrix& mat)
 {
-	const F32* elems = M.GetElems();
+	_columns[0][x] *= mat[0][x];
+	_columns[0][y] *= mat[0][y];
+	_columns[0][z] *= mat[0][z];
+	_columns[0][w] *= mat[0][w];
 
-	_m[0] *= elems[0];
-	_m[1] *= elems[1];
-	_m[2] *= elems[2];
-	_m[3] *= elems[3];
-	_m[4] *= elems[4];
-	_m[5] *= elems[5];
-	_m[6] *= elems[6];
-	_m[7] *= elems[7];
-	_m[8] *= elems[8];
-	_m[9] *= elems[9];
-	_m[10] *= elems[10];
-	_m[11] *= elems[11];
-	_m[12] *= elems[12];
-	_m[13] *= elems[13];
-	_m[14] *= elems[14];
-	_m[15] *= elems[15];
+	_columns[1][x] *= mat[1][x];
+	_columns[1][y] *= mat[1][y];
+	_columns[1][z] *= mat[1][z];
+	_columns[1][w] *= mat[1][w];
 
+	_columns[2][x] *= mat[2][x];
+	_columns[2][y] *= mat[2][y];
+	_columns[2][z] *= mat[2][z];
+	_columns[2][w] *= mat[2][w];
+
+	_columns[3][x] *= mat[3][x];
+	_columns[3][y] *= mat[3][y];
+	_columns[3][z] *= mat[3][z];
+	_columns[3][w] *= mat[3][w];
 }
 
 //==========================================================================================================================
@@ -527,98 +569,215 @@ void Matrix::ComponentMulti(const Matrix& M)
 //Operator Overloads
 //
 //==========================================================================================================================
-Matrix& Matrix::operator=(const Matrix& M) 
+Matrix& Matrix::operator=(const Matrix& mat) 
 {
-	const F32* elems = M.GetElems();
+	_columns[0][x] = mat[0][x];
+	_columns[0][y] = mat[0][y];
+	_columns[0][z] = mat[0][z];
+	_columns[0][w] = mat[0][w];
 
-	_m[0] = elems[0];
-	_m[1] = elems[1];
-	_m[2] = elems[2];
-	_m[3] = elems[3];
+	_columns[1][x] = mat[1][x];
+	_columns[1][y] = mat[1][y];
+	_columns[1][z] = mat[1][z];
+	_columns[1][w] = mat[1][w];
 
-	_m[4] = elems[4];
-	_m[5] = elems[5];
-	_m[6] = elems[6];
-	_m[7] = elems[7];
+	_columns[2][x] = mat[2][x];
+	_columns[2][y] = mat[2][y];
+	_columns[2][z] = mat[2][z];
+	_columns[2][w] = mat[2][w];
 
-
-	_m[8]  = elems[8];
-	_m[9]  = elems[9];
-	_m[10] = elems[10];
-	_m[11] = elems[11];
-
-	_m[12] = elems[12];
-	_m[13] = elems[13];
-	_m[14] = elems[14];
-	_m[15] = elems[15];
+	_columns[3][x] = mat[3][x];
+	_columns[3][y] = mat[3][y];
+	_columns[3][z] = mat[3][z];
+	_columns[3][w] = mat[3][w];
 
 	return *this;
 }
 
-Matrix& Matrix::operator*(const Matrix& RightMatrix) 
+Matrix Matrix::operator*(const Matrix& mat) 
 {
-	const F32* left = this->GetElems();
-	const F32* right = RightMatrix.GetElems();
+	Vector xCol 
+	{
+		_columns[0][x] * mat[0][x] + _columns[1][x] * mat[0][y] + _columns[2][x] * mat[0][z] + _columns[3][x] * mat[0][w],
+		_columns[0][y] * mat[0][x] + _columns[1][y] * mat[0][y] + _columns[2][y] * mat[0][z] + _columns[3][y] * mat[0][w],
+		_columns[0][z] * mat[0][x] + _columns[1][z] * mat[0][y] + _columns[2][z] * mat[0][z] + _columns[3][z] * mat[0][w],
+		_columns[0][w] * mat[0][x] + _columns[1][w] * mat[0][y] + _columns[2][w] * mat[0][z] + _columns[3][w] * mat[0][w],
 
-	Matrix newMatrix
-	(
-		left[0] * right[0] + left[4] * right[1] + left[8]  * right[2] + left[12] * right[3], //m00
-		left[1] * right[0] + left[5] * right[1] + left[9]  * right[2] + left[13] * right[3], //m01
-		left[2] * right[0] + left[6] * right[1] + left[10] * right[2] + left[14] * right[3], //m02
-		left[3] * right[0] + left[7] * right[1] + left[11] * right[2] + left[15] * right[3], //m03
+	};
 
-		left[0] * right[4] + left[4] * right[5] + left[8]  * right[6] + left[12] * right[7], //m10
-		left[1] * right[4] + left[5] * right[5] + left[9]  * right[6] + left[13] * right[7], //m11
-		left[2] * right[4] + left[6] * right[5] + left[10] * right[6] + left[14] * right[7], //m12
-		left[3] * right[4] + left[7] * right[5] + left[11] * right[6] + left[15] * right[7], //m13
+	Vector yCol
+	{
+		_columns[0][x] * mat[1][x] + _columns[1][x] * mat[1][y] + _columns[2][x] * mat[1][z] + _columns[3][x] * mat[1][w],
+		_columns[0][y] * mat[1][x] + _columns[1][y] * mat[1][y] + _columns[2][y] * mat[1][z] + _columns[3][y] * mat[1][w],
+		_columns[0][z] * mat[1][x] + _columns[1][z] * mat[1][y] + _columns[2][z] * mat[1][z] + _columns[3][z] * mat[1][w],
+		_columns[0][w] * mat[1][x] + _columns[1][w] * mat[1][y] + _columns[2][w] * mat[1][z] + _columns[3][w] * mat[1][w],
+	};
 
-		left[0] * right[8] + left[4] * right[9] + left[8]  * right[10] + left[12] * right[11], //m20
-		left[1] * right[8] + left[5] * right[9] + left[9]  * right[10] + left[13] * right[11], //m21
-		left[2] * right[8] + left[6] * right[9] + left[10] * right[10] + left[14] * right[11], //m22
-		left[3] * right[8] + left[7] * right[9] + left[11] * right[10] + left[15] * right[11], //m23
+	Vector zCol
+	{
+		_columns[0][x] * mat[2][x] + _columns[1][x] * mat[2][y] + _columns[2][x] * mat[2][z] + _columns[3][x] * mat[2][w],
+		_columns[0][y] * mat[2][x] + _columns[1][y] * mat[2][y] + _columns[2][y] * mat[2][z] + _columns[3][y] * mat[2][w],
+		_columns[0][z] * mat[2][x] + _columns[1][z] * mat[2][y] + _columns[2][z] * mat[2][z] + _columns[3][z] * mat[2][w],
+		_columns[0][w] * mat[2][x] + _columns[1][w] * mat[2][y] + _columns[2][w] * mat[2][z] + _columns[3][w] * mat[2][w],
+	};
 
-		left[0] * right[12] + left[4] * right[13] + left[8]  * right[14] + left[12] * right[15], //m30
-		left[1] * right[12] + left[5] * right[13] + left[9]  * right[14] + left[13] * right[15], //m31
-		left[2] * right[12] + left[6] * right[13] + left[10] * right[14] + left[14] * right[15], //m32
-		left[3] * right[12] + left[7] * right[13] + left[11] * right[14] + left[15] * right[15]  //m33
-	);
+	Vector wCol
+	{
+		_columns[0][x] * mat[3][x] + _columns[1][x] * mat[3][y] + _columns[2][x] * mat[3][z] + _columns[3][x] * mat[3][w],
+		_columns[0][y] * mat[3][x] + _columns[1][y] * mat[3][y] + _columns[2][y] * mat[3][z] + _columns[3][y] * mat[3][w],
+		_columns[0][z] * mat[3][x] + _columns[1][z] * mat[3][y] + _columns[2][z] * mat[3][z] + _columns[3][z] * mat[3][w],
+		_columns[0][w] * mat[3][x] + _columns[1][w] * mat[3][y] + _columns[2][w] * mat[3][z] + _columns[3][w] * mat[3][w],
+	};
 
-	*this = newMatrix;
-	return *this;
+	return Matrix(xCol, yCol, zCol, wCol);
 }
 
-Matrix& Matrix::operator*=(Matrix& RHM) 
+//==========================================================================================================================
+//
+//Look At Matrices
+//
+//==========================================================================================================================
+
+Matrix Matrix::LookAt(const Vector& cameraPos, const Vector& target, const Vector& up)
 {
-	*this = RHM * *this;
-	return *this;
+	Matrix mat{1.0f};
+
+	Vector zAxis = cameraPos - target;
+	zAxis.Normalize();
+
+	Vector xAxis = up.CrossProduct(zAxis);
+	xAxis.Normalize();
+
+	Vector yAxis = zAxis.CrossProduct(xAxis);
+	yAxis.Normalize();
+
+	mat[0][0] = xAxis[0];
+	mat[0][1] = yAxis[0];
+	mat[0][2] = zAxis[0];
+	mat[0][3] = 0.0f;
+
+	mat[1][0] = xAxis[1];
+	mat[1][1] = yAxis[1];
+	mat[1][2] = zAxis[1];
+	mat[1][3] = 0.0f;
+
+	mat[2][0] = xAxis[2];
+	mat[2][1] = yAxis[2];
+	mat[2][2] = zAxis[2];
+	mat[2][3] = 0.0f;
+
+	mat[3] = Vector(-xAxis.DotProduct(cameraPos), -yAxis.DotProduct(cameraPos), -zAxis.DotProduct(cameraPos), 1.0f);
+
+	return mat;
 }
 
-Vector2 Matrix::operator*(const Vector2& RHV)
+void Matrix::SetLookAt(const Vector& cameraPos, const Vector& target, const Vector& up)
 {
-	F32 x = RHV.GetX();
-	F32 y = RHV.GetY();
-	F32 z = RHV. GetZ();
-	F32 w = RHV.GetW();
+	MakeIdentity();
 
-	return Vector2
-	(
-		x * _m[0] + y * _m[4] + z * _m[8] + w * _m[12],
-		x * _m[1] + y * _m[5] + z * _m[9] + w * _m[13]
-	);
+	Vector zAxis = cameraPos - target;
+	zAxis.Normalize();
+
+	Vector xAxis = up.CrossProduct(zAxis);
+	xAxis.Normalize();
+
+	Vector yAxis = zAxis.CrossProduct(xAxis);
+	yAxis.Normalize();
+
+	_columns[0][0] = xAxis[0];
+	_columns[0][1] = yAxis[0];
+	_columns[0][2] = zAxis[0];
+	_columns[0][3] = 0.0f;
+
+	_columns[1][0] = xAxis[1];
+	_columns[1][1] = yAxis[1];
+	_columns[1][2] = zAxis[1];
+	_columns[1][3] = 0.0f;
+
+	_columns[2][0] = xAxis[2];
+	_columns[2][1] = yAxis[2];
+	_columns[2][2] = zAxis[2];
+	_columns[2][3] = 0.0f;
+
+	_columns[3] = Vector(-xAxis.DotProduct(cameraPos), -yAxis.DotProduct(cameraPos), -zAxis.DotProduct(cameraPos), 1.0f);		
 }
 
-Vector3 Matrix::operator*(const Vector3& RHV)
+Matrix Matrix::FPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
 {
-	F32 x = RHV.GetX();
-	F32 y = RHV.GetY();
-	F32 z = RHV. GetZ();
-	F32 w = RHV.GetW();
+	assert(pitch >= -90.0f);
+	assert(pitch <= 90.0f);
+	assert(yaw >= 0.0f);
+	assert(yaw <= 360.0f);
 
-	return Vector3
-	(
-		x * _m[0] + y * _m[4] + z * _m[8] + w * _m[12],
-		x * _m[1] + y * _m[5] + z * _m[9] + w * _m[13],
-		x * _m[2] + y * _m[6] + z * _m[10] + w * _m[14]
+	F32 cosPitch = cos(pitch);
+	F32 sinPitch = sin(pitch);
+	F32 cosYaw 	 = cos(yaw);
+	F32 sinYaw   = sin(yaw);
 
-	);
+	Matrix mat{1.0f};
+
+	Vector xAxis{ cosYaw, 0.0f, -sinYaw };
+	Vector yAxis{ sinYaw * sinPitch, cosPitch, cosYaw * sinPitch };
+	Vector zAxis{ sinYaw * cosPitch, -sinPitch, cosPitch * cosYaw };
+
+	mat[0][0] = xAxis[0];
+	mat[0][1] = yAxis[0];
+	mat[0][2] = zAxis[0];
+	mat[0][3] = 0.0f;
+
+	mat[1][0] = xAxis[1];
+	mat[1][1] = yAxis[1];
+	mat[1][2] = zAxis[1];
+	mat[1][3] = 0.0f;
+
+	mat[2][0] = xAxis[2];
+	mat[2][1] = yAxis[2];
+	mat[2][2] = zAxis[2];
+	mat[2][3] = 0.0f;
+
+	mat[3] = Vector(-xAxis.DotProduct(cameraPos), -yAxis.DotProduct(cameraPos), -zAxis.DotProduct(cameraPos), 1.0f);
+
+	return mat;
+}
+
+void Matrix::SetFPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
+{
+	assert(pitch >= -90.0f);
+	assert(pitch <= 90.0f);
+	assert(yaw >= 0.0f);
+	assert(yaw <= 360.0f);
+
+	F32 cosPitch = cos(pitch);
+	F32 sinPitch = sin(pitch);
+	F32 cosYaw 	 = cos(yaw);
+	F32 sinYaw   = sin(yaw);
+
+	Vector xAxis{ cosYaw, 0.0f, -sinYaw };
+	Vector yAxis{ sinYaw * sinPitch, cosPitch, cosYaw * sinPitch };
+	Vector zAxis{ sinYaw * cosPitch, -sinPitch, cosPitch * cosYaw };
+
+	_columns[0][0] = xAxis[0];
+	_columns[0][1] = yAxis[0];
+	_columns[0][2] = zAxis[0];
+	_columns[0][3] = 0.0f;
+
+	_columns[1][0] = xAxis[1];
+	_columns[1][1] = yAxis[1];
+	_columns[1][2] = zAxis[1];
+	_columns[1][3] = 0.0f;
+
+	_columns[2][0] = xAxis[2];
+	_columns[2][1] = yAxis[2];
+	_columns[2][2] = zAxis[2];
+	_columns[2][3] = 0.0f;
+
+	_columns[3] = Vector(-xAxis.DotProduct(cameraPos), -yAxis.DotProduct(cameraPos), -zAxis.DotProduct(cameraPos), 1.0f);	
+}
+
+Vector Matrix::operator*(const Vector& vec)
+{
+	return Vector( _columns[0][x] * vec[x] + _columns[1][x] * vec[y] + _columns[2][x] * vec[z] + _columns[3][x] * vec[w],
+				   _columns[0][y] * vec[x] + _columns[1][y] * vec[y] + _columns[2][y] * vec[z] + _columns[3][y] * vec[w],
+				   _columns[0][z] * vec[x] + _columns[1][z] + vec[y] + _columns[2][z] * vec[z] + _columns[3][z] * vec[w],
+				   _columns[0][w] * vec[x] + _columns[1][w] + vec[y] + _columns[2][w] + vec[z] + _columns[3][w] * vec[w] );
 }

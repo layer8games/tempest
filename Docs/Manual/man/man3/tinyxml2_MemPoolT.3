@@ -1,4 +1,4 @@
-.TH "tinyxml2::MemPoolT< ITEM_SIZE >" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "tinyxml2::MemPoolT< ITEM_SIZE >" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -8,6 +8,16 @@ tinyxml2::MemPoolT< ITEM_SIZE >
 .PP
 .PP
 Inherits \fBtinyxml2::MemPool\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBBlock\fP"
+.br
+.ti -1c
+.RI "union \fBItem\fP"
+.br
+.in -1c
 .SS "Public Types"
 
 .in +1c
@@ -41,6 +51,38 @@ Inherits \fBtinyxml2::MemPool\fP\&.
 .br
 .ti -1c
 .RI "int \fBUntracked\fP () const"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMemPoolT\fP (const \fBMemPoolT\fP &)"
+.br
+.ti -1c
+.RI "void \fBoperator=\fP (const \fBMemPoolT\fP &)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBDynArray\fP< \fBBlock\fP *, 10 > \fB_blockPtrs\fP"
+.br
+.ti -1c
+.RI "\fBItem\fP * \fB_root\fP"
+.br
+.ti -1c
+.RI "int \fB_currentAllocs\fP"
+.br
+.ti -1c
+.RI "int \fB_nAllocs\fP"
+.br
+.ti -1c
+.RI "int \fB_maxAllocs\fP"
+.br
+.ti -1c
+.RI "int \fB_nUntracked\fP"
 .br
 .in -1c
 

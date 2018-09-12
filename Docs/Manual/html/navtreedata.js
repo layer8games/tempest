@@ -25,17 +25,27 @@ var NAVTREE =
 [
   [ "Killer Engine", "index.html", [
     [ "Killer Engine Documentation.", "index.html#The", null ],
+    [ "Bug List", "bug.html", null ],
+    [ "Modules", "modules.html", "modules" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ]
+        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", null ],
+        [ "Enumerations", "functions_enum.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
+        [ "Macros", "globals_defs.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
@@ -43,11 +53,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"class_killer_engine_1_1_level_manager.html#abc93aa295b82020232c00debe8dd70df",
-"class_killer_math_1_1_quaternion.html#acee1e1c18aefd86f0c3569015cb971f2",
-"class_killer_physics_1_1_particle_gravity_force.html#ad94d42efe96cef4a6bcc0613fe13b742",
-"classtinyxml2_1_1_x_m_l_element.html#a3fe5417d59eb8f5c4afe924b7d332736",
-"functions_s.html"
+"class_killer_engine_1_1_game_object2_d.html#a84de7f701665851b9a736abae6a20f42",
+"class_killer_engine_1_1_rendered_text.html#acf7f9a1d6be859143d9fd3c21c70016e",
+"class_killer_math_1_1_quaternion.html#af6401e6d511916154c7f9a8b39a35ac8",
+"class_killer_physics_1_1_particle2_d.html#aa69de395d452ab6cbe57668deb88e723",
+"classtinyxml2_1_1_dyn_array.html#aaad72f384e761c70a4519183eb8fea17",
+"classtinyxml2_1_1_x_m_l_element.html#aae6568c64c7f1cc88be8461ba41a79cf",
+"functions_n.html",
+"group__joysticks.html#ga89540873278ae5a42b3e70d64164dc74",
+"group__window.html#ga8af814fc98d786d1de2505b40b707de8"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

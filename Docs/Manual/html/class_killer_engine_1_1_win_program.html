@@ -89,6 +89,8 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_win_program.ht
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_win_program-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">KillerEngine::WinProgram Class Reference</div>  </div>
@@ -97,12 +99,12 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_win_program.ht
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aef911f4d03e445c4d5a178c088662d41"><td class="memItemLeft" align="right" valign="top"><a id="aef911f4d03e445c4d5a178c088662d41"></a>
-HINSTANCE&#160;</td><td class="memItemRight" valign="bottom"><b>GetHINSTANCE</b> (void)</td></tr>
-<tr class="separator:aef911f4d03e445c4d5a178c088662d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace72b70e20711445e9f7fd131514146b"><td class="memItemLeft" align="right" valign="top"><a id="ace72b70e20711445e9f7fd131514146b"></a>
-HWND&#160;</td><td class="memItemRight" valign="bottom"><b>GetHWND</b> (void)</td></tr>
-<tr class="separator:ace72b70e20711445e9f7fd131514146b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada8913b7ece25ec2c72598030afda020"><td class="memItemLeft" align="right" valign="top"><a id="ada8913b7ece25ec2c72598030afda020"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>EndRunning</b> (void)</td></tr>
+<tr class="separator:ada8913b7ece25ec2c72598030afda020"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a321f0c88434a5385f4398c3bebb433d0"><td class="memItemLeft" align="right" valign="top"><a id="a321f0c88434a5385f4398c3bebb433d0"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetRunning</b> (void)</td></tr>
+<tr class="separator:a321f0c88434a5385f4398c3bebb433d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a3912a9171bcd8d4a4c5303ed6d0d6d"><td class="memItemLeft" align="right" valign="top"><a id="a6a3912a9171bcd8d4a4c5303ed6d0d6d"></a>
 S32&#160;</td><td class="memItemRight" valign="bottom"><b>GetWidth</b> (void)</td></tr>
 <tr class="separator:a6a3912a9171bcd8d4a4c5303ed6d0d6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,64 +123,124 @@ S32&#160;</td><td class="memItemRight" valign="bottom"><b>GetTop</b> (void)</td>
 <tr class="memitem:abcabf2bc51a56f384a000d510fc15b93"><td class="memItemLeft" align="right" valign="top"><a id="abcabf2bc51a56f384a000d510fc15b93"></a>
 S32&#160;</td><td class="memItemRight" valign="bottom"><b>GetBottom</b> (void)</td></tr>
 <tr class="separator:abcabf2bc51a56f384a000d510fc15b93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a390478713355c57ea63b0923e59a3892"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_win_program.html#a390478713355c57ea63b0923e59a3892">Init</a> (S32 width, S32 height, string wndName, bool isFullScreen)</td></tr>
-<tr class="memdesc:a390478713355c57ea63b0923e59a3892"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up Windows Program.  <a href="#a390478713355c57ea63b0923e59a3892">More...</a><br /></td></tr>
-<tr class="separator:a390478713355c57ea63b0923e59a3892"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa6d9df181d956bb4a4c50d571be9d96"><td class="memItemLeft" align="right" valign="top"><a id="afa6d9df181d956bb4a4c50d571be9d96"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ProcessWndEvents</b> (void)</td></tr>
-<tr class="separator:afa6d9df181d956bb4a4c50d571be9d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a431120fc5e5d42454cc1bbb94f9088df"><td class="memItemLeft" align="right" valign="top"><a id="a431120fc5e5d42454cc1bbb94f9088df"></a>
-Keys&#160;</td><td class="memItemRight" valign="bottom"><b>ConvertKeyCodes</b> (WPARAM wParam)</td></tr>
-<tr class="separator:a431120fc5e5d42454cc1bbb94f9088df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2fbc4e18cf69cd925e9ec5272638594"><td class="memItemLeft" align="right" valign="top"><a id="af2fbc4e18cf69cd925e9ec5272638594"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>BufferSwap</b> (void)</td></tr>
-<tr class="separator:af2fbc4e18cf69cd925e9ec5272638594"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a082614c6191c6df8eaadfe096e060d7f"><td class="memItemLeft" align="right" valign="top"><a id="a082614c6191c6df8eaadfe096e060d7f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetBackgroundColor</b> (const <a class="el" href="class_killer_engine_1_1_color.html">Color</a> &amp;c)</td></tr>
 <tr class="separator:a082614c6191c6df8eaadfe096e060d7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28e31ea56cf9f3dd02693125f558c9e4"><td class="memItemLeft" align="right" valign="top"><a id="a28e31ea56cf9f3dd02693125f558c9e4"></a>
-LRESULT CALLBACK&#160;</td><td class="memItemRight" valign="bottom"><b>WndProc</b> (HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)</td></tr>
-<tr class="separator:a28e31ea56cf9f3dd02693125f558c9e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a390478713355c57ea63b0923e59a3892"><td class="memItemLeft" align="right" valign="top"><a id="a390478713355c57ea63b0923e59a3892"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> (S32 width, S32 height, string wndName, bool isFullScreen)</td></tr>
+<tr class="separator:a390478713355c57ea63b0923e59a3892"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e7caa302600352c3ca66301ead19032"><td class="memItemLeft" align="right" valign="top"><a id="a1e7caa302600352c3ca66301ead19032"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ProcessEvents</b> (void)</td></tr>
+<tr class="separator:a1e7caa302600352c3ca66301ead19032"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2fbc4e18cf69cd925e9ec5272638594"><td class="memItemLeft" align="right" valign="top"><a id="af2fbc4e18cf69cd925e9ec5272638594"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>BufferSwap</b> (void)</td></tr>
+<tr class="separator:af2fbc4e18cf69cd925e9ec5272638594"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab1011c8ef85bbe76ac1d174d720e815"><td class="memItemLeft" align="right" valign="top"><a id="aab1011c8ef85bbe76ac1d174d720e815"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>DisplayFPS</b> (void)</td></tr>
+<tr class="separator:aab1011c8ef85bbe76ac1d174d720e815"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6d23bebf4af9ed1d8b35be5a2b9a1e7"><td class="memItemLeft" align="right" valign="top"><a id="ad6d23bebf4af9ed1d8b35be5a2b9a1e7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ToggleWireFrame</b> (void)</td></tr>
+<tr class="separator:ad6d23bebf4af9ed1d8b35be5a2b9a1e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a9155b60f73afcced2f3b00a2ec5d4db0"><td class="memItemLeft" align="right" valign="top"><a id="a9155b60f73afcced2f3b00a2ec5d4db0"></a>
 static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_win_program.html">WinProgram</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Instance</b> (void)</td></tr>
 <tr class="separator:a9155b60f73afcced2f3b00a2ec5d4db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67dd3fed6be00a958cf7bff49089f133"><td class="memItemLeft" align="right" valign="top"><a id="a67dd3fed6be00a958cf7bff49089f133"></a>
-static LRESULT CALLBACK&#160;</td><td class="memItemRight" valign="bottom"><b>StaticWndProc</b> (HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)</td></tr>
-<tr class="separator:a67dd3fed6be00a958cf7bff49089f133"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0393cea9b1006dfb1f9a608581f3c46a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_win_program.html#a0393cea9b1006dfb1f9a608581f3c46a">OnKey</a> (<a class="el" href="group__window.html#ga3c96d80d363e67d13a41b5d1821f3242">GLFWwindow</a> *window, int key, int scancode, int action, int mode)</td></tr>
+<tr class="memdesc:a0393cea9b1006dfb1f9a608581f3c46a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up Windows Program.  <a href="#a0393cea9b1006dfb1f9a608581f3c46a">More...</a><br /></td></tr>
+<tr class="separator:a0393cea9b1006dfb1f9a608581f3c46a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f16b6074b7fe060428847a809c43ccc"><td class="memItemLeft" align="right" valign="top"><a id="a7f16b6074b7fe060428847a809c43ccc"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>OnResize</b> (<a class="el" href="group__window.html#ga3c96d80d363e67d13a41b5d1821f3242">GLFWwindow</a> *window, int width, int height)</td></tr>
+<tr class="separator:a7f16b6074b7fe060428847a809c43ccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade3406a6e50baed62c993d5ff37f3ccb"><td class="memItemLeft" align="right" valign="top"><a id="ade3406a6e50baed62c993d5ff37f3ccb"></a>
+static Keys&#160;</td><td class="memItemRight" valign="bottom"><b>ConvertKeyCodes</b> (int key)</td></tr>
+<tr class="separator:ade3406a6e50baed62c993d5ff37f3ccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aaacad996e56859ec2b79b77ad765b2e8"><td class="memItemLeft" align="right" valign="top"><a id="aaacad996e56859ec2b79b77ad765b2e8"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_isFullScreen</b></td></tr>
+<tr class="separator:aaacad996e56859ec2b79b77ad765b2e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9911b2b46cbd16696499cd970d21ff6c"><td class="memItemLeft" align="right" valign="top"><a id="a9911b2b46cbd16696499cd970d21ff6c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_running</b></td></tr>
+<tr class="separator:a9911b2b46cbd16696499cd970d21ff6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00b741c504381e23717772a0c36197e9"><td class="memItemLeft" align="right" valign="top"><a id="a00b741c504381e23717772a0c36197e9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_wireFrame</b></td></tr>
+<tr class="separator:a00b741c504381e23717772a0c36197e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9a0c14e58fe54fe87d7f0fa7abeb18e"><td class="memItemLeft" align="right" valign="top"><a id="af9a0c14e58fe54fe87d7f0fa7abeb18e"></a>
+S32&#160;</td><td class="memItemRight" valign="bottom"><b>_totalWidth</b></td></tr>
+<tr class="separator:af9a0c14e58fe54fe87d7f0fa7abeb18e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add4781b314d60d5c2776c1aa878c60ca"><td class="memItemLeft" align="right" valign="top"><a id="add4781b314d60d5c2776c1aa878c60ca"></a>
+S32&#160;</td><td class="memItemRight" valign="bottom"><b>_totalHeight</b></td></tr>
+<tr class="separator:add4781b314d60d5c2776c1aa878c60ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abefba56c5b8b3c092dad75617add5779"><td class="memItemLeft" align="right" valign="top"><a id="abefba56c5b8b3c092dad75617add5779"></a>
+S32&#160;</td><td class="memItemRight" valign="bottom"><b>_right</b></td></tr>
+<tr class="separator:abefba56c5b8b3c092dad75617add5779"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39d4a128b88724363a40e0e9e5ecca31"><td class="memItemLeft" align="right" valign="top"><a id="a39d4a128b88724363a40e0e9e5ecca31"></a>
+S32&#160;</td><td class="memItemRight" valign="bottom"><b>_left</b></td></tr>
+<tr class="separator:a39d4a128b88724363a40e0e9e5ecca31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76a1b573832cfba461f0ef8d61c66248"><td class="memItemLeft" align="right" valign="top"><a id="a76a1b573832cfba461f0ef8d61c66248"></a>
+S32&#160;</td><td class="memItemRight" valign="bottom"><b>_top</b></td></tr>
+<tr class="separator:a76a1b573832cfba461f0ef8d61c66248"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5689f1aa5f9f28f8f30b734254b4285b"><td class="memItemLeft" align="right" valign="top"><a id="a5689f1aa5f9f28f8f30b734254b4285b"></a>
+S32&#160;</td><td class="memItemRight" valign="bottom"><b>_bottom</b></td></tr>
+<tr class="separator:a5689f1aa5f9f28f8f30b734254b4285b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14bec8e61f5b59082b04cf90b409f104"><td class="memItemLeft" align="right" valign="top"><a id="a14bec8e61f5b59082b04cf90b409f104"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>_wndName</b></td></tr>
+<tr class="separator:a14bec8e61f5b59082b04cf90b409f104"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b52b7b0a135963ac9a6b2b9e6b0b841"><td class="memItemLeft" align="right" valign="top"><a id="a1b52b7b0a135963ac9a6b2b9e6b0b841"></a>
+<a class="el" href="class_killer_engine_1_1_color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_bgColor</b></td></tr>
+<tr class="separator:a1b52b7b0a135963ac9a6b2b9e6b0b841"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2828d40f4265f9d51c0ca28d6f12ce0"><td class="memItemLeft" align="right" valign="top"><a id="aa2828d40f4265f9d51c0ca28d6f12ce0"></a>
+<a class="el" href="group__window.html#ga3c96d80d363e67d13a41b5d1821f3242">GLFWwindow</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_window</b></td></tr>
+<tr class="separator:aa2828d40f4265f9d51c0ca28d6f12ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a033daa07778804cee08fd976e38c6e1b"><td class="memItemLeft" align="right" valign="top"><a id="a033daa07778804cee08fd976e38c6e1b"></a>
+static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_win_program.html">WinProgram</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_instance</b> = NULL</td></tr>
+<tr class="separator:a033daa07778804cee08fd976e38c6e1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a390478713355c57ea63b0923e59a3892"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a390478713355c57ea63b0923e59a3892">&#9670;&nbsp;</a></span>Init()</h2>
+<a id="a0393cea9b1006dfb1f9a608581f3c46a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0393cea9b1006dfb1f9a608581f3c46a">&#9670;&nbsp;</a></span>OnKey()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void WinProgram::Init </td>
+          <td class="memname">void WinProgram::OnKey </td>
           <td>(</td>
-          <td class="paramtype">S32&#160;</td>
-          <td class="paramname"><em>width</em>, </td>
+          <td class="paramtype"><a class="el" href="group__window.html#ga3c96d80d363e67d13a41b5d1821f3242">GLFWwindow</a> *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">S32&#160;</td>
-          <td class="paramname"><em>height</em>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>wndName</em>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>scancode</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>isFullScreen</em>&#160;</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>action</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -186,6 +248,11 @@ static LRESULT CALLBACK&#160;</td><td class="memItemRight" valign="bottom"><b>St
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Sets up Windows Program. </p>

@@ -1,4 +1,4 @@
-.TH "tinyxml2::XMLElement" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "tinyxml2::XMLElement" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -235,6 +235,55 @@ Inherits \fBtinyxml2::XMLNode\fP\&.
 .in +1c
 .ti -1c
 .RI "char * \fBParseDeep\fP (char *p, \fBStrPair\fP *endTag, int *curLineNumPtr)"
+.br
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBBUF_SIZE\fP = 200 }"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBXMLElement\fP (\fBXMLDocument\fP *doc)"
+.br
+.ti -1c
+.RI "\fBXMLElement\fP (const \fBXMLElement\fP &)"
+.br
+.ti -1c
+.RI "void \fBoperator=\fP (const \fBXMLElement\fP &)"
+.br
+.ti -1c
+.RI "\fBXMLAttribute\fP * \fBFindAttribute\fP (const char *name)"
+.br
+.ti -1c
+.RI "\fBXMLAttribute\fP * \fBFindOrCreateAttribute\fP (const char *name)"
+.br
+.ti -1c
+.RI "char * \fBParseAttributes\fP (char *p, int *curLineNumPtr)"
+.br
+.ti -1c
+.RI "\fBXMLAttribute\fP * \fBCreateAttribute\fP ()"
+.br
+.in -1c
+.SS "Static Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBDeleteAttribute\fP (\fBXMLAttribute\fP *attribute)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fB_closingType\fP"
+.br
+.ti -1c
+.RI "\fBXMLAttribute\fP * \fB_rootAttribute\fP"
 .br
 .in -1c
 .SS "Friends"

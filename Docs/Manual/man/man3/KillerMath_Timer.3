@@ -1,4 +1,4 @@
-.TH "KillerMath::Timer" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Timer" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -39,6 +39,54 @@ KillerMath::Timer
 .in +1c
 .ti -1c
 .RI "static shared_ptr< \fBTimer\fP > \fBInstance\fP (void)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "U64 \fB_SecondsToCycles\fP (F32 timeSeconds)"
+.br
+.ti -1c
+.RI "F32 \fB_CyclesToSeconds\fP (U64 timeCycles)"
+.br
+.ti -1c
+.RI "U64 \fB_QueryHiResTimer\fP (void)"
+.br
+.ti -1c
+.RI "F32 \fB_QueryFrequency\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "F32 \fB_deltaTime\fP"
+.br
+.ti -1c
+.RI "F32 \fB_timeScale\fP"
+.br
+.ti -1c
+.RI "F64 \fB_totalTime\fP"
+.br
+.ti -1c
+.RI "U64 \fB_pastCycles\fP"
+.br
+.ti -1c
+.RI "U64 \fB_curCycles\fP"
+.br
+.ti -1c
+.RI "F32 \fB_frequency\fP"
+.br
+.ti -1c
+.RI "bool \fB_paused\fP"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBTimer\fP > \fB_instance\fP = NULL"
 .br
 .in -1c
 

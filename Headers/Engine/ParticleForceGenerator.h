@@ -17,8 +17,7 @@ Written by Maxwell Miller
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/Timer.h>
-#include <Engine/Particle2D.h>
-#include <Engine/Particle3D.h>
+#include <Engine/Particle.h>
 
 namespace KM = KillerMath;
 namespace KE = KillerEngine;
@@ -46,9 +45,8 @@ namespace KillerPhysics
 //Virtual Functions
 //
 //==========================================================================================================================	
-		virtual void v_UpdateForce(shared_ptr<Particle2D> particle)=0;
+		virtual void v_UpdateForce(shared_ptr<Particle> particle)=0;
 
-		virtual void v_UpdateForce(shared_ptr<Particle3D> particle)=0;
 	private:
 
 	};//end class

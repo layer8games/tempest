@@ -88,11 +88,16 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_game_object3_d
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_game_object3_d-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">KillerEngine::GameObject3D Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_game_object3_d_8h_source.html">GameObject3D.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for KillerEngine::GameObject3D:</div>
 <div class="dyncontent">
@@ -103,79 +108,830 @@ Inheritance diagram for KillerEngine::GameObject3D:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a880312fed6dca4ee481cbc2f99eb94c0"><td class="memItemLeft" align="right" valign="top"><a id="a880312fed6dca4ee481cbc2f99eb94c0"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>GameObject3D</b> (const <a class="el" href="class_killer_engine_1_1_game_object3_d.html">GameObject3D</a> &amp;obj)</td></tr>
+<tr class="memitem:ac1acba34aada8330e4a8569f5f7b5c28"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#ac1acba34aada8330e4a8569f5f7b5c28">GameObject3D</a> (void)</td></tr>
+<tr class="separator:ac1acba34aada8330e4a8569f5f7b5c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a880312fed6dca4ee481cbc2f99eb94c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a880312fed6dca4ee481cbc2f99eb94c0">GameObject3D</a> (const <a class="el" href="class_killer_engine_1_1_game_object3_d.html">GameObject3D</a> &amp;obj)</td></tr>
 <tr class="separator:a880312fed6dca4ee481cbc2f99eb94c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a969068777e137011c41df7fc0e1be766"><td class="memItemLeft" align="right" valign="top"><a id="a969068777e137011c41df7fc0e1be766"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>v_Update</b> (void)=0</td></tr>
+<tr class="memitem:a969068777e137011c41df7fc0e1be766"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a969068777e137011c41df7fc0e1be766">v_Update</a> (void)=0</td></tr>
 <tr class="separator:a969068777e137011c41df7fc0e1be766"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab831b0d6bbadf1c1056d390dcfa8094f"><td class="memItemLeft" align="right" valign="top"><a id="ab831b0d6bbadf1c1056d390dcfa8094f"></a>
+<tr class="memitem:a57084c4a3f913bd1d6b59fe0177a9a8d"><td class="memItemLeft" align="right" valign="top"><a id="a57084c4a3f913bd1d6b59fe0177a9a8d"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>v_Render</b> (void)</td></tr>
-<tr class="separator:ab831b0d6bbadf1c1056d390dcfa8094f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a3830915ae90307fb3f8c2cc16fde3d"><td class="memItemLeft" align="right" valign="top"><a id="a6a3830915ae90307fb3f8c2cc16fde3d"></a>
-const U32&#160;</td><td class="memItemRight" valign="bottom"><b>GetID</b> (void) const</td></tr>
+<tr class="separator:a57084c4a3f913bd1d6b59fe0177a9a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab38e3e97a35e4b640a747ecf7371ff43"><td class="memItemLeft" align="right" valign="top"><a id="ab38e3e97a35e4b640a747ecf7371ff43"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>InitRenderingData</b> (void)</td></tr>
+<tr class="separator:ab38e3e97a35e4b640a747ecf7371ff43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab80e3d2747639f387375caad97d32236"><td class="memItemLeft" align="right" valign="top"><a id="ab80e3d2747639f387375caad97d32236"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>LoadShader</b> (std::vector&lt; <a class="el" href="struct_killer_engine_1_1_shader_data.html">ShaderData</a> &gt; shaderData)</td></tr>
+<tr class="separator:ab80e3d2747639f387375caad97d32236"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fc3d505036bb2b2f1ca6dbe493fcf77"><td class="memItemLeft" align="right" valign="top"><a id="a0fc3d505036bb2b2f1ca6dbe493fcf77"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>UseShader</b> (void)</td></tr>
+<tr class="separator:a0fc3d505036bb2b2f1ca6dbe493fcf77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ed54d15edb598fe99f01c77fc30017b"><td class="memItemLeft" align="right" valign="top"><a id="a8ed54d15edb598fe99f01c77fc30017b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>BindVAO</b> (void)</td></tr>
+<tr class="separator:a8ed54d15edb598fe99f01c77fc30017b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a3830915ae90307fb3f8c2cc16fde3d"><td class="memItemLeft" align="right" valign="top">const U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a6a3830915ae90307fb3f8c2cc16fde3d">GetID</a> (void) const</td></tr>
 <tr class="separator:a6a3830915ae90307fb3f8c2cc16fde3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a444eaa3264f5ab2f477ea8d9ca1a7d72"><td class="memItemLeft" align="right" valign="top"><a id="a444eaa3264f5ab2f477ea8d9ca1a7d72"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetID</b> (void)</td></tr>
+<tr class="memitem:a444eaa3264f5ab2f477ea8d9ca1a7d72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a444eaa3264f5ab2f477ea8d9ca1a7d72">SetID</a> (void)</td></tr>
 <tr class="separator:a444eaa3264f5ab2f477ea8d9ca1a7d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add2962c8d81d5596f02906a58c20c8e4"><td class="memItemLeft" align="right" valign="top"><a id="add2962c8d81d5596f02906a58c20c8e4"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetActive</b> (void) const</td></tr>
+<tr class="memitem:add2962c8d81d5596f02906a58c20c8e4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#add2962c8d81d5596f02906a58c20c8e4">GetActive</a> (void) const</td></tr>
 <tr class="separator:add2962c8d81d5596f02906a58c20c8e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78779f73bcb05a83e777c5e1d148634d"><td class="memItemLeft" align="right" valign="top"><a id="a78779f73bcb05a83e777c5e1d148634d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetActive</b> (void)</td></tr>
+<tr class="memitem:a78779f73bcb05a83e777c5e1d148634d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a78779f73bcb05a83e777c5e1d148634d">SetActive</a> (void)</td></tr>
 <tr class="separator:a78779f73bcb05a83e777c5e1d148634d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca44ab3097d59c3d8b0f39251a0159aa"><td class="memItemLeft" align="right" valign="top"><a id="aca44ab3097d59c3d8b0f39251a0159aa"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetInactive</b> (void)</td></tr>
+<tr class="memitem:aca44ab3097d59c3d8b0f39251a0159aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#aca44ab3097d59c3d8b0f39251a0159aa">SetInactive</a> (void)</td></tr>
 <tr class="separator:aca44ab3097d59c3d8b0f39251a0159aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf9459535f85a45007f523ab1aa06b47"><td class="memItemLeft" align="right" valign="top"><a id="abf9459535f85a45007f523ab1aa06b47"></a>
-const <a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetPosition</b> (void) const</td></tr>
+<tr class="memitem:abf9459535f85a45007f523ab1aa06b47"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#abf9459535f85a45007f523ab1aa06b47">GetPosition</a> (void) const</td></tr>
 <tr class="separator:abf9459535f85a45007f523ab1aa06b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fd933e453158ceae8439c3678324c98"><td class="memItemLeft" align="right" valign="top"><a id="a4fd933e453158ceae8439c3678324c98"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetPosition</b> (const <a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a> &amp;pos)</td></tr>
+<tr class="memitem:a4fd933e453158ceae8439c3678324c98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a4fd933e453158ceae8439c3678324c98">SetPosition</a> (const <a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a> &amp;pos)</td></tr>
 <tr class="separator:a4fd933e453158ceae8439c3678324c98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c02442e91be7607b3a9c06c1248fd89"><td class="memItemLeft" align="right" valign="top"><a id="a8c02442e91be7607b3a9c06c1248fd89"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetPosition</b> (F32 x, F32 y, F32 z)</td></tr>
+<tr class="memitem:a8c02442e91be7607b3a9c06c1248fd89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a8c02442e91be7607b3a9c06c1248fd89">SetPosition</a> (F32 x, F32 y, F32 z)</td></tr>
 <tr class="separator:a8c02442e91be7607b3a9c06c1248fd89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa77812f052b858c1520c4480b5c40cbb"><td class="memItemLeft" align="right" valign="top"><a id="aa77812f052b858c1520c4480b5c40cbb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddScaledPosition</b> (const <a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a> &amp;v, F32 scale)</td></tr>
+<tr class="memitem:aa77812f052b858c1520c4480b5c40cbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#aa77812f052b858c1520c4480b5c40cbb">AddScaledPosition</a> (const <a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a> &amp;v, F32 scale)</td></tr>
 <tr class="separator:aa77812f052b858c1520c4480b5c40cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09ee69ce664c3eb9a133c56bbb79a65d"><td class="memItemLeft" align="right" valign="top"><a id="a09ee69ce664c3eb9a133c56bbb79a65d"></a>
-F32&#160;</td><td class="memItemRight" valign="bottom"><b>GetWidth</b> (void) const</td></tr>
+<tr class="memitem:a09ee69ce664c3eb9a133c56bbb79a65d"><td class="memItemLeft" align="right" valign="top">F32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a09ee69ce664c3eb9a133c56bbb79a65d">GetWidth</a> (void) const</td></tr>
 <tr class="separator:a09ee69ce664c3eb9a133c56bbb79a65d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab742d8d4cee861ce14f36ff6aaf9a736"><td class="memItemLeft" align="right" valign="top"><a id="ab742d8d4cee861ce14f36ff6aaf9a736"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetWidth</b> (F32 w)</td></tr>
+<tr class="memitem:ab742d8d4cee861ce14f36ff6aaf9a736"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#ab742d8d4cee861ce14f36ff6aaf9a736">SetWidth</a> (F32 w)</td></tr>
 <tr class="separator:ab742d8d4cee861ce14f36ff6aaf9a736"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15afac3624829b19df33f0fed956e1a1"><td class="memItemLeft" align="right" valign="top"><a id="a15afac3624829b19df33f0fed956e1a1"></a>
-F32&#160;</td><td class="memItemRight" valign="bottom"><b>GetHeight</b> (void) const</td></tr>
+<tr class="memitem:a15afac3624829b19df33f0fed956e1a1"><td class="memItemLeft" align="right" valign="top">F32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a15afac3624829b19df33f0fed956e1a1">GetHeight</a> (void) const</td></tr>
 <tr class="separator:a15afac3624829b19df33f0fed956e1a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a662ce5bcc156080e222927f08551d481"><td class="memItemLeft" align="right" valign="top"><a id="a662ce5bcc156080e222927f08551d481"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetHeight</b> (F32 h)</td></tr>
+<tr class="memitem:a662ce5bcc156080e222927f08551d481"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a662ce5bcc156080e222927f08551d481">SetHeight</a> (F32 h)</td></tr>
 <tr class="separator:a662ce5bcc156080e222927f08551d481"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5e0128383102c65ec7d7911285aa914"><td class="memItemLeft" align="right" valign="top"><a id="af5e0128383102c65ec7d7911285aa914"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetDimensions</b> (F32 w, F32 h)</td></tr>
-<tr class="separator:af5e0128383102c65ec7d7911285aa914"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa796ac124e8a645adaf911e680556244"><td class="memItemLeft" align="right" valign="top"><a id="aa796ac124e8a645adaf911e680556244"></a>
-const <a class="el" href="class_killer_engine_1_1_model.html">Model</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetModel</b> (void) const</td></tr>
+<tr class="memitem:a85adf9d369d87210c307f82bd3e6d811"><td class="memItemLeft" align="right" valign="top">F32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a85adf9d369d87210c307f82bd3e6d811">GetDepth</a> (void) const</td></tr>
+<tr class="separator:a85adf9d369d87210c307f82bd3e6d811"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d53151a2259b3685d3a92176b32a689"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a4d53151a2259b3685d3a92176b32a689">SetDepth</a> (F32 d)</td></tr>
+<tr class="separator:a4d53151a2259b3685d3a92176b32a689"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04b10e3a63ced9519b03bdf06f515d24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a04b10e3a63ced9519b03bdf06f515d24">SetDimensions</a> (F32 w, F32 h, F32 d)</td></tr>
+<tr class="separator:a04b10e3a63ced9519b03bdf06f515d24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa796ac124e8a645adaf911e680556244"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_killer_engine_1_1_model.html">Model</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#aa796ac124e8a645adaf911e680556244">GetModel</a> (void) const</td></tr>
 <tr class="separator:aa796ac124e8a645adaf911e680556244"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1553fc2992e99cde13cde8d8f79d0ef3"><td class="memItemLeft" align="right" valign="top"><a id="a1553fc2992e99cde13cde8d8f79d0ef3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetModel</b> (<a class="el" href="class_killer_engine_1_1_model.html">Model</a> &amp;model)</td></tr>
+<tr class="memitem:a1553fc2992e99cde13cde8d8f79d0ef3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a1553fc2992e99cde13cde8d8f79d0ef3">SetModel</a> (<a class="el" href="class_killer_engine_1_1_model.html">Model</a> &amp;model)</td></tr>
 <tr class="separator:a1553fc2992e99cde13cde8d8f79d0ef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c13a93515246cee44233cde2abbaf60"><td class="memItemLeft" align="right" valign="top"><a id="a9c13a93515246cee44233cde2abbaf60"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddVertex</b> (<a class="el" href="struct_killer_engine_1_1_vertex3_d.html">Vertex3D</a> vert)</td></tr>
+<tr class="memitem:a9c13a93515246cee44233cde2abbaf60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a9c13a93515246cee44233cde2abbaf60">AddVertex</a> (<a class="el" href="struct_killer_engine_1_1_vertex3_d.html">Vertex3D</a> vert)</td></tr>
 <tr class="separator:a9c13a93515246cee44233cde2abbaf60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2dbc97381a41f65d731d6791b3bec6c5"><td class="memItemLeft" align="right" valign="top"><a id="a2dbc97381a41f65d731d6791b3bec6c5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddIndex</b> (U16 index)</td></tr>
-<tr class="separator:a2dbc97381a41f65d731d6791b3bec6c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a095838b894f1ecbce81db9cacf309099"><td class="memItemLeft" align="right" valign="top"><a id="a095838b894f1ecbce81db9cacf309099"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddIndex</b> (std::vector&lt; U16 &gt; indices)</td></tr>
-<tr class="separator:a095838b894f1ecbce81db9cacf309099"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2bc3b57c8b2754f0f43efee0ac67d21"><td class="memItemLeft" align="right" valign="top"><a id="ad2bc3b57c8b2754f0f43efee0ac67d21"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>LoadModel</b> (string filepath)</td></tr>
+<tr class="memitem:a365d7fd736008f6878ddf1b282869cee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a365d7fd736008f6878ddf1b282869cee">AddIndex</a> (U32 index)</td></tr>
+<tr class="separator:a365d7fd736008f6878ddf1b282869cee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a417a79276e300da079c86663af392b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a9a417a79276e300da079c86663af392b">AddIndex</a> (std::vector&lt; U32 &gt; indices)</td></tr>
+<tr class="separator:a9a417a79276e300da079c86663af392b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2bc3b57c8b2754f0f43efee0ac67d21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#ad2bc3b57c8b2754f0f43efee0ac67d21">LoadModel</a> (string filepath)</td></tr>
 <tr class="separator:ad2bc3b57c8b2754f0f43efee0ac67d21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6e1ec03b6ba130b7f5903d09676760b"><td class="memItemLeft" align="right" valign="top"><a id="aa6e1ec03b6ba130b7f5903d09676760b"></a>
-const <a class="el" href="class_killer_math_1_1_matrix.html">KM::Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetModelView</b> (void) const</td></tr>
+<tr class="memitem:aa6e1ec03b6ba130b7f5903d09676760b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_killer_math_1_1_matrix.html">KM::Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#aa6e1ec03b6ba130b7f5903d09676760b">GetModelView</a> (void) const</td></tr>
 <tr class="separator:aa6e1ec03b6ba130b7f5903d09676760b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfbb2097d7ce7696fefe942d7dd0367c"><td class="memItemLeft" align="right" valign="top"><a id="acfbb2097d7ce7696fefe942d7dd0367c"></a>
+const <a class="el" href="class_killer_engine_1_1_shader.html">Shader</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>GetShader</b> (void) const</td></tr>
+<tr class="separator:acfbb2097d7ce7696fefe942d7dd0367c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62540ac79b50d1ad2c841dd22173ab04"><td class="memItemLeft" align="right" valign="top"><a id="a62540ac79b50d1ad2c841dd22173ab04"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetShader</b> (const <a class="el" href="class_killer_engine_1_1_shader.html">Shader</a> &amp;shader)</td></tr>
+<tr class="separator:a62540ac79b50d1ad2c841dd22173ab04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62e1c93f0a8d71fc5583fe276b66e6b1"><td class="memItemLeft" align="right" valign="top"><a id="a62e1c93f0a8d71fc5583fe276b66e6b1"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>GetVAO</b> (void) const</td></tr>
+<tr class="separator:a62e1c93f0a8d71fc5583fe276b66e6b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58143a6ae4c179fd0955818de18833e0"><td class="memItemLeft" align="right" valign="top"><a id="a58143a6ae4c179fd0955818de18833e0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetVAO</b> (GLuint vao)</td></tr>
+<tr class="separator:a58143a6ae4c179fd0955818de18833e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:ae0d0d767ed22ba16b7f08ec5090cc4e4"><td class="memItemLeft" align="right" valign="top"><a id="ae0d0d767ed22ba16b7f08ec5090cc4e4"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>BufferData</b> { <br />
+&#160;&#160;<b>VERTEX_BUFFER</b> = 0, 
+<b>VERTEX_POS</b> = 0, 
+<b>COLOR_BUFFER</b> = 1, 
+<b>COLOR_POS</b> = 1, 
+<br />
+&#160;&#160;<b>TEX_COORD_BUFFER</b> = 2, 
+<b>TEX_COORD_POS</b> = 2, 
+<b>INDEX_BUFFER</b> = 3, 
+<b>NUM_VBO</b> = 4
+<br />
+ }</td></tr>
+<tr class="separator:ae0d0d767ed22ba16b7f08ec5090cc4e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a7a00cabc4cd3896b57f62a123ef878de"><td class="memItemLeft" align="right" valign="top"><a id="a7a00cabc4cd3896b57f62a123ef878de"></a>
+U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a7a00cabc4cd3896b57f62a123ef878de">_ID</a></td></tr>
+<tr class="memdesc:a7a00cabc4cd3896b57f62a123ef878de"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID for this instance of <a class="el" href="class_killer_engine_1_1_game_object3_d.html">GameObject3D</a>. <br /></td></tr>
+<tr class="separator:a7a00cabc4cd3896b57f62a123ef878de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1102b6c6367ec908ec3d0c36f3377f0a"><td class="memItemLeft" align="right" valign="top"><a id="a1102b6c6367ec908ec3d0c36f3377f0a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a1102b6c6367ec908ec3d0c36f3377f0a">_active</a></td></tr>
+<tr class="memdesc:a1102b6c6367ec908ec3d0c36f3377f0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tracks if the object should be updated and rendered. <br /></td></tr>
+<tr class="separator:a1102b6c6367ec908ec3d0c36f3377f0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01d1b1b9d9ce4023dbf297dbe7baa423"><td class="memItemLeft" align="right" valign="top"><a id="a01d1b1b9d9ce4023dbf297dbe7baa423"></a>
+<a class="el" href="class_killer_engine_1_1_model.html">Model</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a01d1b1b9d9ce4023dbf297dbe7baa423">_model</a></td></tr>
+<tr class="memdesc:a01d1b1b9d9ce4023dbf297dbe7baa423"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rendering data for object. <br /></td></tr>
+<tr class="separator:a01d1b1b9d9ce4023dbf297dbe7baa423"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b4b98ebc15d3560b7afd149ccf5980b"><td class="memItemLeft" align="right" valign="top"><a id="a8b4b98ebc15d3560b7afd149ccf5980b"></a>
+<a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a8b4b98ebc15d3560b7afd149ccf5980b">_position</a></td></tr>
+<tr class="memdesc:a8b4b98ebc15d3560b7afd149ccf5980b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position in World Space. <br /></td></tr>
+<tr class="separator:a8b4b98ebc15d3560b7afd149ccf5980b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac119de91d97b7e88e50743ef85aab51d"><td class="memItemLeft" align="right" valign="top"><a id="ac119de91d97b7e88e50743ef85aab51d"></a>
+F32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#ac119de91d97b7e88e50743ef85aab51d">_width</a></td></tr>
+<tr class="memdesc:ac119de91d97b7e88e50743ef85aab51d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length of X axis in model space. <br /></td></tr>
+<tr class="separator:ac119de91d97b7e88e50743ef85aab51d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26cbef5a44b1074746fdc531a7188896"><td class="memItemLeft" align="right" valign="top"><a id="a26cbef5a44b1074746fdc531a7188896"></a>
+F32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a26cbef5a44b1074746fdc531a7188896">_height</a></td></tr>
+<tr class="memdesc:a26cbef5a44b1074746fdc531a7188896"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length of Y axis in model space. <br /></td></tr>
+<tr class="separator:a26cbef5a44b1074746fdc531a7188896"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a876046c14efe8009e3c9799a9d3e1d8a"><td class="memItemLeft" align="right" valign="top"><a id="a876046c14efe8009e3c9799a9d3e1d8a"></a>
+F32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a876046c14efe8009e3c9799a9d3e1d8a">_depth</a></td></tr>
+<tr class="memdesc:a876046c14efe8009e3c9799a9d3e1d8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lenth of Z axis in model space. <br /></td></tr>
+<tr class="separator:a876046c14efe8009e3c9799a9d3e1d8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c0d272e773fbc7fdc8f9ba5285dd1c8"><td class="memItemLeft" align="right" valign="top"><a id="a8c0d272e773fbc7fdc8f9ba5285dd1c8"></a>
+<a class="el" href="class_killer_math_1_1_matrix.html">KM::Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#a8c0d272e773fbc7fdc8f9ba5285dd1c8">_modelView</a></td></tr>
+<tr class="memdesc:a8c0d272e773fbc7fdc8f9ba5285dd1c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sent to <a class="el" href="class_killer_engine_1_1_shader.html">Shader</a> as uniform. Used to translate vertices of model from model to world space. <br /></td></tr>
+<tr class="separator:a8c0d272e773fbc7fdc8f9ba5285dd1c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2194066c81ef96d0f8fa869a4051d86"><td class="memItemLeft" align="right" valign="top"><a id="ab2194066c81ef96d0f8fa869a4051d86"></a>
+<a class="el" href="class_killer_math_1_1_matrix.html">KM::Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#ab2194066c81ef96d0f8fa869a4051d86">_rotationX</a></td></tr>
+<tr class="memdesc:ab2194066c81ef96d0f8fa869a4051d86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Experimental member. Trying to get rotations to work. <br /></td></tr>
+<tr class="separator:ab2194066c81ef96d0f8fa869a4051d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af477deffcb8aedcd3db52c6d32ca7e09"><td class="memItemLeft" align="right" valign="top"><a id="af477deffcb8aedcd3db52c6d32ca7e09"></a>
+<a class="el" href="class_killer_engine_1_1_shader.html">Shader</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_shader</b></td></tr>
+<tr class="separator:af477deffcb8aedcd3db52c6d32ca7e09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa57ecb054b9aa25abeab7494f6751630"><td class="memItemLeft" align="right" valign="top"><a id="aa57ecb054b9aa25abeab7494f6751630"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_vao</b></td></tr>
+<tr class="separator:aa57ecb054b9aa25abeab7494f6751630"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a347ca17bb24fa9f2856e72c36794ade9"><td class="memItemLeft" align="right" valign="top"><a id="a347ca17bb24fa9f2856e72c36794ade9"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_vbo</b> [NUM_VBO]</td></tr>
+<tr class="separator:a347ca17bb24fa9f2856e72c36794ade9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:ab899dc601024755e8547aead65bae982"><td class="memItemLeft" align="right" valign="top"><a id="ab899dc601024755e8547aead65bae982"></a>
+static U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_game_object3_d.html#ab899dc601024755e8547aead65bae982">_nextID</a> = 1</td></tr>
+<tr class="memdesc:ab899dc601024755e8547aead65bae982"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global member used to track the next unique ID for GambeObject3D. <br /></td></tr>
+<tr class="separator:ab899dc601024755e8547aead65bae982"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The Game Object is the abstract class, (PURE VIRTUAL) that all objects that will be placed in the game will inherit from. It will hold and define the cell, and will include all calls for updating and rendering. Therewill be a component map which will hold anything that the object will need in the game.</p>
+<p>All of the functions in this class are inlined becuase they are all trivial. The virtual functions are there so that the interface can be the same for all derived classes. By doing this, the world manager will be able to have a map of GameObjects to be rendered in a specific world.</p>
+<p>The <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> itself is an interface to generic functions that each object that will be rendered will need to be drawn to the screen. The <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> holds a private <a class="el" href="class_killer_engine_1_1_sprite.html">Sprite</a> member that will contain all the logic for which rendering algorithm is used.</p>
+<p>Accessors are created for the derived classes to access the cell, but the cell is to be accessed directly only by the <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> itself.</p>
+<p><a class="el" href="class_killer_engine_1_1_game_object3_d.html">GameObject3D</a> will specficially apply to 3D game objects. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ac1acba34aada8330e4a8569f5f7b5c28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1acba34aada8330e4a8569f5f7b5c28">&#9670;&nbsp;</a></span>GameObject3D() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject3D::GameObject3D </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Default constructor. Set's all members to 0, and _active to true. <a class="el" href="class_killer_engine_1_1_game_object3_d.html#a444eaa3264f5ab2f477ea8d9ca1a7d72">SetID()</a> is called as part of the body. </p>
+
+</div>
+</div>
+<a id="a880312fed6dca4ee481cbc2f99eb94c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a880312fed6dca4ee481cbc2f99eb94c0">&#9670;&nbsp;</a></span>GameObject3D() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject3D::GameObject3D </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_killer_engine_1_1_game_object3_d.html">GameObject3D</a> &amp;&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Copy constructor. Calls <a class="el" href="class_killer_engine_1_1_game_object3_d.html#a6a3830915ae90307fb3f8c2cc16fde3d">GetID()</a>, <a class="el" href="class_killer_engine_1_1_game_object3_d.html#add2962c8d81d5596f02906a58c20c8e4">GetActive()</a>, <a class="el" href="class_killer_engine_1_1_game_object3_d.html#aa796ac124e8a645adaf911e680556244">GetModel()</a>, <a class="el" href="class_killer_engine_1_1_game_object3_d.html#abf9459535f85a45007f523ab1aa06b47">GetPosition()</a>, <a class="el" href="class_killer_engine_1_1_game_object3_d.html#a09ee69ce664c3eb9a133c56bbb79a65d">GetWidth()</a>, <a class="el" href="class_killer_engine_1_1_game_object3_d.html#a15afac3624829b19df33f0fed956e1a1">GetHeight()</a>, and <a class="el" href="class_killer_engine_1_1_game_object3_d.html#aa6e1ec03b6ba130b7f5903d09676760b">GetModelView()</a> </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a365d7fd736008f6878ddf1b282869cee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a365d7fd736008f6878ddf1b282869cee">&#9670;&nbsp;</a></span>AddIndex() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::GameObject3D::AddIndex </td>
+          <td>(</td>
+          <td class="paramtype">U32&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Wrapper. Adds new index to object <a class="el" href="class_killer_engine_1_1_model.html">Model</a>. Calls Model::AddIndex </p>
+
+</div>
+</div>
+<a id="a9a417a79276e300da079c86663af392b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a417a79276e300da079c86663af392b">&#9670;&nbsp;</a></span>AddIndex() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::GameObject3D::AddIndex </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; U32 &gt;&#160;</td>
+          <td class="paramname"><em>indices</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Wrapper. Adds collection of indices to object <a class="el" href="class_killer_engine_1_1_model.html">Model</a>. Calls Model::AddIndex </p>
+
+</div>
+</div>
+<a id="aa77812f052b858c1520c4480b5c40cbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa77812f052b858c1520c4480b5c40cbb">&#9670;&nbsp;</a></span>AddScaledPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameObject3D::AddScaledPosition </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">F32&#160;</td>
+          <td class="paramname"><em>scale</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Scales the position of the object in World Space. Wrapper for Vector3::AddScaledVector. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Vector3&amp;. Vector to add to position. </td></tr>
+    <tr><td class="paramname">scale</td><td>F32. Scale to use when adding vector to position. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9c13a93515246cee44233cde2abbaf60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c13a93515246cee44233cde2abbaf60">&#9670;&nbsp;</a></span>AddVertex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::GameObject3D::AddVertex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_killer_engine_1_1_vertex3_d.html">Vertex3D</a>&#160;</td>
+          <td class="paramname"><em>vert</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Wrapper. Adds new <a class="el" href="struct_killer_engine_1_1_vertex3_d.html">Vertex3D</a> to object <a class="el" href="class_killer_engine_1_1_model.html">Model</a>. Calls Model::AddVertex. </p>
+
+</div>
+</div>
+<a id="add2962c8d81d5596f02906a58c20c8e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add2962c8d81d5596f02906a58c20c8e4">&#9670;&nbsp;</a></span>GetActive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GameObject3D::GetActive </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns active state of object. </p>
+
+</div>
+</div>
+<a id="a85adf9d369d87210c307f82bd3e6d811"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85adf9d369d87210c307f82bd3e6d811">&#9670;&nbsp;</a></span>GetDepth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">F32 GameObject3D::GetDepth </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the depth of the object. </p>
+
+</div>
+</div>
+<a id="a15afac3624829b19df33f0fed956e1a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15afac3624829b19df33f0fed956e1a1">&#9670;&nbsp;</a></span>GetHeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">F32 GameObject3D::GetHeight </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the height of the object. </p>
+
+</div>
+</div>
+<a id="a6a3830915ae90307fb3f8c2cc16fde3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a3830915ae90307fb3f8c2cc16fde3d">&#9670;&nbsp;</a></span>GetID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const U32 KillerEngine::GameObject3D::GetID </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the id of this instance. </p>
+
+</div>
+</div>
+<a id="aa796ac124e8a645adaf911e680556244"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa796ac124e8a645adaf911e680556244">&#9670;&nbsp;</a></span>GetModel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_killer_engine_1_1_model.html">Model</a>&amp; KillerEngine::GameObject3D::GetModel </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns object <a class="el" href="class_killer_engine_1_1_model.html">Model</a>. </p>
+
+</div>
+</div>
+<a id="aa6e1ec03b6ba130b7f5903d09676760b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6e1ec03b6ba130b7f5903d09676760b">&#9670;&nbsp;</a></span>GetModelView()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_killer_math_1_1_matrix.html">KM::Matrix</a>&amp; KillerEngine::GameObject3D::GetModelView </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns object <a class="el" href="class_killer_engine_1_1_model.html">Model</a>. </p>
+
+</div>
+</div>
+<a id="abf9459535f85a45007f523ab1aa06b47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf9459535f85a45007f523ab1aa06b47">&#9670;&nbsp;</a></span>GetPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a> &amp; GameObject3D::GetPosition </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns object Position in World Space. </p>
+
+</div>
+</div>
+<a id="a09ee69ce664c3eb9a133c56bbb79a65d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09ee69ce664c3eb9a133c56bbb79a65d">&#9670;&nbsp;</a></span>GetWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">F32 GameObject3D::GetWidth </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns width of the object. </p>
+
+</div>
+</div>
+<a id="ad2bc3b57c8b2754f0f43efee0ac67d21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2bc3b57c8b2754f0f43efee0ac67d21">&#9670;&nbsp;</a></span>LoadModel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::GameObject3D::LoadModel </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>filepath</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Wrapper. Loads object <a class="el" href="class_killer_engine_1_1_model.html">Model</a> from file system. Calls Model::LoadModel </p>
+
+</div>
+</div>
+<a id="a78779f73bcb05a83e777c5e1d148634d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78779f73bcb05a83e777c5e1d148634d">&#9670;&nbsp;</a></span>SetActive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameObject3D::SetActive </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the active state of object to true. </p>
+
+</div>
+</div>
+<a id="a4d53151a2259b3685d3a92176b32a689"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d53151a2259b3685d3a92176b32a689">&#9670;&nbsp;</a></span>SetDepth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameObject3D::SetDepth </td>
+          <td>(</td>
+          <td class="paramtype">F32&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets depth of the object. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>F32. New depth </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a04b10e3a63ced9519b03bdf06f515d24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04b10e3a63ced9519b03bdf06f515d24">&#9670;&nbsp;</a></span>SetDimensions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameObject3D::SetDimensions </td>
+          <td>(</td>
+          <td class="paramtype">F32&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">F32&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">F32&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets width, height and depth of the object </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000003">Bug:</a></b></dt><dd>None of these dimensions are used in anyway. Scale should be added later in some way. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>F32. New width. </td></tr>
+    <tr><td class="paramname">h</td><td>F32. New height. </td></tr>
+    <tr><td class="paramname">d</td><td>F32. New depth. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a662ce5bcc156080e222927f08551d481"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a662ce5bcc156080e222927f08551d481">&#9670;&nbsp;</a></span>SetHeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameObject3D::SetHeight </td>
+          <td>(</td>
+          <td class="paramtype">F32&#160;</td>
+          <td class="paramname"><em>h</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the hieght of the object. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>F32. New height. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a444eaa3264f5ab2f477ea8d9ca1a7d72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a444eaa3264f5ab2f477ea8d9ca1a7d72">&#9670;&nbsp;</a></span>SetID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::GameObject3D::SetID </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets the id of this instance. The id is determind by _nextID. This insures that each <a class="el" href="class_killer_engine_1_1_game_object3_d.html">GameObject3D</a> will have a unique id although there could be a collission with <a class="el" href="class_killer_engine_1_1_game_object2_d.html#ab7967e74f3f918e4049854716871d5af" title="ID for this instance of the GameObject2D. ">GameObject2D::_ID</a>. </p>
+
+</div>
+</div>
+<a id="aca44ab3097d59c3d8b0f39251a0159aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca44ab3097d59c3d8b0f39251a0159aa">&#9670;&nbsp;</a></span>SetInactive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameObject3D::SetInactive </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the active state of object to false. </p>
+
+</div>
+</div>
+<a id="a1553fc2992e99cde13cde8d8f79d0ef3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1553fc2992e99cde13cde8d8f79d0ef3">&#9670;&nbsp;</a></span>SetModel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::GameObject3D::SetModel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_killer_engine_1_1_model.html">Model</a> &amp;&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets object <a class="el" href="class_killer_engine_1_1_model.html">Model</a>. Calls Model::operator= </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">model</td><td><a class="el" href="class_killer_engine_1_1_model.html">Model</a>&amp;. New Object Object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4fd933e453158ceae8439c3678324c98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fd933e453158ceae8439c3678324c98">&#9670;&nbsp;</a></span>SetPosition() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameObject3D::SetPosition </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets object Position in World Space. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>Vector3&amp;. New position in world space. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8c02442e91be7607b3a9c06c1248fd89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c02442e91be7607b3a9c06c1248fd89">&#9670;&nbsp;</a></span>SetPosition() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameObject3D::SetPosition </td>
+          <td>(</td>
+          <td class="paramtype">F32&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">F32&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">F32&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the position of the object in World Space. Calls Vector3::SetX, Vector3::SetY, Vector3::SetZ and Matrix::Translate. This last is done to update the _modelView member. </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000002">Bug:</a></b></dt><dd>This is data duplication which I have not worked out a better way to handle yet. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>F32. X value of new position. </td></tr>
+    <tr><td class="paramname">y</td><td>F32. Y value of new position. </td></tr>
+    <tr><td class="paramname">z</td><td>F32. Z value of new position. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab742d8d4cee861ce14f36ff6aaf9a736"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab742d8d4cee861ce14f36ff6aaf9a736">&#9670;&nbsp;</a></span>SetWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameObject3D::SetWidth </td>
+          <td>(</td>
+          <td class="paramtype">F32&#160;</td>
+          <td class="paramname"><em>w</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets the width of the object. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>F32. New width. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a969068777e137011c41df7fc0e1be766"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a969068777e137011c41df7fc0e1be766">&#9670;&nbsp;</a></span>v_Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void KillerEngine::GameObject3D::v_Update </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Pure Virtual fucntion. Will be called during Level::UpdateObjects on each object, which will define what needs to happen in the update section of the loop. </p>
+
+<p>Implemented in <a class="el" href="class_killer_physics_1_1_particle3_d.html#ad7cd451c1906f966d6647193a4e82bbb">KillerPhysics::Particle3D</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_game_object3_d_8h_source.html">GameObject3D.h</a></li>
 <li>F:/Projects/Killer_Engine/Implementations/GameObject3D.cpp</li>

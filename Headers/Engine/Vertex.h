@@ -10,28 +10,43 @@ Written by Maxwell Miller
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
-#include <Engine/Vector2.h>
-#include <Engine/Vector3.h>
+#include <Engine/Vector.h>
 #include <Engine/Color.h>
 
 namespace KM = KillerMath;
 
 namespace KillerEngine
 {
-	struct Vertex2D
-	 {
-	 	KM::Vector2 position;
-	 	KM::Vector2 texCoord;
-	 	Color color;
-	 	S32 texID;
-	 };
+	struct TexCoord
+	{
+		F32 u;
+		F32 v;
 
-	 struct Vertex3D
-	 {
-	 	KM::Vector3 position;
-	 	KM::Vector3 normal;
-	 	KM::Vector2 texCoord;
-	 	Color color;
-	 	S32 texID;
-	 };
+		TexCoord(F32 s, F32 t)
+		: u(s), v(t)
+		{  }
+	};
+
+	struct Vertex
+	{
+		KM::Vector position;
+		TexCoord   texCoord;
+		Color 	   color;
+
+		Vertex(void)
+		: position(), texCoord(0.0f, 0.0f), color()
+		{  }
+
+		Vertex(KM::Vector pos)
+		: position(pos), texCoord(0.0f, 0.0f), color()
+		{  }
+
+		Vertex(KM::Vector pos, Color col)
+		: position(pos), texCoord(0.0f, 0.0f), color(col)
+		{  }
+
+		Vertex(KM::Vector pos, F32 u, F32 v)
+		: position(pos), texCoord(u, v), color()
+		{  }
+	};
 }//end Namespace

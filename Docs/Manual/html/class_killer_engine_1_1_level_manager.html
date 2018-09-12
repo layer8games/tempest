@@ -89,6 +89,8 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_level_manager.
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_level_manager-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">KillerEngine::LevelManager Class Reference</div>  </div>
@@ -115,12 +117,6 @@ U32&#160;</td><td class="memItemRight" valign="bottom"><b>GetActiveLevelID</b> (
 <tr class="memitem:a54f5e55baf08df7baf315de2d79dcf21"><td class="memItemLeft" align="right" valign="top"><a id="a54f5e55baf08df7baf315de2d79dcf21"></a>
 shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetActiveLevel</b> (void)</td></tr>
 <tr class="separator:a54f5e55baf08df7baf315de2d79dcf21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a4e83a90c8cc73ece08cff331b274d4"><td class="memItemLeft" align="right" valign="top"><a id="a0a4e83a90c8cc73ece08cff331b274d4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetRunning</b> (bool r)</td></tr>
-<tr class="separator:a0a4e83a90c8cc73ece08cff331b274d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9e38f1303aebe940bd977b73a3760b6"><td class="memItemLeft" align="right" valign="top"><a id="ac9e38f1303aebe940bd977b73a3760b6"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>GetRunning</b> (void)</td></tr>
-<tr class="separator:ac9e38f1303aebe940bd977b73a3760b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefaf5b1d035996cafe84fbefe8a416e2"><td class="memItemLeft" align="right" valign="top"><a id="aefaf5b1d035996cafe84fbefe8a416e2"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>EndGame</b> (void)</td></tr>
 <tr class="separator:aefaf5b1d035996cafe84fbefe8a416e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,9 +126,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>AddObjectToLevel</b> 
 <tr class="memitem:ab491d46b17756e0ae885b45b25a5771a"><td class="memItemLeft" align="right" valign="top"><a id="ab491d46b17756e0ae885b45b25a5771a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>AddObjectToLevel</b> (U32 id, shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_game_object2_d.html">GameObject2D</a> &gt; obj)</td></tr>
 <tr class="separator:ab491d46b17756e0ae885b45b25a5771a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34a5f6dec888fd979cc947bc4d3f56bd"><td class="memItemLeft" align="right" valign="top"><a id="a34a5f6dec888fd979cc947bc4d3f56bd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddParticle2DToLevel</b> (U32 id, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle2_d.html">KP::Particle2D</a> &gt;, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle_force_generator.html">KP::ParticleForceGenerator</a> &gt; generator=nullptr)</td></tr>
-<tr class="separator:a34a5f6dec888fd979cc947bc4d3f56bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5274b4a3285a6ff8d081b8b17cf7758b"><td class="memItemLeft" align="right" valign="top"><a id="a5274b4a3285a6ff8d081b8b17cf7758b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddParticleToLevel</b> (U32 id, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt;, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle_force_generator.html">KP::ParticleForceGenerator</a> &gt; generator=nullptr)</td></tr>
+<tr class="separator:a5274b4a3285a6ff8d081b8b17cf7758b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae26096aee14fa7c96a9c0894b71035b3"><td class="memItemLeft" align="right" valign="top"><a id="ae26096aee14fa7c96a9c0894b71035b3"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>AddObject3DToLevel</b> (U32 id, const <a class="el" href="class_killer_engine_1_1_game_object3_d.html">GameObject3D</a> &amp;obj)</td></tr>
 <tr class="separator:ae26096aee14fa7c96a9c0894b71035b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,6 +150,24 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ad3c02e1b837994023d935fc62df03291"><td class="memItemLeft" align="right" valign="top"><a id="ad3c02e1b837994023d935fc62df03291"></a>
 static <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Instance</b> ()</td></tr>
 <tr class="separator:ad3c02e1b837994023d935fc62df03291"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a2020be1f96ff6e4eff6611720702e6fb"><td class="memItemLeft" align="right" valign="top"><a id="a2020be1f96ff6e4eff6611720702e6fb"></a>
+std::map&lt; U32, shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_levels</b></td></tr>
+<tr class="separator:a2020be1f96ff6e4eff6611720702e6fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b79fae2c12a7c7b37244f447f7703dc"><td class="memItemLeft" align="right" valign="top"><a id="a2b79fae2c12a7c7b37244f447f7703dc"></a>
+shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_activeLevel</b></td></tr>
+<tr class="separator:a2b79fae2c12a7c7b37244f447f7703dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76ec2be9fde9f8e405dac36892d78b63"><td class="memItemLeft" align="right" valign="top"><a id="a76ec2be9fde9f8e405dac36892d78b63"></a>
+U32&#160;</td><td class="memItemRight" valign="bottom"><b>_activeLevelID</b></td></tr>
+<tr class="separator:a76ec2be9fde9f8e405dac36892d78b63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a77e3ca8a7adc36630215ca774e77ceaf"><td class="memItemLeft" align="right" valign="top"><a id="a77e3ca8a7adc36630215ca774e77ceaf"></a>
+static <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_instance</b> = NULL</td></tr>
+<tr class="separator:a77e3ca8a7adc36630215ca774e77ceaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_level_manager_8h_source.html">LevelManager.h</a></li>

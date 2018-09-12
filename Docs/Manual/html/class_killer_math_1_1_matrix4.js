@@ -24,5 +24,6 @@ var class_killer_math_1_1_matrix4 =
     [ "MakeOrthographic", "class_killer_math_1_1_matrix4.html#ab865fc46e5af76b0b78b07df5a864106", null ],
     [ "operator*", "class_killer_math_1_1_matrix4.html#a6994e7c299321d64fdc3b8f852b1f854", null ],
     [ "operator*=", "class_killer_math_1_1_matrix4.html#ab9308ef9f506ddba26ba62476517c6e9", null ],
-    [ "operator=", "class_killer_math_1_1_matrix4.html#a09cd27b39eaa2254a1893658df5124d7", null ]
+    [ "operator=", "class_killer_math_1_1_matrix4.html#a09cd27b39eaa2254a1893658df5124d7", null ],
+    [ "_m", "class_killer_math_1_1_matrix4.html#ac5d877773348a65d8dd561c102c3a09f", null ]
 ];

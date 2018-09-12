@@ -1,4 +1,4 @@
-.TH "KillerEngine::Engine" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Engine" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,6 +6,8 @@ KillerEngine::Engine
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <Engine\&.h>\fP
 .SS "Public Member Functions"
 
 .in +1c
@@ -20,9 +22,6 @@ KillerEngine::Engine
 .br
 .ti -1c
 .RI "void \fBEnd\fP (void)"
-.br
-.ti -1c
-.RI "void \fBLoadTexture\fP (const string path, const U32 id, const S32 width, const S32 height)"
 .br
 .ti -1c
 .RI "void \fBAddLevelToManager\fP (shared_ptr< \fBLevel\fP > level)"
@@ -44,6 +43,19 @@ KillerEngine::Engine
 .RI "static shared_ptr< \fBEngine\fP > \fBInstance\fP ()"
 .br
 .in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBEngine\fP > \fB_instance\fP = NULL"
+.br
+.RI "Singleton global instance\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+The KillerEngine class is designed to be the interface to starting up the \fBEngine\fP\&. This class will really just be a function and instance holder for other classes in the engine, but will actually do very little of its own\&.
+.PP
+A lot of the functions that will be here will not be required to use in order to use the engine\&. They will be present as helper classes, not intended for required use\&. 
 .SH "Member Function Documentation"
 .PP 
 .SS "void KillerEngine::Engine::AddLevelToManager (shared_ptr< \fBLevel\fP > level)\fC [inline]\fP"
@@ -57,15 +69,8 @@ Wrapper for LevelManager::AddLevel()\&. Adds level that can be set as active\&.
 
 .SS "void KillerEngine::Engine::End (void)\fC [inline]\fP"
 Wrapper for LevelManager::SetRunning()\&. Sets Running to false\&. This stops the Main Game Loop from running\&. Calling this is the same as Quitting the program\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fInone\fP 
-.RE
-.PP
-
 .SS "void Engine::Init (const S32 width, const S32 height, const string title, const bool fullscreen)"
-Wrapper for \fBWinProgram::Init\fP\&. Sets up the Window and OpenGL 
+Wrapper for WinProgram::Init\&. Sets up the Window and OpenGL 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -80,29 +85,7 @@ Wrapper for \fBWinProgram::Init\fP\&. Sets up the Window and OpenGL
 .PP
 
 .SS "shared_ptr< \fBEngine\fP > Engine::Instance (void)\fC [static]\fP"
-Singleton function to get instance of \fBEngine\fP\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fInone\fP 
-.RE
-.PP
-
-.SS "void KillerEngine::Engine::LoadTexture (const string path, const U32 id, const S32 width, const S32 height)\fC [inline]\fP"
-Wrapper for TextureManager::LoadTexture()\&. Saves an handle to a loaded texture in OpenGL by ID 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIpath\fP string: filepath to the texture image 
-.br
-\fIid\fP U32: id for texture\&. Will be used to call it later\&. 
-.br
-\fIwidth\fP S32: width in pixels of texture 
-.br
-\fIheight\fP S32: height in pixels of texture 
-.RE
-.PP
-
+Singleton function to get global instance of \fBEngine\fP\&. 
 .SS "void Engine::Render (void)"
 Wrapper for steps needed to render\&. Calls the following in order
 .IP "\(bu" 2
@@ -110,24 +93,11 @@ LevelManager::Render()
 .IP "\(bu" 2
 WinProgram::BufferSwap()
 .IP "\(bu" 2
-ErrorManager::DisplayErrors()
-.PP
-.PP
-\fBParameters:\fP
-.RS 4
-\fInone\fP 
-.RE
+\fBErrorManager::DisplayErrors()\fP 
 .PP
 
 .SS "bool KillerEngine::Engine::Running (void)\fC [inline]\fP"
 Check if simulation is still running\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fInone\fP 
-.RE
-.PP
-
 .SS "void KillerEngine::Engine::SetActiveLevel (const U32 id)\fC [inline]\fP"
 Wrapper for LevelManager::SetActive()\&. Sets level with id to be active level 
 .PP
@@ -139,13 +109,6 @@ Wrapper for LevelManager::SetActive()\&. Sets level with id to be active level
 
 .SS "void Engine::ShutDown (void)"
 Wrapper for LevelManager::ShutDown(void) 
-.PP
-\fBParameters:\fP
-.RS 4
-\fInone\fP 
-.RE
-.PP
-
 .SS "void Engine::Update (void)"
 Wrapper for steps needed update steps\&. Calls the following in order\&.
 .IP "\(bu" 2
@@ -153,17 +116,11 @@ WinProgram::ProcessWndEvents()
 .IP "\(bu" 2
 Timer::Update()
 .IP "\(bu" 2
-Controller::Update()
+\fBController::Update()\fP
 .IP "\(bu" 2
 LevelManager::Update()
 .IP "\(bu" 2
-ErrorManager::DisplayErrors()
-.PP
-.PP
-\fBParameters:\fP
-.RS 4
-\fInone\fP 
-.RE
+\fBErrorManager::DisplayErrors()\fP 
 .PP
 
 

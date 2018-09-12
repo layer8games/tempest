@@ -1,4 +1,4 @@
-.TH "KillerEngine::Shader" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Shader" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,23 +10,60 @@ KillerEngine::Shader
 
 .in +1c
 .ti -1c
-.RI "void \fBInitSpriteShader\fP (void)"
+.RI "void \fBLoadShader\fP (std::vector< \fBShaderData\fP > shaders)"
 .br
 .ti -1c
-.RI "void \fBInitModelShader\fP (void)"
+.RI "void \fBUse\fP (void)"
 .br
 .ti -1c
-.RI "GLuint \fBGetSpriteShader\fP (void)"
+.RI "void \fBSetUniform\fP (const GLchar *name, \fBColor\fP col)"
 .br
 .ti -1c
-.RI "GLuint \fBGetModelShader\fP (void)"
+.RI "void \fBSetUniform\fP (const GLchar *name, \fBKM::Vector2\fP vec)"
+.br
+.ti -1c
+.RI "void \fBSetUniform\fP (const GLchar *name, \fBKM::Vector3\fP vec)"
+.br
+.ti -1c
+.RI "void \fBSetUniform\fP (const GLchar *name, \fBKM::Matrix\fP mat)"
+.br
+.ti -1c
+.RI "GLuint \fBGetProgram\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetProgram\fP (GLuint program)"
+.br
+.ti -1c
+.RI "map< string, GLuint > \fBGetUniformLocations\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetUniformLocations\fP (map< string, GLuint > uniforms)"
+.br
+.ti -1c
+.RI "\fBShader\fP & \fBoperator=\fP (const \fBShader\fP &shader)"
 .br
 .in -1c
-.SS "Static Public Member Functions"
+.SS "Private Member Functions"
 
 .in +1c
 .ti -1c
-.RI "static shared_ptr< \fBShader\fP > \fBInstance\fP (void)"
+.RI "string \fB_GetFileString\fP (string path)"
+.br
+.ti -1c
+.RI "bool \fB_CheckCompileErrors\fP (GLuint shader)"
+.br
+.ti -1c
+.RI "GLuint \fB_GetUniformLocation\fP (const GLchar *name)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "map< string, GLuint > \fB_uniformLocations\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_shaderProgram\fP"
 .br
 .in -1c
 

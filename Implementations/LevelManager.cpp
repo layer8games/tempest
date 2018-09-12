@@ -1,5 +1,4 @@
 #include <Engine/LevelManager.h>
-#include <iostream>
 
 using namespace KillerEngine;
 //==========================================================================================================================
@@ -9,7 +8,7 @@ using namespace KillerEngine;
 //==========================================================================================================================
 LevelManager::LevelManager(void) 
 : 
-_running(true) 
+_activeLevel(nullptr)
 {  }
 
 LevelManager::~LevelManager(void)
@@ -74,9 +73,13 @@ void LevelManager::Update(void)
 {
 	//Update Physics, then level will update all registered Objects. 
 	//finally, the level can update anything custom
-	_activeLevel->v_Integrate();
-	_activeLevel->UpdateObjects();
-	_activeLevel->v_Update();
+	
+	if(_activeLevel != nullptr)
+	{
+		_activeLevel->v_Integrate();
+		_activeLevel->UpdateObjects();
+		_activeLevel->v_Update();	
+	}
 }
 
 //==========================================================================================================================
@@ -86,7 +89,10 @@ void LevelManager::Update(void)
 //==========================================================================================================================
 void LevelManager::Render(void) 
 {
-	_activeLevel->v_Render();
+	if(_activeLevel != nullptr)
+	{
+		_activeLevel->v_Render();
+	}
 }
 
 //==========================================================================================================================
@@ -97,7 +103,7 @@ void LevelManager::Render(void)
 //in fact is registered with the manager, and will throw and error if it is not. 
 //	
 //==========================================================================================================================
-void LevelManager::AddObjectToLevel(U32 id, const GameObject2D& obj)
+void LevelManager::AddObjectToLevel(U32 id, const GameObject& obj)
 {
 	if(_levels.find(id) != _levels.end()) 
 	{ 
@@ -109,7 +115,7 @@ void LevelManager::AddObjectToLevel(U32 id, const GameObject2D& obj)
 	} 
 }
 
-void LevelManager::AddObjectToLevel(U32 id, shared_ptr<GameObject2D> obj)
+void LevelManager::AddObjectToLevel(U32 id, shared_ptr<GameObject> obj)
 {
 	if(_levels.find(id) != _levels.end()) 
 	{ 
@@ -121,11 +127,11 @@ void LevelManager::AddObjectToLevel(U32 id, shared_ptr<GameObject2D> obj)
 	} 
 }
 
-void LevelManager::AddParticle2DToLevel(U32 id, shared_ptr<KP::Particle2D> particle, shared_ptr<KP::ParticleForceGenerator> generator)
+void LevelManager::AddParticleToLevel(U32 id, shared_ptr<KP::Particle> particle, shared_ptr<KP::ParticleForceGenerator> generator)
 {
 	if(_levels.find(id) != _levels.end()) 
 	{ 
-		_levels[id]->AddParticle2DToLevel(particle, generator); 
+		_levels[id]->AddParticleToLevel(particle, generator); 
 	} 
 	else
 	{
@@ -133,30 +139,10 @@ void LevelManager::AddParticle2DToLevel(U32 id, shared_ptr<KP::Particle2D> parti
 	} 
 }
 
-void LevelManager::AddObject3DToLevel(U32 id, const GameObject3D& obj)
-{
-	if(_levels.find(id) != _levels.end()) 
-	{ 
-		_levels[id]->AddObject3DToLevel(obj); 
-	} 
-	else 
-	{
-		ErrorManager::Instance()->SetError(EC_Engine, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist.");
-	}
-}
-
-void LevelManager::Remove2DObjectFromLevel(U32 levelID, U32 objID)
+void LevelManager::RemoveObjectFromLevel(U32 levelID, U32 objID)
 {
 	if(_levels.find(levelID) != _levels.end()) 
 	{ 
-		_levels[levelID]->Remove2DObjectFromLevel(objID); 
-	}
-}
-
-void LevelManager::Remove3DObjectFromLevel(U32 levelID, U32 objID)
-{
-	if(_levels.find(levelID) != _levels.end()) 
-	{ 
-		_levels[levelID]->Remove3DObjectFromLevel(objID); 
+		_levels[levelID]->RemoveObjectFromLevel(objID); 
 	}
 }

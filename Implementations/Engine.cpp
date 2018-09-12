@@ -40,7 +40,7 @@ void Engine::ShutDown(void)
 //=======================================================================================================
 void Engine::Update(void) 
 {
-	WinProgram::Instance()->ProcessWndEvents();
+	WinProgram::Instance()->ProcessEvents();
 
 	KM::Timer::Instance()->Update();
 	
@@ -57,8 +57,6 @@ void Engine::Update(void)
 void Engine::Render(void) 
 {
 	LevelManager::Instance()->Render();
-
-	//Renderer::Instance()->Draw();
 
 	WinProgram::Instance()->BufferSwap();
 	

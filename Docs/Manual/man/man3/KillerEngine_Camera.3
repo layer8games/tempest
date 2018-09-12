@@ -1,4 +1,4 @@
-.TH "KillerEngine::Camera" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Camera" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -22,31 +22,28 @@ KillerEngine::Camera
 .RI "void \fBSetPosition\fP (F32 x, F32 y)"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (const \fBKM::Vector2\fP &V)"
-.br
-.ti -1c
 .RI "void \fBSetPosition\fP (F32 x, F32 y, F32 z)"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (const \fBKM::Vector3\fP &V)"
+.RI "void \fBSetPosition\fP (const \fBKM::Vector\fP &V)"
 .br
 .ti -1c
 .RI "void \fBScalePosition\fP (F32 x, F32 y, F32 scale)"
 .br
 .ti -1c
-.RI "void \fBScalePosition\fP (const \fBKM::Vector2\fP &v, F32 scale)"
-.br
-.ti -1c
 .RI "void \fBScalePosition\fP (F32 x, F32 y, F32 z, F32 scale)"
 .br
 .ti -1c
-.RI "void \fBScalePosition\fP (const \fBKM::Vector3\fP &V, F32 scale)"
+.RI "void \fBScalePosition\fP (const \fBKM::Vector\fP &v, F32 scale)"
 .br
 .ti -1c
 .RI "void \fBSetColor\fP (const \fBColor\fP &col)"
 .br
 .ti -1c
 .RI "void \fBSetUp\fP (GLuint shader)"
+.br
+.ti -1c
+.RI "const \fBKM::Matrix\fP & \fBGetViewMatrix\fP (void)"
 .br
 .in -1c
 .SS "Static Public Member Functions"
@@ -56,6 +53,76 @@ KillerEngine::Camera
 .RI "static shared_ptr< \fBCamera\fP > \fBInstance\fP (void)"
 .br
 .in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBColor\fP \fB_background\fP"
+.br
+.RI "Background color of current level\&. "
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_pos\fP"
+.br
+.RI "Position of \fBCamera\fP in world space\&. "
+.ti -1c
+.RI "\fBKM::Matrix\fP \fB_projection\fP"
+.br
+.RI "Projection Matrix (Orthographic or Perspective)\&. Not used\&. "
+.ti -1c
+.RI "\fBKM::Matrix\fP \fB_translation\fP"
+.br
+.RI "Amount of Translation needed to reflect Position\&. Should be opposite of _pos\&. "
+.ti -1c
+.RI "GLuint \fB_currentShader\fP"
+.br
+.RI "Fully compiled OpenGL \fBShader\fP Program\&. "
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBCamera\fP > \fB_instance\fP {NULL}"
+.br
+.RI "Singleton global instance\&. "
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "shared_ptr< \fBCamera\fP > Camera::Instance (void)\fC [static]\fP"
+Singleton function\&. Returns global camera object 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInone\fP 
+.RE
+.PP
+
+.SS "void Camera::SetDefaultMatrix (void)"
+Helper function to set the projection Matrix to be an identity Matrix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInone\fP 
+.RE
+.PP
+
+.SS "void Camera::SetOrthographic (void)"
+Sets private Matrix to use an orthogrphic projection\&. This calls the \fBWinProgram\fP to get the demensions for the Matrix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInone\fP 
+.RE
+.PP
+
+.SS "void Camera::SetPerspective (void)"
+Sets the private Matrix to use a perspective projection\&. Values are hard coded for now\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInone\fP 
+.RE
+.PP
+
 
 .SH "Author"
 .PP 

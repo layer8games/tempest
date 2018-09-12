@@ -23,7 +23,7 @@ Written by Maxwell Miller
 
 //=====Killer1 inlucdes=====
 #include <Engine/Atom.h>
-#include <Engine/Vector2.h>
+#include <Engine/Vector.h>
 #include <Engine/Texture.h>
 #include <Engine/TextureManager.h>
 #include <Engine/ErrorManager.h>
@@ -33,16 +33,12 @@ Written by Maxwell Miller
 
 namespace KM = KillerMath;
 
-//=====OGL includes=====
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/wglext.h>
-
 //=====STL Includes=====
 #include <vector>
 
 namespace KillerEngine 
 {	
+/*! Deprecated class. Do not use. All of this functionality has been moved directly into the GameObject2D */
 	class Sprite 
 	{	
 	public:
@@ -65,18 +61,18 @@ namespace KillerEngine
 			return _textureID; 
 		}
 
-		void SetUVs(const KM::Vector2& bottomTop, const KM::Vector2& leftRight)
+		void SetUVs(const KM::Vector& bottomTop, const KM::Vector& leftRight)
 		{
 			_bottomTop = bottomTop;
 			_leftRight = leftRight;
 		}
 
-		inline const KM::Vector2& GetUVBottomTop(void) const
+		inline const KM::Vector& GetUVBottomTop(void) const
 		{ 
 			return _bottomTop; 
 		}
 
-		inline const KM::Vector2& GetUVLeftRight(void) const
+		inline const KM::Vector& GetUVLeftRight(void) const
 		{ 
 			return _leftRight; 
 		}
@@ -88,9 +84,38 @@ namespace KillerEngine
 			return _characterData;
 		}
 
+		inline const Color& GetColor(void) const
+		{
+			return _color;
+		}
+
+		void SetColor(const Color& col);
+
+		void SetColor(F32 red, F32 green, F32 blue, F32 alpha=1.0f);
+
 		inline const GLuint GetShader(void) const
 		{
 			return _shaderProgram;
+		}
+
+		inline void SetShader(GLuint shader)
+		{
+			_shaderProgram = shader;
+		}
+
+		inline void SetVAO(GLuint vao)
+		{
+			_vao = vao;
+		}
+
+		inline GLuint GetVAO(void)
+		{
+			return _vao;
+		}
+
+		inline U32 GetVertexCount(void)
+		{
+			return _vertexCount;
 		}
  
 //==========================================================================================================================
@@ -111,16 +136,20 @@ namespace KillerEngine
 //==========================================================================================================================
 		void SetTexture(U32 tID, const F32 top, const F32 bottom, const F32 right, const F32 left);
 
-		//void Render(const KM::Vector2& pos, F32 w, F32 h, const Color& col);
+		//void Render(const KM::Vector& pos, F32 w, F32 h, const Color& col);
 
 		//static void StaticDraw(S32 count, std::vector<F32> vertices, std::vector<F32> colors, std::vector<F32> dimensions, std::vector<F32> bottomTop, std::vector<F32>leftRight);
 
 	private:
-		KM::Vector2 		 _bottomTop;
-		KM::Vector2 		 _leftRight;
+		KM::Vector 		 _bottomTop;
+		KM::Vector 		 _leftRight;
 		U32					 _textureID;
 		CharacterData   	 _characterData;
+		Color 				 _color;
 		GLuint 		 		 _shaderProgram;
+		GLuint				 _vao;
+		GLuint				 _vbo;
+		U32 				 _vertexCount;
 
 //==========================================================================================================================
 //

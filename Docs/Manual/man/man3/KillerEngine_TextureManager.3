@@ -1,4 +1,4 @@
-.TH "KillerEngine::TextureManager" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::TextureManager" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,13 +10,10 @@ KillerEngine::TextureManager
 
 .in +1c
 .ti -1c
-.RI "U32 \fBGetCurrentTextureID\fP (void)"
+.RI "void \fBAddTexture\fP (S32 id, const \fBTexture\fP &tex)"
 .br
 .ti -1c
-.RI "void \fBSetCurrentTextureID\fP (U32 textureId)"
-.br
-.ti -1c
-.RI "void \fBLoadTexture\fP (string path, U32 id, S32 width, S32 height)"
+.RI "void \fBAddTexture\fP (S32 id, shared_ptr< \fBTexture\fP > tex)"
 .br
 .ti -1c
 .RI "const shared_ptr< \fBTexture\fP > \fBGetTexture\fP (U32 id)"
@@ -27,6 +24,20 @@ KillerEngine::TextureManager
 .in +1c
 .ti -1c
 .RI "static shared_ptr< \fBTextureManager\fP > \fBInstance\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "map< S32, shared_ptr< \fBTexture\fP > > \fB_loadedTextures\fP"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBTextureManager\fP > \fB_instance\fP = NULL"
 .br
 .in -1c
 

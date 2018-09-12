@@ -22,14 +22,6 @@ Written by Maxwell Miller
 #include <map>
 using std::map;
 
-//=====SOIL includes=====
-#include <SOIL/SOIL.h>
-
-//=====OGL includes=====
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/wglext.h>
-
 namespace KillerEngine 
 {
 
@@ -51,23 +43,12 @@ namespace KillerEngine
 		
 //==========================================================================================================================
 //
-//Accessors
-//
-//==========================================================================================================================
-		U32 GetCurrentTextureID(void) 
-		{ 
-			return _currentTextureID; 
-		}
-		
-		void SetCurrentTextureID(U32 textureId); 
-
-
-//==========================================================================================================================
-//
 //TextureManager Functions
 //
 //==========================================================================================================================
-		void LoadTexture(string path, U32 id, S32 width, S32 height);
+		void AddTexture(S32 id, const Texture& tex);
+
+		void AddTexture(S32 id, shared_ptr<Texture> tex);
 		
 		const shared_ptr<Texture> GetTexture(U32 id);
 
@@ -79,13 +60,9 @@ namespace KillerEngine
 //==========================================================================================================================		
 		TextureManager(void);
 		
-		
-
 	private:
 		static shared_ptr<TextureManager> _instance;
-
-		U32 			  _currentTextureID;
-		map<U32, shared_ptr<Texture>> _loadedTextures;
+		map<S32, shared_ptr<Texture>> 	  _loadedTextures;
 
 	};
 }//End namespace

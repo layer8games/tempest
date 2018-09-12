@@ -10,17 +10,15 @@ using namespace KillerEngine;
 WinProgram::WinProgram(void) 
 : 
 _isFullScreen(false),
-_totalWidth(0), 
-_totalHeight(0),
+_running(false),
+_wireFrame(false),
 _right(0), 
 _left(0),
 _top(0), 
 _bottom(0),
 _wndName("Killer Engine"),
-_hwnd(NULL),
-_hdc(NULL),
-_hglrc(NULL),
-_wndClass()
+_bgColor(),
+_window(nullptr)
 {  }
 
 WinProgram::~WinProgram(void)
@@ -34,6 +32,8 @@ WinProgram::~WinProgram(void)
 //Instance
 //=======================================================================================================
 shared_ptr<WinProgram> WinProgram::_instance = NULL;
+int WinProgram::_totalWidth = 0;
+int WinProgram::_totalHeight = 0;
 
 shared_ptr<WinProgram> WinProgram::Instance(void) 
 {
@@ -44,75 +44,80 @@ shared_ptr<WinProgram> WinProgram::Instance(void)
     return _instance;
 }
 
-//=======================================================================================================
-//InitWindow
-//=======================================================================================================    
+//==========================================================================================================================
+//Init
+//==========================================================================================================================
 void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen) 
 {
-    _totalWidth     = width;
-    _totalHeight    = height;
-    _right          = _totalWidth / 2;
-    _left           = -_totalWidth / 2;
-    _top            = _totalHeight / 2;
-    _bottom         = -_totalHeight / 2;
+	_running = true;
+	_isFullScreen = isFullScreen;
+	_totalWidth = width;
+	_totalHeight = height;
 
-    //=========Window Class registration and creation===========
-	_wndClass.cbSize        = sizeof(WNDCLASSEX);
-    _wndClass.style 		= CS_HREDRAW | CS_VREDRAW; //| CS_OWNDC; //Window Style
-	_wndClass.lpfnWndProc   = &StaticWndProc; 	    //Windows Proc Callback function
-	_wndClass.cbClsExtra    = 0;
-    _wndClass.cbWndExtra    = 0;
-	_wndClass.hInstance		= GetModuleHandle(NULL);//_hInstance;
-    _wndClass.hIcon         = LoadIcon(NULL, IDI_APPLICATION);
-    _wndClass.hCursor       = LoadCursor(NULL, IDC_ARROW);
-    _wndClass.hbrBackground = NULL;
-	_wndClass.lpszMenuName  = NULL;
-	_wndClass.lpszClassName = _wndName.c_str();
-    _wndClass.hIconSm       = LoadIcon(NULL, IDI_WINLOGO);
+	_right = _totalWidth;
+	_left = 0;
+	_top = _totalHeight;
+	_bottom = 0;
 
-	if (!RegisterClassEx(&_wndClass))
-		ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to register window class");
+    if(!glfwInit())
+    {
+    	ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to init GLFW. WinProgram.");
+    }
 
+    //Set up your opengl context
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-	_hwnd = CreateWindowEx(WS_EX_APPWINDOW | WS_EX_WINDOWEDGE,
-				   		   _wndName.c_str(),					    //Window Class name
-				   		   _wndName.c_str(),						//Window Name
-				   		   WS_CLIPSIBLINGS 	   | WS_CLIPCHILDREN |  //Window Styles
-				   		   WS_OVERLAPPEDWINDOW | WS_VISIBLE | WS_CAPTION,		//^           ^
-				   	  	   0,0,										//position of window
-				   		   _totalWidth, _totalHeight,				//Dimensions
-				   		   NULL, 									//Parent Window
-				   		   NULL, 									//Window Menu
-				   		   _wndClass.hInstance,						//hInstance,
-				   		   this); 									//lpParam
-	if (!_hwnd)
-		ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to create HWND");
+    //create window
+    if(_isFullScreen)
+    {
+    	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+    	const GLFWvidmode* vidMode = glfwGetVideoMode(monitor);
+    	
+    	if(vidMode != NULL)
+    	{
+    		_totalWidth = vidMode->width;
+    		_totalHeight = vidMode->height;
+    		_right = _totalWidth;
+    		_left = 0;
+    		_top = _totalHeight;
+    		_bottom = 0;
+    		
+    		_window = glfwCreateWindow(_totalWidth, _totalHeight, wndName.c_str(), monitor, NULL);
+    	}
+    }
+    else
+    {
+    	_window = glfwCreateWindow(_totalWidth, _totalHeight, wndName.c_str(), NULL, NULL);	
+    }
+    
+    if(_window == NULL)
+    {
+    	ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to create GLFW window. WinProgram.");
+    }
 
-	SetWindowLong(_hwnd, GWL_STYLE, WS_BORDER);
+    glfwMakeContextCurrent(_window);
 
-    _hdc = GetDC(_hwnd);
+    glfwSetKeyCallback(_window, OnKey);
+    glfwSetWindowSizeCallback(_window, OnResize);
+    glfwSetMouseButtonCallback(_window, OnMouseClick);
+    //glfwSetCursorPosCallback(_window, OnMouseMove);
 
-    if(!_hdc)
-    	ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to get HDC");
+    glewExperimental = GL_TRUE;
+    if(glewInit() != GLEW_OK)
+    {
+    	ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to init glew. WinProgram.");
+    }
 
-    ShowWindow(_hwnd, SW_SHOW);
-    UpdateWindow(_hwnd);
-
-    Controller::Instance()->Init((F32)width, (F32)height, 200.0f);
+    glViewport(0, 0, _totalWidth, _totalHeight);
+    glEnable(GL_DEPTH_TEST);
 }
 
-//=======================================================================================================
-//ProcessWndEvents
-//=======================================================================================================
-void WinProgram::ProcessWndEvents(void) 
+void WinProgram::ProcessEvents(void)
 {
-    MSG msg;
-
-    while(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) 
-    {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
-    }
+	glfwPollEvents();
 }
 
 //=======================================================================================================
@@ -120,333 +125,245 @@ void WinProgram::ProcessWndEvents(void)
 //=======================================================================================================
 void WinProgram::BufferSwap(void)
 { 
-    glFlush(); 
-    SwapBuffers(_hdc); 
-    glClearBufferfv(GL_COLOR, 0, _bgColor);
-}
-//==========================================================================================================================
-//
-//System Windows Functions
-//
-//==========================================================================================================================
-//=======================================================================================================
-//StaticWndProc
-//=======================================================================================================    
-LRESULT CALLBACK WinProgram::StaticWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
-{
-	WinProgram* window = NULL;
-
-    if(uMsg == WM_CREATE) 
-    {
-        window = (WinProgram*)((LPCREATESTRUCT)lParam)->lpCreateParams;
-
-        SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR)window);
-    }
-    else 
-    {
-        window = (WinProgram*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
-
-		if (!window)
-			DefWindowProc(hWnd, uMsg, wParam, lParam);
-    }
-
-    return window->WndProc(hWnd, uMsg, wParam, lParam);
+    glfwSwapBuffers(_window);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-//=======================================================================================================
-//WndProc
-//=======================================================================================================    
-LRESULT WinProgram::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
+Keys WinProgram::ConvertKeyCodes(int key)
 {
-    switch(uMsg) 
+    switch(key)
     {
-        case WM_CREATE: 
-        {
-			_hdc = GetDC(hWnd);
-		    
-			//=====Create temporary context=====
-			_SetTempPixelFormat();            
-            HGLRC hrcTemp = wglCreateContext(_hdc);
-            wglMakeCurrent(_hdc, hrcTemp);
-
-			//=====Create Real Context=====
-            _SetPixelFormat();
-            
-			PFNWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribsARB = NULL;
-            wglCreateContextAttribsARB = (PFNWGLCREATECONTEXTATTRIBSARBPROC)wglGetProcAddress("wglCreateContextAttribsARB");
-            
-            if(!wglCreateContextAttribsARB)
-            	ErrorManager::Instance()->SetError(EC_OpenGL, "Unable to get wglCreateContextAttribsARB function Vecer");
-
-            GLint contextARBS[] = 
-            {
-                WGL_CONTEXT_MAJOR_VERSION_ARB, 4,
-                WGL_CONTEXT_MINOR_VERSION_ARB, 2,
-                WGL_CONTEXT_PROFILE_MASK_ARB, WGL_CONTEXT_CORE_PROFILE_BIT_ARB,
-                0
-            };
-
-            _hglrc = wglCreateContextAttribsARB(_hdc, 0, contextARBS);
-
-            if(!_hglrc)
-            	ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to create wgl Context");
-
-            wglMakeCurrent(_hdc, _hglrc);
-            wglDeleteContext(hrcTemp);
-
-            if (gl3wInit())
-            	ErrorManager::Instance()->SetError(EC_OpenGL, "gl3wInit() failed");
-
-           // glEnable(GL_DEPTH_TEST);
-
-            break;
-        }
-        case WM_DESTROY: 
-        {
-            _hdc = GetDC(hWnd);
-            wglMakeCurrent(_hdc, NULL); 
-			wglDeleteContext(_hglrc); 
-			DestroyWindow(hWnd);
-            PostQuitMessage(0);
-            break;
-        }
-        //case WM_SIZE: {
-          /*  _width  = LOWORD(lParam);
-            _height = HIWORD(lParam);
-            
-            _halfWidth  = _width / 2;
-            _halfHeight = _height / 2;
-
-            //_OnResize(); */
-        //}
-        //break;
-        case WM_KEYDOWN:
-        {
-            Keys keydown = ConvertKeyCodes(wParam);
-            Controller::Instance()->KeyDown(keydown);
-            break;
-        }
-        case WM_KEYUP:
-        {
-            Keys keyup = ConvertKeyCodes(wParam);
-            Controller::Instance()->KeyUp(keyup);
-            break;
-        }
-        case WM_LBUTTONDOWN:
-        {
-            POINT p;
-            if(!GetCursorPos(&p)) { ErrorManager::Instance()->SetError(EC_Engine, "Unable to find Left Cursor Position in WinProgram!"); }
-            if(!ScreenToClient(_hwnd, &p)) { ErrorManager::Instance()->SetError(EC_Engine, "Unable to convert Left Cursor to client in WinProgram!"); }
-            Controller::Instance()->LeftMouseClick(KM::Vector2((F32)p.x, (F32)p.y));
-            Controller::Instance()->KeyDown(Keys::LEFT_MOUSE);
-            break; 
-        }
-        case WM_LBUTTONUP:
-        {
-            Controller::Instance()->KeyUp(Keys::LEFT_MOUSE);
-            Controller::Instance()->LeftMouseClick(KM::Vector2(0.0f, 0.0f));
-            break;
-        }
-        case WM_RBUTTONDOWN:
-        {
-            POINT p;
-            if(!GetCursorPos(&p)) { ErrorManager::Instance()->SetError(EC_Engine, "Unable to find Right Cursor Position in WinProgram!"); }
-            if(!ScreenToClient(_hwnd, &p)) { ErrorManager::Instance()->SetError(EC_Engine, "Unable to convert Right Cursor to client in WinProgram!"); }
-            Controller::Instance()->RightMouseClick(KM::Vector2((F32)p.x, (F32)p.y));
-            Controller::Instance()->KeyDown(Keys::RIGHT_MOUSE);
-            break;
-        }
-        case WM_RBUTTONUP:
-        {
-            Controller::Instance()->KeyUp(Keys::RIGHT_MOUSE);
-            Controller::Instance()->RightMouseClick(KM::Vector2(0.0f, 0.0f));
-            break;
-        }
-        default:
-        	return DefWindowProc(hWnd, uMsg, wParam, lParam);
-    }
-	return 0;
-}
-
-Keys WinProgram::ConvertKeyCodes(WPARAM wParam)
-{
-    switch(wParam)
-    {
-        case 'A':
+        case GLFW_KEY_A:
             return Keys::A;
-        case 'B':
+        case GLFW_KEY_B:
             return Keys::B;
-        case 'C':
+        case GLFW_KEY_C:
             return Keys::C;
-        case 'D':
+        case GLFW_KEY_D:
             return Keys::D;
-        case 'E':
+        case GLFW_KEY_E:
             return Keys::E;
-        case 'F':
+        case GLFW_KEY_F:
             return Keys::F;
-        case 'G':
+        case GLFW_KEY_G:
             return Keys::G;
-        case 'H':
+        case GLFW_KEY_H:
             return Keys::H;
-        case 'I':
+        case GLFW_KEY_I:
             return Keys::I;
-        case 'J':
+        case GLFW_KEY_J:
             return Keys::J;
-        case 'K':
+        case GLFW_KEY_K:
             return Keys::K;    
-        case 'L':
+        case GLFW_KEY_L:
             return Keys::L;
-        case 'M':
+        case GLFW_KEY_M:
             return Keys::M;
-        case 'N':
+        case GLFW_KEY_N:
             return Keys::N;
-        case 'O':
+        case GLFW_KEY_O:
             return Keys::O;
-        case 'P':
+        case GLFW_KEY_P:
             return Keys::P;
-        case 'Q':
+        case GLFW_KEY_Q:
             return Keys::Q;
-        case 'R':
+        case GLFW_KEY_R:
             return Keys::R;
-        case 'S':
+        case GLFW_KEY_S:
             return Keys::S;
-        case 'T':
+        case GLFW_KEY_T:
             return Keys::T;
-        case 'U':
+        case GLFW_KEY_U:
             return Keys::U;
-        case 'V':
+        case GLFW_KEY_V:
             return Keys::V;
-        case 'W':
+        case GLFW_KEY_W:
             return Keys::W;
-        case 'X':
+        case GLFW_KEY_X:
             return Keys::X;
-        case 'Y':
+        case GLFW_KEY_Y:
             return Keys::Y;
-        case 'Z':
+        case GLFW_KEY_Z:
             return Keys::Z;
-        case VK_UP:
+        case GLFW_KEY_UP:
             return Keys::UP_ARROW;
-        case VK_DOWN:
+        case GLFW_KEY_DOWN:
             return Keys::DOWN_ARROW;
-        case VK_LEFT:
+        case GLFW_KEY_LEFT:
             return Keys::LEFT_ARROW;
-        case VK_RIGHT:
+        case GLFW_KEY_RIGHT:
             return Keys::RIGHT_ARROW;
-        case '0':
+        case GLFW_KEY_0:
             return Keys::ZERO;
-        case '1':
+        case GLFW_KEY_1:
             return Keys::ONE;
-        case '2':
+        case GLFW_KEY_2:
             return Keys::TWO;
-        case '3':
+        case GLFW_KEY_3:
             return Keys::THREE;
-        case '4':
+        case GLFW_KEY_4:
             return Keys::FOUR;
-        case '5':
+        case GLFW_KEY_5:
             return Keys::FIVE;
-        case '6':
+        case GLFW_KEY_6:
             return Keys::SIX;
-        case '7':
+        case GLFW_KEY_7:
             return Keys::SEVEN;
-        case '8':
+        case GLFW_KEY_8:
             return Keys::EIGHT;
-        case '9':
+        case GLFW_KEY_9:
             return Keys::NINE;
-        case VK_OEM_MINUS:
+        case GLFW_KEY_MINUS:
             return Keys::MINUS;
-        case VK_OEM_PLUS:
-            return Keys::PLUS;
-        case VK_SPACE:
+        case GLFW_KEY_EQUAL:
+            return Keys::EQUAL;
+        case GLFW_KEY_SPACE:
             return Keys::SPACE;
-        case VK_ESCAPE:
+        case GLFW_KEY_ESCAPE:
             return Keys::ESCAPE;
-        case VK_TAB:
+        case GLFW_KEY_TAB:
             return Keys::TAB;
-        case VK_LSHIFT:
+        case GLFW_KEY_LEFT_SHIFT:
             return Keys::LSHIFT;
-        case VK_RSHIFT:
+        case GLFW_KEY_RIGHT_SHIFT:
             return Keys::RSHIFT;
-        case VK_RETURN:
+        case GLFW_KEY_ENTER:
             return Keys::ENTER;
-        case VK_XBUTTON1:
-            return Keys::MIDDLE_MOUSE;
         default:
             return Keys::NO_KEY;
     }
 }
 
-//=======================================================================================================
-//_SetTempPixelFormat
-//=======================================================================================================
-void WinProgram::_SetTempPixelFormat(void) 
+void WinProgram::DisplayFPS(void)
 {
-    S32 pixelFormat;
+	static F64 elapsed = 0.0f;
+	static U32 frameCount = 0;
 
-    PIXELFORMATDESCRIPTOR pfd =
-    {
-        sizeof(PIXELFORMATDESCRIPTOR),  //size
-        1,                              //version
-        PFD_SUPPORT_OPENGL |            //OpenGL window
-        PFD_DRAW_TO_WINDOW |            //render to window
-        PFD_DOUBLEBUFFER,               //support double buffer
-        PFD_TYPE_RGBA,                  //color type
-        32,                             //prefered color depth
-        0,0,0,0,0,0,                    //color bits (ignored)
-        0,                              //no alpha buffer
-        0,                              //alpha bits ignored
-        0,                              //no accumulation buffer
-        0,0,0,0,                        //accum bits (ignored)
-        16,                             //depth buffer
-        0,                              //no stencil buffer
-        0,                              //no aux buffers
-        PFD_MAIN_PLANE,                 //main layer
-        0,                              //reserved
-        0,0,0                           //no layer, visible, damage masks
+	F32 delta = KM::Timer::Instance()->DeltaTime();
 
-    };
+	elapsed += delta;
 
-    pixelFormat = ChoosePixelFormat(_hdc, &pfd);    
-    SetPixelFormat(_hdc, pixelFormat, &pfd);
+	if(elapsed > 0.25f)
+	{
+		F64 fps = static_cast<F64>(frameCount / elapsed);
+		F64 msPerFrame = 1000.0 / fps;
+
+		std::ostringstream outs;
+		outs.precision(3);
+		outs << std::fixed
+			 << _wndName << "  "
+			 << "FPS: " << fps << "    "
+			 << "Frame Time: " << msPerFrame << " (ms)";
+
+		glfwSetWindowTitle(_window, outs.str().c_str());
+
+		frameCount = 0;
+		elapsed = 0.0f;
+	}
+
+	++frameCount;
 }
 
-//=======================================================================================================
-//_SetPixelFormat
-//=======================================================================================================
-void WinProgram::_SetPixelFormat(void) 
+void WinProgram::ToggleWireFrame(void)
 {
-    bool worked = true;
+    _wireFrame = !_wireFrame;
 
-    //PFNWGLGETEXTENSIONSSTRINGARBPROC wglGetExtensionstextARB = NULL; 
-    //wglGetExtensionstextARB = (PFNWGLGETEXTENSIONSSTRINGARBPROC)wglGetProcAddress("wglGetExtensionstextARB");
-    //if (!wglGetExtensionstextARB){ worked = false; } //{ ErrorManager::Instance()->SetError(EC_OpenGL, "Unable to get wglGetExtensionstextARB function Vecer"); }
+    if(_wireFrame)
+    {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    }
+    else
+    {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);   
+    }
+}
 
-    PFNWGLCHOOSEPIXELFORMATARBPROC wglChoosePixelFormatARB = NULL;
-    wglChoosePixelFormatARB = (PFNWGLCHOOSEPIXELFORMATARBPROC)wglGetProcAddress("wglChoosePixelFormatARB");
-    if (!wglChoosePixelFormatARB){ worked = false; } //{ ErrorManager::Instance()->SetError(EC_OpenGL, "Unable to get wglChoosePixelFormatARB function Vecer"); }
+void WinProgram::ResetMouseCursor(void)
+{
+    glfwSetCursorPos(_window, _totalWidth / 2.0f, _totalHeight / 2.0f);
+}
 
-    int pixCount    = 0;
-    int pixelFormat = 0;
+void WinProgram::EnableMouseCursor(void)
+{
+    glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+}
 
-    int pixAtrb[] = {
-        WGL_SUPPORT_OPENGL_ARB, 1, //Support OGL rendering
-        WGL_DRAW_TO_WINDOW_ARB, 1, //pf that can run a window
-        WGL_RED_BITS_ARB,       8, //8 bits of RGB color
-        WGL_GREEN_BITS_ARB,     8,
-        WGL_BLUE_BITS_ARB,      8,
-        WGL_DEPTH_BITS_ARB,     16, //16 bits of depth
-        WGL_ACCELERATION_ARB,
-        WGL_FULL_ACCELERATION_ARB,
-        WGL_PIXEL_TYPE_ARB,
-        WGL_TYPE_RGBA_ARB,
-        0};
+void WinProgram::DisableMouseCursor(void)
+{
+    glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+}
 
-    wglChoosePixelFormatARB(_hdc,              //device context
-                            &pixAtrb[0],       //desired attributes
-                            NULL,              //float attribute list
-                            1,                 //max returned formats
-                            &pixelFormat,      //list of returned formats
-                            (UINT*)&pixCount); //number of formats found
+void WinProgram::HideMouseCursor(void)
+{
+    glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+}
 
-    if(pixelFormat == -1) { ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to load Pixel Format"); }
+const KM::Vector WinProgram::GetMousePos(void)
+{
+    F64 mouseX, mouseY;
+    glfwGetCursorPos(_window, &mouseX, &mouseY);
 
-} 
+    return KM::Vector(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
+}
+
+//==========================================================================================================================
+//
+//Callback Functions
+//
+//==========================================================================================================================
+//=======================================================================================================
+//OnKey
+//=======================================================================================================    
+void WinProgram::OnKey(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+    if(action == GLFW_PRESS)
+    {
+        Controller::Instance()->KeyDown(ConvertKeyCodes(key));
+    }
+    else if(action == GLFW_RELEASE)
+    {
+        Controller::Instance()->KeyUp(ConvertKeyCodes(key));
+    }
+}
+
+//==========================================================================================================================
+//OnResize
+//==========================================================================================================================
+void WinProgram::OnResize(GLFWwindow* window, int width, int height)
+{
+    _totalWidth = width;
+    _totalHeight = height;
+    glViewport(0, 0, _totalWidth, _totalHeight);
+}
+
+//==========================================================================================================================
+//OnMouseMove
+//==========================================================================================================================
+void WinProgram::OnMouseClick(GLFWwindow* window, int button, int action, int mods)
+{   
+    if(button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
+    {
+        Controller::Instance()->KeyDown(Keys::LEFT_MOUSE);
+    }
+    else if(button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
+    {
+        Controller::Instance()->KeyUp(Keys::LEFT_MOUSE);
+    }
+
+    if(button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
+    {
+        Controller::Instance()->KeyDown(Keys::RIGHT_MOUSE);
+    }
+    else if(button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_RELEASE)
+    {
+        Controller::Instance()->KeyUp(Keys::RIGHT_MOUSE);
+    }
+}
+
+//==========================================================================================================================
+//OnMouseMove
+//==========================================================================================================================
+void WinProgram::OnMouseMove(GLFWwindow* window, F64 posX, F64 posY)
+{
+    //Controller::Instance()->SetMouseCoord(KM::Vector(static_cast<F32>(posX), static_cast<F32>(posY)));
+}

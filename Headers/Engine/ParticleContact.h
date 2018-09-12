@@ -18,10 +18,8 @@ Written by Maxwell Miller
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
-#include <Engine/Particle2D.h>
-#include <Engine/Particle3D.h>
-#include <Engine/Vector2.h>
-#include <engine/Vector3.h>
+#include <Engine/Particle.h>
+#include <Engine/Vector.h>
 #include <Engine/Timer.h>
 #include <Engine/ErrorManager.h>
 
@@ -54,19 +52,16 @@ namespace KillerPhysics
 			_restitution = restitution;
 		}
 
-		inline void SetContactNormal(KM::Vector2& normal)
+		inline void SetContactNormal(KM::Vector& normal)
 		{
-			_contactNormal2D = normal;
+			_contactNormal = normal;
 		}
 
-		inline void SetContactNormal(KM::Vector3& normal)
+		inline void SetContacts(shared_ptr<Particle> particle1, shared_ptr<Particle> particle2=nullptr)
 		{
-			_contactNormal3D = normal;
+			_particles[0] = particle1;
+			_particles[1] = particle2;
 		}
-
-		void SetContacts(shared_ptr<Particle2D> particle1, shared_ptr<Particle2D> particle2=nullptr);
-
-		void SetContacts(shared_ptr<Particle3D> particle1, shared_ptr<Particle3D> particle2=nullptr);
 
 		inline void SetPenetration(real penetration)
 		{
@@ -80,14 +75,14 @@ namespace KillerPhysics
 
 		//move to cpp
 
-		inline const shared_ptr<Particle2D> GetParticleOne(void)
+		inline const shared_ptr<Particle> GetParticleOne(void)
 		{
-			return _particles2D[0];
+			return _particles[0];
 		}
 
-		inline const shared_ptr<Particle2D> GetParticleTwo(void)
+		inline const shared_ptr<Particle> GetParticleTwo(void)
 		{
-			return _particles2D[1];
+			return _particles[1];
 		}
 //==========================================================================================================================
 //
@@ -113,12 +108,9 @@ namespace KillerPhysics
 //Data
 //
 //==========================================================================================================================
-		shared_ptr<Particle2D>  _particles2D[2];
-		shared_ptr<Particle3D>  _particles3D[2];
-		shared_ptr<KM::Vector2> _particle2DMovements[2];
-		shared_ptr<KM::Vector3> _particle3DMovements[2];
-		KM::Vector2			    _contactNormal2D;
-		KM::Vector3			    _contactNormal3D;
+		shared_ptr<Particle>  _particles[2];
+		shared_ptr<KM::Vector> _particleMovements[2];
+		KM::Vector			    _contactNormal;
 		real 				    _restitution;
 		real				    _penetration;
 	};//end ParticleContact

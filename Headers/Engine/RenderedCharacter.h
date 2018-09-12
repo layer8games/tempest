@@ -1,5 +1,5 @@
 /*========================================================================
-A sprite based UI character to be rendered at run time. Is a GameObject2D
+A sprite based UI character to be rendered at run time. Is a GameObject
 
 This is not free to use, and cannot be used without the express permission
 of KillerWave.
@@ -10,8 +10,8 @@ Written by Maxwell Miller
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
-#include <Engine/GameObject2D.h>
-#include <Engine/Vector2.h>
+#include <Engine/GameObject.h>
+#include <Engine/Vector.h>
 #include <Engine/Sprite.h>
 #include <Engine/Color.h>
 
@@ -44,12 +44,12 @@ namespace KillerEngine
 			return _id;
 		}
 
-		void SetPosition(const KM::Vector2& pos)
+		void SetPosition(const KM::Vector& pos)
 		{
 			_pos = pos;
 		}
 
-		const KM::Vector2& GetPosition(void) const
+		const KM::Vector& GetPosition(void) const
 		{
 			return _pos;
 		}
@@ -113,7 +113,7 @@ namespace KillerEngine
 
 	private:
 		U32			_id;
-		KM::Vector2 _pos;
+		KM::Vector _pos;
 		F32 		_width;
 		F32			_height;
 		Sprite 		_sprite;

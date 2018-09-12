@@ -1,0 +1,271 @@
+.TH "KillerEngine" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerEngine
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCamera\fP"
+.br
+.ti -1c
+.RI "struct \fBCharacterData\fP"
+.br
+.ti -1c
+.RI "class \fBColor\fP"
+.br
+.ti -1c
+.RI "class \fBController\fP"
+.br
+.ti -1c
+.RI "class \fBEngine\fP"
+.br
+.ti -1c
+.RI "class \fBEnvironmentObject\fP"
+.br
+.ti -1c
+.RI "class \fBErrorManager\fP"
+.br
+.ti -1c
+.RI "class \fBFont\fP"
+.br
+.ti -1c
+.RI "class \fBGameObject2D\fP"
+.br
+.ti -1c
+.RI "class \fBGameObject3D\fP"
+.br
+.ti -1c
+.RI "class \fBLevel\fP"
+.br
+.ti -1c
+.RI "class \fBLevelManager\fP"
+.br
+.ti -1c
+.RI "class \fBModel\fP"
+.br
+.ti -1c
+.RI "class \fBModelRenderer\fP"
+.br
+.ti -1c
+.RI "class \fBRenderedCharacter\fP"
+.br
+.ti -1c
+.RI "class \fBRenderedText\fP"
+.br
+.ti -1c
+.RI "class \fBShader\fP"
+.br
+.ti -1c
+.RI "class \fBSprite\fP"
+.br
+.ti -1c
+.RI "class \fBSpriteBatch\fP"
+.br
+.ti -1c
+.RI "class \fBSpriteRenderer\fP"
+.br
+.ti -1c
+.RI "class \fBTexture\fP"
+.br
+.ti -1c
+.RI "class \fBTextureManager\fP"
+.br
+.ti -1c
+.RI "struct \fBVertex2D\fP"
+.br
+.ti -1c
+.RI "struct \fBVertex3D\fP"
+.br
+.ti -1c
+.RI "class \fBWinProgram\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBKeyStates\fP { \fBKEY_DOWN\fP = 1, \fBKEY_HELD\fP, \fBKEY_UP\fP, \fBKEY_RELEASED\fP }"
+.br
+.RI "States that a key is allowed to be in\&. "
+.ti -1c
+.RI "enum \fBKeys\fP { \fBNO_KEY\fP =0, \fBA\fP =1, \fBB\fP =2, \fBC\fP =3, \fBD\fP =4, \fBE\fP =5, \fBF\fP =6, \fBG\fP =7, \fBH\fP =8, \fBI\fP =9, \fBJ\fP =10, \fBK\fP =11, \fBL\fP =12, \fBM\fP =13, \fBN\fP =14, \fBO\fP =15, \fBP\fP =16, \fBQ\fP =17, \fBR\fP =18, \fBS\fP =19, \fBT\fP =20, \fBU\fP =21, \fBV\fP =22, \fBW\fP =23, \fBX\fP =24, \fBY\fP =25, \fBZ\fP =26, \fBUP_ARROW\fP =27, \fBDOWN_ARROW\fP =28, \fBLEFT_ARROW\fP =29, \fBRIGHT_ARROW\fP =30, \fBZERO\fP =31, \fBONE\fP =32, \fBTWO\fP =33, \fBTHREE\fP =34, \fBFOUR\fP =35, \fBFIVE\fP =36, \fBSIX\fP =37, \fBSEVEN\fP =38, \fBEIGHT\fP =39, \fBNINE\fP =40, \fBMINUS\fP =41, \fBPLUS\fP =42, \fBSPACE\fP =43, \fBESCAPE\fP =44, \fBTAB\fP =45, \fBLSHIFT\fP =46, \fBRSHIFT\fP =47, \fBENTER\fP =48, \fBRIGHT_MOUSE\fP =49, \fBLEFT_MOUSE\fP =50, \fBMIDDLE_MOUSE\fP =51 }"
+.br
+.RI "Keycodes to access specific Key state\&. "
+.ti -1c
+.RI "enum \fBErrorCode\fP { \fBEC_NoError\fP = 0, \fBEC_Unknown\fP, \fBEC_Game\fP, \fBEC_Engine\fP, \fBEC_Physics\fP, \fBEC_Windows\fP, \fBEC_OpenGL\fP, \fBEC_OpenGL_Shader\fP, \fBEC_DirectInput\fP, \fBEC_TextureManager\fP, \fBEC_GameObject\fP }"
+.br
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBKillerEngine::ErrorCode\fP"
+Error codes that are used to give a hint as to where to code that is throwing the error is written\&. These are disaplyed to the user in a pop up window when the end application is run\&. These are paired with a more detailed message when the end error is set\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIEC_NoError \fP\fP
+Default value\&. Shouldn't ever be used\&. 
+.TP
+\fB\fIEC_Unknown \fP\fP
+Fall through code, indicates an error in the setting of an error\&. 
+.TP
+\fB\fIEC_Game \fP\fP
+Indicates the error is in the end application, or the game, not the engine\&. 
+.TP
+\fB\fIEC_Engine \fP\fP
+Indicates the error is in the engine's main code, not very specific\&. 
+.TP
+\fB\fIEC_Physics \fP\fP
+Indicates the error is in the \fBKillerPhysics\fP namespace\&. 
+.TP
+\fB\fIEC_Windows \fP\fP
+Indicates that the error is related to the windowing system\&. 
+.TP
+\fB\fIEC_OpenGL \fP\fP
+Indicates that the error is in OpenGL related code\&. 
+.TP
+\fB\fIEC_OpenGL_Shader \fP\fP
+Indicates that the error is caused by OpenGL shader compilation\&. 
+.TP
+\fB\fIEC_DirectInput \fP\fP
+Depricated\&. Indicates that the error is with the DirectInput setup\&. 
+.TP
+\fB\fIEC_TextureManager \fP\fP
+Indicates that the error occured when trying to load a texture into memory\&. 
+.TP
+\fB\fIEC_GameObject \fP\fP
+Indicates that the issue is in a game object specifically\&. 
+.SS "enum \fBKillerEngine::Keys\fP"
+
+.PP
+Keycodes to access specific Key state\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINO_KEY \fP\fP
+.TP
+\fB\fIA \fP\fP
+.TP
+\fB\fIB \fP\fP
+.TP
+\fB\fIC \fP\fP
+.TP
+\fB\fID \fP\fP
+.TP
+\fB\fIE \fP\fP
+.TP
+\fB\fIF \fP\fP
+.TP
+\fB\fIG \fP\fP
+.TP
+\fB\fIH \fP\fP
+.TP
+\fB\fII \fP\fP
+.TP
+\fB\fIJ \fP\fP
+.TP
+\fB\fIK \fP\fP
+.TP
+\fB\fIL \fP\fP
+.TP
+\fB\fIM \fP\fP
+.TP
+\fB\fIN \fP\fP
+.TP
+\fB\fIO \fP\fP
+.TP
+\fB\fIP \fP\fP
+.TP
+\fB\fIQ \fP\fP
+.TP
+\fB\fIR \fP\fP
+.TP
+\fB\fIS \fP\fP
+.TP
+\fB\fIT \fP\fP
+.TP
+\fB\fIU \fP\fP
+.TP
+\fB\fIV \fP\fP
+.TP
+\fB\fIW \fP\fP
+.TP
+\fB\fIX \fP\fP
+.TP
+\fB\fIY \fP\fP
+.TP
+\fB\fIZ \fP\fP
+.TP
+\fB\fIUP_ARROW \fP\fP
+.TP
+\fB\fIDOWN_ARROW \fP\fP
+.TP
+\fB\fILEFT_ARROW \fP\fP
+.TP
+\fB\fIRIGHT_ARROW \fP\fP
+.TP
+\fB\fIZERO \fP\fP
+.TP
+\fB\fIONE \fP\fP
+.TP
+\fB\fITWO \fP\fP
+.TP
+\fB\fITHREE \fP\fP
+.TP
+\fB\fIFOUR \fP\fP
+.TP
+\fB\fIFIVE \fP\fP
+.TP
+\fB\fISIX \fP\fP
+.TP
+\fB\fISEVEN \fP\fP
+.TP
+\fB\fIEIGHT \fP\fP
+.TP
+\fB\fININE \fP\fP
+.TP
+\fB\fIMINUS \fP\fP
+.TP
+\fB\fIPLUS \fP\fP
+.TP
+\fB\fISPACE \fP\fP
+.TP
+\fB\fIESCAPE \fP\fP
+.TP
+\fB\fITAB \fP\fP
+.TP
+\fB\fILSHIFT \fP\fP
+.TP
+\fB\fIRSHIFT \fP\fP
+.TP
+\fB\fIENTER \fP\fP
+.TP
+\fB\fIRIGHT_MOUSE \fP\fP
+.TP
+\fB\fILEFT_MOUSE \fP\fP
+.TP
+\fB\fIMIDDLE_MOUSE \fP\fP
+.SS "enum \fBKillerEngine::KeyStates\fP"
+
+.PP
+States that a key is allowed to be in\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIKEY_DOWN \fP\fP
+.TP
+\fB\fIKEY_HELD \fP\fP
+.TP
+\fB\fIKEY_UP \fP\fP
+.TP
+\fB\fIKEY_RELEASED \fP\fP
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

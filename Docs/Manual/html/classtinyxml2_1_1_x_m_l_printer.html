@@ -90,6 +90,9 @@ $(document).ready(function(){initNavTree('classtinyxml2_1_1_x_m_l_printer.html',
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classtinyxml2_1_1_x_m_l_printer-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">tinyxml2::XMLPrinter Class Reference</div>  </div>
@@ -235,6 +238,49 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>_elementJustOpened</b
 <tr class="memitem:a99d59e67e084714541bee3ae43884bef"><td class="memItemLeft" align="right" valign="top"><a id="a99d59e67e084714541bee3ae43884bef"></a>
 <a class="el" href="classtinyxml2_1_1_dyn_array.html">DynArray</a>&lt; const char *, 10 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_stack</b></td></tr>
 <tr class="separator:a99d59e67e084714541bee3ae43884bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a6ad62ac682429f6e4a0b52dd4f8d1a53"><td class="memItemLeft" align="right" valign="top"><a id="a6ad62ac682429f6e4a0b52dd4f8d1a53"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>ENTITY_RANGE</b> = 64, 
+<b>BUF_SIZE</b> = 200
+ }</td></tr>
+<tr class="separator:a6ad62ac682429f6e4a0b52dd4f8d1a53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a5495e504053f63f2c4d603327314fa91"><td class="memItemLeft" align="right" valign="top"><a id="a5495e504053f63f2c4d603327314fa91"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>PrintString</b> (const char *, bool restrictedEntitySet)</td></tr>
+<tr class="separator:a5495e504053f63f2c4d603327314fa91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:abbd7ac45d97ae5eceec12d6c058119f9"><td class="memItemLeft" align="right" valign="top"><a id="abbd7ac45d97ae5eceec12d6c058119f9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_firstElement</b></td></tr>
+<tr class="separator:abbd7ac45d97ae5eceec12d6c058119f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79d91decf17990f7ce18b592f3fdf44e"><td class="memItemLeft" align="right" valign="top"><a id="a79d91decf17990f7ce18b592f3fdf44e"></a>
+FILE *&#160;</td><td class="memItemRight" valign="bottom"><b>_fp</b></td></tr>
+<tr class="separator:a79d91decf17990f7ce18b592f3fdf44e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19cd59a9dbe4b666264803fb91ac8ec1"><td class="memItemLeft" align="right" valign="top"><a id="a19cd59a9dbe4b666264803fb91ac8ec1"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_depth</b></td></tr>
+<tr class="separator:a19cd59a9dbe4b666264803fb91ac8ec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c5a442e57131faefde97188e92144f3"><td class="memItemLeft" align="right" valign="top"><a id="a3c5a442e57131faefde97188e92144f3"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_textDepth</b></td></tr>
+<tr class="separator:a3c5a442e57131faefde97188e92144f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e27c4b4fe791a96e4e139b5034e190b"><td class="memItemLeft" align="right" valign="top"><a id="a3e27c4b4fe791a96e4e139b5034e190b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_processEntities</b></td></tr>
+<tr class="separator:a3e27c4b4fe791a96e4e139b5034e190b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bc067aa3f0dcee68e4ac75e19117bd0"><td class="memItemLeft" align="right" valign="top"><a id="a7bc067aa3f0dcee68e4ac75e19117bd0"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_compactMode</b></td></tr>
+<tr class="separator:a7bc067aa3f0dcee68e4ac75e19117bd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a334eb34c43f21daebef9341b4768c275"><td class="memItemLeft" align="right" valign="top"><a id="a334eb34c43f21daebef9341b4768c275"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_entityFlag</b> [ENTITY_RANGE]</td></tr>
+<tr class="separator:a334eb34c43f21daebef9341b4768c275"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5df242509d42ae1c9128924121ebe093"><td class="memItemLeft" align="right" valign="top"><a id="a5df242509d42ae1c9128924121ebe093"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_restrictedEntityFlag</b> [ENTITY_RANGE]</td></tr>
+<tr class="separator:a5df242509d42ae1c9128924121ebe093"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19fca2e934576a892fefe2f602874d59"><td class="memItemLeft" align="right" valign="top"><a id="a19fca2e934576a892fefe2f602874d59"></a>
+<a class="el" href="classtinyxml2_1_1_dyn_array.html">DynArray</a>&lt; char, 20 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_buffer</b></td></tr>
+<tr class="separator:a19fca2e934576a892fefe2f602874d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Printing functionality. The <a class="el" href="classtinyxml2_1_1_x_m_l_printer.html">XMLPrinter</a> gives you more options than the <a class="el" href="classtinyxml2_1_1_x_m_l_document.html#a867cf5fa3e3ff6ae4847a8b7ee8ec083">XMLDocument::Print()</a> method.</p>

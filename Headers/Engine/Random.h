@@ -28,8 +28,7 @@ Written by Maxwell Miller
 
 //===== Engine Includes =====
 #include <Engine/Atom.h>
-#include <Engine/Vector2.h>
-#include <Engine/Vector3.h>
+#include <Engine/Vector.h>
 #include <Engine/Quaternion.h>
 
 //===== STL includes =====
@@ -69,9 +68,7 @@ namespace KillerMath
 
 		F64 RandomDouble(F64 min, F64 max);
 
-		Vector2 RandomVector2(F32 min, F32 max);
-
-		Vector3 RandomVector3(F32 min, F32 max);
+		Vector RandomVector(F32 min, F32 max, bool is2d=false);
 
 		Quaternion RandomQuaternion(F32 min, F32 max);
 

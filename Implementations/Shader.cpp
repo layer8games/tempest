@@ -1,4 +1,5 @@
 #include <Engine/Shader.h>
+#include <iostream>
 
 using namespace KillerEngine;
 //==========================================================================================================================
@@ -8,15 +9,16 @@ using namespace KillerEngine;
 //==========================================================================================================================
 Shader::Shader(void)
 :
-_spriteShader(0),
-_modelShader(0)
-{  }
+_uniformLocations(),
+_shaderProgram(0)
+{
+	_shaderProgram = glCreateProgram();
+}
 
 Shader::~Shader(void)
 {
 	glUseProgram(0);
-	glDeleteProgram(_spriteShader);
-	glDeleteProgram(_modelShader);
+	glDeleteProgram(_shaderProgram);
 }
 
 //==========================================================================================================================
@@ -24,253 +26,95 @@ Shader::~Shader(void)
 //Functions
 //
 //==========================================================================================================================
-shared_ptr<Shader> Shader::_instance = NULL;
-
-shared_ptr<Shader> Shader::Instance(void)
+void Shader::LoadShader(std::vector<ShaderData> shaders)
 {
-	if(_instance == NULL)
+	if(shaders.size() > 5)
 	{
-		_instance = shared_ptr<Shader>(new Shader());
+		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Shader::LoadShader. Too many shaders passed to function. Max of 5 allowed, sent = " + shaders.size());
+		return;
 	}
 
-	return _instance;
-}
+	GLuint vertexProgram, fragmentProgram = 0;
+	GLint shaderSize;
 
-void Shader::InitSpriteShader(void)
-{
-	//=====Vertex Shaders=====
-	//This is used when only colors, not textures are used to render
-	//a pirmitive
-	GLchar* vertexShaderSource[] = 
+	for(auto i : shaders)
 	{
-		"#version 430 core																	\n"
-		
-		"layout (location = 0) in vec4 position;											\n"
-		"layout (location = 1) in vec4 color; 												\n"
-		"layout (location = 2) in vec2 dimensions;											\n"
-		"layout (location = 3) in vec2 bottomTop;											\n"
-		"layout (location = 4) in vec2 leftRight; 											\n"
-
-		"uniform mat4 projection_mat;														\n"
-		"uniform mat4 translation_mat;														\n"
-		//"uniform mat4 transform_mat;   														\n"
-		
-		"out vec4 gs_color;																	\n"
-		"out vec4 gs_dimensions;															\n"
-		"out vec2 gs_bottomTop;																\n"
-		"out vec2 gs_leftRight;																\n"
-
-		"void main(void) 																	\n"
-		"{																					\n"
-		"	gl_Position = projection_mat * position;										\n"
-		//"	gl_Position = perspective_mat * modelView_mat * position;						\n"
-		"	gs_color = color;																\n"
-		//Because the geometry shader just applies the dimensions directly, the dimensions 
-		//have to be transformed by the projection_matrix. Maybe this could be done better. 
-		"	gs_dimensions = projection_mat * vec4(dimensions.x, dimensions.y, 0.0, 0.0);	\n"
-		"	gs_bottomTop = bottomTop;														\n"
-		"	gs_leftRight = leftRight; 														\n"
-		"}																					\n"
-	};
-
-	//=====Geomtry Shader=====
-	GLchar* geometryShaderSource[] =
-	{
-		"#version 430 core 																					\n"
-		
-		"layout(points) in; 																				\n"
-		"layout(triangle_strip, max_vertices = 6) out;														\n"
-		
-		"in vec4 gs_color[]; 																				\n"
-		"in vec4 gs_dimensions[]; 																			\n"
-		"in vec2 gs_bottomTop[];																			\n"
-		"in vec2 gs_leftRight[];																			\n"
-		
-		"out vec4 fs_color; 																				\n"
-		"out vec2 fs_uvs; 																					\n"
-		
-		"void main()																						\n"
-		"{																									\n"
-		"	fs_color = gs_color[0]; 																		\n"
-		//Right Bottom
-		"	fs_uvs = vec2(gs_leftRight[0].y, gs_bottomTop[0].x);											\n"
-		"	gl_Position = gl_in[0].gl_Position + vec4(-gs_dimensions[0].x, -gs_dimensions[0].y, 0, 0);		\n"
-		" 	EmitVertex(); 																					\n"
-		//Right Top
-		"	fs_uvs = vec2(gs_leftRight[0].y, gs_bottomTop[0].y);											\n"
-		"	gl_Position = gl_in[0].gl_Position + vec4(-gs_dimensions[0].x, gs_dimensions[0].y, 0.0, 0.0);	\n"
-		"	EmitVertex(); 																					\n"
-		//Left Bottom
-		"	fs_uvs = vec2(gs_leftRight[0].x, gs_bottomTop[0].x);											\n"
-		" 	gl_Position = gl_in[0].gl_Position + vec4(gs_dimensions[0].x, -gs_dimensions[0].y, 0.0, 0.0); 	\n"
-		"	EmitVertex();				 																	\n"
-		//Left Top
-		"	fs_uvs = vec2(gs_leftRight[0].x, gs_bottomTop[0].y);											\n"
-		"	gl_Position = gl_in[0].gl_Position + vec4(gs_dimensions[0].x, gs_dimensions[0].y, 0, 0); 		\n"
-		"	EmitVertex(); 																					\n"
-		
-		"	EndPrimitive(); 																				\n"
-		"}																									\n"
-	};
-
-
-	//=====Fragment Shaders=====
-	//This is used when only colors, not textures are used to render
-	//a pirmitive
-	GLchar* fragmentShaderSource[] = 
-	{
-		"#version 430 core																\n"
-
-		"uniform sampler2D tex;															\n"
-
-		"in vec4 fs_color;																\n"
-		"in vec2 fs_uvs;"
-		"out vec4 color;																\n"
-		
-		"void main(void) 																\n"
-		"{																				\n"
-		"	if(fs_uvs == vec2(0, 0)) { color = fs_color; }								\n"
-		"	else { color = texture(tex, fs_uvs); } 										\n"
-		"}																				\n"
-	};
-
-
-	//=====Compile Shaders=====
-	GLuint vertexShaderProgram;
-	GLuint geometryShaderProgram;
-	GLuint fragmentShaderProgram;
-
-	vertexShaderProgram = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShaderProgram, 1, vertexShaderSource, NULL);
-	glCompileShader(vertexShaderProgram);
-
-	geometryShaderProgram = glCreateShader(GL_GEOMETRY_SHADER);
-	glShaderSource(geometryShaderProgram, 1, geometryShaderSource, NULL);
-	glCompileShader(geometryShaderProgram);
-
-	fragmentShaderProgram = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShaderProgram, 1, fragmentShaderSource, NULL);
-	glCompileShader(fragmentShaderProgram);
-
-	//=====Link=====
-	_spriteShader = glCreateProgram();
-	glAttachShader(_spriteShader, vertexShaderProgram);
-	glAttachShader(_spriteShader, geometryShaderProgram);
-	glAttachShader(_spriteShader, fragmentShaderProgram);
-	glLinkProgram(_spriteShader);
-
-	GLint isLinked = 0;
-	glGetProgramiv(_spriteShader, GL_LINK_STATUS, &isLinked);
-
-	//=====Error Checking=====
-	if(isLinked == GL_FALSE)
-	{
-		string errorMessage("Compile Error in Sprite Shader\n");
-		GLint maxLength = 0;
-		glGetProgramiv(_spriteShader, GL_INFO_LOG_LENGTH, &maxLength);
-
-		//The maxLength includes the NULL character
-		std::vector<GLchar> infoLog(maxLength);
-		glGetProgramInfoLog(_spriteShader, maxLength, &maxLength, &infoLog[0]);
-
-		for(auto i = infoLog.begin(); i != infoLog.end(); ++i)
+		if(i.type == VERTEX)
 		{
-			errorMessage += *i ;
+			vertexProgram = glCreateShader(GL_VERTEX_SHADER);
+			string vertexString = _GetFileString(i.filePath);
+			const GLchar* vertexSource = vertexString.c_str();
+			shaderSize = vertexString.size();
+
+			glShaderSource(vertexProgram, 1, &vertexSource, (GLint*)&shaderSize);
+			glCompileShader(vertexProgram);
+
+			if(!_CheckCompileErrors(vertexProgram))
+			{
+				glDeleteProgram(vertexProgram);
+				return;
+			}
+		} 
+		else if(i.type == FRAGMENT)
+		{
+			fragmentProgram = glCreateShader(GL_FRAGMENT_SHADER);
+			string fragmentString = _GetFileString(i.filePath);
+			const GLchar* fragmentSource = fragmentString.c_str();
+			shaderSize = fragmentString.size();
+
+			glShaderSource(fragmentProgram, 1, &fragmentSource, (GLint*)&shaderSize);
+			glCompileShader(fragmentProgram);
+			
+			if(!_CheckCompileErrors(fragmentProgram))
+			{
+				glDeleteProgram(fragmentProgram);
+				return;
+			}
 		}
-
-		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, errorMessage);
-
-		//The program is useless now. So delete it.
-		glDeleteProgram(_spriteShader);
-
+		else  
+		{
+			ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Shader::LoadShader; No such shader type " + i.type);	
+		}
 	}
 
-	//=====Clean up=====
-	glDeleteShader(vertexShaderProgram);
-	glDeleteShader(geometryShaderProgram);
-	glDeleteShader(fragmentShaderProgram);
-}
-
-void Shader::InitModelShader(void)
-{
-	const GLchar* vertexShaderSource[] =
-	{
-		"#version 430 core															\n"
-
-		"layout (location = 0) in vec4 position;									\n"
-		"layout (location = 1) in vec4 color; 										\n"
-		"uniform mat4 modelView_mat; 												\n"
-
-		"uniform mat4 projection_mat;												\n"
-		
-		"out vec4 fs_color;															\n"
-
-		"void main(void)															\n"
-		"{ 																			\n"
-		"	gl_Position = projection_mat * modelView_mat * position;			    \n"
-		"	fs_color = color;														\n"
-		"}																			\n"
-	};
-
-	const GLchar* fragmentShaderSource[] =
-	{
-		"#version 430 core															\n"
-
-		"in vec4 fs_color;															\n"
-		"out vec4 color;															\n"
-
-		"void main(void)															\n"
-		"{																			\n"
-		"	color = fs_color;														\n"
-		"}																			\n"
-	};
-
-	//===== compile shader =====
-	GLuint vertexShaderProgram;
-	GLuint fragmentShaderProgram;
-
-	vertexShaderProgram = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShaderProgram, 1, vertexShaderSource, NULL);
-	glCompileShader(vertexShaderProgram);
-
-	fragmentShaderProgram = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShaderProgram, 1, fragmentShaderSource, NULL);
-	glCompileShader(fragmentShaderProgram);
-
-	//===== Link program =====
-	_modelShader = glCreateProgram();
-	glAttachShader(_modelShader, vertexShaderProgram);
-	glAttachShader(_modelShader, fragmentShaderProgram);
-	glLinkProgram(_modelShader);
+	glAttachShader(_shaderProgram, vertexProgram);
+	glAttachShader(_shaderProgram, fragmentProgram);
+	glLinkProgram(_shaderProgram);
 
 	//===== Error checking =====
 	GLint isLinked = 0; 
-	glGetProgramiv(_modelShader, GL_LINK_STATUS, &isLinked);
+	glGetProgramiv(_shaderProgram, GL_LINK_STATUS, &isLinked);
 
 	if(isLinked == GL_FALSE)
 	{
-		string errorMessage("Compile Error in Model\n");
-		GLint maxLength = 0;
-		glGetProgramiv(_modelShader, GL_INFO_LOG_LENGTH, &maxLength);
+		GLint length = 0;
+		glGetProgramiv(_shaderProgram, GL_INFO_LOG_LENGTH, &length);
 
-		//The maxLength includes the NULL character
-		std::vector<GLchar> infoLog(maxLength);
-		glGetProgramInfoLog(_modelShader, maxLength, &maxLength, &infoLog[0]);
+		//The length includes the NULL character
+		string errorLog(length, ' ');
+		glGetProgramInfoLog(_shaderProgram, length, &length, &errorLog[0]);
 
-		for(auto i = infoLog.begin(); i != infoLog.end(); ++i)
-		{
-			errorMessage += *i ;
-		}
-
-		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, errorMessage);
+		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Compile Error in shader\n" + errorLog);
 
 		//The program is useless now. So delete it.
-		glDeleteProgram(_modelShader);
+		glDeleteProgram(_shaderProgram);
 	}
 
 	//===== clean up =====
-	glDeleteProgram(vertexShaderProgram);
-	glDeleteProgram(fragmentShaderProgram);
+	glDeleteProgram(vertexProgram);
+	glDeleteProgram(fragmentProgram);
+}
+
+void Shader::Use(bool state)
+{
+	if(state) 
+	{
+		glUseProgram(_shaderProgram);
+	}
+	else
+	{
+		glUseProgram(0);
+	}
 }
 
 //==========================================================================================================================
@@ -278,22 +122,94 @@ void Shader::InitModelShader(void)
 //Accessors
 //
 //==========================================================================================================================
-GLuint Shader::GetSpriteShader(void)
-{
-	if(_spriteShader == 0)
-	{
-		InitSpriteShader();
-	}
 
-	return _spriteShader;
+void Shader::SetUniform(const GLchar* name, Color col)
+{
+	GLuint location = _GetUniformLocation(name);
+	glUniform4f(location, col.GetRed(), col.GetGreen(), col.GetBlue(), col.GetAlpha());
 }
 
-GLuint Shader::GetModelShader(void)
+void Shader::SetUniform(const GLchar* name, KM::Vector vec)
 {
-	if(_modelShader == 0)
+	GLuint location = _GetUniformLocation(name);
+	glUniform4f(location, vec[0], vec[1], vec[2], vec[3]);
+}
+
+void Shader::SetUniform(const GLchar* name, KM::Matrix mat)
+{
+	GLuint location = _GetUniformLocation(name);
+	glUniformMatrix4fv(location, 1, GL_FALSE, &mat.GetElems()[0]);
+}
+
+//==========================================================================================================================
+//
+//Operator overloads
+//
+//==========================================================================================================================
+Shader& Shader::operator=(const Shader& shader)
+{
+	_uniformLocations = shader.GetUniformLocations();
+	_shaderProgram = shader.GetProgram();
+
+	return *this;
+}
+
+//==========================================================================================================================
+//
+//Private Functions
+//
+//==========================================================================================================================
+string Shader::_GetFileString(string path)
+{
+	std::ifstream file {};
+	std::stringstream shaderData;
+
+	file.open(path.c_str());
+
+	if(!file.is_open())
 	{
-		InitModelShader();
+		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Unable to open file path to shader: " + path);
 	}
 
-	return _modelShader;
+	shaderData << file.rdbuf();
+
+	file.close();
+
+	return shaderData.str();
+}
+
+bool Shader::_CheckCompileErrors(GLuint shader)
+{
+	GLint status = 0;
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
+	
+	if(status == GL_FALSE)
+	{
+		GLint length = 0;
+		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
+
+		//The length includes the NULL character
+		string errorLog(length, ' ');	
+		glGetProgramInfoLog(shader, length, &length, &errorLog[0]);
+
+		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Compile Error in shader\n" + errorLog);
+
+		return false;
+	}
+
+	return true;
+}
+
+GLuint Shader::_GetUniformLocation(const GLchar* name)
+{
+	auto it = _uniformLocations.find(name);
+
+	if(it == _uniformLocations.end())
+	{
+		//this use. Make current program active if it is not.
+		Use();
+		_uniformLocations[name] = glGetUniformLocation(_shaderProgram, name);
+	}
+
+	return _uniformLocations[name];
 }

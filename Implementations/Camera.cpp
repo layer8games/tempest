@@ -4,6 +4,9 @@
 using namespace KillerEngine;
 
 //==========================================================================================================================
+//Camera
+//==========================================================================================================================
+//==========================================================================================================================
 //
 //Constructors	 	
 //
@@ -11,9 +14,19 @@ using namespace KillerEngine;
 Camera::Camera(void) 
 : 
 _background(1.0f), 
-_projection(1.0f), 
-_translation(1.0f), 
-_currentShader(0)
+_projection(1.0f),
+_position(0.0f),
+_target(0.0f),
+_up(0.0f, 1.0f, 0.0f),
+_look(0.0f),
+_right(0.0f),
+_lastMouseCoords(0.0f),
+_mouseSensitivity(1.0f),
+_yaw(0.0f), 
+_pitch(0.0f),
+_deltaYaw(0.0f),
+_deltaPitch(0.0f),
+_fov(45.0f)
 {  }
 
 Camera::~Camera(void)
@@ -24,41 +37,6 @@ Camera::~Camera(void)
 //Camera Functions
 //
 //==========================================================================================================================
-shared_ptr<Camera> Camera::_instance{NULL};
-
-shared_ptr<Camera> Camera::Instance(void)
-{
-	if(_instance == NULL) 
-	{
-	 	_instance = shared_ptr<Camera>{new Camera()}; 
-	}
-	return _instance;
-}
-
-void Camera::SetUp(GLuint shader)
-{		
-	KM::Matrix finalMatrix = _projection * _translation;
-
-	const F32* data = finalMatrix.GetElems();
-
-	GLint transform1 = glGetUniformLocation(shader, "projection_mat");
-
-	glUniformMatrix4fv(transform1, 1, GL_FALSE, data);
-
-/*
-	//not working matrix multiplication. Will fix later
-	_translation = _projection * _translation;
-	//_translation *= _projection;
-	
-	const F32* data = _translation.GetElems();
-
-	GLint transform = glGetUniformLocation(shader, "transform_mat");
-
-	glUniformMatrix4fv(transform, 1, GL_FALSE, data);
-*/
-	
-}
-
 void Camera::SetOrthographic(void)
 {
 	_projection.MakeOrthographic((F32)WinProgram::Instance()->GetWidth(), (F32)WinProgram::Instance()->GetHeight(), 200.0f, false);
@@ -75,55 +53,199 @@ void Camera::SetPerspective(void)
 								200.0f);//far
 }
 
+void Camera::SetPerspective(F32 fov, F32 aspect, F32 nearPlane, F32 farPlane)
+{
+	_projection.MakePerspective(fov, aspect, nearPlane, farPlane);
+}
+
 void Camera::SetDefaultMatrix(void)
 {
 	_projection.MakeIdentity();
 }
 
-void Camera::SetPosition(F32 x, F32 y)
+//==========================================================================================================================
+//OrbitCamera
+//==========================================================================================================================
+//==========================================================================================================================
+//
+//Constructors
+//
+//==========================================================================================================================
+OrbitCamera::OrbitCamera(void)
+:
+_radius(10.0f)
+{  }
+
+OrbitCamera::~OrbitCamera(void)
+{  }
+
+//==========================================================================================================================
+//
+//Functions
+//
+//==========================================================================================================================
+void OrbitCamera::v_Rotate(void)
 {
-	_pos = KM::Vector2(x, y);
-	_translation.Translate(_pos);
+	_yaw = DegreeToRadian(_deltaYaw);
+	_pitch = DegreeToRadian(_deltaPitch);
+
+	_pitch = FLOAT_CLAMP(_pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
+
+	_v_UpdateCameraVectors();
 }
 
-void Camera::SetPosition(const KM::Vector2& V)
+void OrbitCamera::v_Update(void)
 {
-	_pos = V;
-	_translation.Translate(_pos);
+	KM::Vector coords = Controller::Instance()->GetMouseCoord();
+
+	//Change oribt with left click
+	if(Controller::Instance()->GetKeyHeld(LEFT_MOUSE))
+	{	
+		_deltaYaw -= (coords[0] - _lastMouseCoords[0]) * _mouseSensitivity;
+		_deltaPitch += (coords[1] - _lastMouseCoords[1]) * _mouseSensitivity;
+	}
+
+	if(Controller::Instance()->GetKeyHeld(RIGHT_MOUSE))
+	{
+		F32 dx = 0.01f * (coords[0] - _lastMouseCoords[0]);
+		F32 dy = 0.01f * (coords[1] - _lastMouseCoords[1]);
+		_radius += dx - dy;
+	}
+
+	_lastMouseCoords = coords;
+
+	v_Rotate();
 }
 
-void Camera::SetPosition(F32 x, F32 y, F32 z)
+//==========================================================================================================================
+//
+//Private
+//
+//==========================================================================================================================
+void OrbitCamera::_v_UpdateCameraVectors(void)
 {
-	_pos = KM::Vector3(x, y, z);
-	_translation.Translate(_pos);
+	_position[0] = _target[0] + _radius * cos(_pitch) * sin(_yaw);
+	_position[1] = _target[1] + _radius * sin(_pitch);
+	_position[2] = _target[2] + _radius * cos(_pitch) * cos(_yaw);
 }
 
-void Camera::SetPosition(const KM::Vector3& V)
+//==========================================================================================================================
+//FPS Camera
+//==========================================================================================================================
+//==========================================================================================================================
+//
+//Constructors
+//
+//==========================================================================================================================		
+FPSCamera::FPSCamera(void)
+:
+_worldUp(0.0f, 1.0f, 0.0f),
+_zoomSensitivity(1.0f),
+_moveSpeed(1.0f),
+_deadZone(0.01f)
 {
-	_pos = V;
-	_translation.Translate(_pos);
+	_position = 0.0f;
+	_yaw = R_PI;
+	_pitch = 0.0f;
 }
 
-void Camera::ScalePosition(F32 x, F32 y, F32 scale)
+FPSCamera::FPSCamera(const KM::Vector position, F32 yaw, F32 pitch)
+:
+_worldUp(0.0f, 1.0f, 0.0f),
+_zoomSensitivity(1.0f),
+_moveSpeed(1.0f),
+_deadZone(0.01f)
 {
-	_pos.AddScaledVector(KM::Vector2(x, y), scale);
-	_translation.Translate(_pos);
+	_position = position;
+	_yaw = yaw;
+	_pitch = pitch;
 }
 
-void Camera::ScalePosition(const KM::Vector2& V, F32 scale)
+FPSCamera::~FPSCamera(void)
+{  }
+
+//==========================================================================================================================
+//
+//Virtual Functions
+//
+//==========================================================================================================================
+void FPSCamera::v_Update(void)
 {
-	_pos.AddScaledVector(V, scale);
-	_translation.Translate(_pos);
+	KM::Vector mouseCoord = Controller::Instance()->GetMouseCoord();
+	S32 width = WinProgram::Instance()->GetWidth();
+	S32 height = WinProgram::Instance()->GetHeight();
+
+	//Set yaw and pitch for rotate
+	_deltaYaw = static_cast<F32>((width / 2.0f - mouseCoord[0])) * _mouseSensitivity;
+	_deltaPitch = static_cast<F32>((height / 2.0f - mouseCoord[1])) * _mouseSensitivity;
+
+	v_Rotate();
+
+	//Clamp cursor to screen
+	WinProgram::Instance()->ResetMouseCursor();
+
+	if(Controller::Instance()->GetKeyHeld(W))
+	{
+		v_Move(_look * _moveSpeed * KM::Timer::Instance()->DeltaTime()); //forward
+	}
+	else if(Controller::Instance()->GetKeyHeld(S))
+	{
+		v_Move(_look * -_moveSpeed * KM::Timer::Instance()->DeltaTime()); //back
+	}
+	
+	if(Controller::Instance()->GetKeyHeld(D))
+	{
+		v_Move(_right * _moveSpeed * KM::Timer::Instance()->DeltaTime()); //right
+	}
+	else if(Controller::Instance()->GetKeyHeld(A))
+	{
+		v_Move(_right * -_moveSpeed * KM::Timer::Instance()->DeltaTime()); //left
+	}
+
+	if(Controller::Instance()->GetKeyHeld(SPACE))
+	{
+		v_Move(_up * _moveSpeed * KM::Timer::Instance()->DeltaTime()); //up
+	}
+	else if(Controller::Instance()->GetKeyHeld(LSHIFT))
+	{
+		v_Move(_up * -_moveSpeed * KM::Timer::Instance()->DeltaTime()); //down
+	}
 }
 
-void Camera::ScalePosition(F32 x, F32 y, F32 z, F32 scale)
+void FPSCamera::v_Rotate(void)
 {
-	_pos.AddScaledVector(KM::Vector3(x, y, z), scale);
-	_translation.Translate(_pos);
+	_yaw += DegreeToRadian(_deltaYaw);
+	_pitch += DegreeToRadian(_deltaPitch);
+
+	_pitch = FLOAT_CLAMP(_pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
+
+	_v_UpdateCameraVectors();
+
+	_deltaYaw = 0.0f;
+	_deltaPitch = 0.0f;
 }
 
-void Camera::ScalePosition(const KM::Vector3& V, F32 scale)
+void FPSCamera::v_Move(const KM::Vector offset)
 {
-	_pos.AddScaledVector(V, scale);
-	_translation.Translate(_pos);
+	_position += offset * _moveSpeed * KM::Timer::Instance()->DeltaTime();
+	_v_UpdateCameraVectors();
+}
+
+void FPSCamera::_v_UpdateCameraVectors(void)
+{
+	//Using spherical to cartesian
+	//Calculate the view direction
+	_look[0] = cos(_pitch) * sin(_yaw);
+	_look[1] = sin(_pitch);
+	_look[2] = cos(_pitch) * cos(_yaw);
+	_look.Normalize();
+
+	//Re-calculate the right and up vectors
+	_right = _look.CrossProduct(_worldUp);
+	_right.Normalize();
+
+	_up = _right.CrossProduct(_look);
+	_up.Normalize();
+
+	_target = _position + _look;
 }

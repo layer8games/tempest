@@ -1,4 +1,4 @@
-.TH "KillerMath::Random" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Random" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -36,6 +36,20 @@ KillerMath::Random
 .in +1c
 .ti -1c
 .RI "static shared_ptr< \fBRandom\fP > \fBInstance\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::mt19937 \fB_generator\fP"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBRandom\fP > \fB_instance\fP = nullptr"
 .br
 .in -1c
 

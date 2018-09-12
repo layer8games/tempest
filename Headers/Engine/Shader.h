@@ -20,17 +20,34 @@ Written by Maxwell Miller
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
+#include <Engine/Color.h>
+#include <Engine/Vector.h>
+#include <Engine/Matrix.h>
+
+namespace KM = KillerMath;
 
 //=====STL includes=====
 #include <vector>
+#include <map>
+#include <fstream>
+#include <sstream>
 
-//=====OGL includes=====
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/wglext.h>
+using std::map;
 
 namespace KillerEngine
 {
+	enum ShaderType
+	{
+		VERTEX,
+		FRAGMENT
+	};
+
+	struct ShaderData
+	{
+		string filePath;
+		ShaderType type;
+	};
+
 	class Shader
 	{
 	public:
@@ -42,30 +59,78 @@ namespace KillerEngine
 		Shader(void);
 
 		~Shader(void);
+
 //==========================================================================================================================
 //
 //Functions
 //
 //==========================================================================================================================
-		static shared_ptr<Shader> Instance(void);
+		//void InitSpriteShader(void);
 
-		void InitSpriteShader(void);
+		//void InitModelShader(void);
 
-		void InitModelShader(void);
+		//GLuint CreateShader(void);
+
+		void LoadShader(std::vector<ShaderData> shaders);
+
+		void Use(bool state=true);
 
 //==========================================================================================================================
 //
 //Accessors
 //
+//==========================================================================================================================		
+
+		void SetUniform(const GLchar* name, Color col);
+
+		void SetUniform(const GLchar* name, KM::Vector vec);
+
+		void SetUniform(const GLchar* name, KM::Matrix mat);
+
+		inline GLuint GetProgram(void) const
+		{
+			return _shaderProgram;
+		}
+
+		inline void SetProgram(GLuint program)
+		{
+			_shaderProgram = program;
+		}
+
+		inline map<string, GLuint> GetUniformLocations(void) const
+		{
+			return _uniformLocations;
+		}
+
+		inline void SetUniformLocations(map<string, GLuint> uniforms)
+		{
+			_uniformLocations = uniforms;
+		}
+
 //==========================================================================================================================
-		GLuint GetSpriteShader(void);
-
-		GLuint GetModelShader(void);
-
+//
+//Operator Overloads
+//
+//==========================================================================================================================		
+		Shader& operator=(const Shader& shader);
+	
 	private:
-		static shared_ptr<Shader> _instance;
-		GLuint 					  _spriteShader;
-		GLuint 					  _modelShader;
+//==========================================================================================================================
+//
+//Private Functions
+//
+//==========================================================================================================================
+		string _GetFileString(string path);
+		
+		bool _CheckCompileErrors(GLuint shader);
+
+		GLuint _GetUniformLocation(const GLchar* name);
+			
+//==========================================================================================================================
+//Data
+//==========================================================================================================================			
+		map<string, GLuint> 	_uniformLocations;
+		GLuint 					_shaderProgram;
 
 	};//end Class
 }//end Namespace

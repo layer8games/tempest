@@ -1,4 +1,4 @@
-.TH "rapidxml::xml_node< Ch >" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "rapidxml::xml_node< Ch >" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -90,6 +90,41 @@ Inherited by \fBrapidxml::xml_document< Ch >\fP\&.
 .RI "void \fBremove_all_attributes\fP ()"
 .br
 .RI "Removes all attributes of node\&. "
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBxml_node\fP (const \fBxml_node\fP &)"
+.br
+.ti -1c
+.RI "void \fBoperator=\fP (const \fBxml_node\fP &)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBnode_type\fP \fBm_type\fP"
+.br
+.ti -1c
+.RI "\fBxml_node\fP< Ch > * \fBm_first_node\fP"
+.br
+.ti -1c
+.RI "\fBxml_node\fP< Ch > * \fBm_last_node\fP"
+.br
+.ti -1c
+.RI "\fBxml_attribute\fP< Ch > * \fBm_first_attribute\fP"
+.br
+.ti -1c
+.RI "\fBxml_attribute\fP< Ch > * \fBm_last_attribute\fP"
+.br
+.ti -1c
+.RI "\fBxml_node\fP< Ch > * \fBm_prev_sibling\fP"
+.br
+.ti -1c
+.RI "\fBxml_node\fP< Ch > * \fBm_next_sibling\fP"
+.br
 .in -1c
 .SS "Additional Inherited Members"
 .SH "Detailed Description"

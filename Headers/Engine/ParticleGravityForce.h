@@ -17,7 +17,7 @@ Written by Maxwell Miller
 //=====Engine includes=====
 #include <Engine/Atom.h>
 #include <Engine/ParticleForceGenerator.h>
-#include <Engine/Vector2.h>
+#include <Engine/Vector.h>
 
 namespace KM = KillerMath;
 namespace KE = KillerEngine;
@@ -34,9 +34,7 @@ namespace KillerPhysics
 //==========================================================================================================================		
 		ParticleGravityForce(void);
 
-		ParticleGravityForce(const KM::Vector2& gravity);
-
-		ParticleGravityForce(const KM::Vector3& gravity);
+		ParticleGravityForce(const KM::Vector& gravity);
 
 		~ParticleGravityForce(void);
 
@@ -45,27 +43,19 @@ namespace KillerPhysics
 //Virtual functions
 //
 //==========================================================================================================================		
-		void v_UpdateForce(shared_ptr<Particle2D> particle) final;
-
-		void v_UpdateForce(shared_ptr<Particle3D> particle) final;
+		void v_UpdateForce(shared_ptr<Particle> particle) final;
 
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================		
-		inline void SetGravityAcceleration(KM::Vector2& gravity)
+		inline void SetGravityAcceleration(KM::Vector& gravity)
 		{
-			_gravityAcc2D = gravity;
-		}
-
-		inline void SetGravityAcceleration(KM::Vector3& gravity)
-		{
-			_gravityAcc3D = gravity;
+			_gravityAcc = gravity;
 		}
 
 	private:
-		KM::Vector2 _gravityAcc2D;
-		KM::Vector3 _gravityAcc3D;
+		KM::Vector _gravityAcc;
 	};//end class
 }//end namespace

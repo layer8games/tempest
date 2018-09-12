@@ -1,4 +1,4 @@
-.TH "rapidxml::xml_document< Ch >" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "rapidxml::xml_document< Ch >" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,6 +10,34 @@ rapidxml::xml_document< Ch >
 \fC#include <rapidxml\&.hpp>\fP
 .PP
 Inherits \fBrapidxml::xml_node< Ch >\fP, and \fBrapidxml::memory_pool< Ch >\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBattribute_name_pred\fP"
+.br
+.ti -1c
+.RI "struct \fBattribute_value_pred\fP"
+.br
+.ti -1c
+.RI "struct \fBattribute_value_pure_pred\fP"
+.br
+.ti -1c
+.RI "struct \fBnode_name_pred\fP"
+.br
+.ti -1c
+.RI "struct \fBtext_pred\fP"
+.br
+.ti -1c
+.RI "struct \fBtext_pure_no_ws_pred\fP"
+.br
+.ti -1c
+.RI "struct \fBtext_pure_with_ws_pred\fP"
+.br
+.ti -1c
+.RI "struct \fBwhitespace_pred\fP"
+.br
+.in -1c
 .SS "Public Member Functions"
 
 .in +1c
@@ -22,6 +50,56 @@ Inherits \fBrapidxml::xml_node< Ch >\fP, and \fBrapidxml::memory_pool< Ch >\fP\&
 .br
 .ti -1c
 .RI "void \fBclear\fP ()"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<int Flags> void \fBparse_bom\fP (Ch *&text)"
+.br
+.ti -1c
+.RI "template<int Flags> \fBxml_node\fP< Ch > * \fBparse_xml_declaration\fP (Ch *&text)"
+.br
+.ti -1c
+.RI "template<int Flags> \fBxml_node\fP< Ch > * \fBparse_comment\fP (Ch *&text)"
+.br
+.ti -1c
+.RI "template<int Flags> \fBxml_node\fP< Ch > * \fBparse_doctype\fP (Ch *&text)"
+.br
+.ti -1c
+.RI "template<int Flags> \fBxml_node\fP< Ch > * \fBparse_pi\fP (Ch *&text)"
+.br
+.ti -1c
+.RI "template<int Flags> Ch \fBparse_and_append_data\fP (\fBxml_node\fP< Ch > *node, Ch *&text, Ch *contents_start)"
+.br
+.ti -1c
+.RI "template<int Flags> \fBxml_node\fP< Ch > * \fBparse_cdata\fP (Ch *&text)"
+.br
+.ti -1c
+.RI "template<int Flags> \fBxml_node\fP< Ch > * \fBparse_element\fP (Ch *&text)"
+.br
+.ti -1c
+.RI "template<int Flags> \fBxml_node\fP< Ch > * \fBparse_node\fP (Ch *&text)"
+.br
+.ti -1c
+.RI "template<int Flags> void \fBparse_node_contents\fP (Ch *&text, \fBxml_node\fP< Ch > *node)"
+.br
+.ti -1c
+.RI "template<int Flags> void \fBparse_node_attributes\fP (Ch *&text, \fBxml_node\fP< Ch > *node)"
+.br
+.in -1c
+.SS "Static Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<int Flags> static void \fBinsert_coded_character\fP (Ch *&text, unsigned long code)"
+.br
+.ti -1c
+.RI "template<class StopPred , int Flags> static void \fBskip\fP (Ch *&text)"
+.br
+.ti -1c
+.RI "template<class StopPred , class StopPredPure , int Flags> static Ch * \fBskip_and_expand_character_refs\fP (Ch *&text)"
 .br
 .in -1c
 .SS "Additional Inherited Members"

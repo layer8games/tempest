@@ -16,13 +16,8 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 
-//=====OGL includes=====
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/wglext.h>
-
-//=====OGL includes=====
-
+//===== Image Library =====
+#include <SOIL/SOIL.h>
 
 namespace KillerEngine 
 {
@@ -49,18 +44,32 @@ namespace KillerEngine
 //
 //Accessors
 //
+// most of this will go. 
 //==========================================================================================================================
-		GLuint GetID(void) const;
+		inline GLuint GetHandle(void) const
+		{
+			return _handle;
+		}
 
-		void SetID(GLuint id);
+		inline S32 GetWidth(void) const 
+		{ 
+			return _width; 
+		}
 
-		S32 GetWidth(void) const;
+		inline void SetWidth(S32 w) 
+		{ 
+			_width = w; 
+		}
 
-		void SetWidth(S32 w);
+		inline S32 GetHeight(void) const 
+		{ 
+			return _height; 
+		}
 
-		S32 GetHeight(void) const;
-
-		void SetHeight(S32 h);
+		inline void SetHeight(S32 h) 
+		{ 
+			_height = h; 
+		}
 
 //==========================================================================================================================
 //
@@ -69,12 +78,23 @@ namespace KillerEngine
 //==========================================================================================================================
 		Texture& operator=(const Texture& T);
 
-		Texture& operator=(Texture* T);
+		Texture& operator=(const Texture* T);
+
+//==========================================================================================================================
+//
+//Functions
+//
+//==========================================================================================================================
+		void LoadTexture(string filePath, bool generateMipMaps=true);
+
+		void Bind(GLuint texUnit=0);
+
+		void UnBind(void);
 
 	private:	
-		GLuint _id;
-		S32    _width;
-		S32    _height;
+		GLuint _handle; // keep but change into handle for new texture. 
+		S32    _width; // not needed. Only keep if you use SOIL, and you think it is something that may be useful to save. 
+		S32    _height; // not needed. Same
 		
 	};
 

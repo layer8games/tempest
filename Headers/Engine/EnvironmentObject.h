@@ -1,7 +1,5 @@
 /*========================================================================
-This is an implementation of a GameObject which will reprents static, 
-unmoving background objects which the player will not be allowed to pass
-through. These are things like rocks, trees, houses, etc. 
+
 
 This is not free to use, and cannot be used without the express permission
 of KillerWave.
@@ -12,9 +10,9 @@ Written by Maxwell Miller
 
 //===== Engine Includes =====
 #include <Engine/Atom.h>
-#include <Engine/GameObject2D.h>
+#include <Engine/GameObject.h>
 #include <Engine/Sprite.h>
-#include <Engine/Vector2.h>
+#include <Engine/Vector.h>
 
 namespace KM = KillerMath;
 
@@ -23,7 +21,12 @@ namespace KM = KillerMath;
 
 namespace KillerEngine
 {
-	class EnvironmentObject : public GameObject2D
+//==========================================================================================================================
+//Documentation
+//==========================================================================================================================
+/*! This is an implementation of a GameObject which will reprents static, unmoving background objects which the player will 
+	not be allowed to pass through. These are things like rocks, trees, houses, etc.  */	
+	class EnvironmentObject : public GameObject
 	{
 	public:
 //==========================================================================================================================
@@ -31,19 +34,22 @@ namespace KillerEngine
 //Constructors	 	
 //
 //==========================================================================================================================
+/*! Default Constructor. No special actions taken. */
 		EnvironmentObject(void);
 
-		EnvironmentObject(const KM::Vector2& pos, F32 w, F32 h);
+/*! Calls GameObject::SetPosition and GameObject::SetDimensions. */		
+		EnvironmentObject(const KM::Vector& pos, F32 w, F32 h);
 
-		EnvironmentObject(const KM::Vector2& pos, U32 textureID, F32 w, F32 h);
-
+/*! Default Destructor. No special action taken. */		
 		~EnvironmentObject(void);
 //==========================================================================================================================
 //
 //Virtual Functions
 //
 //==========================================================================================================================
-		void v_Update(void);
+/*! Empty function, needed because its a pure virtual function. */
+		inline void v_Update(void) final
+		{  }
 
 	private:
 		

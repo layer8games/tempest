@@ -16,5 +16,6 @@ var classtinyxml2_1_1_x_m_l_handle =
     [ "ToElement", "classtinyxml2_1_1_x_m_l_handle.html#a5e73ed8f3f6f9619d5a8bb1862c47d99", null ],
     [ "ToNode", "classtinyxml2_1_1_x_m_l_handle.html#a03ea6ec970a021b71bf1219a0f6717df", null ],
     [ "ToText", "classtinyxml2_1_1_x_m_l_handle.html#a6ab9e8cbfb41417246e5657e3842c62a", null ],
-    [ "ToUnknown", "classtinyxml2_1_1_x_m_l_handle.html#aa387368a1ad8d843a9f12df863d298de", null ]
+    [ "ToUnknown", "classtinyxml2_1_1_x_m_l_handle.html#aa387368a1ad8d843a9f12df863d298de", null ],
+    [ "_node", "classtinyxml2_1_1_x_m_l_handle.html#a65449d71b75d8aeb40a54224c954c138", null ]
 ];

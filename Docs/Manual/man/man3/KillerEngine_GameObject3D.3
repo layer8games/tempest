@@ -1,4 +1,4 @@
-.TH "KillerEngine::GameObject3D" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::GameObject3D" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -7,10 +7,15 @@ KillerEngine::GameObject3D
 .br
 .PP
 .PP
+\fC#include <GameObject3D\&.h>\fP
+.PP
 Inherited by \fBKillerPhysics::Particle3D\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fBGameObject3D\fP (void)"
+.br
 .ti -1c
 .RI "\fBGameObject3D\fP (const \fBGameObject3D\fP &obj)"
 .br
@@ -19,6 +24,18 @@ Inherited by \fBKillerPhysics::Particle3D\fP\&.
 .br
 .ti -1c
 .RI "virtual void \fBv_Render\fP (void)"
+.br
+.ti -1c
+.RI "void \fBInitRenderingData\fP (void)"
+.br
+.ti -1c
+.RI "void \fBLoadShader\fP (std::vector< \fBShaderData\fP > shaderData)"
+.br
+.ti -1c
+.RI "void \fBUseShader\fP (void)"
+.br
+.ti -1c
+.RI "void \fBBindVAO\fP (void)"
 .br
 .ti -1c
 .RI "const U32 \fBGetID\fP (void) const"
@@ -60,7 +77,13 @@ Inherited by \fBKillerPhysics::Particle3D\fP\&.
 .RI "void \fBSetHeight\fP (F32 h)"
 .br
 .ti -1c
-.RI "void \fBSetDimensions\fP (F32 w, F32 h)"
+.RI "F32 \fBGetDepth\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetDepth\fP (F32 d)"
+.br
+.ti -1c
+.RI "void \fBSetDimensions\fP (F32 w, F32 h, F32 d)"
 .br
 .ti -1c
 .RI "const \fBModel\fP & \fBGetModel\fP (void) const"
@@ -72,10 +95,10 @@ Inherited by \fBKillerPhysics::Particle3D\fP\&.
 .RI "void \fBAddVertex\fP (\fBVertex3D\fP vert)"
 .br
 .ti -1c
-.RI "void \fBAddIndex\fP (U16 index)"
+.RI "void \fBAddIndex\fP (U32 index)"
 .br
 .ti -1c
-.RI "void \fBAddIndex\fP (std::vector< U16 > indices)"
+.RI "void \fBAddIndex\fP (std::vector< U32 > indices)"
 .br
 .ti -1c
 .RI "void \fBLoadModel\fP (string filepath)"
@@ -83,7 +106,228 @@ Inherited by \fBKillerPhysics::Particle3D\fP\&.
 .ti -1c
 .RI "const \fBKM::Matrix\fP & \fBGetModelView\fP (void) const"
 .br
+.ti -1c
+.RI "const \fBShader\fP & \fBGetShader\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetShader\fP (const \fBShader\fP &shader)"
+.br
+.ti -1c
+.RI "GLuint \fBGetVAO\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetVAO\fP (GLuint vao)"
+.br
 .in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBBufferData\fP { \fBVERTEX_BUFFER\fP = 0, \fBVERTEX_POS\fP = 0, \fBCOLOR_BUFFER\fP = 1, \fBCOLOR_POS\fP = 1, \fBTEX_COORD_BUFFER\fP = 2, \fBTEX_COORD_POS\fP = 2, \fBINDEX_BUFFER\fP = 3, \fBNUM_VBO\fP = 4 }"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "U32 \fB_ID\fP"
+.br
+.RI "ID for this instance of \fBGameObject3D\fP\&. "
+.ti -1c
+.RI "bool \fB_active\fP"
+.br
+.RI "Tracks if the object should be updated and rendered\&. "
+.ti -1c
+.RI "\fBModel\fP \fB_model\fP"
+.br
+.RI "Rendering data for object\&. "
+.ti -1c
+.RI "\fBKM::Vector3\fP \fB_position\fP"
+.br
+.RI "Position in World Space\&. "
+.ti -1c
+.RI "F32 \fB_width\fP"
+.br
+.RI "Length of X axis in model space\&. "
+.ti -1c
+.RI "F32 \fB_height\fP"
+.br
+.RI "Length of Y axis in model space\&. "
+.ti -1c
+.RI "F32 \fB_depth\fP"
+.br
+.RI "Lenth of Z axis in model space\&. "
+.ti -1c
+.RI "\fBKM::Matrix\fP \fB_modelView\fP"
+.br
+.RI "Sent to \fBShader\fP as uniform\&. Used to translate vertices of model from model to world space\&. "
+.ti -1c
+.RI "\fBKM::Matrix\fP \fB_rotationX\fP"
+.br
+.RI "Experimental member\&. Trying to get rotations to work\&. "
+.ti -1c
+.RI "\fBShader\fP \fB_shader\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_vao\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_vbo\fP [NUM_VBO]"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static U32 \fB_nextID\fP = 1"
+.br
+.RI "Global member used to track the next unique ID for GambeObject3D\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+The Game Object is the abstract class, (PURE VIRTUAL) that all objects that will be placed in the game will inherit from\&. It will hold and define the cell, and will include all calls for updating and rendering\&. Therewill be a component map which will hold anything that the object will need in the game\&.
+.PP
+All of the functions in this class are inlined becuase they are all trivial\&. The virtual functions are there so that the interface can be the same for all derived classes\&. By doing this, the world manager will be able to have a map of GameObjects to be rendered in a specific world\&.
+.PP
+The \fBGameObject\fP itself is an interface to generic functions that each object that will be rendered will need to be drawn to the screen\&. The \fBGameObject\fP holds a private \fBSprite\fP member that will contain all the logic for which rendering algorithm is used\&.
+.PP
+Accessors are created for the derived classes to access the cell, but the cell is to be accessed directly only by the \fBGameObject\fP itself\&.
+.PP
+\fBGameObject3D\fP will specficially apply to 3D game objects\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "GameObject3D::GameObject3D (void)"
+Default constructor\&. Set's all members to 0, and _active to true\&. \fBSetID()\fP is called as part of the body\&. 
+.SS "GameObject3D::GameObject3D (const \fBGameObject3D\fP & obj)"
+Copy constructor\&. Calls \fBGetID()\fP, \fBGetActive()\fP, \fBGetModel()\fP, \fBGetPosition()\fP, \fBGetWidth()\fP, \fBGetHeight()\fP, and \fBGetModelView()\fP 
+.SH "Member Function Documentation"
+.PP 
+.SS "void KillerEngine::GameObject3D::AddIndex (U32 index)\fC [inline]\fP"
+Wrapper\&. Adds new index to object \fBModel\fP\&. Calls Model::AddIndex 
+.SS "void KillerEngine::GameObject3D::AddIndex (std::vector< U32 > indices)\fC [inline]\fP"
+Wrapper\&. Adds collection of indices to object \fBModel\fP\&. Calls Model::AddIndex 
+.SS "void GameObject3D::AddScaledPosition (const \fBKM::Vector3\fP & v, F32 scale)"
+Scales the position of the object in World Space\&. Wrapper for Vector3::AddScaledVector\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIv\fP Vector3&\&. Vector to add to position\&. 
+.br
+\fIscale\fP F32\&. Scale to use when adding vector to position\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::GameObject3D::AddVertex (\fBVertex3D\fP vert)\fC [inline]\fP"
+Wrapper\&. Adds new \fBVertex3D\fP to object \fBModel\fP\&. Calls Model::AddVertex\&. 
+.SS "bool GameObject3D::GetActive (void) const"
+Returns active state of object\&. 
+.SS "F32 GameObject3D::GetDepth (void) const"
+Returns the depth of the object\&. 
+.SS "F32 GameObject3D::GetHeight (void) const"
+Returns the height of the object\&. 
+.SS "const U32 KillerEngine::GameObject3D::GetID (void) const\fC [inline]\fP"
+Returns the id of this instance\&. 
+.SS "const \fBModel\fP& KillerEngine::GameObject3D::GetModel (void) const\fC [inline]\fP"
+Returns object \fBModel\fP\&. 
+.SS "const \fBKM::Matrix\fP& KillerEngine::GameObject3D::GetModelView (void) const\fC [inline]\fP"
+Returns object \fBModel\fP\&. 
+.SS "const \fBKM::Vector3\fP & GameObject3D::GetPosition (void) const"
+Returns object Position in World Space\&. 
+.SS "F32 GameObject3D::GetWidth (void) const"
+Returns width of the object\&. 
+.SS "void KillerEngine::GameObject3D::LoadModel (string filepath)\fC [inline]\fP"
+Wrapper\&. Loads object \fBModel\fP from file system\&. Calls Model::LoadModel 
+.SS "void GameObject3D::SetActive (void)"
+Sets the active state of object to true\&. 
+.SS "void GameObject3D::SetDepth (F32 d)"
+Sets depth of the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP F32\&. New depth 
+.RE
+.PP
+
+.SS "void GameObject3D::SetDimensions (F32 w, F32 h, F32 d)"
+Sets width, height and depth of the object 
+.PP
+\fBBug\fP
+.RS 4
+None of these dimensions are used in anyway\&. Scale should be added later in some way\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIw\fP F32\&. New width\&. 
+.br
+\fIh\fP F32\&. New height\&. 
+.br
+\fId\fP F32\&. New depth\&. 
+.RE
+.PP
+
+.SS "void GameObject3D::SetHeight (F32 h)"
+Sets the hieght of the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIh\fP F32\&. New height\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::GameObject3D::SetID (void)\fC [inline]\fP"
+Sets the id of this instance\&. The id is determind by _nextID\&. This insures that each \fBGameObject3D\fP will have a unique id although there could be a collission with \fBGameObject2D::_ID\fP\&. 
+.SS "void GameObject3D::SetInactive (void)"
+Sets the active state of object to false\&. 
+.SS "void KillerEngine::GameObject3D::SetModel (\fBModel\fP & model)\fC [inline]\fP"
+Sets object \fBModel\fP\&. Calls Model::operator= 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImodel\fP \fBModel\fP&\&. New Object Object\&. 
+.RE
+.PP
+
+.SS "void GameObject3D::SetPosition (const \fBKM::Vector3\fP & pos)"
+Sets object Position in World Space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP Vector3&\&. New position in world space\&. 
+.RE
+.PP
+
+.SS "void GameObject3D::SetPosition (F32 x, F32 y, F32 z)"
+Sets the position of the object in World Space\&. Calls Vector3::SetX, Vector3::SetY, Vector3::SetZ and Matrix::Translate\&. This last is done to update the _modelView member\&. 
+.PP
+\fBBug\fP
+.RS 4
+This is data duplication which I have not worked out a better way to handle yet\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP F32\&. X value of new position\&. 
+.br
+\fIy\fP F32\&. Y value of new position\&. 
+.br
+\fIz\fP F32\&. Z value of new position\&. 
+.RE
+.PP
+
+.SS "void GameObject3D::SetWidth (F32 w)"
+Sets the width of the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIw\fP F32\&. New width\&. 
+.RE
+.PP
+
+.SS "virtual void KillerEngine::GameObject3D::v_Update (void)\fC [pure virtual]\fP"
+Pure Virtual fucntion\&. Will be called during Level::UpdateObjects on each object, which will define what needs to happen in the update section of the loop\&. 
+.PP
+Implemented in \fBKillerPhysics::Particle3D\fP\&.
 
 .SH "Author"
 .PP 

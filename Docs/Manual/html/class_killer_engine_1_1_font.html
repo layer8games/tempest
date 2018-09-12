@@ -88,60 +88,550 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_font.html','')
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_font-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">KillerEngine::Font Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_font_8h_source.html">Font.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9fbeba7fd5ff3bcc89cf6d221e086f14"><td class="memItemLeft" align="right" valign="top"><a id="a9fbeba7fd5ff3bcc89cf6d221e086f14"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Font</b> (const <a class="el" href="class_killer_engine_1_1_font.html">Font</a> &amp;f)</td></tr>
+<tr class="memitem:ae12d76f0b59747bbf028333c9c7ed560"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#ae12d76f0b59747bbf028333c9c7ed560">Font</a> (void)</td></tr>
+<tr class="separator:ae12d76f0b59747bbf028333c9c7ed560"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fbeba7fd5ff3bcc89cf6d221e086f14"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#a9fbeba7fd5ff3bcc89cf6d221e086f14">Font</a> (const <a class="el" href="class_killer_engine_1_1_font.html">Font</a> &amp;f)</td></tr>
 <tr class="separator:a9fbeba7fd5ff3bcc89cf6d221e086f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22100c31fcafbb0dfd73e21d802bf55a"><td class="memItemLeft" align="right" valign="top"><a id="a22100c31fcafbb0dfd73e21d802bf55a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Font</b> (const <a class="el" href="class_killer_engine_1_1_font.html">Font</a> *f)</td></tr>
+<tr class="memitem:a22100c31fcafbb0dfd73e21d802bf55a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#a22100c31fcafbb0dfd73e21d802bf55a">Font</a> (const <a class="el" href="class_killer_engine_1_1_font.html">Font</a> *f)</td></tr>
 <tr class="separator:a22100c31fcafbb0dfd73e21d802bf55a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01c6c76658b87d13b853cdc7e29c5aee"><td class="memItemLeft" align="right" valign="top"><a id="a01c6c76658b87d13b853cdc7e29c5aee"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Font</b> (U32 tID)</td></tr>
+<tr class="memitem:a01c6c76658b87d13b853cdc7e29c5aee"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#a01c6c76658b87d13b853cdc7e29c5aee">Font</a> (U32 tID)</td></tr>
 <tr class="separator:a01c6c76658b87d13b853cdc7e29c5aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae65dcfc3ea7678f2c031422d8ee3863b"><td class="memItemLeft" align="right" valign="top"><a id="ae65dcfc3ea7678f2c031422d8ee3863b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>InitFont</b> (string fontName, string fontFile)</td></tr>
+<tr class="memitem:ae65dcfc3ea7678f2c031422d8ee3863b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#ae65dcfc3ea7678f2c031422d8ee3863b">InitFont</a> (string fontName, string fontFile)</td></tr>
 <tr class="separator:ae65dcfc3ea7678f2c031422d8ee3863b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fae4dc80ca2b7c4480cbb9c1fbfe403"><td class="memItemLeft" align="right" valign="top"><a id="a4fae4dc80ca2b7c4480cbb9c1fbfe403"></a>
 <a class="el" href="struct_killer_engine_1_1_character_data.html">CharacterData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetDataForCharacter</b> (char c)</td></tr>
 <tr class="separator:a4fae4dc80ca2b7c4480cbb9c1fbfe403"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c24cd15c86ad86848f71dfeb295e8bb"><td class="memItemLeft" align="right" valign="top"><a id="a2c24cd15c86ad86848f71dfeb295e8bb"></a>
-std::map&lt; U32, <a class="el" href="struct_killer_engine_1_1_character_data.html">CharacterData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetDataLevel</b> (void) const</td></tr>
-<tr class="separator:a2c24cd15c86ad86848f71dfeb295e8bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8bf01c967333396f94f575cb990be59"><td class="memItemLeft" align="right" valign="top">std::map&lt; U32, <a class="el" href="struct_killer_engine_1_1_character_data.html">CharacterData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#ab8bf01c967333396f94f575cb990be59">GetCharacterData</a> (void) const</td></tr>
+<tr class="separator:ab8bf01c967333396f94f575cb990be59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a160cb4e4672510c3f67478f4a167e09b"><td class="memItemLeft" align="right" valign="top"><a id="a160cb4e4672510c3f67478f4a167e09b"></a>
 std::shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_sprite.html">Sprite</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>CreateCharacter</b> (char character)</td></tr>
 <tr class="separator:a160cb4e4672510c3f67478f4a167e09b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af754616b765bd77758b6cdc20cf51115"><td class="memItemLeft" align="right" valign="top"><a id="af754616b765bd77758b6cdc20cf51115"></a>
-<a class="el" href="class_killer_engine_1_1_font.html">Font</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_killer_engine_1_1_font.html">Font</a> *font)</td></tr>
-<tr class="separator:af754616b765bd77758b6cdc20cf51115"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf4a51078354bd316c839aca76601369"><td class="memItemLeft" align="right" valign="top"><a id="adf4a51078354bd316c839aca76601369"></a>
-<a class="el" href="class_killer_engine_1_1_font.html">Font</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_killer_engine_1_1_font.html">Font</a> &amp;font)</td></tr>
-<tr class="separator:adf4a51078354bd316c839aca76601369"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a1f6efa7f32a1daa0d6315276dfecfd"><td class="memItemLeft" align="right" valign="top"><a id="a8a1f6efa7f32a1daa0d6315276dfecfd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetFile</b> (string fontFile)</td></tr>
+<tr class="memitem:a9d924e371b6ce21fa0af9e18a4017bc5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_killer_engine_1_1_font.html">Font</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#a9d924e371b6ce21fa0af9e18a4017bc5">operator=</a> (const <a class="el" href="class_killer_engine_1_1_font.html">Font</a> *font)</td></tr>
+<tr class="separator:a9d924e371b6ce21fa0af9e18a4017bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6dab252ef7a1c4aa227fed3a4eb0fc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_killer_engine_1_1_font.html">Font</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#ac6dab252ef7a1c4aa227fed3a4eb0fc2">operator=</a> (const <a class="el" href="class_killer_engine_1_1_font.html">Font</a> &amp;font)</td></tr>
+<tr class="separator:ac6dab252ef7a1c4aa227fed3a4eb0fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a1f6efa7f32a1daa0d6315276dfecfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#a8a1f6efa7f32a1daa0d6315276dfecfd">SetFile</a> (string fontFile)</td></tr>
 <tr class="separator:a8a1f6efa7f32a1daa0d6315276dfecfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91a32e13219329fd488a97cdbc87a12d"><td class="memItemLeft" align="right" valign="top"><a id="a91a32e13219329fd488a97cdbc87a12d"></a>
-const string&#160;</td><td class="memItemRight" valign="bottom"><b>GetFile</b> (void) const</td></tr>
+<tr class="memitem:a91a32e13219329fd488a97cdbc87a12d"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#a91a32e13219329fd488a97cdbc87a12d">GetFile</a> (void) const</td></tr>
 <tr class="separator:a91a32e13219329fd488a97cdbc87a12d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabd389a157142aff44c1d82b3797a362"><td class="memItemLeft" align="right" valign="top"><a id="aabd389a157142aff44c1d82b3797a362"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetName</b> (string fontName)</td></tr>
+<tr class="memitem:aabd389a157142aff44c1d82b3797a362"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#aabd389a157142aff44c1d82b3797a362">SetName</a> (string fontName)</td></tr>
 <tr class="separator:aabd389a157142aff44c1d82b3797a362"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a801f7154d3a09f20b159d201e489bc04"><td class="memItemLeft" align="right" valign="top"><a id="a801f7154d3a09f20b159d201e489bc04"></a>
-const string&#160;</td><td class="memItemRight" valign="bottom"><b>GetName</b> (void) const</td></tr>
+<tr class="memitem:a801f7154d3a09f20b159d201e489bc04"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#a801f7154d3a09f20b159d201e489bc04">GetName</a> (void) const</td></tr>
 <tr class="separator:a801f7154d3a09f20b159d201e489bc04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9e22009d4203a818d4a4e8b63c65f46"><td class="memItemLeft" align="right" valign="top"><a id="aa9e22009d4203a818d4a4e8b63c65f46"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetTexture</b> (U32 tID)</td></tr>
+<tr class="memitem:aa9e22009d4203a818d4a4e8b63c65f46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#aa9e22009d4203a818d4a4e8b63c65f46">SetTexture</a> (U32 tID)</td></tr>
 <tr class="separator:aa9e22009d4203a818d4a4e8b63c65f46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5293eeca65871d27f646ac9f7d959fc3"><td class="memItemLeft" align="right" valign="top"><a id="a5293eeca65871d27f646ac9f7d959fc3"></a>
-const U32&#160;</td><td class="memItemRight" valign="bottom"><b>GetTextureID</b> (void) const</td></tr>
+<tr class="memitem:a5293eeca65871d27f646ac9f7d959fc3"><td class="memItemLeft" align="right" valign="top">const U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#a5293eeca65871d27f646ac9f7d959fc3">GetTextureID</a> (void) const</td></tr>
 <tr class="separator:a5293eeca65871d27f646ac9f7d959fc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a21acf3595f87abae7f5a2bd4a3f80ad3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#a21acf3595f87abae7f5a2bd4a3f80ad3">_AddNewCharacterData</a> (string id, string x, string y, string width, string height, string xoffset, string yoffset, string xadvance)</td></tr>
+<tr class="separator:a21acf3595f87abae7f5a2bd4a3f80ad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a409ab61eb07723f98424af0810ca297e"><td class="memItemLeft" align="right" valign="top"><a id="a409ab61eb07723f98424af0810ca297e"></a>
+U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#a409ab61eb07723f98424af0810ca297e">_textureID</a></td></tr>
+<tr class="memdesc:a409ab61eb07723f98424af0810ca297e"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID for <a class="el" href="class_killer_engine_1_1_texture.html">Texture</a> loaded into the <a class="el" href="class_killer_engine_1_1_texture_manager.html">TextureManager</a>. <br /></td></tr>
+<tr class="separator:a409ab61eb07723f98424af0810ca297e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34153677d3546440e0535174ef1a08ea"><td class="memItemLeft" align="right" valign="top"><a id="a34153677d3546440e0535174ef1a08ea"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#a34153677d3546440e0535174ef1a08ea">_fontFile</a></td></tr>
+<tr class="memdesc:a34153677d3546440e0535174ef1a08ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">File path to the .fnt file the texture uses. <br /></td></tr>
+<tr class="separator:a34153677d3546440e0535174ef1a08ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05e62d5eb1389939657ed0f9d6cbb534"><td class="memItemLeft" align="right" valign="top"><a id="a05e62d5eb1389939657ed0f9d6cbb534"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#a05e62d5eb1389939657ed0f9d6cbb534">_fontName</a></td></tr>
+<tr class="memdesc:a05e62d5eb1389939657ed0f9d6cbb534"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name of the font. Not really used right now. <br /></td></tr>
+<tr class="separator:a05e62d5eb1389939657ed0f9d6cbb534"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a050c209fb1609231b85d08124a8fbd"><td class="memItemLeft" align="right" valign="top"><a id="a1a050c209fb1609231b85d08124a8fbd"></a>
+U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#a1a050c209fb1609231b85d08124a8fbd">_headerSize</a> = 26</td></tr>
+<tr class="memdesc:a1a050c209fb1609231b85d08124a8fbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the header section of the .fnt file. Soon to be deprectated. <br /></td></tr>
+<tr class="separator:a1a050c209fb1609231b85d08124a8fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b5e1c96123d53a6aad21cfd05a37cb9"><td class="memItemLeft" align="right" valign="top"><a id="a9b5e1c96123d53a6aad21cfd05a37cb9"></a>
+std::map&lt; U32, <a class="el" href="struct_killer_engine_1_1_character_data.html">CharacterData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_font.html#a9b5e1c96123d53a6aad21cfd05a37cb9">_fontCharData</a></td></tr>
+<tr class="memdesc:a9b5e1c96123d53a6aad21cfd05a37cb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">All data from .fnt file stored in a RenderText can use for placement. <br /></td></tr>
+<tr class="separator:a9b5e1c96123d53a6aad21cfd05a37cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="class_killer_engine_1_1_font.html">Font</a> class is used to open a .fnt file, extract the needed character data, and then save that for text processing later on.</p>
+<p>CreateCharacter is a CharSprite Factory. This may be important to know. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae12d76f0b59747bbf028333c9c7ed560"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae12d76f0b59747bbf028333c9c7ed560">&#9670;&nbsp;</a></span>Font() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Font::Font </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Default Constructor. No special actions taken. </p>
+
+</div>
+</div>
+<a id="a9fbeba7fd5ff3bcc89cf6d221e086f14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fbeba7fd5ff3bcc89cf6d221e086f14">&#9670;&nbsp;</a></span>Font() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Font::Font </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_killer_engine_1_1_font.html">Font</a> &amp;&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Copy Constructor. Calls <a class="el" href="class_killer_engine_1_1_font.html#a5293eeca65871d27f646ac9f7d959fc3">GetTextureID()</a>, <a class="el" href="class_killer_engine_1_1_font.html#a91a32e13219329fd488a97cdbc87a12d">GetFile()</a> and <a class="el" href="class_killer_engine_1_1_font.html#a801f7154d3a09f20b159d201e489bc04">GetName()</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td><a class="el" href="class_killer_engine_1_1_font.html">Font</a>&amp;: <a class="el" href="class_killer_engine_1_1_font.html">Font</a> to be copied. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a22100c31fcafbb0dfd73e21d802bf55a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22100c31fcafbb0dfd73e21d802bf55a">&#9670;&nbsp;</a></span>Font() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Font::Font </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_killer_engine_1_1_font.html">Font</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Copy Constructor. Calls <a class="el" href="class_killer_engine_1_1_font.html#a5293eeca65871d27f646ac9f7d959fc3">GetTextureID()</a>, <a class="el" href="class_killer_engine_1_1_font.html#a91a32e13219329fd488a97cdbc87a12d">GetFile()</a> and <a class="el" href="class_killer_engine_1_1_font.html#a801f7154d3a09f20b159d201e489bc04">GetName()</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>Font*: <a class="el" href="class_killer_engine_1_1_font.html">Font</a> to be copied. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a01c6c76658b87d13b853cdc7e29c5aee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01c6c76658b87d13b853cdc7e29c5aee">&#9670;&nbsp;</a></span>Font() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Font::Font </td>
+          <td>(</td>
+          <td class="paramtype">U32&#160;</td>
+          <td class="paramname"><em>tID</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Single Value Constructor. No special actions taken. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tID</td><td>U32: <a class="el" href="class_killer_engine_1_1_texture.html">Texture</a> ID to be set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a21acf3595f87abae7f5a2bd4a3f80ad3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21acf3595f87abae7f5a2bd4a3f80ad3">&#9670;&nbsp;</a></span>_AddNewCharacterData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Font::_AddNewCharacterData </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>xoffset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>yoffset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>xadvance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Used to add new data to _fontCharData. All ARGS are string that are cast into U32 values for consumption by engine. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>string: Single char used as ASCII id. </td></tr>
+    <tr><td class="paramname">x</td><td>string: x coord in <a class="el" href="class_killer_engine_1_1_texture.html">Texture</a> for character. </td></tr>
+    <tr><td class="paramname">y</td><td>string: y coord in <a class="el" href="class_killer_engine_1_1_texture.html">Texture</a> for character. </td></tr>
+    <tr><td class="paramname">width</td><td>string: Width of character in <a class="el" href="class_killer_engine_1_1_texture.html">Texture</a> </td></tr>
+    <tr><td class="paramname">height</td><td>string: Height of character in <a class="el" href="class_killer_engine_1_1_texture.html">Texture</a>. </td></tr>
+    <tr><td class="paramname">xoffset</td><td>string: Amount of space on the x axis that should be padded into this charcter to look right when rendered </td></tr>
+    <tr><td class="paramname">yoffset</td><td>string: Amount of space on the y axis that should be padded into this character to look right when rendered </td></tr>
+    <tr><td class="paramname">xadvance</td><td>string: Amount of space this character needs to its right to look right when rendered. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab8bf01c967333396f94f575cb990be59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8bf01c967333396f94f575cb990be59">&#9670;&nbsp;</a></span>GetCharacterData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;U32, <a class="el" href="struct_killer_engine_1_1_character_data.html">CharacterData</a>&gt; KillerEngine::Font::GetCharacterData </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the map containing all data for all characters found in the loaded font. The ID of each character is found in the .fnt file and is the ASCII int value of a char </p>
+
+</div>
+</div>
+<a id="a91a32e13219329fd488a97cdbc87a12d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91a32e13219329fd488a97cdbc87a12d">&#9670;&nbsp;</a></span>GetFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string KillerEngine::Font::GetFile </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the file path to the current .fnt file the font is using. </p>
+
+</div>
+</div>
+<a id="a801f7154d3a09f20b159d201e489bc04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a801f7154d3a09f20b159d201e489bc04">&#9670;&nbsp;</a></span>GetName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string KillerEngine::Font::GetName </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the current name of the font. Not used in any major way. </p>
+
+</div>
+</div>
+<a id="a5293eeca65871d27f646ac9f7d959fc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5293eeca65871d27f646ac9f7d959fc3">&#9670;&nbsp;</a></span>GetTextureID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const U32 KillerEngine::Font::GetTextureID </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the current texture ID for the texture. </p>
+
+</div>
+</div>
+<a id="ae65dcfc3ea7678f2c031422d8ee3863b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae65dcfc3ea7678f2c031422d8ee3863b">&#9670;&nbsp;</a></span>InitFont()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Font::InitFont </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>fontName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>fontFile</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initializes all data needed to be able to create RenderedCharacters as part of a <a class="el" href="class_killer_engine_1_1_rendered_text.html">RenderedText</a>. Set's the fontName name, which is currently not used. Later this will be used with a manager to class to find the font you need. Opens fontFile, parses the file and extracts the needed character data. The only currently supported file format is a .fnt file. This class has only been tested with .fnt files generated by BMFont tool found at <a href="http://www.angelcode.com/products/bmfont/">http://www.angelcode.com/products/bmfont/</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fontName</td><td>string. Name of the font you are creating. </td></tr>
+    <tr><td class="paramname">fontFile</td><td>string. File Path to the .fnt file that is used to get the character data needed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9d924e371b6ce21fa0af9e18a4017bc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d924e371b6ce21fa0af9e18a4017bc5">&#9670;&nbsp;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_killer_engine_1_1_font.html">Font</a> &amp; Font::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_killer_engine_1_1_font.html">Font</a> *&#160;</td>
+          <td class="paramname"><em>font</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Copies <a class="el" href="class_killer_engine_1_1_font.html">Font</a> pointer. Calls <a class="el" href="class_killer_engine_1_1_font.html#a5293eeca65871d27f646ac9f7d959fc3">GetTextureID()</a>, <a class="el" href="class_killer_engine_1_1_font.html#a91a32e13219329fd488a97cdbc87a12d">GetFile()</a>, <a class="el" href="class_killer_engine_1_1_font.html#a801f7154d3a09f20b159d201e489bc04">GetName()</a> and <a class="el" href="class_killer_engine_1_1_font.html#ab8bf01c967333396f94f575cb990be59">GetCharacterData()</a>. </p>
+
+</div>
+</div>
+<a id="ac6dab252ef7a1c4aa227fed3a4eb0fc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6dab252ef7a1c4aa227fed3a4eb0fc2">&#9670;&nbsp;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_killer_engine_1_1_font.html">Font</a> &amp; Font::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_killer_engine_1_1_font.html">Font</a> &amp;&#160;</td>
+          <td class="paramname"><em>font</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Copies <a class="el" href="class_killer_engine_1_1_font.html">Font</a> reference. Calls <a class="el" href="class_killer_engine_1_1_font.html#a5293eeca65871d27f646ac9f7d959fc3">GetTextureID()</a>, <a class="el" href="class_killer_engine_1_1_font.html#a91a32e13219329fd488a97cdbc87a12d">GetFile()</a>, <a class="el" href="class_killer_engine_1_1_font.html#a801f7154d3a09f20b159d201e489bc04">GetName()</a> and <a class="el" href="class_killer_engine_1_1_font.html#ab8bf01c967333396f94f575cb990be59">GetCharacterData()</a>. </p>
+
+</div>
+</div>
+<a id="a8a1f6efa7f32a1daa0d6315276dfecfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a1f6efa7f32a1daa0d6315276dfecfd">&#9670;&nbsp;</a></span>SetFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Font::SetFile </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>fontFile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set's the file that the font will read its data from. Does not re-initialize the font. </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000001">Bug:</a></b></dt><dd><p class="startdd">Make sure that the font is re-initialized when this is called. </p>
+<p class="enddd">Check that the file that is sent is a .fnt file. </p>
+</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fontFile</td><td>string: File path to .fnt file. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aabd389a157142aff44c1d82b3797a362"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabd389a157142aff44c1d82b3797a362">&#9670;&nbsp;</a></span>SetName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Font::SetName </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>fontName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set's the name of font. Not used actively in any major way. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fontName</td><td>string: New name of the font. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa9e22009d4203a818d4a4e8b63c65f46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9e22009d4203a818d4a4e8b63c65f46">&#9670;&nbsp;</a></span>SetTexture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Font::SetTexture </td>
+          <td>(</td>
+          <td class="paramtype">U32&#160;</td>
+          <td class="paramname"><em>tID</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set's the texture ID for the current font. This does not re-initialize the font. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tID</td><td>U32: Id from the <a class="el" href="class_killer_engine_1_1_texture_manager.html">TextureManager</a> for the new texture. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_font_8h_source.html">Font.h</a></li>
 <li>F:/Projects/Killer_Engine/Implementations/Font.cpp</li>

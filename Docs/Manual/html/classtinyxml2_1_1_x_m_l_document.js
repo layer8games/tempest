@@ -2,6 +2,7 @@ var classtinyxml2_1_1_x_m_l_document =
 [
     [ "XMLDocument", "classtinyxml2_1_1_x_m_l_document.html#af1574f76ebb619f25ef3f09eb2ba5188", null ],
     [ "~XMLDocument", "classtinyxml2_1_1_x_m_l_document.html#af37c47d8e2ba4b2fc81b21a77a32579b", null ],
+    [ "XMLDocument", "classtinyxml2_1_1_x_m_l_document.html#adcea490db02a099d99440cd14a87d9e4", null ],
     [ "Accept", "classtinyxml2_1_1_x_m_l_document.html#a9efa54f7ecb37c17ab1fa2b3078ccca1", null ],
     [ "Clear", "classtinyxml2_1_1_x_m_l_document.html#a65656b0b2cbc822708eb351504178aaf", null ],
     [ "ClearError", "classtinyxml2_1_1_x_m_l_document.html#a4085d9c52f1d93214311459d6d1fcf17", null ],
@@ -21,7 +22,9 @@ var classtinyxml2_1_1_x_m_l_document =
     [ "NewElement", "classtinyxml2_1_1_x_m_l_document.html#a8aa7817d4a1001364b06373763ab99d6", null ],
     [ "NewText", "classtinyxml2_1_1_x_m_l_document.html#ab7e8b29ae4099092a8bb947da6361296", null ],
     [ "NewUnknown", "classtinyxml2_1_1_x_m_l_document.html#a5385c937734ff6db9226ab707d2c7147", null ],
+    [ "operator=", "classtinyxml2_1_1_x_m_l_document.html#aa542c2cf1276ee4bd778f16d196fe222", null ],
     [ "Parse", "classtinyxml2_1_1_x_m_l_document.html#a1819bd34f540a7304c105a6232d25a1f", null ],
+    [ "Parse", "classtinyxml2_1_1_x_m_l_document.html#aeb556e0e2bed02a73a6c5aaf19759e9a", null ],
     [ "Print", "classtinyxml2_1_1_x_m_l_document.html#a867cf5fa3e3ff6ae4847a8b7ee8ec083", null ],
     [ "PrintError", "classtinyxml2_1_1_x_m_l_document.html#a1d033945b42e125d933d6231e4571552", null ],
     [ "ProcessEntities", "classtinyxml2_1_1_x_m_l_document.html#a53e6c035b1b539563fef8c817fb30469", null ],
@@ -36,5 +39,18 @@ var classtinyxml2_1_1_x_m_l_document =
     [ "ToDocument", "classtinyxml2_1_1_x_m_l_document.html#a3e185f880882bd978367bb55937735ec", null ],
     [ "ToDocument", "classtinyxml2_1_1_x_m_l_document.html#a747ab173887d969fe313b4617f968e99", null ],
     [ "WhitespaceMode", "classtinyxml2_1_1_x_m_l_document.html#a810ce508e6e0365497c2a9deb83c9ca7", null ],
-    [ "XMLElement", "classtinyxml2_1_1_x_m_l_document.html#ac2fba9b6e452829dd892f7392c24e0eb", null ]
+    [ "XMLElement", "classtinyxml2_1_1_x_m_l_document.html#ac2fba9b6e452829dd892f7392c24e0eb", null ],
+    [ "_attributePool", "classtinyxml2_1_1_x_m_l_document.html#a0a57ebeba23bc6cfce88f12b4a946aac", null ],
+    [ "_charBuffer", "classtinyxml2_1_1_x_m_l_document.html#a7913ff24220a40e2e2b49a5137b43d29", null ],
+    [ "_commentPool", "classtinyxml2_1_1_x_m_l_document.html#ac2e73ccbc037dee917c3163158180398", null ],
+    [ "_elementPool", "classtinyxml2_1_1_x_m_l_document.html#a21574fba363a0d23bfc820d1652ab8bc", null ],
+    [ "_errorID", "classtinyxml2_1_1_x_m_l_document.html#a61270d643f810975656da2054e1e1622", null ],
+    [ "_errorLineNum", "classtinyxml2_1_1_x_m_l_document.html#a7865f254baf1f615c5250aa31bb262d1", null ],
+    [ "_errorStr1", "classtinyxml2_1_1_x_m_l_document.html#abce9c3309f0ac2cc6186c19fa84b5ff6", null ],
+    [ "_errorStr2", "classtinyxml2_1_1_x_m_l_document.html#afb014df551fc08f2fa69eeb9b9686e6f", null ],
+    [ "_parseCurLineNum", "classtinyxml2_1_1_x_m_l_document.html#a802c62efacc325f1acb9cfd331b59ea5", null ],
+    [ "_processEntities", "classtinyxml2_1_1_x_m_l_document.html#a9f768cb74fb5ccbadeffa436916f0194", null ],
+    [ "_textPool", "classtinyxml2_1_1_x_m_l_document.html#afe8ac410aaa53cf1f2142a4c2fd958c7", null ],
+    [ "_whitespace", "classtinyxml2_1_1_x_m_l_document.html#a5342ed1e7dc1fe6afc81d4740c465320", null ],
+    [ "_writeBOM", "classtinyxml2_1_1_x_m_l_document.html#a1dbdc7feaa58007403c20243ac5abbd3", null ]
 ];

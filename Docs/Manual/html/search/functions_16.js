@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_7ememory_5fpool',['~memory_pool',['../classrapidxml_1_1memory__pool.html#a0a3e82126e59e4077f41e933130bb5a0',1,'rapidxml::memory_pool']]]
+  ['what',['what',['../classrapidxml_1_1parse__error.html#a986003116ebcb49a69a20228da306232',1,'rapidxml::parse_error']]],
+  ['where',['where',['../classrapidxml_1_1parse__error.html#ab139528f4d9e960f0ee807d22d6c032d',1,'rapidxml::parse_error']]]
 ];

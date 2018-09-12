@@ -1,3 +1,7 @@
+/*! \mainpage Killer Engine
+	\section The Killer Engine Documentation. 
+*/
+
 /*========================================================================
 Call Atom because it is the most basic include file. This is the file
 to be included with all other files that are made. This contains the 
@@ -19,8 +23,10 @@ Written by Maxwell Miller
 //=====Windows Includes=====
 #include <Windows.h>
 
-//=====OGL Includes=====
-#include <GL/gl3w.h>
+//=====OGL includes=====
+#define GLEW_STATIC
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
 
 
@@ -77,4 +83,25 @@ inline real RealSqr(real x)
 inline F32 DegreeToRadian(F32 angle)
 {
 	return static_cast<F32>(angle * R_PI / 180.0f);
+}
+
+inline F32 RadianToDegree(F32 angle)
+{
+	return static_cast<F32>(angle * 180.0f / R_PI);
+}
+
+inline F32 FLOAT_CLAMP(F32 val, F32 min, F32 max)
+{
+	if(val < min)
+	{
+		return min;
+	}
+	else if(val > max)
+	{
+		return max;
+	}
+	else
+	{
+		return val;
+	}
 }

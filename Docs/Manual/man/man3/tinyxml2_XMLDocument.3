@@ -1,4 +1,4 @@
-.TH "tinyxml2::XMLDocument" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "tinyxml2::XMLDocument" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -133,6 +133,69 @@ Inherits \fBtinyxml2::XMLNode\fP\&.
 .in +1c
 .ti -1c
 .RI "static const char * \fBErrorIDToName\fP (XMLError errorID)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBXMLDocument\fP (const \fBXMLDocument\fP &)"
+.br
+.ti -1c
+.RI "void \fBoperator=\fP (const \fBXMLDocument\fP &)"
+.br
+.ti -1c
+.RI "void \fBParse\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fB_writeBOM\fP"
+.br
+.ti -1c
+.RI "bool \fB_processEntities\fP"
+.br
+.ti -1c
+.RI "XMLError \fB_errorID\fP"
+.br
+.ti -1c
+.RI "Whitespace \fB_whitespace\fP"
+.br
+.ti -1c
+.RI "\fBStrPair\fP \fB_errorStr1\fP"
+.br
+.ti -1c
+.RI "\fBStrPair\fP \fB_errorStr2\fP"
+.br
+.ti -1c
+.RI "int \fB_errorLineNum\fP"
+.br
+.ti -1c
+.RI "char * \fB_charBuffer\fP"
+.br
+.ti -1c
+.RI "int \fB_parseCurLineNum\fP"
+.br
+.ti -1c
+.RI "\fBMemPoolT\fP< sizeof(\fBXMLElement\fP) > \fB_elementPool\fP"
+.br
+.ti -1c
+.RI "\fBMemPoolT\fP< sizeof(\fBXMLAttribute\fP) > \fB_attributePool\fP"
+.br
+.ti -1c
+.RI "\fBMemPoolT\fP< sizeof(\fBXMLText\fP) > \fB_textPool\fP"
+.br
+.ti -1c
+.RI "\fBMemPoolT\fP< sizeof(\fBXMLComment\fP) > \fB_commentPool\fP"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const char * \fB_errorNames\fP [XML_ERROR_COUNT]"
 .br
 .in -1c
 .SS "Friends"

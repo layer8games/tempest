@@ -1,4 +1,4 @@
-.TH "tinyxml2::XMLNode" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "tinyxml2::XMLNode" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -211,6 +211,39 @@ Inherited by \fBtinyxml2::XMLComment\fP, \fBtinyxml2::XMLDeclaration\fP, \fBtiny
 .br
 .ti -1c
 .RI "void * \fB_userData\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBUnlink\fP (\fBXMLNode\fP *child)"
+.br
+.ti -1c
+.RI "void \fBInsertChildPreamble\fP (\fBXMLNode\fP *insertThis) const"
+.br
+.ti -1c
+.RI "const \fBXMLElement\fP * \fBToElementWithName\fP (const char *name) const"
+.br
+.ti -1c
+.RI "\fBXMLNode\fP (const \fBXMLNode\fP &)"
+.br
+.ti -1c
+.RI "\fBXMLNode\fP & \fBoperator=\fP (const \fBXMLNode\fP &)"
+.br
+.in -1c
+.SS "Static Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBDeleteNode\fP (\fBXMLNode\fP *node)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBMemPool\fP * \fB_memPool\fP"
 .br
 .in -1c
 .SS "Friends"

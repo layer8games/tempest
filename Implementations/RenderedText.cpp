@@ -53,7 +53,7 @@ RenderedText::~RenderedText(void)
 {
 	for(RenderedCharacter& character : _characterList)
 	{
-		//character.sprite.Render(KM::Vector2(character.xpos, character.ypos), character.width, character.height, character.color);
+		//character.sprite.Render(KM::Vector(character.xpos, character.ypos), character.width, character.height, character.color);
 	}
 }
 */
@@ -64,6 +64,7 @@ RenderedText::~RenderedText(void)
 //==========================================================================================================================
 void RenderedText::AddText(string text)
 {
+/*
 	_characterList.clear();
 
 	_text = text;
@@ -80,7 +81,7 @@ void RenderedText::AddText(string text)
 
 		CharacterData data = sprite->GetCharData();
 
-		character->SetPosition(KM::Vector2(currentX, currentY));
+		character->SetPosition(KM::Vector(currentX, currentY));
 
 		currentX += static_cast<F32>(data.xadvance);
 
@@ -100,7 +101,7 @@ void RenderedText::AddText(string text)
 		//std::cout << "Top=" << topCoord << "\nBottom=" << bottomCoord << "\nrRight=" << rightCoord << "\nLeft=" << leftCoord << "\n";
 
 		sprite->SetTexture(texture.GetID(), topCoord, bottomCoord, rightCoord, leftCoord);
-*/
+
 
 
 		F32 totalCharWidth = data.width * _widthScaleFactor;
@@ -120,11 +121,13 @@ void RenderedText::AddText(string text)
 		_characterList.push_back(character);
 	}
 
-	_center = KM::Vector2(_totalWidth / 2.0f, _totalHeight / 2.0f);
+	_center = KM::Vector(_totalWidth / 2.0f, _totalHeight / 2.0f);
+*/
 }//End AddText
 
-void RenderedText::SetPosition(const KM::Vector2& pos)
+void RenderedText::SetPosition(const KM::Vector& pos)
 {
+/*
 	_pos = pos;;
 
 	F32 currentX = _pos.GetX();
@@ -134,10 +137,11 @@ void RenderedText::SetPosition(const KM::Vector2& pos)
 	{
 		CharacterData data = character->GetSprite().GetCharData();
 
-		character->SetPosition(KM::Vector2( currentX + static_cast<F32>(data.xoffset), currentY - static_cast<F32>(data.yoffset) ));
+		character->SetPosition(KM::Vector( currentX + static_cast<F32>(data.xoffset), currentY - static_cast<F32>(data.yoffset) ));
 
 		currentX += static_cast<F32>(data.xadvance);// + static_cast<F32>(data.xoffset);
 	}
+*/	
 }
 
 /*	Not implemented yet in Sprite	

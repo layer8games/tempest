@@ -89,6 +89,8 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_texture_manage
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_texture_manager-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">KillerEngine::TextureManager Class Reference</div>  </div>
@@ -97,15 +99,12 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_texture_manage
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad0581065e372b157f6c471c1d52023a8"><td class="memItemLeft" align="right" valign="top"><a id="ad0581065e372b157f6c471c1d52023a8"></a>
-U32&#160;</td><td class="memItemRight" valign="bottom"><b>GetCurrentTextureID</b> (void)</td></tr>
-<tr class="separator:ad0581065e372b157f6c471c1d52023a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1652dbed32efe051c854e3c4b78da900"><td class="memItemLeft" align="right" valign="top"><a id="a1652dbed32efe051c854e3c4b78da900"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCurrentTextureID</b> (U32 textureId)</td></tr>
-<tr class="separator:a1652dbed32efe051c854e3c4b78da900"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fcb215930756cd904bef8ce9541ee24"><td class="memItemLeft" align="right" valign="top"><a id="a1fcb215930756cd904bef8ce9541ee24"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>LoadTexture</b> (string path, U32 id, S32 width, S32 height)</td></tr>
-<tr class="separator:a1fcb215930756cd904bef8ce9541ee24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa71a2acf0b8018ddd4a3c585555a8c01"><td class="memItemLeft" align="right" valign="top"><a id="aa71a2acf0b8018ddd4a3c585555a8c01"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddTexture</b> (S32 id, const <a class="el" href="class_killer_engine_1_1_texture.html">Texture</a> &amp;tex)</td></tr>
+<tr class="separator:aa71a2acf0b8018ddd4a3c585555a8c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a186d12a5358b54cf87d8c91e1ce23de2"><td class="memItemLeft" align="right" valign="top"><a id="a186d12a5358b54cf87d8c91e1ce23de2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddTexture</b> (S32 id, shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_texture.html">Texture</a> &gt; tex)</td></tr>
+<tr class="separator:a186d12a5358b54cf87d8c91e1ce23de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab10deccb4e13852ffbb4842539aaf653"><td class="memItemLeft" align="right" valign="top"><a id="ab10deccb4e13852ffbb4842539aaf653"></a>
 const shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetTexture</b> (U32 id)</td></tr>
 <tr class="separator:ab10deccb4e13852ffbb4842539aaf653"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,6 +114,18 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:adf16a9de84a150a472e6b6552b7b2e32"><td class="memItemLeft" align="right" valign="top"><a id="adf16a9de84a150a472e6b6552b7b2e32"></a>
 static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_texture_manager.html">TextureManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Instance</b> (void)</td></tr>
 <tr class="separator:adf16a9de84a150a472e6b6552b7b2e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a05d2741ac7bd47a4ad33bdd752278615"><td class="memItemLeft" align="right" valign="top"><a id="a05d2741ac7bd47a4ad33bdd752278615"></a>
+map&lt; S32, shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_texture.html">Texture</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_loadedTextures</b></td></tr>
+<tr class="separator:a05d2741ac7bd47a4ad33bdd752278615"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a45a645e31ed73d94398df187481eb016"><td class="memItemLeft" align="right" valign="top"><a id="a45a645e31ed73d94398df187481eb016"></a>
+static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_texture_manager.html">TextureManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_instance</b> = NULL</td></tr>
+<tr class="separator:a45a645e31ed73d94398df187481eb016"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_texture_manager_8h_source.html">TextureManager.h</a></li>

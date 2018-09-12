@@ -1,4 +1,4 @@
-.TH "KillerPhysics::ParticleBuoyantForce" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::ParticleBuoyantForce" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -15,10 +15,7 @@ Inherits \fBKillerPhysics::ParticleForceGenerator\fP\&.
 .RI "\fBParticleBuoyantForce::ParticleBuoyantForce\fP (real maxDepth, real objVolume, real liquidHeight, real liquidDensity=1000\&.0f)"
 .br
 .ti -1c
-.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle2D\fP > particle)"
-.br
-.ti -1c
-.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle3D\fP > particle)"
+.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle\fP > particle)"
 .br
 .ti -1c
 .RI "void \fBSetMaxDepth\fP (real depth)"
@@ -31,6 +28,22 @@ Inherits \fBKillerPhysics::ParticleForceGenerator\fP\&.
 .br
 .ti -1c
 .RI "void \fBSetLiquidDensity\fP (real density)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "real \fB_maxDepth\fP"
+.br
+.ti -1c
+.RI "real \fB_objectVolume\fP"
+.br
+.ti -1c
+.RI "real \fB_liquidHeight\fP"
+.br
+.ti -1c
+.RI "real \fB_liquidDensity\fP"
 .br
 .in -1c
 

@@ -1,4 +1,4 @@
-.TH "KillerPhysics::ParticleContact" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::ParticleContact" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -13,16 +13,10 @@ KillerPhysics::ParticleContact
 .RI "void \fBSetRestitution\fP (real restitution)"
 .br
 .ti -1c
-.RI "void \fBSetContactNormal\fP (\fBKM::Vector2\fP &normal)"
+.RI "void \fBSetContactNormal\fP (\fBKM::Vector\fP &normal)"
 .br
 .ti -1c
-.RI "void \fBSetContactNormal\fP (\fBKM::Vector3\fP &normal)"
-.br
-.ti -1c
-.RI "void \fBSetContacts\fP (shared_ptr< \fBParticle2D\fP > particle1, shared_ptr< \fBParticle2D\fP > particle2=nullptr)"
-.br
-.ti -1c
-.RI "void \fBSetContacts\fP (shared_ptr< \fBParticle3D\fP > particle1, shared_ptr< \fBParticle3D\fP > particle2=nullptr)"
+.RI "void \fBSetContacts\fP (shared_ptr< \fBParticle\fP > particle1, shared_ptr< \fBParticle\fP > particle2=nullptr)"
 .br
 .ti -1c
 .RI "void \fBSetPenetration\fP (real penetration)"
@@ -31,16 +25,45 @@ KillerPhysics::ParticleContact
 .RI "real \fBGetPenetration\fP (void)"
 .br
 .ti -1c
-.RI "const shared_ptr< \fBParticle2D\fP > \fBGetParticleOne\fP (void)"
+.RI "const shared_ptr< \fBParticle\fP > \fBGetParticleOne\fP (void)"
 .br
 .ti -1c
-.RI "const shared_ptr< \fBParticle2D\fP > \fBGetParticleTwo\fP (void)"
+.RI "const shared_ptr< \fBParticle\fP > \fBGetParticleTwo\fP (void)"
 .br
 .ti -1c
 .RI "void \fBResolve\fP (void)"
 .br
 .ti -1c
 .RI "real \fBCalculateSeparatingVelocity\fP (void) const"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fB_ResolveImpulseVelocity\fP (void)"
+.br
+.ti -1c
+.RI "void \fB_ResolveInterpenetration\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "shared_ptr< \fBParticle\fP > \fB_particles\fP [2]"
+.br
+.ti -1c
+.RI "shared_ptr< \fBKM::Vector\fP > \fB_particleMovements\fP [2]"
+.br
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_contactNormal\fP"
+.br
+.ti -1c
+.RI "real \fB_restitution\fP"
+.br
+.ti -1c
+.RI "real \fB_penetration\fP"
 .br
 .in -1c
 

@@ -88,6 +88,7 @@ $(document).ready(function(){initNavTree('class_killer_physics_1_1_particle_spri
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_killer_physics_1_1_particle_spring_force-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">KillerPhysics::ParticleSpringForce Class Reference</div>  </div>
@@ -103,30 +104,39 @@ Inheritance diagram for KillerPhysics::ParticleSpringForce:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a27d6ddc6b1e7d298949697374d6f2a41"><td class="memItemLeft" align="right" valign="top"><a id="a27d6ddc6b1e7d298949697374d6f2a41"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ParticleSpringForce</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle2_d.html">Particle2D</a> &gt; otherEnd, real springConstant, real restLength)</td></tr>
-<tr class="separator:a27d6ddc6b1e7d298949697374d6f2a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f0cefae67e84d77b0ae1b2eb75dfb8e"><td class="memItemLeft" align="right" valign="top"><a id="a9f0cefae67e84d77b0ae1b2eb75dfb8e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ParticleSpringForce</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle3_d.html">Particle3D</a> &gt; otherEnd, real springConstant, real restLength)</td></tr>
-<tr class="separator:a9f0cefae67e84d77b0ae1b2eb75dfb8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25075594ad81226c1ea5bb52dc31daca"><td class="memItemLeft" align="right" valign="top"><a id="a25075594ad81226c1ea5bb52dc31daca"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>v_UpdateForce</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle2_d.html">Particle2D</a> &gt; particle) final</td></tr>
-<tr class="separator:a25075594ad81226c1ea5bb52dc31daca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad80f29899ca4d6108bc449e6a3303242"><td class="memItemLeft" align="right" valign="top"><a id="ad80f29899ca4d6108bc449e6a3303242"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>v_UpdateForce</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle3_d.html">Particle3D</a> &gt; particle) final</td></tr>
-<tr class="separator:ad80f29899ca4d6108bc449e6a3303242"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13dbd488aeca41355bc8e33493b51239"><td class="memItemLeft" align="right" valign="top"><a id="a13dbd488aeca41355bc8e33493b51239"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ParticleSpringForce</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">Particle</a> &gt; otherEnd, real springConstant, real restLength)</td></tr>
+<tr class="separator:a13dbd488aeca41355bc8e33493b51239"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef85da3d3bc388b541e7c6a8471af701"><td class="memItemLeft" align="right" valign="top"><a id="aef85da3d3bc388b541e7c6a8471af701"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>v_UpdateForce</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">Particle</a> &gt; particle) final</td></tr>
+<tr class="separator:aef85da3d3bc388b541e7c6a8471af701"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c05c098b7f6ee6fcb7b5b9f436a7227"><td class="memItemLeft" align="right" valign="top"><a id="a7c05c098b7f6ee6fcb7b5b9f436a7227"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>MakeBungie</b> (bool state)</td></tr>
 <tr class="separator:a7c05c098b7f6ee6fcb7b5b9f436a7227"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6f35f70feb432f2dd08d29cf7278f30"><td class="memItemLeft" align="right" valign="top"><a id="ae6f35f70feb432f2dd08d29cf7278f30"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOtherEnd</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle2_d.html">Particle2D</a> &gt; end)</td></tr>
-<tr class="separator:ae6f35f70feb432f2dd08d29cf7278f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefec804662ccebcd9147213a1969a210"><td class="memItemLeft" align="right" valign="top"><a id="aefec804662ccebcd9147213a1969a210"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOtherEnd</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">Particle</a> &gt; end)</td></tr>
+<tr class="separator:aefec804662ccebcd9147213a1969a210"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21676e04e984581963ef44879fe0c884"><td class="memItemLeft" align="right" valign="top"><a id="a21676e04e984581963ef44879fe0c884"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetSpringConstant</b> (real constant)</td></tr>
 <tr class="separator:a21676e04e984581963ef44879fe0c884"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fbecde3a72ca0b7b40d834165b9bfb0"><td class="memItemLeft" align="right" valign="top"><a id="a7fbecde3a72ca0b7b40d834165b9bfb0"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetRestLength</b> (real length)</td></tr>
 <tr class="separator:a7fbecde3a72ca0b7b40d834165b9bfb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ab5fa83ecced30ff050852d79c58218d0"><td class="memItemLeft" align="right" valign="top"><a id="ab5fa83ecced30ff050852d79c58218d0"></a>
+shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">Particle</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_otherEnd</b></td></tr>
+<tr class="separator:ab5fa83ecced30ff050852d79c58218d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aada25f8a7e4daf0ea6e66f29b9e996"><td class="memItemLeft" align="right" valign="top"><a id="a5aada25f8a7e4daf0ea6e66f29b9e996"></a>
+real&#160;</td><td class="memItemRight" valign="bottom"><b>_springConstant</b></td></tr>
+<tr class="separator:a5aada25f8a7e4daf0ea6e66f29b9e996"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85fad4c67f4f32a29c8dec4b7c905ebe"><td class="memItemLeft" align="right" valign="top"><a id="a85fad4c67f4f32a29c8dec4b7c905ebe"></a>
+real&#160;</td><td class="memItemRight" valign="bottom"><b>_restLength</b></td></tr>
+<tr class="separator:a85fad4c67f4f32a29c8dec4b7c905ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1231b472d6282004836713ff3d37ad2c"><td class="memItemLeft" align="right" valign="top"><a id="a1231b472d6282004836713ff3d37ad2c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_isBungie</b></td></tr>
+<tr class="separator:a1231b472d6282004836713ff3d37ad2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_particle_spring_forces_8h_source.html">ParticleSpringForces.h</a></li>

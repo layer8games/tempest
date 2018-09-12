@@ -206,3 +206,28 @@ void Font::_AddNewCharacterData(string id,      string x, 		string y,
 		xadvance.erase(xadvance.begin(), xadvance.begin() + xadvance.find_first_of("=")+1);
 		_fontCharData[charID].xadvance = std::stoi(xadvance);
 }
+
+//==========================================================================================================================
+//
+//Operator Overloads
+//
+//==========================================================================================================================
+Font& Font::operator=(const Font* font)
+{
+	_textureID = font->GetTextureID();
+	_fontFile = font->GetFile();
+	_fontName = font->GetName();
+	_fontCharData = font->GetCharacterData();
+
+	return *this;
+}
+
+Font& Font::operator=(const Font& font)
+{
+	_textureID = font.GetTextureID();
+	_fontFile = font.GetFile();
+	_fontName = font.GetName();
+	_fontCharData = font.GetCharacterData();
+
+	return *this;
+}

@@ -1,4 +1,4 @@
-.TH "KillerEngine::ErrorManager" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::ErrorManager" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,11 +6,16 @@ KillerEngine::ErrorManager
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <ErrorManager\&.h>\fP
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
-.RI "void \fBSetError\fP (ErrorCode code, string message)"
+.RI "\fB~ErrorManager\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetError\fP (\fBErrorCode\fP code, string message)"
 .br
 .ti -1c
 .RI "void \fBDisplayErrors\fP (void)"
@@ -23,6 +28,63 @@ KillerEngine::ErrorManager
 .RI "static shared_ptr< \fBErrorManager\fP > \fBInstance\fP (void)"
 .br
 .in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBErrorManager\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "U32 \fB_numErrors\fP"
+.br
+.RI "Total count of errors\&. "
+.ti -1c
+.RI "map< U32, \fBErrorCode\fP > \fB_errorCodes\fP"
+.br
+.RI "List of active error codes\&. "
+.ti -1c
+.RI "map< U32, string > \fB_errorMessages\fP"
+.br
+.RI "List of active error messages\&. "
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBErrorManager\fP > \fB_instance\fP = NULL"
+.br
+.RI "Global singleton instance\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A singleton class that will display any errors that can happen during the initialization of any of the components of the engine\&. It will be flushed out later to include more details\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ErrorManager::~ErrorManager (void)"
+Default destructor\&. No special actions taken 
+.SS "ErrorManager::ErrorManager (void)\fC [protected]\fP"
+Default constructor\&. No special actions are taken\&. Protected because this class follows the singleton pattern 
+.SH "Member Function Documentation"
+.PP 
+.SS "void ErrorManager::DisplayErrors (void)"
+Displays any errors that have been added to the manager\&. This function loops over all the errors that have been added and displayed them one by one\&. Messages are never removed once they are thrown\&. 
+.SS "shared_ptr< \fBErrorManager\fP > ErrorManager::Instance (void)\fC [static]\fP"
+Singlton function\&. Returns pointer to global \fBErrorManager\fP instance\&. 
+.SS "void ErrorManager::SetError (\fBErrorCode\fP code, string message)"
+Adds an error into the Manager's map of errors\&. Any number of message can be in the Manager\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcode\fP ErrorCode: Displayed to hint where the error happened\&. 
+.br
+\fImessage\fP string: A string that will be displayed to the user giving additional details about the nature of the error\&. 
+.RE
+.PP
+
 
 .SH "Author"
 .PP 

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['winprogram',['WinProgram',['../class_killer_engine_1_1_win_program.html',1,'KillerEngine']]]
+  ['quaternion',['Quaternion',['../class_killer_math_1_1_quaternion.html',1,'KillerMath']]]
 ];

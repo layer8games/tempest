@@ -21,15 +21,14 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Controller.h>
-#include <Engine/Vector2.h>
 #include <Engine/Color.h>
+#include <Engine/Timer.h>
+#include <Engine/Vector.h>
 
 namespace KM = KillerMath; 
 
-//=====OGL includes=====
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/wglext.h>
+//===== STL Includes =====
+#include <sstream>
 
 namespace KillerEngine 
 {
@@ -51,44 +50,51 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-		HINSTANCE GetHINSTANCE(void) 	
+		inline void EndRunning(void) 
 		{ 
-			return _wndClass.hInstance; 
-		}
-
-		HWND GetHWND(void)
-		{
-			return _hwnd; 
+			_running = false;
+			glfwSetWindowShouldClose(_window, GL_TRUE);
 		}
 		
-		S32 GetWidth(void)
+		inline bool GetRunning(void) 
+		{ 
+			return _running;
+		}
+
+		inline S32 GetWidth(void)
 		{ 
 			return _totalWidth; 
 		}
 		
-		S32 GetRight(void)
+		inline S32 GetRight(void)
 		{ 
 			return _right; 
 		}
 		
-		S32 GetLeft(void)
+		inline S32 GetLeft(void)
 		{ 
 			return _left; 
 		}
 		
-		S32 GetHeight(void)
+		inline S32 GetHeight(void)
 		{ 
 			return _totalHeight; 
 		}
 		
-		S32 GetTop(void)
+		inline S32 GetTop(void)
 		{ 
 			return _top; 
 		}
 		
-		S32 GetBottom(void)
+		inline S32 GetBottom(void)
 		{ 
 			return _bottom; 
+		}
+
+		inline void SetBackgroundColor(const Color& c)
+		{
+			_bgColor = c;
+			glClearColor(_bgColor.GetRed(), _bgColor.GetGreen(), _bgColor.GetBlue(), _bgColor.GetAlpha());
 		}
 
 //==========================================================================================================================
@@ -105,58 +111,58 @@ namespace KillerEngine
 	\param wndName string: title of window
 	\param isFullScreen bool: Sets if the system makes the window fullscreen
 */		
+
 		void Init(S32 width, S32 height, string wndName, bool isFullScreen);
 		
-		void ProcessWndEvents(void);
-
-		Keys ConvertKeyCodes(WPARAM wParam);
+		void ProcessEvents(void);
 		
 		void BufferSwap(void);
 
-		void SetBackgroundColor(const Color& c) 
-		{
-			_bgColor[0] = c.GetRed();
-			_bgColor[1] = c.GetGreen();
-			_bgColor[2] = c.GetBlue();
-			_bgColor[3] = c.GetAlpha();
-		}
-		
+		static Keys ConvertKeyCodes(int key);
+
+		void DisplayFPS(void);
+
+		void ToggleWireFrame(void);
+
+		void ResetMouseCursor(void);
+
+		void EnableMouseCursor(void);
+
+		void DisableMouseCursor(void);
+
+		void HideMouseCursor(void);
+
+		const KM::Vector GetMousePos(void);
+
 //==========================================================================================================================
 //
-//System Windows Functions
+//Callback Functions
 //
-//==========================================================================================================================	
-		static LRESULT CALLBACK StaticWndProc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam);
-		
-		LRESULT CALLBACK WndProc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam);
+//==========================================================================================================================
+		static void OnKey(GLFWwindow* window, int key, int scancode, int action, int mode);
+
+		static void OnResize(GLFWwindow* window, int width, int height);
+
+		static void OnMouseClick(GLFWwindow* window, int button, int action, int mods);
+
+		static void OnMouseMove(GLFWwindow* window, F64 posX, F64 posY);
 
 	private:
 		static shared_ptr<WinProgram> _instance;
+		static S32     				  _totalWidth;
+		static S32     				  _totalHeight;
 		
 		bool    _isFullScreen;
-		S32     _totalWidth;
-		S32     _totalHeight;
+		bool 	_running;
+		bool 	_wireFrame;
 		S32     _right;
 		S32     _left;
 		S32     _top;
 		S32     _bottom;
 		string  _wndName;
-		GLfloat _bgColor[4];
+		Color 	_bgColor;
+		GLFWwindow* _window;
 
-		//=====Windows Variables=====
-		HWND _hwnd;
-		HDC _hdc;
-		HGLRC _hglrc;
-		WNDCLASSEX _wndClass;
-
-//==========================================================================================================================
-//
-//Private WinProgram Functions
-//
-//==========================================================================================================================
-		void _SetTempPixelFormat(void);
-		
-		void _SetPixelFormat(void);
 
 	protected:
 //==========================================================================================================================

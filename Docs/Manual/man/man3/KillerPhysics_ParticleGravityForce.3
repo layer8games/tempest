@@ -1,4 +1,4 @@
-.TH "KillerPhysics::ParticleGravityForce" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::ParticleGravityForce" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,22 +12,20 @@ Inherits \fBKillerPhysics::ParticleForceGenerator\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBParticleGravityForce\fP (const \fBKM::Vector2\fP &gravity)"
+.RI "\fBParticleGravityForce\fP (const \fBKM::Vector\fP &gravity)"
 .br
 .ti -1c
-.RI "\fBParticleGravityForce\fP (const \fBKM::Vector3\fP &gravity)"
+.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle\fP > particle) final"
 .br
 .ti -1c
-.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle2D\fP > particle) final"
+.RI "void \fBSetGravityAcceleration\fP (\fBKM::Vector\fP &gravity)"
 .br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
 .ti -1c
-.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle3D\fP > particle) final"
-.br
-.ti -1c
-.RI "void \fBSetGravityAcceleration\fP (\fBKM::Vector2\fP &gravity)"
-.br
-.ti -1c
-.RI "void \fBSetGravityAcceleration\fP (\fBKM::Vector3\fP &gravity)"
+.RI "\fBKM::Vector\fP \fB_gravityAcc\fP"
 .br
 .in -1c
 

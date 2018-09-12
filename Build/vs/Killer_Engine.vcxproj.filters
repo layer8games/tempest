@@ -31,23 +31,11 @@
     <Filter Include="Components\TextureManager">
       <UniqueIdentifier>{9cf645df-f4b4-417c-92f1-1c4cc356a975}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\ProgramWindows">
-      <UniqueIdentifier>{381d786c-065e-4c73-9294-7079cbccce17}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\GameObjects\EnvironmentObj">
       <UniqueIdentifier>{e34428c4-21e7-40f7-9fe0-9eb037b1e2e4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Components\Camera">
       <UniqueIdentifier>{e63d13b7-e9e9-4c1b-8403-7f3d194c5129}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\GameObjects\GameObject\2D">
-      <UniqueIdentifier>{d0d12d87-de69-42af-9f30-fb68d307c6da}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\GameObjects\GameObject\3D">
-      <UniqueIdentifier>{35b9d80d-2b32-4b04-b905-e2040b88907d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\Model">
-      <UniqueIdentifier>{b052f8a3-7bd6-4da4-a4a5-cc4dd017486f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Components\KillerMath">
       <UniqueIdentifier>{4b9e6bed-5956-4340-8293-4302ef41d7fc}</UniqueIdentifier>
@@ -55,17 +43,8 @@
     <Filter Include="Components\KillerMath\LinearAlgebra">
       <UniqueIdentifier>{f7ce502c-f857-4759-98ab-dd273a5641ba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\KillerMath\LinearAlgebra\Matrix">
-      <UniqueIdentifier>{b47791cc-1241-40a1-9bf3-9df0eb96250c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\KillerMath\LinearAlgebra\Vector">
       <UniqueIdentifier>{2d795523-a23d-4211-b17f-2919e5a6a30f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\KillerMath\LinearAlgebra\Vector\2D">
-      <UniqueIdentifier>{d87a1455-c2bf-429d-b0df-78a00d581b81}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\KillerMath\LinearAlgebra\Vector\3D">
-      <UniqueIdentifier>{e21d2ed8-880a-4167-9193-42978d82d57d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Components\KillerMath\Timer">
       <UniqueIdentifier>{d95a6a48-7e2e-4741-b39d-f6a1c763e14d}</UniqueIdentifier>
@@ -78,12 +57,6 @@
     </Filter>
     <Filter Include="Components\KillerPhysics\Particles">
       <UniqueIdentifier>{57925e0b-6c1a-46f2-92b3-fb68a9630ebe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\KillerPhysics\Particles\2D">
-      <UniqueIdentifier>{b6fe0ea0-8fbd-4f8b-ac6e-f4a7ef34a949}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\KillerPhysics\Particles\3D">
-      <UniqueIdentifier>{63bcd68c-6905-4860-97d6-ee3ca171435d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Components\Structs">
       <UniqueIdentifier>{2b6d07f5-9367-4b70-a35d-57e172e29178}</UniqueIdentifier>
@@ -115,9 +88,6 @@
     <Filter Include="Components\Shader">
       <UniqueIdentifier>{712aa763-23a4-43a6-8130-dd06474fa5a2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Renderers">
-      <UniqueIdentifier>{4983916f-5533-4441-a25f-d0bc4ec376f0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\KillerPhysics\Forces">
       <UniqueIdentifier>{b3088a5e-674e-4070-880b-75d7bacedb04}</UniqueIdentifier>
     </Filter>
@@ -138,6 +108,12 @@
     </Filter>
     <Filter Include="Components\KillerPhysics\ContactResolution">
       <UniqueIdentifier>{51060f2b-30e0-4b75-a6f5-ad0625443185}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\KillerMath\LinearAlgebra\Matrix">
+      <UniqueIdentifier>{b47791cc-1241-40a1-9bf3-9df0eb96250c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\WindowProgram">
+      <UniqueIdentifier>{381d786c-065e-4c73-9294-7079cbccce17}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -160,7 +136,7 @@
       <Filter>Components\KillerMath\Timer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\WinProgram.h">
-      <Filter>Components\ProgramWindows</Filter>
+      <Filter>Components\WindowProgram</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Sprite.h">
       <Filter>Components\Sprite</Filter>
@@ -171,26 +147,11 @@
     <ClInclude Include="..\..\Headers\Engine\EnvironmentObject.h">
       <Filter>Components\GameObjects\EnvironmentObj</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\GameObject2D.h">
-      <Filter>Components\GameObjects\GameObject\2D</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\GameObject3D.h">
-      <Filter>Components\GameObjects\GameObject\3D</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Quaternion.h">
       <Filter>Components\KillerMath\Quaternion</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Model.h">
-      <Filter>Components\Model</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Matrix.h">
       <Filter>Components\KillerMath\LinearAlgebra\Matrix</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Vector2.h">
-      <Filter>Components\KillerMath\LinearAlgebra\Vector\2D</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Vector3.h">
-      <Filter>Components\KillerMath\LinearAlgebra\Vector\3D</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Color.h">
       <Filter>Components\Color</Filter>
@@ -225,18 +186,6 @@
     <ClInclude Include="..\..\Headers\Engine\Shader.h">
       <Filter>Components\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\ModelRenderer.h">
-      <Filter>Components\Renderers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\SpriteRenderer.h">
-      <Filter>Components\Renderers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Particle2D.h">
-      <Filter>Components\KillerPhysics\Particles\2D</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Particle3D.h">
-      <Filter>Components\KillerPhysics\Particles\3D</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ParticleForceGenerator.h">
       <Filter>Components\KillerPhysics\Forces\Generator</Filter>
     </ClInclude>
@@ -251,6 +200,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ParticleSpringForces.h">
       <Filter>Components\KillerPhysics\Forces\Spring</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Vector.h">
+      <Filter>Components\KillerMath\LinearAlgebra\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\GameObject.h">
+      <Filter>Components\GameObjects\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Particle.h">
+      <Filter>Components\KillerPhysics\Particles</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
       <Filter>Components\KillerPhysics\ContactResolution</Filter>
@@ -273,7 +231,7 @@
       <Filter>Components\KillerMath\Timer</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\WinProgram.cpp">
-      <Filter>Components\ProgramWindows</Filter>
+      <Filter>Components\WindowProgram</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Sprite.cpp">
       <Filter>Components\Sprite</Filter>
@@ -284,26 +242,11 @@
     <ClCompile Include="..\..\Implementations\EnvironmentObject.cpp">
       <Filter>Components\GameObjects\EnvironmentObj</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\GameObject2D.cpp">
-      <Filter>Components\GameObjects\GameObject\2D</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\GameObject3D.cpp">
-      <Filter>Components\GameObjects\GameObject\3D</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Quaternion.cpp">
       <Filter>Components\KillerMath\Quaternion</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Model.cpp">
-      <Filter>Components\Model</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Matrix.cpp">
       <Filter>Components\KillerMath\LinearAlgebra\Matrix</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Vector2.cpp">
-      <Filter>Components\KillerMath\LinearAlgebra\Vector\2D</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Vector3.cpp">
-      <Filter>Components\KillerMath\LinearAlgebra\Vector\3D</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Color.cpp">
       <Filter>Components\Color</Filter>
@@ -332,18 +275,6 @@
     <ClCompile Include="..\..\Implementations\Shader.cpp">
       <Filter>Components\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\ModelRenderer.cpp">
-      <Filter>Components\Renderers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\SpriteRenderer.cpp">
-      <Filter>Components\Renderers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Particle2D.cpp">
-      <Filter>Components\KillerPhysics\Particles\2D</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Particle3D.cpp">
-      <Filter>Components\KillerPhysics\Particles\3D</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\ParticleForceGenerator.cpp">
       <Filter>Components\KillerPhysics\Forces\Generator</Filter>
     </ClCompile>
@@ -358,6 +289,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ParticleSpringForces.cpp">
       <Filter>Components\KillerPhysics\Forces\Spring</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Vector.cpp">
+      <Filter>Components\KillerMath\LinearAlgebra\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\GameObject.cpp">
+      <Filter>Components\GameObjects\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Particle.cpp">
+      <Filter>Components\KillerPhysics\Particles</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
       <Filter>Components\KillerPhysics\ContactResolution</Filter>

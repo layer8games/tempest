@@ -1,4 +1,4 @@
-.TH "KillerPhysics::ParticleSpringForce" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::ParticleSpringForce" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,28 +12,38 @@ Inherits \fBKillerPhysics::ParticleForceGenerator\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBParticleSpringForce\fP (shared_ptr< \fBParticle2D\fP > otherEnd, real springConstant, real restLength)"
+.RI "\fBParticleSpringForce\fP (shared_ptr< \fBParticle\fP > otherEnd, real springConstant, real restLength)"
 .br
 .ti -1c
-.RI "\fBParticleSpringForce\fP (shared_ptr< \fBParticle3D\fP > otherEnd, real springConstant, real restLength)"
-.br
-.ti -1c
-.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle2D\fP > particle) final"
-.br
-.ti -1c
-.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle3D\fP > particle) final"
+.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle\fP > particle) final"
 .br
 .ti -1c
 .RI "void \fBMakeBungie\fP (bool state)"
 .br
 .ti -1c
-.RI "void \fBSetOtherEnd\fP (shared_ptr< \fBParticle2D\fP > end)"
+.RI "void \fBSetOtherEnd\fP (shared_ptr< \fBParticle\fP > end)"
 .br
 .ti -1c
 .RI "void \fBSetSpringConstant\fP (real constant)"
 .br
 .ti -1c
 .RI "void \fBSetRestLength\fP (real length)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "shared_ptr< \fBParticle\fP > \fB_otherEnd\fP"
+.br
+.ti -1c
+.RI "real \fB_springConstant\fP"
+.br
+.ti -1c
+.RI "real \fB_restLength\fP"
+.br
+.ti -1c
+.RI "bool \fB_isBungie\fP"
 .br
 .in -1c
 

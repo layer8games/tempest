@@ -1,5 +1,7 @@
 var classtinyxml2_1_1_x_m_l_printer =
 [
+    [ "ENTITY_RANGE", "classtinyxml2_1_1_x_m_l_printer.html#a6ad62ac682429f6e4a0b52dd4f8d1a53a2ddc02813235fe451809606959166db5", null ],
+    [ "BUF_SIZE", "classtinyxml2_1_1_x_m_l_printer.html#a6ad62ac682429f6e4a0b52dd4f8d1a53a1f747a8fb39ceb2e711c3798058fb632", null ],
     [ "XMLPrinter", "classtinyxml2_1_1_x_m_l_printer.html#aa6d3841c069085f5b8a27bc7103c04f7", null ],
     [ "~XMLPrinter", "classtinyxml2_1_1_x_m_l_printer.html#af4caefa48ea6436898fb1807de8d14c0", null ],
     [ "ClearBuffer", "classtinyxml2_1_1_x_m_l_printer.html#a216157765b7267bf389975b1cbf9a909", null ],
@@ -10,6 +12,7 @@ var classtinyxml2_1_1_x_m_l_printer =
     [ "OpenElement", "classtinyxml2_1_1_x_m_l_printer.html#a20fb06c83bd13e5140d7dd13af06c010", null ],
     [ "Print", "classtinyxml2_1_1_x_m_l_printer.html#ab30210a7f32e45634e7a45137bf6fdf6", null ],
     [ "PrintSpace", "classtinyxml2_1_1_x_m_l_printer.html#a01148e2ebe6776e38c5a3e41bc5feb74", null ],
+    [ "PrintString", "classtinyxml2_1_1_x_m_l_printer.html#a5495e504053f63f2c4d603327314fa91", null ],
     [ "PushAttribute", "classtinyxml2_1_1_x_m_l_printer.html#a9a4e2c9348b42e147629d5a99f4af3f0", null ],
     [ "PushAttribute", "classtinyxml2_1_1_x_m_l_printer.html#a69120c82088597372d28d0a98f2ee7a1", null ],
     [ "PushAttribute", "classtinyxml2_1_1_x_m_l_printer.html#aa41039e51990aaf5342f3e0575a692c4", null ],
@@ -36,6 +39,15 @@ var classtinyxml2_1_1_x_m_l_printer =
     [ "VisitEnter", "classtinyxml2_1_1_x_m_l_printer.html#a2ce2aa508c21ac91615093ddb9c282c5", null ],
     [ "VisitExit", "classtinyxml2_1_1_x_m_l_printer.html#a15fc1f2b922f540917dcf52808737b29", null ],
     [ "VisitExit", "classtinyxml2_1_1_x_m_l_printer.html#ae99e0a7086543591edfb565f24689098", null ],
+    [ "_buffer", "classtinyxml2_1_1_x_m_l_printer.html#a19fca2e934576a892fefe2f602874d59", null ],
+    [ "_compactMode", "classtinyxml2_1_1_x_m_l_printer.html#a7bc067aa3f0dcee68e4ac75e19117bd0", null ],
+    [ "_depth", "classtinyxml2_1_1_x_m_l_printer.html#a19cd59a9dbe4b666264803fb91ac8ec1", null ],
     [ "_elementJustOpened", "classtinyxml2_1_1_x_m_l_printer.html#ac07169d58b465214a2b1fa306e617c26", null ],
-    [ "_stack", "classtinyxml2_1_1_x_m_l_printer.html#a99d59e67e084714541bee3ae43884bef", null ]
+    [ "_entityFlag", "classtinyxml2_1_1_x_m_l_printer.html#a334eb34c43f21daebef9341b4768c275", null ],
+    [ "_firstElement", "classtinyxml2_1_1_x_m_l_printer.html#abbd7ac45d97ae5eceec12d6c058119f9", null ],
+    [ "_fp", "classtinyxml2_1_1_x_m_l_printer.html#a79d91decf17990f7ce18b592f3fdf44e", null ],
+    [ "_processEntities", "classtinyxml2_1_1_x_m_l_printer.html#a3e27c4b4fe791a96e4e139b5034e190b", null ],
+    [ "_restrictedEntityFlag", "classtinyxml2_1_1_x_m_l_printer.html#a5df242509d42ae1c9128924121ebe093", null ],
+    [ "_stack", "classtinyxml2_1_1_x_m_l_printer.html#a99d59e67e084714541bee3ae43884bef", null ],
+    [ "_textDepth", "classtinyxml2_1_1_x_m_l_printer.html#a3c5a442e57131faefde97188e92144f3", null ]
 ];

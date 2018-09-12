@@ -8,8 +8,9 @@ using namespace KillerEngine;
 //
 //==========================================================================================================================
 Controller::Controller(void) 
-: 
-_transform()
+:
+_leftClickCoordinates(0.0f), 
+_rightClickCoordinates(0.0f)
 {
 	for(int i = 0; i < _totalKeys; ++i)
 	{
@@ -46,6 +47,31 @@ shared_ptr<Controller> Controller::Instance(void)
 //Controller Functions
 //
 //==========================================================================================================================
+void Controller::KeyDown(Keys k)
+{ 
+	_curActiveKeys[k] = true; 
+
+	if(k == LEFT_MOUSE)
+	{
+		_leftClickCoordinates = WinProgram::Instance()->GetMousePos();
+	}
+	else if(k == RIGHT_MOUSE)
+	{
+		_rightClickCoordinates = WinProgram::Instance()->GetMousePos();
+	}
+}
+
+void Controller::KeyUp(Keys k)
+{ 
+	_curActiveKeys[k] = false; 
+
+}
+
+const KM::Vector Controller::GetMouseCoord(void)
+{
+	return WinProgram::Instance()->GetMousePos();
+}
+
 void Controller::Update(void)
 {
 	for(int i = 0; i < _totalKeys; ++i)
@@ -121,9 +147,3 @@ bool Controller::GetKeyReleased(Keys k)
 		return false;
 	}
 }
-
-void Controller::LeftMouseClick(const KM::Vector2& coord)
-{
-	_leftClickCoordinates.SetX(coord.GetX());
-	_leftClickCoordinates.SetY( -( coord.GetY() - static_cast<F32>( WinProgram::Instance()->GetHeight() ) ) );
-} 

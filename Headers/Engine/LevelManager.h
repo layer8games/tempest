@@ -17,7 +17,8 @@ Written by Maxwell Miller
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
 #include <Engine/Level.h>
-#include <Engine/GameObject2D.h>
+#include <Engine/WinProgram.h>
+#include <Engine/GameObject.h>
 #include <Engine/ErrorManager.h>
 
 namespace KP = KillerPhysics;
@@ -60,33 +61,19 @@ namespace KillerEngine
 		{
 			return _activeLevel;
 		}
-		
-		void SetRunning(bool r) 
-		{ 
-			_running = r; 
-		}
-		
-		bool GetRunning(void) 
-		{ 
-			return _running; 
-		}
 
 		void EndGame(void)
 		{
-			_running = false; 
+			WinProgram::Instance()->EndRunning();
 		}
 
-		void AddObjectToLevel(U32 id, const GameObject2D& obj);
+		void AddObjectToLevel(U32 id, const GameObject& obj);
 
-		void AddObjectToLevel(U32 id, shared_ptr<GameObject2D> obj);
+		void AddObjectToLevel(U32 id, shared_ptr<GameObject> obj);
 
-		void AddParticle2DToLevel(U32 id, shared_ptr<KP::Particle2D>, shared_ptr<KP::ParticleForceGenerator> generator=nullptr);
-
-		void AddObject3DToLevel(U32 id, const GameObject3D& obj);
+		void AddParticleToLevel(U32 id, shared_ptr<KP::Particle>, shared_ptr<KP::ParticleForceGenerator> generator=nullptr);
 		
-		void Remove2DObjectFromLevel(U32 levelID, U32 ojbId);
-
-		void Remove3DObjectFromLevel(U32 levelID, U32 ojbId);
+		void RemoveObjectFromLevel(U32 levelID, U32 ojbId);
 
 //==========================================================================================================================
 //
@@ -104,8 +91,7 @@ namespace KillerEngine
 	private:
 		std::map<U32, shared_ptr<Level>> _levels;
 		shared_ptr<Level> 				 _activeLevel;
-		U32 				   			_activeLevelID;
-		bool				   			_running;			
+		U32 				   			_activeLevelID;			
 		static LevelManager*     		_instance;
 
 	};

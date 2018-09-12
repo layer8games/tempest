@@ -25,5 +25,11 @@ var class_killer_physics_1_1_particle2_d =
     [ "SetMass", "class_killer_physics_1_1_particle2_d.html#af09f8f44ece4c4a98a8cd9731ba2559f", null ],
     [ "SetVelocity", "class_killer_physics_1_1_particle2_d.html#a44b0342f6d6712be8a19b3d357375ca9", null ],
     [ "SetVelocity", "class_killer_physics_1_1_particle2_d.html#a8b3eb61ad0ad1ea8d630b85765ef45aa", null ],
-    [ "v_Update", "class_killer_physics_1_1_particle2_d.html#aba18f811b3deee248da26d8a1dae1edb", null ]
+    [ "v_Update", "class_killer_physics_1_1_particle2_d.html#aba18f811b3deee248da26d8a1dae1edb", null ],
+    [ "_acceleration", "class_killer_physics_1_1_particle2_d.html#a79b9e0047139b0e37af80b10fb91b9a7", null ],
+    [ "_damping", "class_killer_physics_1_1_particle2_d.html#a8149fd8a62134a6b3a576b685b8748ce", null ],
+    [ "_forceAccum", "class_killer_physics_1_1_particle2_d.html#ab13f1a32761eaf123f4c05848b4846ad", null ],
+    [ "_gravityForce", "class_killer_physics_1_1_particle2_d.html#a4c4fd089cece6d15ee853b68e9f8f469", null ],
+    [ "_inverseMass", "class_killer_physics_1_1_particle2_d.html#a3663c15c6318ce39d4449d43c0029f9e", null ],
+    [ "_velocity", "class_killer_physics_1_1_particle2_d.html#abdabe588d619bf8d44d8aa330029c7b8", null ]
 ];

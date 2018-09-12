@@ -89,6 +89,9 @@ $(document).ready(function(){initNavTree('classtinyxml2_1_1_str_pair.html','');}
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classtinyxml2_1_1_str_pair-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">tinyxml2::StrPair Class Reference</div>  </div>
@@ -97,7 +100,7 @@ $(document).ready(function(){initNavTree('classtinyxml2_1_1_str_pair.html','');}
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ad37973cda4276bf7f45baa937098d603"><td class="memItemLeft" align="right" valign="top"><a id="ad37973cda4276bf7f45baa937098d603"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+<tr class="memitem:a3ffe24039d236976053c923c37000777"><td class="memItemLeft" align="right" valign="top"><a id="a3ffe24039d236976053c923c37000777"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
 &#160;&#160;<b>NEEDS_ENTITY_PROCESSING</b> = 0x01, 
 <b>NEEDS_NEWLINE_NORMALIZATION</b> = 0x02, 
 <b>NEEDS_WHITESPACE_COLLAPSING</b> = 0x04, 
@@ -111,7 +114,7 @@ Public Types</h2></td></tr>
 &#160;&#160;<b>COMMENT</b> = NEEDS_NEWLINE_NORMALIZATION
 <br />
  }</td></tr>
-<tr class="separator:ad37973cda4276bf7f45baa937098d603"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a3ffe24039d236976053c923c37000777"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -142,6 +145,37 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>TransferTo</b> (<a cl
 <tr class="memitem:a80c1b3bd99bf62ae85c94a29ce537125"><td class="memItemLeft" align="right" valign="top"><a id="a80c1b3bd99bf62ae85c94a29ce537125"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Reset</b> ()</td></tr>
 <tr class="separator:a80c1b3bd99bf62ae85c94a29ce537125"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:aae339c62b4a8a587225dd6075f9997b3"><td class="memItemLeft" align="right" valign="top"><a id="aae339c62b4a8a587225dd6075f9997b3"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>NEEDS_FLUSH</b> = 0x100, 
+<b>NEEDS_DELETE</b> = 0x200
+ }</td></tr>
+<tr class="separator:aae339c62b4a8a587225dd6075f9997b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ade1469025e6b4cac74397a82a7429337"><td class="memItemLeft" align="right" valign="top"><a id="ade1469025e6b4cac74397a82a7429337"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>CollapseWhitespace</b> ()</td></tr>
+<tr class="separator:ade1469025e6b4cac74397a82a7429337"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac43c1f4a5730c5582f9cff724376d106"><td class="memItemLeft" align="right" valign="top"><a id="ac43c1f4a5730c5582f9cff724376d106"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>StrPair</b> (const <a class="el" href="classtinyxml2_1_1_str_pair.html">StrPair</a> &amp;other)</td></tr>
+<tr class="separator:ac43c1f4a5730c5582f9cff724376d106"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f095caeacc0b1fd9fee55cd71261ab4"><td class="memItemLeft" align="right" valign="top"><a id="a0f095caeacc0b1fd9fee55cd71261ab4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classtinyxml2_1_1_str_pair.html">StrPair</a> &amp;other)</td></tr>
+<tr class="separator:a0f095caeacc0b1fd9fee55cd71261ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ae6fabc08e7b24b0d41fa5f2fadbda4ed"><td class="memItemLeft" align="right" valign="top"><a id="ae6fabc08e7b24b0d41fa5f2fadbda4ed"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_flags</b></td></tr>
+<tr class="separator:ae6fabc08e7b24b0d41fa5f2fadbda4ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfd8687916a02833cc55c279460d2f4a"><td class="memItemLeft" align="right" valign="top"><a id="acfd8687916a02833cc55c279460d2f4a"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>_start</b></td></tr>
+<tr class="separator:acfd8687916a02833cc55c279460d2f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a855c81f785458d8f84313221f2d4a1eb"><td class="memItemLeft" align="right" valign="top"><a id="a855c81f785458d8f84313221f2d4a1eb"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>_end</b></td></tr>
+<tr class="separator:a855c81f785458d8f84313221f2d4a1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>F:/Projects/Killer_Engine/Headers/TinyXML/<a class="el" href="tinyxml2_8h_source.html">tinyxml2.h</a></li>

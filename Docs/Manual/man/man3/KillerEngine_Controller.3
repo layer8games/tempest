@@ -1,4 +1,4 @@
-.TH "KillerEngine::Controller" 3 "Sun Jun 3 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Controller" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,14 +6,16 @@ KillerEngine::Controller
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <Controller\&.h>\fP
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
-.RI "void \fBUpdate\fP (void)"
+.RI "\fB~Controller\fP (void)"
 .br
 .ti -1c
-.RI "void \fBInit\fP (F32 w, F32 h, F32 d)"
+.RI "void \fBUpdate\fP (void)"
 .br
 .ti -1c
 .RI "void \fBKeyDown\fP (Keys k)"
@@ -22,16 +24,16 @@ KillerEngine::Controller
 .RI "void \fBKeyUp\fP (Keys k)"
 .br
 .ti -1c
-.RI "void \fBLeftMouseClick\fP (const \fBKM::Vector2\fP &coord)"
+.RI "void \fBLeftMouseClick\fP (const \fBKM::Vector\fP &coord)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector2\fP \fBGetLeftMouseCoord\fP (void) const"
+.RI "const \fBKM::Vector\fP \fBGetLeftMouseCoord\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBRightMouseClick\fP (const \fBKM::Vector2\fP &coord)"
+.RI "void \fBRightMouseClick\fP (const \fBKM::Vector\fP &coord)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector2\fP \fBGetRightMouseCoord\fP (void) const"
+.RI "const \fBKM::Vector\fP \fBGetRightMouseCoord\fP (void) const"
 .br
 .ti -1c
 .RI "bool \fBGetKeyDown\fP (Keys k)"
@@ -45,9 +47,6 @@ KillerEngine::Controller
 .ti -1c
 .RI "bool \fBGetKeyReleased\fP (Keys k)"
 .br
-.ti -1c
-.RI "shared_ptr< \fBController\fP > \fBoperator=\fP (\fBController\fP &c)"
-.br
 .in -1c
 .SS "Static Public Member Functions"
 
@@ -56,6 +55,132 @@ KillerEngine::Controller
 .RI "static shared_ptr< \fBController\fP > \fBInstance\fP ()"
 .br
 .in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "KeyStates \fB_keyStates\fP [\fB_totalKeys\fP]"
+.br
+.RI "Array of states for each key, indexed by ID\&. "
+.ti -1c
+.RI "bool \fB_pastActiveKeys\fP [\fB_totalKeys\fP]"
+.br
+.RI "Array of keys in a pressed state as of last frame, indexed by ID\&. "
+.ti -1c
+.RI "bool \fB_curActiveKeys\fP [\fB_totalKeys\fP]"
+.br
+.RI "Array of keys in a pressed state as of this frame, indexed by ID\&. "
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_leftClickCoordinates\fP"
+.br
+.RI "Coordinates of last left click\&. "
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_rightClickCoordinates\fP"
+.br
+.RI "Coordinates of last right click\&. "
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBController\fP > \fB_instance\fP = NULL"
+.br
+.RI "Singleton Global instance\&. "
+.ti -1c
+.RI "static const int \fB_totalKeys\fP = 51"
+.br
+.RI "Total supported Keys from KeyCode\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Human input device controller\&. Abstract Keyboard input is received through a system all found in the *Program class\&. For example, in \fBWinProgram\fP, when windows gets a key input message for a key down even, \fBKeyDown(Keys k)\fP is called\&.
+.PP
+Two enums are defined\&.
+.PP
+KeyStates represents all the possible states that a key can have\&. KEY_RELEASED means that the key is not pressed\&. KEY_UP means that the key was released this frame\&.
+.PP
+Keys represents all the supported keys\&.
+.PP
+Update handles the logic of changing they key states, with two KeyState arrays holding the current key states, that is the key states of this frame and the past key states, that is the key states from last frame\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Controller::~Controller (void)"
+Destructor\&. No special functions within it\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Controller::GetKeyDown (Keys k)"
+Returns true if k has been pressed down this frame\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIk\fP Keys: Desired keycode\&. 
+.RE
+.PP
+
+.SS "bool Controller::GetKeyHeld (Keys k)"
+Returns true if k has been held down longer than 1 frame\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIk\fP Keys: Desired keycode 
+.RE
+.PP
+
+.SS "bool Controller::GetKeyReleased (Keys k)"
+Returns true if k is not being pressed during this frame 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIk\fP Keys: Desired keycode 
+.RE
+.PP
+
+.SS "bool Controller::GetKeyUp (Keys k)"
+Returns true if k has been released this frame\&.  k Keys: Desired keycode 
+.SS "const \fBKM::Vector\fP KillerEngine::Controller::GetLeftMouseCoord (void) const\fC [inline]\fP"
+Returns the raw coordinates of a Left Click in screen space\&. 
+.SS "const \fBKM::Vector\fP KillerEngine::Controller::GetRightMouseCoord (void) const\fC [inline]\fP"
+Returns the raw coordinates of a Right click in screen space 
+.SS "shared_ptr< \fBController\fP > Controller::Instance (void)\fC [static]\fP"
+Singleton function to get global instance of \fBController\fP\&. 
+.SS "void KillerEngine::Controller::KeyDown (Keys k)\fC [inline]\fP"
+Used by \fBWinProgram\fP to set when a key is pressed down, based on system signals\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIk\fP Keys: Keycode for key that has been pressed down\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Controller::KeyUp (Keys k)\fC [inline]\fP"
+Used by \fBWinProgram\fP to set when a key is no longer detected to be held down\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIk\fP Keys: Keycode for key that has been released\&. 
+.RE
+.PP
+
+.SS "void Controller::LeftMouseClick (const \fBKM::Vector\fP & coord)"
+Used by \fBWinProgram\fP to save the coordinates when a Left Mouse click is detected by the system\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcoord\fP Vector: x,y position on the screen of the click\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Controller::RightMouseClick (const \fBKM::Vector\fP & coord)\fC [inline]\fP"
+Used by \fBWinProgram\fP to save the coordinates when a Right Mouse click is detected by the system\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcoord\fP Vector: x\&.y position on the screen of the click 
+.RE
+.PP
+
+.SS "void Controller::Update (void)"
+Sets the new state of each key\&. 
 
 .SH "Author"
 .PP 

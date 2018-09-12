@@ -89,11 +89,14 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_engine.html','
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_engine-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">KillerEngine::Engine Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_engine_8h_source.html">Engine.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -105,8 +108,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a839aaf9ee031bb12b4f1d08453c2f068"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d9e9ce47304aa613b12d7756787eb38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_engine.html#a6d9e9ce47304aa613b12d7756787eb38">End</a> (void)</td></tr>
 <tr class="separator:a6d9e9ce47304aa613b12d7756787eb38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e5b5f22b26ea517b2e868c973d84e77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_engine.html#a7e5b5f22b26ea517b2e868c973d84e77">LoadTexture</a> (const string path, const U32 id, const S32 width, const S32 height)</td></tr>
-<tr class="separator:a7e5b5f22b26ea517b2e868c973d84e77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e951ac8906346a26efc5620c9768bf0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_engine.html#a4e951ac8906346a26efc5620c9768bf0">AddLevelToManager</a> (shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt; level)</td></tr>
 <tr class="separator:a4e951ac8906346a26efc5620c9768bf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42b05bccc84e2bf48a7b8dcdcefacfad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_engine.html#a42b05bccc84e2bf48a7b8dcdcefacfad">SetActiveLevel</a> (const U32 id)</td></tr>
@@ -120,8 +121,18 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a6d3a6beea3097dff1e797c4a0885ae3e"><td class="memItemLeft" align="right" valign="top">static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_engine.html">Engine</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_engine.html#a6d3a6beea3097dff1e797c4a0885ae3e">Instance</a> ()</td></tr>
 <tr class="separator:a6d3a6beea3097dff1e797c4a0885ae3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a4f3c5a733d582d8d9e7dab7dc6f000ab"><td class="memItemLeft" align="right" valign="top"><a id="a4f3c5a733d582d8d9e7dab7dc6f000ab"></a>
+static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_engine.html">Engine</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_engine.html#a4f3c5a733d582d8d9e7dab7dc6f000ab">_instance</a> = NULL</td></tr>
+<tr class="memdesc:a4f3c5a733d582d8d9e7dab7dc6f000ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singleton global instance. <br /></td></tr>
+<tr class="separator:a4f3c5a733d582d8d9e7dab7dc6f000ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The KillerEngine class is designed to be the interface to starting up the <a class="el" href="class_killer_engine_1_1_engine.html">Engine</a>. This class will really just be a function and instance holder for other classes in the engine, but will actually do very little of its own.</p>
+<p>A lot of the functions that will be here will not be required to use in order to use the engine. They will be present as helper classes, not intended for required use. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a4e951ac8906346a26efc5620c9768bf0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4e951ac8906346a26efc5620c9768bf0">&#9670;&nbsp;</a></span>AddLevelToManager()</h2>
 
@@ -177,12 +188,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Wrapper for LevelManager::SetRunning(). Sets Running to false. This stops the Main Game Loop from running. Calling this is the same as Quitting the program. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">none</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Wrapper for LevelManager::SetRunning(). Sets Running to false. This stops the Main Game Loop from running. Calling this is the same as Quitting the program. </p>
 
 </div>
 </div>
@@ -223,7 +229,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Wrapper for <a class="el" href="class_killer_engine_1_1_win_program.html#a390478713355c57ea63b0923e59a3892" title="Sets up Windows Program. ">WinProgram::Init</a>. Sets up the Window and OpenGL </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Wrapper for WinProgram::Init. Sets up the Window and OpenGL </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">width</td><td>S32: describes width of window. </td></tr>
     <tr><td class="paramname">height</td><td>S32: describes height of the window. </td></tr>
@@ -258,69 +264,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Singleton function to get instance of <a class="el" href="class_killer_engine_1_1_engine.html">Engine</a>. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">none</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a7e5b5f22b26ea517b2e868c973d84e77"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e5b5f22b26ea517b2e868c973d84e77">&#9670;&nbsp;</a></span>LoadTexture()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void KillerEngine::Engine::LoadTexture </td>
-          <td>(</td>
-          <td class="paramtype">const string&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const U32&#160;</td>
-          <td class="paramname"><em>id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const S32&#160;</td>
-          <td class="paramname"><em>width</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const S32&#160;</td>
-          <td class="paramname"><em>height</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Wrapper for TextureManager::LoadTexture(). Saves an handle to a loaded texture in OpenGL by ID </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">path</td><td>string: filepath to the texture image </td></tr>
-    <tr><td class="paramname">id</td><td>U32: id for texture. Will be used to call it later. </td></tr>
-    <tr><td class="paramname">width</td><td>S32: width in pixels of texture </td></tr>
-    <tr><td class="paramname">height</td><td>S32: height in pixels of texture </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Singleton function to get global instance of <a class="el" href="class_killer_engine_1_1_engine.html">Engine</a>. </p>
 
 </div>
 </div>
@@ -342,14 +286,8 @@ Static Public Member Functions</h2></td></tr>
 <p>Wrapper for steps needed to render. Calls the following in order</p><ul>
 <li>LevelManager::Render()</li>
 <li>WinProgram::BufferSwap()</li>
-<li>ErrorManager::DisplayErrors()</li>
+<li><a class="el" href="class_killer_engine_1_1_error_manager.html#a26f8ed34b78234ca563205ed1fa5d7d6">ErrorManager::DisplayErrors()</a> </li>
 </ul>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">none</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -376,12 +314,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Check if simulation is still running. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">none</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Check if simulation is still running. </p>
 
 </div>
 </div>
@@ -432,12 +365,7 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Wrapper for LevelManager::ShutDown(void) </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">none</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Wrapper for LevelManager::ShutDown(void) </p>
 
 </div>
 </div>
@@ -459,16 +387,10 @@ Static Public Member Functions</h2></td></tr>
 <p>Wrapper for steps needed update steps. Calls the following in order.</p><ul>
 <li>WinProgram::ProcessWndEvents()</li>
 <li>Timer::Update()</li>
-<li>Controller::Update()</li>
+<li><a class="el" href="class_killer_engine_1_1_controller.html#acd347bd6a27c7325441815729f92d730">Controller::Update()</a></li>
 <li>LevelManager::Update()</li>
-<li>ErrorManager::DisplayErrors()</li>
+<li><a class="el" href="class_killer_engine_1_1_error_manager.html#a26f8ed34b78234ca563205ed1fa5d7d6">ErrorManager::DisplayErrors()</a> </li>
 </ul>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">none</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

@@ -45,5 +45,9 @@ var class_killer_math_1_1_vector2 =
     [ "Set", "class_killer_math_1_1_vector2.html#a6438a198725ba3507d4b66a55060aa6b", null ],
     [ "SetX", "class_killer_math_1_1_vector2.html#af39a048cae2359d429ac0e48c9301f3a", null ],
     [ "SetY", "class_killer_math_1_1_vector2.html#a2ba0655705f7161fd3c60a0e12130d68", null ],
-    [ "SqrMagnitude", "class_killer_math_1_1_vector2.html#a717db668d9f99050a022150b6b22ec2f", null ]
+    [ "SqrMagnitude", "class_killer_math_1_1_vector2.html#a717db668d9f99050a022150b6b22ec2f", null ],
+    [ "_w", "class_killer_math_1_1_vector2.html#abd7c0e1ed14dd429b8e82c37f0316e5f", null ],
+    [ "_x", "class_killer_math_1_1_vector2.html#a4ddbcb88651e0f0a0ea6e69b6cb7842b", null ],
+    [ "_y", "class_killer_math_1_1_vector2.html#ad67e773965e13980edeb01f62f4a0e3f", null ],
+    [ "_z", "class_killer_math_1_1_vector2.html#ac8e2a27d4159a32682cdfb7ebeba8442", null ]
 ];
