@@ -22,6 +22,10 @@ namespace KillerEngine
 		F32 u;
 		F32 v;
 
+		TexCoord(void)
+		: u(0.0f), v(0.0f)
+		{  }
+
 		TexCoord(F32 s, F32 t)
 		: u(s), v(t)
 		{  }

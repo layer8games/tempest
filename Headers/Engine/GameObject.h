@@ -46,13 +46,15 @@ namespace KillerEngine
 
 		virtual void v_Render(void);
 
-		virtual void v_InitVertexData(void);
+		virtual void v_InitBuffers(void);
 
 //==========================================================================================================================
 //
 //Functions
 //
 //==========================================================================================================================
+		bool LoadOBJ(string filepath);
+
 		void LoadMesh(string filepath);
 
 		const KM::Matrix GetModelMatrix(void);
@@ -325,6 +327,7 @@ namespace KillerEngine
 		U32 					_ID;
 		bool					_active;
 		bool					_activeRender;
+		bool 					_meshLoaded;
 		KM::Vector				_position;
 		KM::Vector 				_scale;
 		S32						_numIndices;
