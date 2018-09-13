@@ -297,7 +297,29 @@ bool GameObject::LoadOBJ(string filepath)
 */
 void GameObject::LoadMesh(string filepath)
 {
+	if(filepath.find(".dae") == std::string::npos)
+	{
+		ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadMesh => Tried to load mesh in the wrong format. " + filepath);
+		return;
+	}
+
+	std::vector<F32> vertexData;
+	std::vector<Vertex> vertices;
+	std::vector<F32> uvData;
+	std::vector<TexCoord> texCoordValues;
+
+	std::smatch match{};
+	std::regex vertexRegex (".*mesh-positions");
+	std::regex uvRegex (".*mesh-map.*");
+
 	std::ifstream file(filepath);
+
+	if(!file)
+	{
+		ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadMesh => Failed to open file: " + filepath);
+		return;
+	}
+
 	std::vector<char> buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 	//xml file must be 0 terminating
 	buffer.push_back('\0');
@@ -315,16 +337,7 @@ void GameObject::LoadMesh(string filepath)
 //I am just not sure what to do with that code yet. 
 
 //===== Get Data =====
-	rapidxml::xml_node<>* data = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh")->first_node("source");
-
-	std::smatch match{};
-	std::regex vertexRegex (".*mesh-positions");
-	std::regex uvRegex (".*mesh-map.*");
-	
-	std::vector<F32> vertexData;
-	std::vector<Vertex> vertices;
-	std::vector<F32> uvData;
-	std::vector<TexCoord> texCoordValues;
+	rapidxml::xml_node<>* data = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh")->first_node("source");	
 
 	for(rapidxml::xml_node<>* i = data; i; i = i->next_sibling("source"))
 	{
