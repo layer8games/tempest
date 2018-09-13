@@ -1,4 +1,5 @@
 #include <Engine/GameObject.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -19,6 +20,7 @@ GameObject::GameObject(void)
 _ID(_nextID),
 _active(true),
 _activeRender(true),
+_meshLoaded(false),
 _position(0.0f),
 _scale(1.0f),
 _shader(),
@@ -65,72 +67,223 @@ GameObject::~GameObject(void)
 //==========================================================================================================================
 void GameObject::v_Render(void)
 {
-	_shader.Use(true);
-	BindVAO(true);
+	if(_meshLoaded)
+	{
+		_shader.Use(true);
+		BindVAO(true);
 
-	glDrawElements(GL_TRIANGLES, _numIndices, GL_UNSIGNED_INT, 0);
-	glBindVertexArray(0);
-	
-	_shader.Use(false);
-	BindVAO(false);
+		glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
+
+		_shader.Use(false);
+		BindVAO(false);
+	}
+	else
+	{
+		_shader.Use(true);
+		BindVAO(true);
+
+		glDrawElements(GL_TRIANGLES, _numIndices, GL_UNSIGNED_INT, 0);
+		glBindVertexArray(0);
+		
+		_shader.Use(false);
+		BindVAO(false);
+	}
 }
 
 //==========================================================================================================================
 //v_InitVertexData
 //==========================================================================================================================
-void GameObject::v_InitVertexData(void)
+void GameObject::v_InitBuffers(void)
 {
-	if(_vertices.size() <= 0)
+	if(_meshLoaded)
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "GameObject::v_InitVertexData. No Vertices added to GameObject before init was called.");
+		std::vector<F32> vertPosition;
+		std::vector<F32> vertTexCoords;
+
+		for(auto i : _vertices)
+		{
+			vertPosition.push_back(i.position[0]);
+			vertPosition.push_back(i.position[1]);
+			vertPosition.push_back(i.position[2]);
+			vertPosition.push_back(i.position[3]);
+
+			vertTexCoords.push_back(i.texCoord.u);
+			vertTexCoords.push_back(i.texCoord.v);
+		}
+
+		glBindVertexArray(_vao);
+
+		glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
+		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPosition.size()), &vertPosition[0], GL_STATIC_DRAW);
+		glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+		glEnableVertexAttribArray(VERTEX_POS);
+
+		if(vertTexCoords.size() > 0)
+		{
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+			glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
+			glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertTexCoords.size()), &vertTexCoords[0], GL_STATIC_DRAW);
+			glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
+			glEnableVertexAttribArray(TEX_COORD_POS);	
+		}
+
+		glBindVertexArray(0);
 	}
-	else if(_indices.size() <= 0)
+	else
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "GameObject::v_InitVertexData. No indices added to GameObject before init was called.");
-	}
-
-	std::vector<F32> vertPosition;
-	std::vector<F32> vertTexCoords;
-
-	for(auto i : _vertices)
-	{
-		vertPosition.push_back(i.position[0]);
-		vertPosition.push_back(i.position[1]);
-		vertPosition.push_back(i.position[2]);
-		vertPosition.push_back(i.position[3]);
-
-		vertTexCoords.push_back(i.texCoord.u);
-		vertTexCoords.push_back(i.texCoord.v);
-	}
-
-	glBindVertexArray(_vao);
-
-	glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
-	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPosition.size()), &vertPosition[0], GL_STATIC_DRAW);
-	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-	glEnableVertexAttribArray(VERTEX_POS);
-
-	if(vertTexCoords.size() > 0)
-	{
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-		glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
-		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertTexCoords.size()), &vertTexCoords[0], GL_STATIC_DRAW);
-		glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
-		glEnableVertexAttribArray(TEX_COORD_POS);	
-	}
+		if(_vertices.size() <= 0)
+			{
+				ErrorManager::Instance()->SetError(EC_Engine, "GameObject::v_InitVertexData. No Vertices added to GameObject before init was called.");
+			}
+			else if(_indices.size() <= 0)
+			{
+				ErrorManager::Instance()->SetError(EC_Engine, "GameObject::v_InitVertexData. No indices added to GameObject before init was called.");
+			}
 	
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[INDEX_BUFFER]);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, (sizeof(U32) * _indices.size()), &_indices[0], GL_STATIC_DRAW);
-
-	glBindVertexArray(0);
+			std::vector<F32> vertPosition;
+			std::vector<F32> vertTexCoords;
+	
+			for(auto i : _vertices)
+			{
+				vertPosition.push_back(i.position[0]);
+				vertPosition.push_back(i.position[1]);
+				vertPosition.push_back(i.position[2]);
+				vertPosition.push_back(i.position[3]);
+	
+				vertTexCoords.push_back(i.texCoord.u);
+				vertTexCoords.push_back(i.texCoord.v);
+			}
+	
+			glBindVertexArray(_vao);
+	
+			glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
+			glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPosition.size()), &vertPosition[0], GL_STATIC_DRAW);
+			glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+			glEnableVertexAttribArray(VERTEX_POS);
+	
+			if(vertTexCoords.size() > 0)
+			{
+				glEnable(GL_BLEND);
+				glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	
+				glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
+				glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertTexCoords.size()), &vertTexCoords[0], GL_STATIC_DRAW);
+				glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
+				glEnableVertexAttribArray(TEX_COORD_POS);	
+			}
+			
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[INDEX_BUFFER]);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, (sizeof(U32) * _indices.size()), &_indices[0], GL_STATIC_DRAW);
+	
+			glBindVertexArray(0);
+		}
 }
 
 //==========================================================================================================================
 //
 //Functions
-//
+//==========================================================================================================================
+bool GameObject::LoadOBJ(string filepath)
+{
+	std::vector<U32> vertexIndices, uvIndices;
+	std::vector<KM::Vector> tempVertices;
+	std::vector<TexCoord> tempUVs;
+
+	if(filepath.find(".obj") != std::string::npos)
+	{
+		std::ifstream file(filepath, std::ios::in);
+
+		if(!file)
+		{
+			ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadOBJ => unable to open " + filepath);
+			return false;
+		}
+
+		//remove later
+		std::cout << "Loading OBJ file " << filepath << " ...\n";
+
+		string lineBuffer;
+		while(std::getline(file, lineBuffer))
+		{
+			if(lineBuffer.substr(0, 2) == "v ")
+			{
+				std::istringstream v(lineBuffer.substr(2));
+				KM::Vector vertex;
+				
+				v >> vertex[0];
+				v >> vertex[1];
+				v >> vertex[2];
+				
+				tempVertices.push_back(vertex);
+			}
+			else if(lineBuffer.substr(0, 2) == "vt")
+			{
+				std::istringstream vt(lineBuffer.substr(3));
+				TexCoord uv;
+
+				vt >> uv.u;
+				vt >> uv.v;
+
+				tempUVs.push_back(uv);
+			}
+			else if(lineBuffer.substr(0, 2) == "f ")
+			{
+				S32 p1, p2, p3; //store mesh index
+				S32 t1, t2, t3; //store texture index
+				S32 n1, n2, n3; //store normal index
+
+				const char* face = lineBuffer.c_str();
+
+				S32 match = sscanf_s(
+					face, "f %i/%i/%i %i/%i/%i %i/%i/%i",
+					&p1, &t1, &n1,  
+					&p2, &t2, &n2,
+					&p3, &t3, &n3 );
+
+				if(match != 9)
+				{
+					ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadOBJ => didn't find enough indices. Found " + match);
+					return false;
+				}
+
+				vertexIndices.push_back(p1);
+				vertexIndices.push_back(p2);
+				vertexIndices.push_back(p3);
+
+				uvIndices.push_back(t1);
+				uvIndices.push_back(t2);
+				uvIndices.push_back(t3);
+
+				//Add normals here
+			}
+		}
+
+		file.close();
+
+		for(U32 i = 0; i < vertexIndices.size(); ++i)
+		{
+			KM::Vector vertex = tempVertices[vertexIndices[i] -1];
+			TexCoord uv = tempUVs[uvIndices[i] - 1];
+
+			Vertex meshVertex;
+			meshVertex.position = vertex;
+			meshVertex.texCoord = uv;
+
+			_vertices.push_back(meshVertex);
+		}		
+
+		_meshLoaded = true;
+
+		v_InitBuffers();
+
+		return true;
+	}
+
+	return false;
+}
+
 /*
 	This whole second has some severe issues. First, the way that uv's are set is not working at all. The geometry (vertices)
 	are working pretty good, but they can't be colored at all, which is a big problem. 
