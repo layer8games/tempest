@@ -17,6 +17,7 @@ _mapRightBorder(0),
 _mapLeftBorder(0),
 _bgColor(),
 _ID(),
+_camera(),
 _gameObjects(),
 _particles(),
 _forceRegistry()
@@ -48,11 +49,17 @@ void Level::v_Render(void)
 	RenderObjects(); 
 }
 
-//=============================================================================
+//==========================================================================================================================
 //
-//AddObjectToLevel
+//Functions
 //
-//=============================================================================
+//==========================================================================================================================
+
+void Level::UpdateLevel(void)
+{
+	_camera->v_Update();
+}
+
 void Level::AddObjectToLevel(const GameObject& obj)
 {
 	_gameObjects.insert({ obj.GetID(), shared_ptr<GameObject>(const_cast<GameObject*>(&obj)) });
@@ -150,6 +157,7 @@ void Level::RenderObjects(void)
 	{
 		if(i.second->GetActiveRender())
 		{
+			i.second->SetShaderUniform("view", _camera->GetViewMatrix());
 			i.second->v_Render();
 		}
 	}
@@ -158,6 +166,7 @@ void Level::RenderObjects(void)
 	{
 		if(i.second->GetActiveRender())
 		{
+			i.second->SetShaderUniform("view", _camera->GetViewMatrix());
 			i.second->v_Render();
 		}
 	}
