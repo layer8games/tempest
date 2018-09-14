@@ -123,9 +123,11 @@ namespace KillerEngine
 
 //==========================================================================================================================
 //
-//Accessors
+//Camera Functions
 //
 //==========================================================================================================================
+		void UpdateLevel(void);
+
 		void AddObjectToLevel(const GameObject& obj);
 
 		void AddObjectToLevel(shared_ptr<GameObject> obj);
@@ -148,6 +150,12 @@ namespace KillerEngine
 		void RenderObjects(void);
 
 		void UpdateObjects(void);
+
+//==========================================================================================================================
+//
+//Accessors
+//
+//==========================================================================================================================		
 		
 		void SetBackgroundColor(Color& c) 
 		{ 
@@ -243,6 +251,16 @@ namespace KillerEngine
 			return _ID; 
 		}
 
+		void SetCamera(Camera* cam)
+		{
+			_camera = cam;
+		}
+
+		const Camera* GetCamera(void)
+		{
+			return _camera;
+		}
+
 	protected:
 		void Importer2D(string tmxFilePath);
 
@@ -251,15 +269,15 @@ namespace KillerEngine
 	private:
 		void _AddTile(TileData data);
 
-
-		S32   _mapWidth;
-		S32   _mapHeight;
-		S32   _mapTopBorder;
-		S32   _mapBottomBorder;
-		S32   _mapRightBorder;
-		S32   _mapLeftBorder;
-		Color _bgColor;
-		U32 _ID;
+		S32     _mapWidth;
+		S32     _mapHeight;
+		S32     _mapTopBorder;
+		S32     _mapBottomBorder;
+		S32     _mapRightBorder;
+		S32     _mapLeftBorder;
+		Color   _bgColor;
+		U32     _ID;
+		Camera* _camera;
 		std::map<U32, shared_ptr<GameObject>>	  _gameObjects;
 		std::map<U32, shared_ptr<KP::Particle>>   _particles;
 		std::vector<shared_ptr<RenderedText>>     _textList;

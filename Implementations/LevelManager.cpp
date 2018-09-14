@@ -77,6 +77,7 @@ void LevelManager::Update(void)
 	if(_activeLevel != nullptr)
 	{
 		_activeLevel->v_Integrate();
+		_activeLevel->UpdateLevel();
 		_activeLevel->UpdateObjects();
 		_activeLevel->v_Update();	
 	}
