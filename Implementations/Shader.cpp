@@ -148,7 +148,7 @@ void Shader::SetUniform(const GLchar* name, KM::Matrix mat)
 //==========================================================================================================================
 Shader& Shader::operator=(const Shader& shader)
 {
-	_uniformLocations = shader.GetUniformLocations();
+	//_uniformLocations = shader.GetUniformLocations();
 	_shaderProgram = shader.GetProgram();
 
 	return *this;

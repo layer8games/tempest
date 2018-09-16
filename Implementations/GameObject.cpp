@@ -98,6 +98,7 @@ void GameObject::v_InitBuffers(void)
 	if(_meshLoaded)
 	{
 		std::vector<F32> vertPosition;
+		std::vector<F32> vertNormals;
 		std::vector<F32> vertTexCoords;
 
 		for(auto i : _vertices)
@@ -106,6 +107,11 @@ void GameObject::v_InitBuffers(void)
 			vertPosition.push_back(i.position[1]);
 			vertPosition.push_back(i.position[2]);
 			vertPosition.push_back(i.position[3]);
+
+			vertNormals.push_back(i.normal[0]);
+			vertNormals.push_back(i.normal[1]);
+			vertNormals.push_back(i.normal[2]);
+			vertNormals.push_back(i.normal[3]);
 
 			vertTexCoords.push_back(i.texCoord.u);
 			vertTexCoords.push_back(i.texCoord.v);
@@ -117,6 +123,14 @@ void GameObject::v_InitBuffers(void)
 		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPosition.size()), &vertPosition[0], GL_STATIC_DRAW);
 		glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 		glEnableVertexAttribArray(VERTEX_POS);
+
+		if(vertNormals.size() > 0)
+		{
+			glBindBuffer(GL_ARRAY_BUFFER, _vbo[NORMAL_BUFFER]);
+			glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertTexCoords.size()), &vertTexCoords[0], GL_STATIC_DRAW);
+			glVertexAttribPointer(NORMAL_POS, 4, GL_FLOAT, GL_FALSE, 0 , NULL);
+			glEnableVertexAttribArray(NORMAL_POS);				
+		}
 
 		if(vertTexCoords.size() > 0)
 		{
@@ -187,8 +201,9 @@ void GameObject::v_InitBuffers(void)
 //==========================================================================================================================
 bool GameObject::LoadOBJ(string filepath)
 {
-	std::vector<U32> vertexIndices, uvIndices;
+	std::vector<U32> vertexIndices, uvIndices, normalIndices;
 	std::vector<KM::Vector> tempVertices;
+	std::vector<KM::Vector> tempNormals;
 	std::vector<TexCoord> tempUVs;
 
 	if(filepath.find(".obj") != std::string::npos)
@@ -201,62 +216,84 @@ bool GameObject::LoadOBJ(string filepath)
 			return false;
 		}
 
-		//remove later
-		std::cout << "Loading OBJ file " << filepath << " ...\n";
-
 		string lineBuffer;
 		while(std::getline(file, lineBuffer))
 		{
-			if(lineBuffer.substr(0, 2) == "v ")
+			std::stringstream ss(lineBuffer);
+			string command;
+			ss >> command;
+
+			if(command == "v")
 			{
-				std::istringstream v(lineBuffer.substr(2));
 				KM::Vector vertex;
+				S32 dimension = 0;
 				
-				v >> vertex[0];
-				v >> vertex[1];
-				v >> vertex[2];
+				while(dimension < 3 && ss >> vertex[dimension])
+				{
+					++dimension;
+				}
 				
 				tempVertices.push_back(vertex);
 			}
-			else if(lineBuffer.substr(0, 2) == "vt")
+			else if(command == "vt")
 			{
-				std::istringstream vt(lineBuffer.substr(3));
 				TexCoord uv;
 
-				vt >> uv.u;
-				vt >> uv.v;
+				ss >> uv.u;
+				ss >> uv.v;
 
 				tempUVs.push_back(uv);
 			}
-			else if(lineBuffer.substr(0, 2) == "f ")
+			else if(command == "vn")
 			{
-				S32 p1, p2, p3; //store mesh index
-				S32 t1, t2, t3; //store texture index
-				S32 n1, n2, n3; //store normal index
-
-				const char* face = lineBuffer.c_str();
-
-				S32 match = sscanf_s(
-					face, "f %i/%i/%i %i/%i/%i %i/%i/%i",
-					&p1, &t1, &n1,  
-					&p2, &t2, &n2,
-					&p3, &t3, &n3 );
-
-				if(match != 9)
+				KM::Vector normal;
+				S32 dimension = 0;
+				
+				while(dimension < 3 && ss >> normal[dimension])
 				{
-					ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadOBJ => didn't find enough indices. Found " + match);
-					return false;
+					++dimension;
 				}
 
-				vertexIndices.push_back(p1);
-				vertexIndices.push_back(p2);
-				vertexIndices.push_back(p3);
+				normal.Normalize();
+				
+				tempNormals.push_back(normal);
+			}
+			else if(command == "f")
+			{
+				string faceData;
+				S32 vertexIndex, uvIndex, normalIndex;
 
-				uvIndices.push_back(t1);
-				uvIndices.push_back(t2);
-				uvIndices.push_back(t3);
+				while(ss >> faceData)
+				{
+					std::vector<string> data = _SplitString(faceData, '/');
 
-				//Add normals here
+					//check for vertex data
+					if(data[0].size() > 0)
+					{
+						sscanf_s(data[0].c_str(), "%d", &vertexIndex);
+						vertexIndices.push_back(vertexIndex);
+					}
+
+					//check for texture coordinate data
+					if(data.size() >= 1)
+					{
+						if(data[1].size() > 0)
+						{
+							sscanf_s(data[1].c_str(), "%d", &uvIndex);
+							uvIndices.push_back(uvIndex);
+						}
+					}
+
+					//check for normal data
+					if(data.size() >= 2)
+					{
+						if(data[2].size() > 0)
+						{
+							sscanf_s(data[2].c_str(), "%d", &normalIndex);
+							normalIndices.push_back(normalIndex);
+						}
+					}
+				}
 			}
 		}
 
@@ -264,12 +301,22 @@ bool GameObject::LoadOBJ(string filepath)
 
 		for(U32 i = 0; i < vertexIndices.size(); ++i)
 		{
-			KM::Vector vertex = tempVertices[vertexIndices[i] -1];
-			TexCoord uv = tempUVs[uvIndices[i] - 1];
-
 			Vertex meshVertex;
-			meshVertex.position = vertex;
-			meshVertex.texCoord = uv;
+
+			if(tempVertices.size() > 0)
+			{
+				meshVertex.position = tempVertices[vertexIndices[i] - 1];
+			}
+
+			if(tempUVs.size() > 0)
+			{
+				meshVertex.texCoord = tempUVs[uvIndices[i] - 1];
+			}
+
+			if(tempNormals.size() > 0)
+			{
+				meshVertex.normal = tempNormals[normalIndices[i] - 1];
+			}
 
 			_vertices.push_back(meshVertex);
 		}		
@@ -500,6 +547,20 @@ std::vector<F32> GameObject::_SplitF32(string text, char delim) const
 	while(std::getline(stream, item, delim))
 	{
 		data.push_back(strtof(item.c_str(), nullptr));
+	}
+
+	return data;
+}
+
+std::vector<string> GameObject::_SplitString(string text, char delim) const
+{
+	std::vector<string> data;
+	std::stringstream stream(text);
+	string item;
+
+	while(std::getline(stream, item, delim))
+	{
+		data.push_back(item);
 	}
 
 	return data;
