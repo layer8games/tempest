@@ -23,6 +23,7 @@ Written by Maxwell Miller
 #include <Engine/Color.h>
 #include <Engine/Vector.h>
 #include <Engine/Matrix.h>
+#include <Engine/Texture.h>
 
 namespace KM = KillerMath;
 
@@ -80,12 +81,15 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================		
+		void SetUniform(const GLchar* name, const F32 val);
 
 		void SetUniform(const GLchar* name, Color col);
 
 		void SetUniform(const GLchar* name, KM::Vector vec);
 
 		void SetUniform(const GLchar* name, KM::Matrix mat);
+
+		void SetUniformSampler(const GLchar* name, S32 texSlot);
 
 		inline GLuint GetProgram(void) const
 		{

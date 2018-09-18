@@ -122,6 +122,11 @@ void Shader::Use(bool state)
 //Accessors
 //
 //==========================================================================================================================
+void Shader::SetUniform(const GLchar* name, const F32 val)
+{
+	GLuint location = _GetUniformLocation(name);
+	glUniform1f(location, val);
+}
 
 void Shader::SetUniform(const GLchar* name, Color col)
 {
@@ -139,6 +144,15 @@ void Shader::SetUniform(const GLchar* name, KM::Matrix mat)
 {
 	GLuint location = _GetUniformLocation(name);
 	glUniformMatrix4fv(location, 1, GL_FALSE, &mat.GetElems()[0]);
+}
+
+void Shader::SetUniformSampler(const GLchar* name, S32 texSlot)
+{
+	glActiveTexture(GL_TEXTURE0 + texSlot);
+
+	GLuint location = _GetUniformLocation(name);
+
+	glUniform1i(location, texSlot);	
 }
 
 //==========================================================================================================================

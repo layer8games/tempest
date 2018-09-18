@@ -221,6 +221,12 @@ namespace KillerEngine
 			_shader.Use();
 		}
 
+		inline void SetShaderUniform(string name, const F32 val)
+		{
+			_shader.Use();
+			_shader.SetUniform(name.c_str(), val);
+		}
+
 		inline void SetShaderUniform(string name, Color col)
 		{
 			_shader.Use();
@@ -237,6 +243,12 @@ namespace KillerEngine
 		{
 			_shader.Use();
 			_shader.SetUniform(name.c_str(), mat);
+		}
+
+		inline void SetShaderUniformSampler(string name, S32 texSlot)
+		{
+			_shader.Use();
+			_shader.SetUniformSampler(name.c_str(), texSlot);
 		}
 
 //===== NumVertices =====
