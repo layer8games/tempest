@@ -233,10 +233,16 @@ namespace KillerEngine
 			_shader.SetUniform(name.c_str(), col);
 		}
 
-		inline void SetShaderUniform(string name, KM::Vector vec)
+		inline void SetShaderUniform(string name, const KM::Vector& vec)
 		{
 			_shader.Use();
 			_shader.SetUniform(name.c_str(), vec);
+		}
+
+		inline void SetShaderUniformVec3(string name, const KM::Vector& vec)
+		{
+			_shader.Use();
+			_shader.SetUniformVec3(name.c_str(), vec);
 		}
 
 		inline void SetShaderUniform(string name, KM::Matrix mat)

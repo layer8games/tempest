@@ -85,7 +85,9 @@ namespace KillerEngine
 
 		void SetUniform(const GLchar* name, Color col);
 
-		void SetUniform(const GLchar* name, KM::Vector vec);
+		void SetUniform(const GLchar* name, const KM::Vector& vec);
+
+		void SetUniformVec3(const GLchar* name, const KM::Vector& vec);
 
 		void SetUniform(const GLchar* name, KM::Matrix mat);
 
