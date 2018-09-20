@@ -151,6 +151,21 @@ namespace KillerEngine
 			_position[2] = z;
 		}
 
+		inline void SetPositionX(F32 xval)
+		{
+			_position[0] = xval;
+		}
+
+		inline void SetPositionY(F32 yVal)
+		{
+			_position[1] = yVal;
+		}
+
+		inline void SetPositionZ(F32 zVal)
+		{
+			_position[2] = zVal;
+		}
+
 		inline void AddScaledPosition(const KM::Vector pos, F32 scale)
 		{
 			_position.AddScaledVector(pos, scale);
@@ -206,22 +221,40 @@ namespace KillerEngine
 			_shader.Use();
 		}
 
+		inline void SetShaderUniform(string name, const F32 val)
+		{
+			_shader.Use();
+			_shader.SetUniform(name.c_str(), val);
+		}
+
 		inline void SetShaderUniform(string name, Color col)
 		{
 			_shader.Use();
 			_shader.SetUniform(name.c_str(), col);
 		}
 
-		inline void SetShaderUniform(string name, KM::Vector vec)
+		inline void SetShaderUniform(string name, const KM::Vector& vec)
 		{
 			_shader.Use();
 			_shader.SetUniform(name.c_str(), vec);
+		}
+
+		inline void SetShaderUniformVec3(string name, const KM::Vector& vec)
+		{
+			_shader.Use();
+			_shader.SetUniformVec3(name.c_str(), vec);
 		}
 
 		inline void SetShaderUniform(string name, KM::Matrix mat)
 		{
 			_shader.Use();
 			_shader.SetUniform(name.c_str(), mat);
+		}
+
+		inline void SetShaderUniformSampler(string name, S32 texSlot)
+		{
+			_shader.Use();
+			_shader.SetUniformSampler(name.c_str(), texSlot);
 		}
 
 //===== NumVertices =====
@@ -311,12 +344,16 @@ namespace KillerEngine
 			TEX_COORD_BUFFER = 2,
 			TEX_COORD_POS = 1,
 			INDEX_BUFFER = 3,
-			NUM_VBO = 4
+			NORMAL_BUFFER = 4,
+			NORMAL_POS = 3,
+			NUM_VBO = 5
 		};
 
 		std::vector<U32> _SplitU32(string text, char delim) const;
 		
 		std::vector<F32> _SplitF32(string text, char delim) const;
+
+		std::vector<string> _SplitString(string text, char delim) const;
 
 //==========================================================================================================================
 //

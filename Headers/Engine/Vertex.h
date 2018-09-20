@@ -34,23 +34,32 @@ namespace KillerEngine
 	struct Vertex
 	{
 		KM::Vector position;
+		KM::Vector normal;
 		TexCoord   texCoord;
 		Color 	   color;
 
 		Vertex(void)
-		: position(), texCoord(0.0f, 0.0f), color()
+		: position(0.0f), normal(0.0f), texCoord(0.0f, 0.0f), color()
 		{  }
 
 		Vertex(KM::Vector pos)
-		: position(pos), texCoord(0.0f, 0.0f), color()
+		: position(pos), normal(0.0f), texCoord(0.0f, 0.0f), color()
 		{  }
 
-		Vertex(KM::Vector pos, Color col)
-		: position(pos), texCoord(0.0f, 0.0f), color(col)
+		Vertex(const KM::Vector& pos, Color col)
+		: position(pos), normal(0.0f), texCoord(0.0f, 0.0f), color(col)
 		{  }
 
-		Vertex(KM::Vector pos, F32 u, F32 v)
-		: position(pos), texCoord(u, v), color()
+		Vertex(const KM::Vector& pos, F32 u, F32 v)
+		: position(pos), normal(0.0f), texCoord(u, v), color()
+		{  }
+
+		Vertex(const KM::Vector& pos, const KM::Vector& norm)
+		: position(pos), normal(norm), texCoord(0.0f, 0.0f), color()
+		{  }
+
+		Vertex(const KM::Vector& pos, const KM::Vector& norm, F32 u, F32 v)
+		: position(pos), normal(norm), texCoord(u, v), color()
 		{  }
 	};
 }//end Namespace
