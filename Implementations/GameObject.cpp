@@ -95,104 +95,53 @@ void GameObject::v_Render(void)
 //==========================================================================================================================
 void GameObject::v_InitBuffers(void)
 {
-	if(_meshLoaded)
+	std::vector<F32> vertPosition;
+	std::vector<F32> vertNormals;
+	std::vector<F32> vertTexCoords;
+
+	for(auto i : _vertices)
 	{
-		std::vector<F32> vertPosition;
-		std::vector<F32> vertNormals;
-		std::vector<F32> vertTexCoords;
+		vertPosition.push_back(i.position[0]);
+		vertPosition.push_back(i.position[1]);
+		vertPosition.push_back(i.position[2]);
+		vertPosition.push_back(i.position[3]);
 
-		for(auto i : _vertices)
-		{
-			vertPosition.push_back(i.position[0]);
-			vertPosition.push_back(i.position[1]);
-			vertPosition.push_back(i.position[2]);
-			vertPosition.push_back(i.position[3]);
+		vertNormals.push_back(i.normal[0]);
+		vertNormals.push_back(i.normal[1]);
+		vertNormals.push_back(i.normal[2]);
+		vertNormals.push_back(i.normal[3]);
 
-			vertNormals.push_back(i.normal[0]);
-			vertNormals.push_back(i.normal[1]);
-			vertNormals.push_back(i.normal[2]);
-			vertNormals.push_back(i.normal[3]);
-
-			vertTexCoords.push_back(i.texCoord.u);
-			vertTexCoords.push_back(i.texCoord.v);
-		}
-
-		glBindVertexArray(_vao);
-
-		glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
-		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPosition.size()), &vertPosition[0], GL_STATIC_DRAW);
-		glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-		glEnableVertexAttribArray(VERTEX_POS);
-
-		if(vertNormals.size() > 0)
-		{
-			glBindBuffer(GL_ARRAY_BUFFER, _vbo[NORMAL_BUFFER]);
-			glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertNormals.size()), &vertNormals[0], GL_STATIC_DRAW);
-			glVertexAttribPointer(NORMAL_POS, 4, GL_FLOAT, GL_FALSE, 0 , NULL);
-			glEnableVertexAttribArray(NORMAL_POS);				
-		}
-
-		if(vertTexCoords.size() > 0)
-		{
-			glEnable(GL_BLEND);
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-			glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
-			glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertTexCoords.size()), &vertTexCoords[0], GL_STATIC_DRAW);
-			glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
-			glEnableVertexAttribArray(TEX_COORD_POS);	
-		}
-
-		glBindVertexArray(0);
+		vertTexCoords.push_back(i.texCoord.u);
+		vertTexCoords.push_back(i.texCoord.v);
 	}
-	else
+
+	glBindVertexArray(_vao);
+
+	glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
+	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPosition.size()), &vertPosition[0], GL_STATIC_DRAW);
+	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(VERTEX_POS);
+
+	if(vertNormals.size() > 0)
 	{
-		if(_vertices.size() <= 0)
-			{
-				ErrorManager::Instance()->SetError(EC_Engine, "GameObject::v_InitVertexData. No Vertices added to GameObject before init was called.");
-			}
-			else if(_indices.size() <= 0)
-			{
-				ErrorManager::Instance()->SetError(EC_Engine, "GameObject::v_InitVertexData. No indices added to GameObject before init was called.");
-			}
-	
-			std::vector<F32> vertPosition;
-			std::vector<F32> vertTexCoords;
-	
-			for(auto i : _vertices)
-			{
-				vertPosition.push_back(i.position[0]);
-				vertPosition.push_back(i.position[1]);
-				vertPosition.push_back(i.position[2]);
-				vertPosition.push_back(i.position[3]);
-	
-				vertTexCoords.push_back(i.texCoord.u);
-				vertTexCoords.push_back(i.texCoord.v);
-			}
-	
-			glBindVertexArray(_vao);
-	
-			glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
-			glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPosition.size()), &vertPosition[0], GL_STATIC_DRAW);
-			glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-			glEnableVertexAttribArray(VERTEX_POS);
-	
-			if(vertTexCoords.size() > 0)
-			{
-				glEnable(GL_BLEND);
-				glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	
-				glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
-				glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertTexCoords.size()), &vertTexCoords[0], GL_STATIC_DRAW);
-				glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
-				glEnableVertexAttribArray(TEX_COORD_POS);	
-			}
-			
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[INDEX_BUFFER]);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, (sizeof(U32) * _indices.size()), &_indices[0], GL_STATIC_DRAW);
-	
-			glBindVertexArray(0);
-		}
+		glBindBuffer(GL_ARRAY_BUFFER, _vbo[NORMAL_BUFFER]);
+		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertNormals.size()), &vertNormals[0], GL_STATIC_DRAW);
+		glVertexAttribPointer(NORMAL_POS, 4, GL_FLOAT, GL_FALSE, 0 , NULL);
+		glEnableVertexAttribArray(NORMAL_POS);				
+	}
+
+	if(vertTexCoords.size() > 0)
+	{
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
+		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertTexCoords.size()), &vertTexCoords[0], GL_STATIC_DRAW);
+		glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
+		glEnableVertexAttribArray(TEX_COORD_POS);	
+	}
+
+	glBindVertexArray(0);
 }
 
 //==========================================================================================================================
