@@ -9,7 +9,7 @@ using namespace KillerMath;
 //==========================================================================================================================
 Random::Random(void) 
 : 
-_generator(std::time(0))
+_generator(static_cast<S32>(std::time(0)))
 {  }
 
 Random::~Random(void)
