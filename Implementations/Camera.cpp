@@ -86,8 +86,8 @@ OrbitCamera::~OrbitCamera(void)
 //==========================================================================================================================
 void OrbitCamera::v_Rotate(void)
 {
-	_yaw = DegreeToRadian(_deltaYaw);
-	_pitch = DegreeToRadian(_deltaPitch);
+	_yaw = RADIAN(_deltaYaw);
+	_pitch = RADIAN(_deltaPitch);
 
 	_pitch = FLOAT_CLAMP(_pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
 
@@ -214,8 +214,8 @@ void FPSCamera::v_Update(void)
 
 void FPSCamera::v_Rotate(void)
 {
-	_yaw += DegreeToRadian(_deltaYaw);
-	_pitch += DegreeToRadian(_deltaPitch);
+	_yaw += RADIAN(_deltaYaw);
+	_pitch += RADIAN(_deltaPitch);
 
 	_pitch = FLOAT_CLAMP(_pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
 

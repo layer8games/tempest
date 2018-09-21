@@ -192,47 +192,47 @@ namespace KillerMath
 
 /*! Resets Matrix and creates rotation around the x axis. Call MakeIdentiy().
 	\bug This is not working at all. 
-	\param x F32. Degree of rotation around x axis. Calls DegreeToRadian() */
+	\param x F32. Degree of rotation around x axis. Calls RADIAN() */
 		void SetRotateX(F32 val);
 
 /*! Creates rotation around the x axis without resetting other values. 
 	\bug Completely untested and probably not working at all. 
-	\param x F32. Degree of rotation around x axis. Calls DegreeToRadian() */
+	\param x F32. Degree of rotation around x axis. Calls RADIAN() */
 		void AddRotateX(F32 val);
 
 /*! Resets Matrix and creates rotation around the y axis. Call MakeIdentiy().
 	\bug This is not working at all. 
-	\param y F32. Degree of rotation around y axis. Calls DegreeToRadian() */
+	\param y F32. Degree of rotation around y axis. Calls RADIAN() */
 		void SetRotateY(F32 val);
 
 /*! Creates rotation around the y axis without resetting other values. 
 	\bug Completely untested and probably not working at all. 
-	\param y F32. Degree of rotation around y axis. Calls DegreeToRadian() */
+	\param y F32. Degree of rotation around y axis. Calls RADIAN() */
 		void AddRotateY(F32 val);
 
 /*! Resets Matrix and creates rotation around the z axis. Call MakeIdentiy().
 	\bug This is not working at all. 
-	\param z F32. Degree of rotation around z axis. Calls DegreeToRadian() */
+	\param z F32. Degree of rotation around z axis. Calls RADIAN() */
 		void SetRotateZ(F32 val);
 
 /*! Creates rotation around the z axis without resetting other values. 
 	\bug Completely untested and probably not working at all. 
-	\param z F32. Degree of rotation around z axis. Calls DegreeToRadian() */
+	\param z F32. Degree of rotation around z axis. Calls RADIAN() */
 		void AddRotateZ(F32 val);
 
 /*! Resets the Matrix and creates an Matrix which will perform a rotation around the x, y and z axis in that order. 
 	Calls MakeIdentity() 
 	\bug Not working at all. The math is wrong, and rotations are not working in general.
-	\param x F32. Degree of rotation around the x axis. Calls DegreeToRadian()
-	\param y F32. Degree of rotation around the y axis. Calls DegreeToRadian()
-	\param z F32. Degree of rotation around the z axis. Calls DegreeToRadian() */
+	\param x F32. Degree of rotation around the x axis. Calls RADIAN()
+	\param y F32. Degree of rotation around the y axis. Calls RADIAN()
+	\param z F32. Degree of rotation around the z axis. Calls RADIAN() */
 		void SetRotate(F32 xVal, F32 yVal, F32 zVal);
 
 /*! Creates rotation around the x, y and z axis, in that order, without resetting other values.
 	\bug Not working at all. The math is wrong, and rotations are not working in general.
-	\param x F32. Degree of rotation around the x axis. Calls DegreeToRadian()
-	\param y F32. Degree of rotation around the y axis. Calls DegreeToRadian()
-	\param z F32. Degree of rotation around the z axis. Calls DegreeToRadian() */
+	\param x F32. Degree of rotation around the x axis. Calls RADIAN()
+	\param y F32. Degree of rotation around the y axis. Calls RADIAN()
+	\param z F32. Degree of rotation around the z axis. Calls RADIAN() */
 		void AddRotation(F32 xVal, F32 yVal, F32 zVal);
 		
 //==========================================================================================================================
