@@ -58,7 +58,7 @@ void Timer::Update(void)
 		
 		if (_deltaTime < 0.001f || _deltaTime > 1.0f)
 		{ 
-			_deltaTime = 0.016; 
+			_deltaTime = 0.016f; 
 		}
 		
 		_totalTime += _deltaTime;

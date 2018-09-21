@@ -42,9 +42,9 @@ real ParticleContact::CalculateSeparatingVelocity(void) const
 		{
 			relativeVelocity -= _particles[1]->GetVelocity();
 		}
-
-		return relativeVelocity.DotProduct(_contactNormal);
-	}		
+		return relativeVelocity.DotProduct(_contactNormal);		
+	}	
+	return 0.0f;
 }
 
 void ParticleContact::_ResolveImpulseVelocity(void)
@@ -200,7 +200,6 @@ ParticleContactResolver::~ParticleContactResolver(void)
 //==========================================================================================================================
 void ParticleContactResolver::ResolveContacts(ParticleContact* contactArray, U32 numContacts)
 {
-	U32 i;
 	_iterationsUsed = 0;
 
 	while(_iterationsUsed < _iterations)
@@ -208,7 +207,7 @@ void ParticleContactResolver::ResolveContacts(ParticleContact* contactArray, U32
 		//Find the contact with the largest closing velocity
 		real max = REAL_MAX;
 		U32 maxIndex = numContacts;
-		for(int i = 0; i < numContacts; ++i)
+		for(U32 i = 0; i < numContacts; ++i)
 		{
 			real sepVal = contactArray[i].CalculateSeparatingVelocity();
 			if(sepVal < max && (sepVal < 0 || contactArray[i].GetPenetration() > 0))
