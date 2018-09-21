@@ -179,7 +179,7 @@ void Matrix::MakePerspective(F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F3
 {
 	assert(nearPlane - farPlane != 0.0f);
 
-	F32 S = 1.0f / tan(DegreeToRadian(0.5f * fieldOfView));
+	F32 S = 1.0f / tan(RADIAN(0.5f * fieldOfView));
 
 	//Reset Matrix 
 	MakeIdentity();
@@ -374,7 +374,7 @@ void Matrix::AddScale(const Vector& vec)
 //==========================================================================================================================
 Matrix Matrix::RotateX(F32 val)
 {
-	val = DegreeToRadian(val);
+	val = RADIAN(val);
 	Matrix mat{1.0f};
 
 	mat[1][y] = cos(val);
@@ -387,7 +387,7 @@ Matrix Matrix::RotateX(F32 val)
 
 Matrix Matrix::RotateY(F32 val)
 {
-	val = DegreeToRadian(val);
+	val = RADIAN(val);
 	Matrix mat{1.0f};
 
 	mat[0][x] = cos(val);
@@ -400,7 +400,7 @@ Matrix Matrix::RotateY(F32 val)
 
 Matrix Matrix::RotateZ(F32 val)
 {
-	val = DegreeToRadian(val);
+	val = RADIAN(val);
 	Matrix mat{1.0f};
 
 	mat[0][x] = cos(val);
@@ -413,7 +413,7 @@ Matrix Matrix::RotateZ(F32 val)
 
 void Matrix::SetRotateX(F32 val)
 {
-	val = DegreeToRadian(val);
+	val = RADIAN(val);
 
 	MakeIdentity();
 
@@ -425,7 +425,7 @@ void Matrix::SetRotateX(F32 val)
 
 void Matrix::AddRotateX(F32 val)
 {
-	val = DegreeToRadian(val);
+	val = RADIAN(val);
 
 	_columns[1][y] += cos(val);
 	_columns[1][z] += -sin(val);
@@ -435,7 +435,7 @@ void Matrix::AddRotateX(F32 val)
 
 void Matrix::SetRotateY(F32 val)
 {
-	val = DegreeToRadian(val);
+	val = RADIAN(val);
 
 	MakeIdentity();
 
@@ -447,7 +447,7 @@ void Matrix::SetRotateY(F32 val)
 
 void Matrix::AddRotateY(F32 val)
 {
-	val = DegreeToRadian(val);
+	val = RADIAN(val);
 
 	_columns[0][x] += cos(val);
 	_columns[0][y] += sin(val);
@@ -457,7 +457,7 @@ void Matrix::AddRotateY(F32 val)
 
 void Matrix::SetRotateZ(F32 val)
 {
-	val = DegreeToRadian(val);
+	val = RADIAN(val);
 
 	MakeIdentity();
 
@@ -469,7 +469,7 @@ void Matrix::SetRotateZ(F32 val)
 
 void Matrix::AddRotateZ(F32 val)
 {
-	val = DegreeToRadian(val);
+	val = RADIAN(val);
 
 	_columns[0][x] += cos(val);
 	_columns[0][y] += -sin(val);
@@ -479,9 +479,9 @@ void Matrix::AddRotateZ(F32 val)
 
 void Matrix::SetRotate(F32 xVal, F32 yVal, F32 zVal)
 {
-	xVal = DegreeToRadian(xVal);
-	yVal = DegreeToRadian(yVal);
-	zVal = DegreeToRadian(zVal);
+	xVal = RADIAN(xVal);
+	yVal = RADIAN(yVal);
+	zVal = RADIAN(zVal);
 
 	MakeIdentity();
 
@@ -498,9 +498,9 @@ void Matrix::SetRotate(F32 xVal, F32 yVal, F32 zVal)
 
 void Matrix::AddRotation(F32 xVal, F32 yVal, F32 zVal)
 {
-	xVal = DegreeToRadian(xVal);
-	yVal = DegreeToRadian(yVal);
-	zVal = DegreeToRadian(zVal);
+	xVal = RADIAN(xVal);
+	yVal = RADIAN(yVal);
+	zVal = RADIAN(zVal);
 
 	_columns[0][x] += cos(yVal) * cos(zVal);
 	_columns[0][y] += -cos(yVal) * sin(zVal);
