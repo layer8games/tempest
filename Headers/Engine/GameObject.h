@@ -260,7 +260,7 @@ namespace KillerEngine
 		inline void SetShaderUniformVec3(string name, const Color& col)
 		{
 			_shader.Use();
-			_shader.SetUniform(name.c_str(), col);
+			_shader.SetUniformVec3(name.c_str(), col);
 		}
 
 //===== NumVertices =====
