@@ -83,8 +83,6 @@ namespace KillerEngine
 //==========================================================================================================================		
 		void SetUniform(const GLchar* name, const F32 val);
 
-		void SetUniform(const GLchar* name, Color col);
-
 		void SetUniform(const GLchar* name, const KM::Vector& vec);
 
 		void SetUniformVec3(const GLchar* name, const KM::Vector& vec);
@@ -92,6 +90,10 @@ namespace KillerEngine
 		void SetUniform(const GLchar* name, KM::Matrix mat);
 
 		void SetUniformSampler(const GLchar* name, S32 texSlot);
+
+		void SetUniform(const GLchar* name, const Color& col);
+
+		void SetUniformVec3(const GLchar* name, const Color& col);
 
 		inline GLuint GetProgram(void) const
 		{
