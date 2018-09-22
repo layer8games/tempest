@@ -11,7 +11,6 @@ Written by Maxwell Miller
 //===== Engine Includes =====
 #include <Engine/Atom.h>
 #include <Engine/GameObject.h>
-#include <Engine/Sprite.h>
 #include <Engine/Vector.h>
 
 namespace KM = KillerMath;

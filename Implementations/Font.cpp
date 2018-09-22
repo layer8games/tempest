@@ -138,6 +138,9 @@ CharacterData Font::GetDataForCharacter(char c)
 	return _fontCharData[id];
 }
 
+/*
+REFACTOR ME!!!!!
+
 std::shared_ptr<Sprite> Font::CreateCharacter(char character)
 {
 //		std::cout << "FONT:: character=" << character << "\ntexture id =" << _textureID << "\nfont name=" << _fontName << "\n"; 
@@ -168,6 +171,7 @@ std::shared_ptr<Sprite> Font::CreateCharacter(char character)
 	
 	return sprite;	 		
 }
+*/
 
 void Font::_AddNewCharacterData(string id,      string x, 		string y,
 						    	string width,   string height,  string xoffset,

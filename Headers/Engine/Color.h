@@ -60,12 +60,22 @@ namespace KillerEngine
 //Operator overloads
 //
 //==========================================================================================================================
+		inline const F32& operator[](int i) const
+		{
+			return _data[i];
+		}
+
+		inline F32& operator[](int i)
+		{
+			return _data[i];
+		}
+
 		Color& operator=(const Color& c) 
 		{
-			_red = c.GetRed();
-			_green = c.GetGreen();
-			_blue = c.GetBlue();
-			_alpha = c.GetAlpha();
+			_data[0] = c[0];
+			_data[1] = c[1];
+			_data[2] = c[2];
+			_data[3] = c[3];
 
 			return *this;
 		}
@@ -76,79 +86,13 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 /*! Creates and returns an array with the 4 color values in it as a pointer. */
-		inline const F32* Get(void) const 
+		inline const F32* GetPointer(void) const 
 		{ 
-			F32 val[] = { _red, _green, _blue, _alpha };
-			return val; 
+			return _data; 
 		}
-		
-/*! Returns the Red color value. */		
-		inline const F32 GetRed(void) const 
-		{ 
-			return _red; 
-		}
-		
-/*! Returns the Green color value. */		
-		inline const F32 GetGreen(void) const 
-		{ 
-			return _green; 
-		}
-		
-/*! Returns the Blue color value. */		
-		inline const F32 GetBlue(void) const 
-		{ 
-			return _blue; 
-		}
-		
-/*! Returns the Alpha color value. */		
-		inline const F32 GetAlpha(void) const 
-		{ 
-			return _alpha; 
-		}
-
-/*! Sets the Red Color value.
-	\params r F32: new value for Red. */
-		inline void SetRed(const F32 r)   
-		{ 
-			assert(r >= 0.0f && r <= 1.0f);
-			_red = r; 
-		}
-		
-/*! Sets the Green Color value.
-	\params r F32: new value for Green. */		
-		inline void SetGreen(const F32 g)  
-		{ 
-			assert(g >= 0.0f && g <= 1.0f);
-			_green = g; 
-		}
-		
-/*! Sets the Blue Color value.
-	\params r F32: new value for Blue. */		
-		inline void SetBlue(const F32 b)  
-		{ 
-			assert(b >= 0.0f && b <= 1.0f);
-			_blue = b; 
-		}
-		
-/*! Sets the Alpha Color value.
-	\params r F32: new value for Alpha. */		
-		inline void SetAlpha(const F32 a) 
-		{ 
-			assert(a >= 0.0f && a <= 1.0f);
-			_alpha = a; 
-		}
-
-/*! Sets Red Green and Blue color values at the same time. This value should be between 0.0 and 1.0
-	\param r F32: Red value.
-	\param g F32: Green value.
-	\param b F32: Blue value. */		
-		void Set(F32 r, F32 g, F32 b);
 
 	private:
-		F32 _red;	///< Red Value
-		F32 _green;	///< Green Value
-		F32 _blue;	///< Blue Value
-		F32 _alpha;	///< Alpha Value
+		F32 _data[4];
 
 	};
 }//End namespace

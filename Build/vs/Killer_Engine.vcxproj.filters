@@ -61,9 +61,6 @@
     <Filter Include="Components\Structs">
       <UniqueIdentifier>{2b6d07f5-9367-4b70-a35d-57e172e29178}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\Sprite">
-      <UniqueIdentifier>{e222f9d6-81c8-468c-b522-04aa743035a2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Components\Level">
       <UniqueIdentifier>{3820084b-1115-47ff-b532-adca4671f2e9}</UniqueIdentifier>
     </Filter>
@@ -137,9 +134,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\WinProgram.h">
       <Filter>Components\WindowProgram</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Sprite.h">
-      <Filter>Components\Sprite</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Camera.h">
       <Filter>Components\Camera</Filter>
@@ -232,9 +226,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\WinProgram.cpp">
       <Filter>Components\WindowProgram</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Sprite.cpp">
-      <Filter>Components\Sprite</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Camera.cpp">
       <Filter>Components\Camera</Filter>

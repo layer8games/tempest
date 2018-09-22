@@ -12,7 +12,6 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/GameObject.h>
 #include <Engine/Vector.h>
-#include <Engine/Sprite.h>
 #include <Engine/Color.h>
 
 namespace KM = KillerMath;
@@ -85,21 +84,6 @@ namespace KillerEngine
 			_height = h;
 		}
 
-		void SetSprite(shared_ptr<Sprite> sprite)
-		{
-			_sprite = sprite;
-		}
-
-		void SetSprite(const Sprite& sprite)
-		{
-			_sprite = sprite;
-		}
-
-		const Sprite& GetSprite(void) const
-		{
-			return _sprite;
-		}
-
 //		Not implemented yet in Sprite		
 		void SetColor(const Color& col)
 		{
@@ -116,7 +100,6 @@ namespace KillerEngine
 		KM::Vector _pos;
 		F32 		_width;
 		F32			_height;
-		Sprite 		_sprite;
 		Color 		_color;
 		
 		static U32 _nextId;

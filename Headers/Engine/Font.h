@@ -11,7 +11,6 @@ Written by Maxwell Miller
 //=====Engine includes=====
 #include <Engine/Atom.h>
 #include <Engine/Texture.h>
-#include <Engine/Sprite.h>
 #include <Engine/CharacterData.h>
 #include <Engine/TextureManager.h>
 
@@ -78,7 +77,8 @@ namespace KillerEngine
 			return _fontCharData; 
 		}
 
-		std::shared_ptr<Sprite> CreateCharacter(char character);
+		//REFACTOR ME!!!!
+		//std::shared_ptr<Sprite> CreateCharacter(char character);
 
 //==========================================================================================================================
 //

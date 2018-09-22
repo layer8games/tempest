@@ -94,7 +94,7 @@ namespace KillerEngine
 		inline void SetBackgroundColor(const Color& c)
 		{
 			_bgColor = c;
-			glClearColor(_bgColor.GetRed(), _bgColor.GetGreen(), _bgColor.GetBlue(), _bgColor.GetAlpha());
+			glClearColor(_bgColor[0], _bgColor[1], _bgColor[2], _bgColor[3]);
 		}
 
 //==========================================================================================================================
