@@ -17,7 +17,6 @@ _id(_nextID),
 _pos(0.0f),
 _width(0.0f),
 _height(0.0f),
-_sprite(),
 _color()
 {
 	++_nextID;

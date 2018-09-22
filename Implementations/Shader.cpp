@@ -128,12 +128,6 @@ void Shader::SetUniform(const GLchar* name, const F32 val)
 	glUniform1f(location, val);
 }
 
-void Shader::SetUniform(const GLchar* name, Color col)
-{
-	GLuint location = _GetUniformLocation(name);
-	glUniform4f(location, col.GetRed(), col.GetGreen(), col.GetBlue(), col.GetAlpha());
-}
-
 void Shader::SetUniform(const GLchar* name, const KM::Vector& vec)
 {
 	GLuint location = _GetUniformLocation(name);
@@ -159,6 +153,18 @@ void Shader::SetUniformSampler(const GLchar* name, S32 texSlot)
 	GLuint location = _GetUniformLocation(name);
 
 	glUniform1i(location, texSlot);	
+}
+
+void Shader::SetUniform(const GLchar* name, const Color& col)
+{
+	GLuint location = _GetUniformLocation(name);
+	glUniform4f(location, col[0], col[1], col[2], col[3]);
+}
+
+void Shader::SetUniformVec3(const GLchar* name, const Color& col)
+{
+	GLuint location = _GetUniformLocation(name);
+	glUniform3f(location, col[0], col[1], col[2]);
 }
 
 //==========================================================================================================================
