@@ -1,11 +1,3 @@
-/*========================================================================
-
-
-This is not free to use, and cannot be used without the express permission
-of KillerWave.
-
-Written by Maxwell Miller
-========================================================================*/
 #pragma once
 
 //=====Engine includes=====
@@ -13,6 +5,8 @@ Written by Maxwell Miller
 #include <Engine/Texture.h>
 #include <Engine/CharacterData.h>
 #include <Engine/TextureManager.h>
+
+#include <Extern/rapidxml.hpp>
 
 //=====STL includes=====
 #include <fstream>
@@ -51,10 +45,6 @@ namespace KillerEngine
 	\param f Font*: Font to be copied.*/
 		Font(const Font* f);
 
-/*! Single Value Constructor. No special actions taken.
-	\param tID U32: Texture ID to be set. */
-		explicit Font(U32 tID);
-
 //==========================================================================================================================
 //
 //Font Functions
@@ -67,18 +57,6 @@ namespace KillerEngine
 	\param fontName string. Name of the font you are creating.
 	\param fontFile string. File Path to the .fnt file that is used to get the character data needed. */
 		void InitFont(string fontName, string fontFile);
-
-		CharacterData GetDataForCharacter(char c);
-
-/*! Returns the map containing all data for all characters found in the loaded font. The ID of each character is found in 
-	the .fnt file and is the ASCII int value of a char */
-		inline std::map<U32, CharacterData> GetCharacterData(void) const
-		{ 
-			return _fontCharData; 
-		}
-
-		//REFACTOR ME!!!!
-		//std::shared_ptr<Sprite> CreateCharacter(char character);
 
 //==========================================================================================================================
 //
@@ -96,21 +74,6 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-/*! Set's the file that the font will read its data from. Does not re-initialize the font. 
-	\bug Make sure that the font is re-initialized when this is called. 
-	\bug Check that the file that is sent is a .fnt file.
-	\param fontFile string: File path to .fnt file. */
-		inline void SetFile(string fontFile)
-		{
-		 	_fontFile = fontFile; 
-		}
-
-/*! Returns the file path to the current .fnt file the font is using. */
-		inline const string GetFile(void) const
-		{
-			return _fontFile; 
-		}
-
 /*! Set's the name of font. Not used actively in any major way.
 	\param fontName string: New name of the font. */
 		inline void SetName(string fontName)
@@ -124,26 +87,22 @@ namespace KillerEngine
 			return _fontName; 
 		}
 
-/*! Set's the texture ID for the current font. This does not re-initialize the font.
-	\param tID U32: Id from the TextureManager for the new texture. */		
-		inline void SetTexture(U32 tID)
+/*! Returns the current texture ID for the texture. */		
+		inline const Texture& GetTexture(void) const
 		{
-			_textureID = tID; 
+			return  _texture; 
 		}
 
-/*! Returns the current texture ID for the texture. */		
-		inline const U32 GetTextureID(void) const
-		{
-			return  _textureID; 
+/*! Returns the map containing all data for all characters found in the loaded font. The ID of each character is found in 
+	the .fnt file and is the ASCII int value of a char */
+		inline std::map<U32, CharacterData> GetCharacterData(void) const
+		{ 
+			return _characterData; 
 		}
+
+		CharacterData GetCharacterData(char c);
 
 	private:
-		U32 					 	 _textureID; 			///< ID for Texture loaded into the TextureManager.
-		string  					 _fontFile;				///< File path to the .fnt file the texture uses.
-		string  					 _fontName;				///< Name of the font. Not really used right now.
-		U32     					 _headerSize = 26;		///< Size of the header section of the .fnt file. Soon to be deprectated.
-		std::map<U32, CharacterData> _fontCharData;			///< All data from .fnt file stored in a RenderText can use for placement.
-
 /*! Used to add new data to _fontCharData. All ARGS are string that are cast into U32 values for consumption by engine.
 	\param id string: Single char used as ASCII id.
 	\param x string: x coord in Texture for character.
@@ -156,5 +115,15 @@ namespace KillerEngine
 		void _AddNewCharacterData(string id,      string x,		   string y,
 							  	  string width,   string height,   string xoffset,
 							  	  string yoffset, string xadvance);
+//==========================================================================================================================
+//
+//Data
+//
+//==========================================================================================================================	
+		Texture 					 _texture; 				///< ID for Texture loaded into the TextureManager.
+		string  					 _fontName;				///< Name of the font. Not really used right now.
+		std::map<U32, CharacterData> _characterData;			///< All data from .fnt file stored in a RenderText can use for placement.
+
+
 	};
 }
