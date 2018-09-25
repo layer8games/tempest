@@ -13,30 +13,48 @@ _pos(0.0f),
 _text(), 
 _font(), 
 _characterList(), 
-
-_totalWidth(0), 
-_totalHeight(0), 
-_center(0.0f)
+_width(0), 
+_height(0), 
+_center(0.0f),
+_scale(1.0f, 1.0f)
 {  }
 
 RenderedText::RenderedText(const Font& font) 
 : 
+_pos(0.0f),
 _text(), 
 _font(font), 
 _characterList(), 
-_totalWidth(0), 
-_totalHeight(0), 
-_center(0.0f)
+_width(0), 
+_height(0), 
+_center(0.0f),
+_scale(1.0f, 1.0f)
 {  }
 
-RenderedText::RenderedText(string text, const Font& font) 
-: 
+RenderedText::RenderedText(const Font& font, string text) 
+:
+_pos(0.0f), 
 _text(text), 
 _font(font), 
 _characterList(), 
-_totalWidth(0), 
-_totalHeight(0), 
-_center(0.0f)
+_width(0), 
+_height(0), 
+_center(0.0f),
+_scale(1.0f, 1.0f)
+{
+	AddText(_text);
+}
+
+RenderedText::RenderedText(const Font& font, string text, const KM::Vector& pos)
+:
+_pos(pos),
+_text(text), 
+_font(font), 
+_characterList(), 
+_width(0), 
+_height(0), 
+_center(0.0f),
+_scale(1.0f, 1.0f)
 {
 	AddText(_text);
 }
@@ -44,19 +62,6 @@ _center(0.0f)
 RenderedText::~RenderedText(void)
 {  }
 
-//==========================================================================================================================
-//
-//Virtual Functions
-//
-//==========================================================================================================================
-/*	void RenderedText::v_Render(void)
-{
-	for(RenderedCharacter& character : _characterList)
-	{
-		//character.sprite.Render(KM::Vector(character.xpos, character.ypos), character.width, character.height, character.color);
-	}
-}
-*/
 //==========================================================================================================================
 //
 //RenderedText Functions
@@ -109,11 +114,11 @@ void RenderedText::AddText(string text)
 
 		character->SetDimensions(totalCharWidth, totalCharHeight);
 
-		_totalWidth += totalCharWidth;
+		_width += totalCharWidth;
 		
-		if(_totalHeight <= totalCharHeight)
+		if(_height <= totalCharHeight)
 		{
-			_totalHeight = totalCharHeight;
+			_height = totalCharHeight;
 		}
 
 		character->SetSprite(sprite);
@@ -121,7 +126,7 @@ void RenderedText::AddText(string text)
 		_characterList.push_back(character);
 	}
 
-	_center = KM::Vector(_totalWidth / 2.0f, _totalHeight / 2.0f);
+	_center = KM::Vector(_width / 2.0f, _height / 2.0f);
 */
 }//End AddText
 

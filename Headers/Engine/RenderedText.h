@@ -39,7 +39,9 @@ namespace KillerEngine
 
 		explicit RenderedText(const Font& font);
 		
-		RenderedText(string text, const Font& font);
+		RenderedText(const Font& font, string text);
+
+		RenderedText(const Font& font, string text, const KM::Vector& pos);
 
 		~RenderedText(void);
 
@@ -48,46 +50,26 @@ namespace KillerEngine
 //RenderedText Functions
 //
 //==========================================================================================================================		
-		void AddText(string text);
-
 		void SetPosition(const KM::Vector& pos);
+
+		void AddText(string text);
 
 		//void SetTextColor(const Color& col);
 
-		void SetWidthScaleFactor(F32 w) 
-		{ 
-			_widthScaleFactor = w; 
-		}
+//==========================================================================================================================
+//
+//Accessors
+//
+//==========================================================================================================================
 
-		void SetHeightScaleFactor(F32 h) 
-		{ 
-			_heightScaleFactor = h; 
-		}
-
-		void SetScaleFactors(const F32 w, const F32 h) 
-		{ 
-			_widthScaleFactor = w; 
-			_heightScaleFactor = h; 
-		}
-
-		void SetFont(const Font& font) 
+		inline void SetFont(const Font& font) 
 		{ 
 			_font = font; 
 		}
 
-		F32 GetTotalWidth(void) const
-		{ 
-			return _totalWidth; 
-		}
-
-		F32 GetTotalHeight(void) const
-		{ 
-			return _totalHeight; 
-		}
-
-		const KM::Vector& GetCenter(void) const
-		{ 
-			return _center; 
+		inline const Font GetFont(void)
+		{
+			return _font;
 		}
 
 		std::vector<std::shared_ptr<RenderedCharacter>> GetCharacterList(void)
@@ -95,15 +77,49 @@ namespace KillerEngine
 			return _characterList;
 		}
 
+		inline void SetWidth(F32 w) 
+		{ 
+			_width = w; 
+		}
+
+		inline F32 GetWidth(void) const
+		{ 
+			return _width; 
+		}
+
+		inline void SetHeight(F32 h) 
+		{ 
+			_height = h; 
+		}
+
+		inline F32 GetHeight(void) const
+		{ 
+			return _height; 
+		}
+
+		inline const KM::Vector& GetCenter(void) const
+		{ 
+			return _center; 
+		}
+
+		inline void SetScale(const KM::Vector& s)
+		{
+			_scale = s;
+		}
+
+		inline const KM::Vector& GetScale(void)
+		{
+			return _scale;
+		}
+
 	private:
-		KM::Vector _pos;
-		string _text;
-		Font   _font;
+		KM::Vector 								   _pos;
+		string 	   								   _text;
+		Font   	   								   _font;
 		std::vector<shared_ptr<RenderedCharacter>> _characterList;
-		F32 _widthScaleFactor;
-		F32 _heightScaleFactor;
-		F32 _totalWidth;
-		F32 _totalHeight;
-		KM::Vector _center;	
+		F32 									   _width;
+		F32 									   _height;
+		KM::Vector 								   _center;
+		KM::Vector 								   _scale;
 	};
 }
