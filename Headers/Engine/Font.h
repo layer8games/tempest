@@ -92,6 +92,11 @@ namespace KillerEngine
 			return  _texture; 
 		}
 
+		inline void SetTexture(const Texture& tex)
+		{
+			_texture = tex;
+		}
+
 /*! Returns the map containing all data for all characters found in the loaded font. The ID of each character is found in 
 	the .fnt file and is the ASCII int value of a char */
 		inline std::map<U32, CharacterData> GetCharacterData(void) const
