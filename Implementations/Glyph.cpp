@@ -1,4 +1,4 @@
-#include <Engine/RenderedCharacter.h>
+#include <Engine/Glyph.h>
 
 using namespace KillerEngine;
 
@@ -11,7 +11,7 @@ using namespace KillerEngine;
 //Constructors	 	
 //
 //==========================================================================================================================
-RenderedCharacter::RenderedCharacter(void) 
+Glyph::Glyph(void) 
 : 
 _id(_nextID), 
 _pos(0.0f),
@@ -22,5 +22,5 @@ _color()
 	++_nextID;
 }
 
-RenderedCharacter::~RenderedCharacter(void)
+Glyph::~Glyph(void)
 {  }

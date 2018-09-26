@@ -116,7 +116,7 @@ void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP:
 	}
 }
 
-void Level::AddTextToLevel(std::shared_ptr<RenderedText> text)
+void Level::AddTextToLevel(std::shared_ptr<Text> text)
 {
 	_textList.push_back(text);
 }
@@ -175,7 +175,7 @@ void Level::RenderObjects(void)
 //==========================================================================================================================
 /*
 Needs refactoring later. The whole text system needs some work
-	for(std::shared_ptr<RenderedText> text : _textList)
+	for(std::shared_ptr<Text> text : _textList)
 	{
 		std::vector<std::shared_ptr<RenderedCharacter>> charList = text->GetCharacterList();
 

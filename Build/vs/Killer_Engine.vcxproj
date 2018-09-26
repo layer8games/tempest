@@ -169,7 +169,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\WinProgram.h" />
-    <ClInclude Include="..\..\Headers\Engine\RenderedText.h" />
+    <ClInclude Include="..\..\Headers\Engine\Text.h" />
     <ClInclude Include="..\..\Headers\Engine\Texture.h" />
     <ClInclude Include="..\..\Headers\Engine\TextureManager.h" />
     <ClInclude Include="..\..\Headers\Engine\Timer.h" />
@@ -224,7 +224,7 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector.cpp" />
     <ClCompile Include="..\..\Implementations\WinProgram.cpp" />
-    <ClCompile Include="..\..\Implementations\RenderedText.cpp" />
+    <ClCompile Include="..\..\Implementations\Text.cpp" />
     <ClCompile Include="..\..\Implementations\TextureManager.cpp" />
     <ClCompile Include="..\..\Implementations\Timer.cpp" />
     <ClCompile Include="..\..\Implementations\Level.cpp" />

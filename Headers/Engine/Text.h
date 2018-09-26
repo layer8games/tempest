@@ -18,7 +18,7 @@ Written by Maxwell Miller
 #include <Engine/GameObject.h>
 #include <Engine/Font.h>
 #include <Engine/Vector.h>
-#include <Engine/RenderedCharacter.h>
+#include <Engine/Glyph.h>
 
 namespace KM = KillerMath;
 
@@ -27,7 +27,7 @@ namespace KM = KillerMath;
 
 namespace KillerEngine
 {
-	class RenderedText
+	class Text
 	{
 	public:
 //==========================================================================================================================
@@ -35,19 +35,19 @@ namespace KillerEngine
 //Constructors
 //
 //==========================================================================================================================
-		RenderedText(void);
+		Text(void);
 
-		explicit RenderedText(const Font& font);
+		explicit Text(const Font& font);
 		
-		RenderedText(const Font& font, string text);
+		Text(const Font& font, string text);
 
-		RenderedText(const Font& font, string text, const KM::Vector& pos);
+		Text(const Font& font, string text, const KM::Vector& pos);
 
-		~RenderedText(void);
+		~Text(void);
 
 //==========================================================================================================================
 //
-//RenderedText Functions
+//Text Functions
 //
 //==========================================================================================================================		
 		void SetPosition(const KM::Vector& pos);
@@ -72,7 +72,7 @@ namespace KillerEngine
 			return _font;
 		}
 
-		std::vector<std::shared_ptr<RenderedCharacter>> GetCharacterList(void)
+		std::vector<std::shared_ptr<Glyph>> GetCharacterList(void)
 		{
 			return _characterList;
 		}
@@ -113,13 +113,13 @@ namespace KillerEngine
 		}
 
 	private:
-		KM::Vector 								   _pos;
-		string 	   								   _text;
-		Font   	   								   _font;
-		std::vector<shared_ptr<RenderedCharacter>> _characterList;
-		F32 									   _width;
-		F32 									   _height;
-		KM::Vector 								   _center;
-		KM::Vector 								   _scale;
+		KM::Vector 						_pos;
+		string 	   						_text;
+		Font   	   						_font;
+		std::vector<shared_ptr<Glyph>> 	_characterList;
+		F32 							_width;
+		F32 							_height;
+		KM::Vector 						_center;
+		KM::Vector 						_scale;
 	};
 }

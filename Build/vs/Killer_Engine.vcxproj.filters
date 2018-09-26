@@ -165,9 +165,6 @@
     <ClInclude Include="..\..\Headers\Engine\RenderedCharacter.h">
       <Filter>Components\RenderCharacter</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\RenderedText.h">
-      <Filter>Components\RenderText</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Texture.h">
       <Filter>Components\Texture</Filter>
     </ClInclude>
@@ -206,6 +203,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
       <Filter>Components\KillerPhysics\ContactResolution</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Text.h">
+      <Filter>Components\RenderText</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -251,9 +251,6 @@
     <ClCompile Include="..\..\Implementations\RenderedCharacter.cpp">
       <Filter>Components\RenderCharacter</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\RenderedText.cpp">
-      <Filter>Components\RenderText</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Texture.cpp">
       <Filter>Components\Texture</Filter>
     </ClCompile>
@@ -292,6 +289,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
       <Filter>Components\KillerPhysics\ContactResolution</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Text.cpp">
+      <Filter>Components\RenderText</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

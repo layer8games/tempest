@@ -20,7 +20,7 @@ Written by Maxwell Miller
 #include <Engine/EnvironmentObject.h>
 #include <Engine/Vector.h>
 #include <Engine/Color.h>
-#include <Engine/RenderedText.h>
+#include <Engine/Text.h>
 #include <Engine/RenderedCharacter.h>
 #include <Engine/Particle.h>
 #include <Engine/ParticleForceRegistry.h>
@@ -143,7 +143,7 @@ namespace KillerEngine
 			_forceRegistry.Add(particle, generator);
 		}
 
-		void AddTextToLevel(shared_ptr<RenderedText> text);
+		void AddTextToLevel(shared_ptr<Text> text);
 		
 		void RemoveObjectFromLevel(U32 id);
 
@@ -267,8 +267,18 @@ namespace KillerEngine
 		virtual ObjectType v_StringToTileData(string s);
 
 	private:
+//==========================================================================================================================
+//
+//Private Functions
+//
+//==========================================================================================================================		
 		void _AddTile(TileData data);
 
+//==========================================================================================================================
+//
+//Data
+//
+//==========================================================================================================================		
 		S32     _mapWidth;
 		S32     _mapHeight;
 		S32     _mapTopBorder;
@@ -280,7 +290,7 @@ namespace KillerEngine
 		Camera* _camera;
 		std::map<U32, shared_ptr<GameObject>>	  _gameObjects;
 		std::map<U32, shared_ptr<KP::Particle>>   _particles;
-		std::vector<shared_ptr<RenderedText>>     _textList;
+		std::vector<shared_ptr<Text>>     _textList;
 		std::map<U32, TileData> _2DTileData;
 		//SpriteRenderer _batch;
 		KP::ParticleForceRegistry _forceRegistry;

@@ -1,4 +1,4 @@
-#include <Engine/RenderedText.h>
+#include <Engine/Text.h>
 
 using namespace KillerEngine;
 
@@ -7,7 +7,7 @@ using namespace KillerEngine;
 //Constructors
 //
 //==========================================================================================================================	
-RenderedText::RenderedText(void) 
+Text::Text(void) 
 : 
 _pos(0.0f),
 _text(), 
@@ -19,7 +19,7 @@ _center(0.0f),
 _scale(1.0f, 1.0f)
 {  }
 
-RenderedText::RenderedText(const Font& font) 
+Text::Text(const Font& font) 
 : 
 _pos(0.0f),
 _text(), 
@@ -31,7 +31,7 @@ _center(0.0f),
 _scale(1.0f, 1.0f)
 {  }
 
-RenderedText::RenderedText(const Font& font, string text) 
+Text::Text(const Font& font, string text) 
 :
 _pos(0.0f), 
 _text(text), 
@@ -45,7 +45,7 @@ _scale(1.0f, 1.0f)
 	AddText(_text);
 }
 
-RenderedText::RenderedText(const Font& font, string text, const KM::Vector& pos)
+Text::Text(const Font& font, string text, const KM::Vector& pos)
 :
 _pos(pos),
 _text(text), 
@@ -59,17 +59,16 @@ _scale(1.0f, 1.0f)
 	AddText(_text);
 }
 
-RenderedText::~RenderedText(void)
+Text::~Text(void)
 {  }
 
 //==========================================================================================================================
 //
-//RenderedText Functions
+//Text Functions
 //
 //==========================================================================================================================
-void RenderedText::AddText(string text)
+void Text::AddText(string text)
 {
-/*
 	_characterList.clear();
 
 	_text = text;
@@ -77,9 +76,9 @@ void RenderedText::AddText(string text)
 	F32 currentX = _pos.GetX();
 	F32 currentY = _pos.GetY();
 
-
 	for(char& c : text)
 	{
+/*
 		shared_ptr<RenderedCharacter> character{new RenderedCharacter()};
 
 		shared_ptr<Sprite> sprite = _font.CreateCharacter(c);
@@ -89,8 +88,7 @@ void RenderedText::AddText(string text)
 		character->SetPosition(KM::Vector(currentX, currentY));
 
 		currentX += static_cast<F32>(data.xadvance);
-
-/*			
+		
 		F32 charWidth  	  = static_cast<F32>(data.width);
 		F32 charHeight 	  = static_cast<F32>(data.height);
 		F32 charX 	 	  = static_cast<F32>(data.x);
@@ -124,13 +122,13 @@ void RenderedText::AddText(string text)
 		character->SetSprite(sprite);
 
 		_characterList.push_back(character);
+*/
 	}
 
 	_center = KM::Vector(_width / 2.0f, _height / 2.0f);
-*/
 }//End AddText
 
-void RenderedText::SetPosition(const KM::Vector& pos)
+void Text::SetPosition(const KM::Vector& pos)
 {
 /*
 	_pos = pos;;
@@ -150,7 +148,7 @@ void RenderedText::SetPosition(const KM::Vector& pos)
 }
 
 /*	Not implemented yet in Sprite	
-void RenderedText::SetTextColor(Color& col)
+void Text::SetTextColor(Color& col)
 {
 	for(RenderedCharacter& character : _characterList)
 	{
