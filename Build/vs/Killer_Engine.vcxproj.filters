@@ -67,12 +67,6 @@
     <Filter Include="Components\LevelManager">
       <UniqueIdentifier>{0848391e-09fc-4949-ad36-3ea60b4741da}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\RenderText">
-      <UniqueIdentifier>{7e0d93d1-f85e-4c81-9b66-d130c9d7e5df}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\RenderCharacter">
-      <UniqueIdentifier>{22c25915-f8de-4ccd-b648-edfd4f055e14}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Docs">
       <UniqueIdentifier>{9ffff7b1-2917-4ec9-81fc-202787d11f86}</UniqueIdentifier>
     </Filter>
@@ -111,6 +105,12 @@
     </Filter>
     <Filter Include="Components\WindowProgram">
       <UniqueIdentifier>{381d786c-065e-4c73-9294-7079cbccce17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Text">
+      <UniqueIdentifier>{7e0d93d1-f85e-4c81-9b66-d130c9d7e5df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\GameObjects\Character">
+      <UniqueIdentifier>{22c25915-f8de-4ccd-b648-edfd4f055e14}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -162,9 +162,6 @@
     <ClInclude Include="..\..\Headers\Engine\LevelManager.h">
       <Filter>Components\LevelManager</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\RenderedCharacter.h">
-      <Filter>Components\RenderCharacter</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Texture.h">
       <Filter>Components\Texture</Filter>
     </ClInclude>
@@ -205,7 +202,10 @@
       <Filter>Components\KillerPhysics\ContactResolution</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Text.h">
-      <Filter>Components\RenderText</Filter>
+      <Filter>Components\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Glyph.h">
+      <Filter>Components\GameObjects\Character</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -248,9 +248,6 @@
     <ClCompile Include="..\..\Implementations\LevelManager.cpp">
       <Filter>Components\LevelManager</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\RenderedCharacter.cpp">
-      <Filter>Components\RenderCharacter</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Texture.cpp">
       <Filter>Components\Texture</Filter>
     </ClCompile>
@@ -291,7 +288,10 @@
       <Filter>Components\KillerPhysics\ContactResolution</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Text.cpp">
-      <Filter>Components\RenderText</Filter>
+      <Filter>Components\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Glyph.cpp">
+      <Filter>Components\GameObjects\Character</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

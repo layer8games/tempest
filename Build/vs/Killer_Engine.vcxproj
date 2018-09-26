@@ -135,7 +135,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\RenderedCharacter.h">
+    <ClInclude Include="..\..\Headers\Engine\Glyph.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -218,7 +218,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\RenderedCharacter.cpp">
+    <ClCompile Include="..\..\Implementations\Glyph.cpp">
       <SubType>
       </SubType>
     </ClCompile>
