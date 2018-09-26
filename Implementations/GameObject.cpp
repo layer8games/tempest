@@ -67,27 +67,13 @@ GameObject::~GameObject(void)
 //==========================================================================================================================
 void GameObject::v_Render(void)
 {
-	if(_meshLoaded)
-	{
-		_shader.Use(true);
-		BindVAO(true);
+	_shader.Use(true);
+	BindVAO(true);
 
-		glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
+	glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
 
-		_shader.Use(false);
-		BindVAO(false);
-	}
-	else
-	{
-		_shader.Use(true);
-		BindVAO(true);
-
-		glDrawElements(GL_TRIANGLES, _numIndices, GL_UNSIGNED_INT, 0);
-		glBindVertexArray(0);
-		
-		_shader.Use(false);
-		BindVAO(false);
-	}
+	_shader.Use(false);
+	BindVAO(false);
 }
 
 //==========================================================================================================================

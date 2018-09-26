@@ -32,76 +32,11 @@ namespace KillerEngine
 
 //==========================================================================================================================
 //
-//Functions
+//Virtual Functions
 //
 //==========================================================================================================================
-//==========================================================================================================================
-//Accessors
-//==========================================================================================================================		
-		U32 GetID(void)
-		{
-			return _id;
-		}
+		void v_Update(void)
+		{  }
 
-		void SetPosition(const KM::Vector& pos)
-		{
-			_pos = pos;
-		}
-
-		const KM::Vector& GetPosition(void) const
-		{
-			return _pos;
-		}
-
-		void SetWidth(F32 w)
-		{
-			_width = w;
-		}
-
-		F32 GetWidth(void)
-		{
-			return _width;
-		}
-
-		F32 SetPosition(void)
-		{
-			return _width;
-		}
-
-		void SetHeight(F32 h)
-		{
-			_height = h;
-		}
-
-		F32 GetHeight(void)
-		{
-			return _height;
-		}
-
-		void SetDimensions(F32 w, F32 h)
-		{
-			_width = w;
-			_height = h;
-		}
-
-//		Not implemented yet in Sprite		
-		void SetColor(const Color& col)
-		{
-			_color = col;
-		}
-				
-		const Color& GetColor(void) const
-		{
-			return _color;
-		}
-
-	private:
-		U32			_id;
-		KM::Vector _pos;
-		F32 		_width;
-		F32			_height;
-		Color 		_color;
-		
-		static U32 _nextId;
 	};//end Class
 }//end Namespace

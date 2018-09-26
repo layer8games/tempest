@@ -73,19 +73,18 @@ void Text::AddText(string text)
 
 	_text = text;
 
-	F32 currentX = _pos.GetX();
-	F32 currentY = _pos.GetY();
+	F32 currentX = _pos[0];
+	F32 currentY = _pos[1];
 
 	for(char& c : text)
 	{
-/*
-		shared_ptr<RenderedCharacter> character{new RenderedCharacter()};
 
-		shared_ptr<Sprite> sprite = _font.CreateCharacter(c);
+/*
+		shared_ptr<Glyph> glyph{new Glyph()};
 
 		CharacterData data = sprite->GetCharData();
 
-		character->SetPosition(KM::Vector(currentX, currentY));
+		glyph->SetPosition(KM::Vector(currentX, currentY));
 
 		currentX += static_cast<F32>(data.xadvance);
 		
@@ -101,16 +100,12 @@ void Text::AddText(string text)
 		F32 leftCoord  = rightCoord + charWidth / textureWidth;
 		F32 bottomCoord = topCoord + charHeight / textureHeight;
 
-		//std::cout << "Top=" << topCoord << "\nBottom=" << bottomCoord << "\nrRight=" << rightCoord << "\nLeft=" << leftCoord << "\n";
-
 		sprite->SetTexture(texture.GetID(), topCoord, bottomCoord, rightCoord, leftCoord);
-
-
 
 		F32 totalCharWidth = data.width * _widthScaleFactor;
 		F32 totalCharHeight = data.height * _heightScaleFactor;
 
-		character->SetDimensions(totalCharWidth, totalCharHeight);
+		glyph->SetDimensions(totalCharWidth, totalCharHeight);
 
 		_width += totalCharWidth;
 		
@@ -119,10 +114,10 @@ void Text::AddText(string text)
 			_height = totalCharHeight;
 		}
 
-		character->SetSprite(sprite);
+		glyph->SetSprite(sprite);
 
-		_characterList.push_back(character);
-*/
+		_characterList.push_back(glyph);
+*/		
 	}
 
 	_center = KM::Vector(_width / 2.0f, _height / 2.0f);

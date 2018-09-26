@@ -12,15 +12,7 @@ using namespace KillerEngine;
 //
 //==========================================================================================================================
 Glyph::Glyph(void) 
-: 
-_id(_nextID), 
-_pos(0.0f),
-_width(0.0f),
-_height(0.0f),
-_color()
-{
-	++_nextID;
-}
+{  }
 
 Glyph::~Glyph(void)
 {  }

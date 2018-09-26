@@ -83,6 +83,43 @@ void Font::InitFont(string fontName, string filePath)
 	}
 }//InitFont
 
+/*
+old version for reference
+
+std::shared_ptr<Sprite> Font::CreateCharacter(char character)
+{
+//		std::cout << "FONT:: character=" << character << "\ntexture id =" << _textureID << "\nfont name=" << _fontName << "\n"; 
+
+	U32 id = static_cast<U32>(character);
+
+	shared_ptr<Texture> texture = TextureManager::Instance()->GetTexture(_textureID);
+
+	CharacterData data = _fontCharData[id];
+
+	shared_ptr<Sprite> sprite{new Sprite()};
+
+	F32 charWidth  	  = static_cast<F32>(data.width);
+	F32 charHeight 	  = static_cast<F32>(data.height);
+	F32 charX 	 	  = static_cast<F32>(data.x);
+	F32 charY 	 	  = static_cast<F32>(data.y);
+	F32 textureWidth  = static_cast<F32>(texture->GetWidth());
+	F32 textureHeight = static_cast<F32>(texture->GetHeight());
+
+	F32 rightCoord   = (charX / textureWidth);
+	F32 topCoord    = charY / textureHeight;
+	F32 leftCoord  = rightCoord + charWidth / textureWidth;
+	F32 bottomCoord = topCoord + charHeight / textureHeight;
+
+	sprite->SetTexture(_textureID, topCoord, bottomCoord, rightCoord, leftCoord);
+
+	sprite->SetCharData(data);
+	
+	return sprite;	 		
+}
+
+
+*/
+
 CharacterData Font::GetCharacterData(char c)
 {
 	U32 id = U32(c);

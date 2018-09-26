@@ -21,7 +21,6 @@ Written by Maxwell Miller
 #include <Engine/Vector.h>
 #include <Engine/Color.h>
 #include <Engine/Text.h>
-#include <Engine/RenderedCharacter.h>
 #include <Engine/Particle.h>
 #include <Engine/ParticleForceRegistry.h>
 #include <Engine/Camera.h>
