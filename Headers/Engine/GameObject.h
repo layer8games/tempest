@@ -57,6 +57,8 @@ namespace KillerEngine
 
 		void LoadMesh(string filepath);
 
+		void MakeSprite(void);
+
 		const KM::Matrix GetModelMatrix(void);
 
 //==========================================================================================================================

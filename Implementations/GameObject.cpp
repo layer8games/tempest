@@ -452,6 +452,11 @@ void GameObject::LoadMesh(string filepath)
 	}
 }//end LoadMesh
 
+void GameObject::MakeSprite(void)
+{
+	
+}
+
 const KM::Matrix GameObject::GetModelMatrix(void)
 {
 	return KM::Matrix::Translate(_position) * KM::Matrix::Scale(_scale);

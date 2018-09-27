@@ -79,7 +79,6 @@ void Text::AddText(string text)
 	for(char& c : text)
 	{
 
-/*
 		shared_ptr<Glyph> glyph{new Glyph()};
 
 		CharacterData data = sprite->GetCharData();
@@ -116,8 +115,7 @@ void Text::AddText(string text)
 
 		glyph->SetSprite(sprite);
 
-		_characterList.push_back(glyph);
-*/		
+		_characterList.push_back(glyph);		
 	}
 
 	_center = KM::Vector(_width / 2.0f, _height / 2.0f);
