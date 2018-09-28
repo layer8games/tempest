@@ -97,11 +97,7 @@ namespace KillerEngine
 			return _height; 
 		}
 
-		inline const KM::Vector& GetCenter(void) const
-		{ 
-			return _center; 
-		}
-
+		//ToDO:: Scale needs to change each Glyph too
 		inline void SetScale(const KM::Vector& s)
 		{
 			_scale = s;
@@ -119,7 +115,6 @@ namespace KillerEngine
 		std::vector<shared_ptr<Glyph>> 	_characterList;
 		F32 							_width;
 		F32 							_height;
-		KM::Vector 						_center;
 		KM::Vector 						_scale;
 	};
 }

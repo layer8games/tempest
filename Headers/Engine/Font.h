@@ -73,6 +73,16 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
+		inline S32 GetWidth(void) const
+		{
+			return _width;
+		}
+
+		inline S32 GetHeight(void) const
+		{
+			return _height;
+		}
+
 /*! Set's the name of font. Not used actively in any major way.
 	\param fontName string: New name of the font. */
 		inline void SetName(string fontName)
@@ -112,9 +122,11 @@ namespace KillerEngine
 //Data
 //
 //==========================================================================================================================	
-		Texture 					 _texture; 				///< ID for Texture loaded into the TextureManager.
-		string  					 _fontName;				///< Name of the font. Not really used right now.
-		std::map<U32, CharacterData> _characterData;			///< All data from .fnt file stored in a RenderText can use for placement.
+		S32 						 _width;
+		S32 						 _height;
+		Texture 					 _texture; 				
+		string  					 _fontName;				
+		std::map<U32, CharacterData> _characterData; ///< All data from .fnt file stored in a RenderText can use for placement.
 
 
 	};

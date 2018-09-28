@@ -12,13 +12,13 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/GameObject.h>
 #include <Engine/Vector.h>
-#include <Engine/Color.h>
+#include <Engine/Texture.h>
 
 namespace KM = KillerMath;
 
 namespace KillerEngine
 {
-	class Glyph
+	class Glyph : public GameObject
 	{
 	public:
 //==========================================================================================================================
@@ -37,6 +37,24 @@ namespace KillerEngine
 //==========================================================================================================================
 		void v_Update(void)
 		{  }
+
+//==========================================================================================================================
+//
+//Accessors
+//
+//==========================================================================================================================		
+		inline void SetTexture(const Texture& tex)
+		{
+			_texture = tex;
+		}
+
+		const Texture& GetTexture(void)
+		{
+			return _texture;
+		}
+
+	private:
+		Texture _texture;
 
 	};//end Class
 }//end Namespace

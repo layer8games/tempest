@@ -10,7 +10,9 @@ using namespace KillerEngine;
 //
 //==========================================================================================================================
 Font::Font(void) 
-: 
+:
+_width(0),
+_height(0), 
 _texture(),
 _fontName(), 
 _characterData()
@@ -18,6 +20,8 @@ _characterData()
 
 Font::Font(const Font& f)
 :
+_width(f.GetWidth()),
+_height(f.GetHeight()),
 _texture(f.GetTexture()),
 _fontName(f.GetName()),
 _characterData(f.GetCharacterData())
@@ -25,6 +29,8 @@ _characterData(f.GetCharacterData())
 
 Font::Font(const Font* f)
 :
+_width(f->GetWidth()),
+_height(f->GetHeight()),
 _texture(f->GetTexture()),
 _fontName(f->GetName()),
 _characterData(f->GetCharacterData())
@@ -59,7 +65,11 @@ void Font::InitFont(string fontName, string filePath)
 	rapidxml::xml_document<char> doc;
 	doc.parse<0>(&buffer[0]);
 
-	rapidxml::xml_node<>* node = doc.first_node("font")->first_node("chars");
+	rapidxml::xml_node<>* node = doc.first_node("font")->first_node("common");
+	_width = static_cast<S32>(std::stoi(node->first_attribute("scaleW")->value()));
+	_height = static_cast<S32>(std::stoi(node->first_attribute("scaleH")->value()));
+
+	node = doc.first_node("font")->first_node("chars");
 
 	U32 totalChars = static_cast<U32>(std::stoi(node->first_attribute("count")->value()));
 	
