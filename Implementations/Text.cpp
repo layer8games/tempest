@@ -97,7 +97,7 @@ void Text::AddText(string text)
 		F32 vMinCoord = vMaxCoord + (charHeight / fontHeight);
 		
 		//Setup Glyph
-		//ToDo::Set vertices for Glyph.
+		//ToDo::Set vertices for Glyph
 		
 		glyph->SetScale(_scale);
 
