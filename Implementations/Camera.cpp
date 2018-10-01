@@ -186,29 +186,29 @@ void FPSCamera::v_Update(void)
 
 	if(Controller::Instance()->GetKeyHeld(W))
 	{
-		v_Move(_look * _moveSpeed * KM::Timer::Instance()->DeltaTime()); //forward
+		v_Move(_look); //forward
 	}
 	else if(Controller::Instance()->GetKeyHeld(S))
 	{
-		v_Move(_look * -_moveSpeed * KM::Timer::Instance()->DeltaTime()); //back
+		v_Move(_look * -1.0f); //back
 	}
 	
 	if(Controller::Instance()->GetKeyHeld(D))
 	{
-		v_Move(_right * _moveSpeed * KM::Timer::Instance()->DeltaTime()); //right
+		v_Move(_right); //right
 	}
 	else if(Controller::Instance()->GetKeyHeld(A))
 	{
-		v_Move(_right * -_moveSpeed * KM::Timer::Instance()->DeltaTime()); //left
+		v_Move(_right * -1.0f); //left
 	}
 
 	if(Controller::Instance()->GetKeyHeld(SPACE))
 	{
-		v_Move(_up * _moveSpeed * KM::Timer::Instance()->DeltaTime()); //up
+		v_Move(_up); //up
 	}
 	else if(Controller::Instance()->GetKeyHeld(LSHIFT))
 	{
-		v_Move(_up * -_moveSpeed * KM::Timer::Instance()->DeltaTime()); //down
+		v_Move(_up * -1.0f); //down
 	}
 }
 

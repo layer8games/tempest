@@ -57,7 +57,7 @@ namespace KillerEngine
 		virtual void v_Update(void)
 		{  }
 
-		virtual void v_Move(const KM::Vector offset)
+		virtual void v_Move(const KM::Vector& offset)
 		{  }
 
 //==========================================================================================================================
