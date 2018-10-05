@@ -372,7 +372,6 @@ namespace KillerEngine
 		U32 					_ID;
 		bool					_active;
 		bool					_activeRender;
-		bool 					_meshLoaded;
 		KM::Vector				_position;
 		KM::Vector 				_scale;
 		S32						_numIndices;

@@ -18,3 +18,20 @@ _texture()
 
 Glyph::~Glyph(void)
 {  }
+
+//==========================================================================================================================
+//
+//Virtual Functions
+//
+//==========================================================================================================================
+void Glyph::v_Render(void)
+{
+	GameObject::_shader.Use();
+	GameObject::_shader.SetUniform("model", GameObject::GetModelMatrix());
+
+	_texture.Bind();
+	
+	GameObject::v_Render();
+
+	_texture.UnBind();
+}

@@ -20,7 +20,6 @@ GameObject::GameObject(void)
 _ID(_nextID),
 _active(true),
 _activeRender(true),
-_meshLoaded(false),
 _position(0.0f),
 _scale(1.0f),
 _shader(),
@@ -256,8 +255,6 @@ bool GameObject::LoadOBJ(string filepath)
 
 			_vertices.push_back(meshVertex);
 		}		
-
-		_meshLoaded = true;
 
 		v_InitBuffers();
 

@@ -177,6 +177,14 @@
     <ClInclude Include="..\..\Headers\Engine\LevelManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Assets\Shaders\sprite_fragment.glsl">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="..\..\Assets\Shaders\sprite_vertex.glsl">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\Color.cpp">
       <SubType>
       </SubType>

@@ -72,9 +72,21 @@ void Text::AddText(string text)
 
 	F32 fontWidth  = static_cast<F32>(_font.GetWidth());
 	F32 fontHeight = static_cast<F32>(_font.GetHeight());
-	F32 currentX = _pos[0];
-	F32 currentY = _pos[1];
+	KM::Vector charPos = _pos;
+	
 	Texture fontTexture = _font.GetTexture();
+
+	std::vector<ShaderData> shaderData;
+
+	ShaderData vs;
+	vs.filePath = "..\\Assets\\Shaders\\sprite_vertex.glsl";
+	vs.type = ShaderType::VERTEX;
+	shaderData.push_back(vs);
+
+	ShaderData fs;
+	fs.filePath = "..\\Assets\\Shaders\\sprite_fragment.glsl";
+	vs.type = ShaderType::FRAGMENT;
+	shaderData.push_back(fs);
 
 	for(U32 i = 0; i < _text.size(); ++i)
 	{
@@ -90,23 +102,30 @@ void Text::AddText(string text)
 		F32 yoffset 	  = static_cast<F32>(data.yoffset);
 
 		//Compute UV's for character
-		F32 uMaxCoord = (charX / fontWidth);
-		F32 uMinCoord = uMaxCoord + (charWidth / fontWidth);
+		F32 uMax = (charX / fontWidth);
+		F32 uMin = uMax + (charWidth / fontWidth);
 		
-		F32 vMaxCoord = charY / fontHeight;
-		F32 vMinCoord = vMaxCoord + (charHeight / fontHeight);
+		F32 vMax = charY / fontHeight;
+		F32 vMin = vMax + (charHeight / fontHeight);
 		
+		//std::cout << "offset for " << _text[i] << " => " << xoffset << " " << yoffset << std::endl;
+
 		//Setup Glyph
-		//ToDo::Set vertices for Glyph
+		//First Triangle
+		glyph->AddVertex(Vertex(KM::Vector(-1.0f, 1.0f, 0.0f), uMin, vMax)); //Top Left
+		glyph->AddVertex(Vertex(KM::Vector(1.0f, 1.0f, 0.0f), uMax, vMax)); //Top Right
+		glyph->AddVertex(Vertex(KM::Vector(1.0f, -1.0f, 0.0f), uMax, vMin)); //Bottom Right
+
+		//Second Triangle
+		glyph->AddVertex(Vertex(KM::Vector(-1.0f, 1.0f, 0.0f), uMin, vMax)); //Top Left
+		glyph->AddVertex(Vertex(KM::Vector(1.0f, -1.0f, 0.0f), uMax, vMin)); //Bottom Right
+		glyph->AddVertex(Vertex(KM::Vector(-1.0f, -1.0f, 0.0f), uMin, vMin)); //Bottom Left
 		
 		glyph->SetScale(_scale);
 
-		KM::Vector charPos{1.0f, 1.0f};
-		charPos.Make2D();
-
-		currentX += static_cast<F32>(data.xadvance);
-
-		glyph->SetPosition(charPos);
+		glyph->SetPosition(charPos[0] + xoffset, charPos[1] + yoffset);
+		
+		charPos[0] += static_cast<F32>(data.xadvance);
 
 		glyph->SetTexture(fontTexture);
 

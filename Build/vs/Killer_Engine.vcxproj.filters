@@ -112,6 +112,9 @@
     <Filter Include="Components\GameObjects\Character">
       <UniqueIdentifier>{22c25915-f8de-4ccd-b648-edfd4f055e14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components\Shader\Default">
+      <UniqueIdentifier>{04713464-c85f-42bc-9fe1-dabb63eafa69}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -292,6 +295,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Glyph.cpp">
       <Filter>Components\GameObjects\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Assets\Shaders\sprite_fragment.glsl">
+      <Filter>Components\Shader\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Assets\Shaders\sprite_vertex.glsl">
+      <Filter>Components\Shader\Default</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

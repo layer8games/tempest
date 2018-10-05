@@ -60,6 +60,6 @@ namespace KillerEngine
 
 		Vertex(const KM::Vector& pos, const KM::Vector& norm, F32 u, F32 v)
 		: position(pos), normal(norm), texCoord(u, v), color()
-		{  }
+		{  }	
 	};
 }//end Namespace
