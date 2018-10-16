@@ -109,7 +109,7 @@
     <Filter Include="Components\Text">
       <UniqueIdentifier>{7e0d93d1-f85e-4c81-9b66-d130c9d7e5df}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\GameObjects\Character">
+    <Filter Include="Components\GameObjects\Glyph">
       <UniqueIdentifier>{22c25915-f8de-4ccd-b648-edfd4f055e14}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -205,7 +205,7 @@
       <Filter>Components\Text</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Glyph.h">
-      <Filter>Components\GameObjects\Character</Filter>
+      <Filter>Components\GameObjects\Glyph</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -291,7 +291,7 @@
       <Filter>Components\Text</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Glyph.cpp">
-      <Filter>Components\GameObjects\Character</Filter>
+      <Filter>Components\GameObjects\Glyph</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

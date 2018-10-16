@@ -40,6 +40,8 @@ namespace KillerEngine
 
 		void v_Render(void);
 
+		void v_InitBuffers(void);
+
 //==========================================================================================================================
 //
 //Functions
@@ -52,6 +54,21 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================		
+		inline void SetCharacter(char character, const Texture& tex, const CharacterData& characterData)
+		{
+			_character = character;
+			_texture = tex;
+			_characterData = characterData;
+
+			v_InitBuffers();
+		}
+
+		inline void SetCharacter(char character, const CharacterData& characterData)
+		{
+			_character = character;
+			_characterData = characterData;
+		}
+
 		inline void SetTexture(const Texture& tex)
 		{
 			_texture = tex;
@@ -62,8 +79,15 @@ namespace KillerEngine
 			return _texture;
 		}
 
+		const CharacterData& GetCharacterData(void) const
+		{
+			return _characterData;
+		}
+
 	private:
-		Texture _texture;
+		char 		  _character;
+		Texture 	  _texture;
+		CharacterData _characterData;
 
 	};//end Class
 }//end Namespace

@@ -17,18 +17,18 @@ U32 GameObject::_nextID = 1;
 //==========================================================================================================================
 GameObject::GameObject(void)
 :
-_ID(_nextID),
-_active(true),
-_activeRender(true),
-_position(0.0f),
-_scale(1.0f),
 _shader(),
-_numIndices(0),
 _vertices(),
 _indices(),
+_uvList(),
+_position(0.0f),
+_scale(1.0f),
+_active(true),
+_activeRender(true),
+_ID(_nextID),
+_numIndices(0),
 _vao(0),
-_vbo{0},
-_uvList()
+_vbo{0}
 {
 	++_nextID;
 
@@ -38,14 +38,16 @@ _uvList()
 
 GameObject::GameObject(const GameObject& obj)
 :
-_ID(obj.GetID()),
-_active(obj.GetActive()),
-_position(obj.GetPosition()),
 _shader(obj.GetShader()),
 _vertices(obj.GetVertices()),
 _indices(obj.GetIndices()),
+_uvList(obj.GetUVList()),
+_position(obj.GetPosition()),
+_active(obj.GetActive()),
+_activeRender(obj.GetActiveRender()),
+_ID(obj.GetID()),
 _vao(obj.GetVAO()),
-_uvList(obj.GetUVList())
+_vbo{0}
 {
 	glGenBuffers(NUM_VBO, _vbo);
 }

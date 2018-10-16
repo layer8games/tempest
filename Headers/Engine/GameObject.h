@@ -114,7 +114,7 @@ namespace KillerEngine
 		}
 
 //===== Active Render =====
-		inline const bool GetActiveRender(void)
+		inline const bool GetActiveRender(void) const
 		{
 			return _activeRender;
 		}
@@ -321,7 +321,7 @@ namespace KillerEngine
 			{
 				glBindVertexArray(0);
 			}
-		}	
+		}
 
 //===== Uv List =====
 		inline std::vector<F32> GetUVList(void) const
@@ -369,17 +369,19 @@ namespace KillerEngine
 //
 //==========================================================================================================================		
 		static U32				_nextID;
-		U32 					_ID;
-		bool					_active;
-		bool					_activeRender;
-		KM::Vector				_position;
-		KM::Vector 				_scale;
-		S32						_numIndices;
+		
 		std::vector<Vertex> 	_vertices;
 		std::vector<U32> 		_indices;
+		std::vector<F32> 		_uvList;
+		KM::Vector				_position;
+		KM::Vector 				_scale;
+		bool					_active;
+		bool					_activeRender;
+		U32 					_ID;
+		S32						_numIndices;
 		GLuint 					_vao;
 		GLuint 					_vbo[NUM_VBO];
-		std::vector<F32> 		_uvList;
+		
 
 	};
 }

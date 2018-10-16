@@ -13,7 +13,9 @@ using namespace KillerEngine;
 //==========================================================================================================================
 Glyph::Glyph(void) 
 :
-_texture()
+_character(),
+_texture(),
+_characterData()
 {  }
 
 Glyph::~Glyph(void)
@@ -31,7 +33,14 @@ void Glyph::v_Render(void)
 
 	_texture.Bind();
 	
-	GameObject::v_Render();
+	GameObject::BindVAO(true);
+
+	glDrawArrays(GL_TRIANGLES, 0, )
 
 	_texture.UnBind();
+}
+
+void Glyph::v_InitBuffers(void)
+{
+
 }

@@ -51,6 +51,11 @@ namespace KillerEngine
 			return _handle;
 		}
 
+		inline void SetHandle(GLuint h)
+		{
+			_handle = h;
+		}
+
 		inline S32 GetWidth(void) const 
 		{ 
 			return _width; 

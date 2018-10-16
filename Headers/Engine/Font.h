@@ -4,17 +4,12 @@
 #include <Engine/Atom.h>
 #include <Engine/Texture.h>
 #include <Engine/CharacterData.h>
-#include <Engine/TextureManager.h>
-
-#include <Extern/rapidxml.hpp>
+#include <Engine/Glyph.h>
 
 //=====STL includes=====
-#include <fstream>
-#include <sstream>
 #include <vector>
 #include <map>
 #include <list>
-#include <memory>
 
 namespace KillerEngine
 {
@@ -73,14 +68,14 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-		inline S32 GetWidth(void) const
+		inline void SetSize(S32 s)
 		{
-			return _width;
+			_size = s;
 		}
 
-		inline S32 GetHeight(void) const
+		inline S32 GetSize(void) const
 		{
-			return _height;
+			return _size;
 		}
 
 /*! Set's the name of font. Not used actively in any major way.
@@ -94,17 +89,6 @@ namespace KillerEngine
 		inline const string GetName(void) const
 		{
 			return _fontName; 
-		}
-
-/*! Returns the current texture ID for the texture. */		
-		inline const Texture& GetTexture(void) const
-		{
-			return  _texture; 
-		}
-
-		inline void SetTexture(const Texture& tex)
-		{
-			_texture = tex;
 		}
 
 /*! Returns the map containing all data for all characters found in the loaded font. The ID of each character is found in 
@@ -122,9 +106,7 @@ namespace KillerEngine
 //Data
 //
 //==========================================================================================================================	
-		S32 						 _width;
-		S32 						 _height;
-		Texture 					 _texture; 				
+		S32 						 _size;			
 		string  					 _fontName;				
 		std::map<U32, CharacterData> _characterData; ///< All data from .fnt file stored in a RenderText can use for placement.
 
