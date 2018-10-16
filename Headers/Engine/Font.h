@@ -5,11 +5,18 @@
 #include <Engine/Texture.h>
 #include <Engine/CharacterData.h>
 #include <Engine/Glyph.h>
+#include <Engine/ErrorManager.h>
+
+//===== External =====
+#include <ft2build.h>
+#include FT_FREETYPE_H
 
 //=====STL includes=====
 #include <vector>
 #include <map>
 #include <list>
+
+typedef std::map<char, KillerEngine::Glyph> GlyphMap;
 
 namespace KillerEngine
 {
@@ -52,6 +59,8 @@ namespace KillerEngine
 	\param fontFile string. File Path to the .fnt file that is used to get the character data needed. */
 		void InitFont(string fontName, string filePath);
 
+		void InitFont(string fontName, string filePath, U32 fontSize);
+
 //==========================================================================================================================
 //
 //Operators
@@ -68,14 +77,27 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-		inline void SetSize(S32 s)
+//===== Size =====
+		inline void SetSize(U32 s)
 		{
 			_size = s;
 		}
 
-		inline S32 GetSize(void) const
+		inline U32 GetSize(void) const
 		{
 			return _size;
+		}
+
+//===== Num Characters =====
+// 128 for ACCII, 256 for UTF8
+		inline void SetNumCharacters(S32 num)
+		{
+			_numCharacters = num;
+		}
+
+		inline S32 GetNumCharacters(void) const
+		{
+			return _numCharacters;
 		}
 
 /*! Set's the name of font. Not used actively in any major way.
@@ -93,12 +115,12 @@ namespace KillerEngine
 
 /*! Returns the map containing all data for all characters found in the loaded font. The ID of each character is found in 
 	the .fnt file and is the ASCII int value of a char */
-		inline std::map<U32, CharacterData> GetCharacterData(void) const
+		GlyphMap GetAllCharacterGlyphs(void) const
 		{ 
-			return _characterData; 
+			return _characterGlyphs; 
 		}
 
-		CharacterData GetCharacterData(char c);
+		const Glyph& GetCharacterGlyph(char c);
 
 	private:
 //==========================================================================================================================
@@ -106,9 +128,10 @@ namespace KillerEngine
 //Data
 //
 //==========================================================================================================================	
-		S32 						 _size;			
-		string  					 _fontName;				
-		std::map<U32, CharacterData> _characterData; ///< All data from .fnt file stored in a RenderText can use for placement.
+		U32 	 _size;	
+		S32 	 _numCharacters;
+		string   _fontName;
+		GlyphMap _characterGlyphs; ///< All data from .fnt file stored in a RenderText can use for placement.
 
 
 	};

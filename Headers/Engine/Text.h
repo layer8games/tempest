@@ -19,6 +19,7 @@ Written by Maxwell Miller
 #include <Engine/Font.h>
 #include <Engine/Vector.h>
 #include <Engine/Glyph.h>
+#include <Engine/Color.h>
 
 namespace KM = KillerMath;
 
@@ -108,7 +109,22 @@ namespace KillerEngine
 			return _scale;
 		}
 
+		inline void SetColor(Color& c)
+		{
+			_color = c;
+		}
+
+		inline const Color& GetColor(void)
+		{
+			return _color;
+		}
+
 	private:
+//==========================================================================================================================
+//
+//Data
+//
+//==========================================================================================================================
 		KM::Vector 						_pos;
 		string 	   						_text;
 		Font   	   						_font;
@@ -116,5 +132,6 @@ namespace KillerEngine
 		F32 							_width;
 		F32 							_height;
 		KM::Vector 						_scale;
+		Color 							_color;
 	};
 }

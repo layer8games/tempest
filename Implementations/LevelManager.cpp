@@ -41,7 +41,7 @@ void LevelManager::AddLevel(shared_ptr<Level> level)
 	
 	if(_levels.find(level->GetID()) == _levels.end()) 
 	{ 
-		ErrorManager::Instance()->SetError(EC_Engine, "Unable to AddLevel to LevelManager"); 
+		ErrorManager::Instance()->SetError(ENGINE, "Unable to AddLevel to LevelManager"); 
 	}
 }
 
@@ -112,7 +112,7 @@ void LevelManager::AddObjectToLevel(U32 id, const GameObject& obj)
 	} 
 	else
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
+		ErrorManager::Instance()->SetError(ENGINE, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
 	} 
 }
 
@@ -124,7 +124,7 @@ void LevelManager::AddObjectToLevel(U32 id, shared_ptr<GameObject> obj)
 	} 
 	else
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
+		ErrorManager::Instance()->SetError(ENGINE, "LevelManager -> Tried to call the AddObjectToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
 	} 
 }
 
@@ -136,7 +136,7 @@ void LevelManager::AddParticleToLevel(U32 id, shared_ptr<KP::Particle> particle,
 	} 
 	else
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "LevelManager -> Tried to call the AddParticle2DToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
+		ErrorManager::Instance()->SetError(ENGINE, "LevelManager -> Tried to call the AddParticle2DToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
 	} 
 }
 

@@ -26,7 +26,6 @@ _scale(1.0f),
 _active(true),
 _activeRender(true),
 _ID(_nextID),
-_numIndices(0),
 _vao(0),
 _vbo{0}
 {
@@ -148,7 +147,7 @@ bool GameObject::LoadOBJ(string filepath)
 
 		if(!file)
 		{
-			ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadOBJ => unable to open " + filepath);
+			ErrorManager::Instance()->SetError(ENGINE, "GameObject::LoadOBJ => unable to open " + filepath);
 			return false;
 		}
 
@@ -281,7 +280,7 @@ void GameObject::LoadMesh(string filepath)
 {
 	if(filepath.find(".dae") == std::string::npos)
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadMesh => Tried to load mesh in the wrong format. " + filepath);
+		ErrorManager::Instance()->SetError(ENGINE, "GameObject::LoadMesh => Tried to load mesh in the wrong format. " + filepath);
 		return;
 	}
 
@@ -298,7 +297,7 @@ void GameObject::LoadMesh(string filepath)
 
 	if(!file)
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadMesh => Failed to open file: " + filepath);
+		ErrorManager::Instance()->SetError(ENGINE, "GameObject::LoadMesh => Failed to open file: " + filepath);
 		return;
 	}
 
@@ -368,7 +367,7 @@ void GameObject::LoadMesh(string filepath)
 
 		if(materials.find(id) == materials.end())
 		{
-			ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadMesh, unable to load color from matrial");
+			ErrorManager::Instance()->SetError(ENGINE, "GameObject::LoadMesh, unable to load color from matrial");
 		}
 	}
 */
@@ -416,7 +415,7 @@ void GameObject::LoadMesh(string filepath)
 
 		if(stride == 0)
 		{
-			ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadMesh: No stride found. That means there is no input, and your xml file is wrong");
+			ErrorManager::Instance()->SetError(ENGINE, "GameObject::LoadMesh: No stride found. That means there is no input, and your xml file is wrong");
 		}
 
 		for(U32 i = 0; i < indices.size(); i+=stride)

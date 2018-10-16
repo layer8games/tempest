@@ -28,19 +28,21 @@ Glyph::~Glyph(void)
 //==========================================================================================================================
 void Glyph::v_Render(void)
 {
-	GameObject::_shader.Use();
+	GameObject::_shader.Use(true);
 	GameObject::_shader.SetUniform("model", GameObject::GetModelMatrix());
 
 	_texture.Bind();
 	
 	GameObject::BindVAO(true);
 
-	glDrawArrays(GL_TRIANGLES, 0, )
+	glDrawArrays(GL_TRIANGLES, 0, GameObject::GetNumVertices());
 
 	_texture.UnBind();
+	GameObject::_shader.Use(false);
+	GameObject::BindVAO(false);
 }
 
 void Glyph::v_InitBuffers(void)
 {
-
+	
 }

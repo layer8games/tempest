@@ -13,6 +13,8 @@ Written by Maxwell Miller
 #include <Engine/GameObject.h>
 #include <Engine/Vector.h>
 #include <Engine/Texture.h>
+#include <Engine/CharacterData.h>
+#include <Engine/Color.h>
 
 namespace KM = KillerMath;
 
@@ -53,7 +55,7 @@ namespace KillerEngine
 //
 //Accessors
 //
-//==========================================================================================================================		
+//==========================================================================================================================
 		inline void SetCharacter(char character, const Texture& tex, const CharacterData& characterData)
 		{
 			_character = character;
@@ -74,20 +76,35 @@ namespace KillerEngine
 			_texture = tex;
 		}
 
-		const Texture& GetTexture(void)
+		inline const Texture& GetTexture(void)
 		{
 			return _texture;
 		}
 
-		const CharacterData& GetCharacterData(void) const
+		inline const CharacterData& GetCharacterData(void) const
 		{
 			return _characterData;
 		}
 
+		inline void SetColor(Color& c)
+		{
+			_color = c;
+		}
+
+		inline const Color& GetColor(void)
+		{
+			return _color;
+		}
+
 	private:
+//==========================================================================================================================
+//
+//Data
+//
+//==========================================================================================================================
 		char 		  _character;
 		Texture 	  _texture;
 		CharacterData _characterData;
-
+		Color 		  _color;
 	};//end Class
 }//end Namespace

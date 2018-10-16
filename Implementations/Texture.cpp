@@ -75,7 +75,7 @@ void Texture::LoadTexture(string filePath, bool generateMipMaps)
 
 	if(imageData == 0)
 	{
-		ErrorManager::Instance()->SetError(EC_TextureManager, "Texture::LoadTexture -> SOIL_load_image call failed to load " + filePath);
+		ErrorManager::Instance()->SetError(TEXTURE_MANAGER, "Texture::LoadTexture -> SOIL_load_image call failed to load " + filePath);
 	}
 	else
 	{

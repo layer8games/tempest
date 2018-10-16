@@ -21,17 +21,18 @@ namespace KillerEngine
 	end error is set. */	
 	enum ErrorCode 
 	{
-		EC_NoError = 0, 		///< Default value. Shouldn't ever be used.
-		EC_Unknown,				///< Fall through code, indicates an error in the setting of an error.
-		EC_Game,				///< Indicates the error is in the end application, or the game, not the engine.
-		EC_Engine,				///< Indicates the error is in the engine's main code, not very specific.
-		EC_Physics,				///< Indicates the error is in the KillerPhysics namespace. 
-		EC_Windows,				///< Indicates that the error is related to the windowing system. 
-		EC_OpenGL,				///< Indicates that the error is in OpenGL related code.
-		EC_OpenGL_Shader,		///< Indicates that the error is caused by OpenGL shader compilation.
-		EC_DirectInput,			///< Depricated. Indicates that the error is with the DirectInput setup.
-		EC_TextureManager,		///< Indicates that the error occured when trying to load a texture into memory.
-		EC_GameObject,			///< Indicates that the issue is in a game object specifically. 
+		NOT_ERROR, 		///< Default value. Shouldn't ever be used.
+		UNKNOWN_ERROR,				///< Fall through code, indicates an error in the setting of an error.
+		APPLICATION,
+		ENGINE,				///< Indicates the error is in the engine's main code, not very specific.
+		PHYSICS,				///< Indicates the error is in the KillerPhysics namespace. 
+		WINDOWS,				///< Indicates that the error is related to the windowing system. 
+		OPENGL,				///< Indicates that the error is in OpenGL related code.
+		SHADER,		///< Indicates that the error is caused by OpenGL shader compilation.
+		GLFW,
+		TEXTURE_MANAGER,
+		GAMEOBJECT,
+		FREETYPE,
 	};
 //==========================================================================================================================
 //Documentation

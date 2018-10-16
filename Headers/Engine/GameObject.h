@@ -266,9 +266,9 @@ namespace KillerEngine
 		}
 
 //===== NumVertices =====
-		inline S32 GetNumVertices(void)
+		inline U32 GetNumVertices(void)
 		{
-			return _numIndices;
+			return _vertices.size();
 		}
 
 //===== Vertex =====
@@ -291,13 +291,11 @@ namespace KillerEngine
 		inline void AddIndex(U32 index)
 		{
 			_indices.push_back(index);
-			++_numIndices;
 		}
 
 		inline void SetIndices(std::vector<U32> indices)
 		{
 			_indices = indices;
-			_numIndices = _indices.size();
 		}
 
 		inline std::vector<U32> GetIndices(void) const
@@ -340,6 +338,11 @@ namespace KillerEngine
 		}
 
 	protected:
+//==========================================================================================================================
+//
+//Protected Data
+//
+//==========================================================================================================================
 		Shader _shader;
 
 	private:
@@ -378,10 +381,7 @@ namespace KillerEngine
 		bool					_active;
 		bool					_activeRender;
 		U32 					_ID;
-		S32						_numIndices;
 		GLuint 					_vao;
 		GLuint 					_vbo[NUM_VBO];
-		
-
 	};
 }

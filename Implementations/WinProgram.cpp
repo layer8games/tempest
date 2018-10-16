@@ -62,7 +62,7 @@ void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen)
 
     if(!glfwInit())
     {
-    	ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to init GLFW. WinProgram.");
+    	ErrorManager::Instance()->SetError(OPENGL, "Failed to init GLFW. WinProgram.");
     }
 
     //Set up your opengl context
@@ -96,7 +96,7 @@ void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen)
     
     if(_window == NULL)
     {
-    	ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to create GLFW window. WinProgram.");
+    	ErrorManager::Instance()->SetError(OPENGL, "Failed to create GLFW window. WinProgram.");
     }
 
     glfwMakeContextCurrent(_window);
@@ -109,7 +109,7 @@ void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen)
     glewExperimental = GL_TRUE;
     if(glewInit() != GLEW_OK)
     {
-    	ErrorManager::Instance()->SetError(EC_OpenGL, "Failed to init glew. WinProgram.");
+    	ErrorManager::Instance()->SetError(OPENGL, "Failed to init glew. WinProgram.");
     }
 
     glViewport(0, 0, _totalWidth, _totalHeight);
