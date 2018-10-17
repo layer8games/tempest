@@ -147,7 +147,7 @@ bool GameObject::LoadOBJ(string filepath)
 
 		if(!file)
 		{
-			ErrorManager::Instance()->SetError(ENGINE, "GameObject::LoadOBJ => unable to open " + filepath);
+			ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadOBJ => unable to open " + filepath);
 			return false;
 		}
 
@@ -280,7 +280,7 @@ void GameObject::LoadMesh(string filepath)
 {
 	if(filepath.find(".dae") == std::string::npos)
 	{
-		ErrorManager::Instance()->SetError(ENGINE, "GameObject::LoadMesh => Tried to load mesh in the wrong format. " + filepath);
+		ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh => Tried to load mesh in the wrong format. " + filepath);
 		return;
 	}
 
@@ -297,7 +297,7 @@ void GameObject::LoadMesh(string filepath)
 
 	if(!file)
 	{
-		ErrorManager::Instance()->SetError(ENGINE, "GameObject::LoadMesh => Failed to open file: " + filepath);
+		ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh => Failed to open file: " + filepath);
 		return;
 	}
 
@@ -367,7 +367,7 @@ void GameObject::LoadMesh(string filepath)
 
 		if(materials.find(id) == materials.end())
 		{
-			ErrorManager::Instance()->SetError(ENGINE, "GameObject::LoadMesh, unable to load color from matrial");
+			ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh, unable to load color from matrial");
 		}
 	}
 */
@@ -415,7 +415,7 @@ void GameObject::LoadMesh(string filepath)
 
 		if(stride == 0)
 		{
-			ErrorManager::Instance()->SetError(ENGINE, "GameObject::LoadMesh: No stride found. That means there is no input, and your xml file is wrong");
+			ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh: No stride found. That means there is no input, and your xml file is wrong");
 		}
 
 		for(U32 i = 0; i < indices.size(); i+=stride)
@@ -458,6 +458,25 @@ void GameObject::MakeSprite(void)
 const KM::Matrix GameObject::GetModelMatrix(void)
 {
 	return KM::Matrix::Translate(_position) * KM::Matrix::Scale(_scale);
+}
+
+void GameObject::BindVBO(BufferData buffer, bool state)
+{
+	switch(buffer)
+	{
+		case VERTEX_BUFFER:
+			glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
+		break;
+		case FRAGMENT_BUFFER:
+			glBindBuffer(GL_ARRAY_BUFFER, _vbo[FRAGMENT_BUFFER]);
+		break;
+		case TEX_COORD_BUFFER:
+			glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
+		break;
+		default:
+			ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::BindVBO: No such buffer");
+		break;
+	}
 }
 
 //==========================================================================================================================

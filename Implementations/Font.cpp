@@ -10,7 +10,6 @@ using namespace KillerEngine;
 //==========================================================================================================================
 Font::Font(void) 
 :
-_size(0),
 _numCharacters(128),
 _fontName(), 
 _characterGlyphs()
@@ -18,7 +17,6 @@ _characterGlyphs()
 
 Font::Font(const Font& f)
 :
-_size(f.GetSize()),
 _numCharacters(f.GetNumCharacters()),
 _fontName(f.GetName()),
 _characterGlyphs(f.GetAllCharacterGlyphs())
@@ -26,7 +24,6 @@ _characterGlyphs(f.GetAllCharacterGlyphs())
 
 Font::Font(const Font* f)
 :
-_size(f->GetSize()),
 _numCharacters(f->GetNumCharacters()),
 _fontName(f->GetName()),
 _characterGlyphs(f->GetAllCharacterGlyphs())
@@ -37,52 +34,59 @@ _characterGlyphs(f->GetAllCharacterGlyphs())
 //Functions
 //
 //==========================================================================================================================
-void Font::InitFont(string fontName, string filePath)
+void Font::InitFont(string fontName, string filePath, U32 fontSize)
 {
- 
-/*	
-	std::cout << "Normal init font called\n";
+ 	S32 error;
 	FT_Library ft;
-	if(FT_Init_FreeType(&ft)) 
+	error = FT_Init_FreeType(&ft);
+	if(error != 0) 
 	{
-		ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont failed to init FT_Library");
+		ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont failed to init FT_Library with Error Code: " + error);
 	}
 
 	FT_Face face;
-	if(FT_New_Face(ft, filePath.c_str(), 0, &face)) 
+	error = FT_New_Face(ft, filePath.c_str(), 0, &face);
+	if(error != 0)
 	{
-		ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont failed to init FT_Face");
+		ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont failed to init FT_Face with Error Code: " + error);
+		std::cout << "Error: " << error << std::endl;
 	}
 
-	if(_size == 0)
+	error = FT_Set_Pixel_Sizes(face, 0, fontSize);
+	if(error != 0)
 	{
-		ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont failed to set font size");
+		ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont cannot set pixel sizes with Error Code: " + error);
 	}
 
-	if(FT_Set_Pixel_Sizes(face, 0, 48))
-	{
-		ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont cannot set pixel sizes to " + _size);
-	}
+	std::cout << "num characters is " << _numCharacters << std::endl;
 
-	for(char c = 0; c < _numCharacters; ++c)
+	char c = 0;
+	for(int i = 0; i < _numCharacters; ++i)
 	{
-		if(FT_Load_Char(face, c, FT_LOAD_RENDER))
+		error = FT_Load_Char(face, c, FT_LOAD_RENDER);
+		if(error != 0)
 		{
 			ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont failed to load Glyph for " + c);
 			continue;
 		}
-		std::cout << "Loaded glyph for " << c << "\n";
+		
+
+		++c;
 	}
 
-*/	
+	error = FT_Done_Face(face);
+	if(error != 0)
+	{
+		ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont failed to release face");
+	}
+
+	error = FT_Done_FreeType(ft);
+	if(error != 0)
+	{
+		ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont failed to release FreeType Library");
+	}
 }//InitFont
 
-void Font::InitFont(string fontName, string filePath, U32 fontSize)
-{
-	std::cout << "init font called with size\n";
-	_size = fontSize;
-	InitFont(fontName, filePath);
-}
 
 //==========================================================================================================================
 //
@@ -91,7 +95,6 @@ void Font::InitFont(string fontName, string filePath, U32 fontSize)
 //==========================================================================================================================
 Font& Font::operator=(const Font& font)
 {
-	_size = font.GetSize();
 	_fontName = font.GetName();
 	_characterGlyphs = font.GetAllCharacterGlyphs();
 
@@ -100,7 +103,6 @@ Font& Font::operator=(const Font& font)
 
 Font& Font::operator=(const Font* font)
 {
-	_size = font->GetSize();
 	_fontName = font->GetName();
 	_characterGlyphs = font->GetAllCharacterGlyphs();
 

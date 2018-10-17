@@ -1,4 +1,5 @@
 #include <Engine/ErrorManager.h>
+#include <iostream>
 	
 using namespace KillerEngine;
 
@@ -61,37 +62,48 @@ void ErrorManager::DisplayErrors(void)
 					//TODO::Need to log these some how
 				break;					 
 				case UNKNOWN_ERROR: 
-					MessageBox(NULL, _errorMessages[i].c_str(), "UNKNOWN", MB_ICONERROR | MB_OK);
+					std::cout << "UNKNOWN_ERROR: " << _errorMessages[i].c_str() << std::endl;
+					MessageBox(NULL, _errorMessages[i].c_str(), "UNKNOWN", MB_ICONERROR | MB_OK);					
 				break;
 				case APPLICATION: 
-					MessageBox(NULL, _errorMessages[i].c_str(), "APPLICATION", MB_ICONERROR | MB_OK);
+					std::cout << "APPLICATION Error: " << _errorMessages[i].c_str() << std::endl;
+					MessageBox(NULL, _errorMessages[i].c_str(), "APPLICATION", MB_ICONERROR | MB_OK);					
 				break;
 				case ENGINE: 
-					MessageBox(NULL, _errorMessages[i].c_str(), "KILLER_ENGINE", MB_ICONERROR | MB_OK);
+					std::cout << "ENGINE Error: " << _errorMessages[i].c_str() << std::endl;
+					MessageBox(NULL, _errorMessages[i].c_str(), "KILLER_ENGINE", MB_ICONERROR | MB_OK);					
 				break;
 				case PHYSICS: 
-					MessageBox(NULL, _errorMessages[i].c_str(), "PHYCIS", MB_ICONERROR | MB_OK);
+					std::cout << "PHYCIS Error: " << _errorMessages[i].c_str() << std::endl;
+					MessageBox(NULL, _errorMessages[i].c_str(), "PHYCIS", MB_ICONERROR | MB_OK);					
 				break;
 				case WINDOWS: 
-					MessageBox(NULL, _errorMessages[i].c_str(), "WINDOWS", MB_ICONERROR | MB_OK);
+					std::cout << "WINDOWS Error: " << _errorMessages[i].c_str() << std::endl;
+					MessageBox(NULL, _errorMessages[i].c_str(), "WINDOWS", MB_ICONERROR | MB_OK);					
 				break;
 				case OPENGL: 
-					MessageBox(NULL, _errorMessages[i].c_str(), "OPENGL", MB_ICONERROR | MB_OK);
+					std::cout << "OPENGL Error: " << _errorMessages[i].c_str() << std::endl;
+					MessageBox(NULL, _errorMessages[i].c_str(), "OPENGL", MB_ICONERROR | MB_OK);					
 				break;
 				case SHADER:
-					MessageBox(NULL, _errorMessages[i].c_str(), "SHADER", MB_ICONERROR | MB_OK);
+					std::cout << "SHADER Error: " << _errorMessages[i].c_str() << std::endl;
+					MessageBox(NULL, _errorMessages[i].c_str(), "SHADER", MB_ICONERROR | MB_OK);					
 				break;
 				case GLFW:
-					MessageBox(NULL, _errorMessages[i].c_str(), "GLFW", MB_ICONERROR | MB_OK);
+					std::cout << "GLFW Error: " << _errorMessages[i].c_str() << std::endl;
+					MessageBox(NULL, _errorMessages[i].c_str(), "GLFW", MB_ICONERROR | MB_OK);					
 				break;
 				case TEXTURE_MANAGER:
-					MessageBox(NULL, _errorMessages[i].c_str(), "TEXTURE_MANAGER", MB_ICONERROR | MB_OK);
+					std::cout << "TEXTURE_MANAGER Error: " << _errorMessages[i].c_str() << std::endl;
+					MessageBox(NULL, _errorMessages[i].c_str(), "TEXTURE_MANAGER", MB_ICONERROR | MB_OK);					
 				break;
 				case GAMEOBJECT:
-					MessageBox(NULL, _errorMessages[i].c_str(), "GAMEOBJECT", MB_ICONERROR | MB_OK);
+					std::cout << "GAMEOBJECT Error: " << _errorMessages[i].c_str() << std::endl;
+					MessageBox(NULL, _errorMessages[i].c_str(), "GAMEOBJECT", MB_ICONERROR | MB_OK);					
 				break;
 				case FREETYPE:
-					MessageBox(NULL, _errorMessages[i].c_str(), "FREETYPE", MB_ICONERROR | MB_OK);
+					std::cout << "FREETYPE Error: " << _errorMessages[i].c_str() << std::endl;
+					MessageBox(NULL, _errorMessages[i].c_str(), "FREETYPE", MB_ICONERROR | MB_OK);					
 				break;
 				default:
 					//TODO::handle case 

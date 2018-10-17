@@ -23,6 +23,20 @@ namespace KM = KillerMath;
 
 namespace KillerEngine
 {
+	enum BufferData
+	{
+		VERTEX_BUFFER = 0,
+		VERTEX_POS = 0,
+		FRAGMENT_BUFFER = 1,
+		FRAGMENT_POS = 2,
+		TEX_COORD_BUFFER = 2,
+		TEX_COORD_POS = 1,
+		INDEX_BUFFER = 3,
+		NORMAL_BUFFER = 4,
+		NORMAL_POS = 3,
+		NUM_VBO = 5
+	};
+	
 	class GameObject
 	{
 	public:
@@ -321,6 +335,9 @@ namespace KillerEngine
 			}
 		}
 
+//===== VBO =====
+		void BindVBO(BufferData buffer, bool state=true);
+
 //===== Uv List =====
 		inline std::vector<F32> GetUVList(void) const
 		{
@@ -338,6 +355,7 @@ namespace KillerEngine
 		}
 
 	protected:
+		
 //==========================================================================================================================
 //
 //Protected Data
@@ -346,20 +364,6 @@ namespace KillerEngine
 		Shader _shader;
 
 	private:
-		enum BufferData
-		{
-			VERTEX_BUFFER = 0,
-			VERTEX_POS = 0,
-			FRAGMENT_BUFFER = 1,
-			FRAGMENT_POS = 2,
-			TEX_COORD_BUFFER = 2,
-			TEX_COORD_POS = 1,
-			INDEX_BUFFER = 3,
-			NORMAL_BUFFER = 4,
-			NORMAL_POS = 3,
-			NUM_VBO = 5
-		};
-
 		std::vector<U32> _SplitU32(string text, char delim) const;
 		
 		std::vector<F32> _SplitF32(string text, char delim) const;
