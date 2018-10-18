@@ -15,14 +15,18 @@ Glyph::Glyph(void)
 :
 _character(),
 _texture(),
-_characterData()
+_characterData(),
+_color(1.0f, 1.0f, 1.0f),
+_projection(1.0f)
 {  }
 
 Glyph::Glyph(char character, const Texture& tex, const CharacterData& characterData)
 :
 _character(character),
 _texture(tex),
-_characterData(characterData)
+_characterData(characterData),
+_color(1.0f, 1.0f, 1.0f),
+_projection(1.0f)
 {
 	v_InitBuffers();
 }
@@ -38,7 +42,8 @@ Glyph::~Glyph(void)
 void Glyph::v_Render(void)
 {
 	GameObject::_shader.Use(true);
-	GameObject::_shader.SetUniform("model", GameObject::GetModelMatrix());
+	GameObject::_shader.SetUniform("projection", _projection);
+	GameObject::_shader.SetUniform("text_color", _color);
 
 	_texture.Bind();
 	
@@ -111,6 +116,9 @@ void Glyph::v_InitBuffers(void)
 	vertTexCoords.push_back(0.0f);
 	vertTexCoords.push_back(0.0f);
 
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); 
+
 	GameObject::BindVAO(true);
 
 	GameObject::BindVBO(VERTEX_BUFFER, true);
@@ -124,4 +132,11 @@ void Glyph::v_InitBuffers(void)
 	glEnableVertexAttribArray(TEX_COORD_POS);
 
 	GameObject::BindVAO(false);
+
+	//TODO: Need to store depth in the WinProgram
+	_projection.MakeOrthographic(
+		static_cast<F32>(WinProgram::Instance()->GetWidth()), 
+		static_cast<F32>(WinProgram::Instance()->GetHeight()), 
+		200
+	);
 }

@@ -306,10 +306,10 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Assets\Shaders\sprite_fragment.glsl">
+    <None Include="..\..\Assets\Shaders\glyph_fragment.glsl">
       <Filter>Assets\Shaders</Filter>
     </None>
-    <None Include="..\..\Assets\Shaders\sprite_vertex.glsl">
+    <None Include="..\..\Assets\Shaders\glyph_vertex.glsl">
       <Filter>Assets\Shaders</Filter>
     </None>
   </ItemGroup>

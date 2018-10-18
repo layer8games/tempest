@@ -15,6 +15,8 @@ Written by Maxwell Miller
 #include <Engine/Texture.h>
 #include <Engine/CharacterData.h>
 #include <Engine/Color.h>
+#include <Engine/Matrix.h>
+#include <Engine/WinProgram.h>
 
 namespace KM = KillerMath;
 
@@ -113,5 +115,6 @@ namespace KillerEngine
 		Texture 	  _texture;
 		CharacterData _characterData;
 		Color 		  _color;
+		KM::Matrix	  _projection;
 	};//end Class
 }//end Namespace
