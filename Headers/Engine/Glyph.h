@@ -73,6 +73,11 @@ namespace KillerEngine
 			_characterData = characterData;
 		}
 
+		inline char GetCharacter(void)
+		{
+			return _character;
+		}
+
 		inline void SetTexture(const Texture& tex)
 		{
 			_texture = tex;

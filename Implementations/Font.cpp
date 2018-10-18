@@ -58,7 +58,7 @@ void Font::InitFont(string fontName, string filePath, U32 fontSize)
 		ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont cannot set pixel sizes with Error Code: " + error);
 	}
 
-	std::cout << "num characters is " << _numCharacters << std::endl;
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1); 
 
 	char c = 0;
 	for(int i = 0; i < _numCharacters; ++i)
@@ -74,36 +74,41 @@ void Font::InitFont(string fontName, string filePath, U32 fontSize)
 		CharacterData data{};
 		Glyph glyph{};
 
-		//Make texture
-		GLuint textureHandle;
-		glGenTextures(1, &textureHandle);
-		glBindTexture(GL_TEXTURE_2D, textureHandle);
-		glTexImage2D(
-			GL_TEXTURE_2D,
-			0,
-			GL_RED,
-			face->glyph->bitmap.width,
-			face->glyph->bitmap.rows,
-			0,
-			GL_RED,
-			GL_UNSIGNED_BYTE,
-			face->glyph->bitmap.buffer
-		);
-
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
 		data.width = face->glyph->bitmap.width;
 		data.height = face->glyph->bitmap.rows;
 		data.bearingWidth = face->glyph->bitmap_left;
 		data.bearingHeight = face->glyph->bitmap_top;
 		data.xAdvance = face->glyph->advance.x;
 
+		//Make texture
+		GLuint textureHandle;
+		glGenTextures(1, &textureHandle);
+		glBindTexture(GL_TEXTURE_2D, textureHandle);
+		
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		glTexImage2D(
+			GL_TEXTURE_2D,
+			0,
+			GL_RED,
+			data.width,
+			data.height,
+			0,
+			GL_RED,
+			GL_UNSIGNED_BYTE,
+			face->glyph->bitmap.buffer
+		);
+
+		texture.SetHandle(textureHandle);
+
 		glyph.SetCharacter(c, texture, data);
 
 		_characterGlyphs.insert({c, glyph});
+
+		glBindTexture(GL_TEXTURE_2D, 0);
 
 		++c;
 	}
