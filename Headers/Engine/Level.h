@@ -24,6 +24,7 @@ Written by Maxwell Miller
 #include <Engine/Particle.h>
 #include <Engine/ParticleForceRegistry.h>
 #include <Engine/Camera.h>
+#include <Engine/Text.h>
 
 namespace KM = KillerMath;
 namespace KP =KillerPhysics;
@@ -289,8 +290,8 @@ namespace KillerEngine
 		shared_ptr<Camera> 						  _camera;
 		std::map<U32, shared_ptr<GameObject>>	  _gameObjects;
 		std::map<U32, shared_ptr<KP::Particle>>   _particles;
-		std::vector<shared_ptr<Text>>     		  _textList;
 		std::map<U32, TileData> 				  _2DTileData;
+		std::vector<shared_ptr<Text>>     		  _textList;
 		//SpriteRenderer _batch;
 		KP::ParticleForceRegistry _forceRegistry;
 	};

@@ -1,4 +1,5 @@
 #include <Engine/Glyph.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -42,8 +43,9 @@ Glyph::~Glyph(void)
 void Glyph::v_Render(void)
 {
 	GameObject::_shader.Use(true);
-	GameObject::_shader.SetUniform("projection", _projection);
-	GameObject::_shader.SetUniform("text_color", _color);
+	//GameObject::_shader.SetUniform("text_offset", GameObject::GetPosition());
+	//GameObject::_shader.SetUniform("projection", _projection);
+	//GameObject::_shader.SetUniform("text_color", _color);
 
 	_texture.Bind();
 	
@@ -58,10 +60,10 @@ void Glyph::v_Render(void)
 
 void Glyph::v_InitBuffers(void)
 {
-	KM::Vector topRight(-1.0f, 1.0f, 0.0f);
-	KM::Vector topLeft(1.0f, 1.0f, 0.0f);
-	KM::Vector bottomRight(-1.0f, -1.0f, 0.0f);
-	KM::Vector bottomLeft(1.0f, -1.0f, 0.0);
+	KM::Vector topRight(1000.0f, 1000.0f, 0.0f);
+	KM::Vector topLeft(-1000.0f, 1000.0f, 0.0f);
+	KM::Vector bottomRight(1000.0f, -1000.0f, 0.0f);
+	KM::Vector bottomLeft(-1000.0f, -1000.0f, 0.0);
 
 	std::vector<F32> vertPositions;
 	std::vector<F32> vertTexCoords;
@@ -83,10 +85,10 @@ void Glyph::v_InitBuffers(void)
 	vertTexCoords.push_back(1.0f);
 	vertTexCoords.push_back(1.0f);
 
-	vertPositions.push_back(bottomLeft[0]);
-	vertPositions.push_back(bottomLeft[1]);
-	vertPositions.push_back(bottomLeft[2]);
-	vertPositions.push_back(bottomLeft[3]);
+	vertPositions.push_back(bottomRight[0]);
+	vertPositions.push_back(bottomRight[1]);
+	vertPositions.push_back(bottomRight[2]);
+	vertPositions.push_back(bottomRight[3]);
 
 	vertTexCoords.push_back(1.0f);
 	vertTexCoords.push_back(0.0f);
@@ -139,4 +141,18 @@ void Glyph::v_InitBuffers(void)
 		static_cast<F32>(WinProgram::Instance()->GetHeight()), 
 		200
 	);
+
+	std::vector<ShaderData> shaderSources;
+
+	ShaderData vs;
+	vs.filePath = "../Assets/Shaders/Default/glyph_vertex.glsl";
+	vs.type = ShaderType::VERTEX;
+	shaderSources.push_back(vs);
+
+	ShaderData fs;
+	fs.filePath = "../Assets/Shaders/Default/glyph_fragment.glsl";
+	fs.type = ShaderType::FRAGMENT;
+	shaderSources.push_back(fs);
+
+	GameObject::LoadShader(shaderSources);
 }

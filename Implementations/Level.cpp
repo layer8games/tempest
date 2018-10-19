@@ -1,4 +1,5 @@
 #include <Engine/Level.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -170,35 +171,14 @@ void Level::RenderObjects(void)
 			i.second->v_Render();
 		}
 	}
-//==========================================================================================================================
-//Render Text
-//==========================================================================================================================
-/*
-Needs refactoring later. The whole text system needs some work
-	for(std::shared_ptr<Text> text : _textList)
+	
+	for(auto i : _textList)
 	{
-		std::vector<std::shared_ptr<RenderedCharacter>> charList = text->GetCharacterList();
-
-		if(charList[0]->GetSprite().GetShader() != SpriteRenderer::Instance()->GetShader())
+		if(i->GetActive())
 		{
-			SpriteRenderer::Instance()->SetShader(charList[0]->GetSprite().GetShader());
+			i->Render();
 		}
-
-		for(std::shared_ptr<RenderedCharacter> character : charList)
-		{
-			SpriteRenderer::Instance()->AddToBatch
-			(
-				character->GetPosition(),
-				character->GetWidth(),
-				character->GetHeight(),
-				character->GetColor(),
-				character->GetSprite().GetTextureID(),
-				character->GetSprite().GetUVBottomTop(),
-				character->GetSprite().GetUVLeftRight()
-			);
-		}
-	}
-*/	
+	}	
 }
 
 void Level::UpdateObjects(void)

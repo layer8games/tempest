@@ -126,7 +126,6 @@ void Font::InitFont(string fontName, string filePath, U32 fontSize)
 	}
 }//InitFont
 
-
 //==========================================================================================================================
 //
 //Operator Overloads

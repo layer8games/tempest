@@ -51,17 +51,33 @@ namespace KillerEngine
 //Text Functions
 //
 //==========================================================================================================================		
+		void Render(void);
+
 		void SetPosition(const KM::Vector& pos);
 
 		void AddText(string text);
 
-		//void SetTextColor(const Color& col);
+		void SetTextColor(const Color& col);
 
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================
+		inline void SetActive(void)
+		{
+			_active = true;
+		}
+
+		inline void SetInactive(void)
+		{
+			_active = false;
+		}
+
+		inline bool GetActive(void) const
+		{
+			return _active;
+		}
 
 		inline void SetFont(const Font& font) 
 		{ 
@@ -73,29 +89,9 @@ namespace KillerEngine
 			return _font;
 		}
 
-		std::vector<std::shared_ptr<Glyph>> GetCharacterList(void)
+		std::vector<Glyph> GetCharacterList(void)
 		{
 			return _characterList;
-		}
-
-		inline void SetWidth(F32 w) 
-		{ 
-			_width = w; 
-		}
-
-		inline F32 GetWidth(void) const
-		{ 
-			return _width; 
-		}
-
-		inline void SetHeight(F32 h) 
-		{ 
-			_height = h; 
-		}
-
-		inline F32 GetHeight(void) const
-		{ 
-			return _height; 
 		}
 
 		//ToDO:: Scale needs to change each Glyph too
@@ -125,12 +121,11 @@ namespace KillerEngine
 //Data
 //
 //==========================================================================================================================
+		bool 							_active;
 		KM::Vector 						_pos;
 		string 	   						_text;
 		Font   	   						_font;
-		std::vector<shared_ptr<Glyph>> 	_characterList;
-		F32 							_width;
-		F32 							_height;
+		std::vector<Glyph>		 		_characterList;
 		KM::Vector 						_scale;
 		Color 							_color;
 	};

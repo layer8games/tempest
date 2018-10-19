@@ -101,7 +101,10 @@ namespace KillerEngine
 			return _characterGlyphs; 
 		}
 
-		const Glyph& GetCharacterGlyph(char c);
+		Glyph GetCharacterGlyph(char c)
+		{
+			return _characterGlyphs[c];
+		}
 
 	private:
 //==========================================================================================================================

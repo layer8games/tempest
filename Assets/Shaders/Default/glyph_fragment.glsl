@@ -9,6 +9,6 @@ uniform vec4 text_color;
 
 void main()
 {
-	vec4 sampled = vec4(1.0, 1.0, 1.0, texture(text, fs_texCoord).r);
-	color = vec4(text_color) * sampled;
+	//vec4 sampled = vec4(1.0, 1.0, 1.0, texture(text, fs_texCoord).r);
+	color = vec4(1.0f, 0.0f, 0.0f, 1.0f);
 }

@@ -95,7 +95,7 @@ namespace KillerEngine
 			return _characterData;
 		}
 
-		inline void SetColor(Color& c)
+		inline void SetColor(const Color& c)
 		{
 			_color = c;
 		}
