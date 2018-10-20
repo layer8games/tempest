@@ -15,6 +15,15 @@ _width(0),
 _height(0)
 {  }
 
+Texture::Texture(string filePath)
+:
+_handle(0),
+_width(0),
+_height(0)
+{
+	LoadTexture(filePath);
+}
+
 Texture::Texture(GLuint id, S32 width, S32 height)
 : 
 _handle(id), 

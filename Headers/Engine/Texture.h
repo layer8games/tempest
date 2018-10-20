@@ -32,6 +32,8 @@ namespace KillerEngine
 //==========================================================================================================================		
 		Texture(void);
 
+		explicit Texture(string filePatht);
+
 		Texture(GLuint id, S32 width, S32 height);
 
 		Texture(const Texture& T);

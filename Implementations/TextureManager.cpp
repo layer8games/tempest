@@ -40,7 +40,13 @@ shared_ptr<TextureManager> TextureManager::Instance(void)
 //TextureManager Functions
 //
 //=====================================================================================================
-void TextureManager::AddTexture(S32 id, const Texture& tex)
+void TextureManager::LoadTexture(U32 id, string filePath)
+{
+	shared_ptr<Texture> texture(new Texture(filePath));
+	AddTexture(id, texture);
+}
+
+void TextureManager::AddTexture(U32 id, const Texture& tex)
 {
 	_loadedTextures.insert({id, shared_ptr<Texture>(const_cast<Texture*>(&tex))});
 
@@ -50,7 +56,7 @@ void TextureManager::AddTexture(S32 id, const Texture& tex)
 	}
 }
 
-void TextureManager::AddTexture(S32 id, shared_ptr<Texture> tex)
+void TextureManager::AddTexture(U32 id, shared_ptr<Texture> tex)
 {
 	_loadedTextures.insert({id, tex});
 
