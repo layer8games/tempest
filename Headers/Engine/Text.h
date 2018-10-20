@@ -105,9 +105,16 @@ namespace KillerEngine
 			return _scale;
 		}
 
-		inline void SetColor(Color& c)
+		inline void SetColor(const Color& c)
 		{
 			_color = c;
+		}
+
+		inline void SetColor(F32 r, F32 g, F32 b)
+		{
+			_color[0] = r;
+			_color[1] = g;
+			_color[2] = b;
 		}
 
 		inline const Color& GetColor(void)

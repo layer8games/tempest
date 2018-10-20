@@ -18,6 +18,8 @@ Written by Maxwell Miller
 #include <Engine/Matrix.h>
 #include <Engine/WinProgram.h>
 
+#include <iostream>
+
 namespace KM = KillerMath;
 
 namespace KillerEngine
@@ -32,7 +34,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		Glyph(void);
 
-		Glyph(char character, const Texture& tex, const CharacterData& characterData);
+		Glyph(const Glyph& glyph);
 
 		~Glyph(void);
 
@@ -65,8 +67,6 @@ namespace KillerEngine
 			_character = character;
 			_texture = tex;
 			_characterData = characterData;
-
-			v_InitBuffers();
 		}
 
 		inline void SetCharacter(char character, const CharacterData& characterData)
@@ -75,7 +75,7 @@ namespace KillerEngine
 			_characterData = characterData;
 		}
 
-		inline char GetCharacter(void)
+		inline char GetCharacter(void) const
 		{
 			return _character;
 		}
@@ -85,7 +85,7 @@ namespace KillerEngine
 			_texture = tex;
 		}
 
-		inline const Texture& GetTexture(void)
+		inline const Texture& GetTexture(void) const
 		{
 			return _texture;
 		}
@@ -100,10 +100,17 @@ namespace KillerEngine
 			_color = c;
 		}
 
-		inline const Color& GetColor(void)
+		inline const Color& GetColor(void) const
 		{
 			return _color;
 		}
+
+//==========================================================================================================================
+//
+//Operator Overloads
+//
+//==========================================================================================================================
+
 
 	private:
 //==========================================================================================================================

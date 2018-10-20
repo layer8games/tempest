@@ -19,17 +19,21 @@ _texture(),
 _characterData(),
 _color(1.0f, 1.0f, 1.0f),
 _projection(1.0f)
-{  }
-
-Glyph::Glyph(char character, const Texture& tex, const CharacterData& characterData)
-:
-_character(character),
-_texture(tex),
-_characterData(characterData),
-_color(1.0f, 1.0f, 1.0f),
-_projection(1.0f)
 {
 	v_InitBuffers();
+}
+
+Glyph::Glyph(const Glyph& glyph)
+:
+_character(glyph.GetCharacter()),
+_texture(glyph.GetTexture()),
+_characterData(glyph.GetCharacterData()),
+_color(glyph.GetColor()),
+_projection(1.0f)
+{
+	//std::cout << "At the time of copy, char is " << glyph.GetCharacter() << "\n";
+	v_InitBuffers();
+	GameObject::SetPosition(glyph.GetPosition());
 }
 
 Glyph::~Glyph(void)
@@ -42,10 +46,12 @@ Glyph::~Glyph(void)
 //==========================================================================================================================
 void Glyph::v_Render(void)
 {
+	//std::cout << "char is " << _character << "\n";
+
 	GameObject::_shader.Use(true);
-	//GameObject::_shader.SetUniform("text_offset", GameObject::GetPosition());
+	GameObject::_shader.SetUniform("text_offset", GameObject::GetPosition());
 	//GameObject::_shader.SetUniform("projection", _projection);
-	//GameObject::_shader.SetUniform("text_color", _color);
+	GameObject::_shader.SetUniform("text_color", _color);
 
 	_texture.Bind();
 	
@@ -60,11 +66,22 @@ void Glyph::v_Render(void)
 
 void Glyph::v_InitBuffers(void)
 {
-	KM::Vector topRight(1000.0f, 1000.0f, 0.0f);
-	KM::Vector topLeft(-1000.0f, 1000.0f, 0.0f);
-	KM::Vector bottomRight(1000.0f, -1000.0f, 0.0f);
-	KM::Vector bottomLeft(-1000.0f, -1000.0f, 0.0);
+	KM::Vector topRight(0.25f, 0.25f, 0.0f);
+	KM::Vector topLeft(-0.25f, 0.25f, 0.0f);
+	KM::Vector bottomRight(0.25f, -0.25f, 0.0f);
+	KM::Vector bottomLeft(-0.25f, -0.25f, 0.0);
 
+	GameObject::AddVertex(Vertex(topLeft, 0.0f, 0.0f));
+	GameObject::AddVertex(Vertex(topRight, 1.0f, 0.0f));
+	GameObject::AddVertex(Vertex(bottomRight, 1.0f, 1.0f));
+
+	GameObject::AddVertex(Vertex(topLeft, 0.0f, 0.0f));
+	GameObject::AddVertex(Vertex(bottomRight, 1.0f, 1.0f));
+	GameObject::AddVertex(Vertex(bottomLeft, 0.0f, 1.0f));
+
+	GameObject::v_InitBuffers();
+
+/*
 	std::vector<F32> vertPositions;
 	std::vector<F32> vertTexCoords;
 
@@ -128,12 +145,13 @@ void Glyph::v_InitBuffers(void)
 	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(VERTEX_POS);
 
-	GameObject::BindVBO(TEX_COORD_BUFFER);
+	GameObject::BindVBO(TEX_COORD_BUFFER, true);
 	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertTexCoords.size()), &vertTexCoords[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(TEX_COORD_POS);
 
 	GameObject::BindVAO(false);
+*/
 
 	//TODO: Need to store depth in the WinProgram
 	_projection.MakeOrthographic(

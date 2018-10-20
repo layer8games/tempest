@@ -36,6 +36,8 @@ _characterGlyphs(f->GetAllCharacterGlyphs())
 //==========================================================================================================================
 void Font::InitFont(string fontName, string filePath, U32 fontSize)
 {
+ 	_fontName = fontName;
+
  	S32 error;
 	FT_Library ft;
 	error = FT_Init_FreeType(&ft);

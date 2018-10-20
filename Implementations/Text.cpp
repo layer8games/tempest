@@ -15,7 +15,8 @@ _pos(0.0f),
 _text(), 
 _font(), 
 _characterList(),  
-_scale(1.0f, 1.0f)
+_scale(1.0f, 1.0f),
+_color(1.0f)
 {  }
 
 Text::Text(const Font& font) 
@@ -25,7 +26,8 @@ _pos(0.0f),
 _text(), 
 _font(font), 
 _characterList(),  
-_scale(1.0f, 1.0f)
+_scale(1.0f, 1.0f),
+_color(1.0f)
 {  }
 
 Text::Text(const Font& font, string text) 
@@ -35,7 +37,8 @@ _pos(0.0f),
 _text(text), 
 _font(font), 
 _characterList(),  
-_scale(1.0f, 1.0f)
+_scale(1.0f, 1.0f),
+_color(1.0f)
 {
 	AddText(_text);
 }
@@ -64,9 +67,9 @@ void Text::Render(void)
 {
 	if(_active)
 	{
-		for(auto g : _characterList)
+		for(U32 i = 0; i < _characterList.size(); ++i)
 		{
-			g.v_Render();
+			_characterList[i].v_Render();
 		}
 	}
 }
@@ -80,15 +83,21 @@ void Text::AddText(string text)
 
 	for(U32 i = 0; i < _text.size(); ++i)
 	{
+		//std::cout << "text char is " << _text[i] << " and flont glyph char is " << _font.GetCharacterGlyph(_text[i]).GetCharacter() << "\n";
+
 		Glyph g = _font.GetCharacterGlyph(_text[i]);
+		g.SetColor(_color);
 
-		KM::Vector glyphPos = currentPos;
-		glyphPos[0] += g.GetCharacterData().bearingWidth;
-		glyphPos[1] -= g.GetCharacterData().bearingHeight;
+		//KM::Vector glyphPos = currentPos;
 
-		g.SetPosition(glyphPos);
+		//glyphPos[0] += g.GetCharacterData().bearingWidth;
+		//glyphPos[1] -= g.GetCharacterData().bearingHeight;
 
-		currentPos[0] += g.GetCharacterData().xAdvance;
+		g.SetPosition(currentPos);
+
+		currentPos[0] += 0.5f;
+		//currentPos[0] += g.GetCharacterData().xAdvance;
+		
 
 		_characterList.push_back(g);
 	}	
