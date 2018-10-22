@@ -58,7 +58,7 @@ void Glyph::v_Render(void)
 	{
 		for(int j = 0; j < 4; ++j)
 		{
-			std::cout << _projection[i][j] << " : ";
+			std::cout << _projection[j][i] << " : ";
 		}
 		std::cout << "\n";
 	}
@@ -79,10 +79,10 @@ void Glyph::v_Render(void)
 
 void Glyph::v_InitBuffers(void)
 {
-	KM::Vector topRight(0.25f, 0.25f, 0.0f);
-	KM::Vector topLeft(-0.25f, 0.25f, 0.0f);
-	KM::Vector bottomRight(0.25f, -0.25f, 0.0f);
-	KM::Vector bottomLeft(-0.25f, -0.25f, 0.0);
+	KM::Vector topRight(1.0f, 1.0f, 0.0f);
+	KM::Vector topLeft(-1.0f, 1.0f, 0.0f);
+	KM::Vector bottomRight(1.0f, -1.0f, 0.0f);
+	KM::Vector bottomLeft(-1.0f, -1.0f, 0.0);
 
 	GameObject::AddVertex(Vertex(topLeft, 0.0f, 0.0f));
 	GameObject::AddVertex(Vertex(topRight, 1.0f, 0.0f));
@@ -95,13 +95,13 @@ void Glyph::v_InitBuffers(void)
 	GameObject::v_InitBuffers();
 
 	//TODO: Need to store depth in the WinProgram
-	//_projection.MakeOrthographic(
-	//	static_cast<F32>(WinProgram::Instance()->GetWidth()), 
-	//	static_cast<F32>(WinProgram::Instance()->GetHeight()), 
-	//	200.0f
-	//);
+	_projection.MakeOrthographic(
+		static_cast<F32>(WinProgram::Instance()->GetWidth()), 
+		static_cast<F32>(WinProgram::Instance()->GetHeight()), 
+		200.0f
+	);
 
-	_projection.MakeIdentity();
+	//_projection.MakeIdentity();
 
 
 	std::vector<ShaderData> shaderSources;

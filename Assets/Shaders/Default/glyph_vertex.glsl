@@ -13,5 +13,5 @@ void main()
 	fs_texCoord = texCoord;
 	//vec4 newPos = vec4(position.x + text_offset.x, position.y, position.z, position.w);
 	//gl_Position = projection * vec4(position.x + text_offset.x, position.y, position.z, position.w);
-	gl_Position = projection * position;
+	gl_Position = projection * position * 48.0f;
 }
