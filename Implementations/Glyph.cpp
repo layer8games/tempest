@@ -20,6 +20,7 @@ _characterData(),
 _color(1.0f, 1.0f, 1.0f),
 _projection(1.0f)
 {
+	//TODO::Remove, this is bad
 	v_InitBuffers();
 }
 
@@ -32,6 +33,7 @@ _color(glyph.GetColor()),
 _projection(1.0f)
 {
 	//std::cout << "At the time of copy, char is " << glyph.GetCharacter() << "\n";
+	//TODO::Remove this is very bad
 	v_InitBuffers();
 	GameObject::SetPosition(glyph.GetPosition());
 }
@@ -50,6 +52,17 @@ void Glyph::v_Render(void)
 
 	GameObject::_shader.Use(true);
 	GameObject::_shader.SetUniform("text_offset", GameObject::GetPosition());
+	
+	std::cout << "Projection:\n";
+	for(int i = 0; i < 4; ++i)
+	{
+		for(int j = 0; j < 4; ++j)
+		{
+			std::cout << _projection[i][j] << " : ";
+		}
+		std::cout << "\n";
+	}
+
 	GameObject::_shader.SetUniform("projection", _projection);
 	GameObject::_shader.SetUniform("text_color", _color);
 
@@ -82,11 +95,13 @@ void Glyph::v_InitBuffers(void)
 	GameObject::v_InitBuffers();
 
 	//TODO: Need to store depth in the WinProgram
-	_projection.MakeOrthographic(
-		static_cast<F32>(WinProgram::Instance()->GetWidth()), 
-		static_cast<F32>(WinProgram::Instance()->GetHeight()), 
-		200.0f
-	);
+	//_projection.MakeOrthographic(
+	//	static_cast<F32>(WinProgram::Instance()->GetWidth()), 
+	//	static_cast<F32>(WinProgram::Instance()->GetHeight()), 
+	//	200.0f
+	//);
+
+	_projection.MakeIdentity();
 
 
 	std::vector<ShaderData> shaderSources;
