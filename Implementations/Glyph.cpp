@@ -53,15 +53,15 @@ void Glyph::v_Render(void)
 	GameObject::_shader.Use(true);
 	GameObject::_shader.SetUniform("text_offset", GameObject::GetPosition());
 	
-	std::cout << "Projection:\n";
-	for(int i = 0; i < 4; ++i)
-	{
-		for(int j = 0; j < 4; ++j)
-		{
-			std::cout << _projection[j][i] << " : ";
-		}
-		std::cout << "\n";
-	}
+	//std::cout << "Projection:\n";
+	//for(int i = 0; i < 4; ++i)
+	//{
+	//	for(int j = 0; j < 4; ++j)
+	//	{
+	//		std::cout << _projection[j][i] << " : ";
+	//	}
+	//	std::cout << "\n";
+	//}
 
 	GameObject::_shader.SetUniform("projection", _projection);
 	GameObject::_shader.SetUniform("text_color", _color);
@@ -95,6 +95,8 @@ void Glyph::v_InitBuffers(void)
 	GameObject::v_InitBuffers();
 
 	//TODO: Need to store depth in the WinProgram
+	std::cout << "w and h: " << static_cast<F32>(WinProgram::Instance()->GetWidth()) << " " << static_cast<F32>(WinProgram::Instance()->GetHeight()) << std::endl;
+
 	_projection.MakeOrthographic(
 		static_cast<F32>(WinProgram::Instance()->GetWidth()), 
 		static_cast<F32>(WinProgram::Instance()->GetHeight()), 

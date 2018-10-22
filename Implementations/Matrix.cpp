@@ -119,13 +119,13 @@ void Matrix::MakeOrthographic(F32 width, F32 height, F32 depth, bool center)
 	//Diagnal
 	_columns[0][x] = 2.0f / (right - left);
 	_columns[1][y] = 2.0f / (top - bottom);
-	_columns[2][z] = -2.0f / (farPlane - nearPlane);
+	_columns[2][z] = 2.0f / (nearPlane - farPlane);
 	_columns[3][w] = 1.0f;
 
 	//Transform "Vector"
-	_columns[3][x] = -((right + left) / (right - left));
-	_columns[3][y] = -((top + bottom) / (top - bottom));
-	_columns[3][z] = -((farPlane + nearPlane) / (farPlane - nearPlane));
+	_columns[3][x] = (left + right) / (left - right);
+	_columns[3][y] = (bottom + top) / (bottom - top);
+	_columns[3][z] = (nearPlane + farPlane) / (farPlane - nearPlane);
 }
 
 void Matrix::MakePerspective(F32 width, F32 height, F32 depth, bool center)
