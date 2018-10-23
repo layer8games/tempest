@@ -36,6 +36,7 @@ _projection(1.0f)
 	//TODO::Remove this is very bad
 	v_InitBuffers();
 	GameObject::SetPosition(glyph.GetPosition());
+	GameObject::SetScale(glyph.GetScale());
 }
 
 Glyph::~Glyph(void)
@@ -52,19 +53,10 @@ void Glyph::v_Render(void)
 
 	GameObject::_shader.Use(true);
 	GameObject::_shader.SetUniform("text_offset", GameObject::GetPosition());
-	
-	//std::cout << "Projection:\n";
-	//for(int i = 0; i < 4; ++i)
-	//{
-	//	for(int j = 0; j < 4; ++j)
-	//	{
-	//		std::cout << _projection[j][i] << " : ";
-	//	}
-	//	std::cout << "\n";
-	//}
-
+	GameObject::_shader.SetUniform("text_scale", GameObject::GetScale());
 	GameObject::_shader.SetUniform("projection", _projection);
 	GameObject::_shader.SetUniform("text_color", _color);
+	
 
 	_texture.Bind();
 	

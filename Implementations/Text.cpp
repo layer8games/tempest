@@ -83,21 +83,23 @@ void Text::AddText(string text)
 
 	for(U32 i = 0; i < _text.size(); ++i)
 	{
-		//std::cout << "text char is " << _text[i] << " and flont glyph char is " << _font.GetCharacterGlyph(_text[i]).GetCharacter() << "\n";
-
 		Glyph g = _font.GetCharacterGlyph(_text[i]);
+		
+		CharacterData data = g.GetCharacterData();
+
 		g.SetColor(_color);
 
 		//KM::Vector glyphPos = currentPos;
 
-		//glyphPos[0] += g.GetCharacterData().bearingWidth;
-		//glyphPos[1] -= g.GetCharacterData().bearingHeight;
+		//glyphPos[0] += data.bearingWidth;
+		//glyphPos[1] -= data.bearingHeight;
 
 		g.SetPosition(currentPos);
 
 		currentPos[0] += 0.5f;
 		//currentPos[0] += g.GetCharacterData().xAdvance;
 		
+		g.SetScale(static_cast<F32>(data.width), static_cast<F32>(data.height));
 
 		_characterList.push_back(g);
 	}	

@@ -188,7 +188,7 @@ namespace KillerEngine
 		}
 
 //===== Scale =====
-		inline const KM::Vector& GetScale(void)
+		inline const KM::Vector& GetScale(void) const
 		{
 			return _scale;
 		}
