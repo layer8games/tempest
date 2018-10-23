@@ -70,6 +70,8 @@ namespace KillerEngine
 */
 		void SetOrthographic(void);
 
+		void SetOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane);
+
 /*! Sets the private Matrix to use a perspective projection. Values are hard coded for now. 
 	\param none
 */

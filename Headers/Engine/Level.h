@@ -251,12 +251,12 @@ namespace KillerEngine
 			return _ID; 
 		}
 
-		void SetCamera(shared_ptr<Camera> cam)
+		void SetCamera(Camera* cam)
 		{
 			_camera = cam;
 		}
 
-		const shared_ptr<Camera> GetCamera(void)
+		const Camera* GetCamera(void)
 		{
 			return _camera;
 		}
@@ -287,7 +287,7 @@ namespace KillerEngine
 		S32     _mapLeftBorder;
 		Color   _bgColor;
 		U32     _ID;
-		shared_ptr<Camera> 						  _camera;
+		Camera* 						  		  _camera;
 		std::map<U32, shared_ptr<GameObject>>	  _gameObjects;
 		std::map<U32, shared_ptr<KP::Particle>>   _particles;
 		std::map<U32, TileData> 				  _2DTileData;

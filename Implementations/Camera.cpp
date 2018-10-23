@@ -39,7 +39,12 @@ Camera::~Camera(void)
 //==========================================================================================================================
 void Camera::SetOrthographic(void)
 {
-	_projection.MakeOrthographic((F32)WinProgram::Instance()->GetWidth(), (F32)WinProgram::Instance()->GetHeight(), 200.0f, false);
+	_projection.MakeOrthographic(-1.0f, 1.0f, -1.0f, 1.0f, 0.01f, 1000.0f);
+}
+
+void Camera::SetOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)
+{
+	_projection.MakeOrthographic(left, right, bottom, top, nearPlane, farPlane);
 }
 
 void Camera::SetPerspective(void)
@@ -50,7 +55,7 @@ void Camera::SetPerspective(void)
 	_projection.MakePerspective(90.0f,  //field of view
 								w / h,  //aspect ratio
 								0.1f, 	//near
-								200.0f);//far
+								2000.0f);//far
 }
 
 void Camera::SetPerspective(F32 fov, F32 aspect, F32 nearPlane, F32 farPlane)

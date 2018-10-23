@@ -18,7 +18,7 @@ _mapRightBorder(0),
 _mapLeftBorder(0),
 _bgColor(),
 _ID(),
-_camera(),
+_camera(new Camera()),
 _gameObjects(),
 _particles(),
 _forceRegistry()

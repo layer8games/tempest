@@ -83,7 +83,7 @@ namespace KillerMath
 	\param depth F32. Depth of the viewport. 
 	\param center bool. Set to true by default. If true, the origin of the view port will be the middle of the screen. 
 		   Otherwise it will be the bottom left corner of the screen. */
-		void MakeOrthographic(F32 width, F32 height, F32 depth, bool center=true);
+		void MakeOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane);
 
 /*! Resets the Matrix, then sets the values up as a Perspective projection, using the more standard equation. Calls MakeIdenity().
 	The viewport values are usually based on the dimensions of the window, but could be made smaller.

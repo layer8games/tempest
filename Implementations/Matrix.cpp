@@ -81,51 +81,25 @@ const std::vector<F32> Matrix::GetElems(void) const
 //==========================================================================================================================
 //Projections
 //==========================================================================================================================
-void Matrix::MakeOrthographic(F32 width, F32 height, F32 depth, bool center) 
+void Matrix::MakeOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)
 {
-	F32 right; 
-	F32 left; 
-	F32 top;
-	F32 bottom;
-	F32 farPlane; 
-	F32 nearPlane;
-	
-	if(center)
-	{
-		right     = width / 2.0f; 
-		left      = -width / 2.0f; 
-		top       = height / 2.0f;
-		bottom    = -height / 2.0f;
-		farPlane  = depth / 2.0f; 
-		nearPlane = 0.01f;
-	}
-	else
-	{
-		right 	  = width;
-	  	left 	  = 0.0f;
-		top 	  = height;
-		bottom 	  = 0.0f;
-		farPlane  = depth;
-		nearPlane = 0.0f;
-	}
-
-  	//Reset Matrix
+	//Reset Matrix
 	MakeIdentity();
 
 	assert(right - left != 0.0f);
-	assert(bottom - top != 0.0f);
-	assert(nearPlane - farPlane != 0.0f);
+	assert(top - bottom != 0.0f);
+	assert(farPlane - nearPlane != 0.0f);
 
 	//Diagnal
 	_columns[0][x] = 2.0f / (right - left);
 	_columns[1][y] = 2.0f / (top - bottom);
-	_columns[2][z] = 2.0f / (nearPlane - farPlane);
+	_columns[2][z] = -2.0f / (farPlane - nearPlane);
 	_columns[3][w] = 1.0f;
 
 	//Transform "Vector"
-	_columns[3][x] = (left + right) / (left - right);
-	_columns[3][y] = (bottom + top) / (bottom - top);
-	_columns[3][z] = (nearPlane + farPlane) / (farPlane - nearPlane);
+	_columns[3][x] = -(right + left) / (right - left);
+	_columns[3][y] = -(top + bottom) / (top - bottom);
+	_columns[3][z] = -(farPlane + nearPlane) / (farPlane - nearPlane);
 }
 
 void Matrix::MakePerspective(F32 width, F32 height, F32 depth, bool center)

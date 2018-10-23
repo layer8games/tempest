@@ -95,16 +95,15 @@ void Glyph::v_InitBuffers(void)
 	GameObject::v_InitBuffers();
 
 	//TODO: Need to store depth in the WinProgram
-	std::cout << "w and h: " << static_cast<F32>(WinProgram::Instance()->GetWidth()) << " " << static_cast<F32>(WinProgram::Instance()->GetHeight()) << std::endl;
-
-	_projection.MakeOrthographic(
-		static_cast<F32>(WinProgram::Instance()->GetWidth()), 
-		static_cast<F32>(WinProgram::Instance()->GetHeight()), 
-		200.0f
+	_projection.MakeOrthographic
+	(
+		static_cast<F32>(-WinProgram::Instance()->GetWidth()) / 2, 
+		static_cast<F32>(WinProgram::Instance()->GetWidth()) / 2,
+		static_cast<F32>(-WinProgram::Instance()->GetHeight()) / 2,
+		static_cast<F32>(WinProgram::Instance()->GetHeight()) / 2, 
+		-100.0f, 
+		100.0f
 	);
-
-	//_projection.MakeIdentity();
-
 
 	std::vector<ShaderData> shaderSources;
 
