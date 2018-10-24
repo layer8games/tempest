@@ -18,8 +18,8 @@ namespace KillerEngine
 	{
 		S32 width;
 		S32 height;
-		S32 bearingWidth;
-		S32 bearingHeight;
+		S32 bearingX;
+		S32 bearingY;
 		S32 xAdvance;
 	};
 }//end Namespace

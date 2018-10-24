@@ -11,6 +11,7 @@ using namespace KillerEngine;
 Font::Font(void) 
 :
 _numCharacters(128),
+_fontSize(0),
 _fontName(), 
 _characterGlyphs()
 {  }
@@ -18,6 +19,7 @@ _characterGlyphs()
 Font::Font(const Font& f)
 :
 _numCharacters(f.GetNumCharacters()),
+_fontSize(f.GetSize()),
 _fontName(f.GetName()),
 _characterGlyphs(f.GetAllCharacterGlyphs())
 {  }
@@ -36,6 +38,7 @@ _characterGlyphs(f->GetAllCharacterGlyphs())
 //==========================================================================================================================
 void Font::InitFont(string fontName, string filePath, U32 fontSize)
 {
+ 	_fontSize = fontSize;
  	_fontName = fontName;
 
  	S32 error;
@@ -78,9 +81,9 @@ void Font::InitFont(string fontName, string filePath, U32 fontSize)
 
 		data.width = face->glyph->bitmap.width;
 		data.height = face->glyph->bitmap.rows;
-		data.bearingWidth = face->glyph->bitmap_left;
-		data.bearingHeight = face->glyph->bitmap_top;
-		data.xAdvance = face->glyph->advance.x;
+		data.bearingX = face->glyph->bitmap_left;
+		data.bearingY = face->glyph->bitmap_top;
+		data.xAdvance = face->glyph->advance.x >> 6;
 
 		//Make texture
 		GLuint textureHandle;

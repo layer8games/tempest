@@ -80,6 +80,7 @@ void Text::AddText(string text)
 	_characterList.clear();
 
 	KM::Vector currentPos = _pos;
+	F32 size = static_cast<F32>(_font.GetSize());
 
 	for(U32 i = 0; i < _text.size(); ++i)
 	{
@@ -89,17 +90,20 @@ void Text::AddText(string text)
 
 		g.SetColor(_color);
 
-		//KM::Vector glyphPos = currentPos;
-
-		//glyphPos[0] += data.bearingWidth;
-		//glyphPos[1] -= data.bearingHeight;
-
+		//g.SetPosition(currentPos[0] + data.bearingX, currentPos[1] - (data.height - data.bearingY));
 		g.SetPosition(currentPos);
 
-		currentPos[0] += 0.5f;
-		//currentPos[0] += g.GetCharacterData().xAdvance;
+		std::cout << "for character " << _text[i] << " xAdvance is " << data.xAdvance << " and offset will be " << currentPos[0] << std::endl
+		<< "pos is " << g.GetPosition()[0] << " " << g.GetPosition()[1] << std::endl
+		<< "scale will be " << data.width << " " << data.height << std::endl
+		<< "size is " << size << std::endl;
+		//if(_text[i + 1] != ' ')
+		//{
+			currentPos[0] += data.xAdvance;
+		//}
 		
 		g.SetScale(static_cast<F32>(data.width), static_cast<F32>(data.height));
+		//g.SetScale(size, size);
 
 		_characterList.push_back(g);
 	}	

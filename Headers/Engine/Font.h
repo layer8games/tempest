@@ -81,6 +81,16 @@ namespace KillerEngine
 			return _numCharacters;
 		}
 
+		inline void SetSize(U32 size)
+		{
+			_fontSize = size;
+		}
+
+		inline U32 GetSize(void) const
+		{
+			return _fontSize;
+		}
+
 /*! Set's the name of font. Not used actively in any major way.
 	\param fontName string: New name of the font. */
 		inline void SetName(string fontName)
@@ -113,6 +123,7 @@ namespace KillerEngine
 //
 //==========================================================================================================================	
 		S32 	 _numCharacters;
+		U32 	 _fontSize;
 		string   _fontName;
 		GlyphMap _characterGlyphs; ///< All data from .fnt file stored in a RenderText can use for placement.
 

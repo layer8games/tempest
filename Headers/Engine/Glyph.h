@@ -38,6 +38,8 @@ namespace KillerEngine
 
 		~Glyph(void);
 
+		Glyph& operator=(const Glyph& glyph);
+
 //==========================================================================================================================
 //
 //Virtual Functions
@@ -80,6 +82,16 @@ namespace KillerEngine
 			return _character;
 		}
 
+		inline void SetGlyphScale(F32 scale)
+		{
+			_glyphScale = scale;
+		}
+
+		inline F32 GetGlyphScale(void) const
+		{
+			return _glyphScale;
+		}
+
 		inline void SetTexture(const Texture& tex)
 		{
 			_texture = tex;
@@ -105,6 +117,11 @@ namespace KillerEngine
 			return _color;
 		}
 
+		inline const KM::Matrix& GetProjectionMatrix(void) const
+		{
+			return _projection;
+		}
+
 //==========================================================================================================================
 //
 //Operator Overloads
@@ -119,6 +136,7 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 		char 		  _character;
+		F32 		  _glyphScale;
 		Texture 	  _texture;
 		CharacterData _characterData;
 		Color 		  _color;
