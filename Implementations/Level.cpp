@@ -158,7 +158,7 @@ void Level::RenderObjects(void)
 	{
 		if(i.second->GetActiveRender())
 		{
-			i.second->SetShaderUniform("view", _camera->GetViewMatrix());
+			i.second->SetUniform("view", _camera->GetViewMatrix());
 			i.second->v_Render();
 		}
 	}
@@ -167,7 +167,7 @@ void Level::RenderObjects(void)
 	{
 		if(i.second->GetActiveRender())
 		{
-			i.second->SetShaderUniform("view", _camera->GetViewMatrix());
+			i.second->SetUniform("view", _camera->GetViewMatrix());
 			i.second->v_Render();
 		}
 	}

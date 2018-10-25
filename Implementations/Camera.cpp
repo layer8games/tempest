@@ -16,7 +16,7 @@ Camera::Camera(void)
 _background(1.0f), 
 _projection(1.0f),
 _position(0.0f),
-_target(0.0f),
+_target(0.0f, 0.0f, -1.0f),
 _up(0.0f, 1.0f, 0.0f),
 _look(0.0f),
 _right(0.0f),

@@ -8,11 +8,11 @@ uniform mat4 view;
 uniform mat4 projection;
 
 out vec2 fs_texCoord;
-out vec4 fs_normal;
 
 void main()
 {
 	fs_texCoord = texCoord;
 
 	gl_Position = projection * view * model * position;
+	//gl_Position = projection * view * model * position;
 }

@@ -93,10 +93,10 @@ void Text::AddText(string text)
 		//g.SetPosition(currentPos[0] + data.bearingX, currentPos[1] - (data.height - data.bearingY));
 		g.SetPosition(currentPos);
 
-		std::cout << "for character " << _text[i] << " xAdvance is " << data.xAdvance << " and offset will be " << currentPos[0] << std::endl
-		<< "pos is " << g.GetPosition()[0] << " " << g.GetPosition()[1] << std::endl
-		<< "scale will be " << data.width << " " << data.height << std::endl
-		<< "size is " << size << std::endl;
+		//std::cout << "for character " << _text[i] << " xAdvance is " << data.xAdvance << " and offset will be " << currentPos[0] << std::endl
+		//<< "pos is " << g.GetPosition()[0] << " " << g.GetPosition()[1] << std::endl
+		//<< "scale will be " << data.width << " " << data.height << std::endl
+		//<< "size is " << size << std::endl;
 		//if(_text[i + 1] != ' ')
 		//{
 			currentPos[0] += data.xAdvance;

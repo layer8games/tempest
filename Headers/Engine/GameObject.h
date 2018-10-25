@@ -237,43 +237,43 @@ namespace KillerEngine
 			_shader.Use();
 		}
 
-		inline void SetShaderUniform(string name, const F32 val)
+		inline void SetUniform(string name, const F32 val)
 		{
 			_shader.Use();
 			_shader.SetUniform(name.c_str(), val);
 		}
 
-		inline void SetShaderUniform(string name, const KM::Vector& vec)
+		inline void SetUniform(string name, const KM::Vector& vec)
 		{
 			_shader.Use();
 			_shader.SetUniform(name.c_str(), vec);
 		}
 
-		inline void SetShaderUniformVec3(string name, const KM::Vector& vec)
+		inline void SetUniformVec3(string name, const KM::Vector& vec)
 		{
 			_shader.Use();
 			_shader.SetUniformVec3(name.c_str(), vec);
 		}
 
-		inline void SetShaderUniform(string name, KM::Matrix mat)
+		inline void SetUniform(string name, KM::Matrix mat)
 		{
 			_shader.Use();
 			_shader.SetUniform(name.c_str(), mat);
 		}
 
-		inline void SetShaderUniformSampler(string name, S32 texSlot)
+		inline void SetUniformSampler(string name, S32 texSlot)
 		{
 			_shader.Use();
 			_shader.SetUniformSampler(name.c_str(), texSlot);
 		}
 
-		inline void SetShaderUniform(string name, const Color& col)
+		inline void SetUniform(string name, const Color& col)
 		{
 			_shader.Use();
 			_shader.SetUniform(name.c_str(), col);
 		}
 
-		inline void SetShaderUniformVec3(string name, const Color& col)
+		inline void SetUniformVec3(string name, const Color& col)
 		{
 			_shader.Use();
 			_shader.SetUniformVec3(name.c_str(), col);
