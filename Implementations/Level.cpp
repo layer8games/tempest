@@ -10,6 +10,7 @@ using namespace KillerEngine;
 //==========================================================================================================================
 Level::Level(void) 
 : 
+_camera(new Camera()),
 _mapWidth(0),
 _mapHeight(0),
 _mapTopBorder(0),
@@ -18,14 +19,15 @@ _mapRightBorder(0),
 _mapLeftBorder(0),
 _bgColor(),
 _ID(),
-_camera(new Camera()),
 _gameObjects(),
 _particles(),
 _forceRegistry()
 {  }
 
 Level::~Level(void)
-{  }
+{
+	delete _camera;
+}
 
 //==========================================================================================================================
 //
