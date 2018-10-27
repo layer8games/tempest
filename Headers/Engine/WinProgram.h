@@ -65,28 +65,28 @@ namespace KillerEngine
 		{ 
 			return _totalWidth; 
 		}
-		
-		inline S32 GetRight(void)
-		{ 
-			return _right; 
-		}
-		
-		inline S32 GetLeft(void)
-		{ 
-			return _left; 
-		}
-		
+
 		inline S32 GetHeight(void)
 		{ 
 			return _totalHeight; 
 		}
 		
-		inline S32 GetTop(void)
+		inline F32 GetScreenRight(void)
+		{ 
+			return _right; 
+		}
+		
+		inline F32 GetScreenLeft(void)
+		{ 
+			return _left; 
+		}
+		
+		inline F32 GetScreenTop(void)
 		{ 
 			return _top; 
 		}
 		
-		inline S32 GetBottom(void)
+		inline F32 GetScreenBottom(void)
 		{ 
 			return _bottom; 
 		}
@@ -155,10 +155,10 @@ namespace KillerEngine
 		bool    _isFullScreen;
 		bool 	_running;
 		bool 	_wireFrame;
-		S32     _right;
-		S32     _left;
-		S32     _top;
-		S32     _bottom;
+		F32     _right;
+		F32     _left;
+		F32     _top;
+		F32     _bottom;
 		string  _wndName;
 		Color 	_bgColor;
 		GLFWwindow* _window;

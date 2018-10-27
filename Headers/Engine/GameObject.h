@@ -96,41 +96,57 @@ namespace KillerEngine
 //===== All Active =====
 		inline const bool GetActive(void) const
 		{
-			return _active && _activeRender;
+			return _activeUpdate && _activeRender;
+		}
+
+		inline void SetActive(bool state)
+		{
+			_activeUpdate = state;
+			_activeRender = state;
 		}
 
 		inline void SetActive(void)
 		{
-			_active = true;
+			_activeUpdate = true;
 			_activeRender = true;
 		}
 
 		inline void SetInactive(void)
 		{
-			_active = false;
+			_activeUpdate = false;
 			_activeRender = false;
 		}
 
 //===== Active Update =====		
 		inline const bool GetActiveUpdate(void) const
 		{
-			return _active;
+			return _activeUpdate;
+		}
+
+		inline void SetActiveUpdate(bool state)
+		{
+			_activeUpdate = state;
 		}
 
 		inline void SetActiveUpdate(void)
 		{
-			_active = true;
+			_activeUpdate = true;
 		}
 
 		inline void SetInactiveUpdate(void)
 		{
-			_active = false;
+			_activeUpdate = false;
 		}
 
 //===== Active Render =====
 		inline const bool GetActiveRender(void) const
 		{
 			return _activeRender;
+		}
+
+		inline void SetActiveRender(bool state)
+		{
+			_activeRender = state;
 		}
 
 		inline void SetActiveRender(void)
@@ -382,7 +398,7 @@ namespace KillerEngine
 		std::vector<F32> 		_uvList;
 		KM::Vector				_position;
 		KM::Vector 				_scale;
-		bool					_active;
+		bool					_activeUpdate;
 		bool					_activeRender;
 		U32 					_ID;
 		GLuint 					_vao;
