@@ -17,19 +17,17 @@ U32 GameObject::_nextID = 1;
 //==========================================================================================================================
 GameObject::GameObject(void)
 :
-_ID(_nextID),
-_active(true),
-_activeRender(true),
-_meshLoaded(false),
-_position(0.0f),
-_scale(1.0f),
 _shader(),
-_numIndices(0),
 _vertices(),
 _indices(),
+_uvList(),
+_position(0.0f),
+_scale(1.0f),
+_active(true),
+_activeRender(true),
+_ID(_nextID),
 _vao(0),
-_vbo{0},
-_uvList()
+_vbo{0}
 {
 	++_nextID;
 
@@ -39,14 +37,16 @@ _uvList()
 
 GameObject::GameObject(const GameObject& obj)
 :
-_ID(obj.GetID()),
-_active(obj.GetActive()),
-_position(obj.GetPosition()),
 _shader(obj.GetShader()),
 _vertices(obj.GetVertices()),
 _indices(obj.GetIndices()),
+_uvList(obj.GetUVList()),
+_position(obj.GetPosition()),
+_active(obj.GetActive()),
+_activeRender(obj.GetActiveRender()),
+_ID(obj.GetID()),
 _vao(obj.GetVAO()),
-_uvList(obj.GetUVList())
+_vbo{0}
 {
 	glGenBuffers(NUM_VBO, _vbo);
 }
@@ -67,27 +67,13 @@ GameObject::~GameObject(void)
 //==========================================================================================================================
 void GameObject::v_Render(void)
 {
-	if(_meshLoaded)
-	{
-		_shader.Use(true);
-		BindVAO(true);
+	_shader.Use(true);
+	BindVAO(true);
 
-		glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
+	glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
 
-		_shader.Use(false);
-		BindVAO(false);
-	}
-	else
-	{
-		_shader.Use(true);
-		BindVAO(true);
-
-		glDrawElements(GL_TRIANGLES, _numIndices, GL_UNSIGNED_INT, 0);
-		glBindVertexArray(0);
-		
-		_shader.Use(false);
-		BindVAO(false);
-	}
+	_shader.Use(false);
+	BindVAO(false);
 }
 
 //==========================================================================================================================
@@ -161,7 +147,7 @@ bool GameObject::LoadOBJ(string filepath)
 
 		if(!file)
 		{
-			ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadOBJ => unable to open " + filepath);
+			ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadOBJ => unable to open " + filepath);
 			return false;
 		}
 
@@ -271,8 +257,6 @@ bool GameObject::LoadOBJ(string filepath)
 			_vertices.push_back(meshVertex);
 		}		
 
-		_meshLoaded = true;
-
 		v_InitBuffers();
 
 		return true;
@@ -296,7 +280,7 @@ void GameObject::LoadMesh(string filepath)
 {
 	if(filepath.find(".dae") == std::string::npos)
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadMesh => Tried to load mesh in the wrong format. " + filepath);
+		ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh => Tried to load mesh in the wrong format. " + filepath);
 		return;
 	}
 
@@ -313,7 +297,7 @@ void GameObject::LoadMesh(string filepath)
 
 	if(!file)
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadMesh => Failed to open file: " + filepath);
+		ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh => Failed to open file: " + filepath);
 		return;
 	}
 
@@ -383,7 +367,7 @@ void GameObject::LoadMesh(string filepath)
 
 		if(materials.find(id) == materials.end())
 		{
-			ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadMesh, unable to load color from matrial");
+			ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh, unable to load color from matrial");
 		}
 	}
 */
@@ -431,7 +415,7 @@ void GameObject::LoadMesh(string filepath)
 
 		if(stride == 0)
 		{
-			ErrorManager::Instance()->SetError(EC_Engine, "GameObject::LoadMesh: No stride found. That means there is no input, and your xml file is wrong");
+			ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh: No stride found. That means there is no input, and your xml file is wrong");
 		}
 
 		for(U32 i = 0; i < indices.size(); i+=stride)
@@ -466,9 +450,33 @@ void GameObject::LoadMesh(string filepath)
 	}
 }//end LoadMesh
 
+void GameObject::MakeSprite(void)
+{
+	
+}
+
 const KM::Matrix GameObject::GetModelMatrix(void)
 {
 	return KM::Matrix::Translate(_position) * KM::Matrix::Scale(_scale);
+}
+
+void GameObject::BindVBO(BufferData buffer, bool state)
+{
+	switch(buffer)
+	{
+		case VERTEX_BUFFER:
+			glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
+		break;
+		case FRAGMENT_BUFFER:
+			glBindBuffer(GL_ARRAY_BUFFER, _vbo[FRAGMENT_BUFFER]);
+		break;
+		case TEX_COORD_BUFFER:
+			glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
+		break;
+		default:
+			ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::BindVBO: No such buffer");
+		break;
+	}
 }
 
 //==========================================================================================================================

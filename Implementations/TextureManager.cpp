@@ -40,23 +40,29 @@ shared_ptr<TextureManager> TextureManager::Instance(void)
 //TextureManager Functions
 //
 //=====================================================================================================
-void TextureManager::AddTexture(S32 id, const Texture& tex)
+void TextureManager::LoadTexture(U32 id, string filePath)
+{
+	shared_ptr<Texture> texture(new Texture(filePath));
+	AddTexture(id, texture);
+}
+
+void TextureManager::AddTexture(U32 id, const Texture& tex)
 {
 	_loadedTextures.insert({id, shared_ptr<Texture>(const_cast<Texture*>(&tex))});
 
 	if(_loadedTextures.find(id) == _loadedTextures.end())
 	{
-		ErrorManager::Instance()->SetError(EC_TextureManager, "TextureManager::AddTexture Texture already loaded " + id);
+		ErrorManager::Instance()->SetError(TEXTURE_MANAGER, "TextureManager::AddTexture Texture already loaded " + id);
 	}
 }
 
-void TextureManager::AddTexture(S32 id, shared_ptr<Texture> tex)
+void TextureManager::AddTexture(U32 id, shared_ptr<Texture> tex)
 {
 	_loadedTextures.insert({id, tex});
 
 	if(_loadedTextures.find(id) == _loadedTextures.end())
 	{
-		ErrorManager::Instance()->SetError(EC_TextureManager, "TextureManager::LoadTexture, Texture already loaded " + id);
+		ErrorManager::Instance()->SetError(TEXTURE_MANAGER, "TextureManager::LoadTexture, Texture already loaded " + id);
 	}
 }
 
@@ -64,7 +70,7 @@ const shared_ptr<Texture> TextureManager::GetTexture(U32 id)
 { 
 	if(_loadedTextures.find(id) == _loadedTextures.end())
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "TextureManager: Unable to find texture: " + std::to_string(id));
+		ErrorManager::Instance()->SetError(ENGINE, "TextureManager: Unable to find texture: " + std::to_string(id));
 		return nullptr;
 	}
 	else

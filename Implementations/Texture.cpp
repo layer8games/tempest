@@ -15,6 +15,15 @@ _width(0),
 _height(0)
 {  }
 
+Texture::Texture(string filePath)
+:
+_handle(0),
+_width(0),
+_height(0)
+{
+	LoadTexture(filePath);
+}
+
 Texture::Texture(GLuint id, S32 width, S32 height)
 : 
 _handle(id), 
@@ -75,7 +84,7 @@ void Texture::LoadTexture(string filePath, bool generateMipMaps)
 
 	if(imageData == 0)
 	{
-		ErrorManager::Instance()->SetError(EC_TextureManager, "Texture::LoadTexture -> SOIL_load_image call failed to load " + filePath);
+		ErrorManager::Instance()->SetError(TEXTURE_MANAGER, "Texture::LoadTexture -> SOIL_load_image call failed to load " + filePath);
 	}
 	else
 	{

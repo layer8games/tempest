@@ -67,12 +67,6 @@
     <Filter Include="Components\LevelManager">
       <UniqueIdentifier>{0848391e-09fc-4949-ad36-3ea60b4741da}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Components\RenderText">
-      <UniqueIdentifier>{7e0d93d1-f85e-4c81-9b66-d130c9d7e5df}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Components\RenderCharacter">
-      <UniqueIdentifier>{22c25915-f8de-4ccd-b648-edfd4f055e14}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Docs">
       <UniqueIdentifier>{9ffff7b1-2917-4ec9-81fc-202787d11f86}</UniqueIdentifier>
     </Filter>
@@ -111,6 +105,18 @@
     </Filter>
     <Filter Include="Components\WindowProgram">
       <UniqueIdentifier>{381d786c-065e-4c73-9294-7079cbccce17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\Text">
+      <UniqueIdentifier>{7e0d93d1-f85e-4c81-9b66-d130c9d7e5df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components\GameObjects\Glyph">
+      <UniqueIdentifier>{22c25915-f8de-4ccd-b648-edfd4f055e14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{d8179ba3-f598-4576-bb4b-dbace166d1d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Shaders">
+      <UniqueIdentifier>{cdd5a601-a7f3-4bfe-b1ff-5965b925f56d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -162,12 +168,6 @@
     <ClInclude Include="..\..\Headers\Engine\LevelManager.h">
       <Filter>Components\LevelManager</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\RenderedCharacter.h">
-      <Filter>Components\RenderCharacter</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\RenderedText.h">
-      <Filter>Components\RenderText</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Texture.h">
       <Filter>Components\Texture</Filter>
     </ClInclude>
@@ -206,6 +206,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
       <Filter>Components\KillerPhysics\ContactResolution</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Text.h">
+      <Filter>Components\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Glyph.h">
+      <Filter>Components\GameObjects\Glyph</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -248,12 +254,6 @@
     <ClCompile Include="..\..\Implementations\LevelManager.cpp">
       <Filter>Components\LevelManager</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\RenderedCharacter.cpp">
-      <Filter>Components\RenderCharacter</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\RenderedText.cpp">
-      <Filter>Components\RenderText</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Texture.cpp">
       <Filter>Components\Texture</Filter>
     </ClCompile>
@@ -293,10 +293,30 @@
     <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
       <Filter>Components\KillerPhysics\ContactResolution</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\Text.cpp">
+      <Filter>Components\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Glyph.cpp">
+      <Filter>Components\GameObjects\Glyph</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\Docs\KillerCodingStandards.txt">
       <Filter>Docs</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Assets\Shaders\Default\glyph_fragment.glsl">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="..\..\Assets\Shaders\Default\glyph_vertex.glsl">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="..\..\Assets\Shaders\Default\sprite_vertex.glsl">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="..\..\Assets\Shaders\Default\sprite_fragment.glsl">
+      <Filter>Assets\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

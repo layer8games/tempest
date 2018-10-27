@@ -16,7 +16,7 @@ Camera::Camera(void)
 _background(1.0f), 
 _projection(1.0f),
 _position(0.0f),
-_target(0.0f),
+_target(0.0f, 0.0f, -1.0f),
 _up(0.0f, 1.0f, 0.0f),
 _look(0.0f),
 _right(0.0f),
@@ -39,7 +39,12 @@ Camera::~Camera(void)
 //==========================================================================================================================
 void Camera::SetOrthographic(void)
 {
-	_projection.MakeOrthographic((F32)WinProgram::Instance()->GetWidth(), (F32)WinProgram::Instance()->GetHeight(), 200.0f, false);
+	_projection.MakeOrthographic(-1.0f, 1.0f, -1.0f, 1.0f, 0.01f, 1000.0f);
+}
+
+void Camera::SetOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)
+{
+	_projection.MakeOrthographic(left, right, bottom, top, nearPlane, farPlane);
 }
 
 void Camera::SetPerspective(void)
@@ -50,7 +55,7 @@ void Camera::SetPerspective(void)
 	_projection.MakePerspective(90.0f,  //field of view
 								w / h,  //aspect ratio
 								0.1f, 	//near
-								200.0f);//far
+								2000.0f);//far
 }
 
 void Camera::SetPerspective(F32 fov, F32 aspect, F32 nearPlane, F32 farPlane)
@@ -186,29 +191,29 @@ void FPSCamera::v_Update(void)
 
 	if(Controller::Instance()->GetKeyHeld(W))
 	{
-		v_Move(_look * _moveSpeed * KM::Timer::Instance()->DeltaTime()); //forward
+		v_Move(_look); //forward
 	}
 	else if(Controller::Instance()->GetKeyHeld(S))
 	{
-		v_Move(_look * -_moveSpeed * KM::Timer::Instance()->DeltaTime()); //back
+		v_Move(_look * -1.0f); //back
 	}
 	
 	if(Controller::Instance()->GetKeyHeld(D))
 	{
-		v_Move(_right * _moveSpeed * KM::Timer::Instance()->DeltaTime()); //right
+		v_Move(_right); //right
 	}
 	else if(Controller::Instance()->GetKeyHeld(A))
 	{
-		v_Move(_right * -_moveSpeed * KM::Timer::Instance()->DeltaTime()); //left
+		v_Move(_right * -1.0f); //left
 	}
 
 	if(Controller::Instance()->GetKeyHeld(SPACE))
 	{
-		v_Move(_up * _moveSpeed * KM::Timer::Instance()->DeltaTime()); //up
+		v_Move(_up); //up
 	}
 	else if(Controller::Instance()->GetKeyHeld(LSHIFT))
 	{
-		v_Move(_up * -_moveSpeed * KM::Timer::Instance()->DeltaTime()); //down
+		v_Move(_up * -1.0f); //down
 	}
 }
 

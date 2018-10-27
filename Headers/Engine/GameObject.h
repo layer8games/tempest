@@ -23,6 +23,20 @@ namespace KM = KillerMath;
 
 namespace KillerEngine
 {
+	enum BufferData
+	{
+		VERTEX_BUFFER = 0,
+		VERTEX_POS = 0,
+		FRAGMENT_BUFFER = 1,
+		FRAGMENT_POS = 2,
+		TEX_COORD_BUFFER = 2,
+		TEX_COORD_POS = 1,
+		INDEX_BUFFER = 3,
+		NORMAL_BUFFER = 4,
+		NORMAL_POS = 3,
+		NUM_VBO = 5
+	};
+	
 	class GameObject
 	{
 	public:
@@ -56,6 +70,8 @@ namespace KillerEngine
 		bool LoadOBJ(string filepath);
 
 		void LoadMesh(string filepath);
+
+		void MakeSprite(void);
 
 		const KM::Matrix GetModelMatrix(void);
 
@@ -112,7 +128,7 @@ namespace KillerEngine
 		}
 
 //===== Active Render =====
-		inline const bool GetActiveRender(void)
+		inline const bool GetActiveRender(void) const
 		{
 			return _activeRender;
 		}
@@ -172,7 +188,7 @@ namespace KillerEngine
 		}
 
 //===== Scale =====
-		inline const KM::Vector& GetScale(void)
+		inline const KM::Vector& GetScale(void) const
 		{
 			return _scale;
 		}
@@ -221,52 +237,52 @@ namespace KillerEngine
 			_shader.Use();
 		}
 
-		inline void SetShaderUniform(string name, const F32 val)
+		inline void SetUniform(string name, const F32 val)
 		{
 			_shader.Use();
 			_shader.SetUniform(name.c_str(), val);
 		}
 
-		inline void SetShaderUniform(string name, const KM::Vector& vec)
+		inline void SetUniform(string name, const KM::Vector& vec)
 		{
 			_shader.Use();
 			_shader.SetUniform(name.c_str(), vec);
 		}
 
-		inline void SetShaderUniformVec3(string name, const KM::Vector& vec)
+		inline void SetUniformVec3(string name, const KM::Vector& vec)
 		{
 			_shader.Use();
 			_shader.SetUniformVec3(name.c_str(), vec);
 		}
 
-		inline void SetShaderUniform(string name, KM::Matrix mat)
+		inline void SetUniform(string name, KM::Matrix mat)
 		{
 			_shader.Use();
 			_shader.SetUniform(name.c_str(), mat);
 		}
 
-		inline void SetShaderUniformSampler(string name, S32 texSlot)
+		inline void SetUniformSampler(string name, S32 texSlot)
 		{
 			_shader.Use();
 			_shader.SetUniformSampler(name.c_str(), texSlot);
 		}
 
-		inline void SetShaderUniform(string name, const Color& col)
+		inline void SetUniform(string name, const Color& col)
 		{
 			_shader.Use();
 			_shader.SetUniform(name.c_str(), col);
 		}
 
-		inline void SetShaderUniformVec3(string name, const Color& col)
+		inline void SetUniformVec3(string name, const Color& col)
 		{
 			_shader.Use();
 			_shader.SetUniformVec3(name.c_str(), col);
 		}
 
 //===== NumVertices =====
-		inline S32 GetNumVertices(void)
+		inline U32 GetNumVertices(void)
 		{
-			return _numIndices;
+			return _vertices.size();
 		}
 
 //===== Vertex =====
@@ -289,13 +305,11 @@ namespace KillerEngine
 		inline void AddIndex(U32 index)
 		{
 			_indices.push_back(index);
-			++_numIndices;
 		}
 
 		inline void SetIndices(std::vector<U32> indices)
 		{
 			_indices = indices;
-			_numIndices = _indices.size();
 		}
 
 		inline std::vector<U32> GetIndices(void) const
@@ -319,7 +333,10 @@ namespace KillerEngine
 			{
 				glBindVertexArray(0);
 			}
-		}	
+		}
+
+//===== VBO =====
+		void BindVBO(BufferData buffer, bool state=true);
 
 //===== Uv List =====
 		inline std::vector<F32> GetUVList(void) const
@@ -338,23 +355,15 @@ namespace KillerEngine
 		}
 
 	protected:
+		
+//==========================================================================================================================
+//
+//Protected Data
+//
+//==========================================================================================================================
 		Shader _shader;
 
 	private:
-		enum BufferData
-		{
-			VERTEX_BUFFER = 0,
-			VERTEX_POS = 0,
-			FRAGMENT_BUFFER = 1,
-			FRAGMENT_POS = 2,
-			TEX_COORD_BUFFER = 2,
-			TEX_COORD_POS = 1,
-			INDEX_BUFFER = 3,
-			NORMAL_BUFFER = 4,
-			NORMAL_POS = 3,
-			NUM_VBO = 5
-		};
-
 		std::vector<U32> _SplitU32(string text, char delim) const;
 		
 		std::vector<F32> _SplitF32(string text, char delim) const;
@@ -367,18 +376,16 @@ namespace KillerEngine
 //
 //==========================================================================================================================		
 		static U32				_nextID;
-		U32 					_ID;
-		bool					_active;
-		bool					_activeRender;
-		bool 					_meshLoaded;
-		KM::Vector				_position;
-		KM::Vector 				_scale;
-		S32						_numIndices;
+		
 		std::vector<Vertex> 	_vertices;
 		std::vector<U32> 		_indices;
+		std::vector<F32> 		_uvList;
+		KM::Vector				_position;
+		KM::Vector 				_scale;
+		bool					_active;
+		bool					_activeRender;
+		U32 					_ID;
 		GLuint 					_vao;
 		GLuint 					_vbo[NUM_VBO];
-		std::vector<F32> 		_uvList;
-
 	};
 }

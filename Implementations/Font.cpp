@@ -1,4 +1,5 @@
 #include <Engine/Font.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -8,31 +9,26 @@ using namespace KillerEngine;
 //
 //==========================================================================================================================
 Font::Font(void) 
-: 
-_textureID(0), 
-_fontFile(), 
-_fontName() 
-{  }
-
-Font::Font(U32 tID)
-: 
-_textureID(tID), 
-_fontFile(), 
-_fontName() 
+:
+_numCharacters(128),
+_fontSize(0),
+_fontName(), 
+_characterGlyphs()
 {  }
 
 Font::Font(const Font& f)
 :
-_textureID(f.GetTextureID()), 
-_fontFile(f.GetFile()), 
-_fontName(f.GetName())
+_numCharacters(f.GetNumCharacters()),
+_fontSize(f.GetSize()),
+_fontName(f.GetName()),
+_characterGlyphs(f.GetAllCharacterGlyphs())
 {  }
 
 Font::Font(const Font* f)
 :
-_textureID(f->GetTextureID()), 
-_fontFile(f->GetFile()), 
-_fontName(f->GetName())
+_numCharacters(f->GetNumCharacters()),
+_fontName(f->GetName()),
+_characterGlyphs(f->GetAllCharacterGlyphs())
 {  }
 
 //==========================================================================================================================
@@ -40,198 +36,118 @@ _fontName(f->GetName())
 //Functions
 //
 //==========================================================================================================================
-void Font::InitFont(string fontName, string fontFile)
+void Font::InitFont(string fontName, string filePath, U32 fontSize)
 {
-	_fontName = fontName;
+ 	_fontSize = fontSize;
+ 	_fontName = fontName;
 
-	_fontFile = fontFile;
-
-	std::ifstream file;
-
-	file.open(_fontFile.c_str());
-
-	if(!file.is_open())
+ 	S32 error;
+	FT_Library ft;
+	error = FT_Init_FreeType(&ft);
+	if(error != 0) 
 	{
-		//Add error manager, set error
-		//std::cout << "Failed to open file!\n" << _fontFile << std::endl; 
+		ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont failed to init FT_Library with Error Code: " + error);
 	}
-	else
+
+	FT_Face face;
+	error = FT_New_Face(ft, filePath.c_str(), 0, &face);
+	if(error != 0)
 	{
-		std::vector<string> results;
-
-		 for(string token; getline(file, token, ' '); )
-		 {
-		 	if(token.find_first_not_of(' ') != std::string::npos) 
-		 		results.push_back(std::move(token));
-		 }
-
-		 bool first = true;
-
-		 results.erase(results.begin(), results.begin() + _headerSize);
-
-		 //for(auto i = results.begin(); i != results.end(); ++i)
-		 //95 is the number of characters in this sheet. 
-		 //There will need to be a way to find this number
-		 //from the sheet itself or something
-		 //for(U32 i = 0; i <= results.size(); ++i )
-		 while(results.size() > 1)
-		 {		
-
-		 	if(first)
-		 	{
-		 		first = false;
-		 		//use elements 0 - 7
-		 		
-		 		string id = results[0];
-
-				string x = results[1];
-
-		 		string y = results[2];
-
-		 		string width = results[3];
-
-		 		string height = results[4];
-
-		 		string xoffset = results[5];
-
-		 		string yoffset = results[6];
-
-		 		string xadvance = results[7];
-
-		 		_AddNewCharacterData(id, x, y, width, height, xoffset, yoffset, xadvance);
-
-			 	results.erase(results.begin(), results.begin()+9);
-			 	continue;
-		 	}
-		 	//after first, use elements 1 - 8
-		 	//need to skip char keyword
-		 	string id = results[1];
-
-			string x = results[2];
-
-	 		string y = results[3];
-
-	 		string width = results[4];
-
-	 		string height = results[5];
-
-	 		string xoffset = results[6];
-
-	 		string yoffset = results[7];
-
-	 		string xadvance = results[8];
-
-	 		_AddNewCharacterData(id, x, y, width, height, xoffset, yoffset, xadvance);
-	 
-		 	results.erase(results.begin(), results.begin() + 10);
-		 }
-
-		 file.close();
+		ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont failed to init FT_Face with Error Code: " + error);
+		std::cout << "Error: " << error << std::endl;
 	}
+
+	error = FT_Set_Pixel_Sizes(face, 0, fontSize);
+	if(error != 0)
+	{
+		ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont cannot set pixel sizes with Error Code: " + error);
+	}
+
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1); 
+
+	char c = 0;
+	for(int i = 0; i < _numCharacters; ++i)
+	{
+		error = FT_Load_Char(face, c, FT_LOAD_RENDER);
+		if(error != 0)
+		{
+			ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont failed to load Glyph for " + c);
+			continue;
+		}
 		
+		Texture texture{};
+		CharacterData data{};
+		Glyph glyph{};
+
+		data.width = face->glyph->bitmap.width;
+		data.height = face->glyph->bitmap.rows;
+		data.bearingX = face->glyph->bitmap_left;
+		data.bearingY = face->glyph->bitmap_top;
+		data.xAdvance = face->glyph->advance.x >> 6;
+
+		//Make texture
+		GLuint textureHandle;
+		glGenTextures(1, &textureHandle);
+		glBindTexture(GL_TEXTURE_2D, textureHandle);
+		
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		glTexImage2D(
+			GL_TEXTURE_2D,
+			0,
+			GL_RED,
+			data.width,
+			data.height,
+			0,
+			GL_RED,
+			GL_UNSIGNED_BYTE,
+			face->glyph->bitmap.buffer
+		);
+
+		texture.SetHandle(textureHandle);
+
+		glyph.SetCharacter(c, texture, data);
+
+		_characterGlyphs.insert({c, glyph});
+
+		glBindTexture(GL_TEXTURE_2D, 0);
+
+		++c;
+	}
+
+	error = FT_Done_Face(face);
+	if(error != 0)
+	{
+		ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont failed to release face");
+	}
+
+	error = FT_Done_FreeType(ft);
+	if(error != 0)
+	{
+		ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont failed to release FreeType Library");
+	}
 }//InitFont
-
-CharacterData Font::GetDataForCharacter(char c)
-{
-	U32 id = U32(c);
-
-	return _fontCharData[id];
-}
-
-/*
-REFACTOR ME!!!!!
-
-std::shared_ptr<Sprite> Font::CreateCharacter(char character)
-{
-//		std::cout << "FONT:: character=" << character << "\ntexture id =" << _textureID << "\nfont name=" << _fontName << "\n"; 
-
-	U32 id = static_cast<U32>(character);
-
-	shared_ptr<Texture> texture = TextureManager::Instance()->GetTexture(_textureID);
-
-	CharacterData data = _fontCharData[id];
-
-	shared_ptr<Sprite> sprite{new Sprite()};
-
-	F32 charWidth  	  = static_cast<F32>(data.width);
-	F32 charHeight 	  = static_cast<F32>(data.height);
-	F32 charX 	 	  = static_cast<F32>(data.x);
-	F32 charY 	 	  = static_cast<F32>(data.y);
-	F32 textureWidth  = static_cast<F32>(texture->GetWidth());
-	F32 textureHeight = static_cast<F32>(texture->GetHeight());
-
-	F32 rightCoord   = (charX / textureWidth);
-	F32 topCoord    = charY / textureHeight;
-	F32 leftCoord  = rightCoord + charWidth / textureWidth;
-	F32 bottomCoord = topCoord + charHeight / textureHeight;
-
-	sprite->SetTexture(_textureID, topCoord, bottomCoord, rightCoord, leftCoord);
-
-	sprite->SetCharData(data);
-	
-	return sprite;	 		
-}
-*/
-
-void Font::_AddNewCharacterData(string id,      string x, 		string y,
-						    	string width,   string height,  string xoffset,
-						    	string yoffset, string xadvance)
-{
-	//CharacterData data;
-
-	//Make ID avilable first
-		id.erase(id.begin(), id.begin() + id.find_first_of("=")+1);
-		
-		U32 charID = std::stoul(id);
-
-		_fontCharData.insert(std::pair<U32, CharacterData>(charID, CharacterData()));
-
-		//Create CharacterData for the given character
-		_fontCharData[charID].id = std::stoi(id);
-
-		x.erase(x.begin(), x.begin() + x.find_first_of("=")+1);
-		_fontCharData[charID].x = std::stoi(x);
-		
-		y.erase(y.begin(), y.begin() + y.find_first_of("=")+1);
-		_fontCharData[charID].y = std::stoi(y);
-		
-		width.erase(width.begin(), width.begin() + width.find_first_of("=")+1);
-		_fontCharData[charID].width = std::stoi(width);
-		
-		height.erase(height.begin(), height.begin() + height.find_first_of("=")+1);
-		_fontCharData[charID].height = std::stoi(height);
-		
-		xoffset.erase(xoffset.begin(), xoffset.begin() + xoffset.find_first_of("=")+1);
-		_fontCharData[charID].xoffset = std::stoi(xoffset);
-		
-		yoffset.erase(yoffset.begin(), yoffset.begin() + yoffset.find_first_of("=")+1);
-		_fontCharData[charID].yoffset = std::stoi(yoffset);
-		
-		xadvance.erase(xadvance.begin(), xadvance.begin() + xadvance.find_first_of("=")+1);
-		_fontCharData[charID].xadvance = std::stoi(xadvance);
-}
 
 //==========================================================================================================================
 //
 //Operator Overloads
 //
 //==========================================================================================================================
-Font& Font::operator=(const Font* font)
+Font& Font::operator=(const Font& font)
 {
-	_textureID = font->GetTextureID();
-	_fontFile = font->GetFile();
-	_fontName = font->GetName();
-	_fontCharData = font->GetCharacterData();
+	_fontName = font.GetName();
+	_characterGlyphs = font.GetAllCharacterGlyphs();
 
 	return *this;
 }
 
-Font& Font::operator=(const Font& font)
+Font& Font::operator=(const Font* font)
 {
-	_textureID = font.GetTextureID();
-	_fontFile = font.GetFile();
-	_fontName = font.GetName();
-	_fontCharData = font.GetCharacterData();
+	_fontName = font->GetName();
+	_characterGlyphs = font->GetAllCharacterGlyphs();
 
 	return *this;
 }

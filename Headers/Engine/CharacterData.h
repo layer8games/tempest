@@ -16,13 +16,10 @@ namespace KillerEngine
 {
 	struct CharacterData
 	{
-		U32 id;
-		U32 x;
-		U32 y;
-		U32 width;
-		U32 height;
-		U32 xoffset;
-		U32 yoffset;
-		U32 xadvance;
+		S32 width;
+		S32 height;
+		S32 bearingX;
+		S32 bearingY;
+		S32 xAdvance;
 	};
 }//end Namespace

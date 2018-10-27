@@ -135,7 +135,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\RenderedCharacter.h">
+    <ClInclude Include="..\..\Headers\Engine\Glyph.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -169,7 +169,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\WinProgram.h" />
-    <ClInclude Include="..\..\Headers\Engine\RenderedText.h" />
+    <ClInclude Include="..\..\Headers\Engine\Text.h" />
     <ClInclude Include="..\..\Headers\Engine\Texture.h" />
     <ClInclude Include="..\..\Headers\Engine\TextureManager.h" />
     <ClInclude Include="..\..\Headers\Engine\Timer.h" />
@@ -218,13 +218,13 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\RenderedCharacter.cpp">
+    <ClCompile Include="..\..\Implementations\Glyph.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector.cpp" />
     <ClCompile Include="..\..\Implementations\WinProgram.cpp" />
-    <ClCompile Include="..\..\Implementations\RenderedText.cpp" />
+    <ClCompile Include="..\..\Implementations\Text.cpp" />
     <ClCompile Include="..\..\Implementations\TextureManager.cpp" />
     <ClCompile Include="..\..\Implementations\Timer.cpp" />
     <ClCompile Include="..\..\Implementations\Level.cpp" />
@@ -232,6 +232,12 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\Docs\KillerCodingStandards.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Assets\Shaders\Default\glyph_fragment.glsl" />
+    <None Include="..\..\Assets\Shaders\Default\glyph_vertex.glsl" />
+    <None Include="..\..\Assets\Shaders\Default\sprite_fragment.glsl" />
+    <None Include="..\..\Assets\Shaders\Default\sprite_vertex.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

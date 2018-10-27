@@ -30,7 +30,7 @@ void Shader::LoadShader(std::vector<ShaderData> shaders)
 {
 	if(shaders.size() > 5)
 	{
-		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Shader::LoadShader. Too many shaders passed to function. Max of 5 allowed, sent = " + shaders.size());
+		ErrorManager::Instance()->SetError(SHADER, "Shader::LoadShader. Too many shaders passed to function. Max of 5 allowed, sent = " + shaders.size());
 		return;
 	}
 
@@ -73,7 +73,7 @@ void Shader::LoadShader(std::vector<ShaderData> shaders)
 		}
 		else  
 		{
-			ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Shader::LoadShader; No such shader type " + i.type);	
+			ErrorManager::Instance()->SetError(SHADER, "Shader::LoadShader; No such shader type " + i.type);	
 		}
 	}
 
@@ -94,7 +94,7 @@ void Shader::LoadShader(std::vector<ShaderData> shaders)
 		string errorLog(length, ' ');
 		glGetProgramInfoLog(_shaderProgram, length, &length, &errorLog[0]);
 
-		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Compile Error in shader\n" + errorLog);
+		ErrorManager::Instance()->SetError(SHADER, "Compile Error in shader\n" + errorLog);
 
 		//The program is useless now. So delete it.
 		glDeleteProgram(_shaderProgram);
@@ -194,7 +194,7 @@ string Shader::_GetFileString(string path)
 
 	if(!file.is_open())
 	{
-		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Unable to open file path to shader: " + path);
+		ErrorManager::Instance()->SetError(SHADER, "Unable to open file path to shader: " + path);
 	}
 
 	shaderData << file.rdbuf();
@@ -218,7 +218,7 @@ bool Shader::_CheckCompileErrors(GLuint shader)
 		string errorLog(length, ' ');	
 		glGetProgramInfoLog(shader, length, &length, &errorLog[0]);
 
-		ErrorManager::Instance()->SetError(EC_OpenGL_Shader, "Compile Error in shader\n" + errorLog);
+		ErrorManager::Instance()->SetError(SHADER, "Compile Error in shader\n" + errorLog);
 
 		return false;
 	}

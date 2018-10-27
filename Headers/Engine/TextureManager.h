@@ -46,9 +46,11 @@ namespace KillerEngine
 //TextureManager Functions
 //
 //==========================================================================================================================
-		void AddTexture(S32 id, const Texture& tex);
+		void LoadTexture(U32 id, string filePath);
 
-		void AddTexture(S32 id, shared_ptr<Texture> tex);
+		void AddTexture(U32 id, const Texture& tex);
+
+		void AddTexture(U32 id, shared_ptr<Texture> tex);
 		
 		const shared_ptr<Texture> GetTexture(U32 id);
 
@@ -62,7 +64,7 @@ namespace KillerEngine
 		
 	private:
 		static shared_ptr<TextureManager> _instance;
-		map<S32, shared_ptr<Texture>> 	  _loadedTextures;
+		map<U32, shared_ptr<Texture>> 	  _loadedTextures;
 
 	};
 }//End namespace

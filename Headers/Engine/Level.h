@@ -20,11 +20,11 @@ Written by Maxwell Miller
 #include <Engine/EnvironmentObject.h>
 #include <Engine/Vector.h>
 #include <Engine/Color.h>
-#include <Engine/RenderedText.h>
-#include <Engine/RenderedCharacter.h>
+#include <Engine/Text.h>
 #include <Engine/Particle.h>
 #include <Engine/ParticleForceRegistry.h>
 #include <Engine/Camera.h>
+#include <Engine/Text.h>
 
 namespace KM = KillerMath;
 namespace KP =KillerPhysics;
@@ -117,7 +117,7 @@ namespace KillerEngine
 */
 		virtual GameObject* v_CreateObject(ObjectType type, KM::Vector& pos, U32 textureID, F32 w, F32 h)
 		{
-			ErrorManager::Instance()->SetError(EC_Engine, "Attempted to call v_CreateObject without Level Implementation");
+			ErrorManager::Instance()->SetError(ENGINE, "Attempted to call v_CreateObject without Level Implementation");
 			return nullptr;
 		}
 
@@ -143,7 +143,7 @@ namespace KillerEngine
 			_forceRegistry.Add(particle, generator);
 		}
 
-		void AddTextToLevel(shared_ptr<RenderedText> text);
+		void AddTextToLevel(shared_ptr<Text> text);
 		
 		void RemoveObjectFromLevel(U32 id);
 
@@ -267,8 +267,18 @@ namespace KillerEngine
 		virtual ObjectType v_StringToTileData(string s);
 
 	private:
+//==========================================================================================================================
+//
+//Private Functions
+//
+//==========================================================================================================================		
 		void _AddTile(TileData data);
 
+//==========================================================================================================================
+//
+//Data
+//
+//==========================================================================================================================		
 		S32     _mapWidth;
 		S32     _mapHeight;
 		S32     _mapTopBorder;
@@ -277,11 +287,11 @@ namespace KillerEngine
 		S32     _mapLeftBorder;
 		Color   _bgColor;
 		U32     _ID;
-		Camera* _camera;
+		Camera* 						  		  _camera;
 		std::map<U32, shared_ptr<GameObject>>	  _gameObjects;
 		std::map<U32, shared_ptr<KP::Particle>>   _particles;
-		std::vector<shared_ptr<RenderedText>>     _textList;
-		std::map<U32, TileData> _2DTileData;
+		std::map<U32, TileData> 				  _2DTileData;
+		std::vector<shared_ptr<Text>>     		  _textList;
 		//SpriteRenderer _batch;
 		KP::ParticleForceRegistry _forceRegistry;
 	};

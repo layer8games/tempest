@@ -1,4 +1,5 @@
 #include <Engine/Level.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -17,7 +18,7 @@ _mapRightBorder(0),
 _mapLeftBorder(0),
 _bgColor(),
 _ID(),
-_camera(),
+_camera(new Camera()),
 _gameObjects(),
 _particles(),
 _forceRegistry()
@@ -66,7 +67,7 @@ void Level::AddObjectToLevel(const GameObject& obj)
 
 	if(_gameObjects.find(obj.GetID()) == _gameObjects.end())
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "Level::AddObjectToLevel Unable to add GameObject to level.");
+		ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject to level.");
 	}
 }
 
@@ -77,7 +78,7 @@ void Level::AddObjectToLevel(shared_ptr<GameObject> obj)
 
 	if(_gameObjects.find(obj->GetID()) == _gameObjects.end())
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "Level::AddObjectToLevel Unable to add GameObject to level.");
+		ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject to level.");
 	}
 }
 
@@ -87,7 +88,7 @@ void Level::AddObjectToLevel(const KP::Particle& obj)
 
 	if(_particles.find(obj.GetID()) == _particles.end())
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "Level::AddObjectToLevel, Unable to add KP::Particle to level. ID = " + obj.GetID());
+		ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel, Unable to add KP::Particle to level. ID = " + obj.GetID());
 	}
 }
 
@@ -97,7 +98,7 @@ void Level::AddObjectToLevel(shared_ptr<KP::Particle> obj)
 
 	if(_particles.find(obj->GetID()) == _particles.end())
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "Level::AddObjectToLevel, Unable to add KP::Particle to level. ID = " + obj->GetID());
+		ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel, Unable to add KP::Particle to level. ID = " + obj->GetID());
 	}
 }
 
@@ -107,7 +108,7 @@ void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP:
 
 	if(_particles.find(particle->GetID()) == _particles.end())
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "Unable to Add Particle to Level. Level.h line 80");
+		ErrorManager::Instance()->SetError(ENGINE, "Unable to Add Particle to Level. Level.h line 80");
 	}
 
 	if(generator != nullptr)
@@ -116,7 +117,7 @@ void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP:
 	}
 }
 
-void Level::AddTextToLevel(std::shared_ptr<RenderedText> text)
+void Level::AddTextToLevel(std::shared_ptr<Text> text)
 {
 	_textList.push_back(text);
 }
@@ -127,7 +128,7 @@ void Level::_AddTile(TileData data)
 
 	if(_2DTileData.find(data.tileID) == _2DTileData.end())
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "Unable to add tile to _2DTileData");
+		ErrorManager::Instance()->SetError(ENGINE, "Unable to add tile to _2DTileData");
 	}
 }
 
@@ -157,7 +158,7 @@ void Level::RenderObjects(void)
 	{
 		if(i.second->GetActiveRender())
 		{
-			i.second->SetShaderUniform("view", _camera->GetViewMatrix());
+			i.second->SetUniform("view", _camera->GetViewMatrix());
 			i.second->v_Render();
 		}
 	}
@@ -166,39 +167,18 @@ void Level::RenderObjects(void)
 	{
 		if(i.second->GetActiveRender())
 		{
-			i.second->SetShaderUniform("view", _camera->GetViewMatrix());
+			i.second->SetUniform("view", _camera->GetViewMatrix());
 			i.second->v_Render();
 		}
 	}
-//==========================================================================================================================
-//Render Text
-//==========================================================================================================================
-/*
-Needs refactoring later. The whole text system needs some work
-	for(std::shared_ptr<RenderedText> text : _textList)
+	
+	for(auto i : _textList)
 	{
-		std::vector<std::shared_ptr<RenderedCharacter>> charList = text->GetCharacterList();
-
-		if(charList[0]->GetSprite().GetShader() != SpriteRenderer::Instance()->GetShader())
+		if(i->GetActive())
 		{
-			SpriteRenderer::Instance()->SetShader(charList[0]->GetSprite().GetShader());
+			i->Render();
 		}
-
-		for(std::shared_ptr<RenderedCharacter> character : charList)
-		{
-			SpriteRenderer::Instance()->AddToBatch
-			(
-				character->GetPosition(),
-				character->GetWidth(),
-				character->GetHeight(),
-				character->GetColor(),
-				character->GetSprite().GetTextureID(),
-				character->GetSprite().GetUVBottomTop(),
-				character->GetSprite().GetUVLeftRight()
-			);
-		}
-	}
-*/	
+	}	
 }
 
 void Level::UpdateObjects(void)
@@ -272,7 +252,7 @@ void Level::Importer2D(string tmxFilePath)
 		}
 		else
 		{
-			ErrorManager::Instance()->SetError(EC_Engine, "Unable to open element or node");
+			ErrorManager::Instance()->SetError(ENGINE, "Unable to open element or node");
 		}
 
 		//=====Set Level variables=====
@@ -311,7 +291,7 @@ void Level::Importer2D(string tmxFilePath)
 				}
 				else
 				{
-					ErrorManager::Instance()->SetError(EC_Engine, "In correct format for tile ObjectType.");
+					ErrorManager::Instance()->SetError(ENGINE, "In correct format for tile ObjectType.");
 				}
 
 				//TextureID
@@ -325,7 +305,7 @@ void Level::Importer2D(string tmxFilePath)
 				}
 				else
 				{
-					ErrorManager::Instance()->SetError(EC_Engine, "In correct format for tile TextureID");
+					ErrorManager::Instance()->SetError(ENGINE, "In correct format for tile TextureID");
 				}
 
 				//=====Capture Image texData=====
@@ -404,18 +384,18 @@ void Level::Importer2D(string tmxFilePath)
 			}
 			else
 			{
-				ErrorManager::Instance()->SetError(EC_Engine, "Incorrect encoding in imported file, not csv, " + name);
+				ErrorManager::Instance()->SetError(ENGINE, "Incorrect encoding in imported file, not csv, " + name);
 			}
 		}
 		else
 		{
-			ErrorManager::Instance()->SetError(EC_Engine, "Unable to open element or node");
+			ErrorManager::Instance()->SetError(ENGINE, "Unable to open element or node");
 		}
 		
 	}
 	else
 	{
-		ErrorManager::Instance()->SetError(EC_Engine, "Unable to open file path to .tmx file " + tmxFilePath);
+		ErrorManager::Instance()->SetError(ENGINE, "Unable to open file path to .tmx file " + tmxFilePath);
 	}
 */
 }//end Importer
@@ -437,7 +417,7 @@ Level::ObjectType Level::v_StringToTileData(string s)
 	
 	else
 	{	
-		ErrorManager::Instance()->SetError(EC_Engine, "No such object tag during import of file " + s);
+		ErrorManager::Instance()->SetError(ENGINE, "No such object tag during import of file " + s);
 		return ObjectType::END;
 	}
 }

@@ -57,7 +57,7 @@ namespace KillerEngine
 		virtual void v_Update(void)
 		{  }
 
-		virtual void v_Move(const KM::Vector offset)
+		virtual void v_Move(const KM::Vector& offset)
 		{  }
 
 //==========================================================================================================================
@@ -69,6 +69,8 @@ namespace KillerEngine
 	\param none
 */
 		void SetOrthographic(void);
+
+		void SetOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane);
 
 /*! Sets the private Matrix to use a perspective projection. Values are hard coded for now. 
 	\param none
