@@ -232,6 +232,17 @@ namespace KillerEngine
 			_scale[2] = zVal;	
 		}
 
+//===== Color =====		
+		inline void SetColor(const Color& col)
+		{
+			_color = col;
+		}
+
+		inline const Color& GetColor(void) const
+		{
+			return _color;
+		}
+
 //===== Shader =====
 		inline const Shader& GetShader(void) const
 		{
@@ -398,6 +409,7 @@ namespace KillerEngine
 		std::vector<F32> 		_uvList;
 		KM::Vector				_position;
 		KM::Vector 				_scale;
+		Color 				_color;
 		bool					_activeUpdate;
 		bool					_activeRender;
 		U32 					_ID;
