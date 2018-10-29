@@ -23,7 +23,7 @@ _indices(),
 _uvList(),
 _position(0.0f),
 _scale(1.0f),
-_active(true),
+_activeUpdate(true),
 _activeRender(true),
 _ID(_nextID),
 _vao(0),
@@ -42,7 +42,7 @@ _vertices(obj.GetVertices()),
 _indices(obj.GetIndices()),
 _uvList(obj.GetUVList()),
 _position(obj.GetPosition()),
-_active(obj.GetActive()),
+_activeUpdate(obj.GetActiveUpdate()),
 _activeRender(obj.GetActiveRender()),
 _ID(obj.GetID()),
 _vao(obj.GetVAO()),
@@ -452,7 +452,39 @@ void GameObject::LoadMesh(string filepath)
 
 void GameObject::MakeSprite(void)
 {
-	
+	_position.Make2D();
+	_vertices.clear();
+
+	KM::Vector topRight(0.5f, 0.5f, 0.0f);
+	KM::Vector topLeft(-0.5f, 0.5f, 0.0f);
+	KM::Vector bottomRight(0.5f, -0.5f, 0.0f);
+	KM::Vector bottomLeft(-0.5f, -0.5f, 0.0);
+
+	KM::Vector top(0.0f, 0.5f);
+
+	AddVertex(Vertex(topLeft, 0.0f, 0.0f));
+	AddVertex(Vertex(topRight, 1.0f, 0.0f));
+	AddVertex(Vertex(bottomRight, 1.0f, 1.0f));
+
+	AddVertex(Vertex(topLeft, 0.0f, 0.0f));
+	AddVertex(Vertex(bottomRight, 1.0f, 1.0f));
+	AddVertex(Vertex(bottomLeft, 0.0f, 1.0f));
+
+	v_InitBuffers();
+
+	std::vector<ShaderData> shaderData;
+
+	ShaderData vs;
+	vs.filePath = "../Assets/Shaders/Default/sprite_vertex.glsl";
+	vs.type = ShaderType::VERTEX;
+	shaderData.push_back(vs);
+
+	ShaderData fs;
+	fs.filePath = "../Assets/Shaders/Default/sprite_fragment.glsl";
+	fs.type = ShaderType::FRAGMENT;
+	shaderData.push_back(fs);
+
+	_shader.LoadShader(shaderData);
 }
 
 const KM::Matrix GameObject::GetModelMatrix(void)
