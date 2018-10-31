@@ -148,9 +148,29 @@ void Level::RemoveObjectFromLevel(U32 id)
 
 //==========================================================================================================================
 //
-//Render
+//Update and Render all objects
 //
 //==========================================================================================================================	
+void Level::UpdateObjects(void)
+{
+	for(auto i : _gameObjects)
+	{
+		if(i.second->GetActiveUpdate())
+		{
+			i.second->v_Update();
+		}
+	}
+
+	for(auto i : _particles)
+	{
+		if(i.second->GetActiveUpdate())
+		{
+			i.second->Integrate();
+			i.second->v_Update();
+		}
+	}
+}
+
 void Level::RenderObjects(void)
 {
 //==========================================================================================================================
@@ -181,26 +201,6 @@ void Level::RenderObjects(void)
 			i->Render();
 		}
 	}	
-}
-
-void Level::UpdateObjects(void)
-{
-	for(auto i : _gameObjects)
-	{
-		if(i.second->GetActiveUpdate())
-		{
-			i.second->v_Update();
-		}
-	}
-
-	for(auto i : _particles)
-	{
-		if(i.second->GetActiveUpdate())
-		{
-			i.second->Integrate();
-			i.second->v_Update();
-		}
-	}
 }
 //==========================================================================================================================
 //

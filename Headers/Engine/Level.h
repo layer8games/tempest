@@ -147,9 +147,9 @@ namespace KillerEngine
 		
 		void RemoveObjectFromLevel(U32 id);
 
-		void RenderObjects(void);
-
 		void UpdateObjects(void);
+
+		void RenderObjects(void);
 
 //==========================================================================================================================
 //
