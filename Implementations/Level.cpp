@@ -84,26 +84,6 @@ void Level::AddObjectToLevel(shared_ptr<GameObject> obj)
 	}
 }
 
-void Level::AddObjectToLevel(const KP::Particle& obj)
-{
-	_particles.insert({obj.GetID(), shared_ptr<KP::Particle>( const_cast<KP::Particle*>(&obj) )});
-
-	if(_particles.find(obj.GetID()) == _particles.end())
-	{
-		ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel, Unable to add KP::Particle to level. ID = " + obj.GetID());
-	}
-}
-
-void Level::AddObjectToLevel(shared_ptr<KP::Particle> obj)
-{
-	_particles.insert({obj->GetID(), obj});
-
-	if(_particles.find(obj->GetID()) == _particles.end())
-	{
-		ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel, Unable to add KP::Particle to level. ID = " + obj->GetID());
-	}
-}
-
 void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP::ParticleForceGenerator> generator)
 {
 	_particles.insert({particle->GetID(), particle});

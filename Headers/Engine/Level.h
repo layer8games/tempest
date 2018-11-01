@@ -132,10 +132,6 @@ namespace KillerEngine
 
 		void AddObjectToLevel(shared_ptr<GameObject> obj);
 
-		void AddObjectToLevel(const KP::Particle& obj);
-
-		void AddObjectToLevel(shared_ptr<KP::Particle> obj);
-
 		void AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP::ParticleForceGenerator> generator=nullptr);
 
 		inline void RegisterParticleForce(shared_ptr<KP::Particle> particle, shared_ptr<KP::ParticleForceGenerator> generator)

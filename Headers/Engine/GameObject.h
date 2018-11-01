@@ -238,6 +238,13 @@ namespace KillerEngine
 			_color = col;
 		}
 
+		inline void SetColor(F32 red, F32 green, F32 blue)
+		{
+			_color[0] = red;
+			_color[2] = green;
+			_color[3] = blue;
+		}
+
 		inline const Color& GetColor(void) const
 		{
 			return _color;
