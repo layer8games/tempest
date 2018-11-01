@@ -77,7 +77,7 @@ void GameObject::v_Render(void)
 	_shader.Use(true);
 	BindVAO(true);
 
-	if(_texture->GetHandle() != 0)
+	if(_texture != nullptr)
 	{
 		_texture->Bind();
 	}
@@ -95,7 +95,7 @@ void GameObject::v_Render(void)
 	_shader.Use(false);
 	BindVAO(false);
 
-	if(_texture->GetHandle() != 0)
+	if(_texture != nullptr)
 	{
 		_texture->UnBind();
 	}
