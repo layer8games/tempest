@@ -134,6 +134,11 @@ namespace KillerEngine
 
 		const KM::Vector GetMousePos(void);
 
+		inline F64 GetTime(void)
+		{
+			return glfwGetTime();
+		}
+
 //==========================================================================================================================
 //
 //Callback Functions

@@ -9,12 +9,12 @@ using namespace KillerMath;
 //==========================================================================================================================
 Timer::Timer() 
 : 
-_frequency(_QueryFrequency()),
+_clamp(false),
 _deltaTime(0.0f),
 _timeScale(1.0f),
 _totalTime(0.0f),
-_pastCycles(_QueryHiResTimer()),
-_curCycles(_pastCycles),
+_pastTime(KE::WinProgram::Instance()->GetTime()),
+_currentTime(_pastTime),
 _paused(false) 
 {  }
 
@@ -52,16 +52,16 @@ void Timer::Update(void)
 {
 	if(!_paused) 
 	{
-		_curCycles  = _QueryHiResTimer();
-		_deltaTime  = (_curCycles - _pastCycles) / _frequency * _timeScale;
-		_pastCycles = _curCycles;
-		
-		if (_deltaTime < 0.001f || _deltaTime > 1.0f)
+		_currentTime = KE::WinProgram::Instance()->GetTime();
+		_deltaTime = static_cast<real>((_currentTime - _pastTime) * _timeScale);
+		_pastTime = _currentTime;
+
+		if(_clamp && _deltaTime < 0.001f || _deltaTime > 1.0f)
 		{ 
 			_deltaTime = 0.016f; 
 		}
 		
-		_totalTime += _deltaTime;
+		_totalTime += static_cast<F64>(_deltaTime);
 	}
 }
 
@@ -72,37 +72,8 @@ void Timer::SingleStep(void)
 {
 	if(!_paused) 
 	{
-		U64 oneStep = _SecondsToCycles((1.0f/30.0f) * _timeScale);
+		_deltaTime = (1.0f/60.0f) * _timeScale;
 
-		_deltaTime = _CyclesToSeconds(oneStep);
-
-		_totalTime += _SecondsToCycles(_deltaTime);
+		_totalTime += _deltaTime;
 	}
-}
-
-//==========================================================================================================================
-//
-//Private Timer Functions
-//
-//==========================================================================================================================
-//===============================================================================
-//_QueryHiResTimer
-//===============================================================================
-//=====Windows only implemenation=====
-U64 Timer::_QueryHiResTimer(void) 
-{ 
-	static LARGE_INTEGER _cycles;
-	QueryPerformanceCounter(&_cycles);
-	return _cycles.QuadPart;
-}
-
-//===============================================================================
-//_QueryFrequence
-//===============================================================================
-//=====Windows only implemenation=====
-F32 Timer::_QueryFrequency(void) 
-{ 
-	static LARGE_INTEGER _freq;
-	QueryPerformanceFrequency(&_freq); 
-	return F32(_freq.QuadPart);
 }
