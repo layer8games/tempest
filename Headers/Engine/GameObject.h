@@ -87,12 +87,6 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-//===== ID =====
-		inline const U32 GetID(void) const
-		{
-			return _ID;
-		}
-
 //===== All Active =====
 		inline const bool GetActive(void) const
 		{
@@ -157,6 +151,18 @@ namespace KillerEngine
 		inline void SetInactiveRender(void)
 		{
 			_activeRender = false;
+		}
+
+//===== Is Sprite =====
+		inline bool IsSprite(void) const
+		{
+			return _isSprite;
+		}
+
+//===== ID =====
+		inline const U32 GetID(void) const
+		{
+			return _ID;
 		}
 
 //===== Position =====
@@ -248,6 +254,17 @@ namespace KillerEngine
 		inline const Color& GetColor(void) const
 		{
 			return _color;
+		}
+
+//===== Texture =====
+		inline void SetTexture(shared_ptr<Texture> texture)
+		{
+			_texture = texture;
+		}
+
+		inline shared_ptr<Texture> GetTexture(void) const
+		{
+			return _texture;
 		}
 
 //===== Shader =====
@@ -416,9 +433,11 @@ namespace KillerEngine
 		std::vector<F32> 		_uvList;
 		KM::Vector				_position;
 		KM::Vector 				_scale;
-		Color 				_color;
+		Color 					_color;
+		shared_ptr<Texture>		_texture;
 		bool					_activeUpdate;
 		bool					_activeRender;
+		bool 					_isSprite;
 		U32 					_ID;
 		GLuint 					_vao;
 		GLuint 					_vbo[NUM_VBO];

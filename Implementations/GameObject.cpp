@@ -24,8 +24,10 @@ _uvList(),
 _position(0.0f),
 _scale(1.0f),
 _color(1.0f),
+_texture(nullptr),
 _activeUpdate(true),
 _activeRender(true),
+_isSprite(false),
 _ID(_nextID),
 _vao(0),
 _vbo{0}
@@ -45,8 +47,10 @@ _uvList(obj.GetUVList()),
 _position(obj.GetPosition()),
 _scale(obj.GetScale()),
 _color(obj.GetColor()),
+_texture(obj.GetTexture()),
 _activeUpdate(obj.GetActiveUpdate()),
 _activeRender(obj.GetActiveRender()),
+_isSprite(obj.IsSprite()),
 _ID(obj.GetID()),
 _vao(obj.GetVAO()),
 _vbo{0}
@@ -73,10 +77,28 @@ void GameObject::v_Render(void)
 	_shader.Use(true);
 	BindVAO(true);
 
+	if(_texture->GetHandle() != 0)
+	{
+		_texture->Bind();
+	}
+
+	if(_isSprite)
+	{
+		std::cout << "is sprite\n";
+		SetUniform("sprite_color", _color);
+	}
+
+	SetUniform("model", GetModelMatrix());
+
 	glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
 
 	_shader.Use(false);
 	BindVAO(false);
+
+	if(_texture->GetHandle() != 0)
+	{
+		_texture->UnBind();
+	}
 }
 
 //==========================================================================================================================
@@ -455,6 +477,7 @@ void GameObject::LoadMesh(string filepath)
 
 void GameObject::MakeSprite(void)
 {
+	_isSprite = true;
 	_position.Make2D();
 	_vertices.clear();
 
