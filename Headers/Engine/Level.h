@@ -27,7 +27,7 @@ Written by Maxwell Miller
 #include <Engine/Text.h>
 
 namespace KM = KillerMath;
-namespace KP =KillerPhysics;
+namespace KP = KillerPhysics;
 
 //=====STL includes=====
 #include <map>

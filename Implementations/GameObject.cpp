@@ -84,7 +84,6 @@ void GameObject::v_Render(void)
 
 	if(_isSprite)
 	{
-		std::cout << "is sprite\n";
 		SetUniform("sprite_color", _color);
 	}
 

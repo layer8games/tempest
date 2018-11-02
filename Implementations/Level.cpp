@@ -66,6 +66,7 @@ void Level::UpdateLevel(void)
 void Level::AddObjectToLevel(const GameObject& obj)
 {
 	_gameObjects.insert({ obj.GetID(), shared_ptr<GameObject>(const_cast<GameObject*>(&obj)) });
+	_gameObjects[obj.GetID()]->SetUniform("projection", _camera->GetProjectionMatrix());
 
 	if(_gameObjects.find(obj.GetID()) == _gameObjects.end())
 	{
@@ -75,8 +76,9 @@ void Level::AddObjectToLevel(const GameObject& obj)
 
 void Level::AddObjectToLevel(shared_ptr<GameObject> obj)
 {
-	_gameObjects.insert({obj->GetID(), obj});
+	obj->SetUniform("projection", _camera->GetProjectionMatrix());
 
+	_gameObjects.insert({obj->GetID(), obj});
 
 	if(_gameObjects.find(obj->GetID()) == _gameObjects.end())
 	{
@@ -86,6 +88,8 @@ void Level::AddObjectToLevel(shared_ptr<GameObject> obj)
 
 void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP::ParticleForceGenerator> generator)
 {
+	particle->SetUniform("projection", _camera->GetProjectionMatrix());
+
 	_particles.insert({particle->GetID(), particle});
 
 	if(_particles.find(particle->GetID()) == _particles.end())
