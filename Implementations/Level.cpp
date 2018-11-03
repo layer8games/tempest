@@ -86,6 +86,29 @@ void Level::AddObjectToLevel(shared_ptr<GameObject> obj)
 	}
 }
 
+void Level::AddParticleToLevel(const KP::Particle& particle)
+{
+	_particles.insert({ particle.GetID(), shared_ptr<KP::Particle>(const_cast<KP::Particle*>(&particle)) });
+	_particles[particle.GetID()]->SetUniform("projection", _camera->GetProjectionMatrix());
+
+	if(_particles.find(particle.GetID()) == _particles.end())
+	{
+		ErrorManager::Instance()->SetError(ENGINE, "Level::AddParticleToLevel Unable to add Particle to level.");
+	}
+}
+
+void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle)
+{
+	particle->SetUniform("projection", _camera->GetProjectionMatrix());
+
+	_particles.insert({particle->GetID(), particle});
+
+	if(_particles.find(particle->GetID()) == _particles.end())
+	{
+		ErrorManager::Instance()->SetError(ENGINE, "Level::AddParticleToLevel Unable to add Particle to level.");	
+	}
+}
+
 void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP::ParticleForceGenerator> generator)
 {
 	particle->SetUniform("projection", _camera->GetProjectionMatrix());
