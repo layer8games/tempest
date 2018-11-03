@@ -1,4 +1,5 @@
 #include <Engine/Particle.h>
+#include <iostream>
 
 using namespace KillerPhysics;
 
@@ -13,7 +14,7 @@ _velocity(0.0f),
 _acceleration(0.0f),
 _forceAccum(0.0f),
 _gravityForce(0.0f),
-_inverseMass(0.0f),
+_inverseMass(1.0f),
 _damping(0.999f)
 {  }
 

@@ -23,8 +23,11 @@ _indices(),
 _uvList(),
 _position(0.0f),
 _scale(1.0f),
-_active(true),
+_color(1.0f),
+_texture(nullptr),
+_activeUpdate(true),
 _activeRender(true),
+_isSprite(false),
 _ID(_nextID),
 _vao(0),
 _vbo{0}
@@ -42,8 +45,12 @@ _vertices(obj.GetVertices()),
 _indices(obj.GetIndices()),
 _uvList(obj.GetUVList()),
 _position(obj.GetPosition()),
-_active(obj.GetActive()),
+_scale(obj.GetScale()),
+_color(obj.GetColor()),
+_texture(obj.GetTexture()),
+_activeUpdate(obj.GetActiveUpdate()),
 _activeRender(obj.GetActiveRender()),
+_isSprite(obj.IsSprite()),
 _ID(obj.GetID()),
 _vao(obj.GetVAO()),
 _vbo{0}
@@ -70,10 +77,29 @@ void GameObject::v_Render(void)
 	_shader.Use(true);
 	BindVAO(true);
 
+	if(_texture != nullptr)
+	{
+		_texture->Bind();
+		SetUniform("has_texture", true);
+	}
+
+	if(_isSprite)
+	{
+		SetUniform("sprite_color", _color);
+	}
+
+	SetUniform("model", GetModelMatrix());
+
 	glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
 
 	_shader.Use(false);
 	BindVAO(false);
+
+	if(_texture != nullptr)
+	{
+		_texture->UnBind();
+		SetUniform("has_texture", false);
+	}
 }
 
 //==========================================================================================================================
@@ -452,7 +478,40 @@ void GameObject::LoadMesh(string filepath)
 
 void GameObject::MakeSprite(void)
 {
-	
+	_isSprite = true;
+	_position.Make2D();
+	_vertices.clear();
+
+	KM::Vector topRight(1.0f, 1.0f, 0.0f);
+	KM::Vector topLeft(-1.0f, 1.0f, 0.0f);
+	KM::Vector bottomRight(1.0f, -1.0f, 0.0f);
+	KM::Vector bottomLeft(-1.0f, -1.0f, 0.0);
+
+	KM::Vector top(0.0f, 0.5f);
+
+	AddVertex(Vertex(topLeft, 0.0f, 0.0f));
+	AddVertex(Vertex(topRight, 1.0f, 0.0f));
+	AddVertex(Vertex(bottomRight, 1.0f, 1.0f));
+
+	AddVertex(Vertex(topLeft, 0.0f, 0.0f));
+	AddVertex(Vertex(bottomRight, 1.0f, 1.0f));
+	AddVertex(Vertex(bottomLeft, 0.0f, 1.0f));
+
+	v_InitBuffers();
+
+	std::vector<ShaderData> shaderData;
+
+	ShaderData vs;
+	vs.filePath = "../Assets/Shaders/Default/sprite_vertex.glsl";
+	vs.type = ShaderType::VERTEX;
+	shaderData.push_back(vs);
+
+	ShaderData fs;
+	fs.filePath = "../Assets/Shaders/Default/sprite_fragment.glsl";
+	fs.type = ShaderType::FRAGMENT;
+	shaderData.push_back(fs);
+
+	_shader.LoadShader(shaderData);
 }
 
 const KM::Matrix GameObject::GetModelMatrix(void)

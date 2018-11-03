@@ -10,6 +10,7 @@ using namespace KillerEngine;
 //==========================================================================================================================
 Level::Level(void) 
 : 
+_camera(new Camera()),
 _mapWidth(0),
 _mapHeight(0),
 _mapTopBorder(0),
@@ -18,14 +19,15 @@ _mapRightBorder(0),
 _mapLeftBorder(0),
 _bgColor(),
 _ID(),
-_camera(new Camera()),
 _gameObjects(),
 _particles(),
 _forceRegistry()
 {  }
 
 Level::~Level(void)
-{  }
+{
+	delete _camera;
+}
 
 //==========================================================================================================================
 //
@@ -64,6 +66,7 @@ void Level::UpdateLevel(void)
 void Level::AddObjectToLevel(const GameObject& obj)
 {
 	_gameObjects.insert({ obj.GetID(), shared_ptr<GameObject>(const_cast<GameObject*>(&obj)) });
+	_gameObjects[obj.GetID()]->SetUniform("projection", _camera->GetProjectionMatrix());
 
 	if(_gameObjects.find(obj.GetID()) == _gameObjects.end())
 	{
@@ -73,8 +76,9 @@ void Level::AddObjectToLevel(const GameObject& obj)
 
 void Level::AddObjectToLevel(shared_ptr<GameObject> obj)
 {
-	_gameObjects.insert({obj->GetID(), obj});
+	obj->SetUniform("projection", _camera->GetProjectionMatrix());
 
+	_gameObjects.insert({obj->GetID(), obj});
 
 	if(_gameObjects.find(obj->GetID()) == _gameObjects.end())
 	{
@@ -82,28 +86,33 @@ void Level::AddObjectToLevel(shared_ptr<GameObject> obj)
 	}
 }
 
-void Level::AddObjectToLevel(const KP::Particle& obj)
+void Level::AddParticleToLevel(const KP::Particle& particle)
 {
-	_particles.insert({obj.GetID(), shared_ptr<KP::Particle>( const_cast<KP::Particle*>(&obj) )});
+	_particles.insert({ particle.GetID(), shared_ptr<KP::Particle>(const_cast<KP::Particle*>(&particle)) });
+	_particles[particle.GetID()]->SetUniform("projection", _camera->GetProjectionMatrix());
 
-	if(_particles.find(obj.GetID()) == _particles.end())
+	if(_particles.find(particle.GetID()) == _particles.end())
 	{
-		ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel, Unable to add KP::Particle to level. ID = " + obj.GetID());
+		ErrorManager::Instance()->SetError(ENGINE, "Level::AddParticleToLevel Unable to add Particle to level.");
 	}
 }
 
-void Level::AddObjectToLevel(shared_ptr<KP::Particle> obj)
+void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle)
 {
-	_particles.insert({obj->GetID(), obj});
+	particle->SetUniform("projection", _camera->GetProjectionMatrix());
 
-	if(_particles.find(obj->GetID()) == _particles.end())
+	_particles.insert({particle->GetID(), particle});
+
+	if(_particles.find(particle->GetID()) == _particles.end())
 	{
-		ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel, Unable to add KP::Particle to level. ID = " + obj->GetID());
+		ErrorManager::Instance()->SetError(ENGINE, "Level::AddParticleToLevel Unable to add Particle to level.");	
 	}
 }
 
 void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP::ParticleForceGenerator> generator)
 {
+	particle->SetUniform("projection", _camera->GetProjectionMatrix());
+
 	_particles.insert({particle->GetID(), particle});
 
 	if(_particles.find(particle->GetID()) == _particles.end())
@@ -146,9 +155,29 @@ void Level::RemoveObjectFromLevel(U32 id)
 
 //==========================================================================================================================
 //
-//Render
+//Update and Render all objects
 //
 //==========================================================================================================================	
+void Level::UpdateObjects(void)
+{
+	for(auto i : _gameObjects)
+	{
+		if(i.second->GetActiveUpdate())
+		{
+			i.second->v_Update();
+		}
+	}
+
+	for(auto i : _particles)
+	{
+		if(i.second->GetActiveUpdate())
+		{
+			i.second->Integrate();
+			i.second->v_Update();
+		}
+	}
+}
+
 void Level::RenderObjects(void)
 {
 //==========================================================================================================================
@@ -179,26 +208,6 @@ void Level::RenderObjects(void)
 			i->Render();
 		}
 	}	
-}
-
-void Level::UpdateObjects(void)
-{
-	for(auto i : _gameObjects)
-	{
-		if(i.second->GetActiveUpdate())
-		{
-			i.second->v_Update();
-		}
-	}
-
-	for(auto i : _particles)
-	{
-		if(i.second->GetActiveUpdate())
-		{
-			i.second->Integrate();
-			i.second->v_Update();
-		}
-	}
 }
 //==========================================================================================================================
 //

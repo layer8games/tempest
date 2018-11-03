@@ -27,7 +27,7 @@ Written by Maxwell Miller
 #include <Engine/Text.h>
 
 namespace KM = KillerMath;
-namespace KP =KillerPhysics;
+namespace KP = KillerPhysics;
 
 //=====STL includes=====
 #include <map>
@@ -132,9 +132,9 @@ namespace KillerEngine
 
 		void AddObjectToLevel(shared_ptr<GameObject> obj);
 
-		void AddObjectToLevel(const KP::Particle& obj);
+		void AddParticleToLevel(const KP::Particle& particle);
 
-		void AddObjectToLevel(shared_ptr<KP::Particle> obj);
+		void AddParticleToLevel(shared_ptr<KP::Particle> particle);
 
 		void AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP::ParticleForceGenerator> generator=nullptr);
 
@@ -147,9 +147,9 @@ namespace KillerEngine
 		
 		void RemoveObjectFromLevel(U32 id);
 
-		void RenderObjects(void);
-
 		void UpdateObjects(void);
+
+		void RenderObjects(void);
 
 //==========================================================================================================================
 //
@@ -266,6 +266,8 @@ namespace KillerEngine
 
 		virtual ObjectType v_StringToTileData(string s);
 
+
+		Camera* _camera;
 	private:
 //==========================================================================================================================
 //
@@ -287,7 +289,6 @@ namespace KillerEngine
 		S32     _mapLeftBorder;
 		Color   _bgColor;
 		U32     _ID;
-		Camera* 						  		  _camera;
 		std::map<U32, shared_ptr<GameObject>>	  _gameObjects;
 		std::map<U32, shared_ptr<KP::Particle>>   _particles;
 		std::map<U32, TileData> 				  _2DTileData;

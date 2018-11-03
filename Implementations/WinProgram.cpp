@@ -55,10 +55,10 @@ void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen)
 	_totalWidth = width;
 	_totalHeight = height;
 
-	_right = _totalWidth;
-	_left = 0;
-	_top = _totalHeight;
-	_bottom = 0;
+	_right = static_cast<F32>(_totalWidth) / 2.0f;
+	_left = -static_cast<F32>(_totalWidth) / 2.0f;
+	_top = static_cast<F32>(_totalHeight) / 2.0f;
+	_bottom = -static_cast<F32>(_totalHeight) / 2.0f;
 
     if(!glfwInit())
     {
@@ -81,10 +81,6 @@ void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen)
     	{
     		_totalWidth = vidMode->width;
     		_totalHeight = vidMode->height;
-    		_right = _totalWidth;
-    		_left = 0;
-    		_top = _totalHeight;
-    		_bottom = 0;
     		
     		_window = glfwCreateWindow(_totalWidth, _totalHeight, wndName.c_str(), monitor, NULL);
     	}
@@ -325,6 +321,16 @@ const KM::Vector WinProgram::GetMousePos(void)
 {
     F64 mouseX, mouseY;
     glfwGetCursorPos(_window, &mouseX, &mouseY);
+
+    //Flips y, sets origin at bottom left of screen
+    mouseY = _totalHeight - mouseY;
+    
+    //Moves coords to be relative to middle. 
+    mouseX = mouseX + _left;
+    mouseY = mouseY + _bottom;
+
+    //TODO:: This should probably be done through a matrix transform
+    //but for now, this seems way easier. 
 
     return KM::Vector(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
 }

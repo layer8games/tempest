@@ -41,7 +41,7 @@ namespace KillerEngine
 	engine. It will be flushed out later to include more details. */
 	class ErrorManager 
 	{
-public:
+	public:
 //==========================================================================================================================
 //
 //Destructor
@@ -73,7 +73,7 @@ public:
 	and displayed them one by one. Messages are never removed once they are thrown. */		
 		void DisplayErrors(void);
 
-protected:
+	protected:
 //==========================================================================================================================
 //
 //Constructor
@@ -82,7 +82,7 @@ protected:
 /*! Default constructor. No special actions are taken. Protected because this class follows the singleton pattern */		
 		ErrorManager(void);
 
-private:
+	private:
 		static shared_ptr<ErrorManager> _instance;	///< Global singleton instance.
 
 		U32       			 _numErrors;			///< Total count of errors.

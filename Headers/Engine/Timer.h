@@ -3,12 +3,10 @@ The high precision timer for the Killer1 Engine. At the time of writting
 this the timer is windows specific, but cross platform functionality is
 planned in the future. 
 
-It is imporatant to note a few imporant aspect of some of the functions. 
-
-1. Do not use _CyclesToSeconds on big values, it will slow down a lot. 
-
-2. Update is called once per frame to update the time, so be careful what
-is put into this function. 
+It uses the GLFW function glfwGetTime, located in the WinProgram to get
+the total time that the glfw window has been open. It used to have a 
+customer frequency timer, but this turned out to be too eratic, and 
+was removed.  
 
 This is not free to use, and cannot be used without the express permission
 of KillerWave.
@@ -19,8 +17,9 @@ Written by Maxwell Miller
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
+#include <Engine/WinProgram.h>
 
-//namespace KE = KillerEngine;
+namespace KE = KillerEngine;
 
 namespace KillerMath 
 {
@@ -42,33 +41,42 @@ namespace KillerMath
 //Accessors
 //
 //==========================================================================================================================
-		//Setters and Getters
-		void SetPaused(bool paused) 
+		inline void SetClamp(bool state)
+		{
+			_clamp = state;
+		}
+
+		inline bool GetClamp(void) const
+		{
+			return _clamp;
+		}
+
+		inline void SetPaused(bool paused)
 		{ 
 			_paused = paused; 
 		}
 		
-		bool GetPaused(void)
+		inline bool GetPaused(void) const
 		{ 
 			return _paused; 
 		}
 
-		void SetTimeScale(F32 scale)
+		inline void SetTimeScale(F32 scale)
 		{ 
 			_timeScale = scale; 
 		}
 		
-		F32  GetTimeScale(void)
+		inline F32  GetTimeScale(void) const
 		{ 
 			return _timeScale; 
 		}
 
-		F32 DeltaTime(void)
+		inline real DeltaTime(void) const
 		{ 
-			return _deltaTime; 
+			return _deltaTime;
 		}
 		
-		F64 TotalTime(void)
+		inline F64 TotalTime(void) const
 		{ 
 			return _totalTime; 
 		}
@@ -93,35 +101,13 @@ namespace KillerMath
 	private:
 		static shared_ptr<Timer> _instance;
 
-		F32  _deltaTime;
-		F32  _timeScale;
+		bool _clamp;
+		real  _deltaTime;
+		real  _timeScale;
 		F64  _totalTime;
-		U64  _pastCycles;
-		U64  _curCycles;
-		F32  _frequency;
+		F64  _pastTime;
+		F64  _currentTime;
 		bool _paused;
-		
-		
-//==========================================================================================================================
-//
-//Private Timer Functions
-//
-//==========================================================================================================================		 
-		inline U64 _SecondsToCycles(F32 timeSeconds)
-		{ 
-			return (U64)(timeSeconds * _frequency); 
-		}
-		
-		//=====WARNING do not use this on big values, very system intensive=====
-		inline F32 _CyclesToSeconds(U64 timeCycles)
-		{ 
-			return (F32)timeCycles / _frequency; 
-		}
-
-		U64 _QueryHiResTimer(void);
-		
-		F32 _QueryFrequency(void);	
-
 	};
 
 }//End namespace
