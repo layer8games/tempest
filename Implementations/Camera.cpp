@@ -39,7 +39,14 @@ Camera::~Camera(void)
 //==========================================================================================================================
 void Camera::SetOrthographic(void)
 {
-	_projection.MakeOrthographic(-1.0f, 1.0f, -1.0f, 1.0f, 0.01f, 1000.0f);
+	F32 left = WinProgram::Instance()->GetScreenLeft();
+	F32 right = WinProgram::Instance()->GetScreenRight(); 
+	F32 bottom = WinProgram::Instance()->GetScreenBottom(); 
+	F32 top = WinProgram::Instance()->GetScreenTop(); 
+	F32 nearPlane=-100.0f; 
+	F32 farPlane=100.0f;
+
+	_projection.MakeOrthographic(left, right, bottom, top, nearPlane, farPlane);
 }
 
 void Camera::SetOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)

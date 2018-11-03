@@ -80,6 +80,7 @@ void GameObject::v_Render(void)
 	if(_texture != nullptr)
 	{
 		_texture->Bind();
+		SetUniform("has_texture", true);
 	}
 
 	if(_isSprite)
@@ -97,6 +98,7 @@ void GameObject::v_Render(void)
 	if(_texture != nullptr)
 	{
 		_texture->UnBind();
+		SetUniform("has_texture", false);
 	}
 }
 
@@ -480,10 +482,10 @@ void GameObject::MakeSprite(void)
 	_position.Make2D();
 	_vertices.clear();
 
-	KM::Vector topRight(0.5f, 0.5f, 0.0f);
-	KM::Vector topLeft(-0.5f, 0.5f, 0.0f);
-	KM::Vector bottomRight(0.5f, -0.5f, 0.0f);
-	KM::Vector bottomLeft(-0.5f, -0.5f, 0.0);
+	KM::Vector topRight(1.0f, 1.0f, 0.0f);
+	KM::Vector topLeft(-1.0f, 1.0f, 0.0f);
+	KM::Vector bottomRight(1.0f, -1.0f, 0.0f);
+	KM::Vector bottomLeft(-1.0f, -1.0f, 0.0);
 
 	KM::Vector top(0.0f, 0.5f);
 
