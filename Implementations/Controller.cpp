@@ -72,6 +72,11 @@ const KM::Vector Controller::GetMouseCoord(void)
 	return WinProgram::Instance()->GetMousePos();
 }
 
+const KM::Vector Controller::GetMouseCoordInScreen(void)
+{
+	return WinProgram::Instance()->GetMousePosInScreen();
+}
+
 void Controller::Update(void)
 {
 	for(int i = 0; i < TOTAL_KEYS; ++i)

@@ -144,6 +144,8 @@ namespace KillerEngine
 
 		const KM::Vector GetMouseCoord(void);
 
+		const KM::Vector GetMouseCoordInScreen(void);
+
 /*! Returns the raw coordinates of a Left Click in screen space. */
 		const KM::Vector GetLeftMouseCoord(void) const
 		{ 
@@ -196,5 +198,7 @@ BUG! This is not copying anything at all. It is only passing the new refalone
 		bool			_curActiveKeys[TOTAL_KEYS];		///< Array of keys in a pressed state as of this frame, indexed by ID.
 		KM::Vector 		_leftClickCoordinates;			///< Coordinates of last left click.
 		KM::Vector		_rightClickCoordinates;			///< Coordinates of last right click.
+		KM::Vector 		_leftClickCoordInScreen;
+		KM::Vector 		_rightClickCoordInScreen;
 	};
 }//End namespace
