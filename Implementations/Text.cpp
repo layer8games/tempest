@@ -127,3 +127,11 @@ void Text::SetTextColor(const Color& col)
 		i.SetColor(col);
 	}
 }
+
+void Text::SetUniforms(string name, const KM::Matrix& matrix)
+{
+	for(auto i : _characterList)
+	{
+		i.SetUniform(name, matrix);
+	}
+}

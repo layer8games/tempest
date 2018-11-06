@@ -55,9 +55,17 @@ namespace KillerEngine
 
 		void SetPosition(const KM::Vector& pos);
 
+		void SetPosition(F32 x, F32 y)
+		{
+			_pos[0] = x;
+			_pos[1] = y;
+		}
+
 		void AddText(string text);
 
 		void SetTextColor(const Color& col);
+
+		void SetUniforms(string name, const KM::Matrix& matrix);
 
 //==========================================================================================================================
 //
