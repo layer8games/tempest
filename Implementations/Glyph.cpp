@@ -20,5 +20,12 @@ _characterData()
 	GameObject::MakeSprite();
 }
 
+Glyph::Glyph(const Glyph& glyph)
+:
+GameObject(glyph),
+_character(glyph.GetCharacter()),
+_characterData(glyph.GetCharacterData())
+{  }
+
 Glyph::~Glyph(void)
 {  }

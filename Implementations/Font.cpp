@@ -110,7 +110,7 @@ void Font::InitFont(string fontName, string filePath, U32 fontSize)
 		texture.SetHandle(textureHandle);
 
 		glyph.SetCharacter(c, data);
-		//glyph.SetTexture(shared_ptr<Texture>(&texture));
+		glyph.SetTexture(shared_ptr<Texture>(&texture));
 
 		_characterGlyphs.insert({c, glyph});
 

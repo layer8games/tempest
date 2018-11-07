@@ -74,6 +74,8 @@ GameObject::~GameObject(void)
 //==========================================================================================================================
 void GameObject::v_Render(void)
 {
+	std::cout << "game object render called\n";
+
 	_shader.Use(true);
 	BindVAO(true);
 

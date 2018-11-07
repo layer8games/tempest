@@ -88,8 +88,8 @@ void Text::AddText(string text)
 		
 		CharacterData data = g.GetCharacterData();
 
-		//g.SetColor(_color);
-		g.SetColor(1.0f, 0.0f, 0.0f);
+		g.SetColor(_color);
+		//g.SetColor(1.0f, 0.0f, 0.0f);
 
 		//g.SetPosition(currentPos[0] + data.bearingX, currentPos[1] - (data.height - data.bearingY));
 		g.SetPosition(currentPos);
