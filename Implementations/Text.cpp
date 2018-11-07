@@ -88,7 +88,8 @@ void Text::AddText(string text)
 		
 		CharacterData data = g.GetCharacterData();
 
-		g.SetColor(_color);
+		//g.SetColor(_color);
+		g.SetColor(1.0f, 0.0f, 0.0f);
 
 		//g.SetPosition(currentPos[0] + data.bearingX, currentPos[1] - (data.height - data.bearingY));
 		g.SetPosition(currentPos);
@@ -102,8 +103,9 @@ void Text::AddText(string text)
 			currentPos[0] += data.xAdvance;
 		//}
 		
-		g.SetScale(static_cast<F32>(data.width), static_cast<F32>(data.height));
+		//g.SetScale(static_cast<F32>(data.width), static_cast<F32>(data.height));
 		//g.SetScale(size, size);
+		g.SetScale(25.0f, 25.0f);
 
 		_characterList.push_back(g);
 	}	

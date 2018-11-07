@@ -22,8 +22,3 @@ _characterData()
 
 Glyph::~Glyph(void)
 {  }
-
-void Glyph::v_Render(void)
-{
-	GameObject::v_Render();
-}
