@@ -75,7 +75,7 @@ void Font::InitFont(string fontName, string filePath, U32 fontSize)
 			continue;
 		}
 		
-		Texture texture{};
+		shared_ptr<Texture> texture(new Texture());
 		CharacterData data{};
 		Glyph glyph{};
 
@@ -107,10 +107,12 @@ void Font::InitFont(string fontName, string filePath, U32 fontSize)
 			face->glyph->bitmap.buffer
 		);
 
-		texture.SetHandle(textureHandle);
+		texture->SetHandle(textureHandle);
+		texture->SetWidth(data.width);
+		texture->SetHeight(data.height);
 
 		glyph.SetCharacter(c, data);
-		glyph.SetTexture(shared_ptr<Texture>(&texture));
+		glyph.SetTexture(texture);
 
 		_characterGlyphs.insert({c, glyph});
 

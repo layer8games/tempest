@@ -126,7 +126,5 @@ namespace KillerEngine
 		U32 	 _fontSize;
 		string   _fontName;
 		GlyphMap _characterGlyphs; ///< All data from .fnt file stored in a RenderText can use for placement.
-
-
 	};
 }
