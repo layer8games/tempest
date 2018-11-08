@@ -38,6 +38,8 @@ namespace KillerEngine
 
 		~Glyph(void);
 
+		Glyph& operator=(const Glyph& glyph);
+
 //==========================================================================================================================
 //
 //Virtual Functions
@@ -46,11 +48,29 @@ namespace KillerEngine
 		void v_Update(void)
 		{  }
 
+		void v_Render(void);
+
+		void v_InitBuffers(void);
+
+//==========================================================================================================================
+//
+//Functions
+//
+//==========================================================================================================================		
+		void InitShader(void);
+
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================
+		inline void SetCharacter(char character, const Texture& tex, const CharacterData& characterData)
+		{
+			_character = character;
+			_texture = tex;
+			_characterData = characterData;
+		}
+
 		inline void SetCharacter(char character, const CharacterData& characterData)
 		{
 			_character = character;
@@ -62,9 +82,44 @@ namespace KillerEngine
 			return _character;
 		}
 
+		inline void SetGlyphScale(F32 scale)
+		{
+			_glyphScale = scale;
+		}
+
+		inline F32 GetGlyphScale(void) const
+		{
+			return _glyphScale;
+		}
+
+		inline void SetTexture(const Texture& tex)
+		{
+			_texture = tex;
+		}
+
+		inline const Texture& GetTexture(void) const
+		{
+			return _texture;
+		}
+
 		inline const CharacterData& GetCharacterData(void) const
 		{
 			return _characterData;
+		}
+
+		inline void SetColor(const Color& c)
+		{
+			_color = c;
+		}
+
+		inline const Color& GetColor(void) const
+		{
+			return _color;
+		}
+
+		inline const KM::Matrix& GetProjectionMatrix(void) const
+		{
+			return _projection;
 		}
 
 //==========================================================================================================================
@@ -81,6 +136,10 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 		char 		  _character;
+		F32 		  _glyphScale;
+		Texture 	  _texture;
 		CharacterData _characterData;
+		Color 		  _color;
+		KM::Matrix	  _projection;
 	};//end Class
 }//end Namespace
