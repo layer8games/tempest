@@ -109,10 +109,18 @@ void Texture::LoadTexture(string filePath, bool generateMipMaps)
 	}
 }
 
-void Texture::Bind(GLuint texUnit) const
+void Texture::Bind(bool state, GLuint texUnit) const
 {
-	glActiveTexture(GL_TEXTURE0 + texUnit);
-	glBindTexture(GL_TEXTURE_2D, _handle);
+	if(state) 
+	{
+		glActiveTexture(GL_TEXTURE0 + texUnit);
+		glBindTexture(GL_TEXTURE_2D, _handle);
+	}
+	else
+	{
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
+	
 }
 
 void Texture::UnBind(void) const

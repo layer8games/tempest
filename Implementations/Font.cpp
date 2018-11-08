@@ -111,8 +111,10 @@ void Font::InitFont(string fontName, string filePath, U32 fontSize)
 		texture->SetWidth(data.width);
 		texture->SetHeight(data.height);
 
+		glyph.v_InitBuffers();
 		glyph.SetCharacter(c, data);
 		glyph.SetTexture(texture);
+		glyph.SetScale(25.0f, 25.0f);
 
 		_characterGlyphs.insert({c, glyph});
 

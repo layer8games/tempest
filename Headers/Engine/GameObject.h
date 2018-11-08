@@ -267,6 +267,11 @@ namespace KillerEngine
 			return _texture;
 		}
 
+		inline void BindTexture(bool state=true)
+		{
+			_texture->Bind(state);
+		}
+
 //===== Shader =====
 		inline const Shader& GetShader(void) const
 		{

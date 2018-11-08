@@ -312,5 +312,11 @@
     <None Include="..\..\Assets\Shaders\Default\sprite_fragment.glsl">
       <Filter>Assets\Shaders</Filter>
     </None>
+    <None Include="..\..\Assets\Shaders\Default\glyph_fragment.glsl">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="..\..\Assets\Shaders\Default\glyph_vertex.glsl">
+      <Filter>Assets\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

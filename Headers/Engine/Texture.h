@@ -94,7 +94,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		void LoadTexture(string filePath, bool generateMipMaps=true);
 
-		void Bind(GLuint texUnit=0) const;
+		void Bind(bool state=true, GLuint texUnit=0) const;
 
 		void UnBind(void) const;
 
