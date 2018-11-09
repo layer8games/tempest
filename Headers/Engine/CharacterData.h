@@ -11,6 +11,7 @@ Written by Maxwell Miller
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
+#include <Engine/Texture.h>
 
 namespace KillerEngine
 {
@@ -21,5 +22,6 @@ namespace KillerEngine
 		S32 bearingX;
 		S32 bearingY;
 		S32 xAdvance;
+		shared_textre<Texture> texture;
 	};
 }//end Namespace
