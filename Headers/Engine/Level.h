@@ -137,7 +137,7 @@ namespace KillerEngine
 			_forceRegistry.Add(particle, generator);
 		}
 
-		void AddTextToLevel(shared_ptr<Text> text);
+		void AddTextToLevel(const Text& text);
 		
 		void RemoveObjectFromLevel(U32 id);
 

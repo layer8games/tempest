@@ -97,7 +97,7 @@ namespace KillerEngine
 			return _font;
 		}
 
-		std::vector<Glyph> GetCharacterList(void)
+		std::vector<shared_ptr<Glyph>> GetCharacterList(void) const
 		{
 			return _characterList;
 		}
@@ -140,7 +140,7 @@ namespace KillerEngine
 		KM::Vector 						_pos;
 		string 	   						_text;
 		Font   	   						_font;
-		std::vector<Glyph>		 		_characterList;
+		std::vector<shared_ptr<Glyph>>	_characterList;
 		KM::Vector 						_scale;
 		Color 							_color;
 	};

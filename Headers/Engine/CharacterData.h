@@ -22,6 +22,6 @@ namespace KillerEngine
 		S32 bearingX;
 		S32 bearingY;
 		S32 xAdvance;
-		shared_textre<Texture> texture;
+		shared_ptr<Texture> texture;
 	};
 }//end Namespace

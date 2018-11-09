@@ -69,7 +69,8 @@ void Text::Render(void)
 	{
 		for(U32 i = 0; i < _characterList.size(); ++i)
 		{
-			_characterList[i].v_Render();
+			//std::cout << "trying to render " << _characterList[i].GetCharacter() << std::endl;
+			//_characterList[i].v_Render();
 		}
 	}
 }
@@ -84,30 +85,37 @@ void Text::AddText(string text)
 
 	for(U32 i = 0; i < _text.size(); ++i)
 	{
-		Glyph g = _font.GetCharacterGlyph(_text[i]);
-		
-		CharacterData data = g.GetCharacterData();
+		//Glyph g = _font.GetCharacterGlyph(_text[i]);
+		CharacterData data = _font.GetCharacter(_text[i]);
 
-		g.SetColor(_color);
-		//g.SetColor(1.0f, 0.0f, 0.0f);
+		//std::cout << "for " << _text[i] << " creating glyph with width " << data.width << " height " << data.height << " texture with handel " << data.texture->GetHandle() << std::endl;
 
-		//g.SetPosition(currentPos[0] + data.bearingX, currentPos[1] - (data.height - data.bearingY));
-		g.SetPosition(currentPos);
+		shared_ptr<Glyph> g(new Glyph());
+		g->v_InitBuffers();
+		g->SetScale(static_cast<F32>(data.width), static_cast<F32>(data.height));
+		//g->SetScale(25.0f, 25.0f);
+		g->SetColor(_color);
+		//g->SetColor(1.0f, 0.0f, 0.0f);
+		g->SetPosition(currentPos[0] + data.bearingX, currentPos[1] - (data.height - data.bearingY));
+		//g->SetPosition(currentPos);
+		g->SetTexture(data.texture);
+		g->SetCharacter(_text[i], data);
 
-		//std::cout << "for character " << _text[i] << " xAdvance is " << data.xAdvance << " and offset will be " << currentPos[0] << std::endl
-		//<< "pos is " << g.GetPosition()[0] << " " << g.GetPosition()[1] << std::endl
-		//<< "scale will be " << data.width << " " << data.height << std::endl
-		//<< "size is " << size << std::endl;
 		//if(_text[i + 1] != ' ')
 		//{
-			currentPos[0] += data.xAdvance;
+		currentPos[0] += data.xAdvance;
 		//}
-		
-		//g.SetScale(static_cast<F32>(data.width), static_cast<F32>(data.height));
-		//g.SetScale(size, size);
-		g.SetScale(25.0f, 25.0f);
 
+		std::cout << "xAdvance is " << data.xAdvance << " for " << _text[i] << std::endl;
+		
+		//g->SetScale(static_cast<F32>(data.width), static_cast<F32>(data.height));
+		//g->SetScale(size, size);
+
+		//std::cout << "from glyph " << g->GetCharacter() << std::endl;
+		
 		_characterList.push_back(g);
+
+		//std::cout << "from char list " << _characterList[i].GetCharacter() << std::endl;
 	}	
 }//End AddText
 
@@ -126,7 +134,7 @@ void Text::SetTextColor(const Color& col)
 {
 	for(auto i : _characterList)
 	{
-		i.SetColor(col);
+		i->SetColor(col);
 	}
 }
 
@@ -134,6 +142,6 @@ void Text::SetUniforms(string name, const KM::Matrix& matrix)
 {
 	for(auto i : _characterList)
 	{
-		i.SetUniform(name, matrix);
+		i->SetUniform(name, matrix);
 	}
 }

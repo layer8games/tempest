@@ -126,11 +126,16 @@ void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP:
 	}
 }
 
-void Level::AddTextToLevel(std::shared_ptr<Text> text)
+void Level::AddTextToLevel(const Text& text)
 {
-	text->SetUniforms("projection", _camera->GetProjectionMatrix());
+	//text->SetUniforms("projection", _camera->GetProjectionMatrix());
 
-	_textList.push_back(text);
+	//_textList.push_back(text);
+	std::vector<shared_ptr<Glyph>> v = text.GetCharacterList();
+	for(auto i : v)
+	{
+		AddObjectToLevel(i);
+	}
 }
 
 void Level::_AddTile(TileData data)
