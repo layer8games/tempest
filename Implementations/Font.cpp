@@ -75,7 +75,7 @@ void Font::InitFont(string fontName, string filePath, U32 fontSize)
 			continue;
 		}
 		
-		Texture texture{};
+		shared_ptr<Texture> texture(new Texture());
 		CharacterData data{};
 		Glyph glyph{};
 
@@ -107,11 +107,13 @@ void Font::InitFont(string fontName, string filePath, U32 fontSize)
 			face->glyph->bitmap.buffer
 		);
 
-		texture.SetHandle(textureHandle);
+		texture->SetHandle(textureHandle);
+		texture->SetWidth(data.width);
+		texture->SetHeight(data.height);
 
-		glyph.SetCharacter(c, texture, data);
+		data.texture = texture;
 
-		_characterGlyphs.insert({c, glyph});
+		_characterGlyphs.insert({c, data});
 
 		glBindTexture(GL_TEXTURE_2D, 0);
 
@@ -139,6 +141,7 @@ void Font::InitFont(string fontName, string filePath, U32 fontSize)
 Font& Font::operator=(const Font& font)
 {
 	_fontName = font.GetName();
+	_fontSize = font.GetSize();
 	_characterGlyphs = font.GetAllCharacterGlyphs();
 
 	return *this;
@@ -147,6 +150,7 @@ Font& Font::operator=(const Font& font)
 Font& Font::operator=(const Font* font)
 {
 	_fontName = font->GetName();
+	_fontSize = font->GetSize();
 	_characterGlyphs = font->GetAllCharacterGlyphs();
 
 	return *this;

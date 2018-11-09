@@ -4,10 +4,6 @@
 using namespace KillerEngine;
 
 //==========================================================================================================================
-//Static Init
-//==========================================================================================================================
-	static U32 _nextID = 1;
-//==========================================================================================================================
 //
 //Constructors	 	
 //
@@ -15,32 +11,27 @@ using namespace KillerEngine;
 Glyph::Glyph(void) 
 :
 _character(),
-_texture(),
-_characterData(),
-_color(1.0f, 1.0f, 1.0f),
-_projection(1.0f)
-{
-	//TODO::Remove, this is bad
-	v_InitBuffers();
-}
+_characterData()
+{  }
 
 Glyph::Glyph(const Glyph& glyph)
 :
+GameObject(glyph),
 _character(glyph.GetCharacter()),
-_texture(glyph.GetTexture()),
-_characterData(glyph.GetCharacterData()),
-_color(glyph.GetColor()),
-_projection(1.0f)
-{
-	//std::cout << "At the time of copy, char is " << glyph.GetCharacter() << "\n";
-	//TODO::Remove this is very bad
-	v_InitBuffers();
-	GameObject::SetPosition(glyph.GetPosition());
-	GameObject::SetScale(glyph.GetScale());
-}
+_characterData(glyph.GetCharacterData())
+{  }
 
 Glyph::~Glyph(void)
 {  }
+
+/*
+Glyph& Glyph::operator=(const Glyph& glyph)
+{
+	GameObject = glyph;
+	_character = glyph.GetCharacter(),
+	_characterDatar = glyph.GetCharacterData();
+}
+*/
 
 //==========================================================================================================================
 //
@@ -49,23 +40,18 @@ Glyph::~Glyph(void)
 //==========================================================================================================================
 void Glyph::v_Render(void)
 {
-	//std::cout << "char is " << _character << "\n";
-
 	GameObject::_shader.Use(true);
-	GameObject::_shader.SetUniform("text_offset", GameObject::GetPosition());
-	GameObject::_shader.SetUniform("text_scale", GameObject::GetScale());
-	GameObject::_shader.SetUniform("projection", _projection);
-	GameObject::_shader.SetUniform("text_color", _color);
-	
 
-	_texture.Bind();
+	GameObject::SetUniform("sprite_color", GameObject::GetColor());
+	GameObject::SetUniform("model", GameObject::GetModelMatrix());
 	
+	GameObject::BindTexture(true);
 	GameObject::BindVAO(true);
 
 	glDrawArrays(GL_TRIANGLES, 0, GameObject::GetNumVertices());
 
-	_texture.UnBind();
 	GameObject::_shader.Use(false);
+	GameObject::BindTexture(false);
 	GameObject::BindVAO(false);
 }
 
@@ -85,17 +71,6 @@ void Glyph::v_InitBuffers(void)
 	GameObject::AddVertex(Vertex(bottomLeft, 0.0f, 1.0f));
 
 	GameObject::v_InitBuffers();
-
-	//TODO: Need to store depth in the WinProgram
-	_projection.MakeOrthographic
-	(
-		static_cast<F32>(-WinProgram::Instance()->GetWidth()) / 2, 
-		static_cast<F32>(WinProgram::Instance()->GetWidth()) / 2,
-		static_cast<F32>(-WinProgram::Instance()->GetHeight()) / 2,
-		static_cast<F32>(WinProgram::Instance()->GetHeight()) / 2, 
-		-100.0f, 
-		100.0f
-	);
 
 	std::vector<ShaderData> shaderSources;
 

@@ -267,6 +267,11 @@ namespace KillerEngine
 			return _texture;
 		}
 
+		inline void BindTexture(bool state=true)
+		{
+			_texture->Bind(state);
+		}
+
 //===== Shader =====
 		inline const Shader& GetShader(void) const
 		{
@@ -306,7 +311,7 @@ namespace KillerEngine
 			_shader.SetUniformVec3(name.c_str(), vec);
 		}
 
-		inline void SetUniform(string name, KM::Matrix mat)
+		inline void SetUniform(string name, const KM::Matrix& mat)
 		{
 			_shader.Use();
 			_shader.SetUniform(name.c_str(), mat);

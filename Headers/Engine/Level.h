@@ -96,12 +96,6 @@ namespace KillerEngine
 //==========================================================================================================================
 
 		virtual void v_InitLevel(U32 id, S32 w, S32 h, Color& c)=0;
-
-		inline virtual void v_InitLevel(U32 id, string tmxFilePath)
-		{
-			SetID(id);
-			Importer2D(tmxFilePath);
-		}
 		
 		virtual void v_Update(void)=0;
 
@@ -143,7 +137,7 @@ namespace KillerEngine
 			_forceRegistry.Add(particle, generator);
 		}
 
-		void AddTextToLevel(shared_ptr<Text> text);
+		void AddTextToLevel(const Text& text);
 		
 		void RemoveObjectFromLevel(U32 id);
 
@@ -262,7 +256,6 @@ namespace KillerEngine
 		}
 
 	protected:
-		void Importer2D(string tmxFilePath);
 
 		virtual ObjectType v_StringToTileData(string s);
 
@@ -292,7 +285,6 @@ namespace KillerEngine
 		std::map<U32, shared_ptr<GameObject>>	  _gameObjects;
 		std::map<U32, shared_ptr<KP::Particle>>   _particles;
 		std::map<U32, TileData> 				  _2DTileData;
-		std::vector<shared_ptr<Text>>     		  _textList;
 		//SpriteRenderer _batch;
 		KP::ParticleForceRegistry _forceRegistry;
 	};

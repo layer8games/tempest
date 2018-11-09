@@ -11,6 +11,7 @@ using namespace KillerEngine;
 Text::Text(void) 
 :
 _active(true),
+_totalWidth(0.0f),
 _pos(0.0f),
 _text(), 
 _font(), 
@@ -22,6 +23,7 @@ _color(1.0f)
 Text::Text(const Font& font) 
 : 
 _active(true),
+_totalWidth(0.0f),
 _pos(0.0f),
 _text(), 
 _font(font), 
@@ -33,6 +35,7 @@ _color(1.0f)
 Text::Text(const Font& font, string text) 
 :
 _active(true),
+_totalWidth(0.0f),
 _pos(0.0f), 
 _text(text), 
 _font(font), 
@@ -46,6 +49,7 @@ _color(1.0f)
 Text::Text(const Font& font, string text, const KM::Vector& pos)
 :
 _active(true),
+_totalWidth(0.0f),
 _pos(pos),
 _text(text), 
 _font(font), 
@@ -63,17 +67,6 @@ Text::~Text(void)
 //Text Functions
 //
 //==========================================================================================================================
-void Text::Render(void)
-{
-	if(_active)
-	{
-		for(U32 i = 0; i < _characterList.size(); ++i)
-		{
-			_characterList[i].v_Render();
-		}
-	}
-}
-
 void Text::AddText(string text)
 {
 	_text = text;
@@ -84,27 +77,20 @@ void Text::AddText(string text)
 
 	for(U32 i = 0; i < _text.size(); ++i)
 	{
-		Glyph g = _font.GetCharacterGlyph(_text[i]);
+		CharacterData data = _font.GetCharacter(_text[i]);
 		
-		CharacterData data = g.GetCharacterData();
+		shared_ptr<Glyph> g(new Glyph());
+		g->v_InitBuffers();
+		g->SetScale(static_cast<F32>(data.width), static_cast<F32>(data.height));
+		g->SetColor(_color);
+		g->SetPosition(currentPos[0] + data.bearingX, currentPos[1] - (data.height + data.bearingY));
+		g->SetPosition(currentPos);
+		g->SetTexture(data.texture);
+		g->SetCharacter(_text[i], data);
 
-		g.SetColor(_color);
-
-		//g.SetPosition(currentPos[0] + data.bearingX, currentPos[1] - (data.height - data.bearingY));
-		g.SetPosition(currentPos);
-
-		//std::cout << "for character " << _text[i] << " xAdvance is " << data.xAdvance << " and offset will be " << currentPos[0] << std::endl
-		//<< "pos is " << g.GetPosition()[0] << " " << g.GetPosition()[1] << std::endl
-		//<< "scale will be " << data.width << " " << data.height << std::endl
-		//<< "size is " << size << std::endl;
-		//if(_text[i + 1] != ' ')
-		//{
-			currentPos[0] += data.xAdvance;
-		//}
+		currentPos[0] += data.xAdvance + _font.GetSize();
+		_totalWidth += data.width;
 		
-		g.SetScale(static_cast<F32>(data.width), static_cast<F32>(data.height));
-		//g.SetScale(size, size);
-
 		_characterList.push_back(g);
 	}	
 }//End AddText
@@ -124,6 +110,14 @@ void Text::SetTextColor(const Color& col)
 {
 	for(auto i : _characterList)
 	{
-		i.SetColor(col);
+		i->SetColor(col);
+	}
+}
+
+void Text::SetUniforms(string name, const KM::Matrix& matrix)
+{
+	for(auto i : _characterList)
+	{
+		i->SetUniform(name, matrix);
 	}
 }

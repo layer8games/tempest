@@ -16,7 +16,7 @@
 #include <map>
 #include <list>
 
-typedef std::map<char, KillerEngine::Glyph> GlyphMap;
+typedef std::map<char, KillerEngine::CharacterData> CharacterDataMap;
 
 namespace KillerEngine
 {
@@ -106,12 +106,12 @@ namespace KillerEngine
 
 /*! Returns the map containing all data for all characters found in the loaded font. The ID of each character is found in 
 	the .fnt file and is the ASCII int value of a char */
-		GlyphMap GetAllCharacterGlyphs(void) const
+		CharacterDataMap GetAllCharacterGlyphs(void) const
 		{ 
 			return _characterGlyphs; 
 		}
 
-		Glyph GetCharacterGlyph(char c)
+		inline CharacterData GetCharacter(char c)
 		{
 			return _characterGlyphs[c];
 		}
@@ -125,8 +125,6 @@ namespace KillerEngine
 		S32 	 _numCharacters;
 		U32 	 _fontSize;
 		string   _fontName;
-		GlyphMap _characterGlyphs; ///< All data from .fnt file stored in a RenderText can use for placement.
-
-
+		CharacterDataMap _characterGlyphs; ///< All data from .fnt file stored in a RenderText can use for placement.
 	};
 }

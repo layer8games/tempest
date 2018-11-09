@@ -126,9 +126,16 @@ void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP:
 	}
 }
 
-void Level::AddTextToLevel(std::shared_ptr<Text> text)
+void Level::AddTextToLevel(const Text& text)
 {
-	_textList.push_back(text);
+	//text->SetUniforms("projection", _camera->GetProjectionMatrix());
+
+	//_textList.push_back(text);
+	std::vector<shared_ptr<Glyph>> v = text.GetCharacterList();
+	for(auto i : v)
+	{
+		AddObjectToLevel(i);
+	}
 }
 
 void Level::_AddTile(TileData data)
@@ -172,7 +179,6 @@ void Level::UpdateObjects(void)
 	{
 		if(i.second->GetActiveUpdate())
 		{
-			i.second->Integrate();
 			i.second->v_Update();
 		}
 	}
@@ -199,215 +205,8 @@ void Level::RenderObjects(void)
 			i.second->SetUniform("view", _camera->GetViewMatrix());
 			i.second->v_Render();
 		}
-	}
-	
-	for(auto i : _textList)
-	{
-		if(i->GetActive())
-		{
-			i->Render();
-		}
 	}	
 }
-//==========================================================================================================================
-//
-//TMX file Importer
-//
-//==========================================================================================================================	
-void Level::Importer2D(string tmxFilePath)
-{
-/*
-
-	All of this is old an old version that needs to be deleted. Just keeping it as a reference. 
-
-
-	tinyxml2::XMLDocument doc;
-	doc.LoadFile(tmxFilePath.c_str());
-
-	if(!doc.Error())
-	{
-//==========================================================================================================================
-//Caputre map data
-//==========================================================================================================================			
-		LevelData mapData;
-		
-
-		tinyxml2::XMLElement* elem = doc.RootElement();
-
-		if(elem != NULL)
-		{
-			elem->QueryIntAttribute("width", &mapData.mapWidth);
-			elem->QueryIntAttribute("height", &mapData.mapHeight);
-			elem->QueryIntAttribute("tilewidth", &mapData.tileWidth);
-			elem->QueryIntAttribute("tileheight", &mapData.tileHeight);
-			
-			string color = elem->Attribute("backgroundcolor");
-
-			string red = "0x" + color.substr(1,2);
-			string green = "0x" + color.substr(3,2);
-			string blue = "0x" + color.substr(5,2);
-
-			U32 ir = std::stoul(red, NULL, 16); 
-			U32 ig = std::stoul(green, NULL, 16); 
-			U32 ib = std::stoul(blue, NULL, 16); 
-
-			F32 r = (F32)ir / 255;
-			F32 g = (F32)ig / 255;
-			F32 b = (F32)ib / 255;
-
-			std::cout << "color " << r << " " << g << " " << b << "\n";
-						 
-			mapData.color = Color(r, g, b);
-		}
-		else
-		{
-			ErrorManager::Instance()->SetError(ENGINE, "Unable to open element or node");
-		}
-
-		//=====Set Level variables=====
-		SetLevelWidth(mapData.mapWidth * mapData.tileWidth);
-		SetLevelHeight(mapData.mapHeight * mapData.tileHeight);
-		SetBackgroundColor(mapData.color);
-//==========================================================================================================================
-//Capture Tile Data
-//==========================================================================================================================
-		elem = doc.RootElement()->FirstChildElement("tileset");
-		
-		if(elem != NULL)
-		{
-			for(tinyxml2::XMLElement* e = elem->FirstChildElement("tile"); e != NULL; e = e->NextSiblingElement())
-			{
-				TileData texData;
-				
-				//=====Capture tile ID=====
-				e->QueryIntAttribute("id", &texData.tileID);
-
-				//Increase by one for now, but later this will be
-				//increased by the <tileset firstgid="1"
-				++texData.tileID;
-				
-				//=====Capture Custom Properties=====
-				//ObjectType
-				tinyxml2::XMLElement* p = e->FirstChildElement("properties")->FirstChildElement("property");
-
-				string att = p->Attribute("name");
-				
-				if(att == "ObjectType")
-				{
-					string name = p->Attribute("value");
-
-					texData.type = v_StringToTileData(name);				
-				}
-				else
-				{
-					ErrorManager::Instance()->SetError(ENGINE, "In correct format for tile ObjectType.");
-				}
-
-				//TextureID
-				p = e->FirstChildElement("properties")->FirstChildElement("property")->NextSiblingElement("property");
-
-				att = p->Attribute("name");
-
-				if(att == "TextureID")
-				{
-					p->QueryIntAttribute("value", &texData.textureID);
-				}
-				else
-				{
-					ErrorManager::Instance()->SetError(ENGINE, "In correct format for tile TextureID");
-				}
-
-				//=====Capture Image texData=====
-				tinyxml2::XMLElement* image = e->FirstChildElement("image");
-
-				image->QueryIntAttribute("width", &texData.width);
-				image->QueryIntAttribute("height", &texData.height);
-				texData.texturePath = image->Attribute("source");
-
-				//=====ReFormat the texture URL=====
-				for(auto i = texData.texturePath.begin(); i != texData.texturePath.end(); i++)
-				{
-					if(*i == '/')
-					{
-						*i = '\\';
-					}
-					if(*i == '.' && *(i+1) == '.')
-					{
-						texData.texturePath.erase(i, i + 1);
-					}
-				}
-
-				texData.texturePath = "..\\Assets" + texData.texturePath;
-				_AddTile(texData);
-				TextureManager::Instance()->LoadTexture(texData.texturePath, texData.textureID, texData.width, texData.height);
-			}
-//==========================================================================================================================
-//Caputre tile layout
-//==========================================================================================================================
-			elem = doc.RootElement()->FirstChildElement("layer")->FirstChildElement("data");
-			string name = elem->Attribute("encoding");
-
-			if(name == "csv")
-			{
-				string csvData = elem->GetText();
-
-				for(U32 i = 0; i < csvData.size(); ++i)
-				{
-					csvData.erase(std::remove(csvData.begin(), csvData.end(), ','), csvData.end());
-					csvData.erase(std::remove(csvData.begin(), csvData.end(), '\n'), csvData.end());
-					
-					if(csvData[i] > '0')
-					{
-						//=====Get X Y from csv data for textures=====
-						U32 x;
-						U32 y;
-													
-						U32 p = i + 1;
-
-						if(p % mapData.mapWidth == 0) { x = mapData.mapWidth; }	
-						else
-						{
-							U32 t = 1; 
-							U32 m = p / mapData.mapWidth;
-							while((m * mapData.mapWidth) + t != p)
-							{
-								++t;
-							}
-							x = t;
-						}
-
-						y = mapData.mapHeight - ((i + 1) / mapData.mapHeight);
-
-						//=====Add Object to Level=====
-						S32 tile = csvData[i] - '0';
-
-						TileData currentTile = _2DTileData.find(tile)->second;
-
-						//Broken for now anyway, need to find a better way to do this overall
-						//AddObjectToLevel(v_CreateObject(currentTile.type, 
-						//			   KM::Vector2( (F32)(x * mapData.tileWidth)+(currentTile.width / 2), (F32)(y * mapData.tileHeight)+(currentTile.height / 2)),
-						//			   currentTile.textureID,
-						//			   (F32)currentTile.width, (F32)currentTile.height));
-					}
-					}
-			}
-			else
-			{
-				ErrorManager::Instance()->SetError(ENGINE, "Incorrect encoding in imported file, not csv, " + name);
-			}
-		}
-		else
-		{
-			ErrorManager::Instance()->SetError(ENGINE, "Unable to open element or node");
-		}
-		
-	}
-	else
-	{
-		ErrorManager::Instance()->SetError(ENGINE, "Unable to open file path to .tmx file " + tmxFilePath);
-	}
-*/
-}//end Importer
 
 //==========================================================================================================================
 //

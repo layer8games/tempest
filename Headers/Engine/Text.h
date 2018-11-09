@@ -51,13 +51,19 @@ namespace KillerEngine
 //Text Functions
 //
 //==========================================================================================================================		
-		void Render(void);
-
 		void SetPosition(const KM::Vector& pos);
+
+		void SetPosition(F32 x, F32 y)
+		{
+			_pos[0] = x;
+			_pos[1] = y;
+		}
 
 		void AddText(string text);
 
 		void SetTextColor(const Color& col);
+
+		void SetUniforms(string name, const KM::Matrix& matrix);
 
 //==========================================================================================================================
 //
@@ -79,6 +85,11 @@ namespace KillerEngine
 			return _active;
 		}
 
+		inline F32 GetWidth(void)
+		{
+			return _totalWidth;
+		}
+
 		inline void SetFont(const Font& font) 
 		{ 
 			_font = font; 
@@ -89,7 +100,7 @@ namespace KillerEngine
 			return _font;
 		}
 
-		std::vector<Glyph> GetCharacterList(void)
+		std::vector<shared_ptr<Glyph>> GetCharacterList(void) const
 		{
 			return _characterList;
 		}
@@ -129,10 +140,11 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 		bool 							_active;
+		F32 							_totalWidth;
 		KM::Vector 						_pos;
 		string 	   						_text;
 		Font   	   						_font;
-		std::vector<Glyph>		 		_characterList;
+		std::vector<shared_ptr<Glyph>>	_characterList;
 		KM::Vector 						_scale;
 		Color 							_color;
 	};
