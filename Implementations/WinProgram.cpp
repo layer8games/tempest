@@ -371,11 +371,6 @@ void WinProgram::OnKey(GLFWwindow* window, int key, int scancode, int action, in
     {
         Controller::Instance()->KeyUp(ConvertKeyCodes(key));
     }
-
-    if(key == GLFW_KEY_F11 && action == GLFW_PRESS)
-    {
-        std::cout << "f11 hit\n";
-    }
 }
 
 //==========================================================================================================================

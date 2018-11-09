@@ -141,6 +141,7 @@ void Font::InitFont(string fontName, string filePath, U32 fontSize)
 Font& Font::operator=(const Font& font)
 {
 	_fontName = font.GetName();
+	_fontSize = font.GetSize();
 	_characterGlyphs = font.GetAllCharacterGlyphs();
 
 	return *this;
@@ -149,6 +150,7 @@ Font& Font::operator=(const Font& font)
 Font& Font::operator=(const Font* font)
 {
 	_fontName = font->GetName();
+	_fontSize = font->GetSize();
 	_characterGlyphs = font->GetAllCharacterGlyphs();
 
 	return *this;

@@ -205,15 +205,6 @@ void Level::RenderObjects(void)
 			i.second->SetUniform("view", _camera->GetViewMatrix());
 			i.second->v_Render();
 		}
-	}
-	
-	for(auto i : _textList)
-	{
-		if(i->GetActive())
-		{
-			i->SetUniforms("view", _camera->GetViewMatrix());
-			i->Render();
-		}
 	}	
 }
 

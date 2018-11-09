@@ -51,8 +51,6 @@ namespace KillerEngine
 //Text Functions
 //
 //==========================================================================================================================		
-		void Render(void);
-
 		void SetPosition(const KM::Vector& pos);
 
 		void SetPosition(F32 x, F32 y)
@@ -85,6 +83,11 @@ namespace KillerEngine
 		inline bool GetActive(void) const
 		{
 			return _active;
+		}
+
+		inline F32 GetWidth(void)
+		{
+			return _totalWidth;
 		}
 
 		inline void SetFont(const Font& font) 
@@ -137,6 +140,7 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 		bool 							_active;
+		F32 							_totalWidth;
 		KM::Vector 						_pos;
 		string 	   						_text;
 		Font   	   						_font;
