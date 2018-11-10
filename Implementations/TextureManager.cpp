@@ -23,11 +23,11 @@ TextureManager::~TextureManager(void)
 //Singleton Functions
 //
 //==========================================================================================================================
-shared_ptr<TextureManager> TextureManager::_instance = NULL;
+shared_ptr<TextureManager> TextureManager::_instance = nullptr;
 
 shared_ptr<TextureManager> TextureManager::Instance(void) 
 {
-	if(_instance == NULL) 
+	if(_instance == nullptr) 
 	{ 
 		_instance = shared_ptr<TextureManager>(new TextureManager()); 
 	}
