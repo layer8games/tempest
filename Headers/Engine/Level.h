@@ -245,6 +245,7 @@ namespace KillerEngine
 			return _ID; 
 		}
 
+//===== Camera =====
 		void SetCamera(Camera* cam)
 		{
 			_camera = cam;
@@ -255,12 +256,11 @@ namespace KillerEngine
 			return _camera;
 		}
 
-	protected:
-
-		virtual ObjectType v_StringToTileData(string s);
-
-
-		Camera* _camera;
+		inline void SetCameraOrthographic(void)
+		{
+			_camera->SetOrthographic();
+		}
+		
 	private:
 //==========================================================================================================================
 //
@@ -282,6 +282,7 @@ namespace KillerEngine
 		S32     _mapLeftBorder;
 		Color   _bgColor;
 		U32     _ID;
+		Camera* _camera;
 		std::map<U32, shared_ptr<GameObject>>	  _gameObjects;
 		std::map<U32, shared_ptr<KP::Particle>>   _particles;
 		std::map<U32, TileData> 				  _2DTileData;

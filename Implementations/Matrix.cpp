@@ -102,53 +102,6 @@ void Matrix::MakeOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 near
 	_columns[3][z] = -(farPlane + nearPlane) / (farPlane - nearPlane);
 }
 
-void Matrix::MakePerspective(F32 width, F32 height, F32 depth, bool center)
-{
-
-	F32 right; 
-	F32 left; 
-	F32 top;
-	F32 bottom;
-	F32 farPlane; 
-	F32 nearPlane;
-	
-
-	if(center)
-	{
-		right     = width / 2.0f; 
-		left      = -width / 2.0f; 
-		top       = height / 2.0f;
-		bottom    = -height / 2.0f;
-		farPlane  = depth / 2.0f; 
-		nearPlane = 0.0f;
-	}
-	else
-	{
-		right 	  = width;
-	  	left 	  = 0.0f;
-		top 	  = height;
-		bottom 	  = 0.0f;
-		farPlane  = depth;
-		nearPlane = 0.0f;
-	}
-
-	//Reset Matrix 
-	MakeIdentity();
-
-	assert(right - left != 0.0f);
-	assert(top - bottom != 0.0f);
-	assert(nearPlane - farPlane != 0.0f);
-
-	
-	_columns[0][x]  = (2.0f * nearPlane) / (right - left);
-	_columns[1][y]  = (2.0f * nearPlane) / (top - bottom);
-	_columns[2][x]  = (right + left) / (right - left);
-	_columns[2][y]  = (top + bottom) / (top - bottom);
-	_columns[2][z] = (nearPlane + farPlane) / (nearPlane - farPlane);
-	_columns[2][w] = -1.0f;
-	_columns[3][z] = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
-}
-
 void Matrix::MakePerspective(F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F32 farPlane)
 {
 	assert(nearPlane - farPlane != 0.0f);

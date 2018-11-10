@@ -85,16 +85,6 @@ namespace KillerMath
 		   Otherwise it will be the bottom left corner of the screen. */
 		void MakeOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane);
 
-/*! Resets the Matrix, then sets the values up as a Perspective projection, using the more standard equation. Calls MakeIdenity().
-	The viewport values are usually based on the dimensions of the window, but could be made smaller.
-	\bug I cannot get this to work for the life of me. I am not sure why, the math all looks right but the function wont work.
-	\param width F32. Width of viewport. 
-	\param height F32. Height of viewport.
-	\param depth F32. Depfth of viewport.
-	\param center bool. True by default. If true, the origin of the view port will be the middle of the screen. 
-		   Otherwise it will be the bottom left corner of the screen. */
-		void MakePerspective(F32 width, F32 height, F32 depth, bool center=true);
-
 /*! Resets the Matrix, then sets the values up as a Perspective Matrix. Instead of using the dimensions of the viewport, 
 	this version uses slightly differently ideas. 
 	\param fieldOfview F32. Angle of the view fields of view. Good values include 90 or 120. Will change the skew of the view.

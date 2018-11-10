@@ -10,7 +10,6 @@ using namespace KillerEngine;
 //==========================================================================================================================
 Level::Level(void) 
 : 
-_camera(new Camera()),
 _mapWidth(0),
 _mapHeight(0),
 _mapTopBorder(0),
@@ -19,10 +18,13 @@ _mapRightBorder(0),
 _mapLeftBorder(0),
 _bgColor(),
 _ID(),
+_camera(new Camera()),
 _gameObjects(),
 _particles(),
 _forceRegistry()
-{  }
+{
+	_camera->SetOrthographic();
+}
 
 Level::~Level(void)
 {
@@ -206,26 +208,4 @@ void Level::RenderObjects(void)
 			i.second->v_Render();
 		}
 	}	
-}
-
-//==========================================================================================================================
-//
-//StringToEnum
-//
-//==========================================================================================================================
-Level::ObjectType Level::v_StringToTileData(string s)
-{
-	if(s == "Background") { return ObjectType::BACKGROUND; }
-	
-	else if(s == "Environment") { return ObjectType::ENVIRONMENT; }	
-	
-	else if(s == "Player") { return ObjectType::PLAYER;	}	
-	
-	else if(s == "Enemy") { return ObjectType::ENEMY; }
-	
-	else
-	{	
-		ErrorManager::Instance()->SetError(ENGINE, "No such object tag during import of file " + s);
-		return ObjectType::END;
-	}
 }
