@@ -1,5 +1,4 @@
 #include <Engine/GameObject.h>
-#include <iostream>
 
 using namespace KillerEngine;
 
@@ -17,7 +16,6 @@ U32 GameObject::_nextID = 1;
 //==========================================================================================================================
 GameObject::GameObject(void)
 :
-_shader(),
 _vertices(),
 _indices(),
 _uvList(),
@@ -25,6 +23,7 @@ _position(0.0f),
 _scale(1.0f),
 _color(1.0f),
 _texture(nullptr),
+_shader(nullptr),
 _activeUpdate(true),
 _activeRender(true),
 _isSprite(false),
@@ -40,7 +39,6 @@ _vbo{0}
 
 GameObject::GameObject(const GameObject& obj)
 :
-_shader(obj.GetShader()),
 _vertices(obj.GetVertices()),
 _indices(obj.GetIndices()),
 _uvList(obj.GetUVList()),
@@ -48,6 +46,7 @@ _position(obj.GetPosition()),
 _scale(obj.GetScale()),
 _color(obj.GetColor()),
 _texture(obj.GetTexture()),
+_shader(obj.GetShader()),
 _activeUpdate(obj.GetActiveUpdate()),
 _activeRender(obj.GetActiveRender()),
 _isSprite(obj.IsSprite()),
@@ -74,7 +73,7 @@ GameObject::~GameObject(void)
 //==========================================================================================================================
 void GameObject::v_Render(void)
 {
-	_shader.Use(true);
+	_shader->Use(true);
 	BindVAO(true);
 
 	if(_texture != nullptr)
@@ -92,7 +91,7 @@ void GameObject::v_Render(void)
 
 	glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
 
-	_shader.Use(false);
+	_shader->Use(false);
 	BindVAO(false);
 
 	if(_texture != nullptr)
@@ -499,19 +498,7 @@ void GameObject::MakeSprite(void)
 
 	v_InitBuffers();
 
-	std::vector<ShaderData> shaderData;
-
-	ShaderData vs;
-	vs.filePath = "../Assets/Shaders/Default/sprite_vertex.glsl";
-	vs.type = ShaderType::VERTEX;
-	shaderData.push_back(vs);
-
-	ShaderData fs;
-	fs.filePath = "../Assets/Shaders/Default/sprite_fragment.glsl";
-	fs.type = ShaderType::FRAGMENT;
-	shaderData.push_back(fs);
-
-	_shader.LoadShader(shaderData);
+	_shader = ShaderManager::Instance()->GetShader(SPRITE);
 }
 
 const KM::Matrix GameObject::GetModelMatrix(void)

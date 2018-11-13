@@ -17,8 +17,7 @@ Written by Maxwell Miller
 #include <Engine/Color.h>
 #include <Engine/Matrix.h>
 #include <Engine/WinProgram.h>
-
-#include <iostream>
+#include <Engine/ShaderManager.h>
 
 namespace KM = KillerMath;
 
@@ -37,8 +36,6 @@ namespace KillerEngine
 		Glyph(const Glyph& glyph);
 
 		~Glyph(void);
-
-		//Glyph& operator=(const Glyph& glyph);
 
 //==========================================================================================================================
 //

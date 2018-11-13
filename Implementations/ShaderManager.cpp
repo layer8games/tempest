@@ -40,6 +40,14 @@ shared_ptr<ShaderManager> ShaderManager::Instance(void)
 //==========================================================================================================================
 void ShaderManager::LoadShader(U32 id, std::vector<ShaderData> data)
 {
+	if(_loadedShaders.find(id) != _loadedShaders.end())
+	{
+		//NO error for now. This allows calls to load shader to be set in an object, without loading a shader more than 
+		//once.
+		//ErrorManager::Instance()->SetError(ENGINE, "ShaderManager::LoadShader Shader already loaded. ID = " + id);
+		return;
+	}
+
 	shared_ptr<Shader> shader(new Shader());
 	shader->LoadShader(data);
 

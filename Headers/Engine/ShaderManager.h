@@ -48,13 +48,13 @@ namespace KillerEngine
 
 		shared_ptr<Shader> GetShader(U32 id)
 		{
-			if(_loadedShaders.find(id) == _loadedShaders.end())
+			if(_loadedShaders.find(id) != _loadedShaders.end())
 			{
-				ErrorManager::Instance()->SetError(ENGINE, "ShaderManager::GetShader No such Shader! ID = " + id);
+				return _loadedShaders[id];
 			}
 			else
 			{
-				return _loadedShaders[id];
+				ErrorManager::Instance()->SetError(ENGINE, "ShaderManager::GetShader No such Shader! ID = " + id);
 			}
 		}
 

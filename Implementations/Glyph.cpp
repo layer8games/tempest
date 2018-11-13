@@ -40,7 +40,7 @@ Glyph& Glyph::operator=(const Glyph& glyph)
 //==========================================================================================================================
 void Glyph::v_Render(void)
 {
-	GameObject::_shader.Use(true);
+	GameObject::UseShader(true);
 
 	GameObject::SetUniform("sprite_color", GameObject::GetColor());
 	GameObject::SetUniform("model", GameObject::GetModelMatrix());
@@ -50,7 +50,7 @@ void Glyph::v_Render(void)
 
 	glDrawArrays(GL_TRIANGLES, 0, GameObject::GetNumVertices());
 
-	GameObject::_shader.Use(false);
+	GameObject::UseShader(false);
 	GameObject::BindTexture(false);
 	GameObject::BindVAO(false);
 }
@@ -72,17 +72,5 @@ void Glyph::v_InitBuffers(void)
 
 	GameObject::v_InitBuffers();
 
-	std::vector<ShaderData> shaderSources;
-
-	ShaderData vs;
-	vs.filePath = "../Assets/Shaders/Default/glyph_vertex.glsl";
-	vs.type = ShaderType::VERTEX;
-	shaderSources.push_back(vs);
-
-	ShaderData fs;
-	fs.filePath = "../Assets/Shaders/Default/glyph_fragment.glsl";
-	fs.type = ShaderType::FRAGMENT;
-	shaderSources.push_back(fs);
-
-	GameObject::LoadShader(shaderSources);
+	GameObject::SetShader(ShaderManager::Instance()->GetShader(GLYPH));
 }
