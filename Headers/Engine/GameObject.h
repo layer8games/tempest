@@ -9,6 +9,8 @@
 #include <Engine/Color.h>
 #include <Engine/Vertex.h>
 #include <Engine/Texture.h>
+#include <Engine/ShaderManager.h>
+
 namespace KM = KillerMath;
 
 #include <Extern/rapidxml.hpp>
@@ -273,66 +275,66 @@ namespace KillerEngine
 		}
 
 //===== Shader =====
-		inline const Shader& GetShader(void) const
+		inline const shared_ptr<Shader> GetShader(void) const
 		{
 			return _shader;
 		}
 
-		inline void SetShader(const Shader& shader)
+		inline void SetShader(const shared_ptr<Shader> shader)
 		{
 			_shader = shader;
 		}
 
 		inline void LoadShader(std::vector<ShaderData> shaderData)
 		{
-			_shader.LoadShader(shaderData);
+			_shader->LoadShader(shaderData);
 		}
 
-		inline void UseShader(void)
+		inline void UseShader(bool state=true)
 		{
-			_shader.Use();
+			_shader->Use(state);
 		}
 
 		inline void SetUniform(string name, const F32 val)
 		{
-			_shader.Use();
-			_shader.SetUniform(name.c_str(), val);
+			_shader->Use();
+			_shader->SetUniform(name.c_str(), val);
 		}
 
 		inline void SetUniform(string name, const KM::Vector& vec)
 		{
-			_shader.Use();
-			_shader.SetUniform(name.c_str(), vec);
+			_shader->Use();
+			_shader->SetUniform(name.c_str(), vec);
 		}
 
 		inline void SetUniformVec3(string name, const KM::Vector& vec)
 		{
-			_shader.Use();
-			_shader.SetUniformVec3(name.c_str(), vec);
+			_shader->Use();
+			_shader->SetUniformVec3(name.c_str(), vec);
 		}
 
 		inline void SetUniform(string name, const KM::Matrix& mat)
 		{
-			_shader.Use();
-			_shader.SetUniform(name.c_str(), mat);
+			_shader->Use();
+			_shader->SetUniform(name.c_str(), mat);
 		}
 
 		inline void SetUniformSampler(string name, S32 texSlot)
 		{
-			_shader.Use();
-			_shader.SetUniformSampler(name.c_str(), texSlot);
+			_shader->Use();
+			_shader->SetUniformSampler(name.c_str(), texSlot);
 		}
 
 		inline void SetUniform(string name, const Color& col)
 		{
-			_shader.Use();
-			_shader.SetUniform(name.c_str(), col);
+			_shader->Use();
+			_shader->SetUniform(name.c_str(), col);
 		}
 
 		inline void SetUniformVec3(string name, const Color& col)
 		{
-			_shader.Use();
-			_shader.SetUniformVec3(name.c_str(), col);
+			_shader->Use();
+			_shader->SetUniformVec3(name.c_str(), col);
 		}
 
 //===== NumVertices =====
@@ -410,15 +412,6 @@ namespace KillerEngine
 			_uvList.push_back(val);
 		}
 
-	protected:
-		
-//==========================================================================================================================
-//
-//Protected Data
-//
-//==========================================================================================================================
-		Shader _shader;
-
 	private:
 		std::vector<U32> _SplitU32(string text, char delim) const;
 		
@@ -440,6 +433,7 @@ namespace KillerEngine
 		KM::Vector 				_scale;
 		Color 					_color;
 		shared_ptr<Texture>		_texture;
+		shared_ptr<Shader>		_shader;
 		bool					_activeUpdate;
 		bool					_activeRender;
 		bool 					_isSprite;
