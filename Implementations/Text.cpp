@@ -20,45 +20,6 @@ _scale(1.0f, 1.0f),
 _color(1.0f)
 {  }
 
-Text::Text(const Font& font) 
-: 
-_active(true),
-_totalWidth(0.0f),
-_pos(0.0f),
-_text(), 
-_font(font), 
-_characterList(),  
-_scale(1.0f, 1.0f),
-_color(1.0f)
-{  }
-
-Text::Text(const Font& font, string text) 
-:
-_active(true),
-_totalWidth(0.0f),
-_pos(0.0f), 
-_text(text), 
-_font(font), 
-_characterList(),  
-_scale(1.0f, 1.0f),
-_color(1.0f)
-{
-	AddText(_text);
-}
-
-Text::Text(const Font& font, string text, const KM::Vector& pos)
-:
-_active(true),
-_totalWidth(0.0f),
-_pos(pos),
-_text(text), 
-_font(font), 
-_characterList(), 
-_scale(1.0f, 1.0f)
-{
-	AddText(_text);
-}
-
 Text::~Text(void)
 {  }
 
@@ -73,11 +34,11 @@ void Text::AddText(string text)
 	_characterList.clear();
 
 	KM::Vector currentPos = _pos;
-	F32 size = static_cast<F32>(_font.GetSize());
+	F32 size = static_cast<F32>(_font->GetSize());
 
 	for(U32 i = 0; i < _text.size(); ++i)
 	{
-		CharacterData data = _font.GetCharacter(_text[i]);
+		CharacterData data = _font->GetCharacter(_text[i]);
 		
 		shared_ptr<Glyph> g(new Glyph());
 		g->v_InitBuffers();
@@ -88,7 +49,7 @@ void Text::AddText(string text)
 		g->SetTexture(data.texture);
 		g->SetCharacter(_text[i], data);
 
-		currentPos[0] += data.xAdvance + _font.GetSize();
+		currentPos[0] += data.xAdvance + _font->GetSize();
 		_totalWidth += data.width;
 		
 		_characterList.push_back(g);
