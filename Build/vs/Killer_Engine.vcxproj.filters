@@ -121,6 +121,9 @@
     <Filter Include="Source Code\ShaderManager">
       <UniqueIdentifier>{b86f9cee-c90e-4b5e-9a71-5bc9fcc0a055}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\FontManager">
+      <UniqueIdentifier>{628dddcc-7234-492d-a7d2-24ed7ef95ef1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -219,6 +222,9 @@
     <ClInclude Include="..\..\Headers\Engine\ShaderManager.h">
       <Filter>Source Code\ShaderManager</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\FontManager.h">
+      <Filter>Source Code\FontManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -307,6 +313,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ShaderManager.cpp">
       <Filter>Source Code\ShaderManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\FontManager.cpp">
+      <Filter>Source Code\FontManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
