@@ -27,11 +27,11 @@ namespace KillerEngine
 //==========================================================================================================================
 		static shared_ptr<FontManager> Instance(void);
 
-		void LoadFont(U32 id, string filePath);
+		void LoadFont(U32 id, string fontName, string filePath, U32 size);
 
 		void AddFont(U32 id, shared_ptr<Font> font);
 
-		void AddFont(U32 id, const Font* font);
+		void AddFont(U32 id, Font& font);
 
 		shared_ptr<Font> GetFont(U32 id);
 
