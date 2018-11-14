@@ -38,12 +38,6 @@ namespace KillerEngine
 //==========================================================================================================================
 		Text(void);
 
-		explicit Text(const Font& font);
-		
-		Text(const Font& font, string text);
-
-		Text(const Font& font, string text, const KM::Vector& pos);
-
 		~Text(void);
 
 //==========================================================================================================================
@@ -90,12 +84,17 @@ namespace KillerEngine
 			return _totalWidth;
 		}
 
-		inline void SetFont(const Font& font) 
-		{ 
-			_font = font; 
+		inline void SetFont(shared_ptr<Font> font)
+		{
+			_font = font;
 		}
 
-		inline const Font GetFont(void)
+		inline void SetFont(Font& font) 
+		{ 
+			_font = shared_ptr<Font>(&font); 
+		}
+
+		inline const shared_ptr<Font> GetFont(void)
 		{
 			return _font;
 		}
@@ -143,7 +142,7 @@ namespace KillerEngine
 		F32 							_totalWidth;
 		KM::Vector 						_pos;
 		string 	   						_text;
-		Font   	   						_font;
+		shared_ptr<Font>				_font;
 		std::vector<shared_ptr<Glyph>>	_characterList;
 		KM::Vector 						_scale;
 		Color 							_color;

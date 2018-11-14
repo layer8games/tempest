@@ -124,6 +124,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h" />
+    <ClInclude Include="..\..\Headers\Engine\FontManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GameObject.h" />
     <ClInclude Include="..\..\Headers\Engine\Particle.h" />
     <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
@@ -190,6 +194,10 @@
     <ClCompile Include="..\..\Implementations\Controller.cpp" />
     <ClCompile Include="..\..\Implementations\ErrorManager.cpp" />
     <ClCompile Include="..\..\Implementations\Font.cpp" />
+    <ClCompile Include="..\..\Implementations\FontManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObject.cpp" />
     <ClCompile Include="..\..\Implementations\Particle.cpp" />
     <ClCompile Include="..\..\Implementations\ParticleContact.cpp">

@@ -36,7 +36,7 @@ _characterGlyphs(f->GetAllCharacterGlyphs())
 //Functions
 //
 //==========================================================================================================================
-void Font::InitFont(string fontName, string filePath, U32 fontSize)
+void Font::Init(string fontName, string filePath, U32 fontSize)
 {
  	_fontSize = fontSize;
  	_fontName = fontName;

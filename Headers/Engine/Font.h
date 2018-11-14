@@ -51,7 +51,7 @@ namespace KillerEngine
 //Font Functions
 //
 //==========================================================================================================================
-	void InitFont(string fontName, string filePath, U32 fontSize);
+	void Init(string fontName, string filePath, U32 fontSize);
 
 //==========================================================================================================================
 //
