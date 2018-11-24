@@ -225,6 +225,9 @@
     <ClInclude Include="..\..\Headers\Engine\FontManager.h">
       <Filter>Source Code\FontManager</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\ParticleContactResolver.h">
+      <Filter>Source Code\KillerPhysics\ContactResolution</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -316,6 +319,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\FontManager.cpp">
       <Filter>Source Code\FontManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\ParticleContactResolver.cpp">
+      <Filter>Source Code\KillerPhysics\ContactResolution</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
