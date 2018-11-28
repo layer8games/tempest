@@ -1,4 +1,5 @@
 #include <Engine/Matrix.h>
+#include <iostream>
 
 using namespace KillerMath;
 
@@ -438,6 +439,45 @@ void Matrix::AddRotation(F32 xVal, F32 yVal, F32 zVal)
 	_columns[2][x] += sin(xVal) * sin(zVal) - cos(xVal) * sin(yVal) * cos(zVal);
 	_columns[2][y] += sin(xVal) * cos(zVal) + cos(xVal) * sin(yVal) * sin(zVal);
 	_columns[2][z] += cos(xVal) * cos(yVal);
+}
+
+//==========================================================================================================================
+//Inverse
+//==========================================================================================================================
+
+void Matrix::SetInverse(void)
+{
+	//find the determinate
+
+}
+
+Matrix Matrix::Inverse(void)
+{
+	return Matrix(1.0f);
+}
+
+F32 Matrix::Determinate(void)
+{
+	//This equation is very difficult to understand. It was ultimately taking from 3d Math Primer, page 165, Determinate of 
+	//4x4 matrix in expanded form.
+	//m11 through m41 represent the cofactors of those sections of the matrix, which are added together to get the value
+	F32 m11 = _columns[0][0] * (   _columns[1][1] * (_columns[2][2] * _columns[3][3] - _columns[3][2] * _columns[2][3])
+			   					+ _columns[2][1] * (_columns[3][2] * _columns[1][3] - _columns[1][2] * _columns[3][3])
+			   					+ _columns[3][1] * (_columns[1][2] * _columns[2][3] - _columns[2][2] * _columns[1][3]) );
+
+	F32 m21 = _columns[1][0] * (   _columns[0][1] * (_columns[2][2] * _columns[3][3] - _columns[3][2] * _columns[2][3])
+		 		   				+ _columns[2][1] * (_columns[3][2] * _columns[0][3] - _columns[0][2] * _columns[3][3])
+		 		   				+ _columns[3][1] * (_columns[0][2] * _columns[2][3] - _columns[2][2] * _columns[0][3]) );
+
+	F32 m31 = _columns[2][0] * (   _columns[0][1] * (_columns[1][2] * _columns[3][3] - _columns[3][2] * _columns[1][3])
+		 		   				+ _columns[1][1] * (_columns[3][2] * _columns[0][3] - _columns[0][2] * _columns[3][3])
+		 		   				+ _columns[3][1] * (_columns[0][2] * _columns[1][3] - _columns[1][2] * _columns[0][3]) );
+
+	F32 m41 = _columns[3][0] * (   _columns[0][1] * (_columns[1][2] * _columns[2][3] - _columns[2][2] * _columns[1][3])
+		 		   				+ _columns[1][1] * (_columns[2][2] * _columns[0][3] - _columns[0][2] * _columns[2][3])
+		 		   				+ _columns[2][1] * (_columns[0][2] * _columns[1][3] - _columns[1][2] * _columns[0][3]) );
+
+	return m11 - m21 + m31 - m41;
 }
 
 //==========================================================================================================================

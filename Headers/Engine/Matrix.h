@@ -224,7 +224,15 @@ namespace KillerMath
 	\param y F32. Degree of rotation around the y axis. Calls RADIAN()
 	\param z F32. Degree of rotation around the z axis. Calls RADIAN() */
 		void AddRotation(F32 xVal, F32 yVal, F32 zVal);
-		
+
+//==========================================================================================================================
+//Inverse
+//==========================================================================================================================		
+		void SetInverse(void);
+
+		static Matrix Inverse(void);
+
+		F32 Determinate(void);
 //==========================================================================================================================
 //Resettings
 //==========================================================================================================================
@@ -298,7 +306,8 @@ namespace KillerMath
 		Vector operator*(const Vector& vec);
 
 	private:
-		enum {
+		enum 
+		{
 			x=0,
 			y=1,
 			z=2,
