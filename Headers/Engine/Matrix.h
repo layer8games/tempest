@@ -230,9 +230,11 @@ namespace KillerMath
 //==========================================================================================================================		
 		void SetInverse(void);
 
-		static Matrix Inverse(void);
+		Matrix GetInverse(void);
 
 		F32 Determinate(void);
+
+		static F32 Determinate3x3(Vector& col1, Vector& col2, Vector& col3);
 //==========================================================================================================================
 //Resettings
 //==========================================================================================================================
@@ -304,6 +306,8 @@ namespace KillerMath
 /*! Performs Matrix multiplication with Vector.
 */
 		Vector operator*(const Vector& vec);
+
+		Matrix& operator/=(F32 val);
 
 	private:
 		enum 

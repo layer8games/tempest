@@ -447,13 +447,104 @@ void Matrix::AddRotation(F32 xVal, F32 yVal, F32 zVal)
 
 void Matrix::SetInverse(void)
 {
-	//find the determinate
+	F32 det = Determinate();
 
+	if(det == 0.0f) return;
+
+	F32 c00 = Determinate3x3(Vector(_columns[y][y], _columns[y][z], _columns[y][w]),
+							 Vector(_columns[z][y], _columns[z][z], _columns[z][w]),
+							 Vector(_columns[w][y], _columns[w][z], _columns[w][w]));
+
+	F32 c01 = Determinate3x3(Vector(_columns[y][x], _columns[y][z], _columns[y][w]),
+							 Vector(_columns[z][x], _columns[z][z], _columns[z][w]),
+							 Vector(_columns[w][x], _columns[w][z], _columns[w][w]));
+
+	F32 c02 = Determinate3x3(Vector(_columns[y][x], _columns[y][y], _columns[y][w]),
+							 Vector(_columns[z][x], _columns[z][y], _columns[z][w]),
+							 Vector(_columns[w][x], _columns[w][y], _columns[w][w]));
+
+	F32 c03 = Determinate3x3(Vector(_columns[y][x], _columns[y][y], _columns[y][z]),
+							 Vector(_columns[z][x], _columns[z][y], _columns[z][z]),
+							 Vector(_columns[w][x], _columns[w][y], _columns[w][z]));
+
+	Vector colx {c00, -c01, c02, -c03};
+
+	F32 c10 = Determinate3x3(Vector(_columns[x][y], _columns[x][z], _columns[x][w]),
+							 Vector(_columns[z][y], _columns[z][z], _columns[z][w]),
+							 Vector(_columns[w][y], _columns[w][z], _columns[w][w]));
+
+	F32 c11 = Determinate3x3(Vector(_columns[x][x], _columns[x][z], _columns[x][w]),
+							 Vector(_columns[z][x], _columns[z][z], _columns[z][w]),
+							 Vector(_columns[w][x], _columns[w][z], _columns[w][w]));
+
+	std::cout << "c11 is " << c11 << std::endl;
+
+	F32 c12 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][w]),
+							 Vector(_columns[z][x], _columns[z][y], _columns[z][w]),
+							 Vector(_columns[w][x], _columns[w][y], _columns[w][w]));
+
+	F32 c13 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][z]),
+							 Vector(_columns[z][x], _columns[z][y], _columns[z][z]),
+							 Vector(_columns[w][x], _columns[w][y], _columns[w][z]));
+
+	Vector coly {-c10, c11, -c12, c13};
+
+	F32 c20 = Determinate3x3(Vector(_columns[x][y], _columns[x][z], _columns[x][w]),
+							 Vector(_columns[y][y], _columns[y][z], _columns[y][w]),
+							 Vector(_columns[w][y], _columns[w][z], _columns[w][w]));
+
+	F32 c21 = Determinate3x3(Vector(_columns[x][x], _columns[x][z], _columns[x][w]),
+							 Vector(_columns[y][x], _columns[y][z], _columns[y][w]),
+							 Vector(_columns[w][x], _columns[w][z], _columns[w][w]));
+
+	F32 c22 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][w]),
+							 Vector(_columns[y][x], _columns[y][y], _columns[y][w]),
+							 Vector(_columns[w][x], _columns[w][y], _columns[w][w]));
+
+	F32 c23 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][z]),
+							 Vector(_columns[y][x], _columns[y][y], _columns[y][z]),
+							 Vector(_columns[w][x], _columns[w][y], _columns[w][z]));
+
+	Vector colz {c20, -c21, c22, -c23};
+
+	F32 c30 = Determinate3x3(Vector(_columns[x][y], _columns[x][z], _columns[x][w]),
+							 Vector(_columns[y][y], _columns[y][z], _columns[y][w]),
+							 Vector(_columns[z][y], _columns[z][z], _columns[z][w]));
+
+	F32 c31 = Determinate3x3(Vector(_columns[x][x], _columns[x][z], _columns[x][w]),
+							 Vector(_columns[y][x], _columns[y][z], _columns[y][w]),
+							 Vector(_columns[z][x], _columns[z][z], _columns[z][w]));
+
+	F32 c32 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][w]),
+							 Vector(_columns[y][x], _columns[y][y], _columns[y][w]),
+							 Vector(_columns[z][x], _columns[z][y], _columns[z][w]));
+
+	F32 c33 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][z]),
+							 Vector(_columns[y][x], _columns[y][y], _columns[y][z]),
+							 Vector(_columns[z][x], _columns[z][y], _columns[z][z]));
+
+	Vector colw {-c30, c31, -c32, c33};
+
+	Matrix adj { colx, coly, colz, colw };
+
+	adj.Transpose();	
+
+	adj	/= det;
+
+	std::cout << "11 = " << adj[1][1] << std::endl;
+
+	*this = adj;
 }
 
-Matrix Matrix::Inverse(void)
+Matrix Matrix::GetInverse(void)
 {
-	return Matrix(1.0f);
+	Matrix ret = *this;
+
+	std::cout << "ret 11 is " << ret[1][1] << std::endl;
+
+	ret.SetInverse();
+
+	return ret;
 }
 
 F32 Matrix::Determinate(void)
@@ -478,6 +569,13 @@ F32 Matrix::Determinate(void)
 		 		   				+ _columns[2][1] * (_columns[0][2] * _columns[1][3] - _columns[1][2] * _columns[0][3]) );
 
 	return m11 - m21 + m31 - m41;
+}
+
+F32 Matrix::Determinate3x3(Vector& col1, Vector& col2, Vector& col3)
+{
+	return col1[x] * (col2[y] * col3[z] - col3[y] * col2[z])
+		 + col2[x] * (col3[y] * col1[z] - col1[y] * col3[z])
+		 + col3[x] * (col1[y] * col2[z] - col2[y] * col1[z]);
 }
 
 //==========================================================================================================================
@@ -747,4 +845,29 @@ Vector Matrix::operator*(const Vector& vec)
 				   _columns[0][y] * vec[x] + _columns[1][y] * vec[y] + _columns[2][y] * vec[z] + _columns[3][y] * vec[w],
 				   _columns[0][z] * vec[x] + _columns[1][z] + vec[y] + _columns[2][z] * vec[z] + _columns[3][z] * vec[w],
 				   _columns[0][w] * vec[x] + _columns[1][w] + vec[y] + _columns[2][w] + vec[z] + _columns[3][w] * vec[w] );
+}
+
+Matrix& Matrix::operator/=(F32 val)
+{
+	_columns[x][x] /= val;
+	_columns[x][y] /= val;
+	_columns[x][z] /= val;
+	_columns[x][w] /= val;
+	
+	_columns[y][x] /= val;
+	_columns[y][y] /= val;
+	_columns[y][z] /= val;
+	_columns[y][w] /= val;
+
+	_columns[z][x] /= val;
+	_columns[z][y] /= val;
+	_columns[z][z] /= val;
+	_columns[z][w] /= val;
+
+	_columns[w][x] /= val;
+	_columns[w][y] /= val;
+	_columns[w][z] /= val;
+	_columns[w][w] /= val;
+
+	return *this;
 }
