@@ -28,9 +28,9 @@ namespace KillerMath
 		
 		explicit Quaternion(real value);
 
-		Quaternion(real w, real x, real y, real z);
+		Quaternion(real wVal, real xVal, real yVal, real zVal);
 
-		Quaternion(const Quaternion& Q);
+		Quaternion(const Quaternion& q);
 
 		~Quaternion(void);
 		
@@ -42,29 +42,9 @@ namespace KillerMath
 //==========================================================================================================================
 //Accessors
 //==========================================================================================================================		
-		real GetW(void) const
-		{
-			return _q[0];
-		}
-
-		real GetX(void) const
-		{
-			return _q[1];
-		}
-
-		real GetY(void) const
-		{
-			return _q[2];
-		}
-
-		real GetZ(void) const
-		{
-			return _q[3];
-		}
-
 		const real* GetElems(void) const
 		{
-			return _q;
+			return _data;
 		}
 //==========================================================================================================================
 //
@@ -73,25 +53,25 @@ namespace KillerMath
 //==========================================================================================================================
 		inline const F32& operator[](int i) const
 		{
-			return _q[i];
+			return _data[i];
 		}
 
 		inline F32& operator[](int i)
 		{
-			return _q[i];
+			return _data[i];
 		}
 
-		Quaternion operator/ (real d);
+		Quaternion operator/(real d);
 
-		Quaternion& operator/= (real d);
+		Quaternion& operator/=(real d);
 
-		Quaternion operator* (real m);
+		Quaternion operator*(real m);
 
-		Quaternion operator* (Quaternion& q2);
+		Quaternion operator*(const Quaternion& q2);
 
-		Quaternion& operator*= (real m);
+		Quaternion& operator*=(real m);
 
-		Quaternion& operator*= (Quaternion& q2);
+		Quaternion& operator*=(const Quaternion& q2);
 
 //==========================================================================================================================
 //
@@ -115,6 +95,14 @@ namespace KillerMath
 		void Normalize(void);
 		
 	private:
-		real _q[4];
+		enum 
+		{
+			w = 0,
+			x = 1,
+			y = 2,
+			z = 3,
+		};
+
+		real _data[4];
 	};//end Class
 }//end Namespace

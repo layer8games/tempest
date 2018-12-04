@@ -1,4 +1,5 @@
 #include <Engine/Matrix.h>
+#include <iostream>
 
 using namespace KillerMath;
 
@@ -205,6 +206,66 @@ void Matrix::AddTranslate(const Vector& vec)
 	{
 		_columns[3][z] += vec[z];
 	}
+}
+
+Vector Matrix::TransformInverse(const Vector vec) const
+{
+	Vector tmp = vec;
+
+	tmp[x] -= _columns[3][x];
+	tmp[y] -= _columns[3][y];
+	tmp[z] -= _columns[3][z];
+
+	return Vector
+	{
+		tmp[x] * _columns[0][x] +
+		tmp[y] * _columns[0][y] + 
+		tmp[z] * _columns[0][z],
+
+		tmp[x] * _columns[1][x] + 
+		tmp[y] * _columns[1][y] + 
+		tmp[z] * _columns[1][z],
+
+		tmp[x] * _columns[2][x] +
+		tmp[y] * _columns[2][y] + 
+		tmp[z] * _columns[2][z]
+	};
+}
+
+Vector Matrix::TransformDirection(const Vector& vec) const
+{
+	return Vector
+	{
+		vec[x] * _columns[0][x] + 
+		vec[y] * _columns[1][x] + 
+		vec[z] * _columns[2][x],
+
+		vec[x] * _columns[0][y] + 
+		vec[y] * _columns[1][y] + 
+		vec[z] * _columns[2][y],
+
+		vec[x] * _columns[0][z] + 
+		vec[y] * _columns[1][z] + 
+		vec[z] * _columns[2][z],
+	};
+}
+
+Vector Matrix::TransformInverseDirection(const Vector& vec) const
+{
+	return Vector
+	{
+		vec[x] * _columns[0][x] + 
+		vec[y] * _columns[0][y] + 
+		vec[z] * _columns[0][z],
+
+		vec[x] * _columns[1][x] + 
+		vec[y] * _columns[1][y] + 
+		vec[z] * _columns[1][z],
+
+		vec[x] * _columns[2][x] + 
+		vec[y] * _columns[2][y] + 
+		vec[z] * _columns[2][z],
+	};
 }
 
 //==========================================================================================================================
@@ -438,6 +499,169 @@ void Matrix::AddRotation(F32 xVal, F32 yVal, F32 zVal)
 	_columns[2][x] += sin(xVal) * sin(zVal) - cos(xVal) * sin(yVal) * cos(zVal);
 	_columns[2][y] += sin(xVal) * cos(zVal) + cos(xVal) * sin(yVal) * sin(zVal);
 	_columns[2][z] += cos(xVal) * cos(yVal);
+}
+
+void Matrix::SetOrientation(const Quaternion& q)
+{
+	F32 q_w = q[0];
+	F32 q_x = q[1];
+	F32 q_y = q[2];
+	F32 q_z = q[3];
+
+	_columns[0][x] = 1.0f - (2.0f * q_y * q_y + q_z * q_z);
+	_columns[0][y] = 2.0f * q_x * q_y - 2.0f * q_z * q_w;
+	_columns[0][z] = 2.0f * q_x * q_z + 2.0f * q_y * q_w;
+
+	_columns[1][x] = 2.0f * q_w * q_y + 2.0f * q_z * q_w;
+	_columns[1][y] = 1.0f - (2.0f * q_x * q_x + 2.0f * q_z * q_z);
+	_columns[1][z] = 2.0f * q_y * q_z - 2.0f * q_x * q_w;
+
+	_columns[2][x] = 2.0f * q_x * q_z - 2.0f * q_y * q_w;
+	_columns[2][y] = 2.0f * q_y * q_z + 2.0f * q_x * q_w;
+	_columns[2][z] = 1 - (2.0f * q_x * q_x + 2.0f * q_y * q_y);
+}
+
+void Matrix::SetOrientationAndPosition(const Quaternion& q, const Vector& v)
+{
+	SetOrientation(q);
+	Translate(v);
+}
+
+//==========================================================================================================================
+//Inverse
+//==========================================================================================================================
+
+void Matrix::SetInverse(void)
+{
+	F32 det = Determinate();
+
+	if(det == 0.0f) return;
+
+	F32 c00 = Determinate3x3(Vector(_columns[y][y], _columns[y][z], _columns[y][w]),
+							 Vector(_columns[z][y], _columns[z][z], _columns[z][w]),
+							 Vector(_columns[w][y], _columns[w][z], _columns[w][w]));
+
+	F32 c01 = Determinate3x3(Vector(_columns[y][x], _columns[y][z], _columns[y][w]),
+							 Vector(_columns[z][x], _columns[z][z], _columns[z][w]),
+							 Vector(_columns[w][x], _columns[w][z], _columns[w][w]));
+
+	F32 c02 = Determinate3x3(Vector(_columns[y][x], _columns[y][y], _columns[y][w]),
+							 Vector(_columns[z][x], _columns[z][y], _columns[z][w]),
+							 Vector(_columns[w][x], _columns[w][y], _columns[w][w]));
+
+	F32 c03 = Determinate3x3(Vector(_columns[y][x], _columns[y][y], _columns[y][z]),
+							 Vector(_columns[z][x], _columns[z][y], _columns[z][z]),
+							 Vector(_columns[w][x], _columns[w][y], _columns[w][z]));
+
+	Vector colx {c00, -c01, c02, -c03};
+
+	F32 c10 = Determinate3x3(Vector(_columns[x][y], _columns[x][z], _columns[x][w]),
+							 Vector(_columns[z][y], _columns[z][z], _columns[z][w]),
+							 Vector(_columns[w][y], _columns[w][z], _columns[w][w]));
+
+	F32 c11 = Determinate3x3(Vector(_columns[x][x], _columns[x][z], _columns[x][w]),
+							 Vector(_columns[z][x], _columns[z][z], _columns[z][w]),
+							 Vector(_columns[w][x], _columns[w][z], _columns[w][w]));
+
+	std::cout << "c11 is " << c11 << std::endl;
+
+	F32 c12 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][w]),
+							 Vector(_columns[z][x], _columns[z][y], _columns[z][w]),
+							 Vector(_columns[w][x], _columns[w][y], _columns[w][w]));
+
+	F32 c13 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][z]),
+							 Vector(_columns[z][x], _columns[z][y], _columns[z][z]),
+							 Vector(_columns[w][x], _columns[w][y], _columns[w][z]));
+
+	Vector coly {-c10, c11, -c12, c13};
+
+	F32 c20 = Determinate3x3(Vector(_columns[x][y], _columns[x][z], _columns[x][w]),
+							 Vector(_columns[y][y], _columns[y][z], _columns[y][w]),
+							 Vector(_columns[w][y], _columns[w][z], _columns[w][w]));
+
+	F32 c21 = Determinate3x3(Vector(_columns[x][x], _columns[x][z], _columns[x][w]),
+							 Vector(_columns[y][x], _columns[y][z], _columns[y][w]),
+							 Vector(_columns[w][x], _columns[w][z], _columns[w][w]));
+
+	F32 c22 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][w]),
+							 Vector(_columns[y][x], _columns[y][y], _columns[y][w]),
+							 Vector(_columns[w][x], _columns[w][y], _columns[w][w]));
+
+	F32 c23 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][z]),
+							 Vector(_columns[y][x], _columns[y][y], _columns[y][z]),
+							 Vector(_columns[w][x], _columns[w][y], _columns[w][z]));
+
+	Vector colz {c20, -c21, c22, -c23};
+
+	F32 c30 = Determinate3x3(Vector(_columns[x][y], _columns[x][z], _columns[x][w]),
+							 Vector(_columns[y][y], _columns[y][z], _columns[y][w]),
+							 Vector(_columns[z][y], _columns[z][z], _columns[z][w]));
+
+	F32 c31 = Determinate3x3(Vector(_columns[x][x], _columns[x][z], _columns[x][w]),
+							 Vector(_columns[y][x], _columns[y][z], _columns[y][w]),
+							 Vector(_columns[z][x], _columns[z][z], _columns[z][w]));
+
+	F32 c32 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][w]),
+							 Vector(_columns[y][x], _columns[y][y], _columns[y][w]),
+							 Vector(_columns[z][x], _columns[z][y], _columns[z][w]));
+
+	F32 c33 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][z]),
+							 Vector(_columns[y][x], _columns[y][y], _columns[y][z]),
+							 Vector(_columns[z][x], _columns[z][y], _columns[z][z]));
+
+	Vector colw {-c30, c31, -c32, c33};
+
+	Matrix adj { colx, coly, colz, colw };
+
+	adj.Transpose();	
+
+	adj	/= det;
+
+	std::cout << "11 = " << adj[1][1] << std::endl;
+
+	*this = adj;
+}
+
+Matrix Matrix::GetInverse(void) const
+{
+	Matrix ret = *this;
+
+	std::cout << "ret 11 is " << ret[1][1] << std::endl;
+
+	ret.SetInverse();
+
+	return ret;
+}
+
+F32 Matrix::Determinate(void) const
+{
+	//This equation is very difficult to understand. It was ultimately taking from 3d Math Primer, page 165, Determinate of 
+	//4x4 matrix in expanded form.
+	//m11 through m41 represent the cofactors of those sections of the matrix, which are added together to get the value
+	F32 m11 = _columns[0][0] * (   _columns[1][1] * (_columns[2][2] * _columns[3][3] - _columns[3][2] * _columns[2][3])
+			   					+ _columns[2][1] * (_columns[3][2] * _columns[1][3] - _columns[1][2] * _columns[3][3])
+			   					+ _columns[3][1] * (_columns[1][2] * _columns[2][3] - _columns[2][2] * _columns[1][3]) );
+
+	F32 m21 = _columns[1][0] * (   _columns[0][1] * (_columns[2][2] * _columns[3][3] - _columns[3][2] * _columns[2][3])
+		 		   				+ _columns[2][1] * (_columns[3][2] * _columns[0][3] - _columns[0][2] * _columns[3][3])
+		 		   				+ _columns[3][1] * (_columns[0][2] * _columns[2][3] - _columns[2][2] * _columns[0][3]) );
+
+	F32 m31 = _columns[2][0] * (   _columns[0][1] * (_columns[1][2] * _columns[3][3] - _columns[3][2] * _columns[1][3])
+		 		   				+ _columns[1][1] * (_columns[3][2] * _columns[0][3] - _columns[0][2] * _columns[3][3])
+		 		   				+ _columns[3][1] * (_columns[0][2] * _columns[1][3] - _columns[1][2] * _columns[0][3]) );
+
+	F32 m41 = _columns[3][0] * (   _columns[0][1] * (_columns[1][2] * _columns[2][3] - _columns[2][2] * _columns[1][3])
+		 		   				+ _columns[1][1] * (_columns[2][2] * _columns[0][3] - _columns[0][2] * _columns[2][3])
+		 		   				+ _columns[2][1] * (_columns[0][2] * _columns[1][3] - _columns[1][2] * _columns[0][3]) );
+
+	return m11 - m21 + m31 - m41;
+}
+
+F32 Matrix::Determinate3x3(Vector& col1, Vector& col2, Vector& col3)
+{
+	return col1[x] * (col2[y] * col3[z] - col3[y] * col2[z])
+		 + col2[x] * (col3[y] * col1[z] - col1[y] * col3[z])
+		 + col3[x] * (col1[y] * col2[z] - col2[y] * col1[z]);
 }
 
 //==========================================================================================================================
@@ -701,10 +925,35 @@ void Matrix::SetFPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
 	_columns[3] = Vector(-xAxis.DotProduct(cameraPos), -yAxis.DotProduct(cameraPos), -zAxis.DotProduct(cameraPos), 1.0f);	
 }
 
-Vector Matrix::operator*(const Vector& vec)
+Vector Matrix::operator*(const Vector& vec) const
 {
 	return Vector( _columns[0][x] * vec[x] + _columns[1][x] * vec[y] + _columns[2][x] * vec[z] + _columns[3][x] * vec[w],
 				   _columns[0][y] * vec[x] + _columns[1][y] * vec[y] + _columns[2][y] * vec[z] + _columns[3][y] * vec[w],
 				   _columns[0][z] * vec[x] + _columns[1][z] + vec[y] + _columns[2][z] * vec[z] + _columns[3][z] * vec[w],
 				   _columns[0][w] * vec[x] + _columns[1][w] + vec[y] + _columns[2][w] + vec[z] + _columns[3][w] * vec[w] );
+}
+
+Matrix& Matrix::operator/=(F32 val)
+{
+	_columns[x][x] /= val;
+	_columns[x][y] /= val;
+	_columns[x][z] /= val;
+	_columns[x][w] /= val;
+	
+	_columns[y][x] /= val;
+	_columns[y][y] /= val;
+	_columns[y][z] /= val;
+	_columns[y][w] /= val;
+
+	_columns[z][x] /= val;
+	_columns[z][y] /= val;
+	_columns[z][z] /= val;
+	_columns[z][w] /= val;
+
+	_columns[w][x] /= val;
+	_columns[w][y] /= val;
+	_columns[w][z] /= val;
+	_columns[w][w] /= val;
+
+	return *this;
 }

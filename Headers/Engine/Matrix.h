@@ -3,6 +3,7 @@
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
 #include <Engine/Vector.h>
+#include <Engine/Quaternion.h>
 
 #include <vector>
 #include <cassert>
@@ -132,6 +133,22 @@ namespace KillerMath
 */	
 		void AddTranslate(const Vector& vec);
 
+		Vector TransformInverse(const Vector vec) const;
+
+		inline static Vector LocalToWorld(const Vector& vec, const Matrix& mat)
+		{
+			return mat * vec;
+		}
+
+		inline static Vector WorldToLocal(const Vector& vec, const Matrix& mat)
+		{
+			return mat.TransformInverse(vec);
+		}
+
+		Vector TransformDirection(const Vector& vec) const;
+
+		Vector TransformInverseDirection(const Vector& vec) const;
+
 //==========================================================================================================================
 //Scaling
 //==========================================================================================================================
@@ -224,7 +241,21 @@ namespace KillerMath
 	\param y F32. Degree of rotation around the y axis. Calls RADIAN()
 	\param z F32. Degree of rotation around the z axis. Calls RADIAN() */
 		void AddRotation(F32 xVal, F32 yVal, F32 zVal);
-		
+
+		void SetOrientation(const Quaternion& q);
+
+		void SetOrientationAndPosition(const Quaternion& q, const Vector& v);
+
+//==========================================================================================================================
+//Inverse
+//==========================================================================================================================		
+		void SetInverse(void);
+
+		Matrix GetInverse(void) const;
+
+		F32 Determinate(void) const;
+
+		static F32 Determinate3x3(Vector& col1, Vector& col2, Vector& col3);
 //==========================================================================================================================
 //Resettings
 //==========================================================================================================================
@@ -295,10 +326,13 @@ namespace KillerMath
 
 /*! Performs Matrix multiplication with Vector.
 */
-		Vector operator*(const Vector& vec);
+		Vector operator*(const Vector& vec) const;
+
+		Matrix& operator/=(F32 val);
 
 	private:
-		enum {
+		enum 
+		{
 			x=0,
 			y=1,
 			z=2,
