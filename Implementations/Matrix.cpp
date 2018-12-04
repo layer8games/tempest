@@ -208,6 +208,66 @@ void Matrix::AddTranslate(const Vector& vec)
 	}
 }
 
+Vector Matrix::TransformInverse(const Vector vec) const
+{
+	Vector tmp = vec;
+
+	tmp[x] -= _columns[3][x];
+	tmp[y] -= _columns[3][y];
+	tmp[z] -= _columns[3][z];
+
+	return Vector
+	{
+		tmp[x] * _columns[0][x] +
+		tmp[y] * _columns[0][y] + 
+		tmp[z] * _columns[0][z],
+
+		tmp[x] * _columns[1][x] + 
+		tmp[y] * _columns[1][y] + 
+		tmp[z] * _columns[1][z],
+
+		tmp[x] * _columns[2][x] +
+		tmp[y] * _columns[2][y] + 
+		tmp[z] * _columns[2][z]
+	};
+}
+
+Vector Matrix::TransformDirection(const Vector& vec) const
+{
+	return Vector
+	{
+		vec[x] * _columns[0][x] + 
+		vec[y] * _columns[1][x] + 
+		vec[z] * _columns[2][x],
+
+		vec[x] * _columns[0][y] + 
+		vec[y] * _columns[1][y] + 
+		vec[z] * _columns[2][y],
+
+		vec[x] * _columns[0][z] + 
+		vec[y] * _columns[1][z] + 
+		vec[z] * _columns[2][z],
+	};
+}
+
+Vector Matrix::TransformInverseDirection(const Vector& vec) const
+{
+	return Vector
+	{
+		vec[x] * _columns[0][x] + 
+		vec[y] * _columns[0][y] + 
+		vec[z] * _columns[0][z],
+
+		vec[x] * _columns[1][x] + 
+		vec[y] * _columns[1][y] + 
+		vec[z] * _columns[1][z],
+
+		vec[x] * _columns[2][x] + 
+		vec[y] * _columns[2][y] + 
+		vec[z] * _columns[2][z],
+	};
+}
+
 //==========================================================================================================================
 //Scaling
 //==========================================================================================================================
@@ -441,6 +501,32 @@ void Matrix::AddRotation(F32 xVal, F32 yVal, F32 zVal)
 	_columns[2][z] += cos(xVal) * cos(yVal);
 }
 
+void Matrix::SetOrientation(const Quaternion& q)
+{
+	F32 q_w = q[0];
+	F32 q_x = q[1];
+	F32 q_y = q[2];
+	F32 q_z = q[3];
+
+	_columns[0][x] = 1.0f - (2.0f * q_y * q_y + q_z * q_z);
+	_columns[0][y] = 2.0f * q_x * q_y - 2.0f * q_z * q_w;
+	_columns[0][z] = 2.0f * q_x * q_z + 2.0f * q_y * q_w;
+
+	_columns[1][x] = 2.0f * q_w * q_y + 2.0f * q_z * q_w;
+	_columns[1][y] = 1.0f - (2.0f * q_x * q_x + 2.0f * q_z * q_z);
+	_columns[1][z] = 2.0f * q_y * q_z - 2.0f * q_x * q_w;
+
+	_columns[2][x] = 2.0f * q_x * q_z - 2.0f * q_y * q_w;
+	_columns[2][y] = 2.0f * q_y * q_z + 2.0f * q_x * q_w;
+	_columns[2][z] = 1 - (2.0f * q_x * q_x + 2.0f * q_y * q_y);
+}
+
+void Matrix::SetOrientationAndPosition(const Quaternion& q, const Vector& v)
+{
+	SetOrientation(q);
+	Translate(v);
+}
+
 //==========================================================================================================================
 //Inverse
 //==========================================================================================================================
@@ -536,7 +622,7 @@ void Matrix::SetInverse(void)
 	*this = adj;
 }
 
-Matrix Matrix::GetInverse(void)
+Matrix Matrix::GetInverse(void) const
 {
 	Matrix ret = *this;
 
@@ -547,7 +633,7 @@ Matrix Matrix::GetInverse(void)
 	return ret;
 }
 
-F32 Matrix::Determinate(void)
+F32 Matrix::Determinate(void) const
 {
 	//This equation is very difficult to understand. It was ultimately taking from 3d Math Primer, page 165, Determinate of 
 	//4x4 matrix in expanded form.
@@ -839,7 +925,7 @@ void Matrix::SetFPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
 	_columns[3] = Vector(-xAxis.DotProduct(cameraPos), -yAxis.DotProduct(cameraPos), -zAxis.DotProduct(cameraPos), 1.0f);	
 }
 
-Vector Matrix::operator*(const Vector& vec)
+Vector Matrix::operator*(const Vector& vec) const
 {
 	return Vector( _columns[0][x] * vec[x] + _columns[1][x] * vec[y] + _columns[2][x] * vec[z] + _columns[3][x] * vec[w],
 				   _columns[0][y] * vec[x] + _columns[1][y] * vec[y] + _columns[2][y] * vec[z] + _columns[3][y] * vec[w],
