@@ -1,5 +1,4 @@
 #include <Engine/Matrix.h>
-#include <iostream>
 
 using namespace KillerMath;
 
@@ -563,8 +562,6 @@ void Matrix::SetInverse(void)
 							 Vector(_columns[z][x], _columns[z][z], _columns[z][w]),
 							 Vector(_columns[w][x], _columns[w][z], _columns[w][w]));
 
-	std::cout << "c11 is " << c11 << std::endl;
-
 	F32 c12 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][w]),
 							 Vector(_columns[z][x], _columns[z][y], _columns[z][w]),
 							 Vector(_columns[w][x], _columns[w][y], _columns[w][w]));
@@ -617,16 +614,12 @@ void Matrix::SetInverse(void)
 
 	adj	/= det;
 
-	std::cout << "11 = " << adj[1][1] << std::endl;
-
 	*this = adj;
 }
 
 Matrix Matrix::GetInverse(void) const
 {
 	Matrix ret = *this;
-
-	std::cout << "ret 11 is " << ret[1][1] << std::endl;
 
 	ret.SetInverse();
 
