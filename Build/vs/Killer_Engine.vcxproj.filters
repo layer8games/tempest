@@ -73,9 +73,6 @@
     <Filter Include="Source Code\KillerPhysics">
       <UniqueIdentifier>{9e6deab4-04ba-4e5d-a927-ac83649188fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerPhysics\Particles">
-      <UniqueIdentifier>{57925e0b-6c1a-46f2-92b3-fb68a9630ebe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\KillerPhysics\Forces">
       <UniqueIdentifier>{b3088a5e-674e-4070-880b-75d7bacedb04}</UniqueIdentifier>
     </Filter>
@@ -123,6 +120,12 @@
     </Filter>
     <Filter Include="Source Code\FontManager">
       <UniqueIdentifier>{628dddcc-7234-492d-a7d2-24ed7ef95ef1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerPhysics\RigidBody">
+      <UniqueIdentifier>{c249fc9b-461f-4338-8fb6-84a67018f196}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerPhysics\Particle">
+      <UniqueIdentifier>{57925e0b-6c1a-46f2-92b3-fb68a9630ebe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -208,7 +211,7 @@
       <Filter>Source Code\GameObjects\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Particle.h">
-      <Filter>Source Code\KillerPhysics\Particles</Filter>
+      <Filter>Source Code\KillerPhysics\Particle</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
       <Filter>Source Code\KillerPhysics\ContactResolution</Filter>
@@ -227,6 +230,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ParticleContactResolver.h">
       <Filter>Source Code\KillerPhysics\ContactResolution</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\RigidBody.h">
+      <Filter>Source Code\KillerPhysics\RigidBody</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -303,7 +309,7 @@
       <Filter>Source Code\GameObjects\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Particle.cpp">
-      <Filter>Source Code\KillerPhysics\Particles</Filter>
+      <Filter>Source Code\KillerPhysics\Particle</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
       <Filter>Source Code\KillerPhysics\ContactResolution</Filter>
@@ -322,6 +328,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ParticleContactResolver.cpp">
       <Filter>Source Code\KillerPhysics\ContactResolution</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\RigidBody.cpp">
+      <Filter>Source Code\KillerPhysics\RigidBody</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

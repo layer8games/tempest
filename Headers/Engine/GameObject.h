@@ -8,6 +8,7 @@
 #include <Engine/Matrix.h>
 #include <Engine/Color.h>
 #include <Engine/Vertex.h>
+#include <Engine/Quaternion.h>
 #include <Engine/Texture.h>
 #include <Engine/ShaderManager.h>
 
@@ -240,6 +241,25 @@ namespace KillerEngine
 			_scale[2] = zVal;	
 		}
 
+//===== Orientation =====
+		inline const KM::Quaternion& GetOrientation(void) const
+		{
+			return _orientation;
+		}
+
+		inline void SetOrientation(const KM::Quaternion& q)
+		{
+			_orientation = q;
+		}
+
+		inline void SetOrientation(F32 wVal, F32 xVal, F32 yVal, F32 zVal)
+		{
+			_orientation[0] = wVal;
+			_orientation[1] = xVal;
+			_orientation[2] = yVal;
+			_orientation[3] = zVal;
+		}
+
 //===== Color =====		
 		inline void SetColor(const Color& col)
 		{
@@ -431,6 +451,7 @@ namespace KillerEngine
 		std::vector<F32> 		_uvList;
 		KM::Vector				_position;
 		KM::Vector 				_scale;
+		KM::Quaternion 			_orientation;
 		Color 					_color;
 		shared_ptr<Texture>		_texture;
 		shared_ptr<Shader>		_shader;
