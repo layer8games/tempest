@@ -432,6 +432,12 @@ namespace KillerEngine
 			_uvList.push_back(val);
 		}
 
+	protected:
+		KM::Quaternion& _AccessOrientation(void)
+		{
+			return _orientation;
+		}
+
 	private:
 		std::vector<U32> _SplitU32(string text, char delim) const;
 		

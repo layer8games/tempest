@@ -523,7 +523,10 @@ void Matrix::SetOrientation(const Quaternion& q)
 void Matrix::SetOrientationAndPosition(const Quaternion& q, const Vector& v)
 {
 	SetOrientation(q);
-	Translate(v);
+	
+	_columns[3][x] = v[x];
+	_columns[3][y] = v[y];
+	_columns[3][z] = v[z];
 }
 
 //==========================================================================================================================
