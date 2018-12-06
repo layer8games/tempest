@@ -14,7 +14,7 @@ _rotation(0.0f),
 _forceAccum(0.0f),
 _transformMatrix(1.0f),
 _inverseMass(1.0f),
-_linearDampin(0.999f)
+_linearDamping(0.999f)
 {  }
 
 RigidBody::~RigidBody(void)
@@ -27,3 +27,18 @@ RigidBody::~RigidBody(void)
 //==========================================================================================================================
 void RigidBody::v_Update(void)
 {  }
+
+//==========================================================================================================================
+//Mass
+//==========================================================================================================================
+const real RigidBody::GetMass(void)
+{
+	if(_inverseMass == 0.0f)
+	{
+		return REAL_MAX;
+	}
+	else
+	{
+		return static_cast<real>(1.0f) / _inverseMass;
+	}
+}
