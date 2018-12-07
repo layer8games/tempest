@@ -8,6 +8,8 @@ using namespace KillerPhysics;
 //==========================================================================================================================
 RigidBody::RigidBody(void)
 :
+_inverseInertiaTensor(0.0f),
+_inverseInertiaTensorInWorld(0.0f),
 _velocity(0.0f),
 _acceleration(0.0f),
 _rotation(0.0f),
@@ -48,4 +50,16 @@ const real RigidBody::GetMass(void)
 	{
 		return static_cast<real>(1.0f) / _inverseMass;
 	}
+}
+
+/*
+	This needs: 
+	1. GameObject to cache the world transform matrix
+	2. multiply the _invserInertiaTensorInWorld by it. 
+
+	The book is confusing. This must be high performance, it will be called every frame.
+*/
+void RigidBody::_TransformInertiaTensor(void)
+{
+	
 }

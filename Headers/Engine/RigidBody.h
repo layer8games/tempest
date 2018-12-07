@@ -46,6 +46,17 @@ namespace KillerPhysics
 //Accessors
 //
 //==========================================================================================================================
+//===== Inertia Tensor =====
+		inline const KM::Matrix& GetInverseInertiaTensor(void) const
+		{
+			return _inverseInertiaTensor;
+		}
+
+		void SetInverseInertiaTensor(const KM::Matrix& mat)
+		{
+			_inverseInertiaTensor.SetAsInverse(mat);
+		}
+
 //===== Velocity =====		
 		inline const KM::Vector& GetVelocity(void) const
 		{
@@ -173,11 +184,15 @@ namespace KillerPhysics
 			_transformMatrix.SetOrientationAndPosition(GameObject::GetOrientation(), GameObject::GetPosition());
 		}
 
+		void _TransformInertiaTensor(void);
+
 //==========================================================================================================================
 //
 //Data
 //
 //==========================================================================================================================
+		KM::Matrix _inverseInertiaTensor;
+		KM::Matrix _inverseInertiaTensorInWorld;
 		KM::Vector _velocity;
 		KM::Vector _acceleration;
 		KM::Vector _rotation;

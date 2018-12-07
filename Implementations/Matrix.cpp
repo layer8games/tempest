@@ -620,6 +620,12 @@ void Matrix::SetInverse(void)
 	*this = adj;
 }
 
+void Matrix::SetAsInverse(const Matrix& mat)
+{
+	*this = mat;
+	SetInverse();
+}
+
 Matrix Matrix::GetInverse(void) const
 {
 	Matrix ret = *this;
@@ -709,74 +715,6 @@ void Matrix::ComponentMulti(const Matrix& mat)
 	_columns[3][y] *= mat[3][y];
 	_columns[3][z] *= mat[3][z];
 	_columns[3][w] *= mat[3][w];
-}
-
-//==========================================================================================================================
-//
-//Operator Overloads
-//
-//==========================================================================================================================
-Matrix& Matrix::operator=(const Matrix& mat) 
-{
-	_columns[0][x] = mat[0][x];
-	_columns[0][y] = mat[0][y];
-	_columns[0][z] = mat[0][z];
-	_columns[0][w] = mat[0][w];
-
-	_columns[1][x] = mat[1][x];
-	_columns[1][y] = mat[1][y];
-	_columns[1][z] = mat[1][z];
-	_columns[1][w] = mat[1][w];
-
-	_columns[2][x] = mat[2][x];
-	_columns[2][y] = mat[2][y];
-	_columns[2][z] = mat[2][z];
-	_columns[2][w] = mat[2][w];
-
-	_columns[3][x] = mat[3][x];
-	_columns[3][y] = mat[3][y];
-	_columns[3][z] = mat[3][z];
-	_columns[3][w] = mat[3][w];
-
-	return *this;
-}
-
-Matrix Matrix::operator*(const Matrix& mat) 
-{
-	Vector xCol 
-	{
-		_columns[0][x] * mat[0][x] + _columns[1][x] * mat[0][y] + _columns[2][x] * mat[0][z] + _columns[3][x] * mat[0][w],
-		_columns[0][y] * mat[0][x] + _columns[1][y] * mat[0][y] + _columns[2][y] * mat[0][z] + _columns[3][y] * mat[0][w],
-		_columns[0][z] * mat[0][x] + _columns[1][z] * mat[0][y] + _columns[2][z] * mat[0][z] + _columns[3][z] * mat[0][w],
-		_columns[0][w] * mat[0][x] + _columns[1][w] * mat[0][y] + _columns[2][w] * mat[0][z] + _columns[3][w] * mat[0][w],
-
-	};
-
-	Vector yCol
-	{
-		_columns[0][x] * mat[1][x] + _columns[1][x] * mat[1][y] + _columns[2][x] * mat[1][z] + _columns[3][x] * mat[1][w],
-		_columns[0][y] * mat[1][x] + _columns[1][y] * mat[1][y] + _columns[2][y] * mat[1][z] + _columns[3][y] * mat[1][w],
-		_columns[0][z] * mat[1][x] + _columns[1][z] * mat[1][y] + _columns[2][z] * mat[1][z] + _columns[3][z] * mat[1][w],
-		_columns[0][w] * mat[1][x] + _columns[1][w] * mat[1][y] + _columns[2][w] * mat[1][z] + _columns[3][w] * mat[1][w],
-	};
-
-	Vector zCol
-	{
-		_columns[0][x] * mat[2][x] + _columns[1][x] * mat[2][y] + _columns[2][x] * mat[2][z] + _columns[3][x] * mat[2][w],
-		_columns[0][y] * mat[2][x] + _columns[1][y] * mat[2][y] + _columns[2][y] * mat[2][z] + _columns[3][y] * mat[2][w],
-		_columns[0][z] * mat[2][x] + _columns[1][z] * mat[2][y] + _columns[2][z] * mat[2][z] + _columns[3][z] * mat[2][w],
-		_columns[0][w] * mat[2][x] + _columns[1][w] * mat[2][y] + _columns[2][w] * mat[2][z] + _columns[3][w] * mat[2][w],
-	};
-
-	Vector wCol
-	{
-		_columns[0][x] * mat[3][x] + _columns[1][x] * mat[3][y] + _columns[2][x] * mat[3][z] + _columns[3][x] * mat[3][w],
-		_columns[0][y] * mat[3][x] + _columns[1][y] * mat[3][y] + _columns[2][y] * mat[3][z] + _columns[3][y] * mat[3][w],
-		_columns[0][z] * mat[3][x] + _columns[1][z] * mat[3][y] + _columns[2][z] * mat[3][z] + _columns[3][z] * mat[3][w],
-		_columns[0][w] * mat[3][x] + _columns[1][w] * mat[3][y] + _columns[2][w] * mat[3][z] + _columns[3][w] * mat[3][w],
-	};
-
-	return Matrix(xCol, yCol, zCol, wCol);
 }
 
 //==========================================================================================================================
@@ -919,6 +857,74 @@ void Matrix::SetFPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
 	_columns[2][3] = 0.0f;
 
 	_columns[3] = Vector(-xAxis.DotProduct(cameraPos), -yAxis.DotProduct(cameraPos), -zAxis.DotProduct(cameraPos), 1.0f);	
+}
+
+//==========================================================================================================================
+//
+//Operator Overloads
+//
+//==========================================================================================================================
+Matrix& Matrix::operator=(const Matrix& mat) 
+{
+	_columns[0][x] = mat[0][x];
+	_columns[0][y] = mat[0][y];
+	_columns[0][z] = mat[0][z];
+	_columns[0][w] = mat[0][w];
+
+	_columns[1][x] = mat[1][x];
+	_columns[1][y] = mat[1][y];
+	_columns[1][z] = mat[1][z];
+	_columns[1][w] = mat[1][w];
+
+	_columns[2][x] = mat[2][x];
+	_columns[2][y] = mat[2][y];
+	_columns[2][z] = mat[2][z];
+	_columns[2][w] = mat[2][w];
+
+	_columns[3][x] = mat[3][x];
+	_columns[3][y] = mat[3][y];
+	_columns[3][z] = mat[3][z];
+	_columns[3][w] = mat[3][w];
+
+	return *this;
+}
+
+Matrix Matrix::operator*(const Matrix& mat) const
+{
+	Vector xCol 
+	{
+		_columns[0][x] * mat[0][x] + _columns[1][x] * mat[0][y] + _columns[2][x] * mat[0][z] + _columns[3][x] * mat[0][w],
+		_columns[0][y] * mat[0][x] + _columns[1][y] * mat[0][y] + _columns[2][y] * mat[0][z] + _columns[3][y] * mat[0][w],
+		_columns[0][z] * mat[0][x] + _columns[1][z] * mat[0][y] + _columns[2][z] * mat[0][z] + _columns[3][z] * mat[0][w],
+		_columns[0][w] * mat[0][x] + _columns[1][w] * mat[0][y] + _columns[2][w] * mat[0][z] + _columns[3][w] * mat[0][w],
+
+	};
+
+	Vector yCol
+	{
+		_columns[0][x] * mat[1][x] + _columns[1][x] * mat[1][y] + _columns[2][x] * mat[1][z] + _columns[3][x] * mat[1][w],
+		_columns[0][y] * mat[1][x] + _columns[1][y] * mat[1][y] + _columns[2][y] * mat[1][z] + _columns[3][y] * mat[1][w],
+		_columns[0][z] * mat[1][x] + _columns[1][z] * mat[1][y] + _columns[2][z] * mat[1][z] + _columns[3][z] * mat[1][w],
+		_columns[0][w] * mat[1][x] + _columns[1][w] * mat[1][y] + _columns[2][w] * mat[1][z] + _columns[3][w] * mat[1][w],
+	};
+
+	Vector zCol
+	{
+		_columns[0][x] * mat[2][x] + _columns[1][x] * mat[2][y] + _columns[2][x] * mat[2][z] + _columns[3][x] * mat[2][w],
+		_columns[0][y] * mat[2][x] + _columns[1][y] * mat[2][y] + _columns[2][y] * mat[2][z] + _columns[3][y] * mat[2][w],
+		_columns[0][z] * mat[2][x] + _columns[1][z] * mat[2][y] + _columns[2][z] * mat[2][z] + _columns[3][z] * mat[2][w],
+		_columns[0][w] * mat[2][x] + _columns[1][w] * mat[2][y] + _columns[2][w] * mat[2][z] + _columns[3][w] * mat[2][w],
+	};
+
+	Vector wCol
+	{
+		_columns[0][x] * mat[3][x] + _columns[1][x] * mat[3][y] + _columns[2][x] * mat[3][z] + _columns[3][x] * mat[3][w],
+		_columns[0][y] * mat[3][x] + _columns[1][y] * mat[3][y] + _columns[2][y] * mat[3][z] + _columns[3][y] * mat[3][w],
+		_columns[0][z] * mat[3][x] + _columns[1][z] * mat[3][y] + _columns[2][z] * mat[3][z] + _columns[3][z] * mat[3][w],
+		_columns[0][w] * mat[3][x] + _columns[1][w] * mat[3][y] + _columns[2][w] * mat[3][z] + _columns[3][w] * mat[3][w],
+	};
+
+	return Matrix(xCol, yCol, zCol, wCol);
 }
 
 Vector Matrix::operator*(const Vector& vec) const
