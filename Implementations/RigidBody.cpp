@@ -37,7 +37,7 @@ void RigidBody::CalculateDerivedData(void)
 {
 	GameObject::_AccessOrientation().Normalize();
 
-	_inverseInertiaTensor = GameObject::GetModelMatrix() * _inverseInertiaTensor;
+	_inverseInertiaTensorInWorld = GameObject::GetModelMatrix().Transform3x3(_inverseInertiaTensor);
 }
 //==========================================================================================================================
 //Point Forces

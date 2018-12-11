@@ -281,6 +281,10 @@ namespace KillerMath
 	\param M Matrix&. Right hand value to multiply by. */		
 		void ComponentMulti(const Matrix& M);
 
+		Matrix Transform3x3(const Matrix& mat) const;
+
+		Vector Transform3x3(const Vector& vec) const;
+
 		static Matrix LookAt(const Vector& cameraPos, const Vector& target, const Vector& up);
 
 /*! Creates a view matrix from the world position. Will set the view to "look at" the specified point. This assumes a Right

@@ -717,6 +717,45 @@ void Matrix::ComponentMulti(const Matrix& mat)
 	_columns[3][w] *= mat[3][w];
 }
 
+Matrix Matrix::Transform3x3(const Matrix& mat) const
+{
+	Vector xCol 
+	{
+		_columns[0][x] * mat[0][x] + _columns[1][x] * mat[0][y] + _columns[2][x] * mat[0][z],
+		_columns[0][y] * mat[0][x] + _columns[1][y] * mat[0][y] + _columns[2][y] * mat[0][z],
+		_columns[0][z] * mat[0][x] + _columns[1][z] * mat[0][y] + _columns[2][z] * mat[0][z],
+		0.0f
+	};
+
+	Vector yCol
+	{
+		_columns[0][x] * mat[1][x] + _columns[1][x] * mat[1][y] + _columns[2][x] * mat[1][z],
+		_columns[0][y] * mat[1][x] + _columns[1][y] * mat[1][y] + _columns[2][y] * mat[1][z],
+		_columns[0][z] * mat[1][x] + _columns[1][z] * mat[1][y] + _columns[2][z] * mat[1][z],
+		0.0f
+	};
+
+	Vector zCol
+	{
+		_columns[0][x] * mat[2][x] + _columns[1][x] * mat[2][y] + _columns[2][x] * mat[2][z],
+		_columns[0][y] * mat[2][x] + _columns[1][y] * mat[2][y] + _columns[2][y] * mat[2][z],
+		_columns[0][z] * mat[2][x] + _columns[1][z] * mat[2][y] + _columns[2][z] * mat[2][z],
+		0.0f
+	};
+
+	Vector wCol {0.0f, 0.0f, 0.0f, 1.0f};
+
+	return Matrix(xCol, yCol, zCol, wCol);
+}
+
+Vector Matrix::Transform3x3(const Vector& vec) const
+{
+	return Vector( _columns[0][x] * vec[x] + _columns[1][x] * vec[y] + _columns[2][x] * vec[z],
+				   _columns[0][y] * vec[x] + _columns[1][y] * vec[y] + _columns[2][y] * vec[z],
+				   _columns[0][z] * vec[x] + _columns[1][z] + vec[y] + _columns[2][z] * vec[z],
+				   _columns[0][w] * vec[x] + _columns[1][w] + vec[y] + _columns[2][w] + vec[z] );
+}
+
 //==========================================================================================================================
 //
 //Look At Matrices
