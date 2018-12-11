@@ -49,6 +49,17 @@ namespace KillerPhysics
 //Accessors
 //
 //==========================================================================================================================
+//===== Inertia Tensor =====
+		inline const KM::Matrix& GetInverseInertiaTensor(void) const
+		{
+			return _inverseInertiaTensor;
+		}
+
+		void SetInverseInertiaTensor(const KM::Matrix& mat)
+		{
+			_inverseInertiaTensor.SetAsInverse(mat);
+		}
+
 //===== Velocity =====		
 		inline const KM::Vector& GetVelocity(void) const
 		{
@@ -152,12 +163,6 @@ namespace KillerPhysics
 		//Force given in world space, point given in local space
 		void AddForceAtLocalPoint(const KM::Vector& force, const KM::Vector& point);
 
-//===== Inverse Interia Tensor =====
-		inline const KM::Matrix& GetInverseInertiaTensor(void) const
-		{
-			return _inverseInertiaTensor;
-		}
-
 //===== Mass =====
 		inline real GetInverseMass(void) const
 		{
@@ -207,17 +212,20 @@ namespace KillerPhysics
 //==========================================================================================================================
 
 
+		void _TransformInertiaTensor(void);
+
 //==========================================================================================================================
 //
 //Data
 //
 //==========================================================================================================================
+		KM::Matrix _inverseInertiaTensor;
+		KM::Matrix _inverseInertiaTensorInWorld;
 		KM::Vector _velocity;
 		KM::Vector _acceleration;
 		KM::Vector _rotation;
 		KM::Vector _forceAccum;
 		KM::Vector _torqueAccum;
-		KM::Matrix _inverseInertiaTensor;
 		real 	   _inverseMass;
 		real 	   _linearDamping;
 		bool 	   _isAwake;	

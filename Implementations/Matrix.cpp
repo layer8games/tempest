@@ -620,6 +620,12 @@ void Matrix::SetInverse(void)
 	*this = adj;
 }
 
+void Matrix::SetAsInverse(const Matrix& mat)
+{
+	*this = mat;
+	SetInverse();
+}
+
 Matrix Matrix::GetInverse(void) const
 {
 	Matrix ret = *this;
@@ -920,7 +926,6 @@ Matrix Matrix::operator*(const Matrix& mat) const
 
 	return Matrix(xCol, yCol, zCol, wCol);
 }
-
 
 Vector Matrix::operator*(const Vector& vec) const
 {

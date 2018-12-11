@@ -251,6 +251,8 @@ namespace KillerMath
 //==========================================================================================================================		
 		void SetInverse(void);
 
+		void SetAsInverse(const Matrix& mat);
+
 		Matrix GetInverse(void) const;
 
 		F32 Determinate(void) const;
