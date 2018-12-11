@@ -173,6 +173,7 @@ void Level::UpdateObjects(void)
 	{
 		if(i.second->GetActiveUpdate())
 		{
+			i.second->UpdateInternals();
 			i.second->v_Update();
 		}
 	}
@@ -181,6 +182,7 @@ void Level::UpdateObjects(void)
 	{
 		if(i.second->GetActiveUpdate())
 		{
+			i.second->UpdateInternals();
 			i.second->v_Update();
 		}
 	}

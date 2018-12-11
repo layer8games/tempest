@@ -70,13 +70,27 @@ namespace KillerEngine
 //Functions
 //
 //==========================================================================================================================
+		void UpdateInternals(void);
+
 		bool LoadOBJ(string filepath);
 
 		void LoadMesh(string filepath);
 
 		void MakeSprite(void);
 
-		const KM::Matrix GetModelMatrix(void);
+		const KM::Matrix& GetModelMatrix(void) const
+		{
+			return _modelTOWorldCache;
+		}
+
+		//temporary idea. 
+		//In Matrix, add Translate vs Transform vs Rotate
+		const KM::Matrix GetModelMatrixRot(void) const
+		{
+			KM::Matrix mat = _modelTOWorldCache; 
+			mat.Translate(0.0f, 0.0f, 0.0f);
+			return mat;
+		}
 
 //==========================================================================================================================
 //
@@ -445,6 +459,8 @@ namespace KillerEngine
 
 		std::vector<string> _SplitString(string text, char delim) const;
 
+		void _CalculateCachedData(void);
+
 //==========================================================================================================================
 //
 //Data
@@ -455,6 +471,7 @@ namespace KillerEngine
 		std::vector<Vertex> 	_vertices;
 		std::vector<U32> 		_indices;
 		std::vector<F32> 		_uvList;
+		KM::Matrix 				_modelTOWorldCache;
 		KM::Vector				_position;
 		KM::Vector 				_scale;
 		KM::Quaternion 			_orientation;

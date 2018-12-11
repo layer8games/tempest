@@ -32,13 +32,16 @@ namespace KillerPhysics
 //Virtual Functions
 //
 //==========================================================================================================================
-		void v_Update(void);
+		void v_Update(void)
+		{  }
 
 //==========================================================================================================================
 //
 //Functions
 //
 //==========================================================================================================================		
+		void Integrate(void);
+
 		void CalculateDerivedData(void);
 
 //==========================================================================================================================
@@ -121,10 +124,38 @@ namespace KillerPhysics
 			return _forceAccum;
 		}
 
-//===== Transfomration Matrix =====
-		inline const KM::Matrix& GetTransformation(void) const
+		inline void AddForce(const KM::Vector& force)
 		{
-			return _transformMatrix;
+			_forceAccum += force;
+			_isAwake = true;
+		}
+
+		inline const KM::Vector& GetTorque(void) const
+		{
+			return _torqueAccum;
+		}
+
+		inline void AddTorque(const KM::Vector& torque)
+		{
+			_torqueAccum += torque;
+		}
+
+		inline void ClearAccumulators(void)
+		{
+			_forceAccum.Reset();
+			_torqueAccum.Reset();
+		}
+
+		//Given in world space coordinates
+		void AddForceAtPoint(const KM::Vector& force, const KM::Vector& point);
+
+		//Force given in world space, point given in local space
+		void AddForceAtLocalPoint(const KM::Vector& force, const KM::Vector& point);
+
+//===== Inverse Interia Tensor =====
+		inline const KM::Matrix& GetInverseInertiaTensor(void) const
+		{
+			return _inverseInertiaTensor;
 		}
 
 //===== Mass =====
@@ -162,16 +193,19 @@ namespace KillerPhysics
 			_linearDamping = val;
 		}
 
+//===== Awake =====
+		inline bool GetIsAwake(void)
+		{
+			return _isAwake;
+		}
+
 	private:
 //==========================================================================================================================
 //
 //Private Functions
 //
 //==========================================================================================================================
-		inline void _CalculateTransformMatrix(void)
-		{
-			_transformMatrix.SetOrientationAndPosition(GameObject::GetOrientation(), GameObject::GetPosition());
-		}
+
 
 //==========================================================================================================================
 //
@@ -182,9 +216,11 @@ namespace KillerPhysics
 		KM::Vector _acceleration;
 		KM::Vector _rotation;
 		KM::Vector _forceAccum;
-		KM::Matrix _transformMatrix;
+		KM::Vector _torqueAccum;
+		KM::Matrix _inverseInertiaTensor;
 		real 	   _inverseMass;
-		real 	   _linearDamping;		
+		real 	   _linearDamping;
+		bool 	   _isAwake;	
 
 	};//end Class
 }//end Namespace

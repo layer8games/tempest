@@ -12,9 +12,11 @@ _velocity(0.0f),
 _acceleration(0.0f),
 _rotation(0.0f),
 _forceAccum(0.0f),
-_transformMatrix(1.0f),
+_torqueAccum(0.0f),
+_inverseInertiaTensor(0.0f),
 _inverseMass(1.0f),
-_linearDamping(0.999f)
+_linearDamping(0.999f),
+_isAwake(false)
 {  }
 
 RigidBody::~RigidBody(void)
@@ -25,14 +27,37 @@ RigidBody::~RigidBody(void)
 //Functions
 //
 //==========================================================================================================================
-void RigidBody::v_Update(void)
-{  }
+void RigidBody::Integrate(void)
+{
+	ClearAccumulators();
+}
 
 void RigidBody::CalculateDerivedData(void)
 {
 	GameObject::_AccessOrientation().Normalize();
 
-	_CalculateTransformMatrix();
+	_inverseInertiaTensor = GameObject::GetModelMatrix() * _inverseInertiaTensor;
+}
+//==========================================================================================================================
+//Point Forces
+//==========================================================================================================================
+//Given in world space coordinates
+void RigidBody::AddForceAtPoint(const KM::Vector& force, const KM::Vector& point)
+{
+	KM::Vector pt = point; 
+	pt -= GameObject::GetPosition();
+
+	_forceAccum += force; 
+	_torqueAccum += pt.CrossProduct(force);
+
+	_isAwake = true;
+}	
+
+//Force given in world space, point given in local space
+void RigidBody::AddForceAtLocalPoint(const KM::Vector& force, const KM::Vector& point)
+{
+	KM::Vector pt = GameObject::GetModelMatrixRot() * point;
+	AddForceAtPoint(force, pt);
 }
 
 //==========================================================================================================================
