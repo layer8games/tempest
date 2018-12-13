@@ -46,7 +46,11 @@ namespace KillerPhysics
 //==========================================================================================================================		
 		void Add(shared_ptr<Particle> particle, shared_ptr<ForceGenerator> forceGen);
 
+		void Add(shared_ptr<RigidBody> body, shared_ptr<ForceGenerator> forceGen);
+
 		void Remove(shared_ptr<Particle> particle, shared_ptr<ForceGenerator> forceGen);
+
+		void Remove(shared_ptr<RigidBody> body, shared_ptr<ForceGenerator> forceGen);
 
 		void Clear(void);
 
@@ -72,8 +76,25 @@ namespace KillerPhysics
 
 		//TODO: Implement for RigidBody
 
-		typedef std::vector<_ParticleForceRegistration> Registry;
+		struct _RigidBodyRegistration
+		{
+			shared_ptr<RigidBody> 	   body;
+			shared_ptr<ForceGenerator> forceGen;
+
+			bool operator ==(_RigidBodyRegistration b)
+			{
+				if(b.body == body && b.forceGen == forceGen)
+					return true;
+				else
+					return false;
+			}
+		};
+
+		typedef std::vector<_ParticleForceRegistration> ParticleRegistry;
+		typedef std::vector<_RigidBodyRegistration> RigidBodyRegistry;
 		
-		Registry _registrations;
+		ParticleRegistry _particleRegistrations;
+		RigidBodyRegistry _bodyRegistrations;
+
 	};//end class
 }//end namespacef

@@ -61,7 +61,22 @@ void SpringForce::v_UpdateForce(shared_ptr<Particle> particle)
 //TODO: Implement
 void SpringForce::v_UpdateForce(shared_ptr<RigidBody> body)
 {
+	KM::Vector force = body->GetPosition();
+	force -= _otherEnd->GetPosition();
 
+	real magnitude = force.Magnitude();
+
+	if(_isBungie && magnitude <= _restLength)
+	{
+		return;
+	}
+
+	magnitude = real_abs(magnitude - _restLength) * _springConstant;
+
+	force.Normalize();
+	force *= static_cast<F32>(-magnitude);
+
+	body->AddForce(force);
 }
 
 //==========================================================================================================================
@@ -104,7 +119,15 @@ void AnchoredSpring::v_UpdateForce(shared_ptr<Particle> particle)
 //TODO: Implement
 void AnchoredSpring::v_UpdateForce(shared_ptr<RigidBody> body)
 {
-	
+	KM::Vector force = body->GetPosition();
+	force -= _anchor;
+
+	real magnitude = force.Magnitude();
+	magnitude = (_restLength - magnitude) * _springConstant;
+
+	force.Normalize();
+	force *= static_cast<F32>(magnitude);
+	body->AddForce(force);
 }
 
 //==========================================================================================================================
@@ -145,7 +168,10 @@ void BuoyantForce::v_UpdateForce(shared_ptr<Particle> particle)
 	real depth = particle->GetPosition()[1]; //Get the y val
 
 	//Out of liquid check
-	if(depth >= _liquidHeight + _maxDepth) return;
+	if(depth >= _liquidHeight + _maxDepth) 
+	{
+		return;
+	}
 	
 	KM::Vector force(0.0f);
 
@@ -155,16 +181,39 @@ void BuoyantForce::v_UpdateForce(shared_ptr<Particle> particle)
 		force[1] = _liquidDensity * _objectVolume;
 
 		particle->AddForce(force);
-		return;
 	}
+	else
+	{
+		force[1] = _liquidDensity * _objectVolume * (depth - _maxDepth - _liquidHeight) / 2 * _maxDepth;
 
-	force[1] = _liquidDensity * _objectVolume * (depth - _maxDepth - _liquidHeight) / 2 * _maxDepth;
-
-	particle->AddForce(force);	
+		particle->AddForce(force);
+	}	
 }
 
 //TODO: Implement
 void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody> body)
 {
-	
+	real depth = body->GetPosition()[1];
+
+	if(depth >= _liquidHeight + _maxDepth) 
+	{
+		return;
+	}
+
+	KM::Vector force(0.0f);
+
+	if(depth <= _liquidHeight - _maxDepth)
+	{
+		force[1] = _liquidDensity * _objectVolume;
+
+		body->AddForce(force);
+		return;
+	}
+	else
+	{
+		force[1] = _liquidDensity * _objectVolume * (depth - _maxDepth - _liquidHeight) / 2 * _maxDepth;
+
+		body->AddForce(force);
+	}
+
 }

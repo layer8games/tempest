@@ -8,6 +8,9 @@ using namespace KillerPhysics;
 //
 //==========================================================================================================================
 ForceRegistry::ForceRegistry(void)
+:
+_particleRegistrations(),
+_bodyRegistrations()
 {  }
 
 ForceRegistry::~ForceRegistry(void)
@@ -24,7 +27,16 @@ void ForceRegistry::Add(shared_ptr<Particle> particle, shared_ptr<ForceGenerator
 	registration.particle = particle;
 	registration.forceGen = forceGen;
 
-	_registrations.push_back(registration);
+	_particleRegistrations.push_back(registration);
+}
+
+void ForceRegistry::Add(shared_ptr<RigidBody> body, shared_ptr<ForceGenerator> forceGen)
+{
+	ForceRegistry::_RigidBodyRegistration registration;
+	registration.body = body;
+	registration.forceGen = forceGen;
+
+	_bodyRegistrations.push_back(registration);
 }
 
 void ForceRegistry::Remove(shared_ptr<Particle> particle, shared_ptr<ForceGenerator> forceGen)
@@ -33,22 +45,36 @@ void ForceRegistry::Remove(shared_ptr<Particle> particle, shared_ptr<ForceGenera
 	registration.particle = particle;
 	registration.forceGen = forceGen;
 
-	auto it = std::find(_registrations.begin(), _registrations.end(), registration);
+	auto it = std::find(_particleRegistrations.begin(), _particleRegistrations.end(), registration);
 
-	if(it != _registrations.end())
+	if(it != _particleRegistrations.end())
 	{
-		_registrations.erase(it);
+		_particleRegistrations.erase(it);
+	}
+}
+
+void ForceRegistry::Remove(shared_ptr<RigidBody> body, shared_ptr<ForceGenerator> forceGen)
+{
+	ForceRegistry::_RigidBodyRegistration registration;
+	registration.body = body;
+	registration.forceGen = forceGen;
+
+	auto it = std::find(_bodyRegistrations.begin(), _bodyRegistrations.end(), registration);
+
+	if(it != _bodyRegistrations.end())
+	{
+		_bodyRegistrations.erase(it);
 	}
 }
 
 void ForceRegistry::Clear(void)
 {
-	_registrations.clear();
+	_particleRegistrations.clear();
 }
 
 void ForceRegistry::UpdateForces(void)
 {
-	for(auto i : _registrations)
+	for(auto i : _particleRegistrations)
 	{
 		if(i.particle->GetActive()) 
 		{
