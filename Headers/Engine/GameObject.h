@@ -447,6 +447,11 @@ namespace KillerEngine
 		}
 
 	protected:
+		KM::Vector& _AccessPosition(void)
+		{
+			return _position;
+		}
+
 		KM::Quaternion& _AccessOrientation(void)
 		{
 			return _orientation;

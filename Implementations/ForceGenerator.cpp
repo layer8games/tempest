@@ -1,4 +1,4 @@
-#include <Engine/ParticleForceGenerator.h>
+#include <Engine/ForceGenerator.h>
 
 using namespace KillerPhysics;
 //==========================================================================================================================
@@ -9,8 +9,8 @@ using namespace KillerPhysics;
 //Constructors	 	
 //
 //==========================================================================================================================
-ParticleForceGenerator::ParticleForceGenerator(void)
+ForceGenerator::ForceGenerator(void)
 {  }
 
-ParticleForceGenerator::~ParticleForceGenerator(void)
+ForceGenerator::~ForceGenerator(void)
 {  }

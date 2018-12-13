@@ -1,4 +1,4 @@
-#include <Engine/ParticleForceRegistry.h>
+#include <Engine/ForceRegistry.h>
 
 using namespace KillerPhysics;
 
@@ -7,29 +7,29 @@ using namespace KillerPhysics;
 //Constructors
 //
 //==========================================================================================================================
-ParticleForceRegistry::ParticleForceRegistry(void)
+ForceRegistry::ForceRegistry(void)
 {  }
 
-ParticleForceRegistry::~ParticleForceRegistry(void)
+ForceRegistry::~ForceRegistry(void)
 {  }
 
 //==========================================================================================================================
 //
-//ParticleForceRegistry functions
+//ForceRegistry functions
 //
 //==========================================================================================================================	
-void ParticleForceRegistry::Add(shared_ptr<Particle> particle, shared_ptr<ParticleForceGenerator> forceGen)
+void ForceRegistry::Add(shared_ptr<Particle> particle, shared_ptr<ForceGenerator> forceGen)
 {
-	ParticleForceRegistry::_ParticleForceRegistration registration;
+	ForceRegistry::_ParticleForceRegistration registration;
 	registration.particle = particle;
 	registration.forceGen = forceGen;
 
 	_registrations.push_back(registration);
 }
 
-void ParticleForceRegistry::Remove(shared_ptr<Particle> particle, shared_ptr<ParticleForceGenerator> forceGen)
+void ForceRegistry::Remove(shared_ptr<Particle> particle, shared_ptr<ForceGenerator> forceGen)
 {
-	ParticleForceRegistry::_ParticleForceRegistration registration;
+	ForceRegistry::_ParticleForceRegistration registration;
 	registration.particle = particle;
 	registration.forceGen = forceGen;
 
@@ -41,12 +41,12 @@ void ParticleForceRegistry::Remove(shared_ptr<Particle> particle, shared_ptr<Par
 	}
 }
 
-void ParticleForceRegistry::Clear(void)
+void ForceRegistry::Clear(void)
 {
 	_registrations.clear();
 }
 
-void ParticleForceRegistry::UpdateForces(void)
+void ForceRegistry::UpdateForces(void)
 {
 	for(auto i : _registrations)
 	{

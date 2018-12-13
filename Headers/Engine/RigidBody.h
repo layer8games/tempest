@@ -198,6 +198,17 @@ namespace KillerPhysics
 			_linearDamping = val;
 		}
 
+//===== Angular Damping =====
+		inline real GetAngularDamping(void) const
+		{
+			return _angularDamping;
+		}
+
+		inline void SetAngularDamping(real val)
+		{
+			_angularDamping = val;
+		}
+
 //===== Awake =====
 		inline bool GetIsAwake(void)
 		{
@@ -228,6 +239,7 @@ namespace KillerPhysics
 		KM::Vector _torqueAccum;
 		real 	   _inverseMass;
 		real 	   _linearDamping;
+		real 	   _angularDamping;
 		bool 	   _isAwake;	
 
 	};//end Class

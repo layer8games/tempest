@@ -35,7 +35,7 @@ The force generator cannot be re-used. For each unique spring-like force
 we need to have its own Spring like force. Each spring-like force is 
 created with a pointer to the object at the other end of the spring, the
 length of the spring, and the spring constant. This then must be registered
-with a ParticleForceRegistry*. 
+with a ForceRegistry*. 
 
 To set an Anchored Spring Force Generator, simple give it an object that cannot
 be moved. This can be enforced in the GameObject using physics or something. 
@@ -50,14 +50,14 @@ Written by Maxwell Miller
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
-#include <Engine/ParticleForceGenerator.h>
+#include <Engine/ForceGenerator.h>
 #include <Engine/Vector.h>
 
 namespace KM = KillerMath;
 
 namespace KillerPhysics
 {
-	class ParticleSpringForce : public ParticleForceGenerator
+	class SpringForce : public ForceGenerator
 	{
 	public:
 //==========================================================================================================================
@@ -65,17 +65,19 @@ namespace KillerPhysics
 //Constructors	 	
 //
 //==========================================================================================================================
-		ParticleSpringForce(void);
+		SpringForce(void);
 
-		ParticleSpringForce(shared_ptr<Particle> otherEnd, real springConstant, real restLength);
+		SpringForce(shared_ptr<Particle> otherEnd, real springConstant, real restLength);
 
-		~ParticleSpringForce(void);
+		~SpringForce(void);
 //==========================================================================================================================
 //
 //Virtual Functions
 //
 //==========================================================================================================================
 		void v_UpdateForce(shared_ptr<Particle> particle) final;
+
+		void v_UpdateForce(shared_ptr<RigidBody> body) final;
 
 //==========================================================================================================================
 //
@@ -116,12 +118,12 @@ namespace KillerPhysics
 		real 				 _restLength;
 		bool				 _isBungie;
 		
-	};//end ParticleSpringForce
+	};//end SpringForce
 
 //==========================================================================================================================
 //Anchored Spring
 //==========================================================================================================================
-	class ParticleAnchoredSpring : public ParticleForceGenerator
+	class AnchoredSpring : public ForceGenerator
 	{
 	public:
 //==========================================================================================================================
@@ -129,11 +131,11 @@ namespace KillerPhysics
 //Constructors
 //
 //==========================================================================================================================		
-		ParticleAnchoredSpring(void);
+		AnchoredSpring(void);
 
-		ParticleAnchoredSpring(KM::Vector anchor, real springConstant, real restLength);
+		AnchoredSpring(KM::Vector anchor, real springConstant, real restLength);
 
-		~ParticleAnchoredSpring(void);
+		~AnchoredSpring(void);
 
 //==========================================================================================================================
 //
@@ -141,6 +143,8 @@ namespace KillerPhysics
 //
 //==========================================================================================================================
 		void v_UpdateForce(shared_ptr<Particle> particle) final;
+
+		void v_UpdateForce(shared_ptr<RigidBody> body) final;
 
 //==========================================================================================================================
 //
@@ -166,12 +170,12 @@ namespace KillerPhysics
 		KM::Vector	_anchor;
 		real 		_springConstant;
 		real		_restLength;
-	};//end ParticleAnchoredSpring
+	};//end AnchoredSpring
 
 //==========================================================================================================================
 //Buoyant Force
 //==========================================================================================================================
-	class ParticleBuoyantForce : public ParticleForceGenerator
+	class BuoyantForce : public ForceGenerator
 	{
 	public:
 //==========================================================================================================================
@@ -179,17 +183,19 @@ namespace KillerPhysics
 //Constructors	 	
 //
 //==========================================================================================================================
-		ParticleBuoyantForce(void);
+		BuoyantForce(void);
 
-		ParticleBuoyantForce::ParticleBuoyantForce(real maxDepth, real objVolume, real liquidHeight, real liquidDensity=1000.0f);
+		BuoyantForce::BuoyantForce(real maxDepth, real objVolume, real liquidHeight, real liquidDensity=1000.0f);
 
-		~ParticleBuoyantForce(void);
+		~BuoyantForce(void);
 //==========================================================================================================================
 //
 //Virtual Functions
 //
 //==========================================================================================================================
 		void v_UpdateForce(shared_ptr<Particle> particle);
+
+		void v_UpdateForce(shared_ptr<RigidBody> body) final;
 
 //==========================================================================================================================
 //
@@ -221,6 +227,6 @@ namespace KillerPhysics
 		real _objectVolume;
 		real _liquidHeight;
 		real _liquidDensity;
-	};//end ParticleBuoyantForce
+	};//end BuoyantForce
 		
 }//end Namespace

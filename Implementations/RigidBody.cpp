@@ -17,6 +17,7 @@ _forceAccum(0.0f),
 _torqueAccum(0.0f),
 _inverseMass(1.0f),
 _linearDamping(0.999f),
+_angularDamping(0.999f),
 _isAwake(false)
 {  }
 
@@ -30,6 +31,30 @@ RigidBody::~RigidBody(void)
 //==========================================================================================================================
 void RigidBody::Integrate(void)
 {
+	F32 delta = KM::Timer::Instance()->DeltaTime();
+
+	assert(delta > 0.0f);
+
+	GameObject::_AccessPosition().AddScaledVector(_velocity, delta);
+	GameObject::_AccessOrientation().AddScaledVector(_rotation, delta);
+
+	KM::Vector resultingAcc = _acceleration;
+
+	//Optional hard coded gravity should be added here
+
+	resultingAcc.AddScaledVector(_forceAccum, delta);
+
+	_velocity.AddScaledVector(resultingAcc, delta);
+	_velocity *= real_pow(_linearDamping, delta);
+
+
+	KM::Vector angularAcc = _inverseInertiaTensorInWorld * _torqueAccum;
+
+	_rotation.AddScaledVector(angularAcc, delta);
+	_rotation *= real_pow(_angularDamping, delta);
+
+
+	CalculateDerivedData();
 	ClearAccumulators();
 }
 

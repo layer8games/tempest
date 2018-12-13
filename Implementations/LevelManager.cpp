@@ -128,7 +128,7 @@ void LevelManager::AddObjectToLevel(U32 id, shared_ptr<GameObject> obj)
 	} 
 }
 
-void LevelManager::AddParticleToLevel(U32 id, shared_ptr<KP::Particle> particle, shared_ptr<KP::ParticleForceGenerator> generator)
+void LevelManager::AddParticleToLevel(U32 id, shared_ptr<KP::Particle> particle, shared_ptr<KP::ForceGenerator> generator)
 {
 	if(_levels.find(id) != _levels.end()) 
 	{ 

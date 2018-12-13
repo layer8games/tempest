@@ -1,5 +1,5 @@
 /*========================================================================
-The ParticleForceGenerator provides the interface for forces to be generated 
+The ForceGenerator provides the interface for forces to be generated 
 and then accumulated by anything that uses forces for physics calculations.
 
 It is based on the Cyclone engine design found in "Game Physics En-
@@ -18,6 +18,7 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/Timer.h>
 #include <Engine/Particle.h>
+#include <Engine/RigidBody.h>
 
 namespace KM = KillerMath;
 namespace KE = KillerEngine;
@@ -27,7 +28,7 @@ namespace KillerPhysics
 //==========================================================================================================================
 //Force Generator
 //==========================================================================================================================	
-	class ParticleForceGenerator
+	class ForceGenerator
 	{
 	public:
 //==========================================================================================================================
@@ -35,9 +36,9 @@ namespace KillerPhysics
 //Constructors
 //
 //==========================================================================================================================
-		ParticleForceGenerator(void);
+		ForceGenerator(void);
 
-		virtual ~ParticleForceGenerator(void);
+		virtual ~ForceGenerator(void);
 
 
 //==========================================================================================================================
@@ -46,6 +47,8 @@ namespace KillerPhysics
 //
 //==========================================================================================================================	
 		virtual void v_UpdateForce(shared_ptr<Particle> particle)=0;
+
+		virtual void v_UpdateForce(shared_ptr<RigidBody> body)=0;
 
 	private:
 

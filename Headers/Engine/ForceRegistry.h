@@ -16,7 +16,7 @@ Written by Maxwell Miller
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
-#include <Engine/ParticleForceGenerator.h>
+#include <Engine/ForceGenerator.h>
 
 namespace KM = KillerMath;
 namespace KE = KillerEngine;
@@ -27,7 +27,7 @@ namespace KE = KillerEngine;
 namespace KillerPhysics
 {
 
-	class ParticleForceRegistry
+	class ForceRegistry
 	{
 	public:
 //==========================================================================================================================
@@ -35,18 +35,18 @@ namespace KillerPhysics
 //Constructors
 //
 //==========================================================================================================================		
-		ParticleForceRegistry(void);
+		ForceRegistry(void);
 
-		~ParticleForceRegistry(void);
+		~ForceRegistry(void);
 
 //==========================================================================================================================
 //
-//ParticleForceRegistry functions
+//ForceRegistry functions
 //
 //==========================================================================================================================		
-		void Add(shared_ptr<Particle> particle, shared_ptr<ParticleForceGenerator> forceGen);
+		void Add(shared_ptr<Particle> particle, shared_ptr<ForceGenerator> forceGen);
 
-		void Remove(shared_ptr<Particle> particle, shared_ptr<ParticleForceGenerator> forceGen);
+		void Remove(shared_ptr<Particle> particle, shared_ptr<ForceGenerator> forceGen);
 
 		void Clear(void);
 
@@ -58,8 +58,8 @@ namespace KillerPhysics
 //==========================================================================================================================		
 		struct _ParticleForceRegistration
 		{
-			shared_ptr<Particle> 			   particle;
-			shared_ptr<ParticleForceGenerator> forceGen;
+			shared_ptr<Particle> 	   particle;
+			shared_ptr<ForceGenerator> forceGen;
 
 			bool operator ==(_ParticleForceRegistration p)
 			{
@@ -69,6 +69,8 @@ namespace KillerPhysics
 					return false;
 			}			
 		};//end struct
+
+		//TODO: Implement for RigidBody
 
 		typedef std::vector<_ParticleForceRegistration> Registry;
 		

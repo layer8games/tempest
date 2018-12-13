@@ -85,9 +85,6 @@
     <Filter Include="Source Code\KillerPhysics\Forces\Spring">
       <UniqueIdentifier>{90b3a85a-49e6-4ef0-b9f4-28445503896b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerPhysics\Forces\Generator">
-      <UniqueIdentifier>{128415f5-4bcb-47fa-8bd6-af05ac197f78}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\KillerPhysics\Forces\Registry">
       <UniqueIdentifier>{0b7fb099-81e9-43aa-8090-714b6099f722}</UniqueIdentifier>
     </Filter>
@@ -126,6 +123,9 @@
     </Filter>
     <Filter Include="Source Code\KillerPhysics\Particle">
       <UniqueIdentifier>{57925e0b-6c1a-46f2-92b3-fb68a9630ebe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerPhysics\Forces\Generator Base">
+      <UniqueIdentifier>{128415f5-4bcb-47fa-8bd6-af05ac197f78}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -189,20 +189,8 @@
     <ClInclude Include="..\..\Headers\Engine\Shader.h">
       <Filter>Source Code\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\ParticleForceGenerator.h">
-      <Filter>Source Code\KillerPhysics\Forces\Generator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\ParticleForceRegistry.h">
-      <Filter>Source Code\KillerPhysics\Forces\Registry</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ParticleDragForce.h">
       <Filter>Source Code\KillerPhysics\Forces\Drag</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\ParticleGravityForce.h">
-      <Filter>Source Code\KillerPhysics\Forces\Gravity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\ParticleSpringForces.h">
-      <Filter>Source Code\KillerPhysics\Forces\Spring</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vector.h">
       <Filter>Source Code\KillerMath\LinearAlgebra\Vector</Filter>
@@ -233,6 +221,18 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\RigidBody.h">
       <Filter>Source Code\KillerPhysics\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\ForceGenerator.h">
+      <Filter>Source Code\KillerPhysics\Forces\Generator Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\GravityForce.h">
+      <Filter>Source Code\KillerPhysics\Forces\Gravity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\ForceRegistry.h">
+      <Filter>Source Code\KillerPhysics\Forces\Registry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\SpringForces.h">
+      <Filter>Source Code\KillerPhysics\Forces\Spring</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -287,20 +287,8 @@
     <ClCompile Include="..\..\Implementations\Shader.cpp">
       <Filter>Source Code\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\ParticleForceGenerator.cpp">
-      <Filter>Source Code\KillerPhysics\Forces\Generator</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\ParticleForceRegistry.cpp">
-      <Filter>Source Code\KillerPhysics\Forces\Registry</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\ParticleDragForce.cpp">
       <Filter>Source Code\KillerPhysics\Forces\Drag</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\ParticleGravityForce.cpp">
-      <Filter>Source Code\KillerPhysics\Forces\Gravity</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\ParticleSpringForces.cpp">
-      <Filter>Source Code\KillerPhysics\Forces\Spring</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector.cpp">
       <Filter>Source Code\KillerMath\LinearAlgebra\Vector</Filter>
@@ -331,6 +319,18 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\RigidBody.cpp">
       <Filter>Source Code\KillerPhysics\RigidBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\ForceGenerator.cpp">
+      <Filter>Source Code\KillerPhysics\Forces\Generator Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\GravityForce.cpp">
+      <Filter>Source Code\KillerPhysics\Forces\Gravity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\ForceRegistry.cpp">
+      <Filter>Source Code\KillerPhysics\Forces\Registry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\SpringForces.cpp">
+      <Filter>Source Code\KillerPhysics\Forces\Spring</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

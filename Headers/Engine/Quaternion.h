@@ -11,6 +11,7 @@ Written by Maxwell Miller
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
+#include <Engine/Vector.h>
 
 #include <assert.h>
 
@@ -93,6 +94,8 @@ namespace KillerMath
 		Quaternion Opposite(void);
 
 		void Normalize(void);
+
+		void AddScaledVector(const Vector& vec, F32 scale);
 		
 	private:
 		enum 

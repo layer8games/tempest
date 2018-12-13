@@ -1,16 +1,16 @@
-#include <Engine/ParticleSpringForces.h>
+#include <Engine/SpringForces.h>
 
 using namespace KillerPhysics;
 
 //==========================================================================================================================
-//ParticleSpringForce
+//SpringForce
 //==========================================================================================================================
 //==========================================================================================================================
 //
 //Constructors	 	
 //
 //==========================================================================================================================
-ParticleSpringForce::ParticleSpringForce(void) 
+SpringForce::SpringForce(void) 
 :
 _otherEnd(),
 _springConstant(1),
@@ -18,7 +18,7 @@ _restLength(1),
 _isBungie(false)
 {  }
 
-ParticleSpringForce::ParticleSpringForce(shared_ptr<Particle> otherEnd, real springConstatant, real restLength)
+SpringForce::SpringForce(shared_ptr<Particle> otherEnd, real springConstatant, real restLength)
 :
 _otherEnd(otherEnd),
 _springConstant(springConstatant),
@@ -26,7 +26,7 @@ _restLength(restLength),
 _isBungie(false)
 {  }
 
-ParticleSpringForce::~ParticleSpringForce(void) 
+SpringForce::~SpringForce(void) 
 {  }
 
 //==========================================================================================================================
@@ -34,7 +34,7 @@ ParticleSpringForce::~ParticleSpringForce(void)
 //Virtual Functions
 //
 //==========================================================================================================================
-void ParticleSpringForce::v_UpdateForce(shared_ptr<Particle> particle)
+void SpringForce::v_UpdateForce(shared_ptr<Particle> particle)
 {
 //=====Calculate Vector of the spring=====
 	KM::Vector force = particle->GetPosition();
@@ -58,28 +58,34 @@ void ParticleSpringForce::v_UpdateForce(shared_ptr<Particle> particle)
 	particle->AddForce(force);
 }
 
+//TODO: Implement
+void SpringForce::v_UpdateForce(shared_ptr<RigidBody> body)
+{
+
+}
+
 //==========================================================================================================================
-//ParticleAnchoredSpring
+//AnchoredSpring
 //==========================================================================================================================
 //==========================================================================================================================
 //
 //Constructors
 //
 //==========================================================================================================================
-ParticleAnchoredSpring::ParticleAnchoredSpring(void)
+AnchoredSpring::AnchoredSpring(void)
 {  }
 
-ParticleAnchoredSpring::ParticleAnchoredSpring(KM::Vector anchor, real springConstant, real restLength)
+AnchoredSpring::AnchoredSpring(KM::Vector anchor, real springConstant, real restLength)
 :
 _anchor(anchor),
 _springConstant(springConstant),
 _restLength(restLength)
 {  }
 
-ParticleAnchoredSpring::~ParticleAnchoredSpring(void)
+AnchoredSpring::~AnchoredSpring(void)
 {  }
 
-void ParticleAnchoredSpring::v_UpdateForce(shared_ptr<Particle> particle)
+void AnchoredSpring::v_UpdateForce(shared_ptr<Particle> particle)
 {
 	//Calculate the vector of the spring
 	KM::Vector force = particle->GetPosition();
@@ -95,15 +101,21 @@ void ParticleAnchoredSpring::v_UpdateForce(shared_ptr<Particle> particle)
 	particle->AddForce(force);
 }
 
+//TODO: Implement
+void AnchoredSpring::v_UpdateForce(shared_ptr<RigidBody> body)
+{
+	
+}
+
 //==========================================================================================================================
-//ParticleBuoyantForce
+//BuoyantForce
 //==========================================================================================================================
 //==========================================================================================================================
 //
 //Constructors	 	
 //
 //==========================================================================================================================
-ParticleBuoyantForce::ParticleBuoyantForce(void) 
+BuoyantForce::BuoyantForce(void) 
 : 
 _maxDepth(0), 
 _objectVolume(0), 
@@ -111,7 +123,7 @@ _liquidHeight(0),
 _liquidDensity(1000.0f)
 {  }
 
-ParticleBuoyantForce::ParticleBuoyantForce(real maxDepth, real objVolume, real liquidHeight, real liquidDensity )
+BuoyantForce::BuoyantForce(real maxDepth, real objVolume, real liquidHeight, real liquidDensity )
 : 
 _maxDepth(maxDepth), 
 _objectVolume(objVolume), 
@@ -119,7 +131,7 @@ _liquidHeight(liquidHeight),
 _liquidDensity(liquidDensity)
 {  }
 
-ParticleBuoyantForce::~ParticleBuoyantForce(void) 
+BuoyantForce::~BuoyantForce(void) 
 {  }
 
 //==========================================================================================================================
@@ -127,7 +139,7 @@ ParticleBuoyantForce::~ParticleBuoyantForce(void)
 //Virtual Functions
 //
 //==========================================================================================================================
-void ParticleBuoyantForce::v_UpdateForce(shared_ptr<Particle> particle)
+void BuoyantForce::v_UpdateForce(shared_ptr<Particle> particle)
 {
 //=====Calculate Depth of object=====
 	real depth = particle->GetPosition()[1]; //Get the y val
@@ -149,4 +161,10 @@ void ParticleBuoyantForce::v_UpdateForce(shared_ptr<Particle> particle)
 	force[1] = _liquidDensity * _objectVolume * (depth - _maxDepth - _liquidHeight) / 2 * _maxDepth;
 
 	particle->AddForce(force);	
+}
+
+//TODO: Implement
+void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody> body)
+{
+	
 }
