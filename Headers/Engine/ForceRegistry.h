@@ -16,7 +16,7 @@ Written by Maxwell Miller
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
-#include <Engine/ParticleForceGenerator.h>
+#include <Engine/ForceGenerator.h>
 
 namespace KM = KillerMath;
 namespace KE = KillerEngine;
@@ -27,7 +27,7 @@ namespace KE = KillerEngine;
 namespace KillerPhysics
 {
 
-	class ParticleForceRegistry
+	class ForceRegistry
 	{
 	public:
 //==========================================================================================================================
@@ -35,18 +35,22 @@ namespace KillerPhysics
 //Constructors
 //
 //==========================================================================================================================		
-		ParticleForceRegistry(void);
+		ForceRegistry(void);
 
-		~ParticleForceRegistry(void);
+		~ForceRegistry(void);
 
 //==========================================================================================================================
 //
-//ParticleForceRegistry functions
+//ForceRegistry functions
 //
 //==========================================================================================================================		
-		void Add(shared_ptr<Particle> particle, shared_ptr<ParticleForceGenerator> forceGen);
+		void Add(shared_ptr<Particle> particle, shared_ptr<ForceGenerator> forceGen);
 
-		void Remove(shared_ptr<Particle> particle, shared_ptr<ParticleForceGenerator> forceGen);
+		void Add(shared_ptr<RigidBody> body, shared_ptr<ForceGenerator> forceGen);
+
+		void Remove(shared_ptr<Particle> particle, shared_ptr<ForceGenerator> forceGen);
+
+		void Remove(shared_ptr<RigidBody> body, shared_ptr<ForceGenerator> forceGen);
 
 		void Clear(void);
 
@@ -58,8 +62,8 @@ namespace KillerPhysics
 //==========================================================================================================================		
 		struct _ParticleForceRegistration
 		{
-			shared_ptr<Particle> 			   particle;
-			shared_ptr<ParticleForceGenerator> forceGen;
+			shared_ptr<Particle> 	   particle;
+			shared_ptr<ForceGenerator> forceGen;
 
 			bool operator ==(_ParticleForceRegistration p)
 			{
@@ -70,8 +74,27 @@ namespace KillerPhysics
 			}			
 		};//end struct
 
-		typedef std::vector<_ParticleForceRegistration> Registry;
+		//TODO: Implement for RigidBody
+
+		struct _RigidBodyRegistration
+		{
+			shared_ptr<RigidBody> 	   body;
+			shared_ptr<ForceGenerator> forceGen;
+
+			bool operator ==(_RigidBodyRegistration b)
+			{
+				if(b.body == body && b.forceGen == forceGen)
+					return true;
+				else
+					return false;
+			}
+		};
+
+		typedef std::vector<_ParticleForceRegistration> ParticleRegistry;
+		typedef std::vector<_RigidBodyRegistration> RigidBodyRegistry;
 		
-		Registry _registrations;
+		ParticleRegistry _particleRegistrations;
+		RigidBodyRegistry _bodyRegistrations;
+
 	};//end class
 }//end namespacef

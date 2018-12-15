@@ -134,7 +134,7 @@ namespace KillerPhysics
 			_inverseMass = inverseMass;
 		}
 
-		inline real HasFiniteMass(void)
+		inline bool HasFiniteMass(void)
 		{
 			return _inverseMass >= 0.0f;
 		}

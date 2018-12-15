@@ -8,6 +8,7 @@
 #include <Engine/Matrix.h>
 #include <Engine/Color.h>
 #include <Engine/Vertex.h>
+#include <Engine/Quaternion.h>
 #include <Engine/Texture.h>
 #include <Engine/ShaderManager.h>
 
@@ -69,13 +70,27 @@ namespace KillerEngine
 //Functions
 //
 //==========================================================================================================================
+		void UpdateInternals(void);
+
 		bool LoadOBJ(string filepath);
 
 		void LoadMesh(string filepath);
 
 		void MakeSprite(void);
 
-		const KM::Matrix GetModelMatrix(void);
+		const KM::Matrix& GetModelMatrix(void) const
+		{
+			return _modelTOWorldCache;
+		}
+
+		//temporary idea. 
+		//In Matrix, add Translate vs Transform vs Rotate
+		const KM::Matrix GetModelMatrixRot(void) const
+		{
+			KM::Matrix mat = _modelTOWorldCache; 
+			mat.Translate(0.0f, 0.0f, 0.0f);
+			return mat;
+		}
 
 //==========================================================================================================================
 //
@@ -238,6 +253,25 @@ namespace KillerEngine
 			_scale[0] = xVal;
 			_scale[1] = yVal;
 			_scale[2] = zVal;	
+		}
+
+//===== Orientation =====
+		inline const KM::Quaternion& GetOrientation(void) const
+		{
+			return _orientation;
+		}
+
+		inline void SetOrientation(const KM::Quaternion& q)
+		{
+			_orientation = q;
+		}
+
+		inline void SetOrientation(F32 wVal, F32 xVal, F32 yVal, F32 zVal)
+		{
+			_orientation[0] = wVal;
+			_orientation[1] = xVal;
+			_orientation[2] = yVal;
+			_orientation[3] = zVal;
 		}
 
 //===== Color =====		
@@ -412,12 +446,25 @@ namespace KillerEngine
 			_uvList.push_back(val);
 		}
 
+	protected:
+		KM::Vector& _AccessPosition(void)
+		{
+			return _position;
+		}
+
+		KM::Quaternion& _AccessOrientation(void)
+		{
+			return _orientation;
+		}
+
 	private:
 		std::vector<U32> _SplitU32(string text, char delim) const;
 		
 		std::vector<F32> _SplitF32(string text, char delim) const;
 
 		std::vector<string> _SplitString(string text, char delim) const;
+
+		void _CalculateCachedData(void);
 
 //==========================================================================================================================
 //
@@ -429,8 +476,10 @@ namespace KillerEngine
 		std::vector<Vertex> 	_vertices;
 		std::vector<U32> 		_indices;
 		std::vector<F32> 		_uvList;
+		KM::Matrix 				_modelTOWorldCache;
 		KM::Vector				_position;
 		KM::Vector 				_scale;
+		KM::Quaternion 			_orientation;
 		Color 					_color;
 		shared_ptr<Texture>		_texture;
 		shared_ptr<Shader>		_shader;

@@ -15,7 +15,7 @@ Written by Maxwell Miller
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
-#include <Engine/ParticleForceGenerator.h>
+#include <Engine/ForceGenerator.h>
 #include <Engine/Vector.h>
 
 namespace KM = KillerMath;
@@ -23,7 +23,7 @@ namespace KE = KillerEngine;
 
 namespace KillerPhysics
 {
-	class ParticleDragForce : public ParticleForceGenerator
+	class ParticleDragForce : public ForceGenerator
 	{
 	public:
 //==========================================================================================================================

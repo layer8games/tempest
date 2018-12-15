@@ -251,6 +251,8 @@ namespace KillerMath
 //==========================================================================================================================		
 		void SetInverse(void);
 
+		void SetAsInverse(const Matrix& mat);
+
 		Matrix GetInverse(void) const;
 
 		F32 Determinate(void) const;
@@ -278,6 +280,10 @@ namespace KillerMath
 /*! Also known as a straight multiplication. Multiplies each value of this Matrix by the matching value of M.
 	\param M Matrix&. Right hand value to multiply by. */		
 		void ComponentMulti(const Matrix& M);
+
+		Matrix Transform3x3(const Matrix& mat) const;
+
+		Vector Transform3x3(const Vector& vec) const;
 
 		static Matrix LookAt(const Vector& cameraPos, const Vector& target, const Vector& up);
 
@@ -322,7 +328,7 @@ namespace KillerMath
 		
 /*! Performs a Matrix style multiplication.
 	\param RightMatrix Matrix&. Right hand value for multiplication. */
-		Matrix operator*(const Matrix& mat);
+		Matrix operator*(const Matrix& mat) const;
 
 /*! Performs Matrix multiplication with Vector.
 */

@@ -19,8 +19,10 @@ GameObject::GameObject(void)
 _vertices(),
 _indices(),
 _uvList(),
+_modelTOWorldCache(),
 _position(0.0f),
 _scale(1.0f),
+_orientation(0.0f),
 _color(1.0f),
 _texture(nullptr),
 _shader(nullptr),
@@ -42,8 +44,10 @@ GameObject::GameObject(const GameObject& obj)
 _vertices(obj.GetVertices()),
 _indices(obj.GetIndices()),
 _uvList(obj.GetUVList()),
+_modelTOWorldCache(obj.GetModelMatrix()),
 _position(obj.GetPosition()),
 _scale(obj.GetScale()),
+_orientation(obj.GetOrientation()),
 _color(obj.GetColor()),
 _texture(obj.GetTexture()),
 _shader(obj.GetShader()),
@@ -159,6 +163,11 @@ void GameObject::v_InitBuffers(void)
 //
 //Functions
 //==========================================================================================================================
+void GameObject::UpdateInternals(void)
+{
+	_CalculateCachedData();
+}
+
 bool GameObject::LoadOBJ(string filepath)
 {
 	std::vector<U32> vertexIndices, uvIndices, normalIndices;
@@ -501,11 +510,6 @@ void GameObject::MakeSprite(void)
 	_shader = ShaderManager::Instance()->GetShader(SPRITE);
 }
 
-const KM::Matrix GameObject::GetModelMatrix(void)
-{
-	return KM::Matrix::Translate(_position) * KM::Matrix::Scale(_scale);
-}
-
 void GameObject::BindVBO(BufferData buffer, bool state)
 {
 	switch(buffer)
@@ -568,4 +572,12 @@ std::vector<string> GameObject::_SplitString(string text, char delim) const
 	}
 
 	return data;
+}
+
+void GameObject::_CalculateCachedData(void)
+{
+	//_modelTOWorldCache =  KM::Matrix::Translate(_position) * KM::Matrix::Scale(_scale);
+
+	_modelTOWorldCache.SetOrientationAndPosition(_orientation, _position);
+	_modelTOWorldCache = _modelTOWorldCache * KM::Matrix::Scale(_scale);
 }

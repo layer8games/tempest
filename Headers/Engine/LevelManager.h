@@ -71,7 +71,7 @@ namespace KillerEngine
 
 		void AddObjectToLevel(U32 id, shared_ptr<GameObject> obj);
 
-		void AddParticleToLevel(U32 id, shared_ptr<KP::Particle>, shared_ptr<KP::ParticleForceGenerator> generator=nullptr);
+		void AddParticleToLevel(U32 id, shared_ptr<KP::Particle>, shared_ptr<KP::ForceGenerator> generator=nullptr);
 		
 		void RemoveObjectFromLevel(U32 levelID, U32 ojbId);
 

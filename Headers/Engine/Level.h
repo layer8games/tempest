@@ -22,7 +22,7 @@ Written by Maxwell Miller
 #include <Engine/Color.h>
 #include <Engine/Text.h>
 #include <Engine/Particle.h>
-#include <Engine/ParticleForceRegistry.h>
+#include <Engine/ForceRegistry.h>
 #include <Engine/Camera.h>
 #include <Engine/Text.h>
 
@@ -130,9 +130,9 @@ namespace KillerEngine
 
 		void AddParticleToLevel(shared_ptr<KP::Particle> particle);
 
-		void AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP::ParticleForceGenerator> generator=nullptr);
+		void AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP::ForceGenerator> generator=nullptr);
 
-		inline void RegisterParticleForce(shared_ptr<KP::Particle> particle, shared_ptr<KP::ParticleForceGenerator> generator)
+		inline void RegisterParticleForce(shared_ptr<KP::Particle> particle, shared_ptr<KP::ForceGenerator> generator)
 		{
 			_forceRegistry.Add(particle, generator);
 		}
@@ -287,6 +287,6 @@ namespace KillerEngine
 		std::map<U32, shared_ptr<KP::Particle>>   _particles;
 		std::map<U32, TileData> 				  _2DTileData;
 		//SpriteRenderer _batch;
-		KP::ParticleForceRegistry _forceRegistry;
+		KP::ForceRegistry _forceRegistry;
 	};
 }//End namespace

@@ -16,7 +16,7 @@ Written by Maxwell Miller
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
-#include <Engine/ParticleForceGenerator.h>
+#include <Engine/ForceGenerator.h>
 #include <Engine/Vector.h>
 
 namespace KM = KillerMath;
@@ -24,7 +24,7 @@ namespace KE = KillerEngine;
 
 namespace KillerPhysics
 {
-	class ParticleGravityForce : public ParticleForceGenerator
+	class GravityForce : public ForceGenerator
 	{
 	public:
 //==========================================================================================================================
@@ -32,11 +32,11 @@ namespace KillerPhysics
 //Constructors
 //
 //==========================================================================================================================		
-		ParticleGravityForce(void);
+		GravityForce(void);
 
-		ParticleGravityForce(const KM::Vector& gravity);
+		GravityForce(const KM::Vector& gravity);
 
-		~ParticleGravityForce(void);
+		~GravityForce(void);
 
 //==========================================================================================================================
 //
@@ -44,6 +44,8 @@ namespace KillerPhysics
 //
 //==========================================================================================================================		
 		void v_UpdateForce(shared_ptr<Particle> particle) final;
+
+		void v_UpdateForce(shared_ptr<RigidBody> body) final;
 
 //==========================================================================================================================
 //

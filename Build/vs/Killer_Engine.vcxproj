@@ -138,12 +138,16 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\ParticleForceRegistry.h" />
+    <ClInclude Include="..\..\Headers\Engine\ForceRegistry.h" />
     <ClInclude Include="..\..\Headers\Engine\Random.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Glyph.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\RigidBody.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -163,10 +167,10 @@
     <ClInclude Include="..\..\Headers\Engine\Font.h" />
     <ClInclude Include="..\..\Headers\Engine\Matrix.h" />
     <ClInclude Include="..\..\Headers\Engine\ParticleDragForce.h" />
-    <ClInclude Include="..\..\Headers\Engine\ParticleGravityForce.h" />
-    <ClInclude Include="..\..\Headers\Engine\ParticleForceGenerator.h" />
+    <ClInclude Include="..\..\Headers\Engine\GravityForce.h" />
+    <ClInclude Include="..\..\Headers\Engine\ForceGenerator.h" />
     <ClInclude Include="..\..\Headers\Engine\Engine.h" />
-    <ClInclude Include="..\..\Headers\Engine\ParticleSpringForces.h" />
+    <ClInclude Include="..\..\Headers\Engine\SpringForces.h" />
     <ClInclude Include="..\..\Headers\Engine\Quaternion.h">
       <SubType>
       </SubType>
@@ -212,12 +216,16 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\ParticleForceGenerator.cpp">
+    <ClCompile Include="..\..\Implementations\ForceGenerator.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\ParticleForceRegistry.cpp" />
+    <ClCompile Include="..\..\Implementations\ForceRegistry.cpp" />
     <ClCompile Include="..\..\Implementations\Random.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\RigidBody.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -235,9 +243,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Matrix.cpp" />
     <ClCompile Include="..\..\Implementations\ParticleDragForce.cpp" />
-    <ClCompile Include="..\..\Implementations\ParticleGravityForce.cpp" />
+    <ClCompile Include="..\..\Implementations\GravityForce.cpp" />
     <ClCompile Include="..\..\Implementations\Engine.cpp" />
-    <ClCompile Include="..\..\Implementations\ParticleSpringForces.cpp" />
+    <ClCompile Include="..\..\Implementations\SpringForces.cpp" />
     <ClCompile Include="..\..\Implementations\Quaternion.cpp">
       <SubType>
       </SubType>

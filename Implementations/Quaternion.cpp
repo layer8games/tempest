@@ -153,3 +153,11 @@ void Quaternion::Normalize(void)
 {
 	*this /= Magnitude();
 }
+
+void Quaternion::AddScaledVector(const Vector& vec, F32 scale)
+{
+	_data[w] += vec[w] * scale;
+	_data[x] += vec[x] * scale;
+	_data[y] += vec[y] * scale;
+	_data[z] += vec[z] * scale;
+}

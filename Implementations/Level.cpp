@@ -111,7 +111,7 @@ void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle)
 	}
 }
 
-void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP::ParticleForceGenerator> generator)
+void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP::ForceGenerator> generator)
 {
 	particle->SetUniform("projection", _camera->GetProjectionMatrix());
 
@@ -173,6 +173,7 @@ void Level::UpdateObjects(void)
 	{
 		if(i.second->GetActiveUpdate())
 		{
+			i.second->UpdateInternals();
 			i.second->v_Update();
 		}
 	}
@@ -181,6 +182,7 @@ void Level::UpdateObjects(void)
 	{
 		if(i.second->GetActiveUpdate())
 		{
+			i.second->UpdateInternals();
 			i.second->v_Update();
 		}
 	}
