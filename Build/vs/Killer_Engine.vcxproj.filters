@@ -127,6 +127,18 @@
     <Filter Include="Source Code\KillerPhysics\Forces\Generator Base">
       <UniqueIdentifier>{128415f5-4bcb-47fa-8bd6-af05ac197f78}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\KillerPhysics\Bounding Volumes">
+      <UniqueIdentifier>{7e6d134b-1f7b-4d76-8e5b-9b9a54386080}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerPhysics\Collision Detection">
+      <UniqueIdentifier>{f8be6447-da41-41ab-b3bd-ebb2e4492266}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerPhysics\Bounding Volumes\Sphere">
+      <UniqueIdentifier>{34b4b040-1565-42b1-97ff-987b7bdaf475}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerPhysics\Bounding Volumes\Box">
+      <UniqueIdentifier>{d043aa17-1d3b-4e2a-bacd-0e4570839863}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -234,6 +246,15 @@
     <ClInclude Include="..\..\Headers\Engine\SpringForces.h">
       <Filter>Source Code\KillerPhysics\Forces\Spring</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\CollideBroadCheck.h">
+      <Filter>Source Code\KillerPhysics\Collision Detection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\BoundingSphere.h">
+      <Filter>Source Code\KillerPhysics\Bounding Volumes\Sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\BoundingBox.h">
+      <Filter>Source Code\KillerPhysics\Bounding Volumes\Box</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -331,6 +352,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\SpringForces.cpp">
       <Filter>Source Code\KillerPhysics\Forces\Spring</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\CollideBroadCheck.cpp">
+      <Filter>Source Code\KillerPhysics\Collision Detection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\BoundingSphere.cpp">
+      <Filter>Source Code\KillerPhysics\Bounding Volumes\Sphere</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
