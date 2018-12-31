@@ -293,3 +293,15 @@ This is going to be a bigger section that will change as times goes on. It is no
 1. All input should be held in a Level, not in an object. 
 
 This has a few implications. First, it means that the Controller should only ever be called from inside a Level. It also means that GameObjects should only ever run v_Update(void) over their own data members, not over any input that is given to them by the player. 
+
+//==========================================================================================================================
+//Public Data
+//==========================================================================================================================
+
+Classes: 
+
+In classes all data should be private. Any access that is needed should be given through an Accessor. Protected members should be avoided. Instead, write a protected Accessor that gives a non-const ref to the needed member. Call this function _Accessor[name of member];
+
+Structs: 
+
+At times, it will be needed and/or convenient to actually have public data. In these cases a struct should be used. This is the only time that data members should be made public. Any other times that this is done, a review of the code should be failed. 
