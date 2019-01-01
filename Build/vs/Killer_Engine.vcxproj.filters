@@ -88,9 +88,6 @@
     <Filter Include="Source Code\KillerPhysics\Forces\Registry">
       <UniqueIdentifier>{0b7fb099-81e9-43aa-8090-714b6099f722}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerPhysics\ContactResolution">
-      <UniqueIdentifier>{51060f2b-30e0-4b75-a6f5-ad0625443185}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Structs">
       <UniqueIdentifier>{2b6d07f5-9367-4b70-a35d-57e172e29178}</UniqueIdentifier>
     </Filter>
@@ -138,6 +135,12 @@
     </Filter>
     <Filter Include="Source Code\KillerPhysics\Bounding Volumes\Box">
       <UniqueIdentifier>{d043aa17-1d3b-4e2a-bacd-0e4570839863}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerPhysics\Contacts">
+      <UniqueIdentifier>{51060f2b-30e0-4b75-a6f5-ad0625443185}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerPhysics\Contacts\Legacy Particle">
+      <UniqueIdentifier>{6392750c-b1db-4cb6-b912-d3528f120b02}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -213,9 +216,6 @@
     <ClInclude Include="..\..\Headers\Engine\Particle.h">
       <Filter>Source Code\KillerPhysics\Particle</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
-      <Filter>Source Code\KillerPhysics\ContactResolution</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Text.h">
       <Filter>Source Code\Text</Filter>
     </ClInclude>
@@ -227,9 +227,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\FontManager.h">
       <Filter>Source Code\FontManager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\ParticleContactResolver.h">
-      <Filter>Source Code\KillerPhysics\ContactResolution</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\RigidBody.h">
       <Filter>Source Code\KillerPhysics\RigidBody</Filter>
@@ -254,6 +251,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\BoundingBox.h">
       <Filter>Source Code\KillerPhysics\Bounding Volumes\Box</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
+      <Filter>Source Code\KillerPhysics\Contacts\Legacy Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\ParticleContactResolver.h">
+      <Filter>Source Code\KillerPhysics\Contacts\Legacy Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Contact.h">
+      <Filter>Source Code\KillerPhysics\Contacts</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -320,9 +326,6 @@
     <ClCompile Include="..\..\Implementations\Particle.cpp">
       <Filter>Source Code\KillerPhysics\Particle</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
-      <Filter>Source Code\KillerPhysics\ContactResolution</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Text.cpp">
       <Filter>Source Code\Text</Filter>
     </ClCompile>
@@ -334,9 +337,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\FontManager.cpp">
       <Filter>Source Code\FontManager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\ParticleContactResolver.cpp">
-      <Filter>Source Code\KillerPhysics\ContactResolution</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\RigidBody.cpp">
       <Filter>Source Code\KillerPhysics\RigidBody</Filter>
@@ -358,6 +358,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\BoundingSphere.cpp">
       <Filter>Source Code\KillerPhysics\Bounding Volumes\Sphere</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
+      <Filter>Source Code\KillerPhysics\Contacts\Legacy Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\ParticleContactResolver.cpp">
+      <Filter>Source Code\KillerPhysics\Contacts\Legacy Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Contact.cpp">
+      <Filter>Source Code\KillerPhysics\Contacts</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
