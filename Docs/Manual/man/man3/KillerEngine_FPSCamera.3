@@ -1,0 +1,76 @@
+.TH "KillerEngine::FPSCamera" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerEngine::FPSCamera
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBKillerEngine::Camera\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFPSCamera\fP (const \fBKM::Vector\fP position, F32 yaw, F32 pitch)"
+.br
+.ti -1c
+.RI "virtual void \fBv_Update\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBv_Rotate\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBv_Move\fP (const \fBKM::Vector\fP offset)"
+.br
+.ti -1c
+.RI "void \fBSetWorldUp\fP (const \fBKM::Vector\fP vec)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP & \fBGetWorldUp\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetZoom\fP (F64 val)"
+.br
+.ti -1c
+.RI "F64 \fBGetZoom\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetMoveSpeed\fP (F32 val)"
+.br
+.ti -1c
+.RI "F32 \fBGetMoveSpeed\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetDeadZone\fP (F32 val)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fB_v_UpdateCameraVectors\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_worldUp\fP"
+.br
+.ti -1c
+.RI "F64 \fB_zoomSensitivity\fP"
+.br
+.ti -1c
+.RI "F32 \fB_moveSpeed\fP"
+.br
+.ti -1c
+.RI "F32 \fB_deadZone\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

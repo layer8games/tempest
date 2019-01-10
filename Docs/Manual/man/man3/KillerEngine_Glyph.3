@@ -1,0 +1,54 @@
+.TH "KillerEngine::Glyph" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerEngine::Glyph
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBKillerEngine::GameObject\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGlyph\fP (const \fBGlyph\fP &glyph)"
+.br
+.ti -1c
+.RI "void \fBv_Update\fP (void)"
+.br
+.ti -1c
+.RI "void \fBv_Render\fP (void)"
+.br
+.ti -1c
+.RI "void \fBv_InitBuffers\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetCharacter\fP (char character, shared_ptr< \fBTexture\fP > tex, const \fBCharacterData\fP &characterData)"
+.br
+.ti -1c
+.RI "void \fBSetCharacter\fP (char character, const \fBCharacterData\fP &characterData)"
+.br
+.ti -1c
+.RI "char \fBGetCharacter\fP (void) const"
+.br
+.ti -1c
+.RI "\fBCharacterData\fP \fBGetCharacterData\fP (void) const"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "char \fB_character\fP"
+.br
+.ti -1c
+.RI "\fBCharacterData\fP \fB_characterData\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

@@ -1,0 +1,166 @@
+.TH "KillerPhysics::RigidBody" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerPhysics::RigidBody
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBKillerEngine::GameObject\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBv_Update\fP (void)"
+.br
+.ti -1c
+.RI "void \fBIntegrate\fP (void)"
+.br
+.ti -1c
+.RI "void \fBCalculateDerivedData\fP (void)"
+.br
+.ti -1c
+.RI "const \fBKM::Matrix\fP & \fBGetInverseInertiaTensor\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetInverseInertiaTensor\fP (const \fBKM::Matrix\fP &mat)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP & \fBGetVelocity\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetVelocity\fP (const \fBKM::Vector\fP &vec)"
+.br
+.ti -1c
+.RI "void \fBSetVelocity\fP (F32 x, F32 y, F32 z)"
+.br
+.ti -1c
+.RI "void \fBAddScaledVelocity\fP (const \fBKM::Vector\fP &vec, F32 scale)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP & \fBGetAcceleration\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetAcceleration\fP (const \fBKM::Vector\fP &vec)"
+.br
+.ti -1c
+.RI "void \fBSetAcceleration\fP (F32 x, F32 y, F32 z)"
+.br
+.ti -1c
+.RI "void \fBAddScaledAcceleration\fP (const \fBKM::Vector\fP &vec, F32 scale)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP & \fBGetRotation\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetRotation\fP (const \fBKM::Vector\fP &vec)"
+.br
+.ti -1c
+.RI "void \fBSetRotation\fP (F32 x, F32 y, F32 z)"
+.br
+.ti -1c
+.RI "void \fBAddScaledRotation\fP (const \fBKM::Vector\fP &vec, F32 scale)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP & \fBGetForces\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBAddForce\fP (const \fBKM::Vector\fP &force)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP & \fBGetTorque\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBAddTorque\fP (const \fBKM::Vector\fP &torque)"
+.br
+.ti -1c
+.RI "void \fBClearAccumulators\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAddForceAtPoint\fP (const \fBKM::Vector\fP &force, const \fBKM::Vector\fP &point)"
+.br
+.ti -1c
+.RI "void \fBAddForceAtLocalPoint\fP (const \fBKM::Vector\fP &force, const \fBKM::Vector\fP &point)"
+.br
+.ti -1c
+.RI "real \fBGetInverseMass\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetInverseMass\fP (real val)"
+.br
+.ti -1c
+.RI "bool \fBHasFiniteMass\fP (void) const"
+.br
+.ti -1c
+.RI "const real \fBGetMass\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetMass\fP (real mass)"
+.br
+.ti -1c
+.RI "real \fBGetLinearDamping\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetLinearDamping\fP (real val)"
+.br
+.ti -1c
+.RI "real \fBGetAngularDamping\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetAngularDamping\fP (real val)"
+.br
+.ti -1c
+.RI "bool \fBGetIsAwake\fP (void)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fB_TransformInertiaTensor\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBKM::Matrix\fP \fB_inverseInertiaTensor\fP"
+.br
+.ti -1c
+.RI "\fBKM::Matrix\fP \fB_inverseInertiaTensorInWorld\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_velocity\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_acceleration\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_rotation\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_forceAccum\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_torqueAccum\fP"
+.br
+.ti -1c
+.RI "real \fB_inverseMass\fP"
+.br
+.ti -1c
+.RI "real \fB_linearDamping\fP"
+.br
+.ti -1c
+.RI "real \fB_angularDamping\fP"
+.br
+.ti -1c
+.RI "bool \fB_isAwake\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

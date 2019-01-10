@@ -1,0 +1,57 @@
+.TH "KillerPhysics::BVHNode< BoundingVolumeClass >" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerPhysics::BVHNode< BoundingVolumeClass >
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBVHNode\fP (shared_ptr< \fBBVHNode\fP > parent, const BoundingVolumeClass &volume, shared_ptr< \fBRigidBody\fP > body=nullptr)"
+.br
+.ti -1c
+.RI "bool \fBIsLeaf\fP (void) const"
+.br
+.ti -1c
+.RI "U32 \fBGetPotentialContacts\fP (\fBPotentialContact\fP *contacts, U32 limit) const"
+.br
+.ti -1c
+.RI "void \fBInsert\fP (shared_ptr< \fBRigidBody\fP > newBody, const BoundingVolumeClass &newVolume)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBBVHNode\fP * \fBchildren\fP [2]"
+.br
+.ti -1c
+.RI "shared_ptr< \fBBVHNode\fP > \fBparent\fP"
+.br
+.ti -1c
+.RI "BoundingVolumeClass \fBvolume\fP"
+.br
+.ti -1c
+.RI "shared_ptr< \fBRigidBody\fP > \fBbody\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fB_Overlaps\fP (const \fBBVHNode\fP< BoundingVolumeClass > *other) const"
+.br
+.ti -1c
+.RI "U32 \fB_GetPotentialChildContacts\fP (const \fBBVHNode\fP< BoundingVolumeClass > *other, \fBPotentialContact\fP *contacts, U32 limit) const"
+.br
+.ti -1c
+.RI "void \fB_RecalculateBoundingVolume\fP (bool recursive=true)"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

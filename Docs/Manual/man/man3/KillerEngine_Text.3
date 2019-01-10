@@ -1,0 +1,98 @@
+.TH "KillerEngine::Text" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerEngine::Text
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSetPosition\fP (const \fBKM::Vector\fP &pos)"
+.br
+.ti -1c
+.RI "void \fBSetPosition\fP (F32 x, F32 y)"
+.br
+.ti -1c
+.RI "void \fBAddText\fP (string text)"
+.br
+.ti -1c
+.RI "void \fBSetTextColor\fP (const \fBColor\fP &col)"
+.br
+.ti -1c
+.RI "void \fBSetUniforms\fP (string name, const \fBKM::Matrix\fP &matrix)"
+.br
+.ti -1c
+.RI "void \fBSetActive\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetInactive\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBGetActive\fP (void) const"
+.br
+.ti -1c
+.RI "F32 \fBGetWidth\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetFont\fP (shared_ptr< \fBFont\fP > font)"
+.br
+.ti -1c
+.RI "void \fBSetFont\fP (\fBFont\fP &font)"
+.br
+.ti -1c
+.RI "const shared_ptr< \fBFont\fP > \fBGetFont\fP (void)"
+.br
+.ti -1c
+.RI "std::vector< shared_ptr< \fBGlyph\fP > > \fBGetCharacterList\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetScale\fP (const \fBKM::Vector\fP &s)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP & \fBGetScale\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetColor\fP (const \fBColor\fP &c)"
+.br
+.ti -1c
+.RI "void \fBSetColor\fP (F32 r, F32 g, F32 b)"
+.br
+.ti -1c
+.RI "const \fBColor\fP & \fBGetColor\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fB_active\fP"
+.br
+.ti -1c
+.RI "F32 \fB_totalWidth\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_pos\fP"
+.br
+.ti -1c
+.RI "string \fB_text\fP"
+.br
+.ti -1c
+.RI "shared_ptr< \fBFont\fP > \fB_font\fP"
+.br
+.ti -1c
+.RI "std::vector< shared_ptr< \fBGlyph\fP > > \fB_characterList\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_scale\fP"
+.br
+.ti -1c
+.RI "\fBColor\fP \fB_color\fP"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

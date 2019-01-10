@@ -1,0 +1,55 @@
+.TH "KillerPhysics::BuoyantForce" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerPhysics::BuoyantForce
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBKillerPhysics::ForceGenerator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBuoyantForce::BuoyantForce\fP (real maxDepth, real objVolume, real liquidHeight, real liquidDensity=1000\&.0f)"
+.br
+.ti -1c
+.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle\fP > particle)"
+.br
+.ti -1c
+.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody\fP > body) final"
+.br
+.ti -1c
+.RI "void \fBSetMaxDepth\fP (real depth)"
+.br
+.ti -1c
+.RI "void \fBSetObjectVolume\fP (real volume)"
+.br
+.ti -1c
+.RI "void \fBSetLiquidHeight\fP (real hieght)"
+.br
+.ti -1c
+.RI "void \fBSetLiquidDensity\fP (real density)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "real \fB_maxDepth\fP"
+.br
+.ti -1c
+.RI "real \fB_objectVolume\fP"
+.br
+.ti -1c
+.RI "real \fB_liquidHeight\fP"
+.br
+.ti -1c
+.RI "real \fB_liquidDensity\fP"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

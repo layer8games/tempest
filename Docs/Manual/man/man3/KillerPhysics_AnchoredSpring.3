@@ -1,0 +1,49 @@
+.TH "KillerPhysics::AnchoredSpring" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerPhysics::AnchoredSpring
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBKillerPhysics::ForceGenerator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAnchoredSpring\fP (\fBKM::Vector\fP anchor, real springConstant, real restLength)"
+.br
+.ti -1c
+.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle\fP > particle) final"
+.br
+.ti -1c
+.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody\fP > body) final"
+.br
+.ti -1c
+.RI "void \fBSetAnchor\fP (\fBKM::Vector\fP &anchor)"
+.br
+.ti -1c
+.RI "void \fBSetSpringConstant\fP (real constant)"
+.br
+.ti -1c
+.RI "void \fBSetRestLength\fP (real length)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_anchor\fP"
+.br
+.ti -1c
+.RI "real \fB_springConstant\fP"
+.br
+.ti -1c
+.RI "real \fB_restLength\fP"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

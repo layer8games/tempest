@@ -1,0 +1,64 @@
+.TH "KillerPhysics::ForceRegistry" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerPhysics::ForceRegistry
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fB_ParticleForceRegistration\fP"
+.br
+.ti -1c
+.RI "struct \fB_RigidBodyRegistration\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAdd\fP (shared_ptr< \fBParticle\fP > particle, shared_ptr< \fBForceGenerator\fP > forceGen)"
+.br
+.ti -1c
+.RI "void \fBAdd\fP (shared_ptr< \fBRigidBody\fP > body, shared_ptr< \fBForceGenerator\fP > forceGen)"
+.br
+.ti -1c
+.RI "void \fBRemove\fP (shared_ptr< \fBParticle\fP > particle, shared_ptr< \fBForceGenerator\fP > forceGen)"
+.br
+.ti -1c
+.RI "void \fBRemove\fP (shared_ptr< \fBRigidBody\fP > body, shared_ptr< \fBForceGenerator\fP > forceGen)"
+.br
+.ti -1c
+.RI "void \fBClear\fP (void)"
+.br
+.ti -1c
+.RI "void \fBUpdateForces\fP (void)"
+.br
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "typedef std::vector< \fB_ParticleForceRegistration\fP > \fBParticleRegistry\fP"
+.br
+.ti -1c
+.RI "typedef std::vector< \fB_RigidBodyRegistration\fP > \fBRigidBodyRegistry\fP"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "ParticleRegistry \fB_particleRegistrations\fP"
+.br
+.ti -1c
+.RI "RigidBodyRegistry \fB_bodyRegistrations\fP"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

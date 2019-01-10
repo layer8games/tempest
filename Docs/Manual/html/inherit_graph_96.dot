@@ -1,0 +1,17 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="KillerPhysics::ForceGenerator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_killer_physics_1_1_force_generator.html"];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="KillerPhysics::AnchoredSpring",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_killer_physics_1_1_anchored_spring.html"];
+  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="KillerPhysics::BuoyantForce",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_killer_physics_1_1_buoyant_force.html"];
+  Node0 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="KillerPhysics::GravityForce",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_killer_physics_1_1_gravity_force.html"];
+  Node0 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="KillerPhysics::ParticleDrag\lForce",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_killer_physics_1_1_particle_drag_force.html"];
+  Node0 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="KillerPhysics::SpringForce",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_killer_physics_1_1_spring_force.html"];
+}
