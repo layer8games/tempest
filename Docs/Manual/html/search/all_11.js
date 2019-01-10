@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['set',['Set',['../class_killer_math_1_1_vector.html#a535b8a4747ae5ab113d79f3f996ed27c',1,'KillerMath::Vector']]],
   ['setactivelevel',['SetActiveLevel',['../class_killer_engine_1_1_engine.html#a42b05bccc84e2bf48a7b8dcdcefacfad',1,'KillerEngine::Engine']]],
   ['setdefaultmatrix',['SetDefaultMatrix',['../class_killer_engine_1_1_camera.html#a1cce2e4ff8005cd6f77bdd3bbe6cd98b',1,'KillerEngine::Camera']]],
   ['seterror',['SetError',['../class_killer_engine_1_1_error_manager.html#a1985ec212295b58c27d0377978b348cc',1,'KillerEngine::ErrorManager']]],
@@ -18,5 +19,6 @@ var searchData=
   ['shaderdata',['ShaderData',['../struct_killer_engine_1_1_shader_data.html',1,'KillerEngine']]],
   ['shadermanager',['ShaderManager',['../class_killer_engine_1_1_shader_manager.html',1,'KillerEngine']]],
   ['shutdown',['ShutDown',['../class_killer_engine_1_1_engine.html#aeb2929a81f40a12b16f07417be420530',1,'KillerEngine::Engine']]],
-  ['springforce',['SpringForce',['../class_killer_physics_1_1_spring_force.html',1,'KillerPhysics']]]
+  ['springforce',['SpringForce',['../class_killer_physics_1_1_spring_force.html',1,'KillerPhysics']]],
+  ['sqrmagnitude',['SqrMagnitude',['../class_killer_math_1_1_vector.html#ac44f0371cdc78dfa8a48633c86c00978',1,'KillerMath::Vector']]]
 ];
