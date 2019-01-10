@@ -22,9 +22,6 @@
     <Filter Include="Source Code\Controller">
       <UniqueIdentifier>{949bad72-f361-4e38-b352-64dbb4371cd2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\ErrorManager">
-      <UniqueIdentifier>{ce3f617a-fab4-4c47-8413-bfad33649533}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Font">
       <UniqueIdentifier>{8ee5872e-c61d-47ce-889d-c375d165cfae}</UniqueIdentifier>
     </Filter>
@@ -42,9 +39,6 @@
     </Filter>
     <Filter Include="Source Code\Texture">
       <UniqueIdentifier>{70216902-edb5-4822-8aec-ed808572d931}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\TextureManager">
-      <UniqueIdentifier>{9cf645df-f4b4-417c-92f1-1c4cc356a975}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Code\Camera">
       <UniqueIdentifier>{e63d13b7-e9e9-4c1b-8403-7f3d194c5129}</UniqueIdentifier>
@@ -94,9 +88,6 @@
     <Filter Include="Source Code\Level">
       <UniqueIdentifier>{3820084b-1115-47ff-b532-adca4671f2e9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\LevelManager">
-      <UniqueIdentifier>{0848391e-09fc-4949-ad36-3ea60b4741da}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Engine">
       <UniqueIdentifier>{66fd72d2-3739-4584-a963-04c6b35f6d8d}</UniqueIdentifier>
     </Filter>
@@ -108,12 +99,6 @@
     </Filter>
     <Filter Include="Source Code\Text">
       <UniqueIdentifier>{7e0d93d1-f85e-4c81-9b66-d130c9d7e5df}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\ShaderManager">
-      <UniqueIdentifier>{b86f9cee-c90e-4b5e-9a71-5bc9fcc0a055}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\FontManager">
-      <UniqueIdentifier>{628dddcc-7234-492d-a7d2-24ed7ef95ef1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Code\KillerPhysics\RigidBody">
       <UniqueIdentifier>{c249fc9b-461f-4338-8fb6-84a67018f196}</UniqueIdentifier>
@@ -142,6 +127,24 @@
     <Filter Include="Source Code\KillerPhysics\Contacts\Legacy Particle">
       <UniqueIdentifier>{6392750c-b1db-4cb6-b912-d3528f120b02}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Managers">
+      <UniqueIdentifier>{67b296c5-708e-48ea-aef8-d6da2a5ae0cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Managers\TextureManager">
+      <UniqueIdentifier>{9cf645df-f4b4-417c-92f1-1c4cc356a975}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Managers\LevelManager">
+      <UniqueIdentifier>{0848391e-09fc-4949-ad36-3ea60b4741da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Managers\ErrorManager">
+      <UniqueIdentifier>{ce3f617a-fab4-4c47-8413-bfad33649533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Managers\ShaderManager">
+      <UniqueIdentifier>{b86f9cee-c90e-4b5e-9a71-5bc9fcc0a055}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Managers\FontManager">
+      <UniqueIdentifier>{628dddcc-7234-492d-a7d2-24ed7ef95ef1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -151,13 +154,13 @@
       <Filter>Source Code\Controller</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ErrorManager.h">
-      <Filter>Source Code\ErrorManager</Filter>
+      <Filter>Source Code\Managers\ErrorManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Font.h">
       <Filter>Source Code\Font</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\TextureManager.h">
-      <Filter>Source Code\TextureManager</Filter>
+      <Filter>Source Code\Managers\TextureManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Timer.h">
       <Filter>Source Code\KillerMath\Timer</Filter>
@@ -190,7 +193,7 @@
       <Filter>Source Code\Level</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\LevelManager.h">
-      <Filter>Source Code\LevelManager</Filter>
+      <Filter>Source Code\Managers\LevelManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Texture.h">
       <Filter>Source Code\Texture</Filter>
@@ -223,10 +226,10 @@
       <Filter>Source Code\GameObjects\Glyph</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ShaderManager.h">
-      <Filter>Source Code\ShaderManager</Filter>
+      <Filter>Source Code\Managers\ShaderManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\FontManager.h">
-      <Filter>Source Code\FontManager</Filter>
+      <Filter>Source Code\Managers\FontManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\RigidBody.h">
       <Filter>Source Code\KillerPhysics\RigidBody</Filter>
@@ -267,13 +270,13 @@
       <Filter>Source Code\Controller</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ErrorManager.cpp">
-      <Filter>Source Code\ErrorManager</Filter>
+      <Filter>Source Code\Managers\ErrorManager</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Font.cpp">
       <Filter>Source Code\Font</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\TextureManager.cpp">
-      <Filter>Source Code\TextureManager</Filter>
+      <Filter>Source Code\Managers\TextureManager</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Timer.cpp">
       <Filter>Source Code\KillerMath\Timer</Filter>
@@ -300,7 +303,7 @@
       <Filter>Source Code\Level</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\LevelManager.cpp">
-      <Filter>Source Code\LevelManager</Filter>
+      <Filter>Source Code\Managers\LevelManager</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Texture.cpp">
       <Filter>Source Code\Texture</Filter>
@@ -333,10 +336,10 @@
       <Filter>Source Code\GameObjects\Glyph</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ShaderManager.cpp">
-      <Filter>Source Code\ShaderManager</Filter>
+      <Filter>Source Code\Managers\ShaderManager</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\FontManager.cpp">
-      <Filter>Source Code\FontManager</Filter>
+      <Filter>Source Code\Managers\FontManager</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\RigidBody.cpp">
       <Filter>Source Code\KillerPhysics\RigidBody</Filter>
