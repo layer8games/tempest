@@ -1,4 +1,4 @@
-.TH "F:/Projects/Killer_Engine/Headers/Engine/ErrorManager.h" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.TH "F:/Projects/Killer_Engine/Headers/Engine/ErrorManager.h" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -22,7 +22,7 @@ F:/Projects/Killer_Engine/Headers/Engine/ErrorManager.h
 
 .in +1c
 .ti -1c
-.RI "enum \fBKillerEngine::ErrorCode\fP { \fBKillerEngine::EC_NoError\fP = 0, \fBKillerEngine::EC_Unknown\fP, \fBKillerEngine::EC_Game\fP, \fBKillerEngine::EC_Engine\fP, \fBKillerEngine::EC_Physics\fP, \fBKillerEngine::EC_Windows\fP, \fBKillerEngine::EC_OpenGL\fP, \fBKillerEngine::EC_OpenGL_Shader\fP, \fBKillerEngine::EC_DirectInput\fP, \fBKillerEngine::EC_TextureManager\fP, \fBKillerEngine::EC_GameObject\fP }"
+.RI "enum \fBKillerEngine::ErrorCode\fP { \fBKillerEngine::NOT_ERROR\fP, \fBKillerEngine::UNKNOWN_ERROR\fP, \fBAPPLICATION\fP, \fBKillerEngine::ENGINE\fP, \fBKillerEngine::PHYSICS\fP, \fBKillerEngine::WINDOWS\fP, \fBKillerEngine::OPENGL\fP, \fBKillerEngine::SHADER\fP, \fBGLFW\fP, \fBTEXTURE_MANAGER\fP, \fBGAMEOBJECT\fP, \fBFREETYPE\fP }"
 .br
 .in -1c
 .SH "Enumeration Type Documentation"
@@ -33,38 +33,26 @@ Error codes that are used to give a hint as to where to code that is throwing th
 \fBEnumerator\fP
 .in +1c
 .TP
-\fB\fIEC_NoError \fP\fP
+\fB\fINOT_ERROR \fP\fP
 Default value\&. Shouldn't ever be used\&. 
 .TP
-\fB\fIEC_Unknown \fP\fP
+\fB\fIUNKNOWN_ERROR \fP\fP
 Fall through code, indicates an error in the setting of an error\&. 
 .TP
-\fB\fIEC_Game \fP\fP
-Indicates the error is in the end application, or the game, not the engine\&. 
-.TP
-\fB\fIEC_Engine \fP\fP
+\fB\fIENGINE \fP\fP
 Indicates the error is in the engine's main code, not very specific\&. 
 .TP
-\fB\fIEC_Physics \fP\fP
+\fB\fIPHYSICS \fP\fP
 Indicates the error is in the KillerPhysics namespace\&. 
 .TP
-\fB\fIEC_Windows \fP\fP
+\fB\fIWINDOWS \fP\fP
 Indicates that the error is related to the windowing system\&. 
 .TP
-\fB\fIEC_OpenGL \fP\fP
+\fB\fIOPENGL \fP\fP
 Indicates that the error is in OpenGL related code\&. 
 .TP
-\fB\fIEC_OpenGL_Shader \fP\fP
+\fB\fISHADER \fP\fP
 Indicates that the error is caused by OpenGL shader compilation\&. 
-.TP
-\fB\fIEC_DirectInput \fP\fP
-Depricated\&. Indicates that the error is with the DirectInput setup\&. 
-.TP
-\fB\fIEC_TextureManager \fP\fP
-Indicates that the error occured when trying to load a texture into memory\&. 
-.TP
-\fB\fIEC_GameObject \fP\fP
-Indicates that the issue is in a game object specifically\&. 
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Killer Engine from the source code\&.

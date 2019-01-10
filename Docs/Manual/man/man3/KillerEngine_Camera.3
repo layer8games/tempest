@@ -1,4 +1,4 @@
-.TH "KillerEngine::Camera" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Camera" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,17 +6,46 @@ KillerEngine::Camera
 .SH SYNOPSIS
 .br
 .PP
+.PP
+Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
+.RI "virtual void \fBv_Rotate\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBv_Update\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBv_Move\fP (const \fBKM::Vector\fP &offset)"
+.br
+.ti -1c
 .RI "void \fBSetOrthographic\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetOrthographic\fP (F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)"
 .br
 .ti -1c
 .RI "void \fBSetPerspective\fP (void)"
 .br
 .ti -1c
+.RI "void \fBSetPerspective\fP (F32 fov, F32 aspect, F32 nearPlane, F32 farPlane)"
+.br
+.ti -1c
 .RI "void \fBSetDefaultMatrix\fP (void)"
+.br
+.ti -1c
+.RI "virtual const \fBKM::Matrix\fP \fBGetViewMatrix\fP (void)"
+.br
+.ti -1c
+.RI "const \fBKM::Matrix\fP & \fBGetProjectionMatrix\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetColor\fP (const \fBColor\fP &col)"
+.br
+.ti -1c
+.RI "const \fBColor\fP & \fBGetBackgroundColor\fP (void) const"
 .br
 .ti -1c
 .RI "void \fBSetPosition\fP (F32 x, F32 y)"
@@ -25,7 +54,7 @@ KillerEngine::Camera
 .RI "void \fBSetPosition\fP (F32 x, F32 y, F32 z)"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (const \fBKM::Vector\fP &V)"
+.RI "void \fBSetPosition\fP (const \fBKM::Vector\fP &vec)"
 .br
 .ti -1c
 .RI "void \fBScalePosition\fP (F32 x, F32 y, F32 scale)"
@@ -34,23 +63,130 @@ KillerEngine::Camera
 .RI "void \fBScalePosition\fP (F32 x, F32 y, F32 z, F32 scale)"
 .br
 .ti -1c
-.RI "void \fBScalePosition\fP (const \fBKM::Vector\fP &v, F32 scale)"
+.RI "void \fBScalePosition\fP (const \fBKM::Vector\fP &vec, F32 scale)"
 .br
 .ti -1c
-.RI "void \fBSetColor\fP (const \fBColor\fP &col)"
+.RI "const \fBKM::Vector\fP & \fBGetPosition\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetUp\fP (GLuint shader)"
+.RI "void \fBSetTarget\fP (const \fBKM::Vector\fP &target)"
 .br
 .ti -1c
-.RI "const \fBKM::Matrix\fP & \fBGetViewMatrix\fP (void)"
+.RI "void \fBSetTarget\fP (F32 xVal, F32 yVal)"
+.br
+.ti -1c
+.RI "void \fBSetTarget\fP (F32 xVal, F32 yVal, F32 zVal)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP & \fBGetTarget\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetUpVector\fP (F32 val)"
+.br
+.ti -1c
+.RI "void \fBSetUpVector\fP (F32 xVal, F32 yVal, F32 zVal)"
+.br
+.ti -1c
+.RI "void \fBSetUpVector\fP (const \fBKM::Vector\fP &vec)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP & \fBGetUpVector\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetLookVector\fP (F32 val)"
+.br
+.ti -1c
+.RI "void \fBSetLookVector\fP (F32 xVal, F32 yVal)"
+.br
+.ti -1c
+.RI "void \fBSetLookVector\fP (F32 xVal, F32 yVal, F32 zVal)"
+.br
+.ti -1c
+.RI "void \fBSetLookVector\fP (const \fBKM::Vector\fP &vec)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP & \fBGetLookVector\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetRightVector\fP (F32 val)"
+.br
+.ti -1c
+.RI "void \fBSetRightVector\fP (F32 xVal, F32 yVal)"
+.br
+.ti -1c
+.RI "void \fBSetRightVector\fP (F32 xVal, F32 yVal, F32 zVal)"
+.br
+.ti -1c
+.RI "void \fBSetRightVector\fP (const \fBKM::Vector\fP &vec)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP & \fBGetRightVector\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetMouseSensitivity\fP (F32 val)"
+.br
+.ti -1c
+.RI "F32 \fBGetMouseSensitivity\fP (void)"
+.br
+.ti -1c
+.RI "F32 \fBGetYaw\fP (void) const"
+.br
+.ti -1c
+.RI "F32 \fBGetPitch\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetFOV\fP (F32 val)"
+.br
+.ti -1c
+.RI "F32 \fBGetFOV\fP (void) const"
 .br
 .in -1c
-.SS "Static Public Member Functions"
+.SS "Protected Attributes"
 
 .in +1c
 .ti -1c
-.RI "static shared_ptr< \fBCamera\fP > \fBInstance\fP (void)"
+.RI "\fBKM::Vector\fP \fB_position\fP"
+.br
+.RI "Position of \fBCamera\fP in world space\&. "
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_target\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_up\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_look\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_right\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_lastMouseCoords\fP"
+.br
+.ti -1c
+.RI "F32 \fB_mouseSensitivity\fP"
+.br
+.ti -1c
+.RI "F32 \fB_yaw\fP"
+.br
+.ti -1c
+.RI "F32 \fB_pitch\fP"
+.br
+.ti -1c
+.RI "F32 \fB_deltaYaw\fP"
+.br
+.ti -1c
+.RI "F32 \fB_deltaPitch\fP"
+.br
+.ti -1c
+.RI "F32 \fB_fov\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fB_v_UpdateCameraVectors\fP (void)"
 .br
 .in -1c
 .SS "Private Attributes"
@@ -61,41 +197,12 @@ KillerEngine::Camera
 .br
 .RI "Background color of current level\&. "
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_pos\fP"
-.br
-.RI "Position of \fBCamera\fP in world space\&. "
-.ti -1c
 .RI "\fBKM::Matrix\fP \fB_projection\fP"
 .br
 .RI "Projection Matrix (Orthographic or Perspective)\&. Not used\&. "
-.ti -1c
-.RI "\fBKM::Matrix\fP \fB_translation\fP"
-.br
-.RI "Amount of Translation needed to reflect Position\&. Should be opposite of _pos\&. "
-.ti -1c
-.RI "GLuint \fB_currentShader\fP"
-.br
-.RI "Fully compiled OpenGL \fBShader\fP Program\&. "
-.in -1c
-.SS "Static Private Attributes"
-
-.in +1c
-.ti -1c
-.RI "static shared_ptr< \fBCamera\fP > \fB_instance\fP {NULL}"
-.br
-.RI "Singleton global instance\&. "
 .in -1c
 .SH "Member Function Documentation"
 .PP 
-.SS "shared_ptr< \fBCamera\fP > Camera::Instance (void)\fC [static]\fP"
-Singleton function\&. Returns global camera object 
-.PP
-\fBParameters:\fP
-.RS 4
-\fInone\fP 
-.RE
-.PP
-
 .SS "void Camera::SetDefaultMatrix (void)"
 Helper function to set the projection Matrix to be an identity Matrix\&. 
 .PP

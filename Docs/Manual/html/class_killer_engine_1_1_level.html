@@ -90,7 +90,6 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_level.html',''
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-types">Protected Types</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_level-members.html">List of all members</a>  </div>
@@ -111,9 +110,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ace325448c62606751528d4a18df74b6c"><td class="memItemLeft" align="right" valign="top"><a id="ace325448c62606751528d4a18df74b6c"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>v_InitLevel</b> (U32 id, S32 w, S32 h, <a class="el" href="class_killer_engine_1_1_color.html">Color</a> &amp;c)=0</td></tr>
 <tr class="separator:ace325448c62606751528d4a18df74b6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81216c258a2cc9cf3b67fa34ad423443"><td class="memItemLeft" align="right" valign="top"><a id="a81216c258a2cc9cf3b67fa34ad423443"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>v_InitLevel</b> (U32 id, string tmxFilePath)</td></tr>
-<tr class="separator:a81216c258a2cc9cf3b67fa34ad423443"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52ee149ac4606f7fc4295a3a10d4c8f7"><td class="memItemLeft" align="right" valign="top"><a id="a52ee149ac4606f7fc4295a3a10d4c8f7"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>v_Update</b> (void)=0</td></tr>
 <tr class="separator:a52ee149ac4606f7fc4295a3a10d4c8f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,51 +119,42 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>v_Integrate</
 <tr class="memitem:a2b0ddbe638002f69519d46733c2729e2"><td class="memItemLeft" align="right" valign="top"><a id="a2b0ddbe638002f69519d46733c2729e2"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>v_Render</b> (void)</td></tr>
 <tr class="separator:a2b0ddbe638002f69519d46733c2729e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac92e369e287eb4c04c7f52ca43bcbac5"><td class="memItemLeft" align="right" valign="top"><a id="ac92e369e287eb4c04c7f52ca43bcbac5"></a>
-virtual <a class="el" href="class_killer_engine_1_1_game_object2_d.html">GameObject2D</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>v_CreateObject</b> (ObjectType type, <a class="el" href="class_killer_math_1_1_vector2.html">KM::Vector2</a> &amp;pos, U32 textureID, F32 w, F32 h)</td></tr>
-<tr class="separator:ac92e369e287eb4c04c7f52ca43bcbac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c29208a8de98835cba7f101efdca6d4"><td class="memItemLeft" align="right" valign="top"><a id="a2c29208a8de98835cba7f101efdca6d4"></a>
+virtual <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>v_CreateObject</b> (ObjectType type, <a class="el" href="class_killer_math_1_1_vector.html">KM::Vector</a> &amp;pos, U32 textureID, F32 w, F32 h)</td></tr>
+<tr class="separator:a2c29208a8de98835cba7f101efdca6d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4812e4f88b745499785fe19709cf7a3d"><td class="memItemLeft" align="right" valign="top"><a id="a4812e4f88b745499785fe19709cf7a3d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateLevel</b> (void)</td></tr>
+<tr class="separator:a4812e4f88b745499785fe19709cf7a3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c25717c005902808795dee87bba6cdc"><td class="memItemLeft" align="right" valign="top"><a id="a6c25717c005902808795dee87bba6cdc"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>AddObjectToLevel</b> (const <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &amp;obj)</td></tr>
 <tr class="separator:a6c25717c005902808795dee87bba6cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0ead74e30f0e465785c282d39cc3de7"><td class="memItemLeft" align="right" valign="top"><a id="ac0ead74e30f0e465785c282d39cc3de7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>AddObjectToLevel</b> (shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &gt; obj)</td></tr>
 <tr class="separator:ac0ead74e30f0e465785c282d39cc3de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74dcd52aff750eab21e32fa5213f9bf4"><td class="memItemLeft" align="right" valign="top"><a id="a74dcd52aff750eab21e32fa5213f9bf4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddObjectToLevel</b> (const <a class="el" href="class_killer_engine_1_1_game_object2_d.html">GameObject2D</a> &amp;obj)</td></tr>
-<tr class="separator:a74dcd52aff750eab21e32fa5213f9bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a02a3835006dd60a040d78521c090e6"><td class="memItemLeft" align="right" valign="top"><a id="a9a02a3835006dd60a040d78521c090e6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddObjectToLevel</b> (shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_game_object2_d.html">GameObject2D</a> &gt; obj)</td></tr>
-<tr class="separator:a9a02a3835006dd60a040d78521c090e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2a7bd32fd530712ec4a827e3261d263"><td class="memItemLeft" align="right" valign="top"><a id="ab2a7bd32fd530712ec4a827e3261d263"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddObjectToLevel</b> (const <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &amp;obj)</td></tr>
-<tr class="separator:ab2a7bd32fd530712ec4a827e3261d263"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1410c0bed1a88c7ac97f51e7c0eabcfb"><td class="memItemLeft" align="right" valign="top"><a id="a1410c0bed1a88c7ac97f51e7c0eabcfb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddObjectToLevel</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; obj)</td></tr>
-<tr class="separator:a1410c0bed1a88c7ac97f51e7c0eabcfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9742179f25bc8982b069d2f610811b5a"><td class="memItemLeft" align="right" valign="top"><a id="a9742179f25bc8982b069d2f610811b5a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddParticleToLevel</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; particle, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle_force_generator.html">KP::ParticleForceGenerator</a> &gt; generator=nullptr)</td></tr>
-<tr class="separator:a9742179f25bc8982b069d2f610811b5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88f43eba284cd0725606512090bd304e"><td class="memItemLeft" align="right" valign="top"><a id="a88f43eba284cd0725606512090bd304e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>RegisterParticleForce</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; particle, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle_force_generator.html">KP::ParticleForceGenerator</a> &gt; generator)</td></tr>
-<tr class="separator:a88f43eba284cd0725606512090bd304e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f930ef9d6969459347eee119dc88cb0"><td class="memItemLeft" align="right" valign="top"><a id="a7f930ef9d6969459347eee119dc88cb0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddObject3DToLevel</b> (const <a class="el" href="class_killer_engine_1_1_game_object3_d.html">GameObject3D</a> &amp;obj)</td></tr>
-<tr class="separator:a7f930ef9d6969459347eee119dc88cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9b46dfb4c850d64328ebcfe09d6f17b"><td class="memItemLeft" align="right" valign="top"><a id="ad9b46dfb4c850d64328ebcfe09d6f17b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddTextToLevel</b> (shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_rendered_text.html">RenderedText</a> &gt; text)</td></tr>
-<tr class="separator:ad9b46dfb4c850d64328ebcfe09d6f17b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafddd675db80a0bc585a1a3abd8b37d3"><td class="memItemLeft" align="right" valign="top"><a id="aafddd675db80a0bc585a1a3abd8b37d3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Remove2DObjectFromLevel</b> (U32 id)</td></tr>
-<tr class="separator:aafddd675db80a0bc585a1a3abd8b37d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48254dcfd55809d8746d1824b189810e"><td class="memItemLeft" align="right" valign="top"><a id="a48254dcfd55809d8746d1824b189810e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Remove3DObjectFromLevel</b> (U32 id)</td></tr>
-<tr class="separator:a48254dcfd55809d8746d1824b189810e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a976f42d11931d94fa5799c09c9415b98"><td class="memItemLeft" align="right" valign="top"><a id="a976f42d11931d94fa5799c09c9415b98"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>RenderObjects</b> (void)</td></tr>
-<tr class="separator:a976f42d11931d94fa5799c09c9415b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b7af310ae110e409e8351e4fbed4759"><td class="memItemLeft" align="right" valign="top"><a id="a7b7af310ae110e409e8351e4fbed4759"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddParticleToLevel</b> (const <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &amp;particle)</td></tr>
+<tr class="separator:a7b7af310ae110e409e8351e4fbed4759"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1d7733e7a4b294cb7f2ef05dc2b0a2b"><td class="memItemLeft" align="right" valign="top"><a id="ad1d7733e7a4b294cb7f2ef05dc2b0a2b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddParticleToLevel</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; particle)</td></tr>
+<tr class="separator:ad1d7733e7a4b294cb7f2ef05dc2b0a2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35556fbe0f081220f328ff47ad87f8f8"><td class="memItemLeft" align="right" valign="top"><a id="a35556fbe0f081220f328ff47ad87f8f8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddParticleToLevel</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; particle, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_force_generator.html">KP::ForceGenerator</a> &gt; generator=nullptr)</td></tr>
+<tr class="separator:a35556fbe0f081220f328ff47ad87f8f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a062658b2775b37edb1c06665e87e5abc"><td class="memItemLeft" align="right" valign="top"><a id="a062658b2775b37edb1c06665e87e5abc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RegisterParticleForce</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; particle, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_force_generator.html">KP::ForceGenerator</a> &gt; generator)</td></tr>
+<tr class="separator:a062658b2775b37edb1c06665e87e5abc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3be6f68566fa11a1d6ed74b6a20c7113"><td class="memItemLeft" align="right" valign="top"><a id="a3be6f68566fa11a1d6ed74b6a20c7113"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddTextToLevel</b> (const <a class="el" href="class_killer_engine_1_1_text.html">Text</a> &amp;text)</td></tr>
+<tr class="separator:a3be6f68566fa11a1d6ed74b6a20c7113"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a128b2440a436be3e29c58d8ef194dcd4"><td class="memItemLeft" align="right" valign="top"><a id="a128b2440a436be3e29c58d8ef194dcd4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveObjectFromLevel</b> (U32 id)</td></tr>
+<tr class="separator:a128b2440a436be3e29c58d8ef194dcd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfe26b484c3972eb8d6df069491cce8a"><td class="memItemLeft" align="right" valign="top"><a id="abfe26b484c3972eb8d6df069491cce8a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateObjects</b> (void)</td></tr>
 <tr class="separator:abfe26b484c3972eb8d6df069491cce8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a976f42d11931d94fa5799c09c9415b98"><td class="memItemLeft" align="right" valign="top"><a id="a976f42d11931d94fa5799c09c9415b98"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RenderObjects</b> (void)</td></tr>
+<tr class="separator:a976f42d11931d94fa5799c09c9415b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a979a57ad58ae3f4e596e3dcad45dc349"><td class="memItemLeft" align="right" valign="top"><a id="a979a57ad58ae3f4e596e3dcad45dc349"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SetBackgroundColor</b> (<a class="el" href="class_killer_engine_1_1_color.html">Color</a> &amp;c)</td></tr>
 <tr class="separator:a979a57ad58ae3f4e596e3dcad45dc349"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -222,6 +209,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetID</b> (U32 id)</t
 <tr class="memitem:a39e93e9ba44dc88ec520ae2d6c56bf4a"><td class="memItemLeft" align="right" valign="top"><a id="a39e93e9ba44dc88ec520ae2d6c56bf4a"></a>
 U32&#160;</td><td class="memItemRight" valign="bottom"><b>GetID</b> (void) const</td></tr>
 <tr class="separator:a39e93e9ba44dc88ec520ae2d6c56bf4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cc18a69cbd46f7b0b4be2eacb644ae5"><td class="memItemLeft" align="right" valign="top"><a id="a3cc18a69cbd46f7b0b4be2eacb644ae5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCamera</b> (<a class="el" href="class_killer_engine_1_1_camera.html">Camera</a> *cam)</td></tr>
+<tr class="separator:a3cc18a69cbd46f7b0b4be2eacb644ae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a642495c25256fbaeae542ac4287f8059"><td class="memItemLeft" align="right" valign="top"><a id="a642495c25256fbaeae542ac4287f8059"></a>
+const <a class="el" href="class_killer_engine_1_1_camera.html">Camera</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetCamera</b> (void)</td></tr>
+<tr class="separator:a642495c25256fbaeae542ac4287f8059"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e913dbfc5e8fc37fad6c8c66430e3db"><td class="memItemLeft" align="right" valign="top"><a id="a3e913dbfc5e8fc37fad6c8c66430e3db"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCameraOrthographic</b> (void)</td></tr>
+<tr class="separator:a3e913dbfc5e8fc37fad6c8c66430e3db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-types"></a>
 Protected Types</h2></td></tr>
@@ -235,15 +231,6 @@ Protected Types</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:ad905abed1332305253873bf0d7a2548f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a1c703047866ff169325bf8a21fc3d3a4"><td class="memItemLeft" align="right" valign="top"><a id="a1c703047866ff169325bf8a21fc3d3a4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Importer2D</b> (string tmxFilePath)</td></tr>
-<tr class="separator:a1c703047866ff169325bf8a21fc3d3a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a441775661e9f3216cc274684906b5f47"><td class="memItemLeft" align="right" valign="top"><a id="a441775661e9f3216cc274684906b5f47"></a>
-virtual ObjectType&#160;</td><td class="memItemRight" valign="bottom"><b>v_StringToTileData</b> (string s)</td></tr>
-<tr class="separator:a441775661e9f3216cc274684906b5f47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -277,27 +264,21 @@ S32&#160;</td><td class="memItemRight" valign="bottom"><b>_mapLeftBorder</b></td
 <tr class="memitem:a42115147f80a23e0210be077d27fc81c"><td class="memItemLeft" align="right" valign="top"><a id="a42115147f80a23e0210be077d27fc81c"></a>
 U32&#160;</td><td class="memItemRight" valign="bottom"><b>_ID</b></td></tr>
 <tr class="separator:a42115147f80a23e0210be077d27fc81c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6e124353d24fea60b6219cc726501e2"><td class="memItemLeft" align="right" valign="top"><a id="aa6e124353d24fea60b6219cc726501e2"></a>
+<a class="el" href="class_killer_engine_1_1_camera.html">Camera</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_camera</b></td></tr>
+<tr class="separator:aa6e124353d24fea60b6219cc726501e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f4c9734867f8c9b60b23bd28c027230"><td class="memItemLeft" align="right" valign="top"><a id="a6f4c9734867f8c9b60b23bd28c027230"></a>
 std::map&lt; U32, shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_gameObjects</b></td></tr>
 <tr class="separator:a6f4c9734867f8c9b60b23bd28c027230"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26cce8fb3e4c30fe2feb80bd0046cfd4"><td class="memItemLeft" align="right" valign="top"><a id="a26cce8fb3e4c30fe2feb80bd0046cfd4"></a>
-std::map&lt; U32, shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_game_object2_d.html">GameObject2D</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_2DWorldObjects</b></td></tr>
-<tr class="separator:a26cce8fb3e4c30fe2feb80bd0046cfd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38e2a4fcf02c173bd9868a4b81641ba5"><td class="memItemLeft" align="right" valign="top"><a id="a38e2a4fcf02c173bd9868a4b81641ba5"></a>
-std::map&lt; U32, shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_game_object3_d.html">GameObject3D</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_3DWorldObjects</b></td></tr>
-<tr class="separator:a38e2a4fcf02c173bd9868a4b81641ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5cdfc5bd62b95463ee4399fd18eb79e9"><td class="memItemLeft" align="right" valign="top"><a id="a5cdfc5bd62b95463ee4399fd18eb79e9"></a>
 std::map&lt; U32, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_particles</b></td></tr>
 <tr class="separator:a5cdfc5bd62b95463ee4399fd18eb79e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff25412b9788b4401f89be4441b91cd3"><td class="memItemLeft" align="right" valign="top"><a id="aff25412b9788b4401f89be4441b91cd3"></a>
-std::vector&lt; shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_rendered_text.html">RenderedText</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_textList</b></td></tr>
-<tr class="separator:aff25412b9788b4401f89be4441b91cd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a922b23ebee85cbc1a75618d0bd08257c"><td class="memItemLeft" align="right" valign="top"><a id="a922b23ebee85cbc1a75618d0bd08257c"></a>
 std::map&lt; U32, <a class="el" href="struct_killer_engine_1_1_level_1_1_tile_data.html">TileData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_2DTileData</b></td></tr>
 <tr class="separator:a922b23ebee85cbc1a75618d0bd08257c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc39a673be2429bc7be21374804822bb"><td class="memItemLeft" align="right" valign="top"><a id="acc39a673be2429bc7be21374804822bb"></a>
-<a class="el" href="class_killer_physics_1_1_particle_force_registry.html">KP::ParticleForceRegistry</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_forceRegistry</b></td></tr>
-<tr class="separator:acc39a673be2429bc7be21374804822bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a7312ddf763189c9d90b1229d973ea0"><td class="memItemLeft" align="right" valign="top"><a id="a2a7312ddf763189c9d90b1229d973ea0"></a>
+<a class="el" href="class_killer_physics_1_1_force_registry.html">KP::ForceRegistry</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_forceRegistry</b></td></tr>
+<tr class="separator:a2a7312ddf763189c9d90b1229d973ea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_level_8h_source.html">Level.h</a></li>

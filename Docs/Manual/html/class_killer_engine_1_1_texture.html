@@ -97,6 +97,9 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_texture.html',
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a1ff6bf719557e9c1445eb8cac5eaa344"><td class="memItemLeft" align="right" valign="top"><a id="a1ff6bf719557e9c1445eb8cac5eaa344"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Texture</b> (string filePatht)</td></tr>
+<tr class="separator:a1ff6bf719557e9c1445eb8cac5eaa344"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad939de32ada78b37dc268c0988810c3c"><td class="memItemLeft" align="right" valign="top"><a id="ad939de32ada78b37dc268c0988810c3c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Texture</b> (GLuint id, S32 width, S32 height)</td></tr>
 <tr class="separator:ad939de32ada78b37dc268c0988810c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,6 +112,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a698e2f7df09f3bf2cbc5bdaaf5c2cd7f"><td class="memItemLeft" align="right" valign="top"><a id="a698e2f7df09f3bf2cbc5bdaaf5c2cd7f"></a>
 GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>GetHandle</b> (void) const</td></tr>
 <tr class="separator:a698e2f7df09f3bf2cbc5bdaaf5c2cd7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1b16fd9908d0e2a80fde7cc6c71a2fa"><td class="memItemLeft" align="right" valign="top"><a id="aa1b16fd9908d0e2a80fde7cc6c71a2fa"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetHandle</b> (GLuint h)</td></tr>
+<tr class="separator:aa1b16fd9908d0e2a80fde7cc6c71a2fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9970f66d9510e4b9ff1e7205b70c7245"><td class="memItemLeft" align="right" valign="top"><a id="a9970f66d9510e4b9ff1e7205b70c7245"></a>
 S32&#160;</td><td class="memItemRight" valign="bottom"><b>GetWidth</b> (void) const</td></tr>
 <tr class="separator:a9970f66d9510e4b9ff1e7205b70c7245"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,9 +136,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetHeight</b> (S32 h)
 <tr class="memitem:ad1d24b557afbfd47d7b4618b69c7fae4"><td class="memItemLeft" align="right" valign="top"><a id="ad1d24b557afbfd47d7b4618b69c7fae4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>LoadTexture</b> (string filePath, bool generateMipMaps=true)</td></tr>
 <tr class="separator:ad1d24b557afbfd47d7b4618b69c7fae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab86abafb6da1d0b0b6701a1dbc42017c"><td class="memItemLeft" align="right" valign="top"><a id="ab86abafb6da1d0b0b6701a1dbc42017c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Bind</b> (GLuint texUnit=0)</td></tr>
-<tr class="separator:ab86abafb6da1d0b0b6701a1dbc42017c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c6078aeb973b3b970269bd0847249fb"><td class="memItemLeft" align="right" valign="top"><a id="a1c6078aeb973b3b970269bd0847249fb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Bind</b> (bool state=true, GLuint texUnit=0) const</td></tr>
+<tr class="separator:a1c6078aeb973b3b970269bd0847249fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c5058326e122ec5c319f1a22365399a"><td class="memItemLeft" align="right" valign="top"><a id="a4c5058326e122ec5c319f1a22365399a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>UnBind</b> (void) const</td></tr>
+<tr class="separator:a4c5058326e122ec5c319f1a22365399a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>

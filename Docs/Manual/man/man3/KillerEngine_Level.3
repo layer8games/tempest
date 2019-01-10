@@ -1,4 +1,4 @@
-.TH "KillerEngine::Level" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Level" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -23,9 +23,6 @@ KillerEngine::Level
 .RI "virtual void \fBv_InitLevel\fP (U32 id, S32 w, S32 h, \fBColor\fP &c)=0"
 .br
 .ti -1c
-.RI "virtual void \fBv_InitLevel\fP (U32 id, string tmxFilePath)"
-.br
-.ti -1c
 .RI "virtual void \fBv_Update\fP (void)=0"
 .br
 .ti -1c
@@ -35,7 +32,10 @@ KillerEngine::Level
 .RI "virtual void \fBv_Render\fP (void)"
 .br
 .ti -1c
-.RI "virtual \fBGameObject2D\fP * \fBv_CreateObject\fP (ObjectType type, \fBKM::Vector2\fP &pos, U32 textureID, F32 w, F32 h)"
+.RI "virtual \fBGameObject\fP * \fBv_CreateObject\fP (ObjectType type, \fBKM::Vector\fP &pos, U32 textureID, F32 w, F32 h)"
+.br
+.ti -1c
+.RI "void \fBUpdateLevel\fP (void)"
 .br
 .ti -1c
 .RI "void \fBAddObjectToLevel\fP (const \fBGameObject\fP &obj)"
@@ -44,40 +44,28 @@ KillerEngine::Level
 .RI "void \fBAddObjectToLevel\fP (shared_ptr< \fBGameObject\fP > obj)"
 .br
 .ti -1c
-.RI "void \fBAddObjectToLevel\fP (const \fBGameObject2D\fP &obj)"
+.RI "void \fBAddParticleToLevel\fP (const \fBKP::Particle\fP &particle)"
 .br
 .ti -1c
-.RI "void \fBAddObjectToLevel\fP (shared_ptr< \fBGameObject2D\fP > obj)"
+.RI "void \fBAddParticleToLevel\fP (shared_ptr< \fBKP::Particle\fP > particle)"
 .br
 .ti -1c
-.RI "void \fBAddObjectToLevel\fP (const \fBKP::Particle\fP &obj)"
+.RI "void \fBAddParticleToLevel\fP (shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ForceGenerator\fP > generator=nullptr)"
 .br
 .ti -1c
-.RI "void \fBAddObjectToLevel\fP (shared_ptr< \fBKP::Particle\fP > obj)"
+.RI "void \fBRegisterParticleForce\fP (shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ForceGenerator\fP > generator)"
 .br
 .ti -1c
-.RI "void \fBAddParticleToLevel\fP (shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ParticleForceGenerator\fP > generator=nullptr)"
+.RI "void \fBAddTextToLevel\fP (const \fBText\fP &text)"
 .br
 .ti -1c
-.RI "void \fBRegisterParticleForce\fP (shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ParticleForceGenerator\fP > generator)"
-.br
-.ti -1c
-.RI "void \fBAddObject3DToLevel\fP (const \fBGameObject3D\fP &obj)"
-.br
-.ti -1c
-.RI "void \fBAddTextToLevel\fP (shared_ptr< \fBRenderedText\fP > text)"
-.br
-.ti -1c
-.RI "void \fBRemove2DObjectFromLevel\fP (U32 id)"
-.br
-.ti -1c
-.RI "void \fBRemove3DObjectFromLevel\fP (U32 id)"
-.br
-.ti -1c
-.RI "void \fBRenderObjects\fP (void)"
+.RI "void \fBRemoveObjectFromLevel\fP (U32 id)"
 .br
 .ti -1c
 .RI "void \fBUpdateObjects\fP (void)"
+.br
+.ti -1c
+.RI "void \fBRenderObjects\fP (void)"
 .br
 .ti -1c
 .RI "void \fBSetBackgroundColor\fP (\fBColor\fP &c)"
@@ -133,22 +121,21 @@ KillerEngine::Level
 .ti -1c
 .RI "U32 \fBGetID\fP (void) const"
 .br
+.ti -1c
+.RI "void \fBSetCamera\fP (\fBCamera\fP *cam)"
+.br
+.ti -1c
+.RI "const \fBCamera\fP * \fBGetCamera\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetCameraOrthographic\fP (void)"
+.br
 .in -1c
 .SS "Protected Types"
 
 .in +1c
 .ti -1c
 .RI "enum \fBObjectType\fP { \fBBACKGROUND\fP, \fBENVIRONMENT\fP, \fBPLAYER\fP, \fBENEMY\fP, \fBEND\fP }"
-.br
-.in -1c
-.SS "Protected Member Functions"
-
-.in +1c
-.ti -1c
-.RI "void \fBImporter2D\fP (string tmxFilePath)"
-.br
-.ti -1c
-.RI "virtual ObjectType \fBv_StringToTileData\fP (string s)"
 .br
 .in -1c
 .SS "Private Member Functions"
@@ -186,25 +173,19 @@ KillerEngine::Level
 .RI "U32 \fB_ID\fP"
 .br
 .ti -1c
+.RI "\fBCamera\fP * \fB_camera\fP"
+.br
+.ti -1c
 .RI "std::map< U32, shared_ptr< \fBGameObject\fP > > \fB_gameObjects\fP"
-.br
-.ti -1c
-.RI "std::map< U32, shared_ptr< \fBGameObject2D\fP > > \fB_2DWorldObjects\fP"
-.br
-.ti -1c
-.RI "std::map< U32, shared_ptr< \fBGameObject3D\fP > > \fB_3DWorldObjects\fP"
 .br
 .ti -1c
 .RI "std::map< U32, shared_ptr< \fBKP::Particle\fP > > \fB_particles\fP"
 .br
 .ti -1c
-.RI "std::vector< shared_ptr< \fBRenderedText\fP > > \fB_textList\fP"
-.br
-.ti -1c
 .RI "std::map< U32, \fBTileData\fP > \fB_2DTileData\fP"
 .br
 .ti -1c
-.RI "\fBKP::ParticleForceRegistry\fP \fB_forceRegistry\fP"
+.RI "\fBKP::ForceRegistry\fP \fB_forceRegistry\fP"
 .br
 .in -1c
 

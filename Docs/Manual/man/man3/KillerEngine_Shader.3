@@ -1,4 +1,4 @@
-.TH "KillerEngine::Shader" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Shader" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -13,19 +13,28 @@ KillerEngine::Shader
 .RI "void \fBLoadShader\fP (std::vector< \fBShaderData\fP > shaders)"
 .br
 .ti -1c
-.RI "void \fBUse\fP (void)"
+.RI "void \fBUse\fP (bool state=true)"
 .br
 .ti -1c
-.RI "void \fBSetUniform\fP (const GLchar *name, \fBColor\fP col)"
+.RI "void \fBSetUniform\fP (const GLchar *name, const F32 val)"
 .br
 .ti -1c
-.RI "void \fBSetUniform\fP (const GLchar *name, \fBKM::Vector2\fP vec)"
+.RI "void \fBSetUniform\fP (const GLchar *name, const \fBKM::Vector\fP &vec)"
 .br
 .ti -1c
-.RI "void \fBSetUniform\fP (const GLchar *name, \fBKM::Vector3\fP vec)"
+.RI "void \fBSetUniformVec3\fP (const GLchar *name, const \fBKM::Vector\fP &vec)"
 .br
 .ti -1c
 .RI "void \fBSetUniform\fP (const GLchar *name, \fBKM::Matrix\fP mat)"
+.br
+.ti -1c
+.RI "void \fBSetUniformSampler\fP (const GLchar *name, S32 texSlot)"
+.br
+.ti -1c
+.RI "void \fBSetUniform\fP (const GLchar *name, const \fBColor\fP &col)"
+.br
+.ti -1c
+.RI "void \fBSetUniformVec3\fP (const GLchar *name, const \fBColor\fP &col)"
 .br
 .ti -1c
 .RI "GLuint \fBGetProgram\fP (void) const"

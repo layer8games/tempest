@@ -1,4 +1,4 @@
-.TH "KillerEngine::WinProgram" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::WinProgram" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -19,19 +19,19 @@ KillerEngine::WinProgram
 .RI "S32 \fBGetWidth\fP (void)"
 .br
 .ti -1c
-.RI "S32 \fBGetRight\fP (void)"
-.br
-.ti -1c
-.RI "S32 \fBGetLeft\fP (void)"
-.br
-.ti -1c
 .RI "S32 \fBGetHeight\fP (void)"
 .br
 .ti -1c
-.RI "S32 \fBGetTop\fP (void)"
+.RI "F32 \fBGetScreenRight\fP (void)"
 .br
 .ti -1c
-.RI "S32 \fBGetBottom\fP (void)"
+.RI "F32 \fBGetScreenLeft\fP (void)"
+.br
+.ti -1c
+.RI "F32 \fBGetScreenTop\fP (void)"
+.br
+.ti -1c
+.RI "F32 \fBGetScreenBottom\fP (void)"
 .br
 .ti -1c
 .RI "void \fBSetBackgroundColor\fP (const \fBColor\fP &c)"
@@ -39,6 +39,7 @@ KillerEngine::WinProgram
 .ti -1c
 .RI "void \fBInit\fP (S32 width, S32 height, string wndName, bool isFullScreen)"
 .br
+.RI "Sets up Windows Program\&. "
 .ti -1c
 .RI "void \fBProcessEvents\fP (void)"
 .br
@@ -51,6 +52,27 @@ KillerEngine::WinProgram
 .ti -1c
 .RI "void \fBToggleWireFrame\fP (void)"
 .br
+.ti -1c
+.RI "void \fBResetMouseCursor\fP (void)"
+.br
+.ti -1c
+.RI "void \fBEnableMouseCursor\fP (void)"
+.br
+.ti -1c
+.RI "void \fBDisableMouseCursor\fP (void)"
+.br
+.ti -1c
+.RI "void \fBHideMouseCursor\fP (void)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP \fBGetMousePos\fP (void)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP \fBGetMousePosInScreen\fP (void)"
+.br
+.ti -1c
+.RI "F64 \fBGetTime\fP (void)"
+.br
 .in -1c
 .SS "Static Public Member Functions"
 
@@ -59,14 +81,19 @@ KillerEngine::WinProgram
 .RI "static shared_ptr< \fBWinProgram\fP > \fBInstance\fP (void)"
 .br
 .ti -1c
-.RI "static void \fBOnKey\fP (\fBGLFWwindow\fP *window, int key, int scancode, int action, int mode)"
-.br
-.RI "Sets up Windows Program\&. "
-.ti -1c
-.RI "static void \fBOnResize\fP (\fBGLFWwindow\fP *window, int width, int height)"
-.br
-.ti -1c
 .RI "static Keys \fBConvertKeyCodes\fP (int key)"
+.br
+.ti -1c
+.RI "static void \fBOnKey\fP (GLFWwindow *window, int key, int scancode, int action, int mode)"
+.br
+.ti -1c
+.RI "static void \fBOnResize\fP (GLFWwindow *window, int width, int height)"
+.br
+.ti -1c
+.RI "static void \fBOnMouseClick\fP (GLFWwindow *window, int button, int action, int mods)"
+.br
+.ti -1c
+.RI "static void \fBOnMouseMove\fP (GLFWwindow *window, F64 posX, F64 posY)"
 .br
 .in -1c
 .SS "Private Attributes"
@@ -82,22 +109,16 @@ KillerEngine::WinProgram
 .RI "bool \fB_wireFrame\fP"
 .br
 .ti -1c
-.RI "S32 \fB_totalWidth\fP"
+.RI "F32 \fB_right\fP"
 .br
 .ti -1c
-.RI "S32 \fB_totalHeight\fP"
+.RI "F32 \fB_left\fP"
 .br
 .ti -1c
-.RI "S32 \fB_right\fP"
+.RI "F32 \fB_top\fP"
 .br
 .ti -1c
-.RI "S32 \fB_left\fP"
-.br
-.ti -1c
-.RI "S32 \fB_top\fP"
-.br
-.ti -1c
-.RI "S32 \fB_bottom\fP"
+.RI "F32 \fB_bottom\fP"
 .br
 .ti -1c
 .RI "string \fB_wndName\fP"
@@ -106,7 +127,7 @@ KillerEngine::WinProgram
 .RI "\fBColor\fP \fB_bgColor\fP"
 .br
 .ti -1c
-.RI "\fBGLFWwindow\fP * \fB_window\fP"
+.RI "GLFWwindow * \fB_window\fP"
 .br
 .in -1c
 .SS "Static Private Attributes"
@@ -115,10 +136,16 @@ KillerEngine::WinProgram
 .ti -1c
 .RI "static shared_ptr< \fBWinProgram\fP > \fB_instance\fP = NULL"
 .br
+.ti -1c
+.RI "static S32 \fB_totalWidth\fP = 0"
+.br
+.ti -1c
+.RI "static S32 \fB_totalHeight\fP = 0"
+.br
 .in -1c
 .SH "Member Function Documentation"
 .PP 
-.SS "void WinProgram::OnKey (\fBGLFWwindow\fP * window, int key, int scancode, int action, int mode)\fC [static]\fP"
+.SS "void WinProgram::Init (S32 width, S32 height, string wndName, bool isFullScreen)"
 
 .PP
 Sets up Windows Program\&. Makes all calls needed to start up a window\&. This is means to abstract away system specific callls 

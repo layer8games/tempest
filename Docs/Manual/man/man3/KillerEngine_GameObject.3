@@ -1,4 +1,4 @@
-.TH "KillerEngine::GameObject" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::GameObject" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -7,7 +7,7 @@ KillerEngine::GameObject
 .br
 .PP
 .PP
-Inherited by \fBKillerPhysics::Particle\fP\&.
+Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \fBKillerPhysics::Particle\fP, and \fBKillerPhysics::RigidBody\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
@@ -21,31 +21,67 @@ Inherited by \fBKillerPhysics::Particle\fP\&.
 .RI "virtual void \fBv_Render\fP (void)"
 .br
 .ti -1c
-.RI "virtual void \fBv_InitVertexData\fP (void)"
+.RI "virtual void \fBv_InitBuffers\fP (void)"
 .br
 .ti -1c
-.RI "void \fBAddVertex\fP (const \fBVertex\fP &vert)"
+.RI "void \fBUpdateInternals\fP (void)"
 .br
 .ti -1c
-.RI "void \fBAddIndex\fP (U32 index)"
+.RI "bool \fBLoadOBJ\fP (string filepath)"
 .br
 .ti -1c
-.RI "void \fBSetIndices\fP (std::vector< U32 > indices)"
+.RI "void \fBLoadMesh\fP (string filepath)"
 .br
 .ti -1c
-.RI "void \fBBindVAO\fP (void)"
+.RI "void \fBMakeSprite\fP (void)"
 .br
 .ti -1c
-.RI "const U32 \fBGetID\fP (void) const"
+.RI "const \fBKM::Matrix\fP & \fBGetModelMatrix\fP (void) const"
+.br
+.ti -1c
+.RI "const \fBKM::Matrix\fP \fBGetModelMatrixRot\fP (void) const"
 .br
 .ti -1c
 .RI "const bool \fBGetActive\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetActive\fP (bool state)"
 .br
 .ti -1c
 .RI "void \fBSetActive\fP (void)"
 .br
 .ti -1c
 .RI "void \fBSetInactive\fP (void)"
+.br
+.ti -1c
+.RI "const bool \fBGetActiveUpdate\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetActiveUpdate\fP (bool state)"
+.br
+.ti -1c
+.RI "void \fBSetActiveUpdate\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetInactiveUpdate\fP (void)"
+.br
+.ti -1c
+.RI "const bool \fBGetActiveRender\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetActiveRender\fP (bool state)"
+.br
+.ti -1c
+.RI "void \fBSetActiveRender\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetInactiveRender\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBIsSprite\fP (void) const"
+.br
+.ti -1c
+.RI "const U32 \fBGetID\fP (void) const"
 .br
 .ti -1c
 .RI "const \fBKM::Vector\fP & \fBGetPosition\fP (void) const"
@@ -60,22 +96,109 @@ Inherited by \fBKillerPhysics::Particle\fP\&.
 .RI "void \fBSetPosition\fP (F32 x, F32 y, F32 z)"
 .br
 .ti -1c
+.RI "void \fBSetPositionX\fP (F32 xval)"
+.br
+.ti -1c
+.RI "void \fBSetPositionY\fP (F32 yVal)"
+.br
+.ti -1c
+.RI "void \fBSetPositionZ\fP (F32 zVal)"
+.br
+.ti -1c
 .RI "void \fBAddScaledPosition\fP (const \fBKM::Vector\fP pos, F32 scale)"
 .br
 .ti -1c
-.RI "const \fBShader\fP & \fBGetShader\fP (void) const"
+.RI "const \fBKM::Vector\fP & \fBGetScale\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetShader\fP (const \fBShader\fP &shader)"
+.RI "void \fBSetScale\fP (const \fBKM::Vector\fP &scale)"
+.br
+.ti -1c
+.RI "void \fBSetScale\fP (F32 val)"
+.br
+.ti -1c
+.RI "void \fBSetScale\fP (F32 xVal, F32 yVal)"
+.br
+.ti -1c
+.RI "void \fBSetScale\fP (F32 xVal, F32 yVal, F32 zVal)"
+.br
+.ti -1c
+.RI "const \fBKM::Quaternion\fP & \fBGetOrientation\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetOrientation\fP (const \fBKM::Quaternion\fP &q)"
+.br
+.ti -1c
+.RI "void \fBSetOrientation\fP (F32 wVal, F32 xVal, F32 yVal, F32 zVal)"
+.br
+.ti -1c
+.RI "void \fBSetColor\fP (const \fBColor\fP &col)"
+.br
+.ti -1c
+.RI "void \fBSetColor\fP (F32 red, F32 green, F32 blue)"
+.br
+.ti -1c
+.RI "const \fBColor\fP & \fBGetColor\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetTexture\fP (shared_ptr< \fBTexture\fP > texture)"
+.br
+.ti -1c
+.RI "shared_ptr< \fBTexture\fP > \fBGetTexture\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBBindTexture\fP (bool state=true)"
+.br
+.ti -1c
+.RI "const shared_ptr< \fBShader\fP > \fBGetShader\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetShader\fP (const shared_ptr< \fBShader\fP > shader)"
 .br
 .ti -1c
 .RI "void \fBLoadShader\fP (std::vector< \fBShaderData\fP > shaderData)"
 .br
 .ti -1c
-.RI "void \fBUseShader\fP (void)"
+.RI "void \fBUseShader\fP (bool state=true)"
+.br
+.ti -1c
+.RI "void \fBSetUniform\fP (string name, const F32 val)"
+.br
+.ti -1c
+.RI "void \fBSetUniform\fP (string name, const \fBKM::Vector\fP &vec)"
+.br
+.ti -1c
+.RI "void \fBSetUniformVec3\fP (string name, const \fBKM::Vector\fP &vec)"
+.br
+.ti -1c
+.RI "void \fBSetUniform\fP (string name, const \fBKM::Matrix\fP &mat)"
+.br
+.ti -1c
+.RI "void \fBSetUniformSampler\fP (string name, S32 texSlot)"
+.br
+.ti -1c
+.RI "void \fBSetUniform\fP (string name, const \fBColor\fP &col)"
+.br
+.ti -1c
+.RI "void \fBSetUniformVec3\fP (string name, const \fBColor\fP &col)"
+.br
+.ti -1c
+.RI "U32 \fBGetNumVertices\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAddVertex\fP (const \fBVertex\fP &vert)"
+.br
+.ti -1c
+.RI "void \fBSetVertices\fP (std::vector< \fBVertex\fP > vertices)"
 .br
 .ti -1c
 .RI "std::vector< \fBVertex\fP > \fBGetVertices\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBAddIndex\fP (U32 index)"
+.br
+.ti -1c
+.RI "void \fBSetIndices\fP (std::vector< U32 > indices)"
 .br
 .ti -1c
 .RI "std::vector< U32 > \fBGetIndices\fP (void) const"
@@ -83,34 +206,92 @@ Inherited by \fBKillerPhysics::Particle\fP\&.
 .ti -1c
 .RI "GLuint \fBGetVAO\fP (void) const"
 .br
+.ti -1c
+.RI "void \fBBindVAO\fP (bool state=true)"
+.br
+.ti -1c
+.RI "void \fBBindVBO\fP (BufferData buffer, bool state=true)"
+.br
+.ti -1c
+.RI "std::vector< F32 > \fBGetUVList\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetUVList\fP (std::vector< F32 > list)"
+.br
+.ti -1c
+.RI "void \fBAddUV\fP (F32 val)"
+.br
 .in -1c
-.SS "Private Types"
+.SS "Protected Member Functions"
 
 .in +1c
 .ti -1c
-.RI "enum \fBBufferData\fP { \fBVERTEX_BUFFER\fP = 0, \fBVERTEX_POS\fP = 0, \fBFRAGMENT_BUFFER\fP = 1, \fBFRAGMENT_POS\fP = 2, \fBTEX_COORD_BUFFER\fP = 2, \fBTEX_COORD_POS\fP = 1, \fBINDEX_BUFFER\fP = 3, \fBNUM_VBO\fP = 4 }"
+.RI "\fBKM::Vector\fP & \fB_AccessPosition\fP (void)"
+.br
+.ti -1c
+.RI "\fBKM::Quaternion\fP & \fB_AccessOrientation\fP (void)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "std::vector< U32 > \fB_SplitU32\fP (string text, char delim) const"
+.br
+.ti -1c
+.RI "std::vector< F32 > \fB_SplitF32\fP (string text, char delim) const"
+.br
+.ti -1c
+.RI "std::vector< string > \fB_SplitString\fP (string text, char delim) const"
+.br
+.ti -1c
+.RI "void \fB_CalculateCachedData\fP (void)"
 .br
 .in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
-.RI "U32 \fB_ID\fP"
+.RI "std::vector< \fBVertex\fP > \fB_vertices\fP"
 .br
 .ti -1c
-.RI "bool \fB_active\fP"
+.RI "std::vector< U32 > \fB_indices\fP"
+.br
+.ti -1c
+.RI "std::vector< F32 > \fB_uvList\fP"
+.br
+.ti -1c
+.RI "\fBKM::Matrix\fP \fB_modelTOWorldCache\fP"
 .br
 .ti -1c
 .RI "\fBKM::Vector\fP \fB_position\fP"
 .br
 .ti -1c
-.RI "\fBShader\fP \fB_shader\fP"
+.RI "\fBKM::Vector\fP \fB_scale\fP"
 .br
 .ti -1c
-.RI "std::vector< \fBVertex\fP > \fB_vertices\fP"
+.RI "\fBKM::Quaternion\fP \fB_orientation\fP"
 .br
 .ti -1c
-.RI "std::vector< U32 > \fB_indices\fP"
+.RI "\fBColor\fP \fB_color\fP"
+.br
+.ti -1c
+.RI "shared_ptr< \fBTexture\fP > \fB_texture\fP"
+.br
+.ti -1c
+.RI "shared_ptr< \fBShader\fP > \fB_shader\fP"
+.br
+.ti -1c
+.RI "bool \fB_activeUpdate\fP"
+.br
+.ti -1c
+.RI "bool \fB_activeRender\fP"
+.br
+.ti -1c
+.RI "bool \fB_isSprite\fP"
+.br
+.ti -1c
+.RI "U32 \fB_ID\fP"
 .br
 .ti -1c
 .RI "GLuint \fB_vao\fP"

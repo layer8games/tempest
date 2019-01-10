@@ -3,5 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="rapidxml::memory_pool\l\< Ch \>::header",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structrapidxml_1_1memory__pool_1_1header.html"];
+  Node0 [label="GLFWgammaramp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_g_l_f_wgammaramp.html",tooltip="Gamma ramp. "];
 }

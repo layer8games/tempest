@@ -1,17 +1,9 @@
-.TH "bug" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.TH "bug" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 bug \- Bug List 
 
-.IP "\fBMember \fBKillerEngine::Font::SetFile\fP (string fontFile)\fP" 1c
-Make sure that the font is re-initialized when this is called\&. 
-.PP
-Check that the file that is sent is a \&.fnt file\&.  
-.IP "\fBMember \fBKillerEngine::GameObject3D::SetDimensions\fP (F32 w, F32 h, F32 d)\fP" 1c
-None of these dimensions are used in anyway\&. Scale should be added later in some way\&.  
-.IP "\fBMember \fBKillerEngine::GameObject3D::SetPosition\fP (F32 x, F32 y, F32 z)\fP" 1c
-This is data duplication which I have not worked out a better way to handle yet\&.  
 .IP "\fBMember \fBKillerMath::Matrix::AddRotateX\fP (F32 val)\fP" 1c
 Completely untested and probably not working at all\&.  
 .IP "\fBMember \fBKillerMath::Matrix::AddRotateY\fP (F32 val)\fP" 1c
@@ -20,15 +12,13 @@ Completely untested and probably not working at all\&.
 Completely untested and probably not working at all\&.  
 .IP "\fBMember \fBKillerMath::Matrix::AddRotation\fP (F32 xVal, F32 yVal, F32 zVal)\fP" 1c
 Not working at all\&. The math is wrong, and rotations are not working in general\&.  
-.IP "\fBMember \fBKillerMath::Matrix::MakePerspective\fP (F32 width, F32 height, F32 depth, bool center=true)\fP" 1c
-I cannot get this to work for the life of me\&. I am not sure why, the math all looks right but the function wont work\&.  
-.IP "\fBMember \fBKillerMath::Matrix::Rotate\fP (F32 xVal, F32 yVal, F32 zVal)\fP" 1c
+.IP "\fBMember \fBKillerMath::Matrix::SetRotate\fP (F32 xVal, F32 yVal, F32 zVal)\fP" 1c
 Not working at all\&. The math is wrong, and rotations are not working in general\&.  
-.IP "\fBMember \fBKillerMath::Matrix::RotateX\fP (F32 val)\fP" 1c
+.IP "\fBMember \fBKillerMath::Matrix::SetRotateX\fP (F32 val)\fP" 1c
 This is not working at all\&.  
-.IP "\fBMember \fBKillerMath::Matrix::RotateY\fP (F32 val)\fP" 1c
+.IP "\fBMember \fBKillerMath::Matrix::SetRotateY\fP (F32 val)\fP" 1c
 This is not working at all\&.  
-.IP "\fBMember \fBKillerMath::Matrix::RotateZ\fP (F32 val)\fP" 1c
+.IP "\fBMember \fBKillerMath::Matrix::SetRotateZ\fP (F32 val)\fP" 1c
 This is not working at all\&. 
 .PP
 

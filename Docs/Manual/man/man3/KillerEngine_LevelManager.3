@@ -1,4 +1,4 @@
-.TH "KillerEngine::LevelManager" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::LevelManager" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -31,22 +31,16 @@ KillerEngine::LevelManager
 .RI "void \fBEndGame\fP (void)"
 .br
 .ti -1c
-.RI "void \fBAddObjectToLevel\fP (U32 id, const \fBGameObject2D\fP &obj)"
+.RI "void \fBAddObjectToLevel\fP (U32 id, const \fBGameObject\fP &obj)"
 .br
 .ti -1c
-.RI "void \fBAddObjectToLevel\fP (U32 id, shared_ptr< \fBGameObject2D\fP > obj)"
+.RI "void \fBAddObjectToLevel\fP (U32 id, shared_ptr< \fBGameObject\fP > obj)"
 .br
 .ti -1c
-.RI "void \fBAddParticleToLevel\fP (U32 id, shared_ptr< \fBKP::Particle\fP >, shared_ptr< \fBKP::ParticleForceGenerator\fP > generator=nullptr)"
+.RI "void \fBAddParticleToLevel\fP (U32 id, shared_ptr< \fBKP::Particle\fP >, shared_ptr< \fBKP::ForceGenerator\fP > generator=nullptr)"
 .br
 .ti -1c
-.RI "void \fBAddObject3DToLevel\fP (U32 id, const \fBGameObject3D\fP &obj)"
-.br
-.ti -1c
-.RI "void \fBRemove2DObjectFromLevel\fP (U32 levelID, U32 ojbId)"
-.br
-.ti -1c
-.RI "void \fBRemove3DObjectFromLevel\fP (U32 levelID, U32 ojbId)"
+.RI "void \fBRemoveObjectFromLevel\fP (U32 levelID, U32 ojbId)"
 .br
 .ti -1c
 .RI "void \fBUpdate\fP (void)"

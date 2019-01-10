@@ -3,5 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="_GPU_DEVICE",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct___g_p_u___d_e_v_i_c_e.html"];
+  Node0 [label="KillerEngine::CharacterData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_killer_engine_1_1_character_data.html"];
 }

@@ -1,4 +1,4 @@
-.TH "KillerEngine::Texture" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Texture" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,6 +10,9 @@ KillerEngine::Texture
 
 .in +1c
 .ti -1c
+.RI "\fBTexture\fP (string filePatht)"
+.br
+.ti -1c
 .RI "\fBTexture\fP (GLuint id, S32 width, S32 height)"
 .br
 .ti -1c
@@ -20,6 +23,9 @@ KillerEngine::Texture
 .br
 .ti -1c
 .RI "GLuint \fBGetHandle\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetHandle\fP (GLuint h)"
 .br
 .ti -1c
 .RI "S32 \fBGetWidth\fP (void) const"
@@ -43,7 +49,10 @@ KillerEngine::Texture
 .RI "void \fBLoadTexture\fP (string filePath, bool generateMipMaps=true)"
 .br
 .ti -1c
-.RI "void \fBBind\fP (GLuint texUnit=0)"
+.RI "void \fBBind\fP (bool state=true, GLuint texUnit=0) const"
+.br
+.ti -1c
+.RI "void \fBUnBind\fP (void) const"
 .br
 .in -1c
 .SS "Private Attributes"

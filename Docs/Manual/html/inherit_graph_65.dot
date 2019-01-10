@@ -3,5 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="tinyxml2::DynArray\l\< char, 20 \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classtinyxml2_1_1_dyn_array.html"];
+  Node0 [label="KillerEngine::CharacterData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_killer_engine_1_1_character_data.html"];
 }

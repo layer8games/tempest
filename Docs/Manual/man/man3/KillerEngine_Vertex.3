@@ -1,4 +1,4 @@
-.TH "KillerEngine::Vertex" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Vertex" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -13,10 +13,16 @@ KillerEngine::Vertex
 .RI "\fBVertex\fP (\fBKM::Vector\fP pos)"
 .br
 .ti -1c
-.RI "\fBVertex\fP (\fBKM::Vector\fP pos, \fBColor\fP col)"
+.RI "\fBVertex\fP (const \fBKM::Vector\fP &pos, \fBColor\fP col)"
 .br
 .ti -1c
-.RI "\fBVertex\fP (\fBKM::Vector\fP pos, F32 u, F32 v)"
+.RI "\fBVertex\fP (const \fBKM::Vector\fP &pos, F32 u, F32 v)"
+.br
+.ti -1c
+.RI "\fBVertex\fP (const \fBKM::Vector\fP &pos, const \fBKM::Vector\fP &norm)"
+.br
+.ti -1c
+.RI "\fBVertex\fP (const \fBKM::Vector\fP &pos, const \fBKM::Vector\fP &norm, F32 u, F32 v)"
 .br
 .in -1c
 .SS "Public Attributes"
@@ -26,10 +32,10 @@ KillerEngine::Vertex
 .RI "\fBKM::Vector\fP \fBposition\fP"
 .br
 .ti -1c
-.RI "F32 \fBuCoord\fP"
+.RI "\fBKM::Vector\fP \fBnormal\fP"
 .br
 .ti -1c
-.RI "F32 \fBvCoord\fP"
+.RI "\fBTexCoord\fP \fBtexCoord\fP"
 .br
 .ti -1c
 .RI "\fBColor\fP \fBcolor\fP"

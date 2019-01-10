@@ -16,11 +16,13 @@ namespace KillerEngine
 //==========================================================================================================================
 //Documentation
 //==========================================================================================================================
-/*! The KillerEngine class is designed to be the interface to starting up the Engine. This class will really just be a 
+/*! 
+	The KillerEngine class is designed to be the interface to starting up the Engine. This class will really just be a 
 	function and instance holder for other classes in the engine, but will actually do very little of its own. 
 
 	A lot of the functions that will be here will not be required to use in order to use the engine. They will be present 
-	as helper classes, not intended for required use. */
+	as helper classes, not intended for required use. 
+*/
 	class Engine
 	{
 
@@ -30,11 +32,13 @@ namespace KillerEngine
 //Interface
 //
 //==========================================================================================================================
-/*! Wrapper for WinProgram::Init. Sets up the Window and OpenGL
+/*! 
+	Wrapper for WinProgram::Init. Sets up the Window and OpenGL
 	\param width S32: describes width of window.
 	\param height S32: describes height of the window.
 	\param title string: sent to system to generate title of window.
-	\param fullscreen bool: tells system to use fullscreen or not. */
+	\param fullscreen bool: tells system to use fullscreen or not. 
+*/
 		void Init(const S32 width, const S32 height, const string title, const bool fullscreen);
 
 /*! Wrapper for LevelManager::ShutDown(void) */
@@ -52,32 +56,40 @@ namespace KillerEngine
 			WinProgram::Instance()->EndRunning(); 
 		}
 		
-/*!  Wrapper for LevelManager::AddLevel(). Adds level that can be set as active. 
-	\param level shared_ptr<Level>: Level to be added. */
+/*!  
+	Wrapper for LevelManager::AddLevel(). Adds level that can be set as active. 
+	\param level shared_ptr<Level>: Level to be added. 
+*/
 		inline void AddLevelToManager(shared_ptr<Level> level)
 		{ 
 			LevelManager::Instance()->AddLevel(level); 
 		}
 
-/*! Wrapper for LevelManager::SetActive(). Sets level with id to be active level
-	\param id const U32: id of level. */
+/*! 
+	Wrapper for LevelManager::SetActive(). Sets level with id to be active level
+	\param id const U32: id of level. 
+*/
 		inline void SetActiveLevel(const U32 id) 
 		{ 
 			LevelManager::Instance()->SetActiveLevel(id); 
 		}
 
-/*! Wrapper for steps needed update steps. Calls the following in order.
+/*! 
+	Wrapper for steps needed update steps. Calls the following in order.
 	 - WinProgram::ProcessWndEvents()
 	 - Timer::Update()
 	 - Controller::Update()
 	 - LevelManager::Update()
-	 - ErrorManager::DisplayErrors() */		
+	 - ErrorManager::DisplayErrors() 
+*/		
 		void Update(void);
 
-/*! Wrapper for steps needed to render. Calls the following in order
+/*! 
+	Wrapper for steps needed to render. Calls the following in order
 	- LevelManager::Render()
 	- WinProgram::BufferSwap()
-	- ErrorManager::DisplayErrors() */
+	- ErrorManager::DisplayErrors() 
+*/
 		void Render(void);
 
 //==========================================================================================================================
@@ -94,6 +106,9 @@ namespace KillerEngine
 //Constructor
 //
 //==========================================================================================================================		
+/*! 
+	Default Constructor. It does not do anything. 
+*/		
 		Engine(void);
 
 	private:

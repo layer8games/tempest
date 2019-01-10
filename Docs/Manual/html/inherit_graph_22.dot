@@ -3,5 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="KillerEngine::Level",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_killer_engine_1_1_level.html"];
+  Node0 [label="KillerMath::Matrix",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_killer_math_1_1_matrix.html"];
 }

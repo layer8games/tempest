@@ -15,7 +15,7 @@ var class_killer_physics_1_1_particle =
     [ "GetInverseMass", "class_killer_physics_1_1_particle.html#ab39b2c57a31cbc876bbf493c9ed2390e", null ],
     [ "GetMass", "class_killer_physics_1_1_particle.html#aac7276a13cfd10ead621849e32243f7a", null ],
     [ "GetVelocity", "class_killer_physics_1_1_particle.html#ae635dd6f540b38f99bb09eae960c4ae4", null ],
-    [ "HasFiniteMass", "class_killer_physics_1_1_particle.html#ac6e48e761dafd96a2d4b845a8cf3f0af", null ],
+    [ "HasFiniteMass", "class_killer_physics_1_1_particle.html#a8c0583ddb1467abd197feba089873776", null ],
     [ "Integrate", "class_killer_physics_1_1_particle.html#a76f08ecd81776b5385e8bee5a2b7f3d5", null ],
     [ "SetAcceleration", "class_killer_physics_1_1_particle.html#af59de95a45bffe459b6eec4614f10eb6", null ],
     [ "SetAcceleration", "class_killer_physics_1_1_particle.html#a8821fc56a6ea8b1414d7dc9c9f04eee6", null ],

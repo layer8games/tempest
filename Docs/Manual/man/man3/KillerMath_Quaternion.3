@@ -1,4 +1,4 @@
-.TH "KillerMath::Quaternion" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Quaternion" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -13,25 +13,19 @@ KillerMath::Quaternion
 .RI "\fBQuaternion\fP (real value)"
 .br
 .ti -1c
-.RI "\fBQuaternion\fP (real w, real x, real y, real z)"
+.RI "\fBQuaternion\fP (real wVal, real xVal, real yVal, real zVal)"
 .br
 .ti -1c
-.RI "\fBQuaternion\fP (const \fBQuaternion\fP &Q)"
-.br
-.ti -1c
-.RI "real \fBGetW\fP (void) const"
-.br
-.ti -1c
-.RI "real \fBGetX\fP (void) const"
-.br
-.ti -1c
-.RI "real \fBGetY\fP (void) const"
-.br
-.ti -1c
-.RI "real \fBGetZ\fP (void) const"
+.RI "\fBQuaternion\fP (const \fBQuaternion\fP &q)"
 .br
 .ti -1c
 .RI "const real * \fBGetElems\fP (void) const"
+.br
+.ti -1c
+.RI "const F32 & \fBoperator[]\fP (int i) const"
+.br
+.ti -1c
+.RI "F32 & \fBoperator[]\fP (int i)"
 .br
 .ti -1c
 .RI "\fBQuaternion\fP \fBoperator/\fP (real d)"
@@ -43,13 +37,13 @@ KillerMath::Quaternion
 .RI "\fBQuaternion\fP \fBoperator*\fP (real m)"
 .br
 .ti -1c
-.RI "\fBQuaternion\fP \fBoperator*\fP (\fBQuaternion\fP &q2)"
+.RI "\fBQuaternion\fP \fBoperator*\fP (const \fBQuaternion\fP &q2)"
 .br
 .ti -1c
 .RI "\fBQuaternion\fP & \fBoperator*=\fP (real m)"
 .br
 .ti -1c
-.RI "\fBQuaternion\fP & \fBoperator*=\fP (\fBQuaternion\fP &q2)"
+.RI "\fBQuaternion\fP & \fBoperator*=\fP (const \fBQuaternion\fP &q2)"
 .br
 .ti -1c
 .RI "real \fBMagnitude\fP (void)"
@@ -75,12 +69,22 @@ KillerMath::Quaternion
 .ti -1c
 .RI "void \fBNormalize\fP (void)"
 .br
+.ti -1c
+.RI "void \fBAddScaledVector\fP (const \fBVector\fP &vec, F32 scale)"
+.br
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBw\fP = 0, \fBx\fP = 1, \fBy\fP = 2, \fBz\fP = 3 }"
+.br
 .in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
-.RI "real \fB_q\fP [4]"
+.RI "real \fB_data\fP [4]"
 .br
 .in -1c
 

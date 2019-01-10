@@ -88,6 +88,7 @@ $(document).ready(function(){initNavTree('class_killer_math_1_1_quaternion.html'
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_killer_math_1_1_quaternion-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -100,27 +101,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af6401e6d511916154c7f9a8b39a35ac8"><td class="memItemLeft" align="right" valign="top"><a id="af6401e6d511916154c7f9a8b39a35ac8"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Quaternion</b> (real value)</td></tr>
 <tr class="separator:af6401e6d511916154c7f9a8b39a35ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3bf1ae75628e4c4968e6d09248e791ec"><td class="memItemLeft" align="right" valign="top"><a id="a3bf1ae75628e4c4968e6d09248e791ec"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Quaternion</b> (real w, real x, real y, real z)</td></tr>
-<tr class="separator:a3bf1ae75628e4c4968e6d09248e791ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f4361332496b2a598697f549f45429d"><td class="memItemLeft" align="right" valign="top"><a id="a8f4361332496b2a598697f549f45429d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Quaternion</b> (const <a class="el" href="class_killer_math_1_1_quaternion.html">Quaternion</a> &amp;Q)</td></tr>
-<tr class="separator:a8f4361332496b2a598697f549f45429d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54757602be51abc9a5aa77d7a38c2c9a"><td class="memItemLeft" align="right" valign="top"><a id="a54757602be51abc9a5aa77d7a38c2c9a"></a>
-real&#160;</td><td class="memItemRight" valign="bottom"><b>GetW</b> (void) const</td></tr>
-<tr class="separator:a54757602be51abc9a5aa77d7a38c2c9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a683cadc15bfd41ae99d1ef4e885152ed"><td class="memItemLeft" align="right" valign="top"><a id="a683cadc15bfd41ae99d1ef4e885152ed"></a>
-real&#160;</td><td class="memItemRight" valign="bottom"><b>GetX</b> (void) const</td></tr>
-<tr class="separator:a683cadc15bfd41ae99d1ef4e885152ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e47aaec212f5bcf20256613a2d7f214"><td class="memItemLeft" align="right" valign="top"><a id="a3e47aaec212f5bcf20256613a2d7f214"></a>
-real&#160;</td><td class="memItemRight" valign="bottom"><b>GetY</b> (void) const</td></tr>
-<tr class="separator:a3e47aaec212f5bcf20256613a2d7f214"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae430f484a02ff4076b185965236c1210"><td class="memItemLeft" align="right" valign="top"><a id="ae430f484a02ff4076b185965236c1210"></a>
-real&#160;</td><td class="memItemRight" valign="bottom"><b>GetZ</b> (void) const</td></tr>
-<tr class="separator:ae430f484a02ff4076b185965236c1210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8b62925c48118470710dc3a6940de5f"><td class="memItemLeft" align="right" valign="top"><a id="ac8b62925c48118470710dc3a6940de5f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Quaternion</b> (real wVal, real xVal, real yVal, real zVal)</td></tr>
+<tr class="separator:ac8b62925c48118470710dc3a6940de5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3b8862f9fd86c7ebb426b4940d08b39"><td class="memItemLeft" align="right" valign="top"><a id="ab3b8862f9fd86c7ebb426b4940d08b39"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Quaternion</b> (const <a class="el" href="class_killer_math_1_1_quaternion.html">Quaternion</a> &amp;q)</td></tr>
+<tr class="separator:ab3b8862f9fd86c7ebb426b4940d08b39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad28d1253f0eb326c677759137ec49ade"><td class="memItemLeft" align="right" valign="top"><a id="ad28d1253f0eb326c677759137ec49ade"></a>
 const real *&#160;</td><td class="memItemRight" valign="bottom"><b>GetElems</b> (void) const</td></tr>
 <tr class="separator:ad28d1253f0eb326c677759137ec49ade"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa83ae09c9892571c527fa9aaaa548e21"><td class="memItemLeft" align="right" valign="top"><a id="aa83ae09c9892571c527fa9aaaa548e21"></a>
+const F32 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (int i) const</td></tr>
+<tr class="separator:aa83ae09c9892571c527fa9aaaa548e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5969f803aceef1886ab1d9f8952c5b7"><td class="memItemLeft" align="right" valign="top"><a id="ad5969f803aceef1886ab1d9f8952c5b7"></a>
+F32 &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (int i)</td></tr>
+<tr class="separator:ad5969f803aceef1886ab1d9f8952c5b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d131d99e89806c24a839a888748fc2b"><td class="memItemLeft" align="right" valign="top"><a id="a9d131d99e89806c24a839a888748fc2b"></a>
 <a class="el" href="class_killer_math_1_1_quaternion.html">Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator/</b> (real d)</td></tr>
 <tr class="separator:a9d131d99e89806c24a839a888748fc2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -130,15 +125,15 @@ const real *&#160;</td><td class="memItemRight" valign="bottom"><b>GetElems</b> 
 <tr class="memitem:ae8879c62e14462df937fa5dd551ea227"><td class="memItemLeft" align="right" valign="top"><a id="ae8879c62e14462df937fa5dd551ea227"></a>
 <a class="el" href="class_killer_math_1_1_quaternion.html">Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (real m)</td></tr>
 <tr class="separator:ae8879c62e14462df937fa5dd551ea227"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af156a4bfd18bbbc4559d54a9425c77e4"><td class="memItemLeft" align="right" valign="top"><a id="af156a4bfd18bbbc4559d54a9425c77e4"></a>
-<a class="el" href="class_killer_math_1_1_quaternion.html">Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (<a class="el" href="class_killer_math_1_1_quaternion.html">Quaternion</a> &amp;q2)</td></tr>
-<tr class="separator:af156a4bfd18bbbc4559d54a9425c77e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0365e07d08d9c5cfaee902cf3b224d1d"><td class="memItemLeft" align="right" valign="top"><a id="a0365e07d08d9c5cfaee902cf3b224d1d"></a>
+<a class="el" href="class_killer_math_1_1_quaternion.html">Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="class_killer_math_1_1_quaternion.html">Quaternion</a> &amp;q2)</td></tr>
+<tr class="separator:a0365e07d08d9c5cfaee902cf3b224d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af47abd91880cbc71c7f6bcc945616d75"><td class="memItemLeft" align="right" valign="top"><a id="af47abd91880cbc71c7f6bcc945616d75"></a>
 <a class="el" href="class_killer_math_1_1_quaternion.html">Quaternion</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*=</b> (real m)</td></tr>
 <tr class="separator:af47abd91880cbc71c7f6bcc945616d75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7d8a38448db1f57296daa644e62541f"><td class="memItemLeft" align="right" valign="top"><a id="ac7d8a38448db1f57296daa644e62541f"></a>
-<a class="el" href="class_killer_math_1_1_quaternion.html">Quaternion</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*=</b> (<a class="el" href="class_killer_math_1_1_quaternion.html">Quaternion</a> &amp;q2)</td></tr>
-<tr class="separator:ac7d8a38448db1f57296daa644e62541f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac26e84e47a848102def4d4b8b9cddee4"><td class="memItemLeft" align="right" valign="top"><a id="ac26e84e47a848102def4d4b8b9cddee4"></a>
+<a class="el" href="class_killer_math_1_1_quaternion.html">Quaternion</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*=</b> (const <a class="el" href="class_killer_math_1_1_quaternion.html">Quaternion</a> &amp;q2)</td></tr>
+<tr class="separator:ac26e84e47a848102def4d4b8b9cddee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa560fa1eda8726e22cbe8cc1739204ca"><td class="memItemLeft" align="right" valign="top"><a id="aa560fa1eda8726e22cbe8cc1739204ca"></a>
 real&#160;</td><td class="memItemRight" valign="bottom"><b>Magnitude</b> (void)</td></tr>
 <tr class="separator:aa560fa1eda8726e22cbe8cc1739204ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,12 +158,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Negate</b> (void)</td
 <tr class="memitem:a4499cb212b359d1590f8cc97ab0cbd24"><td class="memItemLeft" align="right" valign="top"><a id="a4499cb212b359d1590f8cc97ab0cbd24"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Normalize</b> (void)</td></tr>
 <tr class="separator:a4499cb212b359d1590f8cc97ab0cbd24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafa79fd80787def09a1c2b9c88fdc9fe"><td class="memItemLeft" align="right" valign="top"><a id="aafa79fd80787def09a1c2b9c88fdc9fe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddScaledVector</b> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;vec, F32 scale)</td></tr>
+<tr class="separator:aafa79fd80787def09a1c2b9c88fdc9fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:aaa2e1270343747041138875f609da020"><td class="memItemLeft" align="right" valign="top"><a id="aaa2e1270343747041138875f609da020"></a>enum &#160;</td><td class="memItemRight" valign="bottom">{ <b>w</b> = 0, 
+<b>x</b> = 1, 
+<b>y</b> = 2, 
+<b>z</b> = 3
+ }</td></tr>
+<tr class="separator:aaa2e1270343747041138875f609da020"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a57103a12d4cd282c010c60d8b9c42aeb"><td class="memItemLeft" align="right" valign="top"><a id="a57103a12d4cd282c010c60d8b9c42aeb"></a>
-real&#160;</td><td class="memItemRight" valign="bottom"><b>_q</b> [4]</td></tr>
-<tr class="separator:a57103a12d4cd282c010c60d8b9c42aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfd78cbb357801a864f279a34e7c7ef7"><td class="memItemLeft" align="right" valign="top"><a id="adfd78cbb357801a864f279a34e7c7ef7"></a>
+real&#160;</td><td class="memItemRight" valign="bottom"><b>_data</b> [4]</td></tr>
+<tr class="separator:adfd78cbb357801a864f279a34e7c7ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_quaternion_8h_source.html">Quaternion.h</a></li>

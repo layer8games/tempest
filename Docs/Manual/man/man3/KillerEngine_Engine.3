@@ -1,4 +1,4 @@
-.TH "KillerEngine::Engine" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Engine" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -43,6 +43,13 @@ KillerEngine::Engine
 .RI "static shared_ptr< \fBEngine\fP > \fBInstance\fP ()"
 .br
 .in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEngine\fP (void)"
+.br
+.in -1c
 .SS "Static Private Attributes"
 
 .in +1c
@@ -56,6 +63,10 @@ KillerEngine::Engine
 The KillerEngine class is designed to be the interface to starting up the \fBEngine\fP\&. This class will really just be a function and instance holder for other classes in the engine, but will actually do very little of its own\&.
 .PP
 A lot of the functions that will be here will not be required to use in order to use the engine\&. They will be present as helper classes, not intended for required use\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Engine::Engine (void)\fC [protected]\fP"
+Default Constructor\&. It does not do anything\&. 
 .SH "Member Function Documentation"
 .PP 
 .SS "void KillerEngine::Engine::AddLevelToManager (shared_ptr< \fBLevel\fP > level)\fC [inline]\fP"
@@ -70,7 +81,7 @@ Wrapper for LevelManager::AddLevel()\&. Adds level that can be set as active\&.
 .SS "void KillerEngine::Engine::End (void)\fC [inline]\fP"
 Wrapper for LevelManager::SetRunning()\&. Sets Running to false\&. This stops the Main Game Loop from running\&. Calling this is the same as Quitting the program\&. 
 .SS "void Engine::Init (const S32 width, const S32 height, const string title, const bool fullscreen)"
-Wrapper for WinProgram::Init\&. Sets up the Window and OpenGL 
+Wrapper for \fBWinProgram::Init\fP\&. Sets up the Window and OpenGL 
 .PP
 \fBParameters:\fP
 .RS 4

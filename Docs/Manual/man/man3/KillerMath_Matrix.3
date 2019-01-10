@@ -1,4 +1,4 @@
-.TH "KillerMath::Matrix" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Matrix" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -33,22 +33,19 @@ KillerMath::Matrix
 .RI "const std::vector< F32 > \fBGetElems\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBMakeOrthographic\fP (F32 width, F32 height, F32 depth, bool center=true)"
-.br
-.ti -1c
-.RI "void \fBMakePerspective\fP (F32 width, F32 height, F32 depth, bool center=true)"
+.RI "void \fBMakeOrthographic\fP (F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)"
 .br
 .ti -1c
 .RI "void \fBMakePerspective\fP (F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F32 farPlane)"
 .br
 .ti -1c
-.RI "void \fBTranslate\fP (F32 xVal, F32 yVal)"
+.RI "void \fBSetTranslate\fP (F32 xVal, F32 yVal)"
 .br
 .ti -1c
-.RI "void \fBTranslate\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "void \fBSetTranslate\fP (F32 xVal, F32 yVal, F32 zVal)"
 .br
 .ti -1c
-.RI "void \fBTranslate\fP (const \fBVector\fP &vec)"
+.RI "void \fBSetTranslate\fP (const \fBVector\fP &vec)"
 .br
 .ti -1c
 .RI "void \fBAddTranslate\fP (F32 xVal, F32 yVal)"
@@ -60,13 +57,22 @@ KillerMath::Matrix
 .RI "void \fBAddTranslate\fP (const \fBVector\fP &vec)"
 .br
 .ti -1c
-.RI "void \fBScale\fP (F32 xVal, F32 yVal)"
+.RI "\fBVector\fP \fBTransformInverse\fP (const \fBVector\fP vec) const"
 .br
 .ti -1c
-.RI "void \fBScale\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "\fBVector\fP \fBTransformDirection\fP (const \fBVector\fP &vec) const"
 .br
 .ti -1c
-.RI "void \fBScale\fP (const \fBVector\fP &vec)"
+.RI "\fBVector\fP \fBTransformInverseDirection\fP (const \fBVector\fP &vec) const"
+.br
+.ti -1c
+.RI "void \fBSetScale\fP (F32 xVal, F32 yVal)"
+.br
+.ti -1c
+.RI "void \fBSetScale\fP (F32 xVal, F32 yVal, F32 zVal)"
+.br
+.ti -1c
+.RI "void \fBSetScale\fP (const \fBVector\fP &vec)"
 .br
 .ti -1c
 .RI "void \fBAddScale\fP (F32 xVal, F32 yVal)"
@@ -78,28 +84,46 @@ KillerMath::Matrix
 .RI "void \fBAddScale\fP (const \fBVector\fP &vec)"
 .br
 .ti -1c
-.RI "void \fBRotateX\fP (F32 val)"
+.RI "void \fBSetRotateX\fP (F32 val)"
 .br
 .ti -1c
 .RI "void \fBAddRotateX\fP (F32 val)"
 .br
 .ti -1c
-.RI "void \fBRotateY\fP (F32 val)"
+.RI "void \fBSetRotateY\fP (F32 val)"
 .br
 .ti -1c
 .RI "void \fBAddRotateY\fP (F32 val)"
 .br
 .ti -1c
-.RI "void \fBRotateZ\fP (F32 val)"
+.RI "void \fBSetRotateZ\fP (F32 val)"
 .br
 .ti -1c
 .RI "void \fBAddRotateZ\fP (F32 val)"
 .br
 .ti -1c
-.RI "void \fBRotate\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "void \fBSetRotate\fP (F32 xVal, F32 yVal, F32 zVal)"
 .br
 .ti -1c
 .RI "void \fBAddRotation\fP (F32 xVal, F32 yVal, F32 zVal)"
+.br
+.ti -1c
+.RI "void \fBSetOrientation\fP (const \fBQuaternion\fP &q)"
+.br
+.ti -1c
+.RI "void \fBSetOrientationAndPosition\fP (const \fBQuaternion\fP &q, const \fBVector\fP &v)"
+.br
+.ti -1c
+.RI "void \fBSetInverse\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetAsInverse\fP (const \fBMatrix\fP &mat)"
+.br
+.ti -1c
+.RI "\fBMatrix\fP \fBGetInverse\fP (void) const"
+.br
+.ti -1c
+.RI "F32 \fBDeterminate\fP (void) const"
 .br
 .ti -1c
 .RI "void \fBMakeIdentity\fP (void)"
@@ -114,10 +138,16 @@ KillerMath::Matrix
 .RI "void \fBComponentMulti\fP (const \fBMatrix\fP &M)"
 .br
 .ti -1c
-.RI "void \fBLookAt\fP (const \fBVector\fP &cameraPos, const \fBVector\fP &target, const \fBVector\fP &up)"
+.RI "\fBMatrix\fP \fBTransform3x3\fP (const \fBMatrix\fP &mat) const"
 .br
 .ti -1c
-.RI "void \fBFPSView\fP (const \fBVector\fP &cameraPos, F32 pitch, F32 yaw)"
+.RI "\fBVector\fP \fBTransform3x3\fP (const \fBVector\fP &vec) const"
+.br
+.ti -1c
+.RI "void \fBSetLookAt\fP (const \fBVector\fP &cameraPos, const \fBVector\fP &target, const \fBVector\fP &up)"
+.br
+.ti -1c
+.RI "void \fBSetFPSView\fP (const \fBVector\fP &cameraPos, F32 pitch, F32 yaw)"
 .br
 .ti -1c
 .RI "const \fBVector\fP & \fBoperator[]\fP (int i) const"
@@ -129,10 +159,59 @@ KillerMath::Matrix
 .RI "\fBMatrix\fP & \fBoperator=\fP (const \fBMatrix\fP &mat)"
 .br
 .ti -1c
-.RI "\fBMatrix\fP \fBoperator*\fP (const \fBMatrix\fP &mat)"
+.RI "\fBMatrix\fP \fBoperator*\fP (const \fBMatrix\fP &mat) const"
 .br
 .ti -1c
-.RI "\fBVector\fP \fBoperator*\fP (const \fBVector\fP &vec)"
+.RI "\fBVector\fP \fBoperator*\fP (const \fBVector\fP &vec) const"
+.br
+.ti -1c
+.RI "\fBMatrix\fP & \fBoperator/=\fP (F32 val)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBMatrix\fP \fBTranslate\fP (F32 xVal, F32 yVal)"
+.br
+.ti -1c
+.RI "static \fBMatrix\fP \fBTranslate\fP (F32 xVal, F32 yVal, F32 zVal)"
+.br
+.ti -1c
+.RI "static \fBMatrix\fP \fBTranslate\fP (const \fBVector\fP &vec)"
+.br
+.ti -1c
+.RI "static \fBVector\fP \fBLocalToWorld\fP (const \fBVector\fP &vec, const \fBMatrix\fP &mat)"
+.br
+.ti -1c
+.RI "static \fBVector\fP \fBWorldToLocal\fP (const \fBVector\fP &vec, const \fBMatrix\fP &mat)"
+.br
+.ti -1c
+.RI "static \fBMatrix\fP \fBScale\fP (F32 xVal, F32 yVal)"
+.br
+.ti -1c
+.RI "static \fBMatrix\fP \fBScale\fP (F32 xVal, F32 yVal, F32 zVal)"
+.br
+.ti -1c
+.RI "static \fBMatrix\fP \fBScale\fP (const \fBVector\fP &vec)"
+.br
+.ti -1c
+.RI "static \fBMatrix\fP \fBRotateX\fP (F32 val)"
+.br
+.ti -1c
+.RI "static \fBMatrix\fP \fBRotateY\fP (F32 val)"
+.br
+.ti -1c
+.RI "static \fBMatrix\fP \fBRotateZ\fP (F32 val)"
+.br
+.ti -1c
+.RI "static F32 \fBDeterminate3x3\fP (\fBVector\fP &col1, \fBVector\fP &col2, \fBVector\fP &col3)"
+.br
+.ti -1c
+.RI "static \fBMatrix\fP \fBLookAt\fP (const \fBVector\fP &cameraPos, const \fBVector\fP &target, const \fBVector\fP &up)"
+.br
+.ti -1c
+.RI "static \fBMatrix\fP \fBFPSView\fP (const \fBVector\fP &cameraPos, F32 pitch, F32 yaw)"
 .br
 .in -1c
 .SS "Private Types"
@@ -215,7 +294,7 @@ Completely untested and probably not working at all\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIx\fP F32\&. Degree of rotation around x axis\&. Calls DegreeToRadian() 
+\fIx\fP F32\&. Degree of rotation around x axis\&. Calls RADIAN() 
 .RE
 .PP
 
@@ -229,7 +308,7 @@ Completely untested and probably not working at all\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIy\fP F32\&. Degree of rotation around y axis\&. Calls DegreeToRadian() 
+\fIy\fP F32\&. Degree of rotation around y axis\&. Calls RADIAN() 
 .RE
 .PP
 
@@ -243,7 +322,7 @@ Completely untested and probably not working at all\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIz\fP F32\&. Degree of rotation around z axis\&. Calls DegreeToRadian() 
+\fIz\fP F32\&. Degree of rotation around z axis\&. Calls RADIAN() 
 .RE
 .PP
 
@@ -257,11 +336,11 @@ Not working at all\&. The math is wrong, and rotations are not working in genera
 .PP
 \fBParameters:\fP
 .RS 4
-\fIx\fP F32\&. Degree of rotation around the x axis\&. Calls DegreeToRadian() 
+\fIx\fP F32\&. Degree of rotation around the x axis\&. Calls RADIAN() 
 .br
-\fIy\fP F32\&. Degree of rotation around the y axis\&. Calls DegreeToRadian() 
+\fIy\fP F32\&. Degree of rotation around the y axis\&. Calls RADIAN() 
 .br
-\fIz\fP F32\&. Degree of rotation around the z axis\&. Calls DegreeToRadian() 
+\fIz\fP F32\&. Degree of rotation around the z axis\&. Calls RADIAN() 
 .RE
 .PP
 
@@ -326,37 +405,11 @@ Also known as a straight multiplication\&. Multiplies each value of this \fBMatr
 .RE
 .PP
 
-.SS "void Matrix::FPSView (const \fBVector\fP & cameraPos, F32 pitch, F32 yaw)"
-Uses Euler angles to compute a view matrix from the world position\&. This assumes a Right Handed Coordinate system\&. This means that the camera, by default at 0\&.0 is looking down the -z axis\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIcameraPos\fP \fBVector\fP&\&. The position of the camera in world space\&. Can be thought of as the eye\&. 
-.br
-\fIpitch\fP F32\&. Must be between -90 and 90\&. An assert checks for this\&. 
-.br
-\fIyaw\fP F32\&. Must be between 0 and 360\&. An assert checks for thisl 
-.RE
-.PP
-
 .SS "const std::vector< F32 > Matrix::GetElems (void) const"
 Return the array containing all the elements\&. 
-.SS "void Matrix::LookAt (const \fBVector\fP & cameraPos, const \fBVector\fP & target, const \fBVector\fP & up)"
-Creates a view matrix from the world position\&. Will set the view to 'look at' the specified point\&. This assumes a Right Handed Coordinate system\&. This means that the camera, by default at 0\&.0 is looking down the -z axis\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIcameraPos\fP \fBVector\fP&\&. The world position of the camera\&. Can be thought of as the eye\&. 
-.br
-\fItarget\fP \fBVector\fP&\&. The target point to 'look at'\&. 
-.br
-\fIup\fP \fBVector\fP&\&. The direction of UP space in the coordinate scheme\&. could be +y, for example\&. 
-.RE
-.PP
-
 .SS "void KillerMath::Matrix::MakeIdentity (void)\fC [inline]\fP"
 Wrapper for \fBReset()\fP\&. Sets all values of the \fBMatrix\fP to 0, with the diagnal set to 1\&. 
-.SS "void Matrix::MakeOrthographic (F32 width, F32 height, F32 depth, bool center = \fCtrue\fP)"
+.SS "void Matrix::MakeOrthographic (F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)"
 Resets the \fBMatrix\fP, then sets the values up as an Orthographic projection\&. Calls MakeIdentiy()\&. The viewport values are usually based on the dimensions of the window, but could be made smaller\&. 
 .PP
 \fBParameters:\fP
@@ -368,26 +421,6 @@ Resets the \fBMatrix\fP, then sets the values up as an Orthographic projection\&
 \fIdepth\fP F32\&. Depth of the viewport\&. 
 .br
 \fIcenter\fP bool\&. Set to true by default\&. If true, the origin of the view port will be the middle of the screen\&. Otherwise it will be the bottom left corner of the screen\&. 
-.RE
-.PP
-
-.SS "void Matrix::MakePerspective (F32 width, F32 height, F32 depth, bool center = \fCtrue\fP)"
-Resets the \fBMatrix\fP, then sets the values up as a Perspective projection, using the more standard equation\&. Calls MakeIdenity()\&. The viewport values are usually based on the dimensions of the window, but could be made smaller\&. 
-.PP
-\fBBug\fP
-.RS 4
-I cannot get this to work for the life of me\&. I am not sure why, the math all looks right but the function wont work\&. 
-.RE
-.PP
-\fBParameters:\fP
-.RS 4
-\fIwidth\fP F32\&. Width of viewport\&. 
-.br
-\fIheight\fP F32\&. Height of viewport\&. 
-.br
-\fIdepth\fP F32\&. Depfth of viewport\&. 
-.br
-\fIcenter\fP bool\&. True by default\&. If true, the origin of the view port will be the middle of the screen\&. Otherwise it will be the bottom left corner of the screen\&. 
 .RE
 .PP
 
@@ -406,7 +439,7 @@ Resets the \fBMatrix\fP, then sets the values up as a Perspective \fBMatrix\fP\&
 .RE
 .PP
 
-.SS "\fBMatrix\fP Matrix::operator* (const \fBMatrix\fP & mat)"
+.SS "\fBMatrix\fP Matrix::operator* (const \fBMatrix\fP & mat) const"
 Performs a \fBMatrix\fP style multiplication\&. 
 .PP
 \fBParameters:\fP
@@ -415,7 +448,7 @@ Performs a \fBMatrix\fP style multiplication\&.
 .RE
 .PP
 
-.SS "\fBVector\fP Matrix::operator* (const \fBVector\fP & vec)"
+.SS "\fBVector\fP Matrix::operator* (const \fBVector\fP & vec) const"
 Performs \fBMatrix\fP multiplication with \fBVector\fP\&. 
 .SS "\fBMatrix\fP & Matrix::operator= (const \fBMatrix\fP & mat)"
 Sets all the values of object to values of M\&. Call \fBGetElems()\fP\&. 
@@ -453,7 +486,33 @@ Sets all the values of the \fBMatrix\fP to 0, with the diagnal set to val\&.
 .RE
 .PP
 
-.SS "void Matrix::Rotate (F32 xVal, F32 yVal, F32 zVal)"
+.SS "void Matrix::SetFPSView (const \fBVector\fP & cameraPos, F32 pitch, F32 yaw)"
+Uses Euler angles to compute a view matrix from the world position\&. This assumes a Right Handed Coordinate system\&. This means that the camera, by default at 0\&.0 is looking down the -z axis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcameraPos\fP \fBVector\fP&\&. The position of the camera in world space\&. Can be thought of as the eye\&. 
+.br
+\fIpitch\fP F32\&. Must be between -90 and 90\&. An assert checks for this\&. 
+.br
+\fIyaw\fP F32\&. Must be between 0 and 360\&. An assert checks for thisl 
+.RE
+.PP
+
+.SS "void Matrix::SetLookAt (const \fBVector\fP & cameraPos, const \fBVector\fP & target, const \fBVector\fP & up)"
+Creates a view matrix from the world position\&. Will set the view to 'look at' the specified point\&. This assumes a Right Handed Coordinate system\&. This means that the camera, by default at 0\&.0 is looking down the -z axis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcameraPos\fP \fBVector\fP&\&. The world position of the camera\&. Can be thought of as the eye\&. 
+.br
+\fItarget\fP \fBVector\fP&\&. The target point to 'look at'\&. 
+.br
+\fIup\fP \fBVector\fP&\&. The direction of UP space in the coordinate scheme\&. could be +y, for example\&. 
+.RE
+.PP
+
+.SS "void Matrix::SetRotate (F32 xVal, F32 yVal, F32 zVal)"
 Resets the \fBMatrix\fP and creates an \fBMatrix\fP which will perform a rotation around the x, y and z axis in that order\&. Calls \fBMakeIdentity()\fP 
 .PP
 \fBBug\fP
@@ -463,15 +522,15 @@ Not working at all\&. The math is wrong, and rotations are not working in genera
 .PP
 \fBParameters:\fP
 .RS 4
-\fIx\fP F32\&. Degree of rotation around the x axis\&. Calls DegreeToRadian() 
+\fIx\fP F32\&. Degree of rotation around the x axis\&. Calls RADIAN() 
 .br
-\fIy\fP F32\&. Degree of rotation around the y axis\&. Calls DegreeToRadian() 
+\fIy\fP F32\&. Degree of rotation around the y axis\&. Calls RADIAN() 
 .br
-\fIz\fP F32\&. Degree of rotation around the z axis\&. Calls DegreeToRadian() 
+\fIz\fP F32\&. Degree of rotation around the z axis\&. Calls RADIAN() 
 .RE
 .PP
 
-.SS "void Matrix::RotateX (F32 val)"
+.SS "void Matrix::SetRotateX (F32 val)"
 Resets \fBMatrix\fP and creates rotation around the x axis\&. Call MakeIdentiy()\&. 
 .PP
 \fBBug\fP
@@ -481,11 +540,11 @@ This is not working at all\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIx\fP F32\&. Degree of rotation around x axis\&. Calls DegreeToRadian() 
+\fIx\fP F32\&. Degree of rotation around x axis\&. Calls RADIAN() 
 .RE
 .PP
 
-.SS "void Matrix::RotateY (F32 val)"
+.SS "void Matrix::SetRotateY (F32 val)"
 Resets \fBMatrix\fP and creates rotation around the y axis\&. Call MakeIdentiy()\&. 
 .PP
 \fBBug\fP
@@ -495,11 +554,11 @@ This is not working at all\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIy\fP F32\&. Degree of rotation around y axis\&. Calls DegreeToRadian() 
+\fIy\fP F32\&. Degree of rotation around y axis\&. Calls RADIAN() 
 .RE
 .PP
 
-.SS "void Matrix::RotateZ (F32 val)"
+.SS "void Matrix::SetRotateZ (F32 val)"
 Resets \fBMatrix\fP and creates rotation around the z axis\&. Call MakeIdentiy()\&. 
 .PP
 \fBBug\fP
@@ -509,11 +568,11 @@ This is not working at all\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIz\fP F32\&. Degree of rotation around z axis\&. Calls DegreeToRadian() 
+\fIz\fP F32\&. Degree of rotation around z axis\&. Calls RADIAN() 
 .RE
 .PP
 
-.SS "void Matrix::Scale (F32 xVal, F32 yVal)"
+.SS "void Matrix::SetScale (F32 xVal, F32 yVal)"
 Resets the \fBMatrix\fP and creates a scaling \fBMatrix\fP on the x and y axes\&. Calls MakeIndentity() 
 .PP
 \fBParameters:\fP
@@ -524,7 +583,7 @@ Resets the \fBMatrix\fP and creates a scaling \fBMatrix\fP on the x and y axes\&
 .RE
 .PP
 
-.SS "void Matrix::Scale (F32 xVal, F32 yVal, F32 zVal)"
+.SS "void Matrix::SetScale (F32 xVal, F32 yVal, F32 zVal)"
 Resets the \fBMatrix\fP and creates a scaling \fBMatrix\fP on the x, y and z axes\&. MakeIndentity() 
 .PP
 \fBParameters:\fP
@@ -537,9 +596,9 @@ Resets the \fBMatrix\fP and creates a scaling \fBMatrix\fP on the x, y and z axe
 .RE
 .PP
 
-.SS "void Matrix::Scale (const \fBVector\fP & vec)"
+.SS "void Matrix::SetScale (const \fBVector\fP & vec)"
 Resets the \fBMatrix\fP and creates a scaling \fBMatrix\fP on the x and y axes\&. Calls MakeIndentity()\&. 
-.SS "void Matrix::Translate (F32 xVal, F32 yVal)"
+.SS "void Matrix::SetTranslate (F32 xVal, F32 yVal)"
 Resets \fBMatrix\fP, then creates a Translation on the x and y axes\&. Calls MakeIdentiy()\&. 
 .PP
 \fBParameters:\fP
@@ -550,7 +609,7 @@ Resets \fBMatrix\fP, then creates a Translation on the x and y axes\&. Calls Mak
 .RE
 .PP
 
-.SS "void Matrix::Translate (F32 xVal, F32 yVal, F32 zVal)"
+.SS "void Matrix::SetTranslate (F32 xVal, F32 yVal, F32 zVal)"
 Resets \fBMatrix\fP, thn creates a Translation on the x, y and z axes\&. Calls MakeIdentiy()\&. 
 .PP
 \fBParameters:\fP
@@ -563,7 +622,7 @@ Resets \fBMatrix\fP, thn creates a Translation on the x, y and z axes\&. Calls M
 .RE
 .PP
 
-.SS "void Matrix::Translate (const \fBVector\fP & vec)"
+.SS "void Matrix::SetTranslate (const \fBVector\fP & vec)"
 Resets \fBMatrix\fP, then creates translation based on the x, y and z values found in vec\&. Calls MakeIdentiy()\&. 
 .SS "void Matrix::Transpose (void)"
 Reverses the Column/Row order of the \fBMatrix\fP\&. 

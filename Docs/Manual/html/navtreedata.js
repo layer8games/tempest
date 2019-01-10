@@ -26,26 +26,18 @@ var NAVTREE =
   [ "Killer Engine", "index.html", [
     [ "Killer Engine Documentation.", "index.html#The", null ],
     [ "Bug List", "bug.html", null ],
-    [ "Modules", "modules.html", "modules" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
-        [ "Enumerations", "functions_enum.html", null ]
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ],
-      [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ],
-        [ "Typedefs", "globals_type.html", null ],
-        [ "Macros", "globals_defs.html", null ]
-      ] ]
+      [ "File List", "files.html", "files_dup" ]
     ] ]
   ] ]
 ];
@@ -53,15 +45,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"class_killer_engine_1_1_game_object2_d.html#a84de7f701665851b9a736abae6a20f42",
-"class_killer_engine_1_1_rendered_text.html#acf7f9a1d6be859143d9fd3c21c70016e",
-"class_killer_math_1_1_quaternion.html#af6401e6d511916154c7f9a8b39a35ac8",
-"class_killer_physics_1_1_particle2_d.html#aa69de395d452ab6cbe57668deb88e723",
-"classtinyxml2_1_1_dyn_array.html#aaad72f384e761c70a4519183eb8fea17",
-"classtinyxml2_1_1_x_m_l_element.html#aae6568c64c7f1cc88be8461ba41a79cf",
-"functions_n.html",
-"group__joysticks.html#ga89540873278ae5a42b3e70d64164dc74",
-"group__window.html#ga8af814fc98d786d1de2505b40b707de8"
+"class_killer_engine_1_1_game_object.html#a3a10c3dfe4528909783dfdb26dc035e5",
+"class_killer_engine_1_1_texture_manager.html#aafb58e94573d999310abd256b86c48dd",
+"class_killer_physics_1_1_b_v_h_node.html#a62070cb9a06234aced0dc82afe4ae5bd",
+"struct_killer_physics_1_1_bounding_sphere.html#a27a23eb3edd43520e39f0966b020a5d3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

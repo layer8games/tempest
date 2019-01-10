@@ -1,4 +1,4 @@
-.TH "KillerEngine::Controller" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Controller" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -24,13 +24,13 @@ KillerEngine::Controller
 .RI "void \fBKeyUp\fP (Keys k)"
 .br
 .ti -1c
-.RI "void \fBLeftMouseClick\fP (const \fBKM::Vector\fP &coord)"
+.RI "const \fBKM::Vector\fP \fBGetMouseCoord\fP (void)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP \fBGetMouseCoordInScreen\fP (void)"
 .br
 .ti -1c
 .RI "const \fBKM::Vector\fP \fBGetLeftMouseCoord\fP (void) const"
-.br
-.ti -1c
-.RI "void \fBRightMouseClick\fP (const \fBKM::Vector\fP &coord)"
 .br
 .ti -1c
 .RI "const \fBKM::Vector\fP \fBGetRightMouseCoord\fP (void) const"
@@ -59,15 +59,15 @@ KillerEngine::Controller
 
 .in +1c
 .ti -1c
-.RI "KeyStates \fB_keyStates\fP [\fB_totalKeys\fP]"
+.RI "KeyStates \fB_keyStates\fP [TOTAL_KEYS]"
 .br
 .RI "Array of states for each key, indexed by ID\&. "
 .ti -1c
-.RI "bool \fB_pastActiveKeys\fP [\fB_totalKeys\fP]"
+.RI "bool \fB_pastActiveKeys\fP [TOTAL_KEYS]"
 .br
 .RI "Array of keys in a pressed state as of last frame, indexed by ID\&. "
 .ti -1c
-.RI "bool \fB_curActiveKeys\fP [\fB_totalKeys\fP]"
+.RI "bool \fB_curActiveKeys\fP [TOTAL_KEYS]"
 .br
 .RI "Array of keys in a pressed state as of this frame, indexed by ID\&. "
 .ti -1c
@@ -78,6 +78,12 @@ KillerEngine::Controller
 .RI "\fBKM::Vector\fP \fB_rightClickCoordinates\fP"
 .br
 .RI "Coordinates of last right click\&. "
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_leftClickCoordInScreen\fP"
+.br
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_rightClickCoordInScreen\fP"
+.br
 .in -1c
 .SS "Static Private Attributes"
 
@@ -86,10 +92,6 @@ KillerEngine::Controller
 .RI "static shared_ptr< \fBController\fP > \fB_instance\fP = NULL"
 .br
 .RI "Singleton Global instance\&. "
-.ti -1c
-.RI "static const int \fB_totalKeys\fP = 51"
-.br
-.RI "Total supported Keys from KeyCode\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -143,7 +145,7 @@ Returns the raw coordinates of a Left Click in screen space\&.
 Returns the raw coordinates of a Right click in screen space 
 .SS "shared_ptr< \fBController\fP > Controller::Instance (void)\fC [static]\fP"
 Singleton function to get global instance of \fBController\fP\&. 
-.SS "void KillerEngine::Controller::KeyDown (Keys k)\fC [inline]\fP"
+.SS "void Controller::KeyDown (Keys k)"
 Used by \fBWinProgram\fP to set when a key is pressed down, based on system signals\&. 
 .PP
 \fBParameters:\fP
@@ -152,30 +154,12 @@ Used by \fBWinProgram\fP to set when a key is pressed down, based on system sign
 .RE
 .PP
 
-.SS "void KillerEngine::Controller::KeyUp (Keys k)\fC [inline]\fP"
+.SS "void Controller::KeyUp (Keys k)"
 Used by \fBWinProgram\fP to set when a key is no longer detected to be held down\&. 
 .PP
 \fBParameters:\fP
 .RS 4
 \fIk\fP Keys: Keycode for key that has been released\&. 
-.RE
-.PP
-
-.SS "void Controller::LeftMouseClick (const \fBKM::Vector\fP & coord)"
-Used by \fBWinProgram\fP to save the coordinates when a Left Mouse click is detected by the system\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIcoord\fP Vector: x,y position on the screen of the click\&. 
-.RE
-.PP
-
-.SS "void KillerEngine::Controller::RightMouseClick (const \fBKM::Vector\fP & coord)\fC [inline]\fP"
-Used by \fBWinProgram\fP to save the coordinates when a Right Mouse click is detected by the system\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIcoord\fP Vector: x\&.y position on the screen of the click 
 .RE
 .PP
 

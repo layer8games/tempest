@@ -1,11 +1,18 @@
 var searchData=
 [
-  ['last_5fattribute',['last_attribute',['../classrapidxml_1_1xml__node.html#a67db03d1568dc6891573210ddba61520',1,'rapidxml::xml_node']]],
-  ['last_5fnode',['last_node',['../classrapidxml_1_1xml__node.html#a524d427e32c72fba9de1857e02e82fa7',1,'rapidxml::xml_node']]],
-  ['lastchild',['LastChild',['../classtinyxml2_1_1_x_m_l_node.html#a9b8583a277e8e26f4cbbb5492786778e',1,'tinyxml2::XMLNode::LastChild()'],['../classtinyxml2_1_1_x_m_l_handle.html#a9d09f04435f0f2f7d0816b0198d0517b',1,'tinyxml2::XMLHandle::LastChild()']]],
-  ['lastchildelement',['LastChildElement',['../classtinyxml2_1_1_x_m_l_node.html#a173e9d1341bc56992e2d320a35936551',1,'tinyxml2::XMLNode::LastChildElement()'],['../classtinyxml2_1_1_x_m_l_handle.html#a42cccd0ce8b1ce704f431025e9f19e0c',1,'tinyxml2::XMLHandle::LastChildElement()']]],
-  ['leftmouseclick',['LeftMouseClick',['../class_killer_engine_1_1_controller.html#a03daa3da7ef0c8098eb838835b6f5275',1,'KillerEngine::Controller']]],
-  ['loadfile',['LoadFile',['../classtinyxml2_1_1_x_m_l_document.html#a2ebd4647a8af5fc6831b294ac26a150a',1,'tinyxml2::XMLDocument::LoadFile(const char *filename)'],['../classtinyxml2_1_1_x_m_l_document.html#a5f1d330fad44c52f3d265338dd2a6dc2',1,'tinyxml2::XMLDocument::LoadFile(FILE *)']]],
-  ['loadmodel',['LoadModel',['../class_killer_engine_1_1_game_object3_d.html#ad2bc3b57c8b2754f0f43efee0ac67d21',1,'KillerEngine::GameObject3D']]],
-  ['lookat',['LookAt',['../class_killer_math_1_1_matrix.html#a2d4123a752172351868805c869fad193',1,'KillerMath::Matrix']]]
+  ['setactivelevel',['SetActiveLevel',['../class_killer_engine_1_1_engine.html#a42b05bccc84e2bf48a7b8dcdcefacfad',1,'KillerEngine::Engine']]],
+  ['setdefaultmatrix',['SetDefaultMatrix',['../class_killer_engine_1_1_camera.html#a1cce2e4ff8005cd6f77bdd3bbe6cd98b',1,'KillerEngine::Camera']]],
+  ['seterror',['SetError',['../class_killer_engine_1_1_error_manager.html#a1985ec212295b58c27d0377978b348cc',1,'KillerEngine::ErrorManager']]],
+  ['setfpsview',['SetFPSView',['../class_killer_math_1_1_matrix.html#a21d7e1ac5227a6917432b69bf606b372',1,'KillerMath::Matrix']]],
+  ['setlookat',['SetLookAt',['../class_killer_math_1_1_matrix.html#a73ae0144cb295eaaf9e61e66467c9d0e',1,'KillerMath::Matrix']]],
+  ['setname',['SetName',['../class_killer_engine_1_1_font.html#aabd389a157142aff44c1d82b3797a362',1,'KillerEngine::Font']]],
+  ['setorthographic',['SetOrthographic',['../class_killer_engine_1_1_camera.html#a2a81d8b0ecf15683984f944739e5c48a',1,'KillerEngine::Camera']]],
+  ['setperspective',['SetPerspective',['../class_killer_engine_1_1_camera.html#ac111553c81da34e4d7c525bd852fccf5',1,'KillerEngine::Camera']]],
+  ['setrotate',['SetRotate',['../class_killer_math_1_1_matrix.html#afad968106d38cfa46e8dfd9962dee760',1,'KillerMath::Matrix']]],
+  ['setrotatex',['SetRotateX',['../class_killer_math_1_1_matrix.html#a9b6af5f9f58a0afa2750faa78b921f48',1,'KillerMath::Matrix']]],
+  ['setrotatey',['SetRotateY',['../class_killer_math_1_1_matrix.html#a1926f799c74b6592315692c0e0b57158',1,'KillerMath::Matrix']]],
+  ['setrotatez',['SetRotateZ',['../class_killer_math_1_1_matrix.html#ac93cef3b92eb8ab530002f9d9c8e1af0',1,'KillerMath::Matrix']]],
+  ['setscale',['SetScale',['../class_killer_math_1_1_matrix.html#a5d5a3dd16f088be005d5a80999b2c7e7',1,'KillerMath::Matrix::SetScale(F32 xVal, F32 yVal)'],['../class_killer_math_1_1_matrix.html#aa07834d4760812048e1393df236fb11e',1,'KillerMath::Matrix::SetScale(F32 xVal, F32 yVal, F32 zVal)'],['../class_killer_math_1_1_matrix.html#ae9cb924af541a54c96e16d3afaf9af80',1,'KillerMath::Matrix::SetScale(const Vector &amp;vec)']]],
+  ['settranslate',['SetTranslate',['../class_killer_math_1_1_matrix.html#a8b063b7ef8d6080bb4fe952af06f12a6',1,'KillerMath::Matrix::SetTranslate(F32 xVal, F32 yVal)'],['../class_killer_math_1_1_matrix.html#a29f7107daa001f85c23c5b85d512d613',1,'KillerMath::Matrix::SetTranslate(F32 xVal, F32 yVal, F32 zVal)'],['../class_killer_math_1_1_matrix.html#a46b765435a37bf5eed22b54c89a83e55',1,'KillerMath::Matrix::SetTranslate(const Vector &amp;vec)']]],
+  ['shutdown',['ShutDown',['../class_killer_engine_1_1_engine.html#aeb2929a81f40a12b16f07417be420530',1,'KillerEngine::Engine']]]
 ];

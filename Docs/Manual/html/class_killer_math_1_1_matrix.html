@@ -88,6 +88,7 @@ $(document).ready(function(){initNavTree('class_killer_math_1_1_matrix.html','')
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-types">Private Types</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_killer_math_1_1_matrix-members.html">List of all members</a>  </div>
@@ -117,52 +118,77 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a003d09f03ecb7db944793f55b0ee2020"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a215736bc189a6d58d52edaed5780ff4a"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; F32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a215736bc189a6d58d52edaed5780ff4a">GetElems</a> (void) const</td></tr>
 <tr class="separator:a215736bc189a6d58d52edaed5780ff4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51c3fcbb288e4b8b94a725813c286fd7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a51c3fcbb288e4b8b94a725813c286fd7">MakeOrthographic</a> (F32 width, F32 height, F32 depth, bool center=true)</td></tr>
-<tr class="separator:a51c3fcbb288e4b8b94a725813c286fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c40e49c11de1d58eb333359edea2965"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a6c40e49c11de1d58eb333359edea2965">MakePerspective</a> (F32 width, F32 height, F32 depth, bool center=true)</td></tr>
-<tr class="separator:a6c40e49c11de1d58eb333359edea2965"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb35ed527cf821c63c72930db39e891b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#aeb35ed527cf821c63c72930db39e891b">MakeOrthographic</a> (F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)</td></tr>
+<tr class="separator:aeb35ed527cf821c63c72930db39e891b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc6f94293e0244d787df481bcb8bc82b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#abc6f94293e0244d787df481bcb8bc82b">MakePerspective</a> (F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F32 farPlane)</td></tr>
 <tr class="separator:abc6f94293e0244d787df481bcb8bc82b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5af05dbbfc9292d2f54f9af076905b90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a5af05dbbfc9292d2f54f9af076905b90">Translate</a> (F32 xVal, F32 yVal)</td></tr>
-<tr class="separator:a5af05dbbfc9292d2f54f9af076905b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bf1102060cff753d6be8bb9181b5c65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a5bf1102060cff753d6be8bb9181b5c65">Translate</a> (F32 xVal, F32 yVal, F32 zVal)</td></tr>
-<tr class="separator:a5bf1102060cff753d6be8bb9181b5c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28362d4648bcecc52d0a18cb85f41d49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a28362d4648bcecc52d0a18cb85f41d49">Translate</a> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;vec)</td></tr>
-<tr class="separator:a28362d4648bcecc52d0a18cb85f41d49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b063b7ef8d6080bb4fe952af06f12a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a8b063b7ef8d6080bb4fe952af06f12a6">SetTranslate</a> (F32 xVal, F32 yVal)</td></tr>
+<tr class="separator:a8b063b7ef8d6080bb4fe952af06f12a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29f7107daa001f85c23c5b85d512d613"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a29f7107daa001f85c23c5b85d512d613">SetTranslate</a> (F32 xVal, F32 yVal, F32 zVal)</td></tr>
+<tr class="separator:a29f7107daa001f85c23c5b85d512d613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46b765435a37bf5eed22b54c89a83e55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a46b765435a37bf5eed22b54c89a83e55">SetTranslate</a> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;vec)</td></tr>
+<tr class="separator:a46b765435a37bf5eed22b54c89a83e55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a953c5c76b1893954eb73a206041f04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a5a953c5c76b1893954eb73a206041f04">AddTranslate</a> (F32 xVal, F32 yVal)</td></tr>
 <tr class="separator:a5a953c5c76b1893954eb73a206041f04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49c371f5c4bf016b67cb48644ce54a40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a49c371f5c4bf016b67cb48644ce54a40">AddTranslate</a> (F32 xVal, F32 yVal, F32 zVal)</td></tr>
 <tr class="separator:a49c371f5c4bf016b67cb48644ce54a40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e0f01eb9c27540d1803d0b99221f38c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a0e0f01eb9c27540d1803d0b99221f38c">AddTranslate</a> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;vec)</td></tr>
 <tr class="separator:a0e0f01eb9c27540d1803d0b99221f38c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32e43883318d991f57385d840727144c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a32e43883318d991f57385d840727144c">Scale</a> (F32 xVal, F32 yVal)</td></tr>
-<tr class="separator:a32e43883318d991f57385d840727144c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5173c29a27ac1017ae77bf10b8968529"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a5173c29a27ac1017ae77bf10b8968529">Scale</a> (F32 xVal, F32 yVal, F32 zVal)</td></tr>
-<tr class="separator:a5173c29a27ac1017ae77bf10b8968529"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba5165d1488906f71f664cc6515605c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#aba5165d1488906f71f664cc6515605c3">Scale</a> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;vec)</td></tr>
-<tr class="separator:aba5165d1488906f71f664cc6515605c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78654787cb265e3e7e4de2643f6852dd"><td class="memItemLeft" align="right" valign="top"><a id="a78654787cb265e3e7e4de2643f6852dd"></a>
+<a class="el" href="class_killer_math_1_1_vector.html">Vector</a>&#160;</td><td class="memItemRight" valign="bottom"><b>TransformInverse</b> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> vec) const</td></tr>
+<tr class="separator:a78654787cb265e3e7e4de2643f6852dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9b9a3945f849ff82f0f010a6c688885"><td class="memItemLeft" align="right" valign="top"><a id="af9b9a3945f849ff82f0f010a6c688885"></a>
+<a class="el" href="class_killer_math_1_1_vector.html">Vector</a>&#160;</td><td class="memItemRight" valign="bottom"><b>TransformDirection</b> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;vec) const</td></tr>
+<tr class="separator:af9b9a3945f849ff82f0f010a6c688885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab482a8fba87dc88e3c8a1fb8874b80cd"><td class="memItemLeft" align="right" valign="top"><a id="ab482a8fba87dc88e3c8a1fb8874b80cd"></a>
+<a class="el" href="class_killer_math_1_1_vector.html">Vector</a>&#160;</td><td class="memItemRight" valign="bottom"><b>TransformInverseDirection</b> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;vec) const</td></tr>
+<tr class="separator:ab482a8fba87dc88e3c8a1fb8874b80cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d5a3dd16f088be005d5a80999b2c7e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a5d5a3dd16f088be005d5a80999b2c7e7">SetScale</a> (F32 xVal, F32 yVal)</td></tr>
+<tr class="separator:a5d5a3dd16f088be005d5a80999b2c7e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa07834d4760812048e1393df236fb11e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#aa07834d4760812048e1393df236fb11e">SetScale</a> (F32 xVal, F32 yVal, F32 zVal)</td></tr>
+<tr class="separator:aa07834d4760812048e1393df236fb11e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9cb924af541a54c96e16d3afaf9af80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#ae9cb924af541a54c96e16d3afaf9af80">SetScale</a> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;vec)</td></tr>
+<tr class="separator:ae9cb924af541a54c96e16d3afaf9af80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4567d53bdd72d8a1380ca55cf9fb565b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a4567d53bdd72d8a1380ca55cf9fb565b">AddScale</a> (F32 xVal, F32 yVal)</td></tr>
 <tr class="separator:a4567d53bdd72d8a1380ca55cf9fb565b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7c5d4b8d4f4889c12e7859efeeea15d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#ad7c5d4b8d4f4889c12e7859efeeea15d">AddScale</a> (F32 xVal, F32 yVal, F32 zVal)</td></tr>
 <tr class="separator:ad7c5d4b8d4f4889c12e7859efeeea15d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdfa30d8610ac1dd7544a61f3aa06aa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#abdfa30d8610ac1dd7544a61f3aa06aa1">AddScale</a> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;vec)</td></tr>
 <tr class="separator:abdfa30d8610ac1dd7544a61f3aa06aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3e691336d707f55db2096d9eb77df96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#ad3e691336d707f55db2096d9eb77df96">RotateX</a> (F32 val)</td></tr>
-<tr class="separator:ad3e691336d707f55db2096d9eb77df96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b6af5f9f58a0afa2750faa78b921f48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a9b6af5f9f58a0afa2750faa78b921f48">SetRotateX</a> (F32 val)</td></tr>
+<tr class="separator:a9b6af5f9f58a0afa2750faa78b921f48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaabca4de52f878767fb86ba15f56b682"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#aaabca4de52f878767fb86ba15f56b682">AddRotateX</a> (F32 val)</td></tr>
 <tr class="separator:aaabca4de52f878767fb86ba15f56b682"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67accec66c6bb1c21ba42f76397d844d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a67accec66c6bb1c21ba42f76397d844d">RotateY</a> (F32 val)</td></tr>
-<tr class="separator:a67accec66c6bb1c21ba42f76397d844d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1926f799c74b6592315692c0e0b57158"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a1926f799c74b6592315692c0e0b57158">SetRotateY</a> (F32 val)</td></tr>
+<tr class="separator:a1926f799c74b6592315692c0e0b57158"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a682399a0fff6ce3a0fd272f210fad9fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a682399a0fff6ce3a0fd272f210fad9fb">AddRotateY</a> (F32 val)</td></tr>
 <tr class="separator:a682399a0fff6ce3a0fd272f210fad9fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e42c60d5c8ff2ddd44e39344069e159"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a2e42c60d5c8ff2ddd44e39344069e159">RotateZ</a> (F32 val)</td></tr>
-<tr class="separator:a2e42c60d5c8ff2ddd44e39344069e159"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac93cef3b92eb8ab530002f9d9c8e1af0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#ac93cef3b92eb8ab530002f9d9c8e1af0">SetRotateZ</a> (F32 val)</td></tr>
+<tr class="separator:ac93cef3b92eb8ab530002f9d9c8e1af0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f862615048905ec2f897243de006426"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a4f862615048905ec2f897243de006426">AddRotateZ</a> (F32 val)</td></tr>
 <tr class="separator:a4f862615048905ec2f897243de006426"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34b833eb147f7594d0e091c4373c040a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a34b833eb147f7594d0e091c4373c040a">Rotate</a> (F32 xVal, F32 yVal, F32 zVal)</td></tr>
-<tr class="separator:a34b833eb147f7594d0e091c4373c040a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afad968106d38cfa46e8dfd9962dee760"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#afad968106d38cfa46e8dfd9962dee760">SetRotate</a> (F32 xVal, F32 yVal, F32 zVal)</td></tr>
+<tr class="separator:afad968106d38cfa46e8dfd9962dee760"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48c5a11150503c7e1a5a5fb0ae50948f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a48c5a11150503c7e1a5a5fb0ae50948f">AddRotation</a> (F32 xVal, F32 yVal, F32 zVal)</td></tr>
 <tr class="separator:a48c5a11150503c7e1a5a5fb0ae50948f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af46f5c998e0ae789d1c6ccf358a7ca58"><td class="memItemLeft" align="right" valign="top"><a id="af46f5c998e0ae789d1c6ccf358a7ca58"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOrientation</b> (const <a class="el" href="class_killer_math_1_1_quaternion.html">Quaternion</a> &amp;q)</td></tr>
+<tr class="separator:af46f5c998e0ae789d1c6ccf358a7ca58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9abfcd26dfe94b63d05d54aeb4da9d9f"><td class="memItemLeft" align="right" valign="top"><a id="a9abfcd26dfe94b63d05d54aeb4da9d9f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetOrientationAndPosition</b> (const <a class="el" href="class_killer_math_1_1_quaternion.html">Quaternion</a> &amp;q, const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;v)</td></tr>
+<tr class="separator:a9abfcd26dfe94b63d05d54aeb4da9d9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b9c0d6eb4c97724e932be304c25bdc9"><td class="memItemLeft" align="right" valign="top"><a id="a7b9c0d6eb4c97724e932be304c25bdc9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetInverse</b> (void)</td></tr>
+<tr class="separator:a7b9c0d6eb4c97724e932be304c25bdc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a738c82c05cc84e6a1f0ec19806c45f0f"><td class="memItemLeft" align="right" valign="top"><a id="a738c82c05cc84e6a1f0ec19806c45f0f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetAsInverse</b> (const <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> &amp;mat)</td></tr>
+<tr class="separator:a738c82c05cc84e6a1f0ec19806c45f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2362fdb4a41be9a84d6ff850d94c65bb"><td class="memItemLeft" align="right" valign="top"><a id="a2362fdb4a41be9a84d6ff850d94c65bb"></a>
+<a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GetInverse</b> (void) const</td></tr>
+<tr class="separator:a2362fdb4a41be9a84d6ff850d94c65bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30699215eae909f49fad11fb4949f7fc"><td class="memItemLeft" align="right" valign="top"><a id="a30699215eae909f49fad11fb4949f7fc"></a>
+F32&#160;</td><td class="memItemRight" valign="bottom"><b>Determinate</b> (void) const</td></tr>
+<tr class="separator:a30699215eae909f49fad11fb4949f7fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ff5e9294ea82f529f5bb31c1b39367d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a1ff5e9294ea82f529f5bb31c1b39367d">MakeIdentity</a> (void)</td></tr>
 <tr class="separator:a1ff5e9294ea82f529f5bb31c1b39367d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a077757f722775e2641144e4d2197847e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a077757f722775e2641144e4d2197847e">Reset</a> (F32 val=0.0f)</td></tr>
@@ -171,20 +197,74 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:abaedae760f0ad9043afd89ee4137ccb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae26e16420b6995da62c7f2103fa91dd5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#ae26e16420b6995da62c7f2103fa91dd5">ComponentMulti</a> (const <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> &amp;M)</td></tr>
 <tr class="separator:ae26e16420b6995da62c7f2103fa91dd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d4123a752172351868805c869fad193"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a2d4123a752172351868805c869fad193">LookAt</a> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;cameraPos, const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;target, const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;up)</td></tr>
-<tr class="separator:a2d4123a752172351868805c869fad193"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4573572081d42b9d3d55b8d9ea7d73ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a4573572081d42b9d3d55b8d9ea7d73ef">FPSView</a> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;cameraPos, F32 pitch, F32 yaw)</td></tr>
-<tr class="separator:a4573572081d42b9d3d55b8d9ea7d73ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6da5c503cc76ba5cde42ceca411590d9"><td class="memItemLeft" align="right" valign="top"><a id="a6da5c503cc76ba5cde42ceca411590d9"></a>
+<a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Transform3x3</b> (const <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> &amp;mat) const</td></tr>
+<tr class="separator:a6da5c503cc76ba5cde42ceca411590d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a204312353234951d8d8ba3147a041329"><td class="memItemLeft" align="right" valign="top"><a id="a204312353234951d8d8ba3147a041329"></a>
+<a class="el" href="class_killer_math_1_1_vector.html">Vector</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Transform3x3</b> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;vec) const</td></tr>
+<tr class="separator:a204312353234951d8d8ba3147a041329"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73ae0144cb295eaaf9e61e66467c9d0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a73ae0144cb295eaaf9e61e66467c9d0e">SetLookAt</a> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;cameraPos, const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;target, const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;up)</td></tr>
+<tr class="separator:a73ae0144cb295eaaf9e61e66467c9d0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21d7e1ac5227a6917432b69bf606b372"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a21d7e1ac5227a6917432b69bf606b372">SetFPSView</a> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;cameraPos, F32 pitch, F32 yaw)</td></tr>
+<tr class="separator:a21d7e1ac5227a6917432b69bf606b372"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa9f0e80f2c56f57e10773f73354029a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#afa9f0e80f2c56f57e10773f73354029a">operator[]</a> (int i) const</td></tr>
 <tr class="separator:afa9f0e80f2c56f57e10773f73354029a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23b290a140300356a12510139fdf4c71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a23b290a140300356a12510139fdf4c71">operator[]</a> (int i)</td></tr>
 <tr class="separator:a23b290a140300356a12510139fdf4c71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3655359b1f9451cb7b589c3a9bc5c7f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a3655359b1f9451cb7b589c3a9bc5c7f0">operator=</a> (const <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> &amp;mat)</td></tr>
 <tr class="separator:a3655359b1f9451cb7b589c3a9bc5c7f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af36b762320602082b82e7b8b7d4a93c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#af36b762320602082b82e7b8b7d4a93c8">operator*</a> (const <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> &amp;mat)</td></tr>
-<tr class="separator:af36b762320602082b82e7b8b7d4a93c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53cf4caa3cb1f5d286618c3f550b1bc4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_killer_math_1_1_vector.html">Vector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a53cf4caa3cb1f5d286618c3f550b1bc4">operator*</a> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;vec)</td></tr>
-<tr class="separator:a53cf4caa3cb1f5d286618c3f550b1bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a0152c2f453d69a6b8001b47f0302e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#a0a0152c2f453d69a6b8001b47f0302e4">operator*</a> (const <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> &amp;mat) const</td></tr>
+<tr class="separator:a0a0152c2f453d69a6b8001b47f0302e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3260bdf95a729e2aba91688a1e45d1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_killer_math_1_1_vector.html">Vector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_math_1_1_matrix.html#ac3260bdf95a729e2aba91688a1e45d1c">operator*</a> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;vec) const</td></tr>
+<tr class="separator:ac3260bdf95a729e2aba91688a1e45d1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8c111783897fb4cb431b5c86a378698"><td class="memItemLeft" align="right" valign="top"><a id="aa8c111783897fb4cb431b5c86a378698"></a>
+<a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator/=</b> (F32 val)</td></tr>
+<tr class="separator:aa8c111783897fb4cb431b5c86a378698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a132190d771b8439ba4695abd36091bd5"><td class="memItemLeft" align="right" valign="top"><a id="a132190d771b8439ba4695abd36091bd5"></a>
+static <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Translate</b> (F32 xVal, F32 yVal)</td></tr>
+<tr class="separator:a132190d771b8439ba4695abd36091bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f425c7fbead6a6851b0bf541efc747e"><td class="memItemLeft" align="right" valign="top"><a id="a3f425c7fbead6a6851b0bf541efc747e"></a>
+static <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Translate</b> (F32 xVal, F32 yVal, F32 zVal)</td></tr>
+<tr class="separator:a3f425c7fbead6a6851b0bf541efc747e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5d2b45ae592cc3c3a81abefc9225c22"><td class="memItemLeft" align="right" valign="top"><a id="aa5d2b45ae592cc3c3a81abefc9225c22"></a>
+static <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Translate</b> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;vec)</td></tr>
+<tr class="separator:aa5d2b45ae592cc3c3a81abefc9225c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cbf1b39eaffd2c3070c14073b6cbc2d"><td class="memItemLeft" align="right" valign="top"><a id="a3cbf1b39eaffd2c3070c14073b6cbc2d"></a>
+static <a class="el" href="class_killer_math_1_1_vector.html">Vector</a>&#160;</td><td class="memItemRight" valign="bottom"><b>LocalToWorld</b> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;vec, const <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> &amp;mat)</td></tr>
+<tr class="separator:a3cbf1b39eaffd2c3070c14073b6cbc2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ace4ffc2012564e238a73ff981d5753"><td class="memItemLeft" align="right" valign="top"><a id="a4ace4ffc2012564e238a73ff981d5753"></a>
+static <a class="el" href="class_killer_math_1_1_vector.html">Vector</a>&#160;</td><td class="memItemRight" valign="bottom"><b>WorldToLocal</b> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;vec, const <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> &amp;mat)</td></tr>
+<tr class="separator:a4ace4ffc2012564e238a73ff981d5753"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2950ae7f1fc262740fd057dc3208aaf8"><td class="memItemLeft" align="right" valign="top"><a id="a2950ae7f1fc262740fd057dc3208aaf8"></a>
+static <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Scale</b> (F32 xVal, F32 yVal)</td></tr>
+<tr class="separator:a2950ae7f1fc262740fd057dc3208aaf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af78c2f536535be2dc20b74fab3ff9385"><td class="memItemLeft" align="right" valign="top"><a id="af78c2f536535be2dc20b74fab3ff9385"></a>
+static <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Scale</b> (F32 xVal, F32 yVal, F32 zVal)</td></tr>
+<tr class="separator:af78c2f536535be2dc20b74fab3ff9385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e7e62978c8128818b34dd43b50b96fe"><td class="memItemLeft" align="right" valign="top"><a id="a5e7e62978c8128818b34dd43b50b96fe"></a>
+static <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Scale</b> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;vec)</td></tr>
+<tr class="separator:a5e7e62978c8128818b34dd43b50b96fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35dd59ddfbfbaa278f0780ea2eac4908"><td class="memItemLeft" align="right" valign="top"><a id="a35dd59ddfbfbaa278f0780ea2eac4908"></a>
+static <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RotateX</b> (F32 val)</td></tr>
+<tr class="separator:a35dd59ddfbfbaa278f0780ea2eac4908"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6743036174e4994263a726afb85e433"><td class="memItemLeft" align="right" valign="top"><a id="ac6743036174e4994263a726afb85e433"></a>
+static <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RotateY</b> (F32 val)</td></tr>
+<tr class="separator:ac6743036174e4994263a726afb85e433"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0c4ed597ad5d12c709a64dd4056bd61"><td class="memItemLeft" align="right" valign="top"><a id="ae0c4ed597ad5d12c709a64dd4056bd61"></a>
+static <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RotateZ</b> (F32 val)</td></tr>
+<tr class="separator:ae0c4ed597ad5d12c709a64dd4056bd61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d5507cd908b1cf71795c2ae3b136278"><td class="memItemLeft" align="right" valign="top"><a id="a3d5507cd908b1cf71795c2ae3b136278"></a>
+static F32&#160;</td><td class="memItemRight" valign="bottom"><b>Determinate3x3</b> (<a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;col1, <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;col2, <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;col3)</td></tr>
+<tr class="separator:a3d5507cd908b1cf71795c2ae3b136278"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9f3e40fe5a7ff97e940084c7cad6513"><td class="memItemLeft" align="right" valign="top"><a id="ab9f3e40fe5a7ff97e940084c7cad6513"></a>
+static <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>LookAt</b> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;cameraPos, const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;target, const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;up)</td></tr>
+<tr class="separator:ab9f3e40fe5a7ff97e940084c7cad6513"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79f6af62a0de14970a0a6abcf8bd6583"><td class="memItemLeft" align="right" valign="top"><a id="a79f6af62a0de14970a0a6abcf8bd6583"></a>
+static <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><b>FPSView</b> (const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;cameraPos, F32 pitch, F32 yaw)</td></tr>
+<tr class="separator:a79f6af62a0de14970a0a6abcf8bd6583"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
 Private Types</h2></td></tr>
@@ -394,10 +474,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates rotation around the x axis without resetting other values. </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000006">Bug:</a></b></dt><dd>Completely untested and probably not working at all. </dd></dl>
+<p>Creates rotation around the x axis without resetting other values. </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000002">Bug:</a></b></dt><dd>Completely untested and probably not working at all. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>F32. Degree of rotation around x axis. Calls DegreeToRadian() </td></tr>
+    <tr><td class="paramname">x</td><td>F32. Degree of rotation around x axis. Calls RADIAN() </td></tr>
   </table>
   </dd>
 </dl>
@@ -419,10 +499,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates rotation around the y axis without resetting other values. </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000008">Bug:</a></b></dt><dd>Completely untested and probably not working at all. </dd></dl>
+<p>Creates rotation around the y axis without resetting other values. </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000004">Bug:</a></b></dt><dd>Completely untested and probably not working at all. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">y</td><td>F32. Degree of rotation around y axis. Calls DegreeToRadian() </td></tr>
+    <tr><td class="paramname">y</td><td>F32. Degree of rotation around y axis. Calls RADIAN() </td></tr>
   </table>
   </dd>
 </dl>
@@ -444,10 +524,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates rotation around the z axis without resetting other values. </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000010">Bug:</a></b></dt><dd>Completely untested and probably not working at all. </dd></dl>
+<p>Creates rotation around the z axis without resetting other values. </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000006">Bug:</a></b></dt><dd>Completely untested and probably not working at all. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">z</td><td>F32. Degree of rotation around z axis. Calls DegreeToRadian() </td></tr>
+    <tr><td class="paramname">z</td><td>F32. Degree of rotation around z axis. Calls RADIAN() </td></tr>
   </table>
   </dd>
 </dl>
@@ -485,12 +565,12 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates rotation around the x, y and z axis, in that order, without resetting other values. </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000012">Bug:</a></b></dt><dd>Not working at all. The math is wrong, and rotations are not working in general. </dd></dl>
+<p>Creates rotation around the x, y and z axis, in that order, without resetting other values. </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000008">Bug:</a></b></dt><dd>Not working at all. The math is wrong, and rotations are not working in general. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>F32. Degree of rotation around the x axis. Calls DegreeToRadian() </td></tr>
-    <tr><td class="paramname">y</td><td>F32. Degree of rotation around the y axis. Calls DegreeToRadian() </td></tr>
-    <tr><td class="paramname">z</td><td>F32. Degree of rotation around the z axis. Calls DegreeToRadian() </td></tr>
+    <tr><td class="paramname">x</td><td>F32. Degree of rotation around the x axis. Calls RADIAN() </td></tr>
+    <tr><td class="paramname">y</td><td>F32. Degree of rotation around the y axis. Calls RADIAN() </td></tr>
+    <tr><td class="paramname">z</td><td>F32. Degree of rotation around the z axis. Calls RADIAN() </td></tr>
   </table>
   </dd>
 </dl>
@@ -713,48 +793,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a4573572081d42b9d3d55b8d9ea7d73ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4573572081d42b9d3d55b8d9ea7d73ef">&#9670;&nbsp;</a></span>FPSView()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Matrix::FPSView </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;&#160;</td>
-          <td class="paramname"><em>cameraPos</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">F32&#160;</td>
-          <td class="paramname"><em>pitch</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">F32&#160;</td>
-          <td class="paramname"><em>yaw</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Uses Euler angles to compute a view matrix from the world position. This assumes a Right Handed Coordinate system. This means that the camera, by default at 0.0 is looking down the -z axis. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cameraPos</td><td><a class="el" href="class_killer_math_1_1_vector.html">Vector</a>&amp;. The position of the camera in world space. Can be thought of as the eye. </td></tr>
-    <tr><td class="paramname">pitch</td><td>F32. Must be between -90 and 90. An assert checks for this. </td></tr>
-    <tr><td class="paramname">yaw</td><td>F32. Must be between 0 and 360. An assert checks for thisl </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="a215736bc189a6d58d52edaed5780ff4a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a215736bc189a6d58d52edaed5780ff4a">&#9670;&nbsp;</a></span>GetElems()</h2>
 
@@ -771,48 +809,6 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Return the array containing all the elements. </p>
-
-</div>
-</div>
-<a id="a2d4123a752172351868805c869fad193"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d4123a752172351868805c869fad193">&#9670;&nbsp;</a></span>LookAt()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Matrix::LookAt </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;&#160;</td>
-          <td class="paramname"><em>cameraPos</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;&#160;</td>
-          <td class="paramname"><em>target</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;&#160;</td>
-          <td class="paramname"><em>up</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Creates a view matrix from the world position. Will set the view to "look at" the specified point. This assumes a Right Handed Coordinate system. This means that the camera, by default at 0.0 is looking down the -z axis. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cameraPos</td><td><a class="el" href="class_killer_math_1_1_vector.html">Vector</a>&amp;. The world position of the camera. Can be thought of as the eye. </td></tr>
-    <tr><td class="paramname">target</td><td><a class="el" href="class_killer_math_1_1_vector.html">Vector</a>&amp;. The target point to "look at". </td></tr>
-    <tr><td class="paramname">up</td><td><a class="el" href="class_killer_math_1_1_vector.html">Vector</a>&amp;. The direction of UP space in the coordinate scheme. could be +y, for example. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -843,8 +839,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a51c3fcbb288e4b8b94a725813c286fd7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51c3fcbb288e4b8b94a725813c286fd7">&#9670;&nbsp;</a></span>MakeOrthographic()</h2>
+<a id="aeb35ed527cf821c63c72930db39e891b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb35ed527cf821c63c72930db39e891b">&#9670;&nbsp;</a></span>MakeOrthographic()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -853,25 +849,37 @@ Private Attributes</h2></td></tr>
           <td class="memname">void Matrix::MakeOrthographic </td>
           <td>(</td>
           <td class="paramtype">F32&#160;</td>
-          <td class="paramname"><em>width</em>, </td>
+          <td class="paramname"><em>left</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">F32&#160;</td>
-          <td class="paramname"><em>height</em>, </td>
+          <td class="paramname"><em>right</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">F32&#160;</td>
-          <td class="paramname"><em>depth</em>, </td>
+          <td class="paramname"><em>bottom</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>center</em> = <code>true</code>&#160;</td>
+          <td class="paramtype">F32&#160;</td>
+          <td class="paramname"><em>top</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">F32&#160;</td>
+          <td class="paramname"><em>nearPlane</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">F32&#160;</td>
+          <td class="paramname"><em>farPlane</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -892,58 +900,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a6c40e49c11de1d58eb333359edea2965"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c40e49c11de1d58eb333359edea2965">&#9670;&nbsp;</a></span>MakePerspective() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Matrix::MakePerspective </td>
-          <td>(</td>
-          <td class="paramtype">F32&#160;</td>
-          <td class="paramname"><em>width</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">F32&#160;</td>
-          <td class="paramname"><em>height</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">F32&#160;</td>
-          <td class="paramname"><em>depth</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>center</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Resets the <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a>, then sets the values up as a Perspective projection, using the more standard equation. Calls MakeIdenity(). The viewport values are usually based on the dimensions of the window, but could be made smaller. </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000004">Bug:</a></b></dt><dd>I cannot get this to work for the life of me. I am not sure why, the math all looks right but the function wont work. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">width</td><td>F32. Width of viewport. </td></tr>
-    <tr><td class="paramname">height</td><td>F32. Height of viewport. </td></tr>
-    <tr><td class="paramname">depth</td><td>F32. Depfth of viewport. </td></tr>
-    <tr><td class="paramname">center</td><td>bool. True by default. If true, the origin of the view port will be the middle of the screen. Otherwise it will be the bottom left corner of the screen. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="abc6f94293e0244d787df481bcb8bc82b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc6f94293e0244d787df481bcb8bc82b">&#9670;&nbsp;</a></span>MakePerspective() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#abc6f94293e0244d787df481bcb8bc82b">&#9670;&nbsp;</a></span>MakePerspective()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -991,8 +949,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af36b762320602082b82e7b8b7d4a93c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af36b762320602082b82e7b8b7d4a93c8">&#9670;&nbsp;</a></span>operator*() <span class="overload">[1/2]</span></h2>
+<a id="a0a0152c2f453d69a6b8001b47f0302e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a0152c2f453d69a6b8001b47f0302e4">&#9670;&nbsp;</a></span>operator*() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1002,7 +960,7 @@ Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> &amp;&#160;</td>
           <td class="paramname"><em>mat</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1015,8 +973,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a53cf4caa3cb1f5d286618c3f550b1bc4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a53cf4caa3cb1f5d286618c3f550b1bc4">&#9670;&nbsp;</a></span>operator*() <span class="overload">[2/2]</span></h2>
+<a id="ac3260bdf95a729e2aba91688a1e45d1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3260bdf95a729e2aba91688a1e45d1c">&#9670;&nbsp;</a></span>operator*() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1026,7 +984,7 @@ Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;&#160;</td>
           <td class="paramname"><em>vec</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1146,14 +1104,98 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a34b833eb147f7594d0e091c4373c040a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34b833eb147f7594d0e091c4373c040a">&#9670;&nbsp;</a></span>Rotate()</h2>
+<a id="a21d7e1ac5227a6917432b69bf606b372"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21d7e1ac5227a6917432b69bf606b372">&#9670;&nbsp;</a></span>SetFPSView()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Matrix::Rotate </td>
+          <td class="memname">void Matrix::SetFPSView </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;&#160;</td>
+          <td class="paramname"><em>cameraPos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">F32&#160;</td>
+          <td class="paramname"><em>pitch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">F32&#160;</td>
+          <td class="paramname"><em>yaw</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Uses Euler angles to compute a view matrix from the world position. This assumes a Right Handed Coordinate system. This means that the camera, by default at 0.0 is looking down the -z axis. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cameraPos</td><td><a class="el" href="class_killer_math_1_1_vector.html">Vector</a>&amp;. The position of the camera in world space. Can be thought of as the eye. </td></tr>
+    <tr><td class="paramname">pitch</td><td>F32. Must be between -90 and 90. An assert checks for this. </td></tr>
+    <tr><td class="paramname">yaw</td><td>F32. Must be between 0 and 360. An assert checks for thisl </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a73ae0144cb295eaaf9e61e66467c9d0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73ae0144cb295eaaf9e61e66467c9d0e">&#9670;&nbsp;</a></span>SetLookAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Matrix::SetLookAt </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;&#160;</td>
+          <td class="paramname"><em>cameraPos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;&#160;</td>
+          <td class="paramname"><em>target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;&#160;</td>
+          <td class="paramname"><em>up</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates a view matrix from the world position. Will set the view to "look at" the specified point. This assumes a Right Handed Coordinate system. This means that the camera, by default at 0.0 is looking down the -z axis. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cameraPos</td><td><a class="el" href="class_killer_math_1_1_vector.html">Vector</a>&amp;. The world position of the camera. Can be thought of as the eye. </td></tr>
+    <tr><td class="paramname">target</td><td><a class="el" href="class_killer_math_1_1_vector.html">Vector</a>&amp;. The target point to "look at". </td></tr>
+    <tr><td class="paramname">up</td><td><a class="el" href="class_killer_math_1_1_vector.html">Vector</a>&amp;. The direction of UP space in the coordinate scheme. could be +y, for example. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afad968106d38cfa46e8dfd9962dee760"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afad968106d38cfa46e8dfd9962dee760">&#9670;&nbsp;</a></span>SetRotate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Matrix::SetRotate </td>
           <td>(</td>
           <td class="paramtype">F32&#160;</td>
           <td class="paramname"><em>xVal</em>, </td>
@@ -1177,26 +1219,26 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Resets the <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> and creates an <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> which will perform a rotation around the x, y and z axis in that order. Calls <a class="el" href="class_killer_math_1_1_matrix.html#a1ff5e9294ea82f529f5bb31c1b39367d">MakeIdentity()</a> </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000011">Bug:</a></b></dt><dd>Not working at all. The math is wrong, and rotations are not working in general. </dd></dl>
+<p>Resets the <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> and creates an <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> which will perform a rotation around the x, y and z axis in that order. Calls <a class="el" href="class_killer_math_1_1_matrix.html#a1ff5e9294ea82f529f5bb31c1b39367d">MakeIdentity()</a> </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000007">Bug:</a></b></dt><dd>Not working at all. The math is wrong, and rotations are not working in general. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>F32. Degree of rotation around the x axis. Calls DegreeToRadian() </td></tr>
-    <tr><td class="paramname">y</td><td>F32. Degree of rotation around the y axis. Calls DegreeToRadian() </td></tr>
-    <tr><td class="paramname">z</td><td>F32. Degree of rotation around the z axis. Calls DegreeToRadian() </td></tr>
+    <tr><td class="paramname">x</td><td>F32. Degree of rotation around the x axis. Calls RADIAN() </td></tr>
+    <tr><td class="paramname">y</td><td>F32. Degree of rotation around the y axis. Calls RADIAN() </td></tr>
+    <tr><td class="paramname">z</td><td>F32. Degree of rotation around the z axis. Calls RADIAN() </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="ad3e691336d707f55db2096d9eb77df96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3e691336d707f55db2096d9eb77df96">&#9670;&nbsp;</a></span>RotateX()</h2>
+<a id="a9b6af5f9f58a0afa2750faa78b921f48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b6af5f9f58a0afa2750faa78b921f48">&#9670;&nbsp;</a></span>SetRotateX()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Matrix::RotateX </td>
+          <td class="memname">void Matrix::SetRotateX </td>
           <td>(</td>
           <td class="paramtype">F32&#160;</td>
           <td class="paramname"><em>val</em></td><td>)</td>
@@ -1204,24 +1246,24 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Resets <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> and creates rotation around the x axis. Call MakeIdentiy(). </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000005">Bug:</a></b></dt><dd>This is not working at all. </dd></dl>
+<p>Resets <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> and creates rotation around the x axis. Call MakeIdentiy(). </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000001">Bug:</a></b></dt><dd>This is not working at all. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>F32. Degree of rotation around x axis. Calls DegreeToRadian() </td></tr>
+    <tr><td class="paramname">x</td><td>F32. Degree of rotation around x axis. Calls RADIAN() </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a67accec66c6bb1c21ba42f76397d844d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67accec66c6bb1c21ba42f76397d844d">&#9670;&nbsp;</a></span>RotateY()</h2>
+<a id="a1926f799c74b6592315692c0e0b57158"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1926f799c74b6592315692c0e0b57158">&#9670;&nbsp;</a></span>SetRotateY()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Matrix::RotateY </td>
+          <td class="memname">void Matrix::SetRotateY </td>
           <td>(</td>
           <td class="paramtype">F32&#160;</td>
           <td class="paramname"><em>val</em></td><td>)</td>
@@ -1229,24 +1271,24 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Resets <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> and creates rotation around the y axis. Call MakeIdentiy(). </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000007">Bug:</a></b></dt><dd>This is not working at all. </dd></dl>
+<p>Resets <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> and creates rotation around the y axis. Call MakeIdentiy(). </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000003">Bug:</a></b></dt><dd>This is not working at all. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">y</td><td>F32. Degree of rotation around y axis. Calls DegreeToRadian() </td></tr>
+    <tr><td class="paramname">y</td><td>F32. Degree of rotation around y axis. Calls RADIAN() </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a2e42c60d5c8ff2ddd44e39344069e159"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e42c60d5c8ff2ddd44e39344069e159">&#9670;&nbsp;</a></span>RotateZ()</h2>
+<a id="ac93cef3b92eb8ab530002f9d9c8e1af0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac93cef3b92eb8ab530002f9d9c8e1af0">&#9670;&nbsp;</a></span>SetRotateZ()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Matrix::RotateZ </td>
+          <td class="memname">void Matrix::SetRotateZ </td>
           <td>(</td>
           <td class="paramtype">F32&#160;</td>
           <td class="paramname"><em>val</em></td><td>)</td>
@@ -1254,24 +1296,24 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Resets <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> and creates rotation around the z axis. Call MakeIdentiy(). </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000009">Bug:</a></b></dt><dd>This is not working at all. </dd></dl>
+<p>Resets <a class="el" href="class_killer_math_1_1_matrix.html">Matrix</a> and creates rotation around the z axis. Call MakeIdentiy(). </p><dl class="bug"><dt><b><a class="el" href="bug.html#_bug000005">Bug:</a></b></dt><dd>This is not working at all. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">z</td><td>F32. Degree of rotation around z axis. Calls DegreeToRadian() </td></tr>
+    <tr><td class="paramname">z</td><td>F32. Degree of rotation around z axis. Calls RADIAN() </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a32e43883318d991f57385d840727144c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32e43883318d991f57385d840727144c">&#9670;&nbsp;</a></span>Scale() <span class="overload">[1/3]</span></h2>
+<a id="a5d5a3dd16f088be005d5a80999b2c7e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d5a3dd16f088be005d5a80999b2c7e7">&#9670;&nbsp;</a></span>SetScale() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Matrix::Scale </td>
+          <td class="memname">void Matrix::SetScale </td>
           <td>(</td>
           <td class="paramtype">F32&#160;</td>
           <td class="paramname"><em>xVal</em>, </td>
@@ -1299,14 +1341,14 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5173c29a27ac1017ae77bf10b8968529"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5173c29a27ac1017ae77bf10b8968529">&#9670;&nbsp;</a></span>Scale() <span class="overload">[2/3]</span></h2>
+<a id="aa07834d4760812048e1393df236fb11e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa07834d4760812048e1393df236fb11e">&#9670;&nbsp;</a></span>SetScale() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Matrix::Scale </td>
+          <td class="memname">void Matrix::SetScale </td>
           <td>(</td>
           <td class="paramtype">F32&#160;</td>
           <td class="paramname"><em>xVal</em>, </td>
@@ -1341,14 +1383,14 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aba5165d1488906f71f664cc6515605c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba5165d1488906f71f664cc6515605c3">&#9670;&nbsp;</a></span>Scale() <span class="overload">[3/3]</span></h2>
+<a id="ae9cb924af541a54c96e16d3afaf9af80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9cb924af541a54c96e16d3afaf9af80">&#9670;&nbsp;</a></span>SetScale() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Matrix::Scale </td>
+          <td class="memname">void Matrix::SetScale </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;&#160;</td>
           <td class="paramname"><em>vec</em></td><td>)</td>
@@ -1360,14 +1402,14 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5af05dbbfc9292d2f54f9af076905b90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5af05dbbfc9292d2f54f9af076905b90">&#9670;&nbsp;</a></span>Translate() <span class="overload">[1/3]</span></h2>
+<a id="a8b063b7ef8d6080bb4fe952af06f12a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b063b7ef8d6080bb4fe952af06f12a6">&#9670;&nbsp;</a></span>SetTranslate() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Matrix::Translate </td>
+          <td class="memname">void Matrix::SetTranslate </td>
           <td>(</td>
           <td class="paramtype">F32&#160;</td>
           <td class="paramname"><em>xVal</em>, </td>
@@ -1395,14 +1437,14 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a5bf1102060cff753d6be8bb9181b5c65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5bf1102060cff753d6be8bb9181b5c65">&#9670;&nbsp;</a></span>Translate() <span class="overload">[2/3]</span></h2>
+<a id="a29f7107daa001f85c23c5b85d512d613"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29f7107daa001f85c23c5b85d512d613">&#9670;&nbsp;</a></span>SetTranslate() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Matrix::Translate </td>
+          <td class="memname">void Matrix::SetTranslate </td>
           <td>(</td>
           <td class="paramtype">F32&#160;</td>
           <td class="paramname"><em>xVal</em>, </td>
@@ -1437,14 +1479,14 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a28362d4648bcecc52d0a18cb85f41d49"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28362d4648bcecc52d0a18cb85f41d49">&#9670;&nbsp;</a></span>Translate() <span class="overload">[3/3]</span></h2>
+<a id="a46b765435a37bf5eed22b54c89a83e55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46b765435a37bf5eed22b54c89a83e55">&#9670;&nbsp;</a></span>SetTranslate() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Matrix::Translate </td>
+          <td class="memname">void Matrix::SetTranslate </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector.html">Vector</a> &amp;&#160;</td>
           <td class="paramname"><em>vec</em></td><td>)</td>

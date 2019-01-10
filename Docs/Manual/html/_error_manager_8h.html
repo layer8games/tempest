@@ -120,19 +120,20 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:a38b3f7789f5579a6cbc14d3875ddaa7d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7d">KillerEngine::ErrorCode</a> { <br />
-&#160;&#160;<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7da4d815a5b0f33590462d3a6e5f629c9c5">KillerEngine::EC_NoError</a> = 0, 
-<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7da63ea36f6e67d466b9f3cc347a6b7d6b7">KillerEngine::EC_Unknown</a>, 
-<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7da9249930958fb8b8faf710732a3ffe62d">KillerEngine::EC_Game</a>, 
-<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7dada3d29c62e398c363b673ccd6dff2824">KillerEngine::EC_Engine</a>, 
+&#160;&#160;<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7da78fc99d152f669af3185622f96635a8d">KillerEngine::NOT_ERROR</a>, 
+<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7dadd0ce26667f4c3f9a68d68a33a84de58">KillerEngine::UNKNOWN_ERROR</a>, 
+<b>APPLICATION</b>, 
+<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7daa6317ce8450f383d1987f051ccf9cf71">KillerEngine::ENGINE</a>, 
 <br />
-&#160;&#160;<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7da26ad115516331b1093d16e34e6eea9e3">KillerEngine::EC_Physics</a>, 
-<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7daa75ea085db4293c4e065b969b03164e3">KillerEngine::EC_Windows</a>, 
-<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7da5e1ba80a304acd7b7dd988bbbfc19b50">KillerEngine::EC_OpenGL</a>, 
-<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7da998890158cb400ff24cd9c0f664dd5b9">KillerEngine::EC_OpenGL_Shader</a>, 
+&#160;&#160;<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7da2d6acc572ed92d19c7aa2475023dbe7c">KillerEngine::PHYSICS</a>, 
+<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7dafae02e774ecb52ea1f40ad73b2304ba0">KillerEngine::WINDOWS</a>, 
+<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7da114a942a720b274436b032ce03096fae">KillerEngine::OPENGL</a>, 
+<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7dae5104f799b6f2ac5fce275d362e21687">KillerEngine::SHADER</a>, 
 <br />
-&#160;&#160;<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7da0f000e14997d23353db7e9319fbc20d0">KillerEngine::EC_DirectInput</a>, 
-<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7da17e561ab8ae1c6e20619eeb2b5df339a">KillerEngine::EC_TextureManager</a>, 
-<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7dabc673515d8fad3baaed7029d48944254">KillerEngine::EC_GameObject</a>
+&#160;&#160;<b>GLFW</b>, 
+<b>TEXTURE_MANAGER</b>, 
+<b>GAMEOBJECT</b>, 
+<b>FREETYPE</b>
 <br />
  }</td></tr>
 <tr class="separator:a38b3f7789f5579a6cbc14d3875ddaa7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,27 +152,19 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 <p>Error codes that are used to give a hint as to where to code that is throwing the error is written. These are disaplyed to the user in a pop up window when the end application is run. These are paired with a more detailed message when the end error is set. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7da4d815a5b0f33590462d3a6e5f629c9c5"></a>EC_NoError&#160;</td><td class="fielddoc"><p>Default value. Shouldn't ever be used. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7da78fc99d152f669af3185622f96635a8d"></a>NOT_ERROR&#160;</td><td class="fielddoc"><p>Default value. Shouldn't ever be used. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7da63ea36f6e67d466b9f3cc347a6b7d6b7"></a>EC_Unknown&#160;</td><td class="fielddoc"><p>Fall through code, indicates an error in the setting of an error. </p>
+<tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7dadd0ce26667f4c3f9a68d68a33a84de58"></a>UNKNOWN_ERROR&#160;</td><td class="fielddoc"><p>Fall through code, indicates an error in the setting of an error. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7da9249930958fb8b8faf710732a3ffe62d"></a>EC_Game&#160;</td><td class="fielddoc"><p>Indicates the error is in the end application, or the game, not the engine. </p>
+<tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7daa6317ce8450f383d1987f051ccf9cf71"></a>ENGINE&#160;</td><td class="fielddoc"><p>Indicates the error is in the engine's main code, not very specific. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7dada3d29c62e398c363b673ccd6dff2824"></a>EC_Engine&#160;</td><td class="fielddoc"><p>Indicates the error is in the engine's main code, not very specific. </p>
+<tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7da2d6acc572ed92d19c7aa2475023dbe7c"></a>PHYSICS&#160;</td><td class="fielddoc"><p>Indicates the error is in the KillerPhysics namespace. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7da26ad115516331b1093d16e34e6eea9e3"></a>EC_Physics&#160;</td><td class="fielddoc"><p>Indicates the error is in the KillerPhysics namespace. </p>
+<tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7dafae02e774ecb52ea1f40ad73b2304ba0"></a>WINDOWS&#160;</td><td class="fielddoc"><p>Indicates that the error is related to the windowing system. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7daa75ea085db4293c4e065b969b03164e3"></a>EC_Windows&#160;</td><td class="fielddoc"><p>Indicates that the error is related to the windowing system. </p>
+<tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7da114a942a720b274436b032ce03096fae"></a>OPENGL&#160;</td><td class="fielddoc"><p>Indicates that the error is in OpenGL related code. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7da5e1ba80a304acd7b7dd988bbbfc19b50"></a>EC_OpenGL&#160;</td><td class="fielddoc"><p>Indicates that the error is in OpenGL related code. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7da998890158cb400ff24cd9c0f664dd5b9"></a>EC_OpenGL_Shader&#160;</td><td class="fielddoc"><p>Indicates that the error is caused by OpenGL shader compilation. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7da0f000e14997d23353db7e9319fbc20d0"></a>EC_DirectInput&#160;</td><td class="fielddoc"><p>Depricated. Indicates that the error is with the DirectInput setup. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7da17e561ab8ae1c6e20619eeb2b5df339a"></a>EC_TextureManager&#160;</td><td class="fielddoc"><p>Indicates that the error occured when trying to load a texture into memory. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7dabc673515d8fad3baaed7029d48944254"></a>EC_GameObject&#160;</td><td class="fielddoc"><p>Indicates that the issue is in a game object specifically. </p>
+<tr><td class="fieldname"><a id="a38b3f7789f5579a6cbc14d3875ddaa7dae5104f799b6f2ac5fce275d362e21687"></a>SHADER&#160;</td><td class="fielddoc"><p>Indicates that the error is caused by OpenGL shader compilation. </p>
 </td></tr>
 </table>
 

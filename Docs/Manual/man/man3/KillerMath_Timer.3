@@ -1,4 +1,4 @@
-.TH "KillerMath::Timer" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Timer" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,22 +10,28 @@ KillerMath::Timer
 
 .in +1c
 .ti -1c
+.RI "void \fBSetClamp\fP (bool state)"
+.br
+.ti -1c
+.RI "bool \fBGetClamp\fP (void) const"
+.br
+.ti -1c
 .RI "void \fBSetPaused\fP (bool paused)"
 .br
 .ti -1c
-.RI "bool \fBGetPaused\fP (void)"
+.RI "bool \fBGetPaused\fP (void) const"
 .br
 .ti -1c
 .RI "void \fBSetTimeScale\fP (F32 scale)"
 .br
 .ti -1c
-.RI "F32 \fBGetTimeScale\fP (void)"
+.RI "F32 \fBGetTimeScale\fP (void) const"
 .br
 .ti -1c
-.RI "F32 \fBDeltaTime\fP (void)"
+.RI "real \fBDeltaTime\fP (void) const"
 .br
 .ti -1c
-.RI "F64 \fBTotalTime\fP (void)"
+.RI "F64 \fBTotalTime\fP (void) const"
 .br
 .ti -1c
 .RI "void \fBUpdate\fP (void)"
@@ -41,42 +47,26 @@ KillerMath::Timer
 .RI "static shared_ptr< \fBTimer\fP > \fBInstance\fP (void)"
 .br
 .in -1c
-.SS "Private Member Functions"
-
-.in +1c
-.ti -1c
-.RI "U64 \fB_SecondsToCycles\fP (F32 timeSeconds)"
-.br
-.ti -1c
-.RI "F32 \fB_CyclesToSeconds\fP (U64 timeCycles)"
-.br
-.ti -1c
-.RI "U64 \fB_QueryHiResTimer\fP (void)"
-.br
-.ti -1c
-.RI "F32 \fB_QueryFrequency\fP (void)"
-.br
-.in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
-.RI "F32 \fB_deltaTime\fP"
+.RI "bool \fB_clamp\fP"
 .br
 .ti -1c
-.RI "F32 \fB_timeScale\fP"
+.RI "real \fB_deltaTime\fP"
+.br
+.ti -1c
+.RI "real \fB_timeScale\fP"
 .br
 .ti -1c
 .RI "F64 \fB_totalTime\fP"
 .br
 .ti -1c
-.RI "U64 \fB_pastCycles\fP"
+.RI "F64 \fB_pastTime\fP"
 .br
 .ti -1c
-.RI "U64 \fB_curCycles\fP"
-.br
-.ti -1c
-.RI "F32 \fB_frequency\fP"
+.RI "F64 \fB_currentTime\fP"
 .br
 .ti -1c
 .RI "bool \fB_paused\fP"

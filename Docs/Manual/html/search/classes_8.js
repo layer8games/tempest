@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['header',['header',['../structrapidxml_1_1memory__pool_1_1header.html',1,'rapidxml::memory_pool']]]
+  ['matrix',['Matrix',['../class_killer_math_1_1_matrix.html',1,'KillerMath']]],
+  ['matrix4',['Matrix4',['../class_killer_math_1_1_matrix4.html',1,'KillerMath']]]
 ];

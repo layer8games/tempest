@@ -1,4 +1,4 @@
-.TH "KillerEngine::EnvironmentObject" 3 "Thu Aug 9 2018" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::EnvironmentObject" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -9,7 +9,7 @@ KillerEngine::EnvironmentObject
 .PP
 \fC#include <EnvironmentObject\&.h>\fP
 .PP
-Inherits \fBKillerEngine::GameObject2D\fP\&.
+Inherits \fBKillerEngine::GameObject\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
@@ -17,7 +17,7 @@ Inherits \fBKillerEngine::GameObject2D\fP\&.
 .RI "\fBEnvironmentObject\fP (void)"
 .br
 .ti -1c
-.RI "\fBEnvironmentObject\fP (const \fBKM::Vector2\fP &pos, F32 w, F32 h)"
+.RI "\fBEnvironmentObject\fP (const \fBKM::Vector\fP &pos, F32 w, F32 h)"
 .br
 .ti -1c
 .RI "\fB~EnvironmentObject\fP (void)"
@@ -26,6 +26,7 @@ Inherits \fBKillerEngine::GameObject2D\fP\&.
 .RI "void \fBv_Update\fP (void) final"
 .br
 .in -1c
+.SS "Additional Inherited Members"
 .SH "Detailed Description"
 .PP 
 This is an implementation of a \fBGameObject\fP which will reprents static, unmoving background objects which the player will not be allowed to pass through\&. These are things like rocks, trees, houses, etc\&. 
@@ -33,8 +34,8 @@ This is an implementation of a \fBGameObject\fP which will reprents static, unmo
 .PP 
 .SS "EnvironmentObject::EnvironmentObject (void)"
 Default Constructor\&. No special actions taken\&. 
-.SS "EnvironmentObject::EnvironmentObject (const \fBKM::Vector2\fP & pos, F32 w, F32 h)"
-Calls \fBGameObject2D::SetPosition\fP and \fBGameObject2D::SetDimensions\fP\&. 
+.SS "EnvironmentObject::EnvironmentObject (const \fBKM::Vector\fP & pos, F32 w, F32 h)"
+Calls GameObject::SetPosition and GameObject::SetDimensions\&. 
 .SS "EnvironmentObject::~EnvironmentObject (void)"
 Default Destructor\&. No special action taken\&. 
 .SH "Member Function Documentation"
@@ -42,7 +43,7 @@ Default Destructor\&. No special action taken\&.
 .SS "void KillerEngine::EnvironmentObject::v_Update (void)\fC [inline]\fP, \fC [final]\fP, \fC [virtual]\fP"
 Empty function, needed because its a pure virtual function\&. 
 .PP
-Implements \fBKillerEngine::GameObject2D\fP\&.
+Implements \fBKillerEngine::GameObject\fP\&.
 
 .SH "Author"
 .PP 
