@@ -163,7 +163,7 @@ Vector& Vector::operator+=(const Vector& vec)
 
 Vector Vector::operator+(shared_ptr<Vector> vec) const
 {
-	F32* vals = vec->GetPointer();
+	const F32* vals = vec->GetElems();
 
 	if(_2D)
 	{
