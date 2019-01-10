@@ -1,6 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"class_killer_physics_1_1_b_v_h_node.html#a62070cb9a06234aced0dc82afe4ae5bd":[2,0,2,4,6],
 "class_killer_physics_1_1_b_v_h_node.html#a6a695073ba9c5e404afd0271c6bce14d":[2,0,2,4,12],
 "class_killer_physics_1_1_b_v_h_node.html#a6ea0a7f6709b81eff6d27b881cfe3841":[2,0,2,4,9],
 "class_killer_physics_1_1_b_v_h_node.html#a71c49fd82053596f82004b03b7685efc":[2,0,2,4,3],
@@ -249,5 +248,6 @@ var NAVTREEINDEX3 =
 "struct_killer_physics_1_1_bounding_box.html#ac7a636f295281d465bf197a269298305":[2,0,2,1,1],
 "struct_killer_physics_1_1_bounding_sphere.html":[2,0,2,2],
 "struct_killer_physics_1_1_bounding_sphere.html#a0c75361011297f356d03f09e9a4fbcb8":[2,0,2,2,4],
-"struct_killer_physics_1_1_bounding_sphere.html#a2069beb077e00a2fd859cde8b7ac968a":[2,0,2,2,7]
+"struct_killer_physics_1_1_bounding_sphere.html#a2069beb077e00a2fd859cde8b7ac968a":[2,0,2,2,7],
+"struct_killer_physics_1_1_bounding_sphere.html#a27a23eb3edd43520e39f0966b020a5d3":[2,0,2,2,5]
 };
