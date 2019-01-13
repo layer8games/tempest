@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['magnitude',['Magnitude',['../class_killer_math_1_1_vector.html#ade9956bed0bdbad7917f43489043c0a5',1,'KillerMath::Vector']]],
+  ['magnitude',['Magnitude',['../class_killer_math_1_1_quaternion.html#aa560fa1eda8726e22cbe8cc1739204ca',1,'KillerMath::Quaternion::Magnitude()'],['../class_killer_math_1_1_vector.html#ade9956bed0bdbad7917f43489043c0a5',1,'KillerMath::Vector::Magnitude()']]],
   ['make2d',['Make2D',['../class_killer_math_1_1_vector.html#a8571974c1b90b8c17ca7edcd725ddfe9',1,'KillerMath::Vector']]],
   ['make3d',['Make3D',['../class_killer_math_1_1_vector.html#a305ddd137252bd6a519a75979f401f4d',1,'KillerMath::Vector']]],
   ['makeidentity',['MakeIdentity',['../class_killer_math_1_1_matrix.html#a1ff5e9294ea82f529f5bb31c1b39367d',1,'KillerMath::Matrix']]],

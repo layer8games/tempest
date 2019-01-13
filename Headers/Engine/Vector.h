@@ -177,7 +177,7 @@ namespace KillerMath
 //
 //==========================================================================================================================
 /*!
-	Allows you to index into Vector to read the value.
+	Allows you to index into the Vector to read the value.
 	\param i is the index you wish to read. 0 = x, 1 = y, 2 = z, 3 = w.
 */
 		inline const F32& operator[](int i) const
@@ -186,7 +186,7 @@ namespace KillerMath
 		}
 
 /*!
-	Allows you to index into Vector to change the value.
+	Allows you to index into the Vector to change the value.
 	\param i is the index you wish to change. 0 = x, 1 = y, 2 = z, 3 = w.
 */
 		inline F32& operator[](int i)

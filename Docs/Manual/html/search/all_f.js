@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quaternion',['Quaternion',['../class_killer_math_1_1_quaternion.html',1,'KillerMath']]]
+  ['quaternion',['Quaternion',['../class_killer_math_1_1_quaternion.html',1,'KillerMath::Quaternion'],['../class_killer_math_1_1_quaternion.html#a39a0971895c9e93ae338ed9ecbc18220',1,'KillerMath::Quaternion::Quaternion(void)'],['../class_killer_math_1_1_quaternion.html#af6401e6d511916154c7f9a8b39a35ac8',1,'KillerMath::Quaternion::Quaternion(real value)'],['../class_killer_math_1_1_quaternion.html#ac8b62925c48118470710dc3a6940de5f',1,'KillerMath::Quaternion::Quaternion(real wVal, real xVal, real yVal, real zVal)'],['../class_killer_math_1_1_quaternion.html#ab3b8862f9fd86c7ebb426b4940d08b39',1,'KillerMath::Quaternion::Quaternion(const Quaternion &amp;q)']]]
 ];

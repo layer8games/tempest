@@ -1,4 +1,4 @@
-.TH "KillerMath::Quaternion" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Quaternion" 3 "Sun Jan 13 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,9 +6,14 @@ KillerMath::Quaternion
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <Quaternion\&.h>\fP
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fBQuaternion\fP (void)"
+.br
 .ti -1c
 .RI "\fBQuaternion\fP (real value)"
 .br
@@ -17,6 +22,9 @@ KillerMath::Quaternion
 .br
 .ti -1c
 .RI "\fBQuaternion\fP (const \fBQuaternion\fP &q)"
+.br
+.ti -1c
+.RI "\fB~Quaternion\fP (void)"
 .br
 .ti -1c
 .RI "const real * \fBGetElems\fP (void) const"
@@ -70,7 +78,7 @@ KillerMath::Quaternion
 .RI "void \fBNormalize\fP (void)"
 .br
 .ti -1c
-.RI "void \fBAddScaledVector\fP (const \fBVector\fP &vec, F32 scale)"
+.RI "void \fBAddScaledQuaternion\fP (const \fBVector\fP &q, F32 scale)"
 .br
 .in -1c
 .SS "Private Types"
@@ -86,7 +94,178 @@ KillerMath::Quaternion
 .ti -1c
 .RI "real \fB_data\fP [4]"
 .br
+.RI "Array that stores the values for each element\&. "
 .in -1c
+.SH "Detailed Description"
+.PP 
+Quaternions will handle the rotational math that the engine will use\&. This class is the holder of these functions\&. The \fBQuaternion\fP is represent by an Array of 4 F32 values\&. These include w, x, y, z\&. Unlike the \fBVector\fP, w is the first element\&. 
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum\fC [private]\fP"
+Alias set up to allow a refernce to each element that is more human readable in the code\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Quaternion::Quaternion (void)"
+Default Constructor\&. Sets 
+.SS "Quaternion::Quaternion (real value)\fC [explicit]\fP"
+Conversion constructor\&. Sets all elements to the same value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP is what each element will be set to\&. 
+.RE
+.PP
+
+.SS "Quaternion::Quaternion (real wVal, real xVal, real yVal, real zVal)"
+Four value constructor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwVal\fP is the value that w will be set to\&. 
+.br
+\fIxVal\fP is the value that x will be set to\&. 
+.br
+\fIyVal\fP is the value that y will be set to\&. 
+.br
+\fIzVal\fP is the value that z will be set to\&. 
+.RE
+.PP
+
+.SS "Quaternion::Quaternion (const \fBQuaternion\fP & q)"
+Copy constructor\&. Calls the [] operator to get the elements to copy into this \fBQuaternion\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP is the \fBQuaternion\fP that will be copied\&. 
+.RE
+.PP
+
+.SS "Quaternion::~Quaternion (void)"
+Default Destructor\&. Has no direct function at this time\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void Quaternion::AddScaledQuaternion (const \fBVector\fP & q, F32 scale)"
+Adds a scaled \fBQuaternion\fP into this one\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP is the \fBQuaternion\fP to be added\&. 
+.br
+\fIscale\fP is the amount q will be scaled by\&. 
+.RE
+.PP
+
+.SS "\fBQuaternion\fP Quaternion::Conjugate (void)"
+Returns a new \fBQuaternion\fP that represents the negation of the vector portion of the \fBQuaternion\fP\&. 
+.SS "\fBQuaternion\fP Quaternion::Difference (\fBQuaternion\fP & Q)"
+Returns a \fBQuaternion\fP that reprsents the angular displacement between this \fBQuaternion\fP and another\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIQ\fP is the other \fBQuaternion\fP in the displacement\&. 
+.RE
+.PP
+
+.SS "real Quaternion::Dot (\fBQuaternion\fP & Q)"
+Returns the Dot Product between this \fBQuaternion\fP and another\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIQ\fP is the other \fBQuaternion\fP that this Quaterion will perform the operation against\&. 
+.RE
+.PP
+
+.SS "const real* KillerMath::Quaternion::GetElems (void) const\fC [inline]\fP"
+Returns the pointer to the array of elements\&. 
+.SS "\fBQuaternion\fP Quaternion::Inverse (void)"
+Returns a new \fBQuaternion\fP that represents the Conjugate divided by the Magnitude of this \fBQuaternion\fP\&. 
+.SS "real Quaternion::Magnitude (void)"
+Returns the length of the rotation that this \fBQuaternion\fP represents\&. 
+.SS "void Quaternion::Negate (void)"
+
+.PP
+\fBBug\fP
+.RS 4
+This should be changed to be the - operator\&. Multiplies all elements of this \fBQuaternion\fP by -1\&. 
+.RE
+.PP
+
+.SS "void Quaternion::Normalize (void)"
+Makes the length of the rotation that this \fBQuaternion\fP represents be exactly 1\&. 
+.SS "\fBQuaternion\fP Quaternion::operator* (real m)"
+Scalar multiplication\&. Performs a compoenent wise multiplication\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP is the value that all the elements of the new \fBQuaternion\fP will be multiplied by\&. 
+.RE
+.PP
+
+.SS "\fBQuaternion\fP Quaternion::operator* (const \fBQuaternion\fP & q2)"
+\fBQuaternion\fP multiplication\&. Similar to the \fBVector::CrossProduct\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq2\fP is the \fBQuaternion\fP that the new \fBQuaternion\fP will be multiplied with\&. 
+.RE
+.PP
+
+.SS "\fBQuaternion\fP & Quaternion::operator*= (real m)"
+Scalar multiplication\&. Performs a component wise operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP is the value by which this \fBQuaternion\fP will be multiplied by\&. 
+.RE
+.PP
+
+.SS "\fBQuaternion\fP & Quaternion::operator*= (const \fBQuaternion\fP & q2)"
+\fBQuaternion\fP multiplication\&. Similar to the \fBVector::CrossProduct\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq2\fP is the \fBQuaternion\fP that this \fBQuaternion\fP will be multiplied with\&. 
+.RE
+.PP
+
+.SS "\fBQuaternion\fP Quaternion::operator/ (real d)"
+Scalar division\&. Performs a component wise division 
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP is the value that all elements of the new \fBQuaternion\fP will be divided by\&. 
+.RE
+.PP
+
+.SS "\fBQuaternion\fP & Quaternion::operator/= (real d)"
+Scalar division\&. Performs a component wise division 
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP is the value that all elements of this \fBQuaternion\fP will be divided by\&. 
+.RE
+.PP
+
+.SS "const F32& KillerMath::Quaternion::operator[] (int i) const\fC [inline]\fP"
+Allows you to index into the \fBQuaternion\fP to read the value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index you wish to read\&. 0 = x, 1 = y, 2 = z, 3 = w\&. 
+.RE
+.PP
+
+.SS "F32& KillerMath::Quaternion::operator[] (int i)\fC [inline]\fP"
+Allows you to index into the \fBQuaternion\fP to change the value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index you wish to change\&. 0 = x, 1 = y, 2 = z, 3 = w\&. 
+.RE
+.PP
+
+.SS "\fBQuaternion\fP Quaternion::Opposite (void)"
+Like Negate, but returns the result\&. Should probably be removed later\&. 
 
 .SH "Author"
 .PP 
