@@ -9,7 +9,7 @@ var class_killer_math_1_1_quaternion =
     [ "Quaternion", "class_killer_math_1_1_quaternion.html#ac8b62925c48118470710dc3a6940de5f", null ],
     [ "Quaternion", "class_killer_math_1_1_quaternion.html#ab3b8862f9fd86c7ebb426b4940d08b39", null ],
     [ "~Quaternion", "class_killer_math_1_1_quaternion.html#a8809b583edcb51ece4d157d3341218ed", null ],
-    [ "AddScaledQuaternion", "class_killer_math_1_1_quaternion.html#a67fdef0d0ed13a80a9b1f82451d17f5a", null ],
+    [ "AddScaledVector", "class_killer_math_1_1_quaternion.html#aafa79fd80787def09a1c2b9c88fdc9fe", null ],
     [ "Conjugate", "class_killer_math_1_1_quaternion.html#a2fc66a57315b6ce4292b957d7b4a4155", null ],
     [ "Difference", "class_killer_math_1_1_quaternion.html#acdb395a5d27913b4acecae41df5de347", null ],
     [ "Dot", "class_killer_math_1_1_quaternion.html#ac8ead1e7301d8e7a75b17946b0899166", null ],

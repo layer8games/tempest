@@ -1,4 +1,4 @@
-.TH "KillerMath::Quaternion" 3 "Sun Jan 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Quaternion" 3 "Mon Jan 14 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -78,7 +78,7 @@ KillerMath::Quaternion
 .RI "void \fBNormalize\fP (void)"
 .br
 .ti -1c
-.RI "void \fBAddScaledQuaternion\fP (const \fBVector\fP &q, F32 scale)"
+.RI "void \fBAddScaledVector\fP (const \fBVector\fP &vec, F32 scale)"
 .br
 .in -1c
 .SS "Private Types"
@@ -144,8 +144,8 @@ Copy constructor\&. Calls the [] operator to get the elements to copy into this 
 Default Destructor\&. Has no direct function at this time\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void Quaternion::AddScaledQuaternion (const \fBVector\fP & q, F32 scale)"
-Adds a scaled \fBQuaternion\fP into this one\&. 
+.SS "void Quaternion::AddScaledVector (const \fBVector\fP & vec, F32 scale)"
+Adds a scaled \fBVector\fP into this one\&. 
 .PP
 \fBParameters:\fP
 .RS 4

@@ -1,4 +1,4 @@
-.TH "KillerMath::Random" 3 "Sun Jan 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Random" 3 "Mon Jan 14 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,9 +6,17 @@ KillerMath::Random
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <Random\&.h>\fP
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fBRandom\fP (void)"
+.br
+.ti -1c
+.RI "\fB~Random\fP (void)"
+.br
 .ti -1c
 .RI "S32 \fBRandomInt\fP (S32 min, S32 max)"
 .br
@@ -41,6 +49,7 @@ KillerMath::Random
 .ti -1c
 .RI "std::mt19937 \fB_generator\fP"
 .br
+.RI "STL Mersenne twister engine instance\&. "
 .in -1c
 .SS "Static Private Attributes"
 
@@ -48,7 +57,91 @@ KillerMath::Random
 .ti -1c
 .RI "static shared_ptr< \fBRandom\fP > \fB_instance\fP = nullptr"
 .br
+.RI "Pointer to self used for singleton\&. "
 .in -1c
+.SH "Detailed Description"
+.PP 
+\fBRandom\fP number generator\&. It is based on the c++11 STL random, using the mersene twist algorithm\&.
+.PP
+Has an optional singleton\&. Unlike most singletons in the engine, \fBRandom\fP is allowed to create other instances\&. The singleton is there for convience only 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Random::Random (void)"
+Default constructor\&. Sets the _generator to the current time, to keep it random\&. 
+.SS "Random::~Random (void)"
+Default destructor\&. Doesn't have any function\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "shared_ptr< \fBRandom\fP > Random::Instance (void)\fC [static]\fP"
+Basic Singleton pattern\&. Allows access to global copy\&. Not required for use\&. 
+.SS "F64 Random::RandomDouble (F64 min, F64 max)"
+Returns a 64 bit floating point between min and max 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImin\fP is the floor value\&. 
+.br
+\fImax\fP is the ceiling value\&. 
+.RE
+.PP
+
+.SS "F32 Random::RandomFloat (F32 min, F32 max)"
+Returns a random 32 bit floating point between min and max 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImin\fP is the floor value\&. 
+.br
+\fImax\fP is the ceiling value\&. 
+.RE
+.PP
+
+.SS "S32 Random::RandomInt (S32 min, S32 max)"
+Returns a 32 bit signed it between min and max\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImin\fP is the floor value\&. 
+.br
+\fImax\fP is the ceiling value\&. 
+.RE
+.PP
+
+.SS "S64 Random::RandomLong (S64 min, S64 max)"
+Returns a 64 bit signed it between min and max\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImin\fP is the floor value\&. 
+.br
+\fImax\fP is the ceiling value\&. 
+.RE
+.PP
+
+.SS "\fBQuaternion\fP Random::RandomQuaternion (F32 min, F32 max)"
+Returns a \fBQuaternion\fP with w,x,y and z between min and max 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImin\fP is the floor value\&. 
+.br
+\fImax\fP is the ceiling value\&. 
+.RE
+.PP
+
+.SS "\fBVector\fP Random::RandomVector (F32 min, F32 max, bool is2d = \fCfalse\fP)"
+Returns a \fBVector\fP with x, y and z (depending on flag) between min and max 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImin\fP is the floor value\&. 
+.br
+\fImax\fP is the ceiling value\&. 
+.br
+\fIis2d\fP determins if the z value should be set\&. false by default, it will be set to 0 unless true\&. 
+.RE
+.PP
+
 
 .SH "Author"
 .PP 
