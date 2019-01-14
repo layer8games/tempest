@@ -98,12 +98,21 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>_characterGlyphs
 : <a class="el" href="class_killer_engine_1_1_font.html#a0febd9e78dea21ed068cda97add54447">KillerEngine::Font</a>
 </li>
+<li>_clamp
+: <a class="el" href="class_killer_math_1_1_timer.html#abea980147bf3be80aabed442d00333a1">KillerMath::Timer</a>
+</li>
 <li>_curActiveKeys
 : <a class="el" href="class_killer_engine_1_1_controller.html#a5481fb126f6637d6b236dc0ea36ec0d1">KillerEngine::Controller</a>
+</li>
+<li>_currentTime
+: <a class="el" href="class_killer_math_1_1_timer.html#a69c000746353f723379f8c936c3b6a36">KillerMath::Timer</a>
 </li>
 <li>_data
 : <a class="el" href="class_killer_math_1_1_quaternion.html#adfd78cbb357801a864f279a34e7c7ef7">KillerMath::Quaternion</a>
 , <a class="el" href="class_killer_math_1_1_vector.html#a8fbf5ebf92e4b1c2adb811415fe2103f">KillerMath::Vector</a>
+</li>
+<li>_deltaTime
+: <a class="el" href="class_killer_math_1_1_timer.html#a87376a483be665c21403b7eaa95b25ba">KillerMath::Timer</a>
 </li>
 <li>_errorCodes
 : <a class="el" href="class_killer_engine_1_1_error_manager.html#acf9f6e4427348e318a33bae8820e0d57">KillerEngine::ErrorManager</a>
@@ -119,6 +128,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 , <a class="el" href="class_killer_engine_1_1_engine.html#a4f3c5a733d582d8d9e7dab7dc6f000ab">KillerEngine::Engine</a>
 , <a class="el" href="class_killer_engine_1_1_error_manager.html#a2edabb4f2c3fb10f490538249be73d20">KillerEngine::ErrorManager</a>
 , <a class="el" href="class_killer_math_1_1_random.html#a6fccba38b3058559002d3e94ef2d5c08">KillerMath::Random</a>
+, <a class="el" href="class_killer_math_1_1_timer.html#ada940281137e2e1983d58ccc6a6266a7">KillerMath::Timer</a>
 </li>
 <li>_keyStates
 : <a class="el" href="class_killer_engine_1_1_controller.html#ad0190a3b167017eba8f243bbb858b8b3">KillerEngine::Controller</a>
@@ -132,6 +142,12 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>_pastActiveKeys
 : <a class="el" href="class_killer_engine_1_1_controller.html#ad3a8302985044efcddea14691abdb8ec">KillerEngine::Controller</a>
 </li>
+<li>_pastTime
+: <a class="el" href="class_killer_math_1_1_timer.html#a85560c792fce3cde0398bfc8f3f08ed3">KillerMath::Timer</a>
+</li>
+<li>_paused
+: <a class="el" href="class_killer_math_1_1_timer.html#a9276e4e6dafd5008197d8d669200daa0">KillerMath::Timer</a>
+</li>
 <li>_position
 : <a class="el" href="class_killer_engine_1_1_camera.html#a525adc8f0404e3bf71aa315a8b6395e0">KillerEngine::Camera</a>
 </li>
@@ -141,400 +157,11 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>_rightClickCoordinates
 : <a class="el" href="class_killer_engine_1_1_controller.html#aff207edebbe323a2e25751c63077cc73">KillerEngine::Controller</a>
 </li>
-</ul>
-
-
-<h3><a id="index_a"></a>- a -</h3><ul>
-<li>AddLevelToManager()
-: <a class="el" href="class_killer_engine_1_1_engine.html#a4e951ac8906346a26efc5620c9768bf0">KillerEngine::Engine</a>
-</li>
-<li>AddRotateX()
-: <a class="el" href="class_killer_math_1_1_matrix.html#aaabca4de52f878767fb86ba15f56b682">KillerMath::Matrix</a>
-</li>
-<li>AddRotateY()
-: <a class="el" href="class_killer_math_1_1_matrix.html#a682399a0fff6ce3a0fd272f210fad9fb">KillerMath::Matrix</a>
-</li>
-<li>AddRotateZ()
-: <a class="el" href="class_killer_math_1_1_matrix.html#a4f862615048905ec2f897243de006426">KillerMath::Matrix</a>
-</li>
-<li>AddRotation()
-: <a class="el" href="class_killer_math_1_1_matrix.html#a48c5a11150503c7e1a5a5fb0ae50948f">KillerMath::Matrix</a>
-</li>
-<li>AddScale()
-: <a class="el" href="class_killer_math_1_1_matrix.html#abdfa30d8610ac1dd7544a61f3aa06aa1">KillerMath::Matrix</a>
-</li>
-<li>AddScaledVector()
-: <a class="el" href="class_killer_math_1_1_quaternion.html#aafa79fd80787def09a1c2b9c88fdc9fe">KillerMath::Quaternion</a>
-, <a class="el" href="class_killer_math_1_1_vector.html#ad4438b6f3c7c31cc840e770b0db60e69">KillerMath::Vector</a>
-</li>
-<li>AddTranslate()
-: <a class="el" href="class_killer_math_1_1_matrix.html#a5a953c5c76b1893954eb73a206041f04">KillerMath::Matrix</a>
-</li>
-</ul>
-
-
-<h3><a id="index_c"></a>- c -</h3><ul>
-<li>Color()
-: <a class="el" href="class_killer_engine_1_1_color.html#ac3556cb28115ecd6e6f14e97532a08d1">KillerEngine::Color</a>
-</li>
-<li>ComponentMulti()
-: <a class="el" href="class_killer_math_1_1_matrix.html#ae26e16420b6995da62c7f2103fa91dd5">KillerMath::Matrix</a>
-</li>
-<li>Conjugate()
-: <a class="el" href="class_killer_math_1_1_quaternion.html#a2fc66a57315b6ce4292b957d7b4a4155">KillerMath::Quaternion</a>
-</li>
-<li>CrossProduct()
-: <a class="el" href="class_killer_math_1_1_vector.html#aaf785551605513bdf16c1e4616e9ea22">KillerMath::Vector</a>
-</li>
-</ul>
-
-
-<h3><a id="index_d"></a>- d -</h3><ul>
-<li>Difference()
-: <a class="el" href="class_killer_math_1_1_quaternion.html#acdb395a5d27913b4acecae41df5de347">KillerMath::Quaternion</a>
-</li>
-<li>DisplayErrors()
-: <a class="el" href="class_killer_engine_1_1_error_manager.html#a26f8ed34b78234ca563205ed1fa5d7d6">KillerEngine::ErrorManager</a>
-</li>
-<li>Dot()
-: <a class="el" href="class_killer_math_1_1_quaternion.html#ac8ead1e7301d8e7a75b17946b0899166">KillerMath::Quaternion</a>
-</li>
-<li>DotProduct()
-: <a class="el" href="class_killer_math_1_1_vector.html#ae6e58ffbea226d0e34c06d851fdc3a24">KillerMath::Vector</a>
-</li>
-</ul>
-
-
-<h3><a id="index_e"></a>- e -</h3><ul>
-<li>End()
-: <a class="el" href="class_killer_engine_1_1_engine.html#a6d9e9ce47304aa613b12d7756787eb38">KillerEngine::Engine</a>
-</li>
-<li>Engine()
-: <a class="el" href="class_killer_engine_1_1_engine.html#a9ad87e382195a05d5d310a2fb3e357fd">KillerEngine::Engine</a>
-</li>
-<li>EnvironmentObject()
-: <a class="el" href="class_killer_engine_1_1_environment_object.html#a1aedaefbc60b4c3b7817ceefd3344197">KillerEngine::EnvironmentObject</a>
-</li>
-<li>ErrorManager()
-: <a class="el" href="class_killer_engine_1_1_error_manager.html#a9a690a2295078adc0f44d664037bdbaf">KillerEngine::ErrorManager</a>
-</li>
-</ul>
-
-
-<h3><a id="index_f"></a>- f -</h3><ul>
-<li>Font()
-: <a class="el" href="class_killer_engine_1_1_font.html#ae12d76f0b59747bbf028333c9c7ed560">KillerEngine::Font</a>
-</li>
-</ul>
-
-
-<h3><a id="index_g"></a>- g -</h3><ul>
-<li>GetAllCharacterGlyphs()
-: <a class="el" href="class_killer_engine_1_1_font.html#a75925b657a861a8e5deb96759d7dec4e">KillerEngine::Font</a>
-</li>
-<li>GetElems()
-: <a class="el" href="class_killer_math_1_1_matrix.html#a215736bc189a6d58d52edaed5780ff4a">KillerMath::Matrix</a>
-, <a class="el" href="class_killer_math_1_1_quaternion.html#ad28d1253f0eb326c677759137ec49ade">KillerMath::Quaternion</a>
-, <a class="el" href="class_killer_math_1_1_vector.html#a929945014678a1b7066d342b08b81eb8">KillerMath::Vector</a>
-</li>
-<li>GetKeyDown()
-: <a class="el" href="class_killer_engine_1_1_controller.html#a9c2e9930dcfc803b5c4bc0391daf502b">KillerEngine::Controller</a>
-</li>
-<li>GetKeyHeld()
-: <a class="el" href="class_killer_engine_1_1_controller.html#ac106f4ee3509f553b4cf621a88000c4e">KillerEngine::Controller</a>
-</li>
-<li>GetKeyReleased()
-: <a class="el" href="class_killer_engine_1_1_controller.html#a61d1debb2b8a6d47199e6c67abd1c762">KillerEngine::Controller</a>
-</li>
-<li>GetKeyUp()
-: <a class="el" href="class_killer_engine_1_1_controller.html#a717497e96d30f3b13c1952441ca30777">KillerEngine::Controller</a>
-</li>
-<li>GetLeftMouseCoord()
-: <a class="el" href="class_killer_engine_1_1_controller.html#ab900b8371b8bc98e078ea341ae3ea1d5">KillerEngine::Controller</a>
-</li>
-<li>GetName()
-: <a class="el" href="class_killer_engine_1_1_font.html#a801f7154d3a09f20b159d201e489bc04">KillerEngine::Font</a>
-</li>
-<li>GetPointer()
-: <a class="el" href="class_killer_engine_1_1_color.html#aaa63bfda365280dda09739b26b6a399b">KillerEngine::Color</a>
-</li>
-<li>GetRightMouseCoord()
-: <a class="el" href="class_killer_engine_1_1_controller.html#aab2a03a061f1822b3e20a4a3987585f4">KillerEngine::Controller</a>
-</li>
-</ul>
-
-
-<h3><a id="index_i"></a>- i -</h3><ul>
-<li>Init()
-: <a class="el" href="class_killer_engine_1_1_engine.html#a02b8dbb69195d8dced126750f72f4f88">KillerEngine::Engine</a>
-, <a class="el" href="class_killer_engine_1_1_win_program.html#a390478713355c57ea63b0923e59a3892">KillerEngine::WinProgram</a>
-</li>
-<li>Instance()
-: <a class="el" href="class_killer_engine_1_1_controller.html#a460950303ace216a4f980bc6995a79ec">KillerEngine::Controller</a>
-, <a class="el" href="class_killer_engine_1_1_engine.html#a6d3a6beea3097dff1e797c4a0885ae3e">KillerEngine::Engine</a>
-, <a class="el" href="class_killer_engine_1_1_error_manager.html#a71370f015a49fcdc66b53749aeec393f">KillerEngine::ErrorManager</a>
-, <a class="el" href="class_killer_math_1_1_random.html#a285591a0ad92efd857a3f436a9865f0a">KillerMath::Random</a>
-</li>
-<li>Inverse()
-: <a class="el" href="class_killer_math_1_1_quaternion.html#a49de005c96ba16a4309c27288e84e327">KillerMath::Quaternion</a>
-</li>
-<li>Is2D()
-: <a class="el" href="class_killer_math_1_1_vector.html#a1d38c85f3fd1e0e0380cd1eba5f54ee3">KillerMath::Vector</a>
-</li>
-</ul>
-
-
-<h3><a id="index_k"></a>- k -</h3><ul>
-<li>KeyDown()
-: <a class="el" href="class_killer_engine_1_1_controller.html#a5f774944c889c33dbfe11aff682484f1">KillerEngine::Controller</a>
-</li>
-<li>KeyUp()
-: <a class="el" href="class_killer_engine_1_1_controller.html#afd069745f27cda1a4dff8151d8105080">KillerEngine::Controller</a>
-</li>
-</ul>
-
-
-<h3><a id="index_m"></a>- m -</h3><ul>
-<li>Magnitude()
-: <a class="el" href="class_killer_math_1_1_quaternion.html#aa560fa1eda8726e22cbe8cc1739204ca">KillerMath::Quaternion</a>
-, <a class="el" href="class_killer_math_1_1_vector.html#ade9956bed0bdbad7917f43489043c0a5">KillerMath::Vector</a>
-</li>
-<li>Make2D()
-: <a class="el" href="class_killer_math_1_1_vector.html#a8571974c1b90b8c17ca7edcd725ddfe9">KillerMath::Vector</a>
-</li>
-<li>Make3D()
-: <a class="el" href="class_killer_math_1_1_vector.html#a305ddd137252bd6a519a75979f401f4d">KillerMath::Vector</a>
-</li>
-<li>MakeIdentity()
-: <a class="el" href="class_killer_math_1_1_matrix.html#a1ff5e9294ea82f529f5bb31c1b39367d">KillerMath::Matrix</a>
-</li>
-<li>MakeOrthographic()
-: <a class="el" href="class_killer_math_1_1_matrix.html#aeb35ed527cf821c63c72930db39e891b">KillerMath::Matrix</a>
-</li>
-<li>MakePerspective()
-: <a class="el" href="class_killer_math_1_1_matrix.html#abc6f94293e0244d787df481bcb8bc82b">KillerMath::Matrix</a>
-</li>
-<li>Matrix()
-: <a class="el" href="class_killer_math_1_1_matrix.html#a003d09f03ecb7db944793f55b0ee2020">KillerMath::Matrix</a>
-</li>
-</ul>
-
-
-<h3><a id="index_n"></a>- n -</h3><ul>
-<li>Negate()
-: <a class="el" href="class_killer_math_1_1_quaternion.html#acee1e1c18aefd86f0c3569015cb971f2">KillerMath::Quaternion</a>
-</li>
-<li>Normalize()
-: <a class="el" href="class_killer_math_1_1_quaternion.html#a4499cb212b359d1590f8cc97ab0cbd24">KillerMath::Quaternion</a>
-, <a class="el" href="class_killer_math_1_1_vector.html#a1c9bb6d047ccb03b58ad746ee547be22">KillerMath::Vector</a>
-</li>
-</ul>
-
-
-<h3><a id="index_o"></a>- o -</h3><ul>
-<li>operator!=()
-: <a class="el" href="class_killer_math_1_1_vector.html#a2f9dbdab5512d0b326fd48e51c674abe">KillerMath::Vector</a>
-</li>
-<li>operator*()
-: <a class="el" href="class_killer_math_1_1_matrix.html#a0a0152c2f453d69a6b8001b47f0302e4">KillerMath::Matrix</a>
-, <a class="el" href="class_killer_math_1_1_quaternion.html#ae8879c62e14462df937fa5dd551ea227">KillerMath::Quaternion</a>
-, <a class="el" href="class_killer_math_1_1_vector.html#a043af54264e879d4113720d2766b15ba">KillerMath::Vector</a>
-</li>
-<li>operator*=()
-: <a class="el" href="class_killer_math_1_1_quaternion.html#af47abd91880cbc71c7f6bcc945616d75">KillerMath::Quaternion</a>
-, <a class="el" href="class_killer_math_1_1_vector.html#a2d84640faea316f120466f8eb7b58c15">KillerMath::Vector</a>
-</li>
-<li>operator+()
-: <a class="el" href="class_killer_math_1_1_vector.html#aaefe42da81019d15a596c0155b76725a">KillerMath::Vector</a>
-</li>
-<li>operator+=()
-: <a class="el" href="class_killer_math_1_1_vector.html#a15794cb5a37ed10d0f1d87d1e41d52ad">KillerMath::Vector</a>
-</li>
-<li>operator-()
-: <a class="el" href="class_killer_math_1_1_vector.html#acaad422f66a16321fe1227df7aa45069">KillerMath::Vector</a>
-</li>
-<li>operator-=()
-: <a class="el" href="class_killer_math_1_1_vector.html#a1a6bf45adec873d9d9192aa9b8b7021a">KillerMath::Vector</a>
-</li>
-<li>operator/()
-: <a class="el" href="class_killer_math_1_1_quaternion.html#a9d131d99e89806c24a839a888748fc2b">KillerMath::Quaternion</a>
-, <a class="el" href="class_killer_math_1_1_vector.html#ab63991c032f78f8e07bb7a0983637a1c">KillerMath::Vector</a>
-</li>
-<li>operator/=()
-: <a class="el" href="class_killer_math_1_1_quaternion.html#a95c203a29038de4aa9d8e77d663b4aa2">KillerMath::Quaternion</a>
-, <a class="el" href="class_killer_math_1_1_vector.html#a28956f9b95ecb3215db844ef68b623c0">KillerMath::Vector</a>
-</li>
-<li>operator&lt;()
-: <a class="el" href="class_killer_math_1_1_vector.html#a24d5ae37ddbc71eaa890641da2d2db76">KillerMath::Vector</a>
-</li>
-<li>operator&lt;=()
-: <a class="el" href="class_killer_math_1_1_vector.html#ad2cd54af7d517fbe422888f8b657532e">KillerMath::Vector</a>
-</li>
-<li>operator=()
-: <a class="el" href="class_killer_engine_1_1_font.html#a9d924e371b6ce21fa0af9e18a4017bc5">KillerEngine::Font</a>
-, <a class="el" href="class_killer_math_1_1_matrix.html#a3655359b1f9451cb7b589c3a9bc5c7f0">KillerMath::Matrix</a>
-, <a class="el" href="class_killer_math_1_1_vector.html#ad892f497413d305e36b4a82f834ced35">KillerMath::Vector</a>
-</li>
-<li>operator==()
-: <a class="el" href="class_killer_math_1_1_vector.html#adc77807b8ecee88b7dc031d4036f8467">KillerMath::Vector</a>
-</li>
-<li>operator&gt;()
-: <a class="el" href="class_killer_math_1_1_vector.html#a4b86d2b102097006bf5c76cf83874f8b">KillerMath::Vector</a>
-</li>
-<li>operator&gt;=()
-: <a class="el" href="class_killer_math_1_1_vector.html#a66fedc39da6f173fce6bc41940419a6b">KillerMath::Vector</a>
-</li>
-<li>operator[]()
-: <a class="el" href="class_killer_math_1_1_matrix.html#a23b290a140300356a12510139fdf4c71">KillerMath::Matrix</a>
-, <a class="el" href="class_killer_math_1_1_quaternion.html#aa83ae09c9892571c527fa9aaaa548e21">KillerMath::Quaternion</a>
-, <a class="el" href="class_killer_math_1_1_vector.html#a7bbc3b3de9ccac05a720d77f25a60964">KillerMath::Vector</a>
-</li>
-<li>Opposite()
-: <a class="el" href="class_killer_math_1_1_quaternion.html#a0b2c87f482fda6a06321a7d04c99e0b4">KillerMath::Quaternion</a>
-</li>
-</ul>
-
-
-<h3><a id="index_q"></a>- q -</h3><ul>
-<li>Quaternion()
-: <a class="el" href="class_killer_math_1_1_quaternion.html#a39a0971895c9e93ae338ed9ecbc18220">KillerMath::Quaternion</a>
-</li>
-</ul>
-
-
-<h3><a id="index_r"></a>- r -</h3><ul>
-<li>Random()
-: <a class="el" href="class_killer_math_1_1_random.html#a39cc0d258730a90df74f561be3ed0019">KillerMath::Random</a>
-</li>
-<li>RandomDouble()
-: <a class="el" href="class_killer_math_1_1_random.html#af44c7cdfe902d0ab916563237bee400c">KillerMath::Random</a>
-</li>
-<li>RandomFloat()
-: <a class="el" href="class_killer_math_1_1_random.html#a943eba3b270a8a891ed7a5fde8b9e1fa">KillerMath::Random</a>
-</li>
-<li>RandomInt()
-: <a class="el" href="class_killer_math_1_1_random.html#a820270c538d1db4174af9e621b237e6e">KillerMath::Random</a>
-</li>
-<li>RandomLong()
-: <a class="el" href="class_killer_math_1_1_random.html#a5dd460f00506300638dc4178f2b6f6d6">KillerMath::Random</a>
-</li>
-<li>RandomQuaternion()
-: <a class="el" href="class_killer_math_1_1_random.html#ad50e00a6cf02e4afd15121253255bb80">KillerMath::Random</a>
-</li>
-<li>RandomVector()
-: <a class="el" href="class_killer_math_1_1_random.html#ad1cd439ab47622b1f8a0871e1f7186d0">KillerMath::Random</a>
-</li>
-<li>Render()
-: <a class="el" href="class_killer_engine_1_1_engine.html#a0544104c7bffacec72851a2074ac8102">KillerEngine::Engine</a>
-</li>
-<li>Reset()
-: <a class="el" href="class_killer_math_1_1_matrix.html#a077757f722775e2641144e4d2197847e">KillerMath::Matrix</a>
-, <a class="el" href="class_killer_math_1_1_vector.html#ad21852dd621ce6bd797b1b27d1aa678e">KillerMath::Vector</a>
-</li>
-<li>Running()
-: <a class="el" href="class_killer_engine_1_1_engine.html#a839aaf9ee031bb12b4f1d08453c2f068">KillerEngine::Engine</a>
-</li>
-</ul>
-
-
-<h3><a id="index_s"></a>- s -</h3><ul>
-<li>Set()
-: <a class="el" href="class_killer_math_1_1_vector.html#a535b8a4747ae5ab113d79f3f996ed27c">KillerMath::Vector</a>
-</li>
-<li>SetActiveLevel()
-: <a class="el" href="class_killer_engine_1_1_engine.html#a42b05bccc84e2bf48a7b8dcdcefacfad">KillerEngine::Engine</a>
-</li>
-<li>SetDefaultMatrix()
-: <a class="el" href="class_killer_engine_1_1_camera.html#a1cce2e4ff8005cd6f77bdd3bbe6cd98b">KillerEngine::Camera</a>
-</li>
-<li>SetError()
-: <a class="el" href="class_killer_engine_1_1_error_manager.html#a1985ec212295b58c27d0377978b348cc">KillerEngine::ErrorManager</a>
-</li>
-<li>SetFPSView()
-: <a class="el" href="class_killer_math_1_1_matrix.html#a21d7e1ac5227a6917432b69bf606b372">KillerMath::Matrix</a>
-</li>
-<li>SetLookAt()
-: <a class="el" href="class_killer_math_1_1_matrix.html#a73ae0144cb295eaaf9e61e66467c9d0e">KillerMath::Matrix</a>
-</li>
-<li>SetName()
-: <a class="el" href="class_killer_engine_1_1_font.html#aabd389a157142aff44c1d82b3797a362">KillerEngine::Font</a>
-</li>
-<li>SetOrthographic()
-: <a class="el" href="class_killer_engine_1_1_camera.html#a2a81d8b0ecf15683984f944739e5c48a">KillerEngine::Camera</a>
-</li>
-<li>SetPerspective()
-: <a class="el" href="class_killer_engine_1_1_camera.html#ac111553c81da34e4d7c525bd852fccf5">KillerEngine::Camera</a>
-</li>
-<li>SetRotate()
-: <a class="el" href="class_killer_math_1_1_matrix.html#afad968106d38cfa46e8dfd9962dee760">KillerMath::Matrix</a>
-</li>
-<li>SetRotateX()
-: <a class="el" href="class_killer_math_1_1_matrix.html#a9b6af5f9f58a0afa2750faa78b921f48">KillerMath::Matrix</a>
-</li>
-<li>SetRotateY()
-: <a class="el" href="class_killer_math_1_1_matrix.html#a1926f799c74b6592315692c0e0b57158">KillerMath::Matrix</a>
-</li>
-<li>SetRotateZ()
-: <a class="el" href="class_killer_math_1_1_matrix.html#ac93cef3b92eb8ab530002f9d9c8e1af0">KillerMath::Matrix</a>
-</li>
-<li>SetScale()
-: <a class="el" href="class_killer_math_1_1_matrix.html#aa07834d4760812048e1393df236fb11e">KillerMath::Matrix</a>
-</li>
-<li>SetTranslate()
-: <a class="el" href="class_killer_math_1_1_matrix.html#a29f7107daa001f85c23c5b85d512d613">KillerMath::Matrix</a>
-</li>
-<li>ShutDown()
-: <a class="el" href="class_killer_engine_1_1_engine.html#aeb2929a81f40a12b16f07417be420530">KillerEngine::Engine</a>
-</li>
-<li>SqrMagnitude()
-: <a class="el" href="class_killer_math_1_1_vector.html#ac44f0371cdc78dfa8a48633c86c00978">KillerMath::Vector</a>
-</li>
-</ul>
-
-
-<h3><a id="index_t"></a>- t -</h3><ul>
-<li>Transpose()
-: <a class="el" href="class_killer_math_1_1_matrix.html#abaedae760f0ad9043afd89ee4137ccb8">KillerMath::Matrix</a>
-</li>
-</ul>
-
-
-<h3><a id="index_u"></a>- u -</h3><ul>
-<li>Update()
-: <a class="el" href="class_killer_engine_1_1_controller.html#acd347bd6a27c7325441815729f92d730">KillerEngine::Controller</a>
-, <a class="el" href="class_killer_engine_1_1_engine.html#ac59557583a80e4d48faa5e59a55e1a62">KillerEngine::Engine</a>
-</li>
-</ul>
-
-
-<h3><a id="index_v"></a>- v -</h3><ul>
-<li>v_Update()
-: <a class="el" href="class_killer_engine_1_1_environment_object.html#af71fcd9bf8fda70de97c24c2ab35b8fa">KillerEngine::EnvironmentObject</a>
-</li>
-<li>Vector()
-: <a class="el" href="class_killer_math_1_1_vector.html#a5f04e343b7306ad11f8a82c89b486764">KillerMath::Vector</a>
-</li>
-</ul>
-
-
-<h3><a id="index_0x7e"></a>- ~ -</h3><ul>
-<li>~Controller()
-: <a class="el" href="class_killer_engine_1_1_controller.html#a3d53864db248f17f2443df8388053f9d">KillerEngine::Controller</a>
-</li>
-<li>~EnvironmentObject()
-: <a class="el" href="class_killer_engine_1_1_environment_object.html#a516f11de35c5d9f634a28a31d3c01d49">KillerEngine::EnvironmentObject</a>
-</li>
-<li>~ErrorManager()
-: <a class="el" href="class_killer_engine_1_1_error_manager.html#a768a9e20a2a01bf3d69357c7386b0e02">KillerEngine::ErrorManager</a>
-</li>
-<li>~Quaternion()
-: <a class="el" href="class_killer_math_1_1_quaternion.html#a8809b583edcb51ece4d157d3341218ed">KillerMath::Quaternion</a>
-</li>
-<li>~Random()
-: <a class="el" href="class_killer_math_1_1_random.html#a1da0f8a6d539679174ffcdff113f22d7">KillerMath::Random</a>
-</li>
-<li>~Vector()
-: <a class="el" href="class_killer_math_1_1_vector.html#ae8533ae4f11176cc2f19dc529f34efff">KillerMath::Vector</a>
+<li>_timeScale
+: <a class="el" href="class_killer_math_1_1_timer.html#af8ecd164ad99f26693671dc76efb53bc">KillerMath::Timer</a>
+</li>
+<li>_totalTime
+: <a class="el" href="class_killer_math_1_1_timer.html#a1c2d4bc5f9bfe99e3eb8bd57397b4e8f">KillerMath::Timer</a>
 </li>
 </ul>
 </div><!-- contents -->

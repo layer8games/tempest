@@ -6,9 +6,14 @@ KillerMath::Timer
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <Timer\&.h>\fP
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fB~Timer\fP (void)"
+.br
 .ti -1c
 .RI "void \fBSetClamp\fP (bool state)"
 .br
@@ -47,30 +52,44 @@ KillerMath::Timer
 .RI "static shared_ptr< \fBTimer\fP > \fBInstance\fP (void)"
 .br
 .in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTimer\fP (void)"
+.br
+.in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
 .RI "bool \fB_clamp\fP"
 .br
+.RI "If clamped, the timer will be forced to lock the framerate at 60 fps\&. "
 .ti -1c
 .RI "real \fB_deltaTime\fP"
 .br
+.RI "The time that the last frame took to run\&. "
 .ti -1c
 .RI "real \fB_timeScale\fP"
 .br
+.RI "A scale factor that is applied to the delta time\&. "
 .ti -1c
 .RI "F64 \fB_totalTime\fP"
 .br
+.RI "The total time that the program has been running\&. "
 .ti -1c
 .RI "F64 \fB_pastTime\fP"
 .br
+.RI "The time stamp of the last frame\&. "
 .ti -1c
 .RI "F64 \fB_currentTime\fP"
 .br
+.RI "The time stamp of this frame\&. "
 .ti -1c
 .RI "bool \fB_paused\fP"
 .br
+.RI "If paused, the Update loop will not run, allowing the timer to stop\&. "
 .in -1c
 .SS "Static Private Attributes"
 
@@ -78,7 +97,64 @@ KillerMath::Timer
 .ti -1c
 .RI "static shared_ptr< \fBTimer\fP > \fB_instance\fP = NULL"
 .br
+.RI "Internal reference to self, used in Singleton Pattern\&. "
 .in -1c
+.SH "Detailed Description"
+.PP 
+The high precision timer for the Killer1 Engine\&. At the time of writting this the timer is windows specific, but cross platform functionality is planned in the future\&.
+.PP
+It uses the GLFW function glfwGetTime, located in the WinProgram to get the total time that the glfw window has been open\&. It used to have a customer frequency timer, but this turned out to be too eratic, and was removed\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Timer::~Timer (void)"
+Default Destructor\&. Does not do anything\&. 
+.SS "Timer::Timer (void)\fC [protected]\fP"
+Default Constructor, sets _deltaTime and _totalTime to 0, _timeScale to 1, _pastTime to the current time and _currentTime to _pastTime, and _paused to false\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "real KillerMath::Timer::DeltaTime (void) const\fC [inline]\fP"
+Returns the current _deltaTime\&. 
+.SS "bool KillerMath::Timer::GetClamp (void) const\fC [inline]\fP"
+Returns the current state of _clamp\&. 
+.SS "bool KillerMath::Timer::GetPaused (void) const\fC [inline]\fP"
+Returns the state of the _paused flag\&. 
+.SS "F32 KillerMath::Timer::GetTimeScale (void) const\fC [inline]\fP"
+Returns the current value for _timeScale\&. 
+.SS "shared_ptr< \fBTimer\fP > Timer::Instance (void)\fC [static]\fP"
+Singleton pattern function\&. Returns a pointer to the globabl version of the timer\&. This is the only way to use the timer, ensuring that there will only ever be 1 version of it running\&. 
+.SS "void KillerMath::Timer::SetClamp (bool state)\fC [inline]\fP"
+Sets the \fBTimer\fP to be clamped\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP sets the clamp flag\&. 
+.RE
+.PP
+
+.SS "void KillerMath::Timer::SetPaused (bool paused)\fC [inline]\fP"
+Sets the state of the _paused flag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpaused\fP is the state to set\&. 
+.RE
+.PP
+
+.SS "void KillerMath::Timer::SetTimeScale (F32 scale)\fC [inline]\fP"
+Sets the _timeScale variable\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIis\fP the new value for _timeScale\&. 
+.RE
+.PP
+
+.SS "void Timer::SingleStep (void)"
+This will attempt to move _deltaTime forward one single frame, at 60 frames per second\&. Note: Maybe this should be updated to be configurable? 
+.SS "F64 KillerMath::Timer::TotalTime (void) const\fC [inline]\fP"
+Returns the total time that the program has been running\&. 
+.SS "void Timer::Update (void)"
+This updates the _totalTime and _deltaTime values\&. This is where all of the magic happens\&. Should be called once per frame\&. It called WinProgram::GetTime()\&. 
 
 .SH "Author"
 .PP 
