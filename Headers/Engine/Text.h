@@ -3,9 +3,6 @@ This class will hold all the data for a string of text that will be drawn
 to the screen. It will use the font class and the texture manager to keep
 track of all the character data and the texture for the font. 
 
-It is considered a GameObject2D, and when adding it to the work it should
-be treated as any other GameObject2D.
-
 This is not free to use, and cannot be used without the express permission
 of KillerWave.
 
@@ -28,6 +25,11 @@ namespace KM = KillerMath;
 
 namespace KillerEngine
 {
+/*!
+	This class will hold all the data for a string of text that will be drawn
+	to the screen. It will use the font class and the texture manager to keep
+	track of all the character data and the texture for the font. 
+*/
 	class Text
 	{
 	public:
@@ -36,8 +38,14 @@ namespace KillerEngine
 //Constructors
 //
 //==========================================================================================================================
+/*!
+	Default constructor. Sets scale and color to 1.0f, everything else to 0 or null.
+*/
 		Text(void);
 
+/*!
+	Default destructor. No function.
+*/
 		~Text(void);
 
 //==========================================================================================================================
@@ -45,7 +53,14 @@ namespace KillerEngine
 //Text Functions
 //
 //==========================================================================================================================		
-		void SetPosition(const KM::Vector& pos);
+/*!
+	
+*/
+		inline void SetPosition(const KM::Vector& pos)
+		{
+			_pos = pos;
+			_UpdatePositions();
+		}
 
 		void SetPosition(F32 x, F32 y)
 		{
@@ -133,6 +148,13 @@ namespace KillerEngine
 		}
 
 	private:
+//==========================================================================================================================
+//
+//Private Functions
+//
+//==========================================================================================================================
+		void _UpdatePositions(void);
+
 //==========================================================================================================================
 //
 //Data

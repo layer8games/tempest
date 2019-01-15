@@ -111,7 +111,7 @@ namespace KillerEngine
 			return _characterGlyphs; 
 		}
 
-		inline CharacterData GetCharacter(char c)
+		inline CharacterData GetCharacterData(char c)
 		{
 			return _characterGlyphs[c];
 		}
