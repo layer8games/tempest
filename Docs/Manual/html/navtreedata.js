@@ -32,7 +32,7 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
@@ -48,7 +48,7 @@ var NAVTREEINDEX =
 "class_killer_engine_1_1_game_object.html#a3a10c3dfe4528909783dfdb26dc035e5",
 "class_killer_engine_1_1_texture_manager.html#aafb58e94573d999310abd256b86c48dd",
 "class_killer_physics_1_1_b_v_h_node.html#a6a695073ba9c5e404afd0271c6bce14d",
-"struct_killer_engine_1_1_tex_coord.html#af35bd700b1c568d6c306385354c1caa7"
+"struct_killer_engine_1_1_character_data.html#af808a7fd7475f6c70d2deeab5e268fba"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

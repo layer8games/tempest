@@ -1,16 +1,23 @@
 var searchData=
 [
+  ['getacceleration',['GetAcceleration',['../class_killer_physics_1_1_particle.html#a1a874580ae12822eaa3a05d6bae88ff3',1,'KillerPhysics::Particle']]],
   ['getallcharacterglyphs',['GetAllCharacterGlyphs',['../class_killer_engine_1_1_font.html#a75925b657a861a8e5deb96759d7dec4e',1,'KillerEngine::Font']]],
   ['getclamp',['GetClamp',['../class_killer_math_1_1_timer.html#a146856beb44b9224d6d4721f1a715a2a',1,'KillerMath::Timer']]],
+  ['getdamping',['GetDamping',['../class_killer_physics_1_1_particle.html#a0de59a01e803b9cc42ab20a68ba39f2c',1,'KillerPhysics::Particle']]],
   ['getelems',['GetElems',['../class_killer_math_1_1_matrix.html#a215736bc189a6d58d52edaed5780ff4a',1,'KillerMath::Matrix::GetElems()'],['../class_killer_math_1_1_quaternion.html#ad28d1253f0eb326c677759137ec49ade',1,'KillerMath::Quaternion::GetElems()'],['../class_killer_math_1_1_vector.html#a929945014678a1b7066d342b08b81eb8',1,'KillerMath::Vector::GetElems()']]],
+  ['getforces',['GetForces',['../class_killer_physics_1_1_particle.html#a20e0668d8e08c3a511b6f1a8e85622df',1,'KillerPhysics::Particle']]],
+  ['getgravityforce',['GetGravityForce',['../class_killer_physics_1_1_particle.html#ae9ca89ef039adfe258479a69b07e7845',1,'KillerPhysics::Particle']]],
+  ['getinversemass',['GetInverseMass',['../class_killer_physics_1_1_particle.html#ab39b2c57a31cbc876bbf493c9ed2390e',1,'KillerPhysics::Particle']]],
   ['getkeydown',['GetKeyDown',['../class_killer_engine_1_1_controller.html#a9c2e9930dcfc803b5c4bc0391daf502b',1,'KillerEngine::Controller']]],
   ['getkeyheld',['GetKeyHeld',['../class_killer_engine_1_1_controller.html#ac106f4ee3509f553b4cf621a88000c4e',1,'KillerEngine::Controller']]],
   ['getkeyreleased',['GetKeyReleased',['../class_killer_engine_1_1_controller.html#a61d1debb2b8a6d47199e6c67abd1c762',1,'KillerEngine::Controller']]],
   ['getkeyup',['GetKeyUp',['../class_killer_engine_1_1_controller.html#a717497e96d30f3b13c1952441ca30777',1,'KillerEngine::Controller']]],
   ['getleftmousecoord',['GetLeftMouseCoord',['../class_killer_engine_1_1_controller.html#ab900b8371b8bc98e078ea341ae3ea1d5',1,'KillerEngine::Controller']]],
+  ['getmass',['GetMass',['../class_killer_physics_1_1_particle.html#aac7276a13cfd10ead621849e32243f7a',1,'KillerPhysics::Particle']]],
   ['getname',['GetName',['../class_killer_engine_1_1_font.html#a801f7154d3a09f20b159d201e489bc04',1,'KillerEngine::Font']]],
   ['getpaused',['GetPaused',['../class_killer_math_1_1_timer.html#a4caa2352c0801fc072fa807ad10b2d1c',1,'KillerMath::Timer']]],
   ['getpointer',['GetPointer',['../class_killer_engine_1_1_color.html#aaa63bfda365280dda09739b26b6a399b',1,'KillerEngine::Color']]],
   ['getrightmousecoord',['GetRightMouseCoord',['../class_killer_engine_1_1_controller.html#aab2a03a061f1822b3e20a4a3987585f4',1,'KillerEngine::Controller']]],
-  ['gettimescale',['GetTimeScale',['../class_killer_math_1_1_timer.html#a32bff3f3219f8052cc57e3fa900abe7d',1,'KillerMath::Timer']]]
+  ['gettimescale',['GetTimeScale',['../class_killer_math_1_1_timer.html#a32bff3f3219f8052cc57e3fa900abe7d',1,'KillerMath::Timer']]],
+  ['getvelocity',['GetVelocity',['../class_killer_physics_1_1_particle.html#ae635dd6f540b38f99bb09eae960c4ae4',1,'KillerPhysics::Particle']]]
 ];
