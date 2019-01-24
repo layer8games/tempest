@@ -4,7 +4,7 @@ var class_killer_engine_1_1_font =
     [ "Font", "class_killer_engine_1_1_font.html#a9fbeba7fd5ff3bcc89cf6d221e086f14", null ],
     [ "Font", "class_killer_engine_1_1_font.html#a22100c31fcafbb0dfd73e21d802bf55a", null ],
     [ "GetAllCharacterGlyphs", "class_killer_engine_1_1_font.html#a75925b657a861a8e5deb96759d7dec4e", null ],
-    [ "GetCharacter", "class_killer_engine_1_1_font.html#a9a6d685b55426fb6b465d3d6f4f21322", null ],
+    [ "GetCharacterData", "class_killer_engine_1_1_font.html#ab27f9f1a73e3813fbf12add904ddec68", null ],
     [ "GetName", "class_killer_engine_1_1_font.html#a801f7154d3a09f20b159d201e489bc04", null ],
     [ "GetNumCharacters", "class_killer_engine_1_1_font.html#abb25024e448ccbca014807ec9265230a", null ],
     [ "GetSize", "class_killer_engine_1_1_font.html#a5c4e2584df312d767d17c67c11ae0dae", null ],

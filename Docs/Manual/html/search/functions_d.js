@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quaternion',['Quaternion',['../class_killer_math_1_1_quaternion.html#a39a0971895c9e93ae338ed9ecbc18220',1,'KillerMath::Quaternion::Quaternion(void)'],['../class_killer_math_1_1_quaternion.html#af6401e6d511916154c7f9a8b39a35ac8',1,'KillerMath::Quaternion::Quaternion(real value)'],['../class_killer_math_1_1_quaternion.html#ac8b62925c48118470710dc3a6940de5f',1,'KillerMath::Quaternion::Quaternion(real wVal, real xVal, real yVal, real zVal)'],['../class_killer_math_1_1_quaternion.html#ab3b8862f9fd86c7ebb426b4940d08b39',1,'KillerMath::Quaternion::Quaternion(const Quaternion &amp;q)']]]
+  ['particle',['Particle',['../class_killer_physics_1_1_particle.html#a89fff65ae37da07ca215b117e88f12aa',1,'KillerPhysics::Particle::Particle(void)'],['../class_killer_physics_1_1_particle.html#ab4143190fe35b013a5be767b79e3996b',1,'KillerPhysics::Particle::Particle(const Particle *particle)'],['../class_killer_physics_1_1_particle.html#af8e8c2ba8d0fe1e8a72af8322fb127ef',1,'KillerPhysics::Particle::Particle(const Particle &amp;particle)']]]
 ];

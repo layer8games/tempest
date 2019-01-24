@@ -86,3 +86,27 @@ void Text::_UpdatePositions(void)
 		currentPos[0] += data.xAdvance + size;
 	}
 }
+
+void Text::_UpdateActive(void)
+{
+	for(U32 i = 0; i < _characterList.size(); ++i)
+	{
+		_characterList[i]->SetActive(_active);
+	}
+}
+
+void Text::_UpdateScales(void)
+{
+	for(U32 i = 0; i < _characterList.size(); ++i)
+	{
+		_characterList[i]->SetScale(_scale);
+	}
+}
+
+void Text::_UpdateColors(void)
+{
+	for(U32 i = 0; i < _characterList.size(); ++i)
+	{
+		_characterList[i]->SetColor(_color);
+	}
+}

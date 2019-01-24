@@ -6,6 +6,7 @@ var searchData=
   ['_7eparticle',['~Particle',['../class_killer_physics_1_1_particle.html#aedbe5e541966e7799022665fdcb6ba66',1,'KillerPhysics::Particle']]],
   ['_7equaternion',['~Quaternion',['../class_killer_math_1_1_quaternion.html#a8809b583edcb51ece4d157d3341218ed',1,'KillerMath::Quaternion']]],
   ['_7erandom',['~Random',['../class_killer_math_1_1_random.html#a1da0f8a6d539679174ffcdff113f22d7',1,'KillerMath::Random']]],
+  ['_7etext',['~Text',['../class_killer_engine_1_1_text.html#a89cf30f2af3cc7336e98c9dcf2f0c040',1,'KillerEngine::Text']]],
   ['_7etimer',['~Timer',['../class_killer_math_1_1_timer.html#af87243f09ef5b58b889fb4a7284b526d',1,'KillerMath::Timer']]],
   ['_7evector',['~Vector',['../class_killer_math_1_1_vector.html#ae8533ae4f11176cc2f19dc529f34efff',1,'KillerMath::Vector']]]
 ];

@@ -10,6 +10,7 @@ var searchData=
   ['addscaledacceleration',['AddScaledAcceleration',['../class_killer_physics_1_1_particle.html#ade2e2dcdf430775346a6944edca90351',1,'KillerPhysics::Particle']]],
   ['addscaledvector',['AddScaledVector',['../class_killer_math_1_1_quaternion.html#aafa79fd80787def09a1c2b9c88fdc9fe',1,'KillerMath::Quaternion::AddScaledVector()'],['../class_killer_math_1_1_vector.html#ad4438b6f3c7c31cc840e770b0db60e69',1,'KillerMath::Vector::AddScaledVector()']]],
   ['addscaledvelocity',['AddScaledVelocity',['../class_killer_physics_1_1_particle.html#aabb1e9d791388245297e7b51f609e337',1,'KillerPhysics::Particle']]],
+  ['addtext',['AddText',['../class_killer_engine_1_1_text.html#ae379358ca98de712a1346cd661fe67b1',1,'KillerEngine::Text']]],
   ['addtranslate',['AddTranslate',['../class_killer_math_1_1_matrix.html#a5a953c5c76b1893954eb73a206041f04',1,'KillerMath::Matrix::AddTranslate(F32 xVal, F32 yVal)'],['../class_killer_math_1_1_matrix.html#a49c371f5c4bf016b67cb48644ce54a40',1,'KillerMath::Matrix::AddTranslate(F32 xVal, F32 yVal, F32 zVal)'],['../class_killer_math_1_1_matrix.html#a0e0f01eb9c27540d1803d0b99221f38c',1,'KillerMath::Matrix::AddTranslate(const Vector &amp;vec)']]],
   ['anchoredspring',['AnchoredSpring',['../class_killer_physics_1_1_anchored_spring.html',1,'KillerPhysics']]]
 ];

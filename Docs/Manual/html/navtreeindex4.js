@@ -1,5 +1,10 @@
 var NAVTREEINDEX4 =
 {
+"struct_killer_engine_1_1_character_data.html#a1988d19a61b37ec2ad469c4f18198486":[2,0,0,1,5],
+"struct_killer_engine_1_1_character_data.html#a55bda59fda940bdff0c32fd10b67b38a":[2,0,0,1,0],
+"struct_killer_engine_1_1_character_data.html#a669a04e3fe150b606ac5268221426c61":[2,0,0,1,1],
+"struct_killer_engine_1_1_character_data.html#a909627d71dbd45ccda427e49a11d9b05":[2,0,0,1,2],
+"struct_killer_engine_1_1_character_data.html#aadbc1aee48a6f7c27bc53e86ed0ad883":[2,0,0,1,4],
 "struct_killer_engine_1_1_character_data.html#af808a7fd7475f6c70d2deeab5e268fba":[2,0,0,1,3],
 "struct_killer_engine_1_1_level_1_1_level_data.html":[2,0,0,12,0],
 "struct_killer_engine_1_1_level_1_1_level_data.html#a3109c35e0114491f286765e5865028ea":[2,0,0,12,0,0],
