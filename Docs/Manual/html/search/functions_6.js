@@ -3,6 +3,8 @@ var searchData=
   ['getacceleration',['GetAcceleration',['../class_killer_physics_1_1_particle.html#a1a874580ae12822eaa3a05d6bae88ff3',1,'KillerPhysics::Particle']]],
   ['getactive',['GetActive',['../class_killer_engine_1_1_text.html#a3b4ca3d24e6eba6d0240eee1693a4b20',1,'KillerEngine::Text']]],
   ['getallcharacterglyphs',['GetAllCharacterGlyphs',['../class_killer_engine_1_1_font.html#a75925b657a861a8e5deb96759d7dec4e',1,'KillerEngine::Font']]],
+  ['getcharacter',['GetCharacter',['../class_killer_engine_1_1_glyph.html#a08b3dc28dcdf4d656e3637e7b85859d1',1,'KillerEngine::Glyph']]],
+  ['getcharacterdata',['GetCharacterData',['../class_killer_engine_1_1_glyph.html#ade5a94590d214c78f6a690c573fcaa36',1,'KillerEngine::Glyph']]],
   ['getcharacterlist',['GetCharacterList',['../class_killer_engine_1_1_text.html#a4da6479bde0c8d720eb8b0566a0988e2',1,'KillerEngine::Text']]],
   ['getclamp',['GetClamp',['../class_killer_math_1_1_timer.html#a146856beb44b9224d6d4721f1a715a2a',1,'KillerMath::Timer']]],
   ['getcolor',['GetColor',['../class_killer_engine_1_1_text.html#ac6bf167ad2bc594291635de265e2b12c',1,'KillerEngine::Text']]],
@@ -25,5 +27,6 @@ var searchData=
   ['getscale',['GetScale',['../class_killer_engine_1_1_text.html#aa6a54d5412e8f161e233b32db821ee6b',1,'KillerEngine::Text']]],
   ['gettimescale',['GetTimeScale',['../class_killer_math_1_1_timer.html#a32bff3f3219f8052cc57e3fa900abe7d',1,'KillerMath::Timer']]],
   ['getvelocity',['GetVelocity',['../class_killer_physics_1_1_particle.html#ae635dd6f540b38f99bb09eae960c4ae4',1,'KillerPhysics::Particle']]],
-  ['getwidth',['GetWidth',['../class_killer_engine_1_1_text.html#a64ed1c0091d4b89917679e9e9908862c',1,'KillerEngine::Text']]]
+  ['getwidth',['GetWidth',['../class_killer_engine_1_1_text.html#a64ed1c0091d4b89917679e9e9908862c',1,'KillerEngine::Text']]],
+  ['glyph',['Glyph',['../class_killer_engine_1_1_glyph.html#a72b3714bef7fb72255315aba4448800c',1,'KillerEngine::Glyph::Glyph(void)'],['../class_killer_engine_1_1_glyph.html#a6ac5c49902e8945a26d6a5a668279bdf',1,'KillerEngine::Glyph::Glyph(const Glyph &amp;glyph)']]]
 ];

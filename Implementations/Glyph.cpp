@@ -55,22 +55,9 @@ void Glyph::v_Render(void)
 	GameObject::BindVAO(false);
 }
 
-void Glyph::v_InitBuffers(void)
+void Glyph::Init(void)
 {
-	KM::Vector topRight(1.0f, 1.0f, 0.0f);
-	KM::Vector topLeft(-1.0f, 1.0f, 0.0f);
-	KM::Vector bottomRight(1.0f, -1.0f, 0.0f);
-	KM::Vector bottomLeft(-1.0f, -1.0f, 0.0);
-
-	GameObject::AddVertex(Vertex(topLeft, 0.0f, 0.0f));
-	GameObject::AddVertex(Vertex(topRight, 1.0f, 0.0f));
-	GameObject::AddVertex(Vertex(bottomRight, 1.0f, 1.0f));
-
-	GameObject::AddVertex(Vertex(topLeft, 0.0f, 0.0f));
-	GameObject::AddVertex(Vertex(bottomRight, 1.0f, 1.0f));
-	GameObject::AddVertex(Vertex(bottomLeft, 0.0f, 1.0f));
-
-	GameObject::v_InitBuffers();
+	GameObject::MakeSprite();
 
 	GameObject::SetShader(ShaderManager::Instance()->GetShader(GLYPH));
 }

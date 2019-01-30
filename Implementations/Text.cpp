@@ -41,7 +41,7 @@ void Text::AddText(string text)
 		CharacterData data = _font->GetCharacterData(_text[i]);
 		
 		shared_ptr<Glyph> g(new Glyph());
-		g->v_InitBuffers();
+		g->Init();
 		g->SetScale(static_cast<F32>(data.width), static_cast<F32>(data.height));
 		g->SetColor(_color);
 		//g->SetPosition(currentPos[0] + data.bearingX, currentPos[1] - (data.height + data.bearingY));

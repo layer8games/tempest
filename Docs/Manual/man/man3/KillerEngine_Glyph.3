@@ -1,4 +1,4 @@
-.TH "KillerEngine::Glyph" 3 "Wed Jan 23 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Glyph" 3 "Tue Jan 29 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -7,21 +7,29 @@ KillerEngine::Glyph
 .br
 .PP
 .PP
+\fC#include <Glyph\&.h>\fP
+.PP
 Inherits \fBKillerEngine::GameObject\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
+.RI "\fBGlyph\fP (void)"
+.br
+.ti -1c
 .RI "\fBGlyph\fP (const \fBGlyph\fP &glyph)"
 .br
 .ti -1c
-.RI "void \fBv_Update\fP (void)"
+.RI "\fB~Glyph\fP (void)"
 .br
 .ti -1c
-.RI "void \fBv_Render\fP (void)"
+.RI "void \fBv_Update\fP (void) final"
 .br
 .ti -1c
-.RI "void \fBv_InitBuffers\fP (void)"
+.RI "void \fBv_Render\fP (void) final"
+.br
+.ti -1c
+.RI "void \fBInit\fP (void)"
 .br
 .ti -1c
 .RI "void \fBSetCharacter\fP (char character, shared_ptr< \fBTexture\fP > tex, const \fBCharacterData\fP &characterData)"
@@ -42,12 +50,64 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .ti -1c
 .RI "char \fB_character\fP"
 .br
+.RI "Raw character that the \fBGlyph\fP represents on screen\&. "
 .ti -1c
 .RI "\fBCharacterData\fP \fB_characterData\fP"
 .br
+.RI "Various data needed to render and position the \fBGlyph\fP\&. "
 .in -1c
 .SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A sprite based UI character to be rendered at run time\&. It gets its data from a \fBFont\fP, which informs it of its size and its texture\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Glyph::Glyph (void)"
+No special behavior\&. 
+.SS "Glyph::Glyph (const \fBGlyph\fP & glyph)"
+Copies data from getters\&. 
+.SS "Glyph::~Glyph (void)"
+No special behavior\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "char KillerEngine::Glyph::GetCharacter (void) const\fC [inline]\fP"
+Returns the raw character\&. 
+.SS "\fBCharacterData\fP KillerEngine::Glyph::GetCharacterData (void) const\fC [inline]\fP"
+Returns the \fBCharacterData\fP for the \fBGlyph\fP\&. 
+.SS "void Glyph::Init (void)"
+Initializes the \fBGlyph\fP as a sprite, sets \fBGlyph\fP shader\&. 
+.SS "void KillerEngine::Glyph::SetCharacter (char character, shared_ptr< \fBTexture\fP > tex, const \fBCharacterData\fP & characterData)\fC [inline]\fP"
+Sets up the \fBCharacterData\fP that the \fBGlyph\fP will represent\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcharacter\fP is the raw character this \fBGlyph\fP is\&. 
+.br
+\fItex\fP is the \fBTexture\fP from the \fBFont\fP used to draw the character \fBGlyph\fP\&. 
+.br
+\fIcharacterData\fP comes from the \fBFont\fP and stores various data the character need\&. 
+.RE
+.PP
 
+.SS "void KillerEngine::Glyph::SetCharacter (char character, const \fBCharacterData\fP & characterData)\fC [inline]\fP"
+Partial set up of the \fBGlyph\fP \fBCharacterData\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcharacter\fP is the raw character this \fBGlyph\fP is\&. 
+.br
+\fIcharacterData\fP comes from the \fBFont\fP and stores various data the character needs\&. 
+.RE
+.PP
+
+.SS "void Glyph::v_Render (void)\fC [final]\fP, \fC [virtual]\fP"
+Provides specific Rendering calls\&. This sets a \fBGlyph\fP specific uniform called sprite_color\&. No special behavior other than that\&. 
+.PP
+Reimplemented from \fBKillerEngine::GameObject\fP\&.
+.SS "void KillerEngine::Glyph::v_Update (void)\fC [inline]\fP, \fC [final]\fP, \fC [virtual]\fP"
+Needed virtual function from \fBGameObject\fP\&. Empty implementation\&. 
+.PP
+Implements \fBKillerEngine::GameObject\fP\&.
 
 .SH "Author"
 .PP 

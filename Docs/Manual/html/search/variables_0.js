@@ -4,6 +4,8 @@ var searchData=
   ['_5facceleration',['_acceleration',['../class_killer_physics_1_1_particle.html#a2ca64778fbeba319e91d211769c956c3',1,'KillerPhysics::Particle']]],
   ['_5factive',['_active',['../class_killer_engine_1_1_text.html#ad1b141b64e162ef23b11926d3fea1686',1,'KillerEngine::Text']]],
   ['_5fbackground',['_background',['../class_killer_engine_1_1_camera.html#aadd0f8158d4c3246d0b2a0789628da74',1,'KillerEngine::Camera']]],
+  ['_5fcharacter',['_character',['../class_killer_engine_1_1_glyph.html#aebdc20537f0c9812c5b7ac749323450a',1,'KillerEngine::Glyph']]],
+  ['_5fcharacterdata',['_characterData',['../class_killer_engine_1_1_glyph.html#a312335b7adc2e9ce8a877093ab6f16db',1,'KillerEngine::Glyph']]],
   ['_5fcharacterglyphs',['_characterGlyphs',['../class_killer_engine_1_1_font.html#a0febd9e78dea21ed068cda97add54447',1,'KillerEngine::Font']]],
   ['_5fcharacterlist',['_characterList',['../class_killer_engine_1_1_text.html#ae2204448f80ef8d96c907f521d73bcf8',1,'KillerEngine::Text']]],
   ['_5fclamp',['_clamp',['../class_killer_math_1_1_timer.html#abea980147bf3be80aabed442d00333a1',1,'KillerMath::Timer']]],
