@@ -14,7 +14,8 @@ var searchData=
   ['getfont',['GetFont',['../class_killer_engine_1_1_text.html#a1dd9c76c740ba5ede0e9bee84bc38007',1,'KillerEngine::Text']]],
   ['getforces',['GetForces',['../class_killer_physics_1_1_particle.html#a20e0668d8e08c3a511b6f1a8e85622df',1,'KillerPhysics::Particle']]],
   ['getgravityforce',['GetGravityForce',['../class_killer_physics_1_1_particle.html#ae9ca89ef039adfe258479a69b07e7845',1,'KillerPhysics::Particle']]],
-  ['getheight',['GetHeight',['../class_killer_engine_1_1_win_program.html#a73e2ce25ba59f32c50cbc5260fa5e916',1,'KillerEngine::WinProgram']]],
+  ['gethandle',['GetHandle',['../class_killer_engine_1_1_texture.html#a698e2f7df09f3bf2cbc5bdaaf5c2cd7f',1,'KillerEngine::Texture']]],
+  ['getheight',['GetHeight',['../class_killer_engine_1_1_texture.html#a371c343b67e3c7c498963cb5d2338fd3',1,'KillerEngine::Texture::GetHeight()'],['../class_killer_engine_1_1_win_program.html#a73e2ce25ba59f32c50cbc5260fa5e916',1,'KillerEngine::WinProgram::GetHeight()']]],
   ['getinversemass',['GetInverseMass',['../class_killer_physics_1_1_particle.html#ab39b2c57a31cbc876bbf493c9ed2390e',1,'KillerPhysics::Particle']]],
   ['getkeydown',['GetKeyDown',['../class_killer_engine_1_1_controller.html#a9c2e9930dcfc803b5c4bc0391daf502b',1,'KillerEngine::Controller']]],
   ['getkeyheld',['GetKeyHeld',['../class_killer_engine_1_1_controller.html#ac106f4ee3509f553b4cf621a88000c4e',1,'KillerEngine::Controller']]],
@@ -38,7 +39,7 @@ var searchData=
   ['gettime',['GetTime',['../class_killer_engine_1_1_win_program.html#a93b88b8614173ce2b5d4badd14ea6e1c',1,'KillerEngine::WinProgram']]],
   ['gettimescale',['GetTimeScale',['../class_killer_math_1_1_timer.html#a32bff3f3219f8052cc57e3fa900abe7d',1,'KillerMath::Timer']]],
   ['getvelocity',['GetVelocity',['../class_killer_physics_1_1_particle.html#ae635dd6f540b38f99bb09eae960c4ae4',1,'KillerPhysics::Particle']]],
-  ['getwidth',['GetWidth',['../class_killer_engine_1_1_text.html#a64ed1c0091d4b89917679e9e9908862c',1,'KillerEngine::Text::GetWidth()'],['../class_killer_engine_1_1_win_program.html#a6a3912a9171bcd8d4a4c5303ed6d0d6d',1,'KillerEngine::WinProgram::GetWidth()']]],
+  ['getwidth',['GetWidth',['../class_killer_engine_1_1_text.html#a64ed1c0091d4b89917679e9e9908862c',1,'KillerEngine::Text::GetWidth()'],['../class_killer_engine_1_1_texture.html#a9970f66d9510e4b9ff1e7205b70c7245',1,'KillerEngine::Texture::GetWidth()'],['../class_killer_engine_1_1_win_program.html#a6a3912a9171bcd8d4a4c5303ed6d0d6d',1,'KillerEngine::WinProgram::GetWidth()']]],
   ['glyph',['Glyph',['../class_killer_engine_1_1_glyph.html',1,'KillerEngine::Glyph'],['../class_killer_engine_1_1_glyph.html#a72b3714bef7fb72255315aba4448800c',1,'KillerEngine::Glyph::Glyph(void)'],['../class_killer_engine_1_1_glyph.html#a6ac5c49902e8945a26d6a5a668279bdf',1,'KillerEngine::Glyph::Glyph(const Glyph &amp;glyph)']]],
   ['gravityforce',['GravityForce',['../class_killer_physics_1_1_gravity_force.html',1,'KillerPhysics']]]
 ];
