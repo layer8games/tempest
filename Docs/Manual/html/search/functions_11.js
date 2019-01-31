@@ -2,7 +2,7 @@ var searchData=
 [
   ['set',['Set',['../class_killer_math_1_1_vector.html#a535b8a4747ae5ab113d79f3f996ed27c',1,'KillerMath::Vector']]],
   ['setacceleration',['SetAcceleration',['../class_killer_physics_1_1_particle.html#af59de95a45bffe459b6eec4614f10eb6',1,'KillerPhysics::Particle::SetAcceleration(const KM::Vector &amp;acc)'],['../class_killer_physics_1_1_particle.html#a8821fc56a6ea8b1414d7dc9c9f04eee6',1,'KillerPhysics::Particle::SetAcceleration(F32 x, F32 y)'],['../class_killer_physics_1_1_particle.html#a565d0a8f86f0c3f1865a3f4eb789aa7d',1,'KillerPhysics::Particle::SetAcceleration(F32 x, F32 y, F32 z)']]],
-  ['setactive',['SetActive',['../class_killer_engine_1_1_text.html#a570494e905aca3d1ae3ae3de52ede136',1,'KillerEngine::Text']]],
+  ['setactive',['SetActive',['../class_killer_engine_1_1_text.html#a0b9fd4c1de463fdd2c0639981474b915',1,'KillerEngine::Text::SetActive(bool state)'],['../class_killer_engine_1_1_text.html#a570494e905aca3d1ae3ae3de52ede136',1,'KillerEngine::Text::SetActive(void)']]],
   ['setactivelevel',['SetActiveLevel',['../class_killer_engine_1_1_engine.html#a42b05bccc84e2bf48a7b8dcdcefacfad',1,'KillerEngine::Engine']]],
   ['setbackgroundcolor',['SetBackgroundColor',['../class_killer_engine_1_1_win_program.html#a082614c6191c6df8eaadfe096e060d7f',1,'KillerEngine::WinProgram']]],
   ['setcharacter',['SetCharacter',['../class_killer_engine_1_1_glyph.html#a7beb966776e96c6692658b2f27b81ae8',1,'KillerEngine::Glyph::SetCharacter(char character, shared_ptr&lt; Texture &gt; tex, const CharacterData &amp;characterData)'],['../class_killer_engine_1_1_glyph.html#ac819883d7359b0d398439692555bba83',1,'KillerEngine::Glyph::SetCharacter(char character, const CharacterData &amp;characterData)']]],

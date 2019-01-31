@@ -106,6 +106,24 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
+/*!
+	Returns a string version of the current text represented by Glyphs (if the Glyphs have been generated with a font).
+*/
+		inline string GetText(void)
+		{
+			return _text;
+		}
+
+/*!
+	Sets the active state of each Glyph. 
+	\param state is the new state each Glyph will get.
+*/
+		inline void SetActive(bool state)
+		{
+			_active = state;
+			_UpdateActive();
+		}
+
 /*! 
 	Sets each Glyph to active state. 
 */
@@ -149,11 +167,7 @@ namespace KillerEngine
 		{
 			_font = font;
 
-			//Update Glyphs if there is already text
-			if(_text.size() > 0)
-			{
-				AddText(_text);
-			}
+			//Need to update each glyph. Bug to fix later.
 		}
 
 /*! 
@@ -164,11 +178,7 @@ namespace KillerEngine
 		{ 
 			_font = shared_ptr<Font>(&font); 
 
-			//Update Glyphs, if there are any
-			if(_text.size() > 0)
-			{
-				AddText(_text);
-			}
+			//Need to update each glyph. Bug to fix later.
 		}
 
 /*! 
@@ -194,6 +204,13 @@ namespace KillerEngine
 		inline void SetScale(const KM::Vector& s)
 		{
 			_scale = s;
+			_UpdateScales();
+		}
+
+		inline void SetScale(F32 xScale, F32 yScale)
+		{
+			_scale[0] = xScale;
+			_scale[1] = yScale;
 			_UpdateScales();
 		}
 

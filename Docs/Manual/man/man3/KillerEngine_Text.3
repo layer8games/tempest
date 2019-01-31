@@ -33,6 +33,12 @@ KillerEngine::Text
 .RI "void \fBSetUniforms\fP (string name, const \fBKM::Matrix\fP &matrix)"
 .br
 .ti -1c
+.RI "string \fBGetText\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetActive\fP (bool state)"
+.br
+.ti -1c
 .RI "void \fBSetActive\fP (void)"
 .br
 .ti -1c
@@ -58,6 +64,9 @@ KillerEngine::Text
 .br
 .ti -1c
 .RI "void \fBSetScale\fP (const \fBKM::Vector\fP &s)"
+.br
+.ti -1c
+.RI "void \fBSetScale\fP (F32 xScale, F32 yScale)"
 .br
 .ti -1c
 .RI "const \fBKM::Vector\fP & \fBGetScale\fP (void)"
@@ -164,8 +173,19 @@ Returns the current \fBColor\fP of the \fBText\fP\&.
 Returns the font \fBText\fP is using\&. 
 .SS "const \fBKM::Vector\fP& KillerEngine::Text::GetScale (void)\fC [inline]\fP"
 Returns the current scale of the \fBText\fP\&. 
+.SS "string KillerEngine::Text::GetText (void)\fC [inline]\fP"
+Returns a string version of the current text represented by Glyphs (if the Glyphs have been generated with a font)\&. 
 .SS "F32 KillerEngine::Text::GetWidth (void)\fC [inline]\fP"
 Returns the total width of all the Glyphs including the xAdvance values\&. This means that this width represents how much screen space the \fBText\fP is going to take up on the x axis\&. 
+.SS "void KillerEngine::Text::SetActive (bool state)\fC [inline]\fP"
+Sets the active state of each \fBGlyph\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP is the new state each \fBGlyph\fP will get\&. 
+.RE
+.PP
+
 .SS "void KillerEngine::Text::SetActive (void)\fC [inline]\fP"
 Sets each \fBGlyph\fP to active state\&. 
 .SS "void KillerEngine::Text::SetColor (const \fBColor\fP & c)\fC [inline]\fP"

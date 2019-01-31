@@ -33,6 +33,7 @@ var searchData=
   ['getscreenleft',['GetScreenLeft',['../class_killer_engine_1_1_win_program.html#a8baffc29db18e4b8ba452c8e9dc3dbb3',1,'KillerEngine::WinProgram']]],
   ['getscreenright',['GetScreenRight',['../class_killer_engine_1_1_win_program.html#a7f832e3647bb1e435f760d06898f903c',1,'KillerEngine::WinProgram']]],
   ['getscreentop',['GetScreenTop',['../class_killer_engine_1_1_win_program.html#a6f418d5af9f01b652b71c2982300c7b7',1,'KillerEngine::WinProgram']]],
+  ['gettext',['GetText',['../class_killer_engine_1_1_text.html#a5bb3b1901cc06181208cde461ec1d24a',1,'KillerEngine::Text']]],
   ['gettime',['GetTime',['../class_killer_engine_1_1_win_program.html#a93b88b8614173ce2b5d4badd14ea6e1c',1,'KillerEngine::WinProgram']]],
   ['gettimescale',['GetTimeScale',['../class_killer_math_1_1_timer.html#a32bff3f3219f8052cc57e3fa900abe7d',1,'KillerMath::Timer']]],
   ['getvelocity',['GetVelocity',['../class_killer_physics_1_1_particle.html#ae635dd6f540b38f99bb09eae960c4ae4',1,'KillerPhysics::Particle']]],
