@@ -233,12 +233,12 @@ namespace KillerEngine
 /*! 
 	Callback function for glfw. Controls what happens when a key is pressed.
 	\param window is the pointer to the glfw window instance we are checking. 
-	\param key is passed as a ref to store what key is pressed. 
-	\param scancode needed by glfw. See documentation
+	\param key is the ID for the key that has been pressed. 
+	\param scancode is a platform specific token for each key pressed. 
 	\param action stores if it was a press or release
-	\param mode is needed by glfw. See documentation 
+	\param mods represents modifier keys; ctrl, shift, alt.
 */
-		static void OnKey(GLFWwindow* window, int key, int scancode, int action, int mode);
+		static void OnKey(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 /*! 
 	Callback function for glfw. Controls what happens when the screen is resized by the user (in the operating system). 
@@ -254,7 +254,7 @@ namespace KillerEngine
 	\param window is the pointer to the glfw window instance we are changing. 
 	\param button is the mouse button being pressed. 
 	\param action is the state, release or press.
-	\param mods is needed by glfw. 
+	\param mods represents modifier keys; ctrl, shift, alt.
 */
 		static void OnMouseClick(GLFWwindow* window, int button, int action, int mods);
 

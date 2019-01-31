@@ -1,4 +1,4 @@
-.TH "KillerEngine::WinProgram" 3 "Tue Jan 29 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::WinProgram" 3 "Wed Jan 30 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,9 +6,14 @@ KillerEngine::WinProgram
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <WinProgram\&.h>\fP
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fB~WinProgram\fP (void)"
+.br
 .ti -1c
 .RI "void \fBEndRunning\fP (void)"
 .br
@@ -39,7 +44,6 @@ KillerEngine::WinProgram
 .ti -1c
 .RI "void \fBInit\fP (S32 width, S32 height, string wndName, bool isFullScreen)"
 .br
-.RI "Sets up Windows Program\&. "
 .ti -1c
 .RI "void \fBProcessEvents\fP (void)"
 .br
@@ -84,7 +88,7 @@ KillerEngine::WinProgram
 .RI "static Keys \fBConvertKeyCodes\fP (int key)"
 .br
 .ti -1c
-.RI "static void \fBOnKey\fP (GLFWwindow *window, int key, int scancode, int action, int mode)"
+.RI "static void \fBOnKey\fP (GLFWwindow *window, int key, int scancode, int action, int mods)"
 .br
 .ti -1c
 .RI "static void \fBOnResize\fP (GLFWwindow *window, int width, int height)"
@@ -96,39 +100,56 @@ KillerEngine::WinProgram
 .RI "static void \fBOnMouseMove\fP (GLFWwindow *window, F64 posX, F64 posY)"
 .br
 .in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBWinProgram\fP (void)"
+.br
+.in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
 .RI "bool \fB_isFullScreen\fP"
 .br
+.RI "Fullscreen state of the window\&. True means full screen, false means not full screen\&. "
 .ti -1c
 .RI "bool \fB_running\fP"
 .br
+.RI "Running state of the window\&. True means its running, false means its time for shutdown\&. "
 .ti -1c
 .RI "bool \fB_wireFrame\fP"
 .br
+.RI "State of wireframe based rendering\&. True means render in wireframe mode, false means normal rendering\&. "
 .ti -1c
 .RI "F32 \fB_right\fP"
 .br
+.RI "Right boundary of window in pixels with origin in the center of the window\&. "
 .ti -1c
 .RI "F32 \fB_left\fP"
 .br
+.RI "Left boundary of window in pixels with origin in the center of the window\&. "
 .ti -1c
 .RI "F32 \fB_top\fP"
 .br
+.RI "Top boundary of window in pixels with origin in the center of the window\&. "
 .ti -1c
 .RI "F32 \fB_bottom\fP"
 .br
+.RI "Bottom boundary of the window in pixels with origin in the center of the window\&. "
 .ti -1c
 .RI "string \fB_wndName\fP"
 .br
+.RI "Title used for the window\&. "
 .ti -1c
 .RI "\fBColor\fP \fB_bgColor\fP"
 .br
+.RI "Background color OpenGL will use in rendering for the window\&. "
 .ti -1c
 .RI "GLFWwindow * \fB_window\fP"
 .br
+.RI "Pointer to the glfw window instance\&. "
 .in -1c
 .SS "Static Private Attributes"
 
@@ -136,32 +157,160 @@ KillerEngine::WinProgram
 .ti -1c
 .RI "static shared_ptr< \fBWinProgram\fP > \fB_instance\fP = NULL"
 .br
+.RI "Singleton instance\&. Global pointer, allows only one \fBWinProgram\fP to be active\&. "
 .ti -1c
 .RI "static S32 \fB_totalWidth\fP = 0"
 .br
+.RI "Total width of the window in pixels\&. "
 .ti -1c
 .RI "static S32 \fB_totalHeight\fP = 0"
 .br
+.RI "Total height of the window in pixels\&. "
 .in -1c
+.SH "Detailed Description"
+.PP 
+Framework that will open a window in the designated operating system which will be where the renderer will draw what it needs to for the game to be a game\&. There will be system specific code in this section which will be how the game will run on each system that is supported\&.
+.PP
+Supported system: Windows 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "WinProgram::~WinProgram (void)"
+No behavior\&. 
+.SS "WinProgram::WinProgram (void)\fC [protected]\fP"
+By default, sets all numeric values to 0, all bools to false, the _wndName to 'Killer Engine' and _window to a null pointer\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void WinProgram::Init (S32 width, S32 height, string wndName, bool isFullScreen)"
-
-.PP
-Sets up Windows Program\&. Makes all calls needed to start up a window\&. This is means to abstract away system specific callls 
+.SS "void WinProgram::BufferSwap (void)"
+Wrapper around glfwSwapBuffers and glClear\&. Swap buffers will place the back buffer, that has been getting drawn to, as the active buffer, and glClear will set the background color, setting up the next frame to be drawn\&. 
+.SS "Keys WinProgram::ConvertKeyCodes (int key)\fC [static]\fP"
+Converts the glfw key codes into a key code that the engine can understand\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIwidth\fP S32: width of created window 
-.br
-\fIheight\fP S32: height of created window 
-.br
-\fIwndName\fP string: title of window 
-.br
-\fIisFullScreen\fP bool: Sets if the system makes the window fullscreen 
+\fIkey\fP is the glfw key code to be converted\&. 
 .RE
 .PP
 
+.SS "void WinProgram::DisableMouseCursor (void)"
+Toggles the mouse cursor to no longer be displayed\&. This is true both inside and outside the program window, meaning that if you call this, your mouse will no longer work, until you either close the program or re-enable it using \fBEnableMouseCursor()\fP\&. 
+.SS "void WinProgram::DisplayFPS (void)"
+Toggle that allows the frames per second to be displayed in the title of the window\&. 
+.SS "void WinProgram::EnableMouseCursor (void)"
+Toggles the mouse cursor to be displayed\&. 
+.SS "void KillerEngine::WinProgram::EndRunning (void)\fC [inline]\fP"
+Closes down the \fBWinProgram\fP and ends the program\&. 
+.SS "S32 KillerEngine::WinProgram::GetHeight (void)\fC [inline]\fP"
+Returns the total heigth of the program window in pixel\&. 
+.SS "const \fBKM::Vector\fP WinProgram::GetMousePos (void)"
+Returns the position of the mouse cursor with the origin in the top left of the program window, ranging from 0 to 1\&. 
+.SS "const \fBKM::Vector\fP WinProgram::GetMousePosInScreen (void)"
+Returns the position of the mouse cursor in pixels with the origin in the center of the program window, randing from the program windows up - down - left - right values\&. Very important, this is in Screen Space, not world space\&. 
+.SS "bool KillerEngine::WinProgram::GetRunning (void)\fC [inline]\fP"
+Returns the state of the game\&. True means that it should keep running, false means that it is shutting down\&. 
+.SS "F32 KillerEngine::WinProgram::GetScreenBottom (void)\fC [inline]\fP"
+Returns half the height negative, repsrenting the bottom most boundary of the program window\&. 
+.SS "F32 KillerEngine::WinProgram::GetScreenLeft (void)\fC [inline]\fP"
+Returns half the width negative, representing the left most boundary of the program window\&. 
+.SS "F32 KillerEngine::WinProgram::GetScreenRight (void)\fC [inline]\fP"
+Returns half the width positive, representing the right most boundary of the program window\&. 
+.SS "F32 KillerEngine::WinProgram::GetScreenTop (void)\fC [inline]\fP"
+Returns half the height positive, representing the top most boundary of the program window\&. 
+.SS "F64 KillerEngine::WinProgram::GetTime (void)\fC [inline]\fP"
+Wrapper around glfwGetTime\&. Used to find out how long the program has been running in miliseconds\&. Used by the \fBKillerMath::Timer\fP\&. 
+.SS "S32 KillerEngine::WinProgram::GetWidth (void)\fC [inline]\fP"
+Returns the total width of the program window in pixels\&. 
+.SS "void WinProgram::HideMouseCursor (void)"
+Toggles the mouse cursor to not be displayed in the program window\&. Outside of the program window it will behave as normal\&. 
+.SS "void WinProgram::Init (S32 width, S32 height, string wndName, bool isFullScreen)"
+Sets up program window\&. Makes all calls needed to start up a window\&. This is a helper function that takes are of all the glfw calls needed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwidth\fP of created window 
+.br
+\fIheight\fP of created window 
+.br
+\fIwndName\fP title of window 
+.br
+\fIisFullScreen\fP sets if the system makes the window fullscreen 
+.RE
+.PP
+
+.SS "shared_ptr< \fBWinProgram\fP > WinProgram::Instance (void)\fC [static]\fP"
+Singleton function\&. Returns the global pointer to the program window\&. 
+.SS "void WinProgram::OnKey (GLFWwindow * window, int key, int scancode, int action, int mods)\fC [static]\fP"
+Callback function for glfw\&. Controls what happens when a key is pressed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwindow\fP is the pointer to the glfw window instance we are checking\&. 
+.br
+\fIkey\fP is the ID for the key that has been pressed\&. 
+.br
+\fIscancode\fP is a platform specific token for each key pressed\&. 
+.br
+\fIaction\fP stores if it was a press or release 
+.br
+\fImods\fP represents modifier keys; ctrl, shift, alt\&. 
+.RE
+.PP
+
+.SS "void WinProgram::OnMouseClick (GLFWwindow * window, int button, int action, int mods)\fC [static]\fP"
+Callback function for glfw\&. Controls what happens when a mouse click happens (right, left, middle or any other)\&. Currently, only right and left clicks are considered\&. 
+.br
+\fBParameters:\fP
+.RS 4
+\fIwindow\fP is the pointer to the glfw window instance we are changing\&. 
+.br
+\fIbutton\fP is the mouse button being pressed\&. 
+.br
+\fIaction\fP is the state, release or press\&. 
+.br
+\fImods\fP represents modifier keys; ctrl, shift, alt\&. 
+.RE
+.PP
+
+.SS "void WinProgram::OnMouseMove (GLFWwindow * window, F64 posX, F64 posY)\fC [static]\fP"
+Callback function for glfw\&. Controls what happens when the mouse is detected to move\&. Currently not implemented\&. 
+.br
+\fBParameters:\fP
+.RS 4
+\fIwindow\fP is the pointer to the glfw window instance we are changing\&. 
+.br
+\fIposX\fP stores the x position value 
+.br
+\fIposY\fP stores the y posiition value\&. 
+.RE
+.PP
+
+.SS "void WinProgram::OnResize (GLFWwindow * window, int width, int height)\fC [static]\fP"
+Callback function for glfw\&. Controls what happens when the screen is resized by the user (in the operating system)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwindow\fP is the pointer to the glfw window instance we are changing\&. 
+.br
+\fIwidth\fP is the new total width of the window\&. 
+.br
+\fIheight\fP is the new total height of the window\&. 
+.RE
+.PP
+
+.SS "void WinProgram::ProcessEvents (void)"
+Wrapper around glfwPollEvents\&. This polls any pending events\&. Used to capture user Input\&. 
+.SS "void WinProgram::ResetMouseCursor (void)"
+Moves the mouse cursor to the center of the program window\&. 
+.SS "void KillerEngine::WinProgram::SetBackgroundColor (const \fBColor\fP & c)\fC [inline]\fP"
+Sets the color OpenGL will use to color the background of the program window\&. This includes the call to actually change that color state in OpenGL\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIc\fP is the new color that will be set\&. 
+.RE
+.PP
+
+.SS "void WinProgram::ToggleWireFrame (void)"
+Toggle that changes the rendering to only use wireframes, drawing the lines the represent edges in a mesh instead of filling in the faces\&. Used for debugging\&. 
 
 .SH "Author"
 .PP 

@@ -1,13 +1,6 @@
 var searchData=
 [
-  ['_7econtroller',['~Controller',['../class_killer_engine_1_1_controller.html#a3d53864db248f17f2443df8388053f9d',1,'KillerEngine::Controller']]],
-  ['_7eenvironmentobject',['~EnvironmentObject',['../class_killer_engine_1_1_environment_object.html#a516f11de35c5d9f634a28a31d3c01d49',1,'KillerEngine::EnvironmentObject']]],
-  ['_7eerrormanager',['~ErrorManager',['../class_killer_engine_1_1_error_manager.html#a768a9e20a2a01bf3d69357c7386b0e02',1,'KillerEngine::ErrorManager']]],
-  ['_7eglyph',['~Glyph',['../class_killer_engine_1_1_glyph.html#a05a169a0de4f83e573c3dcd6aef33568',1,'KillerEngine::Glyph']]],
-  ['_7eparticle',['~Particle',['../class_killer_physics_1_1_particle.html#aedbe5e541966e7799022665fdcb6ba66',1,'KillerPhysics::Particle']]],
-  ['_7equaternion',['~Quaternion',['../class_killer_math_1_1_quaternion.html#a8809b583edcb51ece4d157d3341218ed',1,'KillerMath::Quaternion']]],
-  ['_7erandom',['~Random',['../class_killer_math_1_1_random.html#a1da0f8a6d539679174ffcdff113f22d7',1,'KillerMath::Random']]],
-  ['_7etext',['~Text',['../class_killer_engine_1_1_text.html#a89cf30f2af3cc7336e98c9dcf2f0c040',1,'KillerEngine::Text']]],
-  ['_7etimer',['~Timer',['../class_killer_math_1_1_timer.html#af87243f09ef5b58b889fb4a7284b526d',1,'KillerMath::Timer']]],
-  ['_7evector',['~Vector',['../class_killer_math_1_1_vector.html#ae8533ae4f11176cc2f19dc529f34efff',1,'KillerMath::Vector']]]
+  ['v_5frender',['v_Render',['../class_killer_engine_1_1_glyph.html#a32069d2fa9daa097a4f4a1b944a13627',1,'KillerEngine::Glyph']]],
+  ['v_5fupdate',['v_Update',['../class_killer_engine_1_1_environment_object.html#af71fcd9bf8fda70de97c24c2ab35b8fa',1,'KillerEngine::EnvironmentObject::v_Update()'],['../class_killer_engine_1_1_glyph.html#a4cc1df624f30a403b96c3c19473f1719',1,'KillerEngine::Glyph::v_Update()'],['../class_killer_physics_1_1_particle.html#a101443632996035330ff2f96f4213421',1,'KillerPhysics::Particle::v_Update()']]],
+  ['vector',['Vector',['../class_killer_math_1_1_vector.html#adc7052514a833f0fbb5ee306a5550ea0',1,'KillerMath::Vector::Vector(void)'],['../class_killer_math_1_1_vector.html#ac0d2b3e79626301240879c27923cc649',1,'KillerMath::Vector::Vector(F32 val)'],['../class_killer_math_1_1_vector.html#a758418347d2121cd7e06e1b4ad7c6c98',1,'KillerMath::Vector::Vector(F32 x, F32 y)'],['../class_killer_math_1_1_vector.html#a77c3b2ae877e41067a4dbd1cdb3c6c91',1,'KillerMath::Vector::Vector(F32 x, F32 y, F32 z)'],['../class_killer_math_1_1_vector.html#a7c4d2b1bd43a5a9dadeddbb5471b2ed1',1,'KillerMath::Vector::Vector(F32 x, F32 y, F32 z, F32 w)'],['../class_killer_math_1_1_vector.html#a5f04e343b7306ad11f8a82c89b486764',1,'KillerMath::Vector::Vector(const Vector &amp;v)']]]
 ];

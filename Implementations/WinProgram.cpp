@@ -361,7 +361,7 @@ const KM::Vector WinProgram::GetMousePosInScreen(void)
 //=======================================================================================================
 //OnKey
 //=======================================================================================================    
-void WinProgram::OnKey(GLFWwindow* window, int key, int scancode, int action, int mode)
+void WinProgram::OnKey(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     if(action == GLFW_PRESS)
     {

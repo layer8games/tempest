@@ -9,6 +9,7 @@ var searchData=
   ['randomvector',['RandomVector',['../class_killer_math_1_1_random.html#ad1cd439ab47622b1f8a0871e1f7186d0',1,'KillerMath::Random']]],
   ['render',['Render',['../class_killer_engine_1_1_engine.html#a0544104c7bffacec72851a2074ac8102',1,'KillerEngine::Engine']]],
   ['reset',['Reset',['../class_killer_math_1_1_matrix.html#a077757f722775e2641144e4d2197847e',1,'KillerMath::Matrix::Reset()'],['../class_killer_math_1_1_vector.html#ad21852dd621ce6bd797b1b27d1aa678e',1,'KillerMath::Vector::Reset()']]],
+  ['resetmousecursor',['ResetMouseCursor',['../class_killer_engine_1_1_win_program.html#a1c1bb1ffae092f13dd5fb42d5a4eaa2c',1,'KillerEngine::WinProgram']]],
   ['rigidbody',['RigidBody',['../class_killer_physics_1_1_rigid_body.html',1,'KillerPhysics']]],
   ['running',['Running',['../class_killer_engine_1_1_engine.html#a839aaf9ee031bb12b4f1d08453c2f068',1,'KillerEngine::Engine']]]
 ];
