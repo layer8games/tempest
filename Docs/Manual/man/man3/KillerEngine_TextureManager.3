@@ -1,4 +1,4 @@
-.TH "KillerEngine::TextureManager" 3 "Wed Jan 30 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::TextureManager" 3 "Thu Jan 31 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,9 +6,14 @@ KillerEngine::TextureManager
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <TextureManager\&.h>\fP
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fB~TextureManager\fP (void)"
+.br
 .ti -1c
 .RI "void \fBLoadTexture\fP (U32 id, string filePath)"
 .br
@@ -29,12 +34,20 @@ KillerEngine::TextureManager
 .RI "static shared_ptr< \fBTextureManager\fP > \fBInstance\fP (void)"
 .br
 .in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTextureManager\fP (void)"
+.br
+.in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
 .RI "map< U32, shared_ptr< \fBTexture\fP > > \fB_loadedTextures\fP"
 .br
+.RI "Database of all added \fBTexture\fP pointers that can be accessed\&. "
 .in -1c
 .SS "Static Private Attributes"
 
@@ -42,7 +55,50 @@ KillerEngine::TextureManager
 .ti -1c
 .RI "static shared_ptr< \fBTextureManager\fP > \fB_instance\fP = nullptr"
 .br
+.RI "Pointer to self used as global data in Singleton pattern\&. "
 .in -1c
+.SH "Detailed Description"
+.PP 
+The \fBTextureManager\fP is a singleton class that will control when and how all textures are added to memory from the disc\&. SOIL is the library used to actually load the images from the hard drive and use the image data to create the texture\&. Once a \fBTexture\fP is created, it can be accessed by ID to copy a pointer to the \fBTexture\fP\&. This means that each \fBTexture\fP can be shared between multiple objects\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TextureManager::~TextureManager (void)"
+Clears all of the saved Textures\&. 
+.SS "TextureManager::TextureManager (void)\fC [protected]\fP"
+Calls default, empty constructor on map\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void TextureManager::AddTexture (U32 id, const \fBTexture\fP & tex)"
+Adds a \fBTexture\fP to manager\&. ID will be used to call it back\&.  is the \fBTexture\fP to add\&. It is converted into a shared_ptr<Texture>\&. 
+.SS "void TextureManager::AddTexture (U32 id, shared_ptr< \fBTexture\fP > tex)"
+Adds a pointer to a \fBTexture\fP into the manager\&. ID will be used to call it back\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItex\fP is the shared pointer to add\&. 
+.RE
+.PP
+
+.SS "const shared_ptr< \fBTexture\fP > TextureManager::GetTexture (U32 id)"
+Returns the \fBTexture\fP pointer stored with ID\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the \fBTexture\fP id that you wish to return\&. Used as a key in a map\&. 
+.RE
+.PP
+
+.SS "shared_ptr< \fBTextureManager\fP > TextureManager::Instance (void)\fC [static]\fP"
+Singleton function\&. Returns the global pointer to the \fBTextureManager\fP\&. 
+.SS "void TextureManager::LoadTexture (U32 id, string filePath)"
+Creates a new \fBTexture\fP using the \fBTexture::Texture(string)\fP constructor\&. Saves by calling AddTexture\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilePath\fP is the path to the image on the hard drive\&. 
+.RE
+.PP
+
 
 .SH "Author"
 .PP 
