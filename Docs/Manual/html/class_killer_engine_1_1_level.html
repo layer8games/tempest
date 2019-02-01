@@ -87,202 +87,1252 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_level.html',''
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-types">Protected Types</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_level-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">KillerEngine::Level Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_level_8h_source.html">Level.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_killer_engine_1_1_level_1_1_level_data.html">LevelData</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_killer_engine_1_1_level_1_1_tile_data.html">TileData</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ace325448c62606751528d4a18df74b6c"><td class="memItemLeft" align="right" valign="top"><a id="ace325448c62606751528d4a18df74b6c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>v_InitLevel</b> (U32 id, S32 w, S32 h, <a class="el" href="class_killer_engine_1_1_color.html">Color</a> &amp;c)=0</td></tr>
+<tr class="memitem:a855c4bef873cd89b0b0c611d731e8fa9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a855c4bef873cd89b0b0c611d731e8fa9">Level</a> (void)</td></tr>
+<tr class="separator:a855c4bef873cd89b0b0c611d731e8fa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3164b75538259d026c034927e977c43b"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a3164b75538259d026c034927e977c43b">~Level</a> (void)</td></tr>
+<tr class="separator:a3164b75538259d026c034927e977c43b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace325448c62606751528d4a18df74b6c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#ace325448c62606751528d4a18df74b6c">v_InitLevel</a> (U32 id, S32 w, S32 h, <a class="el" href="class_killer_engine_1_1_color.html">Color</a> &amp;c)=0</td></tr>
 <tr class="separator:ace325448c62606751528d4a18df74b6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52ee149ac4606f7fc4295a3a10d4c8f7"><td class="memItemLeft" align="right" valign="top"><a id="a52ee149ac4606f7fc4295a3a10d4c8f7"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>v_Update</b> (void)=0</td></tr>
+<tr class="memitem:a52ee149ac4606f7fc4295a3a10d4c8f7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a52ee149ac4606f7fc4295a3a10d4c8f7">v_Update</a> (void)=0</td></tr>
 <tr class="separator:a52ee149ac4606f7fc4295a3a10d4c8f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bacfc94408e29abb0e38ce6e788c0a2"><td class="memItemLeft" align="right" valign="top"><a id="a9bacfc94408e29abb0e38ce6e788c0a2"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>v_Integrate</b> (void)</td></tr>
+<tr class="memitem:a9bacfc94408e29abb0e38ce6e788c0a2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a9bacfc94408e29abb0e38ce6e788c0a2">v_Integrate</a> (void)</td></tr>
 <tr class="separator:a9bacfc94408e29abb0e38ce6e788c0a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b0ddbe638002f69519d46733c2729e2"><td class="memItemLeft" align="right" valign="top"><a id="a2b0ddbe638002f69519d46733c2729e2"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>v_Render</b> (void)</td></tr>
+<tr class="memitem:a2b0ddbe638002f69519d46733c2729e2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a2b0ddbe638002f69519d46733c2729e2">v_Render</a> (void)</td></tr>
 <tr class="separator:a2b0ddbe638002f69519d46733c2729e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c29208a8de98835cba7f101efdca6d4"><td class="memItemLeft" align="right" valign="top"><a id="a2c29208a8de98835cba7f101efdca6d4"></a>
-virtual <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>v_CreateObject</b> (ObjectType type, <a class="el" href="class_killer_math_1_1_vector.html">KM::Vector</a> &amp;pos, U32 textureID, F32 w, F32 h)</td></tr>
-<tr class="separator:a2c29208a8de98835cba7f101efdca6d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4812e4f88b745499785fe19709cf7a3d"><td class="memItemLeft" align="right" valign="top"><a id="a4812e4f88b745499785fe19709cf7a3d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateLevel</b> (void)</td></tr>
+<tr class="memitem:a4812e4f88b745499785fe19709cf7a3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a4812e4f88b745499785fe19709cf7a3d">UpdateLevel</a> (void)</td></tr>
 <tr class="separator:a4812e4f88b745499785fe19709cf7a3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c25717c005902808795dee87bba6cdc"><td class="memItemLeft" align="right" valign="top"><a id="a6c25717c005902808795dee87bba6cdc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddObjectToLevel</b> (const <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &amp;obj)</td></tr>
+<tr class="memitem:a6c25717c005902808795dee87bba6cdc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a6c25717c005902808795dee87bba6cdc">AddObjectToLevel</a> (const <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &amp;obj)</td></tr>
 <tr class="separator:a6c25717c005902808795dee87bba6cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0ead74e30f0e465785c282d39cc3de7"><td class="memItemLeft" align="right" valign="top"><a id="ac0ead74e30f0e465785c282d39cc3de7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddObjectToLevel</b> (shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &gt; obj)</td></tr>
+<tr class="memitem:ac0ead74e30f0e465785c282d39cc3de7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#ac0ead74e30f0e465785c282d39cc3de7">AddObjectToLevel</a> (shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &gt; obj)</td></tr>
 <tr class="separator:ac0ead74e30f0e465785c282d39cc3de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b7af310ae110e409e8351e4fbed4759"><td class="memItemLeft" align="right" valign="top"><a id="a7b7af310ae110e409e8351e4fbed4759"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddParticleToLevel</b> (const <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &amp;particle)</td></tr>
+<tr class="memitem:a7b7af310ae110e409e8351e4fbed4759"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a7b7af310ae110e409e8351e4fbed4759">AddParticleToLevel</a> (const <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &amp;particle)</td></tr>
 <tr class="separator:a7b7af310ae110e409e8351e4fbed4759"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1d7733e7a4b294cb7f2ef05dc2b0a2b"><td class="memItemLeft" align="right" valign="top"><a id="ad1d7733e7a4b294cb7f2ef05dc2b0a2b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddParticleToLevel</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; particle)</td></tr>
+<tr class="memitem:ad1d7733e7a4b294cb7f2ef05dc2b0a2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#ad1d7733e7a4b294cb7f2ef05dc2b0a2b">AddParticleToLevel</a> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; particle)</td></tr>
 <tr class="separator:ad1d7733e7a4b294cb7f2ef05dc2b0a2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35556fbe0f081220f328ff47ad87f8f8"><td class="memItemLeft" align="right" valign="top"><a id="a35556fbe0f081220f328ff47ad87f8f8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddParticleToLevel</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; particle, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_force_generator.html">KP::ForceGenerator</a> &gt; generator=nullptr)</td></tr>
+<tr class="memitem:a35556fbe0f081220f328ff47ad87f8f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a35556fbe0f081220f328ff47ad87f8f8">AddParticleToLevel</a> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; particle, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_force_generator.html">KP::ForceGenerator</a> &gt; generator=nullptr)</td></tr>
 <tr class="separator:a35556fbe0f081220f328ff47ad87f8f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a062658b2775b37edb1c06665e87e5abc"><td class="memItemLeft" align="right" valign="top"><a id="a062658b2775b37edb1c06665e87e5abc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>RegisterParticleForce</b> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; particle, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_force_generator.html">KP::ForceGenerator</a> &gt; generator)</td></tr>
+<tr class="memitem:a062658b2775b37edb1c06665e87e5abc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a062658b2775b37edb1c06665e87e5abc">RegisterParticleForce</a> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; particle, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_force_generator.html">KP::ForceGenerator</a> &gt; generator)</td></tr>
 <tr class="separator:a062658b2775b37edb1c06665e87e5abc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3be6f68566fa11a1d6ed74b6a20c7113"><td class="memItemLeft" align="right" valign="top"><a id="a3be6f68566fa11a1d6ed74b6a20c7113"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddTextToLevel</b> (const <a class="el" href="class_killer_engine_1_1_text.html">Text</a> &amp;text)</td></tr>
+<tr class="memitem:a3be6f68566fa11a1d6ed74b6a20c7113"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a3be6f68566fa11a1d6ed74b6a20c7113">AddTextToLevel</a> (const <a class="el" href="class_killer_engine_1_1_text.html">Text</a> &amp;text)</td></tr>
 <tr class="separator:a3be6f68566fa11a1d6ed74b6a20c7113"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a128b2440a436be3e29c58d8ef194dcd4"><td class="memItemLeft" align="right" valign="top"><a id="a128b2440a436be3e29c58d8ef194dcd4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveObjectFromLevel</b> (U32 id)</td></tr>
+<tr class="memitem:a128b2440a436be3e29c58d8ef194dcd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a128b2440a436be3e29c58d8ef194dcd4">RemoveObjectFromLevel</a> (U32 id)</td></tr>
 <tr class="separator:a128b2440a436be3e29c58d8ef194dcd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfe26b484c3972eb8d6df069491cce8a"><td class="memItemLeft" align="right" valign="top"><a id="abfe26b484c3972eb8d6df069491cce8a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateObjects</b> (void)</td></tr>
+<tr class="memitem:abfe26b484c3972eb8d6df069491cce8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#abfe26b484c3972eb8d6df069491cce8a">UpdateObjects</a> (void)</td></tr>
 <tr class="separator:abfe26b484c3972eb8d6df069491cce8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a976f42d11931d94fa5799c09c9415b98"><td class="memItemLeft" align="right" valign="top"><a id="a976f42d11931d94fa5799c09c9415b98"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>RenderObjects</b> (void)</td></tr>
+<tr class="memitem:a976f42d11931d94fa5799c09c9415b98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a976f42d11931d94fa5799c09c9415b98">RenderObjects</a> (void)</td></tr>
 <tr class="separator:a976f42d11931d94fa5799c09c9415b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a979a57ad58ae3f4e596e3dcad45dc349"><td class="memItemLeft" align="right" valign="top"><a id="a979a57ad58ae3f4e596e3dcad45dc349"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetBackgroundColor</b> (<a class="el" href="class_killer_engine_1_1_color.html">Color</a> &amp;c)</td></tr>
+<tr class="memitem:a979a57ad58ae3f4e596e3dcad45dc349"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a979a57ad58ae3f4e596e3dcad45dc349">SetBackgroundColor</a> (<a class="el" href="class_killer_engine_1_1_color.html">Color</a> &amp;c)</td></tr>
 <tr class="separator:a979a57ad58ae3f4e596e3dcad45dc349"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29500a40202e95e5f477cbfac0341655"><td class="memItemLeft" align="right" valign="top"><a id="a29500a40202e95e5f477cbfac0341655"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ActivateBackgroundColor</b> (void)</td></tr>
+<tr class="memitem:a29500a40202e95e5f477cbfac0341655"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a29500a40202e95e5f477cbfac0341655">ActivateBackgroundColor</a> (void)</td></tr>
 <tr class="separator:a29500a40202e95e5f477cbfac0341655"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8034fa734b4b72166f88aa428156f296"><td class="memItemLeft" align="right" valign="top"><a id="a8034fa734b4b72166f88aa428156f296"></a>
-S32&#160;</td><td class="memItemRight" valign="bottom"><b>GetLevelWidth</b> (void) const</td></tr>
+<tr class="memitem:a8034fa734b4b72166f88aa428156f296"><td class="memItemLeft" align="right" valign="top">S32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a8034fa734b4b72166f88aa428156f296">GetLevelWidth</a> (void) const</td></tr>
 <tr class="separator:a8034fa734b4b72166f88aa428156f296"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a547eaf343b5b083f02564699ed6df675"><td class="memItemLeft" align="right" valign="top"><a id="a547eaf343b5b083f02564699ed6df675"></a>
-S32&#160;</td><td class="memItemRight" valign="bottom"><b>GetLevelHeight</b> (void) const</td></tr>
+<tr class="memitem:a547eaf343b5b083f02564699ed6df675"><td class="memItemLeft" align="right" valign="top">S32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a547eaf343b5b083f02564699ed6df675">GetLevelHeight</a> (void) const</td></tr>
 <tr class="separator:a547eaf343b5b083f02564699ed6df675"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96242b3d0337c57a2dc3c1188b74994a"><td class="memItemLeft" align="right" valign="top"><a id="a96242b3d0337c57a2dc3c1188b74994a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLevelWidth</b> (S32 w)</td></tr>
+<tr class="memitem:a96242b3d0337c57a2dc3c1188b74994a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a96242b3d0337c57a2dc3c1188b74994a">SetLevelWidth</a> (S32 w)</td></tr>
 <tr class="separator:a96242b3d0337c57a2dc3c1188b74994a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae053ef118b049e3e8a64d0d8457dd458"><td class="memItemLeft" align="right" valign="top"><a id="ae053ef118b049e3e8a64d0d8457dd458"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLevelHeight</b> (S32 h)</td></tr>
+<tr class="memitem:ae053ef118b049e3e8a64d0d8457dd458"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#ae053ef118b049e3e8a64d0d8457dd458">SetLevelHeight</a> (S32 h)</td></tr>
 <tr class="separator:ae053ef118b049e3e8a64d0d8457dd458"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5f10f0cf1cfdfa8646628c5d7bc9c25"><td class="memItemLeft" align="right" valign="top"><a id="ae5f10f0cf1cfdfa8646628c5d7bc9c25"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLevelDimensions</b> (S32 w, S32 h)</td></tr>
+<tr class="memitem:ae5f10f0cf1cfdfa8646628c5d7bc9c25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#ae5f10f0cf1cfdfa8646628c5d7bc9c25">SetLevelDimensions</a> (S32 w, S32 h)</td></tr>
 <tr class="separator:ae5f10f0cf1cfdfa8646628c5d7bc9c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7f88c9a262b207a58badb6b9b9eadb4"><td class="memItemLeft" align="right" valign="top"><a id="ab7f88c9a262b207a58badb6b9b9eadb4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetTopBorder</b> (S32 top)</td></tr>
+<tr class="memitem:ab7f88c9a262b207a58badb6b9b9eadb4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#ab7f88c9a262b207a58badb6b9b9eadb4">SetTopBorder</a> (S32 top)</td></tr>
 <tr class="separator:ab7f88c9a262b207a58badb6b9b9eadb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adebc17b4539e472b1b7d617bc0d2f70a"><td class="memItemLeft" align="right" valign="top"><a id="adebc17b4539e472b1b7d617bc0d2f70a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetBottomBorder</b> (S32 bottom)</td></tr>
+<tr class="memitem:adebc17b4539e472b1b7d617bc0d2f70a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#adebc17b4539e472b1b7d617bc0d2f70a">SetBottomBorder</a> (S32 bottom)</td></tr>
 <tr class="separator:adebc17b4539e472b1b7d617bc0d2f70a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72b208b8bbb596179657859371a851e5"><td class="memItemLeft" align="right" valign="top"><a id="a72b208b8bbb596179657859371a851e5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetRightBorder</b> (S32 right)</td></tr>
+<tr class="memitem:a72b208b8bbb596179657859371a851e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a72b208b8bbb596179657859371a851e5">SetRightBorder</a> (S32 right)</td></tr>
 <tr class="separator:a72b208b8bbb596179657859371a851e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8593f5f74aad50cc8c5ffaa684824a80"><td class="memItemLeft" align="right" valign="top"><a id="a8593f5f74aad50cc8c5ffaa684824a80"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLeftBorder</b> (S32 left)</td></tr>
+<tr class="memitem:a8593f5f74aad50cc8c5ffaa684824a80"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a8593f5f74aad50cc8c5ffaa684824a80">SetLeftBorder</a> (S32 left)</td></tr>
 <tr class="separator:a8593f5f74aad50cc8c5ffaa684824a80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af36559de09d3570e6a89be9ad4875c14"><td class="memItemLeft" align="right" valign="top"><a id="af36559de09d3570e6a89be9ad4875c14"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetLevelBorders</b> (S32 top, S32 bottom, S32 right, S32 left)</td></tr>
+<tr class="memitem:af36559de09d3570e6a89be9ad4875c14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#af36559de09d3570e6a89be9ad4875c14">SetLevelBorders</a> (S32 top, S32 bottom, S32 right, S32 left)</td></tr>
 <tr class="separator:af36559de09d3570e6a89be9ad4875c14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5f3927f43667c8ebef22c705adce9c9"><td class="memItemLeft" align="right" valign="top"><a id="ae5f3927f43667c8ebef22c705adce9c9"></a>
-S32&#160;</td><td class="memItemRight" valign="bottom"><b>GetTopBorder</b> (void) const</td></tr>
+<tr class="memitem:ae5f3927f43667c8ebef22c705adce9c9"><td class="memItemLeft" align="right" valign="top">S32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#ae5f3927f43667c8ebef22c705adce9c9">GetTopBorder</a> (void) const</td></tr>
 <tr class="separator:ae5f3927f43667c8ebef22c705adce9c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c02892ad4f551016bd305f82e03614d"><td class="memItemLeft" align="right" valign="top"><a id="a6c02892ad4f551016bd305f82e03614d"></a>
-S32&#160;</td><td class="memItemRight" valign="bottom"><b>GetBottomBorder</b> (void) const</td></tr>
+<tr class="memitem:a6c02892ad4f551016bd305f82e03614d"><td class="memItemLeft" align="right" valign="top">S32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a6c02892ad4f551016bd305f82e03614d">GetBottomBorder</a> (void) const</td></tr>
 <tr class="separator:a6c02892ad4f551016bd305f82e03614d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4e2b9de6ee22bc5e127b2451f8513da"><td class="memItemLeft" align="right" valign="top"><a id="ac4e2b9de6ee22bc5e127b2451f8513da"></a>
-S32&#160;</td><td class="memItemRight" valign="bottom"><b>GetLeftBorder</b> (void) const</td></tr>
+<tr class="memitem:ac4e2b9de6ee22bc5e127b2451f8513da"><td class="memItemLeft" align="right" valign="top">S32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#ac4e2b9de6ee22bc5e127b2451f8513da">GetLeftBorder</a> (void) const</td></tr>
 <tr class="separator:ac4e2b9de6ee22bc5e127b2451f8513da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15f5d354cf31dbbdf97807e1dd2bce38"><td class="memItemLeft" align="right" valign="top"><a id="a15f5d354cf31dbbdf97807e1dd2bce38"></a>
-S32&#160;</td><td class="memItemRight" valign="bottom"><b>GetRightBorder</b> (void) const</td></tr>
+<tr class="memitem:a15f5d354cf31dbbdf97807e1dd2bce38"><td class="memItemLeft" align="right" valign="top">S32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a15f5d354cf31dbbdf97807e1dd2bce38">GetRightBorder</a> (void) const</td></tr>
 <tr class="separator:a15f5d354cf31dbbdf97807e1dd2bce38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ba50d3b285d48a92fce2993c8916b0f"><td class="memItemLeft" align="right" valign="top"><a id="a8ba50d3b285d48a92fce2993c8916b0f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetID</b> (U32 id)</td></tr>
+<tr class="memitem:a8ba50d3b285d48a92fce2993c8916b0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a8ba50d3b285d48a92fce2993c8916b0f">SetID</a> (U32 id)</td></tr>
 <tr class="separator:a8ba50d3b285d48a92fce2993c8916b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39e93e9ba44dc88ec520ae2d6c56bf4a"><td class="memItemLeft" align="right" valign="top"><a id="a39e93e9ba44dc88ec520ae2d6c56bf4a"></a>
-U32&#160;</td><td class="memItemRight" valign="bottom"><b>GetID</b> (void) const</td></tr>
+<tr class="memitem:a39e93e9ba44dc88ec520ae2d6c56bf4a"><td class="memItemLeft" align="right" valign="top">U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a39e93e9ba44dc88ec520ae2d6c56bf4a">GetID</a> (void) const</td></tr>
 <tr class="separator:a39e93e9ba44dc88ec520ae2d6c56bf4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cc18a69cbd46f7b0b4be2eacb644ae5"><td class="memItemLeft" align="right" valign="top"><a id="a3cc18a69cbd46f7b0b4be2eacb644ae5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCamera</b> (<a class="el" href="class_killer_engine_1_1_camera.html">Camera</a> *cam)</td></tr>
+<tr class="memitem:a3cc18a69cbd46f7b0b4be2eacb644ae5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a3cc18a69cbd46f7b0b4be2eacb644ae5">SetCamera</a> (<a class="el" href="class_killer_engine_1_1_camera.html">Camera</a> *cam)</td></tr>
 <tr class="separator:a3cc18a69cbd46f7b0b4be2eacb644ae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a642495c25256fbaeae542ac4287f8059"><td class="memItemLeft" align="right" valign="top"><a id="a642495c25256fbaeae542ac4287f8059"></a>
-const <a class="el" href="class_killer_engine_1_1_camera.html">Camera</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetCamera</b> (void)</td></tr>
+<tr class="memitem:a642495c25256fbaeae542ac4287f8059"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_killer_engine_1_1_camera.html">Camera</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a642495c25256fbaeae542ac4287f8059">GetCamera</a> (void)</td></tr>
 <tr class="separator:a642495c25256fbaeae542ac4287f8059"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e913dbfc5e8fc37fad6c8c66430e3db"><td class="memItemLeft" align="right" valign="top"><a id="a3e913dbfc5e8fc37fad6c8c66430e3db"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetCameraOrthographic</b> (void)</td></tr>
+<tr class="memitem:a3e913dbfc5e8fc37fad6c8c66430e3db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a3e913dbfc5e8fc37fad6c8c66430e3db">SetCameraOrthographic</a> (void)</td></tr>
 <tr class="separator:a3e913dbfc5e8fc37fad6c8c66430e3db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-types"></a>
-Protected Types</h2></td></tr>
-<tr class="memitem:ad905abed1332305253873bf0d7a2548f"><td class="memItemLeft" align="right" valign="top"><a id="ad905abed1332305253873bf0d7a2548f"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>ObjectType</b> { <br />
-&#160;&#160;<b>BACKGROUND</b>, 
-<b>ENVIRONMENT</b>, 
-<b>PLAYER</b>, 
-<b>ENEMY</b>, 
-<br />
-&#160;&#160;<b>END</b>
-<br />
- }</td></tr>
-<tr class="separator:ad905abed1332305253873bf0d7a2548f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:acb34884d581780e45d16e75968b6f574"><td class="memItemLeft" align="right" valign="top"><a id="acb34884d581780e45d16e75968b6f574"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>_AddTile</b> (<a class="el" href="struct_killer_engine_1_1_level_1_1_tile_data.html">TileData</a> data)</td></tr>
-<tr class="separator:acb34884d581780e45d16e75968b6f574"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:abe6740cb2d646d0c24b215f60f55a9a6"><td class="memItemLeft" align="right" valign="top"><a id="abe6740cb2d646d0c24b215f60f55a9a6"></a>
-S32&#160;</td><td class="memItemRight" valign="bottom"><b>_mapWidth</b></td></tr>
-<tr class="separator:abe6740cb2d646d0c24b215f60f55a9a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae72a978d95eb59e6154aebceb34dcda1"><td class="memItemLeft" align="right" valign="top"><a id="ae72a978d95eb59e6154aebceb34dcda1"></a>
-S32&#160;</td><td class="memItemRight" valign="bottom"><b>_mapHeight</b></td></tr>
-<tr class="separator:ae72a978d95eb59e6154aebceb34dcda1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53dd471193c68451adf1e18e004424b9"><td class="memItemLeft" align="right" valign="top"><a id="a53dd471193c68451adf1e18e004424b9"></a>
-S32&#160;</td><td class="memItemRight" valign="bottom"><b>_mapTopBorder</b></td></tr>
-<tr class="separator:a53dd471193c68451adf1e18e004424b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a589e6e70f9b88aca5dc24e5e7ae0cd19"><td class="memItemLeft" align="right" valign="top"><a id="a589e6e70f9b88aca5dc24e5e7ae0cd19"></a>
-S32&#160;</td><td class="memItemRight" valign="bottom"><b>_mapBottomBorder</b></td></tr>
-<tr class="separator:a589e6e70f9b88aca5dc24e5e7ae0cd19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bf6088a51b534496085a5663562b81d"><td class="memItemLeft" align="right" valign="top"><a id="a0bf6088a51b534496085a5663562b81d"></a>
-S32&#160;</td><td class="memItemRight" valign="bottom"><b>_mapRightBorder</b></td></tr>
-<tr class="separator:a0bf6088a51b534496085a5663562b81d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05e7aefef7657a0f8bd760652bc8b5d9"><td class="memItemLeft" align="right" valign="top"><a id="a05e7aefef7657a0f8bd760652bc8b5d9"></a>
-S32&#160;</td><td class="memItemRight" valign="bottom"><b>_mapLeftBorder</b></td></tr>
-<tr class="separator:a05e7aefef7657a0f8bd760652bc8b5d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05e8439ad3ed86b343a99d148bd81376"><td class="memItemLeft" align="right" valign="top"><a id="a05e8439ad3ed86b343a99d148bd81376"></a>
+S32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a05e8439ad3ed86b343a99d148bd81376">_width</a></td></tr>
+<tr class="memdesc:a05e8439ad3ed86b343a99d148bd81376"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total width of the play area in the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. Enforced only by convention. <br /></td></tr>
+<tr class="separator:a05e8439ad3ed86b343a99d148bd81376"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab60ce28a4f2f740a20a66fcb826ff966"><td class="memItemLeft" align="right" valign="top"><a id="ab60ce28a4f2f740a20a66fcb826ff966"></a>
+S32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#ab60ce28a4f2f740a20a66fcb826ff966">_height</a></td></tr>
+<tr class="memdesc:ab60ce28a4f2f740a20a66fcb826ff966"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total height of the play area in the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. Enforced only by convention. <br /></td></tr>
+<tr class="separator:ab60ce28a4f2f740a20a66fcb826ff966"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad15f27b6cae6ea9f350b95342ebbfb12"><td class="memItemLeft" align="right" valign="top"><a id="ad15f27b6cae6ea9f350b95342ebbfb12"></a>
+S32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#ad15f27b6cae6ea9f350b95342ebbfb12">_topBorder</a></td></tr>
+<tr class="memdesc:ad15f27b6cae6ea9f350b95342ebbfb12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional "north" border of the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. <br /></td></tr>
+<tr class="separator:ad15f27b6cae6ea9f350b95342ebbfb12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ff87ff53fb638b654893b780293d62e"><td class="memItemLeft" align="right" valign="top"><a id="a9ff87ff53fb638b654893b780293d62e"></a>
+S32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a9ff87ff53fb638b654893b780293d62e">_bottomBorder</a></td></tr>
+<tr class="memdesc:a9ff87ff53fb638b654893b780293d62e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional "south" border of the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. <br /></td></tr>
+<tr class="separator:a9ff87ff53fb638b654893b780293d62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4368fb1d2b8a6762e38aedecc6e789e0"><td class="memItemLeft" align="right" valign="top"><a id="a4368fb1d2b8a6762e38aedecc6e789e0"></a>
+S32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a4368fb1d2b8a6762e38aedecc6e789e0">_rightBorder</a></td></tr>
+<tr class="memdesc:a4368fb1d2b8a6762e38aedecc6e789e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional "east" border of the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. <br /></td></tr>
+<tr class="separator:a4368fb1d2b8a6762e38aedecc6e789e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b89c3527302b859476631e4d6732901"><td class="memItemLeft" align="right" valign="top"><a id="a5b89c3527302b859476631e4d6732901"></a>
+S32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a5b89c3527302b859476631e4d6732901">_leftBorder</a></td></tr>
+<tr class="memdesc:a5b89c3527302b859476631e4d6732901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional "west" border of the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. <br /></td></tr>
+<tr class="separator:a5b89c3527302b859476631e4d6732901"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb0aa0a7edb987373fadd20ed60264ca"><td class="memItemLeft" align="right" valign="top"><a id="acb0aa0a7edb987373fadd20ed60264ca"></a>
-<a class="el" href="class_killer_engine_1_1_color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_bgColor</b></td></tr>
+<a class="el" href="class_killer_engine_1_1_color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#acb0aa0a7edb987373fadd20ed60264ca">_bgColor</a></td></tr>
+<tr class="memdesc:acb0aa0a7edb987373fadd20ed60264ca"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_killer_engine_1_1_color.html">Color</a> used for the background of the rendering window. <br /></td></tr>
 <tr class="separator:acb0aa0a7edb987373fadd20ed60264ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42115147f80a23e0210be077d27fc81c"><td class="memItemLeft" align="right" valign="top"><a id="a42115147f80a23e0210be077d27fc81c"></a>
-U32&#160;</td><td class="memItemRight" valign="bottom"><b>_ID</b></td></tr>
+U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a42115147f80a23e0210be077d27fc81c">_ID</a></td></tr>
+<tr class="memdesc:a42115147f80a23e0210be077d27fc81c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ID used in the <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelManager</a>. <br /></td></tr>
 <tr class="separator:a42115147f80a23e0210be077d27fc81c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6e124353d24fea60b6219cc726501e2"><td class="memItemLeft" align="right" valign="top"><a id="aa6e124353d24fea60b6219cc726501e2"></a>
-<a class="el" href="class_killer_engine_1_1_camera.html">Camera</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_camera</b></td></tr>
+<a class="el" href="class_killer_engine_1_1_camera.html">Camera</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#aa6e124353d24fea60b6219cc726501e2">_camera</a></td></tr>
+<tr class="memdesc:aa6e124353d24fea60b6219cc726501e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to a <a class="el" href="class_killer_engine_1_1_camera.html">Camera</a> object. <br /></td></tr>
 <tr class="separator:aa6e124353d24fea60b6219cc726501e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f4c9734867f8c9b60b23bd28c027230"><td class="memItemLeft" align="right" valign="top"><a id="a6f4c9734867f8c9b60b23bd28c027230"></a>
-std::map&lt; U32, shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_gameObjects</b></td></tr>
+std::map&lt; U32, shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a6f4c9734867f8c9b60b23bd28c027230">_gameObjects</a></td></tr>
+<tr class="memdesc:a6f4c9734867f8c9b60b23bd28c027230"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of all GameObjects included in the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. <br /></td></tr>
 <tr class="separator:a6f4c9734867f8c9b60b23bd28c027230"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5cdfc5bd62b95463ee4399fd18eb79e9"><td class="memItemLeft" align="right" valign="top"><a id="a5cdfc5bd62b95463ee4399fd18eb79e9"></a>
-std::map&lt; U32, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_particles</b></td></tr>
+std::map&lt; U32, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a5cdfc5bd62b95463ee4399fd18eb79e9">_particles</a></td></tr>
+<tr class="memdesc:a5cdfc5bd62b95463ee4399fd18eb79e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of all KillerPhysics::Particles in the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. <br /></td></tr>
 <tr class="separator:a5cdfc5bd62b95463ee4399fd18eb79e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a922b23ebee85cbc1a75618d0bd08257c"><td class="memItemLeft" align="right" valign="top"><a id="a922b23ebee85cbc1a75618d0bd08257c"></a>
-std::map&lt; U32, <a class="el" href="struct_killer_engine_1_1_level_1_1_tile_data.html">TileData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_2DTileData</b></td></tr>
-<tr class="separator:a922b23ebee85cbc1a75618d0bd08257c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a7312ddf763189c9d90b1229d973ea0"><td class="memItemLeft" align="right" valign="top"><a id="a2a7312ddf763189c9d90b1229d973ea0"></a>
-<a class="el" href="class_killer_physics_1_1_force_registry.html">KP::ForceRegistry</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_forceRegistry</b></td></tr>
+<a class="el" href="class_killer_physics_1_1_force_registry.html">KP::ForceRegistry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a2a7312ddf763189c9d90b1229d973ea0">_forceRegistry</a></td></tr>
+<tr class="memdesc:a2a7312ddf763189c9d90b1229d973ea0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_killer_physics_1_1_force_registry.html">KillerPhysics::ForceRegistry</a> used to allow physics forces to be applied. <br /></td></tr>
 <tr class="separator:a2a7312ddf763189c9d90b1229d973ea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="class_killer_engine_1_1_level.html">Level</a> is the building block for game project. It holds all of the objects that will be rendered to the screen and controls what the update logic is. The <a class="el" href="class_killer_engine_1_1_level.html">Level</a> itself is an abstract class, intended to be implemented on the user end. Some engines will call this a scene or a world. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a855c4bef873cd89b0b0c611d731e8fa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a855c4bef873cd89b0b0c611d731e8fa9">&#9670;&nbsp;</a></span>Level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Level::Level </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Sets call values to 0 and calls default constructors. </p>
+
+</div>
+</div>
+<a id="a3164b75538259d026c034927e977c43b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3164b75538259d026c034927e977c43b">&#9670;&nbsp;</a></span>~Level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Level::~Level </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Deletes the pointer to the <a class="el" href="class_killer_engine_1_1_camera.html">Camera</a>. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a29500a40202e95e5f477cbfac0341655"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29500a40202e95e5f477cbfac0341655">&#9670;&nbsp;</a></span>ActivateBackgroundColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Level::ActivateBackgroundColor </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Forces the current background color to be activated in OpenGL. </p>
+
+</div>
+</div>
+<a id="a6c25717c005902808795dee87bba6cdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c25717c005902808795dee87bba6cdc">&#9670;&nbsp;</a></span>AddObjectToLevel() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Level::AddObjectToLevel </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &amp;&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Converts the ref to a smart_ptr and adds the <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> to the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>is the object to be added. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac0ead74e30f0e465785c282d39cc3de7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0ead74e30f0e465785c282d39cc3de7">&#9670;&nbsp;</a></span>AddObjectToLevel() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Level::AddObjectToLevel </td>
+          <td>(</td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &gt;&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> pointer to the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>is the pointer to be added. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7b7af310ae110e409e8351e4fbed4759"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b7af310ae110e409e8351e4fbed4759">&#9670;&nbsp;</a></span>AddParticleToLevel() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Level::AddParticleToLevel </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &amp;&#160;</td>
+          <td class="paramname"><em>particle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Even though <a class="el" href="class_killer_physics_1_1_particle.html">KillerPhysics::Particle</a> is a <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a>, the compiler can't tell the difference. This adds the physics object to the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">particle</td><td>converted to a shared_ptr and added to the level. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad1d7733e7a4b294cb7f2ef05dc2b0a2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1d7733e7a4b294cb7f2ef05dc2b0a2b">&#9670;&nbsp;</a></span>AddParticleToLevel() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Level::AddParticleToLevel </td>
+          <td>(</td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt;&#160;</td>
+          <td class="paramname"><em>particle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Even though <a class="el" href="class_killer_physics_1_1_particle.html">KillerPhysics::Particle</a> is a <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a>, the compiler can't tell the difference. This adds the physics object to the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">particle</td><td>is the pointer to be added to the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a35556fbe0f081220f328ff47ad87f8f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35556fbe0f081220f328ff47ad87f8f8">&#9670;&nbsp;</a></span>AddParticleToLevel() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Level::AddParticleToLevel </td>
+          <td>(</td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt;&#160;</td>
+          <td class="paramname"><em>particle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_force_generator.html">KP::ForceGenerator</a> &gt;&#160;</td>
+          <td class="paramname"><em>generator</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Helper function that allows to add a <a class="el" href="class_killer_physics_1_1_particle.html">KillerPhysics::Particle</a> and register it a force at the same time. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">particle</td><td>is the pointer to add. </td></tr>
+    <tr><td class="paramname">is</td><td>the optional force to register the particle with. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3be6f68566fa11a1d6ed74b6a20c7113"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3be6f68566fa11a1d6ed74b6a20c7113">&#9670;&nbsp;</a></span>AddTextToLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Level::AddTextToLevel </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_killer_engine_1_1_text.html">Text</a> &amp;&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds the Glyphs in a <a class="el" href="class_killer_engine_1_1_text.html">Text</a> to the <a class="el" href="class_killer_engine_1_1_level.html">Level</a> as GameObjects. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>is the <a class="el" href="class_killer_engine_1_1_text.html">Text</a> to get the Glyphs from. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6c02892ad4f551016bd305f82e03614d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c02892ad4f551016bd305f82e03614d">&#9670;&nbsp;</a></span>GetBottomBorder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">S32 KillerEngine::Level::GetBottomBorder </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the bottom border. </p>
+
+</div>
+</div>
+<a id="a642495c25256fbaeae542ac4287f8059"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a642495c25256fbaeae542ac4287f8059">&#9670;&nbsp;</a></span>GetCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_killer_engine_1_1_camera.html">Camera</a>* KillerEngine::Level::GetCamera </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the current <a class="el" href="class_killer_engine_1_1_camera.html">Camera</a>. </p>
+
+</div>
+</div>
+<a id="a39e93e9ba44dc88ec520ae2d6c56bf4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39e93e9ba44dc88ec520ae2d6c56bf4a">&#9670;&nbsp;</a></span>GetID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">U32 KillerEngine::Level::GetID </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the <a class="el" href="class_killer_engine_1_1_level.html">Level</a> ID. This will only match the <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelManager</a> ID if you set it correctly. </p>
+
+</div>
+</div>
+<a id="ac4e2b9de6ee22bc5e127b2451f8513da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4e2b9de6ee22bc5e127b2451f8513da">&#9670;&nbsp;</a></span>GetLeftBorder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">S32 KillerEngine::Level::GetLeftBorder </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the left border. </p>
+
+</div>
+</div>
+<a id="a547eaf343b5b083f02564699ed6df675"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a547eaf343b5b083f02564699ed6df675">&#9670;&nbsp;</a></span>GetLevelHeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">S32 KillerEngine::Level::GetLevelHeight </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the height of the play area of the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. </p>
+
+</div>
+</div>
+<a id="a8034fa734b4b72166f88aa428156f296"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8034fa734b4b72166f88aa428156f296">&#9670;&nbsp;</a></span>GetLevelWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">S32 KillerEngine::Level::GetLevelWidth </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the width of the play area of the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. </p>
+
+</div>
+</div>
+<a id="a15f5d354cf31dbbdf97807e1dd2bce38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15f5d354cf31dbbdf97807e1dd2bce38">&#9670;&nbsp;</a></span>GetRightBorder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">S32 KillerEngine::Level::GetRightBorder </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the right border. </p>
+
+</div>
+</div>
+<a id="ae5f3927f43667c8ebef22c705adce9c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5f3927f43667c8ebef22c705adce9c9">&#9670;&nbsp;</a></span>GetTopBorder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">S32 KillerEngine::Level::GetTopBorder </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the top border. </p>
+
+</div>
+</div>
+<a id="a062658b2775b37edb1c06665e87e5abc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a062658b2775b37edb1c06665e87e5abc">&#9670;&nbsp;</a></span>RegisterParticleForce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Level::RegisterParticleForce </td>
+          <td>(</td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt;&#160;</td>
+          <td class="paramname"><em>particle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_force_generator.html">KP::ForceGenerator</a> &gt;&#160;</td>
+          <td class="paramname"><em>generator</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Registers a <a class="el" href="class_killer_physics_1_1_particle.html">KillerPhysics::Particle</a> with a KillerPhysics::ForcerGenerator. This only works because they are pointers. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">particle</td><td>is the pointer that needs to be registered with the generator. </td></tr>
+    <tr><td class="paramname">generator</td><td>is the force to apply to the particle. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a128b2440a436be3e29c58d8ef194dcd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a128b2440a436be3e29c58d8ef194dcd4">&#9670;&nbsp;</a></span>RemoveObjectFromLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Level::RemoveObjectFromLevel </td>
+          <td>(</td>
+          <td class="paramtype">U32&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Removes the <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> with id from the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>of the <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a976f42d11931d94fa5799c09c9415b98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a976f42d11931d94fa5799c09c9415b98">&#9670;&nbsp;</a></span>RenderObjects()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Level::RenderObjects </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Loops over all of the <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> and <a class="el" href="class_killer_physics_1_1_particle.html">KillerPhysics::Particle</a> that have been added to the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>, and calls GameObject::v_Render if they are active for rendering. </p>
+
+</div>
+</div>
+<a id="a979a57ad58ae3f4e596e3dcad45dc349"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a979a57ad58ae3f4e596e3dcad45dc349">&#9670;&nbsp;</a></span>SetBackgroundColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Level::SetBackgroundColor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_killer_engine_1_1_color.html">Color</a> &amp;&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Changes the set background color for the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. This goes into effect in the <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelManager</a>. </p>
+
+</div>
+</div>
+<a id="adebc17b4539e472b1b7d617bc0d2f70a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adebc17b4539e472b1b7d617bc0d2f70a">&#9670;&nbsp;</a></span>SetBottomBorder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Level::SetBottomBorder </td>
+          <td>(</td>
+          <td class="paramtype">S32&#160;</td>
+          <td class="paramname"><em>bottom</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the bottom bounds. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bottom</td><td>is the new border. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3cc18a69cbd46f7b0b4be2eacb644ae5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cc18a69cbd46f7b0b4be2eacb644ae5">&#9670;&nbsp;</a></span>SetCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Level::SetCamera </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_killer_engine_1_1_camera.html">Camera</a> *&#160;</td>
+          <td class="paramname"><em>cam</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets the camera to a new <a class="el" href="class_killer_engine_1_1_camera.html">Camera</a> pointer, allowing you to change the <a class="el" href="class_killer_engine_1_1_camera.html">Camera</a> at run time. </p>
+
+</div>
+</div>
+<a id="a3e913dbfc5e8fc37fad6c8c66430e3db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e913dbfc5e8fc37fad6c8c66430e3db">&#9670;&nbsp;</a></span>SetCameraOrthographic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Level::SetCameraOrthographic </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Wrapper around <a class="el" href="class_killer_engine_1_1_camera.html#a2a81d8b0ecf15683984f944739e5c48a">Camera::SetOrthographic</a>. </p>
+
+</div>
+</div>
+<a id="a8ba50d3b285d48a92fce2993c8916b0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ba50d3b285d48a92fce2993c8916b0f">&#9670;&nbsp;</a></span>SetID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Level::SetID </td>
+          <td>(</td>
+          <td class="paramtype">U32&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets a new ID for the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. Use with caution. </p>
+
+</div>
+</div>
+<a id="a8593f5f74aad50cc8c5ffaa684824a80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8593f5f74aad50cc8c5ffaa684824a80">&#9670;&nbsp;</a></span>SetLeftBorder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Level::SetLeftBorder </td>
+          <td>(</td>
+          <td class="paramtype">S32&#160;</td>
+          <td class="paramname"><em>left</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the left bounds. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">left</td><td>is the new border. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af36559de09d3570e6a89be9ad4875c14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af36559de09d3570e6a89be9ad4875c14">&#9670;&nbsp;</a></span>SetLevelBorders()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Level::SetLevelBorders </td>
+          <td>(</td>
+          <td class="paramtype">S32&#160;</td>
+          <td class="paramname"><em>top</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">S32&#160;</td>
+          <td class="paramname"><em>bottom</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">S32&#160;</td>
+          <td class="paramname"><em>right</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">S32&#160;</td>
+          <td class="paramname"><em>left</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Helper function to set all borders of the play area of the <a class="el" href="class_killer_engine_1_1_level.html">Level</a> at the same time. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">top</td><td>is the top border. </td></tr>
+    <tr><td class="paramname">bottom</td><td>is the bottom border. </td></tr>
+    <tr><td class="paramname">right</td><td>is the right border. </td></tr>
+    <tr><td class="paramname">left</td><td>is the left border. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae5f10f0cf1cfdfa8646628c5d7bc9c25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5f10f0cf1cfdfa8646628c5d7bc9c25">&#9670;&nbsp;</a></span>SetLevelDimensions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Level::SetLevelDimensions </td>
+          <td>(</td>
+          <td class="paramtype">S32&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">S32&#160;</td>
+          <td class="paramname"><em>h</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Helper function that allows you to change the play area dimensions at the same time. </p>
+
+</div>
+</div>
+<a id="ae053ef118b049e3e8a64d0d8457dd458"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae053ef118b049e3e8a64d0d8457dd458">&#9670;&nbsp;</a></span>SetLevelHeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Level::SetLevelHeight </td>
+          <td>(</td>
+          <td class="paramtype">S32&#160;</td>
+          <td class="paramname"><em>h</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Changes the height of the play area of the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>is the new height. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a96242b3d0337c57a2dc3c1188b74994a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96242b3d0337c57a2dc3c1188b74994a">&#9670;&nbsp;</a></span>SetLevelWidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Level::SetLevelWidth </td>
+          <td>(</td>
+          <td class="paramtype">S32&#160;</td>
+          <td class="paramname"><em>w</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Changes the width of the play area of the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>is the new width. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a72b208b8bbb596179657859371a851e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72b208b8bbb596179657859371a851e5">&#9670;&nbsp;</a></span>SetRightBorder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Level::SetRightBorder </td>
+          <td>(</td>
+          <td class="paramtype">S32&#160;</td>
+          <td class="paramname"><em>right</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the right bounds. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">right</td><td>is the new border. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab7f88c9a262b207a58badb6b9b9eadb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7f88c9a262b207a58badb6b9b9eadb4">&#9670;&nbsp;</a></span>SetTopBorder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Level::SetTopBorder </td>
+          <td>(</td>
+          <td class="paramtype">S32&#160;</td>
+          <td class="paramname"><em>top</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the top bounds. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">top</td><td>is the new border. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4812e4f88b745499785fe19709cf7a3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4812e4f88b745499785fe19709cf7a3d">&#9670;&nbsp;</a></span>UpdateLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Level::UpdateLevel </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Default actions that need to be called each frame. Right now, that is only Camera::v_Update. </p>
+
+</div>
+</div>
+<a id="abfe26b484c3972eb8d6df069491cce8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfe26b484c3972eb8d6df069491cce8a">&#9670;&nbsp;</a></span>UpdateObjects()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Level::UpdateObjects </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Loops over all of the <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> and <a class="el" href="class_killer_physics_1_1_particle.html">KillerPhysics::Particle</a> that have been added to the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>, and calls GameObject::v_Update if they are active for updates. </p>
+
+</div>
+</div>
+<a id="ace325448c62606751528d4a18df74b6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace325448c62606751528d4a18df74b6c">&#9670;&nbsp;</a></span>v_InitLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void KillerEngine::Level::v_InitLevel </td>
+          <td>(</td>
+          <td class="paramtype">U32&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">S32&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">S32&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_killer_engine_1_1_color.html">Color</a> &amp;&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Abstract function. Used to Initialize the default values, instantiate any objects that will be used and generally get things ready to go. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>is the ID used in the <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelManager</a>. </td></tr>
+    <tr><td class="paramname">w</td><td>is the width of the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. </td></tr>
+    <tr><td class="paramname">h</td><td>is the height of the <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9bacfc94408e29abb0e38ce6e788c0a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bacfc94408e29abb0e38ce6e788c0a2">&#9670;&nbsp;</a></span>v_Integrate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Level::v_Integrate </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Abstract function. Calls KillerPhysics::ForceRegistry::UpdateForces, then loops over each Physics object, calling KillerPhysics::Particle::v_Integrate function. It is virtual to allow for optional customization. </p>
+
+</div>
+</div>
+<a id="a2b0ddbe638002f69519d46733c2729e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b0ddbe638002f69519d46733c2729e2">&#9670;&nbsp;</a></span>v_Render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Level::v_Render </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Wrapper around <a class="el" href="class_killer_engine_1_1_level.html#a976f42d11931d94fa5799c09c9415b98">Level::RenderObjects</a>. It is virtual to allow for optional customization. </p>
+
+</div>
+</div>
+<a id="a52ee149ac4606f7fc4295a3a10d4c8f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52ee149ac4606f7fc4295a3a10d4c8f7">&#9670;&nbsp;</a></span>v_Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void KillerEngine::Level::v_Update </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Abstract function. Used to control what needs to happen during an update. Please note, objects added to the level are already being updated as part of <a class="el" href="class_killer_engine_1_1_level.html#a4812e4f88b745499785fe19709cf7a3d">Level::UpdateLevel</a>. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_level_8h_source.html">Level.h</a></li>
-<li>C:/Projects/Killer_Engine/Implementations/Level.cpp</li>
+<li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_level_8h_source.html">Level.h</a></li>
+<li>F:/Projects/Killer_Engine/Implementations/Level.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

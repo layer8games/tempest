@@ -10,12 +10,12 @@ using namespace KillerEngine;
 //==========================================================================================================================
 Level::Level(void) 
 : 
-_mapWidth(0),
-_mapHeight(0),
-_mapTopBorder(0),
-_mapBottomBorder(0),
-_mapRightBorder(0),
-_mapLeftBorder(0),
+_width(0),
+_height(0),
+_topBorder(0),
+_bottomBorder(0),
+_rightBorder(0),
+_leftBorder(0),
 _bgColor(),
 _ID(),
 _camera(new Camera()),
@@ -137,16 +137,6 @@ void Level::AddTextToLevel(const Text& text)
 	for(auto i : v)
 	{
 		AddObjectToLevel(i);
-	}
-}
-
-void Level::_AddTile(TileData data)
-{
-	_2DTileData.insert(std::map<U32, TileData>::value_type(data.tileID, data));
-
-	if(_2DTileData.find(data.tileID) == _2DTileData.end())
-	{
-		ErrorManager::Instance()->SetError(ENGINE, "Unable to add tile to _2DTileData");
 	}
 }
 

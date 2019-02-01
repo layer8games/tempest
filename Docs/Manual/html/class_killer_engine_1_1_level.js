@@ -1,17 +1,7 @@
 var class_killer_engine_1_1_level =
 [
-    [ "LevelData", "struct_killer_engine_1_1_level_1_1_level_data.html", "struct_killer_engine_1_1_level_1_1_level_data" ],
-    [ "TileData", "struct_killer_engine_1_1_level_1_1_tile_data.html", "struct_killer_engine_1_1_level_1_1_tile_data" ],
-    [ "ObjectType", "class_killer_engine_1_1_level.html#ad905abed1332305253873bf0d7a2548f", [
-      [ "BACKGROUND", "class_killer_engine_1_1_level.html#ad905abed1332305253873bf0d7a2548fa831cb022743f306b875709adda13e881", null ],
-      [ "ENVIRONMENT", "class_killer_engine_1_1_level.html#ad905abed1332305253873bf0d7a2548fa8571655b476eef5fdd078923c385fa30", null ],
-      [ "PLAYER", "class_killer_engine_1_1_level.html#ad905abed1332305253873bf0d7a2548fac03548b462543c5cfbef62f062878a46", null ],
-      [ "ENEMY", "class_killer_engine_1_1_level.html#ad905abed1332305253873bf0d7a2548fa1a022ea3826be6a8f1e3b6a900913a5d", null ],
-      [ "END", "class_killer_engine_1_1_level.html#ad905abed1332305253873bf0d7a2548fa3a29a35a56803ec382f3bfded4b5dfd3", null ]
-    ] ],
     [ "Level", "class_killer_engine_1_1_level.html#a855c4bef873cd89b0b0c611d731e8fa9", null ],
     [ "~Level", "class_killer_engine_1_1_level.html#a3164b75538259d026c034927e977c43b", null ],
-    [ "_AddTile", "class_killer_engine_1_1_level.html#acb34884d581780e45d16e75968b6f574", null ],
     [ "ActivateBackgroundColor", "class_killer_engine_1_1_level.html#a29500a40202e95e5f477cbfac0341655", null ],
     [ "AddObjectToLevel", "class_killer_engine_1_1_level.html#a6c25717c005902808795dee87bba6cdc", null ],
     [ "AddObjectToLevel", "class_killer_engine_1_1_level.html#ac0ead74e30f0e465785c282d39cc3de7", null ],
@@ -44,22 +34,20 @@ var class_killer_engine_1_1_level =
     [ "SetTopBorder", "class_killer_engine_1_1_level.html#ab7f88c9a262b207a58badb6b9b9eadb4", null ],
     [ "UpdateLevel", "class_killer_engine_1_1_level.html#a4812e4f88b745499785fe19709cf7a3d", null ],
     [ "UpdateObjects", "class_killer_engine_1_1_level.html#abfe26b484c3972eb8d6df069491cce8a", null ],
-    [ "v_CreateObject", "class_killer_engine_1_1_level.html#a2c29208a8de98835cba7f101efdca6d4", null ],
     [ "v_InitLevel", "class_killer_engine_1_1_level.html#ace325448c62606751528d4a18df74b6c", null ],
     [ "v_Integrate", "class_killer_engine_1_1_level.html#a9bacfc94408e29abb0e38ce6e788c0a2", null ],
     [ "v_Render", "class_killer_engine_1_1_level.html#a2b0ddbe638002f69519d46733c2729e2", null ],
     [ "v_Update", "class_killer_engine_1_1_level.html#a52ee149ac4606f7fc4295a3a10d4c8f7", null ],
-    [ "_2DTileData", "class_killer_engine_1_1_level.html#a922b23ebee85cbc1a75618d0bd08257c", null ],
     [ "_bgColor", "class_killer_engine_1_1_level.html#acb0aa0a7edb987373fadd20ed60264ca", null ],
+    [ "_bottomBorder", "class_killer_engine_1_1_level.html#a9ff87ff53fb638b654893b780293d62e", null ],
     [ "_camera", "class_killer_engine_1_1_level.html#aa6e124353d24fea60b6219cc726501e2", null ],
     [ "_forceRegistry", "class_killer_engine_1_1_level.html#a2a7312ddf763189c9d90b1229d973ea0", null ],
     [ "_gameObjects", "class_killer_engine_1_1_level.html#a6f4c9734867f8c9b60b23bd28c027230", null ],
+    [ "_height", "class_killer_engine_1_1_level.html#ab60ce28a4f2f740a20a66fcb826ff966", null ],
     [ "_ID", "class_killer_engine_1_1_level.html#a42115147f80a23e0210be077d27fc81c", null ],
-    [ "_mapBottomBorder", "class_killer_engine_1_1_level.html#a589e6e70f9b88aca5dc24e5e7ae0cd19", null ],
-    [ "_mapHeight", "class_killer_engine_1_1_level.html#ae72a978d95eb59e6154aebceb34dcda1", null ],
-    [ "_mapLeftBorder", "class_killer_engine_1_1_level.html#a05e7aefef7657a0f8bd760652bc8b5d9", null ],
-    [ "_mapRightBorder", "class_killer_engine_1_1_level.html#a0bf6088a51b534496085a5663562b81d", null ],
-    [ "_mapTopBorder", "class_killer_engine_1_1_level.html#a53dd471193c68451adf1e18e004424b9", null ],
-    [ "_mapWidth", "class_killer_engine_1_1_level.html#abe6740cb2d646d0c24b215f60f55a9a6", null ],
-    [ "_particles", "class_killer_engine_1_1_level.html#a5cdfc5bd62b95463ee4399fd18eb79e9", null ]
+    [ "_leftBorder", "class_killer_engine_1_1_level.html#a5b89c3527302b859476631e4d6732901", null ],
+    [ "_particles", "class_killer_engine_1_1_level.html#a5cdfc5bd62b95463ee4399fd18eb79e9", null ],
+    [ "_rightBorder", "class_killer_engine_1_1_level.html#a4368fb1d2b8a6762e38aedecc6e789e0", null ],
+    [ "_topBorder", "class_killer_engine_1_1_level.html#ad15f27b6cae6ea9f350b95342ebbfb12", null ],
+    [ "_width", "class_killer_engine_1_1_level.html#a05e8439ad3ed86b343a99d148bd81376", null ]
 ];

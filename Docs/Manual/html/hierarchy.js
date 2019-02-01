@@ -32,7 +32,6 @@ var hierarchy =
       [ "KillerPhysics::RigidBody", "class_killer_physics_1_1_rigid_body.html", null ]
     ] ],
     [ "KillerEngine::Level", "class_killer_engine_1_1_level.html", null ],
-    [ "KillerEngine::Level::LevelData", "struct_killer_engine_1_1_level_1_1_level_data.html", null ],
     [ "KillerEngine::LevelManager", "class_killer_engine_1_1_level_manager.html", null ],
     [ "KillerMath::Matrix", "class_killer_math_1_1_matrix.html", null ],
     [ "KillerMath::Matrix4< T >", "class_killer_math_1_1_matrix4.html", null ],
@@ -48,7 +47,6 @@ var hierarchy =
     [ "KillerEngine::Text", "class_killer_engine_1_1_text.html", null ],
     [ "KillerEngine::Texture", "class_killer_engine_1_1_texture.html", null ],
     [ "KillerEngine::TextureManager", "class_killer_engine_1_1_texture_manager.html", null ],
-    [ "KillerEngine::Level::TileData", "struct_killer_engine_1_1_level_1_1_tile_data.html", null ],
     [ "KillerMath::Timer", "class_killer_math_1_1_timer.html", null ],
     [ "KillerMath::Vector", "class_killer_math_1_1_vector.html", null ],
     [ "KillerEngine::Vertex", "struct_killer_engine_1_1_vertex.html", null ],

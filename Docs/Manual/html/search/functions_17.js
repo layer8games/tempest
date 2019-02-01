@@ -4,6 +4,7 @@ var searchData=
   ['_7eenvironmentobject',['~EnvironmentObject',['../class_killer_engine_1_1_environment_object.html#a516f11de35c5d9f634a28a31d3c01d49',1,'KillerEngine::EnvironmentObject']]],
   ['_7eerrormanager',['~ErrorManager',['../class_killer_engine_1_1_error_manager.html#a768a9e20a2a01bf3d69357c7386b0e02',1,'KillerEngine::ErrorManager']]],
   ['_7eglyph',['~Glyph',['../class_killer_engine_1_1_glyph.html#a05a169a0de4f83e573c3dcd6aef33568',1,'KillerEngine::Glyph']]],
+  ['_7elevel',['~Level',['../class_killer_engine_1_1_level.html#a3164b75538259d026c034927e977c43b',1,'KillerEngine::Level']]],
   ['_7eparticle',['~Particle',['../class_killer_physics_1_1_particle.html#aedbe5e541966e7799022665fdcb6ba66',1,'KillerPhysics::Particle']]],
   ['_7equaternion',['~Quaternion',['../class_killer_math_1_1_quaternion.html#a8809b583edcb51ece4d157d3341218ed',1,'KillerMath::Quaternion']]],
   ['_7erandom',['~Random',['../class_killer_math_1_1_random.html#a1da0f8a6d539679174ffcdff113f22d7',1,'KillerMath::Random']]],
