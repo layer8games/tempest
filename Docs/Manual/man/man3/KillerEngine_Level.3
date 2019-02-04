@@ -1,4 +1,4 @@
-.TH "KillerEngine::Level" 3 "Thu Jan 31 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Level" 3 "Mon Feb 4 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -286,7 +286,7 @@ Removes the \fBGameObject\fP with id from the \fBLevel\fP\&.
 .SS "void Level::RenderObjects (void)"
 Loops over all of the \fBGameObject\fP and \fBKillerPhysics::Particle\fP that have been added to the \fBLevel\fP, and calls GameObject::v_Render if they are active for rendering\&. 
 .SS "void KillerEngine::Level::SetBackgroundColor (\fBColor\fP & c)\fC [inline]\fP"
-Changes the set background color for the \fBLevel\fP\&. This goes into effect in the \fBLevelManager\fP\&. 
+Changes the set background color for the \fBLevel\fP\&. It also calls \fBLevel::ActivateBackgroundColor\fP 
 .SS "void KillerEngine::Level::SetBottomBorder (S32 bottom)\fC [inline]\fP"
 Set the bottom bounds\&. 
 .PP

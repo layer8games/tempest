@@ -89,6 +89,7 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_level_manager.
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_level_manager-members.html">List of all members</a>  </div>
@@ -96,76 +97,518 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_level_manager.
 <div class="title">KillerEngine::LevelManager Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_level_manager_8h_source.html">LevelManager.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa37c14507c6e5a8327e3c2653d7dd6bf"><td class="memItemLeft" align="right" valign="top"><a id="aa37c14507c6e5a8327e3c2653d7dd6bf"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ShutDown</b> (void)</td></tr>
+<tr class="memitem:ac42d0d2bf903f9bb2e8bb01dfd5310b8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#ac42d0d2bf903f9bb2e8bb01dfd5310b8">~LevelManager</a> (void)</td></tr>
+<tr class="separator:ac42d0d2bf903f9bb2e8bb01dfd5310b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa37c14507c6e5a8327e3c2653d7dd6bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#aa37c14507c6e5a8327e3c2653d7dd6bf">ShutDown</a> (void)</td></tr>
 <tr class="separator:aa37c14507c6e5a8327e3c2653d7dd6bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4dce8d0f63bcf2ff849c364e1a07b540"><td class="memItemLeft" align="right" valign="top"><a id="a4dce8d0f63bcf2ff849c364e1a07b540"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddLevel</b> (shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt; level)</td></tr>
+<tr class="memitem:a4dce8d0f63bcf2ff849c364e1a07b540"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a4dce8d0f63bcf2ff849c364e1a07b540">AddLevel</a> (shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt; level)</td></tr>
 <tr class="separator:a4dce8d0f63bcf2ff849c364e1a07b540"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ca8cb0e378e7b8263c4669d9d8879e3"><td class="memItemLeft" align="right" valign="top"><a id="a3ca8cb0e378e7b8263c4669d9d8879e3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveLevel</b> (U32 levelID)</td></tr>
+<tr class="memitem:a3ca8cb0e378e7b8263c4669d9d8879e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a3ca8cb0e378e7b8263c4669d9d8879e3">RemoveLevel</a> (U32 levelID)</td></tr>
 <tr class="separator:a3ca8cb0e378e7b8263c4669d9d8879e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19af362df8714408dd170f4fb641dd34"><td class="memItemLeft" align="right" valign="top"><a id="a19af362df8714408dd170f4fb641dd34"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetActiveLevel</b> (U32 levelID)</td></tr>
+<tr class="memitem:a19af362df8714408dd170f4fb641dd34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a19af362df8714408dd170f4fb641dd34">SetActiveLevel</a> (U32 levelID)</td></tr>
 <tr class="separator:a19af362df8714408dd170f4fb641dd34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97b74d38bd42947b0acae30c5638994d"><td class="memItemLeft" align="right" valign="top"><a id="a97b74d38bd42947b0acae30c5638994d"></a>
-U32&#160;</td><td class="memItemRight" valign="bottom"><b>GetActiveLevelID</b> (void)</td></tr>
+<tr class="memitem:a97b74d38bd42947b0acae30c5638994d"><td class="memItemLeft" align="right" valign="top">U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a97b74d38bd42947b0acae30c5638994d">GetActiveLevelID</a> (void)</td></tr>
 <tr class="separator:a97b74d38bd42947b0acae30c5638994d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54f5e55baf08df7baf315de2d79dcf21"><td class="memItemLeft" align="right" valign="top"><a id="a54f5e55baf08df7baf315de2d79dcf21"></a>
-shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetActiveLevel</b> (void)</td></tr>
+<tr class="memitem:a54f5e55baf08df7baf315de2d79dcf21"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a54f5e55baf08df7baf315de2d79dcf21">GetActiveLevel</a> (void)</td></tr>
 <tr class="separator:a54f5e55baf08df7baf315de2d79dcf21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefaf5b1d035996cafe84fbefe8a416e2"><td class="memItemLeft" align="right" valign="top"><a id="aefaf5b1d035996cafe84fbefe8a416e2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>EndGame</b> (void)</td></tr>
+<tr class="memitem:aefaf5b1d035996cafe84fbefe8a416e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#aefaf5b1d035996cafe84fbefe8a416e2">EndGame</a> (void)</td></tr>
 <tr class="separator:aefaf5b1d035996cafe84fbefe8a416e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1197fc4f7243547cc1fec15926510362"><td class="memItemLeft" align="right" valign="top"><a id="a1197fc4f7243547cc1fec15926510362"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddObjectToLevel</b> (U32 id, const <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &amp;obj)</td></tr>
+<tr class="memitem:a1197fc4f7243547cc1fec15926510362"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a1197fc4f7243547cc1fec15926510362">AddObjectToLevel</a> (U32 id, const <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &amp;obj)</td></tr>
 <tr class="separator:a1197fc4f7243547cc1fec15926510362"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab4779908189b4abac4ceb7745fd1d7a"><td class="memItemLeft" align="right" valign="top"><a id="aab4779908189b4abac4ceb7745fd1d7a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddObjectToLevel</b> (U32 id, shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &gt; obj)</td></tr>
+<tr class="memitem:aab4779908189b4abac4ceb7745fd1d7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#aab4779908189b4abac4ceb7745fd1d7a">AddObjectToLevel</a> (U32 id, shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &gt; obj)</td></tr>
 <tr class="separator:aab4779908189b4abac4ceb7745fd1d7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09d5704ec4abee1ce09d385d098e50dc"><td class="memItemLeft" align="right" valign="top"><a id="a09d5704ec4abee1ce09d385d098e50dc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AddParticleToLevel</b> (U32 id, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt;, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_force_generator.html">KP::ForceGenerator</a> &gt; generator=nullptr)</td></tr>
-<tr class="separator:a09d5704ec4abee1ce09d385d098e50dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07eb42b585ab4453d99676acf959ab35"><td class="memItemLeft" align="right" valign="top"><a id="a07eb42b585ab4453d99676acf959ab35"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveObjectFromLevel</b> (U32 levelID, U32 ojbId)</td></tr>
-<tr class="separator:a07eb42b585ab4453d99676acf959ab35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f1608d9c79fc20af8bd9df607f4955a"><td class="memItemLeft" align="right" valign="top"><a id="a4f1608d9c79fc20af8bd9df607f4955a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Update</b> (void)</td></tr>
+<tr class="memitem:ae70ed48da72d461067605898b22bf0cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#ae70ed48da72d461067605898b22bf0cc">AddParticleToLevel</a> (U32 id, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; particle, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_force_generator.html">KP::ForceGenerator</a> &gt; generator=nullptr)</td></tr>
+<tr class="separator:ae70ed48da72d461067605898b22bf0cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a893e321ff0c7a084b464b154735e912d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a893e321ff0c7a084b464b154735e912d">RemoveObjectFromLevel</a> (U32 levelID, U32 objID)</td></tr>
+<tr class="separator:a893e321ff0c7a084b464b154735e912d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f1608d9c79fc20af8bd9df607f4955a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a4f1608d9c79fc20af8bd9df607f4955a">Update</a> (void)</td></tr>
 <tr class="separator:a4f1608d9c79fc20af8bd9df607f4955a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51683140c6c2b0823709275a1f862d2f"><td class="memItemLeft" align="right" valign="top"><a id="a51683140c6c2b0823709275a1f862d2f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Render</b> (void)</td></tr>
+<tr class="memitem:a51683140c6c2b0823709275a1f862d2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a51683140c6c2b0823709275a1f862d2f">Render</a> (void)</td></tr>
 <tr class="separator:a51683140c6c2b0823709275a1f862d2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ad3c02e1b837994023d935fc62df03291"><td class="memItemLeft" align="right" valign="top"><a id="ad3c02e1b837994023d935fc62df03291"></a>
-static <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Instance</b> ()</td></tr>
+<tr class="memitem:ad3c02e1b837994023d935fc62df03291"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#ad3c02e1b837994023d935fc62df03291">Instance</a> ()</td></tr>
 <tr class="separator:ad3c02e1b837994023d935fc62df03291"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:ab599f3136a5a49ba00904349742b9724"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#ab599f3136a5a49ba00904349742b9724">LevelManager</a> (void)</td></tr>
+<tr class="separator:ab599f3136a5a49ba00904349742b9724"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a2020be1f96ff6e4eff6611720702e6fb"><td class="memItemLeft" align="right" valign="top"><a id="a2020be1f96ff6e4eff6611720702e6fb"></a>
-std::map&lt; U32, shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_levels</b></td></tr>
+std::map&lt; U32, shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a2020be1f96ff6e4eff6611720702e6fb">_levels</a></td></tr>
+<tr class="memdesc:a2020be1f96ff6e4eff6611720702e6fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Database of Levels that can be activated. <br /></td></tr>
 <tr class="separator:a2020be1f96ff6e4eff6611720702e6fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b79fae2c12a7c7b37244f447f7703dc"><td class="memItemLeft" align="right" valign="top"><a id="a2b79fae2c12a7c7b37244f447f7703dc"></a>
-shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_activeLevel</b></td></tr>
+shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a2b79fae2c12a7c7b37244f447f7703dc">_activeLevel</a></td></tr>
+<tr class="memdesc:a2b79fae2c12a7c7b37244f447f7703dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to active <a class="el" href="class_killer_engine_1_1_level.html">Level</a> from database. <br /></td></tr>
 <tr class="separator:a2b79fae2c12a7c7b37244f447f7703dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76ec2be9fde9f8e405dac36892d78b63"><td class="memItemLeft" align="right" valign="top"><a id="a76ec2be9fde9f8e405dac36892d78b63"></a>
-U32&#160;</td><td class="memItemRight" valign="bottom"><b>_activeLevelID</b></td></tr>
+U32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a76ec2be9fde9f8e405dac36892d78b63">_activeLevelID</a></td></tr>
+<tr class="memdesc:a76ec2be9fde9f8e405dac36892d78b63"><td class="mdescLeft">&#160;</td><td class="mdescRight">The ID of the active <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. <br /></td></tr>
 <tr class="separator:a76ec2be9fde9f8e405dac36892d78b63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a77e3ca8a7adc36630215ca774e77ceaf"><td class="memItemLeft" align="right" valign="top"><a id="a77e3ca8a7adc36630215ca774e77ceaf"></a>
-static <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_instance</b> = NULL</td></tr>
+static <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a77e3ca8a7adc36630215ca774e77ceaf">_instance</a> = NULL</td></tr>
+<tr class="memdesc:a77e3ca8a7adc36630215ca774e77ceaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singletone pointer to global version of <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelManager</a>. <br /></td></tr>
 <tr class="separator:a77e3ca8a7adc36630215ca774e77ceaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The holder and controller of the the <a class="el" href="class_killer_engine_1_1_level.html">Level</a> objects. This will act as both a singleton and a state matching controller, where each <a class="el" href="class_killer_engine_1_1_level.html">Level</a> will be a state that can be set to active.</p>
+<p>For now, all of the states that are to be used will be instantiated during the initialization in the main loop, however later, each <a class="el" href="class_killer_engine_1_1_level.html">Level</a> will only be created once it is called, as part of a loading screen. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ac42d0d2bf903f9bb2e8bb01dfd5310b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac42d0d2bf903f9bb2e8bb01dfd5310b8">&#9670;&nbsp;</a></span>~LevelManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LevelManager::~LevelManager </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>No implementation. </p>
+
+</div>
+</div>
+<a id="ab599f3136a5a49ba00904349742b9724"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab599f3136a5a49ba00904349742b9724">&#9670;&nbsp;</a></span>LevelManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">LevelManager::LevelManager </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets active <a class="el" href="class_killer_engine_1_1_level.html">Level</a> state to a nullptr. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4dce8d0f63bcf2ff849c364e1a07b540"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dce8d0f63bcf2ff849c364e1a07b540">&#9670;&nbsp;</a></span>AddLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LevelManager::AddLevel </td>
+          <td>(</td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt;&#160;</td>
+          <td class="paramname"><em>level</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds a <a class="el" href="class_killer_engine_1_1_level.html">Level</a> into the state machine that can then be set to active to be in use. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>is added into the database, with <a class="el" href="class_killer_engine_1_1_level.html#a39e93e9ba44dc88ec520ae2d6c56bf4a">Level::GetID</a> used to index. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1197fc4f7243547cc1fec15926510362"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1197fc4f7243547cc1fec15926510362">&#9670;&nbsp;</a></span>AddObjectToLevel() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LevelManager::AddObjectToLevel </td>
+          <td>(</td>
+          <td class="paramtype">U32&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &amp;&#160;</td>
+          <td class="paramname"><em>obj</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Allows object to be added to level. Wrapper around <a class="el" href="class_killer_engine_1_1_level.html#a6c25717c005902808795dee87bba6cdc">Level::AddObjectToLevel</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>is the key for the <a class="el" href="class_killer_engine_1_1_level.html">Level</a> that the object will be added to. </td></tr>
+    <tr><td class="paramname">obj</td><td>is the object to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aab4779908189b4abac4ceb7745fd1d7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab4779908189b4abac4ceb7745fd1d7a">&#9670;&nbsp;</a></span>AddObjectToLevel() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LevelManager::AddObjectToLevel </td>
+          <td>(</td>
+          <td class="paramtype">U32&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &gt;&#160;</td>
+          <td class="paramname"><em>obj</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Allows object to be added to level. Wrapper around <a class="el" href="class_killer_engine_1_1_level.html#a6c25717c005902808795dee87bba6cdc">Level::AddObjectToLevel</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>is the key for the <a class="el" href="class_killer_engine_1_1_level.html">Level</a> that the object will be added to. </td></tr>
+    <tr><td class="paramname">obj</td><td>is the object pointer to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae70ed48da72d461067605898b22bf0cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae70ed48da72d461067605898b22bf0cc">&#9670;&nbsp;</a></span>AddParticleToLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LevelManager::AddParticleToLevel </td>
+          <td>(</td>
+          <td class="paramtype">U32&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt;&#160;</td>
+          <td class="paramname"><em>particle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_force_generator.html">KP::ForceGenerator</a> &gt;&#160;</td>
+          <td class="paramname"><em>generator</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Allows object to be added to level. Wrapper around <a class="el" href="class_killer_engine_1_1_level.html#a7b7af310ae110e409e8351e4fbed4759">Level::AddParticleToLevel</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>is the key for the <a class="el" href="class_killer_engine_1_1_level.html">Level</a> that the object will be added to. </td></tr>
+    <tr><td class="paramname">particle</td><td>is the object pointer to add. </td></tr>
+    <tr><td class="paramname">generator</td><td>is an optional KillerPhysics::ForcerGenerator pointer to add to the particle. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aefaf5b1d035996cafe84fbefe8a416e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefaf5b1d035996cafe84fbefe8a416e2">&#9670;&nbsp;</a></span>EndGame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::LevelManager::EndGame </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Starts the process to shut down the game. Wrapper around <a class="el" href="class_killer_engine_1_1_win_program.html#ada8913b7ece25ec2c72598030afda020">WinProgram::EndRunning</a>. </p>
+
+</div>
+</div>
+<a id="a54f5e55baf08df7baf315de2d79dcf21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54f5e55baf08df7baf315de2d79dcf21">&#9670;&nbsp;</a></span>GetActiveLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">shared_ptr&lt;<a class="el" href="class_killer_engine_1_1_level.html">Level</a>&gt; KillerEngine::LevelManager::GetActiveLevel </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns a pointer to the active <a class="el" href="class_killer_engine_1_1_level.html">Level</a> state. </p>
+
+</div>
+</div>
+<a id="a97b74d38bd42947b0acae30c5638994d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97b74d38bd42947b0acae30c5638994d">&#9670;&nbsp;</a></span>GetActiveLevelID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">U32 KillerEngine::LevelManager::GetActiveLevelID </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the ID of the active <a class="el" href="class_killer_engine_1_1_level.html">Level</a> state. </p>
+
+</div>
+</div>
+<a id="ad3c02e1b837994023d935fc62df03291"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3c02e1b837994023d935fc62df03291">&#9670;&nbsp;</a></span>Instance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_killer_engine_1_1_level_manager.html">LevelManager</a> * LevelManager::Instance </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Singleton fucntion. Returns the global pointer used to access the manager. </p>
+
+</div>
+</div>
+<a id="a3ca8cb0e378e7b8263c4669d9d8879e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ca8cb0e378e7b8263c4669d9d8879e3">&#9670;&nbsp;</a></span>RemoveLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LevelManager::RemoveLevel </td>
+          <td>(</td>
+          <td class="paramtype">U32&#160;</td>
+          <td class="paramname"><em>levelID</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Removes <a class="el" href="class_killer_engine_1_1_level.html">Level</a> from database. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">levelID</td><td>is the index to delete. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a893e321ff0c7a084b464b154735e912d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a893e321ff0c7a084b464b154735e912d">&#9670;&nbsp;</a></span>RemoveObjectFromLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LevelManager::RemoveObjectFromLevel </td>
+          <td>(</td>
+          <td class="paramtype">U32&#160;</td>
+          <td class="paramname"><em>levelID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">U32&#160;</td>
+          <td class="paramname"><em>objID</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Removes an object from a <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. Wrapper around <a class="el" href="class_killer_engine_1_1_level.html#a128b2440a436be3e29c58d8ef194dcd4">Level::RemoveObjectFromLevel</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">levelID</td><td>is the key for the <a class="el" href="class_killer_engine_1_1_level.html">Level</a> that the object will be removed from. </td></tr>
+    <tr><td class="paramname">objID</td><td>is the <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> ID to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a51683140c6c2b0823709275a1f862d2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51683140c6c2b0823709275a1f862d2f">&#9670;&nbsp;</a></span>Render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LevelManager::Render </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calls all of the functions on the active <a class="el" href="class_killer_engine_1_1_level.html">Level</a> state needed to render the state. Calls <a class="el" href="class_killer_engine_1_1_level.html#a2b0ddbe638002f69519d46733c2729e2">Level::v_Render</a>. </p>
+
+</div>
+</div>
+<a id="a19af362df8714408dd170f4fb641dd34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19af362df8714408dd170f4fb641dd34">&#9670;&nbsp;</a></span>SetActiveLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LevelManager::SetActiveLevel </td>
+          <td>(</td>
+          <td class="paramtype">U32&#160;</td>
+          <td class="paramname"><em>levelID</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Changes the state to have a different active <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">levelID</td><td>is the index to set to active. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa37c14507c6e5a8327e3c2653d7dd6bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa37c14507c6e5a8327e3c2653d7dd6bf">&#9670;&nbsp;</a></span>ShutDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::LevelManager::ShutDown </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Helper function that deletes the instance from global memory. </p>
+
+</div>
+</div>
+<a id="a4f1608d9c79fc20af8bd9df607f4955a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f1608d9c79fc20af8bd9df607f4955a">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LevelManager::Update </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calls all functions on the active <a class="el" href="class_killer_engine_1_1_level.html">Level</a> state needed to update that state. This includes <a class="el" href="class_killer_engine_1_1_level.html#a9bacfc94408e29abb0e38ce6e788c0a2">Level::v_Integrate</a>, <a class="el" href="class_killer_engine_1_1_level.html#a4812e4f88b745499785fe19709cf7a3d">Level::UpdateLevel</a>, <a class="el" href="class_killer_engine_1_1_level.html#abfe26b484c3972eb8d6df069491cce8a">Level::UpdateObjects</a> and <a class="el" href="class_killer_engine_1_1_level.html#a52ee149ac4606f7fc4295a3a10d4c8f7">Level::v_Update</a>. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_level_manager_8h_source.html">LevelManager.h</a></li>
-<li>F:/Projects/Killer_Engine/Implementations/LevelManager.cpp</li>
+<li>C:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_level_manager_8h_source.html">LevelManager.h</a></li>
+<li>C:/Projects/Killer_Engine/Implementations/LevelManager.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

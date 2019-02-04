@@ -1,4 +1,4 @@
-.TH "KillerEngine::Engine" 3 "Thu Jan 31 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Engine" 3 "Mon Feb 4 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -70,7 +70,7 @@ Default Constructor\&. It does not do anything\&.
 .SH "Member Function Documentation"
 .PP 
 .SS "void KillerEngine::Engine::AddLevelToManager (shared_ptr< \fBLevel\fP > level)\fC [inline]\fP"
-Wrapper for LevelManager::AddLevel()\&. Adds level that can be set as active\&. 
+Wrapper for \fBLevelManager::AddLevel()\fP\&. Adds level that can be set as active\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -100,7 +100,7 @@ Singleton function to get global instance of \fBEngine\fP\&.
 .SS "void Engine::Render (void)"
 Wrapper for steps needed to render\&. Calls the following in order
 .IP "\(bu" 2
-LevelManager::Render()
+\fBLevelManager::Render()\fP
 .IP "\(bu" 2
 \fBWinProgram::BufferSwap()\fP
 .IP "\(bu" 2
@@ -119,7 +119,7 @@ Wrapper for LevelManager::SetActive()\&. Sets level with id to be active level
 .PP
 
 .SS "void Engine::ShutDown (void)"
-Wrapper for LevelManager::ShutDown(void) 
+Wrapper for \fBLevelManager::ShutDown(void)\fP 
 .SS "void Engine::Update (void)"
 Wrapper for steps needed update steps\&. Calls the following in order\&.
 .IP "\(bu" 2
@@ -129,7 +129,7 @@ Timer::Update()
 .IP "\(bu" 2
 \fBController::Update()\fP
 .IP "\(bu" 2
-LevelManager::Update()
+\fBLevelManager::Update()\fP
 .IP "\(bu" 2
 \fBErrorManager::DisplayErrors()\fP 
 .PP

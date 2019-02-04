@@ -3,7 +3,7 @@ var searchData=
   ['set',['Set',['../class_killer_math_1_1_vector.html#a535b8a4747ae5ab113d79f3f996ed27c',1,'KillerMath::Vector']]],
   ['setacceleration',['SetAcceleration',['../class_killer_physics_1_1_particle.html#af59de95a45bffe459b6eec4614f10eb6',1,'KillerPhysics::Particle::SetAcceleration(const KM::Vector &amp;acc)'],['../class_killer_physics_1_1_particle.html#a8821fc56a6ea8b1414d7dc9c9f04eee6',1,'KillerPhysics::Particle::SetAcceleration(F32 x, F32 y)'],['../class_killer_physics_1_1_particle.html#a565d0a8f86f0c3f1865a3f4eb789aa7d',1,'KillerPhysics::Particle::SetAcceleration(F32 x, F32 y, F32 z)']]],
   ['setactive',['SetActive',['../class_killer_engine_1_1_text.html#a0b9fd4c1de463fdd2c0639981474b915',1,'KillerEngine::Text::SetActive(bool state)'],['../class_killer_engine_1_1_text.html#a570494e905aca3d1ae3ae3de52ede136',1,'KillerEngine::Text::SetActive(void)']]],
-  ['setactivelevel',['SetActiveLevel',['../class_killer_engine_1_1_engine.html#a42b05bccc84e2bf48a7b8dcdcefacfad',1,'KillerEngine::Engine']]],
+  ['setactivelevel',['SetActiveLevel',['../class_killer_engine_1_1_engine.html#a42b05bccc84e2bf48a7b8dcdcefacfad',1,'KillerEngine::Engine::SetActiveLevel()'],['../class_killer_engine_1_1_level_manager.html#a19af362df8714408dd170f4fb641dd34',1,'KillerEngine::LevelManager::SetActiveLevel()']]],
   ['setbackgroundcolor',['SetBackgroundColor',['../class_killer_engine_1_1_level.html#a979a57ad58ae3f4e596e3dcad45dc349',1,'KillerEngine::Level::SetBackgroundColor()'],['../class_killer_engine_1_1_win_program.html#a082614c6191c6df8eaadfe096e060d7f',1,'KillerEngine::WinProgram::SetBackgroundColor()']]],
   ['setbottomborder',['SetBottomBorder',['../class_killer_engine_1_1_level.html#adebc17b4539e472b1b7d617bc0d2f70a',1,'KillerEngine::Level']]],
   ['setcamera',['SetCamera',['../class_killer_engine_1_1_level.html#a3cc18a69cbd46f7b0b4be2eacb644ae5',1,'KillerEngine::Level']]],
@@ -50,7 +50,7 @@ var searchData=
   ['shader',['Shader',['../class_killer_engine_1_1_shader.html',1,'KillerEngine::Shader'],['../_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7dae5104f799b6f2ac5fce275d362e21687',1,'KillerEngine::SHADER()']]],
   ['shaderdata',['ShaderData',['../struct_killer_engine_1_1_shader_data.html',1,'KillerEngine']]],
   ['shadermanager',['ShaderManager',['../class_killer_engine_1_1_shader_manager.html',1,'KillerEngine']]],
-  ['shutdown',['ShutDown',['../class_killer_engine_1_1_engine.html#aeb2929a81f40a12b16f07417be420530',1,'KillerEngine::Engine']]],
+  ['shutdown',['ShutDown',['../class_killer_engine_1_1_engine.html#aeb2929a81f40a12b16f07417be420530',1,'KillerEngine::Engine::ShutDown()'],['../class_killer_engine_1_1_level_manager.html#aa37c14507c6e5a8327e3c2653d7dd6bf',1,'KillerEngine::LevelManager::ShutDown()']]],
   ['singlestep',['SingleStep',['../class_killer_math_1_1_timer.html#adf1ce88e9fc63149f556d69e3722c46a',1,'KillerMath::Timer']]],
   ['springforce',['SpringForce',['../class_killer_physics_1_1_spring_force.html',1,'KillerPhysics']]],
   ['sqrmagnitude',['SqrMagnitude',['../class_killer_math_1_1_vector.html#ac44f0371cdc78dfa8a48633c86c00978',1,'KillerMath::Vector']]]

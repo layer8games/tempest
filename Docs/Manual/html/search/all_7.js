@@ -3,6 +3,8 @@ var searchData=
   ['gameobject',['GameObject',['../class_killer_engine_1_1_game_object.html',1,'KillerEngine']]],
   ['getacceleration',['GetAcceleration',['../class_killer_physics_1_1_particle.html#a1a874580ae12822eaa3a05d6bae88ff3',1,'KillerPhysics::Particle']]],
   ['getactive',['GetActive',['../class_killer_engine_1_1_text.html#a3b4ca3d24e6eba6d0240eee1693a4b20',1,'KillerEngine::Text']]],
+  ['getactivelevel',['GetActiveLevel',['../class_killer_engine_1_1_level_manager.html#a54f5e55baf08df7baf315de2d79dcf21',1,'KillerEngine::LevelManager']]],
+  ['getactivelevelid',['GetActiveLevelID',['../class_killer_engine_1_1_level_manager.html#a97b74d38bd42947b0acae30c5638994d',1,'KillerEngine::LevelManager']]],
   ['getallcharacterglyphs',['GetAllCharacterGlyphs',['../class_killer_engine_1_1_font.html#a75925b657a861a8e5deb96759d7dec4e',1,'KillerEngine::Font']]],
   ['getbottomborder',['GetBottomBorder',['../class_killer_engine_1_1_level.html#a6c02892ad4f551016bd305f82e03614d',1,'KillerEngine::Level']]],
   ['getcamera',['GetCamera',['../class_killer_engine_1_1_level.html#a642495c25256fbaeae542ac4287f8059',1,'KillerEngine::Level']]],
