@@ -6,6 +6,8 @@ KillerEngine::ShaderData
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <Shader\&.h>\fP
 .SS "Public Attributes"
 
 .in +1c
@@ -16,6 +18,18 @@ KillerEngine::ShaderData
 .RI "ShaderType \fBtype\fP"
 .br
 .in -1c
+.SH "Detailed Description"
+.PP 
+All data needed to be able to compile a shader\&. Filepath is the path to the code file on the hard drive, type is the type of compiler needed by OpenGL\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilePath\fP is the path to the specific shader on the hard drive\&. This will be the source code for one shader stage, ie a vertex shader source file\&. 
+.br
+\fItype\fP is the type of shader this file path is, ie VERTEX for a vertext shader file\&. 
+.RE
+.PP
+
 
 .SH "Author"
 .PP 

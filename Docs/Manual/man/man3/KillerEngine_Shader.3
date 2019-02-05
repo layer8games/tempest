@@ -6,9 +6,17 @@ KillerEngine::Shader
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <Shader\&.h>\fP
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fBShader\fP (void)"
+.br
+.ti -1c
+.RI "\fB~Shader\fP (void)"
+.br
 .ti -1c
 .RI "void \fBLoadShader\fP (std::vector< \fBShaderData\fP > shaders)"
 .br
@@ -71,10 +79,157 @@ KillerEngine::Shader
 .ti -1c
 .RI "map< string, GLuint > \fB_uniformLocations\fP"
 .br
+.RI "Cached database of uniform locations, keyd with the name\&. "
 .ti -1c
 .RI "GLuint \fB_shaderProgram\fP"
 .br
+.RI "Handle to compiled shader program in OpenGL\&. "
 .in -1c
+.SH "Detailed Description"
+.PP 
+A manager class that will control the compiled shaders for OpenGL\&. It could be abstrated out to also include directx, if support is ever added\&.
+.PP
+It will act as a factory class, compiling and creating shaders\&. It has several default shaders, which should be shared amoung common objects, such as the sprites or model primitiives\&.
+.PP
+It can also return an abritrary shader that does not get saved by the class over all\&. This function acts as a wrapper around the calls needed to complile GLSL shaders\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Shader::Shader (void)"
+Initializes the Uniform Locations and sets the shader handle to 0\&. 
+.SS "Shader::~Shader (void)"
+Sets the GL Program to 0, deletes the shader from OpenGL\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Shader::_CheckCompileErrors (GLuint shader)\fC [private]\fP"
+Calls to OpenGL, checking for any errors in the compilation of the shader\&. 
+.SS "string Shader::_GetFileString (string path)\fC [private]\fP"
+Converts the contends of a file into a flat string\&. Used for getting a pointer to all the characters to be passed to OpenGL later for compilation of shaders\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP is the path to the file to convert into a string\&. 
+.RE
+.PP
+
+.SS "GLuint Shader::_GetUniformLocation (const GLchar * name)\fC [private]\fP"
+Checks if there is a cached location with name yet\&. If not, it tries to find one with that name, and caches it\&. There is no error checking yet, if you send it a name that doesn't exists, it will die with a compiler error\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the location to check for and/or cache and return\&. 
+.RE
+.PP
+
+.SS "map<string, GLuint> KillerEngine::Shader::GetUniformLocations (void) const\fC [inline]\fP"
+Returns all cached uniform locations in this shader\&. 
+.SS "void Shader::LoadShader (std::vector< \fBShaderData\fP > shaders)"
+Takes in a list of \fBShaderData\fP, looping over it to compile each shader, then link them together\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIshaders\fP is the list of shaders that will be compiled and linked\&. 
+.RE
+.PP
+
+.SS "\fBShader\fP & Shader::operator= (const \fBShader\fP & shader)"
+Copy assignment operator\&. Copies both the shader handle from OpenGL and the cached shader locations\&. 
+.SS "void KillerEngine::Shader::SetProgram (GLuint program)\fC [inline]\fP"
+Manually set the OpenGL program handle\&. Used for copying the shader\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprogram\fP is the new handle to set\&. 
+.RE
+.PP
+
+.SS "void Shader::SetUniform (const GLchar * name, const F32 val)"
+Helper function to set a uniform in the shader\&. Wrapper around glUniform1f\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the uniform in the shader\&. 
+.br
+\fIval\fP is the value to pass into the shader\&. 
+.RE
+.PP
+
+.SS "void Shader::SetUniform (const GLchar * name, const \fBKM::Vector\fP & vec)"
+Helper function to set a uniform in the shader\&. Wrapper around glUniform4f\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInaem\fP is the name of the uniform in the shader\&. 
+.br
+\fIvec\fP is the \fBKillerMath::Vector\fP to pass along into the shader\&. x, y, z and w will be passed into the shader\&. 
+.RE
+.PP
+
+.SS "void Shader::SetUniform (const GLchar * name, \fBKM::Matrix\fP mat)"
+Helper function to set a uniform in the shader\&. Wrapper around glUniformMatrix4fv\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the uniform in the shader\&. 
+.br
+\fImat\fP is the \fBKillerMath::Matrix\fP to pass into the shader\&. All 16 values will be passed in\&. 
+.RE
+.PP
+
+.SS "void Shader::SetUniform (const GLchar * name, const \fBColor\fP & col)"
+Helper function to set a uniform in the shader\&. Wrapper around glUniform4f\&. Sets the r,g,b and a\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the uniform in the shader\&. 
+.br
+\fIcol\fP is the \fBColor\fP to set in the shader\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Shader::SetUniformLocations (map< string, GLuint > uniforms)\fC [inline]\fP"
+Manually set cache of uniform locations\&. Used for copying\&. 
+.SS "void Shader::SetUniformSampler (const GLchar * name, S32 texSlot)"
+Helper function to set a uniform in the shader\&. This is used to activate more than one texture in the shader\&. The default is to set all textures to slot 0, this allows for multiple slots to be set\&. Wrapper around glActiveTexture and glUniform1i\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the uniform in the shader\&. 
+.br
+\fItexSlot\fP is the index \fBTexture\fP slot to activate\&. 
+.RE
+.PP
+
+.SS "void Shader::SetUniformVec3 (const GLchar * name, const \fBKM::Vector\fP & vec)"
+Helper function to set a uniform in the shader\&. Wrapper around glUniform3f\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the uniform in the shader\&. 
+.br
+\fIvec\fP is the \fBKillerMath::Vector\fP to pass into the shader\&. Only the x, y and z will be passed\&. 
+.RE
+.PP
+
+.SS "void Shader::SetUniformVec3 (const GLchar * name, const \fBColor\fP & col)"
+Helper function to set a uniform in the shader\&. Wrapper around glUniform3f\&. Sets the r, g, and b\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the uniform in the shader\&. 
+.br
+\fIcol\fP is the \fBColor\fP to set in the shader\&. 
+.RE
+.PP
+
+.SS "void Shader::Use (bool state = \fCtrue\fP)"
+Wrapper aroudn glUseProgram\&. Sets this shader to be active in OpenGL for rendering\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP is an optional flag\&. True = set to active, false = set inactive, this is done by calling glUseProgram(0)\&. 
+.RE
+.PP
+
 
 .SH "Author"
 .PP 

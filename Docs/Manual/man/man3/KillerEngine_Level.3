@@ -111,6 +111,24 @@ KillerEngine::Level
 .RI "S32 \fBGetRightBorder\fP (void) const"
 .br
 .ti -1c
+.RI "void \fBSetDepth\fP (S32 d)"
+.br
+.ti -1c
+.RI "S32 \fBGetDepth\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetNearBorder\fP (S32 n)"
+.br
+.ti -1c
+.RI "void \fBSetFarBorder\fP (S32 f)"
+.br
+.ti -1c
+.RI "S32 \fBGetNearBorder\fP (void)"
+.br
+.ti -1c
+.RI "S32 \fBGetFarBorder\fP (void)"
+.br
+.ti -1c
 .RI "void \fBSetID\fP (U32 id)"
 .br
 .ti -1c
@@ -153,6 +171,18 @@ KillerEngine::Level
 .RI "S32 \fB_leftBorder\fP"
 .br
 .RI "Optional 'west' border of the \fBLevel\fP\&. "
+.ti -1c
+.RI "S32 \fB_depth\fP"
+.br
+.RI "Total depth of the play area in the \fBLevel\fP\&. "
+.ti -1c
+.RI "S32 \fB_nearBorder\fP"
+.br
+.RI "Optional close border of the \fBLevel\fP\&. "
+.ti -1c
+.RI "S32 \fB_farBorder\fP"
+.br
+.RI "Optional far border of the \fBLevel\fP\&. "
 .ti -1c
 .RI "\fBColor\fP \fB_bgColor\fP"
 .br
@@ -251,6 +281,10 @@ Adds the Glyphs in a \fBText\fP to the \fBLevel\fP as GameObjects\&.
 Returns the bottom border\&. 
 .SS "const \fBCamera\fP* KillerEngine::Level::GetCamera (void)\fC [inline]\fP"
 Returns the current \fBCamera\fP\&. 
+.SS "S32 KillerEngine::Level::GetDepth (void)\fC [inline]\fP"
+Returns the depth of the play area\&. 
+.SS "S32 KillerEngine::Level::GetFarBorder (void)\fC [inline]\fP"
+Returns the far border of the play area\&. 
 .SS "U32 KillerEngine::Level::GetID (void) const\fC [inline]\fP"
 Returns the \fBLevel\fP ID\&. This will only match the \fBLevelManager\fP ID if you set it correctly\&. 
 .SS "S32 KillerEngine::Level::GetLeftBorder (void) const\fC [inline]\fP"
@@ -259,6 +293,8 @@ Returns the left border\&.
 Returns the height of the play area of the \fBLevel\fP\&. 
 .SS "S32 KillerEngine::Level::GetLevelWidth (void) const\fC [inline]\fP"
 Returns the width of the play area of the \fBLevel\fP\&. 
+.SS "S32 KillerEngine::Level::GetNearBorder (void)\fC [inline]\fP"
+Returns the near border of the play area\&. 
 .SS "S32 KillerEngine::Level::GetRightBorder (void) const\fC [inline]\fP"
 Returns the right border\&. 
 .SS "S32 KillerEngine::Level::GetTopBorder (void) const\fC [inline]\fP"
@@ -300,6 +336,10 @@ Set the bottom bounds\&.
 Sets the camera to a new \fBCamera\fP pointer, allowing you to change the \fBCamera\fP at run time\&. 
 .SS "void KillerEngine::Level::SetCameraOrthographic (void)\fC [inline]\fP"
 Wrapper around \fBCamera::SetOrthographic\fP\&. 
+.SS "void KillerEngine::Level::SetDepth (S32 d)\fC [inline]\fP"
+Sets the depth of the play area 
+.SS "void KillerEngine::Level::SetFarBorder (S32 f)\fC [inline]\fP"
+Sets the far border of the play area\&. 
 .SS "void KillerEngine::Level::SetID (U32 id)\fC [inline]\fP"
 Sets a new ID for the \fBLevel\fP\&. Use with caution\&. 
 .SS "void KillerEngine::Level::SetLeftBorder (S32 left)\fC [inline]\fP"
@@ -346,6 +386,8 @@ Changes the width of the play area of the \fBLevel\fP\&.
 .RE
 .PP
 
+.SS "void KillerEngine::Level::SetNearBorder (S32 n)\fC [inline]\fP"
+Sets the near border of the play area\&. 
 .SS "void KillerEngine::Level::SetRightBorder (S32 right)\fC [inline]\fP"
 Set the right bounds\&. 
 .PP
