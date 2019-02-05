@@ -182,7 +182,7 @@ namespace KillerEngine
 /*!
 	Changes the set background color for the Level. It also calls Level::ActivateBackgroundColor
 */
-		void SetBackgroundColor(Color& c) 
+		inline void SetBackgroundColor(Color& c) 
 		{ 
 			_bgColor = c;
 			ActivateBackgroundColor();
@@ -191,7 +191,7 @@ namespace KillerEngine
 /*!
 	Forces the current background color to be activated in OpenGL.
 */
-		void ActivateBackgroundColor(void) 
+		inline void ActivateBackgroundColor(void) 
 		{ 
 			WinProgram::Instance()->SetBackgroundColor(_bgColor); 
 		}
@@ -199,7 +199,7 @@ namespace KillerEngine
 /*!
 	Returns the width of the play area of the Level.
 */
-		S32  GetLevelWidth(void) const 
+		inline S32 GetLevelWidth(void) const 
 		{ 
 			return _width; 
 		}
@@ -207,7 +207,7 @@ namespace KillerEngine
 /*!
 	Returns the height of the play area of the Level.
 */
-		S32  GetLevelHeight(void) const 
+		inline S32 GetLevelHeight(void) const 
 		{ 
 			return _height; 
 		}
@@ -216,7 +216,7 @@ namespace KillerEngine
 	Changes the width of the play area of the Level.
 	\param w is the new width.
 */
-		void SetLevelWidth(S32 w)  
+		inline void SetLevelWidth(S32 w)  
 		{ 
 			_width = w; 
 		}
@@ -225,7 +225,7 @@ namespace KillerEngine
 	Changes the height of the play area of the Level.
 	\param h is the new height.
 */
-		void SetLevelHeight(S32 h) 
+		inline void SetLevelHeight(S32 h) 
 		{ 
 			_height = h; 
 		}
@@ -233,7 +233,7 @@ namespace KillerEngine
 /*!
 	Helper function that allows you to change the play area dimensions at the same time. 
 */
-		void SetLevelDimensions(S32 w, S32 h) 
+		inline void SetLevelDimensions(S32 w, S32 h) 
 		{ 
 			_width  = w; 
 			_height = h; 
@@ -243,7 +243,7 @@ namespace KillerEngine
 	Set the top bounds.
 	\param top is the new border.
 */
-		void SetTopBorder(S32 top) 
+		inline void SetTopBorder(S32 top) 
 		{ 
 			_topBorder = top; 
 		}
@@ -252,7 +252,7 @@ namespace KillerEngine
 	Set the bottom bounds.
 	\param bottom is the new border.
 */
-		void SetBottomBorder(S32 bottom) 
+		inline void SetBottomBorder(S32 bottom) 
 		{ 
 			_bottomBorder = bottom; 
 		}
@@ -261,7 +261,7 @@ namespace KillerEngine
 	Set the right bounds.
 	\param right is the new border.
 */
-		void SetRightBorder(S32 right) 
+		inline void SetRightBorder(S32 right) 
 		{ 
 			_rightBorder = right;
 		}
@@ -270,7 +270,7 @@ namespace KillerEngine
 	Set the left bounds.
 	\param left is the new border.
 */
-		void SetLeftBorder(S32 left) 
+		inline void SetLeftBorder(S32 left) 
 		{ 
 			_leftBorder = left; 
 		}
@@ -282,7 +282,7 @@ namespace KillerEngine
 	\param right is the right border.
 	\param left is the left border.
 */
-		void SetLevelBorders(S32 top, S32 bottom, S32 right, S32 left)
+		inline void SetLevelBorders(S32 top, S32 bottom, S32 right, S32 left)
 		{
 			_topBorder = top;
 			_bottomBorder = bottom;
@@ -293,7 +293,7 @@ namespace KillerEngine
 /*!
 	Returns the top border.
 */
-		S32 GetTopBorder(void) const 
+		inline S32 GetTopBorder(void) const 
 		{ 
 			return _topBorder; 
 		}
@@ -301,7 +301,7 @@ namespace KillerEngine
 /*!
 	 Returns the bottom border.
 */
-		S32 GetBottomBorder(void) const 
+		inline S32 GetBottomBorder(void) const 
 		{ 
 			return _bottomBorder; 
 		}
@@ -309,7 +309,7 @@ namespace KillerEngine
 /*!
 	Returns the left border.
 */
-		S32 GetLeftBorder(void) const 
+		inline S32 GetLeftBorder(void) const 
 		{ 
 			return _leftBorder; 
 		}
@@ -317,15 +317,63 @@ namespace KillerEngine
 /*!
 	Returns the right border.
 */
-		S32 GetRightBorder(void) const 
+		inline S32 GetRightBorder(void) const 
 		{
 			return _rightBorder; 
+		}
+
+/*! 
+	 Sets the depth of the play area 
+*/
+		inline void SetDepth(S32 d)
+		{
+			_depth = d;
+		}
+
+/*! 
+	 Returns the depth of the play area.
+*/
+		inline S32 GetDepth(void)
+		{
+			return _depth;
+		}
+
+/*! 
+	 Sets the near border of the play area. 
+*/
+		inline void SetNearBorder(S32 n)
+		{
+			_nearBorder = n;
+		}
+
+/*! 
+	 Sets the far border of the play area. 
+*/
+		inline void SetFarBorder(S32 f)
+		{
+			_farBorder = f;
+		}
+
+/*! 
+	Returns the near border of the play area.  
+*/
+		inline S32 GetNearBorder(void)
+		{
+			return _nearBorder;
+		}
+
+/*! 
+	Returns the far border of the play area.  
+*/
+		inline S32 GetFarBorder(void)
+		{
+			return _farBorder;
 		}
 
 /*!
 	Sets a new ID for the Level. Use with caution.
 */
-		void SetID(U32 id) 
+		inline void SetID(U32 id) 
 		{ 
 			_ID = id; 
 		}
@@ -333,7 +381,7 @@ namespace KillerEngine
 /*!
 	Returns the Level ID. This will only match the LevelManager ID if you set it correctly.
 */
-		U32 GetID(void) const 
+		inline U32 GetID(void) const 
 		{ 
 			return _ID; 
 		}
@@ -342,7 +390,7 @@ namespace KillerEngine
 /*!
 	Sets the camera to a new Camera pointer, allowing you to change the Camera at run time. 
 */
-		void SetCamera(Camera* cam)
+		inline void SetCamera(Camera* cam)
 		{
 			_camera = cam;
 		}
@@ -350,7 +398,7 @@ namespace KillerEngine
 /*!
 	Returns the current Camera.
 */
-		const Camera* GetCamera(void)
+		inline const Camera* GetCamera(void)
 		{
 			return _camera;
 		}
@@ -375,6 +423,9 @@ namespace KillerEngine
 		S32     _bottomBorder;										///< Optional "south" border of the Level.
 		S32     _rightBorder;										///< Optional "east" border of the Level.
 		S32     _leftBorder;										///< Optional "west" border of the Level.
+		S32		_depth; 											///< Total depth of the play area in the Level.
+		S32		_nearBorder;										///< Optional close border of the Level.
+		S32 	_farBorder;											///< Optional far border of the Level.
 		Color   _bgColor;											///< Color used for the background of the rendering window.
 		U32     _ID;												///< ID used in the LevelManager.
 		Camera* _camera;											///< Pointer to a Camera object. 
