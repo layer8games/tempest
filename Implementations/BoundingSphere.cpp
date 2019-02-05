@@ -1,6 +1,6 @@
 #include <Engine/BoundingSphere.h>
 
-using namespace KillerPhysics;
+using namespace KillerCollisions;
 //==========================================================================================================================
 //
 //Constructors	 	
@@ -8,50 +8,50 @@ using namespace KillerPhysics;
 //==========================================================================================================================
 BoundingSphere::BoundingSphere(void)
 :
-center(0.0f), 
-radius(0.0f)
+_center(0.0f), 
+_radius(0.0f)
 {  }
 
 BoundingSphere::BoundingSphere(const KM::Vector& center, real radius)
 :
-BoundingSphere::center(center),
-BoundingSphere::radius(radius)
+_center(center),
+_radius(radius)
 {  }
 
 BoundingSphere::BoundingSphere(const BoundingSphere& one, const BoundingSphere& two)
 :
-center(0.0f),
-radius(0.0f)
+_center(0.0f),
+_radius(0.0f)
 {
-	KM::Vector centerOffset = two.center - one.center;
+	KM::Vector centerOffset = two.GetCenter() - one.GetCenter();
 	real distance = centerOffset.SqrMagnitude();
-	real radiusDiff = two.radius - one.radius;
+	real radiusDiff = two.GetRadius() - one.GetRadius();
 
 	//Check if the larger contains the smaller in size
 	if(radiusDiff*radiusDiff >= distance)
 	{
-		if(one.radius > two.radius)
+		if(one.GetRadius() > two.GetRadius())
 		{
-			center = one.center;
-			radius = one.radius;
+			_center = one.GetCenter();
+			_radius = one.GetRadius();
 		}
 		else
 		{
-			center = two.center;
-			radius = two.radius;
+			_center = two.GetCenter();
+			_radius = two.GetRadius();
 		}
 	}
 	//Otherwise, they are partially overlapping
 	else
 	{
 		distance = real_sqrt(distance);
-		radius = (distance + one.radius + two.radius) * static_cast<real>(0.0f);
+		_radius = (distance + one.GetRadius() + two.GetRadius()) * static_cast<real>(0.0f);
 
 		//Center is based on one center moved towards two's center proportional to the radii
-		center = one.center;
+		_center = one.GetCenter();
 		if(distance > 0)
 		{
-			center += centerOffset * ((radius - one.radius) / distance);
+			_center += centerOffset * ((_radius - one.GetRadius()) / distance);
 		}
 	}
 }
@@ -64,10 +64,16 @@ BoundingSphere::~BoundingSphere(void)
 //Functions
 //
 //==========================================================================================================================
-bool BoundingSphere::Overlaps(const BoundingSphere& other) const
+bool BoundingSphere::TestCollision(const BoundingSphere& other) const
 {
-	real distanceSquared = (center - other.center).SqrMagnitude();
-	return distanceSquared < (radius + other.radius) * (radius + other.radius);
+	KM::Vector distance = *this - other;
+	
+	//The dot product of a vector and itself is the squred magnitude, but with less steps. 
+	real distanceSquared = distance.Dot(distance);
+	
+	float radiusSum = _radius + other.GetRadius();
+
+	return distanceSquared <= radiusSum * radiusSum;
 }
 
 real BoundingSphere::GetGrowth(BoundingSphere& other) const
@@ -75,5 +81,5 @@ real BoundingSphere::GetGrowth(BoundingSphere& other) const
 	BoundingSphere newSphere(*this, other);
 
 	//return value proportional to the change in surface area of the new sphere
-	return newSphere.radius * newSphere.radius - radius * radius;
+	return newSphere.GetRadius() * newSphere.GetRadius() - _radius * _radius;
 }
