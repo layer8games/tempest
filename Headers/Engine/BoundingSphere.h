@@ -71,6 +71,19 @@ namespace KillerCollisions
 			_center = pos;
 		}
 
+/*!
+	Alternate setter for center.
+	\param x is the value for x.
+	\param y is the value for y.
+	\param z is the value for z.
+*/
+		inline void SetCenter(F32 x, F32 y, F32 z)
+		{
+			_center[0] = x;
+			_center[1] = y;
+			_center[2] = z;
+		}
+
 /*! 
 	Get the location of the center. 
 */
