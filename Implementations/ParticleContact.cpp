@@ -42,7 +42,7 @@ real ParticleContact::CalculateSeparatingVelocity(void) const
 		{
 			relativeVelocity -= _particles[1]->GetVelocity();
 		}
-		return relativeVelocity.DotProduct(_contactNormal);		
+		return relativeVelocity.Dot(_contactNormal);		
 	}	
 	return 0.0f;
 }
@@ -71,7 +71,7 @@ void ParticleContact::_ResolveImpulseVelocity(void)
 			accelCausedVel -= _particles[1]->GetAcceleration();
 		}
 
-		accelCausedSeparatingVel = accelCausedVel.DotProduct(_contactNormal * KM::Timer::Instance()->DeltaTime());
+		accelCausedSeparatingVel = accelCausedVel.Dot(_contactNormal * KM::Timer::Instance()->DeltaTime());
 	}	
 
 	//If we have an acceleration, remove it. 

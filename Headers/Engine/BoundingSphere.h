@@ -11,14 +11,22 @@ namespace KillerCollisions
 	class BoundingSphere
 	{
 
-
+	public:
 //==========================================================================================================================
 //
 //Constructors	 	
 //
 //==========================================================================================================================
+/*! 
+	Sets center and radius to 0. 
+*/
 		BoundingSphere(void);
 
+/*! 
+	Sets center and radius to args.
+	\param center is the value for center. 
+	\param radius is the value for radius. 
+*/
 		BoundingSphere(const KM::Vector& center, real radius);
 
 /*! 

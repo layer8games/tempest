@@ -66,7 +66,7 @@ BoundingSphere::~BoundingSphere(void)
 //==========================================================================================================================
 bool BoundingSphere::TestCollision(const BoundingSphere& other) const
 {
-	KM::Vector distance = *this - other;
+	KM::Vector distance = _center - other.GetCenter();
 	
 	//The dot product of a vector and itself is the squred magnitude, but with less steps. 
 	real distanceSquared = distance.Dot(distance);

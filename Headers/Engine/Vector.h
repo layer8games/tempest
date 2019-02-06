@@ -108,7 +108,7 @@ namespace KillerMath
 	Performs a Dot or Scalar product in the order of this * other.
 	\param vec is the left hand argument in the operation.	
 */
-		F32 DotProduct(const Vector& vec) const;
+		F32 Dot(const Vector& vec) const;
 
 /*!
 	Performs a Cross or Vector production in the order of this % other.

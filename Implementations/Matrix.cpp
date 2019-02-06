@@ -790,7 +790,7 @@ Matrix Matrix::LookAt(const Vector& cameraPos, const Vector& target, const Vecto
 	mat[2][2] = zAxis[2];
 	mat[2][3] = 0.0f;
 
-	mat[3] = Vector(-xAxis.DotProduct(cameraPos), -yAxis.DotProduct(cameraPos), -zAxis.DotProduct(cameraPos), 1.0f);
+	mat[3] = Vector(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);
 
 	return mat;
 }
@@ -823,7 +823,7 @@ void Matrix::SetLookAt(const Vector& cameraPos, const Vector& target, const Vect
 	_columns[2][2] = zAxis[2];
 	_columns[2][3] = 0.0f;
 
-	_columns[3] = Vector(-xAxis.DotProduct(cameraPos), -yAxis.DotProduct(cameraPos), -zAxis.DotProduct(cameraPos), 1.0f);		
+	_columns[3] = Vector(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);		
 }
 
 Matrix Matrix::FPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
@@ -859,7 +859,7 @@ Matrix Matrix::FPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
 	mat[2][2] = zAxis[2];
 	mat[2][3] = 0.0f;
 
-	mat[3] = Vector(-xAxis.DotProduct(cameraPos), -yAxis.DotProduct(cameraPos), -zAxis.DotProduct(cameraPos), 1.0f);
+	mat[3] = Vector(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);
 
 	return mat;
 }
@@ -895,7 +895,7 @@ void Matrix::SetFPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
 	_columns[2][2] = zAxis[2];
 	_columns[2][3] = 0.0f;
 
-	_columns[3] = Vector(-xAxis.DotProduct(cameraPos), -yAxis.DotProduct(cameraPos), -zAxis.DotProduct(cameraPos), 1.0f);	
+	_columns[3] = Vector(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);	
 }
 
 //==========================================================================================================================

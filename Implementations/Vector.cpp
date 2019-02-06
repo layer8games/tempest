@@ -52,7 +52,7 @@ Vector::~Vector(void)
 //
 //==========================================================================================================================
 //===== Vector Special functions =====
-F32 Vector::DotProduct(const Vector& vec) const
+F32 Vector::Dot(const Vector& vec) const
 {
 	return _data[x] * vec[x] +
 		   _data[y] * vec[y] +
