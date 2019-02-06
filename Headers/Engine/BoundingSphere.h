@@ -30,7 +30,7 @@ namespace KillerCollisions
 		BoundingSphere(const KM::Vector& center, real radius);
 
 /*! 
-	Special constructor that combined the volumes of 2 BoundingSpheres into one sphere that emcompasses both volumes. 
+	Special constructor that combines the volumes of 2 BoundingSpheres into one sphere that emcompasses both volumes. 
 	\param one is the first sphere.
 	\param two is the second sphere to combine with one. 
 */

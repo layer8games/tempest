@@ -24,7 +24,7 @@ _center(0.0f),
 _radius(0.0f)
 {
 	KM::Vector centerOffset = two.GetCenter() - one.GetCenter();
-	real distance = centerOffset.SqrMagnitude();
+	real distance = centerOffset.Dot(centerOffset);
 	real radiusDiff = two.GetRadius() - one.GetRadius();
 
 	//Check if the larger contains the smaller in size
