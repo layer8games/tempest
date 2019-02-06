@@ -273,6 +273,9 @@
     <ClInclude Include="..\..\Headers\Engine\BoundingSphere.h">
       <Filter>Source Code\KillerCollision\BoundingVolumes\Sphere</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\AABB.h">
+      <Filter>Source Code\KillerCollision\BoundingVolumes\Cube</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -379,6 +382,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\BoundingSphere.cpp">
       <Filter>Source Code\KillerCollision\BoundingVolumes\Sphere</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\AABB.cpp">
+      <Filter>Source Code\KillerCollision\BoundingVolumes\Cube</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
