@@ -124,11 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h" />
-    <ClInclude Include="..\..\Headers\Engine\BoundingBox.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\AABB.h">
+    <ClInclude Include="..\..\Headers\Engine\AxisBoundingBox.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -149,6 +145,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GameObject.h" />
+    <ClInclude Include="..\..\Headers\Engine\OrientedBoundingBox.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Particle.h" />
     <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
       <SubType>
@@ -213,7 +213,7 @@
     <ClInclude Include="..\..\Headers\Engine\LevelManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Implementations\AABB.cpp">
+    <ClCompile Include="..\..\Implementations\AxisBoundingBox.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -243,6 +243,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObject.cpp" />
+    <ClCompile Include="..\..\Implementations\OrientedBoundingBox.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\Particle.cpp" />
     <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
       <SubType>

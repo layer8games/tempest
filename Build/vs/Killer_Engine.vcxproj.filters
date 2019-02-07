@@ -145,13 +145,13 @@
     <Filter Include="Source Code\KillerCollision\BoundingVolumes\Sphere">
       <UniqueIdentifier>{1ee31c7c-3c01-40f8-be00-d9f83ab4613b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerCollision\BoundingVolumes\Cube">
+    <Filter Include="Source Code\KillerCollision\BoundingVolumes\BoundingBoxes">
+      <UniqueIdentifier>{2f9f53e3-9379-4bff-a340-09c5a03b4f1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\AllignedBoundingBox">
       <UniqueIdentifier>{b284a455-a2fb-4c42-ad61-eaa2ff66a65c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerCollision\BoundingVolumes\Circle">
-      <UniqueIdentifier>{a5df8d56-3d7d-4e66-ae06-9fef237d49d4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerCollision\BoundingVolumes\Box">
+    <Filter Include="Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\OrientedBoundingBox">
       <UniqueIdentifier>{05bd94d4-af3d-442a-930b-95aa6f8ac3b6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -267,14 +267,14 @@
     <ClInclude Include="..\..\Headers\Engine\Contact.h">
       <Filter>Source Code\KillerPhysics\Contacts</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\BoundingBox.h">
-      <Filter>Source Code\KillerCollision\BoundingVolumes\Box</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\BoundingSphere.h">
       <Filter>Source Code\KillerCollision\BoundingVolumes\Sphere</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\AABB.h">
-      <Filter>Source Code\KillerCollision\BoundingVolumes\Cube</Filter>
+    <ClInclude Include="..\..\Headers\Engine\AxisBoundingBox.h">
+      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\AllignedBoundingBox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\OrientedBoundingBox.h">
+      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\OrientedBoundingBox</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -383,8 +383,11 @@
     <ClCompile Include="..\..\Implementations\BoundingSphere.cpp">
       <Filter>Source Code\KillerCollision\BoundingVolumes\Sphere</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\AABB.cpp">
-      <Filter>Source Code\KillerCollision\BoundingVolumes\Cube</Filter>
+    <ClCompile Include="..\..\Implementations\AxisBoundingBox.cpp">
+      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\AllignedBoundingBox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\OrientedBoundingBox.cpp">
+      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\OrientedBoundingBox</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

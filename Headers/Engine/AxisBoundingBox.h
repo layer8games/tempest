@@ -8,7 +8,7 @@ namespace KM = KillerMath;
 
 namespace KillerCollisions
 {
-	class AABB
+	class AxisBoundingBox
 	{
 	public:
 //==========================================================================================================================
@@ -16,13 +16,13 @@ namespace KillerCollisions
 //Constructors	 	
 //
 //==========================================================================================================================
-		AABB(void);
+		AxisBoundingBox(void);
 
-		AABB(const KM::Vector& center, F32 w, F32 h, F32 d);
+		AxisBoundingBox(const KM::Vector& center, F32 w, F32 h, F32 d);
 
-		//TODO: Consider adding constructor that will combine 2 AABB's. 
+		//TODO: Consider adding constructor that will combine 2 AxisBoundingBox's. 
 
-		~AABB(void);
+		~AxisBoundingBox(void);
 
 //==========================================================================================================================
 //
@@ -30,13 +30,13 @@ namespace KillerCollisions
 //
 //==========================================================================================================================
 /*!
-	Test if this and other are colliding or not. Two AABB's must overlap on all 3 axis. This is tested by comparing the
+	Test if this and other are colliding or not. Two AxisBoundingBox's must overlap on all 3 axis. This is tested by comparing the
 	difference between the position on an axis with the sum of the length of the coorespoding axis. For example, for the x axis, 
 	(a.center.x - b.center.x) > (a.halfWidth + b.halfWidth). If this is true, we can move onto the next axis. If any axis if false,
 	then they do not intersect.
-	\param other is another AABB that we are testing against.
+	\param other is another AxisBoundingBox that we are testing against.
 */
-		bool TestCollision(const AABB& other) const;
+		bool TestCollision(const AxisBoundingBox& other) const;
 
 //==========================================================================================================================
 //
