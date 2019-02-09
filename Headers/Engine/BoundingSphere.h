@@ -50,8 +50,15 @@ namespace KillerCollisions
 */
 		bool TestCollision(const BoundingSphere& other) const;
 
+/*!
+	Returns how much a Sphere would grow if it were combined with another Sphere. Untested. 
+	\param other is the Sphere we are checking against. 
+*/
 		real GetGrowth(BoundingSphere& other) const;
 
+/*!
+	Returns the area of the Sphere. Untested. 
+*/
 		inline real GetSize(void) const
 		{
 			return static_cast<real>(1.333333) * R_PI * _radius * _radius * _radius;

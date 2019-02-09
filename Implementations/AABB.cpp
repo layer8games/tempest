@@ -1,4 +1,4 @@
-#include <Engine/AxisBoundingBox.h>
+#include <Engine/AABB.h>
 
 using namespace KillerCollisions;
 //==========================================================================================================================
@@ -6,7 +6,7 @@ using namespace KillerCollisions;
 //Constructors	 	
 //
 //==========================================================================================================================
-AxisBoundingBox::AxisBoundingBox(void)
+AABB::AABB(void)
 :
 _center(0.0f, 0.0f, 0.0f, 0.0f),
 _halfWidth(0.0f),
@@ -14,15 +14,15 @@ _halfHeight(0.0f),
 _halfDepth(0.0f)
 {  }
 
-AxisBoundingBox::AxisBoundingBox(const KM::Vector& center, F32 w, F32 h, F32 d)
+AABB::AABB(const KM::Vector& center, F32 w, F32 h, F32 d)
 :
 _center(center),
-_halfWidth(w),
-_halfHeight(h),
-_halfDepth(d)
+_halfWidth(w / 2.0f),
+_halfHeight(h / 2.0f),
+_halfDepth(d / 2.0f)
 {  }
 
-AxisBoundingBox::~AxisBoundingBox(void)
+AABB::~AABB(void)
 {  }
 
 //==========================================================================================================================
@@ -30,7 +30,7 @@ AxisBoundingBox::~AxisBoundingBox(void)
 //Functions
 //
 //==========================================================================================================================
-bool AxisBoundingBox::TestCollision(const AxisBoundingBox& other) const
+bool AABB::TestCollision(const AABB& other) const
 {
 	if(real_abs(_center[0] - other.GetCenter()[0]) > (_halfWidth + other.GetHalfWidth()))
 	{

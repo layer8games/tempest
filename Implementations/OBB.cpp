@@ -1,4 +1,4 @@
-#include <Engine/OrientedBoundingBox.h>
+#include <Engine/OBB.h>
 
 using namespace KillerCollisions;
 //==========================================================================================================================
@@ -6,8 +6,8 @@ using namespace KillerCollisions;
 //Constructors	 	
 //
 //==========================================================================================================================
-OrientedBoundingBox::OrientedBoundingBox(void)
+OBB::OBB(void)
 {  }
 
-OrientedBoundingBox::~OrientedBoundingBox(void)
+OBB::~OBB(void)
 {  }
