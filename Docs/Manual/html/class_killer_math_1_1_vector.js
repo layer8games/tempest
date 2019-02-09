@@ -13,7 +13,7 @@ var class_killer_math_1_1_vector =
     [ "~Vector", "class_killer_math_1_1_vector.html#ae8533ae4f11176cc2f19dc529f34efff", null ],
     [ "AddScaledVector", "class_killer_math_1_1_vector.html#ad4438b6f3c7c31cc840e770b0db60e69", null ],
     [ "CrossProduct", "class_killer_math_1_1_vector.html#aaf785551605513bdf16c1e4616e9ea22", null ],
-    [ "DotProduct", "class_killer_math_1_1_vector.html#ae6e58ffbea226d0e34c06d851fdc3a24", null ],
+    [ "Dot", "class_killer_math_1_1_vector.html#a97149d57596644c322702de7b437bb1d", null ],
     [ "GetElems", "class_killer_math_1_1_vector.html#a929945014678a1b7066d342b08b81eb8", null ],
     [ "Is2D", "class_killer_math_1_1_vector.html#a1d38c85f3fd1e0e0380cd1eba5f54ee3", null ],
     [ "Magnitude", "class_killer_math_1_1_vector.html#ade9956bed0bdbad7917f43489043c0a5", null ],

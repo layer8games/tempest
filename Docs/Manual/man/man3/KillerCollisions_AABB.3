@@ -1,0 +1,247 @@
+.TH "KillerCollisions::AABB" 3 "Fri Feb 8 2019" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerCollisions::AABB
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAABB\fP (void)"
+.br
+.ti -1c
+.RI "\fBAABB\fP (const \fBKM::Vector\fP &center, F32 w, F32 h, F32 d)"
+.br
+.ti -1c
+.RI "\fB~AABB\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBTestCollision\fP (const \fBAABB\fP &other) const"
+.br
+.ti -1c
+.RI "void \fBSetCenter\fP (const \fBKM::Vector\fP &c)"
+.br
+.ti -1c
+.RI "void \fBSetCenter\fP (F32 x, F32 y, F32 z)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP & \fBGetCenter\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetHalfWidth\fP (F32 w)"
+.br
+.ti -1c
+.RI "void \fBSetWidth\fP (F32 w)"
+.br
+.ti -1c
+.RI "F32 \fBGetHalfWidth\fP (void) const"
+.br
+.ti -1c
+.RI "F32 \fBGetWidth\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetHalfHeight\fP (F32 h)"
+.br
+.ti -1c
+.RI "void \fBSetHeight\fP (F32 h)"
+.br
+.ti -1c
+.RI "F32 \fBGetHalfHeight\fP (void) const"
+.br
+.ti -1c
+.RI "F32 \fBGetHeight\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetHalfDepth\fP (F32 d)"
+.br
+.ti -1c
+.RI "void \fBSetDepth\fP (F32 d)"
+.br
+.ti -1c
+.RI "F32 \fBGetHalfDepth\fP (void) const"
+.br
+.ti -1c
+.RI "F32 \fBGetDepth\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetHalfDimensions\fP (F32 w, F32 h, F32 d)"
+.br
+.ti -1c
+.RI "void \fBSetDimensions\fP (F32 w, F32 h, F32 d)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_center\fP"
+.br
+.RI "Center location of the \fBAABB\fP\&. This is the posistion represented in local space of the object that holds it\&. "
+.ti -1c
+.RI "F32 \fB_halfWidth\fP"
+.br
+.RI "Half the width from the center to the edge, along the x axis\&. "
+.ti -1c
+.RI "F32 \fB_halfHeight\fP"
+.br
+.RI "Half the height from the center to the edge, along the y axis\&. "
+.ti -1c
+.RI "F32 \fB_halfDepth\fP"
+.br
+.RI "Half the depth from the center to the edge, along the z axis\&. "
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "AABB::AABB (void)"
+Sets all values to 0\&. 
+.SS "AABB::AABB (const \fBKM::Vector\fP & center, F32 w, F32 h, F32 d)"
+Sets the center up and the dimensions\&. Dimensions are sent in as full, and then halved\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcenter\fP is the location of the center of the \fBAABB\fP\&. 
+.br
+\fIw\fP is the full width of the \fBAABB\fP\&. It is divided by 2 to get the half width that is stored\&. 
+.br
+\fIh\fP is the full height of the \fBAABB\fP\&. It is divided by 2 to get the half height that is stored\&. 
+.br
+\fId\fP is the full depth of the \fBAABB\fP\&. It is divided by 2 to get the half depth that is stored\&. 
+.RE
+.PP
+
+.SS "AABB::~AABB (void)"
+No implemenation\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "const \fBKM::Vector\fP& KillerCollisions::AABB::GetCenter (void) const\fC [inline]\fP"
+Returns the center of the \fBAABB\fP\&. 
+.SS "F32 KillerCollisions::AABB::GetDepth (void) const\fC [inline]\fP"
+Returns the full depth extent of the \fBAABB\fP\&. Because internally this is stored as a half, it is multiplied before it is returned\&. 
+.SS "F32 KillerCollisions::AABB::GetHalfDepth (void) const\fC [inline]\fP"
+Returns the half depth extent of the \fBAABB\fP\&. 
+.SS "F32 KillerCollisions::AABB::GetHalfHeight (void) const\fC [inline]\fP"
+Returns the half height extent of the \fBAABB\fP\&. 
+.SS "F32 KillerCollisions::AABB::GetHalfWidth (void) const\fC [inline]\fP"
+Returns the half width of the \fBAABB\fP\&. 
+.SS "F32 KillerCollisions::AABB::GetHeight (void) const\fC [inline]\fP"
+Returns the full height extent of the \fBAABB\fP\&. Because internally it is stored as a half height, it is multiplied by 2 before it is returned\&. 
+.SS "F32 KillerCollisions::AABB::GetWidth (void) const\fC [inline]\fP"
+Returns the full width of the \fBAABB\fP\&. Because this is stored as a half width, it is multiplied by 2 before it is returned\&. 
+.SS "void KillerCollisions::AABB::SetCenter (const \fBKM::Vector\fP & c)\fC [inline]\fP"
+Sets the location of the center of the sphere\&. This is the position in local space for the object it encompasses\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIc\fP is the new center\&. The w component is set to 0\&. 
+.RE
+.PP
+
+.SS "void KillerCollisions::AABB::SetCenter (F32 x, F32 y, F32 z)\fC [inline]\fP"
+Sets the location of the center of the sphere\&. This is the position in local space for the object it encompasses\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP is the new x value of the center\&. 
+.br
+\fIy\fP is the new y value of the center\&. 
+.br
+\fIz\fP is the new z value of the center\&. 
+.RE
+.PP
+
+.SS "void KillerCollisions::AABB::SetDepth (F32 d)\fC [inline]\fP"
+Sets the full depth of the extent of the \fBAABB\fP\&. Because this is internally stored as a half depth, it is divided before it is set\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP is the new full depth extent\&. 
+.RE
+.PP
+
+.SS "void KillerCollisions::AABB::SetDimensions (F32 w, F32 h, F32 d)\fC [inline]\fP"
+Sets all of the full extents of the \fBAABB\fP\&. Because these are all stored as halves, each one is divided by 2 before they are set\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIw\fP is the new full width extent\&. 
+.br
+\fIh\fP is the new full height extent\&. 
+.br
+\fId\fP is the new full depth extent\&. 
+.RE
+.PP
+
+.SS "void KillerCollisions::AABB::SetHalfDepth (F32 d)\fC [inline]\fP"
+Sets the half depth extent of the \fBAABB\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP is the new half depth extent\&. 
+.RE
+.PP
+
+.SS "void KillerCollisions::AABB::SetHalfDimensions (F32 w, F32 h, F32 d)\fC [inline]\fP"
+Sets all of the half extents of the \fBAABB\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIw\fP is the new half width extent\&. 
+.br
+\fIh\fP is the new half height extent\&. 
+.br
+\fId\fP is the new half depth extent\&. 
+.RE
+.PP
+
+.SS "void KillerCollisions::AABB::SetHalfHeight (F32 h)\fC [inline]\fP"
+Sets the half height extent of the \fBAABB\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIh\fP is the new half height\&. 
+.RE
+.PP
+
+.SS "void KillerCollisions::AABB::SetHalfWidth (F32 w)\fC [inline]\fP"
+Sets the half width extent of the \fBAABB\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIw\fP is the new half width\&. 
+.RE
+.PP
+
+.SS "void KillerCollisions::AABB::SetHeight (F32 h)\fC [inline]\fP"
+Sets the full height extent of the \fBAABB\fP\&. Because this is internally stored as a half width, it is divided by 2 when it is set\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIh\fP is the new full height\&. 
+.RE
+.PP
+
+.SS "void KillerCollisions::AABB::SetWidth (F32 w)\fC [inline]\fP"
+Sets the full width extent of the \fBAABB\fP\&. Because this is internally stored as a half width, it is divided by 2 when it is set\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIw\fP is the new full width\&. 
+.RE
+.PP
+
+.SS "bool AABB::TestCollision (const \fBAABB\fP & other) const"
+Test if this and other are colliding or not\&. Two \fBAABB\fP's must overlap on all 3 axis\&. This is tested by comparing the difference between the position on an axis with the sum of the length of the coorespoding axis\&. For example, for the x axis, (a\&.center\&.x - b\&.center\&.x) > (a\&.halfWidth + b\&.halfWidth)\&. If this is true, we can move onto the next axis\&. If any axis if false, then they do not intersect\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP is another \fBAABB\fP that we are testing against\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

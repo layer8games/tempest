@@ -2,8 +2,8 @@ var hierarchy =
 [
     [ "KillerPhysics::ForceRegistry::_ParticleForceRegistration", "struct_killer_physics_1_1_force_registry_1_1___particle_force_registration.html", null ],
     [ "KillerPhysics::ForceRegistry::_RigidBodyRegistration", "struct_killer_physics_1_1_force_registry_1_1___rigid_body_registration.html", null ],
-    [ "KillerPhysics::BoundingBox", "struct_killer_physics_1_1_bounding_box.html", null ],
-    [ "KillerPhysics::BoundingSphere", "struct_killer_physics_1_1_bounding_sphere.html", null ],
+    [ "KillerCollisions::AABB", "class_killer_collisions_1_1_a_a_b_b.html", null ],
+    [ "KillerCollisions::BoundingSphere", "class_killer_collisions_1_1_bounding_sphere.html", null ],
     [ "KillerPhysics::BVHNode< BoundingVolumeClass >", "class_killer_physics_1_1_b_v_h_node.html", null ],
     [ "KillerEngine::Camera", "class_killer_engine_1_1_camera.html", [
       [ "KillerEngine::FPSCamera", "class_killer_engine_1_1_f_p_s_camera.html", null ],
@@ -35,6 +35,7 @@ var hierarchy =
     [ "KillerEngine::LevelManager", "class_killer_engine_1_1_level_manager.html", null ],
     [ "KillerMath::Matrix", "class_killer_math_1_1_matrix.html", null ],
     [ "KillerMath::Matrix4< T >", "class_killer_math_1_1_matrix4.html", null ],
+    [ "KillerCollisions::OBB", "class_killer_collisions_1_1_o_b_b.html", null ],
     [ "KillerPhysics::ParticleContact", "class_killer_physics_1_1_particle_contact.html", null ],
     [ "KillerPhysics::ParticleContactResolver", "class_killer_physics_1_1_particle_contact_resolver.html", null ],
     [ "KillerPhysics::PotentialContact", "struct_killer_physics_1_1_potential_contact.html", null ],

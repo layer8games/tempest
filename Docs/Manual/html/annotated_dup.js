@@ -1,5 +1,10 @@
 var annotated_dup =
 [
+    [ "KillerCollisions", null, [
+      [ "AABB", "class_killer_collisions_1_1_a_a_b_b.html", "class_killer_collisions_1_1_a_a_b_b" ],
+      [ "BoundingSphere", "class_killer_collisions_1_1_bounding_sphere.html", "class_killer_collisions_1_1_bounding_sphere" ],
+      [ "OBB", "class_killer_collisions_1_1_o_b_b.html", "class_killer_collisions_1_1_o_b_b" ]
+    ] ],
     [ "KillerEngine", null, [
       [ "Camera", "class_killer_engine_1_1_camera.html", "class_killer_engine_1_1_camera" ],
       [ "CharacterData", "struct_killer_engine_1_1_character_data.html", "struct_killer_engine_1_1_character_data" ],
@@ -36,8 +41,6 @@ var annotated_dup =
     ] ],
     [ "KillerPhysics", null, [
       [ "AnchoredSpring", "class_killer_physics_1_1_anchored_spring.html", "class_killer_physics_1_1_anchored_spring" ],
-      [ "BoundingBox", "struct_killer_physics_1_1_bounding_box.html", "struct_killer_physics_1_1_bounding_box" ],
-      [ "BoundingSphere", "struct_killer_physics_1_1_bounding_sphere.html", "struct_killer_physics_1_1_bounding_sphere" ],
       [ "BuoyantForce", "class_killer_physics_1_1_buoyant_force.html", "class_killer_physics_1_1_buoyant_force" ],
       [ "BVHNode", "class_killer_physics_1_1_b_v_h_node.html", "class_killer_physics_1_1_b_v_h_node" ],
       [ "Contact", "class_killer_physics_1_1_contact.html", "class_killer_physics_1_1_contact" ],

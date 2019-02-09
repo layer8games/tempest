@@ -1,0 +1,144 @@
+.TH "KillerCollisions::BoundingSphere" 3 "Fri Feb 8 2019" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerCollisions::BoundingSphere
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBoundingSphere\fP (void)"
+.br
+.ti -1c
+.RI "\fBBoundingSphere\fP (const \fBKM::Vector\fP &center, real radius)"
+.br
+.ti -1c
+.RI "\fBBoundingSphere\fP (const \fBBoundingSphere\fP &one, const \fBBoundingSphere\fP &two)"
+.br
+.ti -1c
+.RI "bool \fBTestCollision\fP (const \fBBoundingSphere\fP &other) const"
+.br
+.ti -1c
+.RI "real \fBGetGrowth\fP (\fBBoundingSphere\fP &other) const"
+.br
+.ti -1c
+.RI "real \fBGetSize\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetCenter\fP (const \fBKM::Vector\fP &pos)"
+.br
+.ti -1c
+.RI "void \fBSetCenter\fP (F32 x, F32 y, F32 z)"
+.br
+.ti -1c
+.RI "const \fBKM::Vector\fP & \fBGetCenter\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetRadius\fP (real r)"
+.br
+.ti -1c
+.RI "real \fBGetRadius\fP (void) const"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBKM::Vector\fP \fB_center\fP"
+.br
+.RI "Center of the sphere\&. "
+.ti -1c
+.RI "real \fB_radius\fP"
+.br
+.RI "Radius of the sphere\&. "
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BoundingSphere::BoundingSphere (void)"
+Sets center and radius to 0\&. 
+.SS "BoundingSphere::BoundingSphere (const \fBKM::Vector\fP & center, real radius)"
+Sets center and radius to args\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcenter\fP is the value for center\&. 
+.br
+\fIradius\fP is the value for radius\&. 
+.RE
+.PP
+
+.SS "BoundingSphere::BoundingSphere (const \fBBoundingSphere\fP & one, const \fBBoundingSphere\fP & two)"
+Special constructor that combines the volumes of 2 BoundingSpheres into one sphere that emcompasses both volumes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIone\fP is the first sphere\&. 
+.br
+\fItwo\fP is the second sphere to combine with one\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "const \fBKM::Vector\fP& KillerCollisions::BoundingSphere::GetCenter (void) const\fC [inline]\fP"
+Get the location of the center\&. 
+.SS "real BoundingSphere::GetGrowth (\fBBoundingSphere\fP & other) const"
+Returns how much a Sphere would grow if it were combined with another Sphere\&. Untested\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP is the Sphere we are checking against\&. 
+.RE
+.PP
+
+.SS "real KillerCollisions::BoundingSphere::GetRadius (void) const\fC [inline]\fP"
+Get radius\&. 
+.SS "real KillerCollisions::BoundingSphere::GetSize (void) const\fC [inline]\fP"
+Returns the area of the Sphere\&. Untested\&. 
+.SS "void KillerCollisions::BoundingSphere::SetCenter (const \fBKM::Vector\fP & pos)\fC [inline]\fP"
+Set new center\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP is the new location of the center\&. 
+.RE
+.PP
+
+.SS "void KillerCollisions::BoundingSphere::SetCenter (F32 x, F32 y, F32 z)\fC [inline]\fP"
+Alternate setter for center\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP is the value for x\&. 
+.br
+\fIy\fP is the value for y\&. 
+.br
+\fIz\fP is the value for z\&. 
+.RE
+.PP
+
+.SS "void KillerCollisions::BoundingSphere::SetRadius (real r)\fC [inline]\fP"
+Set the radius\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP is the new radius\&. 
+.RE
+.PP
+
+.SS "bool BoundingSphere::TestCollision (const \fBBoundingSphere\fP & other) const"
+Tests if another \fBBoundingSphere\fP is intersecting with this \fBBoundingSphere\fP\&. The distance between the centers is compared with the sum of the radii\&. We keep it squred to avoid having to call a sqrt function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP is the \fBBoundingSphere\fP we are testing against\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

@@ -45,10 +45,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"class_killer_engine_1_1_game_object.html#a3a10c3dfe4528909783dfdb26dc035e5",
-"class_killer_engine_1_1_texture.html#ad1d24b557afbfd47d7b4618b69c7fae4",
-"class_killer_physics_1_1_anchored_spring.html#afacd44508f3118d7c862af7a26ba34a7",
-"functions_u.html"
+"class_killer_engine_1_1_font.html#a801f7154d3a09f20b159d201e489bc04",
+"class_killer_engine_1_1_text.html#a4da6479bde0c8d720eb8b0566a0988e2",
+"class_killer_math_1_1_vector.html#a3d5890e8627d48e187e42f6ce4de46a9",
+"functions.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
