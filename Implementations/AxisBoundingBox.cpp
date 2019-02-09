@@ -32,17 +32,17 @@ AxisBoundingBox::~AxisBoundingBox(void)
 //==========================================================================================================================
 bool AxisBoundingBox::TestCollision(const AxisBoundingBox& other) const
 {
-	if(real_abs(_center[0] - other.GetCenter()[0]) > _halfWidth + other.GetHalfWidth())
+	if(real_abs(_center[0] - other.GetCenter()[0]) > (_halfWidth + other.GetHalfWidth()))
 	{
 		return false;
 	}
 
-	if(real_abs(_center[1] - other.GetCenter()[1] > _halfHeight + other.GetHalfHeight()))
+	if(real_abs(_center[1] - other.GetCenter()[1]) > (_halfHeight + other.GetHalfHeight()))
 	{
 		return false;
 	}
 
-	if(real_abs(_center[3] - other.GetCenter()[3] > _halfDepth + other.GetHalfDepth()))
+	if(real_abs(_center[2] - other.GetCenter()[2]) > (_halfDepth + other.GetHalfDepth()))
 	{
 		return false;
 	}
