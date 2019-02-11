@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"class_killer_math_1_1_vector.html#a305ddd137252bd6a519a75979f401f4d":[2,0,2,5,18],
+"class_killer_math_1_1_vector.html#a3171879e1510d534d85f3a0e5a868b55":[2,0,2,5,24],
 "class_killer_math_1_1_vector.html#a3d5890e8627d48e187e42f6ce4de46a9":[2,0,2,5,44],
 "class_killer_math_1_1_vector.html#a45f75c1d19722661156339053678c1dd":[2,0,2,5,22],
 "class_killer_math_1_1_vector.html#a48896b0a406f7880a16a038aa6a2cd3b":[2,0,2,5,28],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "dir_692516b589a32b3bfce781ca9f6d1534.html":[3,0,0],
 "dir_b570760f141a85ad0cc6e39d54356d6a.html":[3,0,0,0],
 "dir_d7a8c3580a66cb9f51008755fd5db0bf.html":[3,0,1],
-"files.html":[3,0],
-"ft2build_8h_source.html":[3,0,0,1],
-"functions.html":[2,3,0]
+"files.html":[3,0]
 };

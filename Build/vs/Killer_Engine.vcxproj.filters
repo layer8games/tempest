@@ -76,9 +76,6 @@
     <Filter Include="Source Code\KillerPhysics\Forces\Gravity">
       <UniqueIdentifier>{2feda301-ee03-4ffc-b0ea-625d489dac2e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerPhysics\Forces\Spring">
-      <UniqueIdentifier>{90b3a85a-49e6-4ef0-b9f4-28445503896b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\KillerPhysics\Forces\Registry">
       <UniqueIdentifier>{0b7fb099-81e9-43aa-8090-714b6099f722}</UniqueIdentifier>
     </Filter>
@@ -153,6 +150,18 @@
     </Filter>
     <Filter Include="Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\OBB">
       <UniqueIdentifier>{05bd94d4-af3d-442a-930b-95aa6f8ac3b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerPhysics\Forces\Springs">
+      <UniqueIdentifier>{90b3a85a-49e6-4ef0-b9f4-28445503896b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerPhysics\Forces\Springs\Default">
+      <UniqueIdentifier>{77b9ec57-89f0-4b28-9ccd-ac36c1a1d928}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerPhysics\Forces\Springs\AnchoredSpring">
+      <UniqueIdentifier>{80ec5136-074d-41e9-a703-5d3de0472230}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerPhysics\Forces\Springs\BuoyantForce">
+      <UniqueIdentifier>{7e96f329-fb0c-44bf-bd44-69755cdf143f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -252,9 +261,6 @@
     <ClInclude Include="..\..\Headers\Engine\ForceRegistry.h">
       <Filter>Source Code\KillerPhysics\Forces\Registry</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\SpringForces.h">
-      <Filter>Source Code\KillerPhysics\Forces\Spring</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\CollideBroadCheck.h">
       <Filter>Source Code\KillerPhysics\Collision Detection</Filter>
     </ClInclude>
@@ -275,6 +281,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\OBB.h">
       <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\OBB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\AnchoredSpring.h">
+      <Filter>Source Code\KillerPhysics\Forces\Springs\AnchoredSpring</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\BuoyantForce.h">
+      <Filter>Source Code\KillerPhysics\Forces\Springs\BuoyantForce</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\SpringForce.h">
+      <Filter>Source Code\KillerPhysics\Forces\Springs\Default</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -365,9 +380,6 @@
     <ClCompile Include="..\..\Implementations\ForceRegistry.cpp">
       <Filter>Source Code\KillerPhysics\Forces\Registry</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\SpringForces.cpp">
-      <Filter>Source Code\KillerPhysics\Forces\Spring</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\CollideBroadCheck.cpp">
       <Filter>Source Code\KillerPhysics\Collision Detection</Filter>
     </ClCompile>
@@ -388,6 +400,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\OBB.cpp">
       <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\OBB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\AnchoredSpring.cpp">
+      <Filter>Source Code\KillerPhysics\Forces\Springs\AnchoredSpring</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\BuoyantForce.cpp">
+      <Filter>Source Code\KillerPhysics\Forces\Springs\BuoyantForce</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\SpringForce.cpp">
+      <Filter>Source Code\KillerPhysics\Forces\Springs\Default</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

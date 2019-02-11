@@ -7,12 +7,20 @@ KillerPhysics::BuoyantForce
 .br
 .PP
 .PP
+\fC#include <BuoyantForce\&.h>\fP
+.PP
 Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
+.RI "\fBBuoyantForce\fP (void)"
+.br
+.ti -1c
 .RI "\fBBuoyantForce::BuoyantForce\fP (real maxDepth, real objVolume, real liquidHeight, real liquidDensity=1000\&.0f)"
+.br
+.ti -1c
+.RI "\fB~BuoyantForce\fP (void)"
 .br
 .ti -1c
 .RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle\fP > particle)"
@@ -39,35 +47,99 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .ti -1c
 .RI "real \fB_maxDepth\fP"
 .br
+.RI "The depth that when reached and object will be pushed up from\&. "
 .ti -1c
 .RI "real \fB_objectVolume\fP"
 .br
+.RI "Volume of the object\&. This should be moved into the object itself\&. "
 .ti -1c
 .RI "real \fB_liquidHeight\fP"
 .br
+.RI "Hight of the top of the liquid\&. This is where the object will be pushed to\&. "
 .ti -1c
 .RI "real \fB_liquidDensity\fP"
 .br
+.RI "The thickness of the liquid\&. Will change how fast the object is pushed\&. "
 .in -1c
+.SH "Detailed Description"
+.PP 
+A spring-like force that creates a bobbing effect, like the one experienced by a boat on water\&.
+.PP
+It uses Hooks law to generate the amount of force based on the distance that the spring is extended\&.
+.PP
+The base equation is:
+.PP
+f = -k * delta * l
+.PP
+Where delta is the distance that the spring has been moved and k is what is known as the 'spring constant', a value that represents the 'stiffness' of the spring\&. For our terms, the equation will look like this:
+.PP
+f = -k(l - l^0)
+.PP
+Where l is the location of the end of the spring, and l^0 is the reseting position of the spring\&.
+.PP
+Since this is a vector force, the vector version of the law looks like this:
+.PP
+f = -l(|d| - l^0)^d
+.PP
+Where |d| is the magnitude or length of d, which is distance away from l^0 our spring now is, and ^d is a unit vector version of d\&. Also:
+.PP
+d = xA - xB
+.PP
+Where xA is the position of the spring attached to our object, and xB is the end of the spring\&.
+.PP
+Usage:
+.PP
+The force generator cannot be re-used\&. For each unique spring-like force we need to have its own Spring like force\&. Each spring-like force is created with a pointer to the object at the other end of the spring, the length of the spring, and the spring constant\&. This then must be registered with a ForceRegistry*\&.
+.PP
+Using depth, volume, height and desity of hypothetical liquid, it will generate a force to push an object up\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BuoyantForce::BuoyantForce (void)"
+Sets all values to 0 and the desity to 1000\&. 
+.SS "BuoyantForce::~BuoyantForce (void)"
+Not implemenated\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void BuoyantForce::v_UpdateForce (shared_ptr< \fBParticle\fP > particle)\fC [virtual]\fP"
-Unimplemented virtual function\&. Each force defines what happens during an update\&. This is the part that will make the forces different\&. 
+.SS "KillerPhysics::BuoyantForce::BuoyantForce::BuoyantForce (real maxDepth, real objVolume, real liquidHeight, real liquidDensity = \fC1000\&.0f\fP)"
+Sets the values of the force\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIparticle\fP defines this as the \fBParticle\fP object version\&. 
+\fImaxDepth\fP is the value for the depth the object is able to reach\&. 
+.br
+\fIobjVolume\fP is the value for the volume of the object\&. 
+.br
+\fIliquidHeight\fP is the value for the height of the liquid\&. 
+.br
+\fIliquidDensity\fP is the value for the desity, with a default of 1000 set\&. 
+.RE
+.PP
+
+.SS "void KillerPhysics::BuoyantForce::SetLiquidDensity (real density)\fC [inline]\fP"
+Changes the density of the liquid\&. 
+.SS "void KillerPhysics::BuoyantForce::SetLiquidHeight (real hieght)\fC [inline]\fP"
+Changes the height of the liquid\&. 
+.SS "void KillerPhysics::BuoyantForce::SetMaxDepth (real depth)\fC [inline]\fP"
+Changes the max depth\&. 
+.SS "void KillerPhysics::BuoyantForce::SetObjectVolume (real volume)\fC [inline]\fP"
+Changes the volume of the objects affect by the force\&.\&. 
+.SS "void BuoyantForce::v_UpdateForce (shared_ptr< \fBParticle\fP > particle)\fC [virtual]\fP"
+The y value of the position of the object is checked against the max depth\&. If the object has reached the max depth, then it is given a +y force, scaled by the density and volume, until it reaches the height\&. Untested\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparticle\fP is the pointer to the object that will have the force affect it\&. 
 .RE
 .PP
 
 .PP
 Implements \fBKillerPhysics::ForceGenerator\fP\&.
 .SS "void BuoyantForce::v_UpdateForce (shared_ptr< \fBRigidBody\fP > body)\fC [final]\fP, \fC [virtual]\fP"
-Unimplemented virtual function\&. Each force defines what happens during an update\&. This is the part that will make the forces different\&. 
+The y value of the position of the object is checked against the max depth\&. If the object has reached the max depth, then it is given a +y force, scaled by the density and volume, until it reaches the height\&. Untested\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIparticle\fP defines this as the \fBRigidBody\fP object version\&. 
+\fIbody\fP is the pointer to the object that will have the force affect it\&. 
 .RE
 .PP
 
