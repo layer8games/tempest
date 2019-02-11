@@ -7,10 +7,18 @@ KillerPhysics::ForceGenerator
 .br
 .PP
 .PP
+\fC#include <ForceGenerator\&.h>\fP
+.PP
 Inherited by \fBKillerPhysics::AnchoredSpring\fP, \fBKillerPhysics::BuoyantForce\fP, \fBKillerPhysics::GravityForce\fP, \fBKillerPhysics::ParticleDragForce\fP, and \fBKillerPhysics::SpringForce\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fBForceGenerator\fP (void)"
+.br
+.ti -1c
+.RI "virtual \fB~ForceGenerator\fP (void)"
+.br
 .ti -1c
 .RI "virtual void \fBv_UpdateForce\fP (shared_ptr< \fBParticle\fP > particle)=0"
 .br
@@ -18,6 +26,41 @@ Inherited by \fBKillerPhysics::AnchoredSpring\fP, \fBKillerPhysics::BuoyantForce
 .RI "virtual void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody\fP > body)=0"
 .br
 .in -1c
+.SH "Detailed Description"
+.PP 
+The \fBForceGenerator\fP provides the interface for forces to be generated and then accumulated by anything that uses forces for physics calculations\&.
+.PP
+It is based on the Cyclone engine design found in 'Game Physics Engine Development, second edition' by Ian Millington\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ForceGenerator::ForceGenerator (void)"
+No implemenation\&. 
+.SS "ForceGenerator::~ForceGenerator (void)\fC [virtual]\fP"
+No implementation\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void KillerPhysics::ForceGenerator::v_UpdateForce (shared_ptr< \fBParticle\fP > particle)\fC [pure virtual]\fP"
+Unimplemented virtual function\&. Each force defines what happens during an update\&. This is the part that will make the forces different\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparticle\fP defines this as the \fBParticle\fP object version\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBKillerPhysics::BuoyantForce\fP, \fBKillerPhysics::AnchoredSpring\fP, \fBKillerPhysics::SpringForce\fP, \fBKillerPhysics::GravityForce\fP, and \fBKillerPhysics::ParticleDragForce\fP\&.
+.SS "virtual void KillerPhysics::ForceGenerator::v_UpdateForce (shared_ptr< \fBRigidBody\fP > body)\fC [pure virtual]\fP"
+Unimplemented virtual function\&. Each force defines what happens during an update\&. This is the part that will make the forces different\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparticle\fP defines this as the \fBRigidBody\fP object version\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBKillerPhysics::BuoyantForce\fP, \fBKillerPhysics::AnchoredSpring\fP, \fBKillerPhysics::SpringForce\fP, and \fBKillerPhysics::GravityForce\fP\&.
 
 .SH "Author"
 .PP 
