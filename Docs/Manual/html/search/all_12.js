@@ -20,6 +20,7 @@ var searchData=
   ['setfarborder',['SetFarBorder',['../class_killer_engine_1_1_level.html#abcd4fa8ac11041d4fba8400ff7a035ac',1,'KillerEngine::Level']]],
   ['setfont',['SetFont',['../class_killer_engine_1_1_text.html#afd5a9ed8b321ae0d49f93d68d691d7de',1,'KillerEngine::Text::SetFont(shared_ptr&lt; Font &gt; font)'],['../class_killer_engine_1_1_text.html#aea1b3d78e2b53dbc74a077e995726554',1,'KillerEngine::Text::SetFont(Font &amp;font)']]],
   ['setfpsview',['SetFPSView',['../class_killer_math_1_1_matrix.html#a21d7e1ac5227a6917432b69bf606b372',1,'KillerMath::Matrix']]],
+  ['setgravityacceleration',['SetGravityAcceleration',['../class_killer_physics_1_1_gravity_force.html#ae3a33a91777c4ae0f60d9ee33dbf3f5c',1,'KillerPhysics::GravityForce']]],
   ['setgravityforce',['SetGravityForce',['../class_killer_physics_1_1_particle.html#ad20737aa75c1c80bfae4a1ec31d7a843',1,'KillerPhysics::Particle']]],
   ['sethalfdepth',['SetHalfDepth',['../class_killer_collisions_1_1_a_a_b_b.html#a7adbb3efb97d8a462518c7bf509ff8a7',1,'KillerCollisions::AABB']]],
   ['sethalfdimensions',['SetHalfDimensions',['../class_killer_collisions_1_1_a_a_b_b.html#a34835e97311fc91f418ae41c155939d6',1,'KillerCollisions::AABB']]],

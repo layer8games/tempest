@@ -9,7 +9,7 @@ using namespace KillerPhysics;
 //==========================================================================================================================
 GravityForce::GravityForce(void) 
 : 
-_gravityAcc(KM::Vector(0.0f, -1.0f))
+_gravityAcc(KM::Vector(0.0f, -1.0f, 0.0f))
 {  }
 
 GravityForce::GravityForce(const KM::Vector& gravity) 

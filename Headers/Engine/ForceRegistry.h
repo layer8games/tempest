@@ -1,13 +1,3 @@
-/*========================================================================
-
-
-
-
-This is not free to use, and cannot be used without the express permission
-of KillerWave.
-
-Written by Maxwell Miller
-========================================================================*/
 #pragma once
 
 //=====Engine includes=====
