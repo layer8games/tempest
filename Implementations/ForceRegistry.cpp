@@ -23,7 +23,7 @@ ForceRegistry::~ForceRegistry(void)
 //==========================================================================================================================	
 void ForceRegistry::Add(shared_ptr<Particle> particle, shared_ptr<ForceGenerator> forceGen)
 {
-	ForceRegistry::_ParticleForceRegistration registration;
+	_ParticleForceRegistration registration;
 	registration.particle = particle;
 	registration.forceGen = forceGen;
 
@@ -32,7 +32,7 @@ void ForceRegistry::Add(shared_ptr<Particle> particle, shared_ptr<ForceGenerator
 
 void ForceRegistry::Add(shared_ptr<RigidBody> body, shared_ptr<ForceGenerator> forceGen)
 {
-	ForceRegistry::_RigidBodyRegistration registration;
+	_RigidBodyRegistration registration;
 	registration.body = body;
 	registration.forceGen = forceGen;
 
@@ -41,7 +41,7 @@ void ForceRegistry::Add(shared_ptr<RigidBody> body, shared_ptr<ForceGenerator> f
 
 void ForceRegistry::Remove(shared_ptr<Particle> particle, shared_ptr<ForceGenerator> forceGen)
 {
-	ForceRegistry::_ParticleForceRegistration registration;
+	_ParticleForceRegistration registration;
 	registration.particle = particle;
 	registration.forceGen = forceGen;
 
@@ -55,7 +55,7 @@ void ForceRegistry::Remove(shared_ptr<Particle> particle, shared_ptr<ForceGenera
 
 void ForceRegistry::Remove(shared_ptr<RigidBody> body, shared_ptr<ForceGenerator> forceGen)
 {
-	ForceRegistry::_RigidBodyRegistration registration;
+	_RigidBodyRegistration registration;
 	registration.body = body;
 	registration.forceGen = forceGen;
 
@@ -79,6 +79,14 @@ void ForceRegistry::UpdateForces(void)
 		if(i.particle->GetActive()) 
 		{
 			i.forceGen->v_UpdateForce(i.particle);
+		}
+	}
+
+	for(auto i : _bodyRegistrations)
+	{
+		if(i.body->GetActive())
+		{
+			i.forceGen->v_UpdateForce(i.body);
 		}
 	}
 }

@@ -8,6 +8,7 @@ var searchData=
   ['randomquaternion',['RandomQuaternion',['../class_killer_math_1_1_random.html#ad50e00a6cf02e4afd15121253255bb80',1,'KillerMath::Random']]],
   ['randomvector',['RandomVector',['../class_killer_math_1_1_random.html#ad1cd439ab47622b1f8a0871e1f7186d0',1,'KillerMath::Random']]],
   ['registerparticleforce',['RegisterParticleForce',['../class_killer_engine_1_1_level.html#a062658b2775b37edb1c06665e87e5abc',1,'KillerEngine::Level']]],
+  ['remove',['Remove',['../class_killer_physics_1_1_force_registry.html#a8d5d15b48c6301fc2e141509b8ac2dfb',1,'KillerPhysics::ForceRegistry::Remove(shared_ptr&lt; Particle &gt; particle, shared_ptr&lt; ForceGenerator &gt; forceGen)'],['../class_killer_physics_1_1_force_registry.html#a09b9c7eebc1c4172a666d678a21f8ce4',1,'KillerPhysics::ForceRegistry::Remove(shared_ptr&lt; RigidBody &gt; body, shared_ptr&lt; ForceGenerator &gt; forceGen)']]],
   ['removelevel',['RemoveLevel',['../class_killer_engine_1_1_level_manager.html#a3ca8cb0e378e7b8263c4669d9d8879e3',1,'KillerEngine::LevelManager']]],
   ['removeobjectfromlevel',['RemoveObjectFromLevel',['../class_killer_engine_1_1_level.html#a128b2440a436be3e29c58d8ef194dcd4',1,'KillerEngine::Level::RemoveObjectFromLevel()'],['../class_killer_engine_1_1_level_manager.html#a893e321ff0c7a084b464b154735e912d',1,'KillerEngine::LevelManager::RemoveObjectFromLevel()']]],
   ['render',['Render',['../class_killer_engine_1_1_engine.html#a0544104c7bffacec72851a2074ac8102',1,'KillerEngine::Engine::Render()'],['../class_killer_engine_1_1_level_manager.html#a51683140c6c2b0823709275a1f862d2f',1,'KillerEngine::LevelManager::Render()']]],
@@ -15,5 +16,6 @@ var searchData=
   ['reset',['Reset',['../class_killer_math_1_1_matrix.html#a077757f722775e2641144e4d2197847e',1,'KillerMath::Matrix::Reset()'],['../class_killer_math_1_1_vector.html#ad21852dd621ce6bd797b1b27d1aa678e',1,'KillerMath::Vector::Reset()']]],
   ['resetmousecursor',['ResetMouseCursor',['../class_killer_engine_1_1_win_program.html#a1c1bb1ffae092f13dd5fb42d5a4eaa2c',1,'KillerEngine::WinProgram']]],
   ['rigidbody',['RigidBody',['../class_killer_physics_1_1_rigid_body.html',1,'KillerPhysics']]],
+  ['rigidbodyregistry',['RigidBodyRegistry',['../class_killer_physics_1_1_force_registry.html#a4694db4e43d691379626b37df41ca6c5',1,'KillerPhysics::ForceRegistry']]],
   ['running',['Running',['../class_killer_engine_1_1_engine.html#a839aaf9ee031bb12b4f1d08453c2f068',1,'KillerEngine::Engine']]]
 ];

@@ -80,6 +80,10 @@ var menudata={children:[
 {text:"w",url:"functions_func_w.html#index_w"},
 {text:"~",url:"functions_func_0x7e.html#index_0x7e"}]},
 {text:"Variables",url:"functions_vars.html",children:[
-{text:"_",url:"functions_vars.html#index__"}]}]}]},
+{text:"_",url:"functions_vars.html#index__"},
+{text:"b",url:"functions_vars.html#index_b"},
+{text:"f",url:"functions_vars.html#index_f"},
+{text:"p",url:"functions_vars.html#index_p"}]},
+{text:"Typedefs",url:"functions_type.html"}]}]},
 {text:"Files",url:"files.html",children:[
 {text:"File List",url:"files.html"}]}]}

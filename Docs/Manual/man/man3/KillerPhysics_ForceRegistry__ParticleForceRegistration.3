@@ -1,4 +1,4 @@
-.TH "KillerPhysics::ForceRegistry::_ParticleForceRegistration" 3 "Fri Feb 8 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::ForceRegistry::_ParticleForceRegistration" 3 "Mon Feb 11 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -19,10 +19,26 @@ KillerPhysics::ForceRegistry::_ParticleForceRegistration
 .ti -1c
 .RI "shared_ptr< \fBParticle\fP > \fBparticle\fP"
 .br
+.RI "Pointer to object saved to add force to later\&. "
 .ti -1c
 .RI "shared_ptr< \fBForceGenerator\fP > \fBforceGen\fP"
 .br
+.RI "Pointer to force saved to be added to object later\&. "
 .in -1c
+.SH "Detailed Description"
+.PP 
+Private struct type that pairs a single \fBParticle\fP with a \fBForceGenerator\fP\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "bool KillerPhysics::ForceRegistry::_ParticleForceRegistration::operator== (\fB_ParticleForceRegistration\fP p)\fC [inline]\fP"
+Returns true if another registration matches this one\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIp\fP is the registration to be compared against\&. 
+.RE
+.PP
+
 
 .SH "Author"
 .PP 

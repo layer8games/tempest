@@ -1,4 +1,4 @@
-.TH "KillerPhysics::ForceRegistry" 3 "Fri Feb 8 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::ForceRegistry" 3 "Mon Feb 11 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,6 +6,8 @@ KillerPhysics::ForceRegistry
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <ForceRegistry\&.h>\fP
 .SS "Classes"
 
 .in +1c
@@ -19,6 +21,12 @@ KillerPhysics::ForceRegistry
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fBForceRegistry\fP (void)"
+.br
+.ti -1c
+.RI "\fB~ForceRegistry\fP (void)"
+.br
 .ti -1c
 .RI "void \fBAdd\fP (shared_ptr< \fBParticle\fP > particle, shared_ptr< \fBForceGenerator\fP > forceGen)"
 .br
@@ -52,12 +60,81 @@ KillerPhysics::ForceRegistry
 
 .in +1c
 .ti -1c
-.RI "ParticleRegistry \fB_particleRegistrations\fP"
+.RI "\fBParticleRegistry\fP \fB_particleRegistrations\fP"
 .br
+.RI "Saved list of all \fBParticle\fP objects registered with a \fBForceGenerator\fP\&. "
 .ti -1c
-.RI "RigidBodyRegistry \fB_bodyRegistrations\fP"
+.RI "\fBRigidBodyRegistry\fP \fB_bodyRegistrations\fP"
 .br
+.RI "Saved list of all \fBRigidBody\fP objects registered with a \fBForceGenerator\fP\&. "
 .in -1c
+.SH "Detailed Description"
+.PP 
+Registry to find out which particles need forces\&. It keeps track of which objects need specific forces for their development\&. There is also untested functionality to allow for a \fBRigidBody\fP registration\&. These registrations are called every frame to add the accompanying force to the object\&.
+.PP
+It is based on the Cyclone engine design found in 'Game Physics Engine Development, second edition' by Ian Millington\&. 
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef std::vector<\fB_ParticleForceRegistration\fP> \fBKillerPhysics::ForceRegistry::ParticleRegistry\fP\fC [private]\fP"
+Alias type for \fBParticle\fP Registration vector\&. 
+.SS "typedef std::vector<\fB_RigidBodyRegistration\fP> \fBKillerPhysics::ForceRegistry::RigidBodyRegistry\fP\fC [private]\fP"
+Alias type for \fBRigidBody\fP registration vector\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ForceRegistry::ForceRegistry (void)"
+Sets everything to 0\&. 
+.SS "ForceRegistry::~ForceRegistry (void)"
+No implementation\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void ForceRegistry::Add (shared_ptr< \fBParticle\fP > particle, shared_ptr< \fBForceGenerator\fP > forceGen)"
+Creates a new \fB_ParticleForceRegistration\fP\&. Adds the args to the new \fB_ParticleForceRegistration\fP, then saves this into the instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparticle\fP is the pointer to be registered and saved\&. 
+.br
+\fIforceGen\fP is the force that will be saved with the object\&. 
+.RE
+.PP
+
+.SS "void ForceRegistry::Add (shared_ptr< \fBRigidBody\fP > body, shared_ptr< \fBForceGenerator\fP > forceGen)"
+Creates a new \fB_RigidBodyRegistration\fP\&. Adds the args to the new \fB_RigidBodyRegistration\fP, then saves this into the instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbody\fP is the pointer to be registered and saved\&. 
+.br
+\fIforceGen\fP is the force that will be saved with the object\&. 
+.RE
+.PP
+
+.SS "void ForceRegistry::Clear (void)"
+Removed all saved registrations by clearing the list of saved registrations\&. 
+.SS "void ForceRegistry::Remove (shared_ptr< \fBParticle\fP > particle, shared_ptr< \fBForceGenerator\fP > forceGen)"
+Removes the registration matching the pointer args from the instance\&. This has some cost, since it creates a new registration, then uses this to compare with every registration, until the needed registration is found\&. There is room to optimize here\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparticle\fP is the object that needs to be removed\&. 
+.br
+\fIforceGen\fP is the matching force that also needs to be removed\&. 
+.RE
+.PP
+
+.SS "void ForceRegistry::Remove (shared_ptr< \fBRigidBody\fP > body, shared_ptr< \fBForceGenerator\fP > forceGen)"
+Removes the registration matching the pointer args from the instance\&. This has some cost, since it creates a new registration, then uses this to compare with every registration, until the needed registration is found\&. There is room to optimize here\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbody\fP is the object that needs to be removed\&. 
+.br
+\fIforceGen\fP is the matching force that also needs to be removed\&. 
+.RE
+.PP
+
+.SS "void ForceRegistry::UpdateForces (void)"
+Iterates over all registered objects, adding the force to the accompanying object\&. This is what will cause a force to act on the object\&. This is where the magic happens\&. 
 
 .SH "Author"
 .PP 

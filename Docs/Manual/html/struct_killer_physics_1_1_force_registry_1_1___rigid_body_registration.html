@@ -97,21 +97,57 @@ $(document).ready(function(){initNavTree('struct_killer_physics_1_1_force_regist
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6b54443ac76befd230a1f2dd1cc4b0f3"><td class="memItemLeft" align="right" valign="top"><a id="a6b54443ac76befd230a1f2dd1cc4b0f3"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (<a class="el" href="struct_killer_physics_1_1_force_registry_1_1___rigid_body_registration.html">_RigidBodyRegistration</a> b)</td></tr>
+<tr class="memitem:a6b54443ac76befd230a1f2dd1cc4b0f3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_killer_physics_1_1_force_registry_1_1___rigid_body_registration.html#a6b54443ac76befd230a1f2dd1cc4b0f3">operator==</a> (<a class="el" href="struct_killer_physics_1_1_force_registry_1_1___rigid_body_registration.html">_RigidBodyRegistration</a> b)</td></tr>
 <tr class="separator:a6b54443ac76befd230a1f2dd1cc4b0f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ac258d35fe4ead798236498b1ca48b32e"><td class="memItemLeft" align="right" valign="top"><a id="ac258d35fe4ead798236498b1ca48b32e"></a>
-shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body.html">RigidBody</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>body</b></td></tr>
+shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body.html">RigidBody</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_killer_physics_1_1_force_registry_1_1___rigid_body_registration.html#ac258d35fe4ead798236498b1ca48b32e">body</a></td></tr>
+<tr class="memdesc:ac258d35fe4ead798236498b1ca48b32e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to object saved to add force to later. <br /></td></tr>
 <tr class="separator:ac258d35fe4ead798236498b1ca48b32e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4917fa3a6f4d0598755d9d5fb9cd70b"><td class="memItemLeft" align="right" valign="top"><a id="ad4917fa3a6f4d0598755d9d5fb9cd70b"></a>
-shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_force_generator.html">ForceGenerator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>forceGen</b></td></tr>
+shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_force_generator.html">ForceGenerator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_killer_physics_1_1_force_registry_1_1___rigid_body_registration.html#ad4917fa3a6f4d0598755d9d5fb9cd70b">forceGen</a></td></tr>
+<tr class="memdesc:ad4917fa3a6f4d0598755d9d5fb9cd70b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to force saved to be added to object later. <br /></td></tr>
 <tr class="separator:ad4917fa3a6f4d0598755d9d5fb9cd70b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Private struct type that pairs a single <a class="el" href="class_killer_physics_1_1_rigid_body.html">RigidBody</a> with a ForceGenerators. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6b54443ac76befd230a1f2dd1cc4b0f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b54443ac76befd230a1f2dd1cc4b0f3">&#9670;&nbsp;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KillerPhysics::ForceRegistry::_RigidBodyRegistration::operator== </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_killer_physics_1_1_force_registry_1_1___rigid_body_registration.html">_RigidBodyRegistration</a>&#160;</td>
+          <td class="paramname"><em>b</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns true if another registration matches this one. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">b</td><td>is the registration to be compared against. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_force_registry_8h_source.html">ForceRegistry.h</a></li>
+<li>C:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_force_registry_8h_source.html">ForceRegistry.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,4 +1,4 @@
-.TH "KillerEngine::Level" 3 "Fri Feb 8 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Level" 3 "Mon Feb 11 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -424,7 +424,7 @@ Abstract function\&. Used to Initialize the default values, instantiate any obje
 .PP
 
 .SS "void Level::v_Integrate (void)\fC [virtual]\fP"
-Abstract function\&. Calls KillerPhysics::ForceRegistry::UpdateForces, then loops over each Physics object, calling KillerPhysics::Particle::v_Integrate function\&. It is virtual to allow for optional customization\&. 
+Abstract function\&. Calls \fBKillerPhysics::ForceRegistry::UpdateForces\fP, then loops over each Physics object, calling KillerPhysics::Particle::v_Integrate function\&. It is virtual to allow for optional customization\&. 
 .SS "void Level::v_Render (void)\fC [virtual]\fP"
 Wrapper around \fBLevel::RenderObjects\fP\&. It is virtual to allow for optional customization\&. 
 .SS "virtual void KillerEngine::Level::v_Update (void)\fC [pure virtual]\fP"
