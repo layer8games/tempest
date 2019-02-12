@@ -16,6 +16,7 @@ var searchData=
   ['getcolor',['GetColor',['../class_killer_engine_1_1_text.html#ac6bf167ad2bc594291635de265e2b12c',1,'KillerEngine::Text']]],
   ['getdamping',['GetDamping',['../class_killer_physics_1_1_particle.html#a0de59a01e803b9cc42ab20a68ba39f2c',1,'KillerPhysics::Particle']]],
   ['getdepth',['GetDepth',['../class_killer_collisions_1_1_a_a_b_b.html#ad6663c9b328ee8ec92a7b4402b921475',1,'KillerCollisions::AABB::GetDepth()'],['../class_killer_engine_1_1_level.html#abe898753c0935d5f5f4d6ab9ed956195',1,'KillerEngine::Level::GetDepth()']]],
+  ['getdrag',['GetDrag',['../class_killer_physics_1_1_drag_force.html#af1ddc83e92c1c5f08122501726f1c47b',1,'KillerPhysics::DragForce']]],
   ['getelems',['GetElems',['../class_killer_math_1_1_matrix.html#a215736bc189a6d58d52edaed5780ff4a',1,'KillerMath::Matrix::GetElems()'],['../class_killer_math_1_1_quaternion.html#ad28d1253f0eb326c677759137ec49ade',1,'KillerMath::Quaternion::GetElems()'],['../class_killer_math_1_1_vector.html#a929945014678a1b7066d342b08b81eb8',1,'KillerMath::Vector::GetElems()']]],
   ['getfarborder',['GetFarBorder',['../class_killer_engine_1_1_level.html#af815627c189b67a3862886d50f3e090e',1,'KillerEngine::Level']]],
   ['getfont',['GetFont',['../class_killer_engine_1_1_text.html#a1dd9c76c740ba5ede0e9bee84bc38007',1,'KillerEngine::Text']]],

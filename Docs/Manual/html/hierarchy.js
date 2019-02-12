@@ -20,8 +20,8 @@ var hierarchy =
     [ "KillerPhysics::ForceGenerator", "class_killer_physics_1_1_force_generator.html", [
       [ "KillerPhysics::AnchoredSpring", "class_killer_physics_1_1_anchored_spring.html", null ],
       [ "KillerPhysics::BuoyantForce", "class_killer_physics_1_1_buoyant_force.html", null ],
+      [ "KillerPhysics::DragForce", "class_killer_physics_1_1_drag_force.html", null ],
       [ "KillerPhysics::GravityForce", "class_killer_physics_1_1_gravity_force.html", null ],
-      [ "KillerPhysics::ParticleDragForce", "class_killer_physics_1_1_particle_drag_force.html", null ],
       [ "KillerPhysics::SpringForce", "class_killer_physics_1_1_spring_force.html", null ]
     ] ],
     [ "KillerPhysics::ForceRegistry", "class_killer_physics_1_1_force_registry.html", null ],

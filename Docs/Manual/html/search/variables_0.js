@@ -25,6 +25,8 @@ var searchData=
   ['_5fdata',['_data',['../class_killer_math_1_1_quaternion.html#adfd78cbb357801a864f279a34e7c7ef7',1,'KillerMath::Quaternion::_data()'],['../class_killer_math_1_1_vector.html#a8fbf5ebf92e4b1c2adb811415fe2103f',1,'KillerMath::Vector::_data()']]],
   ['_5fdeltatime',['_deltaTime',['../class_killer_math_1_1_timer.html#a87376a483be665c21403b7eaa95b25ba',1,'KillerMath::Timer']]],
   ['_5fdepth',['_depth',['../class_killer_engine_1_1_level.html#ad34c210f1d8c4552b9e11ceed6bd024f',1,'KillerEngine::Level']]],
+  ['_5fdrag',['_drag',['../class_killer_physics_1_1_drag_force.html#ae09c0f837f166c8691b43b8c808c9446',1,'KillerPhysics::DragForce']]],
+  ['_5fdragsqr',['_dragSqr',['../class_killer_physics_1_1_drag_force.html#a08f7a7d5f23e11f42a910e24dbf27899',1,'KillerPhysics::DragForce']]],
   ['_5ferrorcodes',['_errorCodes',['../class_killer_engine_1_1_error_manager.html#acf9f6e4427348e318a33bae8820e0d57',1,'KillerEngine::ErrorManager']]],
   ['_5ferrormessages',['_errorMessages',['../class_killer_engine_1_1_error_manager.html#a42abac6899f6b7d27701396cd0f1585f',1,'KillerEngine::ErrorManager']]],
   ['_5ffarborder',['_farBorder',['../class_killer_engine_1_1_level.html#a57fd006e428307305f52b475dd29d5ce',1,'KillerEngine::Level']]],

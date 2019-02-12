@@ -106,9 +106,6 @@
     <Filter Include="Source Code\KillerPhysics\Forces\Generator Base">
       <UniqueIdentifier>{128415f5-4bcb-47fa-8bd6-af05ac197f78}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerPhysics\Collision Detection">
-      <UniqueIdentifier>{f8be6447-da41-41ab-b3bd-ebb2e4492266}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\KillerPhysics\Contacts">
       <UniqueIdentifier>{51060f2b-30e0-4b75-a6f5-ad0625443185}</UniqueIdentifier>
     </Filter>
@@ -225,9 +222,6 @@
     <ClInclude Include="..\..\Headers\Engine\Shader.h">
       <Filter>Source Code\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\ParticleDragForce.h">
-      <Filter>Source Code\KillerPhysics\Forces\Drag</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vector.h">
       <Filter>Source Code\KillerMath\LinearAlgebra\Vector</Filter>
     </ClInclude>
@@ -261,9 +255,6 @@
     <ClInclude Include="..\..\Headers\Engine\ForceRegistry.h">
       <Filter>Source Code\KillerPhysics\Forces\Registry</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\CollideBroadCheck.h">
-      <Filter>Source Code\KillerPhysics\Collision Detection</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
       <Filter>Source Code\KillerPhysics\Contacts\Legacy Particle</Filter>
     </ClInclude>
@@ -290,6 +281,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\SpringForce.h">
       <Filter>Source Code\KillerPhysics\Forces\Springs\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\DragForce.h">
+      <Filter>Source Code\KillerPhysics\Forces\Drag</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -344,9 +338,6 @@
     <ClCompile Include="..\..\Implementations\Shader.cpp">
       <Filter>Source Code\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\ParticleDragForce.cpp">
-      <Filter>Source Code\KillerPhysics\Forces\Drag</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector.cpp">
       <Filter>Source Code\KillerMath\LinearAlgebra\Vector</Filter>
     </ClCompile>
@@ -380,9 +371,6 @@
     <ClCompile Include="..\..\Implementations\ForceRegistry.cpp">
       <Filter>Source Code\KillerPhysics\Forces\Registry</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\CollideBroadCheck.cpp">
-      <Filter>Source Code\KillerPhysics\Collision Detection</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
       <Filter>Source Code\KillerPhysics\Contacts\Legacy Particle</Filter>
     </ClCompile>
@@ -409,6 +397,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\SpringForce.cpp">
       <Filter>Source Code\KillerPhysics\Forces\Springs\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\DragForce.cpp">
+      <Filter>Source Code\KillerPhysics\Forces\Drag</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,7 @@ KillerPhysics::ForceGenerator
 .PP
 \fC#include <ForceGenerator\&.h>\fP
 .PP
-Inherited by \fBKillerPhysics::AnchoredSpring\fP, \fBKillerPhysics::BuoyantForce\fP, \fBKillerPhysics::GravityForce\fP, \fBKillerPhysics::ParticleDragForce\fP, and \fBKillerPhysics::SpringForce\fP\&.
+Inherited by \fBKillerPhysics::AnchoredSpring\fP, \fBKillerPhysics::BuoyantForce\fP, \fBKillerPhysics::DragForce\fP, \fBKillerPhysics::GravityForce\fP, and \fBKillerPhysics::SpringForce\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
@@ -49,7 +49,7 @@ Unimplemented virtual function\&. Each force defines what happens during an upda
 .PP
 
 .PP
-Implemented in \fBKillerPhysics::AnchoredSpring\fP, \fBKillerPhysics::BuoyantForce\fP, \fBKillerPhysics::SpringForce\fP, \fBKillerPhysics::GravityForce\fP, and \fBKillerPhysics::ParticleDragForce\fP\&.
+Implemented in \fBKillerPhysics::AnchoredSpring\fP, \fBKillerPhysics::BuoyantForce\fP, \fBKillerPhysics::SpringForce\fP, \fBKillerPhysics::DragForce\fP, and \fBKillerPhysics::GravityForce\fP\&.
 .SS "virtual void KillerPhysics::ForceGenerator::v_UpdateForce (shared_ptr< \fBRigidBody\fP > body)\fC [pure virtual]\fP"
 Unimplemented virtual function\&. Each force defines what happens during an update\&. This is the part that will make the forces different\&. 
 .PP
@@ -60,7 +60,7 @@ Unimplemented virtual function\&. Each force defines what happens during an upda
 .PP
 
 .PP
-Implemented in \fBKillerPhysics::BuoyantForce\fP, \fBKillerPhysics::AnchoredSpring\fP, \fBKillerPhysics::SpringForce\fP, and \fBKillerPhysics::GravityForce\fP\&.
+Implemented in \fBKillerPhysics::BuoyantForce\fP, \fBKillerPhysics::AnchoredSpring\fP, \fBKillerPhysics::SpringForce\fP, \fBKillerPhysics::DragForce\fP, and \fBKillerPhysics::GravityForce\fP\&.
 
 .SH "Author"
 .PP 

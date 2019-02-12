@@ -17,6 +17,7 @@ var searchData=
   ['setdefaultmatrix',['SetDefaultMatrix',['../class_killer_engine_1_1_camera.html#a1cce2e4ff8005cd6f77bdd3bbe6cd98b',1,'KillerEngine::Camera']]],
   ['setdepth',['SetDepth',['../class_killer_collisions_1_1_a_a_b_b.html#a5caaad42e920d5cf9cc02f4139321d0f',1,'KillerCollisions::AABB::SetDepth()'],['../class_killer_engine_1_1_level.html#aa9bb1720c0c6c997090a193535f8f8af',1,'KillerEngine::Level::SetDepth()']]],
   ['setdimensions',['SetDimensions',['../class_killer_collisions_1_1_a_a_b_b.html#a940c1cd6f7c101e017797e64bcee92bd',1,'KillerCollisions::AABB']]],
+  ['setdrag',['SetDrag',['../class_killer_physics_1_1_drag_force.html#a54c9ae545e49efea4dafb04e09761202',1,'KillerPhysics::DragForce']]],
   ['seterror',['SetError',['../class_killer_engine_1_1_error_manager.html#a1985ec212295b58c27d0377978b348cc',1,'KillerEngine::ErrorManager']]],
   ['setfarborder',['SetFarBorder',['../class_killer_engine_1_1_level.html#abcd4fa8ac11041d4fba8400ff7a035ac',1,'KillerEngine::Level']]],
   ['setfont',['SetFont',['../class_killer_engine_1_1_text.html#afd5a9ed8b321ae0d49f93d68d691d7de',1,'KillerEngine::Text::SetFont(shared_ptr&lt; Font &gt; font)'],['../class_killer_engine_1_1_text.html#aea1b3d78e2b53dbc74a077e995726554',1,'KillerEngine::Text::SetFont(Font &amp;font)']]],

@@ -1,4 +1,4 @@
-#include <Engine/ParticleDragForce.h>
+#include <Engine/DragForce.h>
 
 using namespace KillerPhysics;
 
@@ -7,16 +7,19 @@ using namespace KillerPhysics;
 //Constructors
 //
 //==========================================================================================================================
-ParticleDragForce::ParticleDragForce(void) 
+DragForce::DragForce(void)
+:
+_drag(0.0f),
+_dragSqr(0.0f)
 {  }
 
-ParticleDragForce::ParticleDragForce(real drag, real dragSqr) 
+DragForce::DragForce(real drag) 
 : 
 _drag(drag), 
-_dragSqr(dragSqr)
+_dragSqr(_drag * _drag)
 {  }
 
-ParticleDragForce::~ParticleDragForce(void) 
+DragForce::~DragForce(void) 
 {  }
 
 //==========================================================================================================================
@@ -24,7 +27,7 @@ ParticleDragForce::~ParticleDragForce(void)
 //Virtual Functions
 //
 //==========================================================================================================================
-void ParticleDragForce::v_UpdateForce(shared_ptr<Particle> particle)
+void DragForce::v_UpdateForce(shared_ptr<Particle> particle)
 {
 	KM::Vector force = particle->GetVelocity();
 
@@ -35,4 +38,17 @@ void ParticleDragForce::v_UpdateForce(shared_ptr<Particle> particle)
 	force *= -dragCoeff;
 
 	particle->AddForce(force);
+}
+
+void DragForce::v_UpdateForce(shared_ptr<RigidBody> body)
+{
+	KM::Vector force = body->GetVelocity();
+
+	real dragCoeff = force.Magnitude();
+	dragCoeff = _drag * dragCoeff  + _dragSqr * dragCoeff * dragCoeff;
+
+	force.Normalize();
+	force *= -dragCoeff;
+
+	body->AddForce(force);
 }

@@ -55,6 +55,7 @@ namespace KillerEngine
 			else
 			{
 				ErrorManager::Instance()->SetError(ENGINE, "ShaderManager::GetShader No such Shader! ID = " + id);
+				return nullptr;
 			}
 		}
 

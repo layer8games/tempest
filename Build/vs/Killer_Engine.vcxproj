@@ -140,10 +140,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\CollideBroadCheck.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Contact.h">
       <SubType>
       </SubType>
@@ -194,7 +190,7 @@
     <ClInclude Include="..\..\Headers\Engine\ErrorManager.h" />
     <ClInclude Include="..\..\Headers\Engine\Font.h" />
     <ClInclude Include="..\..\Headers\Engine\Matrix.h" />
-    <ClInclude Include="..\..\Headers\Engine\ParticleDragForce.h" />
+    <ClInclude Include="..\..\Headers\Engine\DragForce.h" />
     <ClInclude Include="..\..\Headers\Engine\GravityForce.h" />
     <ClInclude Include="..\..\Headers\Engine\ForceGenerator.h" />
     <ClInclude Include="..\..\Headers\Engine\Engine.h" />
@@ -234,10 +230,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\BuoyantForce.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\CollideBroadCheck.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -298,7 +290,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Matrix.cpp" />
-    <ClCompile Include="..\..\Implementations\ParticleDragForce.cpp" />
+    <ClCompile Include="..\..\Implementations\DragForce.cpp" />
     <ClCompile Include="..\..\Implementations\GravityForce.cpp" />
     <ClCompile Include="..\..\Implementations\Engine.cpp" />
     <ClCompile Include="..\..\Implementations\SpringForce.cpp" />
