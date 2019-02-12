@@ -21,13 +21,13 @@ KillerEngine::LevelManager
 .RI "void \fBAddLevel\fP (shared_ptr< \fBLevel\fP > level)"
 .br
 .ti -1c
-.RI "void \fBRemoveLevel\fP (U32 levelID)"
+.RI "void \fBRemoveLevel\fP (\fBU32\fP levelID)"
 .br
 .ti -1c
-.RI "void \fBSetActiveLevel\fP (U32 levelID)"
+.RI "void \fBSetActiveLevel\fP (\fBU32\fP levelID)"
 .br
 .ti -1c
-.RI "U32 \fBGetActiveLevelID\fP (void)"
+.RI "\fBU32\fP \fBGetActiveLevelID\fP (void)"
 .br
 .ti -1c
 .RI "shared_ptr< \fBLevel\fP > \fBGetActiveLevel\fP (void)"
@@ -36,16 +36,16 @@ KillerEngine::LevelManager
 .RI "void \fBEndGame\fP (void)"
 .br
 .ti -1c
-.RI "void \fBAddObjectToLevel\fP (U32 id, const \fBGameObject\fP &obj)"
+.RI "void \fBAddObjectToLevel\fP (\fBU32\fP id, const \fBGameObject\fP &obj)"
 .br
 .ti -1c
-.RI "void \fBAddObjectToLevel\fP (U32 id, shared_ptr< \fBGameObject\fP > obj)"
+.RI "void \fBAddObjectToLevel\fP (\fBU32\fP id, shared_ptr< \fBGameObject\fP > obj)"
 .br
 .ti -1c
-.RI "void \fBAddParticleToLevel\fP (U32 id, shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ForceGenerator\fP > generator=nullptr)"
+.RI "void \fBAddParticleToLevel\fP (\fBU32\fP id, shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ForceGenerator\fP > generator=nullptr)"
 .br
 .ti -1c
-.RI "void \fBRemoveObjectFromLevel\fP (U32 levelID, U32 objID)"
+.RI "void \fBRemoveObjectFromLevel\fP (\fBU32\fP levelID, \fBU32\fP objID)"
 .br
 .ti -1c
 .RI "void \fBUpdate\fP (void)"
@@ -72,7 +72,7 @@ KillerEngine::LevelManager
 
 .in +1c
 .ti -1c
-.RI "std::map< U32, shared_ptr< \fBLevel\fP > > \fB_levels\fP"
+.RI "std::map< \fBU32\fP, shared_ptr< \fBLevel\fP > > \fB_levels\fP"
 .br
 .RI "Database of Levels that can be activated\&. "
 .ti -1c
@@ -80,7 +80,7 @@ KillerEngine::LevelManager
 .br
 .RI "Pointer to active \fBLevel\fP from database\&. "
 .ti -1c
-.RI "U32 \fB_activeLevelID\fP"
+.RI "\fBU32\fP \fB_activeLevelID\fP"
 .br
 .RI "The ID of the active \fBLevel\fP\&. "
 .in -1c
@@ -114,7 +114,7 @@ Adds a \fBLevel\fP into the state machine that can then be set to active to be i
 .RE
 .PP
 
-.SS "void LevelManager::AddObjectToLevel (U32 id, const \fBGameObject\fP & obj)"
+.SS "void LevelManager::AddObjectToLevel (\fBU32\fP id, const \fBGameObject\fP & obj)"
 Allows object to be added to level\&. Wrapper around \fBLevel::AddObjectToLevel\fP\&. 
 .PP
 \fBParameters:\fP
@@ -125,7 +125,7 @@ Allows object to be added to level\&. Wrapper around \fBLevel::AddObjectToLevel\
 .RE
 .PP
 
-.SS "void LevelManager::AddObjectToLevel (U32 id, shared_ptr< \fBGameObject\fP > obj)"
+.SS "void LevelManager::AddObjectToLevel (\fBU32\fP id, shared_ptr< \fBGameObject\fP > obj)"
 Allows object to be added to level\&. Wrapper around \fBLevel::AddObjectToLevel\fP\&. 
 .PP
 \fBParameters:\fP
@@ -136,7 +136,7 @@ Allows object to be added to level\&. Wrapper around \fBLevel::AddObjectToLevel\
 .RE
 .PP
 
-.SS "void LevelManager::AddParticleToLevel (U32 id, shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ForceGenerator\fP > generator = \fCnullptr\fP)"
+.SS "void LevelManager::AddParticleToLevel (\fBU32\fP id, shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ForceGenerator\fP > generator = \fCnullptr\fP)"
 Allows object to be added to level\&. Wrapper around \fBLevel::AddParticleToLevel\fP\&. 
 .PP
 \fBParameters:\fP
@@ -153,11 +153,11 @@ Allows object to be added to level\&. Wrapper around \fBLevel::AddParticleToLeve
 Starts the process to shut down the game\&. Wrapper around \fBWinProgram::EndRunning\fP\&. 
 .SS "shared_ptr<\fBLevel\fP> KillerEngine::LevelManager::GetActiveLevel (void)\fC [inline]\fP"
 Returns a pointer to the active \fBLevel\fP state\&. 
-.SS "U32 KillerEngine::LevelManager::GetActiveLevelID (void)\fC [inline]\fP"
+.SS "\fBU32\fP KillerEngine::LevelManager::GetActiveLevelID (void)\fC [inline]\fP"
 Returns the ID of the active \fBLevel\fP state\&. 
 .SS "\fBLevelManager\fP * LevelManager::Instance (void)\fC [static]\fP"
 Singleton fucntion\&. Returns the global pointer used to access the manager\&. 
-.SS "void LevelManager::RemoveLevel (U32 levelID)"
+.SS "void LevelManager::RemoveLevel (\fBU32\fP levelID)"
 Removes \fBLevel\fP from database\&. 
 .PP
 \fBParameters:\fP
@@ -166,7 +166,7 @@ Removes \fBLevel\fP from database\&.
 .RE
 .PP
 
-.SS "void LevelManager::RemoveObjectFromLevel (U32 levelID, U32 objID)"
+.SS "void LevelManager::RemoveObjectFromLevel (\fBU32\fP levelID, \fBU32\fP objID)"
 Removes an object from a \fBLevel\fP\&. Wrapper around \fBLevel::RemoveObjectFromLevel\fP\&. 
 .PP
 \fBParameters:\fP
@@ -179,7 +179,7 @@ Removes an object from a \fBLevel\fP\&. Wrapper around \fBLevel::RemoveObjectFro
 
 .SS "void LevelManager::Render (void)"
 Calls all of the functions on the active \fBLevel\fP state needed to render the state\&. Calls \fBLevel::v_Render\fP\&. 
-.SS "void LevelManager::SetActiveLevel (U32 levelID)"
+.SS "void LevelManager::SetActiveLevel (\fBU32\fP levelID)"
 Changes the state to have a different active \fBLevel\fP\&. 
 .PP
 \fBParameters:\fP

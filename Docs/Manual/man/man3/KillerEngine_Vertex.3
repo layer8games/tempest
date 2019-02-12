@@ -21,13 +21,13 @@ KillerEngine::Vertex
 .RI "\fBVertex\fP (const \fBKM::Vector\fP &pos, \fBColor\fP col)"
 .br
 .ti -1c
-.RI "\fBVertex\fP (const \fBKM::Vector\fP &pos, F32 u, F32 v)"
+.RI "\fBVertex\fP (const \fBKM::Vector\fP &pos, \fBF32\fP u, \fBF32\fP v)"
 .br
 .ti -1c
 .RI "\fBVertex\fP (const \fBKM::Vector\fP &pos, const \fBKM::Vector\fP &norm)"
 .br
 .ti -1c
-.RI "\fBVertex\fP (const \fBKM::Vector\fP &pos, const \fBKM::Vector\fP &norm, F32 u, F32 v)"
+.RI "\fBVertex\fP (const \fBKM::Vector\fP &pos, const \fBKM::Vector\fP &norm, \fBF32\fP u, \fBF32\fP v)"
 .br
 .in -1c
 .SS "Public Attributes"
@@ -77,7 +77,7 @@ Sets up the starting position and color\&. Everything else is set to 0\&.
 .RE
 .PP
 
-.SS "KillerEngine::Vertex::Vertex (const \fBKM::Vector\fP & pos, F32 u, F32 v)\fC [inline]\fP"
+.SS "KillerEngine::Vertex::Vertex (const \fBKM::Vector\fP & pos, \fBF32\fP u, \fBF32\fP v)\fC [inline]\fP"
 Sets the position, and texture coords\&. Everything else is set to 0\&. 
 .PP
 \fBParameters:\fP
@@ -101,7 +101,7 @@ Sets the position and surface normal, in model space\&.
 .RE
 .PP
 
-.SS "KillerEngine::Vertex::Vertex (const \fBKM::Vector\fP & pos, const \fBKM::Vector\fP & norm, F32 u, F32 v)\fC [inline]\fP"
+.SS "KillerEngine::Vertex::Vertex (const \fBKM::Vector\fP & pos, const \fBKM::Vector\fP & norm, \fBF32\fP u, \fBF32\fP v)\fC [inline]\fP"
 Sets the position, surface normal, and texture coords\&. \fBColor\fP is set to default\&. 
 .PP
 \fBParameters:\fP

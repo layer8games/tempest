@@ -18,22 +18,22 @@ KillerMath::Random
 .RI "\fB~Random\fP (void)"
 .br
 .ti -1c
-.RI "S32 \fBRandomInt\fP (S32 min, S32 max)"
+.RI "\fBS32\fP \fBRandomInt\fP (\fBS32\fP min, \fBS32\fP max)"
 .br
 .ti -1c
-.RI "S64 \fBRandomLong\fP (S64 min, S64 max)"
+.RI "\fBS64\fP \fBRandomLong\fP (\fBS64\fP min, \fBS64\fP max)"
 .br
 .ti -1c
-.RI "F32 \fBRandomFloat\fP (F32 min, F32 max)"
+.RI "\fBF32\fP \fBRandomFloat\fP (\fBF32\fP min, \fBF32\fP max)"
 .br
 .ti -1c
-.RI "F64 \fBRandomDouble\fP (F64 min, F64 max)"
+.RI "\fBF64\fP \fBRandomDouble\fP (\fBF64\fP min, \fBF64\fP max)"
 .br
 .ti -1c
-.RI "\fBVector\fP \fBRandomVector\fP (F32 min, F32 max, bool is2d=false)"
+.RI "\fBVector\fP \fBRandomVector\fP (\fBF32\fP min, \fBF32\fP max, bool is2d=false)"
 .br
 .ti -1c
-.RI "\fBQuaternion\fP \fBRandomQuaternion\fP (F32 min, F32 max)"
+.RI "\fBQuaternion\fP \fBRandomQuaternion\fP (\fBF32\fP min, \fBF32\fP max)"
 .br
 .in -1c
 .SS "Static Public Member Functions"
@@ -74,7 +74,7 @@ Default destructor\&. Doesn't have any function\&.
 .PP 
 .SS "shared_ptr< \fBRandom\fP > Random::Instance (void)\fC [static]\fP"
 Basic Singleton pattern\&. Allows access to global copy\&. Not required for use\&. 
-.SS "F64 Random::RandomDouble (F64 min, F64 max)"
+.SS "\fBF64\fP Random::RandomDouble (\fBF64\fP min, \fBF64\fP max)"
 Returns a 64 bit floating point between min and max 
 .PP
 \fBParameters:\fP
@@ -85,7 +85,7 @@ Returns a 64 bit floating point between min and max
 .RE
 .PP
 
-.SS "F32 Random::RandomFloat (F32 min, F32 max)"
+.SS "\fBF32\fP Random::RandomFloat (\fBF32\fP min, \fBF32\fP max)"
 Returns a random 32 bit floating point between min and max 
 .PP
 \fBParameters:\fP
@@ -96,7 +96,7 @@ Returns a random 32 bit floating point between min and max
 .RE
 .PP
 
-.SS "S32 Random::RandomInt (S32 min, S32 max)"
+.SS "\fBS32\fP Random::RandomInt (\fBS32\fP min, \fBS32\fP max)"
 Returns a 32 bit signed it between min and max\&. 
 .PP
 \fBParameters:\fP
@@ -107,7 +107,7 @@ Returns a 32 bit signed it between min and max\&.
 .RE
 .PP
 
-.SS "S64 Random::RandomLong (S64 min, S64 max)"
+.SS "\fBS64\fP Random::RandomLong (\fBS64\fP min, \fBS64\fP max)"
 Returns a 64 bit signed it between min and max\&. 
 .PP
 \fBParameters:\fP
@@ -118,7 +118,7 @@ Returns a 64 bit signed it between min and max\&.
 .RE
 .PP
 
-.SS "\fBQuaternion\fP Random::RandomQuaternion (F32 min, F32 max)"
+.SS "\fBQuaternion\fP Random::RandomQuaternion (\fBF32\fP min, \fBF32\fP max)"
 Returns a \fBQuaternion\fP with w,x,y and z between min and max 
 .PP
 \fBParameters:\fP
@@ -129,7 +129,7 @@ Returns a \fBQuaternion\fP with w,x,y and z between min and max
 .RE
 .PP
 
-.SS "\fBVector\fP Random::RandomVector (F32 min, F32 max, bool is2d = \fCfalse\fP)"
+.SS "\fBVector\fP Random::RandomVector (\fBF32\fP min, \fBF32\fP max, bool is2d = \fCfalse\fP)"
 Returns a \fBVector\fP with x, y and z (depending on flag) between min and max 
 .PP
 \fBParameters:\fP

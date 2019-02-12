@@ -13,7 +13,7 @@ KillerCollisions::BoundingSphere
 .RI "\fBBoundingSphere\fP (void)"
 .br
 .ti -1c
-.RI "\fBBoundingSphere\fP (const \fBKM::Vector\fP &center, real radius)"
+.RI "\fBBoundingSphere\fP (const \fBKM::Vector\fP &center, \fBreal\fP radius)"
 .br
 .ti -1c
 .RI "\fBBoundingSphere\fP (const \fBBoundingSphere\fP &one, const \fBBoundingSphere\fP &two)"
@@ -22,25 +22,25 @@ KillerCollisions::BoundingSphere
 .RI "bool \fBTestCollision\fP (const \fBBoundingSphere\fP &other) const"
 .br
 .ti -1c
-.RI "real \fBGetGrowth\fP (\fBBoundingSphere\fP &other) const"
+.RI "\fBreal\fP \fBGetGrowth\fP (\fBBoundingSphere\fP &other) const"
 .br
 .ti -1c
-.RI "real \fBGetSize\fP (void) const"
+.RI "\fBreal\fP \fBGetSize\fP (void) const"
 .br
 .ti -1c
 .RI "void \fBSetCenter\fP (const \fBKM::Vector\fP &pos)"
 .br
 .ti -1c
-.RI "void \fBSetCenter\fP (F32 x, F32 y, F32 z)"
+.RI "void \fBSetCenter\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
 .RI "const \fBKM::Vector\fP & \fBGetCenter\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetRadius\fP (real r)"
+.RI "void \fBSetRadius\fP (\fBreal\fP r)"
 .br
 .ti -1c
-.RI "real \fBGetRadius\fP (void) const"
+.RI "\fBreal\fP \fBGetRadius\fP (void) const"
 .br
 .in -1c
 .SS "Private Attributes"
@@ -51,7 +51,7 @@ KillerCollisions::BoundingSphere
 .br
 .RI "Center of the sphere\&. "
 .ti -1c
-.RI "real \fB_radius\fP"
+.RI "\fBreal\fP \fB_radius\fP"
 .br
 .RI "Radius of the sphere\&. "
 .in -1c
@@ -59,7 +59,7 @@ KillerCollisions::BoundingSphere
 .PP 
 .SS "BoundingSphere::BoundingSphere (void)"
 Sets center and radius to 0\&. 
-.SS "BoundingSphere::BoundingSphere (const \fBKM::Vector\fP & center, real radius)"
+.SS "BoundingSphere::BoundingSphere (const \fBKM::Vector\fP & center, \fBreal\fP radius)"
 Sets center and radius to args\&. 
 .PP
 \fBParameters:\fP
@@ -85,7 +85,7 @@ Special constructor that combines the volumes of 2 BoundingSpheres into one sphe
 .PP 
 .SS "const \fBKM::Vector\fP& KillerCollisions::BoundingSphere::GetCenter (void) const\fC [inline]\fP"
 Get the location of the center\&. 
-.SS "real BoundingSphere::GetGrowth (\fBBoundingSphere\fP & other) const"
+.SS "\fBreal\fP BoundingSphere::GetGrowth (\fBBoundingSphere\fP & other) const"
 Returns how much a Sphere would grow if it were combined with another Sphere\&. Untested\&. 
 .PP
 \fBParameters:\fP
@@ -94,9 +94,9 @@ Returns how much a Sphere would grow if it were combined with another Sphere\&. 
 .RE
 .PP
 
-.SS "real KillerCollisions::BoundingSphere::GetRadius (void) const\fC [inline]\fP"
+.SS "\fBreal\fP KillerCollisions::BoundingSphere::GetRadius (void) const\fC [inline]\fP"
 Get radius\&. 
-.SS "real KillerCollisions::BoundingSphere::GetSize (void) const\fC [inline]\fP"
+.SS "\fBreal\fP KillerCollisions::BoundingSphere::GetSize (void) const\fC [inline]\fP"
 Returns the area of the Sphere\&. Untested\&. 
 .SS "void KillerCollisions::BoundingSphere::SetCenter (const \fBKM::Vector\fP & pos)\fC [inline]\fP"
 Set new center\&. 
@@ -107,7 +107,7 @@ Set new center\&.
 .RE
 .PP
 
-.SS "void KillerCollisions::BoundingSphere::SetCenter (F32 x, F32 y, F32 z)\fC [inline]\fP"
+.SS "void KillerCollisions::BoundingSphere::SetCenter (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)\fC [inline]\fP"
 Alternate setter for center\&. 
 .PP
 \fBParameters:\fP
@@ -120,7 +120,7 @@ Alternate setter for center\&.
 .RE
 .PP
 
-.SS "void KillerCollisions::BoundingSphere::SetRadius (real r)\fC [inline]\fP"
+.SS "void KillerCollisions::BoundingSphere::SetRadius (\fBreal\fP r)\fC [inline]\fP"
 Set the radius\&. 
 .PP
 \fBParameters:\fP

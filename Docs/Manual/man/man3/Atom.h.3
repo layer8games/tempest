@@ -1,4 +1,4 @@
-.TH "F:/Projects/Killer_Engine/Headers/Engine/Atom.h" 3 "Wed Jun 6 2018" "Killer Engine" \" -*- nroff -*-
+.TH "F:/Projects/Killer_Engine/Headers/Engine/Atom.h" 3 "Mon Feb 11 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -8,7 +8,9 @@ F:/Projects/Killer_Engine/Headers/Engine/Atom.h
 .PP
 \fC#include <Windows\&.h>\fP
 .br
-\fC#include <GL/gl3w\&.h>\fP
+\fC#include <GL/glew\&.h>\fP
+.br
+\fC#include <GLFW/glfw3\&.h>\fP
 .br
 \fC#include <string>\fP
 .br
@@ -19,32 +21,43 @@ F:/Projects/Killer_Engine/Headers/Engine/Atom.h
 
 .in +1c
 .ti -1c
-.RI "#define \fBDOUBLE_PRECISION\fP"
+.RI "#define \fBGLEW_STATIC\fP"
 .br
 .ti -1c
 .RI "#define \fBREAL_MAX\fP   FLT_MAX"
 .br
+.RI "Defined as FLT_MAX\&. "
 .ti -1c
 .RI "#define \fBreal_sqrt\fP   sqrt"
 .br
+.RI "Alias for the sqrt function\&. "
 .ti -1c
 .RI "#define \fBreal_abs\fP   fabsf"
 .br
+.RI "Alias for the fabsf function\&. "
 .ti -1c
 .RI "#define \fBreal_sin\fP   sin"
 .br
+.RI "Alias for the sin function\&. "
 .ti -1c
 .RI "#define \fBreal_cos\fP   cos"
 .br
 .ti -1c
+.RI "#define \fBreal_tan\fP   tan"
+.br
+.RI "Alias for the tan function\&. "
+.ti -1c
 .RI "#define \fBreal_exp\fP   exp"
 .br
+.RI "Alias for the exp function\&. "
 .ti -1c
 .RI "#define \fBreal_pow\fP   pow"
 .br
+.RI "Alias for the pow function\&. "
 .ti -1c
-.RI "#define \fBreal_fmod\fP   fmod"
+.RI "#define \fBreal_fmod\fP   fmod4"
 .br
+.RI "Alias for fmod4 function\&. "
 .ti -1c
 .RI "#define \fBreal_epsilon\fP   DBL_EPSILON"
 .br
@@ -55,45 +68,62 @@ F:/Projects/Killer_Engine/Headers/Engine/Atom.h
 .ti -1c
 .RI "typedef int8_t \fBS8\fP"
 .br
+.RI "Signed, 8 bit integer\&. "
 .ti -1c
 .RI "typedef int16_t \fBS16\fP"
 .br
+.RI "Signed, 16 bit integer\&. "
 .ti -1c
 .RI "typedef int32_t \fBS32\fP"
 .br
+.RI "Signed, 32 bit integer\&. "
 .ti -1c
 .RI "typedef int64_t \fBS64\fP"
 .br
+.RI "Signed, 64 bit integer\&. "
 .ti -1c
 .RI "typedef uint8_t \fBU8\fP"
 .br
+.RI "Unsigned, 8 bit integer\&. "
 .ti -1c
 .RI "typedef uint16_t \fBU16\fP"
 .br
+.RI "Unsigned, 16 bit integer\&. "
 .ti -1c
 .RI "typedef uint32_t \fBU32\fP"
 .br
+.RI "Unsigned, 32 bit integer\&. "
 .ti -1c
 .RI "typedef uint64_t \fBU64\fP"
 .br
+.RI "Unsigned, 64 bit integer\&. "
 .ti -1c
 .RI "typedef float \fBF32\fP"
 .br
+.RI "32 bit float point number\&. "
 .ti -1c
 .RI "typedef double \fBF64\fP"
 .br
+.RI "64 bit float point number\&. "
 .ti -1c
 .RI "typedef float \fBreal\fP"
 .br
+.RI "A configurable real number\&. Currently set to be 32 bits, could be set o 64 bits\&. "
 .in -1c
 .SS "Functions"
 
 .in +1c
 .ti -1c
-.RI "\fBreal\fP \fBRealSqr\fP (\fBreal\fP \fBx\fP)"
+.RI "\fBreal\fP \fBREAL_SQR\fP (\fBreal\fP x)"
 .br
 .ti -1c
-.RI "\fBF32\fP \fBDegreeToRadian\fP (\fBF32\fP angle)"
+.RI "\fBF32\fP \fBRADIAN\fP (\fBF32\fP angle)"
+.br
+.ti -1c
+.RI "\fBF32\fP \fBDEGREE\fP (\fBF32\fP radian)"
+.br
+.ti -1c
+.RI "\fBF32\fP \fBFLOAT_CLAMP\fP (\fBF32\fP val, \fBF32\fP min, \fBF32\fP max)"
 .br
 .in -1c
 .SS "Variables"
@@ -102,62 +132,52 @@ F:/Projects/Killer_Engine/Headers/Engine/Atom.h
 .ti -1c
 .RI "const \fBreal\fP \fBR_PI\fP = static_cast<\fBreal\fP>(3\&.14159265358979)"
 .br
+.RI "Defined as 3\&.14159265358979\&. "
 .in -1c
-.SH "Macro Definition Documentation"
+.SH "Detailed Description"
 .PP 
-.SS "#define DOUBLE_PRECISION"
-
-.SS "#define real_abs   fabsf"
-
-.SS "#define real_cos   cos"
-
-.SS "#define real_epsilon   DBL_EPSILON"
-
-.SS "#define real_exp   exp"
-
-.SS "#define real_fmod   fmod"
-
-.SS "#define REAL_MAX   FLT_MAX"
-
-.SS "#define real_pow   pow"
-
-.SS "#define real_sin   sin"
-
-.SS "#define real_sqrt   sqrt"
-
-.SH "Typedef Documentation"
-.PP 
-.SS "typedef float \fBF32\fP"
-
-.SS "typedef double \fBF64\fP"
-
-.SS "typedef float \fBreal\fP"
-
-.SS "typedef int16_t \fBS16\fP"
-
-.SS "typedef int32_t \fBS32\fP"
-
-.SS "typedef int64_t \fBS64\fP"
-
-.SS "typedef int8_t \fBS8\fP"
-
-.SS "typedef uint16_t \fBU16\fP"
-
-.SS "typedef uint32_t \fBU32\fP"
-
-.SS "typedef uint64_t \fBU64\fP"
-
-.SS "typedef uint8_t \fBU8\fP"
-
+Global helpers and defines\&. 
 .SH "Function Documentation"
 .PP 
-.SS "\fBF32\fP DegreeToRadian (\fBF32\fP angle)\fC [inline]\fP"
+.SS "\fBF32\fP DEGREE (\fBF32\fP radian)\fC [inline]\fP"
+Converts a radian to an angle\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIradian\fP is the value to convert\&. 
+.RE
+.PP
 
-.SS "\fBreal\fP RealSqr (\fBreal\fP x)\fC [inline]\fP"
+.SS "\fBF32\fP FLOAT_CLAMP (\fBF32\fP val, \fBF32\fP min, \fBF32\fP max)\fC [inline]\fP"
+Clamps a value to a set min and max\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the value to clamp\&. 
+.br
+\fImin\fP is the floor\&. 
+.br
+\fImax\fP is the ceiling\&. 
+.RE
+.PP
 
-.SH "Variable Documentation"
-.PP 
-.SS "const \fBreal\fP R_PI = static_cast<\fBreal\fP>(3\&.14159265358979)"
+.SS "\fBF32\fP RADIAN (\fBF32\fP angle)\fC [inline]\fP"
+Converts an angle to a radian\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIangle\fP is the value to convert\&. 
+.RE
+.PP
+
+.SS "\fBreal\fP REAL_SQR (\fBreal\fP x)\fC [inline]\fP"
+Returns the value squared\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP is the value\&. 
+.RE
+.PP
 
 .SH "Author"
 .PP 

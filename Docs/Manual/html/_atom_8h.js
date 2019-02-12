@@ -1,6 +1,6 @@
 var _atom_8h =
 [
-    [ "DOUBLE_PRECISION", "_atom_8h.html#a61df8c6544a4c2dabae7825eeb67b0bd", null ],
+    [ "GLEW_STATIC", "_atom_8h.html#abcde84ea0ef5f934384e4620f092c85a", null ],
     [ "real_abs", "_atom_8h.html#a8dfc5ed815226c7c6b4cbb7497b8269c", null ],
     [ "real_cos", "_atom_8h.html#a90aee8fe5c75893ee4824ffdb980d83a", null ],
     [ "real_epsilon", "_atom_8h.html#a7c1ff2c4b00ca1d4ec6f83424ea66075", null ],
@@ -10,6 +10,7 @@ var _atom_8h =
     [ "real_pow", "_atom_8h.html#ad4b35674d9a186dfcb92f988a1dc014f", null ],
     [ "real_sin", "_atom_8h.html#a794a500a3b790ab2475f9c89b631fefd", null ],
     [ "real_sqrt", "_atom_8h.html#a62fde4217f637e745572c33e37e8d842", null ],
+    [ "real_tan", "_atom_8h.html#a47f2d5ebb257f94835028dbcb0efb49d", null ],
     [ "F32", "_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b", null ],
     [ "F64", "_atom_8h.html#adc9896ee12db3bb116fc63b3464c72c7", null ],
     [ "real", "_atom_8h.html#a031f8951175b43076c2084a6c2173410", null ],
@@ -21,7 +22,9 @@ var _atom_8h =
     [ "U32", "_atom_8h.html#a696390429f2f3b644bde8d0322a24124", null ],
     [ "U64", "_atom_8h.html#a25809e0734a149248fcf5831efa4e33d", null ],
     [ "U8", "_atom_8h.html#aa63ef7b996d5487ce35a5a66601f3e73", null ],
-    [ "DegreeToRadian", "_atom_8h.html#ae7c9e6357e24ecd3dbf5b128fe92d86b", null ],
-    [ "RealSqr", "_atom_8h.html#a9da93dec37a949fa6996e46c52562447", null ],
+    [ "DEGREE", "_atom_8h.html#ae302d253ab1b2c8dc0f0f95f75f67fc1", null ],
+    [ "FLOAT_CLAMP", "_atom_8h.html#a33ce6dd57af96f0ba08e64e74e9ed5d8", null ],
+    [ "RADIAN", "_atom_8h.html#ad06479465462169e68af16c08fc1ba35", null ],
+    [ "REAL_SQR", "_atom_8h.html#a23914c0a41c63c6a7869e6e4c466204a", null ],
     [ "R_PI", "_atom_8h.html#a2faa8b1b25d610065d1d367655238b9a", null ]
 ];

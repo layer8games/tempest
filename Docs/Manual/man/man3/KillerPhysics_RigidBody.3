@@ -33,10 +33,10 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "void \fBSetVelocity\fP (const \fBKM::Vector\fP &vec)"
 .br
 .ti -1c
-.RI "void \fBSetVelocity\fP (F32 x, F32 y, F32 z)"
+.RI "void \fBSetVelocity\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
-.RI "void \fBAddScaledVelocity\fP (const \fBKM::Vector\fP &vec, F32 scale)"
+.RI "void \fBAddScaledVelocity\fP (const \fBKM::Vector\fP &vec, \fBF32\fP scale)"
 .br
 .ti -1c
 .RI "const \fBKM::Vector\fP & \fBGetAcceleration\fP (void) const"
@@ -45,10 +45,10 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "void \fBSetAcceleration\fP (const \fBKM::Vector\fP &vec)"
 .br
 .ti -1c
-.RI "void \fBSetAcceleration\fP (F32 x, F32 y, F32 z)"
+.RI "void \fBSetAcceleration\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
-.RI "void \fBAddScaledAcceleration\fP (const \fBKM::Vector\fP &vec, F32 scale)"
+.RI "void \fBAddScaledAcceleration\fP (const \fBKM::Vector\fP &vec, \fBF32\fP scale)"
 .br
 .ti -1c
 .RI "const \fBKM::Vector\fP & \fBGetRotation\fP (void) const"
@@ -57,10 +57,10 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "void \fBSetRotation\fP (const \fBKM::Vector\fP &vec)"
 .br
 .ti -1c
-.RI "void \fBSetRotation\fP (F32 x, F32 y, F32 z)"
+.RI "void \fBSetRotation\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
-.RI "void \fBAddScaledRotation\fP (const \fBKM::Vector\fP &vec, F32 scale)"
+.RI "void \fBAddScaledRotation\fP (const \fBKM::Vector\fP &vec, \fBF32\fP scale)"
 .br
 .ti -1c
 .RI "const \fBKM::Vector\fP & \fBGetForces\fP (void) const"
@@ -84,31 +84,31 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "void \fBAddForceAtLocalPoint\fP (const \fBKM::Vector\fP &force, const \fBKM::Vector\fP &point)"
 .br
 .ti -1c
-.RI "real \fBGetInverseMass\fP (void) const"
+.RI "\fBreal\fP \fBGetInverseMass\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetInverseMass\fP (real val)"
+.RI "void \fBSetInverseMass\fP (\fBreal\fP val)"
 .br
 .ti -1c
 .RI "bool \fBHasFiniteMass\fP (void) const"
 .br
 .ti -1c
-.RI "const real \fBGetMass\fP (void)"
+.RI "const \fBreal\fP \fBGetMass\fP (void)"
 .br
 .ti -1c
-.RI "void \fBSetMass\fP (real mass)"
+.RI "void \fBSetMass\fP (\fBreal\fP mass)"
 .br
 .ti -1c
-.RI "real \fBGetLinearDamping\fP (void) const"
+.RI "\fBreal\fP \fBGetLinearDamping\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetLinearDamping\fP (real val)"
+.RI "void \fBSetLinearDamping\fP (\fBreal\fP val)"
 .br
 .ti -1c
-.RI "real \fBGetAngularDamping\fP (void) const"
+.RI "\fBreal\fP \fBGetAngularDamping\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetAngularDamping\fP (real val)"
+.RI "void \fBSetAngularDamping\fP (\fBreal\fP val)"
 .br
 .ti -1c
 .RI "bool \fBGetIsAwake\fP (void)"
@@ -146,13 +146,13 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "\fBKM::Vector\fP \fB_torqueAccum\fP"
 .br
 .ti -1c
-.RI "real \fB_inverseMass\fP"
+.RI "\fBreal\fP \fB_inverseMass\fP"
 .br
 .ti -1c
-.RI "real \fB_linearDamping\fP"
+.RI "\fBreal\fP \fB_linearDamping\fP"
 .br
 .ti -1c
-.RI "real \fB_angularDamping\fP"
+.RI "\fBreal\fP \fB_angularDamping\fP"
 .br
 .ti -1c
 .RI "bool \fB_isAwake\fP"

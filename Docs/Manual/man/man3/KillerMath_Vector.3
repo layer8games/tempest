@@ -15,16 +15,16 @@ KillerMath::Vector
 .RI "\fBVector\fP (void)"
 .br
 .ti -1c
-.RI "\fBVector\fP (F32 val)"
+.RI "\fBVector\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "\fBVector\fP (F32 x, F32 y)"
+.RI "\fBVector\fP (\fBF32\fP x, \fBF32\fP y)"
 .br
 .ti -1c
-.RI "\fBVector\fP (F32 x, F32 y, F32 z)"
+.RI "\fBVector\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
-.RI "\fBVector\fP (F32 x, F32 y, F32 z, F32 w)"
+.RI "\fBVector\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z, \fBF32\fP w)"
 .br
 .ti -1c
 .RI "\fBVector\fP (const \fBVector\fP &v)"
@@ -42,43 +42,43 @@ KillerMath::Vector
 .RI "bool \fBIs2D\fP (void) const"
 .br
 .ti -1c
-.RI "F32 \fBDot\fP (const \fBVector\fP &vec) const"
+.RI "\fBF32\fP \fBDot\fP (const \fBVector\fP &vec) const"
 .br
 .ti -1c
 .RI "\fBVector\fP \fBCrossProduct\fP (const \fBVector\fP &vec) const"
 .br
 .ti -1c
-.RI "F32 \fBMagnitude\fP (void)"
+.RI "\fBF32\fP \fBMagnitude\fP (void)"
 .br
 .ti -1c
-.RI "F32 \fBSqrMagnitude\fP (void)"
+.RI "\fBF32\fP \fBSqrMagnitude\fP (void)"
 .br
 .ti -1c
 .RI "void \fBNormalize\fP (void)"
 .br
 .ti -1c
-.RI "void \fBReset\fP (F32 val=0\&.0f)"
+.RI "void \fBReset\fP (\fBF32\fP val=0\&.0f)"
 .br
 .ti -1c
-.RI "void \fBAddScaledVector\fP (const \fBVector\fP &vec, F32 scale)"
+.RI "void \fBAddScaledVector\fP (const \fBVector\fP &vec, \fBF32\fP scale)"
 .br
 .ti -1c
-.RI "const F32 * \fBGetElems\fP (void) const"
+.RI "const \fBF32\fP * \fBGetElems\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSet\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "void \fBSet\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
-.RI "const F32 & \fBoperator[]\fP (int i) const"
+.RI "const \fBF32\fP & \fBoperator[]\fP (int i) const"
 .br
 .ti -1c
-.RI "F32 & \fBoperator[]\fP (int i)"
+.RI "\fBF32\fP & \fBoperator[]\fP (int i)"
 .br
 .ti -1c
 .RI "\fBVector\fP & \fBoperator=\fP (const \fBVector\fP &vec)"
 .br
 .ti -1c
-.RI "\fBVector\fP & \fBoperator=\fP (F32 val)"
+.RI "\fBVector\fP & \fBoperator=\fP (\fBF32\fP val)"
 .br
 .ti -1c
 .RI "\fBVector\fP \fBoperator+\fP (const \fBVector\fP &vec) const"
@@ -87,10 +87,10 @@ KillerMath::Vector
 .RI "\fBVector\fP & \fBoperator+=\fP (const \fBVector\fP &vec)"
 .br
 .ti -1c
-.RI "\fBVector\fP \fBoperator+\fP (F32 val) const"
+.RI "\fBVector\fP \fBoperator+\fP (\fBF32\fP val) const"
 .br
 .ti -1c
-.RI "\fBVector\fP & \fBoperator+=\fP (F32 val)"
+.RI "\fBVector\fP & \fBoperator+=\fP (\fBF32\fP val)"
 .br
 .ti -1c
 .RI "\fBVector\fP \fBoperator+\fP (shared_ptr< \fBVector\fP > vec) const"
@@ -102,10 +102,10 @@ KillerMath::Vector
 .RI "\fBVector\fP & \fBoperator\-=\fP (const \fBVector\fP &vec)"
 .br
 .ti -1c
-.RI "\fBVector\fP \fBoperator\-\fP (F32 val) const"
+.RI "\fBVector\fP \fBoperator\-\fP (\fBF32\fP val) const"
 .br
 .ti -1c
-.RI "\fBVector\fP & \fBoperator\-=\fP (F32 val)"
+.RI "\fBVector\fP & \fBoperator\-=\fP (\fBF32\fP val)"
 .br
 .ti -1c
 .RI "\fBVector\fP \fBoperator*\fP (const \fBVector\fP vec) const"
@@ -114,16 +114,16 @@ KillerMath::Vector
 .RI "\fBVector\fP & \fBoperator*=\fP (const \fBVector\fP vec)"
 .br
 .ti -1c
-.RI "\fBVector\fP \fBoperator*\fP (F32 val) const"
+.RI "\fBVector\fP \fBoperator*\fP (\fBF32\fP val) const"
 .br
 .ti -1c
-.RI "\fBVector\fP & \fBoperator*=\fP (F32 val)"
+.RI "\fBVector\fP & \fBoperator*=\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "\fBVector\fP \fBoperator/\fP (F32 val) const"
+.RI "\fBVector\fP \fBoperator/\fP (\fBF32\fP val) const"
 .br
 .ti -1c
-.RI "\fBVector\fP & \fBoperator/=\fP (F32 val)"
+.RI "\fBVector\fP & \fBoperator/=\fP (\fBF32\fP val)"
 .br
 .ti -1c
 .RI "bool \fBoperator>\fP (const \fBVector\fP &vec) const"
@@ -159,7 +159,7 @@ KillerMath::Vector
 .br
 .RI "Used to decide whether to use 2D or 3D logic in operators\&. "
 .ti -1c
-.RI "F32 \fB_data\fP [4]"
+.RI "\fBF32\fP \fB_data\fP [4]"
 .br
 .RI "Array that stores the values for each element\&. "
 .in -1c
@@ -176,7 +176,7 @@ Alias set up to allow a refernce to each element that is more human readable in 
 .PP 
 .SS "Vector::Vector (void)"
 Default construtor\&. Sets all values to 0, and _2D to false\&. 
-.SS "Vector::Vector (F32 val)\fC [explicit]\fP"
+.SS "Vector::Vector (\fBF32\fP val)\fC [explicit]\fP"
 Single input conversion constructor\&. It will set the x, y and z components to the input\&. _2D is false\&. 
 .PP
 \fBParameters:\fP
@@ -185,7 +185,7 @@ Single input conversion constructor\&. It will set the x, y and z components to 
 .RE
 .PP
 
-.SS "Vector::Vector (F32 x, F32 y)"
+.SS "Vector::Vector (\fBF32\fP x, \fBF32\fP y)"
 Two input constructor\&. Set's x and y accordingly\&. Z is set to 0\&.0f\&. W is set to 1\&.0f 
 .PP
 \fBParameters:\fP
@@ -196,7 +196,7 @@ Two input constructor\&. Set's x and y accordingly\&. Z is set to 0\&.0f\&. W is
 .RE
 .PP
 
-.SS "Vector::Vector (F32 x, F32 y, F32 z)"
+.SS "Vector::Vector (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 Three input constructor\&. W is set to 1\&.0f\&. 
 .PP
 \fBParameters:\fP
@@ -209,7 +209,7 @@ Three input constructor\&. W is set to 1\&.0f\&.
 .RE
 .PP
 
-.SS "Vector::Vector (F32 x, F32 y, F32 z, F32 w)"
+.SS "Vector::Vector (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z, \fBF32\fP w)"
 Four input constructor\&. 
 .PP
 \fBParameters:\fP
@@ -237,7 +237,7 @@ Copy Constructor\&. It explicitly copies all data into new \fBVector\fP\&.
 Destructor\&. It does not do anything\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void Vector::AddScaledVector (const \fBVector\fP & vec, F32 scale)"
+.SS "void Vector::AddScaledVector (const \fBVector\fP & vec, \fBF32\fP scale)"
 Adds a \fBVector\fP scaled by a value to this \fBVector\fP\&. 
 .PP
 \fBParameters:\fP
@@ -257,7 +257,7 @@ Performs a Cross or \fBVector\fP production in the order of this % other\&.
 .RE
 .PP
 
-.SS "F32 Vector::Dot (const \fBVector\fP & vec) const"
+.SS "\fBF32\fP Vector::Dot (const \fBVector\fP & vec) const"
 Performs a Dot or Scalar product in the order of this * other\&. 
 .PP
 \fBParameters:\fP
@@ -266,11 +266,11 @@ Performs a Dot or Scalar product in the order of this * other\&.
 .RE
 .PP
 
-.SS "const F32* KillerMath::Vector::GetElems (void) const\fC [inline]\fP"
+.SS "const \fBF32\fP* KillerMath::Vector::GetElems (void) const\fC [inline]\fP"
 Returns the raw data for the \fBVector\fP\&. 
 .SS "bool KillerMath::Vector::Is2D (void) const\fC [inline]\fP"
 Returns that 2D state of the \fBVector\fP stored in _2D; 
-.SS "F32 Vector::Magnitude (void)"
+.SS "\fBF32\fP Vector::Magnitude (void)"
 Returns the length of the \fBVector\fP\&. Caution, this uses the square root function\&. 
 .SS "void KillerMath::Vector::Make2D (void)\fC [inline]\fP"
 Sets the \fBVector\fP to act like a 2D vector instead of a 3D \fBVector\fP by setting _2D to true\&. This means that the z value wont be copied or used in operations\&. 
@@ -296,7 +296,7 @@ False equality comparison\&. 2D is used as an early out\&. 2D is also checked be
 .RE
 .PP
 
-.SS "\fBVector\fP Vector::operator* (F32 val) const"
+.SS "\fBVector\fP Vector::operator* (\fBF32\fP val) const"
 Scalar multiplication\&. This is a componentwise multiplication, scaling the \fBVector\fP by the scalar\&. 2D check done before z is changed\&. 
 .PP
 \fBParameters:\fP
@@ -314,7 +314,7 @@ Scalar multiplication\&. This is a componentwise multiplication, scaling the \fB
 .RE
 .PP
 
-.SS "\fBVector\fP & Vector::operator*= (F32 val)"
+.SS "\fBVector\fP & Vector::operator*= (\fBF32\fP val)"
 Scalar multiplication\&. This is a componentwise multiplication, scaling the \fBVector\fP by the scalar\&. 2D check done before z is changed\&. 
 .PP
 \fBParameters:\fP
@@ -332,7 +332,7 @@ Scalar multiplication\&. This is a componentwise multiplication, scaling the \fB
 .RE
 .PP
 
-.SS "\fBVector\fP Vector::operator+ (F32 val) const"
+.SS "\fBVector\fP Vector::operator+ (\fBF32\fP val) const"
 Scalar addition\&. Each value is added into\&. 2D check done before z is changed\&. 
 .PP
 \fBParameters:\fP
@@ -359,7 +359,7 @@ Shared Pointer addition\&. A helper to allow arithmetic with shared_ptr<Vector>\
 .RE
 .PP
 
-.SS "\fBVector\fP & Vector::operator+= (F32 val)"
+.SS "\fBVector\fP & Vector::operator+= (\fBF32\fP val)"
 Scalar addition\&. Each value is added into\&. 2D check done before z is changed\&. 
 .PP
 \fBParameters:\fP
@@ -377,7 +377,7 @@ Scalar addition\&. Each value is added into\&. 2D check done before z is changed
 .RE
 .PP
 
-.SS "\fBVector\fP Vector::operator\- (F32 val) const"
+.SS "\fBVector\fP Vector::operator\- (\fBF32\fP val) const"
 Scalar subtraction\&. 2D check is done before z is changed\&. 
 .PP
 \fBParameters:\fP
@@ -395,7 +395,7 @@ Scalar subtraction\&. 2D check is done before z is changed\&.
 .RE
 .PP
 
-.SS "\fBVector\fP & Vector::operator\-= (F32 val)"
+.SS "\fBVector\fP & Vector::operator\-= (\fBF32\fP val)"
 Sclara subtraction\&. 2D check is done before z is changed\&. 
 .PP
 \fBParameters:\fP
@@ -404,7 +404,7 @@ Sclara subtraction\&. 2D check is done before z is changed\&.
 .RE
 .PP
 
-.SS "\fBVector\fP Vector::operator/ (F32 val) const"
+.SS "\fBVector\fP Vector::operator/ (\fBF32\fP val) const"
 Scalar division\&. This is done componentwise\&. 2D check done before z is changed\&. 
 .PP
 \fBParameters:\fP
@@ -413,7 +413,7 @@ Scalar division\&. This is done componentwise\&. 2D check done before z is chang
 .RE
 .PP
 
-.SS "\fBVector\fP & Vector::operator/= (F32 val)"
+.SS "\fBVector\fP & Vector::operator/= (\fBF32\fP val)"
 Scalar division\&. This is done componentwise\&. 2D check done before z is changed\&. 
 .PP
 \fBParameters:\fP
@@ -449,7 +449,7 @@ Copy assignment from \fBVector\fP\&.
 .RE
 .PP
 
-.SS "\fBVector\fP & Vector::operator= (F32 val)"
+.SS "\fBVector\fP & Vector::operator= (\fBF32\fP val)"
 Copy assignment from scalar\&. 
 .PP
 \fBParameters:\fP
@@ -485,7 +485,7 @@ Greater than or equal to comparison\&. 2D is used as an early out\&. 2D is also 
 .RE
 .PP
 
-.SS "const F32& KillerMath::Vector::operator[] (int i) const\fC [inline]\fP"
+.SS "const \fBF32\fP& KillerMath::Vector::operator[] (int i) const\fC [inline]\fP"
 Allows you to index into the \fBVector\fP to read the value\&. 
 .PP
 \fBParameters:\fP
@@ -494,7 +494,7 @@ Allows you to index into the \fBVector\fP to read the value\&.
 .RE
 .PP
 
-.SS "F32& KillerMath::Vector::operator[] (int i)\fC [inline]\fP"
+.SS "\fBF32\fP& KillerMath::Vector::operator[] (int i)\fC [inline]\fP"
 Allows you to index into the \fBVector\fP to change the value\&. 
 .PP
 \fBParameters:\fP
@@ -503,7 +503,7 @@ Allows you to index into the \fBVector\fP to change the value\&.
 .RE
 .PP
 
-.SS "void Vector::Reset (F32 val = \fC0\&.0f\fP)"
+.SS "void Vector::Reset (\fBF32\fP val = \fC0\&.0f\fP)"
 Sets all values to input\&. Does not check for _2D before changing z\&. 
 .PP
 \fBParameters:\fP
@@ -512,7 +512,7 @@ Sets all values to input\&. Does not check for _2D before changing z\&.
 .RE
 .PP
 
-.SS "void KillerMath::Vector::Set (F32 xVal, F32 yVal, F32 zVal)\fC [inline]\fP"
+.SS "void KillerMath::Vector::Set (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)\fC [inline]\fP"
 A helper function to allow to quickly set x, y and z to different values\&. 
 .PP
 \fBParameters:\fP
@@ -525,7 +525,7 @@ A helper function to allow to quickly set x, y and z to different values\&.
 .RE
 .PP
 
-.SS "F32 Vector::SqrMagnitude (void)"
+.SS "\fBF32\fP Vector::SqrMagnitude (void)"
 Returns the squard length of the \fBVector\fP\&. It avoids the cost of the square root function\&. 
 
 .SH "Author"

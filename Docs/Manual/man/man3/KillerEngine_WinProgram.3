@@ -21,28 +21,28 @@ KillerEngine::WinProgram
 .RI "bool \fBGetRunning\fP (void)"
 .br
 .ti -1c
-.RI "S32 \fBGetWidth\fP (void)"
+.RI "\fBS32\fP \fBGetWidth\fP (void)"
 .br
 .ti -1c
-.RI "S32 \fBGetHeight\fP (void)"
+.RI "\fBS32\fP \fBGetHeight\fP (void)"
 .br
 .ti -1c
-.RI "F32 \fBGetScreenRight\fP (void)"
+.RI "\fBF32\fP \fBGetScreenRight\fP (void)"
 .br
 .ti -1c
-.RI "F32 \fBGetScreenLeft\fP (void)"
+.RI "\fBF32\fP \fBGetScreenLeft\fP (void)"
 .br
 .ti -1c
-.RI "F32 \fBGetScreenTop\fP (void)"
+.RI "\fBF32\fP \fBGetScreenTop\fP (void)"
 .br
 .ti -1c
-.RI "F32 \fBGetScreenBottom\fP (void)"
+.RI "\fBF32\fP \fBGetScreenBottom\fP (void)"
 .br
 .ti -1c
 .RI "void \fBSetBackgroundColor\fP (const \fBColor\fP &c)"
 .br
 .ti -1c
-.RI "void \fBInit\fP (S32 width, S32 height, string wndName, bool isFullScreen)"
+.RI "void \fBInit\fP (\fBS32\fP width, \fBS32\fP height, string wndName, bool isFullScreen)"
 .br
 .ti -1c
 .RI "void \fBProcessEvents\fP (void)"
@@ -75,7 +75,7 @@ KillerEngine::WinProgram
 .RI "const \fBKM::Vector\fP \fBGetMousePosInScreen\fP (void)"
 .br
 .ti -1c
-.RI "F64 \fBGetTime\fP (void)"
+.RI "\fBF64\fP \fBGetTime\fP (void)"
 .br
 .in -1c
 .SS "Static Public Member Functions"
@@ -97,7 +97,7 @@ KillerEngine::WinProgram
 .RI "static void \fBOnMouseClick\fP (GLFWwindow *window, int button, int action, int mods)"
 .br
 .ti -1c
-.RI "static void \fBOnMouseMove\fP (GLFWwindow *window, F64 posX, F64 posY)"
+.RI "static void \fBOnMouseMove\fP (GLFWwindow *window, \fBF64\fP posX, \fBF64\fP posY)"
 .br
 .in -1c
 .SS "Protected Member Functions"
@@ -123,19 +123,19 @@ KillerEngine::WinProgram
 .br
 .RI "State of wireframe based rendering\&. True means render in wireframe mode, false means normal rendering\&. "
 .ti -1c
-.RI "F32 \fB_right\fP"
+.RI "\fBF32\fP \fB_right\fP"
 .br
 .RI "Right boundary of window in pixels with origin in the center of the window\&. "
 .ti -1c
-.RI "F32 \fB_left\fP"
+.RI "\fBF32\fP \fB_left\fP"
 .br
 .RI "Left boundary of window in pixels with origin in the center of the window\&. "
 .ti -1c
-.RI "F32 \fB_top\fP"
+.RI "\fBF32\fP \fB_top\fP"
 .br
 .RI "Top boundary of window in pixels with origin in the center of the window\&. "
 .ti -1c
-.RI "F32 \fB_bottom\fP"
+.RI "\fBF32\fP \fB_bottom\fP"
 .br
 .RI "Bottom boundary of the window in pixels with origin in the center of the window\&. "
 .ti -1c
@@ -159,11 +159,11 @@ KillerEngine::WinProgram
 .br
 .RI "Singleton instance\&. Global pointer, allows only one \fBWinProgram\fP to be active\&. "
 .ti -1c
-.RI "static S32 \fB_totalWidth\fP = 0"
+.RI "static \fBS32\fP \fB_totalWidth\fP = 0"
 .br
 .RI "Total width of the window in pixels\&. "
 .ti -1c
-.RI "static S32 \fB_totalHeight\fP = 0"
+.RI "static \fBS32\fP \fB_totalHeight\fP = 0"
 .br
 .RI "Total height of the window in pixels\&. "
 .in -1c
@@ -199,7 +199,7 @@ Toggle that allows the frames per second to be displayed in the title of the win
 Toggles the mouse cursor to be displayed\&. 
 .SS "void KillerEngine::WinProgram::EndRunning (void)\fC [inline]\fP"
 Closes down the \fBWinProgram\fP and ends the program\&. 
-.SS "S32 KillerEngine::WinProgram::GetHeight (void)\fC [inline]\fP"
+.SS "\fBS32\fP KillerEngine::WinProgram::GetHeight (void)\fC [inline]\fP"
 Returns the total heigth of the program window in pixel\&. 
 .SS "const \fBKM::Vector\fP WinProgram::GetMousePos (void)"
 Returns the position of the mouse cursor with the origin in the top left of the program window, ranging from 0 to 1\&. 
@@ -207,21 +207,21 @@ Returns the position of the mouse cursor with the origin in the top left of the 
 Returns the position of the mouse cursor in pixels with the origin in the center of the program window, randing from the program windows up - down - left - right values\&. Very important, this is in Screen Space, not world space\&. 
 .SS "bool KillerEngine::WinProgram::GetRunning (void)\fC [inline]\fP"
 Returns the state of the game\&. True means that it should keep running, false means that it is shutting down\&. 
-.SS "F32 KillerEngine::WinProgram::GetScreenBottom (void)\fC [inline]\fP"
+.SS "\fBF32\fP KillerEngine::WinProgram::GetScreenBottom (void)\fC [inline]\fP"
 Returns half the height negative, repsrenting the bottom most boundary of the program window\&. 
-.SS "F32 KillerEngine::WinProgram::GetScreenLeft (void)\fC [inline]\fP"
+.SS "\fBF32\fP KillerEngine::WinProgram::GetScreenLeft (void)\fC [inline]\fP"
 Returns half the width negative, representing the left most boundary of the program window\&. 
-.SS "F32 KillerEngine::WinProgram::GetScreenRight (void)\fC [inline]\fP"
+.SS "\fBF32\fP KillerEngine::WinProgram::GetScreenRight (void)\fC [inline]\fP"
 Returns half the width positive, representing the right most boundary of the program window\&. 
-.SS "F32 KillerEngine::WinProgram::GetScreenTop (void)\fC [inline]\fP"
+.SS "\fBF32\fP KillerEngine::WinProgram::GetScreenTop (void)\fC [inline]\fP"
 Returns half the height positive, representing the top most boundary of the program window\&. 
-.SS "F64 KillerEngine::WinProgram::GetTime (void)\fC [inline]\fP"
+.SS "\fBF64\fP KillerEngine::WinProgram::GetTime (void)\fC [inline]\fP"
 Wrapper around glfwGetTime\&. Used to find out how long the program has been running in miliseconds\&. Used by the \fBKillerMath::Timer\fP\&. 
-.SS "S32 KillerEngine::WinProgram::GetWidth (void)\fC [inline]\fP"
+.SS "\fBS32\fP KillerEngine::WinProgram::GetWidth (void)\fC [inline]\fP"
 Returns the total width of the program window in pixels\&. 
 .SS "void WinProgram::HideMouseCursor (void)"
 Toggles the mouse cursor to not be displayed in the program window\&. Outside of the program window it will behave as normal\&. 
-.SS "void WinProgram::Init (S32 width, S32 height, string wndName, bool isFullScreen)"
+.SS "void WinProgram::Init (\fBS32\fP width, \fBS32\fP height, string wndName, bool isFullScreen)"
 Sets up program window\&. Makes all calls needed to start up a window\&. This is a helper function that takes are of all the glfw calls needed\&. 
 .PP
 \fBParameters:\fP
@@ -270,7 +270,7 @@ Callback function for glfw\&. Controls what happens when a mouse click happens (
 .RE
 .PP
 
-.SS "void WinProgram::OnMouseMove (GLFWwindow * window, F64 posX, F64 posY)\fC [static]\fP"
+.SS "void WinProgram::OnMouseMove (GLFWwindow * window, \fBF64\fP posX, \fBF64\fP posY)\fC [static]\fP"
 Callback function for glfw\&. Controls what happens when the mouse is detected to move\&. Currently not implemented\&. 
 .br
 \fBParameters:\fP

@@ -10,16 +10,16 @@ KillerEngine::FontManager
 
 .in +1c
 .ti -1c
-.RI "void \fBLoadFont\fP (U32 id, string fontName, string filePath, U32 size)"
+.RI "void \fBLoadFont\fP (\fBU32\fP id, string fontName, string filePath, \fBU32\fP size)"
 .br
 .ti -1c
-.RI "void \fBAddFont\fP (U32 id, shared_ptr< \fBFont\fP > font)"
+.RI "void \fBAddFont\fP (\fBU32\fP id, shared_ptr< \fBFont\fP > font)"
 .br
 .ti -1c
-.RI "void \fBAddFont\fP (U32 id, \fBFont\fP &font)"
+.RI "void \fBAddFont\fP (\fBU32\fP id, \fBFont\fP &font)"
 .br
 .ti -1c
-.RI "shared_ptr< \fBFont\fP > \fBGetFont\fP (U32 id)"
+.RI "shared_ptr< \fBFont\fP > \fBGetFont\fP (\fBU32\fP id)"
 .br
 .in -1c
 .SS "Static Public Member Functions"
@@ -33,7 +33,7 @@ KillerEngine::FontManager
 
 .in +1c
 .ti -1c
-.RI "std::map< U32, shared_ptr< \fBFont\fP > > \fB_loadedFonts\fP"
+.RI "std::map< \fBU32\fP, shared_ptr< \fBFont\fP > > \fB_loadedFonts\fP"
 .br
 .in -1c
 .SS "Static Private Attributes"

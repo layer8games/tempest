@@ -1,5 +1,9 @@
 var searchData=
 [
+  ['s16',['S16',['../_atom_8h.html#a6d241ad21a823c90d4835380787db5d4',1,'Atom.h']]],
+  ['s32',['S32',['../_atom_8h.html#a39c786017723555afb9e8b85accec0de',1,'Atom.h']]],
+  ['s64',['S64',['../_atom_8h.html#a1d293e5c494dd6826239b02f5fe98e7f',1,'Atom.h']]],
+  ['s8',['S8',['../_atom_8h.html#af1475a0bb1962ef08dd1f78bd5dba87a',1,'Atom.h']]],
   ['set',['Set',['../class_killer_math_1_1_vector.html#a535b8a4747ae5ab113d79f3f996ed27c',1,'KillerMath::Vector']]],
   ['setacceleration',['SetAcceleration',['../class_killer_physics_1_1_particle.html#af59de95a45bffe459b6eec4614f10eb6',1,'KillerPhysics::Particle::SetAcceleration(const KM::Vector &amp;acc)'],['../class_killer_physics_1_1_particle.html#a8821fc56a6ea8b1414d7dc9c9f04eee6',1,'KillerPhysics::Particle::SetAcceleration(F32 x, F32 y)'],['../class_killer_physics_1_1_particle.html#a565d0a8f86f0c3f1865a3f4eb789aa7d',1,'KillerPhysics::Particle::SetAcceleration(F32 x, F32 y, F32 z)']]],
   ['setactive',['SetActive',['../class_killer_engine_1_1_text.html#a0b9fd4c1de463fdd2c0639981474b915',1,'KillerEngine::Text::SetActive(bool state)'],['../class_killer_engine_1_1_text.html#a570494e905aca3d1ae3ae3de52ede136',1,'KillerEngine::Text::SetActive(void)']]],

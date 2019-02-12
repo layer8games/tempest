@@ -15,35 +15,35 @@ KillerEngine::Color
 .RI "\fBColor\fP (void)"
 .br
 .ti -1c
-.RI "\fBColor\fP (F32 col)"
+.RI "\fBColor\fP (\fBF32\fP col)"
 .br
 .ti -1c
-.RI "\fBColor\fP (F32 red, F32 green, F32 blue)"
+.RI "\fBColor\fP (\fBF32\fP red, \fBF32\fP green, \fBF32\fP blue)"
 .br
 .ti -1c
-.RI "\fBColor\fP (F32 red, F32 green, F32 blue, F32 alpha)"
+.RI "\fBColor\fP (\fBF32\fP red, \fBF32\fP green, \fBF32\fP blue, \fBF32\fP alpha)"
 .br
 .ti -1c
 .RI "\fBColor\fP (const \fBColor\fP &c)"
 .br
 .ti -1c
-.RI "const F32 & \fBoperator[]\fP (int i) const"
+.RI "const \fBF32\fP & \fBoperator[]\fP (int i) const"
 .br
 .ti -1c
-.RI "F32 & \fBoperator[]\fP (int i)"
+.RI "\fBF32\fP & \fBoperator[]\fP (int i)"
 .br
 .ti -1c
 .RI "\fBColor\fP & \fBoperator=\fP (const \fBColor\fP &c)"
 .br
 .ti -1c
-.RI "const F32 * \fBGetPointer\fP (void) const"
+.RI "const \fBF32\fP * \fBGetPointer\fP (void) const"
 .br
 .in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
-.RI "F32 \fB_data\fP [4]"
+.RI "\fBF32\fP \fB_data\fP [4]"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -57,7 +57,7 @@ There will be 4 values per color so that it can be sent to a vec4 in OGL before 
 .PP 
 .SS "Color::Color (void)"
 Default Constructor\&. Sets Red Green and Blue to 0\&.0f, and Alpha to 1\&.0f 
-.SS "Color::Color (F32 col)\fC [explicit]\fP"
+.SS "Color::Color (\fBF32\fP col)\fC [explicit]\fP"
 Single Value Constructor\&. Sets Red, Green and Blue to value\&. The value needs to be between 0\&.0f and 1\&.0f\&. Alpha is set to 1\&.0f by default\&. 
 .PP
 \fBParameters:\fP
@@ -66,7 +66,7 @@ Single Value Constructor\&. Sets Red, Green and Blue to value\&. The value needs
 .RE
 .PP
 
-.SS "Color::Color (F32 red, F32 green, F32 blue)"
+.SS "Color::Color (\fBF32\fP red, \fBF32\fP green, \fBF32\fP blue)"
 Three value Constructor\&. Sets Red, Green and Blue accordingly\&. Values need to be between 0\&.0f and 1\&.0f\&. Alpha is set to 1\&.0f by default\&. 
 .PP
 \fBParameters:\fP
@@ -79,7 +79,7 @@ Three value Constructor\&. Sets Red, Green and Blue accordingly\&. Values need t
 .RE
 .PP
 
-.SS "Color::Color (F32 red, F32 green, F32 blue, F32 alpha)"
+.SS "Color::Color (\fBF32\fP red, \fBF32\fP green, \fBF32\fP blue, \fBF32\fP alpha)"
 Four value Constructor\&. Sets Red, Green and Blue accordingly\&. Values need to be between 0\&.0f and 1\&.0f by default\&. 
 .PP
 \fBParameters:\fP
@@ -105,7 +105,7 @@ Copy constructor\&. Calls Color::GetRed Color::GetGreen Color::GetBlue Color::Ge
 
 .SH "Member Function Documentation"
 .PP 
-.SS "const F32* KillerEngine::Color::GetPointer (void) const\fC [inline]\fP"
+.SS "const \fBF32\fP* KillerEngine::Color::GetPointer (void) const\fC [inline]\fP"
 Creates and returns an array with the 4 color values in it as a pointer\&. 
 
 .SH "Author"

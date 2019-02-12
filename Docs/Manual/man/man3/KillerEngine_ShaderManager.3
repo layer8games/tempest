@@ -10,13 +10,13 @@ KillerEngine::ShaderManager
 
 .in +1c
 .ti -1c
-.RI "void \fBAddShader\fP (U32 id, shared_ptr< \fBShader\fP > shader)"
+.RI "void \fBAddShader\fP (\fBU32\fP id, shared_ptr< \fBShader\fP > shader)"
 .br
 .ti -1c
-.RI "void \fBLoadShader\fP (U32 id, std::vector< \fBShaderData\fP > data)"
+.RI "void \fBLoadShader\fP (\fBU32\fP id, std::vector< \fBShaderData\fP > data)"
 .br
 .ti -1c
-.RI "shared_ptr< \fBShader\fP > \fBGetShader\fP (U32 id)"
+.RI "shared_ptr< \fBShader\fP > \fBGetShader\fP (\fBU32\fP id)"
 .br
 .in -1c
 .SS "Static Public Member Functions"
@@ -37,7 +37,7 @@ KillerEngine::ShaderManager
 
 .in +1c
 .ti -1c
-.RI "std::map< U32, shared_ptr< \fBShader\fP > > \fB_loadedShaders\fP"
+.RI "std::map< \fBU32\fP, shared_ptr< \fBShader\fP > > \fB_loadedShaders\fP"
 .br
 .in -1c
 .SS "Static Private Attributes"

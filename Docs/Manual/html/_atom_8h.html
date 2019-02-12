@@ -96,385 +96,127 @@ $(document).ready(function(){initNavTree('_atom_8h.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;Windows.h&gt;</code><br />
-<code>#include &lt;<a class="el" href="gl3w_8h_source.html">GL/gl3w.h</a>&gt;</code><br />
+<code>#include &lt;GL/glew.h&gt;</code><br />
+<code>#include &lt;GLFW/glfw3.h&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for Atom.h:</div>
-<div class="dyncontent">
-<div class="center"><img src="_atom_8h__incl.png" border="0" usemap="#_f_1_2_projects_2_killer___engine_2_headers_2_engine_2_atom_8h" alt=""/></div>
-<map name="_f_1_2_projects_2_killer___engine_2_headers_2_engine_2_atom_8h" id="_f_1_2_projects_2_killer___engine_2_headers_2_engine_2_atom_8h">
-</map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="_atom_8h__dep__incl.png" border="0" usemap="#_f_1_2_projects_2_killer___engine_2_headers_2_engine_2_atom_8hdep" alt=""/></div>
-<map name="_f_1_2_projects_2_killer___engine_2_headers_2_engine_2_atom_8hdep" id="_f_1_2_projects_2_killer___engine_2_headers_2_engine_2_atom_8hdep">
-</map>
-</div>
 </div>
 <p><a href="_atom_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a61df8c6544a4c2dabae7825eeb67b0bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a61df8c6544a4c2dabae7825eeb67b0bd">DOUBLE_PRECISION</a></td></tr>
-<tr class="separator:a61df8c6544a4c2dabae7825eeb67b0bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70fc4e60483cc1a5cb39dd935640cadc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a70fc4e60483cc1a5cb39dd935640cadc">REAL_MAX</a>&#160;&#160;&#160;FLT_MAX</td></tr>
+<tr class="memitem:abcde84ea0ef5f934384e4620f092c85a"><td class="memItemLeft" align="right" valign="top"><a id="abcde84ea0ef5f934384e4620f092c85a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>GLEW_STATIC</b></td></tr>
+<tr class="separator:abcde84ea0ef5f934384e4620f092c85a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70fc4e60483cc1a5cb39dd935640cadc"><td class="memItemLeft" align="right" valign="top"><a id="a70fc4e60483cc1a5cb39dd935640cadc"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a70fc4e60483cc1a5cb39dd935640cadc">REAL_MAX</a>&#160;&#160;&#160;FLT_MAX</td></tr>
+<tr class="memdesc:a70fc4e60483cc1a5cb39dd935640cadc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defined as FLT_MAX. <br /></td></tr>
 <tr class="separator:a70fc4e60483cc1a5cb39dd935640cadc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62fde4217f637e745572c33e37e8d842"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a62fde4217f637e745572c33e37e8d842">real_sqrt</a>&#160;&#160;&#160;sqrt</td></tr>
+<tr class="memitem:a62fde4217f637e745572c33e37e8d842"><td class="memItemLeft" align="right" valign="top"><a id="a62fde4217f637e745572c33e37e8d842"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a62fde4217f637e745572c33e37e8d842">real_sqrt</a>&#160;&#160;&#160;sqrt</td></tr>
+<tr class="memdesc:a62fde4217f637e745572c33e37e8d842"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for the sqrt function. <br /></td></tr>
 <tr class="separator:a62fde4217f637e745572c33e37e8d842"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8dfc5ed815226c7c6b4cbb7497b8269c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a8dfc5ed815226c7c6b4cbb7497b8269c">real_abs</a>&#160;&#160;&#160;fabsf</td></tr>
+<tr class="memitem:a8dfc5ed815226c7c6b4cbb7497b8269c"><td class="memItemLeft" align="right" valign="top"><a id="a8dfc5ed815226c7c6b4cbb7497b8269c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a8dfc5ed815226c7c6b4cbb7497b8269c">real_abs</a>&#160;&#160;&#160;fabsf</td></tr>
+<tr class="memdesc:a8dfc5ed815226c7c6b4cbb7497b8269c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for the fabsf function. <br /></td></tr>
 <tr class="separator:a8dfc5ed815226c7c6b4cbb7497b8269c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a794a500a3b790ab2475f9c89b631fefd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a794a500a3b790ab2475f9c89b631fefd">real_sin</a>&#160;&#160;&#160;sin</td></tr>
+<tr class="memitem:a794a500a3b790ab2475f9c89b631fefd"><td class="memItemLeft" align="right" valign="top"><a id="a794a500a3b790ab2475f9c89b631fefd"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a794a500a3b790ab2475f9c89b631fefd">real_sin</a>&#160;&#160;&#160;sin</td></tr>
+<tr class="memdesc:a794a500a3b790ab2475f9c89b631fefd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for the sin function. <br /></td></tr>
 <tr class="separator:a794a500a3b790ab2475f9c89b631fefd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90aee8fe5c75893ee4824ffdb980d83a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a90aee8fe5c75893ee4824ffdb980d83a">real_cos</a>&#160;&#160;&#160;cos</td></tr>
+<tr class="memitem:a90aee8fe5c75893ee4824ffdb980d83a"><td class="memItemLeft" align="right" valign="top"><a id="a90aee8fe5c75893ee4824ffdb980d83a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>real_cos</b>&#160;&#160;&#160;cos</td></tr>
 <tr class="separator:a90aee8fe5c75893ee4824ffdb980d83a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7ef619b91b3578381c3034144c57b85"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#aa7ef619b91b3578381c3034144c57b85">real_exp</a>&#160;&#160;&#160;exp</td></tr>
+<tr class="memitem:a47f2d5ebb257f94835028dbcb0efb49d"><td class="memItemLeft" align="right" valign="top"><a id="a47f2d5ebb257f94835028dbcb0efb49d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a47f2d5ebb257f94835028dbcb0efb49d">real_tan</a>&#160;&#160;&#160;tan</td></tr>
+<tr class="memdesc:a47f2d5ebb257f94835028dbcb0efb49d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for the tan function. <br /></td></tr>
+<tr class="separator:a47f2d5ebb257f94835028dbcb0efb49d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7ef619b91b3578381c3034144c57b85"><td class="memItemLeft" align="right" valign="top"><a id="aa7ef619b91b3578381c3034144c57b85"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#aa7ef619b91b3578381c3034144c57b85">real_exp</a>&#160;&#160;&#160;exp</td></tr>
+<tr class="memdesc:aa7ef619b91b3578381c3034144c57b85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for the exp function. <br /></td></tr>
 <tr class="separator:aa7ef619b91b3578381c3034144c57b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4b35674d9a186dfcb92f988a1dc014f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#ad4b35674d9a186dfcb92f988a1dc014f">real_pow</a>&#160;&#160;&#160;pow</td></tr>
+<tr class="memitem:ad4b35674d9a186dfcb92f988a1dc014f"><td class="memItemLeft" align="right" valign="top"><a id="ad4b35674d9a186dfcb92f988a1dc014f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#ad4b35674d9a186dfcb92f988a1dc014f">real_pow</a>&#160;&#160;&#160;pow</td></tr>
+<tr class="memdesc:ad4b35674d9a186dfcb92f988a1dc014f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for the pow function. <br /></td></tr>
 <tr class="separator:ad4b35674d9a186dfcb92f988a1dc014f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54a1672ee009885701363111bdebc4ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a54a1672ee009885701363111bdebc4ad">real_fmod</a>&#160;&#160;&#160;fmod</td></tr>
+<tr class="memitem:a54a1672ee009885701363111bdebc4ad"><td class="memItemLeft" align="right" valign="top"><a id="a54a1672ee009885701363111bdebc4ad"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a54a1672ee009885701363111bdebc4ad">real_fmod</a>&#160;&#160;&#160;fmod4</td></tr>
+<tr class="memdesc:a54a1672ee009885701363111bdebc4ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for fmod4 function. <br /></td></tr>
 <tr class="separator:a54a1672ee009885701363111bdebc4ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c1ff2c4b00ca1d4ec6f83424ea66075"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a7c1ff2c4b00ca1d4ec6f83424ea66075">real_epsilon</a>&#160;&#160;&#160;DBL_EPSILON</td></tr>
+<tr class="memitem:a7c1ff2c4b00ca1d4ec6f83424ea66075"><td class="memItemLeft" align="right" valign="top"><a id="a7c1ff2c4b00ca1d4ec6f83424ea66075"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>real_epsilon</b>&#160;&#160;&#160;DBL_EPSILON</td></tr>
 <tr class="separator:a7c1ff2c4b00ca1d4ec6f83424ea66075"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:af1475a0bb1962ef08dd1f78bd5dba87a"><td class="memItemLeft" align="right" valign="top">typedef int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#af1475a0bb1962ef08dd1f78bd5dba87a">S8</a></td></tr>
+<tr class="memitem:af1475a0bb1962ef08dd1f78bd5dba87a"><td class="memItemLeft" align="right" valign="top"><a id="af1475a0bb1962ef08dd1f78bd5dba87a"></a>
+typedef int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#af1475a0bb1962ef08dd1f78bd5dba87a">S8</a></td></tr>
+<tr class="memdesc:af1475a0bb1962ef08dd1f78bd5dba87a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signed, 8 bit integer. <br /></td></tr>
 <tr class="separator:af1475a0bb1962ef08dd1f78bd5dba87a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d241ad21a823c90d4835380787db5d4"><td class="memItemLeft" align="right" valign="top">typedef int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a6d241ad21a823c90d4835380787db5d4">S16</a></td></tr>
+<tr class="memitem:a6d241ad21a823c90d4835380787db5d4"><td class="memItemLeft" align="right" valign="top"><a id="a6d241ad21a823c90d4835380787db5d4"></a>
+typedef int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a6d241ad21a823c90d4835380787db5d4">S16</a></td></tr>
+<tr class="memdesc:a6d241ad21a823c90d4835380787db5d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signed, 16 bit integer. <br /></td></tr>
 <tr class="separator:a6d241ad21a823c90d4835380787db5d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39c786017723555afb9e8b85accec0de"><td class="memItemLeft" align="right" valign="top">typedef int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a39c786017723555afb9e8b85accec0de">S32</a></td></tr>
+<tr class="memitem:a39c786017723555afb9e8b85accec0de"><td class="memItemLeft" align="right" valign="top"><a id="a39c786017723555afb9e8b85accec0de"></a>
+typedef int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a39c786017723555afb9e8b85accec0de">S32</a></td></tr>
+<tr class="memdesc:a39c786017723555afb9e8b85accec0de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signed, 32 bit integer. <br /></td></tr>
 <tr class="separator:a39c786017723555afb9e8b85accec0de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d293e5c494dd6826239b02f5fe98e7f"><td class="memItemLeft" align="right" valign="top">typedef int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a1d293e5c494dd6826239b02f5fe98e7f">S64</a></td></tr>
+<tr class="memitem:a1d293e5c494dd6826239b02f5fe98e7f"><td class="memItemLeft" align="right" valign="top"><a id="a1d293e5c494dd6826239b02f5fe98e7f"></a>
+typedef int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a1d293e5c494dd6826239b02f5fe98e7f">S64</a></td></tr>
+<tr class="memdesc:a1d293e5c494dd6826239b02f5fe98e7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signed, 64 bit integer. <br /></td></tr>
 <tr class="separator:a1d293e5c494dd6826239b02f5fe98e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa63ef7b996d5487ce35a5a66601f3e73"><td class="memItemLeft" align="right" valign="top">typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#aa63ef7b996d5487ce35a5a66601f3e73">U8</a></td></tr>
+<tr class="memitem:aa63ef7b996d5487ce35a5a66601f3e73"><td class="memItemLeft" align="right" valign="top"><a id="aa63ef7b996d5487ce35a5a66601f3e73"></a>
+typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#aa63ef7b996d5487ce35a5a66601f3e73">U8</a></td></tr>
+<tr class="memdesc:aa63ef7b996d5487ce35a5a66601f3e73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsigned, 8 bit integer. <br /></td></tr>
 <tr class="separator:aa63ef7b996d5487ce35a5a66601f3e73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a0a322d5fa4a546d293a77ba8b4a71f"><td class="memItemLeft" align="right" valign="top">typedef uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a0a0a322d5fa4a546d293a77ba8b4a71f">U16</a></td></tr>
+<tr class="memitem:a0a0a322d5fa4a546d293a77ba8b4a71f"><td class="memItemLeft" align="right" valign="top"><a id="a0a0a322d5fa4a546d293a77ba8b4a71f"></a>
+typedef uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a0a0a322d5fa4a546d293a77ba8b4a71f">U16</a></td></tr>
+<tr class="memdesc:a0a0a322d5fa4a546d293a77ba8b4a71f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsigned, 16 bit integer. <br /></td></tr>
 <tr class="separator:a0a0a322d5fa4a546d293a77ba8b4a71f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a696390429f2f3b644bde8d0322a24124"><td class="memItemLeft" align="right" valign="top">typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a></td></tr>
+<tr class="memitem:a696390429f2f3b644bde8d0322a24124"><td class="memItemLeft" align="right" valign="top"><a id="a696390429f2f3b644bde8d0322a24124"></a>
+typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a></td></tr>
+<tr class="memdesc:a696390429f2f3b644bde8d0322a24124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsigned, 32 bit integer. <br /></td></tr>
 <tr class="separator:a696390429f2f3b644bde8d0322a24124"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25809e0734a149248fcf5831efa4e33d"><td class="memItemLeft" align="right" valign="top">typedef uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a25809e0734a149248fcf5831efa4e33d">U64</a></td></tr>
+<tr class="memitem:a25809e0734a149248fcf5831efa4e33d"><td class="memItemLeft" align="right" valign="top"><a id="a25809e0734a149248fcf5831efa4e33d"></a>
+typedef uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a25809e0734a149248fcf5831efa4e33d">U64</a></td></tr>
+<tr class="memdesc:a25809e0734a149248fcf5831efa4e33d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsigned, 64 bit integer. <br /></td></tr>
 <tr class="separator:a25809e0734a149248fcf5831efa4e33d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a841d3674577a1e86afdc2f4845f46c4b"><td class="memItemLeft" align="right" valign="top">typedef float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a></td></tr>
+<tr class="memitem:a841d3674577a1e86afdc2f4845f46c4b"><td class="memItemLeft" align="right" valign="top"><a id="a841d3674577a1e86afdc2f4845f46c4b"></a>
+typedef float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a></td></tr>
+<tr class="memdesc:a841d3674577a1e86afdc2f4845f46c4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">32 bit float point number. <br /></td></tr>
 <tr class="separator:a841d3674577a1e86afdc2f4845f46c4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc9896ee12db3bb116fc63b3464c72c7"><td class="memItemLeft" align="right" valign="top">typedef double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#adc9896ee12db3bb116fc63b3464c72c7">F64</a></td></tr>
+<tr class="memitem:adc9896ee12db3bb116fc63b3464c72c7"><td class="memItemLeft" align="right" valign="top"><a id="adc9896ee12db3bb116fc63b3464c72c7"></a>
+typedef double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#adc9896ee12db3bb116fc63b3464c72c7">F64</a></td></tr>
+<tr class="memdesc:adc9896ee12db3bb116fc63b3464c72c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">64 bit float point number. <br /></td></tr>
 <tr class="separator:adc9896ee12db3bb116fc63b3464c72c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a031f8951175b43076c2084a6c2173410"><td class="memItemLeft" align="right" valign="top">typedef float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a></td></tr>
+<tr class="memitem:a031f8951175b43076c2084a6c2173410"><td class="memItemLeft" align="right" valign="top"><a id="a031f8951175b43076c2084a6c2173410"></a>
+typedef float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a></td></tr>
+<tr class="memdesc:a031f8951175b43076c2084a6c2173410"><td class="mdescLeft">&#160;</td><td class="mdescRight">A configurable real number. Currently set to be 32 bits, could be set o 64 bits. <br /></td></tr>
 <tr class="separator:a031f8951175b43076c2084a6c2173410"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a9da93dec37a949fa6996e46c52562447"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a9da93dec37a949fa6996e46c52562447">RealSqr</a> (<a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a> <a class="el" href="glcorearb_8h.html#a0cdec8e97a75ee9458b23d152bf962d4">x</a>)</td></tr>
-<tr class="separator:a9da93dec37a949fa6996e46c52562447"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7c9e6357e24ecd3dbf5b128fe92d86b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#ae7c9e6357e24ecd3dbf5b128fe92d86b">DegreeToRadian</a> (<a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> angle)</td></tr>
-<tr class="separator:ae7c9e6357e24ecd3dbf5b128fe92d86b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23914c0a41c63c6a7869e6e4c466204a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a23914c0a41c63c6a7869e6e4c466204a">REAL_SQR</a> (<a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a> x)</td></tr>
+<tr class="separator:a23914c0a41c63c6a7869e6e4c466204a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad06479465462169e68af16c08fc1ba35"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#ad06479465462169e68af16c08fc1ba35">RADIAN</a> (<a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> angle)</td></tr>
+<tr class="separator:ad06479465462169e68af16c08fc1ba35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae302d253ab1b2c8dc0f0f95f75f67fc1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#ae302d253ab1b2c8dc0f0f95f75f67fc1">DEGREE</a> (<a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> radian)</td></tr>
+<tr class="separator:ae302d253ab1b2c8dc0f0f95f75f67fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33ce6dd57af96f0ba08e64e74e9ed5d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a33ce6dd57af96f0ba08e64e74e9ed5d8">FLOAT_CLAMP</a> (<a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> val, <a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> min, <a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> max)</td></tr>
+<tr class="separator:a33ce6dd57af96f0ba08e64e74e9ed5d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a2faa8b1b25d610065d1d367655238b9a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a2faa8b1b25d610065d1d367655238b9a">R_PI</a> = static_cast&lt;<a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a>&gt;(3.14159265358979)</td></tr>
+<tr class="memitem:a2faa8b1b25d610065d1d367655238b9a"><td class="memItemLeft" align="right" valign="top"><a id="a2faa8b1b25d610065d1d367655238b9a"></a>
+const <a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_atom_8h.html#a2faa8b1b25d610065d1d367655238b9a">R_PI</a> = static_cast&lt;<a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a>&gt;(3.14159265358979)</td></tr>
+<tr class="memdesc:a2faa8b1b25d610065d1d367655238b9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defined as 3.14159265358979. <br /></td></tr>
 <tr class="separator:a2faa8b1b25d610065d1d367655238b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a61df8c6544a4c2dabae7825eeb67b0bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61df8c6544a4c2dabae7825eeb67b0bd">&#9670;&nbsp;</a></span>DOUBLE_PRECISION</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DOUBLE_PRECISION</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8dfc5ed815226c7c6b4cbb7497b8269c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8dfc5ed815226c7c6b4cbb7497b8269c">&#9670;&nbsp;</a></span>real_abs</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define real_abs&#160;&#160;&#160;fabsf</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a90aee8fe5c75893ee4824ffdb980d83a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a90aee8fe5c75893ee4824ffdb980d83a">&#9670;&nbsp;</a></span>real_cos</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define real_cos&#160;&#160;&#160;cos</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7c1ff2c4b00ca1d4ec6f83424ea66075"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c1ff2c4b00ca1d4ec6f83424ea66075">&#9670;&nbsp;</a></span>real_epsilon</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define real_epsilon&#160;&#160;&#160;DBL_EPSILON</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa7ef619b91b3578381c3034144c57b85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7ef619b91b3578381c3034144c57b85">&#9670;&nbsp;</a></span>real_exp</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define real_exp&#160;&#160;&#160;exp</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a54a1672ee009885701363111bdebc4ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54a1672ee009885701363111bdebc4ad">&#9670;&nbsp;</a></span>real_fmod</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define real_fmod&#160;&#160;&#160;fmod</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a70fc4e60483cc1a5cb39dd935640cadc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a70fc4e60483cc1a5cb39dd935640cadc">&#9670;&nbsp;</a></span>REAL_MAX</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define REAL_MAX&#160;&#160;&#160;FLT_MAX</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad4b35674d9a186dfcb92f988a1dc014f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4b35674d9a186dfcb92f988a1dc014f">&#9670;&nbsp;</a></span>real_pow</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define real_pow&#160;&#160;&#160;pow</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a794a500a3b790ab2475f9c89b631fefd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a794a500a3b790ab2475f9c89b631fefd">&#9670;&nbsp;</a></span>real_sin</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define real_sin&#160;&#160;&#160;sin</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a62fde4217f637e745572c33e37e8d842"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62fde4217f637e745572c33e37e8d842">&#9670;&nbsp;</a></span>real_sqrt</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define real_sqrt&#160;&#160;&#160;sqrt</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="a841d3674577a1e86afdc2f4845f46c4b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a841d3674577a1e86afdc2f4845f46c4b">&#9670;&nbsp;</a></span>F32</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef float <a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="adc9896ee12db3bb116fc63b3464c72c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc9896ee12db3bb116fc63b3464c72c7">&#9670;&nbsp;</a></span>F64</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef double <a class="el" href="_atom_8h.html#adc9896ee12db3bb116fc63b3464c72c7">F64</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a031f8951175b43076c2084a6c2173410"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a031f8951175b43076c2084a6c2173410">&#9670;&nbsp;</a></span>real</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef float <a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6d241ad21a823c90d4835380787db5d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d241ad21a823c90d4835380787db5d4">&#9670;&nbsp;</a></span>S16</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef int16_t <a class="el" href="_atom_8h.html#a6d241ad21a823c90d4835380787db5d4">S16</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a39c786017723555afb9e8b85accec0de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39c786017723555afb9e8b85accec0de">&#9670;&nbsp;</a></span>S32</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef int32_t <a class="el" href="_atom_8h.html#a39c786017723555afb9e8b85accec0de">S32</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1d293e5c494dd6826239b02f5fe98e7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d293e5c494dd6826239b02f5fe98e7f">&#9670;&nbsp;</a></span>S64</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef int64_t <a class="el" href="_atom_8h.html#a1d293e5c494dd6826239b02f5fe98e7f">S64</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af1475a0bb1962ef08dd1f78bd5dba87a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1475a0bb1962ef08dd1f78bd5dba87a">&#9670;&nbsp;</a></span>S8</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef int8_t <a class="el" href="_atom_8h.html#af1475a0bb1962ef08dd1f78bd5dba87a">S8</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0a0a322d5fa4a546d293a77ba8b4a71f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a0a322d5fa4a546d293a77ba8b4a71f">&#9670;&nbsp;</a></span>U16</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef uint16_t <a class="el" href="_atom_8h.html#a0a0a322d5fa4a546d293a77ba8b4a71f">U16</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a696390429f2f3b644bde8d0322a24124"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a696390429f2f3b644bde8d0322a24124">&#9670;&nbsp;</a></span>U32</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef uint32_t <a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a25809e0734a149248fcf5831efa4e33d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25809e0734a149248fcf5831efa4e33d">&#9670;&nbsp;</a></span>U64</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef uint64_t <a class="el" href="_atom_8h.html#a25809e0734a149248fcf5831efa4e33d">U64</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa63ef7b996d5487ce35a5a66601f3e73"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa63ef7b996d5487ce35a5a66601f3e73">&#9670;&nbsp;</a></span>U8</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef uint8_t <a class="el" href="_atom_8h.html#aa63ef7b996d5487ce35a5a66601f3e73">U8</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="ae7c9e6357e24ecd3dbf5b128fe92d86b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7c9e6357e24ecd3dbf5b128fe92d86b">&#9670;&nbsp;</a></span>DegreeToRadian()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Global helpers and defines. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ae302d253ab1b2c8dc0f0f95f75f67fc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae302d253ab1b2c8dc0f0f95f75f67fc1">&#9670;&nbsp;</a></span>DEGREE()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -483,7 +225,89 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> DegreeToRadian </td>
+          <td class="memname"><a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> DEGREE </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a>&#160;</td>
+          <td class="paramname"><em>radian</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Converts a radian to an angle. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">radian</td><td>is the value to convert. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a33ce6dd57af96f0ba08e64e74e9ed5d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33ce6dd57af96f0ba08e64e74e9ed5d8">&#9670;&nbsp;</a></span>FLOAT_CLAMP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> FLOAT_CLAMP </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a>&#160;</td>
+          <td class="paramname"><em>val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a>&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a>&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Clamps a value to a set min and max. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>is the value to clamp. </td></tr>
+    <tr><td class="paramname">min</td><td>is the floor. </td></tr>
+    <tr><td class="paramname">max</td><td>is the ceiling. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad06479465462169e68af16c08fc1ba35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad06479465462169e68af16c08fc1ba35">&#9670;&nbsp;</a></span>RADIAN()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> RADIAN </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a>&#160;</td>
           <td class="paramname"><em>angle</em></td><td>)</td>
@@ -496,11 +320,17 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Converts an angle to a radian. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>is the value to convert. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a9da93dec37a949fa6996e46c52562447"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9da93dec37a949fa6996e46c52562447">&#9670;&nbsp;</a></span>RealSqr()</h2>
+<a id="a23914c0a41c63c6a7869e6e4c466204a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23914c0a41c63c6a7869e6e4c466204a">&#9670;&nbsp;</a></span>REAL_SQR()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -509,7 +339,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a> RealSqr </td>
+          <td class="memname"><a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a> REAL_SQR </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a>&#160;</td>
           <td class="paramname"><em>x</em></td><td>)</td>
@@ -522,21 +352,12 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a2faa8b1b25d610065d1d367655238b9a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2faa8b1b25d610065d1d367655238b9a">&#9670;&nbsp;</a></span>R_PI</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a> R_PI = static_cast&lt;<a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a>&gt;(3.14159265358979)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Returns the value squared. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>is the value. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

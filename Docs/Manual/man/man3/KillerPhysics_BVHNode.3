@@ -16,7 +16,7 @@ KillerPhysics::BVHNode< BoundingVolumeClass >
 .RI "bool \fBIsLeaf\fP (void) const"
 .br
 .ti -1c
-.RI "U32 \fBGetPotentialContacts\fP (\fBPotentialContact\fP *contacts, U32 limit) const"
+.RI "\fBU32\fP \fBGetPotentialContacts\fP (\fBPotentialContact\fP *contacts, \fBU32\fP limit) const"
 .br
 .ti -1c
 .RI "void \fBInsert\fP (shared_ptr< \fBRigidBody\fP > newBody, const BoundingVolumeClass &newVolume)"
@@ -45,7 +45,7 @@ KillerPhysics::BVHNode< BoundingVolumeClass >
 .RI "bool \fB_Overlaps\fP (const \fBBVHNode\fP< BoundingVolumeClass > *other) const"
 .br
 .ti -1c
-.RI "U32 \fB_GetPotentialChildContacts\fP (const \fBBVHNode\fP< BoundingVolumeClass > *other, \fBPotentialContact\fP *contacts, U32 limit) const"
+.RI "\fBU32\fP \fB_GetPotentialChildContacts\fP (const \fBBVHNode\fP< BoundingVolumeClass > *other, \fBPotentialContact\fP *contacts, \fBU32\fP limit) const"
 .br
 .ti -1c
 .RI "void \fB_RecalculateBoundingVolume\fP (bool recursive=true)"

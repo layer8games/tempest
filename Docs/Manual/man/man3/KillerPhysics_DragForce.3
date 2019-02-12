@@ -17,7 +17,7 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .RI "\fBDragForce\fP (void)"
 .br
 .ti -1c
-.RI "\fBDragForce\fP (real drag)"
+.RI "\fBDragForce\fP (\fBreal\fP drag)"
 .br
 .ti -1c
 .RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle\fP > particle) final"
@@ -26,21 +26,21 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .RI "void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody\fP > body) final"
 .br
 .ti -1c
-.RI "void \fBSetDrag\fP (real d)"
+.RI "void \fBSetDrag\fP (\fBreal\fP d)"
 .br
 .ti -1c
-.RI "real \fBGetDrag\fP (void)"
+.RI "\fBreal\fP \fBGetDrag\fP (void)"
 .br
 .in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
-.RI "real \fB_drag\fP"
+.RI "\fBreal\fP \fB_drag\fP"
 .br
 .RI "Drag coefficent used to determine how much velocity should be removed\&. "
 .ti -1c
-.RI "real \fB_dragSqr\fP"
+.RI "\fBreal\fP \fB_dragSqr\fP"
 .br
 .RI "Simply the drag coefficient squared\&. Cached to save on some operations\&. "
 .in -1c
@@ -63,7 +63,7 @@ It is based on the Cyclone engine design found in 'Game Physics Engine Developme
 .PP 
 .SS "DragForce::DragForce (void)"
 Sets all values to 0\&. 
-.SS "DragForce::DragForce (real drag)"
+.SS "DragForce::DragForce (\fBreal\fP drag)"
 Sets starting values for the \fBDragForce\fP\&. 
 .PP
 \fBParameters:\fP
@@ -74,9 +74,9 @@ Sets starting values for the \fBDragForce\fP\&.
 
 .SH "Member Function Documentation"
 .PP 
-.SS "real KillerPhysics::DragForce::GetDrag (void)\fC [inline]\fP"
+.SS "\fBreal\fP KillerPhysics::DragForce::GetDrag (void)\fC [inline]\fP"
 Returns the current drag coefficient\&. 
-.SS "void KillerPhysics::DragForce::SetDrag (real d)\fC [inline]\fP"
+.SS "void KillerPhysics::DragForce::SetDrag (\fBreal\fP d)\fC [inline]\fP"
 Changes the drag coefficient\&. 
 .PP
 \fBParameters:\fP

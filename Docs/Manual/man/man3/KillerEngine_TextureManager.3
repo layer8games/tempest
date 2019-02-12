@@ -15,16 +15,16 @@ KillerEngine::TextureManager
 .RI "\fB~TextureManager\fP (void)"
 .br
 .ti -1c
-.RI "void \fBLoadTexture\fP (U32 id, string filePath)"
+.RI "void \fBLoadTexture\fP (\fBU32\fP id, string filePath)"
 .br
 .ti -1c
-.RI "void \fBAddTexture\fP (U32 id, const \fBTexture\fP &tex)"
+.RI "void \fBAddTexture\fP (\fBU32\fP id, const \fBTexture\fP &tex)"
 .br
 .ti -1c
-.RI "void \fBAddTexture\fP (U32 id, shared_ptr< \fBTexture\fP > tex)"
+.RI "void \fBAddTexture\fP (\fBU32\fP id, shared_ptr< \fBTexture\fP > tex)"
 .br
 .ti -1c
-.RI "const shared_ptr< \fBTexture\fP > \fBGetTexture\fP (U32 id)"
+.RI "const shared_ptr< \fBTexture\fP > \fBGetTexture\fP (\fBU32\fP id)"
 .br
 .in -1c
 .SS "Static Public Member Functions"
@@ -45,7 +45,7 @@ KillerEngine::TextureManager
 
 .in +1c
 .ti -1c
-.RI "map< U32, shared_ptr< \fBTexture\fP > > \fB_loadedTextures\fP"
+.RI "map< \fBU32\fP, shared_ptr< \fBTexture\fP > > \fB_loadedTextures\fP"
 .br
 .RI "Database of all added \fBTexture\fP pointers that can be accessed\&. "
 .in -1c
@@ -68,9 +68,9 @@ Clears all of the saved Textures\&.
 Calls default, empty constructor on map\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void TextureManager::AddTexture (U32 id, const \fBTexture\fP & tex)"
+.SS "void TextureManager::AddTexture (\fBU32\fP id, const \fBTexture\fP & tex)"
 Adds a \fBTexture\fP to manager\&. ID will be used to call it back\&.  is the \fBTexture\fP to add\&. It is converted into a shared_ptr<Texture>\&. 
-.SS "void TextureManager::AddTexture (U32 id, shared_ptr< \fBTexture\fP > tex)"
+.SS "void TextureManager::AddTexture (\fBU32\fP id, shared_ptr< \fBTexture\fP > tex)"
 Adds a pointer to a \fBTexture\fP into the manager\&. ID will be used to call it back\&. 
 .PP
 \fBParameters:\fP
@@ -79,7 +79,7 @@ Adds a pointer to a \fBTexture\fP into the manager\&. ID will be used to call it
 .RE
 .PP
 
-.SS "const shared_ptr< \fBTexture\fP > TextureManager::GetTexture (U32 id)"
+.SS "const shared_ptr< \fBTexture\fP > TextureManager::GetTexture (\fBU32\fP id)"
 Returns the \fBTexture\fP pointer stored with ID\&. 
 .PP
 \fBParameters:\fP
@@ -90,7 +90,7 @@ Returns the \fBTexture\fP pointer stored with ID\&.
 
 .SS "shared_ptr< \fBTextureManager\fP > TextureManager::Instance (void)\fC [static]\fP"
 Singleton function\&. Returns the global pointer to the \fBTextureManager\fP\&. 
-.SS "void TextureManager::LoadTexture (U32 id, string filePath)"
+.SS "void TextureManager::LoadTexture (\fBU32\fP id, string filePath)"
 Creates a new \fBTexture\fP using the \fBTexture::Texture(string)\fP constructor\&. Saves by calling AddTexture\&. 
 .PP
 \fBParameters:\fP

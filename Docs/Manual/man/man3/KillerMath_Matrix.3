@@ -21,37 +21,37 @@ KillerMath::Matrix
 .RI "\fBMatrix\fP (const \fBVector\fP &x, const \fBVector\fP &y, const \fBVector\fP &z, const \fBVector\fP &w)"
 .br
 .ti -1c
-.RI "\fBMatrix\fP (const F32 val)"
+.RI "\fBMatrix\fP (const \fBF32\fP val)"
 .br
 .ti -1c
-.RI "\fBMatrix\fP (F32 m00, F32 m01, F32 m02, F32 m03, F32 m10, F32 m11, F32 m12, F32 m13, F32 m20, F32 m21, F32 m22, F32 m23, F32 m30, F32 m31, F32 m32, F32 m33)"
+.RI "\fBMatrix\fP (\fBF32\fP m00, \fBF32\fP m01, \fBF32\fP m02, \fBF32\fP m03, \fBF32\fP m10, \fBF32\fP m11, \fBF32\fP m12, \fBF32\fP m13, \fBF32\fP m20, \fBF32\fP m21, \fBF32\fP m22, \fBF32\fP m23, \fBF32\fP m30, \fBF32\fP m31, \fBF32\fP m32, \fBF32\fP m33)"
 .br
 .ti -1c
 .RI "\fBMatrix\fP (const \fBMatrix\fP &M)"
 .br
 .ti -1c
-.RI "const std::vector< F32 > \fBGetElems\fP (void) const"
+.RI "const std::vector< \fBF32\fP > \fBGetElems\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBMakeOrthographic\fP (F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)"
+.RI "void \fBMakeOrthographic\fP (\fBF32\fP left, \fBF32\fP right, \fBF32\fP bottom, \fBF32\fP top, \fBF32\fP nearPlane, \fBF32\fP farPlane)"
 .br
 .ti -1c
-.RI "void \fBMakePerspective\fP (F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F32 farPlane)"
+.RI "void \fBMakePerspective\fP (\fBF32\fP fieldOfView, \fBF32\fP aspectRatio, \fBF32\fP nearPlane, \fBF32\fP farPlane)"
 .br
 .ti -1c
-.RI "void \fBSetTranslate\fP (F32 xVal, F32 yVal)"
+.RI "void \fBSetTranslate\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
 .br
 .ti -1c
-.RI "void \fBSetTranslate\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "void \fBSetTranslate\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
 .RI "void \fBSetTranslate\fP (const \fBVector\fP &vec)"
 .br
 .ti -1c
-.RI "void \fBAddTranslate\fP (F32 xVal, F32 yVal)"
+.RI "void \fBAddTranslate\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
 .br
 .ti -1c
-.RI "void \fBAddTranslate\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "void \fBAddTranslate\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
 .RI "void \fBAddTranslate\fP (const \fBVector\fP &vec)"
@@ -66,46 +66,46 @@ KillerMath::Matrix
 .RI "\fBVector\fP \fBTransformInverseDirection\fP (const \fBVector\fP &vec) const"
 .br
 .ti -1c
-.RI "void \fBSetScale\fP (F32 xVal, F32 yVal)"
+.RI "void \fBSetScale\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
 .br
 .ti -1c
-.RI "void \fBSetScale\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "void \fBSetScale\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
 .RI "void \fBSetScale\fP (const \fBVector\fP &vec)"
 .br
 .ti -1c
-.RI "void \fBAddScale\fP (F32 xVal, F32 yVal)"
+.RI "void \fBAddScale\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
 .br
 .ti -1c
-.RI "void \fBAddScale\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "void \fBAddScale\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
 .RI "void \fBAddScale\fP (const \fBVector\fP &vec)"
 .br
 .ti -1c
-.RI "void \fBSetRotateX\fP (F32 val)"
+.RI "void \fBSetRotateX\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBAddRotateX\fP (F32 val)"
+.RI "void \fBAddRotateX\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBSetRotateY\fP (F32 val)"
+.RI "void \fBSetRotateY\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBAddRotateY\fP (F32 val)"
+.RI "void \fBAddRotateY\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBSetRotateZ\fP (F32 val)"
+.RI "void \fBSetRotateZ\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBAddRotateZ\fP (F32 val)"
+.RI "void \fBAddRotateZ\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBSetRotate\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "void \fBSetRotate\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
-.RI "void \fBAddRotation\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "void \fBAddRotation\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
 .RI "void \fBSetOrientation\fP (const \fBQuaternion\fP &q)"
@@ -123,13 +123,13 @@ KillerMath::Matrix
 .RI "\fBMatrix\fP \fBGetInverse\fP (void) const"
 .br
 .ti -1c
-.RI "F32 \fBDeterminate\fP (void) const"
+.RI "\fBF32\fP \fBDeterminate\fP (void) const"
 .br
 .ti -1c
 .RI "void \fBMakeIdentity\fP (void)"
 .br
 .ti -1c
-.RI "void \fBReset\fP (F32 val=0\&.0f)"
+.RI "void \fBReset\fP (\fBF32\fP val=0\&.0f)"
 .br
 .ti -1c
 .RI "void \fBTranspose\fP (void)"
@@ -147,7 +147,7 @@ KillerMath::Matrix
 .RI "void \fBSetLookAt\fP (const \fBVector\fP &cameraPos, const \fBVector\fP &target, const \fBVector\fP &up)"
 .br
 .ti -1c
-.RI "void \fBSetFPSView\fP (const \fBVector\fP &cameraPos, F32 pitch, F32 yaw)"
+.RI "void \fBSetFPSView\fP (const \fBVector\fP &cameraPos, \fBF32\fP pitch, \fBF32\fP yaw)"
 .br
 .ti -1c
 .RI "const \fBVector\fP & \fBoperator[]\fP (int i) const"
@@ -165,17 +165,17 @@ KillerMath::Matrix
 .RI "\fBVector\fP \fBoperator*\fP (const \fBVector\fP &vec) const"
 .br
 .ti -1c
-.RI "\fBMatrix\fP & \fBoperator/=\fP (F32 val)"
+.RI "\fBMatrix\fP & \fBoperator/=\fP (\fBF32\fP val)"
 .br
 .in -1c
 .SS "Static Public Member Functions"
 
 .in +1c
 .ti -1c
-.RI "static \fBMatrix\fP \fBTranslate\fP (F32 xVal, F32 yVal)"
+.RI "static \fBMatrix\fP \fBTranslate\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
 .br
 .ti -1c
-.RI "static \fBMatrix\fP \fBTranslate\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "static \fBMatrix\fP \fBTranslate\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
 .RI "static \fBMatrix\fP \fBTranslate\fP (const \fBVector\fP &vec)"
@@ -187,31 +187,31 @@ KillerMath::Matrix
 .RI "static \fBVector\fP \fBWorldToLocal\fP (const \fBVector\fP &vec, const \fBMatrix\fP &mat)"
 .br
 .ti -1c
-.RI "static \fBMatrix\fP \fBScale\fP (F32 xVal, F32 yVal)"
+.RI "static \fBMatrix\fP \fBScale\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
 .br
 .ti -1c
-.RI "static \fBMatrix\fP \fBScale\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "static \fBMatrix\fP \fBScale\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
 .RI "static \fBMatrix\fP \fBScale\fP (const \fBVector\fP &vec)"
 .br
 .ti -1c
-.RI "static \fBMatrix\fP \fBRotateX\fP (F32 val)"
+.RI "static \fBMatrix\fP \fBRotateX\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "static \fBMatrix\fP \fBRotateY\fP (F32 val)"
+.RI "static \fBMatrix\fP \fBRotateY\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "static \fBMatrix\fP \fBRotateZ\fP (F32 val)"
+.RI "static \fBMatrix\fP \fBRotateZ\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "static F32 \fBDeterminate3x3\fP (\fBVector\fP &col1, \fBVector\fP &col2, \fBVector\fP &col3)"
+.RI "static \fBF32\fP \fBDeterminate3x3\fP (\fBVector\fP &col1, \fBVector\fP &col2, \fBVector\fP &col3)"
 .br
 .ti -1c
 .RI "static \fBMatrix\fP \fBLookAt\fP (const \fBVector\fP &cameraPos, const \fBVector\fP &target, const \fBVector\fP &up)"
 .br
 .ti -1c
-.RI "static \fBMatrix\fP \fBFPSView\fP (const \fBVector\fP &cameraPos, F32 pitch, F32 yaw)"
+.RI "static \fBMatrix\fP \fBFPSView\fP (const \fBVector\fP &cameraPos, \fBF32\fP pitch, \fBF32\fP yaw)"
 .br
 .in -1c
 .SS "Private Types"
@@ -241,7 +241,7 @@ This is the way that the array mapping looks, for a quick reference\&.
 .PP 
 .SS "Matrix::Matrix (void)"
 Default constructor\&. Sets all values to 0, except for the last in the \fBMatrix\fP\&. 
-.SS "Matrix::Matrix (F32 m00, F32 m01, F32 m02, F32 m03, F32 m10, F32 m11, F32 m12, F32 m13, F32 m20, F32 m21, F32 m22, F32 m23, F32 m30, F32 m31, F32 m32, F32 m33)"
+.SS "Matrix::Matrix (\fBF32\fP m00, \fBF32\fP m01, \fBF32\fP m02, \fBF32\fP m03, \fBF32\fP m10, \fBF32\fP m11, \fBF32\fP m12, \fBF32\fP m13, \fBF32\fP m20, \fBF32\fP m21, \fBF32\fP m22, \fBF32\fP m23, \fBF32\fP m30, \fBF32\fP m31, \fBF32\fP m32, \fBF32\fP m33)"
 All value constructor\&. Takes a list of values and turns them into a matrix of the same mapping\&. 
 .PP
 \fBParameters:\fP
@@ -284,7 +284,7 @@ All value constructor\&. Takes a list of values and turns them into a matrix of 
 Copy Constructor\&. Calls \fBGetElems()\fP, then sets the values accordingly\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void Matrix::AddRotateX (F32 val)"
+.SS "void Matrix::AddRotateX (\fBF32\fP val)"
 Creates rotation around the x axis without resetting other values\&. 
 .PP
 \fBBug\fP
@@ -294,11 +294,11 @@ Completely untested and probably not working at all\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIx\fP F32\&. Degree of rotation around x axis\&. Calls RADIAN() 
+\fIx\fP F32\&. Degree of rotation around x axis\&. Calls \fBRADIAN()\fP 
 .RE
 .PP
 
-.SS "void Matrix::AddRotateY (F32 val)"
+.SS "void Matrix::AddRotateY (\fBF32\fP val)"
 Creates rotation around the y axis without resetting other values\&. 
 .PP
 \fBBug\fP
@@ -308,11 +308,11 @@ Completely untested and probably not working at all\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIy\fP F32\&. Degree of rotation around y axis\&. Calls RADIAN() 
+\fIy\fP F32\&. Degree of rotation around y axis\&. Calls \fBRADIAN()\fP 
 .RE
 .PP
 
-.SS "void Matrix::AddRotateZ (F32 val)"
+.SS "void Matrix::AddRotateZ (\fBF32\fP val)"
 Creates rotation around the z axis without resetting other values\&. 
 .PP
 \fBBug\fP
@@ -322,11 +322,11 @@ Completely untested and probably not working at all\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIz\fP F32\&. Degree of rotation around z axis\&. Calls RADIAN() 
+\fIz\fP F32\&. Degree of rotation around z axis\&. Calls \fBRADIAN()\fP 
 .RE
 .PP
 
-.SS "void Matrix::AddRotation (F32 xVal, F32 yVal, F32 zVal)"
+.SS "void Matrix::AddRotation (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 Creates rotation around the x, y and z axis, in that order, without resetting other values\&. 
 .PP
 \fBBug\fP
@@ -336,15 +336,15 @@ Not working at all\&. The math is wrong, and rotations are not working in genera
 .PP
 \fBParameters:\fP
 .RS 4
-\fIx\fP F32\&. Degree of rotation around the x axis\&. Calls RADIAN() 
+\fIx\fP F32\&. Degree of rotation around the x axis\&. Calls \fBRADIAN()\fP 
 .br
-\fIy\fP F32\&. Degree of rotation around the y axis\&. Calls RADIAN() 
+\fIy\fP F32\&. Degree of rotation around the y axis\&. Calls \fBRADIAN()\fP 
 .br
-\fIz\fP F32\&. Degree of rotation around the z axis\&. Calls RADIAN() 
+\fIz\fP F32\&. Degree of rotation around the z axis\&. Calls \fBRADIAN()\fP 
 .RE
 .PP
 
-.SS "void Matrix::AddScale (F32 xVal, F32 yVal)"
+.SS "void Matrix::AddScale (\fBF32\fP xVal, \fBF32\fP yVal)"
 Creates a scaling \fBMatrix\fP on the x and y axes without resetting the other values\&. 
 .PP
 \fBParameters:\fP
@@ -355,7 +355,7 @@ Creates a scaling \fBMatrix\fP on the x and y axes without resetting the other v
 .RE
 .PP
 
-.SS "void Matrix::AddScale (F32 xVal, F32 yVal, F32 zVal)"
+.SS "void Matrix::AddScale (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 Creates a scaling \fBMatrix\fP on the x, y and z axes without resetting the other values\&. 
 .PP
 \fBParameters:\fP
@@ -370,7 +370,7 @@ Creates a scaling \fBMatrix\fP on the x, y and z axes without resetting the othe
 
 .SS "void Matrix::AddScale (const \fBVector\fP & vec)"
 Creates a scaling \fBMatrix\fP on the x, y and z axes without resetting the other values\&. 
-.SS "void Matrix::AddTranslate (F32 xVal, F32 yVal)"
+.SS "void Matrix::AddTranslate (\fBF32\fP xVal, \fBF32\fP yVal)"
 Creates a translation on the x and y axes without reseting the other values\&. 
 .PP
 \fBParameters:\fP
@@ -381,7 +381,7 @@ Creates a translation on the x and y axes without reseting the other values\&.
 .RE
 .PP
 
-.SS "void Matrix::AddTranslate (F32 xVal, F32 yVal, F32 zVal)"
+.SS "void Matrix::AddTranslate (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 Creates a translation on the x, y and z axes without resetting the other values\&. 
 .PP
 \fBParameters:\fP
@@ -405,11 +405,11 @@ Also known as a straight multiplication\&. Multiplies each value of this \fBMatr
 .RE
 .PP
 
-.SS "const std::vector< F32 > Matrix::GetElems (void) const"
+.SS "const std::vector< \fBF32\fP > Matrix::GetElems (void) const"
 Return the array containing all the elements\&. 
 .SS "void KillerMath::Matrix::MakeIdentity (void)\fC [inline]\fP"
 Wrapper for \fBReset()\fP\&. Sets all values of the \fBMatrix\fP to 0, with the diagnal set to 1\&. 
-.SS "void Matrix::MakeOrthographic (F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)"
+.SS "void Matrix::MakeOrthographic (\fBF32\fP left, \fBF32\fP right, \fBF32\fP bottom, \fBF32\fP top, \fBF32\fP nearPlane, \fBF32\fP farPlane)"
 Resets the \fBMatrix\fP, then sets the values up as an Orthographic projection\&. Calls MakeIdentiy()\&. The viewport values are usually based on the dimensions of the window, but could be made smaller\&. 
 .PP
 \fBParameters:\fP
@@ -424,7 +424,7 @@ Resets the \fBMatrix\fP, then sets the values up as an Orthographic projection\&
 .RE
 .PP
 
-.SS "void Matrix::MakePerspective (F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F32 farPlane)"
+.SS "void Matrix::MakePerspective (\fBF32\fP fieldOfView, \fBF32\fP aspectRatio, \fBF32\fP nearPlane, \fBF32\fP farPlane)"
 Resets the \fBMatrix\fP, then sets the values up as a Perspective \fBMatrix\fP\&. Instead of using the dimensions of the viewport, this version uses slightly differently ideas\&. 
 .PP
 \fBParameters:\fP
@@ -477,7 +477,7 @@ Used to access the ith column of the matrix\&. This version allows you to edit t
 .RE
 .PP
 
-.SS "void Matrix::Reset (F32 val = \fC0\&.0f\fP)"
+.SS "void Matrix::Reset (\fBF32\fP val = \fC0\&.0f\fP)"
 Sets all the values of the \fBMatrix\fP to 0, with the diagnal set to val\&. 
 .PP
 \fBParameters:\fP
@@ -486,7 +486,7 @@ Sets all the values of the \fBMatrix\fP to 0, with the diagnal set to val\&.
 .RE
 .PP
 
-.SS "void Matrix::SetFPSView (const \fBVector\fP & cameraPos, F32 pitch, F32 yaw)"
+.SS "void Matrix::SetFPSView (const \fBVector\fP & cameraPos, \fBF32\fP pitch, \fBF32\fP yaw)"
 Uses Euler angles to compute a view matrix from the world position\&. This assumes a Right Handed Coordinate system\&. This means that the camera, by default at 0\&.0 is looking down the -z axis\&. 
 .PP
 \fBParameters:\fP
@@ -512,7 +512,7 @@ Creates a view matrix from the world position\&. Will set the view to 'look at' 
 .RE
 .PP
 
-.SS "void Matrix::SetRotate (F32 xVal, F32 yVal, F32 zVal)"
+.SS "void Matrix::SetRotate (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 Resets the \fBMatrix\fP and creates an \fBMatrix\fP which will perform a rotation around the x, y and z axis in that order\&. Calls \fBMakeIdentity()\fP 
 .PP
 \fBBug\fP
@@ -522,15 +522,15 @@ Not working at all\&. The math is wrong, and rotations are not working in genera
 .PP
 \fBParameters:\fP
 .RS 4
-\fIx\fP F32\&. Degree of rotation around the x axis\&. Calls RADIAN() 
+\fIx\fP F32\&. Degree of rotation around the x axis\&. Calls \fBRADIAN()\fP 
 .br
-\fIy\fP F32\&. Degree of rotation around the y axis\&. Calls RADIAN() 
+\fIy\fP F32\&. Degree of rotation around the y axis\&. Calls \fBRADIAN()\fP 
 .br
-\fIz\fP F32\&. Degree of rotation around the z axis\&. Calls RADIAN() 
+\fIz\fP F32\&. Degree of rotation around the z axis\&. Calls \fBRADIAN()\fP 
 .RE
 .PP
 
-.SS "void Matrix::SetRotateX (F32 val)"
+.SS "void Matrix::SetRotateX (\fBF32\fP val)"
 Resets \fBMatrix\fP and creates rotation around the x axis\&. Call MakeIdentiy()\&. 
 .PP
 \fBBug\fP
@@ -540,11 +540,11 @@ This is not working at all\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIx\fP F32\&. Degree of rotation around x axis\&. Calls RADIAN() 
+\fIx\fP F32\&. Degree of rotation around x axis\&. Calls \fBRADIAN()\fP 
 .RE
 .PP
 
-.SS "void Matrix::SetRotateY (F32 val)"
+.SS "void Matrix::SetRotateY (\fBF32\fP val)"
 Resets \fBMatrix\fP and creates rotation around the y axis\&. Call MakeIdentiy()\&. 
 .PP
 \fBBug\fP
@@ -554,11 +554,11 @@ This is not working at all\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIy\fP F32\&. Degree of rotation around y axis\&. Calls RADIAN() 
+\fIy\fP F32\&. Degree of rotation around y axis\&. Calls \fBRADIAN()\fP 
 .RE
 .PP
 
-.SS "void Matrix::SetRotateZ (F32 val)"
+.SS "void Matrix::SetRotateZ (\fBF32\fP val)"
 Resets \fBMatrix\fP and creates rotation around the z axis\&. Call MakeIdentiy()\&. 
 .PP
 \fBBug\fP
@@ -568,11 +568,11 @@ This is not working at all\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIz\fP F32\&. Degree of rotation around z axis\&. Calls RADIAN() 
+\fIz\fP F32\&. Degree of rotation around z axis\&. Calls \fBRADIAN()\fP 
 .RE
 .PP
 
-.SS "void Matrix::SetScale (F32 xVal, F32 yVal)"
+.SS "void Matrix::SetScale (\fBF32\fP xVal, \fBF32\fP yVal)"
 Resets the \fBMatrix\fP and creates a scaling \fBMatrix\fP on the x and y axes\&. Calls MakeIndentity() 
 .PP
 \fBParameters:\fP
@@ -583,7 +583,7 @@ Resets the \fBMatrix\fP and creates a scaling \fBMatrix\fP on the x and y axes\&
 .RE
 .PP
 
-.SS "void Matrix::SetScale (F32 xVal, F32 yVal, F32 zVal)"
+.SS "void Matrix::SetScale (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 Resets the \fBMatrix\fP and creates a scaling \fBMatrix\fP on the x, y and z axes\&. MakeIndentity() 
 .PP
 \fBParameters:\fP
@@ -598,7 +598,7 @@ Resets the \fBMatrix\fP and creates a scaling \fBMatrix\fP on the x, y and z axe
 
 .SS "void Matrix::SetScale (const \fBVector\fP & vec)"
 Resets the \fBMatrix\fP and creates a scaling \fBMatrix\fP on the x and y axes\&. Calls MakeIndentity()\&. 
-.SS "void Matrix::SetTranslate (F32 xVal, F32 yVal)"
+.SS "void Matrix::SetTranslate (\fBF32\fP xVal, \fBF32\fP yVal)"
 Resets \fBMatrix\fP, then creates a Translation on the x and y axes\&. Calls MakeIdentiy()\&. 
 .PP
 \fBParameters:\fP
@@ -609,7 +609,7 @@ Resets \fBMatrix\fP, then creates a Translation on the x and y axes\&. Calls Mak
 .RE
 .PP
 
-.SS "void Matrix::SetTranslate (F32 xVal, F32 yVal, F32 zVal)"
+.SS "void Matrix::SetTranslate (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 Resets \fBMatrix\fP, thn creates a Translation on the x, y and z axes\&. Calls MakeIdentiy()\&. 
 .PP
 \fBParameters:\fP

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['degree',['DEGREE',['../_atom_8h.html#ae302d253ab1b2c8dc0f0f95f75f67fc1',1,'Atom.h']]],
   ['deltatime',['DeltaTime',['../class_killer_math_1_1_timer.html#a7c69473dfe5608c6840c33a7938b88c5',1,'KillerMath::Timer']]],
   ['difference',['Difference',['../class_killer_math_1_1_quaternion.html#acdb395a5d27913b4acecae41df5de347',1,'KillerMath::Quaternion']]],
   ['disablemousecursor',['DisableMouseCursor',['../class_killer_engine_1_1_win_program.html#a1a29b6818e14cf8ec80e511aa9ea2383',1,'KillerEngine::WinProgram']]],

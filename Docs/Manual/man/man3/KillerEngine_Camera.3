@@ -24,13 +24,13 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .RI "void \fBSetOrthographic\fP (void)"
 .br
 .ti -1c
-.RI "void \fBSetOrthographic\fP (F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)"
+.RI "void \fBSetOrthographic\fP (\fBF32\fP left, \fBF32\fP right, \fBF32\fP bottom, \fBF32\fP top, \fBF32\fP nearPlane, \fBF32\fP farPlane)"
 .br
 .ti -1c
 .RI "void \fBSetPerspective\fP (void)"
 .br
 .ti -1c
-.RI "void \fBSetPerspective\fP (F32 fov, F32 aspect, F32 nearPlane, F32 farPlane)"
+.RI "void \fBSetPerspective\fP (\fBF32\fP fov, \fBF32\fP aspect, \fBF32\fP nearPlane, \fBF32\fP farPlane)"
 .br
 .ti -1c
 .RI "void \fBSetDefaultMatrix\fP (void)"
@@ -48,22 +48,22 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .RI "const \fBColor\fP & \fBGetBackgroundColor\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (F32 x, F32 y)"
+.RI "void \fBSetPosition\fP (\fBF32\fP x, \fBF32\fP y)"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (F32 x, F32 y, F32 z)"
+.RI "void \fBSetPosition\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
 .RI "void \fBSetPosition\fP (const \fBKM::Vector\fP &vec)"
 .br
 .ti -1c
-.RI "void \fBScalePosition\fP (F32 x, F32 y, F32 scale)"
+.RI "void \fBScalePosition\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP scale)"
 .br
 .ti -1c
-.RI "void \fBScalePosition\fP (F32 x, F32 y, F32 z, F32 scale)"
+.RI "void \fBScalePosition\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z, \fBF32\fP scale)"
 .br
 .ti -1c
-.RI "void \fBScalePosition\fP (const \fBKM::Vector\fP &vec, F32 scale)"
+.RI "void \fBScalePosition\fP (const \fBKM::Vector\fP &vec, \fBF32\fP scale)"
 .br
 .ti -1c
 .RI "const \fBKM::Vector\fP & \fBGetPosition\fP (void) const"
@@ -72,19 +72,19 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .RI "void \fBSetTarget\fP (const \fBKM::Vector\fP &target)"
 .br
 .ti -1c
-.RI "void \fBSetTarget\fP (F32 xVal, F32 yVal)"
+.RI "void \fBSetTarget\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
 .br
 .ti -1c
-.RI "void \fBSetTarget\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "void \fBSetTarget\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
 .RI "const \fBKM::Vector\fP & \fBGetTarget\fP (void)"
 .br
 .ti -1c
-.RI "void \fBSetUpVector\fP (F32 val)"
+.RI "void \fBSetUpVector\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBSetUpVector\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "void \fBSetUpVector\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
 .RI "void \fBSetUpVector\fP (const \fBKM::Vector\fP &vec)"
@@ -93,13 +93,13 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .RI "const \fBKM::Vector\fP & \fBGetUpVector\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetLookVector\fP (F32 val)"
+.RI "void \fBSetLookVector\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBSetLookVector\fP (F32 xVal, F32 yVal)"
+.RI "void \fBSetLookVector\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
 .br
 .ti -1c
-.RI "void \fBSetLookVector\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "void \fBSetLookVector\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
 .RI "void \fBSetLookVector\fP (const \fBKM::Vector\fP &vec)"
@@ -108,13 +108,13 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .RI "const \fBKM::Vector\fP & \fBGetLookVector\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetRightVector\fP (F32 val)"
+.RI "void \fBSetRightVector\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBSetRightVector\fP (F32 xVal, F32 yVal)"
+.RI "void \fBSetRightVector\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
 .br
 .ti -1c
-.RI "void \fBSetRightVector\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "void \fBSetRightVector\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
 .RI "void \fBSetRightVector\fP (const \fBKM::Vector\fP &vec)"
@@ -123,22 +123,22 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .RI "const \fBKM::Vector\fP & \fBGetRightVector\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetMouseSensitivity\fP (F32 val)"
+.RI "void \fBSetMouseSensitivity\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "F32 \fBGetMouseSensitivity\fP (void)"
+.RI "\fBF32\fP \fBGetMouseSensitivity\fP (void)"
 .br
 .ti -1c
-.RI "F32 \fBGetYaw\fP (void) const"
+.RI "\fBF32\fP \fBGetYaw\fP (void) const"
 .br
 .ti -1c
-.RI "F32 \fBGetPitch\fP (void) const"
+.RI "\fBF32\fP \fBGetPitch\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetFOV\fP (F32 val)"
+.RI "void \fBSetFOV\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "F32 \fBGetFOV\fP (void) const"
+.RI "\fBF32\fP \fBGetFOV\fP (void) const"
 .br
 .in -1c
 .SS "Protected Attributes"
@@ -164,22 +164,22 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .RI "\fBKM::Vector\fP \fB_lastMouseCoords\fP"
 .br
 .ti -1c
-.RI "F32 \fB_mouseSensitivity\fP"
+.RI "\fBF32\fP \fB_mouseSensitivity\fP"
 .br
 .ti -1c
-.RI "F32 \fB_yaw\fP"
+.RI "\fBF32\fP \fB_yaw\fP"
 .br
 .ti -1c
-.RI "F32 \fB_pitch\fP"
+.RI "\fBF32\fP \fB_pitch\fP"
 .br
 .ti -1c
-.RI "F32 \fB_deltaYaw\fP"
+.RI "\fBF32\fP \fB_deltaYaw\fP"
 .br
 .ti -1c
-.RI "F32 \fB_deltaPitch\fP"
+.RI "\fBF32\fP \fB_deltaPitch\fP"
 .br
 .ti -1c
-.RI "F32 \fB_fov\fP"
+.RI "\fBF32\fP \fB_fov\fP"
 .br
 .in -1c
 .SS "Private Member Functions"

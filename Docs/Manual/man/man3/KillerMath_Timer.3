@@ -27,16 +27,16 @@ KillerMath::Timer
 .RI "bool \fBGetPaused\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetTimeScale\fP (F32 scale)"
+.RI "void \fBSetTimeScale\fP (\fBF32\fP scale)"
 .br
 .ti -1c
-.RI "F32 \fBGetTimeScale\fP (void) const"
+.RI "\fBF32\fP \fBGetTimeScale\fP (void) const"
 .br
 .ti -1c
-.RI "real \fBDeltaTime\fP (void) const"
+.RI "\fBreal\fP \fBDeltaTime\fP (void) const"
 .br
 .ti -1c
-.RI "F64 \fBTotalTime\fP (void) const"
+.RI "\fBF64\fP \fBTotalTime\fP (void) const"
 .br
 .ti -1c
 .RI "void \fBUpdate\fP (void)"
@@ -67,23 +67,23 @@ KillerMath::Timer
 .br
 .RI "If clamped, the timer will be forced to lock the framerate at 60 fps\&. "
 .ti -1c
-.RI "real \fB_deltaTime\fP"
+.RI "\fBreal\fP \fB_deltaTime\fP"
 .br
 .RI "The time that the last frame took to run\&. "
 .ti -1c
-.RI "real \fB_timeScale\fP"
+.RI "\fBreal\fP \fB_timeScale\fP"
 .br
 .RI "A scale factor that is applied to the delta time\&. "
 .ti -1c
-.RI "F64 \fB_totalTime\fP"
+.RI "\fBF64\fP \fB_totalTime\fP"
 .br
 .RI "The total time that the program has been running\&. "
 .ti -1c
-.RI "F64 \fB_pastTime\fP"
+.RI "\fBF64\fP \fB_pastTime\fP"
 .br
 .RI "The time stamp of the last frame\&. "
 .ti -1c
-.RI "F64 \fB_currentTime\fP"
+.RI "\fBF64\fP \fB_currentTime\fP"
 .br
 .RI "The time stamp of this frame\&. "
 .ti -1c
@@ -112,13 +112,13 @@ Default Destructor\&. Does not do anything\&.
 Default Constructor, sets _deltaTime and _totalTime to 0, _timeScale to 1, _pastTime to the current time and _currentTime to _pastTime, and _paused to false\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "real KillerMath::Timer::DeltaTime (void) const\fC [inline]\fP"
+.SS "\fBreal\fP KillerMath::Timer::DeltaTime (void) const\fC [inline]\fP"
 Returns the current _deltaTime\&. 
 .SS "bool KillerMath::Timer::GetClamp (void) const\fC [inline]\fP"
 Returns the current state of _clamp\&. 
 .SS "bool KillerMath::Timer::GetPaused (void) const\fC [inline]\fP"
 Returns the state of the _paused flag\&. 
-.SS "F32 KillerMath::Timer::GetTimeScale (void) const\fC [inline]\fP"
+.SS "\fBF32\fP KillerMath::Timer::GetTimeScale (void) const\fC [inline]\fP"
 Returns the current value for _timeScale\&. 
 .SS "shared_ptr< \fBTimer\fP > Timer::Instance (void)\fC [static]\fP"
 Singleton pattern function\&. Returns a pointer to the globabl version of the timer\&. This is the only way to use the timer, ensuring that there will only ever be 1 version of it running\&. 
@@ -140,7 +140,7 @@ Sets the state of the _paused flag\&.
 .RE
 .PP
 
-.SS "void KillerMath::Timer::SetTimeScale (F32 scale)\fC [inline]\fP"
+.SS "void KillerMath::Timer::SetTimeScale (\fBF32\fP scale)\fC [inline]\fP"
 Sets the _timeScale variable\&. 
 .PP
 \fBParameters:\fP
@@ -151,7 +151,7 @@ Sets the _timeScale variable\&.
 
 .SS "void Timer::SingleStep (void)"
 This will attempt to move _deltaTime forward one single frame, at 60 frames per second\&. Note: Maybe this should be updated to be configurable? 
-.SS "F64 KillerMath::Timer::TotalTime (void) const\fC [inline]\fP"
+.SS "\fBF64\fP KillerMath::Timer::TotalTime (void) const\fC [inline]\fP"
 Returns the total time that the program has been running\&. 
 .SS "void Timer::Update (void)"
 This updates the _totalTime and _deltaTime values\&. This is where all of the magic happens\&. Should be called once per frame\&. It called WinProgram::GetTime()\&. 

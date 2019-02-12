@@ -15,18 +15,18 @@ KillerEngine::TexCoord
 .RI "\fBTexCoord\fP (void)"
 .br
 .ti -1c
-.RI "\fBTexCoord\fP (F32 s, F32 t)"
+.RI "\fBTexCoord\fP (\fBF32\fP s, \fBF32\fP t)"
 .br
 .in -1c
 .SS "Public Attributes"
 
 .in +1c
 .ti -1c
-.RI "F32 \fBu\fP"
+.RI "\fBF32\fP \fBu\fP"
 .br
 .RI "U coordinate\&. Should only be between 0 and 1\&. Matches to the x in a texture\&. "
 .ti -1c
-.RI "F32 \fBv\fP"
+.RI "\fBF32\fP \fBv\fP"
 .br
 .RI "V coordinate\&. Should only be between 0 and 1\&. Matches to the y in a texture\&. "
 .in -1c
@@ -37,7 +37,7 @@ Helper struct to keep track of UV coordinates for a texture\&.
 .PP 
 .SS "KillerEngine::TexCoord::TexCoord (void)\fC [inline]\fP"
 Sets u and v to 0\&. 
-.SS "KillerEngine::TexCoord::TexCoord (F32 s, F32 t)\fC [inline]\fP"
+.SS "KillerEngine::TexCoord::TexCoord (\fBF32\fP s, \fBF32\fP t)\fC [inline]\fP"
 Sets up the start values for the coords\&. 
 .PP
 \fBParameters:\fP

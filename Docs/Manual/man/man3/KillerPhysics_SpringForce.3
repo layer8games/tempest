@@ -17,7 +17,7 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .RI "\fBSpringForce\fP (void)"
 .br
 .ti -1c
-.RI "\fBSpringForce\fP (shared_ptr< \fBParticle\fP > otherEnd, real springConstant, real restLength)"
+.RI "\fBSpringForce\fP (shared_ptr< \fBParticle\fP > otherEnd, \fBreal\fP springConstant, \fBreal\fP restLength)"
 .br
 .ti -1c
 .RI "\fB~SpringForce\fP (void)"
@@ -35,10 +35,10 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .RI "void \fBSetOtherEnd\fP (shared_ptr< \fBParticle\fP > end)"
 .br
 .ti -1c
-.RI "void \fBSetSpringConstant\fP (real constant)"
+.RI "void \fBSetSpringConstant\fP (\fBreal\fP constant)"
 .br
 .ti -1c
-.RI "void \fBSetRestLength\fP (real length)"
+.RI "void \fBSetRestLength\fP (\fBreal\fP length)"
 .br
 .in -1c
 .SS "Private Attributes"
@@ -49,11 +49,11 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .br
 .RI "Other end of the spring\&. Consider changing to a GameObject\&. "
 .ti -1c
-.RI "real \fB_springConstant\fP"
+.RI "\fBreal\fP \fB_springConstant\fP"
 .br
 .RI "Determines the 'stiffness' of the spring\&. The higher this value is, the more force the spring can make\&. "
 .ti -1c
-.RI "real \fB_restLength\fP"
+.RI "\fBreal\fP \fB_restLength\fP"
 .br
 .RI "Length of the spring at rest\&. When an object reaches this length, a force will be acted on it\&. "
 .ti -1c
@@ -94,7 +94,7 @@ The force generator cannot be re-used\&. For each unique spring-like force we ne
 .PP 
 .SS "SpringForce::SpringForce (void)"
 Sets spring constant to 1, rest length to 1, everything else to default or false\&. 
-.SS "SpringForce::SpringForce (shared_ptr< \fBParticle\fP > otherEnd, real springConstant, real restLength)"
+.SS "SpringForce::SpringForce (shared_ptr< \fBParticle\fP > otherEnd, \fBreal\fP springConstant, \fBreal\fP restLength)"
 Allows you to set up \fBSpringForce\fP in a single call\&. 
 .PP
 \fBParameters:\fP
@@ -122,7 +122,7 @@ Changes the location of the other end of the spring\&.
 .RE
 .PP
 
-.SS "void KillerPhysics::SpringForce::SetRestLength (real length)\fC [inline]\fP"
+.SS "void KillerPhysics::SpringForce::SetRestLength (\fBreal\fP length)\fC [inline]\fP"
 Changes the length of the invisible spring\&. 
 .PP
 \fBParameters:\fP
@@ -131,7 +131,7 @@ Changes the length of the invisible spring\&.
 .RE
 .PP
 
-.SS "void KillerPhysics::SpringForce::SetSpringConstant (real constant)\fC [inline]\fP"
+.SS "void KillerPhysics::SpringForce::SetSpringConstant (\fBreal\fP constant)\fC [inline]\fP"
 Changes the 'striffness' of the spring\&. 
 .PP
 \fBParameters:\fP

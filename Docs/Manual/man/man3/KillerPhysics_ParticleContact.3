@@ -10,7 +10,7 @@ KillerPhysics::ParticleContact
 
 .in +1c
 .ti -1c
-.RI "void \fBSetRestitution\fP (real restitution)"
+.RI "void \fBSetRestitution\fP (\fBreal\fP restitution)"
 .br
 .ti -1c
 .RI "void \fBSetContactNormal\fP (\fBKM::Vector\fP &normal)"
@@ -19,10 +19,10 @@ KillerPhysics::ParticleContact
 .RI "void \fBSetContacts\fP (shared_ptr< \fBParticle\fP > particle1, shared_ptr< \fBParticle\fP > particle2=nullptr)"
 .br
 .ti -1c
-.RI "void \fBSetPenetration\fP (real penetration)"
+.RI "void \fBSetPenetration\fP (\fBreal\fP penetration)"
 .br
 .ti -1c
-.RI "real \fBGetPenetration\fP (void)"
+.RI "\fBreal\fP \fBGetPenetration\fP (void)"
 .br
 .ti -1c
 .RI "const shared_ptr< \fBParticle\fP > \fBGetParticleOne\fP (void)"
@@ -34,7 +34,7 @@ KillerPhysics::ParticleContact
 .RI "void \fBResolve\fP (void)"
 .br
 .ti -1c
-.RI "real \fBCalculateSeparatingVelocity\fP (void) const"
+.RI "\fBreal\fP \fBCalculateSeparatingVelocity\fP (void) const"
 .br
 .in -1c
 .SS "Private Member Functions"
@@ -60,10 +60,10 @@ KillerPhysics::ParticleContact
 .RI "\fBKM::Vector\fP \fB_contactNormal\fP"
 .br
 .ti -1c
-.RI "real \fB_restitution\fP"
+.RI "\fBreal\fP \fB_restitution\fP"
 .br
 .ti -1c
-.RI "real \fB_penetration\fP"
+.RI "\fBreal\fP \fB_penetration\fP"
 .br
 .in -1c
 

@@ -8,6 +8,10 @@ namespace KM = KillerMath;
 
 namespace KillerCollisions
 {
+/*!
+	An Axis Alligned Bounding Box used to do rough collission detection. It used a center, half-lengths set up to compute 
+	the box. It will support many kinds of collision tests eventually, but for now it only support AABB vs AABB tests.
+*/
 	class AABB
 	{
 	public:

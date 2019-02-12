@@ -1,8 +1,12 @@
-/*! \mainpage Killer Engine
-	\section The Killer Engine Documentation. 
+/*! 
+	\mainpage Killer Engine
+	\section The Killer Engine Documentation.
+	I can't find a better place to list this, so here are the default types that exist
+	in the engine. 
 */
 
 /*========================================================================
+@file Atom.h
 Call Atom because it is the most basic include file. This is the file
 to be included with all other files that are made. This contains the 
 type definitions that will be the atomic variable types for the Killer1
@@ -35,61 +39,129 @@ Written by Maxwell Miller
 #include <memory>
 using std::shared_ptr;
 
+/*!
+	@file Atom.h
+	Global helpers and defines.
+*/
+
 //=====Global usings=====
 //template<typename T>
 //using shared_prt = std::shared_prt<T>;
 
-//Signed Typedefs
+
+
+//===== Signed typedefs =====
+
+/// Signed, 8 bit integer.
 typedef int8_t   S8;
+
+/// Signed, 16 bit integer
 typedef int16_t  S16;
+
+/// Signed, 32 bit integer.
 typedef int32_t  S32;
+
+///Signed, 64 bit integer.
 typedef int64_t  S64;
 
-//Unsigned Typedefs
+//===== Unsighed typedefs =====
+
+/// Unsigned, 8 bit integer.
 typedef uint8_t  U8;
+
+/// Unsigned, 16 bit integer.
 typedef uint16_t U16;
+
+/// Unsigned, 32 bit integer.
 typedef uint32_t U32;
+
+/// Unsigned, 64 bit integer.
 typedef uint64_t U64;
 
-//Floating types
+//===== Floating point typedefs =====
+
+/// 32 bit float point number.
 typedef float  F32;
+
+/// 64 bit float point number.
 typedef double F64;
 
-//text type 
-//typedef std::string string;
+/// Using string directly, for convience. 
 using std::string;
 
+/// A configurable real number. Currently set to be 32 bits, could be set o 64 bits. 
 typedef float real;
-#define DOUBLE_PRECISION
+//#define DOUBLE_PRECISION
+
+/// Defined as FLT_MAX
 #define REAL_MAX FLT_MAX
+
+/// Alias for the sqrt function.
 #define real_sqrt sqrt	
+
+/// Alias for the fabsf function.
 #define real_abs fabsf
+
+/// Alias for the sin function.
 #define real_sin sin
+
+// Alias for the cos funtion.
 #define real_cos cos
+
+/// Alias for the tan function. 
+#define real_tan tan
+
+/// Alias for the exp function.
 #define real_exp exp
+
+/// Alias for the pow function. 
 #define real_pow pow
-#define real_fmod fmod
+
+/// Alias for fmod4 function.
+#define real_fmod fmod4
+
+// Defined as DBL_EPSILON.
 #define real_epsilon DBL_EPSILON
+
+/// Defined as 3.14159265358979.
 const real R_PI = static_cast<real>(3.14159265358979);
 
 //==========================================================================================================================
 //Global Helper functions
 //==========================================================================================================================
+/*!
+	Returns the value squared.
+	\param x is the value.
+*/
 inline real REAL_SQR(real x)
 {
  	return x * x;
 }
 
+/*!
+	Converts an angle to a radian.
+	\param angle is the value to convert.
+*/
 inline F32 RADIAN(F32 angle)
 {
 	return static_cast<F32>(angle * R_PI / 180.0f);
 }
 
-inline F32 DEGREE(F32 angle)
+/*!
+	Converts a radian to an angle. 
+	\param radian is the value to convert. 
+*/
+inline F32 DEGREE(F32 radian)
 {
-	return static_cast<F32>(angle * 180.0f / R_PI);
+	return static_cast<F32>(radian * 180.0f / R_PI);
 }
 
+/*!
+	Clamps a value to a set min and max. 
+	\param val is the value to clamp. 
+	\param min is the floor.
+	\param max is the ceiling.
+*/
 inline F32 FLOAT_CLAMP(F32 val, F32 min, F32 max)
 {
 	if(val < min)

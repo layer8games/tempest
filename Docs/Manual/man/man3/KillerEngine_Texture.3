@@ -18,7 +18,7 @@ KillerEngine::Texture
 .RI "\fBTexture\fP (string filePath)"
 .br
 .ti -1c
-.RI "\fBTexture\fP (GLuint id, S32 width, S32 height)"
+.RI "\fBTexture\fP (GLuint id, \fBS32\fP width, \fBS32\fP height)"
 .br
 .ti -1c
 .RI "\fBTexture\fP (const \fBTexture\fP &T)"
@@ -36,16 +36,16 @@ KillerEngine::Texture
 .RI "void \fBSetHandle\fP (GLuint h)"
 .br
 .ti -1c
-.RI "S32 \fBGetWidth\fP (void) const"
+.RI "\fBS32\fP \fBGetWidth\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetWidth\fP (S32 w)"
+.RI "void \fBSetWidth\fP (\fBS32\fP w)"
 .br
 .ti -1c
-.RI "S32 \fBGetHeight\fP (void) const"
+.RI "\fBS32\fP \fBGetHeight\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetHeight\fP (S32 h)"
+.RI "void \fBSetHeight\fP (\fBS32\fP h)"
 .br
 .ti -1c
 .RI "\fBTexture\fP & \fBoperator=\fP (const \fBTexture\fP &T)"
@@ -71,11 +71,11 @@ KillerEngine::Texture
 .br
 .RI "ID used by OpenGL as handle to the memory this \fBTexture\fP takes up on the GPU\&. "
 .ti -1c
-.RI "S32 \fB_width\fP"
+.RI "\fBS32\fP \fB_width\fP"
 .br
 .RI "Width of the \fBTexture\fP\&. Not currently used for anything\&. Storing just for record keeping I guess\&. "
 .ti -1c
-.RI "S32 \fB_height\fP"
+.RI "\fBS32\fP \fB_height\fP"
 .br
 .RI "Height of the \fBTexture\fP\&. Not currently used for anything\&. Storing just for record keeping\&. "
 .in -1c
@@ -95,7 +95,7 @@ Calls LoadTexture to set up \fBTexture\fP at creation
 .RE
 .PP
 
-.SS "Texture::Texture (GLuint id, S32 width, S32 height)"
+.SS "Texture::Texture (GLuint id, \fBS32\fP width, \fBS32\fP height)"
 Sets values up based on existing data\&. 
 .PP
 \fBParameters:\fP
@@ -143,9 +143,9 @@ Binds or Unbinds the \fBTexture\fP to the designated texUnit in OpenGL\&.
 
 .SS "GLuint KillerEngine::Texture::GetHandle (void) const\fC [inline]\fP"
 Returns the handle to the OpenGL memory of the \fBTexture\fP\&. 
-.SS "S32 KillerEngine::Texture::GetHeight (void) const\fC [inline]\fP"
+.SS "\fBS32\fP KillerEngine::Texture::GetHeight (void) const\fC [inline]\fP"
 Returns the height of the \fBTexture\fP\&. 
-.SS "S32 KillerEngine::Texture::GetWidth (void) const\fC [inline]\fP"
+.SS "\fBS32\fP KillerEngine::Texture::GetWidth (void) const\fC [inline]\fP"
 Returns the Width of the \fBTexture\fP\&. 
 .SS "void Texture::LoadTexture (string filePath, bool generateMipMaps = \fCtrue\fP)"
 Uses SOIL to generate and save a \fBTexture\fP\&. SOIL will load the data needed, then OpenGL is used to set up an handle to the memory in the GPU for the \fBTexture\fP to be used later\&. 
@@ -185,7 +185,7 @@ Sets the handle to a new OpenGL memory handle\&.
 .RE
 .PP
 
-.SS "void KillerEngine::Texture::SetHeight (S32 h)\fC [inline]\fP"
+.SS "void KillerEngine::Texture::SetHeight (\fBS32\fP h)\fC [inline]\fP"
 Sets the height of the \fBTexture\fP\&. Use with care! This is not a value that can just be scaled at random\&. 
 .PP
 \fBParameters:\fP
@@ -194,7 +194,7 @@ Sets the height of the \fBTexture\fP\&. Use with care! This is not a value that 
 .RE
 .PP
 
-.SS "void KillerEngine::Texture::SetWidth (S32 w)\fC [inline]\fP"
+.SS "void KillerEngine::Texture::SetWidth (\fBS32\fP w)\fC [inline]\fP"
 Sets the width of the \fBTexture\fP\&. Use with care! This is not a value that can just be scaled at random\&. 
 .PP
 \fBParameters:\fP

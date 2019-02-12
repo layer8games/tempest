@@ -44,13 +44,13 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "void \fBSetVelocity\fP (const \fBKM::Vector\fP &vel)"
 .br
 .ti -1c
-.RI "void \fBSetVelocity\fP (F32 x, F32 y)"
+.RI "void \fBSetVelocity\fP (\fBF32\fP x, \fBF32\fP y)"
 .br
 .ti -1c
-.RI "void \fBSetVelocity\fP (F32 x, F32 y, F32 z)"
+.RI "void \fBSetVelocity\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
-.RI "void \fBAddScaledVelocity\fP (const \fBKM::Vector\fP &vec, F32 scale)"
+.RI "void \fBAddScaledVelocity\fP (const \fBKM::Vector\fP &vec, \fBF32\fP scale)"
 .br
 .ti -1c
 .RI "const \fBKM::Vector\fP & \fBGetAcceleration\fP (void) const"
@@ -59,13 +59,13 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "void \fBSetAcceleration\fP (const \fBKM::Vector\fP &acc)"
 .br
 .ti -1c
-.RI "void \fBSetAcceleration\fP (F32 x, F32 y)"
+.RI "void \fBSetAcceleration\fP (\fBF32\fP x, \fBF32\fP y)"
 .br
 .ti -1c
-.RI "void \fBSetAcceleration\fP (F32 x, F32 y, F32 z)"
+.RI "void \fBSetAcceleration\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
-.RI "void \fBAddScaledAcceleration\fP (const \fBKM::Vector\fP &acc, F32 scale)"
+.RI "void \fBAddScaledAcceleration\fP (const \fBKM::Vector\fP &acc, \fBF32\fP scale)"
 .br
 .ti -1c
 .RI "const \fBKM::Vector\fP & \fBGetForces\fP (void) const"
@@ -77,25 +77,25 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "void \fBSetGravityForce\fP (const \fBKM::Vector\fP &grav)"
 .br
 .ti -1c
-.RI "const real \fBGetInverseMass\fP (void) const"
+.RI "const \fBreal\fP \fBGetInverseMass\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetInverseMass\fP (real inverseMass)"
+.RI "void \fBSetInverseMass\fP (\fBreal\fP inverseMass)"
 .br
 .ti -1c
 .RI "bool \fBHasFiniteMass\fP (void)"
 .br
 .ti -1c
-.RI "const real \fBGetMass\fP (void)"
+.RI "const \fBreal\fP \fBGetMass\fP (void)"
 .br
 .ti -1c
-.RI "void \fBSetMass\fP (real mass)"
+.RI "void \fBSetMass\fP (\fBreal\fP mass)"
 .br
 .ti -1c
-.RI "const real \fBGetDamping\fP (void) const"
+.RI "const \fBreal\fP \fBGetDamping\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetDamping\fP (real damp)"
+.RI "void \fBSetDamping\fP (\fBreal\fP damp)"
 .br
 .in -1c
 .SS "Private Attributes"
@@ -118,11 +118,11 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .br
 .RI "An optimization, gravity does not have to be treated like other forces, it can permanately be cached\&. "
 .ti -1c
-.RI "real \fB_inverseMass\fP"
+.RI "\fBreal\fP \fB_inverseMass\fP"
 .br
 .RI "The inverse mass of the object, written like 1/mass\&. This is an optimization to avoid uneeded operations\&. "
 .ti -1c
-.RI "real \fB_damping\fP"
+.RI "\fBreal\fP \fB_damping\fP"
 .br
 .RI "Damping is a substitute for friction\&. It represents the rate of acceleration decay\&. 0\&.0f means heavy friction, close to 1 means almost none\&. Do not set to 1\&. A good value for no decay is 0\&.999f\&. "
 .in -1c
@@ -148,7 +148,7 @@ Default destructor\&. Virtual because this class is a child of the GameObject\&.
 .PP 
 .SS "void Particle::AddForce (const \fBKM::Vector\fP force)"
 Adds a force that will act upon this \fBParticle\fP\&. This is done by adding the combined forces into the acceleration of the \fBParticle\fP\&. 
-.SS "void KillerPhysics::Particle::AddScaledAcceleration (const \fBKM::Vector\fP & acc, F32 scale)\fC [inline]\fP"
+.SS "void KillerPhysics::Particle::AddScaledAcceleration (const \fBKM::Vector\fP & acc, \fBF32\fP scale)\fC [inline]\fP"
 Directly add a scaled vectory into the current acceleration\&. 
 .PP
 \fBParameters:\fP
@@ -159,7 +159,7 @@ Directly add a scaled vectory into the current acceleration\&.
 .RE
 .PP
 
-.SS "void KillerPhysics::Particle::AddScaledVelocity (const \fBKM::Vector\fP & vec, F32 scale)\fC [inline]\fP"
+.SS "void KillerPhysics::Particle::AddScaledVelocity (const \fBKM::Vector\fP & vec, \fBF32\fP scale)\fC [inline]\fP"
 Directly add a scaled vectory into the current velocity\&. 
 .PP
 \fBParameters:\fP
@@ -174,15 +174,15 @@ Directly add a scaled vectory into the current velocity\&.
 Removed all forces that have been applied to the \fBParticle\fP this frame\&. 
 .SS "const \fBKM::Vector\fP& KillerPhysics::Particle::GetAcceleration (void) const\fC [inline]\fP"
 Returns the current acceleration of the particle\&. 
-.SS "const real KillerPhysics::Particle::GetDamping (void) const\fC [inline]\fP"
+.SS "const \fBreal\fP KillerPhysics::Particle::GetDamping (void) const\fC [inline]\fP"
 Returns the current damping for the \fBParticle\fP\&. 
 .SS "const \fBKM::Vector\fP& KillerPhysics::Particle::GetForces (void) const\fC [inline]\fP"
 Returns the total amount of all the forces applied to this particle for this frame added together\&. 
 .SS "const \fBKM::Vector\fP& KillerPhysics::Particle::GetGravityForce (void) const\fC [inline]\fP"
 Returns the value cached to represent the force of gravity on this \fBParticle\fP\&. 
-.SS "const real KillerPhysics::Particle::GetInverseMass (void) const\fC [inline]\fP"
+.SS "const \fBreal\fP KillerPhysics::Particle::GetInverseMass (void) const\fC [inline]\fP"
 Returns the Inverse Mass of this \fBParticle\fP\&. 
-.SS "const real Particle::GetMass (void)"
+.SS "const \fBreal\fP Particle::GetMass (void)"
 Returns the actual Mass of the \fBParticle\fP object\&. 
 .SS "const \fBKM::Vector\fP& KillerPhysics::Particle::GetVelocity (void) const\fC [inline]\fP"
 Returns the current velocity of the \fBParticle\fP\&. 
@@ -199,7 +199,7 @@ Directly set the acceleration of the \fBParticle\fP without regards to physics o
 .RE
 .PP
 
-.SS "void KillerPhysics::Particle::SetAcceleration (F32 x, F32 y)\fC [inline]\fP"
+.SS "void KillerPhysics::Particle::SetAcceleration (\fBF32\fP x, \fBF32\fP y)\fC [inline]\fP"
 Directly set the acceleration of the \fBParticle\fP without regards to physics or the current value of the acceleration\&. The z value is not affected\&. 
 .PP
 \fBParameters:\fP
@@ -210,7 +210,7 @@ Directly set the acceleration of the \fBParticle\fP without regards to physics o
 .RE
 .PP
 
-.SS "void KillerPhysics::Particle::SetAcceleration (F32 x, F32 y, F32 z)\fC [inline]\fP"
+.SS "void KillerPhysics::Particle::SetAcceleration (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)\fC [inline]\fP"
 Directly set the acceleration of the \fBParticle\fP without regards to physics or the current value of the acceleration\&. 
 .PP
 \fBParameters:\fP
@@ -223,7 +223,7 @@ Directly set the acceleration of the \fBParticle\fP without regards to physics o
 .RE
 .PP
 
-.SS "void KillerPhysics::Particle::SetDamping (real damp)\fC [inline]\fP"
+.SS "void KillerPhysics::Particle::SetDamping (\fBreal\fP damp)\fC [inline]\fP"
 Sets the damping value for the \fBParticle\fP\&. 
 .PP
 \fBParameters:\fP
@@ -241,7 +241,7 @@ Sets the cached value that represents the force of gravity on this \fBParticle\f
 .RE
 .PP
 
-.SS "void KillerPhysics::Particle::SetInverseMass (real inverseMass)\fC [inline]\fP"
+.SS "void KillerPhysics::Particle::SetInverseMass (\fBreal\fP inverseMass)\fC [inline]\fP"
 Sets the Inverse Mass of this \fBParticle\fP\&. 
 .PP
 \fBParameters:\fP
@@ -250,7 +250,7 @@ Sets the Inverse Mass of this \fBParticle\fP\&.
 .RE
 .PP
 
-.SS "void KillerPhysics::Particle::SetMass (real mass)\fC [inline]\fP"
+.SS "void KillerPhysics::Particle::SetMass (\fBreal\fP mass)\fC [inline]\fP"
 Sets the actual Mass of the \fBParticle\fP object\&. Because Mass is stored as the inverse, that is 1/mass, this involves some math to set up the inverse\&. 
 .PP
 \fBParameters:\fP
@@ -268,7 +268,7 @@ Directly sets the velocity of the \fBParticle\fP, ignoring acceleration and phys
 .RE
 .PP
 
-.SS "void KillerPhysics::Particle::SetVelocity (F32 x, F32 y)\fC [inline]\fP"
+.SS "void KillerPhysics::Particle::SetVelocity (\fBF32\fP x, \fBF32\fP y)\fC [inline]\fP"
 Directly sets the velocity of the \fBParticle\fP, ignoring acceleration and physics\&. This can be viewed as an impulse, but permanent\&. Does not change the z value of the velocity\&. 
 .PP
 \fBParameters:\fP
@@ -279,7 +279,7 @@ Directly sets the velocity of the \fBParticle\fP, ignoring acceleration and phys
 .RE
 .PP
 
-.SS "void KillerPhysics::Particle::SetVelocity (F32 x, F32 y, F32 z)\fC [inline]\fP"
+.SS "void KillerPhysics::Particle::SetVelocity (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)\fC [inline]\fP"
 Directly sets the velocity of the \fBParticle\fP, ignoring acceleration and physics\&. This can be viewed as an impulse, but permanent\&. 
 .PP
 \fBParameters:\fP

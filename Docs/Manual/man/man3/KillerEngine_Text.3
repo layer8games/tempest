@@ -21,7 +21,7 @@ KillerEngine::Text
 .RI "void \fBSetPosition\fP (const \fBKM::Vector\fP &pos)"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (F32 x, F32 y)"
+.RI "void \fBSetPosition\fP (\fBF32\fP x, \fBF32\fP y)"
 .br
 .ti -1c
 .RI "void \fBAddText\fP (string text)"
@@ -48,7 +48,7 @@ KillerEngine::Text
 .RI "bool \fBGetActive\fP (void) const"
 .br
 .ti -1c
-.RI "F32 \fBGetWidth\fP (void)"
+.RI "\fBF32\fP \fBGetWidth\fP (void)"
 .br
 .ti -1c
 .RI "void \fBSetFont\fP (shared_ptr< \fBFont\fP > font)"
@@ -66,7 +66,7 @@ KillerEngine::Text
 .RI "void \fBSetScale\fP (const \fBKM::Vector\fP &s)"
 .br
 .ti -1c
-.RI "void \fBSetScale\fP (F32 xScale, F32 yScale)"
+.RI "void \fBSetScale\fP (\fBF32\fP xScale, \fBF32\fP yScale)"
 .br
 .ti -1c
 .RI "const \fBKM::Vector\fP & \fBGetScale\fP (void)"
@@ -75,7 +75,7 @@ KillerEngine::Text
 .RI "void \fBSetColor\fP (const \fBColor\fP &c)"
 .br
 .ti -1c
-.RI "void \fBSetColor\fP (F32 r, F32 g, F32 b)"
+.RI "void \fBSetColor\fP (\fBF32\fP r, \fBF32\fP g, \fBF32\fP b)"
 .br
 .ti -1c
 .RI "const \fBColor\fP & \fBGetColor\fP (void)"
@@ -105,7 +105,7 @@ KillerEngine::Text
 .br
 .RI "Active state of \fBText\fP and each \fBGlyph\fP\&. "
 .ti -1c
-.RI "F32 \fB_totalWidth\fP"
+.RI "\fBF32\fP \fB_totalWidth\fP"
 .br
 .RI "Total space the \fBText\fP will take up on screen\&. "
 .ti -1c
@@ -175,7 +175,7 @@ Returns the font \fBText\fP is using\&.
 Returns the current scale of the \fBText\fP\&. 
 .SS "string KillerEngine::Text::GetText (void)\fC [inline]\fP"
 Returns a string version of the current text represented by Glyphs (if the Glyphs have been generated with a font)\&. 
-.SS "F32 KillerEngine::Text::GetWidth (void)\fC [inline]\fP"
+.SS "\fBF32\fP KillerEngine::Text::GetWidth (void)\fC [inline]\fP"
 Returns the total width of all the Glyphs including the xAdvance values\&. This means that this width represents how much screen space the \fBText\fP is going to take up on the x axis\&. 
 .SS "void KillerEngine::Text::SetActive (bool state)\fC [inline]\fP"
 Sets the active state of each \fBGlyph\fP\&. 
@@ -197,7 +197,7 @@ Sets the \fBColor\fP for the \fBText\fP and each \fBGlyph\fP that has been added
 .RE
 .PP
 
-.SS "void KillerEngine::Text::SetColor (F32 r, F32 g, F32 b)\fC [inline]\fP"
+.SS "void KillerEngine::Text::SetColor (\fBF32\fP r, \fBF32\fP g, \fBF32\fP b)\fC [inline]\fP"
 Sets the \fBColor\fP for the \fBText\fP and each \fBGlyph\fP that has been added\&. 
 .PP
 \fBParameters:\fP
@@ -239,7 +239,7 @@ Updates the position of each \fBGlyph\fP in the \fBText\fP\&.
 .RE
 .PP
 
-.SS "void KillerEngine::Text::SetPosition (F32 x, F32 y)\fC [inline]\fP"
+.SS "void KillerEngine::Text::SetPosition (\fBF32\fP x, \fBF32\fP y)\fC [inline]\fP"
 Updates the position of each \fBGlyph\fP in the \fBText\fP\&. 
 .PP
 \fBParameters:\fP

@@ -24,7 +24,7 @@ KillerEngine::Shader
 .RI "void \fBUse\fP (bool state=true)"
 .br
 .ti -1c
-.RI "void \fBSetUniform\fP (const GLchar *name, const F32 val)"
+.RI "void \fBSetUniform\fP (const GLchar *name, const \fBF32\fP val)"
 .br
 .ti -1c
 .RI "void \fBSetUniform\fP (const GLchar *name, const \fBKM::Vector\fP &vec)"
@@ -36,7 +36,7 @@ KillerEngine::Shader
 .RI "void \fBSetUniform\fP (const GLchar *name, \fBKM::Matrix\fP mat)"
 .br
 .ti -1c
-.RI "void \fBSetUniformSampler\fP (const GLchar *name, S32 texSlot)"
+.RI "void \fBSetUniformSampler\fP (const GLchar *name, \fBS32\fP texSlot)"
 .br
 .ti -1c
 .RI "void \fBSetUniform\fP (const GLchar *name, const \fBColor\fP &col)"
@@ -142,7 +142,7 @@ Manually set the OpenGL program handle\&. Used for copying the shader\&.
 .RE
 .PP
 
-.SS "void Shader::SetUniform (const GLchar * name, const F32 val)"
+.SS "void Shader::SetUniform (const GLchar * name, const \fBF32\fP val)"
 Helper function to set a uniform in the shader\&. Wrapper around glUniform1f\&. 
 .PP
 \fBParameters:\fP
@@ -188,7 +188,7 @@ Helper function to set a uniform in the shader\&. Wrapper around glUniform4f\&. 
 
 .SS "void KillerEngine::Shader::SetUniformLocations (map< string, GLuint > uniforms)\fC [inline]\fP"
 Manually set cache of uniform locations\&. Used for copying\&. 
-.SS "void Shader::SetUniformSampler (const GLchar * name, S32 texSlot)"
+.SS "void Shader::SetUniformSampler (const GLchar * name, \fBS32\fP texSlot)"
 Helper function to set a uniform in the shader\&. This is used to activate more than one texture in the shader\&. The default is to set all textures to slot 0, this allows for multiple slots to be set\&. Wrapper around glActiveTexture and glUniform1i\&. 
 .PP
 \fBParameters:\fP

@@ -81,7 +81,7 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "bool \fBIsSprite\fP (void) const"
 .br
 .ti -1c
-.RI "const U32 \fBGetID\fP (void) const"
+.RI "const \fBU32\fP \fBGetID\fP (void) const"
 .br
 .ti -1c
 .RI "const \fBKM::Vector\fP & \fBGetPosition\fP (void) const"
@@ -90,22 +90,22 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "void \fBSetPosition\fP (const \fBKM::Vector\fP &pos)"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (F32 x, F32 y)"
+.RI "void \fBSetPosition\fP (\fBF32\fP x, \fBF32\fP y)"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (F32 x, F32 y, F32 z)"
+.RI "void \fBSetPosition\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
-.RI "void \fBSetPositionX\fP (F32 xval)"
+.RI "void \fBSetPositionX\fP (\fBF32\fP xval)"
 .br
 .ti -1c
-.RI "void \fBSetPositionY\fP (F32 yVal)"
+.RI "void \fBSetPositionY\fP (\fBF32\fP yVal)"
 .br
 .ti -1c
-.RI "void \fBSetPositionZ\fP (F32 zVal)"
+.RI "void \fBSetPositionZ\fP (\fBF32\fP zVal)"
 .br
 .ti -1c
-.RI "void \fBAddScaledPosition\fP (const \fBKM::Vector\fP pos, F32 scale)"
+.RI "void \fBAddScaledPosition\fP (const \fBKM::Vector\fP pos, \fBF32\fP scale)"
 .br
 .ti -1c
 .RI "const \fBKM::Vector\fP & \fBGetScale\fP (void) const"
@@ -114,13 +114,13 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "void \fBSetScale\fP (const \fBKM::Vector\fP &scale)"
 .br
 .ti -1c
-.RI "void \fBSetScale\fP (F32 val)"
+.RI "void \fBSetScale\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBSetScale\fP (F32 xVal, F32 yVal)"
+.RI "void \fBSetScale\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
 .br
 .ti -1c
-.RI "void \fBSetScale\fP (F32 xVal, F32 yVal, F32 zVal)"
+.RI "void \fBSetScale\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
 .RI "const \fBKM::Quaternion\fP & \fBGetOrientation\fP (void) const"
@@ -129,13 +129,13 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "void \fBSetOrientation\fP (const \fBKM::Quaternion\fP &q)"
 .br
 .ti -1c
-.RI "void \fBSetOrientation\fP (F32 wVal, F32 xVal, F32 yVal, F32 zVal)"
+.RI "void \fBSetOrientation\fP (\fBF32\fP wVal, \fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
 .RI "void \fBSetColor\fP (const \fBColor\fP &col)"
 .br
 .ti -1c
-.RI "void \fBSetColor\fP (F32 red, F32 green, F32 blue)"
+.RI "void \fBSetColor\fP (\fBF32\fP red, \fBF32\fP green, \fBF32\fP blue)"
 .br
 .ti -1c
 .RI "const \fBColor\fP & \fBGetColor\fP (void) const"
@@ -162,7 +162,7 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "void \fBUseShader\fP (bool state=true)"
 .br
 .ti -1c
-.RI "void \fBSetUniform\fP (string name, const F32 val)"
+.RI "void \fBSetUniform\fP (string name, const \fBF32\fP val)"
 .br
 .ti -1c
 .RI "void \fBSetUniform\fP (string name, const \fBKM::Vector\fP &vec)"
@@ -174,7 +174,7 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "void \fBSetUniform\fP (string name, const \fBKM::Matrix\fP &mat)"
 .br
 .ti -1c
-.RI "void \fBSetUniformSampler\fP (string name, S32 texSlot)"
+.RI "void \fBSetUniformSampler\fP (string name, \fBS32\fP texSlot)"
 .br
 .ti -1c
 .RI "void \fBSetUniform\fP (string name, const \fBColor\fP &col)"
@@ -183,7 +183,7 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "void \fBSetUniformVec3\fP (string name, const \fBColor\fP &col)"
 .br
 .ti -1c
-.RI "U32 \fBGetNumVertices\fP (void)"
+.RI "\fBU32\fP \fBGetNumVertices\fP (void)"
 .br
 .ti -1c
 .RI "void \fBAddVertex\fP (const \fBVertex\fP &vert)"
@@ -195,13 +195,13 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "std::vector< \fBVertex\fP > \fBGetVertices\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBAddIndex\fP (U32 index)"
+.RI "void \fBAddIndex\fP (\fBU32\fP index)"
 .br
 .ti -1c
-.RI "void \fBSetIndices\fP (std::vector< U32 > indices)"
+.RI "void \fBSetIndices\fP (std::vector< \fBU32\fP > indices)"
 .br
 .ti -1c
-.RI "std::vector< U32 > \fBGetIndices\fP (void) const"
+.RI "std::vector< \fBU32\fP > \fBGetIndices\fP (void) const"
 .br
 .ti -1c
 .RI "GLuint \fBGetVAO\fP (void) const"
@@ -213,13 +213,13 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "void \fBBindVBO\fP (BufferData buffer, bool state=true)"
 .br
 .ti -1c
-.RI "std::vector< F32 > \fBGetUVList\fP (void) const"
+.RI "std::vector< \fBF32\fP > \fBGetUVList\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetUVList\fP (std::vector< F32 > list)"
+.RI "void \fBSetUVList\fP (std::vector< \fBF32\fP > list)"
 .br
 .ti -1c
-.RI "void \fBAddUV\fP (F32 val)"
+.RI "void \fBAddUV\fP (\fBF32\fP val)"
 .br
 .in -1c
 .SS "Protected Member Functions"
@@ -236,10 +236,10 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 
 .in +1c
 .ti -1c
-.RI "std::vector< U32 > \fB_SplitU32\fP (string text, char delim) const"
+.RI "std::vector< \fBU32\fP > \fB_SplitU32\fP (string text, char delim) const"
 .br
 .ti -1c
-.RI "std::vector< F32 > \fB_SplitF32\fP (string text, char delim) const"
+.RI "std::vector< \fBF32\fP > \fB_SplitF32\fP (string text, char delim) const"
 .br
 .ti -1c
 .RI "std::vector< string > \fB_SplitString\fP (string text, char delim) const"
@@ -255,10 +255,10 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "std::vector< \fBVertex\fP > \fB_vertices\fP"
 .br
 .ti -1c
-.RI "std::vector< U32 > \fB_indices\fP"
+.RI "std::vector< \fBU32\fP > \fB_indices\fP"
 .br
 .ti -1c
-.RI "std::vector< F32 > \fB_uvList\fP"
+.RI "std::vector< \fBF32\fP > \fB_uvList\fP"
 .br
 .ti -1c
 .RI "\fBKM::Matrix\fP \fB_modelTOWorldCache\fP"
@@ -291,7 +291,7 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "bool \fB_isSprite\fP"
 .br
 .ti -1c
-.RI "U32 \fB_ID\fP"
+.RI "\fBU32\fP \fB_ID\fP"
 .br
 .ti -1c
 .RI "GLuint \fB_vao\fP"
@@ -304,7 +304,7 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 
 .in +1c
 .ti -1c
-.RI "static U32 \fB_nextID\fP = 1"
+.RI "static \fBU32\fP \fB_nextID\fP = 1"
 .br
 .in -1c
 

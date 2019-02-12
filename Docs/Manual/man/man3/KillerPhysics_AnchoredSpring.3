@@ -17,7 +17,7 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .RI "\fBAnchoredSpring\fP (void)"
 .br
 .ti -1c
-.RI "\fBAnchoredSpring\fP (\fBKM::Vector\fP anchor, real springConstant, real restLength)"
+.RI "\fBAnchoredSpring\fP (\fBKM::Vector\fP anchor, \fBreal\fP springConstant, \fBreal\fP restLength)"
 .br
 .ti -1c
 .RI "\fB~AnchoredSpring\fP (void)"
@@ -32,10 +32,10 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .RI "void \fBSetAnchor\fP (\fBKM::Vector\fP &anchor)"
 .br
 .ti -1c
-.RI "void \fBSetSpringConstant\fP (real constant)"
+.RI "void \fBSetSpringConstant\fP (\fBreal\fP constant)"
 .br
 .ti -1c
-.RI "void \fBSetRestLength\fP (real length)"
+.RI "void \fBSetRestLength\fP (\fBreal\fP length)"
 .br
 .in -1c
 .SS "Private Attributes"
@@ -46,11 +46,11 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .br
 .RI "The location of the anchor point of the spring\&. "
 .ti -1c
-.RI "real \fB_springConstant\fP"
+.RI "\fBreal\fP \fB_springConstant\fP"
 .br
 .RI "Determines the 'stiffness' of the spring\&. The higher this value is, the more force the spring can make\&. "
 .ti -1c
-.RI "real \fB_restLength\fP"
+.RI "\fBreal\fP \fB_restLength\fP"
 .br
 .RI "Length of the spring at rest\&. When an object reaches this length, a force will be acted on it\&. "
 .in -1c
@@ -89,7 +89,7 @@ To set an Anchored Spring Force Generator, simple give it an object that cannot 
 .PP 
 .SS "AnchoredSpring::AnchoredSpring (void)"
 Sets all values to 1, with anchor at 0\&. 
-.SS "AnchoredSpring::AnchoredSpring (\fBKM::Vector\fP anchor, real springConstant, real restLength)"
+.SS "AnchoredSpring::AnchoredSpring (\fBKM::Vector\fP anchor, \fBreal\fP springConstant, \fBreal\fP restLength)"
 Sets up the default values of the spring\&. 
 .PP
 \fBParameters:\fP
@@ -115,7 +115,7 @@ Changes the location of the other end of the spring\&.
 .RE
 .PP
 
-.SS "void KillerPhysics::AnchoredSpring::SetRestLength (real length)\fC [inline]\fP"
+.SS "void KillerPhysics::AnchoredSpring::SetRestLength (\fBreal\fP length)\fC [inline]\fP"
 Changes the length of the invisible spring\&. 
 .PP
 \fBParameters:\fP
@@ -124,7 +124,7 @@ Changes the length of the invisible spring\&.
 .RE
 .PP
 
-.SS "void KillerPhysics::AnchoredSpring::SetSpringConstant (real constant)\fC [inline]\fP"
+.SS "void KillerPhysics::AnchoredSpring::SetSpringConstant (\fBreal\fP constant)\fC [inline]\fP"
 Changes the 'striffness' of the spring\&. 
 .PP
 \fBParameters:\fP

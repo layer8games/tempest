@@ -18,7 +18,7 @@ KillerEngine::Level
 .RI "virtual \fB~Level\fP (void)"
 .br
 .ti -1c
-.RI "virtual void \fBv_InitLevel\fP (U32 id, S32 w, S32 h, \fBColor\fP &c)=0"
+.RI "virtual void \fBv_InitLevel\fP (\fBU32\fP id, \fBS32\fP w, \fBS32\fP h, \fBColor\fP &c)=0"
 .br
 .ti -1c
 .RI "virtual void \fBv_Update\fP (void)=0"
@@ -54,7 +54,7 @@ KillerEngine::Level
 .RI "void \fBAddTextToLevel\fP (const \fBText\fP &text)"
 .br
 .ti -1c
-.RI "void \fBRemoveObjectFromLevel\fP (U32 id)"
+.RI "void \fBRemoveObjectFromLevel\fP (\fBU32\fP id)"
 .br
 .ti -1c
 .RI "void \fBUpdateObjects\fP (void)"
@@ -69,70 +69,70 @@ KillerEngine::Level
 .RI "void \fBActivateBackgroundColor\fP (void)"
 .br
 .ti -1c
-.RI "S32 \fBGetLevelWidth\fP (void) const"
+.RI "\fBS32\fP \fBGetLevelWidth\fP (void) const"
 .br
 .ti -1c
-.RI "S32 \fBGetLevelHeight\fP (void) const"
+.RI "\fBS32\fP \fBGetLevelHeight\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetLevelWidth\fP (S32 w)"
+.RI "void \fBSetLevelWidth\fP (\fBS32\fP w)"
 .br
 .ti -1c
-.RI "void \fBSetLevelHeight\fP (S32 h)"
+.RI "void \fBSetLevelHeight\fP (\fBS32\fP h)"
 .br
 .ti -1c
-.RI "void \fBSetLevelDimensions\fP (S32 w, S32 h)"
+.RI "void \fBSetLevelDimensions\fP (\fBS32\fP w, \fBS32\fP h)"
 .br
 .ti -1c
-.RI "void \fBSetTopBorder\fP (S32 top)"
+.RI "void \fBSetTopBorder\fP (\fBS32\fP top)"
 .br
 .ti -1c
-.RI "void \fBSetBottomBorder\fP (S32 bottom)"
+.RI "void \fBSetBottomBorder\fP (\fBS32\fP bottom)"
 .br
 .ti -1c
-.RI "void \fBSetRightBorder\fP (S32 right)"
+.RI "void \fBSetRightBorder\fP (\fBS32\fP right)"
 .br
 .ti -1c
-.RI "void \fBSetLeftBorder\fP (S32 left)"
+.RI "void \fBSetLeftBorder\fP (\fBS32\fP left)"
 .br
 .ti -1c
-.RI "void \fBSetLevelBorders\fP (S32 top, S32 bottom, S32 right, S32 left)"
+.RI "void \fBSetLevelBorders\fP (\fBS32\fP top, \fBS32\fP bottom, \fBS32\fP right, \fBS32\fP left)"
 .br
 .ti -1c
-.RI "S32 \fBGetTopBorder\fP (void) const"
+.RI "\fBS32\fP \fBGetTopBorder\fP (void) const"
 .br
 .ti -1c
-.RI "S32 \fBGetBottomBorder\fP (void) const"
+.RI "\fBS32\fP \fBGetBottomBorder\fP (void) const"
 .br
 .ti -1c
-.RI "S32 \fBGetLeftBorder\fP (void) const"
+.RI "\fBS32\fP \fBGetLeftBorder\fP (void) const"
 .br
 .ti -1c
-.RI "S32 \fBGetRightBorder\fP (void) const"
+.RI "\fBS32\fP \fBGetRightBorder\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetDepth\fP (S32 d)"
+.RI "void \fBSetDepth\fP (\fBS32\fP d)"
 .br
 .ti -1c
-.RI "S32 \fBGetDepth\fP (void)"
+.RI "\fBS32\fP \fBGetDepth\fP (void)"
 .br
 .ti -1c
-.RI "void \fBSetNearBorder\fP (S32 n)"
+.RI "void \fBSetNearBorder\fP (\fBS32\fP n)"
 .br
 .ti -1c
-.RI "void \fBSetFarBorder\fP (S32 f)"
+.RI "void \fBSetFarBorder\fP (\fBS32\fP f)"
 .br
 .ti -1c
-.RI "S32 \fBGetNearBorder\fP (void)"
+.RI "\fBS32\fP \fBGetNearBorder\fP (void)"
 .br
 .ti -1c
-.RI "S32 \fBGetFarBorder\fP (void)"
+.RI "\fBS32\fP \fBGetFarBorder\fP (void)"
 .br
 .ti -1c
-.RI "void \fBSetID\fP (U32 id)"
+.RI "void \fBSetID\fP (\fBU32\fP id)"
 .br
 .ti -1c
-.RI "U32 \fBGetID\fP (void) const"
+.RI "\fBU32\fP \fBGetID\fP (void) const"
 .br
 .ti -1c
 .RI "void \fBSetCamera\fP (\fBCamera\fP *cam)"
@@ -148,39 +148,39 @@ KillerEngine::Level
 
 .in +1c
 .ti -1c
-.RI "S32 \fB_width\fP"
+.RI "\fBS32\fP \fB_width\fP"
 .br
 .RI "Total width of the play area in the \fBLevel\fP\&. Enforced only by convention\&. "
 .ti -1c
-.RI "S32 \fB_height\fP"
+.RI "\fBS32\fP \fB_height\fP"
 .br
 .RI "Total height of the play area in the \fBLevel\fP\&. Enforced only by convention\&. "
 .ti -1c
-.RI "S32 \fB_topBorder\fP"
+.RI "\fBS32\fP \fB_topBorder\fP"
 .br
 .RI "Optional 'north' border of the \fBLevel\fP\&. "
 .ti -1c
-.RI "S32 \fB_bottomBorder\fP"
+.RI "\fBS32\fP \fB_bottomBorder\fP"
 .br
 .RI "Optional 'south' border of the \fBLevel\fP\&. "
 .ti -1c
-.RI "S32 \fB_rightBorder\fP"
+.RI "\fBS32\fP \fB_rightBorder\fP"
 .br
 .RI "Optional 'east' border of the \fBLevel\fP\&. "
 .ti -1c
-.RI "S32 \fB_leftBorder\fP"
+.RI "\fBS32\fP \fB_leftBorder\fP"
 .br
 .RI "Optional 'west' border of the \fBLevel\fP\&. "
 .ti -1c
-.RI "S32 \fB_depth\fP"
+.RI "\fBS32\fP \fB_depth\fP"
 .br
 .RI "Total depth of the play area in the \fBLevel\fP\&. "
 .ti -1c
-.RI "S32 \fB_nearBorder\fP"
+.RI "\fBS32\fP \fB_nearBorder\fP"
 .br
 .RI "Optional close border of the \fBLevel\fP\&. "
 .ti -1c
-.RI "S32 \fB_farBorder\fP"
+.RI "\fBS32\fP \fB_farBorder\fP"
 .br
 .RI "Optional far border of the \fBLevel\fP\&. "
 .ti -1c
@@ -188,7 +188,7 @@ KillerEngine::Level
 .br
 .RI "\fBColor\fP used for the background of the rendering window\&. "
 .ti -1c
-.RI "U32 \fB_ID\fP"
+.RI "\fBU32\fP \fB_ID\fP"
 .br
 .RI "ID used in the \fBLevelManager\fP\&. "
 .ti -1c
@@ -196,11 +196,11 @@ KillerEngine::Level
 .br
 .RI "Pointer to a \fBCamera\fP object\&. "
 .ti -1c
-.RI "std::map< U32, shared_ptr< \fBGameObject\fP > > \fB_gameObjects\fP"
+.RI "std::map< \fBU32\fP, shared_ptr< \fBGameObject\fP > > \fB_gameObjects\fP"
 .br
 .RI "List of all GameObjects included in the \fBLevel\fP\&. "
 .ti -1c
-.RI "std::map< U32, shared_ptr< \fBKP::Particle\fP > > \fB_particles\fP"
+.RI "std::map< \fBU32\fP, shared_ptr< \fBKP::Particle\fP > > \fB_particles\fP"
 .br
 .RI "List of all KillerPhysics::Particles in the \fBLevel\fP\&. "
 .ti -1c
@@ -277,27 +277,27 @@ Adds the Glyphs in a \fBText\fP to the \fBLevel\fP as GameObjects\&.
 .RE
 .PP
 
-.SS "S32 KillerEngine::Level::GetBottomBorder (void) const\fC [inline]\fP"
+.SS "\fBS32\fP KillerEngine::Level::GetBottomBorder (void) const\fC [inline]\fP"
 Returns the bottom border\&. 
 .SS "const \fBCamera\fP* KillerEngine::Level::GetCamera (void)\fC [inline]\fP"
 Returns the current \fBCamera\fP\&. 
-.SS "S32 KillerEngine::Level::GetDepth (void)\fC [inline]\fP"
+.SS "\fBS32\fP KillerEngine::Level::GetDepth (void)\fC [inline]\fP"
 Returns the depth of the play area\&. 
-.SS "S32 KillerEngine::Level::GetFarBorder (void)\fC [inline]\fP"
+.SS "\fBS32\fP KillerEngine::Level::GetFarBorder (void)\fC [inline]\fP"
 Returns the far border of the play area\&. 
-.SS "U32 KillerEngine::Level::GetID (void) const\fC [inline]\fP"
+.SS "\fBU32\fP KillerEngine::Level::GetID (void) const\fC [inline]\fP"
 Returns the \fBLevel\fP ID\&. This will only match the \fBLevelManager\fP ID if you set it correctly\&. 
-.SS "S32 KillerEngine::Level::GetLeftBorder (void) const\fC [inline]\fP"
+.SS "\fBS32\fP KillerEngine::Level::GetLeftBorder (void) const\fC [inline]\fP"
 Returns the left border\&. 
-.SS "S32 KillerEngine::Level::GetLevelHeight (void) const\fC [inline]\fP"
+.SS "\fBS32\fP KillerEngine::Level::GetLevelHeight (void) const\fC [inline]\fP"
 Returns the height of the play area of the \fBLevel\fP\&. 
-.SS "S32 KillerEngine::Level::GetLevelWidth (void) const\fC [inline]\fP"
+.SS "\fBS32\fP KillerEngine::Level::GetLevelWidth (void) const\fC [inline]\fP"
 Returns the width of the play area of the \fBLevel\fP\&. 
-.SS "S32 KillerEngine::Level::GetNearBorder (void)\fC [inline]\fP"
+.SS "\fBS32\fP KillerEngine::Level::GetNearBorder (void)\fC [inline]\fP"
 Returns the near border of the play area\&. 
-.SS "S32 KillerEngine::Level::GetRightBorder (void) const\fC [inline]\fP"
+.SS "\fBS32\fP KillerEngine::Level::GetRightBorder (void) const\fC [inline]\fP"
 Returns the right border\&. 
-.SS "S32 KillerEngine::Level::GetTopBorder (void) const\fC [inline]\fP"
+.SS "\fBS32\fP KillerEngine::Level::GetTopBorder (void) const\fC [inline]\fP"
 Returns the top border\&. 
 .SS "void KillerEngine::Level::RegisterParticleForce (shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ForceGenerator\fP > generator)\fC [inline]\fP"
 Registers a \fBKillerPhysics::Particle\fP with a KillerPhysics::ForcerGenerator\&. This only works because they are pointers\&. 
@@ -310,7 +310,7 @@ Registers a \fBKillerPhysics::Particle\fP with a KillerPhysics::ForcerGenerator\
 .RE
 .PP
 
-.SS "void Level::RemoveObjectFromLevel (U32 id)"
+.SS "void Level::RemoveObjectFromLevel (\fBU32\fP id)"
 Removes the \fBGameObject\fP with id from the \fBLevel\fP\&. 
 .PP
 \fBParameters:\fP
@@ -323,7 +323,7 @@ Removes the \fBGameObject\fP with id from the \fBLevel\fP\&.
 Loops over all of the \fBGameObject\fP and \fBKillerPhysics::Particle\fP that have been added to the \fBLevel\fP, and calls GameObject::v_Render if they are active for rendering\&. 
 .SS "void KillerEngine::Level::SetBackgroundColor (\fBColor\fP & c)\fC [inline]\fP"
 Changes the set background color for the \fBLevel\fP\&. It also calls \fBLevel::ActivateBackgroundColor\fP 
-.SS "void KillerEngine::Level::SetBottomBorder (S32 bottom)\fC [inline]\fP"
+.SS "void KillerEngine::Level::SetBottomBorder (\fBS32\fP bottom)\fC [inline]\fP"
 Set the bottom bounds\&. 
 .PP
 \fBParameters:\fP
@@ -336,13 +336,13 @@ Set the bottom bounds\&.
 Sets the camera to a new \fBCamera\fP pointer, allowing you to change the \fBCamera\fP at run time\&. 
 .SS "void KillerEngine::Level::SetCameraOrthographic (void)\fC [inline]\fP"
 Wrapper around \fBCamera::SetOrthographic\fP\&. 
-.SS "void KillerEngine::Level::SetDepth (S32 d)\fC [inline]\fP"
+.SS "void KillerEngine::Level::SetDepth (\fBS32\fP d)\fC [inline]\fP"
 Sets the depth of the play area 
-.SS "void KillerEngine::Level::SetFarBorder (S32 f)\fC [inline]\fP"
+.SS "void KillerEngine::Level::SetFarBorder (\fBS32\fP f)\fC [inline]\fP"
 Sets the far border of the play area\&. 
-.SS "void KillerEngine::Level::SetID (U32 id)\fC [inline]\fP"
+.SS "void KillerEngine::Level::SetID (\fBU32\fP id)\fC [inline]\fP"
 Sets a new ID for the \fBLevel\fP\&. Use with caution\&. 
-.SS "void KillerEngine::Level::SetLeftBorder (S32 left)\fC [inline]\fP"
+.SS "void KillerEngine::Level::SetLeftBorder (\fBS32\fP left)\fC [inline]\fP"
 Set the left bounds\&. 
 .PP
 \fBParameters:\fP
@@ -351,7 +351,7 @@ Set the left bounds\&.
 .RE
 .PP
 
-.SS "void KillerEngine::Level::SetLevelBorders (S32 top, S32 bottom, S32 right, S32 left)\fC [inline]\fP"
+.SS "void KillerEngine::Level::SetLevelBorders (\fBS32\fP top, \fBS32\fP bottom, \fBS32\fP right, \fBS32\fP left)\fC [inline]\fP"
 Helper function to set all borders of the play area of the \fBLevel\fP at the same time\&. 
 .PP
 \fBParameters:\fP
@@ -366,9 +366,9 @@ Helper function to set all borders of the play area of the \fBLevel\fP at the sa
 .RE
 .PP
 
-.SS "void KillerEngine::Level::SetLevelDimensions (S32 w, S32 h)\fC [inline]\fP"
+.SS "void KillerEngine::Level::SetLevelDimensions (\fBS32\fP w, \fBS32\fP h)\fC [inline]\fP"
 Helper function that allows you to change the play area dimensions at the same time\&. 
-.SS "void KillerEngine::Level::SetLevelHeight (S32 h)\fC [inline]\fP"
+.SS "void KillerEngine::Level::SetLevelHeight (\fBS32\fP h)\fC [inline]\fP"
 Changes the height of the play area of the \fBLevel\fP\&. 
 .PP
 \fBParameters:\fP
@@ -377,7 +377,7 @@ Changes the height of the play area of the \fBLevel\fP\&.
 .RE
 .PP
 
-.SS "void KillerEngine::Level::SetLevelWidth (S32 w)\fC [inline]\fP"
+.SS "void KillerEngine::Level::SetLevelWidth (\fBS32\fP w)\fC [inline]\fP"
 Changes the width of the play area of the \fBLevel\fP\&. 
 .PP
 \fBParameters:\fP
@@ -386,9 +386,9 @@ Changes the width of the play area of the \fBLevel\fP\&.
 .RE
 .PP
 
-.SS "void KillerEngine::Level::SetNearBorder (S32 n)\fC [inline]\fP"
+.SS "void KillerEngine::Level::SetNearBorder (\fBS32\fP n)\fC [inline]\fP"
 Sets the near border of the play area\&. 
-.SS "void KillerEngine::Level::SetRightBorder (S32 right)\fC [inline]\fP"
+.SS "void KillerEngine::Level::SetRightBorder (\fBS32\fP right)\fC [inline]\fP"
 Set the right bounds\&. 
 .PP
 \fBParameters:\fP
@@ -397,7 +397,7 @@ Set the right bounds\&.
 .RE
 .PP
 
-.SS "void KillerEngine::Level::SetTopBorder (S32 top)\fC [inline]\fP"
+.SS "void KillerEngine::Level::SetTopBorder (\fBS32\fP top)\fC [inline]\fP"
 Set the top bounds\&. 
 .PP
 \fBParameters:\fP
@@ -410,7 +410,7 @@ Set the top bounds\&.
 Default actions that need to be called each frame\&. Right now, that is only Camera::v_Update\&. 
 .SS "void Level::UpdateObjects (void)"
 Loops over all of the \fBGameObject\fP and \fBKillerPhysics::Particle\fP that have been added to the \fBLevel\fP, and calls GameObject::v_Update if they are active for updates\&. 
-.SS "virtual void KillerEngine::Level::v_InitLevel (U32 id, S32 w, S32 h, \fBColor\fP & c)\fC [pure virtual]\fP"
+.SS "virtual void KillerEngine::Level::v_InitLevel (\fBU32\fP id, \fBS32\fP w, \fBS32\fP h, \fBColor\fP & c)\fC [pure virtual]\fP"
 Abstract function\&. Used to Initialize the default values, instantiate any objects that will be used and generally get things ready to go\&. 
 .PP
 \fBParameters:\fP
