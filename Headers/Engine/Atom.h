@@ -1,12 +1,5 @@
-/*! 
-	\mainpage Killer Engine
-	\section The Killer Engine Documentation.
-	I can't find a better place to list this, so here are the default types that exist
-	in the engine. 
-*/
-
 /*========================================================================
-@file Atom.h
+
 Call Atom because it is the most basic include file. This is the file
 to be included with all other files that are made. This contains the 
 type definitions that will be the atomic variable types for the Killer1
@@ -41,7 +34,10 @@ using std::shared_ptr;
 
 /*!
 	@file Atom.h
-	Global helpers and defines.
+	Called Atom because it is the most basic include file. This is the file to be included with all other 
+	files that are made. This contains the type definitions that will be the atomic variable types for the 
+	KillerEngine (as suggested by Jason Gregory in Game Engine Architecture 2nd Edition). It will also 
+	contain the basic header files that every other class or file will need. 
 */
 
 //=====Global usings=====

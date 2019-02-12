@@ -1,0 +1,361 @@
+/*!
+\mainpage Killer Engine
+
+<h1>Coding Standards</h1>
+
+<b>Comments</b>
+
+All comments should be places as far to the left margin as they can be. Even if the relevant code is in the middle of the column, by placing all the comments to the furthermost left it allows for the comments to be easier to find in the IDE.
+ 
+Header comment. Begin each header file with a comment section which explains the use of the functions and any interface or design details that would be relevant to understand in order for the someone new to know what choices you had made. 
+
+example: 
+
+\code
+/*========================================================================
+Explanation of interface and design here
+
+credit here:
+This is not free to use, and cannot be used without the express permission
+of KillerWave.
+
+Written by Maxwell Miller
+========================================================================*/
+\endcode
+
+<b>Function group comments.</b>
+
+These are placed to at the start of a group of functions so that it is easy to identify what a related group of functions are for. 
+
+example:
+
+\code
+//==========================================================================================================================
+//
+//Function group
+//
+//==========================================================================================================================
+\endcode
+
+<b>Function name comments</b>
+
+These are to label the individual functions located in the files for ease of access. If the functions are in a header, or if they are grouped small enough that adding this comment would double the number of lines, then don't use it. It's meant more for very large files that many functions (ie the Renderer really needs this). 
+
+example:
+
+\code
+//==========================================================================================================================
+//Function Name
+//==========================================================================================================================
+\endcode
+
+<b>Notational comment.</b>
+
+These are used to make small, notation comments in the code for ease of use. This is defined as \c// followed by a line of equal signs, followed by the comment, followed by another line equal signs. The lines should match this doc. Copy and paste it, or set up a code complete snippet.
+
+example:
+
+\code
+//===== Comment here =====
+\endcode
+
+<b>End of scope comment.</b>
+
+This is used where the brackets may be misleading, and it could be difficult to tell where one scope ends and another beings.
+
+example:
+\code
+{
+	if 
+	{
+		while() 
+		{
+
+		}
+	}
+	else if()
+	{
+
+	}
+};//end of scope
+\endcode
+
+<h1>Header format</h1>
+
+Every header file should be set up in the same format. Use pre-processor definition here, in order to prevent a header class being declared twice by the compiler. Next the includes and any relevant using statements with a comment label indicating the location or purpose of these includes. The namespace comes next, following by any forward definitions of classes, then the class definition. Next comes the class itself, and all of the functions and members that that class will use. Members always come first. Note that there should only be one function per line, and there should be a new line between all functions and the next, even in the same group. Also, all classes should have private functions and members declared before public functions and members. Ideally every single header in a project will be formated in the exact same way. This goes down to the order in which the functions are defined and the number of spaces between the beginning and end of a comment, and the start of the code. I know that I can be a bit annal about how these things works, but I like to have these exact. Please note the spacing as it will drive me nuts. 
+
+example:
+
+\code
+#pragma once
+
+//=====lib includes=====
+#include <lib.h>
+using lib::function;
+
+namespace L = lib
+
+//=====STL includes=====
+#include <stl_lib>
+using std::lib;
+
+namespace ProjectNamespace 
+{
+
+//=====Foreward class definition=====
+	class Forward;
+
+	class NewClass 
+	{
+
+public:
+//==========================================================================================================================
+//
+//Function group1
+//
+//==========================================================================================================================
+//==========================================================================================================================
+//function 1
+//==========================================================================================================================
+		void Function1(void);
+		
+//==========================================================================================================================
+//function 2
+//==========================================================================================================================
+		void Function2(void);
+		
+//==========================================================================================================================
+//function 3
+//==========================================================================================================================
+		void Function3(void);
+
+private:
+//==========================================================================================================================
+//
+//Function group2
+//
+//==========================================================================================================================
+//==========================================================================================================================
+//function 1
+//==========================================================================================================================
+		void function4(void);
+		
+//==========================================================================================================================
+//function 2
+//==========================================================================================================================
+		void function5(void);
+		
+//==========================================================================================================================
+//function 3
+//==========================================================================================================================
+		void function6(void);
+
+//==========================================================================================================================
+//
+//Data
+//
+//==========================================================================================================================
+	 	type var1;
+	 	type var2;
+	 	type var3;	
+	};
+}//end namepace
+
+\endcode
+
+<h1>Implementation (.cpp files)</h1>
+
+All implementations should have only a single include that links them to their header file. The header is where all other includes should be found. This is because implementations are meant to be edited with the header open for reference. They should be implemented in the same order they are declared for ease of access and to make them more standard. The example would be for the header listed in item 2's example. Note that the initializer list is required. 
+
+example:
+
+/code
+#include <file.h>
+
+using namespace ProjectNamespace ;
+
+
+//==========================================================================================================================
+//
+//Constructor Example
+//
+//==========================================================================================================================
+Class::Class()
+: 
+thing(), 
+thing2(), 
+things3()
+{  }
+
+//==========================================================================================================================
+//
+//function group1
+//
+//==========================================================================================================================
+void NewClass::function1() 
+{
+	implementation;
+}
+
+void NewClass::function2() 
+{
+	implementation;
+}
+
+void NewClass::function2() 
+{
+	implementation;
+}
+
+//==========================================================================================================================
+//
+//function group2
+//
+//==========================================================================================================================
+void NewClass::function4() 
+{
+	implementation;
+}
+
+void NewClass::function5() 
+{
+	implementation;
+}
+
+void NewClass::function6() 
+{
+	implementation;
+}
+
+
+\endcode
+<h1>Bracing</h1>
+
+As has likely been clear throughout these example, I prefer the k and r style bracing over other types of bracing. There are some exceptions to this, when for readability it makes more sense to use a different style. Here are some exceptions that I would approve of. 
+
+For example: 
+
+/code
+
+class NewClass
+{
+	NewClass(void)
+	{
+
+	}
+
+	~NewClass(void)
+	{
+
+	}
+
+	ClassFunction(type arg, type arg, type arg)
+	{
+
+	}	
+};
+
+\endcode
+
+Multi-line declaration of variable:
+
+**this example is from the actual matrix class: 
+
+\code
+
+Matrix4<T>
+(
+	lhm[0] * rhm[0] + lhm[1] * rhm[4] + lhm[2] * rhm[8]  + lhm[3] * rhm[12], //m11
+	lhm[0] * rhm[1] + lhm[1] * rhm[5] + lhm[2] * rhm[9]  + lhm[3] * rhm[13], //m12
+	lhm[0] * rhm[2] + lhm[1] * rhm[6] + lhm[2] * rhm[10] + lhm[3] * rhm[14], //m13
+	lhm[0] * rhm[3] + lhm[1] * rhm[7] + lhm[2] * rhm[11] + lhm[3] * rhm[15], //m14
+
+	lhm[4] * rhm[0] + lhm[5] * rhm[4] + lhm[6] * rhm[8]  + lhm[7] * rhm[12], //m21
+	lhm[4] * rhm[1] + lhm[5] * rhm[5] + lhm[6] * rhm[9]  + lhm[7] * rhm[13], //m22
+	lhm[4] * rhm[2] + lhm[5] * rhm[6] + lhm[6] * rhm[10] + lhm[7] * rhm[14], //m23
+	lhm[4] * rhm[3] + lhm[5] * rhm[7] + lhm[6] * rhm[11] + lhm[7] * rhm[15], //m24
+
+	lhm[8] * rhm[0] + lhm[9] * rhm[4] + lhm[10] * rhm[8]  + lhm[11] * rhm[12], //m31
+	lhm[8] * rhm[1] + lhm[9] * rhm[5] + lhm[10] * rhm[9]  + lhm[11] * rhm[13], //m32
+	lhm[8] * rhm[2] + lhm[9] * rhm[6] + lhm[10] * rhm[10] + lhm[11] * rhm[14], //m33
+	lhm[8] * rhm[3] + lhm[9] * rhm[7] + lhm[10] * rhm[11] + lhm[11] * rhm[15], //m34
+
+	lhm[12] * rhm[0] + lhm[13] * rhm[4] + lhm[14] * rhm[8]  + lhm[15] * rhm[12], //m41
+	lhm[12] * rhm[1] + lhm[13] * rhm[5] + lhm[14] * rhm[9]  + lhm[15] * rhm[13], //m42
+	lhm[12] * rhm[2] + lhm[13] * rhm[6] + lhm[14] * rhm[10] + lhm[15] * rhm[14], //m43
+	lhm[12] * rhm[3] + lhm[13] * rhm[7] + lhm[14] * rhm[11] + lhm[15] * rhm[15]  //m44
+);
+
+\endcode
+
+<h1>Naming</h1>
+
+There are several types of names, and I will cover how each should be handled. All names should prefer camel case to under scoring. 
+
+public or local variable names use camel case:
+
+\code
+
+simpleVariable1;
+
+\endcode
+
+private variable names use camel case proceeded with an _ (under score) 
+
+\code
+
+_simpleNamedVariable2;
+
+\endcode
+
+public function names use camel Case starting with a cap: 
+
+\code
+
+FunctionName1(void);
+FunctionName2(int numberOfThings);
+
+\endcode
+
+private function names are the same, but proceeded with an _ (underscore): 
+
+\code
+
+_FunctionName3(void);
+
+\endcode
+
+virtual function names also use camel case, proceeded with a v_: 
+
+\code
+
+v_FunctionName4(void);
+
+\endcode
+
+Classes are named like public Functions.
+
+\code
+
+class NewMathClass
+{
+	
+};
+
+\endcode
+
+<h1>Design Ideas</h1>
+This is going to be a bigger section that will change as times goes on. It is no where near complete, this is just a place to start because its on my mind. 
+
+1. All input should be held in a Level, not in an object. 
+
+This has a few implications. First, it means that the Controller should only ever be called from inside a Level. It also means that GameObjects should only ever run v_Update(void) over their own data members, not over any input that is given to them by the player. 
+
+Classes: 
+
+In classes all data should be private. Any access that is needed should be given through an Accessor. Protected members should be avoided. Instead, write a protected Accessor that gives a non-const ref to the needed member. Call this function _Accessor[name of member];
+
+Structs: 
+
+At times, it will be needed and/or convenient to actually have public data. In these cases a struct should be used. This is the only time that data members should be made public. Any other times that this is done, a review of the code should be failed. 
+*/
