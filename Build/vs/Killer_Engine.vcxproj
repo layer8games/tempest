@@ -311,9 +311,6 @@
     <ClCompile Include="..\..\Implementations\LevelManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\Docs\KillerCodingStandards.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\..\Assets\Shaders\Default\glyph_fragment.glsl" />
     <None Include="..\..\Assets\Shaders\Default\glyph_vertex.glsl" />
     <None Include="..\..\Assets\Shaders\Default\sprite_fragment.glsl" />
