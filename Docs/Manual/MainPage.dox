@@ -169,7 +169,7 @@ All implementations should have only a single include that links them to their h
 
 example:
 
-/code
+\code
 #include <file.h>
 
 using namespace ProjectNamespace ;
