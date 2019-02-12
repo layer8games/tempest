@@ -253,6 +253,72 @@ namespace KillerMath
 */
 		Vector& operator-=(const Vector& vec);
 
+//===== Negation and increment =====
+/*! 
+	Changes the sign of each element of the Vector. If 2D, z is not changed. w is also ignored. 
+*/
+		inline Vector operator-(void)
+		{
+			if(_2D)
+			{
+				return Vector(-_data[x], -_data[y]);
+			}
+
+			return Vector(-_data[x], -_data[y], -_data[z]);
+		}
+
+/*! 
+	Prefix, Adds 1 to each element of the Vector. If 2D, z is ignored. w is always ignored.  
+*/
+		inline Vector& operator++(void)
+		{
+			++_data[x];
+			++_data[y];
+
+			if(!_2D)
+			{
+				++_data[z];
+			}
+
+			return *this;
+		}
+
+/*! 
+	Postfix, Adds 1 to each element of the Vector. If 2D, z is ignored. w is always ignored.  
+*/
+		inline Vector operator++(int)
+		{
+			Vector temp = *this;
+			++*this;
+			return temp;
+		}
+
+/*! 
+	Prefix, Subtracts 1 to each element of the Vector. If 2D, z is ignored. w is always ignored.  
+*/
+		inline Vector& operator--(void)
+		{
+			--_data[x];
+			--_data[y];
+
+			if(!_2D)
+			{
+				--_data[z];
+			}
+
+			return *this;
+		}
+
+/*! 
+	Postfix, Subtracts 1 to each element of the Vector. If 2D, z is ignored. w is always ignored.   
+*/
+		inline Vector operator--(int)
+		{
+			Vector temp = *this;
+			--*this;
+			return temp;
+		}
+
 //===== Subtract by scalar =====
 /*!
 	Scalar subtraction. 2D check is done before z is changed. 
