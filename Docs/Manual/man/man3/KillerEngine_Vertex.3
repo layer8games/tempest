@@ -6,9 +6,14 @@ KillerEngine::Vertex
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <Vertex\&.h>\fP
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fBVertex\fP (void)"
+.br
 .ti -1c
 .RI "\fBVertex\fP (\fBKM::Vector\fP pos)"
 .br
@@ -31,16 +36,86 @@ KillerEngine::Vertex
 .ti -1c
 .RI "\fBKM::Vector\fP \fBposition\fP"
 .br
+.RI "Position of the vertex, in model space\&. "
 .ti -1c
 .RI "\fBKM::Vector\fP \fBnormal\fP"
 .br
+.RI "The normal of the vertext in model space\&. "
 .ti -1c
 .RI "\fBTexCoord\fP \fBtexCoord\fP"
 .br
+.RI "If there is an attached texture, this holds its information\&. "
 .ti -1c
 .RI "\fBColor\fP \fBcolor\fP"
 .br
+.RI "\fBColor\fP values for the vertext\&. "
 .in -1c
+.SH "Detailed Description"
+.PP 
+Helper structure to keep track of all the value OpenGL needs for a vertex for rendering\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "KillerEngine::Vertex::Vertex (void)\fC [inline]\fP"
+Sets all values to 0\&. 
+.SS "KillerEngine::Vertex::Vertex (\fBKM::Vector\fP pos)\fC [inline]\fP"
+Sets up the position, everything else is set to 0\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP is the starting position for the vertext\&. Should be in model space\&. 
+.RE
+.PP
+
+.SS "KillerEngine::Vertex::Vertex (const \fBKM::Vector\fP & pos, \fBColor\fP col)\fC [inline]\fP"
+Sets up the starting position and color\&. Everything else is set to 0\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP is the starting position in model space\&. 
+.br
+\fIcolor\fP is the starting color\&. 
+.RE
+.PP
+
+.SS "KillerEngine::Vertex::Vertex (const \fBKM::Vector\fP & pos, F32 u, F32 v)\fC [inline]\fP"
+Sets the position, and texture coords\&. Everything else is set to 0\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP is the starting position, in model space\&. 
+.br
+\fIu\fP sets the u value in a texture coord\&. 
+.br
+\fIv\fP sets the v value in a texture coord\&. 
+.RE
+.PP
+
+.SS "KillerEngine::Vertex::Vertex (const \fBKM::Vector\fP & pos, const \fBKM::Vector\fP & norm)\fC [inline]\fP"
+Sets the position and surface normal, in model space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP is the starting position in model space\&. 
+.br
+\fInorm\fP is the surface normal\&. Should be normalized, in model space\&. 
+.RE
+.PP
+
+.SS "KillerEngine::Vertex::Vertex (const \fBKM::Vector\fP & pos, const \fBKM::Vector\fP & norm, F32 u, F32 v)\fC [inline]\fP"
+Sets the position, surface normal, and texture coords\&. \fBColor\fP is set to default\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP is the starting position in model space\&. 
+.br
+\fInorm\fP is the surface normal\&. Should be normalized, in model space\&. 
+.br
+\fIu\fP sets the u value in a texture coord\&. 
+.br
+\fIv\fP sets the v values in a texture coord\&. 
+.RE
+.PP
+
 
 .SH "Author"
 .PP 

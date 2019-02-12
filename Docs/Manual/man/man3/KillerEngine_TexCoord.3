@@ -6,9 +6,14 @@ KillerEngine::TexCoord
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <Vertex\&.h>\fP
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fBTexCoord\fP (void)"
+.br
 .ti -1c
 .RI "\fBTexCoord\fP (F32 s, F32 t)"
 .br
@@ -19,10 +24,30 @@ KillerEngine::TexCoord
 .ti -1c
 .RI "F32 \fBu\fP"
 .br
+.RI "U coordinate\&. Should only be between 0 and 1\&. Matches to the x in a texture\&. "
 .ti -1c
 .RI "F32 \fBv\fP"
 .br
+.RI "V coordinate\&. Should only be between 0 and 1\&. Matches to the y in a texture\&. "
 .in -1c
+.SH "Detailed Description"
+.PP 
+Helper struct to keep track of UV coordinates for a texture\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "KillerEngine::TexCoord::TexCoord (void)\fC [inline]\fP"
+Sets u and v to 0\&. 
+.SS "KillerEngine::TexCoord::TexCoord (F32 s, F32 t)\fC [inline]\fP"
+Sets up the start values for the coords\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP is the value for u\&. 
+.br
+\fIt\fP is the value for v\&. 
+.RE
+.PP
+
 
 .SH "Author"
 .PP 
