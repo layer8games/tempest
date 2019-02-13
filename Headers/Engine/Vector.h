@@ -15,7 +15,7 @@ namespace KillerMath
 /*! 
 	A custom Vector class writen for the Killer Engine. 
 
-	The Vector is a 4 element 3D vector. The Vector consists of an x, y, z and w component represented by an array of F32 values. They are refered as x, y, z and w through through documentation. In code, you would have to refered to them as their index in the array (0 - 3). There is an alias set up in the Vector, and enum, that lets you use x, y, z and w to represent the indices natively. This is private to the Vector. The w is included mostly used for convenience when multiplying with a 4X4 Matrix. It follows all the rules of a Vector and can be used for what you need it to be. 
+	The Vector is a 4 element 3D vector. The Vector consists of an x, y, z and w component represented by an array of F32 values. They are refered as x, y, z and w through documentation. In code, you would have to refered to them as their index in the array (0 - 3). There is an alias set up in the Vector, and enum, that lets you use x, y, z and w to represent the indices natively. This is private to the Vector. The w is included mostly used for convenience when multiplying with a 4X4 Matrix. It follows all the rules of a Vector and can be used for what you need it to be. 
 */
 	class Vector
 	{
