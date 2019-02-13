@@ -17,7 +17,7 @@ Written by Maxwell Miller
 //=====Killer includes=====
 #include <Engine/Atom.h>
 #include <Engine/WinProgram.h>
-#include <Engine/Matrix.h>
+#include <Engine/Matrix4.h>
 #include <Engine/Vector.h>
 #include <Engine/Color.h>
 #include <Engine/Controller.h>
@@ -65,31 +65,31 @@ namespace KillerEngine
 //Camera Functions
 //
 //==========================================================================================================================
-/*! Sets private Matrix to use an orthogrphic projection. This calls the WinProgram to get the demensions for the Matrix. 
+/*! Sets private Matrix4 to use an orthogrphic projection. This calls the WinProgram to get the demensions for the Matrix4. 
 	\param none
 */
 		void SetOrthographic(void);
 
 		void SetOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane);
 
-/*! Sets the private Matrix to use a perspective projection. Values are hard coded for now. 
+/*! Sets the private Matrix4 to use a perspective projection. Values are hard coded for now. 
 	\param none
 */
 		void SetPerspective(void);
 
 		void SetPerspective(F32 fov, F32 aspect, F32 nearPlane, F32 farPlane);
 
-/*! Helper function to set the projection Matrix to be an identity Matrix. 
+/*! Helper function to set the projection Matrix4 to be an identity Matrix4. 
 	\param none
 */
-		void SetDefaultMatrix(void);
+		void SetDefaultMatrix4(void);
 
-		inline const virtual KM::Matrix GetViewMatrix(void)
+		inline const virtual KM::Matrix4 GetViewMatrix4(void)
 		{
-			return KM::Matrix::LookAt(_position, _target, _up);
+			return KM::Matrix4::LookAt(_position, _target, _up);
 		}
 
-		inline const KM::Matrix& GetProjectionMatrix(void)
+		inline const KM::Matrix4& GetProjectionMatrix4(void)
 		{
 			return _projection;
 		}
@@ -320,7 +320,7 @@ namespace KillerEngine
 //
 //==========================================================================================================================		
 		Color  							_background;	///< Background color of current level.
-		KM::Matrix 						_projection;	///< Projection Matrix (Orthographic or Perspective). Not used 
+		KM::Matrix4 						_projection;	///< Projection Matrix4 (Orthographic or Perspective). Not used 
 		
 	protected:
 		KM::Vector  					_position;		///< Position of Camera in world space.
@@ -365,9 +365,9 @@ namespace KillerEngine
 		//If you use this, make sure to comment out the vector update 
 		//in the implementation
 /*
-		inline const virtual KM::Matrix GetViewMatrix(void)
+		inline const virtual KM::Matrix4 GetViewMatrix4(void)
 		{
-			return KM::Matrix::FPSView(_position, _yaw, _pitch);
+			return KM::Matrix4::FPSView(_position, _yaw, _pitch);
 		}
 */
 

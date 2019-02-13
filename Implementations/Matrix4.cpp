@@ -1,4 +1,4 @@
-#include <Engine/Matrix.h>
+#include <Engine/Matrix4.h>
 
 using namespace KillerMath;
 
@@ -7,7 +7,7 @@ using namespace KillerMath;
 //Constructors	 	
 //
 //==========================================================================================================================
-Matrix::Matrix(void)
+Matrix4::Matrix4(void)
 :
 _columns{Vector(1.0f, 0.0f, 0.0f, 0.0f),
 		 Vector(0.0f, 1.0f, 0.0f, 0.0f),
@@ -15,17 +15,17 @@ _columns{Vector(1.0f, 0.0f, 0.0f, 0.0f),
 		 Vector(0.0f, 0.0f, 0.0f, 1.0f)}
 {  }
 
-Matrix::Matrix(const Vector& x, const Vector& y, const Vector& z)
+Matrix4::Matrix4(const Vector& x, const Vector& y, const Vector& z)
 :
 _columns{x, y, z, Vector(0.0f, 0.0f, 0.0f, 1.0f)}
 {  }
 
-Matrix::Matrix(const Vector& x, const Vector& y, const Vector& z, const Vector& w)
+Matrix4::Matrix4(const Vector& x, const Vector& y, const Vector& z, const Vector& w)
 :
 _columns{x, y, z, w}
 {  }
 
-Matrix::Matrix(const F32 val)
+Matrix4::Matrix4(const F32 val)
 :
 _columns{Vector(val, 0.0f, 0.0f, 0.0f),
 		 Vector(0.0f, val, 0.0f, 0.0f),
@@ -33,7 +33,7 @@ _columns{Vector(val, 0.0f, 0.0f, 0.0f),
 		 Vector(0.0f, 0.0f, 0.0f, 1.0f)}
 {  }
 
-Matrix::Matrix( F32 m00, F32 m01, F32 m02, F32 m03,
+Matrix4::Matrix4( F32 m00, F32 m01, F32 m02, F32 m03,
 				F32 m10, F32 m11, F32 m12, F32 m13,
 				F32 m20, F32 m21, F32 m22, F32 m23,
 				F32 m30, F32 m31, F32 m32, F32 m33)
@@ -44,17 +44,17 @@ _columns{Vector(m00, m01, m02, m03),
 		 Vector(m30, m31, m32, m33)}
 {  }
 
-Matrix::Matrix(const Matrix& M)
+Matrix4::Matrix4(const Matrix4& M)
 :
 _columns{M[0], M[1], M[2], M[3]}
 {  }
 
 //==========================================================================================================================
 //
-//Matrix functions
+//Matrix4 functions
 //
 //==========================================================================================================================
-const std::vector<F32> Matrix::GetElems(void) const
+const std::vector<F32> Matrix4::GetElems(void) const
 {
 	std::vector<F32> elems;
 	
@@ -81,9 +81,9 @@ const std::vector<F32> Matrix::GetElems(void) const
 //==========================================================================================================================
 //Projections
 //==========================================================================================================================
-void Matrix::MakeOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)
+void Matrix4::MakeOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)
 {
-	//Reset Matrix
+	//Reset Matrix4
 	MakeIdentity();
 
 	assert(right - left != 0.0f);
@@ -102,13 +102,13 @@ void Matrix::MakeOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 near
 	_columns[3][z] = -(farPlane + nearPlane) / (farPlane - nearPlane);
 }
 
-void Matrix::MakePerspective(F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F32 farPlane)
+void Matrix4::MakePerspective(F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F32 farPlane)
 {
 	assert(nearPlane - farPlane != 0.0f);
 
 	F32 S = 1.0f / tan(RADIAN(0.5f * fieldOfView));
 
-	//Reset Matrix 
+	//Reset Matrix4 
 	MakeIdentity();
 
 	_columns[0][x] = S / aspectRatio;
@@ -121,9 +121,9 @@ void Matrix::MakePerspective(F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F3
 //==========================================================================================================================
 //Translations
 //==========================================================================================================================
-Matrix Matrix::Translate(F32 xVal, F32 yVal)
+Matrix4 Matrix4::Translate(F32 xVal, F32 yVal)
 {
-	Matrix mat{1.0f};
+	Matrix4 mat{1.0f};
 
 	mat[3][x] = xVal;
 	mat[3][y] = yVal;
@@ -131,9 +131,9 @@ Matrix Matrix::Translate(F32 xVal, F32 yVal)
 	return mat;
 }
 
-Matrix Matrix::Translate(F32 xVal, F32 yVal, F32 zVal)
+Matrix4 Matrix4::Translate(F32 xVal, F32 yVal, F32 zVal)
 {
-	Matrix mat{1.0f};
+	Matrix4 mat{1.0f};
 
 	mat[3][x] = xVal;
 	mat[3][y] = yVal;
@@ -142,9 +142,9 @@ Matrix Matrix::Translate(F32 xVal, F32 yVal, F32 zVal)
 	return mat;	
 }
 
-Matrix Matrix::Translate(const Vector& vec)
+Matrix4 Matrix4::Translate(const Vector& vec)
 {
-	Matrix mat{1.0f};
+	Matrix4 mat{1.0f};
 
 	mat[3][x] = vec[x];
 	mat[3][y] = vec[y];
@@ -153,7 +153,7 @@ Matrix Matrix::Translate(const Vector& vec)
 	return mat;	
 }
 
-void Matrix::SetTranslate(F32 xVal, F32 yVal)
+void Matrix4::SetTranslate(F32 xVal, F32 yVal)
 {
 	MakeIdentity();
 
@@ -161,7 +161,7 @@ void Matrix::SetTranslate(F32 xVal, F32 yVal)
 	_columns[3][y] = yVal;
 }
 
-void Matrix::SetTranslate(F32 xVal, F32 yVal, F32 zVal)
+void Matrix4::SetTranslate(F32 xVal, F32 yVal, F32 zVal)
 {
 	MakeIdentity();			
 
@@ -170,7 +170,7 @@ void Matrix::SetTranslate(F32 xVal, F32 yVal, F32 zVal)
 	_columns[3][z] = zVal;
 }
 
-void Matrix::SetTranslate(const Vector& vec)
+void Matrix4::SetTranslate(const Vector& vec)
 {
 	MakeIdentity(); 
 
@@ -183,20 +183,20 @@ void Matrix::SetTranslate(const Vector& vec)
 	}
 }
 
-void Matrix::AddTranslate(F32 xVal, F32 yVal)
+void Matrix4::AddTranslate(F32 xVal, F32 yVal)
 {
 	_columns[3][x] += xVal;
 	_columns[3][y] += yVal;
 }
 
-void Matrix::AddTranslate(F32 xVal, F32 yVal, F32 zVal)
+void Matrix4::AddTranslate(F32 xVal, F32 yVal, F32 zVal)
 {
 	_columns[3][x] += xVal; 
 	_columns[3][y] += yVal; 
 	_columns[3][z] += zVal;
 }
 
-void Matrix::AddTranslate(const Vector& vec)
+void Matrix4::AddTranslate(const Vector& vec)
 {
 	_columns[3][x] += vec[x];
 	_columns[3][y] += vec[y];
@@ -207,7 +207,7 @@ void Matrix::AddTranslate(const Vector& vec)
 	}
 }
 
-Vector Matrix::TransformInverse(const Vector vec) const
+Vector Matrix4::TransformInverse(const Vector vec) const
 {
 	Vector tmp = vec;
 
@@ -231,7 +231,7 @@ Vector Matrix::TransformInverse(const Vector vec) const
 	};
 }
 
-Vector Matrix::TransformDirection(const Vector& vec) const
+Vector Matrix4::TransformDirection(const Vector& vec) const
 {
 	return Vector
 	{
@@ -249,7 +249,7 @@ Vector Matrix::TransformDirection(const Vector& vec) const
 	};
 }
 
-Vector Matrix::TransformInverseDirection(const Vector& vec) const
+Vector Matrix4::TransformInverseDirection(const Vector& vec) const
 {
 	return Vector
 	{
@@ -270,9 +270,9 @@ Vector Matrix::TransformInverseDirection(const Vector& vec) const
 //==========================================================================================================================
 //Scaling
 //==========================================================================================================================
-Matrix Matrix::Scale(F32 xVal, F32 yVal)
+Matrix4 Matrix4::Scale(F32 xVal, F32 yVal)
 {
-	Matrix mat{1.0f};
+	Matrix4 mat{1.0f};
 
 	mat[0][x] = xVal;
 	mat[1][y] = yVal;
@@ -280,9 +280,9 @@ Matrix Matrix::Scale(F32 xVal, F32 yVal)
 	return mat;
 }
 
-Matrix Matrix::Scale(F32 xVal, F32 yVal, F32 zVal)
+Matrix4 Matrix4::Scale(F32 xVal, F32 yVal, F32 zVal)
 {
-	Matrix mat{1.0f};
+	Matrix4 mat{1.0f};
 
 	mat[0][x] = xVal;
 	mat[1][y] = yVal;
@@ -291,9 +291,9 @@ Matrix Matrix::Scale(F32 xVal, F32 yVal, F32 zVal)
 	return mat;
 }
 
-Matrix Matrix::Scale(const Vector& vec)
+Matrix4 Matrix4::Scale(const Vector& vec)
 {
-	Matrix mat{1.0f};
+	Matrix4 mat{1.0f};
 
 	mat[0][x] = vec[x];
 	mat[1][y] = vec[y];
@@ -302,7 +302,7 @@ Matrix Matrix::Scale(const Vector& vec)
 	return mat;
 }
 
-void Matrix::SetScale(F32 xVal, F32 yVal)
+void Matrix4::SetScale(F32 xVal, F32 yVal)
 {
 	MakeIdentity();
 
@@ -310,7 +310,7 @@ void Matrix::SetScale(F32 xVal, F32 yVal)
 	_columns[1][y] = yVal;
 }
 
-void Matrix::SetScale(F32 xVal, F32 yVal, F32 zVal)
+void Matrix4::SetScale(F32 xVal, F32 yVal, F32 zVal)
 {
 	MakeIdentity();
 
@@ -319,7 +319,7 @@ void Matrix::SetScale(F32 xVal, F32 yVal, F32 zVal)
 	_columns[2][z] = zVal;
 }
 
-void Matrix::SetScale(const Vector& vec)
+void Matrix4::SetScale(const Vector& vec)
 {
 	MakeIdentity();
 
@@ -332,20 +332,20 @@ void Matrix::SetScale(const Vector& vec)
 	}
 }
 
-void Matrix::AddScale(F32 xVal, F32 yVal)
+void Matrix4::AddScale(F32 xVal, F32 yVal)
 {
 	_columns[0][x] += xVal;
 	_columns[1][y] += yVal;
 }
 
-void Matrix::AddScale(F32 xVal, F32 yVal, F32 zVal)
+void Matrix4::AddScale(F32 xVal, F32 yVal, F32 zVal)
 {
 	_columns[0][x] += xVal;
 	_columns[1][y] += yVal;
 	_columns[2][z] += zVal;
 }
 
-void Matrix::AddScale(const Vector& vec)
+void Matrix4::AddScale(const Vector& vec)
 {
 	_columns[0][x] += vec[x];
 	_columns[1][y] += vec[y];
@@ -359,10 +359,10 @@ void Matrix::AddScale(const Vector& vec)
 //==========================================================================================================================
 //Rotations
 //==========================================================================================================================
-Matrix Matrix::RotateX(F32 val)
+Matrix4 Matrix4::RotateX(F32 val)
 {
 	val = RADIAN(val);
-	Matrix mat{1.0f};
+	Matrix4 mat{1.0f};
 
 	mat[1][y] = cos(val);
 	mat[1][z] = -sin(val);
@@ -372,10 +372,10 @@ Matrix Matrix::RotateX(F32 val)
 	return mat;
 }
 
-Matrix Matrix::RotateY(F32 val)
+Matrix4 Matrix4::RotateY(F32 val)
 {
 	val = RADIAN(val);
-	Matrix mat{1.0f};
+	Matrix4 mat{1.0f};
 
 	mat[0][x] = cos(val);
 	mat[0][z] = sin(val);
@@ -385,10 +385,10 @@ Matrix Matrix::RotateY(F32 val)
 	return mat;
 }
 
-Matrix Matrix::RotateZ(F32 val)
+Matrix4 Matrix4::RotateZ(F32 val)
 {
 	val = RADIAN(val);
-	Matrix mat{1.0f};
+	Matrix4 mat{1.0f};
 
 	mat[0][x] = cos(val);
 	mat[0][y] = -sin(val);
@@ -398,7 +398,7 @@ Matrix Matrix::RotateZ(F32 val)
 	return mat;
 }
 
-void Matrix::SetRotateX(F32 val)
+void Matrix4::SetRotateX(F32 val)
 {
 	val = RADIAN(val);
 
@@ -410,7 +410,7 @@ void Matrix::SetRotateX(F32 val)
 	_columns[2][z] = cos(val);
 }
 
-void Matrix::AddRotateX(F32 val)
+void Matrix4::AddRotateX(F32 val)
 {
 	val = RADIAN(val);
 
@@ -420,7 +420,7 @@ void Matrix::AddRotateX(F32 val)
 	_columns[2][z] += cos(val);
 }
 
-void Matrix::SetRotateY(F32 val)
+void Matrix4::SetRotateY(F32 val)
 {
 	val = RADIAN(val);
 
@@ -432,7 +432,7 @@ void Matrix::SetRotateY(F32 val)
 	_columns[2][z] = cos(val);
 }
 
-void Matrix::AddRotateY(F32 val)
+void Matrix4::AddRotateY(F32 val)
 {
 	val = RADIAN(val);
 
@@ -442,7 +442,7 @@ void Matrix::AddRotateY(F32 val)
 	_columns[2][y] += cos(val);	
 }
 
-void Matrix::SetRotateZ(F32 val)
+void Matrix4::SetRotateZ(F32 val)
 {
 	val = RADIAN(val);
 
@@ -454,7 +454,7 @@ void Matrix::SetRotateZ(F32 val)
 	_columns[1][y] = cos(val);
 }
 
-void Matrix::AddRotateZ(F32 val)
+void Matrix4::AddRotateZ(F32 val)
 {
 	val = RADIAN(val);
 
@@ -464,7 +464,7 @@ void Matrix::AddRotateZ(F32 val)
 	_columns[1][y] += cos(val);
 }
 
-void Matrix::SetRotate(F32 xVal, F32 yVal, F32 zVal)
+void Matrix4::SetRotate(F32 xVal, F32 yVal, F32 zVal)
 {
 	xVal = RADIAN(xVal);
 	yVal = RADIAN(yVal);
@@ -483,7 +483,7 @@ void Matrix::SetRotate(F32 xVal, F32 yVal, F32 zVal)
 	_columns[2][z] = cos(xVal) * cos(yVal);
 }
 
-void Matrix::AddRotation(F32 xVal, F32 yVal, F32 zVal)
+void Matrix4::AddRotation(F32 xVal, F32 yVal, F32 zVal)
 {
 	xVal = RADIAN(xVal);
 	yVal = RADIAN(yVal);
@@ -500,7 +500,7 @@ void Matrix::AddRotation(F32 xVal, F32 yVal, F32 zVal)
 	_columns[2][z] += cos(xVal) * cos(yVal);
 }
 
-void Matrix::SetOrientation(const Quaternion& q)
+void Matrix4::SetOrientation(const Quaternion& q)
 {
 	F32 q_w = q[0];
 	F32 q_x = q[1];
@@ -520,7 +520,7 @@ void Matrix::SetOrientation(const Quaternion& q)
 	_columns[2][z] = 1 - (2.0f * q_x * q_x + 2.0f * q_y * q_y);
 }
 
-void Matrix::SetOrientationAndPosition(const Quaternion& q, const Vector& v)
+void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Vector& v)
 {
 	SetOrientation(q);
 	
@@ -533,7 +533,7 @@ void Matrix::SetOrientationAndPosition(const Quaternion& q, const Vector& v)
 //Inverse
 //==========================================================================================================================
 
-void Matrix::SetInverse(void)
+void Matrix4::SetInverse(void)
 {
 	F32 det = Determinate();
 
@@ -611,7 +611,7 @@ void Matrix::SetInverse(void)
 
 	Vector colw {-c30, c31, -c32, c33};
 
-	Matrix adj { colx, coly, colz, colw };
+	Matrix4 adj { colx, coly, colz, colw };
 
 	adj.Transpose();	
 
@@ -620,26 +620,26 @@ void Matrix::SetInverse(void)
 	*this = adj;
 }
 
-void Matrix::SetAsInverse(const Matrix& mat)
+void Matrix4::SetAsInverse(const Matrix4& mat)
 {
 	*this = mat;
 	SetInverse();
 }
 
-Matrix Matrix::GetInverse(void) const
+Matrix4 Matrix4::GetInverse(void) const
 {
-	Matrix ret = *this;
+	Matrix4 ret = *this;
 
 	ret.SetInverse();
 
 	return ret;
 }
 
-F32 Matrix::Determinate(void) const
+F32 Matrix4::Determinate(void) const
 {
 	//This equation is very difficult to understand. It was ultimately taking from 3d Math Primer, page 165, Determinate of 
-	//4x4 matrix in expanded form.
-	//m11 through m41 represent the cofactors of those sections of the matrix, which are added together to get the value
+	//4x4 Matrix4 in expanded form.
+	//m11 through m41 represent the cofactors of those sections of the Matrix4, which are added together to get the value
 	F32 m11 = _columns[0][0] * (   _columns[1][1] * (_columns[2][2] * _columns[3][3] - _columns[3][2] * _columns[2][3])
 			   					+ _columns[2][1] * (_columns[3][2] * _columns[1][3] - _columns[1][2] * _columns[3][3])
 			   					+ _columns[3][1] * (_columns[1][2] * _columns[2][3] - _columns[2][2] * _columns[1][3]) );
@@ -659,7 +659,7 @@ F32 Matrix::Determinate(void) const
 	return m11 - m21 + m31 - m41;
 }
 
-F32 Matrix::Determinate3x3(Vector& col1, Vector& col2, Vector& col3)
+F32 Matrix4::Determinate3x3(Vector& col1, Vector& col2, Vector& col3)
 {
 	return col1[x] * (col2[y] * col3[z] - col3[y] * col2[z])
 		 + col2[x] * (col3[y] * col1[z] - col1[y] * col3[z])
@@ -669,9 +669,9 @@ F32 Matrix::Determinate3x3(Vector& col1, Vector& col2, Vector& col3)
 //==========================================================================================================================
 //Resettings
 //==========================================================================================================================
-void Matrix::Reset(F32 val)
+void Matrix4::Reset(F32 val)
 {
-	//Reset Matrix
+	//Reset Matrix4
 	_columns[0] = Vector(val, 0.0f, 0.0f, 0.0f);
 	_columns[1] = Vector(0.0f, val, 0.0f, 0.0f);
 	_columns[2] = Vector(0.0f, 0.0f, val, 0.0f);
@@ -681,7 +681,7 @@ void Matrix::Reset(F32 val)
 //==========================================================================================================================
 //Misc
 //==========================================================================================================================
-void Matrix::Transpose(void)
+void Matrix4::Transpose(void)
 {
 	Vector newCol0 {_columns[0][x], _columns[1][x], _columns[2][x], _columns[3][x]};
 	Vector newCol1 {_columns[0][y], _columns[1][y], _columns[2][y], _columns[3][y]};
@@ -694,7 +694,7 @@ void Matrix::Transpose(void)
 	_columns[3] = newCol3;
 }
 
-void Matrix::ComponentMulti(const Matrix& mat)
+void Matrix4::ComponentMulti(const Matrix4& mat)
 {
 	_columns[0][x] *= mat[0][x];
 	_columns[0][y] *= mat[0][y];
@@ -717,7 +717,7 @@ void Matrix::ComponentMulti(const Matrix& mat)
 	_columns[3][w] *= mat[3][w];
 }
 
-Matrix Matrix::Transform3x3(const Matrix& mat) const
+Matrix4 Matrix4::Transform3x3(const Matrix4& mat) const
 {
 	Vector xCol 
 	{
@@ -745,10 +745,10 @@ Matrix Matrix::Transform3x3(const Matrix& mat) const
 
 	Vector wCol {0.0f, 0.0f, 0.0f, 1.0f};
 
-	return Matrix(xCol, yCol, zCol, wCol);
+	return Matrix4(xCol, yCol, zCol, wCol);
 }
 
-Vector Matrix::Transform3x3(const Vector& vec) const
+Vector Matrix4::Transform3x3(const Vector& vec) const
 {
 	return Vector( _columns[0][x] * vec[x] + _columns[1][x] * vec[y] + _columns[2][x] * vec[z],
 				   _columns[0][y] * vec[x] + _columns[1][y] * vec[y] + _columns[2][y] * vec[z],
@@ -762,9 +762,9 @@ Vector Matrix::Transform3x3(const Vector& vec) const
 //
 //==========================================================================================================================
 
-Matrix Matrix::LookAt(const Vector& cameraPos, const Vector& target, const Vector& up)
+Matrix4 Matrix4::LookAt(const Vector& cameraPos, const Vector& target, const Vector& up)
 {
-	Matrix mat{1.0f};
+	Matrix4 mat{1.0f};
 
 	Vector zAxis = cameraPos - target;
 	zAxis.Normalize();
@@ -795,7 +795,7 @@ Matrix Matrix::LookAt(const Vector& cameraPos, const Vector& target, const Vecto
 	return mat;
 }
 
-void Matrix::SetLookAt(const Vector& cameraPos, const Vector& target, const Vector& up)
+void Matrix4::SetLookAt(const Vector& cameraPos, const Vector& target, const Vector& up)
 {
 	MakeIdentity();
 
@@ -826,7 +826,7 @@ void Matrix::SetLookAt(const Vector& cameraPos, const Vector& target, const Vect
 	_columns[3] = Vector(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);		
 }
 
-Matrix Matrix::FPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
+Matrix4 Matrix4::FPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
 {
 	assert(pitch >= -90.0f);
 	assert(pitch <= 90.0f);
@@ -838,7 +838,7 @@ Matrix Matrix::FPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
 	F32 cosYaw 	 = cos(yaw);
 	F32 sinYaw   = sin(yaw);
 
-	Matrix mat{1.0f};
+	Matrix4 mat{1.0f};
 
 	Vector xAxis{ cosYaw, 0.0f, -sinYaw };
 	Vector yAxis{ sinYaw * sinPitch, cosPitch, cosYaw * sinPitch };
@@ -864,7 +864,7 @@ Matrix Matrix::FPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
 	return mat;
 }
 
-void Matrix::SetFPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
+void Matrix4::SetFPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
 {
 	assert(pitch >= -90.0f);
 	assert(pitch <= 90.0f);
@@ -903,7 +903,7 @@ void Matrix::SetFPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
 //Operator Overloads
 //
 //==========================================================================================================================
-Matrix& Matrix::operator=(const Matrix& mat) 
+Matrix4& Matrix4::operator=(const Matrix4& mat) 
 {
 	_columns[0][x] = mat[0][x];
 	_columns[0][y] = mat[0][y];
@@ -928,7 +928,7 @@ Matrix& Matrix::operator=(const Matrix& mat)
 	return *this;
 }
 
-Matrix Matrix::operator*(const Matrix& mat) const
+Matrix4 Matrix4::operator*(const Matrix4& mat) const
 {
 	Vector xCol 
 	{
@@ -963,10 +963,10 @@ Matrix Matrix::operator*(const Matrix& mat) const
 		_columns[0][w] * mat[3][x] + _columns[1][w] * mat[3][y] + _columns[2][w] * mat[3][z] + _columns[3][w] * mat[3][w],
 	};
 
-	return Matrix(xCol, yCol, zCol, wCol);
+	return Matrix4(xCol, yCol, zCol, wCol);
 }
 
-Vector Matrix::operator*(const Vector& vec) const
+Vector Matrix4::operator*(const Vector& vec) const
 {
 	return Vector( _columns[0][x] * vec[x] + _columns[1][x] * vec[y] + _columns[2][x] * vec[z] + _columns[3][x] * vec[w],
 				   _columns[0][y] * vec[x] + _columns[1][y] * vec[y] + _columns[2][y] * vec[z] + _columns[3][y] * vec[w],
@@ -974,7 +974,7 @@ Vector Matrix::operator*(const Vector& vec) const
 				   _columns[0][w] * vec[x] + _columns[1][w] + vec[y] + _columns[2][w] + vec[z] + _columns[3][w] * vec[w] );
 }
 
-Matrix& Matrix::operator/=(F32 val)
+Matrix4& Matrix4::operator/=(F32 val)
 {
 	_columns[x][x] /= val;
 	_columns[x][y] /= val;

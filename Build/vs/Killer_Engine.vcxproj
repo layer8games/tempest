@@ -149,6 +149,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GameObject.h" />
+    <ClInclude Include="..\..\Headers\Engine\Matrix3.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\OBB.h">
       <SubType>
       </SubType>
@@ -163,6 +167,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ForceRegistry.h" />
+    <ClInclude Include="..\..\Headers\Engine\Point.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Random.h">
       <SubType>
       </SubType>
@@ -189,7 +197,7 @@
     <ClInclude Include="..\..\Headers\Engine\Controller.h" />
     <ClInclude Include="..\..\Headers\Engine\ErrorManager.h" />
     <ClInclude Include="..\..\Headers\Engine\Font.h" />
-    <ClInclude Include="..\..\Headers\Engine\Matrix.h" />
+    <ClInclude Include="..\..\Headers\Engine\Matrix4.h" />
     <ClInclude Include="..\..\Headers\Engine\DragForce.h" />
     <ClInclude Include="..\..\Headers\Engine\GravityForce.h" />
     <ClInclude Include="..\..\Headers\Engine\ForceGenerator.h" />
@@ -251,6 +259,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObject.cpp" />
+    <ClCompile Include="..\..\Implementations\Matrix3.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\OBB.cpp">
       <SubType>
       </SubType>
@@ -269,6 +281,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ForceRegistry.cpp" />
+    <ClCompile Include="..\..\Implementations\Point.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\Random.cpp">
       <SubType>
       </SubType>
@@ -289,7 +305,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Matrix.cpp" />
+    <ClCompile Include="..\..\Implementations\Matrix4.cpp" />
     <ClCompile Include="..\..\Implementations\DragForce.cpp" />
     <ClCompile Include="..\..\Implementations\GravityForce.cpp" />
     <ClCompile Include="..\..\Implementations\Engine.cpp" />

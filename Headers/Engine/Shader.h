@@ -22,7 +22,7 @@ Written by Maxwell Miller
 #include <Engine/ErrorManager.h>
 #include <Engine/Color.h>
 #include <Engine/Vector.h>
-#include <Engine/Matrix.h>
+#include <Engine/Matrix4.h>
 #include <Engine/Texture.h>
 
 namespace KM = KillerMath;
@@ -137,11 +137,11 @@ namespace KillerEngine
 		void SetUniformVec3(const GLchar* name, const KM::Vector& vec);
 
 /*! 
-	Helper function to set a uniform in the shader. Wrapper around glUniformMatrix4fv.
+	Helper function to set a uniform in the shader. Wrapper around glUniformMatrix44fv.
 	\param name is the name of the uniform in the shader.
-	\param mat is the KillerMath::Matrix to pass into the shader. All 16 values will be passed in.
+	\param mat is the KillerMath::Matrix4 to pass into the shader. All 16 values will be passed in.
 */
-		void SetUniform(const GLchar* name, KM::Matrix mat);
+		void SetUniform(const GLchar* name, KM::Matrix4 mat);
 
 /*! 
 	 Helper function to set a uniform in the shader. This is used to activate more than one texture in the shader. The 

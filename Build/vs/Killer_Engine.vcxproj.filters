@@ -157,6 +157,9 @@
     <Filter Include="Source Code\KillerPhysics\Forces\Springs\BuoyantForce">
       <UniqueIdentifier>{7e96f329-fb0c-44bf-bd44-69755cdf143f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\KillerMath\LinearAlgebra\Point">
+      <UniqueIdentifier>{78f25389-9b6a-4fa7-9efc-4b9cde25a36f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -188,9 +191,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Quaternion.h">
       <Filter>Source Code\KillerMath\Quaternion</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Matrix.h">
-      <Filter>Source Code\KillerMath\LinearAlgebra\Matrix</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Color.h">
       <Filter>Source Code\Color</Filter>
@@ -282,6 +282,15 @@
     <ClInclude Include="..\..\Headers\Engine\DragForce.h">
       <Filter>Source Code\KillerPhysics\Forces\Drag</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Matrix4.h">
+      <Filter>Source Code\KillerMath\LinearAlgebra\Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Matrix3.h">
+      <Filter>Source Code\KillerMath\LinearAlgebra\Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Point.h">
+      <Filter>Source Code\KillerMath\LinearAlgebra\Point</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -310,9 +319,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Quaternion.cpp">
       <Filter>Source Code\KillerMath\Quaternion</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Matrix.cpp">
-      <Filter>Source Code\KillerMath\LinearAlgebra\Matrix</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Color.cpp">
       <Filter>Source Code\Color</Filter>
@@ -397,6 +403,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\DragForce.cpp">
       <Filter>Source Code\KillerPhysics\Forces\Drag</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Matrix4.cpp">
+      <Filter>Source Code\KillerMath\LinearAlgebra\Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Matrix3.cpp">
+      <Filter>Source Code\KillerMath\LinearAlgebra\Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Point.cpp">
+      <Filter>Source Code\KillerMath\LinearAlgebra\Point</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -97,9 +97,9 @@ namespace KillerEngine
 /*! 
 	A wrapper function that calls GameObject::SetUniform on each Glyph using the input. 
 	\param name is the name of the uniform that will be set. 
-	\param matrix is the transformation matrix to be used by each Glyph. 
+	\param Matrix4 is the transformation Matrix4 to be used by each Glyph. 
 */
-		void SetUniforms(string name, const KM::Matrix& matrix);
+		void SetUniforms(string name, const KM::Matrix4& Matrix4);
 
 //==========================================================================================================================
 //

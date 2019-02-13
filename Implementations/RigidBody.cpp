@@ -62,7 +62,7 @@ void RigidBody::CalculateDerivedData(void)
 {
 	GameObject::_AccessOrientation().Normalize();
 
-	_inverseInertiaTensorInWorld = GameObject::GetModelMatrix().Transform3x3(_inverseInertiaTensor);
+	_inverseInertiaTensorInWorld = GameObject::GetModelMatrix4().Transform3x3(_inverseInertiaTensor);
 }
 //==========================================================================================================================
 //Point Forces
@@ -82,7 +82,7 @@ void RigidBody::AddForceAtPoint(const KM::Vector& force, const KM::Vector& point
 //Force given in world space, point given in local space
 void RigidBody::AddForceAtLocalPoint(const KM::Vector& force, const KM::Vector& point)
 {
-	KM::Vector pt = GameObject::GetModelMatrixRot() * point;
+	KM::Vector pt = GameObject::GetModelMatrix4Rot() * point;
 	AddForceAtPoint(force, pt);
 }
 
@@ -103,7 +103,7 @@ const real RigidBody::GetMass(void)
 
 /*
 	This needs: 
-	1. GameObject to cache the world transform matrix
+	1. GameObject to cache the world transform Matrix4
 	2. multiply the _invserInertiaTensorInWorld by it. 
 
 	The book is confusing. This must be high performance, it will be called every frame.

@@ -13,18 +13,18 @@ namespace KillerMath
 //==========================================================================================================================
 //Documentation
 //==========================================================================================================================
-/*! The Matrix is meant to be mathematically sound. The functions found here have been tested and are built according to 
+/*! The Matrix4 is meant to be mathematically sound. The functions found here have been tested and are built according to 
 	linear algebra rules. The 
 
 	Matrices will be column major to ahdere to the format used within opengl, and only 4x4 Matrices will be supported. This 
 	is because I cannot find any useful reason to suport a dynamic type at this time. In the future if other Matrices appear 
-	to be useful, this class will basically be copied and will be turned into whatever other type of Matrix is needed, be it 
+	to be useful, this class will basically be copied and will be turned into whatever other type of Matrix4 is needed, be it 
 	a 3x3 or 2x2 or whatever. This class will only be a 4x4. 
 
-	All of the values in the Matrix are stores as a 16 length array of F32. This is a single dimensional array.
+	All of the values in the Matrix4 are stores as a 16 length array of F32. This is a single dimensional array.
 
 	This is the way that the array mapping looks, for a quick reference. */	
-	class Matrix
+	class Matrix4
 	{
 	public:
 //==========================================================================================================================
@@ -32,16 +32,16 @@ namespace KillerMath
 //Constructors
 //
 //==========================================================================================================================
-/*! Default constructor. Sets all values to 0, except for the last in the Matrix. */
-		Matrix(void);
+/*! Default constructor. Sets all values to 0, except for the last in the Matrix4. */
+		Matrix4(void);
 
-		Matrix(const Vector& x, const Vector& y, const Vector& z);
+		Matrix4(const Vector& x, const Vector& y, const Vector& z);
 
-		Matrix(const Vector& x, const Vector& y, const Vector& z, const Vector& w);
+		Matrix4(const Vector& x, const Vector& y, const Vector& z, const Vector& w);
 
-		explicit Matrix(const F32 val);
+		explicit Matrix4(const F32 val);
 		
-/*! All value constructor. Takes a list of values and turns them into a matrix of the same mapping. 
+/*! All value constructor. Takes a list of values and turns them into a Matrix4 of the same mapping. 
 	\param m00 F32. Value 0,0.
 	\param m01 F32. Value 0,1.
 	\param m02 F32. Value 0,2
@@ -58,17 +58,17 @@ namespace KillerMath
 	\param m31 F32. Value 3,1.
 	\param m32 F32. Value 3,2
 	\param m33 F32. Value 3,3. */
-		Matrix( F32 m00, F32 m01, F32 m02, F32 m03,
+		Matrix4( F32 m00, F32 m01, F32 m02, F32 m03,
 				F32 m10, F32 m11, F32 m12, F32 m13,
 				F32 m20, F32 m21, F32 m22, F32 m23,
 				F32 m30, F32 m31, F32 m32, F32 m33);
 
 /*! Copy Constructor. Calls GetElems(), then sets the values accordingly. */		
-		Matrix(const Matrix& M);
+		Matrix4(const Matrix4& M);
 
 //==========================================================================================================================
 //
-//Matrix functions
+//Matrix4 functions
 //
 //==========================================================================================================================
 /*! Return the array containing all the elements. */
@@ -77,7 +77,7 @@ namespace KillerMath
 //==========================================================================================================================
 //Projections
 //==========================================================================================================================		
-/*! Resets the Matrix, then sets the values up as an Orthographic projection. Calls MakeIdentiy(). The viewport values are 
+/*! Resets the Matrix4, then sets the values up as an Orthographic projection. Calls MakeIdentiy(). The viewport values are 
 	usually based on the dimensions of the window, but could be made smaller.
 	\param width F32. Width of viewport.
 	\param height F32. Height of viewport.
@@ -86,7 +86,7 @@ namespace KillerMath
 		   Otherwise it will be the bottom left corner of the screen. */
 		void MakeOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane);
 
-/*! Resets the Matrix, then sets the values up as a Perspective Matrix. Instead of using the dimensions of the viewport, 
+/*! Resets the Matrix4, then sets the values up as a Perspective Matrix4. Instead of using the dimensions of the viewport, 
 	this version uses slightly differently ideas. 
 	\param fieldOfview F32. Angle of the view fields of view. Good values include 90 or 120. Will change the skew of the view.
 	\param aspectration F32. Width/height of the screen, but can be set to more specifici values like 4:3 or 16:9.
@@ -97,24 +97,24 @@ namespace KillerMath
 //==========================================================================================================================
 //Translations
 //==========================================================================================================================
-		static Matrix Translate(F32 xVal, F32 yVal);
+		static Matrix4 Translate(F32 xVal, F32 yVal);
 
-		static Matrix Translate(F32 xVal, F32 yVal, F32 zVal);
+		static Matrix4 Translate(F32 xVal, F32 yVal, F32 zVal);
 
-		static Matrix Translate(const Vector& vec);
+		static Matrix4 Translate(const Vector& vec);
 
-/*! Resets Matrix, then creates a Translation on the x and y axes. Calls MakeIdentiy().
+/*! Resets Matrix4, then creates a Translation on the x and y axes. Calls MakeIdentiy().
 	\param x F32. Value of x axis translation.
 	\param y F32. Value of y axis translation. */
 		void SetTranslate(F32 xVal, F32 yVal);
 
-/*! Resets Matrix, thn creates a Translation on the x, y and z axes. Calls MakeIdentiy().
+/*! Resets Matrix4, thn creates a Translation on the x, y and z axes. Calls MakeIdentiy().
 	\param x F32. Value of x axis translation.
 	\param y F32. Value of y axis translation.
 	\param z F32. Value of z axis translation. */		
 		void SetTranslate(F32 xVal, F32 yVal, F32 zVal);
 
-/*! Resets Matrix, then creates translation based on the x, y and z values found in vec. Calls MakeIdentiy().
+/*! Resets Matrix4, then creates translation based on the x, y and z values found in vec. Calls MakeIdentiy().
 */	
 		void SetTranslate(const Vector& vec);
 
@@ -135,12 +135,12 @@ namespace KillerMath
 
 		Vector TransformInverse(const Vector vec) const;
 
-		inline static Vector LocalToWorld(const Vector& vec, const Matrix& mat)
+		inline static Vector LocalToWorld(const Vector& vec, const Matrix4& mat)
 		{
 			return mat * vec;
 		}
 
-		inline static Vector WorldToLocal(const Vector& vec, const Matrix& mat)
+		inline static Vector WorldToLocal(const Vector& vec, const Matrix4& mat)
 		{
 			return mat.TransformInverse(vec);
 		}
@@ -152,52 +152,52 @@ namespace KillerMath
 //==========================================================================================================================
 //Scaling
 //==========================================================================================================================
-		static Matrix Scale(F32 xVal, F32 yVal);
+		static Matrix4 Scale(F32 xVal, F32 yVal);
 
-		static Matrix Scale(F32 xVal, F32 yVal, F32 zVal);
+		static Matrix4 Scale(F32 xVal, F32 yVal, F32 zVal);
 
-		static Matrix Scale(const Vector& vec);
+		static Matrix4 Scale(const Vector& vec);
 
-/*! Resets the Matrix and creates a scaling Matrix on the x and y axes. Calls MakeIndentity()
+/*! Resets the Matrix4 and creates a scaling Matrix4 on the x and y axes. Calls MakeIndentity()
 	\param x F32. Length to scale on x axis.
 	\param y F32. Length to scale on y axis. */
 		void SetScale(F32 xVal, F32 yVal);
 
-/*! Resets the Matrix and creates a scaling Matrix on the x, y and z axes. MakeIndentity()
+/*! Resets the Matrix4 and creates a scaling Matrix4 on the x, y and z axes. MakeIndentity()
 	\param x F32. Length to scale on the x axis.
 	\param y F32. Length to scale on the y axis.
 	\param z F32. Length to scale on the z axis. */
 		void SetScale(F32 xVal, F32 yVal, F32 zVal);
 
-/*! Resets the Matrix and creates a scaling Matrix on the x and y axes. Calls MakeIndentity().
+/*! Resets the Matrix4 and creates a scaling Matrix4 on the x and y axes. Calls MakeIndentity().
 */
 		void SetScale(const Vector& vec);
 
-/*! Creates a scaling Matrix on the x and y axes without resetting the other values.
+/*! Creates a scaling Matrix4 on the x and y axes without resetting the other values.
 	\param x F32. Value of scale on x axis.
 	\param y F32. Value of scale on y axis. */
 		void AddScale(F32 xVal, F32 yVal);
 
-/*! Creates a scaling Matrix on the x, y and z axes without resetting the other values.
+/*! Creates a scaling Matrix4 on the x, y and z axes without resetting the other values.
 	\param x F32. Value of scale on x axis.
 	\param y F32. Value of scale on y axis.
 	\param z F32. Value of scale on z axis. */
 		void AddScale(F32 xVal, F32 yVal, F32 zVal);
 
-/*! Creates a scaling Matrix on the x, y and z axes without resetting the other values.
+/*! Creates a scaling Matrix4 on the x, y and z axes without resetting the other values.
 */
 		void AddScale(const Vector& vec);
 
 //==========================================================================================================================
 //Rotations
 //==========================================================================================================================
-		static Matrix RotateX(F32 val);
+		static Matrix4 RotateX(F32 val);
 
-		static Matrix RotateY(F32 val);
+		static Matrix4 RotateY(F32 val);
 
-		static Matrix RotateZ(F32 val);
+		static Matrix4 RotateZ(F32 val);
 
-/*! Resets Matrix and creates rotation around the x axis. Call MakeIdentiy().
+/*! Resets Matrix4 and creates rotation around the x axis. Call MakeIdentiy().
 	\bug This is not working at all. 
 	\param x F32. Degree of rotation around x axis. Calls RADIAN() */
 		void SetRotateX(F32 val);
@@ -207,7 +207,7 @@ namespace KillerMath
 	\param x F32. Degree of rotation around x axis. Calls RADIAN() */
 		void AddRotateX(F32 val);
 
-/*! Resets Matrix and creates rotation around the y axis. Call MakeIdentiy().
+/*! Resets Matrix4 and creates rotation around the y axis. Call MakeIdentiy().
 	\bug This is not working at all. 
 	\param y F32. Degree of rotation around y axis. Calls RADIAN() */
 		void SetRotateY(F32 val);
@@ -217,7 +217,7 @@ namespace KillerMath
 	\param y F32. Degree of rotation around y axis. Calls RADIAN() */
 		void AddRotateY(F32 val);
 
-/*! Resets Matrix and creates rotation around the z axis. Call MakeIdentiy().
+/*! Resets Matrix4 and creates rotation around the z axis. Call MakeIdentiy().
 	\bug This is not working at all. 
 	\param z F32. Degree of rotation around z axis. Calls RADIAN() */
 		void SetRotateZ(F32 val);
@@ -227,7 +227,7 @@ namespace KillerMath
 	\param z F32. Degree of rotation around z axis. Calls RADIAN() */
 		void AddRotateZ(F32 val);
 
-/*! Resets the Matrix and creates an Matrix which will perform a rotation around the x, y and z axis in that order. 
+/*! Resets the Matrix4 and creates an Matrix4 which will perform a rotation around the x, y and z axis in that order. 
 	Calls MakeIdentity() 
 	\bug Not working at all. The math is wrong, and rotations are not working in general.
 	\param x F32. Degree of rotation around the x axis. Calls RADIAN()
@@ -251,9 +251,9 @@ namespace KillerMath
 //==========================================================================================================================		
 		void SetInverse(void);
 
-		void SetAsInverse(const Matrix& mat);
+		void SetAsInverse(const Matrix4& mat);
 
-		Matrix GetInverse(void) const;
+		Matrix4 GetInverse(void) const;
 
 		F32 Determinate(void) const;
 
@@ -261,42 +261,42 @@ namespace KillerMath
 //==========================================================================================================================
 //Resettings
 //==========================================================================================================================
-/*! Wrapper for Reset(). Sets all values of the Matrix to 0, with the diagnal set to 1. */
+/*! Wrapper for Reset(). Sets all values of the Matrix4 to 0, with the diagnal set to 1. */
 		void MakeIdentity(void)
 		{
 			Reset(1.0f);
 		}	
 
-/*! Sets all the values of the Matrix to 0, with the diagnal set to val.
-	\param val F32. Value of the diagnal of the Matrix. */		
+/*! Sets all the values of the Matrix4 to 0, with the diagnal set to val.
+	\param val F32. Value of the diagnal of the Matrix4. */		
 		void Reset(F32 val=0.0f);
 
 //==========================================================================================================================
 //Misc
 //==========================================================================================================================		
-/*! Reverses the Column/Row order of the Matrix. */
+/*! Reverses the Column/Row order of the Matrix4. */
 		void Transpose(void);
 
-/*! Also known as a straight multiplication. Multiplies each value of this Matrix by the matching value of M.
-	\param M Matrix&. Right hand value to multiply by. */		
-		void ComponentMulti(const Matrix& M);
+/*! Also known as a straight multiplication. Multiplies each value of this Matrix4 by the matching value of M.
+	\param M Matrix4&. Right hand value to multiply by. */		
+		void ComponentMulti(const Matrix4& M);
 
-		Matrix Transform3x3(const Matrix& mat) const;
+		Matrix4 Transform3x3(const Matrix4& mat) const;
 
 		Vector Transform3x3(const Vector& vec) const;
 
-		static Matrix LookAt(const Vector& cameraPos, const Vector& target, const Vector& up);
+		static Matrix4 LookAt(const Vector& cameraPos, const Vector& target, const Vector& up);
 
-/*! Creates a view matrix from the world position. Will set the view to "look at" the specified point. This assumes a Right
+/*! Creates a view Matrix4 from the world position. Will set the view to "look at" the specified point. This assumes a Right
 	Handed Coordinate system. This means that the camera, by default at 0.0 is looking down the -z axis.
 	\param cameraPos Vector&. The world position of the camera. Can be thought of as the eye.
 	\param target Vector&. The target point to "look at".
 	\param up Vector&. The direction of UP space in the coordinate scheme. could be +y, for example. */
 		void SetLookAt(const Vector& cameraPos, const Vector& target, const Vector& up);
 
-		static Matrix FPSView(const Vector& cameraPos, F32 pitch, F32 yaw);
+		static Matrix4 FPSView(const Vector& cameraPos, F32 pitch, F32 yaw);
 
-/*! Uses Euler angles to compute a view matrix from the world position. This assumes a Right Handed Coordinate system. This 
+/*! Uses Euler angles to compute a view Matrix4 from the world position. This assumes a Right Handed Coordinate system. This 
 	means that the camera, by default at 0.0 is looking down the -z axis.
 	\param cameraPos Vector&. The position of the camera in world space. Can be thought of as the eye. 
 	\param pitch F32. Must be between -90 and 90. An assert checks for this.
@@ -308,14 +308,14 @@ namespace KillerMath
 //Operator Overloads
 //
 //==========================================================================================================================
-/*! Used to access the ith column of the matrix.
+/*! Used to access the ith column of the Matrix4.
 	\param i int. Cannot be greater than 3. There are only 4 columns. */
 		const Vector& operator[](int i) const
 		{
 			return _columns[i];
 		}
 
-/*! Used to access the ith column of the matrix. This version allows you to edit the values in the column.
+/*! Used to access the ith column of the Matrix4. This version allows you to edit the values in the column.
 	\param i int. Cannot be greater than 3. There are only 4 columns. */
 		Vector& operator[](int i)
 		{
@@ -323,18 +323,18 @@ namespace KillerMath
 		}
 
 /*! Sets all the values of object to values of M. Call GetElems().
-	\param M Matrix& */
-		Matrix& operator=(const Matrix& mat);
+	\param M Matrix4& */
+		Matrix4& operator=(const Matrix4& mat);
 		
-/*! Performs a Matrix style multiplication.
-	\param RightMatrix Matrix&. Right hand value for multiplication. */
-		Matrix operator*(const Matrix& mat) const;
+/*! Performs a Matrix4 style multiplication.
+	\param RightMatrix4 Matrix4&. Right hand value for multiplication. */
+		Matrix4 operator*(const Matrix4& mat) const;
 
-/*! Performs Matrix multiplication with Vector.
+/*! Performs Matrix4 multiplication with Vector.
 */
 		Vector operator*(const Vector& vec) const;
 
-		Matrix& operator/=(F32 val);
+		Matrix4& operator/=(F32 val);
 
 	private:
 		enum 

@@ -44,7 +44,7 @@ GameObject::GameObject(const GameObject& obj)
 _vertices(obj.GetVertices()),
 _indices(obj.GetIndices()),
 _uvList(obj.GetUVList()),
-_modelTOWorldCache(obj.GetModelMatrix()),
+_modelTOWorldCache(obj.GetModelMatrix4()),
 _position(obj.GetPosition()),
 _scale(obj.GetScale()),
 _orientation(obj.GetOrientation()),
@@ -91,7 +91,7 @@ void GameObject::v_Render(void)
 		SetUniform("sprite_color", _color);
 	}
 
-	SetUniform("model", GetModelMatrix());
+	SetUniform("model", GetModelMatrix4());
 
 	glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
 
@@ -576,8 +576,8 @@ std::vector<string> GameObject::_SplitString(string text, char delim) const
 
 void GameObject::_CalculateCachedData(void)
 {
-	//_modelTOWorldCache =  KM::Matrix::Translate(_position) * KM::Matrix::Scale(_scale);
+	//_modelTOWorldCache =  KM::Matrix4::Translate(_position) * KM::Matrix4::Scale(_scale);
 
 	_modelTOWorldCache.SetOrientationAndPosition(_orientation, _position);
-	_modelTOWorldCache = _modelTOWorldCache * KM::Matrix::Scale(_scale);
+	_modelTOWorldCache = _modelTOWorldCache * KM::Matrix4::Scale(_scale);
 }

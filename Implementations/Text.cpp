@@ -64,11 +64,11 @@ void Text::SetTextColor(const Color& col)
 	}
 }
 
-void Text::SetUniforms(string name, const KM::Matrix& matrix)
+void Text::SetUniforms(string name, const KM::Matrix4& Matrix4)
 {
 	for(auto i : _characterList)
 	{
-		i->SetUniform(name, matrix);
+		i->SetUniform(name, Matrix4);
 	}
 }
 

@@ -329,7 +329,7 @@ const KM::Vector WinProgram::GetMousePos(void)
    // mouseX = mouseX + _left;
    // mouseY = mouseY + _bottom;
 
-    //TODO:: This should probably be done through a matrix transform
+    //TODO:: This should probably be done through a Matrix4 transform
     //but for now, this seems way easier. 
 
     return KM::Vector(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
@@ -347,7 +347,7 @@ const KM::Vector WinProgram::GetMousePosInScreen(void)
     mouseX = mouseX + _left;
     mouseY = mouseY + _bottom;
 
-    //TODO:: This should probably be done through a matrix transform
+    //TODO:: This should probably be done through a Matrix4 transform
     //but for now, this seems way easier. 
 
     return KM::Vector(static_cast<F32>(mouseX), static_cast<F32>(mouseY));

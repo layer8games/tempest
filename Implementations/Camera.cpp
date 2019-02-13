@@ -70,7 +70,7 @@ void Camera::SetPerspective(F32 fov, F32 aspect, F32 nearPlane, F32 farPlane)
 	_projection.MakePerspective(fov, aspect, nearPlane, farPlane);
 }
 
-void Camera::SetDefaultMatrix(void)
+void Camera::SetDefaultMatrix4(void)
 {
 	_projection.MakeIdentity();
 }

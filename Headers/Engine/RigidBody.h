@@ -6,7 +6,7 @@
 #include <Engine/Timer.h>
 #include <Engine/Vector.h>
 #include <Engine/Quaternion.h>
-#include <Engine/Matrix.h>
+#include <Engine/Matrix4.h>
 
 namespace KM = KillerMath;
 namespace KE = KillerEngine;
@@ -50,12 +50,12 @@ namespace KillerPhysics
 //
 //==========================================================================================================================
 //===== Inertia Tensor =====
-		inline const KM::Matrix& GetInverseInertiaTensor(void) const
+		inline const KM::Matrix4& GetInverseInertiaTensor(void) const
 		{
 			return _inverseInertiaTensor;
 		}
 
-		void SetInverseInertiaTensor(const KM::Matrix& mat)
+		void SetInverseInertiaTensor(const KM::Matrix4& mat)
 		{
 			_inverseInertiaTensor.SetAsInverse(mat);
 		}
@@ -230,8 +230,8 @@ namespace KillerPhysics
 //Data
 //
 //==========================================================================================================================
-		KM::Matrix _inverseInertiaTensor;
-		KM::Matrix _inverseInertiaTensorInWorld;
+		KM::Matrix4 _inverseInertiaTensor;
+		KM::Matrix4 _inverseInertiaTensorInWorld;
 		KM::Vector _velocity;
 		KM::Vector _acceleration;
 		KM::Vector _rotation;

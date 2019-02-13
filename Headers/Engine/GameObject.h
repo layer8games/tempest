@@ -5,7 +5,7 @@
 #include <Engine/ErrorManager.h>
 #include <Engine/Shader.h>
 #include <Engine/Vector.h>
-#include <Engine/Matrix.h>
+#include <Engine/Matrix4.h>
 #include <Engine/Color.h>
 #include <Engine/Vertex.h>
 #include <Engine/Quaternion.h>
@@ -78,16 +78,16 @@ namespace KillerEngine
 
 		void MakeSprite(void);
 
-		const KM::Matrix& GetModelMatrix(void) const
+		const KM::Matrix4& GetModelMatrix4(void) const
 		{
 			return _modelTOWorldCache;
 		}
 
 		//temporary idea. 
-		//In Matrix, add Translate vs Transform vs Rotate
-		const KM::Matrix GetModelMatrixRot(void) const
+		//In Matrix4, add Translate vs Transform vs Rotate
+		const KM::Matrix4 GetModelMatrix4Rot(void) const
 		{
-			KM::Matrix mat = _modelTOWorldCache; 
+			KM::Matrix4 mat = _modelTOWorldCache; 
 			mat.Translate(0.0f, 0.0f, 0.0f);
 			return mat;
 		}
@@ -347,7 +347,7 @@ namespace KillerEngine
 			_shader->SetUniformVec3(name.c_str(), vec);
 		}
 
-		inline void SetUniform(string name, const KM::Matrix& mat)
+		inline void SetUniform(string name, const KM::Matrix4& mat)
 		{
 			_shader->Use();
 			_shader->SetUniform(name.c_str(), mat);
@@ -476,7 +476,7 @@ namespace KillerEngine
 		std::vector<Vertex> 	_vertices;
 		std::vector<U32> 		_indices;
 		std::vector<F32> 		_uvList;
-		KM::Matrix 				_modelTOWorldCache;
+		KM::Matrix4 				_modelTOWorldCache;
 		KM::Vector				_position;
 		KM::Vector 				_scale;
 		KM::Quaternion 			_orientation;
