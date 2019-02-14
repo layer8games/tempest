@@ -85,7 +85,7 @@ typedef double F64;
 /// Using string directly, for convience. 
 using std::string;
 
-/// A configurable real number. Currently set to be 32 bits, could be set or 64 bits. 
+/// A configurable real number. Currently set to be 32 bits, could be set to 64 bits. 
 typedef float real;
 //#define DOUBLE_PRECISION
 
