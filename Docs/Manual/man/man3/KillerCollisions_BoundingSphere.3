@@ -6,6 +6,8 @@ KillerCollisions::BoundingSphere
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <BoundingSphere\&.h>\fP
 .SS "Public Member Functions"
 
 .in +1c
@@ -55,6 +57,11 @@ KillerCollisions::BoundingSphere
 .br
 .RI "Radius of the sphere\&. "
 .in -1c
+.SH "Detailed Description"
+.PP 
+The \fBBoundingSphere\fP is a basic bounding volume that can be used for simple, course collision tests\&. It is represented by a center position, located in the model space of the object it is attached to, and a radius, that describes its extent in all directions\&.
+.PP
+TestCollision functions can be added for each type of boudning volume it can intersect with\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "BoundingSphere::BoundingSphere (void)"

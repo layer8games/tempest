@@ -8,6 +8,13 @@ namespace KM = KillerMath;
 
 namespace KillerCollisions
 {
+/*!
+	The BoundingSphere is a basic bounding volume that can be used for simple, course collision tests. It is represented by
+	a center position, located in the model space of the object it is attached to, and a radius, that describes its extent
+	in all directions. 
+
+	TestCollision functions can be added for each type of boudning volume it can intersect with. 
+*/
 	class BoundingSphere
 	{
 
