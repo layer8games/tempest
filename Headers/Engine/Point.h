@@ -97,15 +97,15 @@ namespace KillerMath
 //===== Point Special functions =====
 /*!
 	Performs a Dot or Scalar product in the order of this * other.
-	\param vec is the left hand argument in the operation.	
+	\param point is the left hand argument in the operation.	
 */
-		F32 Dot(const Point& vec) const;
+		F32 Dot(const Point& point) const;
 
 /*!
 	Performs a Cross or Point production in the order of this % other.
-	\param vec is the left hand argument in the operation.			
+	\param point is the left hand argument in the operation.			
 */		
-		Point CrossProduct(const Point& vec) const;
+		Point CrossProduct(const Point& point) const;
 
 /*!
 	Returns the length of the Point. Caution, this uses the square root function.
@@ -131,10 +131,10 @@ namespace KillerMath
 //===== Math Helper Functions =====
 /*!
 	Adds a Point scaled by a value to this Point. 
-	\param vec is the Point that will be added to this one. 
+	\param point is the Point that will be added to this one. 
 	\param scale is the amount the added Point will be scaled by.
 */
-		void AddScaledPoint(const Point& vec, F32 scale);
+		void AddScaledPoint(const Point& point, F32 scale);
 
 //==========================================================================================================================
 //
@@ -188,9 +188,9 @@ namespace KillerMath
 //===== Copy Assignment =====		
 /*!
 	Copy assignment from Point.
-	\param vec is the Point to copy into this Point.
+	\param point is the Point to copy into this Point.
 */
-		Point& operator=(const Point& vec);
+		Point& operator=(const Point& point);
 
 /*!
 	Copy assignment from scalar.
@@ -202,15 +202,15 @@ namespace KillerMath
 //===== Add by Point =====
 /*!
 	Point addtion. This is done componentwise.
-	\param vec is the Point to add into a new Point.
+	\param point is the Point to add into a new Point.
 */
-		Point operator+(const Point& vec) const;
+		Point operator+(const Point& point) const;
 
 /*!
 	Point addition equal. This is done componentwise.
-	\param vec is the Point to add into this Point.
+	\param point is the Point to add into this Point.
 */
-		Point& operator+=(const Point& vec);
+		Point& operator+=(const Point& point);
 
 //===== Add by scalar =====
 /*!
@@ -227,22 +227,22 @@ namespace KillerMath
 
 /*!
 	Shared Pointer addition. A helper to allow arithmetic with shared_ptr<Point>.
-	\param vec is the shared_ptr<Point> that is added into each element of a new Point.
+	\param point is the shared_ptr<Point> that is added into each element of a new Point.
 */
-		Point operator+(shared_ptr<Point> vec) const;
+		Point operator+(shared_ptr<Point> point) const;
 
 //===== Subtract by Point =====
 /*!
 	Point subtraction. This is done componentwise. 2D check done before z is changed. 
-	\param vec is the Point subtracted from the new Point.
+	\param point is the Point subtracted from the new Point.
 */
-		Point operator-(const Point& vec) const;
+		Point operator-(const Point& point) const;
 
 /*!
 	Point subtraction. This is done componenetwise. 2D check done before z is changed. 
-	\param vec is the Pointed subtractd from this Point.
+	\param point is the Pointed subtractd from this Point.
 */
-		Point& operator-=(const Point& vec);
+		Point& operator-=(const Point& point);
 
 //===== Negation and increment =====
 /*! 
@@ -326,15 +326,15 @@ namespace KillerMath
 //===== Component-wise multiply by Point =====
 /*!
 	Point multiplication. This is a componentwise multiplication, scaling one Point by another. 2D check done before z is changed.
-	\param vec is the Point multiplied by the new Point.
+	\param point is the Point multiplied by the new Point.
 */
-		Point operator*(const Point vec) const;
+		Point operator*(const Point point) const;
 
 /*!
 	Point multiplication. This is a componentwise multiplication, scaling one Point by another. 2D check done before z is changed.
-	\param vec is the Point multiplied by this Point.
+	\param point is the Point multiplied by this Point.
 */
-		Point& operator*=(const Point vec);
+		Point& operator*=(const Point point);
 
 //===== Mutliply by Scalar =====
 /*!
@@ -365,39 +365,39 @@ namespace KillerMath
 //===== Comparison =====
 /*!
 	Greater than comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of this are greater than all elements of the other Point.
-	\param vec is the Point this Point will be compared against.
+	\param point is the Point this Point will be compared against.
 */
-		bool operator>(const Point& vec) const;
+		bool operator>(const Point& point) const;
 
 /*!
 	Less than comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of this are less than all elements of the other Point.
-	\param vec is the Point this Point will be compared against.
+	\param point is the Point this Point will be compared against.
 */
-		bool operator<(const Point& vec) const;
+		bool operator<(const Point& point) const;
 
 /*!
 	Greater than or equal to comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of this are greater than or equal to all elements of the other Point.
-	\param vec is the Point this Point will be compared against.
+	\param point is the Point this Point will be compared against.
 */
-		bool operator>=(const Point& vec) const;
+		bool operator>=(const Point& point) const;
 
 /*!
 	Less than or equal to comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of this are less than or equal to all elements of the other Point.
-	\param vec is the Point this Point will be compared against.
+	\param point is the Point this Point will be compared against.
 */
-		bool operator<=(const Point& vec) const;
+		bool operator<=(const Point& point) const;
 
 /*!
 	Equality comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of this are equal to all elements of other Point. 
-	\param vec is the Point this Point will be compared against. 
+	\param point is the Point this Point will be compared against. 
 */
-		bool operator==(const Point& vec) const;
+		bool operator==(const Point& point) const;
 
 /*!
 	False equality comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of this are not equal to all elements of other Point. 
-	\param vec is the Point this Point will be compared against. 
+	\param point is the Point this Point will be compared against. 
 */
-		bool operator!=(const Point& vec) const;
+		bool operator!=(const Point& point) const;
 
 
 	private:

@@ -46,18 +46,18 @@ Point::~Point(void)
 //
 //==========================================================================================================================
 //===== Point Special functions =====
-F32 Point::Dot(const Point& vec) const
+F32 Point::Dot(const Point& point) const
 {
-	return _data[x] * vec[x] +
-		   _data[y] * vec[y] +
-		   _data[z] * vec[z];
+	return _data[x] * point[x] +
+		   _data[y] * point[y] +
+		   _data[z] * point[z];
 }
 
-Point Point::CrossProduct(const Point& vec) const
+Point Point::CrossProduct(const Point& point) const
 {
-	return Point( _data[y] * vec[z] - _data[z] * vec[y],
-				   _data[z] * vec[x] - _data[x] * vec[z],
-				   _data[x] * vec[y] - _data[y] * vec[x] );
+	return Point( _data[y] * point[z] - _data[z] * point[y],
+				   _data[z] * point[x] - _data[x] * point[z],
+				   _data[x] * point[y] - _data[y] * point[x] );
 }
 
 F32 Point::Magnitude(void)
@@ -85,18 +85,18 @@ void Point::Reset(F32 val)
 	_data[x] = val;
 	_data[y] = val;
 	_data[z] = val;
-	_data[w] = 1.0f;
+	_data[w] = 0.0f;
 }
 
 //===== Math Helper Functions =====
-void Point::AddScaledPoint(const Point& vec, F32 scale)
+void Point::AddScaledPoint(const Point& point, F32 scale)
 {
-	_data[x] += vec[x] * scale;
-	_data[y] += vec[y] * scale;
+	_data[x] += point[x] * scale;
+	_data[y] += point[y] * scale;
 
 	if(!_2D)
 	{
-		_data[z] += vec[z] * scale;
+		_data[z] += point[z] * scale;
 	}
 }
 //==========================================================================================================================
@@ -105,12 +105,12 @@ void Point::AddScaledPoint(const Point& vec, F32 scale)
 //
 //==========================================================================================================================
 //===== Copy Assignment =====		
-Point& Point::operator=(const Point& vec)
+Point& Point::operator=(const Point& point)
 {
-	_data[x] = vec[x];
-	_data[y] = vec[y];
-	_data[z] = vec[z];
-	_data[w] = vec[w];
+	_data[x] = point[x];
+	_data[y] = point[y];
+	_data[z] = point[z];
+	_data[w] = point[w];
 
 	return *this;
 }
@@ -129,45 +129,45 @@ Point& Point::operator=(F32 val)
 }
 
 //===== Add by Point =====
-Point Point::operator+(const Point& vec) const
+Point Point::operator+(const Point& point) const
 {
 	if(_2D)
 	{
-		return Point( _data[x] + vec[x],
-				   	   _data[y] + vec[y] );
+		return Point( _data[x] + point[x],
+				   	  _data[y] + point[y] );
 	}
 
-	return Point( _data[x] + vec[x],
-				   _data[y] + vec[y],
-				   _data[z] + vec[z] );
+	return Point( _data[x] + point[x],
+				  _data[y] + point[y],
+				  _data[z] + point[z] );
 }
 
-Point& Point::operator+=(const Point& vec)
+Point& Point::operator+=(const Point& point)
 {
-	_data[x] += vec[x];
-	_data[y] += vec[y];
+	_data[x] += point[x];
+	_data[y] += point[y];
 	
 	if(!_2D) 
 	{
-		_data[z] += vec[z];
+		_data[z] += point[z];
 	}
 
 	return *this;
 }
 
-Point Point::operator+(shared_ptr<Point> vec) const
+Point Point::operator+(shared_ptr<Point> point) const
 {
-	const F32* vals = vec->GetElems();
+	const F32* vals = point->GetElems();
 
 	if(_2D)
 	{
 		return Point( _data[x] + vals[x],
-					   _data[y] + vals[y] );
+					  _data[y] + vals[y] );
 	}
 
 	return Point( _data[x] + vals[x],
-				   _data[y] + vals[y],
-				   _data[z] + vals[z] );
+				  _data[y] + vals[y],
+				  _data[z] + vals[z] );
 }
 
 //===== Add by scalar =====
@@ -176,12 +176,12 @@ Point Point::operator+(F32 val) const
 	if(_2D)
 	{
 		return Point( _data[x] + val,
-				   	   _data[y] + val );
+				   	  _data[y] + val );
 	}
 
 	return Point( _data[x] + val,
-				   _data[y] + val,
-				   _data[z] + val );
+				  _data[y] + val,
+				  _data[z] + val );
 }
 
 Point& Point::operator+=(F32 val)
@@ -198,27 +198,27 @@ Point& Point::operator+=(F32 val)
 }
 
 //===== Subtract by Point =====
-Point Point::operator-(const Point& vec) const
+Point Point::operator-(const Point& point) const
 {
 	if(_2D)
 	{
-		return Point( _data[x] - vec[x],
-				   	   _data[y] - vec[y] );
+		return Point( _data[x] - point[x],
+				   	  _data[y] - point[y] );
 	}
 
-	return Point( _data[x] - vec[x],
-				   _data[y] - vec[y],
-				   _data[z] - vec[z] );
+	return Point( _data[x] - point[x],
+				  _data[y] - point[y],
+				  _data[z] - point[z] );
 }
 
-Point& Point::operator-=(const Point& vec)
+Point& Point::operator-=(const Point& point)
 {
-	_data[x] -= vec[x];
-	_data[y] -= vec[y];
+	_data[x] -= point[x];
+	_data[y] -= point[y];
 	
 	if(!_2D) 
 	{
-		_data[z] -= vec[z];
+		_data[z] -= point[z];
 	}
 
 	return *this;
@@ -230,12 +230,12 @@ Point Point::operator-(F32 val) const
 	if(_2D)
 	{
 		return Point( _data[x] - val,
-				   	   _data[y] - val );
+				   	  _data[y] - val );
 	}
 
 	return Point( _data[x] - val,
-				   _data[y] - val,
-				   _data[z] - val );
+				  _data[y] - val,
+				  _data[z] - val );
 }
 
 Point& Point::operator-=(F32 val)
@@ -252,27 +252,27 @@ Point& Point::operator-=(F32 val)
 }
 
 //===== Component-wise multiply by Point =====
-Point Point::operator*(const Point vec) const
+Point Point::operator*(const Point point) const
 {
 	if(_2D)
 	{
-		return Point( _data[x] * vec[x],
-				   	   _data[y] * vec[y] );
+		return Point( _data[x] * point[x],
+				   	  _data[y] * point[y] );
 	}
 
-	return Point( _data[x] * vec[x],
-				   _data[y] * vec[y],
-				   _data[z] * vec[z] );
+	return Point( _data[x] * point[x],
+				  _data[y] * point[y],
+				  _data[z] * point[z] );
 }
 
-Point& Point::operator*=(const Point vec)
+Point& Point::operator*=(const Point point)
 {
-	_data[x] *= vec[x];
-	_data[y] *= vec[y];
+	_data[x] *= point[x];
+	_data[y] *= point[y];
 	
 	if(!_2D) 
 	{
-		_data[z] *= vec[z];
+		_data[z] *= point[z];
 	}
 
 	return *this;
@@ -284,12 +284,12 @@ Point Point::operator*(F32 val) const
 	if(_2D)
 	{
 		return Point( _data[x] * val,
-				   	   _data[y] * val );
+				   	  _data[y] * val );
 	}
 
 	return Point( _data[x] * val,
-				   _data[y] * val,
-				   _data[z] * val );
+				  _data[y] * val,
+				  _data[z] * val );
 }
 
 Point& Point::operator*=(F32 val)
@@ -313,12 +313,12 @@ Point Point::operator/(F32 val) const
 	if(_2D)
 	{
 		return Point( _data[x] / val,
-					   _data[y] / val );
+					  _data[y] / val );
 	}
 
 	return Point( _data[x] / val,
-				   _data[y] / val,
-				   _data[z] / val );
+				  _data[y] / val,
+				  _data[z] / val );
 }
 
 Point& Point::operator/=(F32 val)
@@ -337,115 +337,115 @@ Point& Point::operator/=(F32 val)
 }
 
 //===== Comparison =====
-bool Point::operator>(const Point& vec) const
+bool Point::operator>(const Point& point) const
 {
-	if(_2D != vec.Is2D())
+	if(_2D != point.Is2D())
 	{
 		return false;
 	}
 
-	bool state = _data[x] > vec[x] && 
-		   		 _data[y] > vec[y] && 
-		    	 _data[w] > vec[w];
+	bool state = _data[x] > point[x] && 
+		   		 _data[y] > point[y] && 
+		    	 _data[w] > point[w];
 	
 	if(!_2D)
 	{
-		state = state && _data[z] > vec[z];
+		state = state && _data[z] > point[z];
 	}
 
 	return state;
 }
 
-bool Point::operator<(const Point& vec) const
+bool Point::operator<(const Point& point) const
 {
-	if(_2D != vec.Is2D())
+	if(_2D != point.Is2D())
 	{
 		return false;
 	}
 
-	bool state = _data[x] < vec[x] && 
-		   		 _data[y] < vec[y] && 
-		    	 _data[w] < vec[w];
+	bool state = _data[x] < point[x] && 
+		   		 _data[y] < point[y] && 
+		    	 _data[w] < point[w];
 	
 	if(!_2D)
 	{
-		state = state && _data[z] < vec[z];
+		state = state && _data[z] < point[z];
 	}
 
 	return state;
 }
 
-bool Point::operator>=(const Point& vec) const
+bool Point::operator>=(const Point& point) const
 {
-	if(_2D != vec.Is2D())
+	if(_2D != point.Is2D())
 	{
 		return false;
 	}
 
-	bool state = _data[x] >= vec[x] && 
-		   		 _data[y] >= vec[y] && 
-		    	 _data[w] >= vec[w];
+	bool state = _data[x] >= point[x] && 
+		   		 _data[y] >= point[y] && 
+		    	 _data[w] >= point[w];
 	
 	if(!_2D)
 	{
-		state = state && _data[z] >= vec[z];
+		state = state && _data[z] >= point[z];
 	}
 
 	return state;
 }
 
-bool Point::operator<=(const Point& vec) const
+bool Point::operator<=(const Point& point) const
 {
-	if(_2D != vec.Is2D())
+	if(_2D != point.Is2D())
 	{
 		return false;
 	}
 
-	bool state = _data[x] <= vec[x] && 
-		   		 _data[y] <= vec[y] && 
-		    	 _data[w] <= vec[w];
+	bool state = _data[x] <= point[x] && 
+		   		 _data[y] <= point[y] && 
+		    	 _data[w] <= point[w];
 	
 	if(!_2D)
 	{
-		state = state && _data[z] <= vec[z];
+		state = state && _data[z] <= point[z];
 	}
 
 	return state;
 }
 
-bool Point::operator==(const Point& vec) const
+bool Point::operator==(const Point& point) const
 {
-	if(_2D != vec.Is2D())
+	if(_2D != point.Is2D())
 	{
 		return false;
 	}
 
-	bool state = _data[x] == vec[x] && 
-		   		 _data[y] == vec[y] && 
-		    	 _data[w] == vec[w];
+	bool state = _data[x] == point[x] && 
+		   		 _data[y] == point[y] && 
+		    	 _data[w] == point[w];
 	
 	if(!_2D)
 	{
-		state = state && _data[z] == vec[z];
+		state = state && _data[z] == point[z];
 	}
 
 	return state;
 }
 
-bool Point::operator!=(const Point& vec) const
+bool Point::operator!=(const Point& point) const
 {
-	if(_2D != vec.Is2D())
+	if(_2D != point.Is2D())
 	{
 		return false;
 	}
 
-	bool state = _data[x] != vec[x] && 
-		   		 _data[y] != vec[y] && 
-		    	 _data[w] != vec[w];
+	bool state = _data[x] != point[x] && 
+		   		 _data[y] != point[y] && 
+		    	 _data[w] != point[w];
 	
 	if(!_2D)
 	{
-		state = state && _data[z] != vec[z];
+		state = state && _data[z] != point[z];
 	}
 
 	return state;
