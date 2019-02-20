@@ -8,13 +8,13 @@ using namespace KillerCollisions;
 //==========================================================================================================================
 AABB::AABB(void)
 :
-_center(0.0f, 0.0f, 0.0f, 0.0f),
+_center(0.0f, 0.0f, 0.0f),
 _halfWidth(0.0f),
 _halfHeight(0.0f),
 _halfDepth(0.0f)
 {  }
 
-AABB::AABB(const KM::Vector& center, F32 w, F32 h, F32 d)
+AABB::AABB(const KM::Point& center, F32 w, F32 h, F32 d)
 :
 _center(center),
 _halfWidth(w / 2.0f),

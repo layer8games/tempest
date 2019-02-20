@@ -25,7 +25,7 @@ namespace KillerMath
 
 	The w element is what separates a Vector from a Point. A Point is meant to represent a point in space. This can also be 
 	thought of as a displayment from the origin of the planes. This is expressed mathematically by always having the w 
-	component be 0. Because of a 0 in this place, any transforms done by a matrix will be treated differently. 
+	component be 1, which allows the Point to be transformed by a Matrix with transformation values added. 
 */
 	class Point
 	{

@@ -1,0 +1,7 @@
+/*!
+	\namespace KillerEngine
+	\namespace KillerMath
+	\class Vector
+
+	\details The Vector class, like the KillerEngine::Color class, is based on 4 elements.
+*/

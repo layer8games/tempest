@@ -2,7 +2,7 @@
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
-#include <Engine/Vector.h>
+#include <Engine/Point.h>
 
 namespace KM = KillerMath;
 
@@ -32,7 +32,7 @@ namespace KillerCollisions
 	\param h is the full height of the AABB. It is divided by 2 to get the half height that is stored. 
 	\param d is the full depth of the AABB. It is divided by 2 to get the half depth that is stored. 
 */
-		AABB(const KM::Vector& center, F32 w, F32 h, F32 d);
+		AABB(const KM::Point& center, F32 w, F32 h, F32 d);
 
 		//TODO: Consider adding constructor that will combine 2 AABB's. 
 
@@ -64,11 +64,9 @@ namespace KillerCollisions
 	Sets the location of the center of the sphere. This is the position in local space for the object it encompasses. 
 	\param c is the new center. The w component is set to 0.
 */
-		inline void SetCenter(const KM::Vector& c)
+		inline void SetCenter(const KM::Point& c)
 		{
 			_center = c;
-			//Temporary code. Needs to be removed when an offical Point class is created. 
-			_center[3] = 0.0f;
 		}
 
 /*!
@@ -87,7 +85,7 @@ namespace KillerCollisions
 /*!
 	 Returns the center of the AABB.
 */
-		inline const KM::Vector& GetCenter(void) const
+		inline const KM::Point& GetCenter(void) const
 		{
 			return _center;
 		}
@@ -228,7 +226,7 @@ namespace KillerCollisions
 		}	
 
 	private:
-		KM::Vector _center;			///< Center location of the AABB. This is the posistion represented in local space of the object that holds it. 
+		KM::Point  _center;			///< Center location of the AABB. This is the posistion represented in local space of the object that holds it. 
 		F32		   _halfWidth;		///< Half the width from the center to the edge, along the x axis. 
 		F32 	   _halfHeight;		///< Half the height from the center to the edge, along the y axis. 
 		F32 	   _halfDepth;		///< Half the depth from the center to the edge, along the z axis. 

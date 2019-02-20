@@ -10,25 +10,25 @@ using namespace KillerMath;
 Vector::Vector(void)
 :
 _2D(false),
-_data{0.0f, 0.0f, 0.0f, 1.0f}
+_data{0.0f, 0.0f, 0.0f, 0.0f}
 {  }
 
 Vector::Vector(F32 val)
 :
 _2D(false),
-_data{val, val, val, 1.0f}
+_data{val, val, val, 0.0f}
 {  }
 
 Vector::Vector(F32 x, F32 y)
 :
 _2D(true),
-_data{x, y, 0.0, 1.0f}
+_data{x, y, 0.0, 0.0f}
 {  }
 
 Vector::Vector(F32 x, F32 y, F32 z)
 :
 _2D(false),
-_data{x, y, z, 1.0f}
+_data{x, y, z, 0.0f}
 {  }
 
 Vector::Vector(F32 x, F32 y, F32 z, F32 w)
@@ -91,7 +91,7 @@ void Vector::Reset(F32 val)
 	_data[x] = val;
 	_data[y] = val;
 	_data[z] = val;
-	_data[w] = 1.0f;
+	_data[w] = 0.0f;
 }
 
 //===== Math Helper Functions =====

@@ -1,0 +1,11 @@
+/*!
+\namespace KillerEngine
+\class Color
+
+\details A structure to hold basic colors for all Sprites to sent to OGL in order to render things
+
+There will be 4 values per color so that it can be sent to a vec4 in OGL before it is used to actually control the colors of anything in the shader. This is stored in n array for convenience of passing the whole array out when the time comes.  
+
+Where values are set, they are required to be normalized, that is between 0.0f and 1.0f. This is because the colors need to be represented this for OpenGL. Asserts are used at compile time to make sure that this is true.
+
+*/
