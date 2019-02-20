@@ -21,18 +21,19 @@ namespace KillerEngine
 	end error is set. */	
 	enum ErrorCode 
 	{
-		NOT_ERROR, 		///< Default value. Shouldn't ever be used.
-		UNKNOWN_ERROR,				///< Fall through code, indicates an error in the setting of an error.
-		APPLICATION,
+		NOT_ERROR, 			///< Default value. Shouldn't ever be used.
+		UNKNOWN_ERROR,		///< Fall through code, indicates an error in the setting of an error.
+		APPLICATION,		///< Indicates and error in the end application, not the engine itself. 
 		ENGINE,				///< Indicates the error is in the engine's main code, not very specific.
-		PHYSICS,				///< Indicates the error is in the KillerPhysics namespace. 
-		WINDOWS,				///< Indicates that the error is related to the windowing system. 
+		MATH, 				///< Indicates an error in the math section of the engine.
+		PHYSICS,			///< Indicates the error is in the KillerPhysics namespace. 
+		WINDOWS,			///< Indicates that the error is related to the windowing system. 
 		OPENGL,				///< Indicates that the error is in OpenGL related code.
-		SHADER,		///< Indicates that the error is caused by OpenGL shader compilation.
-		GLFW,
-		TEXTURE_MANAGER,
-		GAMEOBJECT,
-		FREETYPE,
+		SHADER,				///< Indicates that the error is caused by OpenGL shader compilation.
+		GLFW,			 	///< Indicates an error in the code wrapping around the GLFW library. 
+		TEXTURE_MANAGER, 	///< Indicates an error in the TextureManager class of the engine. 
+		GAMEOBJECT,			///< Indicates an error in the GameObject class of the engine. 
+		FREETYPE,			///< Indicates an error in the code wrapper around FreeType.
 	};
 //==========================================================================================================================
 //Documentation

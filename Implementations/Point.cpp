@@ -55,9 +55,15 @@ F32 Point::Dot(const Point& point) const
 
 Point Point::CrossProduct(const Point& point) const
 {
+	if(_2D)
+	{
+		KE::ErrorManager::Instance()->SetError(KE::ErrorCode::MATH, "Attempted to perform CrossProduct on 2D Point. Point.cpp ln 60");
+		return Point(0.0f);
+	}
+
 	return Point( _data[y] * point[z] - _data[z] * point[y],
-				   _data[z] * point[x] - _data[x] * point[z],
-				   _data[x] * point[y] - _data[y] * point[x] );
+				  _data[z] * point[x] - _data[x] * point[z],
+				  _data[x] * point[y] - _data[y] * point[x] );
 }
 
 F32 Point::Magnitude(void)
@@ -346,7 +352,7 @@ bool Point::operator>(const Point& point) const
 
 	bool state = _data[x] > point[x] && 
 		   		 _data[y] > point[y] && 
-		    	 _data[w] > point[w];
+		    	 _data[w] >= point[w];
 	
 	if(!_2D)
 	{
@@ -365,7 +371,7 @@ bool Point::operator<(const Point& point) const
 
 	bool state = _data[x] < point[x] && 
 		   		 _data[y] < point[y] && 
-		    	 _data[w] < point[w];
+		    	 _data[w] <= point[w];
 	
 	if(!_2D)
 	{

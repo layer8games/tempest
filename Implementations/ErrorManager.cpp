@@ -73,6 +73,10 @@ void ErrorManager::DisplayErrors(void)
 					std::cout << "ENGINE Error: " << _errorMessages[i].c_str() << std::endl;
 					MessageBox(NULL, _errorMessages[i].c_str(), "KILLER_ENGINE", MB_ICONERROR | MB_OK);					
 				break;
+				case MATH:
+					std::cout << "MATH error: " << _errorMessages[i].c_str() << std::endl;
+					MessageBox(NULL, _errorMessages[i].c_str(), "MATH", MB_ICONERROR | MB_OK);
+				break;
 				case PHYSICS: 
 					std::cout << "PHYCIS Error: " << _errorMessages[i].c_str() << std::endl;
 					MessageBox(NULL, _errorMessages[i].c_str(), "PHYCIS", MB_ICONERROR | MB_OK);					

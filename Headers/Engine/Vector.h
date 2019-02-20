@@ -26,7 +26,7 @@ namespace KillerMath
 //
 //==========================================================================================================================
 /*! 
-	Default construtor. Sets all values to 0, and _2D to false.
+	Default construtor. Sets all values to 0, and _2D to false. W is set to 1.
 */		
 		Vector(void);
 
@@ -37,14 +37,14 @@ namespace KillerMath
 		explicit Vector(F32 val);
 
 /*! 
-	Two input constructor. Set's x and y accordingly. Z is set to 0.0f. W is set to 1.0f
+	Two input constructor. Set's x and y accordingly. Z is set to 0.0f. W is set to 1.
 	\param x is the value for x.
 	\param y is the value for y.
 */	
 		Vector(F32 x, F32 y);
 
 /*! 
-	Three input constructor. W is set to 1.0f.
+	Three input constructor. W is set to 1.
 	\param x is the value for x.
 	\param y is the value for y.
 	\param z is the value for z.

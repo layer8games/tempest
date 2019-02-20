@@ -352,7 +352,7 @@ bool Vector::operator>(const Vector& vec) const
 
 	bool state = _data[x] > vec[x] && 
 		   		 _data[y] > vec[y] && 
-		    	 _data[w] > vec[w];
+		    	 _data[w] >= vec[w];
 	
 	if(!_2D)
 	{
@@ -371,7 +371,7 @@ bool Vector::operator<(const Vector& vec) const
 
 	bool state = _data[x] < vec[x] && 
 		   		 _data[y] < vec[y] && 
-		    	 _data[w] < vec[w];
+		    	 _data[w] <= vec[w];
 	
 	if(!_2D)
 	{

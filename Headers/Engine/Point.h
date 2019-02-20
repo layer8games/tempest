@@ -2,6 +2,9 @@
 
 //===== Killer Includes =====
 #include <Engine/Atom.h>
+#include <Engine/ErrorManager.h>
+
+namespace KE = KillerEngine;
 
 
 //===== Stnadard inlcudes =====
@@ -13,9 +16,16 @@ namespace KillerMath
 //Documentation
 //==========================================================================================================================
 /*! 
-	A custom Point class writen for the Killer Engine. 
+	A custom Point class writen for the Killer Engine.
 
-	The Point is a 4 element 3D Point. The Point consists of an x, y, z and w component represented by an array of F32 values. They are refered as x, y, z and w through through documentation. In code, you would have to refered to them as their index in the array (0 - 3). There is an alias set up in the Point, and enum, that lets you use x, y, z and w to represent the indices natively. This is private to the Point. The w is included mostly used for convenience when multiplying with a 4X4 Matrix4. It follows all the rules of a Point and can be used for what you need it to be. 
+	The Point is a 4 element 3D Point. The Point consists of an x, y, z and w component represented by an array of F32 values. 
+	They are refered as x, y, z and w through through documentation. In code, you would have to refered to them as their index 
+	in the array (0 - 3). There is an alias set up in the Point, and enum, that lets you use x, y, z and w to represent the 
+	indices natively. This is private to the Point. 
+
+	The w element is what separates a Vector from a Point. A Point is meant to represent a point in space. This can also be 
+	thought of as a displayment from the origin of the planes. This is expressed mathematically by always having the w 
+	component be 0. Because of a 0 in this place, any transforms done by a matrix will be treated differently. 
 */
 	class Point
 	{
@@ -31,20 +41,20 @@ namespace KillerMath
 		Point(void);
 
 /*! 
-	Single input conversion constructor. It will set the x, y and z components to the input. _2D is false. 
+	Single input conversion constructor. It will set the x, y and z components to the input. _2D is false. W is set to 0.
 	\param val F32: Input value for x, y and z.
 */		
 		explicit Point(F32 val);
 
 /*! 
-	Two input constructor. Set's x and y accordingly. Z is set to 0.0f. W is set to 1.0f
+	Two input constructor. Set's x and y accordingly. Z is set to 0.0f. W is set to 0.
 	\param x is the value for x.
 	\param y is the value for y.
 */	
 		Point(F32 x, F32 y);
 
 /*! 
-	Three input constructor. W is set to 1.0f.
+	Three input constructor. W is set to 0.
 	\param x is the value for x.
 	\param y is the value for y.
 	\param z is the value for z.
@@ -55,7 +65,7 @@ namespace KillerMath
 	Copy Constructor. It explicitly copies all data into new Point. 
 	\param v is the Point to copy. 
 */
-		Point(const Point& v);
+		Point(const Point& p);
 
 /*! 
 	Destructor. It does not do anything. 
