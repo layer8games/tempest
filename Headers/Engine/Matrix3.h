@@ -10,6 +10,37 @@
 
 namespace KillerMath 
 {
+
+	struct Column3
+		{
+			Column3(F32 x, F32 y, F32 z)
+			:
+			_data{x, y, z}
+			{  }
+
+			Column3(const Column3& col)
+			:
+			_data{ col[0], col[1], col[2] }
+			{  }
+
+			Column3(const Vector& vec)
+			:
+			_data{ vec[0], vec[1], vec[2] }
+			{  }
+			
+			const F32& operator[](int i) const
+			{
+				return _data[i];
+			}
+
+			F32& operator[](int i)
+			{
+				return _data[i];
+			}
+
+		private:
+			F32 _data[3];
+		};
 //==========================================================================================================================
 //Documentation
 //==========================================================================================================================
@@ -35,13 +66,14 @@ namespace KillerMath
 /*! Default constructor. Sets all values to 0, except for the last in the Matrix3. */
 		Matrix3(void);
 
-		Matrix3(const Vector& x, const Vector& y, const Vector& z);
+		Matrix3(const Column3& x, const Column3& y, const Column3& z);
 
-		Matrix3(const Vector& x, const Vector& y, const Vector& z, const Vector& w);
+		Matrix3(const Vector& x, const Vector& y, const Vector& z);
 
 		explicit Matrix3(const F32 val);
 		
-/*! All value constructor. Takes a list of values and turns them into a Matrix3 of the same mapping. 
+/*! 
+	All value constructor. Takes a list of values and turns them into a Matrix3 of the same mapping. 
 	\param m00 F32. Value 0,0.
 	\param m01 F32. Value 0,1.
 	\param m02 F32. Value 0,2
@@ -54,14 +86,10 @@ namespace KillerMath
 	\param m21 F32. Value 2,1.
 	\param m22 F32. Value 2,2
 	\param m23 F32. Value 2,3.
-	\param m30 F32. Value 3,0.
-	\param m31 F32. Value 3,1.
-	\param m32 F32. Value 3,2
-	\param m33 F32. Value 3,3. */
-		Matrix3( F32 m00, F32 m01, F32 m02, F32 m03,
-				F32 m10, F32 m11, F32 m12, F32 m13,
-				F32 m20, F32 m21, F32 m22, F32 m23,
-				F32 m30, F32 m31, F32 m32, F32 m33);
+*/
+		Matrix3( F32 m00, F32 m01, F32 m02,
+				 F32 m10, F32 m11, F32 m12,
+				 F32 m20, F32 m21, F32 m22 );
 
 /*! Copy Constructor. Calls GetElems(), then sets the values accordingly. */		
 		Matrix3(const Matrix3& M);
@@ -73,81 +101,6 @@ namespace KillerMath
 //==========================================================================================================================
 /*! Return the array containing all the elements. */
 		const std::vector<F32> GetElems(void) const;
-
-//==========================================================================================================================
-//Projections
-//==========================================================================================================================		
-/*! Resets the Matrix3, then sets the values up as an Orthographic projection. Calls MakeIdentiy(). The viewport values are 
-	usually based on the dimensions of the window, but could be made smaller.
-	\param width F32. Width of viewport.
-	\param height F32. Height of viewport.
-	\param depth F32. Depth of the viewport. 
-	\param center bool. Set to true by default. If true, the origin of the view port will be the middle of the screen. 
-		   Otherwise it will be the bottom left corner of the screen. */
-		void MakeOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane);
-
-/*! Resets the Matrix3, then sets the values up as a Perspective Matrix3. Instead of using the dimensions of the viewport, 
-	this version uses slightly differently ideas. 
-	\param fieldOfview F32. Angle of the view fields of view. Good values include 90 or 120. Will change the skew of the view.
-	\param aspectration F32. Width/height of the screen, but can be set to more specifici values like 4:3 or 16:9.
-	\param nearPlane F32. Near rendering plane of viewport. Must be at least 1.0f.
-	\param farPlane F32. Similar to depth, this is the point at which culling will happen. Should be greater than nearPlane. */
-		void MakePerspective(F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F32 farPlane);
-
-//==========================================================================================================================
-//Translations
-//==========================================================================================================================
-		static Matrix3 Translate(F32 xVal, F32 yVal);
-
-		static Matrix3 Translate(F32 xVal, F32 yVal, F32 zVal);
-
-		static Matrix3 Translate(const Vector& vec);
-
-/*! Resets Matrix3, then creates a Translation on the x and y axes. Calls MakeIdentiy().
-	\param x F32. Value of x axis translation.
-	\param y F32. Value of y axis translation. */
-		void SetTranslate(F32 xVal, F32 yVal);
-
-/*! Resets Matrix3, thn creates a Translation on the x, y and z axes. Calls MakeIdentiy().
-	\param x F32. Value of x axis translation.
-	\param y F32. Value of y axis translation.
-	\param z F32. Value of z axis translation. */		
-		void SetTranslate(F32 xVal, F32 yVal, F32 zVal);
-
-/*! Resets Matrix3, then creates translation based on the x, y and z values found in vec. Calls MakeIdentiy().
-*/	
-		void SetTranslate(const Vector& vec);
-
-/*! Creates a translation on the x and y axes without reseting the other values. 
-	\param x F32. Value of x axis translation.
-	\param y F32. Value of y axis translation. */		
-		void AddTranslate(F32 xVal, F32 yVal);
-
-/*! Creates a translation on the x, y and z axes without resetting the other values.
-	\param x F32. Value of x axis translation.
-	\param y F32. Value of y axis translation.
-	\param z F32. Value of z axis translation. */
-		void AddTranslate(F32 xVal, F32 yVal, F32 zVal);
-
-/*! Creates a translation on the x, y and z axes without reseting the other values. 
-*/	
-		void AddTranslate(const Vector& vec);
-
-		Vector TransformInverse(const Vector vec) const;
-
-		inline static Vector LocalToWorld(const Vector& vec, const Matrix3& mat)
-		{
-			return mat * vec;
-		}
-
-		inline static Vector WorldToLocal(const Vector& vec, const Matrix3& mat)
-		{
-			return mat.TransformInverse(vec);
-		}
-
-		Vector TransformDirection(const Vector& vec) const;
-
-		Vector TransformInverseDirection(const Vector& vec) const;
 
 //==========================================================================================================================
 //Scaling
@@ -281,27 +234,9 @@ namespace KillerMath
 	\param M Matrix3&. Right hand value to multiply by. */		
 		void ComponentMulti(const Matrix3& M);
 
-		Matrix3 Transform3x3(const Matrix3& mat) const;
+		Matrix3 Matrix3::Transform(const Matrix3& mat) const;
 
-		Vector Transform3x3(const Vector& vec) const;
-
-		static Matrix3 LookAt(const Vector& cameraPos, const Vector& target, const Vector& up);
-
-/*! Creates a view Matrix3 from the world position. Will set the view to "look at" the specified point. This assumes a Right
-	Handed Coordinate system. This means that the camera, by default at 0.0 is looking down the -z axis.
-	\param cameraPos Vector&. The world position of the camera. Can be thought of as the eye.
-	\param target Vector&. The target point to "look at".
-	\param up Vector&. The direction of UP space in the coordinate scheme. could be +y, for example. */
-		void SetLookAt(const Vector& cameraPos, const Vector& target, const Vector& up);
-
-		static Matrix3 FPSView(const Vector& cameraPos, F32 pitch, F32 yaw);
-
-/*! Uses Euler angles to compute a view Matrix3 from the world position. This assumes a Right Handed Coordinate system. This 
-	means that the camera, by default at 0.0 is looking down the -z axis.
-	\param cameraPos Vector&. The position of the camera in world space. Can be thought of as the eye. 
-	\param pitch F32. Must be between -90 and 90. An assert checks for this.
-	\param yaw F32. Must be between 0 and 360. An assert checks for thisl */		
-		void SetFPSView(const Vector& cameraPos, F32 pitch, F32 yaw);
+		Vector Matrix3::Transform(const Vector& vec) const;
 
 //==========================================================================================================================
 //
@@ -310,14 +245,14 @@ namespace KillerMath
 //==========================================================================================================================
 /*! Used to access the ith column of the Matrix3.
 	\param i int. Cannot be greater than 3. There are only 4 columns. */
-		const Vector& operator[](int i) const
+		const Column3& operator[](int i) const
 		{
 			return _columns[i];
 		}
 
 /*! Used to access the ith column of the Matrix3. This version allows you to edit the values in the column.
 	\param i int. Cannot be greater than 3. There are only 4 columns. */
-		Vector& operator[](int i)
+		Column3& operator[](int i)
 		{
 			return _columns[i];
 		}
@@ -341,8 +276,7 @@ namespace KillerMath
 		{
 			x=0,
 			y=1,
-			z=2,
-			w=3
+			z=2
 		};
 
 //==========================================================================================================================
@@ -350,7 +284,7 @@ namespace KillerMath
 //Data
 //
 //==========================================================================================================================
-		Vector _columns[4];
+		Column3 _columns[3];
 	};
 
 }//End namespace
