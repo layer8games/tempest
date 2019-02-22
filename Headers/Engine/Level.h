@@ -18,7 +18,7 @@ Written by Maxwell Miller
 #include <Engine/WinProgram.h>
 #include <Engine/TextureManager.h>
 #include <Engine/EnvironmentObject.h>
-#include <Engine/Vector.h>
+#include <Engine/Vector4.h>
 #include <Engine/Color.h>
 #include <Engine/Text.h>
 #include <Engine/Particle.h>

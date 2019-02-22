@@ -4,7 +4,7 @@
 #include <Engine/Atom.h>
 #include <Engine/GameObject.h>
 #include <Engine/Timer.h>
-#include <Engine/Vector.h>
+#include <Engine/Vector4.h>
 
 //===== Standard includes =====
 #include <cassert>
@@ -82,7 +82,7 @@ namespace KillerPhysics
 /*!
 	Adds a force that will act upon this Particle. This is done by adding the combined forces into the acceleration of the Particle.
 */
-		void AddForce(const KM::Vector force);
+		void AddForce(const KM::Vector4 force);
 
 //==========================================================================================================================
 //
@@ -93,7 +93,7 @@ namespace KillerPhysics
 /*!
 	Returns the current velocity of the Particle.
 */
-		inline const KM::Vector& GetVelocity(void) const
+		inline const KM::Vector4& GetVelocity(void) const
 		{
 			return _velocity;
 		}
@@ -102,7 +102,7 @@ namespace KillerPhysics
 	 Directly sets the velocity of the Particle, ignoring acceleration and physics. This can be viewed as an impulse, but permanent.
 	 \param vel is the value set for the velocity. Disregards what the velocity was. 
 */
-		inline void SetVelocity(const KM::Vector& vel)
+		inline void SetVelocity(const KM::Vector4& vel)
 		{
 			_velocity = vel;
 		}
@@ -133,20 +133,20 @@ namespace KillerPhysics
 		}
 
 /*!
-	Directly add a scaled vectory into the current velocity. 
-	\param vec is the Vector to be added. 
+	Directly add a scaled Vector4y into the current velocity. 
+	\param vec is the Vector4 to be added. 
 	\param scale is the F32 that vec will be scaled by before it is added into the velocity. 
 */
-		inline void AddScaledVelocity(const KM::Vector& vec, F32 scale)
+		inline void AddScaledVelocity(const KM::Vector4& vec, F32 scale)
 		{
-			_velocity.AddScaledVector(vec, scale);
+			_velocity.AddScaledVector4(vec, scale);
 		}
 
 //===== Accleration =====
 /*!
 	Returns the current acceleration of the particle. 
 */
-		inline const KM::Vector& GetAcceleration(void) const
+		inline const KM::Vector4& GetAcceleration(void) const
 		{
 			return _acceleration;
 		}
@@ -155,7 +155,7 @@ namespace KillerPhysics
 	Directly set the acceleration of the Particle without regards to physics or the current value of the acceleration. 
 	\param acc is the new value of the acceleration.
 */
-		inline void SetAcceleration(const KM::Vector& acc)
+		inline void SetAcceleration(const KM::Vector4& acc)
 		{
 			_acceleration = acc;
 		}
@@ -186,20 +186,20 @@ namespace KillerPhysics
 		}
 
 /*!
-	Directly add a scaled vectory into the current acceleration. 
-	\param vec is the Vector to be added. 
+	Directly add a scaled Vector4y into the current acceleration. 
+	\param vec is the Vector4 to be added. 
 	\param scale is the F32 that vec will be scaled by before it is added into the acceleration. 
 */		
-		inline void AddScaledAcceleration(const KM::Vector& acc, F32 scale)
+		inline void AddScaledAcceleration(const KM::Vector4& acc, F32 scale)
 		{
-			_acceleration.AddScaledVector(acc, scale);
+			_acceleration.AddScaledVector4(acc, scale);
 		}
 
 //===== Froces =====
 /*!
 	Returns the total amount of all the forces applied to this particle for this frame added together.
 */
-		inline const KM::Vector& GetForces(void) const
+		inline const KM::Vector4& GetForces(void) const
 		{
 			return _forceAccum;
 		}
@@ -208,7 +208,7 @@ namespace KillerPhysics
 /*!
 	Returns the value cached to represent the force of gravity on this Particle.
 */
-		inline const KM::Vector& GetGravityForce(void) const
+		inline const KM::Vector4& GetGravityForce(void) const
 		{
 			return _gravityForce;
 		}
@@ -217,7 +217,7 @@ namespace KillerPhysics
 	Sets the cached value that represents the force of gravity on this Particle.
 	\param grav is the value that the gravity force will be set to.
 */
-		inline void SetGravityForce(const KM::Vector& grav)
+		inline void SetGravityForce(const KM::Vector4& grav)
 		{
 			_gravityForce = grav;
 		}
@@ -289,10 +289,10 @@ namespace KillerPhysics
 //Data
 //
 //==========================================================================================================================
-		KM::Vector _velocity;		///< Represents the rate of change, otherwise known as the first differential of the position.
-		KM::Vector _acceleration;	///< Reprsent the rate of change of the velocity, otherwise known as the second differential of the position.
-		KM::Vector _forceAccum;		///< Using D'Lambert's principal, this reprsents the combined forces that will as on this Particle for exactly 1 frame.
-		KM::Vector _gravityForce;	///< An optimization, gravity does not have to be treated like other forces, it can permanately be cached. 
+		KM::Vector4 _velocity;		///< Represents the rate of change, otherwise known as the first differential of the position.
+		KM::Vector4 _acceleration;	///< Reprsent the rate of change of the velocity, otherwise known as the second differential of the position.
+		KM::Vector4 _forceAccum;		///< Using D'Lambert's principal, this reprsents the combined forces that will as on this Particle for exactly 1 frame.
+		KM::Vector4 _gravityForce;	///< An optimization, gravity does not have to be treated like other forces, it can permanately be cached. 
 		real 	   _inverseMass;	///< The inverse mass of the object, written like 1/mass. This is an optimization to avoid uneeded operations. 
 		real 	   _damping;		///< Damping is a substitute for friction. It represents the rate of acceleration decay. 0.0f means heavy friction, close to 1 means almost none. Do not set to 1. A good value for no decay is 0.999f.
 	};

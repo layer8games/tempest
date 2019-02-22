@@ -9,28 +9,28 @@ using namespace KillerMath;
 //==========================================================================================================================
 Matrix4::Matrix4(void)
 :
-_columns{Vector(1.0f, 0.0f, 0.0f, 0.0f),
-		 Vector(0.0f, 1.0f, 0.0f, 0.0f),
-		 Vector(0.0f, 0.0f, 1.0f, 0.0f),
-		 Vector(0.0f, 0.0f, 0.0f, 1.0f)}
+_columns{Vector4(1.0f, 0.0f, 0.0f, 0.0f),
+		 Vector4(0.0f, 1.0f, 0.0f, 0.0f),
+		 Vector4(0.0f, 0.0f, 1.0f, 0.0f),
+		 Vector4(0.0f, 0.0f, 0.0f, 1.0f)}
 {  }
 
-Matrix4::Matrix4(const Vector& x, const Vector& y, const Vector& z)
+Matrix4::Matrix4(const Vector4& x, const Vector4& y, const Vector4& z)
 :
-_columns{x, y, z, Vector(0.0f, 0.0f, 0.0f, 1.0f)}
+_columns{x, y, z, Vector4(0.0f, 0.0f, 0.0f, 1.0f)}
 {  }
 
-Matrix4::Matrix4(const Vector& x, const Vector& y, const Vector& z, const Vector& w)
+Matrix4::Matrix4(const Vector4& x, const Vector4& y, const Vector4& z, const Vector4& w)
 :
 _columns{x, y, z, w}
 {  }
 
 Matrix4::Matrix4(const F32 val)
 :
-_columns{Vector(val, 0.0f, 0.0f, 0.0f),
-		 Vector(0.0f, val, 0.0f, 0.0f),
-		 Vector(0.0f, 0.0f, val, 0.0f),
-		 Vector(0.0f, 0.0f, 0.0f, 1.0f)}
+_columns{Vector4(val, 0.0f, 0.0f, 0.0f),
+		 Vector4(0.0f, val, 0.0f, 0.0f),
+		 Vector4(0.0f, 0.0f, val, 0.0f),
+		 Vector4(0.0f, 0.0f, 0.0f, 1.0f)}
 {  }
 
 Matrix4::Matrix4( F32 m00, F32 m01, F32 m02, F32 m03,
@@ -38,10 +38,10 @@ Matrix4::Matrix4( F32 m00, F32 m01, F32 m02, F32 m03,
 				F32 m20, F32 m21, F32 m22, F32 m23,
 				F32 m30, F32 m31, F32 m32, F32 m33)
 :
-_columns{Vector(m00, m01, m02, m03),
-		 Vector(m10, m11, m12, m13),
-		 Vector(m20, m21, m22, m23),
-		 Vector(m30, m31, m32, m33)}
+_columns{Vector4(m00, m01, m02, m03),
+		 Vector4(m10, m11, m12, m13),
+		 Vector4(m20, m21, m22, m23),
+		 Vector4(m30, m31, m32, m33)}
 {  }
 
 Matrix4::Matrix4(const Matrix4& M)
@@ -96,7 +96,7 @@ void Matrix4::MakeOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nea
 	_columns[2][z] = -2.0f / (farPlane - nearPlane);
 	_columns[3][w] = 1.0f;
 
-	//Transform "Vector"
+	//Transform "Vector4"
 	_columns[3][x] = -(right + left) / (right - left);
 	_columns[3][y] = -(top + bottom) / (top - bottom);
 	_columns[3][z] = -(farPlane + nearPlane) / (farPlane - nearPlane);
@@ -142,7 +142,7 @@ Matrix4 Matrix4::Translate(F32 xVal, F32 yVal, F32 zVal)
 	return mat;	
 }
 
-Matrix4 Matrix4::Translate(const Vector& vec)
+Matrix4 Matrix4::Translate(const Vector4& vec)
 {
 	Matrix4 mat{1.0f};
 
@@ -170,7 +170,7 @@ void Matrix4::SetTranslate(F32 xVal, F32 yVal, F32 zVal)
 	_columns[3][z] = zVal;
 }
 
-void Matrix4::SetTranslate(const Vector& vec)
+void Matrix4::SetTranslate(const Vector4& vec)
 {
 	MakeIdentity(); 
 
@@ -196,7 +196,7 @@ void Matrix4::AddTranslate(F32 xVal, F32 yVal, F32 zVal)
 	_columns[3][z] += zVal;
 }
 
-void Matrix4::AddTranslate(const Vector& vec)
+void Matrix4::AddTranslate(const Vector4& vec)
 {
 	_columns[3][x] += vec[x];
 	_columns[3][y] += vec[y];
@@ -207,15 +207,15 @@ void Matrix4::AddTranslate(const Vector& vec)
 	}
 }
 
-Vector Matrix4::TransformInverse(const Vector vec) const
+Vector4 Matrix4::TransformInverse(const Vector4 vec) const
 {
-	Vector tmp = vec;
+	Vector4 tmp = vec;
 
 	tmp[x] -= _columns[3][x];
 	tmp[y] -= _columns[3][y];
 	tmp[z] -= _columns[3][z];
 
-	return Vector
+	return Vector4
 	{
 		tmp[x] * _columns[0][x] +
 		tmp[y] * _columns[0][y] + 
@@ -231,9 +231,9 @@ Vector Matrix4::TransformInverse(const Vector vec) const
 	};
 }
 
-Vector Matrix4::TransformDirection(const Vector& vec) const
+Vector4 Matrix4::TransformDirection(const Vector4& vec) const
 {
-	return Vector
+	return Vector4
 	{
 		vec[x] * _columns[0][x] + 
 		vec[y] * _columns[1][x] + 
@@ -249,9 +249,9 @@ Vector Matrix4::TransformDirection(const Vector& vec) const
 	};
 }
 
-Vector Matrix4::TransformInverseDirection(const Vector& vec) const
+Vector4 Matrix4::TransformInverseDirection(const Vector4& vec) const
 {
-	return Vector
+	return Vector4
 	{
 		vec[x] * _columns[0][x] + 
 		vec[y] * _columns[0][y] + 
@@ -291,7 +291,7 @@ Matrix4 Matrix4::Scale(F32 xVal, F32 yVal, F32 zVal)
 	return mat;
 }
 
-Matrix4 Matrix4::Scale(const Vector& vec)
+Matrix4 Matrix4::Scale(const Vector4& vec)
 {
 	Matrix4 mat{1.0f};
 
@@ -319,7 +319,7 @@ void Matrix4::SetScale(F32 xVal, F32 yVal, F32 zVal)
 	_columns[2][z] = zVal;
 }
 
-void Matrix4::SetScale(const Vector& vec)
+void Matrix4::SetScale(const Vector4& vec)
 {
 	MakeIdentity();
 
@@ -345,7 +345,7 @@ void Matrix4::AddScale(F32 xVal, F32 yVal, F32 zVal)
 	_columns[2][z] += zVal;
 }
 
-void Matrix4::AddScale(const Vector& vec)
+void Matrix4::AddScale(const Vector4& vec)
 {
 	_columns[0][x] += vec[x];
 	_columns[1][y] += vec[y];
@@ -520,7 +520,7 @@ void Matrix4::SetOrientation(const Quaternion& q)
 	_columns[2][z] = 1 - (2.0f * q_x * q_x + 2.0f * q_y * q_y);
 }
 
-void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Vector& v)
+void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Vector4& v)
 {
 	SetOrientation(q);
 	
@@ -539,77 +539,77 @@ void Matrix4::SetInverse(void)
 
 	if(det == 0.0f) return;
 
-	F32 c00 = Determinate3x3(Vector(_columns[y][y], _columns[y][z], _columns[y][w]),
-							 Vector(_columns[z][y], _columns[z][z], _columns[z][w]),
-							 Vector(_columns[w][y], _columns[w][z], _columns[w][w]));
+	F32 c00 = Determinate3x3(Vector4(_columns[y][y], _columns[y][z], _columns[y][w]),
+							 Vector4(_columns[z][y], _columns[z][z], _columns[z][w]),
+							 Vector4(_columns[w][y], _columns[w][z], _columns[w][w]));
 
-	F32 c01 = Determinate3x3(Vector(_columns[y][x], _columns[y][z], _columns[y][w]),
-							 Vector(_columns[z][x], _columns[z][z], _columns[z][w]),
-							 Vector(_columns[w][x], _columns[w][z], _columns[w][w]));
+	F32 c01 = Determinate3x3(Vector4(_columns[y][x], _columns[y][z], _columns[y][w]),
+							 Vector4(_columns[z][x], _columns[z][z], _columns[z][w]),
+							 Vector4(_columns[w][x], _columns[w][z], _columns[w][w]));
 
-	F32 c02 = Determinate3x3(Vector(_columns[y][x], _columns[y][y], _columns[y][w]),
-							 Vector(_columns[z][x], _columns[z][y], _columns[z][w]),
-							 Vector(_columns[w][x], _columns[w][y], _columns[w][w]));
+	F32 c02 = Determinate3x3(Vector4(_columns[y][x], _columns[y][y], _columns[y][w]),
+							 Vector4(_columns[z][x], _columns[z][y], _columns[z][w]),
+							 Vector4(_columns[w][x], _columns[w][y], _columns[w][w]));
 
-	F32 c03 = Determinate3x3(Vector(_columns[y][x], _columns[y][y], _columns[y][z]),
-							 Vector(_columns[z][x], _columns[z][y], _columns[z][z]),
-							 Vector(_columns[w][x], _columns[w][y], _columns[w][z]));
+	F32 c03 = Determinate3x3(Vector4(_columns[y][x], _columns[y][y], _columns[y][z]),
+							 Vector4(_columns[z][x], _columns[z][y], _columns[z][z]),
+							 Vector4(_columns[w][x], _columns[w][y], _columns[w][z]));
 
-	Vector colx {c00, -c01, c02, -c03};
+	Vector4 colx {c00, -c01, c02, -c03};
 
-	F32 c10 = Determinate3x3(Vector(_columns[x][y], _columns[x][z], _columns[x][w]),
-							 Vector(_columns[z][y], _columns[z][z], _columns[z][w]),
-							 Vector(_columns[w][y], _columns[w][z], _columns[w][w]));
+	F32 c10 = Determinate3x3(Vector4(_columns[x][y], _columns[x][z], _columns[x][w]),
+							 Vector4(_columns[z][y], _columns[z][z], _columns[z][w]),
+							 Vector4(_columns[w][y], _columns[w][z], _columns[w][w]));
 
-	F32 c11 = Determinate3x3(Vector(_columns[x][x], _columns[x][z], _columns[x][w]),
-							 Vector(_columns[z][x], _columns[z][z], _columns[z][w]),
-							 Vector(_columns[w][x], _columns[w][z], _columns[w][w]));
+	F32 c11 = Determinate3x3(Vector4(_columns[x][x], _columns[x][z], _columns[x][w]),
+							 Vector4(_columns[z][x], _columns[z][z], _columns[z][w]),
+							 Vector4(_columns[w][x], _columns[w][z], _columns[w][w]));
 
-	F32 c12 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][w]),
-							 Vector(_columns[z][x], _columns[z][y], _columns[z][w]),
-							 Vector(_columns[w][x], _columns[w][y], _columns[w][w]));
+	F32 c12 = Determinate3x3(Vector4(_columns[x][x], _columns[x][y], _columns[x][w]),
+							 Vector4(_columns[z][x], _columns[z][y], _columns[z][w]),
+							 Vector4(_columns[w][x], _columns[w][y], _columns[w][w]));
 
-	F32 c13 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][z]),
-							 Vector(_columns[z][x], _columns[z][y], _columns[z][z]),
-							 Vector(_columns[w][x], _columns[w][y], _columns[w][z]));
+	F32 c13 = Determinate3x3(Vector4(_columns[x][x], _columns[x][y], _columns[x][z]),
+							 Vector4(_columns[z][x], _columns[z][y], _columns[z][z]),
+							 Vector4(_columns[w][x], _columns[w][y], _columns[w][z]));
 
-	Vector coly {-c10, c11, -c12, c13};
+	Vector4 coly {-c10, c11, -c12, c13};
 
-	F32 c20 = Determinate3x3(Vector(_columns[x][y], _columns[x][z], _columns[x][w]),
-							 Vector(_columns[y][y], _columns[y][z], _columns[y][w]),
-							 Vector(_columns[w][y], _columns[w][z], _columns[w][w]));
+	F32 c20 = Determinate3x3(Vector4(_columns[x][y], _columns[x][z], _columns[x][w]),
+							 Vector4(_columns[y][y], _columns[y][z], _columns[y][w]),
+							 Vector4(_columns[w][y], _columns[w][z], _columns[w][w]));
 
-	F32 c21 = Determinate3x3(Vector(_columns[x][x], _columns[x][z], _columns[x][w]),
-							 Vector(_columns[y][x], _columns[y][z], _columns[y][w]),
-							 Vector(_columns[w][x], _columns[w][z], _columns[w][w]));
+	F32 c21 = Determinate3x3(Vector4(_columns[x][x], _columns[x][z], _columns[x][w]),
+							 Vector4(_columns[y][x], _columns[y][z], _columns[y][w]),
+							 Vector4(_columns[w][x], _columns[w][z], _columns[w][w]));
 
-	F32 c22 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][w]),
-							 Vector(_columns[y][x], _columns[y][y], _columns[y][w]),
-							 Vector(_columns[w][x], _columns[w][y], _columns[w][w]));
+	F32 c22 = Determinate3x3(Vector4(_columns[x][x], _columns[x][y], _columns[x][w]),
+							 Vector4(_columns[y][x], _columns[y][y], _columns[y][w]),
+							 Vector4(_columns[w][x], _columns[w][y], _columns[w][w]));
 
-	F32 c23 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][z]),
-							 Vector(_columns[y][x], _columns[y][y], _columns[y][z]),
-							 Vector(_columns[w][x], _columns[w][y], _columns[w][z]));
+	F32 c23 = Determinate3x3(Vector4(_columns[x][x], _columns[x][y], _columns[x][z]),
+							 Vector4(_columns[y][x], _columns[y][y], _columns[y][z]),
+							 Vector4(_columns[w][x], _columns[w][y], _columns[w][z]));
 
-	Vector colz {c20, -c21, c22, -c23};
+	Vector4 colz {c20, -c21, c22, -c23};
 
-	F32 c30 = Determinate3x3(Vector(_columns[x][y], _columns[x][z], _columns[x][w]),
-							 Vector(_columns[y][y], _columns[y][z], _columns[y][w]),
-							 Vector(_columns[z][y], _columns[z][z], _columns[z][w]));
+	F32 c30 = Determinate3x3(Vector4(_columns[x][y], _columns[x][z], _columns[x][w]),
+							 Vector4(_columns[y][y], _columns[y][z], _columns[y][w]),
+							 Vector4(_columns[z][y], _columns[z][z], _columns[z][w]));
 
-	F32 c31 = Determinate3x3(Vector(_columns[x][x], _columns[x][z], _columns[x][w]),
-							 Vector(_columns[y][x], _columns[y][z], _columns[y][w]),
-							 Vector(_columns[z][x], _columns[z][z], _columns[z][w]));
+	F32 c31 = Determinate3x3(Vector4(_columns[x][x], _columns[x][z], _columns[x][w]),
+							 Vector4(_columns[y][x], _columns[y][z], _columns[y][w]),
+							 Vector4(_columns[z][x], _columns[z][z], _columns[z][w]));
 
-	F32 c32 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][w]),
-							 Vector(_columns[y][x], _columns[y][y], _columns[y][w]),
-							 Vector(_columns[z][x], _columns[z][y], _columns[z][w]));
+	F32 c32 = Determinate3x3(Vector4(_columns[x][x], _columns[x][y], _columns[x][w]),
+							 Vector4(_columns[y][x], _columns[y][y], _columns[y][w]),
+							 Vector4(_columns[z][x], _columns[z][y], _columns[z][w]));
 
-	F32 c33 = Determinate3x3(Vector(_columns[x][x], _columns[x][y], _columns[x][z]),
-							 Vector(_columns[y][x], _columns[y][y], _columns[y][z]),
-							 Vector(_columns[z][x], _columns[z][y], _columns[z][z]));
+	F32 c33 = Determinate3x3(Vector4(_columns[x][x], _columns[x][y], _columns[x][z]),
+							 Vector4(_columns[y][x], _columns[y][y], _columns[y][z]),
+							 Vector4(_columns[z][x], _columns[z][y], _columns[z][z]));
 
-	Vector colw {-c30, c31, -c32, c33};
+	Vector4 colw {-c30, c31, -c32, c33};
 
 	Matrix4 adj { colx, coly, colz, colw };
 
@@ -659,7 +659,7 @@ F32 Matrix4::Determinate(void) const
 	return m11 - m21 + m31 - m41;
 }
 
-F32 Matrix4::Determinate3x3(Vector& col1, Vector& col2, Vector& col3)
+F32 Matrix4::Determinate3x3(Vector4& col1, Vector4& col2, Vector4& col3)
 {
 	return col1[x] * (col2[y] * col3[z] - col3[y] * col2[z])
 		 + col2[x] * (col3[y] * col1[z] - col1[y] * col3[z])
@@ -672,10 +672,10 @@ F32 Matrix4::Determinate3x3(Vector& col1, Vector& col2, Vector& col3)
 void Matrix4::Reset(F32 val)
 {
 	//Reset Matrix4
-	_columns[0] = Vector(val, 0.0f, 0.0f, 0.0f);
-	_columns[1] = Vector(0.0f, val, 0.0f, 0.0f);
-	_columns[2] = Vector(0.0f, 0.0f, val, 0.0f);
-	_columns[3] = Vector(0.0f, 0.0f, 0.0f, val);
+	_columns[0] = Vector4(val, 0.0f, 0.0f, 0.0f);
+	_columns[1] = Vector4(0.0f, val, 0.0f, 0.0f);
+	_columns[2] = Vector4(0.0f, 0.0f, val, 0.0f);
+	_columns[3] = Vector4(0.0f, 0.0f, 0.0f, val);
 }
 
 //==========================================================================================================================
@@ -683,10 +683,10 @@ void Matrix4::Reset(F32 val)
 //==========================================================================================================================
 void Matrix4::Transpose(void)
 {
-	Vector newCol0 {_columns[0][x], _columns[1][x], _columns[2][x], _columns[3][x]};
-	Vector newCol1 {_columns[0][y], _columns[1][y], _columns[2][y], _columns[3][y]};
-	Vector newCol2 {_columns[0][z], _columns[1][z], _columns[2][z], _columns[3][z]};
-	Vector newCol3 {_columns[0][w], _columns[1][w], _columns[2][w], _columns[3][w]};
+	Vector4 newCol0 {_columns[0][x], _columns[1][x], _columns[2][x], _columns[3][x]};
+	Vector4 newCol1 {_columns[0][y], _columns[1][y], _columns[2][y], _columns[3][y]};
+	Vector4 newCol2 {_columns[0][z], _columns[1][z], _columns[2][z], _columns[3][z]};
+	Vector4 newCol3 {_columns[0][w], _columns[1][w], _columns[2][w], _columns[3][w]};
 
 	_columns[0] = newCol0;
 	_columns[1] = newCol1;
@@ -719,7 +719,7 @@ void Matrix4::ComponentMulti(const Matrix4& mat)
 
 Matrix4 Matrix4::Transform3x3(const Matrix4& mat) const
 {
-	Vector xCol 
+	Vector4 xCol 
 	{
 		_columns[0][x] * mat[0][x] + _columns[1][x] * mat[0][y] + _columns[2][x] * mat[0][z],
 		_columns[0][y] * mat[0][x] + _columns[1][y] * mat[0][y] + _columns[2][y] * mat[0][z],
@@ -727,7 +727,7 @@ Matrix4 Matrix4::Transform3x3(const Matrix4& mat) const
 		0.0f
 	};
 
-	Vector yCol
+	Vector4 yCol
 	{
 		_columns[0][x] * mat[1][x] + _columns[1][x] * mat[1][y] + _columns[2][x] * mat[1][z],
 		_columns[0][y] * mat[1][x] + _columns[1][y] * mat[1][y] + _columns[2][y] * mat[1][z],
@@ -735,7 +735,7 @@ Matrix4 Matrix4::Transform3x3(const Matrix4& mat) const
 		0.0f
 	};
 
-	Vector zCol
+	Vector4 zCol
 	{
 		_columns[0][x] * mat[2][x] + _columns[1][x] * mat[2][y] + _columns[2][x] * mat[2][z],
 		_columns[0][y] * mat[2][x] + _columns[1][y] * mat[2][y] + _columns[2][y] * mat[2][z],
@@ -743,14 +743,14 @@ Matrix4 Matrix4::Transform3x3(const Matrix4& mat) const
 		0.0f
 	};
 
-	Vector wCol {0.0f, 0.0f, 0.0f, 1.0f};
+	Vector4 wCol {0.0f, 0.0f, 0.0f, 1.0f};
 
 	return Matrix4(xCol, yCol, zCol, wCol);
 }
 
-Vector Matrix4::Transform3x3(const Vector& vec) const
+Vector4 Matrix4::Transform3x3(const Vector4& vec) const
 {
-	return Vector( _columns[0][x] * vec[x] + _columns[1][x] * vec[y] + _columns[2][x] * vec[z],
+	return Vector4( _columns[0][x] * vec[x] + _columns[1][x] * vec[y] + _columns[2][x] * vec[z],
 				   _columns[0][y] * vec[x] + _columns[1][y] * vec[y] + _columns[2][y] * vec[z],
 				   _columns[0][z] * vec[x] + _columns[1][z] + vec[y] + _columns[2][z] * vec[z],
 				   _columns[0][w] * vec[x] + _columns[1][w] + vec[y] + _columns[2][w] + vec[z] );
@@ -762,17 +762,17 @@ Vector Matrix4::Transform3x3(const Vector& vec) const
 //
 //==========================================================================================================================
 
-Matrix4 Matrix4::LookAt(const Vector& cameraPos, const Vector& target, const Vector& up)
+Matrix4 Matrix4::LookAt(const Vector4& cameraPos, const Vector4& target, const Vector4& up)
 {
 	Matrix4 mat{1.0f};
 
-	Vector zAxis = cameraPos - target;
+	Vector4 zAxis = cameraPos - target;
 	zAxis.Normalize();
 
-	Vector xAxis = up.CrossProduct(zAxis);
+	Vector4 xAxis = up.CrossProduct(zAxis);
 	xAxis.Normalize();
 
-	Vector yAxis = zAxis.CrossProduct(xAxis);
+	Vector4 yAxis = zAxis.CrossProduct(xAxis);
 	yAxis.Normalize();
 
 	mat[0][0] = xAxis[0];
@@ -790,22 +790,22 @@ Matrix4 Matrix4::LookAt(const Vector& cameraPos, const Vector& target, const Vec
 	mat[2][2] = zAxis[2];
 	mat[2][3] = 0.0f;
 
-	mat[3] = Vector(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);
+	mat[3] = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);
 
 	return mat;
 }
 
-void Matrix4::SetLookAt(const Vector& cameraPos, const Vector& target, const Vector& up)
+void Matrix4::SetLookAt(const Vector4& cameraPos, const Vector4& target, const Vector4& up)
 {
 	MakeIdentity();
 
-	Vector zAxis = cameraPos - target;
+	Vector4 zAxis = cameraPos - target;
 	zAxis.Normalize();
 
-	Vector xAxis = up.CrossProduct(zAxis);
+	Vector4 xAxis = up.CrossProduct(zAxis);
 	xAxis.Normalize();
 
-	Vector yAxis = zAxis.CrossProduct(xAxis);
+	Vector4 yAxis = zAxis.CrossProduct(xAxis);
 	yAxis.Normalize();
 
 	_columns[0][0] = xAxis[0];
@@ -823,10 +823,10 @@ void Matrix4::SetLookAt(const Vector& cameraPos, const Vector& target, const Vec
 	_columns[2][2] = zAxis[2];
 	_columns[2][3] = 0.0f;
 
-	_columns[3] = Vector(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);		
+	_columns[3] = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);		
 }
 
-Matrix4 Matrix4::FPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
+Matrix4 Matrix4::FPSView(const Vector4& cameraPos, F32 pitch, F32 yaw)
 {
 	assert(pitch >= -90.0f);
 	assert(pitch <= 90.0f);
@@ -840,9 +840,9 @@ Matrix4 Matrix4::FPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
 
 	Matrix4 mat{1.0f};
 
-	Vector xAxis{ cosYaw, 0.0f, -sinYaw };
-	Vector yAxis{ sinYaw * sinPitch, cosPitch, cosYaw * sinPitch };
-	Vector zAxis{ sinYaw * cosPitch, -sinPitch, cosPitch * cosYaw };
+	Vector4 xAxis{ cosYaw, 0.0f, -sinYaw };
+	Vector4 yAxis{ sinYaw * sinPitch, cosPitch, cosYaw * sinPitch };
+	Vector4 zAxis{ sinYaw * cosPitch, -sinPitch, cosPitch * cosYaw };
 
 	mat[0][0] = xAxis[0];
 	mat[0][1] = yAxis[0];
@@ -859,12 +859,12 @@ Matrix4 Matrix4::FPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
 	mat[2][2] = zAxis[2];
 	mat[2][3] = 0.0f;
 
-	mat[3] = Vector(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);
+	mat[3] = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);
 
 	return mat;
 }
 
-void Matrix4::SetFPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
+void Matrix4::SetFPSView(const Vector4& cameraPos, F32 pitch, F32 yaw)
 {
 	assert(pitch >= -90.0f);
 	assert(pitch <= 90.0f);
@@ -876,9 +876,9 @@ void Matrix4::SetFPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
 	F32 cosYaw 	 = cos(yaw);
 	F32 sinYaw   = sin(yaw);
 
-	Vector xAxis{ cosYaw, 0.0f, -sinYaw };
-	Vector yAxis{ sinYaw * sinPitch, cosPitch, cosYaw * sinPitch };
-	Vector zAxis{ sinYaw * cosPitch, -sinPitch, cosPitch * cosYaw };
+	Vector4 xAxis{ cosYaw, 0.0f, -sinYaw };
+	Vector4 yAxis{ sinYaw * sinPitch, cosPitch, cosYaw * sinPitch };
+	Vector4 zAxis{ sinYaw * cosPitch, -sinPitch, cosPitch * cosYaw };
 
 	_columns[0][0] = xAxis[0];
 	_columns[0][1] = yAxis[0];
@@ -895,7 +895,7 @@ void Matrix4::SetFPSView(const Vector& cameraPos, F32 pitch, F32 yaw)
 	_columns[2][2] = zAxis[2];
 	_columns[2][3] = 0.0f;
 
-	_columns[3] = Vector(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);	
+	_columns[3] = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);	
 }
 
 //==========================================================================================================================
@@ -930,7 +930,7 @@ Matrix4& Matrix4::operator=(const Matrix4& mat)
 
 Matrix4 Matrix4::operator*(const Matrix4& mat) const
 {
-	Vector xCol 
+	Vector4 xCol 
 	{
 		_columns[0][x] * mat[0][x] + _columns[1][x] * mat[0][y] + _columns[2][x] * mat[0][z] + _columns[3][x] * mat[0][w],
 		_columns[0][y] * mat[0][x] + _columns[1][y] * mat[0][y] + _columns[2][y] * mat[0][z] + _columns[3][y] * mat[0][w],
@@ -939,7 +939,7 @@ Matrix4 Matrix4::operator*(const Matrix4& mat) const
 
 	};
 
-	Vector yCol
+	Vector4 yCol
 	{
 		_columns[0][x] * mat[1][x] + _columns[1][x] * mat[1][y] + _columns[2][x] * mat[1][z] + _columns[3][x] * mat[1][w],
 		_columns[0][y] * mat[1][x] + _columns[1][y] * mat[1][y] + _columns[2][y] * mat[1][z] + _columns[3][y] * mat[1][w],
@@ -947,7 +947,7 @@ Matrix4 Matrix4::operator*(const Matrix4& mat) const
 		_columns[0][w] * mat[1][x] + _columns[1][w] * mat[1][y] + _columns[2][w] * mat[1][z] + _columns[3][w] * mat[1][w],
 	};
 
-	Vector zCol
+	Vector4 zCol
 	{
 		_columns[0][x] * mat[2][x] + _columns[1][x] * mat[2][y] + _columns[2][x] * mat[2][z] + _columns[3][x] * mat[2][w],
 		_columns[0][y] * mat[2][x] + _columns[1][y] * mat[2][y] + _columns[2][y] * mat[2][z] + _columns[3][y] * mat[2][w],
@@ -955,7 +955,7 @@ Matrix4 Matrix4::operator*(const Matrix4& mat) const
 		_columns[0][w] * mat[2][x] + _columns[1][w] * mat[2][y] + _columns[2][w] * mat[2][z] + _columns[3][w] * mat[2][w],
 	};
 
-	Vector wCol
+	Vector4 wCol
 	{
 		_columns[0][x] * mat[3][x] + _columns[1][x] * mat[3][y] + _columns[2][x] * mat[3][z] + _columns[3][x] * mat[3][w],
 		_columns[0][y] * mat[3][x] + _columns[1][y] * mat[3][y] + _columns[2][y] * mat[3][z] + _columns[3][y] * mat[3][w],
@@ -966,9 +966,9 @@ Matrix4 Matrix4::operator*(const Matrix4& mat) const
 	return Matrix4(xCol, yCol, zCol, wCol);
 }
 
-Vector Matrix4::operator*(const Vector& vec) const
+Vector4 Matrix4::operator*(const Vector4& vec) const
 {
-	return Vector( _columns[0][x] * vec[x] + _columns[1][x] * vec[y] + _columns[2][x] * vec[z] + _columns[3][x] * vec[w],
+	return Vector4( _columns[0][x] * vec[x] + _columns[1][x] * vec[y] + _columns[2][x] * vec[z] + _columns[3][x] * vec[w],
 				   _columns[0][y] * vec[x] + _columns[1][y] * vec[y] + _columns[2][y] * vec[z] + _columns[3][y] * vec[w],
 				   _columns[0][z] * vec[x] + _columns[1][z] + vec[y] + _columns[2][z] * vec[z] + _columns[3][z] * vec[w],
 				   _columns[0][w] * vec[x] + _columns[1][w] + vec[y] + _columns[2][w] + vec[z] + _columns[3][w] * vec[w] );

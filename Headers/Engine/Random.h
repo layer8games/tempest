@@ -13,9 +13,9 @@ RandomFloat -> Returns a random 32 bit floating point between min and max
 
 RandomDouble -> Returns a 64 bit floating point between min and max
 
-RandomVector2 -> Returns a Vector2 with x and y between min and max
+RandomVector42 -> Returns a Vector42 with x and y between min and max
 
-RandomVector3 -> Returns a Vector3 with x, y and z between min and max
+RandomVector43 -> Returns a Vector43 with x, y and z between min and max
 
 RandomQuaternion -> Returns a Quaternion with x,y,z and w between min and max
 
@@ -28,7 +28,7 @@ Written by Maxwell Miller
 
 //===== Engine Includes =====
 #include <Engine/Atom.h>
-#include <Engine/Vector.h>
+#include <Engine/Vector4.h>
 #include <Engine/Quaternion.h>
 
 //===== STL includes =====
@@ -108,12 +108,12 @@ namespace KillerMath
 		F64 RandomDouble(F64 min, F64 max);
 
 /*!
-	Returns a Vector with x, y and z (depending on flag) between min and max
+	Returns a Vector4 with x, y and z (depending on flag) between min and max
 	\param min is the floor value. 
 	\param max is the ceiling value.
 	\param is2d determins if the z value should be set. false by default, it will be set to 0 unless true.
 */
-		Vector RandomVector(F32 min, F32 max, bool is2d=false);
+		Vector4 RandomVector4(F32 min, F32 max, bool is2d=false);
 
 /*!
 	Returns a Quaternion with w,x,y and z between min and max

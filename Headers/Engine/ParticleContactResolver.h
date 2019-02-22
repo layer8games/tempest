@@ -45,7 +45,7 @@ namespace KillerPhysics
 			_iterations = iterations;
 		}
 
-// Consider a different data structure here. Maybe a vector<Particl2DContact> instead		
+// Consider a different data structure here. Maybe a Vector4<Particl2DContact> instead		
 		void ResolveContacts(ParticleContact* contactArray, U32 numContacts);
 
 	private:

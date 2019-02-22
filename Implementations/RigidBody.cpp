@@ -35,22 +35,22 @@ void RigidBody::Integrate(void)
 
 	assert(delta > 0.0f);
 
-	GameObject::_AccessPosition().AddScaledVector(_velocity, delta);
-	GameObject::_AccessOrientation().AddScaledVector(_rotation, delta);
+	GameObject::_AccessPosition().AddScaledVector4(_velocity, delta);
+	GameObject::_AccessOrientation().AddScaledVector4(_rotation, delta);
 
-	KM::Vector resultingAcc = _acceleration;
+	KM::Vector4 resultingAcc = _acceleration;
 
 	//Optional hard coded gravity should be added here
 
-	resultingAcc.AddScaledVector(_forceAccum, delta);
+	resultingAcc.AddScaledVector4(_forceAccum, delta);
 
-	_velocity.AddScaledVector(resultingAcc, delta);
+	_velocity.AddScaledVector4(resultingAcc, delta);
 	_velocity *= real_pow(_linearDamping, delta);
 
 
-	KM::Vector angularAcc = _inverseInertiaTensorInWorld * _torqueAccum;
+	KM::Vector4 angularAcc = _inverseInertiaTensorInWorld * _torqueAccum;
 
-	_rotation.AddScaledVector(angularAcc, delta);
+	_rotation.AddScaledVector4(angularAcc, delta);
 	_rotation *= real_pow(_angularDamping, delta);
 
 
@@ -68,9 +68,9 @@ void RigidBody::CalculateDerivedData(void)
 //Point Forces
 //==========================================================================================================================
 //Given in world space coordinates
-void RigidBody::AddForceAtPoint(const KM::Vector& force, const KM::Vector& point)
+void RigidBody::AddForceAtPoint(const KM::Vector4& force, const KM::Vector4& point)
 {
-	KM::Vector pt = point; 
+	KM::Vector4 pt = point; 
 	pt -= GameObject::GetPosition();
 
 	_forceAccum += force; 
@@ -80,9 +80,9 @@ void RigidBody::AddForceAtPoint(const KM::Vector& force, const KM::Vector& point
 }	
 
 //Force given in world space, point given in local space
-void RigidBody::AddForceAtLocalPoint(const KM::Vector& force, const KM::Vector& point)
+void RigidBody::AddForceAtLocalPoint(const KM::Vector4& force, const KM::Vector4& point)
 {
-	KM::Vector pt = GameObject::GetModelMatrix4Rot() * point;
+	KM::Vector4 pt = GameObject::GetModelMatrix4Rot() * point;
 	AddForceAtPoint(force, pt);
 }
 

@@ -36,8 +36,8 @@ SpringForce::~SpringForce(void)
 //==========================================================================================================================
 void SpringForce::v_UpdateForce(shared_ptr<Particle> particle)
 {
-//=====Calculate Vector of the spring=====
-	KM::Vector force = particle->GetPosition();
+//=====Calculate Vector4 of the spring=====
+	KM::Vector4 force = particle->GetPosition();
 	force -= _otherEnd->GetPosition();
 
 //=====Calculate magnitude of force=====
@@ -61,7 +61,7 @@ void SpringForce::v_UpdateForce(shared_ptr<Particle> particle)
 //TODO: Implement
 void SpringForce::v_UpdateForce(shared_ptr<RigidBody> body)
 {
-	KM::Vector force = body->GetPosition();
+	KM::Vector4 force = body->GetPosition();
 	force -= _otherEnd->GetPosition();
 
 	real magnitude = force.Magnitude();

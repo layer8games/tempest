@@ -61,13 +61,13 @@ void Particle::Integrate(void)
 
 	KE::GameObject::AddScaledPosition(_velocity, delta);
 
-	KM::Vector resultingAcc = _acceleration;
+	KM::Vector4 resultingAcc = _acceleration;
 	
 	resultingAcc += _gravityForce;
 
-	resultingAcc.AddScaledVector(_forceAccum, delta);
+	resultingAcc.AddScaledVector4(_forceAccum, delta);
 
-	_velocity.AddScaledVector(resultingAcc, delta);
+	_velocity.AddScaledVector4(resultingAcc, delta);
 
 	_velocity *= real_pow(_damping, delta);
 
@@ -79,7 +79,7 @@ void Particle::ClearAccumulator(void)
 	_forceAccum.Reset();
 }
 
-void Particle::AddForce(const KM::Vector force)
+void Particle::AddForce(const KM::Vector4 force)
 {
 	_forceAccum += force;
 }

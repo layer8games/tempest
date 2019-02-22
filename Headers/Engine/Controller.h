@@ -5,7 +5,7 @@
 #include <Engine/WinProgram.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Matrix4.h>
-#include <Engine/Vector.h>
+#include <Engine/Vector4.h>
 namespace KM = KillerMath;
 
 //=====DirectInput includes=====
@@ -137,23 +137,23 @@ namespace KillerEngine
 	\param k Keys: Keycode for key that has been released. */
 		void KeyUp(Keys k);
 
-		//void SetMouseCoord(const KM::Vector& coord)
+		//void SetMouseCoord(const KM::Vector4& coord)
 		//{
 		//	_mouseCoordinates = coord;
 		//}
 
-		const KM::Vector GetMouseCoord(void);
+		const KM::Vector4 GetMouseCoord(void);
 
-		const KM::Vector GetMouseCoordInScreen(void);
+		const KM::Vector4 GetMouseCoordInScreen(void);
 
 /*! Returns the raw coordinates of a Left Click in screen space. */
-		const KM::Vector GetLeftMouseCoord(void) const
+		const KM::Vector4 GetLeftMouseCoord(void) const
 		{ 
 			return _leftClickCoordinates; 
 		}
 
 /*! Returns the raw coordinates of a Right click in screen space */		
-		const KM::Vector GetRightMouseCoord(void) const
+		const KM::Vector4 GetRightMouseCoord(void) const
 		{ 
 			return _rightClickCoordinates; 
 		}
@@ -196,9 +196,9 @@ BUG! This is not copying anything at all. It is only passing the new refalone
 		KeyStates 		_keyStates[TOTAL_KEYS];			///< Array of states for each key, indexed by ID.
 		bool 			_pastActiveKeys[TOTAL_KEYS];	///< Array of keys in a pressed state as of last frame, indexed by ID.
 		bool			_curActiveKeys[TOTAL_KEYS];		///< Array of keys in a pressed state as of this frame, indexed by ID.
-		KM::Vector 		_leftClickCoordinates;			///< Coordinates of last left click.
-		KM::Vector		_rightClickCoordinates;			///< Coordinates of last right click.
-		KM::Vector 		_leftClickCoordInScreen;
-		KM::Vector 		_rightClickCoordInScreen;
+		KM::Vector4 		_leftClickCoordinates;			///< Coordinates of last left click.
+		KM::Vector4		_rightClickCoordinates;			///< Coordinates of last right click.
+		KM::Vector4 		_leftClickCoordInScreen;
+		KM::Vector4 		_rightClickCoordInScreen;
 	};
 }//End namespace

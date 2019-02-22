@@ -13,7 +13,7 @@ Written by Maxwell Miller
 //=====Engine includes=====
 #include <Engine/Atom.h>
 #include <Engine/ForceGenerator.h>
-#include <Engine/Vector.h>
+#include <Engine/Vector4.h>
 
 namespace KM = KillerMath;
 namespace KE = KillerEngine;
@@ -39,10 +39,10 @@ namespace KillerPhysics
 		GravityForce(void);
 
 /*! 
-	Sets acceleration to KillerMath::Vector sent in.
+	Sets acceleration to KillerMath::Vector4 sent in.
 	\param gravity will be the value set for the acceleration. 
 */
-		GravityForce(const KM::Vector& gravity);
+		GravityForce(const KM::Vector4& gravity);
 
 /*! 
 	No implemenation. 
@@ -75,12 +75,12 @@ namespace KillerPhysics
 	Changes the acceleration the force will cause on an object.
 	\param gravity is the new acceleration. 
 */
-		inline void SetGravityAcceleration(KM::Vector& gravity)
+		inline void SetGravityAcceleration(KM::Vector4& gravity)
 		{
 			_gravityAcc = gravity;
 		}
 
 	private:
-		KM::Vector _gravityAcc;		///< The acceleration saved for this force.
+		KM::Vector4 _gravityAcc;		///< The acceleration saved for this force.
 	};//end class
 }//end namespace

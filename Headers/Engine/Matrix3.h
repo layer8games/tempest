@@ -2,7 +2,8 @@
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
-#include <Engine/Vector.h>
+#include <Engine/Vector3.h>
+#include <Engine/Vector4.h>
 #include <Engine/Quaternion.h>
 
 #include <vector>
@@ -10,37 +11,6 @@
 
 namespace KillerMath 
 {
-
-	struct Column3
-		{
-			Column3(F32 x, F32 y, F32 z)
-			:
-			_data{x, y, z}
-			{  }
-
-			Column3(const Column3& col)
-			:
-			_data{ col[0], col[1], col[2] }
-			{  }
-
-			Column3(const Vector& vec)
-			:
-			_data{ vec[0], vec[1], vec[2] }
-			{  }
-			
-			const F32& operator[](int i) const
-			{
-				return _data[i];
-			}
-
-			F32& operator[](int i)
-			{
-				return _data[i];
-			}
-
-		private:
-			F32 _data[3];
-		};
 //==========================================================================================================================
 //Documentation
 //==========================================================================================================================
@@ -66,9 +36,9 @@ namespace KillerMath
 /*! Default constructor. Sets all values to 0, except for the last in the Matrix3. */
 		Matrix3(void);
 
-		Matrix3(const Column3& x, const Column3& y, const Column3& z);
+		Matrix3(const Vector3& x, const Vector3& y, const Vector3& z);
 
-		Matrix3(const Vector& x, const Vector& y, const Vector& z);
+		Matrix3(const Vector4& x, const Vector4& y, const Vector4& z);
 
 		explicit Matrix3(const F32 val);
 		
@@ -109,7 +79,9 @@ namespace KillerMath
 
 		static Matrix3 Scale(F32 xVal, F32 yVal, F32 zVal);
 
-		static Matrix3 Scale(const Vector& vec);
+		static Matrix3 Scale(const Vector3& vec);
+
+		static Matrix3 Scale(const Vector4& vec);
 
 /*! Resets the Matrix3 and creates a scaling Matrix3 on the x and y axes. Calls MakeIndentity()
 	\param x F32. Length to scale on x axis.
@@ -122,9 +94,12 @@ namespace KillerMath
 	\param z F32. Length to scale on the z axis. */
 		void SetScale(F32 xVal, F32 yVal, F32 zVal);
 
-/*! Resets the Matrix3 and creates a scaling Matrix3 on the x and y axes. Calls MakeIndentity().
+		void SetScale(const Vector3& vec);
+
+/*! 
+	Resets the Matrix3 and creates a scaling Matrix3 on the x and y axes. Calls MakeIndentity().
 */
-		void SetScale(const Vector& vec);
+		void SetScale(const Vector4& vec);
 
 /*! Creates a scaling Matrix3 on the x and y axes without resetting the other values.
 	\param x F32. Value of scale on x axis.
@@ -137,9 +112,12 @@ namespace KillerMath
 	\param z F32. Value of scale on z axis. */
 		void AddScale(F32 xVal, F32 yVal, F32 zVal);
 
-/*! Creates a scaling Matrix3 on the x, y and z axes without resetting the other values.
+		void AddScale(const Vector3& vec);
+
+/*! 
+	Creates a scaling Matrix3 on the x, y and z axes without resetting the other values.
 */
-		void AddScale(const Vector& vec);
+		void AddScale(const Vector4& vec);
 
 //==========================================================================================================================
 //Rotations
@@ -197,7 +175,7 @@ namespace KillerMath
 
 		void SetOrientation(const Quaternion& q);
 
-		void SetOrientationAndPosition(const Quaternion& q, const Vector& v);
+		void SetOrientationAndPosition(const Quaternion& q, const Vector4& v);
 
 //==========================================================================================================================
 //Inverse
@@ -209,8 +187,6 @@ namespace KillerMath
 		Matrix3 GetInverse(void) const;
 
 		F32 Determinate(void) const;
-
-		static F32 Determinate3x3(Vector& col1, Vector& col2, Vector& col3);
 //==========================================================================================================================
 //Resettings
 //==========================================================================================================================
@@ -236,7 +212,7 @@ namespace KillerMath
 
 		Matrix3 Matrix3::Transform(const Matrix3& mat) const;
 
-		Vector Matrix3::Transform(const Vector& vec) const;
+		Vector4 Matrix3::Transform(const Vector4& vec) const;
 
 //==========================================================================================================================
 //
@@ -245,16 +221,16 @@ namespace KillerMath
 //==========================================================================================================================
 /*! Used to access the ith column of the Matrix3.
 	\param i int. Cannot be greater than 3. There are only 4 columns. */
-		const Column3& operator[](int i) const
+		const Vector3& operator[](int i) const
 		{
-			return _columns[i];
+			return _data[i];
 		}
 
 /*! Used to access the ith column of the Matrix3. This version allows you to edit the values in the column.
 	\param i int. Cannot be greater than 3. There are only 4 columns. */
-		Column3& operator[](int i)
+		Vector3& operator[](int i)
 		{
-			return _columns[i];
+			return _data[i];
 		}
 
 /*! Sets all the values of object to values of M. Call GetElems().
@@ -265,26 +241,19 @@ namespace KillerMath
 	\param RightMatrix3 Matrix3&. Right hand value for multiplication. */
 		Matrix3 operator*(const Matrix3& mat) const;
 
-/*! Performs Matrix3 multiplication with Vector.
+/*! Performs Matrix3 multiplication with Vector4.
 */
-		Vector operator*(const Vector& vec) const;
+		Vector4 operator*(const Vector4& vec) const;
 
 		Matrix3& operator/=(F32 val);
 
 	private:
-		enum 
-		{
-			x=0,
-			y=1,
-			z=2
-		};
-
 //==========================================================================================================================
 //
 //Data
 //
 //==========================================================================================================================
-		Column3 _columns[3];
+		Vector3 _data[3];
 	};
 
 }//End namespace

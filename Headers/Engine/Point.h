@@ -23,7 +23,7 @@ namespace KillerMath
 	in the array (0 - 3). There is an alias set up in the Point, and enum, that lets you use x, y, z and w to represent the 
 	indices natively. This is private to the Point. 
 
-	The w element is what separates a Vector from a Point. A Point is meant to represent a point in space. This can also be 
+	The w element is what separates a Vector4 from a Point. A Point is meant to represent a point in space. This can also be 
 	thought of as a displayment from the origin of the planes. This is expressed mathematically by always having the w 
 	component be 1, which allows the Point to be transformed by a Matrix with transformation values added. 
 */

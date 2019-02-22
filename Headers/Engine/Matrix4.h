@@ -2,7 +2,7 @@
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
-#include <Engine/Vector.h>
+#include <Engine/Vector4.h>
 #include <Engine/Quaternion.h>
 
 #include <vector>
@@ -35,9 +35,9 @@ namespace KillerMath
 /*! Default constructor. Sets all values to 0, except for the last in the Matrix4. */
 		Matrix4(void);
 
-		Matrix4(const Vector& x, const Vector& y, const Vector& z);
+		Matrix4(const Vector4& x, const Vector4& y, const Vector4& z);
 
-		Matrix4(const Vector& x, const Vector& y, const Vector& z, const Vector& w);
+		Matrix4(const Vector4& x, const Vector4& y, const Vector4& z, const Vector4& w);
 
 		explicit Matrix4(const F32 val);
 		
@@ -101,7 +101,7 @@ namespace KillerMath
 
 		static Matrix4 Translate(F32 xVal, F32 yVal, F32 zVal);
 
-		static Matrix4 Translate(const Vector& vec);
+		static Matrix4 Translate(const Vector4& vec);
 
 /*! Resets Matrix4, then creates a Translation on the x and y axes. Calls MakeIdentiy().
 	\param x F32. Value of x axis translation.
@@ -116,7 +116,7 @@ namespace KillerMath
 
 /*! Resets Matrix4, then creates translation based on the x, y and z values found in vec. Calls MakeIdentiy().
 */	
-		void SetTranslate(const Vector& vec);
+		void SetTranslate(const Vector4& vec);
 
 /*! Creates a translation on the x and y axes without reseting the other values. 
 	\param x F32. Value of x axis translation.
@@ -131,23 +131,23 @@ namespace KillerMath
 
 /*! Creates a translation on the x, y and z axes without reseting the other values. 
 */	
-		void AddTranslate(const Vector& vec);
+		void AddTranslate(const Vector4& vec);
 
-		Vector TransformInverse(const Vector vec) const;
+		Vector4 TransformInverse(const Vector4 vec) const;
 
-		inline static Vector LocalToWorld(const Vector& vec, const Matrix4& mat)
+		inline static Vector4 LocalToWorld(const Vector4& vec, const Matrix4& mat)
 		{
 			return mat * vec;
 		}
 
-		inline static Vector WorldToLocal(const Vector& vec, const Matrix4& mat)
+		inline static Vector4 WorldToLocal(const Vector4& vec, const Matrix4& mat)
 		{
 			return mat.TransformInverse(vec);
 		}
 
-		Vector TransformDirection(const Vector& vec) const;
+		Vector4 TransformDirection(const Vector4& vec) const;
 
-		Vector TransformInverseDirection(const Vector& vec) const;
+		Vector4 TransformInverseDirection(const Vector4& vec) const;
 
 //==========================================================================================================================
 //Scaling
@@ -156,7 +156,7 @@ namespace KillerMath
 
 		static Matrix4 Scale(F32 xVal, F32 yVal, F32 zVal);
 
-		static Matrix4 Scale(const Vector& vec);
+		static Matrix4 Scale(const Vector4& vec);
 
 /*! Resets the Matrix4 and creates a scaling Matrix4 on the x and y axes. Calls MakeIndentity()
 	\param x F32. Length to scale on x axis.
@@ -171,7 +171,7 @@ namespace KillerMath
 
 /*! Resets the Matrix4 and creates a scaling Matrix4 on the x and y axes. Calls MakeIndentity().
 */
-		void SetScale(const Vector& vec);
+		void SetScale(const Vector4& vec);
 
 /*! Creates a scaling Matrix4 on the x and y axes without resetting the other values.
 	\param x F32. Value of scale on x axis.
@@ -186,7 +186,7 @@ namespace KillerMath
 
 /*! Creates a scaling Matrix4 on the x, y and z axes without resetting the other values.
 */
-		void AddScale(const Vector& vec);
+		void AddScale(const Vector4& vec);
 
 //==========================================================================================================================
 //Rotations
@@ -244,7 +244,7 @@ namespace KillerMath
 
 		void SetOrientation(const Quaternion& q);
 
-		void SetOrientationAndPosition(const Quaternion& q, const Vector& v);
+		void SetOrientationAndPosition(const Quaternion& q, const Vector4& v);
 
 //==========================================================================================================================
 //Inverse
@@ -257,7 +257,7 @@ namespace KillerMath
 
 		F32 Determinate(void) const;
 
-		static F32 Determinate3x3(Vector& col1, Vector& col2, Vector& col3);
+		static F32 Determinate3x3(Vector4& col1, Vector4& col2, Vector4& col3);
 //==========================================================================================================================
 //Resettings
 //==========================================================================================================================
@@ -283,25 +283,25 @@ namespace KillerMath
 
 		Matrix4 Transform3x3(const Matrix4& mat) const;
 
-		Vector Transform3x3(const Vector& vec) const;
+		Vector4 Transform3x3(const Vector4& vec) const;
 
-		static Matrix4 LookAt(const Vector& cameraPos, const Vector& target, const Vector& up);
+		static Matrix4 LookAt(const Vector4& cameraPos, const Vector4& target, const Vector4& up);
 
 /*! Creates a view Matrix4 from the world position. Will set the view to "look at" the specified point. This assumes a Right
 	Handed Coordinate system. This means that the camera, by default at 0.0 is looking down the -z axis.
-	\param cameraPos Vector&. The world position of the camera. Can be thought of as the eye.
-	\param target Vector&. The target point to "look at".
-	\param up Vector&. The direction of UP space in the coordinate scheme. could be +y, for example. */
-		void SetLookAt(const Vector& cameraPos, const Vector& target, const Vector& up);
+	\param cameraPos Vector4&. The world position of the camera. Can be thought of as the eye.
+	\param target Vector4&. The target point to "look at".
+	\param up Vector4&. The direction of UP space in the coordinate scheme. could be +y, for example. */
+		void SetLookAt(const Vector4& cameraPos, const Vector4& target, const Vector4& up);
 
-		static Matrix4 FPSView(const Vector& cameraPos, F32 pitch, F32 yaw);
+		static Matrix4 FPSView(const Vector4& cameraPos, F32 pitch, F32 yaw);
 
 /*! Uses Euler angles to compute a view Matrix4 from the world position. This assumes a Right Handed Coordinate system. This 
 	means that the camera, by default at 0.0 is looking down the -z axis.
-	\param cameraPos Vector&. The position of the camera in world space. Can be thought of as the eye. 
+	\param cameraPos Vector4&. The position of the camera in world space. Can be thought of as the eye. 
 	\param pitch F32. Must be between -90 and 90. An assert checks for this.
 	\param yaw F32. Must be between 0 and 360. An assert checks for thisl */		
-		void SetFPSView(const Vector& cameraPos, F32 pitch, F32 yaw);
+		void SetFPSView(const Vector4& cameraPos, F32 pitch, F32 yaw);
 
 //==========================================================================================================================
 //
@@ -310,14 +310,14 @@ namespace KillerMath
 //==========================================================================================================================
 /*! Used to access the ith column of the Matrix4.
 	\param i int. Cannot be greater than 3. There are only 4 columns. */
-		const Vector& operator[](int i) const
+		const Vector4& operator[](int i) const
 		{
 			return _columns[i];
 		}
 
 /*! Used to access the ith column of the Matrix4. This version allows you to edit the values in the column.
 	\param i int. Cannot be greater than 3. There are only 4 columns. */
-		Vector& operator[](int i)
+		Vector4& operator[](int i)
 		{
 			return _columns[i];
 		}
@@ -330,27 +330,19 @@ namespace KillerMath
 	\param RightMatrix4 Matrix4&. Right hand value for multiplication. */
 		Matrix4 operator*(const Matrix4& mat) const;
 
-/*! Performs Matrix4 multiplication with Vector.
+/*! Performs Matrix4 multiplication with Vector4.
 */
-		Vector operator*(const Vector& vec) const;
+		Vector4 operator*(const Vector4& vec) const;
 
 		Matrix4& operator/=(F32 val);
 
 	private:
-		enum 
-		{
-			x=0,
-			y=1,
-			z=2,
-			w=3
-		};
-
 //==========================================================================================================================
 //
 //Data
 //
 //==========================================================================================================================
-		Vector _columns[4];
+		Vector4 _columns[4];
 	};
 
 }//End namespace

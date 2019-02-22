@@ -18,7 +18,7 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/WinProgram.h>
 #include <Engine/Matrix4.h>
-#include <Engine/Vector.h>
+#include <Engine/Vector4.h>
 #include <Engine/Color.h>
 #include <Engine/Controller.h>
 #include <Engine/Timer.h>
@@ -57,7 +57,7 @@ namespace KillerEngine
 		virtual void v_Update(void)
 		{  }
 
-		virtual void v_Move(const KM::Vector& offset)
+		virtual void v_Move(const KM::Vector4& offset)
 		{  }
 
 //==========================================================================================================================
@@ -128,27 +128,27 @@ namespace KillerEngine
 			_position[2] = z;
 		}
 
-		inline void SetPosition(const KM::Vector& vec)
+		inline void SetPosition(const KM::Vector4& vec)
 		{
 			_position = vec;
 		}
 
 		inline void ScalePosition(F32 x, F32 y, F32 scale)
 		{
-			_position.AddScaledVector(KM::Vector(x, y), scale);
+			_position.AddScaledVector4(KM::Vector4(x, y), scale);
 		}
 
 		inline void ScalePosition(F32 x, F32 y, F32 z, F32 scale)
 		{
-			_position.AddScaledVector(KM::Vector(x, y, z), scale);
+			_position.AddScaledVector4(KM::Vector4(x, y, z), scale);
 		}
 
-		inline void ScalePosition(const KM::Vector& vec, F32 scale)
+		inline void ScalePosition(const KM::Vector4& vec, F32 scale)
 		{
-			_position.AddScaledVector(vec, scale);
+			_position.AddScaledVector4(vec, scale);
 		}
 
-		inline const KM::Vector& GetPosition(void) const
+		inline const KM::Vector4& GetPosition(void) const
 		{
 			return _position;
 		}
@@ -156,7 +156,7 @@ namespace KillerEngine
 //==========================================================================================================================
 //Target
 //==========================================================================================================================
-		inline void SetTarget(const KM::Vector& target)
+		inline void SetTarget(const KM::Vector4& target)
 		{
 			_target = target;
 		}
@@ -175,7 +175,7 @@ namespace KillerEngine
 			_target[2] = zVal;
 		}
 
-		inline const KM::Vector& GetTarget(void)
+		inline const KM::Vector4& GetTarget(void)
 		{
 			return _target;
 		}		
@@ -185,24 +185,24 @@ namespace KillerEngine
 //==========================================================================================================================
 //Up
 //==========================================================================================================================		
-		inline void SetUpVector(F32 val)
+		inline void SetUpVector4(F32 val)
 		{
 			_up[1] = val;
 		}
 
-		inline void SetUpVector(F32 xVal, F32 yVal, F32 zVal)
+		inline void SetUpVector4(F32 xVal, F32 yVal, F32 zVal)
 		{
 			_up[0] = xVal;
 			_up[1] = yVal;
 			_up[2] = zVal;
 		}
 
-		inline void SetUpVector(const KM::Vector& vec)
+		inline void SetUpVector4(const KM::Vector4& vec)
 		{
 			_up	 = vec;
 		}
 
-		inline const KM::Vector& GetUpVector(void) const
+		inline const KM::Vector4& GetUpVector4(void) const
 		{
 			return _up;
 		}
@@ -210,30 +210,30 @@ namespace KillerEngine
 //==========================================================================================================================
 //Look
 //==========================================================================================================================
-		inline void SetLookVector(F32 val)
+		inline void SetLookVector4(F32 val)
 		{
 			_look = val;
 		}
 
-		inline void SetLookVector(F32 xVal, F32 yVal)
+		inline void SetLookVector4(F32 xVal, F32 yVal)
 		{
 			_look[0] = xVal;
 			_look[1] = yVal;
 		}
 
-		inline void SetLookVector(F32 xVal, F32 yVal, F32 zVal)
+		inline void SetLookVector4(F32 xVal, F32 yVal, F32 zVal)
 		{
 			_look[0] = xVal;
 			_look[1] = yVal;
 			_look[2] = zVal;
 		}
 
-		inline void SetLookVector(const KM::Vector& vec)
+		inline void SetLookVector4(const KM::Vector4& vec)
 		{
 			_look = vec;
 		}
 
-		inline const KM::Vector& GetLookVector(void) const
+		inline const KM::Vector4& GetLookVector4(void) const
 		{
 			return _look;
 		}
@@ -241,30 +241,30 @@ namespace KillerEngine
 //==========================================================================================================================
 //Right
 //==========================================================================================================================
-		inline void SetRightVector(F32 val)
+		inline void SetRightVector4(F32 val)
 		{
 			_right = val;
 		}
 
-		inline void SetRightVector(F32 xVal, F32 yVal)
+		inline void SetRightVector4(F32 xVal, F32 yVal)
 		{
 			_right[0] = xVal;
 			_right[1] = yVal;
 		}
 
-		inline void SetRightVector(F32 xVal, F32 yVal, F32 zVal)
+		inline void SetRightVector4(F32 xVal, F32 yVal, F32 zVal)
 		{
 			_right[0] = xVal;
 			_right[1] = yVal;
 			_right[2] = zVal;
 		}
 
-		inline void SetRightVector(const KM::Vector& vec)
+		inline void SetRightVector4(const KM::Vector4& vec)
 		{
 			_right = vec;
 		}
 
-		inline const KM::Vector& GetRightVector(void) const
+		inline const KM::Vector4& GetRightVector4(void) const
 		{
 			return _right;
 		}
@@ -311,7 +311,7 @@ namespace KillerEngine
 		}
 
 	private:
-		virtual void _v_UpdateCameraVectors(void)
+		virtual void _v_UpdateCameraVector4s(void)
 		{  }
 
 //==========================================================================================================================
@@ -323,12 +323,12 @@ namespace KillerEngine
 		KM::Matrix4 						_projection;	///< Projection Matrix4 (Orthographic or Perspective). Not used 
 		
 	protected:
-		KM::Vector  					_position;		///< Position of Camera in world space.
-		KM::Vector 						_target;
-		KM::Vector 						_up;
-		KM::Vector 						_look;
-		KM::Vector 						_right;
-		KM::Vector 						_lastMouseCoords;
+		KM::Vector4  					_position;		///< Position of Camera in world space.
+		KM::Vector4 						_target;
+		KM::Vector4 						_up;
+		KM::Vector4 						_look;
+		KM::Vector4 						_right;
+		KM::Vector4 						_lastMouseCoords;
 		F32								_mouseSensitivity;
 		F32 							_yaw;
 		F32 							_pitch;
@@ -362,7 +362,7 @@ namespace KillerEngine
 		virtual void v_Update(void);
 
 		//to test later
-		//If you use this, make sure to comment out the vector update 
+		//If you use this, make sure to comment out the Vector4 update 
 		//in the implementation
 /*
 		inline const virtual KM::Matrix4 GetViewMatrix4(void)
@@ -384,7 +384,7 @@ namespace KillerEngine
 		}
 
 	private:
-		virtual void _v_UpdateCameraVectors(void);
+		virtual void _v_UpdateCameraVector4s(void);
 //==========================================================================================================================
 //
 //Data
@@ -407,7 +407,7 @@ namespace KillerEngine
 //==========================================================================================================================		
 		FPSCamera(void);
 
-		FPSCamera(const KM::Vector position, F32 yaw, F32 pitch);
+		FPSCamera(const KM::Vector4 position, F32 yaw, F32 pitch);
 
 		~FPSCamera(void);
 
@@ -420,19 +420,19 @@ namespace KillerEngine
 
 		virtual void v_Rotate(void);
 
-		virtual void v_Move(const KM::Vector offset);
+		virtual void v_Move(const KM::Vector4 offset);
 
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================
-	 	inline void SetWorldUp(const KM::Vector vec)
+	 	inline void SetWorldUp(const KM::Vector4 vec)
 		{
 			_worldUp = vec;
 		}
 
-		inline const KM::Vector& GetWorldUp(void)
+		inline const KM::Vector4& GetWorldUp(void)
 		{
 			return _worldUp;
 		}
@@ -463,14 +463,14 @@ namespace KillerEngine
 		}
 
 	private:
-		virtual void _v_UpdateCameraVectors(void);
+		virtual void _v_UpdateCameraVector4s(void);
 
 //==========================================================================================================================
 //
 //Data
 //
 //==========================================================================================================================
-		KM::Vector _worldUp;
+		KM::Vector4 _worldUp;
 		F64 	   _zoomSensitivity;
 		F32 	   _moveSpeed;
 		F32		   _deadZone;

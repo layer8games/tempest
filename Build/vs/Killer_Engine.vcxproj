@@ -211,7 +211,11 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Vector.h" />
+    <ClInclude Include="..\..\Headers\Engine\Vector3.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Vector4.h" />
     <ClInclude Include="..\..\Headers\Engine\Vertex.h">
       <SubType>
       </SubType>
@@ -318,7 +322,11 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Vector.cpp" />
+    <ClCompile Include="..\..\Implementations\Vector3.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Vector4.cpp" />
     <ClCompile Include="..\..\Implementations\WinProgram.cpp" />
     <ClCompile Include="..\..\Implementations\Text.cpp" />
     <ClCompile Include="..\..\Implementations\TextureManager.cpp" />

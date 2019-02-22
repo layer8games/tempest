@@ -36,7 +36,7 @@ real ParticleContact::CalculateSeparatingVelocity(void) const
 {
 	if(_particles[0])
 	{
-		KM::Vector relativeVelocity = _particles[0]->GetVelocity();
+		KM::Vector4 relativeVelocity = _particles[0]->GetVelocity();
 
 		if(_particles[1])
 		{
@@ -64,7 +64,7 @@ void ParticleContact::_ResolveImpulseVelocity(void)
 	if(_particles[0])
 	{
 		//Check to see if velocity build up is due to acceleration only
-		KM::Vector accelCausedVel = _particles[0]->GetAcceleration();
+		KM::Vector4 accelCausedVel = _particles[0]->GetAcceleration();
 
 		if(_particles[1])
 		{
@@ -112,7 +112,7 @@ void ParticleContact::_ResolveImpulseVelocity(void)
 	if(_particles[0])
 	{
 		//Find amount of impulse per unit of inverse mass
-		KM::Vector implusePerMass = _contactNormal * impulse;
+		KM::Vector4 implusePerMass = _contactNormal * impulse;
 
 		//Apply impulses: they are applied in the direction of the contact
 		//and are proportional to the inverse mass
@@ -148,14 +148,14 @@ void ParticleContact::_ResolveInterpenetration(void)
 	if(_particles[0])
 	{
 		//Find amount of penetration per unit of inverse mass
-		KM::Vector movePerMass = _contactNormal * (_penetration / totalInverseMass);
+		KM::Vector4 movePerMass = _contactNormal * (_penetration / totalInverseMass);
 
 		//Calculate movement amounts
-		_particleMovements[0] = shared_ptr<KM::Vector>(new KM::Vector(movePerMass * _particles[0]->GetInverseMass()));
+		_particleMovements[0] = shared_ptr<KM::Vector4>(new KM::Vector4(movePerMass * _particles[0]->GetInverseMass()));
 
 		if(_particles[1])
 		{
-			_particleMovements[1] = shared_ptr<KM::Vector>(new KM::Vector(movePerMass * -_particles[1]->GetInverseMass()));
+			_particleMovements[1] = shared_ptr<KM::Vector4>(new KM::Vector4(movePerMass * -_particles[1]->GetInverseMass()));
 		}
 		else
 		{

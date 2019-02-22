@@ -9,7 +9,7 @@
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
-#include <Engine/Vector.h>
+#include <Engine/Vector4.h>
 
 namespace KM = KillerMath;
 
@@ -33,8 +33,8 @@ namespace KillerPhysics
 //
 //==========================================================================================================================
 	private:
-		KM::Vector _contactPoint;
-		KM::Vector _collissionNormal;
+		KM::Vector4 _contactPoint;
+		KM::Vector4 _collissionNormal;
 		real 	   _penetrationDepth;
 		real 	   _collissionRestitution;
 		real 	   _friction;

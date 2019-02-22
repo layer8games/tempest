@@ -3,7 +3,7 @@
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/ForceGenerator.h>
-#include <Engine/Vector.h>
+#include <Engine/Vector4.h>
 
 namespace KM = KillerMath;
 
@@ -25,11 +25,11 @@ namespace KillerPhysics
 
 	Where l is the location of the end of the spring, and l^0 is the reseting position of the spring.
 
-	Since this is a vector force, the vector version of the law looks like this:
+	Since this is a Vector4 force, the Vector4 version of the law looks like this:
 
 	f = -l(|d| - l^0)^d
 
-	Where |d| is the magnitude or length of d, which is distance away from l^0 our spring now is, and ^d is a unit vector version 
+	Where |d| is the magnitude or length of d, which is distance away from l^0 our spring now is, and ^d is a unit Vector4 version 
 	of d. Also:
 
 	d = xA - xB

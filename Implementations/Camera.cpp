@@ -103,12 +103,12 @@ void OrbitCamera::v_Rotate(void)
 
 	_pitch = FLOAT_CLAMP(_pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
 
-	_v_UpdateCameraVectors();
+	_v_UpdateCameraVector4s();
 }
 
 void OrbitCamera::v_Update(void)
 {
-	KM::Vector coords = Controller::Instance()->GetMouseCoord();
+	KM::Vector4 coords = Controller::Instance()->GetMouseCoord();
 
 	//Change oribt with left click
 	if(Controller::Instance()->GetKeyHeld(LEFT_MOUSE))
@@ -134,7 +134,7 @@ void OrbitCamera::v_Update(void)
 //Private
 //
 //==========================================================================================================================
-void OrbitCamera::_v_UpdateCameraVectors(void)
+void OrbitCamera::_v_UpdateCameraVector4s(void)
 {
 	_position[0] = _target[0] + _radius * cos(_pitch) * sin(_yaw);
 	_position[1] = _target[1] + _radius * sin(_pitch);
@@ -161,7 +161,7 @@ _deadZone(0.01f)
 	_pitch = 0.0f;
 }
 
-FPSCamera::FPSCamera(const KM::Vector position, F32 yaw, F32 pitch)
+FPSCamera::FPSCamera(const KM::Vector4 position, F32 yaw, F32 pitch)
 :
 _worldUp(0.0f, 1.0f, 0.0f),
 _zoomSensitivity(1.0f),
@@ -183,7 +183,7 @@ FPSCamera::~FPSCamera(void)
 //==========================================================================================================================
 void FPSCamera::v_Update(void)
 {
-	KM::Vector mouseCoord = Controller::Instance()->GetMouseCoord();
+	KM::Vector4 mouseCoord = Controller::Instance()->GetMouseCoord();
 	S32 width = WinProgram::Instance()->GetWidth();
 	S32 height = WinProgram::Instance()->GetHeight();
 
@@ -231,19 +231,19 @@ void FPSCamera::v_Rotate(void)
 
 	_pitch = FLOAT_CLAMP(_pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
 
-	_v_UpdateCameraVectors();
+	_v_UpdateCameraVector4s();
 
 	_deltaYaw = 0.0f;
 	_deltaPitch = 0.0f;
 }
 
-void FPSCamera::v_Move(const KM::Vector offset)
+void FPSCamera::v_Move(const KM::Vector4 offset)
 {
 	_position += offset * _moveSpeed * KM::Timer::Instance()->DeltaTime();
-	_v_UpdateCameraVectors();
+	_v_UpdateCameraVector4s();
 }
 
-void FPSCamera::_v_UpdateCameraVectors(void)
+void FPSCamera::_v_UpdateCameraVector4s(void)
 {
 	//Using spherical to cartesian
 	//Calculate the view direction
@@ -252,7 +252,7 @@ void FPSCamera::_v_UpdateCameraVectors(void)
 	_look[2] = cos(_pitch) * cos(_yaw);
 	_look.Normalize();
 
-	//Re-calculate the right and up vectors
+	//Re-calculate the right and up Vector4s
 	_right = _look.CrossProduct(_worldUp);
 	_right.Normalize();
 
