@@ -357,22 +357,49 @@ void Matrix3::SetOrientation(const Quaternion& q)
 	_data[2][z] = 1 - (2.0f * q_x * q_x + 2.0f * q_y * q_y);
 }
 
-void Matrix3::SetOrientationAndPosition(const Quaternion& q, const Vector4& v)
-{
-	SetOrientation(q);
-	
-	_data[3][x] = v[x];
-	_data[3][y] = v[y];
-	_data[3][z] = v[z];
-}
-
 //==========================================================================================================================
 //Inverse
 //==========================================================================================================================
-
 void Matrix3::SetInverse(void)
 {
-	
+	F32 det = Determinate();
+
+	if(det == 0.0f) return;
+
+	// Find the minors based on the cofactors
+	F32 c0x = _Cofactor(_data[1][y], _data[1][z], _data[2][y], _data[2][z]);
+
+	F32 c0y = _Cofactor(_data[1][x], _data[1][z], _data[2][x], _data[2][z]);
+
+	F32 c0z = _Cofactor(_data[1][x], _data[1][y], _data[2][x], _data[2][y]);
+
+	Vector3 colx {c0x, -c0y, c0z};
+
+	F32 c1x = _Cofactor(_data[0][y], _data[0][z], _data[2][y], _data[2][z]);
+
+	F32 c1y = _Cofactor(_data[0][x], _data[0][z], _data[2][x], _data[2][z]);
+
+	F32 c1z = _Cofactor(_data[0][x], _data[0][y], _data[2][x], _data[2][y]);
+
+	Vector3 coly {-c1x, c1y, -c1z};
+
+	F32 c2x = _Cofactor(_data[0][y], _data[0][z], _data[1][y], _data[1][z]);
+
+	F32 c2y = _Cofactor(_data[0][x], _data[0][z], _data[1][x], _data[1][z]);
+
+	F32 c2z = _Cofactor(_data[0][x], _data[0][y], _data[1][x], _data[1][y]);
+
+	Vector3 colz {c2x, -c2y, c2z};
+
+	//Create the new Matrix
+	Matrix3 adj {colx, coly, colz};
+
+	//Transpose and divide.
+	adj.Transpose();	
+
+	adj	/= det;
+
+	*this = adj;
 }
 
 void Matrix3::SetAsInverse(const Matrix3& mat)
@@ -392,8 +419,9 @@ Matrix3 Matrix3::GetInverse(void) const
 
 F32 Matrix3::Determinate(void) const
 {
-	//Implement later
-	return 1.0f;
+	return _data[0][x] * (_data[1][y] * _data[2][z] - _data[2][y] * _data[1][z])
+		 + _data[1][x] * (_data[2][y] * _data[0][z] - _data[0][y] * _data[2][z])
+		 + _data[2][x] * (_data[0][y] * _data[1][z] - _data[1][y] * _data[0][z]);
 }
 
 //==========================================================================================================================
@@ -541,4 +569,9 @@ Matrix3& Matrix3::operator/=(F32 val)
 	_data[z][z] /= val;
 
 	return *this;
+}
+
+F32 Matrix3::_Cofactor(F32 c00, F32 c01, F32 c10, F32 c11) const
+{
+	return c00 * c11 - c10 * c01;
 }

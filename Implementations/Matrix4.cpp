@@ -539,73 +539,73 @@ void Matrix4::SetInverse(void)
 
 	if(det == 0.0f) return;
 
-	F32 c00 = Determinate3x3(Vector4(_columns[y][y], _columns[y][z], _columns[y][w]),
+	F32 c00 = _Cofactor(Vector4(_columns[y][y], _columns[y][z], _columns[y][w]),
 							 Vector4(_columns[z][y], _columns[z][z], _columns[z][w]),
 							 Vector4(_columns[w][y], _columns[w][z], _columns[w][w]));
 
-	F32 c01 = Determinate3x3(Vector4(_columns[y][x], _columns[y][z], _columns[y][w]),
+	F32 c01 = _Cofactor(Vector4(_columns[y][x], _columns[y][z], _columns[y][w]),
 							 Vector4(_columns[z][x], _columns[z][z], _columns[z][w]),
 							 Vector4(_columns[w][x], _columns[w][z], _columns[w][w]));
 
-	F32 c02 = Determinate3x3(Vector4(_columns[y][x], _columns[y][y], _columns[y][w]),
+	F32 c02 = _Cofactor(Vector4(_columns[y][x], _columns[y][y], _columns[y][w]),
 							 Vector4(_columns[z][x], _columns[z][y], _columns[z][w]),
 							 Vector4(_columns[w][x], _columns[w][y], _columns[w][w]));
 
-	F32 c03 = Determinate3x3(Vector4(_columns[y][x], _columns[y][y], _columns[y][z]),
+	F32 c03 = _Cofactor(Vector4(_columns[y][x], _columns[y][y], _columns[y][z]),
 							 Vector4(_columns[z][x], _columns[z][y], _columns[z][z]),
 							 Vector4(_columns[w][x], _columns[w][y], _columns[w][z]));
 
 	Vector4 colx {c00, -c01, c02, -c03};
 
-	F32 c10 = Determinate3x3(Vector4(_columns[x][y], _columns[x][z], _columns[x][w]),
+	F32 c10 = _Cofactor(Vector4(_columns[x][y], _columns[x][z], _columns[x][w]),
 							 Vector4(_columns[z][y], _columns[z][z], _columns[z][w]),
 							 Vector4(_columns[w][y], _columns[w][z], _columns[w][w]));
 
-	F32 c11 = Determinate3x3(Vector4(_columns[x][x], _columns[x][z], _columns[x][w]),
+	F32 c11 = _Cofactor(Vector4(_columns[x][x], _columns[x][z], _columns[x][w]),
 							 Vector4(_columns[z][x], _columns[z][z], _columns[z][w]),
 							 Vector4(_columns[w][x], _columns[w][z], _columns[w][w]));
 
-	F32 c12 = Determinate3x3(Vector4(_columns[x][x], _columns[x][y], _columns[x][w]),
+	F32 c12 = _Cofactor(Vector4(_columns[x][x], _columns[x][y], _columns[x][w]),
 							 Vector4(_columns[z][x], _columns[z][y], _columns[z][w]),
 							 Vector4(_columns[w][x], _columns[w][y], _columns[w][w]));
 
-	F32 c13 = Determinate3x3(Vector4(_columns[x][x], _columns[x][y], _columns[x][z]),
+	F32 c13 = _Cofactor(Vector4(_columns[x][x], _columns[x][y], _columns[x][z]),
 							 Vector4(_columns[z][x], _columns[z][y], _columns[z][z]),
 							 Vector4(_columns[w][x], _columns[w][y], _columns[w][z]));
 
 	Vector4 coly {-c10, c11, -c12, c13};
 
-	F32 c20 = Determinate3x3(Vector4(_columns[x][y], _columns[x][z], _columns[x][w]),
+	F32 c20 = _Cofactor(Vector4(_columns[x][y], _columns[x][z], _columns[x][w]),
 							 Vector4(_columns[y][y], _columns[y][z], _columns[y][w]),
 							 Vector4(_columns[w][y], _columns[w][z], _columns[w][w]));
 
-	F32 c21 = Determinate3x3(Vector4(_columns[x][x], _columns[x][z], _columns[x][w]),
+	F32 c21 = _Cofactor(Vector4(_columns[x][x], _columns[x][z], _columns[x][w]),
 							 Vector4(_columns[y][x], _columns[y][z], _columns[y][w]),
 							 Vector4(_columns[w][x], _columns[w][z], _columns[w][w]));
 
-	F32 c22 = Determinate3x3(Vector4(_columns[x][x], _columns[x][y], _columns[x][w]),
+	F32 c22 = _Cofactor(Vector4(_columns[x][x], _columns[x][y], _columns[x][w]),
 							 Vector4(_columns[y][x], _columns[y][y], _columns[y][w]),
 							 Vector4(_columns[w][x], _columns[w][y], _columns[w][w]));
 
-	F32 c23 = Determinate3x3(Vector4(_columns[x][x], _columns[x][y], _columns[x][z]),
+	F32 c23 = _Cofactor(Vector4(_columns[x][x], _columns[x][y], _columns[x][z]),
 							 Vector4(_columns[y][x], _columns[y][y], _columns[y][z]),
 							 Vector4(_columns[w][x], _columns[w][y], _columns[w][z]));
 
 	Vector4 colz {c20, -c21, c22, -c23};
 
-	F32 c30 = Determinate3x3(Vector4(_columns[x][y], _columns[x][z], _columns[x][w]),
+	F32 c30 = _Cofactor(Vector4(_columns[x][y], _columns[x][z], _columns[x][w]),
 							 Vector4(_columns[y][y], _columns[y][z], _columns[y][w]),
 							 Vector4(_columns[z][y], _columns[z][z], _columns[z][w]));
 
-	F32 c31 = Determinate3x3(Vector4(_columns[x][x], _columns[x][z], _columns[x][w]),
+	F32 c31 = _Cofactor(Vector4(_columns[x][x], _columns[x][z], _columns[x][w]),
 							 Vector4(_columns[y][x], _columns[y][z], _columns[y][w]),
 							 Vector4(_columns[z][x], _columns[z][z], _columns[z][w]));
 
-	F32 c32 = Determinate3x3(Vector4(_columns[x][x], _columns[x][y], _columns[x][w]),
+	F32 c32 = _Cofactor(Vector4(_columns[x][x], _columns[x][y], _columns[x][w]),
 							 Vector4(_columns[y][x], _columns[y][y], _columns[y][w]),
 							 Vector4(_columns[z][x], _columns[z][y], _columns[z][w]));
 
-	F32 c33 = Determinate3x3(Vector4(_columns[x][x], _columns[x][y], _columns[x][z]),
+	F32 c33 = _Cofactor(Vector4(_columns[x][x], _columns[x][y], _columns[x][z]),
 							 Vector4(_columns[y][x], _columns[y][y], _columns[y][z]),
 							 Vector4(_columns[z][x], _columns[z][y], _columns[z][z]));
 
@@ -659,12 +659,7 @@ F32 Matrix4::Determinate(void) const
 	return m11 - m21 + m31 - m41;
 }
 
-F32 Matrix4::Determinate3x3(Vector4& col1, Vector4& col2, Vector4& col3)
-{
-	return col1[x] * (col2[y] * col3[z] - col3[y] * col2[z])
-		 + col2[x] * (col3[y] * col1[z] - col1[y] * col3[z])
-		 + col3[x] * (col1[y] * col2[z] - col2[y] * col1[z]);
-}
+
 
 //==========================================================================================================================
 //Resettings
@@ -997,4 +992,11 @@ Matrix4& Matrix4::operator/=(F32 val)
 	_columns[w][w] /= val;
 
 	return *this;
+}
+
+F32 Matrix4::_Cofactor(const Vector4& col1, const Vector4& col2, const Vector4& col3) const
+{
+	return col1[x] * (col2[y] * col3[z] - col3[y] * col2[z])
+		 + col2[x] * (col3[y] * col1[z] - col1[y] * col3[z])
+		 + col3[x] * (col1[y] * col2[z] - col2[y] * col1[z]);
 }

@@ -256,8 +256,6 @@ namespace KillerMath
 		Matrix4 GetInverse(void) const;
 
 		F32 Determinate(void) const;
-
-		static F32 Determinate3x3(Vector4& col1, Vector4& col2, Vector4& col3);
 //==========================================================================================================================
 //Resettings
 //==========================================================================================================================
@@ -337,6 +335,20 @@ namespace KillerMath
 		Matrix4& operator/=(F32 val);
 
 	private:
+//==========================================================================================================================
+//
+//Private Fucntions
+//
+//==========================================================================================================================
+/*!
+	Returns the cofactor for the sub matrix made up of the 3 Vector4 passed in. This is used in Matrix4::Inverse as part of 
+	what is called a Classic Adjoint. 
+	\param col1 is the first column of the sub matrix.
+	\param col2 is the second column of the sub matrix.
+	\param col3 is the fourth column of the sub matrix.
+*/
+		F32 _Cofactor(const Vector4& col1, const Vector4& col2, const Vector4& col3) const;
+
 //==========================================================================================================================
 //
 //Data
