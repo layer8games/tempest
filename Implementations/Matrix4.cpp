@@ -34,9 +34,9 @@ _columns{Vector4(val, 0.0f, 0.0f, 0.0f),
 {  }
 
 Matrix4::Matrix4( F32 m00, F32 m01, F32 m02, F32 m03,
-				F32 m10, F32 m11, F32 m12, F32 m13,
-				F32 m20, F32 m21, F32 m22, F32 m23,
-				F32 m30, F32 m31, F32 m32, F32 m33)
+				  F32 m10, F32 m11, F32 m12, F32 m13,
+				  F32 m20, F32 m21, F32 m22, F32 m23,
+				  F32 m30, F32 m31, F32 m32, F32 m33)
 :
 _columns{Vector4(m00, m01, m02, m03),
 		 Vector4(m10, m11, m12, m13),
