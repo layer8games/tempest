@@ -64,7 +64,7 @@ namespace KillerPhysics
 	\param springConstant is the "stiffness" of the spring.
 	\param restLength is the length of the spring.
 */
-		AnchoredSpring(KM::Vector4 anchor, real springConstant, real restLength);
+		AnchoredSpring(KM::Point anchor, real springConstant, real restLength);
 
 /*!
 	No implementation.

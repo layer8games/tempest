@@ -2,6 +2,8 @@
 
 //===== Killer Includes =====
 #include <Engine/Atom.h>
+#include <Engine/Vector3.h>
+#include <Engine/Point.h>
 
 
 //===== Stnadard inlcudes =====
@@ -9,6 +11,8 @@
 
 namespace KillerMath
 {
+	class Vector3;
+	class Point;
 //==========================================================================================================================
 //Documentation
 //==========================================================================================================================
@@ -208,6 +212,10 @@ namespace KillerMath
 	\param vec is the Vector4 to copy into this Vector4.
 */
 		Vector4& operator=(const Vector4& vec);
+
+		Vector4& operator=(const Point& point);
+
+		Vector4& operator=(const Vector3& vec);
 
 /*!
 	Copy assignment from scalar.

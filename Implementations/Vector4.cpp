@@ -121,6 +121,26 @@ Vector4& Vector4::operator=(const Vector4& vec)
 	return *this;
 }
 
+Vector4& Vector4::operator=(const Point& point)
+{
+	_data[x] = point[x];
+	_data[y] = point[y];
+	_data[z] = point[z];
+	_data[w] = 0.0f;
+
+	return *this;
+}
+
+Vector4& Vector4::operator=(const Vector3& vec)
+{
+	_data[x] = vec[x];
+	_data[y] = vec[y];
+	_data[z] = vec[z];
+	_data[w] = 0.0f;
+
+	return *this;
+}
+
 Vector4& Vector4::operator=(F32 val)
 {
 	_data[x] = val;

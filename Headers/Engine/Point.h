@@ -3,6 +3,8 @@
 //===== Killer Includes =====
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
+#include <Engine/Vector4.h>
+#include <Engine/Vector3.h>
 
 namespace KE = KillerEngine;
 
@@ -12,6 +14,9 @@ namespace KE = KillerEngine;
 
 namespace KillerMath
 {
+	class Vector4;
+	class Vector3;
+
 //==========================================================================================================================
 //Documentation
 //==========================================================================================================================
@@ -60,6 +65,15 @@ namespace KillerMath
 	\param z is the value for z.
 */
 		Point(F32 x, F32 y, F32 z);
+
+/*! 
+	Four input constructor. W variable in this constructor.
+	\param x is the value for x.
+	\param y is the value for y.
+	\param z is the value for z.
+	\param w is the value for w.
+*/
+		Point(F32 x, F32 y, F32 z, F32 w);
 
 /*! 
 	Copy Constructor. It explicitly copies all data into new Point. 
