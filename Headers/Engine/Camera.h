@@ -185,19 +185,19 @@ namespace KillerEngine
 //==========================================================================================================================
 //Up
 //==========================================================================================================================		
-		inline void SetUpVector4(F32 val)
+		inline void SetUpVector(F32 val)
 		{
 			_up[1] = val;
 		}
 
-		inline void SetUpVector4(F32 xVal, F32 yVal, F32 zVal)
+		inline void SetUpVector(F32 xVal, F32 yVal, F32 zVal)
 		{
 			_up[0] = xVal;
 			_up[1] = yVal;
 			_up[2] = zVal;
 		}
 
-		inline void SetUpVector4(const KM::Vector4& vec)
+		inline void SetUpVector(const KM::Vector4& vec)
 		{
 			_up	 = vec;
 		}
