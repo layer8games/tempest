@@ -3,11 +3,11 @@
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/GameObject.h>
-#include <Engine/Vector.h>
+#include <Engine/Vector4.h>
 #include <Engine/Texture.h>
 #include <Engine/CharacterData.h>
 #include <Engine/Color.h>
-#include <Engine/Matrix.h>
+#include <Engine/Matrix4.h>
 #include <Engine/WinProgram.h>
 #include <Engine/ShaderManager.h>
 

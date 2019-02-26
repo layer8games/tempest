@@ -71,7 +71,7 @@ void Level::UpdateLevel(void)
 void Level::AddObjectToLevel(const GameObject& obj)
 {
 	_gameObjects.insert({ obj.GetID(), shared_ptr<GameObject>(const_cast<GameObject*>(&obj)) });
-	_gameObjects[obj.GetID()]->SetUniform("projection", _camera->GetProjectionMatrix());
+	_gameObjects[obj.GetID()]->SetUniform("projection", _camera->GetProjectionMatrix4());
 
 	if(_gameObjects.find(obj.GetID()) == _gameObjects.end())
 	{
@@ -81,7 +81,7 @@ void Level::AddObjectToLevel(const GameObject& obj)
 
 void Level::AddObjectToLevel(shared_ptr<GameObject> obj)
 {
-	obj->SetUniform("projection", _camera->GetProjectionMatrix());
+	obj->SetUniform("projection", _camera->GetProjectionMatrix4());
 
 	_gameObjects.insert({obj->GetID(), obj});
 
@@ -94,7 +94,7 @@ void Level::AddObjectToLevel(shared_ptr<GameObject> obj)
 void Level::AddParticleToLevel(const KP::Particle& particle)
 {
 	_particles.insert({ particle.GetID(), shared_ptr<KP::Particle>(const_cast<KP::Particle*>(&particle)) });
-	_particles[particle.GetID()]->SetUniform("projection", _camera->GetProjectionMatrix());
+	_particles[particle.GetID()]->SetUniform("projection", _camera->GetProjectionMatrix4());
 
 	if(_particles.find(particle.GetID()) == _particles.end())
 	{
@@ -104,7 +104,7 @@ void Level::AddParticleToLevel(const KP::Particle& particle)
 
 void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle)
 {
-	particle->SetUniform("projection", _camera->GetProjectionMatrix());
+	particle->SetUniform("projection", _camera->GetProjectionMatrix4());
 
 	_particles.insert({particle->GetID(), particle});
 
@@ -116,7 +116,7 @@ void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle)
 
 void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP::ForceGenerator> generator)
 {
-	particle->SetUniform("projection", _camera->GetProjectionMatrix());
+	particle->SetUniform("projection", _camera->GetProjectionMatrix4());
 
 	_particles.insert({particle->GetID(), particle});
 
@@ -133,7 +133,7 @@ void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP:
 
 void Level::AddTextToLevel(const Text& text)
 {
-	//text->SetUniforms("projection", _camera->GetProjectionMatrix());
+	//text->SetUniforms("projection", _camera->GetProjectionMatrix4());
 
 	//_textList.push_back(text);
 	std::vector<shared_ptr<Glyph>> v = text.GetCharacterList();
@@ -190,7 +190,7 @@ void Level::RenderObjects(void)
 	{
 		if(i.second->GetActiveRender())
 		{
-			i.second->SetUniform("view", _camera->GetViewMatrix());
+			i.second->SetUniform("view", _camera->GetViewMatrix4());
 			i.second->v_Render();
 		}
 	}
@@ -199,7 +199,7 @@ void Level::RenderObjects(void)
 	{
 		if(i.second->GetActiveRender())
 		{
-			i.second->SetUniform("view", _camera->GetViewMatrix());
+			i.second->SetUniform("view", _camera->GetViewMatrix4());
 			i.second->v_Render();
 		}
 	}	

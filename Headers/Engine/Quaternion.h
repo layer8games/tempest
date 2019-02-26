@@ -2,7 +2,7 @@
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
-#include <Engine/Vector.h>
+#include <Engine/Vector4.h>
 
 #include <assert.h>
 
@@ -13,7 +13,7 @@ namespace KillerMath
 //==========================================================================================================================
 /*! 
 	Quaternions will handle the rotational math that the engine will use. This class is the holder of these functions. The
-	Quaternion is represent by an Array of 4 F32 values. These include w, x, y, z. Unlike the Vector, w is the first element.
+	Quaternion is represent by an Array of 4 F32 values. These include w, x, y, z. Unlike the Vector4, w is the first element.
 */	
 	class Quaternion
 	{
@@ -112,7 +112,7 @@ namespace KillerMath
 		Quaternion operator*(real m);
 
 /*! 
-	Quaternion multiplication. Similar to the Vector::CrossProduct. 
+	Quaternion multiplication. Similar to the Vector4::CrossProduct. 
 	\param q2 is the Quaternion that the new Quaternion will be multiplied with. 
 */
 		Quaternion operator*(const Quaternion& q2);
@@ -124,7 +124,7 @@ namespace KillerMath
 		Quaternion& operator*=(real m);
 
 /*! 
-	 Quaternion multiplication. Similar to the Vector::CrossProduct. 
+	 Quaternion multiplication. Similar to the Vector4::CrossProduct. 
 	\param q2 is the Quaternion that this Quaternion will be multiplied with.
 */
 		Quaternion& operator*=(const Quaternion& q2);
@@ -140,7 +140,7 @@ namespace KillerMath
 		real Magnitude(void);
 
 /*! 
-	Returns a new Quaternion that represents the negation of the vector portion of the Quaternion. 
+	Returns a new Quaternion that represents the negation of the Vector4 portion of the Quaternion. 
 */
 		Quaternion Conjugate(void);
 
@@ -177,11 +177,11 @@ namespace KillerMath
 		void Normalize(void);
 
 /*! 
-	 Adds a scaled Vector into this one. 
+	 Adds a scaled Vector4 into this one. 
 	 \param q is the Quaternion to be added. 
 	 \param scale is the amount q will be scaled by.
 */
-		void AddScaledVector(const Vector& vec, F32 scale);
+		void AddScaledVector4(const Vector4& vec, F32 scale);
 		
 	private:
 /*!

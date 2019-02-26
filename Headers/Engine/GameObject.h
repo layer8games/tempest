@@ -4,8 +4,8 @@
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Shader.h>
-#include <Engine/Vector.h>
-#include <Engine/Matrix.h>
+#include <Engine/Vector4.h>
+#include <Engine/Matrix4.h>
 #include <Engine/Color.h>
 #include <Engine/Vertex.h>
 #include <Engine/Quaternion.h>
@@ -78,16 +78,16 @@ namespace KillerEngine
 
 		void MakeSprite(void);
 
-		const KM::Matrix& GetModelMatrix(void) const
+		const KM::Matrix4& GetModelMatrix4(void) const
 		{
 			return _modelTOWorldCache;
 		}
 
 		//temporary idea. 
-		//In Matrix, add Translate vs Transform vs Rotate
-		const KM::Matrix GetModelMatrixRot(void) const
+		//In Matrix4, add Translate vs Transform vs Rotate
+		const KM::Matrix4 GetModelMatrix4Rot(void) const
 		{
-			KM::Matrix mat = _modelTOWorldCache; 
+			KM::Matrix4 mat = _modelTOWorldCache; 
 			mat.Translate(0.0f, 0.0f, 0.0f);
 			return mat;
 		}
@@ -183,12 +183,12 @@ namespace KillerEngine
 		}
 
 //===== Position =====
-		inline const KM::Vector& GetPosition(void) const
+		inline const KM::Vector4& GetPosition(void) const
 		{
 			return _position;
 		}
 
-		inline void SetPosition(const KM::Vector& pos)
+		inline void SetPosition(const KM::Vector4& pos)
 		{
 			_position = pos;
 		}
@@ -221,18 +221,18 @@ namespace KillerEngine
 			_position[2] = zVal;
 		}
 
-		inline void AddScaledPosition(const KM::Vector pos, F32 scale)
+		inline void AddScaledPosition(const KM::Vector4 pos, F32 scale)
 		{
-			_position.AddScaledVector(pos, scale);
+			_position.AddScaledVector4(pos, scale);
 		}
 
 //===== Scale =====
-		inline const KM::Vector& GetScale(void) const
+		inline const KM::Vector4& GetScale(void) const
 		{
 			return _scale;
 		}
 
-		inline void SetScale(const KM::Vector& scale)
+		inline void SetScale(const KM::Vector4& scale)
 		{
 			_scale = scale;
 		}
@@ -335,19 +335,19 @@ namespace KillerEngine
 			_shader->SetUniform(name.c_str(), val);
 		}
 
-		inline void SetUniform(string name, const KM::Vector& vec)
+		inline void SetUniform(string name, const KM::Vector4& vec)
 		{
 			_shader->Use();
 			_shader->SetUniform(name.c_str(), vec);
 		}
 
-		inline void SetUniformVec3(string name, const KM::Vector& vec)
+		inline void SetUniformVec3(string name, const KM::Vector4& vec)
 		{
 			_shader->Use();
 			_shader->SetUniformVec3(name.c_str(), vec);
 		}
 
-		inline void SetUniform(string name, const KM::Matrix& mat)
+		inline void SetUniform(string name, const KM::Matrix4& mat)
 		{
 			_shader->Use();
 			_shader->SetUniform(name.c_str(), mat);
@@ -447,7 +447,7 @@ namespace KillerEngine
 		}
 
 	protected:
-		KM::Vector& _AccessPosition(void)
+		KM::Vector4& _AccessPosition(void)
 		{
 			return _position;
 		}
@@ -476,9 +476,9 @@ namespace KillerEngine
 		std::vector<Vertex> 	_vertices;
 		std::vector<U32> 		_indices;
 		std::vector<F32> 		_uvList;
-		KM::Matrix 				_modelTOWorldCache;
-		KM::Vector				_position;
-		KM::Vector 				_scale;
+		KM::Matrix4 				_modelTOWorldCache;
+		KM::Vector4				_position;
+		KM::Vector4 				_scale;
 		KM::Quaternion 			_orientation;
 		Color 					_color;
 		shared_ptr<Texture>		_texture;

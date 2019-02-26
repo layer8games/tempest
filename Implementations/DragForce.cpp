@@ -29,7 +29,7 @@ DragForce::~DragForce(void)
 //==========================================================================================================================
 void DragForce::v_UpdateForce(shared_ptr<Particle> particle)
 {
-	KM::Vector force = particle->GetVelocity();
+	KM::Vector4 force = particle->GetVelocity();
 
 	real dragCoeff = force.Magnitude();
 	dragCoeff = _drag * dragCoeff  + _dragSqr * dragCoeff * dragCoeff;
@@ -42,7 +42,7 @@ void DragForce::v_UpdateForce(shared_ptr<Particle> particle)
 
 void DragForce::v_UpdateForce(shared_ptr<RigidBody> body)
 {
-	KM::Vector force = body->GetVelocity();
+	KM::Vector4 force = body->GetVelocity();
 
 	real dragCoeff = force.Magnitude();
 	dragCoeff = _drag * dragCoeff  + _dragSqr * dragCoeff * dragCoeff;

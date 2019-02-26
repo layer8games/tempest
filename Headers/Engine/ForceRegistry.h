@@ -131,11 +131,11 @@ namespace KillerPhysics
 		};
 
 /*! 
-	Alias type for Particle Registration vector. 
+	Alias type for Particle Registration Vector4. 
 */
 		typedef std::vector<_ParticleForceRegistration> ParticleRegistry;
 /*! 
-	Alias type for RigidBody registration vector. 
+	Alias type for RigidBody registration Vector4. 
 */
 		typedef std::vector<_RigidBodyRegistration> RigidBodyRegistry;
 		

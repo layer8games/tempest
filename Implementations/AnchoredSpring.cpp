@@ -14,7 +14,7 @@ _springConstant(1),
 _restLength(1)
 {  }
 
-AnchoredSpring::AnchoredSpring(KM::Vector anchor, real springConstant, real restLength)
+AnchoredSpring::AnchoredSpring(KM::Vector4 anchor, real springConstant, real restLength)
 :
 _anchor(anchor),
 _springConstant(springConstant),
@@ -26,8 +26,8 @@ AnchoredSpring::~AnchoredSpring(void)
 
 void AnchoredSpring::v_UpdateForce(shared_ptr<Particle> particle)
 {
-	//Calculate the vector of the spring
-	KM::Vector force = particle->GetPosition();
+	//Calculate the Vector4 of the spring
+	KM::Vector4 force = particle->GetPosition();
 	force -= _anchor;
 
 	//Calculate the magnitude of the force
@@ -43,7 +43,7 @@ void AnchoredSpring::v_UpdateForce(shared_ptr<Particle> particle)
 //TODO: Implement
 void AnchoredSpring::v_UpdateForce(shared_ptr<RigidBody> body)
 {
-	KM::Vector force = body->GetPosition();
+	KM::Vector4 force = body->GetPosition();
 	force -= _anchor;
 
 	real magnitude = force.Magnitude();

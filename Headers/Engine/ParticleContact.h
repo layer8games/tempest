@@ -16,7 +16,7 @@ Written by Maxwell Miller
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/Particle.h>
-#include <Engine/Vector.h>
+#include <Engine/Vector4.h>
 #include <Engine/Timer.h>
 #include <Engine/ErrorManager.h>
 
@@ -49,7 +49,7 @@ namespace KillerPhysics
 			_restitution = restitution;
 		}
 
-		inline void SetContactNormal(KM::Vector& normal)
+		inline void SetContactNormal(KM::Vector4& normal)
 		{
 			_contactNormal = normal;
 		}
@@ -106,8 +106,8 @@ namespace KillerPhysics
 //
 //==========================================================================================================================
 		shared_ptr<Particle>    _particles[2];
-		shared_ptr<KM::Vector>  _particleMovements[2];
-		KM::Vector			    _contactNormal;
+		shared_ptr<KM::Vector4>  _particleMovements[2];
+		KM::Vector4			    _contactNormal;
 		real 				    _restitution;
 		real				    _penetration;
 	};//end ParticleContact

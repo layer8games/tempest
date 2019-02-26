@@ -2,7 +2,7 @@
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
-#include <Engine/Vector.h>
+#include <Engine/Point.h>
 
 namespace KM = KillerMath;
 
@@ -34,7 +34,7 @@ namespace KillerCollisions
 	\param center is the value for center. 
 	\param radius is the value for radius. 
 */
-		BoundingSphere(const KM::Vector& center, real radius);
+		BoundingSphere(const KM::Point& center, real radius);
 
 /*! 
 	Special constructor that combines the volumes of 2 BoundingSpheres into one sphere that emcompasses both volumes. 
@@ -80,7 +80,7 @@ namespace KillerCollisions
 	Set new center.
 	\param pos is the new location of the center.
 */
-		inline void SetCenter(const KM::Vector& pos)
+		inline void SetCenter(const KM::Point& pos)
 		{
 			_center = pos;
 		}
@@ -101,7 +101,7 @@ namespace KillerCollisions
 /*! 
 	Get the location of the center. 
 */
-		inline const KM::Vector& GetCenter(void) const
+		inline const KM::Point& GetCenter(void) const
 		{
 			return _center;
 		}
@@ -129,7 +129,7 @@ namespace KillerCollisions
 //Data
 //
 //==========================================================================================================================	
-		KM::Vector _center; 	///< Center of the sphere.
+		KM::Point _center; 	///< Center of the sphere.
 		real 	   _radius;		///< Radius of the sphere.
 
 	};//end Class

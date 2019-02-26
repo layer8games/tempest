@@ -44,7 +44,7 @@ GameObject::GameObject(const GameObject& obj)
 _vertices(obj.GetVertices()),
 _indices(obj.GetIndices()),
 _uvList(obj.GetUVList()),
-_modelTOWorldCache(obj.GetModelMatrix()),
+_modelTOWorldCache(obj.GetModelMatrix4()),
 _position(obj.GetPosition()),
 _scale(obj.GetScale()),
 _orientation(obj.GetOrientation()),
@@ -91,7 +91,7 @@ void GameObject::v_Render(void)
 		SetUniform("sprite_color", _color);
 	}
 
-	SetUniform("model", GetModelMatrix());
+	SetUniform("model", GetModelMatrix4());
 
 	glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
 
@@ -171,8 +171,8 @@ void GameObject::UpdateInternals(void)
 bool GameObject::LoadOBJ(string filepath)
 {
 	std::vector<U32> vertexIndices, uvIndices, normalIndices;
-	std::vector<KM::Vector> tempVertices;
-	std::vector<KM::Vector> tempNormals;
+	std::vector<KM::Vector4> tempVertices;
+	std::vector<KM::Vector4> tempNormals;
 	std::vector<TexCoord> tempUVs;
 
 	if(filepath.find(".obj") != std::string::npos)
@@ -194,7 +194,7 @@ bool GameObject::LoadOBJ(string filepath)
 
 			if(command == "v")
 			{
-				KM::Vector vertex;
+				KM::Vector4 vertex;
 				S32 dimension = 0;
 				
 				while(dimension < 3 && ss >> vertex[dimension])
@@ -215,7 +215,7 @@ bool GameObject::LoadOBJ(string filepath)
 			}
 			else if(command == "vn")
 			{
-				KM::Vector normal;
+				KM::Vector4 normal;
 				S32 dimension = 0;
 				
 				while(dimension < 3 && ss >> normal[dimension])
@@ -365,8 +365,8 @@ void GameObject::LoadMesh(string filepath)
 
 		 	for(U32 i = 0; i < vertexData.size(); i += 3)
 			{
-				//vertices.push_back(Vertex(KM::Vector(vertexData[i], vertexData[i+1], vertexData[i+2])));
-				AddVertex(Vertex(KM::Vector(vertexData[i], vertexData[i+1], vertexData[i+2])));
+				//vertices.push_back(Vertex(KM::Vector4(vertexData[i], vertexData[i+1], vertexData[i+2])));
+				AddVertex(Vertex(KM::Vector4(vertexData[i], vertexData[i+1], vertexData[i+2])));
 			}
 		}
 		else if(std::regex_match(attrib, match, uvRegex))
@@ -490,12 +490,12 @@ void GameObject::MakeSprite(void)
 	_position.Make2D();
 	_vertices.clear();
 
-	KM::Vector topRight(1.0f, 1.0f, 0.0f);
-	KM::Vector topLeft(-1.0f, 1.0f, 0.0f);
-	KM::Vector bottomRight(1.0f, -1.0f, 0.0f);
-	KM::Vector bottomLeft(-1.0f, -1.0f, 0.0);
+	KM::Vector4 topRight(1.0f, 1.0f, 0.0f);
+	KM::Vector4 topLeft(-1.0f, 1.0f, 0.0f);
+	KM::Vector4 bottomRight(1.0f, -1.0f, 0.0f);
+	KM::Vector4 bottomLeft(-1.0f, -1.0f, 0.0);
 
-	KM::Vector top(0.0f, 0.5f);
+	KM::Vector4 top(0.0f, 0.5f);
 
 	AddVertex(Vertex(topLeft, 0.0f, 0.0f));
 	AddVertex(Vertex(topRight, 1.0f, 0.0f));
@@ -576,8 +576,8 @@ std::vector<string> GameObject::_SplitString(string text, char delim) const
 
 void GameObject::_CalculateCachedData(void)
 {
-	//_modelTOWorldCache =  KM::Matrix::Translate(_position) * KM::Matrix::Scale(_scale);
+	//_modelTOWorldCache =  KM::Matrix4::Translate(_position) * KM::Matrix4::Scale(_scale);
 
 	_modelTOWorldCache.SetOrientationAndPosition(_orientation, _position);
-	_modelTOWorldCache = _modelTOWorldCache * KM::Matrix::Scale(_scale);
+	_modelTOWorldCache = _modelTOWorldCache * KM::Matrix4::Scale(_scale);
 }

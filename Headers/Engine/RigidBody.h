@@ -4,9 +4,9 @@
 #include <Engine/Atom.h>
 #include <Engine/GameObject.h>
 #include <Engine/Timer.h>
-#include <Engine/Vector.h>
+#include <Engine/Vector4.h>
 #include <Engine/Quaternion.h>
-#include <Engine/Matrix.h>
+#include <Engine/Matrix4.h>
 
 namespace KM = KillerMath;
 namespace KE = KillerEngine;
@@ -50,23 +50,23 @@ namespace KillerPhysics
 //
 //==========================================================================================================================
 //===== Inertia Tensor =====
-		inline const KM::Matrix& GetInverseInertiaTensor(void) const
+		inline const KM::Matrix4& GetInverseInertiaTensor(void) const
 		{
 			return _inverseInertiaTensor;
 		}
 
-		void SetInverseInertiaTensor(const KM::Matrix& mat)
+		void SetInverseInertiaTensor(const KM::Matrix4& mat)
 		{
 			_inverseInertiaTensor.SetAsInverse(mat);
 		}
 
 //===== Velocity =====		
-		inline const KM::Vector& GetVelocity(void) const
+		inline const KM::Vector4& GetVelocity(void) const
 		{
 			return _velocity;
 		}
 
-		inline void SetVelocity(const KM::Vector& vec)
+		inline void SetVelocity(const KM::Vector4& vec)
 		{
 			_velocity = vec; 
 		}
@@ -78,18 +78,18 @@ namespace KillerPhysics
 			_velocity[2] = z;
 		}
 
-		inline void AddScaledVelocity(const KM::Vector& vec, F32 scale)
+		inline void AddScaledVelocity(const KM::Vector4& vec, F32 scale)
 		{
-			_velocity.AddScaledVector(vec, scale);
+			_velocity.AddScaledVector4(vec, scale);
 		}
 
 //===== Acceleration =====
-		inline const KM::Vector& GetAcceleration(void) const
+		inline const KM::Vector4& GetAcceleration(void) const
 		{
 			return _acceleration;
 		}
 
-		inline void SetAcceleration(const KM::Vector& vec)
+		inline void SetAcceleration(const KM::Vector4& vec)
 		{
 			_acceleration = vec;
 		}
@@ -101,18 +101,18 @@ namespace KillerPhysics
 			_acceleration[2] = z;
 		}
 
-		inline void AddScaledAcceleration(const KM::Vector& vec, F32 scale)
+		inline void AddScaledAcceleration(const KM::Vector4& vec, F32 scale)
 		{
-			_acceleration.AddScaledVector(vec, scale);
+			_acceleration.AddScaledVector4(vec, scale);
 		}
 
 //===== Rotation =====
-		inline const KM::Vector& GetRotation(void) const
+		inline const KM::Vector4& GetRotation(void) const
 		{
 			return _rotation;
 		}
 
-		inline void SetRotation(const KM::Vector& vec)
+		inline void SetRotation(const KM::Vector4& vec)
 		{
 			_rotation = vec;
 		}
@@ -124,29 +124,29 @@ namespace KillerPhysics
 			_rotation[2] = z;
 		}
 
-		inline void AddScaledRotation(const KM::Vector& vec, F32 scale)
+		inline void AddScaledRotation(const KM::Vector4& vec, F32 scale)
 		{
-			_rotation.AddScaledVector(vec, scale);
+			_rotation.AddScaledVector4(vec, scale);
 		}
 
 //===== Forces =====
-		inline const KM::Vector& GetForces(void) const
+		inline const KM::Vector4& GetForces(void) const
 		{
 			return _forceAccum;
 		}
 
-		inline void AddForce(const KM::Vector& force)
+		inline void AddForce(const KM::Vector4& force)
 		{
 			_forceAccum += force;
 			_isAwake = true;
 		}
 
-		inline const KM::Vector& GetTorque(void) const
+		inline const KM::Vector4& GetTorque(void) const
 		{
 			return _torqueAccum;
 		}
 
-		inline void AddTorque(const KM::Vector& torque)
+		inline void AddTorque(const KM::Vector4& torque)
 		{
 			_torqueAccum += torque;
 		}
@@ -158,10 +158,10 @@ namespace KillerPhysics
 		}
 
 		//Given in world space coordinates
-		void AddForceAtPoint(const KM::Vector& force, const KM::Vector& point);
+		void AddForceAtPoint(const KM::Vector4& force, const KM::Vector4& point);
 
 		//Force given in world space, point given in local space
-		void AddForceAtLocalPoint(const KM::Vector& force, const KM::Vector& point);
+		void AddForceAtLocalPoint(const KM::Vector4& force, const KM::Vector4& point);
 
 //===== Mass =====
 		inline real GetInverseMass(void) const
@@ -230,13 +230,13 @@ namespace KillerPhysics
 //Data
 //
 //==========================================================================================================================
-		KM::Matrix _inverseInertiaTensor;
-		KM::Matrix _inverseInertiaTensorInWorld;
-		KM::Vector _velocity;
-		KM::Vector _acceleration;
-		KM::Vector _rotation;
-		KM::Vector _forceAccum;
-		KM::Vector _torqueAccum;
+		KM::Matrix4 _inverseInertiaTensor;
+		KM::Matrix4 _inverseInertiaTensorInWorld;
+		KM::Vector4 _velocity;
+		KM::Vector4 _acceleration;
+		KM::Vector4 _rotation;
+		KM::Vector4 _forceAccum;
+		KM::Vector4 _torqueAccum;
 		real 	   _inverseMass;
 		real 	   _linearDamping;
 		real 	   _angularDamping;

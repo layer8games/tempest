@@ -12,7 +12,7 @@ _center(0.0f),
 _radius(0.0f)
 {  }
 
-BoundingSphere::BoundingSphere(const KM::Vector& center, real radius)
+BoundingSphere::BoundingSphere(const KM::Point& center, real radius)
 :
 _center(center),
 _radius(radius)
@@ -23,7 +23,7 @@ BoundingSphere::BoundingSphere(const BoundingSphere& one, const BoundingSphere& 
 _center(0.0f),
 _radius(0.0f)
 {
-	KM::Vector centerOffset = two.GetCenter() - one.GetCenter();
+	KM::Point centerOffset = two.GetCenter() - one.GetCenter();
 	real distance = centerOffset.Dot(centerOffset);
 	real radiusDiff = two.GetRadius() - one.GetRadius();
 
@@ -66,9 +66,9 @@ BoundingSphere::~BoundingSphere(void)
 //==========================================================================================================================
 bool BoundingSphere::TestCollision(const BoundingSphere& other) const
 {
-	KM::Vector distance = _center - other.GetCenter();
+	KM::Point distance = _center - other.GetCenter();
 	
-	//The dot product of a vector and itself is the squred magnitude, but with less steps. 
+	//The dot product of a Point and itself is the squred magnitude, but with less steps. 
 	real distanceSquared = distance.Dot(distance);
 	
 	float radiusSum = _radius + other.GetRadius();

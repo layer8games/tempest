@@ -317,7 +317,7 @@ void WinProgram::HideMouseCursor(void)
     glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 }
 
-const KM::Vector WinProgram::GetMousePos(void)
+const KM::Vector4 WinProgram::GetMousePos(void)
 {
     F64 mouseX, mouseY;
     glfwGetCursorPos(_window, &mouseX, &mouseY);
@@ -329,13 +329,13 @@ const KM::Vector WinProgram::GetMousePos(void)
    // mouseX = mouseX + _left;
    // mouseY = mouseY + _bottom;
 
-    //TODO:: This should probably be done through a matrix transform
+    //TODO:: This should probably be done through a Matrix4 transform
     //but for now, this seems way easier. 
 
-    return KM::Vector(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
+    return KM::Vector4(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
 }
 
-const KM::Vector WinProgram::GetMousePosInScreen(void)
+const KM::Vector4 WinProgram::GetMousePosInScreen(void)
 {
     F64 mouseX, mouseY;
     glfwGetCursorPos(_window, &mouseX, &mouseY);
@@ -347,10 +347,10 @@ const KM::Vector WinProgram::GetMousePosInScreen(void)
     mouseX = mouseX + _left;
     mouseY = mouseY + _bottom;
 
-    //TODO:: This should probably be done through a matrix transform
+    //TODO:: This should probably be done through a Matrix4 transform
     //but for now, this seems way easier. 
 
-    return KM::Vector(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
+    return KM::Vector4(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
 }
 
 //==========================================================================================================================
@@ -412,5 +412,5 @@ void WinProgram::OnMouseClick(GLFWwindow* window, int button, int action, int mo
 //==========================================================================================================================
 void WinProgram::OnMouseMove(GLFWwindow* window, F64 posX, F64 posY)
 {
-    //Controller::Instance()->SetMouseCoord(KM::Vector(static_cast<F32>(posX), static_cast<F32>(posY)));
+    //Controller::Instance()->SetMouseCoord(KM::Vector4(static_cast<F32>(posX), static_cast<F32>(posY)));
 }
