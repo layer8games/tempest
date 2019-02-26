@@ -4,6 +4,7 @@
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Shader.h>
+#include <Engine/Point.h>
 #include <Engine/Vector4.h>
 #include <Engine/Matrix4.h>
 #include <Engine/Color.h>
@@ -183,12 +184,12 @@ namespace KillerEngine
 		}
 
 //===== Position =====
-		inline const KM::Vector4& GetPosition(void) const
+		inline const KM::Point& GetPosition(void) const
 		{
 			return _position;
 		}
 
-		inline void SetPosition(const KM::Vector4& pos)
+		inline void SetPosition(const KM::Point& pos)
 		{
 			_position = pos;
 		}
@@ -476,9 +477,9 @@ namespace KillerEngine
 		std::vector<Vertex> 	_vertices;
 		std::vector<U32> 		_indices;
 		std::vector<F32> 		_uvList;
-		KM::Matrix4 				_modelTOWorldCache;
-		KM::Vector4				_position;
-		KM::Vector4 				_scale;
+		KM::Matrix4 			_modelTOWorldCache;
+		KM::Point				_position;
+		KM::Vector4 			_scale;
 		KM::Quaternion 			_orientation;
 		Color 					_color;
 		shared_ptr<Texture>		_texture;

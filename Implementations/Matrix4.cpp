@@ -493,6 +493,15 @@ void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Vector4& v)
 	_data[3][z] = v[z];
 }
 
+void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Point& p)
+{
+	SetOrientation(q);
+	
+	_data[3][x] = p[x];
+	_data[3][y] = p[y];
+	_data[3][z] = p[z];
+}
+
 //==========================================================================================================================
 //Inverse
 //==========================================================================================================================
@@ -931,6 +940,14 @@ Vector4 Matrix4::operator*(const Vector4& vec) const
 				   _data[0][y] * vec[x] + _data[1][y] * vec[y] + _data[2][y] * vec[z] + _data[3][y] * vec[w],
 				   _data[0][z] * vec[x] + _data[1][z] + vec[y] + _data[2][z] * vec[z] + _data[3][z] * vec[w],
 				   _data[0][w] * vec[x] + _data[1][w] + vec[y] + _data[2][w] + vec[z] + _data[3][w] * vec[w]);
+}
+
+Point Matrix4::operator*(const Point& point) const
+{
+	return Point(_data[0][x] * point[x] + _data[1][x] * point[y] + _data[2][x] * point[z] + _data[3][x] * point[w],
+				 _data[0][y] * point[x] + _data[1][y] * point[y] + _data[2][y] * point[z] + _data[3][y] * point[w],
+				 _data[0][z] * point[x] + _data[1][z] + point[y] + _data[2][z] * point[z] + _data[3][z] * point[w],
+				 _data[0][w] * point[x] + _data[1][w] + point[y] + _data[2][w] + point[z] + _data[3][w] * point[w]);
 }
 
 Matrix4& Matrix4::operator/=(F32 val)

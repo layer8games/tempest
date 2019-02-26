@@ -105,6 +105,28 @@ void Point::AddScaledPoint(const Point& point, F32 scale)
 		_data[z] += point[z] * scale;
 	}
 }
+
+void AddScaledVector(const Vector3& vec, F32 scale)
+{
+	_data[x] += vec[x] * scale;
+	_data[y] += vec[y] * scale;
+
+	if(!_2D)
+	{
+		_data[z] += vec[z] * scale;
+	}	
+}
+
+void AddScaledVector(const Vector4& vec, F32 scale)
+{
+	_data[x] += vec[x] * scale;
+	_data[y] += vec[y] * scale;
+
+	if(!_2D)
+	{
+		_data[z] += vec[z] * scale;
+	}
+}
 //==========================================================================================================================
 //
 //Operator overloads

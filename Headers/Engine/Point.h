@@ -146,6 +146,10 @@ namespace KillerMath
 */
 		void AddScaledPoint(const Point& point, F32 scale);
 
+		void AddScaledVector(const Vector3& vec, F32 scale);
+
+		void AddScaledVector(const Vector4& vec, F32 scale);
+
 //==========================================================================================================================
 //
 //Accessors
