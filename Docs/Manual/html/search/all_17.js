@@ -13,6 +13,7 @@ var searchData=
   ['_7elevel',['~Level',['../class_killer_engine_1_1_level.html#a3164b75538259d026c034927e977c43b',1,'KillerEngine::Level']]],
   ['_7elevelmanager',['~LevelManager',['../class_killer_engine_1_1_level_manager.html#ac42d0d2bf903f9bb2e8bb01dfd5310b8',1,'KillerEngine::LevelManager']]],
   ['_7eparticle',['~Particle',['../class_killer_physics_1_1_particle.html#aedbe5e541966e7799022665fdcb6ba66',1,'KillerPhysics::Particle']]],
+  ['_7epoint',['~Point',['../class_killer_math_1_1_point.html#a682d384f6d17405b835f7e67f16ba2f2',1,'KillerMath::Point']]],
   ['_7equaternion',['~Quaternion',['../class_killer_math_1_1_quaternion.html#a8809b583edcb51ece4d157d3341218ed',1,'KillerMath::Quaternion']]],
   ['_7erandom',['~Random',['../class_killer_math_1_1_random.html#a1da0f8a6d539679174ffcdff113f22d7',1,'KillerMath::Random']]],
   ['_7eshader',['~Shader',['../class_killer_engine_1_1_shader.html#a7ea565f5de1e0d483c688280784f915a',1,'KillerEngine::Shader']]],
@@ -21,6 +22,7 @@ var searchData=
   ['_7etexture',['~Texture',['../class_killer_engine_1_1_texture.html#a38ba89d0fe85916b94031971a7299533',1,'KillerEngine::Texture']]],
   ['_7etexturemanager',['~TextureManager',['../class_killer_engine_1_1_texture_manager.html#aa0132808a9d38479f6853e53529dfd7f',1,'KillerEngine::TextureManager']]],
   ['_7etimer',['~Timer',['../class_killer_math_1_1_timer.html#af87243f09ef5b58b889fb4a7284b526d',1,'KillerMath::Timer']]],
-  ['_7evector',['~Vector',['../class_killer_math_1_1_vector.html#ae8533ae4f11176cc2f19dc529f34efff',1,'KillerMath::Vector']]],
+  ['_7evector3',['~Vector3',['../class_killer_math_1_1_vector3.html#a17fc19421d16ac167d99766aa167a9a3',1,'KillerMath::Vector3']]],
+  ['_7evector4',['~Vector4',['../class_killer_math_1_1_vector4.html#a679dbad31d1595698afc778260384810',1,'KillerMath::Vector4']]],
   ['_7ewinprogram',['~WinProgram',['../class_killer_engine_1_1_win_program.html#a513faa7c01cdde8099b12dc9f6969f0e',1,'KillerEngine::WinProgram']]]
 ];

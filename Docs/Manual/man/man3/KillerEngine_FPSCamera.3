@@ -1,4 +1,4 @@
-.TH "KillerEngine::FPSCamera" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::FPSCamera" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,7 +12,7 @@ Inherits \fBKillerEngine::Camera\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBFPSCamera\fP (const \fBKM::Vector\fP position, \fBF32\fP yaw, \fBF32\fP pitch)"
+.RI "\fBFPSCamera\fP (const \fBKM::Vector4\fP position, \fBF32\fP yaw, \fBF32\fP pitch)"
 .br
 .ti -1c
 .RI "virtual void \fBv_Update\fP (void)"
@@ -21,13 +21,13 @@ Inherits \fBKillerEngine::Camera\fP\&.
 .RI "virtual void \fBv_Rotate\fP (void)"
 .br
 .ti -1c
-.RI "virtual void \fBv_Move\fP (const \fBKM::Vector\fP offset)"
+.RI "virtual void \fBv_Move\fP (const \fBKM::Vector4\fP offset)"
 .br
 .ti -1c
-.RI "void \fBSetWorldUp\fP (const \fBKM::Vector\fP vec)"
+.RI "void \fBSetWorldUp\fP (const \fBKM::Vector4\fP vec)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetWorldUp\fP (void)"
+.RI "const \fBKM::Vector4\fP & \fBGetWorldUp\fP (void)"
 .br
 .ti -1c
 .RI "void \fBSetZoom\fP (\fBF64\fP val)"
@@ -49,14 +49,14 @@ Inherits \fBKillerEngine::Camera\fP\&.
 
 .in +1c
 .ti -1c
-.RI "virtual void \fB_v_UpdateCameraVectors\fP (void)"
+.RI "virtual void \fB_v_UpdateCameraVector4s\fP (void)"
 .br
 .in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_worldUp\fP"
+.RI "\fBKM::Vector4\fP \fB_worldUp\fP"
 .br
 .ti -1c
 .RI "\fBF64\fP \fB_zoomSensitivity\fP"

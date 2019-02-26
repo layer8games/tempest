@@ -8,5 +8,8 @@ var searchData=
   ['timer',['Timer',['../class_killer_math_1_1_timer.html#af866f8d58d5ed1da7a0c61df4975be3e',1,'KillerMath::Timer']]],
   ['togglewireframe',['ToggleWireFrame',['../class_killer_engine_1_1_win_program.html#ad6d23bebf4af9ed1d8b35be5a2b9a1e7',1,'KillerEngine::WinProgram']]],
   ['totaltime',['TotalTime',['../class_killer_math_1_1_timer.html#a830d3293d3fff92fce367ad91c31fd24',1,'KillerMath::Timer']]],
-  ['transpose',['Transpose',['../class_killer_math_1_1_matrix.html#abaedae760f0ad9043afd89ee4137ccb8',1,'KillerMath::Matrix']]]
+  ['transform3x3',['Transform3x3',['../class_killer_math_1_1_matrix4.html#a436d8465dbb313c1310aed8046a2d1d9',1,'KillerMath::Matrix4::Transform3x3(const Matrix4 &amp;mat) const'],['../class_killer_math_1_1_matrix4.html#a6d3bd349c1c1136431268d1536083dd3',1,'KillerMath::Matrix4::Transform3x3(const Vector4 &amp;vec) const']]],
+  ['transforminverse',['TransformInverse',['../class_killer_math_1_1_matrix4.html#a2fc41bb9f0475c7d184ece88434f7ebb',1,'KillerMath::Matrix4']]],
+  ['translate',['Translate',['../class_killer_math_1_1_matrix4.html#a60f809a90b9243b1bd297a2b7679e30a',1,'KillerMath::Matrix4::Translate(F32 xVal, F32 yVal)'],['../class_killer_math_1_1_matrix4.html#ac19adc0bdb6cbc346578889e8601e6fe',1,'KillerMath::Matrix4::Translate(F32 xVal, F32 yVal, F32 zVal)'],['../class_killer_math_1_1_matrix4.html#a79edaf95db4e5567f2ed4181ae98a553',1,'KillerMath::Matrix4::Translate(const Vector4 &amp;vec)']]],
+  ['transpose',['Transpose',['../class_killer_math_1_1_matrix3.html#ad740d1765d351e64d4110cdcffe1e629',1,'KillerMath::Matrix3::Transpose()'],['../class_killer_math_1_1_matrix4.html#a964a1fef0efb416e91b3881413028f9f',1,'KillerMath::Matrix4::Transpose()']]]
 ];

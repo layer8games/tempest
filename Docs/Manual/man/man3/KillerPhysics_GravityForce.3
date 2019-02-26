@@ -1,4 +1,4 @@
-.TH "KillerPhysics::GravityForce" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::GravityForce" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -17,7 +17,7 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .RI "\fBGravityForce\fP (void)"
 .br
 .ti -1c
-.RI "\fBGravityForce\fP (const \fBKM::Vector\fP &gravity)"
+.RI "\fBGravityForce\fP (const \fBKM::Vector4\fP &gravity)"
 .br
 .ti -1c
 .RI "\fB~GravityForce\fP (void)"
@@ -29,14 +29,14 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .RI "void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody\fP > body) final"
 .br
 .ti -1c
-.RI "void \fBSetGravityAcceleration\fP (\fBKM::Vector\fP &gravity)"
+.RI "void \fBSetGravityAcceleration\fP (\fBKM::Vector4\fP &gravity)"
 .br
 .in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_gravityAcc\fP"
+.RI "\fBKM::Vector4\fP \fB_gravityAcc\fP"
 .br
 .RI "The acceleration saved for this force\&. "
 .in -1c
@@ -49,8 +49,8 @@ It is based on the Cyclone engine design found in 'Game Physics Engine Developme
 .PP 
 .SS "GravityForce::GravityForce (void)"
 Sets default acceleration to 0, -1, 0\&. 
-.SS "GravityForce::GravityForce (const \fBKM::Vector\fP & gravity)"
-Sets acceleration to \fBKillerMath::Vector\fP sent in\&. 
+.SS "GravityForce::GravityForce (const \fBKM::Vector4\fP & gravity)"
+Sets acceleration to \fBKillerMath::Vector4\fP sent in\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -62,7 +62,7 @@ Sets acceleration to \fBKillerMath::Vector\fP sent in\&.
 No implemenation\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void KillerPhysics::GravityForce::SetGravityAcceleration (\fBKM::Vector\fP & gravity)\fC [inline]\fP"
+.SS "void KillerPhysics::GravityForce::SetGravityAcceleration (\fBKM::Vector4\fP & gravity)\fC [inline]\fP"
 Changes the acceleration the force will cause on an object\&. 
 .PP
 \fBParameters:\fP

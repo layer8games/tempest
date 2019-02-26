@@ -1,4 +1,4 @@
-.TH "KillerEngine::GameObject" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::GameObject" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -36,10 +36,10 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "void \fBMakeSprite\fP (void)"
 .br
 .ti -1c
-.RI "const \fBKM::Matrix\fP & \fBGetModelMatrix\fP (void) const"
+.RI "const \fBKM::Matrix4\fP & \fBGetModelMatrix4\fP (void) const"
 .br
 .ti -1c
-.RI "const \fBKM::Matrix\fP \fBGetModelMatrixRot\fP (void) const"
+.RI "const \fBKM::Matrix4\fP \fBGetModelMatrix4Rot\fP (void) const"
 .br
 .ti -1c
 .RI "const bool \fBGetActive\fP (void) const"
@@ -84,10 +84,10 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "const \fBU32\fP \fBGetID\fP (void) const"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetPosition\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetPosition\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (const \fBKM::Vector\fP &pos)"
+.RI "void \fBSetPosition\fP (const \fBKM::Vector4\fP &pos)"
 .br
 .ti -1c
 .RI "void \fBSetPosition\fP (\fBF32\fP x, \fBF32\fP y)"
@@ -105,13 +105,13 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "void \fBSetPositionZ\fP (\fBF32\fP zVal)"
 .br
 .ti -1c
-.RI "void \fBAddScaledPosition\fP (const \fBKM::Vector\fP pos, \fBF32\fP scale)"
+.RI "void \fBAddScaledPosition\fP (const \fBKM::Vector4\fP pos, \fBF32\fP scale)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetScale\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetScale\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetScale\fP (const \fBKM::Vector\fP &scale)"
+.RI "void \fBSetScale\fP (const \fBKM::Vector4\fP &scale)"
 .br
 .ti -1c
 .RI "void \fBSetScale\fP (\fBF32\fP val)"
@@ -165,13 +165,13 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "void \fBSetUniform\fP (string name, const \fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBSetUniform\fP (string name, const \fBKM::Vector\fP &vec)"
+.RI "void \fBSetUniform\fP (string name, const \fBKM::Vector4\fP &vec)"
 .br
 .ti -1c
-.RI "void \fBSetUniformVec3\fP (string name, const \fBKM::Vector\fP &vec)"
+.RI "void \fBSetUniformVec3\fP (string name, const \fBKM::Vector4\fP &vec)"
 .br
 .ti -1c
-.RI "void \fBSetUniform\fP (string name, const \fBKM::Matrix\fP &mat)"
+.RI "void \fBSetUniform\fP (string name, const \fBKM::Matrix4\fP &mat)"
 .br
 .ti -1c
 .RI "void \fBSetUniformSampler\fP (string name, \fBS32\fP texSlot)"
@@ -226,7 +226,7 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 
 .in +1c
 .ti -1c
-.RI "\fBKM::Vector\fP & \fB_AccessPosition\fP (void)"
+.RI "\fBKM::Vector4\fP & \fB_AccessPosition\fP (void)"
 .br
 .ti -1c
 .RI "\fBKM::Quaternion\fP & \fB_AccessOrientation\fP (void)"
@@ -261,13 +261,13 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "std::vector< \fBF32\fP > \fB_uvList\fP"
 .br
 .ti -1c
-.RI "\fBKM::Matrix\fP \fB_modelTOWorldCache\fP"
+.RI "\fBKM::Matrix4\fP \fB_modelTOWorldCache\fP"
 .br
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_position\fP"
+.RI "\fBKM::Vector4\fP \fB_position\fP"
 .br
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_scale\fP"
+.RI "\fBKM::Vector4\fP \fB_scale\fP"
 .br
 .ti -1c
 .RI "\fBKM::Quaternion\fP \fB_orientation\fP"

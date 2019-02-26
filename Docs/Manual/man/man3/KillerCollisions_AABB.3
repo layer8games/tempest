@@ -1,4 +1,4 @@
-.TH "KillerCollisions::AABB" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerCollisions::AABB" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -15,7 +15,7 @@ KillerCollisions::AABB
 .RI "\fBAABB\fP (void)"
 .br
 .ti -1c
-.RI "\fBAABB\fP (const \fBKM::Vector\fP &center, \fBF32\fP w, \fBF32\fP h, \fBF32\fP d)"
+.RI "\fBAABB\fP (const \fBKM::Point\fP &center, \fBF32\fP w, \fBF32\fP h, \fBF32\fP d)"
 .br
 .ti -1c
 .RI "\fB~AABB\fP (void)"
@@ -24,13 +24,13 @@ KillerCollisions::AABB
 .RI "bool \fBTestCollision\fP (const \fBAABB\fP &other) const"
 .br
 .ti -1c
-.RI "void \fBSetCenter\fP (const \fBKM::Vector\fP &c)"
+.RI "void \fBSetCenter\fP (const \fBKM::Point\fP &c)"
 .br
 .ti -1c
 .RI "void \fBSetCenter\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetCenter\fP (void) const"
+.RI "const \fBKM::Point\fP & \fBGetCenter\fP (void) const"
 .br
 .ti -1c
 .RI "void \fBSetHalfWidth\fP (\fBF32\fP w)"
@@ -79,7 +79,7 @@ KillerCollisions::AABB
 
 .in +1c
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_center\fP"
+.RI "\fBKM::Point\fP \fB_center\fP"
 .br
 .RI "Center location of the \fBAABB\fP\&. This is the posistion represented in local space of the object that holds it\&. "
 .ti -1c
@@ -102,7 +102,7 @@ An Axis Alligned Bounding Box used to do rough collission detection\&. It used a
 .PP 
 .SS "AABB::AABB (void)"
 Sets all values to 0\&. 
-.SS "AABB::AABB (const \fBKM::Vector\fP & center, \fBF32\fP w, \fBF32\fP h, \fBF32\fP d)"
+.SS "AABB::AABB (const \fBKM::Point\fP & center, \fBF32\fP w, \fBF32\fP h, \fBF32\fP d)"
 Sets the center up and the dimensions\&. Dimensions are sent in as full, and then halved\&. 
 .PP
 \fBParameters:\fP
@@ -121,7 +121,7 @@ Sets the center up and the dimensions\&. Dimensions are sent in as full, and the
 No implemenation\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "const \fBKM::Vector\fP& KillerCollisions::AABB::GetCenter (void) const\fC [inline]\fP"
+.SS "const \fBKM::Point\fP& KillerCollisions::AABB::GetCenter (void) const\fC [inline]\fP"
 Returns the center of the \fBAABB\fP\&. 
 .SS "\fBF32\fP KillerCollisions::AABB::GetDepth (void) const\fC [inline]\fP"
 Returns the full depth extent of the \fBAABB\fP\&. Because internally this is stored as a half, it is multiplied before it is returned\&. 
@@ -135,7 +135,7 @@ Returns the half width of the \fBAABB\fP\&.
 Returns the full height extent of the \fBAABB\fP\&. Because internally it is stored as a half height, it is multiplied by 2 before it is returned\&. 
 .SS "\fBF32\fP KillerCollisions::AABB::GetWidth (void) const\fC [inline]\fP"
 Returns the full width of the \fBAABB\fP\&. Because this is stored as a half width, it is multiplied by 2 before it is returned\&. 
-.SS "void KillerCollisions::AABB::SetCenter (const \fBKM::Vector\fP & c)\fC [inline]\fP"
+.SS "void KillerCollisions::AABB::SetCenter (const \fBKM::Point\fP & c)\fC [inline]\fP"
 Sets the location of the center of the sphere\&. This is the position in local space for the object it encompasses\&. 
 .PP
 \fBParameters:\fP

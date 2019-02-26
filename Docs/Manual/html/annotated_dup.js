@@ -32,12 +32,14 @@ var annotated_dup =
       [ "WinProgram", "class_killer_engine_1_1_win_program.html", "class_killer_engine_1_1_win_program" ]
     ] ],
     [ "KillerMath", null, [
-      [ "Matrix", "class_killer_math_1_1_matrix.html", "class_killer_math_1_1_matrix" ],
+      [ "Matrix3", "class_killer_math_1_1_matrix3.html", "class_killer_math_1_1_matrix3" ],
       [ "Matrix4", "class_killer_math_1_1_matrix4.html", "class_killer_math_1_1_matrix4" ],
+      [ "Point", "class_killer_math_1_1_point.html", "class_killer_math_1_1_point" ],
       [ "Quaternion", "class_killer_math_1_1_quaternion.html", "class_killer_math_1_1_quaternion" ],
       [ "Random", "class_killer_math_1_1_random.html", "class_killer_math_1_1_random" ],
       [ "Timer", "class_killer_math_1_1_timer.html", "class_killer_math_1_1_timer" ],
-      [ "Vector", "class_killer_math_1_1_vector.html", "class_killer_math_1_1_vector" ]
+      [ "Vector3", "class_killer_math_1_1_vector3.html", "class_killer_math_1_1_vector3" ],
+      [ "Vector4", "class_killer_math_1_1_vector4.html", "class_killer_math_1_1_vector4" ]
     ] ],
     [ "KillerPhysics", null, [
       [ "AnchoredSpring", "class_killer_physics_1_1_anchored_spring.html", "class_killer_physics_1_1_anchored_spring" ],

@@ -1,4 +1,4 @@
-.TH "KillerPhysics::ParticleContact" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::ParticleContact" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -13,7 +13,7 @@ KillerPhysics::ParticleContact
 .RI "void \fBSetRestitution\fP (\fBreal\fP restitution)"
 .br
 .ti -1c
-.RI "void \fBSetContactNormal\fP (\fBKM::Vector\fP &normal)"
+.RI "void \fBSetContactNormal\fP (\fBKM::Vector4\fP &normal)"
 .br
 .ti -1c
 .RI "void \fBSetContacts\fP (shared_ptr< \fBParticle\fP > particle1, shared_ptr< \fBParticle\fP > particle2=nullptr)"
@@ -54,10 +54,10 @@ KillerPhysics::ParticleContact
 .RI "shared_ptr< \fBParticle\fP > \fB_particles\fP [2]"
 .br
 .ti -1c
-.RI "shared_ptr< \fBKM::Vector\fP > \fB_particleMovements\fP [2]"
+.RI "shared_ptr< \fBKM::Vector4\fP > \fB_particleMovements\fP [2]"
 .br
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_contactNormal\fP"
+.RI "\fBKM::Vector4\fP \fB_contactNormal\fP"
 .br
 .ti -1c
 .RI "\fBreal\fP \fB_restitution\fP"

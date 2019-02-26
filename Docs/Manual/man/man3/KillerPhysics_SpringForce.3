@@ -1,4 +1,4 @@
-.TH "KillerPhysics::SpringForce" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::SpringForce" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -77,11 +77,11 @@ f = -k(l - l^0)
 .PP
 Where l is the location of the end of the spring, and l^0 is the reseting position of the spring\&.
 .PP
-Since this is a vector force, the vector version of the law looks like this:
+Since this is a Vector4 force, the Vector4 version of the law looks like this:
 .PP
 f = -l(|d| - l^0)^d
 .PP
-Where |d| is the magnitude or length of d, which is distance away from l^0 our spring now is, and ^d is a unit vector version of d\&. Also:
+Where |d| is the magnitude or length of d, which is distance away from l^0 our spring now is, and ^d is a unit Vector4 version of d\&. Also:
 .PP
 d = xA - xB
 .PP

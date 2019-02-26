@@ -1,4 +1,4 @@
-.TH "F:/Projects/Killer_Engine/Headers/Engine/Atom.h" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "F:/Projects/Killer_Engine/Headers/Engine/Atom.h" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -110,6 +110,13 @@ F:/Projects/Killer_Engine/Headers/Engine/Atom.h
 .br
 .RI "A configurable real number\&. Currently set to be 32 bits, could be set to 64 bits\&. "
 .in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBx\fP = 0, \fBy\fP = 1, \fBz\fP = 2, \fBw\fP = 3 }"
+.br
+.in -1c
 .SS "Functions"
 
 .in +1c
@@ -137,6 +144,10 @@ F:/Projects/Killer_Engine/Headers/Engine/Atom.h
 .SH "Detailed Description"
 .PP 
 Called Atom because it is the most basic include file\&. This is the file to be included with all other files that are made\&. This contains the type definitions that will be the atomic variable types for the KillerEngine (as suggested by Jason Gregory in Game Engine Architecture 2nd Edition)\&. It will also contain the basic header files that every other class or file will need\&. 
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "anonymous enum"
+Alias set up to allow a refernce to each element of a Vector, Matrix, Quaternion and any other type of object that uses an x, y, z and w value\&. 
 .SH "Function Documentation"
 .PP 
 .SS "\fBF32\fP DEGREE (\fBF32\fP radian)\fC [inline]\fP"

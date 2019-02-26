@@ -33,11 +33,12 @@ var hierarchy =
     ] ],
     [ "KillerEngine::Level", "class_killer_engine_1_1_level.html", null ],
     [ "KillerEngine::LevelManager", "class_killer_engine_1_1_level_manager.html", null ],
-    [ "KillerMath::Matrix", "class_killer_math_1_1_matrix.html", null ],
+    [ "KillerMath::Matrix3", "class_killer_math_1_1_matrix3.html", null ],
     [ "KillerMath::Matrix4< T >", "class_killer_math_1_1_matrix4.html", null ],
     [ "KillerCollisions::OBB", "class_killer_collisions_1_1_o_b_b.html", null ],
     [ "KillerPhysics::ParticleContact", "class_killer_physics_1_1_particle_contact.html", null ],
     [ "KillerPhysics::ParticleContactResolver", "class_killer_physics_1_1_particle_contact_resolver.html", null ],
+    [ "KillerMath::Point", "class_killer_math_1_1_point.html", null ],
     [ "KillerPhysics::PotentialContact", "struct_killer_physics_1_1_potential_contact.html", null ],
     [ "KillerMath::Quaternion", "class_killer_math_1_1_quaternion.html", null ],
     [ "KillerMath::Random", "class_killer_math_1_1_random.html", null ],
@@ -49,7 +50,8 @@ var hierarchy =
     [ "KillerEngine::Texture", "class_killer_engine_1_1_texture.html", null ],
     [ "KillerEngine::TextureManager", "class_killer_engine_1_1_texture_manager.html", null ],
     [ "KillerMath::Timer", "class_killer_math_1_1_timer.html", null ],
-    [ "KillerMath::Vector", "class_killer_math_1_1_vector.html", null ],
+    [ "KillerMath::Vector3", "class_killer_math_1_1_vector3.html", null ],
+    [ "KillerMath::Vector4", "class_killer_math_1_1_vector4.html", null ],
     [ "KillerEngine::Vertex", "struct_killer_engine_1_1_vertex.html", null ],
     [ "KillerEngine::WinProgram", "class_killer_engine_1_1_win_program.html", null ]
 ];

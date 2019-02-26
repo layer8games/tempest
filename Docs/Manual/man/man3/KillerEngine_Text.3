@@ -1,4 +1,4 @@
-.TH "KillerEngine::Text" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Text" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -18,7 +18,7 @@ KillerEngine::Text
 .RI "\fB~Text\fP (void)"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (const \fBKM::Vector\fP &pos)"
+.RI "void \fBSetPosition\fP (const \fBKM::Vector4\fP &pos)"
 .br
 .ti -1c
 .RI "void \fBSetPosition\fP (\fBF32\fP x, \fBF32\fP y)"
@@ -30,7 +30,7 @@ KillerEngine::Text
 .RI "void \fBSetTextColor\fP (const \fBColor\fP &col)"
 .br
 .ti -1c
-.RI "void \fBSetUniforms\fP (string name, const \fBKM::Matrix\fP &matrix)"
+.RI "void \fBSetUniforms\fP (string name, const \fBKM::Matrix4\fP &Matrix4)"
 .br
 .ti -1c
 .RI "string \fBGetText\fP (void)"
@@ -63,13 +63,13 @@ KillerEngine::Text
 .RI "std::vector< shared_ptr< \fBGlyph\fP > > \fBGetCharacterList\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetScale\fP (const \fBKM::Vector\fP &s)"
+.RI "void \fBSetScale\fP (const \fBKM::Vector4\fP &s)"
 .br
 .ti -1c
 .RI "void \fBSetScale\fP (\fBF32\fP xScale, \fBF32\fP yScale)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetScale\fP (void)"
+.RI "const \fBKM::Vector4\fP & \fBGetScale\fP (void)"
 .br
 .ti -1c
 .RI "void \fBSetColor\fP (const \fBColor\fP &c)"
@@ -109,7 +109,7 @@ KillerEngine::Text
 .br
 .RI "Total space the \fBText\fP will take up on screen\&. "
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_pos\fP"
+.RI "\fBKM::Vector4\fP \fB_pos\fP"
 .br
 .RI "Position of the first \fBGlyph\fP in the \fBText\fP\&. "
 .ti -1c
@@ -125,7 +125,7 @@ KillerEngine::Text
 .br
 .RI "List of all generated Glyphs\&. "
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_scale\fP"
+.RI "\fBKM::Vector4\fP \fB_scale\fP"
 .br
 .RI "The scaling factor used for each \fBGlyph\fP\&. "
 .ti -1c
@@ -171,7 +171,7 @@ Returns all the Glyphs in the \fBText\fP\&. Used for copying\&.
 Returns the current \fBColor\fP of the \fBText\fP\&. 
 .SS "const shared_ptr<\fBFont\fP> KillerEngine::Text::GetFont (void)\fC [inline]\fP"
 Returns the font \fBText\fP is using\&. 
-.SS "const \fBKM::Vector\fP& KillerEngine::Text::GetScale (void)\fC [inline]\fP"
+.SS "const \fBKM::Vector4\fP& KillerEngine::Text::GetScale (void)\fC [inline]\fP"
 Returns the current scale of the \fBText\fP\&. 
 .SS "string KillerEngine::Text::GetText (void)\fC [inline]\fP"
 Returns a string version of the current text represented by Glyphs (if the Glyphs have been generated with a font)\&. 
@@ -230,7 +230,7 @@ Sets the font for the \fBText\fP and all of the Glyphs, if there are any\&.
 
 .SS "void KillerEngine::Text::SetInactive (void)\fC [inline]\fP"
 Sets each \fBGlyph\fP to not active state\&. 
-.SS "void KillerEngine::Text::SetPosition (const \fBKM::Vector\fP & pos)\fC [inline]\fP"
+.SS "void KillerEngine::Text::SetPosition (const \fBKM::Vector4\fP & pos)\fC [inline]\fP"
 Updates the position of each \fBGlyph\fP in the \fBText\fP\&. 
 .PP
 \fBParameters:\fP
@@ -250,12 +250,12 @@ Updates the position of each \fBGlyph\fP in the \fBText\fP\&.
 .RE
 .PP
 
-.SS "void KillerEngine::Text::SetScale (const \fBKM::Vector\fP & s)\fC [inline]\fP"
+.SS "void KillerEngine::Text::SetScale (const \fBKM::Vector4\fP & s)\fC [inline]\fP"
 Sets the scale of the \fBText\fP and updates any Glyphs\&. Calls GameObject::SetScale() 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIs\fP is the Vector used as the scale\&. 
+\fIs\fP is the Vector4 used as the scale\&. 
 .RE
 .PP
 
@@ -268,14 +268,14 @@ Sets the color of each \fBGlyph\fP in the \fBText\fP\&.
 .RE
 .PP
 
-.SS "void Text::SetUniforms (string name, const \fBKM::Matrix\fP & matrix)"
+.SS "void Text::SetUniforms (string name, const \fBKM::Matrix4\fP & Matrix4)"
 A wrapper function that calls GameObject::SetUniform on each \fBGlyph\fP using the input\&. 
 .PP
 \fBParameters:\fP
 .RS 4
 \fIname\fP is the name of the uniform that will be set\&. 
 .br
-\fImatrix\fP is the transformation matrix to be used by each \fBGlyph\fP\&. 
+\fIMatrix4\fP is the transformation Matrix4 to be used by each \fBGlyph\fP\&. 
 .RE
 .PP
 

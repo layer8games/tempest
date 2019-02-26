@@ -1,24 +1,40 @@
-.TH "bug" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "bug" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 bug \- Bug List 
 
-.IP "\fBMember \fBKillerMath::Matrix::AddRotateX\fP (F32 val)\fP" 1c
+.IP "\fBMember \fBKillerMath::Matrix3::AddRotateX\fP (F32 val)\fP" 1c
 Completely untested and probably not working at all\&.  
-.IP "\fBMember \fBKillerMath::Matrix::AddRotateY\fP (F32 val)\fP" 1c
+.IP "\fBMember \fBKillerMath::Matrix3::AddRotateY\fP (F32 val)\fP" 1c
 Completely untested and probably not working at all\&.  
-.IP "\fBMember \fBKillerMath::Matrix::AddRotateZ\fP (F32 val)\fP" 1c
+.IP "\fBMember \fBKillerMath::Matrix3::AddRotateZ\fP (F32 val)\fP" 1c
 Completely untested and probably not working at all\&.  
-.IP "\fBMember \fBKillerMath::Matrix::AddRotation\fP (F32 xVal, F32 yVal, F32 zVal)\fP" 1c
+.IP "\fBMember \fBKillerMath::Matrix3::AddRotation\fP (F32 xVal, F32 yVal, F32 zVal)\fP" 1c
 Not working at all\&. The math is wrong, and rotations are not working in general\&.  
-.IP "\fBMember \fBKillerMath::Matrix::SetRotate\fP (F32 xVal, F32 yVal, F32 zVal)\fP" 1c
+.IP "\fBMember \fBKillerMath::Matrix3::SetRotate\fP (F32 xVal, F32 yVal, F32 zVal)\fP" 1c
 Not working at all\&. The math is wrong, and rotations are not working in general\&.  
-.IP "\fBMember \fBKillerMath::Matrix::SetRotateX\fP (F32 val)\fP" 1c
+.IP "\fBMember \fBKillerMath::Matrix3::SetRotateX\fP (F32 val)\fP" 1c
 This is not working at all\&.  
-.IP "\fBMember \fBKillerMath::Matrix::SetRotateY\fP (F32 val)\fP" 1c
+.IP "\fBMember \fBKillerMath::Matrix3::SetRotateY\fP (F32 val)\fP" 1c
 This is not working at all\&.  
-.IP "\fBMember \fBKillerMath::Matrix::SetRotateZ\fP (F32 val)\fP" 1c
+.IP "\fBMember \fBKillerMath::Matrix3::SetRotateZ\fP (F32 val)\fP" 1c
+This is not working at all\&.  
+.IP "\fBMember \fBKillerMath::Matrix4< T >::AddRotateX\fP (F32 val)\fP" 1c
+Completely untested and probably not working at all\&.  
+.IP "\fBMember \fBKillerMath::Matrix4< T >::AddRotateY\fP (F32 val)\fP" 1c
+Completely untested and probably not working at all\&.  
+.IP "\fBMember \fBKillerMath::Matrix4< T >::AddRotateZ\fP (F32 val)\fP" 1c
+Completely untested and probably not working at all\&.  
+.IP "\fBMember \fBKillerMath::Matrix4< T >::AddRotation\fP (F32 xVal, F32 yVal, F32 zVal)\fP" 1c
+Not working at all\&. The math is wrong, and rotations are not working in general\&.  
+.IP "\fBMember \fBKillerMath::Matrix4< T >::SetRotate\fP (F32 xVal, F32 yVal, F32 zVal)\fP" 1c
+Not working at all\&. The math is wrong, and rotations are not working in general\&.  
+.IP "\fBMember \fBKillerMath::Matrix4< T >::SetRotateX\fP (F32 val)\fP" 1c
+This is not working at all\&.  
+.IP "\fBMember \fBKillerMath::Matrix4< T >::SetRotateY\fP (F32 val)\fP" 1c
+This is not working at all\&.  
+.IP "\fBMember \fBKillerMath::Matrix4< T >::SetRotateZ\fP (F32 val)\fP" 1c
 This is not working at all\&.  
 .IP "\fBMember \fBKillerMath::Quaternion::Negate\fP (void)\fP" 1c
 This should be changed to be the - operator\&. Multiplies all elements of this \fBQuaternion\fP by -1\&. 

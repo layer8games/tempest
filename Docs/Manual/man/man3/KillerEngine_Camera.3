@@ -1,4 +1,4 @@
-.TH "KillerEngine::Camera" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Camera" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -18,7 +18,7 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .RI "virtual void \fBv_Update\fP (void)"
 .br
 .ti -1c
-.RI "virtual void \fBv_Move\fP (const \fBKM::Vector\fP &offset)"
+.RI "virtual void \fBv_Move\fP (const \fBKM::Vector4\fP &offset)"
 .br
 .ti -1c
 .RI "void \fBSetOrthographic\fP (void)"
@@ -33,13 +33,13 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .RI "void \fBSetPerspective\fP (\fBF32\fP fov, \fBF32\fP aspect, \fBF32\fP nearPlane, \fBF32\fP farPlane)"
 .br
 .ti -1c
-.RI "void \fBSetDefaultMatrix\fP (void)"
+.RI "void \fBSetDefaultMatrix4\fP (void)"
 .br
 .ti -1c
-.RI "virtual const \fBKM::Matrix\fP \fBGetViewMatrix\fP (void)"
+.RI "virtual const \fBKM::Matrix4\fP \fBGetViewMatrix4\fP (void)"
 .br
 .ti -1c
-.RI "const \fBKM::Matrix\fP & \fBGetProjectionMatrix\fP (void)"
+.RI "const \fBKM::Matrix4\fP & \fBGetProjectionMatrix4\fP (void)"
 .br
 .ti -1c
 .RI "void \fBSetColor\fP (const \fBColor\fP &col)"
@@ -54,7 +54,7 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .RI "void \fBSetPosition\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (const \fBKM::Vector\fP &vec)"
+.RI "void \fBSetPosition\fP (const \fBKM::Vector4\fP &vec)"
 .br
 .ti -1c
 .RI "void \fBScalePosition\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP scale)"
@@ -63,13 +63,13 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .RI "void \fBScalePosition\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z, \fBF32\fP scale)"
 .br
 .ti -1c
-.RI "void \fBScalePosition\fP (const \fBKM::Vector\fP &vec, \fBF32\fP scale)"
+.RI "void \fBScalePosition\fP (const \fBKM::Vector4\fP &vec, \fBF32\fP scale)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetPosition\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetPosition\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetTarget\fP (const \fBKM::Vector\fP &target)"
+.RI "void \fBSetTarget\fP (const \fBKM::Vector4\fP &target)"
 .br
 .ti -1c
 .RI "void \fBSetTarget\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
@@ -78,49 +78,49 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .RI "void \fBSetTarget\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetTarget\fP (void)"
+.RI "const \fBKM::Vector4\fP & \fBGetTarget\fP (void)"
 .br
 .ti -1c
-.RI "void \fBSetUpVector\fP (\fBF32\fP val)"
+.RI "void \fBSetUpVector4\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBSetUpVector\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
+.RI "void \fBSetUpVector4\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
-.RI "void \fBSetUpVector\fP (const \fBKM::Vector\fP &vec)"
+.RI "void \fBSetUpVector4\fP (const \fBKM::Vector4\fP &vec)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetUpVector\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetUpVector4\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetLookVector\fP (\fBF32\fP val)"
+.RI "void \fBSetLookVector4\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBSetLookVector\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
+.RI "void \fBSetLookVector4\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
 .br
 .ti -1c
-.RI "void \fBSetLookVector\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
+.RI "void \fBSetLookVector4\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
-.RI "void \fBSetLookVector\fP (const \fBKM::Vector\fP &vec)"
+.RI "void \fBSetLookVector4\fP (const \fBKM::Vector4\fP &vec)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetLookVector\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetLookVector4\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetRightVector\fP (\fBF32\fP val)"
+.RI "void \fBSetRightVector4\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBSetRightVector\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
+.RI "void \fBSetRightVector4\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
 .br
 .ti -1c
-.RI "void \fBSetRightVector\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
+.RI "void \fBSetRightVector4\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
-.RI "void \fBSetRightVector\fP (const \fBKM::Vector\fP &vec)"
+.RI "void \fBSetRightVector4\fP (const \fBKM::Vector4\fP &vec)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetRightVector\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetRightVector4\fP (void) const"
 .br
 .ti -1c
 .RI "void \fBSetMouseSensitivity\fP (\fBF32\fP val)"
@@ -145,23 +145,23 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 
 .in +1c
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_position\fP"
+.RI "\fBKM::Vector4\fP \fB_position\fP"
 .br
 .RI "Position of \fBCamera\fP in world space\&. "
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_target\fP"
+.RI "\fBKM::Vector4\fP \fB_target\fP"
 .br
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_up\fP"
+.RI "\fBKM::Vector4\fP \fB_up\fP"
 .br
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_look\fP"
+.RI "\fBKM::Vector4\fP \fB_look\fP"
 .br
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_right\fP"
+.RI "\fBKM::Vector4\fP \fB_right\fP"
 .br
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_lastMouseCoords\fP"
+.RI "\fBKM::Vector4\fP \fB_lastMouseCoords\fP"
 .br
 .ti -1c
 .RI "\fBF32\fP \fB_mouseSensitivity\fP"
@@ -186,7 +186,7 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 
 .in +1c
 .ti -1c
-.RI "virtual void \fB_v_UpdateCameraVectors\fP (void)"
+.RI "virtual void \fB_v_UpdateCameraVector4s\fP (void)"
 .br
 .in -1c
 .SS "Private Attributes"
@@ -197,14 +197,14 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .br
 .RI "Background color of current level\&. "
 .ti -1c
-.RI "\fBKM::Matrix\fP \fB_projection\fP"
+.RI "\fBKM::Matrix4\fP \fB_projection\fP"
 .br
-.RI "Projection Matrix (Orthographic or Perspective)\&. Not used\&. "
+.RI "Projection Matrix4 (Orthographic or Perspective)\&. Not used\&. "
 .in -1c
 .SH "Member Function Documentation"
 .PP 
-.SS "void Camera::SetDefaultMatrix (void)"
-Helper function to set the projection Matrix to be an identity Matrix\&. 
+.SS "void Camera::SetDefaultMatrix4 (void)"
+Helper function to set the projection Matrix4 to be an identity Matrix4\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -213,7 +213,7 @@ Helper function to set the projection Matrix to be an identity Matrix\&.
 .PP
 
 .SS "void Camera::SetOrthographic (void)"
-Sets private Matrix to use an orthogrphic projection\&. This calls the \fBWinProgram\fP to get the demensions for the Matrix\&. 
+Sets private Matrix4 to use an orthogrphic projection\&. This calls the \fBWinProgram\fP to get the demensions for the Matrix4\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -222,7 +222,7 @@ Sets private Matrix to use an orthogrphic projection\&. This calls the \fBWinPro
 .PP
 
 .SS "void Camera::SetPerspective (void)"
-Sets the private Matrix to use a perspective projection\&. Values are hard coded for now\&. 
+Sets the private Matrix4 to use a perspective projection\&. Values are hard coded for now\&. 
 .PP
 \fBParameters:\fP
 .RS 4

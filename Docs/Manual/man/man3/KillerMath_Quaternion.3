@@ -1,4 +1,4 @@
-.TH "KillerMath::Quaternion" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Quaternion" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -78,7 +78,7 @@ KillerMath::Quaternion
 .RI "void \fBNormalize\fP (void)"
 .br
 .ti -1c
-.RI "void \fBAddScaledVector\fP (const \fBVector\fP &vec, \fBF32\fP scale)"
+.RI "void \fBAddScaledVector4\fP (const \fBVector4\fP &vec, \fBF32\fP scale)"
 .br
 .in -1c
 .SS "Private Types"
@@ -98,7 +98,7 @@ KillerMath::Quaternion
 .in -1c
 .SH "Detailed Description"
 .PP 
-Quaternions will handle the rotational math that the engine will use\&. This class is the holder of these functions\&. The \fBQuaternion\fP is represent by an Array of 4 F32 values\&. These include w, x, y, z\&. Unlike the \fBVector\fP, w is the first element\&. 
+Quaternions will handle the rotational math that the engine will use\&. This class is the holder of these functions\&. The \fBQuaternion\fP is represent by an Array of 4 F32 values\&. These include w, x, y, z\&. Unlike the \fBVector4\fP, w is the first element\&. 
 .SH "Member Enumeration Documentation"
 .PP 
 .SS "anonymous enum\fC [private]\fP"
@@ -144,8 +144,8 @@ Copy constructor\&. Calls the [] operator to get the elements to copy into this 
 Default Destructor\&. Has no direct function at this time\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void Quaternion::AddScaledVector (const \fBVector\fP & vec, \fBF32\fP scale)"
-Adds a scaled \fBVector\fP into this one\&. 
+.SS "void Quaternion::AddScaledVector4 (const \fBVector4\fP & vec, \fBF32\fP scale)"
+Adds a scaled \fBVector4\fP into this one\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -156,7 +156,7 @@ Adds a scaled \fBVector\fP into this one\&.
 .PP
 
 .SS "\fBQuaternion\fP Quaternion::Conjugate (void)"
-Returns a new \fBQuaternion\fP that represents the negation of the vector portion of the \fBQuaternion\fP\&. 
+Returns a new \fBQuaternion\fP that represents the negation of the \fBVector4\fP portion of the \fBQuaternion\fP\&. 
 .SS "\fBQuaternion\fP Quaternion::Difference (\fBQuaternion\fP & Q)"
 Returns a \fBQuaternion\fP that reprsents the angular displacement between this \fBQuaternion\fP and another\&. 
 .PP
@@ -202,7 +202,7 @@ Scalar multiplication\&. Performs a compoenent wise multiplication\&.
 .PP
 
 .SS "\fBQuaternion\fP Quaternion::operator* (const \fBQuaternion\fP & q2)"
-\fBQuaternion\fP multiplication\&. Similar to the \fBVector::CrossProduct\fP\&. 
+\fBQuaternion\fP multiplication\&. Similar to the \fBVector4::CrossProduct\fP\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -220,7 +220,7 @@ Scalar multiplication\&. Performs a component wise operation\&.
 .PP
 
 .SS "\fBQuaternion\fP & Quaternion::operator*= (const \fBQuaternion\fP & q2)"
-\fBQuaternion\fP multiplication\&. Similar to the \fBVector::CrossProduct\fP\&. 
+\fBQuaternion\fP multiplication\&. Similar to the \fBVector4::CrossProduct\fP\&. 
 .PP
 \fBParameters:\fP
 .RS 4

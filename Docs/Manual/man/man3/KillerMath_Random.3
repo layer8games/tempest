@@ -1,4 +1,4 @@
-.TH "KillerMath::Random" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Random" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -30,7 +30,7 @@ KillerMath::Random
 .RI "\fBF64\fP \fBRandomDouble\fP (\fBF64\fP min, \fBF64\fP max)"
 .br
 .ti -1c
-.RI "\fBVector\fP \fBRandomVector\fP (\fBF32\fP min, \fBF32\fP max, bool is2d=false)"
+.RI "\fBVector4\fP \fBRandomVector4\fP (\fBF32\fP min, \fBF32\fP max, bool is2d=false)"
 .br
 .ti -1c
 .RI "\fBQuaternion\fP \fBRandomQuaternion\fP (\fBF32\fP min, \fBF32\fP max)"
@@ -129,8 +129,8 @@ Returns a \fBQuaternion\fP with w,x,y and z between min and max
 .RE
 .PP
 
-.SS "\fBVector\fP Random::RandomVector (\fBF32\fP min, \fBF32\fP max, bool is2d = \fCfalse\fP)"
-Returns a \fBVector\fP with x, y and z (depending on flag) between min and max 
+.SS "\fBVector4\fP Random::RandomVector4 (\fBF32\fP min, \fBF32\fP max, bool is2d = \fCfalse\fP)"
+Returns a \fBVector4\fP with x, y and z (depending on flag) between min and max 
 .PP
 \fBParameters:\fP
 .RS 4

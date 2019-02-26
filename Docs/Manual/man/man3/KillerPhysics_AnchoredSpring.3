@@ -1,4 +1,4 @@
-.TH "KillerPhysics::AnchoredSpring" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::AnchoredSpring" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -17,7 +17,7 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .RI "\fBAnchoredSpring\fP (void)"
 .br
 .ti -1c
-.RI "\fBAnchoredSpring\fP (\fBKM::Vector\fP anchor, \fBreal\fP springConstant, \fBreal\fP restLength)"
+.RI "\fBAnchoredSpring\fP (\fBKM::Vector4\fP anchor, \fBreal\fP springConstant, \fBreal\fP restLength)"
 .br
 .ti -1c
 .RI "\fB~AnchoredSpring\fP (void)"
@@ -29,7 +29,7 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .RI "void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody\fP > body) final"
 .br
 .ti -1c
-.RI "void \fBSetAnchor\fP (\fBKM::Vector\fP &anchor)"
+.RI "void \fBSetAnchor\fP (\fBKM::Vector4\fP &anchor)"
 .br
 .ti -1c
 .RI "void \fBSetSpringConstant\fP (\fBreal\fP constant)"
@@ -42,7 +42,7 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_anchor\fP"
+.RI "\fBKM::Vector4\fP \fB_anchor\fP"
 .br
 .RI "The location of the anchor point of the spring\&. "
 .ti -1c
@@ -70,11 +70,11 @@ f = -k(l - l^0)
 .PP
 Where l is the location of the end of the spring, and l^0 is the reseting position of the spring\&.
 .PP
-Since this is a vector force, the vector version of the law looks like this:
+Since this is a Vector4 force, the Vector4 version of the law looks like this:
 .PP
 f = -l(|d| - l^0)^d
 .PP
-Where |d| is the magnitude or length of d, which is distance away from l^0 our spring now is, and ^d is a unit vector version of d\&. Also:
+Where |d| is the magnitude or length of d, which is distance away from l^0 our spring now is, and ^d is a unit Vector4 version of d\&. Also:
 .PP
 d = xA - xB
 .PP
@@ -89,7 +89,7 @@ To set an Anchored Spring Force Generator, simple give it an object that cannot 
 .PP 
 .SS "AnchoredSpring::AnchoredSpring (void)"
 Sets all values to 1, with anchor at 0\&. 
-.SS "AnchoredSpring::AnchoredSpring (\fBKM::Vector\fP anchor, \fBreal\fP springConstant, \fBreal\fP restLength)"
+.SS "AnchoredSpring::AnchoredSpring (\fBKM::Vector4\fP anchor, \fBreal\fP springConstant, \fBreal\fP restLength)"
 Sets up the default values of the spring\&. 
 .PP
 \fBParameters:\fP
@@ -106,7 +106,7 @@ Sets up the default values of the spring\&.
 No implementation\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void KillerPhysics::AnchoredSpring::SetAnchor (\fBKM::Vector\fP & anchor)\fC [inline]\fP"
+.SS "void KillerPhysics::AnchoredSpring::SetAnchor (\fBKM::Vector4\fP & anchor)\fC [inline]\fP"
 Changes the location of the other end of the spring\&. 
 .PP
 \fBParameters:\fP

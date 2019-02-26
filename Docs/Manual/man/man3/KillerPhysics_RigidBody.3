@@ -1,4 +1,4 @@
-.TH "KillerPhysics::RigidBody" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::RigidBody" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -21,67 +21,67 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "void \fBCalculateDerivedData\fP (void)"
 .br
 .ti -1c
-.RI "const \fBKM::Matrix\fP & \fBGetInverseInertiaTensor\fP (void) const"
+.RI "const \fBKM::Matrix4\fP & \fBGetInverseInertiaTensor\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetInverseInertiaTensor\fP (const \fBKM::Matrix\fP &mat)"
+.RI "void \fBSetInverseInertiaTensor\fP (const \fBKM::Matrix4\fP &mat)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetVelocity\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetVelocity\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetVelocity\fP (const \fBKM::Vector\fP &vec)"
+.RI "void \fBSetVelocity\fP (const \fBKM::Vector4\fP &vec)"
 .br
 .ti -1c
 .RI "void \fBSetVelocity\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
-.RI "void \fBAddScaledVelocity\fP (const \fBKM::Vector\fP &vec, \fBF32\fP scale)"
+.RI "void \fBAddScaledVelocity\fP (const \fBKM::Vector4\fP &vec, \fBF32\fP scale)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetAcceleration\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetAcceleration\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetAcceleration\fP (const \fBKM::Vector\fP &vec)"
+.RI "void \fBSetAcceleration\fP (const \fBKM::Vector4\fP &vec)"
 .br
 .ti -1c
 .RI "void \fBSetAcceleration\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
-.RI "void \fBAddScaledAcceleration\fP (const \fBKM::Vector\fP &vec, \fBF32\fP scale)"
+.RI "void \fBAddScaledAcceleration\fP (const \fBKM::Vector4\fP &vec, \fBF32\fP scale)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetRotation\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetRotation\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetRotation\fP (const \fBKM::Vector\fP &vec)"
+.RI "void \fBSetRotation\fP (const \fBKM::Vector4\fP &vec)"
 .br
 .ti -1c
 .RI "void \fBSetRotation\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
-.RI "void \fBAddScaledRotation\fP (const \fBKM::Vector\fP &vec, \fBF32\fP scale)"
+.RI "void \fBAddScaledRotation\fP (const \fBKM::Vector4\fP &vec, \fBF32\fP scale)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetForces\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetForces\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBAddForce\fP (const \fBKM::Vector\fP &force)"
+.RI "void \fBAddForce\fP (const \fBKM::Vector4\fP &force)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetTorque\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetTorque\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBAddTorque\fP (const \fBKM::Vector\fP &torque)"
+.RI "void \fBAddTorque\fP (const \fBKM::Vector4\fP &torque)"
 .br
 .ti -1c
 .RI "void \fBClearAccumulators\fP (void)"
 .br
 .ti -1c
-.RI "void \fBAddForceAtPoint\fP (const \fBKM::Vector\fP &force, const \fBKM::Vector\fP &point)"
+.RI "void \fBAddForceAtPoint\fP (const \fBKM::Vector4\fP &force, const \fBKM::Vector4\fP &point)"
 .br
 .ti -1c
-.RI "void \fBAddForceAtLocalPoint\fP (const \fBKM::Vector\fP &force, const \fBKM::Vector\fP &point)"
+.RI "void \fBAddForceAtLocalPoint\fP (const \fBKM::Vector4\fP &force, const \fBKM::Vector4\fP &point)"
 .br
 .ti -1c
 .RI "\fBreal\fP \fBGetInverseMass\fP (void) const"
@@ -125,25 +125,25 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBKM::Matrix\fP \fB_inverseInertiaTensor\fP"
+.RI "\fBKM::Matrix4\fP \fB_inverseInertiaTensor\fP"
 .br
 .ti -1c
-.RI "\fBKM::Matrix\fP \fB_inverseInertiaTensorInWorld\fP"
+.RI "\fBKM::Matrix4\fP \fB_inverseInertiaTensorInWorld\fP"
 .br
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_velocity\fP"
+.RI "\fBKM::Vector4\fP \fB_velocity\fP"
 .br
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_acceleration\fP"
+.RI "\fBKM::Vector4\fP \fB_acceleration\fP"
 .br
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_rotation\fP"
+.RI "\fBKM::Vector4\fP \fB_rotation\fP"
 .br
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_forceAccum\fP"
+.RI "\fBKM::Vector4\fP \fB_forceAccum\fP"
 .br
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_torqueAccum\fP"
+.RI "\fBKM::Vector4\fP \fB_torqueAccum\fP"
 .br
 .ti -1c
 .RI "\fBreal\fP \fB_inverseMass\fP"

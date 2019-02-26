@@ -6,6 +6,7 @@ var _error_manager_8h =
       [ "UNKNOWN_ERROR", "_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7dadd0ce26667f4c3f9a68d68a33a84de58", null ],
       [ "APPLICATION", "_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7dab39c4502496fa56188f05e46cdda531c", null ],
       [ "ENGINE", "_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7daa6317ce8450f383d1987f051ccf9cf71", null ],
+      [ "MATH", "_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7da289394a611480474fec1e304f11283ce", null ],
       [ "PHYSICS", "_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7da2d6acc572ed92d19c7aa2475023dbe7c", null ],
       [ "WINDOWS", "_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7dafae02e774ecb52ea1f40ad73b2304ba0", null ],
       [ "OPENGL", "_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7da114a942a720b274436b032ce03096fae", null ],

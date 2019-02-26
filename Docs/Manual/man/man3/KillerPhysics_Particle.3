@@ -1,4 +1,4 @@
-.TH "KillerPhysics::Particle" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::Particle" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -35,13 +35,13 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "void \fBClearAccumulator\fP (void)"
 .br
 .ti -1c
-.RI "void \fBAddForce\fP (const \fBKM::Vector\fP force)"
+.RI "void \fBAddForce\fP (const \fBKM::Vector4\fP force)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetVelocity\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetVelocity\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetVelocity\fP (const \fBKM::Vector\fP &vel)"
+.RI "void \fBSetVelocity\fP (const \fBKM::Vector4\fP &vel)"
 .br
 .ti -1c
 .RI "void \fBSetVelocity\fP (\fBF32\fP x, \fBF32\fP y)"
@@ -50,13 +50,13 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "void \fBSetVelocity\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
-.RI "void \fBAddScaledVelocity\fP (const \fBKM::Vector\fP &vec, \fBF32\fP scale)"
+.RI "void \fBAddScaledVelocity\fP (const \fBKM::Vector4\fP &vec, \fBF32\fP scale)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetAcceleration\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetAcceleration\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetAcceleration\fP (const \fBKM::Vector\fP &acc)"
+.RI "void \fBSetAcceleration\fP (const \fBKM::Vector4\fP &acc)"
 .br
 .ti -1c
 .RI "void \fBSetAcceleration\fP (\fBF32\fP x, \fBF32\fP y)"
@@ -65,16 +65,16 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "void \fBSetAcceleration\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
-.RI "void \fBAddScaledAcceleration\fP (const \fBKM::Vector\fP &acc, \fBF32\fP scale)"
+.RI "void \fBAddScaledAcceleration\fP (const \fBKM::Vector4\fP &acc, \fBF32\fP scale)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetForces\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetForces\fP (void) const"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP & \fBGetGravityForce\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetGravityForce\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetGravityForce\fP (const \fBKM::Vector\fP &grav)"
+.RI "void \fBSetGravityForce\fP (const \fBKM::Vector4\fP &grav)"
 .br
 .ti -1c
 .RI "const \fBreal\fP \fBGetInverseMass\fP (void) const"
@@ -102,19 +102,19 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_velocity\fP"
+.RI "\fBKM::Vector4\fP \fB_velocity\fP"
 .br
 .RI "Represents the rate of change, otherwise known as the first differential of the position\&. "
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_acceleration\fP"
+.RI "\fBKM::Vector4\fP \fB_acceleration\fP"
 .br
 .RI "Reprsent the rate of change of the velocity, otherwise known as the second differential of the position\&. "
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_forceAccum\fP"
+.RI "\fBKM::Vector4\fP \fB_forceAccum\fP"
 .br
 .RI "Using D'Lambert's principal, this reprsents the combined forces that will as on this \fBParticle\fP for exactly 1 frame\&. "
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_gravityForce\fP"
+.RI "\fBKM::Vector4\fP \fB_gravityForce\fP"
 .br
 .RI "An optimization, gravity does not have to be treated like other forces, it can permanately be cached\&. "
 .ti -1c
@@ -146,25 +146,25 @@ Reference Copy Constructor\&. This was the perfered method of copy, I don't even
 Default destructor\&. Virtual because this class is a child of the GameObject\&. It performs no function\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void Particle::AddForce (const \fBKM::Vector\fP force)"
+.SS "void Particle::AddForce (const \fBKM::Vector4\fP force)"
 Adds a force that will act upon this \fBParticle\fP\&. This is done by adding the combined forces into the acceleration of the \fBParticle\fP\&. 
-.SS "void KillerPhysics::Particle::AddScaledAcceleration (const \fBKM::Vector\fP & acc, \fBF32\fP scale)\fC [inline]\fP"
-Directly add a scaled vectory into the current acceleration\&. 
+.SS "void KillerPhysics::Particle::AddScaledAcceleration (const \fBKM::Vector4\fP & acc, \fBF32\fP scale)\fC [inline]\fP"
+Directly add a scaled Vector4y into the current acceleration\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIvec\fP is the Vector to be added\&. 
+\fIvec\fP is the Vector4 to be added\&. 
 .br
 \fIscale\fP is the F32 that vec will be scaled by before it is added into the acceleration\&. 
 .RE
 .PP
 
-.SS "void KillerPhysics::Particle::AddScaledVelocity (const \fBKM::Vector\fP & vec, \fBF32\fP scale)\fC [inline]\fP"
-Directly add a scaled vectory into the current velocity\&. 
+.SS "void KillerPhysics::Particle::AddScaledVelocity (const \fBKM::Vector4\fP & vec, \fBF32\fP scale)\fC [inline]\fP"
+Directly add a scaled Vector4y into the current velocity\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIvec\fP is the Vector to be added\&. 
+\fIvec\fP is the Vector4 to be added\&. 
 .br
 \fIscale\fP is the F32 that vec will be scaled by before it is added into the velocity\&. 
 .RE
@@ -172,25 +172,25 @@ Directly add a scaled vectory into the current velocity\&.
 
 .SS "void Particle::ClearAccumulator (void)"
 Removed all forces that have been applied to the \fBParticle\fP this frame\&. 
-.SS "const \fBKM::Vector\fP& KillerPhysics::Particle::GetAcceleration (void) const\fC [inline]\fP"
+.SS "const \fBKM::Vector4\fP& KillerPhysics::Particle::GetAcceleration (void) const\fC [inline]\fP"
 Returns the current acceleration of the particle\&. 
 .SS "const \fBreal\fP KillerPhysics::Particle::GetDamping (void) const\fC [inline]\fP"
 Returns the current damping for the \fBParticle\fP\&. 
-.SS "const \fBKM::Vector\fP& KillerPhysics::Particle::GetForces (void) const\fC [inline]\fP"
+.SS "const \fBKM::Vector4\fP& KillerPhysics::Particle::GetForces (void) const\fC [inline]\fP"
 Returns the total amount of all the forces applied to this particle for this frame added together\&. 
-.SS "const \fBKM::Vector\fP& KillerPhysics::Particle::GetGravityForce (void) const\fC [inline]\fP"
+.SS "const \fBKM::Vector4\fP& KillerPhysics::Particle::GetGravityForce (void) const\fC [inline]\fP"
 Returns the value cached to represent the force of gravity on this \fBParticle\fP\&. 
 .SS "const \fBreal\fP KillerPhysics::Particle::GetInverseMass (void) const\fC [inline]\fP"
 Returns the Inverse Mass of this \fBParticle\fP\&. 
 .SS "const \fBreal\fP Particle::GetMass (void)"
 Returns the actual Mass of the \fBParticle\fP object\&. 
-.SS "const \fBKM::Vector\fP& KillerPhysics::Particle::GetVelocity (void) const\fC [inline]\fP"
+.SS "const \fBKM::Vector4\fP& KillerPhysics::Particle::GetVelocity (void) const\fC [inline]\fP"
 Returns the current velocity of the \fBParticle\fP\&. 
 .SS "bool KillerPhysics::Particle::HasFiniteMass (void)\fC [inline]\fP"
 As a convention, if the inverse mass is less than 0\&.0f, then the mass of this \fBParticle\fP is thought of as being infinate, that is, it is an immovable object\&. This returns the current state of the mass relation to this logic\&. 
 .SS "void Particle::Integrate (void)"
 Integrate is where the physical poperties of a point mass are simulated\&. An algorithm is used to update the velocity based off the acceleration, and the position based off the velocity\&. Forces that are applied to this \fBParticle\fP are taken into account for this update\&. All forces are cleared at the end of the integration step\&. 
-.SS "void KillerPhysics::Particle::SetAcceleration (const \fBKM::Vector\fP & acc)\fC [inline]\fP"
+.SS "void KillerPhysics::Particle::SetAcceleration (const \fBKM::Vector4\fP & acc)\fC [inline]\fP"
 Directly set the acceleration of the \fBParticle\fP without regards to physics or the current value of the acceleration\&. 
 .PP
 \fBParameters:\fP
@@ -232,7 +232,7 @@ Sets the damping value for the \fBParticle\fP\&.
 .RE
 .PP
 
-.SS "void KillerPhysics::Particle::SetGravityForce (const \fBKM::Vector\fP & grav)\fC [inline]\fP"
+.SS "void KillerPhysics::Particle::SetGravityForce (const \fBKM::Vector4\fP & grav)\fC [inline]\fP"
 Sets the cached value that represents the force of gravity on this \fBParticle\fP\&. 
 .PP
 \fBParameters:\fP
@@ -259,7 +259,7 @@ Sets the actual Mass of the \fBParticle\fP object\&. Because Mass is stored as t
 .RE
 .PP
 
-.SS "void KillerPhysics::Particle::SetVelocity (const \fBKM::Vector\fP & vel)\fC [inline]\fP"
+.SS "void KillerPhysics::Particle::SetVelocity (const \fBKM::Vector4\fP & vel)\fC [inline]\fP"
 Directly sets the velocity of the \fBParticle\fP, ignoring acceleration and physics\&. This can be viewed as an impulse, but permanent\&. 
 .PP
 \fBParameters:\fP

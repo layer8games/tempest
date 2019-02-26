@@ -1,4 +1,4 @@
-.TH "F:/Projects/Killer_Engine/Headers/Engine/ErrorManager.h" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "F:/Projects/Killer_Engine/Headers/Engine/ErrorManager.h" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -22,7 +22,7 @@ F:/Projects/Killer_Engine/Headers/Engine/ErrorManager.h
 
 .in +1c
 .ti -1c
-.RI "enum \fBKillerEngine::ErrorCode\fP { \fBKillerEngine::NOT_ERROR\fP, \fBKillerEngine::UNKNOWN_ERROR\fP, \fBAPPLICATION\fP, \fBKillerEngine::ENGINE\fP, \fBKillerEngine::PHYSICS\fP, \fBKillerEngine::WINDOWS\fP, \fBKillerEngine::OPENGL\fP, \fBKillerEngine::SHADER\fP, \fBGLFW\fP, \fBTEXTURE_MANAGER\fP, \fBGAMEOBJECT\fP, \fBFREETYPE\fP }"
+.RI "enum \fBKillerEngine::ErrorCode\fP { \fBKillerEngine::NOT_ERROR\fP, \fBKillerEngine::UNKNOWN_ERROR\fP, \fBKillerEngine::APPLICATION\fP, \fBKillerEngine::ENGINE\fP, \fBKillerEngine::MATH\fP, \fBKillerEngine::PHYSICS\fP, \fBKillerEngine::WINDOWS\fP, \fBKillerEngine::OPENGL\fP, \fBKillerEngine::SHADER\fP, \fBKillerEngine::GLFW\fP, \fBKillerEngine::TEXTURE_MANAGER\fP, \fBKillerEngine::GAMEOBJECT\fP, \fBKillerEngine::FREETYPE\fP }"
 .br
 .in -1c
 .SH "Enumeration Type Documentation"
@@ -39,8 +39,14 @@ Default value\&. Shouldn't ever be used\&.
 \fB\fIUNKNOWN_ERROR \fP\fP
 Fall through code, indicates an error in the setting of an error\&. 
 .TP
+\fB\fIAPPLICATION \fP\fP
+Indicates and error in the end application, not the engine itself\&. 
+.TP
 \fB\fIENGINE \fP\fP
 Indicates the error is in the engine's main code, not very specific\&. 
+.TP
+\fB\fIMATH \fP\fP
+Indicates an error in the math section of the engine\&. 
 .TP
 \fB\fIPHYSICS \fP\fP
 Indicates the error is in the KillerPhysics namespace\&. 
@@ -53,6 +59,18 @@ Indicates that the error is in OpenGL related code\&.
 .TP
 \fB\fISHADER \fP\fP
 Indicates that the error is caused by OpenGL shader compilation\&. 
+.TP
+\fB\fIGLFW \fP\fP
+Indicates an error in the code wrapping around the GLFW library\&. 
+.TP
+\fB\fITEXTURE_MANAGER \fP\fP
+Indicates an error in the \fBTextureManager\fP class of the engine\&. 
+.TP
+\fB\fIGAMEOBJECT \fP\fP
+Indicates an error in the \fBGameObject\fP class of the engine\&. 
+.TP
+\fB\fIFREETYPE \fP\fP
+Indicates an error in the code wrapper around FreeType\&. 
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for Killer Engine from the source code\&.

@@ -1,4 +1,4 @@
-.TH "KillerEngine::Controller" 3 "Wed Feb 13 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Controller" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -24,16 +24,16 @@ KillerEngine::Controller
 .RI "void \fBKeyUp\fP (Keys k)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP \fBGetMouseCoord\fP (void)"
+.RI "const \fBKM::Vector4\fP \fBGetMouseCoord\fP (void)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP \fBGetMouseCoordInScreen\fP (void)"
+.RI "const \fBKM::Vector4\fP \fBGetMouseCoordInScreen\fP (void)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP \fBGetLeftMouseCoord\fP (void) const"
+.RI "const \fBKM::Vector4\fP \fBGetLeftMouseCoord\fP (void) const"
 .br
 .ti -1c
-.RI "const \fBKM::Vector\fP \fBGetRightMouseCoord\fP (void) const"
+.RI "const \fBKM::Vector4\fP \fBGetRightMouseCoord\fP (void) const"
 .br
 .ti -1c
 .RI "bool \fBGetKeyDown\fP (Keys k)"
@@ -71,18 +71,18 @@ KillerEngine::Controller
 .br
 .RI "Array of keys in a pressed state as of this frame, indexed by ID\&. "
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_leftClickCoordinates\fP"
+.RI "\fBKM::Vector4\fP \fB_leftClickCoordinates\fP"
 .br
 .RI "Coordinates of last left click\&. "
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_rightClickCoordinates\fP"
+.RI "\fBKM::Vector4\fP \fB_rightClickCoordinates\fP"
 .br
 .RI "Coordinates of last right click\&. "
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_leftClickCoordInScreen\fP"
+.RI "\fBKM::Vector4\fP \fB_leftClickCoordInScreen\fP"
 .br
 .ti -1c
-.RI "\fBKM::Vector\fP \fB_rightClickCoordInScreen\fP"
+.RI "\fBKM::Vector4\fP \fB_rightClickCoordInScreen\fP"
 .br
 .in -1c
 .SS "Static Private Attributes"
@@ -139,9 +139,9 @@ Returns true if k is not being pressed during this frame
 
 .SS "bool Controller::GetKeyUp (Keys k)"
 Returns true if k has been released this frame\&.  k Keys: Desired keycode 
-.SS "const \fBKM::Vector\fP KillerEngine::Controller::GetLeftMouseCoord (void) const\fC [inline]\fP"
+.SS "const \fBKM::Vector4\fP KillerEngine::Controller::GetLeftMouseCoord (void) const\fC [inline]\fP"
 Returns the raw coordinates of a Left Click in screen space\&. 
-.SS "const \fBKM::Vector\fP KillerEngine::Controller::GetRightMouseCoord (void) const\fC [inline]\fP"
+.SS "const \fBKM::Vector4\fP KillerEngine::Controller::GetRightMouseCoord (void) const\fC [inline]\fP"
 Returns the raw coordinates of a Right click in screen space 
 .SS "shared_ptr< \fBController\fP > Controller::Instance (void)\fC [static]\fP"
 Singleton function to get global instance of \fBController\fP\&. 
