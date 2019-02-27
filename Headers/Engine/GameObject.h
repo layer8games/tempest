@@ -5,6 +5,7 @@
 #include <Engine/ErrorManager.h>
 #include <Engine/Shader.h>
 #include <Engine/Point.h>
+#include <Engine/Vector3.h>
 #include <Engine/Vector4.h>
 #include <Engine/Matrix4.h>
 #include <Engine/Color.h>
@@ -347,10 +348,16 @@ namespace KillerEngine
 			_shader->SetUniform(name.c_str(), vec);
 		}
 
-		inline void SetUniformVec3(string name, const KM::Vector4& vec)
+		inline void SetUniform(string name, const KM::Vector3& vec)
 		{
 			_shader->Use();
-			_shader->SetUniformVec3(name.c_str(), vec);
+			_shader->SetUniform(name.c_str(), vec);
+		}
+
+		inline void SetUniform(string name, const KM::Point& point)
+		{
+			_shader->Use();
+			_shader->SetUniform(name.c_str(), point);
 		}
 
 		inline void SetUniform(string name, const KM::Matrix4& mat)

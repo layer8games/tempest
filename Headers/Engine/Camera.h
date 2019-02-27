@@ -185,19 +185,19 @@ namespace KillerEngine
 //==========================================================================================================================
 //Up
 //==========================================================================================================================		
-		inline void SetUpVector4(F32 val)
+		inline void SetUpVector(F32 val)
 		{
 			_up[1] = val;
 		}
 
-		inline void SetUpVector4(F32 xVal, F32 yVal, F32 zVal)
+		inline void SetUpVector(F32 xVal, F32 yVal, F32 zVal)
 		{
 			_up[0] = xVal;
 			_up[1] = yVal;
 			_up[2] = zVal;
 		}
 
-		inline void SetUpVector4(const KM::Vector4& vec)
+		inline void SetUpVector(const KM::Vector4& vec)
 		{
 			_up	 = vec;
 		}
@@ -210,30 +210,30 @@ namespace KillerEngine
 //==========================================================================================================================
 //Look
 //==========================================================================================================================
-		inline void SetLookVector4(F32 val)
+		inline void SetLookVector(F32 val)
 		{
 			_look = val;
 		}
 
-		inline void SetLookVector4(F32 xVal, F32 yVal)
+		inline void SetLookVector(F32 xVal, F32 yVal)
 		{
 			_look[0] = xVal;
 			_look[1] = yVal;
 		}
 
-		inline void SetLookVector4(F32 xVal, F32 yVal, F32 zVal)
+		inline void SetLookVector(F32 xVal, F32 yVal, F32 zVal)
 		{
 			_look[0] = xVal;
 			_look[1] = yVal;
 			_look[2] = zVal;
 		}
 
-		inline void SetLookVector4(const KM::Vector4& vec)
+		inline void SetLookVector(const KM::Vector4& vec)
 		{
 			_look = vec;
 		}
 
-		inline const KM::Vector4& GetLookVector4(void) const
+		inline const KM::Vector4& GetLookVector(void) const
 		{
 			return _look;
 		}
@@ -241,30 +241,30 @@ namespace KillerEngine
 //==========================================================================================================================
 //Right
 //==========================================================================================================================
-		inline void SetRightVector4(F32 val)
+		inline void SetRightVector(F32 val)
 		{
 			_right = val;
 		}
 
-		inline void SetRightVector4(F32 xVal, F32 yVal)
+		inline void SetRightVector(F32 xVal, F32 yVal)
 		{
 			_right[0] = xVal;
 			_right[1] = yVal;
 		}
 
-		inline void SetRightVector4(F32 xVal, F32 yVal, F32 zVal)
+		inline void SetRightVector(F32 xVal, F32 yVal, F32 zVal)
 		{
 			_right[0] = xVal;
 			_right[1] = yVal;
 			_right[2] = zVal;
 		}
 
-		inline void SetRightVector4(const KM::Vector4& vec)
+		inline void SetRightVector(const KM::Vector4& vec)
 		{
 			_right = vec;
 		}
 
-		inline const KM::Vector4& GetRightVector4(void) const
+		inline const KM::Vector4& GetRightVector(void) const
 		{
 			return _right;
 		}
@@ -311,7 +311,7 @@ namespace KillerEngine
 		}
 
 	private:
-		virtual void _v_UpdateCameraVector4s(void)
+		virtual void _v_UpdateCameraVectors(void)
 		{  }
 
 //==========================================================================================================================
@@ -320,15 +320,15 @@ namespace KillerEngine
 //
 //==========================================================================================================================		
 		Color  							_background;	///< Background color of current level.
-		KM::Matrix4 						_projection;	///< Projection Matrix4 (Orthographic or Perspective). Not used 
+		KM::Matrix4 					_projection;	///< Projection Matrix4 (Orthographic or Perspective). Not used 
 		
 	protected:
 		KM::Vector4  					_position;		///< Position of Camera in world space.
-		KM::Vector4 						_target;
-		KM::Vector4 						_up;
-		KM::Vector4 						_look;
-		KM::Vector4 						_right;
-		KM::Vector4 						_lastMouseCoords;
+		KM::Vector4 					_target;
+		KM::Vector4 					_up;
+		KM::Vector4 					_look;
+		KM::Vector4 					_right;
+		KM::Vector4 					_lastMouseCoords;
 		F32								_mouseSensitivity;
 		F32 							_yaw;
 		F32 							_pitch;

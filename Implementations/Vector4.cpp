@@ -159,16 +159,68 @@ Vector4 Vector4::operator+(const Vector4& vec) const
 {
 	if(_2D)
 	{
-		return Vector4( _data[x] + vec[x],
-				   	   _data[y] + vec[y] );
+		return Vector4(_data[x] + vec[x],
+				   	   _data[y] + vec[y]);
 	}
 
-	return Vector4( _data[x] + vec[x],
+	return Vector4(_data[x] + vec[x],
 				   _data[y] + vec[y],
-				   _data[z] + vec[z] );
+				   _data[z] + vec[z]);
 }
 
 Vector4& Vector4::operator+=(const Vector4& vec)
+{
+	_data[x] += vec[x];
+	_data[y] += vec[y];
+	
+	if(!_2D) 
+	{
+		_data[z] += vec[z];
+	}
+
+	return *this;
+}
+
+Vector4 Vector4::operator+(const Vector3& vec) const
+{
+	if(_2D)
+	{
+		return Vector4(_data[x] + vec[x],
+				   	   _data[y] + vec[y]);
+	}
+
+	return Vector4(_data[x] + vec[x],
+				   _data[y] + vec[y],
+				   _data[z] + vec[z]);
+}
+
+Vector4& Vector4::operator+=(const Point& vec)
+{
+	_data[x] += vec[x];
+	_data[y] += vec[y];
+	
+	if(!_2D) 
+	{
+		_data[z] += vec[z];
+	}
+
+	return *this;
+}
+
+Vector4 Vector4::operator+(const Point& vec) const
+{
+	if(_2D)
+	{
+		return Vector4(_data[x] + vec[x],
+				   	   _data[y] + vec[y]);
+	}
+
+	return Vector4(_data[x] + vec[x],
+				   _data[y] + vec[y],
+				   _data[z] + vec[z]);
+}
+
+Vector4& Vector4::operator+=(const Vector3& vec)
 {
 	_data[x] += vec[x];
 	_data[y] += vec[y];
@@ -228,16 +280,68 @@ Vector4 Vector4::operator-(const Vector4& vec) const
 {
 	if(_2D)
 	{
-		return Vector4( _data[x] - vec[x],
-				   	   _data[y] - vec[y] );
+		return Vector4(_data[x] - vec[x],
+				   	   _data[y] - vec[y]);
 	}
 
-	return Vector4( _data[x] - vec[x],
+	return Vector4(_data[x] - vec[x],
 				   _data[y] - vec[y],
-				   _data[z] - vec[z] );
+				   _data[z] - vec[z]);
 }
 
 Vector4& Vector4::operator-=(const Vector4& vec)
+{
+	_data[x] -= vec[x];
+	_data[y] -= vec[y];
+	
+	if(!_2D) 
+	{
+		_data[z] -= vec[z];
+	}
+
+	return *this;
+}
+
+Vector4 Vector4::operator-(const Vector3& vec) const
+{
+	if(_2D)
+	{
+		return Vector4(_data[x] - vec[x],
+				   	   _data[y] - vec[y]);
+	}
+
+	return Vector4(_data[x] - vec[x],
+				   _data[y] - vec[y],
+				   _data[z] - vec[z]);
+}
+
+Vector4& Vector4::operator-=(const Vector3& vec)
+{
+	_data[x] -= vec[x];
+	_data[y] -= vec[y];
+	
+	if(!_2D) 
+	{
+		_data[z] -= vec[z];
+	}
+
+	return *this;
+}
+
+Vector4 Vector4::operator-(const Point& vec) const
+{
+	if(_2D)
+	{
+		return Vector4(_data[x] - vec[x],
+				   	   _data[y] - vec[y]);
+	}
+
+	return Vector4(_data[x] - vec[x],
+				   _data[y] - vec[y],
+				   _data[z] - vec[z]);
+}
+
+Vector4& Vector4::operator-=(const Point& vec)
 {
 	_data[x] -= vec[x];
 	_data[y] -= vec[y];

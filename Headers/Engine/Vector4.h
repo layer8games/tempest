@@ -237,6 +237,30 @@ namespace KillerMath
 */
 		Vector4& operator+=(const Vector4& vec);
 
+/*!
+	Vector3 addtion. This is done componentwise.
+	\param vec is the Vector3 to add into a new Vector4.
+*/
+		Vector4 operator+(const Vector3& vec) const;
+
+/*!
+	Vector3 addition equal. This is done componentwise.
+	\param vec is the Vector3 to add into this Vector4.
+*/
+		Vector4& operator+=(const Vector3& vec);
+
+/*!
+	Point addtion. This is done componentwise.
+	\param vec is the Point to add into a new Vector4.
+*/
+		Vector4 operator+(const Point& Point) const;
+
+/*!
+	Point addition equal. This is done componentwise.
+	\param vec is the Point to add into this Vector4.
+*/
+		Vector4& operator+=(const Point& vec);
+
 //===== Add by scalar =====
 /*!
 	Scalar addition. Each value is added into. 2D check done before z is changed.
@@ -268,6 +292,30 @@ namespace KillerMath
 	\param vec is the Vector4ed subtractd from this Vector4.
 */
 		Vector4& operator-=(const Vector4& vec);
+
+/*!
+	Vector3 subtraction. This is done componentwise. 2D check done before z is changed. 
+	\param vec is the Vector3 subtracted from the new Vector4.
+*/
+		Vector4 operator-(const Vector3& vec) const;
+
+/*!
+	Vector3 subtraction. This is done componenetwise. 2D check done before z is changed. 
+	\param vec is the Vector3 subtracted from this Vector4.
+*/
+		Vector4& operator-=(const Vector3& vec);
+
+/*!
+	Point subtraction. This is done componentwise. 2D check done before z is changed. 
+	\param vec is the Point subtracted from the new Vector4.
+*/
+		Vector4 operator-(const Point& vec) const;
+
+/*!
+	Point subtraction. This is done componenetwise. 2D check done before z is changed. 
+	\param vec is the Point subtracted from this Vector4.
+*/
+		Vector4& operator-=(const Point& vec);
 
 //===== Negation and increment =====
 /*! 

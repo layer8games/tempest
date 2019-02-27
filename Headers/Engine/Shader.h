@@ -22,6 +22,8 @@ Written by Maxwell Miller
 #include <Engine/ErrorManager.h>
 #include <Engine/Color.h>
 #include <Engine/Vector4.h>
+#include <Engine/Vector3.h>
+#include <Engine/Point.h>
 #include <Engine/Matrix4.h>
 #include <Engine/Texture.h>
 
@@ -132,9 +134,16 @@ namespace KillerEngine
 /*! 
 	Helper function to set a uniform in the shader. Wrapper around glUniform3f.
 	\param name is the name of the uniform in the shader. 
-	\param vec is the KillerMath::Vector4 to pass into the shader. Only the x, y and z will be passed.  
+	\param vec is the KillerMath::Vector3 to pass into the shader. x, y and z will be passed into the shader.
 */
-		void SetUniformVec3(const GLchar* name, const KM::Vector4& vec);
+		void SetUniform(const GLchar* name, const KM::Vector3& vec);
+
+/*! 
+	Helper function to set a uniform in the shader. Wrapper around glUniform3f.
+	\param name is the name of the uniform in the shader. 
+	\param point is the KillerMath::Point to pass into the shader. x, y, z and w will be passed into the shader.
+*/
+		void SetUniform(const GLchar* name, const KM::Point& point);
 
 /*! 
 	Helper function to set a uniform in the shader. Wrapper around glUniformMatrix44fv.

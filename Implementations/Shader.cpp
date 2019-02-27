@@ -134,10 +134,16 @@ void Shader::SetUniform(const GLchar* name, const KM::Vector4& vec)
 	glUniform4f(location, vec[0], vec[1], vec[2], vec[3]);
 }
 
-void Shader::SetUniformVec3(const GLchar* name, const KM::Vector4& vec)
+void Shader::SetUniform(const GLchar* name, const KM::Vector3& vec)
 {
 	GLuint location = _GetUniformLocation(name);
 	glUniform3f(location, vec[0], vec[1], vec[2]);
+}
+
+void Shader::SetUniform(const GLchar* name, const KM::Point& point)
+{
+	GLuint location = _GetUniformLocation(name);
+	glUniform4f(location, point[0], point[1], point[2], point[3]);
 }
 
 void Shader::SetUniform(const GLchar* name, KM::Matrix4 mat)

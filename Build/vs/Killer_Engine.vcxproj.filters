@@ -127,9 +127,6 @@
     <Filter Include="Source Code\KillerPhysics\Contacts">
       <UniqueIdentifier>{51060f2b-30e0-4b75-a6f5-ad0625443185}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerPhysics\Contacts\Legacy Particle">
-      <UniqueIdentifier>{6392750c-b1db-4cb6-b912-d3528f120b02}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\KillerEngine\Shader">
       <UniqueIdentifier>{712aa763-23a4-43a6-8130-dd06474fa5a2}</UniqueIdentifier>
     </Filter>
@@ -252,12 +249,6 @@
     <ClInclude Include="..\..\Headers\Engine\ForceRegistry.h">
       <Filter>Source Code\KillerPhysics\Forces\Registry</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
-      <Filter>Source Code\KillerPhysics\Contacts\Legacy Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\ParticleContactResolver.h">
-      <Filter>Source Code\KillerPhysics\Contacts\Legacy Particle</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Contact.h">
       <Filter>Source Code\KillerPhysics\Contacts</Filter>
     </ClInclude>
@@ -376,12 +367,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ForceRegistry.cpp">
       <Filter>Source Code\KillerPhysics\Forces\Registry</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
-      <Filter>Source Code\KillerPhysics\Contacts\Legacy Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\ParticleContactResolver.cpp">
-      <Filter>Source Code\KillerPhysics\Contacts\Legacy Particle</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Contact.cpp">
       <Filter>Source Code\KillerPhysics\Contacts</Filter>
