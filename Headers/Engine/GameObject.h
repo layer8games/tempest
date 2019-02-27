@@ -224,16 +224,21 @@ namespace KillerEngine
 
 		inline void AddScaledPosition(const KM::Vector4 pos, F32 scale)
 		{
-			_position.AddScaledVector4(pos, scale);
+			_position.AddScaledVector(pos, scale);
+		}
+
+		inline void AddScaledPosition(const KM::Point point, F32 scale)
+		{
+			_position.AddScaledPoint(point, scale);
 		}
 
 //===== Scale =====
-		inline const KM::Vector4& GetScale(void) const
+		inline const KM::Vector3& GetScale(void) const
 		{
 			return _scale;
 		}
 
-		inline void SetScale(const KM::Vector4& scale)
+		inline void SetScale(const KM::Vector3& scale)
 		{
 			_scale = scale;
 		}
@@ -448,7 +453,7 @@ namespace KillerEngine
 		}
 
 	protected:
-		KM::Vector4& _AccessPosition(void)
+		KM::Point& _AccessPosition(void)
 		{
 			return _position;
 		}
@@ -479,7 +484,7 @@ namespace KillerEngine
 		std::vector<F32> 		_uvList;
 		KM::Matrix4 			_modelTOWorldCache;
 		KM::Point				_position;
-		KM::Vector4 			_scale;
+		KM::Vector3 			_scale;
 		KM::Quaternion 			_orientation;
 		Color 					_color;
 		shared_ptr<Texture>		_texture;

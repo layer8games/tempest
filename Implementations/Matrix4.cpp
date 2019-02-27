@@ -266,6 +266,17 @@ Matrix4 Matrix4::Scale(const Vector4& vec)
 	return mat;
 }
 
+Matrix4 Matrix4::Scale(const Vector3& vec)
+{
+	Matrix4 mat{1.0f};
+
+	mat[0][x] = vec[x];
+	mat[1][y] = vec[y];
+	mat[2][z] = vec[z];
+
+	return mat;
+}
+
 void Matrix4::SetScale(F32 xVal, F32 yVal)
 {
 	MakeIdentity();
