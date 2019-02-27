@@ -158,14 +158,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Particle.h" />
-    <ClInclude Include="..\..\Headers\Engine\ParticleContact.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\ParticleContactResolver.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ForceRegistry.h" />
     <ClInclude Include="..\..\Headers\Engine\Point.h">
       <SubType>
@@ -272,14 +264,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Particle.cpp" />
-    <ClCompile Include="..\..\Implementations\ParticleContact.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\ParticleContactResolver.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\ForceGenerator.cpp">
       <SubType>
       </SubType>

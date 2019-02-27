@@ -202,6 +202,12 @@ namespace KillerMath
 */
 		static Matrix4 Scale(const Vector4& vec);
 
+/*!
+	Creates a matrix that will perform a scaling translation equal to the x y and z values in a Vector3.
+	\param vec contains the values used in the scaling. 
+*/
+		static Matrix4 Scale(const Vector3& vec);
+
 /*! 
 	Sets this matrix to perform a scaling transformation in 2D.
 	\param xVal is the amount to scale in the x axis. 
@@ -338,6 +344,13 @@ namespace KillerMath
 	\param v contains the position to set, as a translation. 
 */
 		void SetOrientationAndPosition(const Quaternion& q, const Vector4& v);
+
+/*!
+	A helper functions that will set the rotational transform and position at the same time. This is currently untested. 
+	\param q contains the orientation to set. 
+	\param p contains the position to set, as a translation. 
+*/
+		void SetOrientationAndPosition(const Quaternion& q, const Point& p);
 
 //==========================================================================================================================
 //Inverse
@@ -490,6 +503,12 @@ namespace KillerMath
 	\param vec is the vector that is multiplied by this matrix. 
 */
 		Vector4 operator*(const Vector4& vec) const;
+
+/*! 
+	Performs Matrix4 multiplication with Point.
+	\param point is the vector that is multiplied by this matrix. 
+*/
+		Point operator*(const Point& point) const;
 
 /*!
 	Divides each element of this matrix, setting it to the results. 

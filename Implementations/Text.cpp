@@ -33,7 +33,7 @@ void Text::AddText(string text)
 	_text = text;
 	_characterList.clear();
 
-	KM::Vector4 currentPos = _pos;
+	KM::Point currentPos = _pos;
 	F32 size = static_cast<F32>(_font->GetSize());
 
 	for(U32 i = 0; i < _text.size(); ++i)
@@ -74,7 +74,7 @@ void Text::SetUniforms(string name, const KM::Matrix4& Matrix4)
 
 void Text::_UpdatePositions(void)
 {
-	KM::Vector4 currentPos = _pos;
+	KM::Point currentPos = _pos;
 	U32 size = _font->GetSize();
 
 	for(U32 i = 0; i < _characterList.size(); ++i)

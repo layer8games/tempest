@@ -11,7 +11,7 @@ Written by Maxwell Miller
 //===== Engine Includes =====
 #include <Engine/Atom.h>
 #include <Engine/GameObject.h>
-#include <Engine/Vector4.h>
+#include <Engine/Point.h>
 
 namespace KM = KillerMath;
 
@@ -37,7 +37,7 @@ namespace KillerEngine
 		EnvironmentObject(void);
 
 /*! Calls GameObject::SetPosition and GameObject::SetDimensions. */		
-		EnvironmentObject(const KM::Vector4& pos, F32 w, F32 h);
+		EnvironmentObject(const KM::Point& pos, F32 w, F32 h);
 
 /*! Default Destructor. No special action taken. */		
 		~EnvironmentObject(void);

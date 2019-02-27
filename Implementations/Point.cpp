@@ -31,6 +31,12 @@ _2D(false),
 _data{x, y, z, 1.0f}
 {  }
 
+Point::Point(F32 x, F32 y, F32 z, F32 w)
+:
+_2D(false),
+_data{x, y, z, w}
+{  }
+
 Point::Point(const Point& v)
 :
 _2D(v.Is2D()),
@@ -103,6 +109,28 @@ void Point::AddScaledPoint(const Point& point, F32 scale)
 	if(!_2D)
 	{
 		_data[z] += point[z] * scale;
+	}
+}
+
+void Point::AddScaledVector(const Vector3& vec, F32 scale)
+{
+	_data[x] += vec[x] * scale;
+	_data[y] += vec[y] * scale;
+
+	if(!_2D)
+	{
+		_data[z] += vec[z] * scale;
+	}	
+}
+
+void Point::AddScaledVector(const Vector4& vec, F32 scale)
+{
+	_data[x] += vec[x] * scale;
+	_data[y] += vec[y] * scale;
+
+	if(!_2D)
+	{
+		_data[z] += vec[z] * scale;
 	}
 }
 //==========================================================================================================================

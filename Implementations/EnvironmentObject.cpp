@@ -10,7 +10,7 @@ using namespace KillerEngine;
 EnvironmentObject::EnvironmentObject(void)
 {  }
 
-EnvironmentObject::EnvironmentObject(const KM::Vector4& pos, F32 w, F32 h)
+EnvironmentObject::EnvironmentObject(const KM::Point& pos, F32 w, F32 h)
 {
 	GameObject::SetPosition(pos);
 }

@@ -181,7 +181,7 @@ namespace KillerMath
 	 \param q is the Quaternion to be added. 
 	 \param scale is the amount q will be scaled by.
 */
-		void AddScaledVector4(const Vector4& vec, F32 scale);
+		void AddScaledVector(const Vector4& vec, F32 scale);
 		
 	private:
 /*!

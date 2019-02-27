@@ -35,8 +35,8 @@ void RigidBody::Integrate(void)
 
 	assert(delta > 0.0f);
 
-	GameObject::_AccessPosition().AddScaledVector4(_velocity, delta);
-	GameObject::_AccessOrientation().AddScaledVector4(_rotation, delta);
+	GameObject::_AccessPosition().AddScaledVector(_velocity, delta);
+	GameObject::_AccessOrientation().AddScaledVector(_rotation, delta);
 
 	KM::Vector4 resultingAcc = _acceleration;
 

@@ -171,7 +171,7 @@ void GameObject::UpdateInternals(void)
 bool GameObject::LoadOBJ(string filepath)
 {
 	std::vector<U32> vertexIndices, uvIndices, normalIndices;
-	std::vector<KM::Vector4> tempVertices;
+	std::vector<KM::Point> tempVertices;
 	std::vector<KM::Vector4> tempNormals;
 	std::vector<TexCoord> tempUVs;
 
@@ -194,7 +194,7 @@ bool GameObject::LoadOBJ(string filepath)
 
 			if(command == "v")
 			{
-				KM::Vector4 vertex;
+				KM::Point vertex;
 				S32 dimension = 0;
 				
 				while(dimension < 3 && ss >> vertex[dimension])
@@ -366,7 +366,7 @@ void GameObject::LoadMesh(string filepath)
 		 	for(U32 i = 0; i < vertexData.size(); i += 3)
 			{
 				//vertices.push_back(Vertex(KM::Vector4(vertexData[i], vertexData[i+1], vertexData[i+2])));
-				AddVertex(Vertex(KM::Vector4(vertexData[i], vertexData[i+1], vertexData[i+2])));
+				AddVertex(Vertex(KM::Point(vertexData[i], vertexData[i+1], vertexData[i+2])));
 			}
 		}
 		else if(std::regex_match(attrib, match, uvRegex))
@@ -490,12 +490,12 @@ void GameObject::MakeSprite(void)
 	_position.Make2D();
 	_vertices.clear();
 
-	KM::Vector4 topRight(1.0f, 1.0f, 0.0f);
-	KM::Vector4 topLeft(-1.0f, 1.0f, 0.0f);
-	KM::Vector4 bottomRight(1.0f, -1.0f, 0.0f);
-	KM::Vector4 bottomLeft(-1.0f, -1.0f, 0.0);
+	KM::Point topRight(1.0f, 1.0f, 0.0f);
+	KM::Point topLeft(-1.0f, 1.0f, 0.0f);
+	KM::Point bottomRight(1.0f, -1.0f, 0.0f);
+	KM::Point bottomLeft(-1.0f, -1.0f, 0.0);
 
-	KM::Vector4 top(0.0f, 0.5f);
+	KM::Point top(0.0f, 0.5f);
 
 	AddVertex(Vertex(topLeft, 0.0f, 0.0f));
 	AddVertex(Vertex(topRight, 1.0f, 0.0f));

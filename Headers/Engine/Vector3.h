@@ -3,6 +3,7 @@
 //===== Killer Includes =====
 #include <Engine/Atom.h>
 #include <Engine/Vector4.h>
+#include <Engine/Point.h>
 
 
 //===== Stnadard inlcudes =====
@@ -10,6 +11,9 @@
 
 namespace KillerMath
 {
+	class Vector4;
+	class Point;
+
 //==========================================================================================================================
 //Documentation
 //==========================================================================================================================

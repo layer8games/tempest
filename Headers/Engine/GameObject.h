@@ -4,6 +4,8 @@
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Shader.h>
+#include <Engine/Point.h>
+#include <Engine/Vector3.h>
 #include <Engine/Vector4.h>
 #include <Engine/Matrix4.h>
 #include <Engine/Color.h>
@@ -183,12 +185,12 @@ namespace KillerEngine
 		}
 
 //===== Position =====
-		inline const KM::Vector4& GetPosition(void) const
+		inline const KM::Point& GetPosition(void) const
 		{
 			return _position;
 		}
 
-		inline void SetPosition(const KM::Vector4& pos)
+		inline void SetPosition(const KM::Point& pos)
 		{
 			_position = pos;
 		}
@@ -223,16 +225,21 @@ namespace KillerEngine
 
 		inline void AddScaledPosition(const KM::Vector4 pos, F32 scale)
 		{
-			_position.AddScaledVector4(pos, scale);
+			_position.AddScaledVector(pos, scale);
+		}
+
+		inline void AddScaledPosition(const KM::Point point, F32 scale)
+		{
+			_position.AddScaledPoint(point, scale);
 		}
 
 //===== Scale =====
-		inline const KM::Vector4& GetScale(void) const
+		inline const KM::Vector3& GetScale(void) const
 		{
 			return _scale;
 		}
 
-		inline void SetScale(const KM::Vector4& scale)
+		inline void SetScale(const KM::Vector3& scale)
 		{
 			_scale = scale;
 		}
@@ -341,10 +348,16 @@ namespace KillerEngine
 			_shader->SetUniform(name.c_str(), vec);
 		}
 
-		inline void SetUniformVec3(string name, const KM::Vector4& vec)
+		inline void SetUniform(string name, const KM::Vector3& vec)
 		{
 			_shader->Use();
-			_shader->SetUniformVec3(name.c_str(), vec);
+			_shader->SetUniform(name.c_str(), vec);
+		}
+
+		inline void SetUniform(string name, const KM::Point& point)
+		{
+			_shader->Use();
+			_shader->SetUniform(name.c_str(), point);
 		}
 
 		inline void SetUniform(string name, const KM::Matrix4& mat)
@@ -447,7 +460,7 @@ namespace KillerEngine
 		}
 
 	protected:
-		KM::Vector4& _AccessPosition(void)
+		KM::Point& _AccessPosition(void)
 		{
 			return _position;
 		}
@@ -476,9 +489,9 @@ namespace KillerEngine
 		std::vector<Vertex> 	_vertices;
 		std::vector<U32> 		_indices;
 		std::vector<F32> 		_uvList;
-		KM::Matrix4 				_modelTOWorldCache;
-		KM::Vector4				_position;
-		KM::Vector4 				_scale;
+		KM::Matrix4 			_modelTOWorldCache;
+		KM::Point				_position;
+		KM::Vector3 			_scale;
 		KM::Quaternion 			_orientation;
 		Color 					_color;
 		shared_ptr<Texture>		_texture;
