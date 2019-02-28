@@ -130,9 +130,6 @@
     <Filter Include="Source Code\KillerEngine\Shader">
       <UniqueIdentifier>{712aa763-23a4-43a6-8130-dd06474fa5a2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerEngine\Structs">
-      <UniqueIdentifier>{2b6d07f5-9367-4b70-a35d-57e172e29178}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\KillerEngine\Text">
       <UniqueIdentifier>{7e0d93d1-f85e-4c81-9b66-d130c9d7e5df}</UniqueIdentifier>
     </Filter>
@@ -160,6 +157,21 @@
     <Filter Include="Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\OBB">
       <UniqueIdentifier>{05bd94d4-af3d-442a-930b-95aa6f8ac3b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Vertex">
+      <UniqueIdentifier>{313dca8f-e2fb-4717-9a11-3f2a117715e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\CharacterData">
+      <UniqueIdentifier>{9b6669af-d33e-478b-8f0d-d88f5ba7a68c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerEngine\Camera\Default">
+      <UniqueIdentifier>{e7845e79-d40a-4caa-8155-921be8665cfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerEngine\Camera\Orbit">
+      <UniqueIdentifier>{68ca543c-cf23-4f33-b950-473d0ffc8bd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerEngine\Camera\FPS">
+      <UniqueIdentifier>{398c9621-a3c6-45f5-8d4e-80557f2d0ef8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -183,9 +195,6 @@
     <ClInclude Include="..\..\Headers\Engine\WinProgram.h">
       <Filter>Source Code\KillerEngine\WindowProgram</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Camera.h">
-      <Filter>Source Code\KillerEngine\Camera</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\EnvironmentObject.h">
       <Filter>Source Code\KillerEngine\GameObjects\EnvironmentObj</Filter>
     </ClInclude>
@@ -194,12 +203,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Color.h">
       <Filter>Source Code\KillerEngine\Color</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Vertex.h">
-      <Filter>Source Code\KillerEngine\Structs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\CharacterData.h">
-      <Filter>Source Code\KillerEngine\Structs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Level.h">
       <Filter>Source Code\KillerEngine\Level</Filter>
@@ -288,6 +291,21 @@
     <ClInclude Include="..\..\Headers\Engine\Vector3.h">
       <Filter>Source Code\KillerMath\LinearAlgebra\Vector</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Vertex.h">
+      <Filter>Source Code\Vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\CharacterData.h">
+      <Filter>Source Code\CharacterData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Camera.h">
+      <Filter>Source Code\KillerEngine\Camera\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\OrbitCamera.h">
+      <Filter>Source Code\KillerEngine\Camera\Orbit</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\FPSCamera.h">
+      <Filter>Source Code\KillerEngine\Camera\FPS</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -307,9 +325,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\WinProgram.cpp">
       <Filter>Source Code\KillerEngine\WindowProgram</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Camera.cpp">
-      <Filter>Source Code\KillerEngine\Camera</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\EnvironmentObject.cpp">
       <Filter>Source Code\KillerEngine\GameObjects\EnvironmentObj</Filter>
@@ -406,6 +421,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector3.cpp">
       <Filter>Source Code\KillerMath\LinearAlgebra\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Camera.cpp">
+      <Filter>Source Code\KillerEngine\Camera\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\OrbitCamera.cpp">
+      <Filter>Source Code\KillerEngine\Camera\Orbit</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\FPSCamera.cpp">
+      <Filter>Source Code\KillerEngine\Camera\FPS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
