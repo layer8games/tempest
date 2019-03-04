@@ -741,11 +741,11 @@ Vector4 Matrix4::Transform3x3(const Vector4& vec) const
 //
 //==========================================================================================================================
 
-Matrix4 Matrix4::LookAt(const Vector4& cameraPos, const Vector4& target, const Vector4& up)
+Matrix4 Matrix4::LookAt(const Point& cameraPos, const Point& target, const Vector4& up)
 {
 	Matrix4 mat{1.0f};
 
-	Vector4 zAxis = cameraPos - target;
+	Vector4 zAxis = Vector4(cameraPos - target);
 	zAxis.Normalize();
 
 	Vector4 xAxis = up.CrossProduct(zAxis);

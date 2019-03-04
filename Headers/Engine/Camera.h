@@ -19,6 +19,7 @@ Written by Maxwell Miller
 #include <Engine/WinProgram.h>
 #include <Engine/Matrix4.h>
 #include <Engine/Vector4.h>
+#include <Engine/Point.h>
 #include <Engine/Color.h>
 #include <Engine/Controller.h>
 #include <Engine/Timer.h>
@@ -323,12 +324,12 @@ namespace KillerEngine
 		KM::Matrix4 					_projection;	///< Projection Matrix4 (Orthographic or Perspective). Not used 
 		
 	protected:
-		KM::Vector4  					_position;		///< Position of Camera in world space.
-		KM::Vector4 					_target;
+		KM::Point  						_position;		///< Position of Camera in world space.
+		KM::Point 						_target;
 		KM::Vector4 					_up;
 		KM::Vector4 					_look;
 		KM::Vector4 					_right;
-		KM::Vector4 					_lastMouseCoords;
+		KM::Point 						_lastMouseCoords;
 		F32								_mouseSensitivity;
 		F32 							_yaw;
 		F32 							_pitch;
