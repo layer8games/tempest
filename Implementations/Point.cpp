@@ -176,6 +176,19 @@ Point Point::operator+(const Point& point) const
 				  _data[z] + point[z] );
 }
 
+Point Point::operator+(const Vector4& vec) const
+{
+	if(_2D)
+	{
+		return Point( _data[x] + vec[x],
+				   	  _data[y] + vec[y] );
+	}
+
+	return Point( _data[x] + vec[x],
+				  _data[y] + vec[y],
+				  _data[z] + vec[z] );
+}
+
 Point& Point::operator+=(const Point& point)
 {
 	_data[x] += point[x];
@@ -184,6 +197,19 @@ Point& Point::operator+=(const Point& point)
 	if(!_2D) 
 	{
 		_data[z] += point[z];
+	}
+
+	return *this;
+}
+
+Point& Point::operator+=(const Vector4& vec)
+{
+	_data[x] += vec[x];
+	_data[y] += vec[y];
+	
+	if(!_2D) 
+	{
+		_data[z] += vec[z];
 	}
 
 	return *this;

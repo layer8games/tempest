@@ -5,7 +5,7 @@
 #include <Engine/WinProgram.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Matrix4.h>
-#include <Engine/Vector4.h>
+#include <Engine/Point.h>
 namespace KM = KillerMath;
 
 //=====DirectInput includes=====
@@ -142,18 +142,18 @@ namespace KillerEngine
 		//	_mouseCoordinates = coord;
 		//}
 
-		const KM::Vector4 GetMouseCoord(void);
+		const KM::Point GetMouseCoord(void);
 
-		const KM::Vector4 GetMouseCoordInScreen(void);
+		const KM::Point GetMouseCoordInScreen(void);
 
 /*! Returns the raw coordinates of a Left Click in screen space. */
-		const KM::Vector4 GetLeftMouseCoord(void) const
+		const KM::Point GetLeftMouseCoord(void) const
 		{ 
 			return _leftClickCoordinates; 
 		}
 
 /*! Returns the raw coordinates of a Right click in screen space */		
-		const KM::Vector4 GetRightMouseCoord(void) const
+		const KM::Point GetRightMouseCoord(void) const
 		{ 
 			return _rightClickCoordinates; 
 		}
@@ -193,12 +193,12 @@ BUG! This is not copying anything at all. It is only passing the new refalone
 	private:
 		static shared_ptr<Controller> _instance;		///< Singleton Global instance.
 		
-		KeyStates 		_keyStates[TOTAL_KEYS];			///< Array of states for each key, indexed by ID.
-		bool 			_pastActiveKeys[TOTAL_KEYS];	///< Array of keys in a pressed state as of last frame, indexed by ID.
-		bool			_curActiveKeys[TOTAL_KEYS];		///< Array of keys in a pressed state as of this frame, indexed by ID.
-		KM::Vector4 		_leftClickCoordinates;			///< Coordinates of last left click.
-		KM::Vector4		_rightClickCoordinates;			///< Coordinates of last right click.
-		KM::Vector4 		_leftClickCoordInScreen;
-		KM::Vector4 		_rightClickCoordInScreen;
+		KeyStates 	_keyStates[TOTAL_KEYS];			///< Array of states for each key, indexed by ID.
+		bool 		_pastActiveKeys[TOTAL_KEYS];	///< Array of keys in a pressed state as of last frame, indexed by ID.
+		bool		_curActiveKeys[TOTAL_KEYS];		///< Array of keys in a pressed state as of this frame, indexed by ID.
+		KM::Point 	_leftClickCoordinates;			///< Coordinates of last left click.
+		KM::Point	_rightClickCoordinates;			///< Coordinates of last right click.
+		KM::Point 	_leftClickCoordInScreen;
+		KM::Point 	_rightClickCoordInScreen;
 	};
 }//End namespace

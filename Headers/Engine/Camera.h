@@ -129,27 +129,27 @@ namespace KillerEngine
 			_position[2] = z;
 		}
 
-		inline void SetPosition(const KM::Vector4& vec)
+		inline void SetPosition(const KM::Point& point)
 		{
-			_position = vec;
+			_position = point;
 		}
 
 		inline void ScalePosition(F32 x, F32 y, F32 scale)
 		{
-			_position.AddScaledVector4(KM::Vector4(x, y), scale);
+			_position.AddScaledPoint(KM::Point(x, y), scale);
 		}
 
 		inline void ScalePosition(F32 x, F32 y, F32 z, F32 scale)
 		{
-			_position.AddScaledVector4(KM::Vector4(x, y, z), scale);
+			_position.AddScaledPoint(KM::Point(x, y, z), scale);
 		}
 
-		inline void ScalePosition(const KM::Vector4& vec, F32 scale)
+		inline void ScalePosition(const KM::Point& point, F32 scale)
 		{
-			_position.AddScaledVector4(vec, scale);
+			_position.AddScaledPoint(point, scale);
 		}
 
-		inline const KM::Vector4& GetPosition(void) const
+		inline const KM::Point& GetPosition(void) const
 		{
 			return _position;
 		}
@@ -157,7 +157,7 @@ namespace KillerEngine
 //==========================================================================================================================
 //Target
 //==========================================================================================================================
-		inline void SetTarget(const KM::Vector4& target)
+		inline void SetTarget(const KM::Point& target)
 		{
 			_target = target;
 		}
@@ -176,7 +176,7 @@ namespace KillerEngine
 			_target[2] = zVal;
 		}
 
-		inline const KM::Vector4& GetTarget(void)
+		inline const KM::Point& GetTarget(void)
 		{
 			return _target;
 		}		
@@ -203,7 +203,7 @@ namespace KillerEngine
 			_up	 = vec;
 		}
 
-		inline const KM::Vector4& GetUpVector4(void) const
+		inline const KM::Vector4& GetUpVector(void) const
 		{
 			return _up;
 		}
@@ -329,6 +329,7 @@ namespace KillerEngine
 		KM::Vector4 					_up;
 		KM::Vector4 					_look;
 		KM::Vector4 					_right;
+		KM::Point 						_currentMouseCoords;
 		KM::Point 						_lastMouseCoords;
 		F32								_mouseSensitivity;
 		F32 							_yaw;

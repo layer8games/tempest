@@ -16,7 +16,7 @@ namespace KillerEngine
 //==========================================================================================================================		
 		FPSCamera(void);
 
-		FPSCamera(const KM::Vector4 position, F32 yaw, F32 pitch);
+		FPSCamera(const KM::Point& position, F32 yaw, F32 pitch);
 
 		~FPSCamera(void);
 
@@ -29,7 +29,7 @@ namespace KillerEngine
 
 		virtual void v_Rotate(void);
 
-		virtual void v_Move(const KM::Vector4 offset);
+		virtual void v_Move(const KM::Vector4& offset);
 
 //==========================================================================================================================
 //

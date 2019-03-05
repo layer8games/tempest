@@ -67,12 +67,12 @@ void Controller::KeyUp(Keys k)
 
 }
 
-const KM::Vector4 Controller::GetMouseCoord(void)
+const KM::Point Controller::GetMouseCoord(void)
 {
 	return WinProgram::Instance()->GetMousePos();
 }
 
-const KM::Vector4 Controller::GetMouseCoordInScreen(void)
+const KM::Point Controller::GetMouseCoordInScreen(void)
 {
 	return WinProgram::Instance()->GetMousePosInScreen();
 }

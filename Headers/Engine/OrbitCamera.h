@@ -39,6 +39,9 @@ namespace KillerEngine
 			return KM::Matrix4::FPSView(_position, _yaw, _pitch);
 		}
 */
+		void Orbit(void);
+
+		void Zoom(void);
 
 //==========================================================================================================================
 //
@@ -53,7 +56,7 @@ namespace KillerEngine
 		}
 
 	private:
-		virtual void _v_UpdateCameraVector4s(void);
+		virtual void _v_UpdateCameraVectors(void);
 //==========================================================================================================================
 //
 //Data
