@@ -19,6 +19,7 @@ Written by Maxwell Miller
 #include <Engine/WinProgram.h>
 #include <Engine/Matrix4.h>
 #include <Engine/Vector4.h>
+#include <Engine/Point.h>
 #include <Engine/Color.h>
 #include <Engine/Controller.h>
 #include <Engine/Timer.h>
@@ -128,27 +129,27 @@ namespace KillerEngine
 			_position[2] = z;
 		}
 
-		inline void SetPosition(const KM::Vector4& vec)
+		inline void SetPosition(const KM::Point& point)
 		{
-			_position = vec;
+			_position = point;
 		}
 
 		inline void ScalePosition(F32 x, F32 y, F32 scale)
 		{
-			_position.AddScaledVector4(KM::Vector4(x, y), scale);
+			_position.AddScaledPoint(KM::Point(x, y), scale);
 		}
 
 		inline void ScalePosition(F32 x, F32 y, F32 z, F32 scale)
 		{
-			_position.AddScaledVector4(KM::Vector4(x, y, z), scale);
+			_position.AddScaledPoint(KM::Point(x, y, z), scale);
 		}
 
-		inline void ScalePosition(const KM::Vector4& vec, F32 scale)
+		inline void ScalePosition(const KM::Point& point, F32 scale)
 		{
-			_position.AddScaledVector4(vec, scale);
+			_position.AddScaledPoint(point, scale);
 		}
 
-		inline const KM::Vector4& GetPosition(void) const
+		inline const KM::Point& GetPosition(void) const
 		{
 			return _position;
 		}
@@ -156,7 +157,7 @@ namespace KillerEngine
 //==========================================================================================================================
 //Target
 //==========================================================================================================================
-		inline void SetTarget(const KM::Vector4& target)
+		inline void SetTarget(const KM::Point& target)
 		{
 			_target = target;
 		}
@@ -175,7 +176,7 @@ namespace KillerEngine
 			_target[2] = zVal;
 		}
 
-		inline const KM::Vector4& GetTarget(void)
+		inline const KM::Point& GetTarget(void)
 		{
 			return _target;
 		}		
@@ -202,7 +203,7 @@ namespace KillerEngine
 			_up	 = vec;
 		}
 
-		inline const KM::Vector4& GetUpVector4(void) const
+		inline const KM::Vector4& GetUpVector(void) const
 		{
 			return _up;
 		}
@@ -323,12 +324,13 @@ namespace KillerEngine
 		KM::Matrix4 					_projection;	///< Projection Matrix4 (Orthographic or Perspective). Not used 
 		
 	protected:
-		KM::Vector4  					_position;		///< Position of Camera in world space.
-		KM::Vector4 					_target;
+		KM::Point  						_position;		///< Position of Camera in world space.
+		KM::Point 						_target;
 		KM::Vector4 					_up;
 		KM::Vector4 					_look;
 		KM::Vector4 					_right;
-		KM::Vector4 					_lastMouseCoords;
+		KM::Point 						_currentMouseCoords;
+		KM::Point 						_lastMouseCoords;
 		F32								_mouseSensitivity;
 		F32 							_yaw;
 		F32 							_pitch;
@@ -336,145 +338,4 @@ namespace KillerEngine
 		F32								_deltaPitch;
 		F32 							_fov;
 	};//end Camera
-
-//==========================================================================================================================
-//Orbit Camera
-//==========================================================================================================================
-	class OrbitCamera : public Camera
-	{
-	public:
-//==========================================================================================================================
-//
-//Constructors
-//
-//==========================================================================================================================
-		OrbitCamera(void);
-
-		~OrbitCamera(void);
-
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================		
-		virtual void v_Rotate(void);
-
-		virtual void v_Update(void);
-
-		//to test later
-		//If you use this, make sure to comment out the Vector4 update 
-		//in the implementation
-/*
-		inline const virtual KM::Matrix4 GetViewMatrix4(void)
-		{
-			return KM::Matrix4::FPSView(_position, _yaw, _pitch);
-		}
-*/
-
-//==========================================================================================================================
-//
-//Accessors
-//
-//==========================================================================================================================		
-		//ToDO: Make the min and max member vairables
-		//that can be changed per instance
-		inline void SetRadius(F32 val)
-		{
-			_radius = FLOAT_CLAMP(val, 2.0f, 80.0f);
-		}
-
-	private:
-		virtual void _v_UpdateCameraVector4s(void);
-//==========================================================================================================================
-//
-//Data
-//
-//==========================================================================================================================		
-		F32 _radius;
-
-	};//end OrbitCamera
-
-//==========================================================================================================================
-//FPSCamera
-//==========================================================================================================================
-	class FPSCamera : public Camera
-	{
-	public:
-//==========================================================================================================================
-//
-//Constructors
-//
-//==========================================================================================================================		
-		FPSCamera(void);
-
-		FPSCamera(const KM::Vector4 position, F32 yaw, F32 pitch);
-
-		~FPSCamera(void);
-
-//==========================================================================================================================
-//
-//Virtual Functions
-//
-//==========================================================================================================================
-		virtual void v_Update(void);
-
-		virtual void v_Rotate(void);
-
-		virtual void v_Move(const KM::Vector4 offset);
-
-//==========================================================================================================================
-//
-//Accessors
-//
-//==========================================================================================================================
-	 	inline void SetWorldUp(const KM::Vector4 vec)
-		{
-			_worldUp = vec;
-		}
-
-		inline const KM::Vector4& GetWorldUp(void)
-		{
-			return _worldUp;
-		}
-
-		inline void SetZoom(F64 val)
-		{
-			_zoomSensitivity = val;
-		}
-
-		inline F64 GetZoom(void)
-		{
-			return _zoomSensitivity;
-		}
-
-		inline void SetMoveSpeed(F32 val)
-		{
-			_moveSpeed = val;
-		}
-
-		inline F32 GetMoveSpeed(void)
-		{
-			return _moveSpeed;
-		}
-
-		inline void SetDeadZone(F32 val)
-		{
-			_deadZone = val;
-		}
-
-	private:
-		virtual void _v_UpdateCameraVector4s(void);
-
-//==========================================================================================================================
-//
-//Data
-//
-//==========================================================================================================================
-		KM::Vector4 _worldUp;
-		F64 	   _zoomSensitivity;
-		F32 	   _moveSpeed;
-		F32		   _deadZone;
-
-	};//end FPSCamera
-
 }//end namespace

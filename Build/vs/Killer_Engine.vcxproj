@@ -148,12 +148,20 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\FPSCamera.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GameObject.h" />
     <ClInclude Include="..\..\Headers\Engine\Matrix3.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\OBB.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\OrbitCamera.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -254,12 +262,20 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\FPSCamera.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObject.cpp" />
     <ClCompile Include="..\..\Implementations\Matrix3.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\OBB.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\OrbitCamera.cpp">
       <SubType>
       </SubType>
     </ClCompile>

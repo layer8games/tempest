@@ -79,6 +79,12 @@ namespace KillerMath
 		Vector4(const Vector4& v);
 
 /*! 
+	Copy a Point into a Vector4. W is set to 0.
+	\param  p will be converted into a Vector4.
+*/
+		explicit Vector4(const Point& p);
+
+/*! 
 	Destructor. It does not do anything. 
 */		
 		~Vector4(void);
@@ -121,6 +127,12 @@ namespace KillerMath
 	\param vec is the left hand argument in the operation.	
 */
 		F32 Dot(const Vector4& vec) const;
+
+/*!
+	Performs a Dot or Scalar product in the order of this * other.
+	\param point is the left hand argument in the operation.	
+*/
+		F32 Dot(const Point& point) const;
 
 /*!
 	Performs a Cross or Vector4 production in the order of this % other.

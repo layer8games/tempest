@@ -43,6 +43,12 @@ _2D(v.Is2D()),
 _data{v[x], v[y], v[z], v[w]}
 {  }
 
+Vector4::Vector4(const Point& p)
+:
+_2D(p.Is2D()),
+_data{p[x], p[y], p[z], 0.0f}
+{  }
+
 Vector4::~Vector4(void)
 {  }
 
@@ -57,6 +63,13 @@ F32 Vector4::Dot(const Vector4& vec) const
 	return _data[x] * vec[x] +
 		   _data[y] * vec[y] +
 		   _data[z] * vec[z];
+}
+
+F32 Vector4::Dot(const Point& point) const
+{
+	return _data[x] * point[x] +
+		   _data[y] * point[y] +
+		   _data[z] * point[z];
 }
 
 Vector4 Vector4::CrossProduct(const Vector4& vec) const

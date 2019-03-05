@@ -317,7 +317,7 @@ void WinProgram::HideMouseCursor(void)
     glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 }
 
-const KM::Vector4 WinProgram::GetMousePos(void)
+const KM::Point WinProgram::GetMousePos(void)
 {
     F64 mouseX, mouseY;
     glfwGetCursorPos(_window, &mouseX, &mouseY);
@@ -332,10 +332,10 @@ const KM::Vector4 WinProgram::GetMousePos(void)
     //TODO:: This should probably be done through a Matrix4 transform
     //but for now, this seems way easier. 
 
-    return KM::Vector4(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
+    return KM::Point(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
 }
 
-const KM::Vector4 WinProgram::GetMousePosInScreen(void)
+const KM::Point WinProgram::GetMousePosInScreen(void)
 {
     F64 mouseX, mouseY;
     glfwGetCursorPos(_window, &mouseX, &mouseY);
@@ -350,7 +350,7 @@ const KM::Vector4 WinProgram::GetMousePosInScreen(void)
     //TODO:: This should probably be done through a Matrix4 transform
     //but for now, this seems way easier. 
 
-    return KM::Vector4(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
+    return KM::Point(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
 }
 
 //==========================================================================================================================

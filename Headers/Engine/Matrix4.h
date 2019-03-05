@@ -428,7 +428,7 @@ namespace KillerMath
 	\param target is the axis down which the camera should look. You can also think of this as the target in space the camera should face.
 	\param up is the direction considered to be up for the camera. 
 */
-		static Matrix4 LookAt(const Vector4& cameraPos, const Vector4& target, const Vector4& up);
+		static Matrix4 LookAt(const Point& cameraPos, const Point& target, const Vector4& up);
 
 /*! 
 	Sets this matrix to translate other entities so that they appear as if they were looking down a target axis from a target position. 

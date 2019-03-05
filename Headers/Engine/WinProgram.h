@@ -23,7 +23,7 @@ Written by Maxwell Miller
 #include <Engine/Controller.h>
 #include <Engine/Color.h>
 #include <Engine/Timer.h>
-#include <Engine/Vector4.h>
+#include <Engine/Point.h>
 
 namespace KM = KillerMath; 
 
@@ -209,13 +209,13 @@ namespace KillerEngine
 /*! 
 	Returns the position of the mouse cursor with the origin in the top left of the program window, ranging from 0 to 1. 
 */
-		const KM::Vector4 GetMousePos(void);
+		const KM::Point GetMousePos(void);
 
 /*! 
 	Returns the position of the mouse cursor in pixels with the origin in the center of the program window, randing from the
 	program windows up - down - left - right values. Very important, this is in Screen Space, not world space.
 */
-		const KM::Vector4 GetMousePosInScreen(void);
+		const KM::Point GetMousePosInScreen(void);
 
 /*! 
 	Wrapper around glfwGetTime. Used to find out how long the program has been running in miliseconds. Used by the KillerMath::Timer. 
