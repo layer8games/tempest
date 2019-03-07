@@ -223,12 +223,12 @@ namespace KillerEngine
 			_position[2] = zVal;
 		}
 
-		inline void AddScaledPosition(const KM::Vector4 pos, F32 scale)
+		inline void AddScaledPosition(const KM::Vector4& pos, F32 scale)
 		{
 			_position.AddScaledVector(pos, scale);
 		}
 
-		inline void AddScaledPosition(const KM::Point point, F32 scale)
+		inline void AddScaledPosition(const KM::Point& point, F32 scale)
 		{
 			_position.AddScaledPoint(point, scale);
 		}
