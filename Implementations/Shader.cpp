@@ -163,8 +163,16 @@ void Shader::SetUniformSampler(const GLchar* name, S32 texSlot)
 
 void Shader::SetUniform(const GLchar* name, const Color& col)
 {
-	GLuint location = _GetUniformLocation(name);
-	glUniform4f(location, col[0], col[1], col[2], col[3]);
+	if(col.HasAlpha())
+	{
+		GLuint location = _GetUniformLocation(name);
+		glUniform4f(location, col[0], col[1], col[2], col[3]);	
+	}
+	else
+	{
+		GLuint location = _GetUniformLocation(name);
+		glUniform3f(location, col[0], col[1], col[2]);	
+	}
 }
 
 void Shader::SetUniformVec3(const GLchar* name, const Color& col)

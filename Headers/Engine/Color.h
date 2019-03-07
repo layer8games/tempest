@@ -85,13 +85,33 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-/*! Creates and returns an array with the 4 color values in it as a pointer. */
+/*! 
+	Checks if the alpha channel should be considered for this Color. 
+*/
+		inline bool HasAlpha(void) const
+		{
+			return _alpha;
+		}
+
+/*! 
+	Sets if the alpha channel should be considered for this Color.
+	\param state is the new state that will be set. 
+*/
+		inline void UseAlpha(bool state)
+		{
+			_alpha = state;
+		}
+
+/*! 
+	Creates and returns an array with the 4 color values in it as a pointer. 
+*/
 		inline const F32* GetPointer(void) const 
 		{ 
 			return _data; 
 		}
 
 	private:
+		bool _alpha;
 		F32 _data[4];
 
 	};
