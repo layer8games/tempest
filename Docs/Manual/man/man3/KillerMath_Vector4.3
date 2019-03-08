@@ -1,4 +1,4 @@
-.TH "KillerMath::Vector4" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Vector4" 3 "Thu Mar 7 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -30,6 +30,9 @@ KillerMath::Vector4
 .RI "\fBVector4\fP (const \fBVector4\fP &v)"
 .br
 .ti -1c
+.RI "\fBVector4\fP (const \fBPoint\fP &p)"
+.br
+.ti -1c
 .RI "\fB~Vector4\fP (void)"
 .br
 .ti -1c
@@ -43,6 +46,9 @@ KillerMath::Vector4
 .br
 .ti -1c
 .RI "\fBF32\fP \fBDot\fP (const \fBVector4\fP &vec) const"
+.br
+.ti -1c
+.RI "\fBF32\fP \fBDot\fP (const \fBPoint\fP &point) const"
 .br
 .ti -1c
 .RI "\fBVector4\fP \fBCrossProduct\fP (const \fBVector4\fP &vec) const"
@@ -78,6 +84,12 @@ KillerMath::Vector4
 .RI "\fBVector4\fP & \fBoperator=\fP (const \fBVector4\fP &vec)"
 .br
 .ti -1c
+.RI "\fBVector4\fP & \fBoperator=\fP (const \fBPoint\fP &point)"
+.br
+.ti -1c
+.RI "\fBVector4\fP & \fBoperator=\fP (const \fBVector3\fP &vec)"
+.br
+.ti -1c
 .RI "\fBVector4\fP & \fBoperator=\fP (\fBF32\fP val)"
 .br
 .ti -1c
@@ -85,6 +97,18 @@ KillerMath::Vector4
 .br
 .ti -1c
 .RI "\fBVector4\fP & \fBoperator+=\fP (const \fBVector4\fP &vec)"
+.br
+.ti -1c
+.RI "\fBVector4\fP \fBoperator+\fP (const \fBVector3\fP &vec) const"
+.br
+.ti -1c
+.RI "\fBVector4\fP & \fBoperator+=\fP (const \fBVector3\fP &vec)"
+.br
+.ti -1c
+.RI "\fBVector4\fP \fBoperator+\fP (const \fBPoint\fP &\fBPoint\fP) const"
+.br
+.ti -1c
+.RI "\fBVector4\fP & \fBoperator+=\fP (const \fBPoint\fP &vec)"
 .br
 .ti -1c
 .RI "\fBVector4\fP \fBoperator+\fP (\fBF32\fP val) const"
@@ -100,6 +124,18 @@ KillerMath::Vector4
 .br
 .ti -1c
 .RI "\fBVector4\fP & \fBoperator\-=\fP (const \fBVector4\fP &vec)"
+.br
+.ti -1c
+.RI "\fBVector4\fP \fBoperator\-\fP (const \fBVector3\fP &vec) const"
+.br
+.ti -1c
+.RI "\fBVector4\fP & \fBoperator\-=\fP (const \fBVector3\fP &vec)"
+.br
+.ti -1c
+.RI "\fBVector4\fP \fBoperator\-\fP (const \fBPoint\fP &vec) const"
+.br
+.ti -1c
+.RI "\fBVector4\fP & \fBoperator\-=\fP (const \fBPoint\fP &vec)"
 .br
 .ti -1c
 .RI "\fBVector4\fP \fBoperator\-\fP (void)"
@@ -239,6 +275,15 @@ Copy Constructor\&. It explicitly copies all data into new \fBVector4\fP\&.
 .RE
 .PP
 
+.SS "Vector4::Vector4 (const \fBPoint\fP & p)\fC [explicit]\fP"
+Copy a \fBPoint\fP into a \fBVector4\fP\&. W is set to 0\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIp\fP will be converted into a \fBVector4\fP\&. 
+.RE
+.PP
+
 .SS "Vector4::~Vector4 (void)"
 Destructor\&. It does not do anything\&. 
 .SH "Member Function Documentation"
@@ -269,6 +314,15 @@ Performs a Dot or Scalar product in the order of this * other\&.
 \fBParameters:\fP
 .RS 4
 \fIvec\fP is the left hand argument in the operation\&. 
+.RE
+.PP
+
+.SS "\fBF32\fP Vector4::Dot (const \fBPoint\fP & point) const"
+Performs a Dot or Scalar product in the order of this * other\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpoint\fP is the left hand argument in the operation\&. 
 .RE
 .PP
 
@@ -338,6 +392,24 @@ Scalar multiplication\&. This is a componentwise multiplication, scaling the \fB
 .RE
 .PP
 
+.SS "\fBVector4\fP Vector4::operator+ (const \fBVector3\fP & vec) const"
+\fBVector3\fP addtion\&. This is done componentwise\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP is the \fBVector3\fP to add into a new \fBVector4\fP\&. 
+.RE
+.PP
+
+.SS "\fBVector4\fP Vector4::operator+ (const \fBPoint\fP & Point) const"
+\fBPoint\fP addtion\&. This is done componentwise\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP is the \fBPoint\fP to add into a new \fBVector4\fP\&. 
+.RE
+.PP
+
 .SS "\fBVector4\fP Vector4::operator+ (\fBF32\fP val) const"
 Scalar addition\&. Each value is added into\&. 2D check done before z is changed\&. 
 .PP
@@ -369,6 +441,24 @@ Postfix, Adds 1 to each element of the \fBVector4\fP\&. If 2D, z is ignored\&. w
 .RE
 .PP
 
+.SS "\fBVector4\fP & Vector4::operator+= (const \fBVector3\fP & vec)"
+\fBVector3\fP addition equal\&. This is done componentwise\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP is the \fBVector3\fP to add into this \fBVector4\fP\&. 
+.RE
+.PP
+
+.SS "\fBVector4\fP & Vector4::operator+= (const \fBPoint\fP & vec)"
+\fBPoint\fP addition equal\&. This is done componentwise\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP is the \fBPoint\fP to add into this \fBVector4\fP\&. 
+.RE
+.PP
+
 .SS "\fBVector4\fP & Vector4::operator+= (\fBF32\fP val)"
 Scalar addition\&. Each value is added into\&. 2D check done before z is changed\&. 
 .PP
@@ -384,6 +474,24 @@ Scalar addition\&. Each value is added into\&. 2D check done before z is changed
 \fBParameters:\fP
 .RS 4
 \fIvec\fP is the \fBVector4\fP subtracted from the new \fBVector4\fP\&. 
+.RE
+.PP
+
+.SS "\fBVector4\fP Vector4::operator\- (const \fBVector3\fP & vec) const"
+\fBVector3\fP subtraction\&. This is done componentwise\&. 2D check done before z is changed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP is the \fBVector3\fP subtracted from the new \fBVector4\fP\&. 
+.RE
+.PP
+
+.SS "\fBVector4\fP Vector4::operator\- (const \fBPoint\fP & vec) const"
+\fBPoint\fP subtraction\&. This is done componentwise\&. 2D check done before z is changed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP is the \fBPoint\fP subtracted from the new \fBVector4\fP\&. 
 .RE
 .PP
 
@@ -408,6 +516,24 @@ Postfix, Subtracts 1 to each element of the \fBVector4\fP\&. If 2D, z is ignored
 \fBParameters:\fP
 .RS 4
 \fIvec\fP is the Vector4ed subtractd from this \fBVector4\fP\&. 
+.RE
+.PP
+
+.SS "\fBVector4\fP & Vector4::operator\-= (const \fBVector3\fP & vec)"
+\fBVector3\fP subtraction\&. This is done componenetwise\&. 2D check done before z is changed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP is the \fBVector3\fP subtracted from this \fBVector4\fP\&. 
+.RE
+.PP
+
+.SS "\fBVector4\fP & Vector4::operator\-= (const \fBPoint\fP & vec)"
+\fBPoint\fP subtraction\&. This is done componenetwise\&. 2D check done before z is changed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP is the \fBPoint\fP subtracted from this \fBVector4\fP\&. 
 .RE
 .PP
 

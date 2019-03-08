@@ -1,4 +1,4 @@
-.TH "KillerEngine::WinProgram" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::WinProgram" 3 "Thu Mar 7 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -69,10 +69,10 @@ KillerEngine::WinProgram
 .RI "void \fBHideMouseCursor\fP (void)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector4\fP \fBGetMousePos\fP (void)"
+.RI "const \fBKM::Point\fP \fBGetMousePos\fP (void)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector4\fP \fBGetMousePosInScreen\fP (void)"
+.RI "const \fBKM::Point\fP \fBGetMousePosInScreen\fP (void)"
 .br
 .ti -1c
 .RI "\fBF64\fP \fBGetTime\fP (void)"
@@ -201,9 +201,9 @@ Toggles the mouse cursor to be displayed\&.
 Closes down the \fBWinProgram\fP and ends the program\&. 
 .SS "\fBS32\fP KillerEngine::WinProgram::GetHeight (void)\fC [inline]\fP"
 Returns the total heigth of the program window in pixel\&. 
-.SS "const \fBKM::Vector4\fP WinProgram::GetMousePos (void)"
+.SS "const \fBKM::Point\fP WinProgram::GetMousePos (void)"
 Returns the position of the mouse cursor with the origin in the top left of the program window, ranging from 0 to 1\&. 
-.SS "const \fBKM::Vector4\fP WinProgram::GetMousePosInScreen (void)"
+.SS "const \fBKM::Point\fP WinProgram::GetMousePosInScreen (void)"
 Returns the position of the mouse cursor in pixels with the origin in the center of the program window, randing from the program windows up - down - left - right values\&. Very important, this is in Screen Space, not world space\&. 
 .SS "bool KillerEngine::WinProgram::GetRunning (void)\fC [inline]\fP"
 Returns the state of the game\&. True means that it should keep running, false means that it is shutting down\&. 

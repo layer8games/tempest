@@ -1,4 +1,4 @@
-.TH "KillerEngine::EnvironmentObject" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::EnvironmentObject" 3 "Thu Mar 7 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -17,7 +17,7 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "\fBEnvironmentObject\fP (void)"
 .br
 .ti -1c
-.RI "\fBEnvironmentObject\fP (const \fBKM::Vector4\fP &pos, \fBF32\fP w, \fBF32\fP h)"
+.RI "\fBEnvironmentObject\fP (const \fBKM::Point\fP &pos, \fBF32\fP w, \fBF32\fP h)"
 .br
 .ti -1c
 .RI "\fB~EnvironmentObject\fP (void)"
@@ -34,7 +34,7 @@ This is an implementation of a \fBGameObject\fP which will reprents static, unmo
 .PP 
 .SS "EnvironmentObject::EnvironmentObject (void)"
 Default Constructor\&. No special actions taken\&. 
-.SS "EnvironmentObject::EnvironmentObject (const \fBKM::Vector4\fP & pos, \fBF32\fP w, \fBF32\fP h)"
+.SS "EnvironmentObject::EnvironmentObject (const \fBKM::Point\fP & pos, \fBF32\fP w, \fBF32\fP h)"
 Calls GameObject::SetPosition and GameObject::SetDimensions\&. 
 .SS "EnvironmentObject::~EnvironmentObject (void)"
 Default Destructor\&. No special action taken\&. 

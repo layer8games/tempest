@@ -1,4 +1,4 @@
-.TH "KillerMath::Matrix4< T >" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Matrix4< T >" 3 "Thu Mar 7 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -108,6 +108,9 @@ KillerMath::Matrix4< T >
 .RI "void \fBSetOrientationAndPosition\fP (const \fBQuaternion\fP &q, const \fBVector4\fP &v)"
 .br
 .ti -1c
+.RI "void \fBSetOrientationAndPosition\fP (const \fBQuaternion\fP &q, const \fBPoint\fP &p)"
+.br
+.ti -1c
 .RI "void \fBSetInverse\fP (void)"
 .br
 .ti -1c
@@ -157,6 +160,9 @@ KillerMath::Matrix4< T >
 .br
 .ti -1c
 .RI "\fBVector4\fP \fBoperator*\fP (const \fBVector4\fP &vec) const"
+.br
+.ti -1c
+.RI "\fBPoint\fP \fBoperator*\fP (const \fBPoint\fP &point) const"
 .br
 .ti -1c
 .RI "\fBMatrix4\fP & \fBoperator/=\fP (\fBF32\fP val)"
@@ -256,6 +262,9 @@ KillerMath::Matrix4< T >
 .RI "static \fBMatrix4\fP \fBScale\fP (const \fBVector4\fP &vec)"
 .br
 .ti -1c
+.RI "static \fBMatrix4\fP \fBScale\fP (const \fBVector3\fP &vec)"
+.br
+.ti -1c
 .RI "static \fBMatrix4\fP \fBRotateX\fP (\fBF32\fP val)"
 .br
 .ti -1c
@@ -265,7 +274,7 @@ KillerMath::Matrix4< T >
 .RI "static \fBMatrix4\fP \fBRotateZ\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "static \fBMatrix4\fP \fBLookAt\fP (const \fBVector4\fP &cameraPos, const \fBVector4\fP &target, const \fBVector4\fP &up)"
+.RI "static \fBMatrix4\fP \fBLookAt\fP (const \fBPoint\fP &cameraPos, const \fBPoint\fP &target, const \fBVector4\fP &up)"
 .br
 .ti -1c
 .RI "static \fBMatrix4\fP \fBFPSView\fP (const \fBVector4\fP &cameraPos, \fBF32\fP pitch, \fBF32\fP yaw)"
@@ -519,7 +528,7 @@ Similar to \fBMatrix4::LookAt\fP, this function will create a matrix that can be
 Return the array containing all the elements\&. 
 .SS "template<typename T > \fBMatrix4\fP Matrix4::GetInverse (void) const"
 Returns a matrix that is the inverse of this one\&. Warning, very expensive function to call\&. 
-.SS "template<typename T > \fBMatrix4\fP Matrix4::LookAt (const \fBVector4\fP & cameraPos, const \fBVector4\fP & target, const \fBVector4\fP & up)\fC [static]\fP"
+.SS "template<typename T > \fBMatrix4\fP Matrix4::LookAt (const \fBPoint\fP & cameraPos, const \fBPoint\fP & target, const \fBVector4\fP & up)\fC [static]\fP"
 Returns a matrix that can translate other entities so that they appear as if they were looking down a target axis from a target position\&. This is used mostly with the camera\&. A right handed coordinate system is assumed\&. 
 .PP
 \fBParameters:\fP
@@ -583,6 +592,15 @@ Performs \fBMatrix4\fP multiplication with \fBVector4\fP\&.
 \fBParameters:\fP
 .RS 4
 \fIvec\fP is the vector that is multiplied by this matrix\&. 
+.RE
+.PP
+
+.SS "template<typename T > \fBPoint\fP Matrix4::operator* (const \fBPoint\fP & point) const"
+Performs \fBMatrix4\fP multiplication with \fBPoint\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpoint\fP is the vector that is multiplied by this matrix\&. 
 .RE
 .PP
 
@@ -691,6 +709,15 @@ Creates a matrix that will perform a scaling translation equal to the x y and z 
 .RE
 .PP
 
+.SS "template<typename T > \fBMatrix4\fP Matrix4::Scale (const \fBVector3\fP & vec)\fC [static]\fP"
+Creates a matrix that will perform a scaling translation equal to the x y and z values in a \fBVector3\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP contains the values used in the scaling\&. 
+.RE
+.PP
+
 .SS "template<typename T > void Matrix4::SetAsInverse (const \fBMatrix4\fP< T > & mat)"
 Changes this matrix to equal the inverse of another\&. Warning, very expsenive function to call\&. 
 .PP
@@ -745,6 +772,17 @@ A helper functions that will set the rotational transform and position at the sa
 \fIq\fP contains the orientation to set\&. 
 .br
 \fIv\fP contains the position to set, as a translation\&. 
+.RE
+.PP
+
+.SS "template<typename T > void Matrix4::SetOrientationAndPosition (const \fBQuaternion\fP & q, const \fBPoint\fP & p)"
+A helper functions that will set the rotational transform and position at the same time\&. This is currently untested\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP contains the orientation to set\&. 
+.br
+\fIp\fP contains the position to set, as a translation\&. 
 .RE
 .PP
 

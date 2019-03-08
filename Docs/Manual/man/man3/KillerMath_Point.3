@@ -1,4 +1,4 @@
-.TH "KillerMath::Point" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Point" 3 "Thu Mar 7 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -22,6 +22,9 @@ KillerMath::Point
 .br
 .ti -1c
 .RI "\fBPoint\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
+.br
+.ti -1c
+.RI "\fBPoint\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z, \fBF32\fP w)"
 .br
 .ti -1c
 .RI "\fBPoint\fP (const \fBPoint\fP &p)"
@@ -60,6 +63,12 @@ KillerMath::Point
 .RI "void \fBAddScaledPoint\fP (const \fBPoint\fP &point, \fBF32\fP scale)"
 .br
 .ti -1c
+.RI "void \fBAddScaledVector\fP (const \fBVector3\fP &vec, \fBF32\fP scale)"
+.br
+.ti -1c
+.RI "void \fBAddScaledVector\fP (const \fBVector4\fP &vec, \fBF32\fP scale)"
+.br
+.ti -1c
 .RI "const \fBF32\fP * \fBGetElems\fP (void) const"
 .br
 .ti -1c
@@ -81,7 +90,13 @@ KillerMath::Point
 .RI "\fBPoint\fP \fBoperator+\fP (const \fBPoint\fP &point) const"
 .br
 .ti -1c
+.RI "\fBPoint\fP \fBoperator+\fP (const \fBVector4\fP &vec) const"
+.br
+.ti -1c
 .RI "\fBPoint\fP & \fBoperator+=\fP (const \fBPoint\fP &point)"
+.br
+.ti -1c
+.RI "\fBPoint\fP & \fBoperator+=\fP (const \fBVector4\fP &vec)"
 .br
 .ti -1c
 .RI "\fBPoint\fP \fBoperator+\fP (\fBF32\fP val) const"
@@ -223,6 +238,21 @@ Three input constructor\&. W is set to 0\&.
 .RE
 .PP
 
+.SS "Point::Point (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z, \fBF32\fP w)"
+Four input constructor\&. W variable in this constructor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP is the value for x\&. 
+.br
+\fIy\fP is the value for y\&. 
+.br
+\fIz\fP is the value for z\&. 
+.br
+\fIw\fP is the value for w\&. 
+.RE
+.PP
+
 .SS "Point::Point (const \fBPoint\fP & p)"
 Copy Constructor\&. It explicitly copies all data into new \fBPoint\fP\&. 
 .PP
@@ -331,6 +361,15 @@ Scalar multiplication\&. This is a componentwise multiplication, scaling the \fB
 .RE
 .PP
 
+.SS "\fBPoint\fP Point::operator+ (const \fBVector4\fP & vec) const"
+\fBPoint\fP addtion\&. This is done componentwise\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP is added into a new \fBPoint\fP\&. 
+.RE
+.PP
+
 .SS "\fBPoint\fP Point::operator+ (\fBF32\fP val) const"
 Scalar addition\&. Each value is added into\&. 2D check done before z is changed\&. 
 .PP
@@ -359,6 +398,15 @@ Postfix, Adds 1 to each element of the \fBPoint\fP\&. If 2D, z is ignored\&. w i
 \fBParameters:\fP
 .RS 4
 \fIpoint\fP is the \fBPoint\fP to add into this \fBPoint\fP\&. 
+.RE
+.PP
+
+.SS "\fBPoint\fP & Point::operator+= (const \fBVector4\fP & vec)"
+\fBPoint\fP addition equal\&. This is done componentwise\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP is the \fBVector4\fP to add into this \fBPoint\fP\&. 
 .RE
 .PP
 

@@ -112,8 +112,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:adc57a80de68f06ec392792bc252c48c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26137c7e4e3b5ca91578e213b95c4246"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_shader.html#a26137c7e4e3b5ca91578e213b95c4246">SetUniform</a> (const GLchar *name, const <a class="el" href="class_killer_math_1_1_vector4.html">KM::Vector4</a> &amp;vec)</td></tr>
 <tr class="separator:a26137c7e4e3b5ca91578e213b95c4246"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a493b1b2b1dabbe1fd256a8e54f893b56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_shader.html#a493b1b2b1dabbe1fd256a8e54f893b56">SetUniformVec3</a> (const GLchar *name, const <a class="el" href="class_killer_math_1_1_vector4.html">KM::Vector4</a> &amp;vec)</td></tr>
-<tr class="separator:a493b1b2b1dabbe1fd256a8e54f893b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdeff21ff45c673ae947e2fc738e6b51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_shader.html#acdeff21ff45c673ae947e2fc738e6b51">SetUniform</a> (const GLchar *name, const <a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a> &amp;vec)</td></tr>
+<tr class="separator:acdeff21ff45c673ae947e2fc738e6b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4926f68d27ad1525e659a58f9cdf46b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_shader.html#a4926f68d27ad1525e659a58f9cdf46b7">SetUniform</a> (const GLchar *name, const <a class="el" href="class_killer_math_1_1_point.html">KM::Point</a> &amp;point)</td></tr>
+<tr class="separator:a4926f68d27ad1525e659a58f9cdf46b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af62b65d3ab0a84ebe11fface87421d5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_shader.html#af62b65d3ab0a84ebe11fface87421d5d">SetUniform</a> (const GLchar *name, <a class="el" href="class_killer_math_1_1_matrix4.html">KM::Matrix4</a> mat)</td></tr>
 <tr class="separator:af62b65d3ab0a84ebe11fface87421d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6479f173357a0fd70e0d96a26af41395"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_shader.html#a6479f173357a0fd70e0d96a26af41395">SetUniformSampler</a> (const GLchar *name, <a class="el" href="_atom_8h.html#a39c786017723555afb9e8b85accec0de">S32</a> texSlot)</td></tr>
@@ -392,7 +394,7 @@ GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 </div>
 </div>
 <a id="adc57a80de68f06ec392792bc252c48c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc57a80de68f06ec392792bc252c48c9">&#9670;&nbsp;</a></span>SetUniform() <span class="overload">[1/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#adc57a80de68f06ec392792bc252c48c9">&#9670;&nbsp;</a></span>SetUniform() <span class="overload">[1/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -427,7 +429,7 @@ GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 </div>
 </div>
 <a id="a26137c7e4e3b5ca91578e213b95c4246"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26137c7e4e3b5ca91578e213b95c4246">&#9670;&nbsp;</a></span>SetUniform() <span class="overload">[2/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a26137c7e4e3b5ca91578e213b95c4246">&#9670;&nbsp;</a></span>SetUniform() <span class="overload">[2/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -461,8 +463,78 @@ GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 
 </div>
 </div>
+<a id="acdeff21ff45c673ae947e2fc738e6b51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdeff21ff45c673ae947e2fc738e6b51">&#9670;&nbsp;</a></span>SetUniform() <span class="overload">[3/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Shader::SetUniform </td>
+          <td>(</td>
+          <td class="paramtype">const GLchar *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a> &amp;&#160;</td>
+          <td class="paramname"><em>vec</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Helper function to set a uniform in the shader. Wrapper around glUniform3f. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>is the name of the uniform in the shader. </td></tr>
+    <tr><td class="paramname">vec</td><td>is the <a class="el" href="class_killer_math_1_1_vector3.html">KillerMath::Vector3</a> to pass into the shader. x, y and z will be passed into the shader. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4926f68d27ad1525e659a58f9cdf46b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4926f68d27ad1525e659a58f9cdf46b7">&#9670;&nbsp;</a></span>SetUniform() <span class="overload">[4/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Shader::SetUniform </td>
+          <td>(</td>
+          <td class="paramtype">const GLchar *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_killer_math_1_1_point.html">KM::Point</a> &amp;&#160;</td>
+          <td class="paramname"><em>point</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Helper function to set a uniform in the shader. Wrapper around glUniform3f. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>is the name of the uniform in the shader. </td></tr>
+    <tr><td class="paramname">point</td><td>is the <a class="el" href="class_killer_math_1_1_point.html">KillerMath::Point</a> to pass into the shader. x, y, z and w will be passed into the shader. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="af62b65d3ab0a84ebe11fface87421d5d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af62b65d3ab0a84ebe11fface87421d5d">&#9670;&nbsp;</a></span>SetUniform() <span class="overload">[3/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af62b65d3ab0a84ebe11fface87421d5d">&#9670;&nbsp;</a></span>SetUniform() <span class="overload">[5/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -497,7 +569,7 @@ GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 </div>
 </div>
 <a id="a1762fa4147457cb4a206dd06a45887cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1762fa4147457cb4a206dd06a45887cc">&#9670;&nbsp;</a></span>SetUniform() <span class="overload">[4/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1762fa4147457cb4a206dd06a45887cc">&#9670;&nbsp;</a></span>SetUniform() <span class="overload">[6/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -593,43 +665,8 @@ GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 
 </div>
 </div>
-<a id="a493b1b2b1dabbe1fd256a8e54f893b56"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a493b1b2b1dabbe1fd256a8e54f893b56">&#9670;&nbsp;</a></span>SetUniformVec3() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Shader::SetUniformVec3 </td>
-          <td>(</td>
-          <td class="paramtype">const GLchar *&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector4.html">KM::Vector4</a> &amp;&#160;</td>
-          <td class="paramname"><em>vec</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Helper function to set a uniform in the shader. Wrapper around glUniform3f. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">name</td><td>is the name of the uniform in the shader. </td></tr>
-    <tr><td class="paramname">vec</td><td>is the <a class="el" href="class_killer_math_1_1_vector4.html">KillerMath::Vector4</a> to pass into the shader. Only the x, y and z will be passed. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="ad352583a4ed33931098f1718a00bc060"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad352583a4ed33931098f1718a00bc060">&#9670;&nbsp;</a></span>SetUniformVec3() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad352583a4ed33931098f1718a00bc060">&#9670;&nbsp;</a></span>SetUniformVec3()</h2>
 
 <div class="memitem">
 <div class="memproto">

@@ -1,4 +1,4 @@
-.TH "KillerEngine::OrbitCamera" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::OrbitCamera" 3 "Thu Mar 7 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -18,6 +18,12 @@ Inherits \fBKillerEngine::Camera\fP\&.
 .RI "virtual void \fBv_Update\fP (void)"
 .br
 .ti -1c
+.RI "void \fBOrbit\fP (void)"
+.br
+.ti -1c
+.RI "void \fBZoom\fP (void)"
+.br
+.ti -1c
 .RI "void \fBSetRadius\fP (\fBF32\fP val)"
 .br
 .in -1c
@@ -25,7 +31,7 @@ Inherits \fBKillerEngine::Camera\fP\&.
 
 .in +1c
 .ti -1c
-.RI "virtual void \fB_v_UpdateCameraVector4s\fP (void)"
+.RI "virtual void \fB_v_UpdateCameraVectors\fP (void)"
 .br
 .in -1c
 .SS "Private Attributes"

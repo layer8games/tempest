@@ -1,7 +1,7 @@
 var class_killer_engine_1_1_f_p_s_camera =
 [
     [ "FPSCamera", "class_killer_engine_1_1_f_p_s_camera.html#a60ca00d8c765c7e1af7c5d51e6353ca3", null ],
-    [ "FPSCamera", "class_killer_engine_1_1_f_p_s_camera.html#a00adc8d953e324dd3176ac3237ea22d8", null ],
+    [ "FPSCamera", "class_killer_engine_1_1_f_p_s_camera.html#a956408d8e0335a4c7b3856f13437beb5", null ],
     [ "~FPSCamera", "class_killer_engine_1_1_f_p_s_camera.html#adfd8b17c8df18b57e4ca02d873c9273c", null ],
     [ "_v_UpdateCameraVector4s", "class_killer_engine_1_1_f_p_s_camera.html#a3c626985bb921b0865b3caabbacf9555", null ],
     [ "GetMoveSpeed", "class_killer_engine_1_1_f_p_s_camera.html#a62d6f816f64d88e328d9acd22f07a66b", null ],
@@ -11,7 +11,7 @@ var class_killer_engine_1_1_f_p_s_camera =
     [ "SetMoveSpeed", "class_killer_engine_1_1_f_p_s_camera.html#afbf442b1bc0af7f21c43205adaa4a3fa", null ],
     [ "SetWorldUp", "class_killer_engine_1_1_f_p_s_camera.html#a563975fbb75c1780e4c8efad8e842003", null ],
     [ "SetZoom", "class_killer_engine_1_1_f_p_s_camera.html#a784a97885e7c93cf8440a02f214ce7ff", null ],
-    [ "v_Move", "class_killer_engine_1_1_f_p_s_camera.html#a03987a19a1a1138e821666393d7e1256", null ],
+    [ "v_Move", "class_killer_engine_1_1_f_p_s_camera.html#a132929ce7b3e810b4674dab9a36696aa", null ],
     [ "v_Rotate", "class_killer_engine_1_1_f_p_s_camera.html#a875c99676ce3ed447aea4e49e03f8f2e", null ],
     [ "v_Update", "class_killer_engine_1_1_f_p_s_camera.html#a53ac498645465d61f1301b2b344cdf68", null ],
     [ "_deadZone", "class_killer_engine_1_1_f_p_s_camera.html#a55125c41cc85e8deb0bd8e75aa55bdf2", null ],

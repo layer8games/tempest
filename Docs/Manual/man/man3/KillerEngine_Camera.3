@@ -1,4 +1,4 @@
-.TH "KillerEngine::Camera" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Camera" 3 "Thu Mar 7 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -54,7 +54,7 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .RI "void \fBSetPosition\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (const \fBKM::Vector4\fP &vec)"
+.RI "void \fBSetPosition\fP (const \fBKM::Point\fP &point)"
 .br
 .ti -1c
 .RI "void \fBScalePosition\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP scale)"
@@ -63,13 +63,13 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .RI "void \fBScalePosition\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z, \fBF32\fP scale)"
 .br
 .ti -1c
-.RI "void \fBScalePosition\fP (const \fBKM::Vector4\fP &vec, \fBF32\fP scale)"
+.RI "void \fBScalePosition\fP (const \fBKM::Point\fP &point, \fBF32\fP scale)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector4\fP & \fBGetPosition\fP (void) const"
+.RI "const \fBKM::Point\fP & \fBGetPosition\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetTarget\fP (const \fBKM::Vector4\fP &target)"
+.RI "void \fBSetTarget\fP (const \fBKM::Point\fP &target)"
 .br
 .ti -1c
 .RI "void \fBSetTarget\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
@@ -78,49 +78,49 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .RI "void \fBSetTarget\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector4\fP & \fBGetTarget\fP (void)"
+.RI "const \fBKM::Point\fP & \fBGetTarget\fP (void)"
 .br
 .ti -1c
-.RI "void \fBSetUpVector4\fP (\fBF32\fP val)"
+.RI "void \fBSetUpVector\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBSetUpVector4\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
+.RI "void \fBSetUpVector\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
-.RI "void \fBSetUpVector4\fP (const \fBKM::Vector4\fP &vec)"
+.RI "void \fBSetUpVector\fP (const \fBKM::Vector4\fP &vec)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector4\fP & \fBGetUpVector4\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetUpVector\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetLookVector4\fP (\fBF32\fP val)"
+.RI "void \fBSetLookVector\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBSetLookVector4\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
+.RI "void \fBSetLookVector\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
 .br
 .ti -1c
-.RI "void \fBSetLookVector4\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
+.RI "void \fBSetLookVector\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
-.RI "void \fBSetLookVector4\fP (const \fBKM::Vector4\fP &vec)"
+.RI "void \fBSetLookVector\fP (const \fBKM::Vector4\fP &vec)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector4\fP & \fBGetLookVector4\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetLookVector\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetRightVector4\fP (\fBF32\fP val)"
+.RI "void \fBSetRightVector\fP (\fBF32\fP val)"
 .br
 .ti -1c
-.RI "void \fBSetRightVector4\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
+.RI "void \fBSetRightVector\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
 .br
 .ti -1c
-.RI "void \fBSetRightVector4\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
+.RI "void \fBSetRightVector\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
-.RI "void \fBSetRightVector4\fP (const \fBKM::Vector4\fP &vec)"
+.RI "void \fBSetRightVector\fP (const \fBKM::Vector4\fP &vec)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector4\fP & \fBGetRightVector4\fP (void) const"
+.RI "const \fBKM::Vector4\fP & \fBGetRightVector\fP (void) const"
 .br
 .ti -1c
 .RI "void \fBSetMouseSensitivity\fP (\fBF32\fP val)"
@@ -145,11 +145,11 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 
 .in +1c
 .ti -1c
-.RI "\fBKM::Vector4\fP \fB_position\fP"
+.RI "\fBKM::Point\fP \fB_position\fP"
 .br
 .RI "Position of \fBCamera\fP in world space\&. "
 .ti -1c
-.RI "\fBKM::Vector4\fP \fB_target\fP"
+.RI "\fBKM::Point\fP \fB_target\fP"
 .br
 .ti -1c
 .RI "\fBKM::Vector4\fP \fB_up\fP"
@@ -161,7 +161,10 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 .RI "\fBKM::Vector4\fP \fB_right\fP"
 .br
 .ti -1c
-.RI "\fBKM::Vector4\fP \fB_lastMouseCoords\fP"
+.RI "\fBKM::Point\fP \fB_currentMouseCoords\fP"
+.br
+.ti -1c
+.RI "\fBKM::Point\fP \fB_lastMouseCoords\fP"
 .br
 .ti -1c
 .RI "\fBF32\fP \fB_mouseSensitivity\fP"
@@ -186,7 +189,7 @@ Inherited by \fBKillerEngine::FPSCamera\fP, and \fBKillerEngine::OrbitCamera\fP\
 
 .in +1c
 .ti -1c
-.RI "virtual void \fB_v_UpdateCameraVector4s\fP (void)"
+.RI "virtual void \fB_v_UpdateCameraVectors\fP (void)"
 .br
 .in -1c
 .SS "Private Attributes"

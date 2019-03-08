@@ -1,4 +1,4 @@
-.TH "KillerEngine::Shader" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Shader" 3 "Thu Mar 7 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -30,7 +30,10 @@ KillerEngine::Shader
 .RI "void \fBSetUniform\fP (const GLchar *name, const \fBKM::Vector4\fP &vec)"
 .br
 .ti -1c
-.RI "void \fBSetUniformVec3\fP (const GLchar *name, const \fBKM::Vector4\fP &vec)"
+.RI "void \fBSetUniform\fP (const GLchar *name, const \fBKM::Vector3\fP &vec)"
+.br
+.ti -1c
+.RI "void \fBSetUniform\fP (const GLchar *name, const \fBKM::Point\fP &point)"
 .br
 .ti -1c
 .RI "void \fBSetUniform\fP (const GLchar *name, \fBKM::Matrix4\fP mat)"
@@ -164,6 +167,28 @@ Helper function to set a uniform in the shader\&. Wrapper around glUniform4f\&.
 .RE
 .PP
 
+.SS "void Shader::SetUniform (const GLchar * name, const \fBKM::Vector3\fP & vec)"
+Helper function to set a uniform in the shader\&. Wrapper around glUniform3f\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the uniform in the shader\&. 
+.br
+\fIvec\fP is the \fBKillerMath::Vector3\fP to pass into the shader\&. x, y and z will be passed into the shader\&. 
+.RE
+.PP
+
+.SS "void Shader::SetUniform (const GLchar * name, const \fBKM::Point\fP & point)"
+Helper function to set a uniform in the shader\&. Wrapper around glUniform3f\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the uniform in the shader\&. 
+.br
+\fIpoint\fP is the \fBKillerMath::Point\fP to pass into the shader\&. x, y, z and w will be passed into the shader\&. 
+.RE
+.PP
+
 .SS "void Shader::SetUniform (const GLchar * name, \fBKM::Matrix4\fP mat)"
 Helper function to set a uniform in the shader\&. Wrapper around glUniformMatrix44fv\&. 
 .PP
@@ -196,17 +221,6 @@ Helper function to set a uniform in the shader\&. This is used to activate more 
 \fIname\fP is the name of the uniform in the shader\&. 
 .br
 \fItexSlot\fP is the index \fBTexture\fP slot to activate\&. 
-.RE
-.PP
-
-.SS "void Shader::SetUniformVec3 (const GLchar * name, const \fBKM::Vector4\fP & vec)"
-Helper function to set a uniform in the shader\&. Wrapper around glUniform3f\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIname\fP is the name of the uniform in the shader\&. 
-.br
-\fIvec\fP is the \fBKillerMath::Vector4\fP to pass into the shader\&. Only the x, y and z will be passed\&. 
 .RE
 .PP
 
