@@ -1,0 +1,22 @@
+//==========================================================================================================================
+//
+//Purpose
+//
+//==========================================================================================================================
+This document will track the current status of the test suite in general. It will include broken tests, items that need improvement, flaky test reports and broken test reports. It makes the most sense to track this inside of the project itself with this document right now.
+
+//==========================================================================================================================
+//
+//Issues:
+//
+//==========================================================================================================================
+
+//==========================================================================================================================
+//Model in GameObject3D
+//==========================================================================================================================
+The GameObject3D tests have been disabled by commenting them out for now. This is because the Model class is throwing an exception. 
+
+//==========================================================================================================================
+//Matrix4::MakePerspective
+//==========================================================================================================================
+There is an error in these tests. It needs to be looked at. The equation that is being used to make the perspective Matrix4 may be wrong, or it could be an error in the math on my end. This has been commented out for now. It can be re-added when the fix is written for the Matrix4 class.
