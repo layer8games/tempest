@@ -174,6 +174,12 @@ namespace KillerEngine
 */
 		void RenderObjects(void);
 
+/*! 
+	Loops over all GameObjects and KillerPhysics::Particle that have bee added to the level and calls GameObject::SetUniform for the
+	type that is passed in. This is a template function. 
+	\param name is the name of the uniform to set. This must match what is found in the shader. 
+	\param type is the dynamic type that is passed into the shader.  
+*/
 		template <class T>
 		inline void SetObjectUniforms(string name, const T& type)
 		{
