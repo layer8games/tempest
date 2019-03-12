@@ -1,4 +1,4 @@
-.TH "KillerEngine::Color" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Color" 3 "Tue Mar 12 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -36,12 +36,21 @@ KillerEngine::Color
 .RI "\fBColor\fP & \fBoperator=\fP (const \fBColor\fP &c)"
 .br
 .ti -1c
+.RI "bool \fBHasAlpha\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBUseAlpha\fP (bool state)"
+.br
+.ti -1c
 .RI "const \fBF32\fP * \fBGetPointer\fP (void) const"
 .br
 .in -1c
 .SS "Private Attributes"
 
 .in +1c
+.ti -1c
+.RI "bool \fB_alpha\fP"
+.br
 .ti -1c
 .RI "\fBF32\fP \fB_data\fP [4]"
 .br
@@ -107,6 +116,17 @@ Copy constructor\&. Calls Color::GetRed Color::GetGreen Color::GetBlue Color::Ge
 .PP 
 .SS "const \fBF32\fP* KillerEngine::Color::GetPointer (void) const\fC [inline]\fP"
 Creates and returns an array with the 4 color values in it as a pointer\&. 
+.SS "bool KillerEngine::Color::HasAlpha (void) const\fC [inline]\fP"
+Checks if the alpha channel should be considered for this \fBColor\fP\&. 
+.SS "void KillerEngine::Color::UseAlpha (bool state)\fC [inline]\fP"
+Sets if the alpha channel should be considered for this \fBColor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP is the new state that will be set\&. 
+.RE
+.PP
+
 
 .SH "Author"
 .PP 

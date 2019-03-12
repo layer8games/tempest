@@ -1,4 +1,4 @@
-.TH "KillerEngine::Level" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Level" 3 "Tue Mar 12 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -61,6 +61,9 @@ KillerEngine::Level
 .br
 .ti -1c
 .RI "void \fBRenderObjects\fP (void)"
+.br
+.ti -1c
+.RI "template<class T > void \fBSetObjectUniforms\fP (string name, const T &type)"
 .br
 .ti -1c
 .RI "void \fBSetBackgroundColor\fP (\fBColor\fP &c)"
@@ -388,6 +391,17 @@ Changes the width of the play area of the \fBLevel\fP\&.
 
 .SS "void KillerEngine::Level::SetNearBorder (\fBS32\fP n)\fC [inline]\fP"
 Sets the near border of the play area\&. 
+.SS "template<class T > void KillerEngine::Level::SetObjectUniforms (string name, const T & type)\fC [inline]\fP"
+Loops over all GameObjects and \fBKillerPhysics::Particle\fP that have bee added to the level and calls GameObject::SetUniform for the type that is passed in\&. This is a template function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is the name of the uniform to set\&. This must match what is found in the shader\&. 
+.br
+\fItype\fP is the dynamic type that is passed into the shader\&. 
+.RE
+.PP
+
 .SS "void KillerEngine::Level::SetRightBorder (\fBS32\fP right)\fC [inline]\fP"
 Set the right bounds\&. 
 .PP

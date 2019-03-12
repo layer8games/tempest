@@ -36,6 +36,7 @@ var class_killer_engine_1_1_level =
     [ "SetLevelHeight", "class_killer_engine_1_1_level.html#ae053ef118b049e3e8a64d0d8457dd458", null ],
     [ "SetLevelWidth", "class_killer_engine_1_1_level.html#a96242b3d0337c57a2dc3c1188b74994a", null ],
     [ "SetNearBorder", "class_killer_engine_1_1_level.html#ae27c04e6efa23a7e1ef505b0e2765a38", null ],
+    [ "SetObjectUniforms", "class_killer_engine_1_1_level.html#ae079b910ef5937c6a11f6918e0c0e627", null ],
     [ "SetRightBorder", "class_killer_engine_1_1_level.html#a72b208b8bbb596179657859371a851e5", null ],
     [ "SetTopBorder", "class_killer_engine_1_1_level.html#ab7f88c9a262b207a58badb6b9b9eadb4", null ],
     [ "UpdateLevel", "class_killer_engine_1_1_level.html#a4812e4f88b745499785fe19709cf7a3d", null ],

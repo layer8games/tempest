@@ -11,5 +11,6 @@ var searchData=
   ['updateforces',['UpdateForces',['../class_killer_physics_1_1_force_registry.html#aa9c6529736a81a9dcbb0914042728be0',1,'KillerPhysics::ForceRegistry']]],
   ['updatelevel',['UpdateLevel',['../class_killer_engine_1_1_level.html#a4812e4f88b745499785fe19709cf7a3d',1,'KillerEngine::Level']]],
   ['updateobjects',['UpdateObjects',['../class_killer_engine_1_1_level.html#abfe26b484c3972eb8d6df069491cce8a',1,'KillerEngine::Level']]],
-  ['use',['Use',['../class_killer_engine_1_1_shader.html#acd00cf10ae9fecb542659d8efaf6cd47',1,'KillerEngine::Shader']]]
+  ['use',['Use',['../class_killer_engine_1_1_shader.html#acd00cf10ae9fecb542659d8efaf6cd47',1,'KillerEngine::Shader']]],
+  ['usealpha',['UseAlpha',['../class_killer_engine_1_1_color.html#a68194c8b3c854ac2748b6e38212e9514',1,'KillerEngine::Color']]]
 ];

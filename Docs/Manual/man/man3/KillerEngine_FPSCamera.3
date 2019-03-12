@@ -1,4 +1,4 @@
-.TH "KillerEngine::FPSCamera" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::FPSCamera" 3 "Tue Mar 12 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,7 +12,7 @@ Inherits \fBKillerEngine::Camera\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBFPSCamera\fP (const \fBKM::Vector4\fP position, \fBF32\fP yaw, \fBF32\fP pitch)"
+.RI "\fBFPSCamera\fP (const \fBKM::Point\fP &position, \fBF32\fP yaw, \fBF32\fP pitch)"
 .br
 .ti -1c
 .RI "virtual void \fBv_Update\fP (void)"
@@ -21,7 +21,7 @@ Inherits \fBKillerEngine::Camera\fP\&.
 .RI "virtual void \fBv_Rotate\fP (void)"
 .br
 .ti -1c
-.RI "virtual void \fBv_Move\fP (const \fBKM::Vector4\fP offset)"
+.RI "virtual void \fBv_Move\fP (const \fBKM::Vector4\fP &offset)"
 .br
 .ti -1c
 .RI "void \fBSetWorldUp\fP (const \fBKM::Vector4\fP vec)"

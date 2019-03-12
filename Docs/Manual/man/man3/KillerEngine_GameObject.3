@@ -1,4 +1,4 @@
-.TH "KillerEngine::GameObject" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::GameObject" 3 "Tue Mar 12 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -84,10 +84,10 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "const \fBU32\fP \fBGetID\fP (void) const"
 .br
 .ti -1c
-.RI "const \fBKM::Vector4\fP & \fBGetPosition\fP (void) const"
+.RI "const \fBKM::Point\fP & \fBGetPosition\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (const \fBKM::Vector4\fP &pos)"
+.RI "void \fBSetPosition\fP (const \fBKM::Point\fP &pos)"
 .br
 .ti -1c
 .RI "void \fBSetPosition\fP (\fBF32\fP x, \fBF32\fP y)"
@@ -105,13 +105,16 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "void \fBSetPositionZ\fP (\fBF32\fP zVal)"
 .br
 .ti -1c
-.RI "void \fBAddScaledPosition\fP (const \fBKM::Vector4\fP pos, \fBF32\fP scale)"
+.RI "void \fBAddScaledPosition\fP (const \fBKM::Vector4\fP &pos, \fBF32\fP scale)"
 .br
 .ti -1c
-.RI "const \fBKM::Vector4\fP & \fBGetScale\fP (void) const"
+.RI "void \fBAddScaledPosition\fP (const \fBKM::Point\fP &point, \fBF32\fP scale)"
 .br
 .ti -1c
-.RI "void \fBSetScale\fP (const \fBKM::Vector4\fP &scale)"
+.RI "const \fBKM::Vector3\fP & \fBGetScale\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetScale\fP (const \fBKM::Vector3\fP &scale)"
 .br
 .ti -1c
 .RI "void \fBSetScale\fP (\fBF32\fP val)"
@@ -168,7 +171,10 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "void \fBSetUniform\fP (string name, const \fBKM::Vector4\fP &vec)"
 .br
 .ti -1c
-.RI "void \fBSetUniformVec3\fP (string name, const \fBKM::Vector4\fP &vec)"
+.RI "void \fBSetUniform\fP (string name, const \fBKM::Vector3\fP &vec)"
+.br
+.ti -1c
+.RI "void \fBSetUniform\fP (string name, const \fBKM::Point\fP &point)"
 .br
 .ti -1c
 .RI "void \fBSetUniform\fP (string name, const \fBKM::Matrix4\fP &mat)"
@@ -226,7 +232,7 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 
 .in +1c
 .ti -1c
-.RI "\fBKM::Vector4\fP & \fB_AccessPosition\fP (void)"
+.RI "\fBKM::Point\fP & \fB_AccessPosition\fP (void)"
 .br
 .ti -1c
 .RI "\fBKM::Quaternion\fP & \fB_AccessOrientation\fP (void)"
@@ -264,10 +270,10 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "\fBKM::Matrix4\fP \fB_modelTOWorldCache\fP"
 .br
 .ti -1c
-.RI "\fBKM::Vector4\fP \fB_position\fP"
+.RI "\fBKM::Point\fP \fB_position\fP"
 .br
 .ti -1c
-.RI "\fBKM::Vector4\fP \fB_scale\fP"
+.RI "\fBKM::Vector3\fP \fB_scale\fP"
 .br
 .ti -1c
 .RI "\fBKM::Quaternion\fP \fB_orientation\fP"

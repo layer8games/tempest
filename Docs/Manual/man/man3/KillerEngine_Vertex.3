@@ -1,4 +1,4 @@
-.TH "KillerEngine::Vertex" 3 "Mon Feb 25 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Vertex" 3 "Tue Mar 12 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -15,26 +15,26 @@ KillerEngine::Vertex
 .RI "\fBVertex\fP (void)"
 .br
 .ti -1c
-.RI "\fBVertex\fP (\fBKM::Vector4\fP pos)"
+.RI "\fBVertex\fP (\fBKM::Point\fP pos)"
 .br
 .ti -1c
-.RI "\fBVertex\fP (const \fBKM::Vector4\fP &pos, \fBColor\fP col)"
+.RI "\fBVertex\fP (const \fBKM::Point\fP &pos, \fBColor\fP col)"
 .br
 .ti -1c
-.RI "\fBVertex\fP (const \fBKM::Vector4\fP &pos, \fBF32\fP u, \fBF32\fP v)"
+.RI "\fBVertex\fP (const \fBKM::Point\fP &pos, \fBF32\fP u, \fBF32\fP v)"
 .br
 .ti -1c
-.RI "\fBVertex\fP (const \fBKM::Vector4\fP &pos, const \fBKM::Vector4\fP &norm)"
+.RI "\fBVertex\fP (const \fBKM::Point\fP &pos, const \fBKM::Vector4\fP &norm)"
 .br
 .ti -1c
-.RI "\fBVertex\fP (const \fBKM::Vector4\fP &pos, const \fBKM::Vector4\fP &norm, \fBF32\fP u, \fBF32\fP v)"
+.RI "\fBVertex\fP (const \fBKM::Point\fP &pos, const \fBKM::Vector4\fP &norm, \fBF32\fP u, \fBF32\fP v)"
 .br
 .in -1c
 .SS "Public Attributes"
 
 .in +1c
 .ti -1c
-.RI "\fBKM::Vector4\fP \fBposition\fP"
+.RI "\fBKM::Point\fP \fBposition\fP"
 .br
 .RI "Position of the vertex, in model space\&. "
 .ti -1c
@@ -57,7 +57,7 @@ Helper structure to keep track of all the value OpenGL needs for a vertex for re
 .PP 
 .SS "KillerEngine::Vertex::Vertex (void)\fC [inline]\fP"
 Sets all values to 0\&. 
-.SS "KillerEngine::Vertex::Vertex (\fBKM::Vector4\fP pos)\fC [inline]\fP"
+.SS "KillerEngine::Vertex::Vertex (\fBKM::Point\fP pos)\fC [inline]\fP"
 Sets up the position, everything else is set to 0\&. 
 .PP
 \fBParameters:\fP
@@ -66,7 +66,7 @@ Sets up the position, everything else is set to 0\&.
 .RE
 .PP
 
-.SS "KillerEngine::Vertex::Vertex (const \fBKM::Vector4\fP & pos, \fBColor\fP col)\fC [inline]\fP"
+.SS "KillerEngine::Vertex::Vertex (const \fBKM::Point\fP & pos, \fBColor\fP col)\fC [inline]\fP"
 Sets up the starting position and color\&. Everything else is set to 0\&. 
 .PP
 \fBParameters:\fP
@@ -77,7 +77,7 @@ Sets up the starting position and color\&. Everything else is set to 0\&.
 .RE
 .PP
 
-.SS "KillerEngine::Vertex::Vertex (const \fBKM::Vector4\fP & pos, \fBF32\fP u, \fBF32\fP v)\fC [inline]\fP"
+.SS "KillerEngine::Vertex::Vertex (const \fBKM::Point\fP & pos, \fBF32\fP u, \fBF32\fP v)\fC [inline]\fP"
 Sets the position, and texture coords\&. Everything else is set to 0\&. 
 .PP
 \fBParameters:\fP
@@ -90,7 +90,7 @@ Sets the position, and texture coords\&. Everything else is set to 0\&.
 .RE
 .PP
 
-.SS "KillerEngine::Vertex::Vertex (const \fBKM::Vector4\fP & pos, const \fBKM::Vector4\fP & norm)\fC [inline]\fP"
+.SS "KillerEngine::Vertex::Vertex (const \fBKM::Point\fP & pos, const \fBKM::Vector4\fP & norm)\fC [inline]\fP"
 Sets the position and surface normal, in model space\&. 
 .PP
 \fBParameters:\fP
@@ -101,7 +101,7 @@ Sets the position and surface normal, in model space\&.
 .RE
 .PP
 
-.SS "KillerEngine::Vertex::Vertex (const \fBKM::Vector4\fP & pos, const \fBKM::Vector4\fP & norm, \fBF32\fP u, \fBF32\fP v)\fC [inline]\fP"
+.SS "KillerEngine::Vertex::Vertex (const \fBKM::Point\fP & pos, const \fBKM::Vector4\fP & norm, \fBF32\fP u, \fBF32\fP v)\fC [inline]\fP"
 Sets the position, surface normal, and texture coords\&. \fBColor\fP is set to default\&. 
 .PP
 \fBParameters:\fP

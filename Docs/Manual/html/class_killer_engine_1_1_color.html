@@ -118,11 +118,18 @@ const <a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</
 <tr class="memitem:a44575bc90833ae17226d240e70787c43"><td class="memItemLeft" align="right" valign="top"><a id="a44575bc90833ae17226d240e70787c43"></a>
 <a class="el" href="class_killer_engine_1_1_color.html">Color</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_killer_engine_1_1_color.html">Color</a> &amp;c)</td></tr>
 <tr class="separator:a44575bc90833ae17226d240e70787c43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d1452a9ddb2b585e4d378482381151c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_color.html#a1d1452a9ddb2b585e4d378482381151c">HasAlpha</a> (void) const</td></tr>
+<tr class="separator:a1d1452a9ddb2b585e4d378482381151c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68194c8b3c854ac2748b6e38212e9514"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_color.html#a68194c8b3c854ac2748b6e38212e9514">UseAlpha</a> (bool state)</td></tr>
+<tr class="separator:a68194c8b3c854ac2748b6e38212e9514"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa63bfda365280dda09739b26b6a399b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_color.html#aaa63bfda365280dda09739b26b6a399b">GetPointer</a> (void) const</td></tr>
 <tr class="separator:aaa63bfda365280dda09739b26b6a399b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:add9da283df699a954036e9870c4fb339"><td class="memItemLeft" align="right" valign="top"><a id="add9da283df699a954036e9870c4fb339"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_alpha</b></td></tr>
+<tr class="separator:add9da283df699a954036e9870c4fb339"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f41ec89d0ee5c4ed7af4bbed2869933"><td class="memItemLeft" align="right" valign="top"><a id="a3f41ec89d0ee5c4ed7af4bbed2869933"></a>
 <a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_data</b> [4]</td></tr>
 <tr class="separator:a3f41ec89d0ee5c4ed7af4bbed2869933"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -326,9 +333,68 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a1d1452a9ddb2b585e4d378482381151c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d1452a9ddb2b585e4d378482381151c">&#9670;&nbsp;</a></span>HasAlpha()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KillerEngine::Color::HasAlpha </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks if the alpha channel should be considered for this <a class="el" href="class_killer_engine_1_1_color.html">Color</a>. </p>
+
+</div>
+</div>
+<a id="a68194c8b3c854ac2748b6e38212e9514"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68194c8b3c854ac2748b6e38212e9514">&#9670;&nbsp;</a></span>UseAlpha()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Color::UseAlpha </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets if the alpha channel should be considered for this <a class="el" href="class_killer_engine_1_1_color.html">Color</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>is the new state that will be set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_color_8h_source.html">Color.h</a></li>
-<li>F:/Projects/Killer_Engine/Implementations/Color.cpp</li>
+<li>C:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_color_8h_source.html">Color.h</a></li>
+<li>C:/Projects/Killer_Engine/Implementations/Color.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
