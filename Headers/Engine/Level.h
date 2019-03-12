@@ -174,6 +174,20 @@ namespace KillerEngine
 */
 		void RenderObjects(void);
 
+		template <class T>
+		inline void SetObjectUniforms(string name, const T& type)
+		{
+			for(auto i : _gameObjects)
+			{
+				i.second->SetUniform(name, type);
+			}
+
+			for(auto i : _particles)
+			{
+				i.second->SetUniform(name, type);
+			}
+		}
+
 //==========================================================================================================================
 //
 //Accessors
