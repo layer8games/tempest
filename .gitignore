@@ -34,7 +34,8 @@ LocalMachine.props
 *_p.c
 *.ilk
 *.meta
-*.obj
+#Needed to be able to see model files
+#*.obj
 *.pch
 *.pdb
 *.pgc
