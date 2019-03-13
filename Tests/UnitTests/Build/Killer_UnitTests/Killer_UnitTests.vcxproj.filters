@@ -4,52 +4,130 @@
     <Filter Include="Docs">
       <UniqueIdentifier>{ac5f141c-b740-42cf-894a-976dac61b428}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Tests">
+    <Filter Include="Source Code">
+      <UniqueIdentifier>{f590a158-4a93-48d5-a983-28cb187fee16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\UITest">
+      <UniqueIdentifier>{5daae116-3d88-49a6-aaf4-83fefb9ef015}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\UITest\Demo3D">
+      <UniqueIdentifier>{cc0bd382-664e-420d-bcc6-56ec7ebd0150}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\UITest\Demo3D\Cube">
+      <UniqueIdentifier>{e7cbb560-1c49-46a8-983c-4583d0c66c2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\UITest\Ballistics">
+      <UniqueIdentifier>{8384058a-c753-491e-bc32-000c719641a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\UITest\Ballistics\Cannon">
+      <UniqueIdentifier>{8a102062-da86-4971-8dc3-7850d572e4b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\UITest\Ballistics\Projectile">
+      <UniqueIdentifier>{e04785e9-29a2-4fa0-853f-d31cb8f4048e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\UITest\MovingBoxes">
+      <UniqueIdentifier>{05c1527b-49e9-4853-aecc-802c38e4bbb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\UITest\MovingBoxes\Box">
+      <UniqueIdentifier>{797bdd7e-1c43-40b2-8457-74d85d716b07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\UITest\Firework Demo">
+      <UniqueIdentifier>{a0782278-624d-4515-a2ab-5721f78037a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\UITest\Firework Demo\Firework">
+      <UniqueIdentifier>{97890cdf-61ca-4af8-a829-20067a3cfcfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\UITest\MainMenu">
+      <UniqueIdentifier>{6c0f69e9-12d9-4a95-b76d-cbd12aae91b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\UnitTests">
       <UniqueIdentifier>{2d03fbd3-ccc8-43e0-af91-49b11b6885c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\UITest\SplashScreen">
+      <UniqueIdentifier>{87836b19-4c76-4fc5-8e6f-ef964f3505b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\UITest\SpringsDemo">
+      <UniqueIdentifier>{0953da12-5e75-4b5b-8cfa-37ed9edbb711}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\t_Quaternion.cpp">
-      <Filter>Tests</Filter>
+      <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_Color.cpp">
-      <Filter>Tests</Filter>
+      <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_Timer.cpp">
-      <Filter>Tests</Filter>
+      <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_Random.cpp">
-      <Filter>Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\t_Main.cpp">
-      <Filter>Tests</Filter>
+      <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_GameObject.cpp">
-      <Filter>Tests</Filter>
+      <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_Level.cpp">
-      <Filter>Tests</Filter>
+      <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_BoundingSphere.cpp">
-      <Filter>Tests</Filter>
+      <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_AABB.cpp">
-      <Filter>Tests</Filter>
+      <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_Point.cpp">
-      <Filter>Tests</Filter>
+      <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_Matrix4.cpp">
-      <Filter>Tests</Filter>
+      <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_Matrix3.cpp">
-      <Filter>Tests</Filter>
+      <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_Vector4.cpp">
-      <Filter>Tests</Filter>
+      <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_Vector3.cpp">
-      <Filter>Tests</Filter>
+      <Filter>Source Code\UnitTests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Demo3D.cpp">
+      <Filter>Source Code\UITest\Demo3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Ballistics.cpp">
+      <Filter>Source Code\UITest\Ballistics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Cannon.cpp">
+      <Filter>Source Code\UITest\Ballistics\Cannon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Projectile.cpp">
+      <Filter>Source Code\UITest\Ballistics\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\MovingBoxes.cpp">
+      <Filter>Source Code\UITest\MovingBoxes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Box.cpp">
+      <Filter>Source Code\UITest\MovingBoxes\Box</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Cube.cpp">
+      <Filter>Source Code\UITest\Demo3D\Cube</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\FireworkDemo.cpp">
+      <Filter>Source Code\UITest\Firework Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Firework.cpp">
+      <Filter>Source Code\UITest\Firework Demo\Firework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Main.cpp">
+      <Filter>Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\MainMenu.cpp">
+      <Filter>Source Code\UITest\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\SplashScreen.cpp">
+      <Filter>Source Code\UITest\SplashScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Springs.cpp">
+      <Filter>Source Code\UITest\SpringsDemo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -58,8 +136,44 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Headers\UnitTests\t_Main.h">
-      <Filter>Tests</Filter>
+    <ClInclude Include="..\..\Headers\Boxes\Demo3D.h">
+      <Filter>Source Code\UITest\Demo3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Boxes\Ballistics.h">
+      <Filter>Source Code\UITest\Ballistics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Boxes\Projectile.h">
+      <Filter>Source Code\UITest\Ballistics\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Boxes\MovingBoxes.h">
+      <Filter>Source Code\UITest\MovingBoxes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Boxes\Box.h">
+      <Filter>Source Code\UITest\MovingBoxes\Box</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Boxes\Cannon.h">
+      <Filter>Source Code\UITest\Ballistics\Cannon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Boxes\Cube.h">
+      <Filter>Source Code\UITest\Demo3D\Cube</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Boxes\FireworksDemo.h">
+      <Filter>Source Code\UITest\Firework Demo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Boxes\Firework.h">
+      <Filter>Source Code\UITest\Firework Demo\Firework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Boxes\MainMenu.h">
+      <Filter>Source Code\UITest\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Boxes\SplashScreen.h">
+      <Filter>Source Code\UITest\SplashScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Boxes\Springs.h">
+      <Filter>Source Code\UITest\SpringsDemo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\UnitTests\TestHelper.h">
+      <Filter>Source Code</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

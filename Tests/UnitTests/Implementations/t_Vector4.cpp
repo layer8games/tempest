@@ -36,12 +36,12 @@ Written by Maxwell Miller
 -------------------------------------------------------------*/
 
 #include <boost/test/unit_test.hpp>
+#include <UnitTests/TestHelper.h>
 #include <Engine/Atom.h>
 #include <Engine/Vector4.h>
 #include <Engine/Vector3.h>
 #include <Engine/Point.h>
 
-#include <UnitTests/t_Main.h>
 
 namespace KM = KillerMath;
 

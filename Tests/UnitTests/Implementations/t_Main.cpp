@@ -40,6 +40,3 @@ Written by Maxwell Miller
 //
 //==========================================================================================================================
 
-#define BOOST_TEST_MAIN KillerUnitTests
-
-#include <boost/test/unit_test.hpp>

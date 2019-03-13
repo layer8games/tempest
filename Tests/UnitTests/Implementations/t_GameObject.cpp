@@ -37,7 +37,7 @@ Written by Maxwell Miller
 
 #include <boost/test/unit_test.hpp>
 
-#include <UnitTests/t_Main.h>
+#include <UnitTests/TestHelper.h>
 #include <Engine/Atom.h>
 #include <Engine/GameObject.h>
 #include <Engine/ErrorManager.h>
@@ -45,7 +45,6 @@ Written by Maxwell Miller
 #include <Engine/Vector4.h>
 
 #include <memory>
-#include <iostream>
 
 namespace KE = KillerEngine;
 namespace KM = KillerMath;

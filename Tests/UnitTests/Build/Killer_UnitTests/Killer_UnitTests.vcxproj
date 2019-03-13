@@ -119,6 +119,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Implementations\Ballistics.cpp" />
+    <ClCompile Include="..\..\Implementations\Box.cpp" />
+    <ClCompile Include="..\..\Implementations\Cannon.cpp" />
+    <ClCompile Include="..\..\Implementations\Cube.cpp" />
+    <ClCompile Include="..\..\Implementations\Demo3D.cpp" />
+    <ClCompile Include="..\..\Implementations\Firework.cpp" />
+    <ClCompile Include="..\..\Implementations\FireworkDemo.cpp" />
+    <ClCompile Include="..\..\Implementations\Main.cpp" />
+    <ClCompile Include="..\..\Implementations\MainMenu.cpp" />
+    <ClCompile Include="..\..\Implementations\MovingBoxes.cpp" />
+    <ClCompile Include="..\..\Implementations\Projectile.cpp" />
+    <ClCompile Include="..\..\Implementations\SplashScreen.cpp" />
+    <ClCompile Include="..\..\Implementations\Springs.cpp" />
     <ClCompile Include="..\..\Implementations\t_AABB.cpp" />
     <ClCompile Include="..\..\Implementations\t_BoundingSphere.cpp">
       <SubType>
@@ -130,7 +143,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_GameObject.cpp" />
     <ClCompile Include="..\..\Implementations\t_Level.cpp" />
-    <ClCompile Include="..\..\Implementations\t_Main.cpp" />
     <ClCompile Include="..\..\Implementations\t_Matrix3.cpp" />
     <ClCompile Include="..\..\Implementations\t_Matrix4.cpp" />
     <ClCompile Include="..\..\Implementations\t_Point.cpp" />
@@ -153,7 +165,19 @@
     <Text Include="..\..\Docs\TestStatus.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Headers\UnitTests\t_Main.h" />
+    <ClInclude Include="..\..\Headers\Boxes\Ballistics.h" />
+    <ClInclude Include="..\..\Headers\Boxes\Box.h" />
+    <ClInclude Include="..\..\Headers\Boxes\Cannon.h" />
+    <ClInclude Include="..\..\Headers\Boxes\Cube.h" />
+    <ClInclude Include="..\..\Headers\Boxes\Demo3D.h" />
+    <ClInclude Include="..\..\Headers\Boxes\Firework.h" />
+    <ClInclude Include="..\..\Headers\Boxes\FireworksDemo.h" />
+    <ClInclude Include="..\..\Headers\Boxes\MainMenu.h" />
+    <ClInclude Include="..\..\Headers\Boxes\MovingBoxes.h" />
+    <ClInclude Include="..\..\Headers\Boxes\Projectile.h" />
+    <ClInclude Include="..\..\Headers\Boxes\SplashScreen.h" />
+    <ClInclude Include="..\..\Headers\Boxes\Springs.h" />
+    <ClInclude Include="..\..\Headers\UnitTests\TestHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
