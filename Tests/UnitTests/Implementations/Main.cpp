@@ -79,14 +79,13 @@ BOOST_AUTO_TEST_CASE(UITests)
 //=====Window Parameter Constants=====
 	const S32    wndWidth  	   = 1024;
 	const S32    wndHeight 	   = 768;
-	const string wndTitle	   = "Boxes VS Triangles v0.2";
+	const string wndTitle	   = "Killer Engine UI Tests v0.1";
 	const S32    wndFullScreen = false;
 
 
 	KE::Engine::Instance()->Init(wndWidth, wndHeight, wndTitle, wndFullScreen);
 
 //=====Pre-Load Assets=====	
-//=======================================================Path==============================ID===Width=Height
 	KE::TextureManager::Instance()->LoadTexture(100, "../Assets/Textures/Boxes/RedBox.png");
 	KE::TextureManager::Instance()->LoadTexture(101, "../Assets/Textures/Boxes/GreenBox.png");
 	KE::TextureManager::Instance()->LoadTexture(102, "../Assets/Textures/Boxes/BlueBox.png");
