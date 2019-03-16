@@ -312,6 +312,9 @@ bool GameObject::LoadOBJ(string filepath)
 */
 void GameObject::LoadMesh(string filepath)
 {
+	ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh Deprecated function, do not call!");
+	return;
+
 	if(filepath.find(".dae") == std::string::npos)
 	{
 		ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh => Tried to load mesh in the wrong format. " + filepath);
