@@ -24,7 +24,7 @@ Ballistics::~Ballistics(void) {  }
 //InitLevel
 //
 //=============================================================================
-void Ballistics::v_InitLevel(U32 id, S32 w, S32 h, KE::Color& c)
+void Ballistics::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 {
 	Level::SetID(id);
 	Level::SetLevelWidth(w);

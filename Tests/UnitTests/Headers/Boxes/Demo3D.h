@@ -42,7 +42,7 @@ namespace Boxes
 //Functions
 //
 //==========================================================================================================================
-		void v_InitLevel(U32 id, S32 w, S32 h, KE::Color& c) final;
+		void v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c) final;
 
 		void v_Update(void) final;
 

@@ -22,7 +22,7 @@ SplashScreen::~SplashScreen(void)
 //InitLevel
 //
 //=============================================================================
-void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, KE::Color& c) 
+void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c) 
 {
 	Level::SetID(id);
 	Level::SetLevelWidth(w);

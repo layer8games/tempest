@@ -78,7 +78,7 @@ namespace KillerEngine
 	\param h is the height of the Level. 
 
 */
-		virtual void v_InitLevel(U32 id, S32 w, S32 h, Color& c)=0;
+		virtual void v_InitLevel(U32 id, S32 w, S32 h, const Color& c)=0;
 
 /*!
 	Abstract function. Used to control what needs to happen during an update. Please note, objects added to the level 
@@ -202,7 +202,7 @@ namespace KillerEngine
 /*!
 	Changes the set background color for the Level. It also calls Level::ActivateBackgroundColor
 */
-		inline void SetBackgroundColor(Color& c) 
+		inline void SetBackgroundColor(const Color& c) 
 		{ 
 			_bgColor = c;
 			ActivateBackgroundColor();

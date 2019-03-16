@@ -56,7 +56,7 @@ public:
 		//ShutDown();
 	}
 
-	void v_InitLevel(U32 id, S32 w, S32 h, KE::Color& c) final
+	void v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c) final
 	{  }
 
 	void v_Update(void) final
@@ -69,13 +69,12 @@ public:
 
 BOOST_AUTO_TEST_CASE(LevelSetAndGetDepthTests)
 {
+	TestLevel test { };
+	test.SetDepth(200);
+	test.SetNearBorder(-100);
+	test.SetFarBorder(100);
 
-	//TestLevel test { };
-	//test.SetDepth(200);
-	//test.SetNearBorder(-100);
-	//test.SetFarBorder(100);
-
-	//BOOST_CHECK_EQUAL(test.GetDepth(), 200);
-	//BOOST_CHECK_EQUAL(test.GetNearBorder(), -100);
-	//BOOST_CHECK_EQUAL(test.GetFarBorder(), 100);
+	BOOST_CHECK_EQUAL(test.GetDepth(), 200);
+	BOOST_CHECK_EQUAL(test.GetNearBorder(), -100);
+	BOOST_CHECK_EQUAL(test.GetFarBorder(), 100);
 }
