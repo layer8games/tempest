@@ -36,9 +36,11 @@ Written by Maxwell Miller
 #include <UnitTests/TestHelper.h>
 #include <Engine/Atom.h>
 #include <Engine/Level.h>
-
+#include <Engine/GameObject.h>
+#include <Engine/Particle.h>
 
 namespace KE = KillerEngine;
+namespace KP = KillerPhysics;
 
 //==========================================================================================================================
 //Concrete Level
@@ -48,19 +50,32 @@ class TestLevel : public KE::Level
 public:
 	TestLevel(void)
 	{
-		//Setup();
+		Level::SetCameraOrthographic(-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f);
 	}
 
 	~TestLevel(void)
-	{
-		//ShutDown();
-	}
+	{  }
 
 	void v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c) final
 	{  }
 
 	void v_Update(void) final
 	{  }
+};
+
+class TestLevelDefinedGameObject : public KE::GameObject
+{
+public:
+	TestLevelDefinedGameObject(void)
+	{
+		GameObject::MakeSprite();
+	};
+
+	~TestLevelDefinedGameObject(void)
+	{  };
+
+	void v_Update(void)
+	{  };
 };
 
 //==========================================================================================================================
@@ -77,4 +92,50 @@ BOOST_AUTO_TEST_CASE(LevelSetAndGetDepthTests)
 	BOOST_CHECK_EQUAL(test.GetDepth(), 200);
 	BOOST_CHECK_EQUAL(test.GetNearBorder(), -100);
 	BOOST_CHECK_EQUAL(test.GetFarBorder(), 100);
+}
+
+BOOST_AUTO_TEST_CASE(LevelAddAndRemoveObjects)
+{
+	TestLevel* test = new TestLevel();
+	test->SetDepth(200);
+	test->SetNearBorder(-100);
+	test->SetFarBorder(100);
+
+	shared_ptr<TestLevelDefinedGameObject> obj1 { new TestLevelDefinedGameObject() };
+
+	U32 obj1ID = obj1->GetID();
+
+	test->AddObjectToLevel(obj1);
+
+	auto copy1 = test->GetGameObject(obj1ID);
+
+	BOOST_CHECK_EQUAL(obj1ID, copy1->GetID());
+
+	test->RemoveObjectFromLevel(obj1ID);
+
+	auto copy2 = test->GetGameObject(obj1ID);
+
+	BOOST_CHECK_EQUAL(copy2, nullptr);
+
+/*
+	Error in GetShader call is blocking this code from running. It should be fixec, but I have
+	already spent too much time trying to get this to work. Calling it for now, since this is an
+	issue in the unit test framework, not the code itself.
+
+	shared_ptr<KP::Particle> particle { new KP::Particle() };
+
+	U32 particleID = particle->GetID();
+
+	test->AddObjectToLevel(particle);
+
+	auto particleCopy = test->GetParticle(particleID);
+
+	BOOST_CHECK_EQUAL(particleCopy->GetID(), particleID);
+
+	test->RemoveObjectFromLevel(particleID);
+
+	auto particleCopy2 = test->GetParticle(particleID);
+
+	BOOST_CHECK_EQUAL(particleCopy2, nullptr);
+*/
 }

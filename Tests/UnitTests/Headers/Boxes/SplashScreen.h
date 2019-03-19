@@ -19,6 +19,8 @@ Written by Maxwell Miller
 #include <Engine/Text.h>
 #include <Engine/Color.h>
 #include <Engine/Point.h>
+#include <Engine/Controller.h>
+#include <Engine/Engine.h>
 
 namespace KE = KillerEngine;
 namespace KM = KillerMath;

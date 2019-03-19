@@ -430,6 +430,32 @@ namespace KillerEngine
 		{
 			_camera->SetOrthographic();
 		}
+
+/*! 
+	Wrapper around Camera::SetOrthographic with the same arguments. 
+	\param left is the left boundary of the projection.
+	\param right is the right boundary of the projection. 
+	\param bottom is the bottom boundary of the projection. 
+	\param top is the uppder boundary of the projection. 
+	\param nearPlane is the close boundary of the projection.
+	\param farPlane is the distant boundary of the projection.
+*/
+		void SetCameraOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)
+		{
+			_camera->SetOrthographic(left, right, bottom, top, nearPlane, farPlane);
+		}
+
+/*! 
+	Returns GameObject with ID.
+	\param id is the ID of the object to get. Should coorespond to GameObject::_ID. 
+*/
+		shared_ptr<GameObject> GetGameObject(U32 id);
+
+/*! 
+	Returns KillerPhysics::Particle with ID.
+	\param id is the ID of the object to get. Should coorespond to the GameObject::_ID. 
+*/
+		shared_ptr<KP::Particle> GetParticle(U32 id);
 		
 	private:
 //==========================================================================================================================

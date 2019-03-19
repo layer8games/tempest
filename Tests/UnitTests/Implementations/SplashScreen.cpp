@@ -64,6 +64,11 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 //=============================================================================
 void SplashScreen::v_Update(void) 
 {
+	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ESCAPE))
+	{
+		KE::Engine::Instance()->End();
+	}
+
 	KM::Point greenPos = _green.GetPosition();
 	KM::Point bluePos  = _blue.GetPosition();
 	F32 redWidth   = _red.GetScale()[1];

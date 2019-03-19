@@ -32,6 +32,8 @@ _forceRegistry()
 Level::~Level(void)
 {
 	delete _camera;
+	_gameObjects.clear();
+	_particles.clear();
 }
 
 //==========================================================================================================================
@@ -150,9 +152,19 @@ void Level::AddTextToLevel(const Text& text)
 //=============================================================================
 void Level::RemoveObjectFromLevel(U32 id)
 {
-	std::map<U32, std::shared_ptr<GameObject>>::iterator i = _gameObjects.find(id);
-
-	_gameObjects.erase(i);
+	//Assume that if an ID is not a GameObject, then it could be derived type.
+	if(_gameObjects.find(id) != _gameObjects.end())
+	{
+		_gameObjects.erase(id);
+	}
+	else if(_particles.find(id) != _particles.end())
+	{
+		_particles.erase(id);
+	}
+	else
+	{
+		ErrorManager::Instance()->SetError(ENGINE, "Level::RemoveObjectFromLevel, ln 163, no object found with id " + id);
+	}
 }
 
 //==========================================================================================================================
@@ -203,4 +215,34 @@ void Level::RenderObjects(void)
 			i.second->v_Render();
 		}
 	}	
+}
+
+//==========================================================================================================================
+//GetObjects
+//==========================================================================================================================
+
+shared_ptr<GameObject> Level::GetGameObject(U32 id)
+{
+	shared_ptr<GameObject> obj = _gameObjects[id];
+
+	if(obj == nullptr)
+	{
+		//ErrorManager::Instance()->SetError(ENGINE, "Level::GetGameObject ln 233, unable to find object with id " + id);
+		return nullptr;
+	}
+
+	return obj;
+}
+
+shared_ptr<KP::Particle> Level::GetParticle(U32 id)
+{
+	shared_ptr<KP::Particle> obj = _particles[id];
+
+	if(obj == nullptr)
+	{
+		//ErrorManager::Instance()->SetError(ENGINE, "Level::GetGameObject ln 233, unable to find object with id " + id);
+		return nullptr;
+	}
+
+	return obj;
 }

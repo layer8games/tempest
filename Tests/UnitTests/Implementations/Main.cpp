@@ -66,6 +66,7 @@ namespace KE = KillerEngine;
 #include <Boxes/FireworksDemo.h>
 #include <Boxes/Springs.h>
 #include <Boxes/Demo3D.h>
+#include <Boxes/Box.h>
 
 using namespace Boxes;
 

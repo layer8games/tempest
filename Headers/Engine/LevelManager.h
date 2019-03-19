@@ -126,7 +126,8 @@ namespace KillerEngine
 		void AddParticleToLevel(U32 id, shared_ptr<KP::Particle> particle, shared_ptr<KP::ForceGenerator> generator=nullptr);
 		
 /*! 
-	Removes an object from a Level. Wrapper around Level::RemoveObjectFromLevel.
+	Removes an object from a Level. Wrapper around Level::RemoveObjectFromLevel. This assumes that ID are unique for all GameObject. 
+	I don't know if this is true, so be careful. 
 	\param levelID is the key for the Level that the object will be removed from. 
 	\param objID is the GameObject ID to remove. 
 */
