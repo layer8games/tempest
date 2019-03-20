@@ -96,7 +96,7 @@ namespace KillerCollisions
 */
 		inline void SetHalfWidth(F32 w)
 		{
-			_halfWidth = w;
+			_halfScale[x] = w;
 		}
 
 /*!
@@ -106,7 +106,7 @@ namespace KillerCollisions
 */
 		inline void SetWidth(F32 w)
 		{
-			_halfWidth = w / 2.0f;
+			_halfScale[x] = w / 2.0f;
 		}
 
 /*!
@@ -114,7 +114,7 @@ namespace KillerCollisions
 */
 		inline F32 GetHalfWidth(void) const
 		{
-			return _halfWidth;
+			return _halfScale[x];
 		}
 
 /*!
@@ -123,7 +123,7 @@ namespace KillerCollisions
 */
 		inline F32 GetWidth(void) const
 		{
-			return _halfWidth * 2.0f;
+			return _halfScale[x] * 2.0f;
 		}
 
 /*!
@@ -132,7 +132,7 @@ namespace KillerCollisions
 */
 		inline void SetHalfHeight(F32 h)
 		{
-			_halfHeight = h;
+			_halfScale[y] = h;
 		}
 
 /*!
@@ -142,7 +142,7 @@ namespace KillerCollisions
 */
 		inline void SetHeight(F32 h)
 		{
-			_halfHeight = h / 2.0f;
+			_halfScale[y] = h / 2.0f;
 		}
 
 /*!
@@ -150,7 +150,7 @@ namespace KillerCollisions
 */
 		inline F32 GetHalfHeight(void) const
 		{
-			return _halfHeight;
+			return _halfScale[y];
 		}
 
 /*!
@@ -159,7 +159,7 @@ namespace KillerCollisions
 */
 		inline F32 GetHeight(void) const
 		{
-			return _halfHeight * 2.0f;
+			return _halfScale[y] * 2.0f;
 		}
 
 /*!
@@ -168,7 +168,7 @@ namespace KillerCollisions
 */
 		inline void SetHalfDepth(F32 d)
 		{
-			_halfDepth = d;
+			_halfScale[z] = d;
 		}
 
 /*!
@@ -178,7 +178,7 @@ namespace KillerCollisions
 */
 		inline void SetDepth(F32 d)
 		{
-			_halfDepth = d / 2.0f;
+			_halfScale[z] = d / 2.0f;
 		}
 
 /*!
@@ -186,7 +186,7 @@ namespace KillerCollisions
 */
 		inline F32 GetHalfDepth(void) const
 		{
-			return _halfDepth;
+			return _halfScale[z];
 		}
 
 /*!
@@ -195,7 +195,7 @@ namespace KillerCollisions
 */
 		inline F32 GetDepth(void) const
 		{
-			return _halfDepth * 2.0f;
+			return _halfScale[z] * 2.0f;
 		}
 
 /*!
@@ -206,9 +206,9 @@ namespace KillerCollisions
 */
 		inline void SetHalfDimensions(F32 w, F32 h, F32 d)
 		{
-			_halfWidth = w;
-			_halfHeight = h;
-			_halfDepth = d;
+			_halfScale[x] = w;
+			_halfScale[y] = h;
+			_halfScale[z] = d;
 		}
 
 /*!
@@ -220,16 +220,14 @@ namespace KillerCollisions
 */
 		inline void SetDimensions(F32 w, F32 h, F32 d)
 		{
-			_halfWidth = w / 2.0f;
-			_halfHeight = h / 2.0f;
-			_halfDepth = d / 2.0f;
-		}	
+			_halfScale[x] = w / 2.0f;
+			_halfScale[y] = h / 2.0f;
+			_halfScale[z] = d / 2.0f;
+		}
 
 	private:
-		KM::Point  _center;			///< Center location of the AABB. This is the posistion represented in local space of the object that holds it. 
-		F32		   _halfWidth;		///< Half the width from the center to the edge, along the x axis. 
-		F32 	   _halfHeight;		///< Half the height from the center to the edge, along the y axis. 
-		F32 	   _halfDepth;		///< Half the depth from the center to the edge, along the z axis. 
+		KM::Point   _center;		///< Center location of the AABB. This is the posistion represented in world space of the object that holds it. 
+		KM::Vector3 _halfScale;		///< The half sizes of the bounding volume along the 3 axies, x, y and z.	 
 		
 	};//end Class
 }//end Namespace

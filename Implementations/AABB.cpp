@@ -9,17 +9,13 @@ using namespace KillerCollisions;
 AABB::AABB(void)
 :
 _center(0.0f, 0.0f, 0.0f),
-_halfWidth(0.0f),
-_halfHeight(0.0f),
-_halfDepth(0.0f)
+_halfScale(0.0f, 0.0f, 0.0f)
 {  }
 
 AABB::AABB(const KM::Point& center, F32 w, F32 h, F32 d)
 :
 _center(center),
-_halfWidth(w / 2.0f),
-_halfHeight(h / 2.0f),
-_halfDepth(d / 2.0f)
+_halfScale(w / 2.0f, h / 2.0f, d / 2.0f)
 {  }
 
 AABB::~AABB(void)
@@ -32,17 +28,17 @@ AABB::~AABB(void)
 //==========================================================================================================================
 bool AABB::TestCollision(const AABB& other) const
 {
-	if(real_abs(_center[0] - other.GetCenter()[0]) > (_halfWidth + other.GetHalfWidth()))
+	if(real_abs(_center[0] - other.GetCenter()[0]) > (_halfScale[x] + other.GetHalfWidth()))
 	{
 		return false;
 	}
 
-	if(real_abs(_center[1] - other.GetCenter()[1]) > (_halfHeight + other.GetHalfHeight()))
+	if(real_abs(_center[1] - other.GetCenter()[1]) > (_halfScale[y] + other.GetHalfHeight()))
 	{
 		return false;
 	}
 
-	if(real_abs(_center[2] - other.GetCenter()[2]) > (_halfDepth + other.GetHalfDepth()))
+	if(real_abs(_center[2] - other.GetCenter()[2]) > (_halfScale[z] + other.GetHalfDepth()))
 	{
 		return false;
 	}

@@ -43,7 +43,7 @@ void Glyph::v_Render(void)
 	GameObject::UseShader(true);
 
 	GameObject::SetUniform("sprite_color", GameObject::GetColor());
-	GameObject::SetUniform("model", GameObject::GetModelMatrix4());
+	GameObject::SetUniform("model", GameObject::GetModelMatrix());
 	
 	GameObject::BindTexture(true);
 	GameObject::BindVAO(true);

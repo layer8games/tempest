@@ -44,7 +44,7 @@ GameObject::GameObject(const GameObject& obj)
 _vertices(obj.GetVertices()),
 _indices(obj.GetIndices()),
 _uvList(obj.GetUVList()),
-_modelTOWorldCache(obj.GetModelMatrix4()),
+_modelTOWorldCache(obj.GetModelMatrix()),
 _position(obj.GetPosition()),
 _scale(obj.GetScale()),
 _orientation(obj.GetOrientation()),
@@ -91,7 +91,7 @@ void GameObject::v_Render(void)
 		SetUniform("sprite_color", _color);
 	}
 
-	SetUniform("model", GetModelMatrix4());
+	SetUniform("model", GetModelMatrix());
 
 	glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
 

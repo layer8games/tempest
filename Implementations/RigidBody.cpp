@@ -62,7 +62,7 @@ void RigidBody::CalculateDerivedData(void)
 {
 	GameObject::_AccessOrientation().Normalize();
 
-	_inverseInertiaTensorInWorld = GameObject::GetModelMatrix4().Transform3x3(_inverseInertiaTensor);
+	_inverseInertiaTensorInWorld = GameObject::GetModelMatrix().Transform3x3(_inverseInertiaTensor);
 }
 //==========================================================================================================================
 //Point Forces
@@ -82,7 +82,7 @@ void RigidBody::AddForceAtPoint(const KM::Vector4& force, const KM::Vector4& poi
 //Force given in world space, point given in local space
 void RigidBody::AddForceAtLocalPoint(const KM::Vector4& force, const KM::Vector4& point)
 {
-	KM::Vector4 pt = GameObject::GetModelMatrix4Rot() * point;
+	KM::Vector4 pt = GameObject::GetModelMatrixRot() * point;
 	AddForceAtPoint(force, pt);
 }
 
