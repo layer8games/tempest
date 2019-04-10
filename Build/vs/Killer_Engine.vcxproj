@@ -129,11 +129,15 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Atom.h" />
-    <ClInclude Include="..\..\Headers\Engine\AABB.h">
+    <ClInclude Include="..\..\Headers\Engine\AxisAlignedBoundingBox.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\BoundingSphere.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\BroadPhaseCollision.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -158,7 +162,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\OBB.h">
+    <ClInclude Include="..\..\Headers\Engine\OrientedBoundingBox.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -230,7 +234,7 @@
     <ClInclude Include="..\..\Headers\Engine\LevelManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Implementations\AABB.cpp">
+    <ClCompile Include="..\..\Implementations\AxisAlignedBoundingBox.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -272,7 +276,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\OBB.cpp">
+    <ClCompile Include="..\..\Implementations\OrientedBoundingBox.cpp">
       <SubType>
       </SubType>
     </ClCompile>

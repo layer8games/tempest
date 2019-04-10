@@ -99,18 +99,18 @@ namespace KillerMath
 	Sets the Vector4 to act like a 2D Vector4 instead of a 3D Vector4 by setting _2D to true. This means that the z value wont 
 	be copied or used in operations. 
 */		
-		inline void Make2D(void)
+		inline void Make2D(bool state=true)
 		{
-			_2D = true;
+			_2D = state;
 		}
 
 /*! 
 	Sets the Vector4 to act like a 3D Vector4 instead of a 3D Vector4 by settings _2D to true. This means that the z value will
 	be copied and used in operations.
 */		
-		inline void Make3D(void)
+		inline void Make3D(bool state=false)
 		{
-			_2D = false;
+			_2D = state;
 		}
 
 /*! 

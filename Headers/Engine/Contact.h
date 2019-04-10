@@ -35,9 +35,9 @@ namespace KillerPhysics
 	private:
 		KM::Vector4 _contactPoint;
 		KM::Vector4 _collissionNormal;
-		real 	   _penetrationDepth;
-		real 	   _collissionRestitution;
-		real 	   _friction;
+		real 	    _penetrationDepth;
+		real 	    _collissionRestitution;
+		real 	    _friction;
 		
 	};//end Class
 }//end Namespace

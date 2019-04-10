@@ -43,6 +43,9 @@ namespace KillerCollisions
 */
 		BoundingSphere(const BoundingSphere& one, const BoundingSphere& two);
 
+/*!
+	No implementation.
+*/
 		~BoundingSphere(void);
 
 //==========================================================================================================================
@@ -69,6 +72,11 @@ namespace KillerCollisions
 		inline real GetSize(void) const
 		{
 			return static_cast<real>(1.333333) * R_PI * _radius * _radius * _radius;
+		}
+
+		inline void Make2D(bool state=true)
+		{
+			_center.Make2D(state);
 		}
 
 //==========================================================================================================================
@@ -130,7 +138,7 @@ namespace KillerCollisions
 //
 //==========================================================================================================================	
 		KM::Point _center; 	///< Center of the sphere.
-		real 	   _radius;		///< Radius of the sphere.
+		real 	  _radius;	///< Radius of the sphere.
 
 	};//end Class
 }//end Namespace

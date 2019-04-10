@@ -151,12 +151,6 @@
     <Filter Include="Source Code\KillerCollision\BoundingVolumes\BoundingBoxes">
       <UniqueIdentifier>{2f9f53e3-9379-4bff-a340-09c5a03b4f1d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\AABB">
-      <UniqueIdentifier>{b284a455-a2fb-4c42-ad61-eaa2ff66a65c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\OBB">
-      <UniqueIdentifier>{05bd94d4-af3d-442a-930b-95aa6f8ac3b6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Vertex">
       <UniqueIdentifier>{313dca8f-e2fb-4717-9a11-3f2a117715e9}</UniqueIdentifier>
     </Filter>
@@ -171,6 +165,15 @@
     </Filter>
     <Filter Include="Source Code\KillerEngine\Camera\FPS">
       <UniqueIdentifier>{398c9621-a3c6-45f5-8d4e-80557f2d0ef8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\AxisAligned">
+      <UniqueIdentifier>{b284a455-a2fb-4c42-ad61-eaa2ff66a65c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\Oriented">
+      <UniqueIdentifier>{05bd94d4-af3d-442a-930b-95aa6f8ac3b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerCollision\BoundingVolumeHierarchies">
+      <UniqueIdentifier>{9f42f7c3-de5f-447d-b2c2-5297fcadfa37}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -258,12 +261,6 @@
     <ClInclude Include="..\..\Headers\Engine\BoundingSphere.h">
       <Filter>Source Code\KillerCollision\BoundingVolumes\Sphere</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\AABB.h">
-      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\AABB</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\OBB.h">
-      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\OBB</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\AnchoredSpring.h">
       <Filter>Source Code\KillerPhysics\Forces\Springs\AnchoredSpring</Filter>
     </ClInclude>
@@ -305,6 +302,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\FPSCamera.h">
       <Filter>Source Code\KillerEngine\Camera\FPS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\AxisAlignedBoundingBox.h">
+      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\AxisAligned</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\OrientedBoundingBox.h">
+      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\Oriented</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\BroadPhaseCollision.h">
+      <Filter>Source Code\KillerCollision\BoundingVolumeHierarchies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -389,12 +395,6 @@
     <ClCompile Include="..\..\Implementations\BoundingSphere.cpp">
       <Filter>Source Code\KillerCollision\BoundingVolumes\Sphere</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\AABB.cpp">
-      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\AABB</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\OBB.cpp">
-      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\OBB</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\AnchoredSpring.cpp">
       <Filter>Source Code\KillerPhysics\Forces\Springs\AnchoredSpring</Filter>
     </ClCompile>
@@ -430,6 +430,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\FPSCamera.cpp">
       <Filter>Source Code\KillerEngine\Camera\FPS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\AxisAlignedBoundingBox.cpp">
+      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\AxisAligned</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\OrientedBoundingBox.cpp">
+      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\Oriented</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
