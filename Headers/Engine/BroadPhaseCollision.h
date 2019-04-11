@@ -6,7 +6,7 @@
 namespace KillerCollisions 
 {
 	template<class PhysicsObject>
-	struct PotentailParticleContact
+	struct PotentailContact
 	{
 		PhysicsObject* obj[2];
 	};
@@ -39,6 +39,8 @@ namespace KillerCollisions
 		{
 			return (_obj != nullptr);
 		}
+
+
 
 	private:
 //==========================================================================================================================
