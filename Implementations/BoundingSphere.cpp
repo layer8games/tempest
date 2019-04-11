@@ -1,4 +1,5 @@
 #include <Engine/BoundingSphere.h>
+#include <iostream>
 
 using namespace KillerCollisions;
 //==========================================================================================================================
@@ -28,7 +29,7 @@ _radius(0.0f)
 	real radiusDiff = two.GetRadius() - one.GetRadius();
 
 	//Check if the larger contains the smaller in size
-	if(radiusDiff*radiusDiff >= distance)
+	if(real_abs(radiusDiff) >= distance)
 	{
 		if(one.GetRadius() > two.GetRadius())
 		{
@@ -79,6 +80,8 @@ bool BoundingSphere::TestCollision(const BoundingSphere& other) const
 real BoundingSphere::GetGrowth(BoundingSphere& other) const
 {
 	BoundingSphere newSphere(*this, other);
+
+	std::cout << "New sphere radius: " << newSphere.GetRadius() << std::endl; 
 
 	//return value proportional to the change in surface area of the new sphere
 	return newSphere.GetRadius() * newSphere.GetRadius() - _radius * _radius;

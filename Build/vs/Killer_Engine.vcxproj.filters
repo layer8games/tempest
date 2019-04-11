@@ -303,14 +303,14 @@
     <ClInclude Include="..\..\Headers\Engine\FPSCamera.h">
       <Filter>Source Code\KillerEngine\Camera\FPS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\AxisAlignedBoundingBox.h">
-      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\AxisAligned</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\OrientedBoundingBox.h">
-      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\Oriented</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\BroadPhaseCollision.h">
       <Filter>Source Code\KillerCollision\BoundingVolumeHierarchies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\AABB.h">
+      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\AxisAligned</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\OBB.h">
+      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\Oriented</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -431,10 +431,10 @@
     <ClCompile Include="..\..\Implementations\FPSCamera.cpp">
       <Filter>Source Code\KillerEngine\Camera\FPS</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\AxisAlignedBoundingBox.cpp">
+    <ClCompile Include="..\..\Implementations\AABB.cpp">
       <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\AxisAligned</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\OrientedBoundingBox.cpp">
+    <ClCompile Include="..\..\Implementations\OBB.cpp">
       <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\Oriented</Filter>
     </ClCompile>
   </ItemGroup>

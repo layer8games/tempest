@@ -107,3 +107,11 @@ BOOST_AUTO_TEST_CASE(BoundingShereIntersectBoundingSphere)
 	BOOST_CHECK_EQUAL(sphere1.TestCollision(sphere2), false);
 	BOOST_CHECK_EQUAL(sphere2.TestCollision(sphere1), false);
 }
+
+BOOST_AUTO_TEST_CASE(BoudningSphereGetGrowth)
+{
+	KC::BoundingSphere sphere1 { KM::Point(0.0f, 0.0f, 0.0f), 8.0f };
+	KC::BoundingSphere sphere2 { KM::Point(8.0f, 10.0f, 0.0f), 10.0f };
+
+	BOOST_CHECK_EQUAL(sphere1.GetGrowth(sphere2), 2.0f);
+}

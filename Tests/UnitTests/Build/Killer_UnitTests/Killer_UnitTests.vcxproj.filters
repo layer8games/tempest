@@ -126,10 +126,10 @@
     <ClCompile Include="..\..\Implementations\Springs.cpp">
       <Filter>Source Code\UITest\SpringsDemo</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\t_AxisAlignedBoundingBox.cpp">
+    <ClCompile Include="..\..\Implementations\t_BoundingVolumeHierarchy.cpp">
       <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\t_BoundingVolumeHierarchy.cpp">
+    <ClCompile Include="..\..\Implementations\t_AABB.cpp">
       <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
   </ItemGroup>

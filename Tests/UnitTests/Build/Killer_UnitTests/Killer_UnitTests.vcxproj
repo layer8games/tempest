@@ -133,7 +133,7 @@
     <ClCompile Include="..\..\Implementations\Projectile.cpp" />
     <ClCompile Include="..\..\Implementations\SplashScreen.cpp" />
     <ClCompile Include="..\..\Implementations\Springs.cpp" />
-    <ClCompile Include="..\..\Implementations\t_AxisAlignedBoundingBox.cpp" />
+    <ClCompile Include="..\..\Implementations\t_AABB.cpp" />
     <ClCompile Include="..\..\Implementations\t_BoundingSphere.cpp">
       <SubType>
       </SubType>
