@@ -12,7 +12,7 @@ namespace KillerCollisions
 	};
 
 	template<class BoundingVolume, class PhysicsObject>
-	class BVHNode
+	class Node
 	{
 	public:
 //==========================================================================================================================
@@ -20,14 +20,14 @@ namespace KillerCollisions
 //Constructors	 	
 //
 //==========================================================================================================================
-		BVHNode(void)
+		Node(void)
 		:
 		_volume(),
 		_children{nullptr, nullptr},
 		_obj(nullptr)
 		{  }
 
-		~BVHNode(void)
+		~Node(void)
 		{  }
 
 //==========================================================================================================================
@@ -49,7 +49,7 @@ namespace KillerCollisions
 //
 //==========================================================================================================================
 		BoundingVolume  			_volume;
-		BVHNode* 					_children[2];
+		Node* 					_children[2];
 		PhysicsObject* 				_obj;
 		
 	};//end Class

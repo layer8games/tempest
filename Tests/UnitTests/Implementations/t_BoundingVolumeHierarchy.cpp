@@ -46,7 +46,7 @@ namespace KM = KillerMath;
 
 BOOST_AUTO_TEST_CASE(BVH_Constructor)
 {
-	KC::BVHNode<KC::BoundingSphere, KP::Particle> node;
+	KC::Node<KC::BoundingSphere, KP::Particle> node;
 
 	BOOST_CHECK_EQUAL(node.IsLeaf(), false);
 }
