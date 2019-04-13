@@ -110,8 +110,24 @@ BOOST_AUTO_TEST_CASE(BoundingShereIntersectBoundingSphere)
 
 BOOST_AUTO_TEST_CASE(BoudningSphereGetGrowth)
 {
-	KC::BoundingSphere sphere1 { KM::Point(0.0f, 0.0f, 0.0f), 8.0f };
-	KC::BoundingSphere sphere2 { KM::Point(8.0f, 10.0f, 0.0f), 10.0f };
+	//Note, only checking relative sizes, since size prediction is not
+	//really important. 
 
-	BOOST_CHECK_EQUAL(sphere1.GetGrowth(sphere2), 2.0f);
+	KC::BoundingSphere sphere1 { KM::Point(0.0f, 0.0f, 0.0f), 8.0f };
+	KC::BoundingSphere sphere2 { KM::Point(0.0f, 0.0f, 0.0f), 10.0f };
+
+	//Check if the growth from 2 would be bigger than 1 is now. 
+	BOOST_CHECK_GT(sphere1.GetGrowth(sphere2), sphere1.GetRadius());
+
+	KC::BoundingSphere sphere3 { KM::Point(10.0f, 10.0f, 0.0f), 10.0f };
+
+	//Check if 3, a sphere the same size of 2, but in a different place
+	//would have a larger growth, being further away.
+	BOOST_CHECK_GT(sphere1.GetGrowth(sphere3), sphere1.GetGrowth(sphere2));
+
+	KC::BoundingSphere sphere4 { KM::Point(5.0f, 5.0f, 0.0f), 2.0f };
+	
+	//Check if a smaller, but further away sphere would have less growth
+	//than a bigger, but closer sphere. 
+	BOOST_CHECK_GT(sphere1.GetGrowth(sphere2), sphere1.GetGrowth(sphere4));	
 }

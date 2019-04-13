@@ -61,7 +61,10 @@ namespace KillerCollisions
 		bool TestCollision(const BoundingSphere& other) const;
 
 /*!
-	Returns how much a Sphere would grow if it were combined with another Sphere. Untested. 
+	Returns how much a Sphere would grow if it were combined with another Sphere. This size is not specified in specific units,
+	but rather more closely reflect the surface area of the new sphere, so should be used to compare relative sizes, not specific
+	sizes, since this would be unpredictable and far too much work to be with it. This function should be as a heuristic for tests
+	between spheres.  
 	\param other is the Sphere we are checking against. 
 */
 		real GetGrowth(BoundingSphere& other) const;

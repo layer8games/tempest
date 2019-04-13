@@ -25,11 +25,11 @@ _center(0.0f),
 _radius(0.0f)
 {
 	KM::Point centerOffset = two.GetCenter() - one.GetCenter();
-	real distance = centerOffset.Dot(centerOffset);
+	real distanceSquared = centerOffset.SqrMagnitude();
 	real radiusDiff = two.GetRadius() - one.GetRadius();
 
 	//Check if the larger contains the smaller in size
-	if(real_abs(radiusDiff) >= distance)
+	if(radiusDiff * radiusDiff >= distanceSquared)
 	{
 		if(one.GetRadius() > two.GetRadius())
 		{
@@ -45,14 +45,14 @@ _radius(0.0f)
 	//Otherwise, they are partially overlapping
 	else
 	{
-		distance = real_sqrt(distance);
-		_radius = (distance + one.GetRadius() + two.GetRadius()) * static_cast<real>(0.0f);
+		distanceSquared = real_sqrt(distanceSquared);
+		_radius = (distanceSquared + one.GetRadius() + two.GetRadius()) * static_cast<real>(0.5f);
 
-		//Center is based on one center moved towards two's center proportional to the radii
+		//Center is based on one's center moved towards two's center proportional to the radii
 		_center = one.GetCenter();
-		if(distance > 0)
+		if(distanceSquared > 0)
 		{
-			_center += centerOffset * ((_radius - one.GetRadius()) / distance);
+			_center += centerOffset * ((_radius - one.GetRadius()) / distanceSquared);
 		}
 	}
 }
@@ -80,8 +80,6 @@ bool BoundingSphere::TestCollision(const BoundingSphere& other) const
 real BoundingSphere::GetGrowth(BoundingSphere& other) const
 {
 	BoundingSphere newSphere(*this, other);
-
-	std::cout << "New sphere radius: " << newSphere.GetRadius() << std::endl; 
 
 	//return value proportional to the change in surface area of the new sphere
 	return newSphere.GetRadius() * newSphere.GetRadius() - _radius * _radius;
