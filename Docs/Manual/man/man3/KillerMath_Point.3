@@ -1,4 +1,4 @@
-.TH "KillerMath::Point" 3 "Tue Mar 12 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Point" 3 "Mon Apr 22 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -33,10 +33,10 @@ KillerMath::Point
 .RI "\fB~Point\fP (void)"
 .br
 .ti -1c
-.RI "void \fBMake2D\fP (void)"
+.RI "void \fBMake2D\fP (bool state=true)"
 .br
 .ti -1c
-.RI "void \fBMake3D\fP (void)"
+.RI "void \fBMake3D\fP (bool state=false)"
 .br
 .ti -1c
 .RI "bool \fBIs2D\fP (void) const"
@@ -301,9 +301,9 @@ Returns the raw data for the \fBPoint\fP\&.
 Returns that 2D state of the \fBPoint\fP stored in _2D; 
 .SS "\fBF32\fP Point::Magnitude (void)"
 Returns the length of the \fBPoint\fP\&. Caution, this uses the square root function\&. 
-.SS "void KillerMath::Point::Make2D (void)\fC [inline]\fP"
+.SS "void KillerMath::Point::Make2D (bool state = \fCtrue\fP)\fC [inline]\fP"
 Sets the \fBPoint\fP to act like a 2D \fBPoint\fP instead of a 3D \fBPoint\fP by setting _2D to true\&. This means that the z value wont be copied or used in operations\&. 
-.SS "void KillerMath::Point::Make3D (void)\fC [inline]\fP"
+.SS "void KillerMath::Point::Make3D (bool state = \fCfalse\fP)\fC [inline]\fP"
 Sets the \fBPoint\fP to act like a 3D \fBPoint\fP instead of a 3D \fBPoint\fP by settings _2D to true\&. This means that the z value will be copied and used in operations\&. 
 .SS "void Point::Normalize (void)"
 Changes the \fBPoint\fP into a unit \fBPoint\fP by converting its magnitude to exaclty 1\&.0\&. This is an expensive operation\&. 

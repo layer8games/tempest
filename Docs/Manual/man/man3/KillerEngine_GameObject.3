@@ -1,4 +1,4 @@
-.TH "KillerEngine::GameObject" 3 "Tue Mar 12 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::GameObject" 3 "Mon Apr 22 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -7,7 +7,7 @@ KillerEngine::GameObject
 .br
 .PP
 .PP
-Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \fBKillerPhysics::Particle\fP, and \fBKillerPhysics::RigidBody\fP\&.
+Inherited by \fBBoxes::Box\fP, \fBBoxes::Cannon\fP, \fBBoxes::Cube\fP, \fBDefinedObject\fP, \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \fBKillerPhysics::Particle\fP, \fBKillerPhysics::RigidBody\fP, and \fBTestLevelDefinedGameObject\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
@@ -36,10 +36,10 @@ Inherited by \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \
 .RI "void \fBMakeSprite\fP (void)"
 .br
 .ti -1c
-.RI "const \fBKM::Matrix4\fP & \fBGetModelMatrix4\fP (void) const"
+.RI "const \fBKM::Matrix4\fP & \fBGetModelMatrix\fP (void) const"
 .br
 .ti -1c
-.RI "const \fBKM::Matrix4\fP \fBGetModelMatrix4Rot\fP (void) const"
+.RI "const \fBKM::Matrix4\fP \fBGetModelMatrixRot\fP (void) const"
 .br
 .ti -1c
 .RI "const bool \fBGetActive\fP (void) const"

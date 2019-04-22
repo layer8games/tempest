@@ -22,7 +22,5 @@ var class_killer_collisions_1_1_a_a_b_b =
     [ "SetWidth", "class_killer_collisions_1_1_a_a_b_b.html#ad19e085b59b909128b8eba2e8571eb4d", null ],
     [ "TestCollision", "class_killer_collisions_1_1_a_a_b_b.html#a901b93bc78f671a12a5d975df48b7479", null ],
     [ "_center", "class_killer_collisions_1_1_a_a_b_b.html#a5edff9792f8d3d7aa5a531097ca72d37", null ],
-    [ "_halfDepth", "class_killer_collisions_1_1_a_a_b_b.html#a475754271d15b33694a0a7b966179524", null ],
-    [ "_halfHeight", "class_killer_collisions_1_1_a_a_b_b.html#a9b1cf4d2e618ac159b7edfcee7caecda", null ],
-    [ "_halfWidth", "class_killer_collisions_1_1_a_a_b_b.html#ae8e55e22daf3f76cd829d6be53212b62", null ]
+    [ "_halfScale", "class_killer_collisions_1_1_a_a_b_b.html#a43ab20ef07aa9f8624eb664409542e50", null ]
 ];

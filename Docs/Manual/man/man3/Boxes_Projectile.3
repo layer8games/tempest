@@ -1,0 +1,62 @@
+.TH "Boxes::Projectile" 3 "Mon Apr 22 2019" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Boxes::Projectile
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBKillerPhysics::Particle\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBv_Update\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetMaxDistance\fP (\fBF32\fP dist)"
+.br
+.ti -1c
+.RI "\fBF32\fP \fBGetMaxDistance\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetSpeedScale\fP (\fBF32\fP scale)"
+.br
+.ti -1c
+.RI "\fBF32\fP \fBGetSpeedScale\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetType\fP (ProjectileType type)"
+.br
+.ti -1c
+.RI "ProjectileType \fBGetType\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBF32\fP \fB_maxDistance\fP"
+.br
+.ti -1c
+.RI "\fBF32\fP \fB_distanceTraveled\fP"
+.br
+.ti -1c
+.RI "\fBF32\fP \fB_speedScale\fP"
+.br
+.ti -1c
+.RI "ProjectileType \fB_type\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Member Function Documentation"
+.PP 
+.SS "void Projectile::v_Update (void)\fC [virtual]\fP"
+v_Update is a virtual function defined in the GameObject::v_Update()\&. This is an empty function (=0), so it must be defined in order to be compiled\&. It is re-declared as virtual so that any children of the Particle can choose to implement it\&. The Particle version is empty\&. 
+.PP
+Reimplemented from \fBKillerPhysics::Particle\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

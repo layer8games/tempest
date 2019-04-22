@@ -1,4 +1,4 @@
-.TH "KillerPhysics::Particle" 3 "Tue Mar 12 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::Particle" 3 "Mon Apr 22 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,6 +10,8 @@ KillerPhysics::Particle
 \fC#include <Particle\&.h>\fP
 .PP
 Inherits \fBKillerEngine::GameObject\fP\&.
+.PP
+Inherited by \fBBoxes::Firework\fP, and \fBBoxes::Projectile\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
@@ -294,6 +296,8 @@ Directly sets the velocity of the \fBParticle\fP, ignoring acceleration and phys
 v_Update is a virtual function defined in the GameObject::v_Update()\&. This is an empty function (=0), so it must be defined in order to be compiled\&. It is re-declared as virtual so that any children of the \fBParticle\fP can choose to implement it\&. The \fBParticle\fP version is empty\&. 
 .PP
 Implements \fBKillerEngine::GameObject\fP\&.
+.PP
+Reimplemented in \fBBoxes::Firework\fP, and \fBBoxes::Projectile\fP\&.
 
 .SH "Author"
 .PP 

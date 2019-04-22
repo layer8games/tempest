@@ -1,0 +1,71 @@
+.TH "Boxes::Firework" 3 "Mon Apr 22 2019" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Boxes::Firework
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBKillerPhysics::Particle\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFirework\fP (\fBU32\fP levelID, \fBU32\fP size)"
+.br
+.ti -1c
+.RI "void \fBv_Update\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetPool\fP (PayloadPool pool)"
+.br
+.ti -1c
+.RI "void \fBSetMaxSize\fP (\fBU32\fP size)"
+.br
+.ti -1c
+.RI "\fBU32\fP \fBGetMaxSize\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetLevelID\fP (\fBU32\fP id)"
+.br
+.ti -1c
+.RI "\fBU32\fP \fBGetLevelID\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetProjection\fP (const \fBKM::Matrix4\fP projection)"
+.br
+.ti -1c
+.RI "void \fBInitPayload\fP (\fBU32\fP rule, \fBKM::Point\fP pos)"
+.br
+.ti -1c
+.RI "void \fBReset\fP (\fBU32\fP rule)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "PayloadPool \fB_pool\fP"
+.br
+.ti -1c
+.RI "\fBU32\fP \fB_levelID\fP"
+.br
+.ti -1c
+.RI "\fBU32\fP \fB_maxSize\fP"
+.br
+.ti -1c
+.RI "\fBKM::Matrix4\fP \fB_projection\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Member Function Documentation"
+.PP 
+.SS "void Firework::v_Update (void)\fC [virtual]\fP"
+v_Update is a virtual function defined in the GameObject::v_Update()\&. This is an empty function (=0), so it must be defined in order to be compiled\&. It is re-declared as virtual so that any children of the Particle can choose to implement it\&. The Particle version is empty\&. 
+.PP
+Reimplemented from \fBKillerPhysics::Particle\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

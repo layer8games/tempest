@@ -8,6 +8,7 @@ var class_killer_collisions_1_1_bounding_sphere =
     [ "GetGrowth", "class_killer_collisions_1_1_bounding_sphere.html#a0c75361011297f356d03f09e9a4fbcb8", null ],
     [ "GetRadius", "class_killer_collisions_1_1_bounding_sphere.html#af81731b80cb45e701739584031b95dc5", null ],
     [ "GetSize", "class_killer_collisions_1_1_bounding_sphere.html#ae6d6d956c269f0f31bb583cfb26b2077", null ],
+    [ "Make2D", "class_killer_collisions_1_1_bounding_sphere.html#a764a81a5d4c758a9d20feff499f1695f", null ],
     [ "SetCenter", "class_killer_collisions_1_1_bounding_sphere.html#a14855099fa117f05cc158a1a7d27a686", null ],
     [ "SetCenter", "class_killer_collisions_1_1_bounding_sphere.html#a874ac60c0b18e8dc27336fb03b86a3d3", null ],
     [ "SetRadius", "class_killer_collisions_1_1_bounding_sphere.html#aeb2258543c03f5ffdb502d5209fd271d", null ],

@@ -1,0 +1,88 @@
+.TH "Boxes::Springs" 3 "Mon Apr 22 2019" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Boxes::Springs
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBKillerEngine::Level\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBv_InitLevel\fP (\fBU32\fP id, \fBS32\fP w, \fBS32\fP h, const \fBKE::Color\fP &c)"
+.br
+.ti -1c
+.RI "void \fBv_Update\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBKE::Text\fP \fB_levelTitle\fP"
+.br
+.ti -1c
+.RI "\fBKP::GravityForce\fP \fB_gravity\fP"
+.br
+.ti -1c
+.RI "\fBKP::Particle\fP \fB_box1OtherEnd\fP"
+.br
+.ti -1c
+.RI "\fBKP::Particle\fP \fB_box1\fP"
+.br
+.ti -1c
+.RI "\fBKP::SpringForce\fP \fB_box1Spring\fP"
+.br
+.ti -1c
+.RI "\fBKM::Point\fP \fB_box2Anchor\fP"
+.br
+.ti -1c
+.RI "\fBKP::Particle\fP \fB_box2\fP"
+.br
+.ti -1c
+.RI "\fBKP::AnchoredSpring\fP \fB_box2Spring\fP"
+.br
+.ti -1c
+.RI "\fBKP::Particle\fP \fB_box3OtherEnd\fP"
+.br
+.ti -1c
+.RI "\fBKP::Particle\fP \fB_box3\fP"
+.br
+.ti -1c
+.RI "\fBKP::SpringForce\fP \fB_box3Spring\fP"
+.br
+.ti -1c
+.RI "\fBKP::Particle\fP \fB_box4\fP"
+.br
+.ti -1c
+.RI "\fBKP::BuoyantForce\fP \fB_box4BuoyantForce\fP"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "void Springs::v_InitLevel (\fBU32\fP id, \fBS32\fP w, \fBS32\fP h, const \fBKE::Color\fP & c)\fC [virtual]\fP"
+Abstract function\&. Used to Initialize the default values, instantiate any objects that will be used and generally get things ready to go\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the ID used in the LevelManager\&. 
+.br
+\fIw\fP is the width of the Level\&. 
+.br
+\fIh\fP is the height of the Level\&. 
+.RE
+.PP
+
+.PP
+Implements \fBKillerEngine::Level\fP\&.
+.SS "void Springs::v_Update (void)\fC [virtual]\fP"
+Abstract function\&. Used to control what needs to happen during an update\&. Please note, objects added to the level are already being updated as part of Level::UpdateLevel\&. 
+.PP
+Implements \fBKillerEngine::Level\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

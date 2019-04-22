@@ -1,4 +1,4 @@
-.TH "KillerCollisions::BoundingSphere" 3 "Tue Mar 12 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerCollisions::BoundingSphere" 3 "Mon Apr 22 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -21,6 +21,9 @@ KillerCollisions::BoundingSphere
 .RI "\fBBoundingSphere\fP (const \fBBoundingSphere\fP &one, const \fBBoundingSphere\fP &two)"
 .br
 .ti -1c
+.RI "\fB~BoundingSphere\fP (void)"
+.br
+.ti -1c
 .RI "bool \fBTestCollision\fP (const \fBBoundingSphere\fP &other) const"
 .br
 .ti -1c
@@ -28,6 +31,9 @@ KillerCollisions::BoundingSphere
 .br
 .ti -1c
 .RI "\fBreal\fP \fBGetSize\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBMake2D\fP (bool state=true)"
 .br
 .ti -1c
 .RI "void \fBSetCenter\fP (const \fBKM::Point\fP &pos)"
@@ -88,13 +94,15 @@ Special constructor that combines the volumes of 2 BoundingSpheres into one sphe
 .RE
 .PP
 
+.SS "BoundingSphere::~BoundingSphere (void)"
+No implementation\&. 
 .SH "Member Function Documentation"
 .PP 
 .SS "const \fBKM::Point\fP& KillerCollisions::BoundingSphere::GetCenter (void) const\fC [inline]\fP"
 Get the location of the center\&. 
 .SS "\fBreal\fP BoundingSphere::GetGrowth (\fBBoundingSphere\fP & other) const"
-Returns how much a Sphere would grow if it were combined with another Sphere\&. Untested\&. 
-.PP
+Returns how much a Sphere would grow if it were combined with another Sphere\&. This size is not specified in specific units, but rather more closely reflect the surface area of the new sphere, so should be used to compare relative sizes, not specific sizes, since this would be unpredictable and far too much work to be with it\&. This function should be as a heuristic for tests between spheres\&. 
+.br
 \fBParameters:\fP
 .RS 4
 \fIother\fP is the Sphere we are checking against\&. 

@@ -1,4 +1,4 @@
-.TH "KillerMath::Vector4" 3 "Tue Mar 12 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Vector4" 3 "Mon Apr 22 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -36,10 +36,10 @@ KillerMath::Vector4
 .RI "\fB~Vector4\fP (void)"
 .br
 .ti -1c
-.RI "void \fBMake2D\fP (void)"
+.RI "void \fBMake2D\fP (bool state=true)"
 .br
 .ti -1c
-.RI "void \fBMake3D\fP (void)"
+.RI "void \fBMake3D\fP (bool state=false)"
 .br
 .ti -1c
 .RI "bool \fBIs2D\fP (void) const"
@@ -332,9 +332,9 @@ Returns the raw data for the \fBVector4\fP\&.
 Returns that 2D state of the \fBVector4\fP stored in _2D; 
 .SS "\fBF32\fP Vector4::Magnitude (void)"
 Returns the length of the \fBVector4\fP\&. Caution, this uses the square root function\&. 
-.SS "void KillerMath::Vector4::Make2D (void)\fC [inline]\fP"
+.SS "void KillerMath::Vector4::Make2D (bool state = \fCtrue\fP)\fC [inline]\fP"
 Sets the \fBVector4\fP to act like a 2D \fBVector4\fP instead of a 3D \fBVector4\fP by setting _2D to true\&. This means that the z value wont be copied or used in operations\&. 
-.SS "void KillerMath::Vector4::Make3D (void)\fC [inline]\fP"
+.SS "void KillerMath::Vector4::Make3D (bool state = \fCfalse\fP)\fC [inline]\fP"
 Sets the \fBVector4\fP to act like a 3D \fBVector4\fP instead of a 3D \fBVector4\fP by settings _2D to true\&. This means that the z value will be copied and used in operations\&. 
 .SS "void Vector4::Normalize (void)"
 Changes the \fBVector4\fP into a unit \fBVector4\fP by converting its magnitude to exaclty 1\&.0\&. This is an expensive operation\&. 

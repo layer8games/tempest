@@ -1,0 +1,82 @@
+.TH "Boxes::Demo3D" 3 "Mon Apr 22 2019" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Boxes::Demo3D
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBKillerEngine::Level\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBv_InitLevel\fP (\fBU32\fP id, \fBS32\fP w, \fBS32\fP h, const \fBKE::Color\fP &c) final"
+.br
+.ti -1c
+.RI "void \fBv_Update\fP (void) final"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fB_useOrbit\fP"
+.br
+.ti -1c
+.RI "\fBCube\fP \fB_crate1\fP"
+.br
+.ti -1c
+.RI "\fBCube\fP \fB_crate2\fP"
+.br
+.ti -1c
+.RI "\fBCube\fP \fB_floor\fP"
+.br
+.ti -1c
+.RI "\fBCube\fP \fB_robot\fP"
+.br
+.ti -1c
+.RI "\fBCube\fP \fB_bowlingPin\fP"
+.br
+.ti -1c
+.RI "\fBCube\fP \fB_bunny\fP"
+.br
+.ti -1c
+.RI "\fBCube\fP \fB_light\fP"
+.br
+.ti -1c
+.RI "\fBF32\fP \fB_lightMovAngle\fP"
+.br
+.ti -1c
+.RI "\fBKE::OrbitCamera\fP \fB_orbitCamera\fP"
+.br
+.ti -1c
+.RI "\fBKE::FPSCamera\fP \fB_fpsCamera\fP"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "void Demo3D::v_InitLevel (\fBU32\fP id, \fBS32\fP w, \fBS32\fP h, const \fBKE::Color\fP & c)\fC [final]\fP, \fC [virtual]\fP"
+Abstract function\&. Used to Initialize the default values, instantiate any objects that will be used and generally get things ready to go\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP is the ID used in the LevelManager\&. 
+.br
+\fIw\fP is the width of the Level\&. 
+.br
+\fIh\fP is the height of the Level\&. 
+.RE
+.PP
+
+.PP
+Implements \fBKillerEngine::Level\fP\&.
+.SS "void Demo3D::v_Update (void)\fC [final]\fP, \fC [virtual]\fP"
+Abstract function\&. Used to control what needs to happen during an update\&. Please note, objects added to the level are already being updated as part of Level::UpdateLevel\&. 
+.PP
+Implements \fBKillerEngine::Level\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

@@ -1,4 +1,4 @@
-.TH "KillerCollisions::AABB" 3 "Tue Mar 12 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerCollisions::AABB" 3 "Mon Apr 22 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -81,19 +81,11 @@ KillerCollisions::AABB
 .ti -1c
 .RI "\fBKM::Point\fP \fB_center\fP"
 .br
-.RI "Center location of the \fBAABB\fP\&. This is the posistion represented in local space of the object that holds it\&. "
+.RI "Center location of the \fBAABB\fP\&. This is the posistion represented in world space of the object that holds it\&. "
 .ti -1c
-.RI "\fBF32\fP \fB_halfWidth\fP"
+.RI "\fBKM::Vector3\fP \fB_halfScale\fP"
 .br
-.RI "Half the width from the center to the edge, along the x axis\&. "
-.ti -1c
-.RI "\fBF32\fP \fB_halfHeight\fP"
-.br
-.RI "Half the height from the center to the edge, along the y axis\&. "
-.ti -1c
-.RI "\fBF32\fP \fB_halfDepth\fP"
-.br
-.RI "Half the depth from the center to the edge, along the z axis\&. "
+.RI "The half sizes of the bounding volume along the 3 axies, x, y and z\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 
