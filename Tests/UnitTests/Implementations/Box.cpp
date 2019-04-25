@@ -86,5 +86,6 @@ void Box::OnCollide(void)
 void Box::InitBounding(void)
 {
 	_boundingBox.SetCenter(GameObject::GetPosition());
-	_boundingBox.SetDimensions(GameObject::GetScale());
+	//Set the half dimensions equal to the dimensions... Not sure why this is. It was not intended to be used this way.
+	_boundingBox.SetHalfDimensions(GameObject::GetScale());
 }

@@ -87,9 +87,9 @@ BOOST_AUTO_TEST_CASE(UITests)
 	KE::Engine::Instance()->Init(wndWidth, wndHeight, wndTitle, wndFullScreen);
 
 //=====Pre-Load Assets=====	
-	KE::TextureManager::Instance()->LoadTexture(100, "../Assets/Textures/Boxes/RedBox.png");
-	KE::TextureManager::Instance()->LoadTexture(101, "../Assets/Textures/Boxes/GreenBox.png");
-	KE::TextureManager::Instance()->LoadTexture(102, "../Assets/Textures/Boxes/BlueBox.png");
+	KE::TextureManager::Instance()->LoadTexture(100, "../Assets/Textures/Boxes/red_box_32_32.png");
+	KE::TextureManager::Instance()->LoadTexture(101, "../Assets/Textures/Boxes/green_box_32_32.png");
+	KE::TextureManager::Instance()->LoadTexture(102, "../Assets/Textures/Boxes/blue_box_32_32.png");
 	KE::TextureManager::Instance()->LoadTexture(300, "../Assets/Textures/Ballistics/cannon.png");
 	KE::TextureManager::Instance()->LoadTexture(301, "../Assets/Textures/Ballistics/bullet_v2.png");
 	KE::TextureManager::Instance()->LoadTexture(302, "../Assets/Textures/Ballistics/artillery_v1.png");
