@@ -3,6 +3,7 @@
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/Point.h>
+#include <Engine/Vector3.h>
 
 namespace KM = KillerMath;
 
@@ -211,6 +212,11 @@ namespace KillerCollisions
 			_halfScale[z] = d;
 		}
 
+		inline void SetHalfDimensions(const KM::Vector3& scale)
+		{
+			_halfScale = scale;
+		}
+
 /*!
 	 Sets all of the full extents of the AABB. Because these are all stored as halves, each one is divided
 	 by 2 before they are set. 
@@ -223,6 +229,11 @@ namespace KillerCollisions
 			_halfScale[x] = w / 2.0f;
 			_halfScale[y] = h / 2.0f;
 			_halfScale[z] = d / 2.0f;
+		}
+
+		inline void SetDimensions(const KM::Vector3& scale)
+		{
+			_halfScale = scale / 2.0f;
 		}
 
 	private:

@@ -27,6 +27,8 @@ Written by Maxwell Miller
 
 #include <Boxes/Box.h>
 
+#include <iostream>
+
 namespace KE = KillerEngine;
 namespace KM = KillerMath;
 
@@ -59,6 +61,8 @@ namespace Boxes
 //
 //==========================================================================================================================		
 		void CheckBoxEdge(KE::GameObject& b);
+
+		void CheckCollisions(void);
 
 	private:
 //==========================================================================================================================

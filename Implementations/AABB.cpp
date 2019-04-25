@@ -1,4 +1,5 @@
 #include <Engine/AABB.h>
+#include <iostream>
 
 using namespace KillerCollisions;
 //==========================================================================================================================
@@ -28,7 +29,8 @@ AABB::~AABB(void)
 //==========================================================================================================================
 bool AABB::TestCollision(const AABB& other) const
 {
-	if(real_abs(_center[0] - other.GetCenter()[0]) > (_halfScale[x] + other.GetHalfWidth()))
+
+	if(real_abs(_center[x] - other.GetCenter()[x]) > (_halfScale[x] + other.GetHalfWidth()))
 	{
 		return false;
 	}

@@ -1,4 +1,5 @@
 #include <Boxes/MovingBoxes.h>
+#include <iostream>
 
 using namespace Boxes;
 
@@ -50,16 +51,19 @@ void MovingBoxes::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	_redbox.SetPosition(0.0f, _top / 3.0f);
 	_redbox.SetTexture(KE::TextureManager::Instance()->GetTexture(100));
 	_redbox.SetScale(25.0f, 25.0f);
+	_redbox.InitBounding();
 	Level::AddObjectToLevel(_redbox);
 
 	_greenbox.SetPosition(_left / 3.0f, 0.0f);
 	_greenbox.SetTexture(KE::TextureManager::Instance()->GetTexture(101));
 	_greenbox.SetScale(25.0f, 25.0f);
+	_greenbox.InitBounding();
 	Level::AddObjectToLevel(_greenbox);
 
 	_bluebox.SetPosition(_right / 3.0f, 0.0f);
 	_bluebox.SetTexture(KE::TextureManager::Instance()->GetTexture(102));
 	_bluebox.SetScale(25.0f, 25.0f);
+	_bluebox.InitBounding();
 	Level::AddObjectToLevel(_bluebox);
 
 	_activeBox = &_redbox;
@@ -137,6 +141,8 @@ void MovingBoxes::v_Update(void)
 	CheckBoxEdge(_redbox);
 	CheckBoxEdge(_greenbox);
 	CheckBoxEdge(_bluebox);
+
+	CheckCollisions();
 }//End update
 
 //==========================================================================================================================
@@ -169,4 +175,17 @@ void MovingBoxes::CheckBoxEdge(KE::GameObject& b)
 	}
 
 	b.SetPosition(tempPos);
+}
+
+void MovingBoxes::CheckCollisions(void)
+{
+	if(_redbox.OverlapCheck(_greenbox))
+	{
+		_redbox.OnCollide();
+	}
+
+	if(_redbox.OverlapCheck(_bluebox))
+	{
+		_redbox.OnCollide();
+	}
 }

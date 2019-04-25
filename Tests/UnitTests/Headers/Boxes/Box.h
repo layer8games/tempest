@@ -19,9 +19,11 @@ Written by Maxwell Miller
 #include <Engine/Vector4.h>
 #include <Engine/Point.h>
 #include <Engine/Color.h>
+#include <Engine/AABB.h>
 
 namespace KE = KillerEngine;
 namespace KM = KillerMath;
+namespace KC = KillerCollisions;
 
 namespace Boxes
 {
@@ -45,10 +47,17 @@ namespace Boxes
 
 //==========================================================================================================================
 //
-//Virtual functions
+//Functions
 //
 //==========================================================================================================================		
 		void v_Update(void);
+
+		inline bool OverlapCheck(const Box& other)
+		{
+			return _boundingBox.TestCollision(other.GetBounding());
+		}
+
+		void OnCollide(void);
 
 //==========================================================================================================================
 //
@@ -81,6 +90,13 @@ namespace Boxes
 			return _direction;
 		}
 
+		inline const KC::AABB& GetBounding(void) const
+		{
+			return _boundingBox;
+		}
+
+		void InitBounding(void);
+
 	private:
 //==========================================================================================================================
 //
@@ -89,6 +105,7 @@ namespace Boxes
 //==========================================================================================================================		
 		F32  	  				_speed;
 		KM::Vector4 			_direction;
+		KC::AABB				_boundingBox;
 	};
 
 }//End namespace
