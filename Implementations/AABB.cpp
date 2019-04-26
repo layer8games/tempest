@@ -35,12 +35,12 @@ bool AABB::TestCollision(const AABB& other) const
 		return false;
 	}
 
-	if(real_abs(_center[1] - other.GetCenter()[1]) > (_halfScale[y] + other.GetHalfHeight()))
+	if(real_abs(_center[y] - other.GetCenter()[y]) > (_halfScale[y] + other.GetHalfHeight()))
 	{
 		return false;
 	}
 
-	if(real_abs(_center[2] - other.GetCenter()[2]) > (_halfScale[z] + other.GetHalfDepth()))
+	if(real_abs(_center[z] - other.GetCenter()[z]) > (_halfScale[z] + other.GetHalfDepth()))
 	{
 		return false;
 	}

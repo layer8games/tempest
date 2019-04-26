@@ -212,6 +212,10 @@ namespace KillerCollisions
 			_halfScale[z] = d;
 		}
 
+/*! 
+	Sets the new half extent of the AABB 
+	\param scale is the new extent to be used. 
+*/
 		inline void SetHalfDimensions(const KM::Vector3& scale)
 		{
 			_halfScale = scale;
@@ -231,6 +235,10 @@ namespace KillerCollisions
 			_halfScale[z] = d / 2.0f;
 		}
 
+/*! 
+	Sets the extent of the AABB. Because these are half values, the input is divided by half.
+	\param scale is the new extent.  
+*/
 		inline void SetDimensions(const KM::Vector3& scale)
 		{
 			_halfScale = scale / 2.0f;
