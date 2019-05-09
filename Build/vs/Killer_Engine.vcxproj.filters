@@ -154,9 +154,6 @@
     <Filter Include="Source Code\Vertex">
       <UniqueIdentifier>{313dca8f-e2fb-4717-9a11-3f2a117715e9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\CharacterData">
-      <UniqueIdentifier>{9b6669af-d33e-478b-8f0d-d88f5ba7a68c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\KillerEngine\Camera\Default">
       <UniqueIdentifier>{e7845e79-d40a-4caa-8155-921be8665cfa}</UniqueIdentifier>
     </Filter>
@@ -174,6 +171,12 @@
     </Filter>
     <Filter Include="Source Code\KillerCollision\BoundingVolumeHierarchies">
       <UniqueIdentifier>{9f42f7c3-de5f-447d-b2c2-5297fcadfa37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerEngine\CharacterData">
+      <UniqueIdentifier>{9b6669af-d33e-478b-8f0d-d88f5ba7a68c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerEngine\Menu">
+      <UniqueIdentifier>{0a1cd979-9cd6-4c96-9cc1-bf2d699202af}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -292,7 +295,7 @@
       <Filter>Source Code\Vertex</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\CharacterData.h">
-      <Filter>Source Code\CharacterData</Filter>
+      <Filter>Source Code\KillerEngine\CharacterData</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Camera.h">
       <Filter>Source Code\KillerEngine\Camera\Default</Filter>
@@ -311,6 +314,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\OBB.h">
       <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\Oriented</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Menu.h">
+      <Filter>Source Code\KillerEngine\Menu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -436,6 +442,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\OBB.cpp">
       <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\Oriented</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Menu.cpp">
+      <Filter>Source Code\KillerEngine\Menu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
