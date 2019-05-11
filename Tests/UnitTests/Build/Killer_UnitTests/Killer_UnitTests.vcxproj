@@ -150,6 +150,10 @@
     <ClCompile Include="..\..\Implementations\t_Level.cpp" />
     <ClCompile Include="..\..\Implementations\t_Matrix3.cpp" />
     <ClCompile Include="..\..\Implementations\t_Matrix4.cpp" />
+    <ClCompile Include="..\..\Implementations\t_Menu.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\t_Point.cpp" />
     <ClCompile Include="..\..\Implementations\t_Quaternion.cpp" />
     <ClCompile Include="..\..\Implementations\t_Random.cpp">

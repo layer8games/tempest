@@ -31,30 +31,34 @@ Text::~Text(void)
 void Text::AddText(string text)
 {
 	_text = text;
-	_characterList.clear();
+	_CreateCharacterList();
 
 	KM::Point currentPos = _pos;
-	F32 size = static_cast<F32>(_font->GetSize());
 
-	for(U32 i = 0; i < _text.size(); ++i)
+	if(_font->GetNumCharacters() > 0)
 	{
-		CharacterData data = _font->GetCharacterData(_text[i]);
+		for(U32 i = 0; i < _text.size(); ++i)
+		{
+			_UpdateGlyphData(i);
+		}
+		_UpdatePositions();
+	}
 		
-		shared_ptr<Glyph> g(new Glyph());
-		g->Init();
-		g->SetScale(static_cast<F32>(data.width), static_cast<F32>(data.height));
-		g->SetColor(_color);
-		//g->SetPosition(currentPos[0] + data.bearingX, currentPos[1] - (data.height + data.bearingY));
-		g->SetPosition(currentPos);
-		g->SetTexture(data.texture);
-		g->SetCharacter(_text[i], data);
-
-		currentPos[0] += data.xAdvance + _font->GetSize();
-		_totalWidth += data.width;
-		
-		_characterList.push_back(g);
-	}	
 }//End AddText
+
+void Text::SetFont(shared_ptr<Font> font)
+{
+	_font = font;
+
+	if(_text.size() > 0)
+	{
+		for(U32 i = 0; i < _text.size(); ++i)
+		{
+			_UpdateGlyphData(i);
+		}
+		_UpdatePositions();
+	}
+}
 
 void Text::SetTextColor(const Color& col)
 {
@@ -108,5 +112,34 @@ void Text::_UpdateColors(void)
 	for(U32 i = 0; i < _characterList.size(); ++i)
 	{
 		_characterList[i]->SetColor(_color);
+	}
+}
+
+void Text::_UpdateGlyphData(U32 index)
+{
+	if(_characterList.size() != _text.size())
+	{
+		_CreateCharacterList();
+	}
+	else
+	{
+		CharacterData data = _font->GetCharacterData(_text[index]);
+		_characterList[index]->SetScale(static_cast<F32>(data.width), static_cast<F32>(data.height));
+		_characterList[index]->SetColor(_color);
+		_characterList[index]->SetTexture(data.texture);
+		_characterList[index]->SetCharacter(_text[index], data);
+		_totalWidth += data.width;
+	}		
+}
+
+void Text::_CreateCharacterList(void)
+{
+	_characterList.clear();
+
+	for(U32 i = 0; i < _text.size(); ++i)
+	{
+		shared_ptr<Glyph> g(new Glyph());
+		g->Init();
+		_characterList.push_back(g);
 	}
 }

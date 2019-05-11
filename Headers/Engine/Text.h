@@ -164,12 +164,7 @@ namespace KillerEngine
 	Sets the font for the Text and all of the Glyphs, if there are any. 
 	\param font is the new Font that will be saved in this Text.
 */
-		inline void SetFont(shared_ptr<Font> font)
-		{
-			_font = font;
-
-			//Need to update each glyph. Bug to fix later.
-		}
+		void SetFont(shared_ptr<Font> font);
 
 /*! 
 	Sets the font for the Text and all of the Glyphs, if there are any. 
@@ -282,6 +277,19 @@ namespace KillerEngine
 */
 		void _UpdateColors(void);
 
+/*! 
+	Updates a Glyph. This sets the data, the sprite, color, scale and other values based on the font. If the Glyph has been
+	added to the characterList already, it will update and edit the existing Glyph, other wise a new one will be created 
+	and added to the list. 
+	\param index is the character number in the _text. This should coorespond the index in _characterList. 
+*/
+		void _UpdateGlyphData(U32 index);
+
+/*! 
+	Creates or Recreates the character list, forcing it to match with the text.  
+*/
+		void _CreateCharacterList(void);
+
 //==========================================================================================================================
 //
 //Data
@@ -292,8 +300,8 @@ namespace KillerEngine
 		KM::Point 						_pos;				///< Position of the first Glyph in the Text.
 		string 	   						_text;				///< The string used to generate each Glyph.
 		shared_ptr<Font>				_font;				///< The Font used to generate each Glyph.
-		std::vector<shared_ptr<Glyph>>	_characterList;		///< List of all generated Glyphs
-		KM::Vector3 						_scale;				///< The scaling factor used for each Glyph.
+		std::vector<shared_ptr<Glyph>>	_characterList;		///< List of all generated Glyphs. Should match _text.
+		KM::Vector3 					_scale;				///< The scaling factor used for each Glyph.
 		Color 							_color;				///< The Color used for each Glyph.
 	};
 }
