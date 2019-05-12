@@ -60,3 +60,12 @@ BOOST_AUTO_TEST_CASE(MenuConstructorAndAccessors)
 	BOOST_CHECK_EQUAL(menu.GetOffsetFromTitle()[x], 0.0f);
 	BOOST_CHECK_EQUAL(menu.GetOffsetFromTitle()[y], 50.0f);
 }
+
+BOOST_AUTO_TEST_CASE(MenuItemTests)
+{
+	KE::Menu menu { };
+
+	menu.SetPosition(0.0f, 100.0f);
+	menu.SetItemOffset(10.0f. 25.0f);
+	
+}

@@ -8,10 +8,11 @@ using namespace KillerEngine;
 //==========================================================================================================================
 Menu::Menu(void)
 :
-_totalItems(0),
-_selectorPosIndex(0),
+_totalItems(-1),
+_selectorPosIndex(-1),
 _menuPos(0.0f, 0.0f),
-_itemOffset(0.0f, 1.0f),
+_itemOffset(0.0f, -.0f),
+_selectorOffset(0.0f, 0.0),
 _offsetFromTitle(0.0, 1.0f),
 _itemList(),
 _selector(nullptr)
@@ -33,16 +34,14 @@ void Menu::AddItem(MenuItem item)
 {
 	if(!_itemList.empty())
 	{
-		item.pos[x] = _menuPos[x] + _offsetFromTitle[x];
-		item.pos[y] = _menuPos[y] - _offsetFromTitle[y];
-
+		item.pos = _itemList.back().pos + _itemOffset;
 		item.text.SetPosition(item.pos);
+		_selector->SetPosition(item.pos +  _selectorOffset);
+		_selectorPosIndex = 0;
 	}
 	else
 	{
-		item.pos[x] = _itemList.back().pos[x] + _itemOffset[x];
-		item.pos[y] = _itemList.back().pos[y] - _itemOffset[y];
-
+		item.pos = _menuPos + _offsetFromTitle;
 		item.text.SetPosition(item.pos);
 	}
 

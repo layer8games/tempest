@@ -75,6 +75,16 @@ namespace KillerEngine
 			return _itemOffset;
 		}
 
+		inline void SetSelectorOffset(const KM::Point& offset)
+		{
+			_selectorOffset = offset;
+		}
+
+		inline const KM::Point& GetSelectorOffset(void)
+		{
+			return _selectorOffset;
+		}
+
 		inline void SetOffsetFromTitle(const KM::Point& pos)
 		{
 			_offsetFromTitle = pos;
@@ -102,10 +112,11 @@ namespace KillerEngine
 		}
 
 	private:
-		U8 				 		_totalItems;
-		U8 						_selectorPosIndex;
+		S32 				 	_totalItems;
+		S32 					_selectorPosIndex;
 		KM::Point 				_menuPos;
 		KM::Point 		 		_itemOffset;
+		KM::Point 				_selectorOffset;
 		KM::Point 				_offsetFromTitle;
 		Text 					_title;
 		std::vector<MenuItem> 	_itemList;
