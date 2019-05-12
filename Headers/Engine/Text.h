@@ -12,6 +12,7 @@ Written by Maxwell Miller
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
+#include <Engine/ErrorManager.h>
 #include <Engine/GameObject.h>
 #include <Engine/Font.h>
 #include <Engine/Point.h>
@@ -49,6 +50,13 @@ namespace KillerEngine
 	Default constructor. Sets scale and color to 1.0f, everything else to 0 or null.
 */
 		Text(void);
+
+/*!
+	String to Text conversion function. Calls Text::AddText to set up the class. 
+	\param text is the string that will be used to create the Text. 
+
+*/
+		explicit Text(string text);
 
 /*!
 	Default destructor. No function.

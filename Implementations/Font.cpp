@@ -10,6 +10,7 @@ using namespace KillerEngine;
 //==========================================================================================================================
 Font::Font(void) 
 :
+_initialized(false),
 _numCharacters(128),
 _fontSize(0),
 _fontName(), 
@@ -18,6 +19,7 @@ _characterGlyphs()
 
 Font::Font(const Font& f)
 :
+_initialized(f.GetInitialized()),
 _numCharacters(f.GetNumCharacters()),
 _fontSize(f.GetSize()),
 _fontName(f.GetName()),
@@ -26,6 +28,7 @@ _characterGlyphs(f.GetAllCharacterGlyphs())
 
 Font::Font(const Font* f)
 :
+_initialized(f->GetInitialized()),
 _numCharacters(f->GetNumCharacters()),
 _fontName(f->GetName()),
 _characterGlyphs(f->GetAllCharacterGlyphs())
@@ -131,6 +134,8 @@ void Font::Init(string fontName, string filePath, U32 fontSize)
 	{
 		ErrorManager::Instance()->SetError(FREETYPE, "Font::InitFont failed to release FreeType Library");
 	}
+
+	_initialized = true;
 }//InitFont
 
 //==========================================================================================================================

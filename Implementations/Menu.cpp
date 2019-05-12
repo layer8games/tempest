@@ -73,3 +73,25 @@ void Menu::CallSelectedAction(void)
 {
 
 }
+
+//==========================================================================================================================
+//
+//Private Functions
+//
+//==========================================================================================================================
+void Menu::_UpdateItemPositions(void)
+{
+	if(!_itemList.empty())
+	{
+		_itemList[0].pos = _menuPos + _offsetFromTitle;
+		_itemList[0].text.SetPosition(_itemList[0].pos);
+		_selector->SetPosition(_itemList[0].pos + _selectorOffset);
+		_selectorPosIndex = 0;
+
+		for(U32 i = 1; i > _itemList.size(); ++i)
+		{
+			_itemList[i].pos = _itemList[i - i].pos + _itemOffset;
+			_itemList[i].text.SetPosition(_itemList[i].pos);
+		}
+	}
+}

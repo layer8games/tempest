@@ -69,6 +69,11 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
+		inline bool GetInitialized(void) const
+		{
+			return _initialized;
+		}
+
 //===== Num Characters =====
 // 128 for ACCII, 256 for UTF8
 		inline void SetNumCharacters(S32 num)
@@ -122,6 +127,7 @@ namespace KillerEngine
 //Data
 //
 //==========================================================================================================================	
+		bool 	 _initialized;
 		S32 	 _numCharacters;
 		U32 	 _fontSize;
 		string   _fontName;

@@ -1,5 +1,4 @@
 #include <Engine/Text.h>
-#include <iostream>
 
 using namespace KillerEngine;
 
@@ -20,6 +19,20 @@ _scale(1.0f, 1.0f),
 _color(1.0f)
 {  }
 
+Text::Text(string text) 
+:
+_active(true),
+_totalWidth(0.0f),
+_pos(0.0f),
+_text(), 
+_font(nullptr), 
+_characterList(),  
+_scale(1.0f, 1.0f),
+_color(1.0f)
+{
+	AddText(text);
+}
+
 Text::~Text(void)
 {  }
 
@@ -35,7 +48,7 @@ void Text::AddText(string text)
 
 	KM::Point currentPos = _pos;
 
-	if(_font->GetNumCharacters() > 0)
+	if(_font != nullptr)
 	{
 		for(U32 i = 0; i < _text.size(); ++i)
 		{
@@ -48,6 +61,11 @@ void Text::AddText(string text)
 
 void Text::SetFont(shared_ptr<Font> font)
 {
+	if(!font->GetInitialized())
+	{
+		ErrorManager::Instance()->SetError(ENGINE, "Text::SetFont cannot set uninitialized font.");
+	}
+
 	_font = font;
 
 	if(_text.size() > 0)
@@ -79,15 +97,19 @@ void Text::SetUniforms(string name, const KM::Matrix4& Matrix4)
 void Text::_UpdatePositions(void)
 {
 	KM::Point currentPos = _pos;
-	U32 size = _font->GetSize();
-
-	for(U32 i = 0; i < _characterList.size(); ++i)
+	
+	if(_font != nullptr)
 	{
-		CharacterData data = _font->GetCharacterData(_characterList[i]->GetCharacter());
-		//_characterList[i]->SetPosition(currentPos[0] + data.bearingX, currentPos[1] - (data.height + data.bearingY));
-		_characterList[i]->SetPosition(currentPos);
+		U32 size = _font->GetSize();
 
-		currentPos[0] += data.xAdvance + size;
+		for(U32 i = 0; i < _characterList.size(); ++i)
+		{
+			CharacterData data = _font->GetCharacterData(_characterList[i]->GetCharacter());
+			//_characterList[i]->SetPosition(currentPos[0] + data.bearingX, currentPos[1] - (data.height + data.bearingY));
+			_characterList[i]->SetPosition(currentPos);
+
+			currentPos[0] += data.xAdvance + size;
+		}	
 	}
 }
 

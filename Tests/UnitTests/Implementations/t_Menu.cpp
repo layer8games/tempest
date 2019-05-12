@@ -61,11 +61,26 @@ BOOST_AUTO_TEST_CASE(MenuConstructorAndAccessors)
 	BOOST_CHECK_EQUAL(menu.GetOffsetFromTitle()[y], 50.0f);
 }
 
+bool menuItem1ActionStatus = false;
+
+void MenuItem1Action(void)
+{
+	menuItem1ActionStatus = true;
+}
+
 BOOST_AUTO_TEST_CASE(MenuItemTests)
 {
 	KE::Menu menu { };
 
 	menu.SetPosition(0.0f, 100.0f);
-	menu.SetItemOffset(10.0f. 25.0f);
+	menu.SetItemOffset(10.0f, 25.0f);
 	
+	KE::MenuItem item1 { };
+
+	item1.text = KE::Text("Item1");
+	item1.Action = &MenuItem1Action;
+
+	menu.AddItem(item1);
+
+	BOOST_CHECK_EQUAL(menu.GetTotalItems(), 0);
 }
