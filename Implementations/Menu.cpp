@@ -49,9 +49,17 @@ void Menu::AddItem(MenuItem item)
 	++_totalItems;
 }
 
-void Menu::RemoveItem(U8 index)
+void Menu::RemoveItem(U32 index)
 {
-
+	if(index < _totalItems)
+	{
+		_itemList.erase(_itemList.begin() + index);
+		if(_selectorPosIndex >= index)
+		{
+			--_selectorPosIndex;
+		}
+		--_totalItems;
+	}
 }
 
 void Menu::MoveSelectorUp(void)
@@ -64,7 +72,7 @@ void Menu::MoveSelectorDown(void)
 
 }
 
-void Menu::SetSelectorPos(U8 index)
+void Menu::SetSelectorPos(U32 index)
 {
 
 }

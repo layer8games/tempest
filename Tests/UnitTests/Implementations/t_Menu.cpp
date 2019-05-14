@@ -82,5 +82,17 @@ BOOST_AUTO_TEST_CASE(MenuItemTests)
 
 	menu.AddItem(item1);
 
-	BOOST_CHECK_EQUAL(menu.GetTotalItems(), 0);
+	BOOST_CHECK_EQUAL(menu.GetTotalItems(), 1);
+
+	KE::MenuItem item2 { };
+	item2.text = KE::Text("Item2");
+
+	menu.AddItem(item2);
+
+	//BOOST_CHECK_EQUAL(menu.GetTotalItems(), 2);
+
+	//menu.RemoveItem(1);
+
+	//BOOST_CHECK_EQUAL(menu.GetTotalItems(), 1);
+
 }

@@ -40,13 +40,13 @@ namespace KillerEngine
 //==========================================================================================================================
 		void AddItem(MenuItem item);
 
-		void RemoveItem(U8 index);
+		void RemoveItem(U32 index);
 
 		void MoveSelectorUp(void);
 
 		void MoveSelectorDown(void);
 
-		void SetSelectorPos(U8 index);
+		void SetSelectorPos(U32 index);
 
 		void CallSelectedAction(void);
 
@@ -57,7 +57,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		inline S32 GetTotalItems(void)
 		{
-			return _totalItems;
+			return _totalItems + 1;
 		}
 
 		inline void SetPosition(const KM::Point& pos)
