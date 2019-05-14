@@ -33,10 +33,7 @@ _ID(_nextID),
 _vao(0),
 _vbo{0}
 {
-	++_nextID;
-
-	glGenVertexArrays(1, &_vao);
-	glGenBuffers(NUM_VBO, _vbo);
+	++_nextID;	
 }
 
 GameObject::GameObject(const GameObject& obj)
@@ -57,9 +54,7 @@ _isSprite(obj.IsSprite()),
 _ID(obj.GetID()),
 _vao(obj.GetVAO()),
 _vbo{0}
-{
-	glGenBuffers(NUM_VBO, _vbo);
-}
+{  }
 
 GameObject::~GameObject(void)
 {
@@ -110,6 +105,8 @@ void GameObject::v_Render(void)
 //==========================================================================================================================
 void GameObject::v_InitBuffers(void)
 {
+	InitOGL();
+
 	std::vector<F32> vertPosition;
 	std::vector<F32> vertNormals;
 	std::vector<F32> vertTexCoords;
@@ -163,6 +160,16 @@ void GameObject::v_InitBuffers(void)
 //
 //Functions
 //==========================================================================================================================
+void GameObject::InitOGL(void)
+{
+	if(_vao == 0)
+	{
+		glGenVertexArrays(1, &_vao);
+	}
+
+	glGenBuffers(NUM_VBO, _vbo);
+}
+
 void GameObject::UpdateInternals(void)
 {
 	_CalculateCachedData();

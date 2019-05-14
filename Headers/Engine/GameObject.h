@@ -72,6 +72,8 @@ namespace KillerEngine
 //Functions
 //
 //==========================================================================================================================
+		void InitOGL(void);
+
 		void UpdateInternals(void);
 
 		bool LoadOBJ(string filepath);

@@ -55,6 +55,16 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
+		inline void SetWrap(bool state)
+		{
+			_wrap = state;
+		}
+
+		inline bool GetWrap(void)
+		{
+			return _wrap;
+		}
+
 		inline S32 GetTotalItems(void)
 		{
 			return _itemList.size();
@@ -150,7 +160,8 @@ namespace KillerEngine
 
 		inline void SetSelector(GameObject* obj)
 		{
-			_selector = shared_ptr<GameObject>(obj);
+			//_selector = shared_ptr<GameObject>(obj);
+			_selector = obj;
 
 			if(!_itemList.empty())
 			{
@@ -159,6 +170,7 @@ namespace KillerEngine
 			}
 		}
 
+/*		
 		inline void SetSelector(GameObject& obj)
 		{
 			_selector = shared_ptr<GameObject>(&obj);
@@ -180,6 +192,7 @@ namespace KillerEngine
 				SetSelectorPos(0);
 			}
 		}
+*/
 
 	private:
 //==========================================================================================================================
@@ -194,6 +207,7 @@ namespace KillerEngine
 //Data
 //
 //==========================================================================================================================
+		bool					_wrap;
 		U32 					_selectorPosIndex;
 		KM::Point 				_menuPos;
 		KM::Point 		 		_itemOffset;
@@ -201,7 +215,7 @@ namespace KillerEngine
 		KM::Point 				_offsetFromTitle;
 		Text 					_title;
 		std::vector<MenuItem> 	_itemList;
-		shared_ptr<GameObject>	_selector;
+		GameObject*				_selector;
 		
 	};//end Class
 }//end Namespace

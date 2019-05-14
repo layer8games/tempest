@@ -8,6 +8,7 @@ using namespace KillerEngine;
 //==========================================================================================================================
 Menu::Menu(void)
 :
+_wrap(false),
 _selectorPosIndex(UINT_MAX),
 _menuPos(0.0f, 0.0f),
 _itemOffset(0.0f, 0.0f),
@@ -21,7 +22,6 @@ Menu::~Menu(void)
 
 {
 	_itemList.clear();
-	_selector.reset();
 }
 
 //==========================================================================================================================
@@ -76,7 +76,10 @@ void Menu::MoveSelectorUp(void)
 {
 	if(_selectorPosIndex == 0)
 	{
-		_selectorPosIndex = _itemList.size() - 1; 
+		if(_wrap)
+		{
+			_selectorPosIndex = _itemList.size() - 1; 	
+		}
 	}
 	else
 	{
@@ -85,7 +88,7 @@ void Menu::MoveSelectorUp(void)
 
 	if(_selector != nullptr)
 	{
-		_selector->SetPosition(_itemList[_selectorPosIndex].pos - _selectorOffset);
+		_selector->SetPosition(_itemList[_selectorPosIndex].pos + _selectorOffset);
 	}
 }
 
@@ -93,7 +96,10 @@ void Menu::MoveSelectorDown(void)
 {
 	if(_selectorPosIndex == _itemList.size() - 1)
 	{
-		_selectorPosIndex = 0;
+		if(_wrap) 
+		{
+			_selectorPosIndex = 0;
+		}
 	}
 	else
 	{
@@ -102,7 +108,7 @@ void Menu::MoveSelectorDown(void)
 
 	if(_selector != nullptr)
 	{
-		_selector->SetPosition(_itemList[_selectorPosIndex].pos - _selectorOffset);
+		_selector->SetPosition(_itemList[_selectorPosIndex].pos + _selectorOffset);
 	}
 }
 
@@ -111,7 +117,7 @@ void Menu::SetSelectorPos(U32 index)
 	if(index < _itemList.size())
 	{
 		_selectorPosIndex = index;
-		_selector->SetPosition(_itemList[_selectorPosIndex].pos - _selectorOffset);
+		_selector->SetPosition(_itemList[_selectorPosIndex].pos + _selectorOffset);
 	}
 }
 

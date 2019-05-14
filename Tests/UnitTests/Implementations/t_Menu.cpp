@@ -124,7 +124,7 @@ BOOST_AUTO_TEST_CASE(MenuItemSelector)
 	KE::Menu menu { };
 
 	menu.SetPosition(0.0f, -100.0f);
-	menu.SetItemOffset(10.0f, -25.0f);
+	menu.SetItemOffset(0.0f, -25.0f);
 	menu.SetSelectorOffset(-10.0f, 0.0f);
 	
 	KE::MenuItem item1 { };
@@ -142,5 +142,8 @@ BOOST_AUTO_TEST_CASE(MenuItemSelector)
 
 	//Failing because of openGL code... look into it. 
 	//Consider not calling openGL code in GameObject Constructors. 
-	//menu.SetSelector(shared_ptr<KE::GameObject>(&selector));
+	menu.SetSelector(&selector);
+
+	BOOST_CHECK_EQUAL(selector.GetPosition()[x], -10.0f);
+	BOOST_CHECK_EQUAL(selector.GetPosition()[y], -125.0f);
 }
