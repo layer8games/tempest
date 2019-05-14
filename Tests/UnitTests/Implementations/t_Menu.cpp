@@ -37,9 +37,23 @@ Written by Maxwell Miller
 #include <Engine/Menu.h>
 #include <Engine/Point.h>
 #include <Engine/Text.h>
+#include <Boxes/Box.h>
 
 namespace KE = KillerEngine;
 namespace KM = KillerMath;
+
+class MenuSelector : public KE::GameObject
+{
+public:
+	MenuSelector(void)
+	{  }
+
+	~MenuSelector(void)
+	{  }
+
+	void v_Update(void)
+	{  }
+};
 
 BOOST_AUTO_TEST_CASE(MenuConstructorAndAccessors)
 {
@@ -68,17 +82,16 @@ void MenuItem1Action(void)
 	menuItem1ActionStatus = true;
 }
 
-BOOST_AUTO_TEST_CASE(MenuItemTests)
+BOOST_AUTO_TEST_CASE(MenuItemAddRemove)
 {
 	KE::Menu menu { };
 
-	menu.SetPosition(0.0f, 100.0f);
-	menu.SetItemOffset(10.0f, 25.0f);
+	menu.SetPosition(0.0f, -100.0f);
+	menu.SetItemOffset(10.0f, -25.0f);
+	menu.SetSelectorOffset(-10.0f, 0.0f);
 	
 	KE::MenuItem item1 { };
-
 	item1.text = KE::Text("Item1");
-	item1.Action = &MenuItem1Action;
 
 	menu.AddItem(item1);
 
@@ -89,10 +102,45 @@ BOOST_AUTO_TEST_CASE(MenuItemTests)
 
 	menu.AddItem(item2);
 
-	//BOOST_CHECK_EQUAL(menu.GetTotalItems(), 2);
+	BOOST_CHECK_EQUAL(menu.GetTotalItems(), 2);
 
-	//menu.RemoveItem(1);
+//ToDo: Test Positions
 
-	//BOOST_CHECK_EQUAL(menu.GetTotalItems(), 1);
+	menu.RemoveItem(1);
 
+	BOOST_CHECK_EQUAL(menu.GetTotalItems(), 1);
+
+	menu.RemoveItem(1);
+
+	BOOST_CHECK_EQUAL(menu.GetTotalItems(), 1);
+
+	menu.RemoveItem(0);
+
+	BOOST_CHECK_EQUAL(menu.GetTotalItems(), 0);	
+}
+
+BOOST_AUTO_TEST_CASE(MenuItemSelector)
+{
+	KE::Menu menu { };
+
+	menu.SetPosition(0.0f, -100.0f);
+	menu.SetItemOffset(10.0f, -25.0f);
+	menu.SetSelectorOffset(-10.0f, 0.0f);
+	
+	KE::MenuItem item1 { };
+	item1.text = KE::Text("Item1");
+	item1.Action = &MenuItem1Action;
+
+	KE::MenuItem item2 { };
+	item2.text = KE::Text("Item2");
+
+	menu.AddItem(item1);
+	menu.AddItem(item2);
+
+	MenuSelector selector { };
+	selector.SetActive(false);
+
+	//Failing because of openGL code... look into it. 
+	//Consider not calling openGL code in GameObject Constructors. 
+	//menu.SetSelector(shared_ptr<KE::GameObject>(&selector));
 }

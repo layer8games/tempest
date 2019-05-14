@@ -57,7 +57,7 @@ namespace KillerEngine
 //==========================================================================================================================
 		inline S32 GetTotalItems(void)
 		{
-			return _totalItems + 1;
+			return _itemList.size();
 		}
 
 		inline void SetPosition(const KM::Point& pos)
@@ -148,6 +148,39 @@ namespace KillerEngine
 			return _itemList;
 		}
 
+		inline void SetSelector(GameObject* obj)
+		{
+			_selector = shared_ptr<GameObject>(obj);
+
+			if(!_itemList.empty())
+			{
+				_selectorPosIndex = 0;
+				SetSelectorPos(0);
+			}
+		}
+
+		inline void SetSelector(GameObject& obj)
+		{
+			_selector = shared_ptr<GameObject>(&obj);
+
+			if(!_itemList.empty())
+			{
+				_selectorPosIndex = 0;
+				SetSelectorPos(0);
+			}
+		}
+
+		inline void SetSelector(shared_ptr<GameObject> obj)
+		{
+			_selector = obj;
+
+			if(!_itemList.empty())
+			{
+				_selectorPosIndex = 0;
+				SetSelectorPos(0);
+			}
+		}
+
 	private:
 //==========================================================================================================================
 //
@@ -161,8 +194,7 @@ namespace KillerEngine
 //Data
 //
 //==========================================================================================================================
-		S32 				 	_totalItems;
-		S32 					_selectorPosIndex;
+		U32 					_selectorPosIndex;
 		KM::Point 				_menuPos;
 		KM::Point 		 		_itemOffset;
 		KM::Point 				_selectorOffset;
