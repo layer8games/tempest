@@ -155,6 +155,13 @@ namespace KillerEngine
 	\param text is the Text to get the Glyphs from.
 */
 		void AddTextToLevel(const Text& text);
+
+/*!
+	Adds the Glyphs in a Text to the Level as GameObjects.
+	\param text is shared pointer Text to get the Glyphs from.
+*/
+		void AddTextToLevel(shared_ptr<Text> text);
+
 		
 /*!
 	Removes the GameObject with id from the Level.

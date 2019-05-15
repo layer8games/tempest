@@ -145,6 +145,15 @@ void Level::AddTextToLevel(const Text& text)
 	}
 }
 
+void Level::AddTextToLevel(shared_ptr<Text> text)
+{
+	std::vector<shared_ptr<Glyph>> v = text->GetCharacterList();
+	for(auto i : v)
+	{
+		AddObjectToLevel(i);
+	}
+}
+
 //=============================================================================
 //
 //RemoveObjectFromLevel

@@ -58,6 +58,8 @@ namespace KillerEngine
 */
 		explicit Text(string text);
 
+		Text(string text, shared_ptr<Font> font);
+
 /*!
 	Default destructor. No function.
 */

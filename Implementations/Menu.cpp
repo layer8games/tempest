@@ -37,13 +37,13 @@ void Menu::AddItem(MenuItem item)
 	{
 		MenuItem last = _itemList.back();
 		item.pos = _itemList.back().pos + _itemOffset;
-		item.text.SetPosition(item.pos);
+		item.text->SetPosition(item.pos);
 	}
 	//If this is the first item to be added
 	else
 	{
 		item.pos = _menuPos + _offsetFromTitle;
-		item.text.SetPosition(item.pos);
+		item.text->SetPosition(item.pos);
 
 		if(_selector != nullptr)
 		{
@@ -65,7 +65,7 @@ void Menu::RemoveItem(U32 index)
 		if(_selectorPosIndex >= index)
 		{
 			--_selectorPosIndex;
-			SetSelectorPos(_selectorPosIndex);
+			SetSelectorPosition(_selectorPosIndex);
 		}
 	}
 
@@ -112,7 +112,7 @@ void Menu::MoveSelectorDown(void)
 	}
 }
 
-void Menu::SetSelectorPos(U32 index)
+void Menu::SetSelectorPosition(U32 index)
 {
 	if(index < _itemList.size())
 	{
@@ -136,7 +136,7 @@ void Menu::_UpdateItemPositions(void)
 	if(!_itemList.empty())
 	{
 		_itemList[0].pos = _menuPos + _offsetFromTitle;
-		_itemList[0].text.SetPosition(_itemList[0].pos);
+		_itemList[0].text->SetPosition(_itemList[0].pos);
 		
 		if(_selector != nullptr)
 		{
@@ -147,7 +147,7 @@ void Menu::_UpdateItemPositions(void)
 		for(U32 i = 1; i > _itemList.size(); ++i)
 		{
 			_itemList[i].pos = _itemList[i - i].pos + _itemOffset;
-			_itemList[i].text.SetPosition(_itemList[i].pos);
+			_itemList[i].text->SetPosition(_itemList[i].pos);
 		}
 	}
 }

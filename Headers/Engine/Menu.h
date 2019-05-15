@@ -16,7 +16,7 @@ namespace KillerEngine
 	struct MenuItem
 	{
 		KM::Point pos;
-		Text 	  text;
+		shared_ptr<Text>  text;
 
 		void (*Action)(void) = NULL;
 	};
@@ -46,7 +46,7 @@ namespace KillerEngine
 
 		void MoveSelectorDown(void);
 
-		void SetSelectorPos(U32 index);
+		void SetSelectorPosition(U32 index);
 
 		void CallSelectedAction(void);
 
@@ -124,31 +124,31 @@ namespace KillerEngine
 			return _selectorOffset;
 		}
 
-		inline void SetOffsetFromTitle(const KM::Point& pos)
+		inline void SetTitleOffset(const KM::Point& pos)
 		{
 			_offsetFromTitle = pos;
 			_UpdateItemPositions();
 		}
 
-		inline void SetOffsetFromTitle(F32 xPos, F32 yPos)
+		inline void SetTitleOffset(F32 xPos, F32 yPos)
 		{
 			_offsetFromTitle[x] = xPos;
 			_offsetFromTitle[y] = yPos;
 			_UpdateItemPositions();
 		}
 
-		inline const KM::Point& GetOffsetFromTitle(void)
+		inline const KM::Point& GetTitleOffset(void)
 		{
 			return _offsetFromTitle;
 		}
 
 		inline void SetTitle(const Text& text)
 		{
-			_title = text;
-			_title.SetPosition(_menuPos);
+			_title = shared_ptr<Text>(const_cast<KE::Text*>(&text));
+			_title->SetPosition(_menuPos);
 		}
 
-		inline const Text& GetTitle(void)
+		inline shared_ptr<Text> GetTitle(void)
 		{
 			return _title;
 		}
@@ -166,7 +166,7 @@ namespace KillerEngine
 			if(!_itemList.empty())
 			{
 				_selectorPosIndex = 0;
-				SetSelectorPos(0);
+				SetSelectorPosition(0);
 			}
 		}
 
@@ -213,7 +213,7 @@ namespace KillerEngine
 		KM::Point 		 		_itemOffset;
 		KM::Point 				_selectorOffset;
 		KM::Point 				_offsetFromTitle;
-		Text 					_title;
+		shared_ptr<Text>		_title;
 		std::vector<MenuItem> 	_itemList;
 		GameObject*				_selector;
 		

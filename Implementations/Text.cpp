@@ -33,6 +33,20 @@ _color(1.0f)
 	AddText(text);
 }
 
+Text::Text(string text, shared_ptr<Font> font)
+:
+_active(true),
+_totalWidth(0.0f),
+_pos(0.0f),
+_text(), 
+_font(font), 
+_characterList(),  
+_scale(1.0f, 1.0f),
+_color(1.0f)
+{
+	AddText(text);
+}
+
 Text::~Text(void)
 {  }
 
