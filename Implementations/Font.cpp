@@ -30,6 +30,7 @@ Font::Font(const Font* f)
 :
 _initialized(f->GetInitialized()),
 _numCharacters(f->GetNumCharacters()),
+_fontSize(f->GetSize()),
 _fontName(f->GetName()),
 _characterGlyphs(f->GetAllCharacterGlyphs())
 {  }

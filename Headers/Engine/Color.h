@@ -53,6 +53,9 @@ namespace KillerEngine
 	\param c = Color&: color to copy*/
 		Color(const Color& c);
 
+/*! 
+	Default Constructor. Not implemented. 
+*/
 		~Color(void);
 
 //==========================================================================================================================
@@ -70,7 +73,7 @@ namespace KillerEngine
 			return _data[i];
 		}
 
-		Color& operator=(const Color& c) 
+		inline Color& operator=(const Color& c) 
 		{
 			_data[0] = c[0];
 			_data[1] = c[1];

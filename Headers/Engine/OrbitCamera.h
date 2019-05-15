@@ -26,9 +26,9 @@ namespace KillerEngine
 //Functions
 //
 //==========================================================================================================================		
-		virtual void v_Rotate(void);
+		virtual void v_Rotate(void) final;
 
-		virtual void v_Update(void);
+		virtual void v_Update(void) final;
 
 		//to test later
 		//If you use this, make sure to comment out the Vector4 update 

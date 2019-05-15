@@ -16,10 +16,11 @@
 #include <map>
 #include <list>
 
-typedef std::map<char, KillerEngine::CharacterData> CharacterDataMap;
-
 namespace KillerEngine
 {
+
+typedef std::map<char, CharacterData> CharacterDataMap;
+
 //==========================================================================================================================
 //Documentation
 //==========================================================================================================================
@@ -37,7 +38,9 @@ namespace KillerEngine
 //Constructors
 //
 //==========================================================================================================================
-/*! Default Constructor. No special actions taken. */
+/*!
+ 	Default Constructor. No special actions taken. 
+*/
 		Font(void);
 
 /*! 
@@ -149,7 +152,7 @@ namespace KillerEngine
 	Returns the map containing all data for all characters found in the loaded font. The ID of each character is found in 
 	the .fnt file and is the ASCII int value of a char 
 */
-		CharacterDataMap GetAllCharacterGlyphs(void) const
+		inline CharacterDataMap GetAllCharacterGlyphs(void) const
 		{ 
 			return _characterGlyphs; 
 		}
@@ -169,10 +172,10 @@ namespace KillerEngine
 //Data
 //
 //==========================================================================================================================	
-		bool 	 _initialized;				///< Initialization state of the Font. 
-		S32 	 _numCharacters;			///< Number of characters found in the Font. 128 for ACCII, 256 for UTF8
-		U32 	 _fontSize;					///< Size of the Font. Should be used like a text font for weight. 
-		string   _fontName;					///< Name of the font. Not used for anything really. 
+		bool 	 		 _initialized;		///< Initialization state of the Font. 
+		S32 	 		 _numCharacters;	///< Number of characters found in the Font. 128 for ACCII, 256 for UTF8
+		U32 	 		 _fontSize;			///< Size of the Font. Should be used like a text font for weight. 
+		string   		 _fontName;			///< Name of the font. Not used for anything really. 
 		CharacterDataMap _characterGlyphs; 	///< All data from .fnt file stored in a RenderText can use for placement.
 	};
 }

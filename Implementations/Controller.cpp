@@ -9,8 +9,13 @@ using namespace KillerEngine;
 //==========================================================================================================================
 Controller::Controller(void) 
 :
+_keyStates{},
+_pastActiveKeys{},
+_curActiveKeys{},
 _leftClickCoordinates(0.0f), 
-_rightClickCoordinates(0.0f)
+_rightClickCoordinates(0.0f),
+_leftClickCoordInScreen(0.0f),
+_rightClickCoordInScreen(0.0f)
 {
 	for(int i = 0; i < TOTAL_KEYS; ++i)
 	{

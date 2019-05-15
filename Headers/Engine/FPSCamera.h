@@ -25,11 +25,11 @@ namespace KillerEngine
 //Virtual Functions
 //
 //==========================================================================================================================
-		virtual void v_Update(void);
+		virtual void v_Update(void) final;
 
-		virtual void v_Rotate(void);
+		virtual void v_Rotate(void) final;
 
-		virtual void v_Move(const KM::Vector4& offset);
+		virtual void v_Move(const KM::Vector4& offset) final;
 
 //==========================================================================================================================
 //
