@@ -37,6 +37,8 @@ var annotated_dup =
       [ "Glyph", "class_killer_engine_1_1_glyph.html", "class_killer_engine_1_1_glyph" ],
       [ "Level", "class_killer_engine_1_1_level.html", "class_killer_engine_1_1_level" ],
       [ "LevelManager", "class_killer_engine_1_1_level_manager.html", "class_killer_engine_1_1_level_manager" ],
+      [ "Menu", "class_killer_engine_1_1_menu.html", "class_killer_engine_1_1_menu" ],
+      [ "MenuItem", "struct_killer_engine_1_1_menu_item.html", "struct_killer_engine_1_1_menu_item" ],
       [ "OrbitCamera", "class_killer_engine_1_1_orbit_camera.html", "class_killer_engine_1_1_orbit_camera" ],
       [ "Shader", "class_killer_engine_1_1_shader.html", "class_killer_engine_1_1_shader" ],
       [ "ShaderData", "struct_killer_engine_1_1_shader_data.html", "struct_killer_engine_1_1_shader_data" ],
@@ -76,6 +78,7 @@ var annotated_dup =
     ] ],
     [ "DefinedObject", "class_defined_object.html", "class_defined_object" ],
     [ "DefinedObject3D", "class_defined_object3_d.html", "class_defined_object3_d" ],
+    [ "MenuSelector", "class_menu_selector.html", "class_menu_selector" ],
     [ "TestLevel", "class_test_level.html", "class_test_level" ],
     [ "TestLevelDefinedGameObject", "class_test_level_defined_game_object.html", "class_test_level_defined_game_object" ]
 ];

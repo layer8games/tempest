@@ -143,6 +143,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a062658b2775b37edb1c06665e87e5abc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3be6f68566fa11a1d6ed74b6a20c7113"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a3be6f68566fa11a1d6ed74b6a20c7113">AddTextToLevel</a> (const <a class="el" href="class_killer_engine_1_1_text.html">Text</a> &amp;text)</td></tr>
 <tr class="separator:a3be6f68566fa11a1d6ed74b6a20c7113"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a737b562d1979d1d652b5256b675c15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a9a737b562d1979d1d652b5256b675c15">AddTextToLevel</a> (shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_text.html">Text</a> &gt; text)</td></tr>
+<tr class="separator:a9a737b562d1979d1d652b5256b675c15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a128b2440a436be3e29c58d8ef194dcd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#a128b2440a436be3e29c58d8ef194dcd4">RemoveObjectFromLevel</a> (<a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a> id)</td></tr>
 <tr class="separator:a128b2440a436be3e29c58d8ef194dcd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfe26b484c3972eb8d6df069491cce8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level.html#abfe26b484c3972eb8d6df069491cce8a">UpdateObjects</a> (void)</td></tr>
@@ -485,7 +487,7 @@ std::map&lt; <a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124
 </div>
 </div>
 <a id="a3be6f68566fa11a1d6ed74b6a20c7113"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3be6f68566fa11a1d6ed74b6a20c7113">&#9670;&nbsp;</a></span>AddTextToLevel()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3be6f68566fa11a1d6ed74b6a20c7113">&#9670;&nbsp;</a></span>AddTextToLevel() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -502,6 +504,30 @@ std::map&lt; <a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124
 <p>Adds the Glyphs in a <a class="el" href="class_killer_engine_1_1_text.html">Text</a> to the <a class="el" href="class_killer_engine_1_1_level.html">Level</a> as GameObjects. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">text</td><td>is the <a class="el" href="class_killer_engine_1_1_text.html">Text</a> to get the Glyphs from. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9a737b562d1979d1d652b5256b675c15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a737b562d1979d1d652b5256b675c15">&#9670;&nbsp;</a></span>AddTextToLevel() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Level::AddTextToLevel </td>
+          <td>(</td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_text.html">Text</a> &gt;&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds the Glyphs in a <a class="el" href="class_killer_engine_1_1_text.html">Text</a> to the <a class="el" href="class_killer_engine_1_1_level.html">Level</a> as GameObjects. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>is shared pointer <a class="el" href="class_killer_engine_1_1_text.html">Text</a> to get the Glyphs from. </td></tr>
   </table>
   </dd>
 </dl>

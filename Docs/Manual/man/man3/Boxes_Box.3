@@ -1,4 +1,4 @@
-.TH "Boxes::Box" 3 "Mon Apr 22 2019" "Killer Engine" \" -*- nroff -*-
+.TH "Boxes::Box" 3 "Tue May 14 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -24,6 +24,12 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "void \fBv_Update\fP (void)"
 .br
 .ti -1c
+.RI "bool \fBOverlapCheck\fP (const \fBBox\fP &other)"
+.br
+.ti -1c
+.RI "void \fBOnCollide\fP (void)"
+.br
+.ti -1c
 .RI "void \fBSetSpeed\fP (\fBF32\fP s)"
 .br
 .ti -1c
@@ -38,6 +44,12 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .ti -1c
 .RI "const \fBKM::Vector4\fP & \fBGetDirection\fP (void) const"
 .br
+.ti -1c
+.RI "const \fBKC::AABB\fP & \fBGetBounding\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBInitBounding\fP (void)"
+.br
 .in -1c
 .SS "Private Attributes"
 
@@ -47,6 +59,9 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .br
 .ti -1c
 .RI "\fBKM::Vector4\fP \fB_direction\fP"
+.br
+.ti -1c
+.RI "\fBKC::AABB\fP \fB_boundingBox\fP"
 .br
 .in -1c
 .SS "Additional Inherited Members"

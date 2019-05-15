@@ -1,9 +1,13 @@
 var class_killer_engine_1_1_text =
 [
     [ "Text", "class_killer_engine_1_1_text.html#a69ade6b2e48cf82e2e4564ebd5704489", null ],
+    [ "Text", "class_killer_engine_1_1_text.html#af252617e20ff36f8c710cd69e77450d5", null ],
+    [ "Text", "class_killer_engine_1_1_text.html#a3e5dc91d1a305343571ff868ef0e95de", null ],
     [ "~Text", "class_killer_engine_1_1_text.html#a89cf30f2af3cc7336e98c9dcf2f0c040", null ],
+    [ "_CreateCharacterList", "class_killer_engine_1_1_text.html#a21743d329a26ef0fd4eef0939a2c8e73", null ],
     [ "_UpdateActive", "class_killer_engine_1_1_text.html#af5eef16716594c7627f0a529fae44305", null ],
     [ "_UpdateColors", "class_killer_engine_1_1_text.html#a6295eefc0111affc2e905f6ef2336a09", null ],
+    [ "_UpdateGlyphData", "class_killer_engine_1_1_text.html#a284199c77db0ddb59824e7a30b4eefb7", null ],
     [ "_UpdatePositions", "class_killer_engine_1_1_text.html#af21c617f7230394ee6367ab99a5089cd", null ],
     [ "_UpdateScales", "class_killer_engine_1_1_text.html#acdd8b848d882d3d6629cbe4b85fe2fe5", null ],
     [ "AddText", "class_killer_engine_1_1_text.html#ae379358ca98de712a1346cd661fe67b1", null ],
@@ -18,7 +22,7 @@ var class_killer_engine_1_1_text =
     [ "SetActive", "class_killer_engine_1_1_text.html#a570494e905aca3d1ae3ae3de52ede136", null ],
     [ "SetColor", "class_killer_engine_1_1_text.html#a6cc22d6e12339cfe7d3c7af8a1234773", null ],
     [ "SetColor", "class_killer_engine_1_1_text.html#a2dfda81e9853a06ec1488c5e700bba15", null ],
-    [ "SetFont", "class_killer_engine_1_1_text.html#afd5a9ed8b321ae0d49f93d68d691d7de", null ],
+    [ "SetFont", "class_killer_engine_1_1_text.html#a6c3c01329246c8a9b65e974982f33c31", null ],
     [ "SetFont", "class_killer_engine_1_1_text.html#aea1b3d78e2b53dbc74a077e995726554", null ],
     [ "SetInactive", "class_killer_engine_1_1_text.html#a58a7f4e3ed3a1a022bd67f34041d8bdc", null ],
     [ "SetPosition", "class_killer_engine_1_1_text.html#af90b4b2232ec65fb16c1bc17c8fc0aa8", null ],

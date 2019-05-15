@@ -34,6 +34,7 @@ var class_killer_engine_1_1_game_object =
     [ "GetUVList", "class_killer_engine_1_1_game_object.html#a94ab63052c10c0bfeee0bbf209752ec9", null ],
     [ "GetVAO", "class_killer_engine_1_1_game_object.html#a2e04b9bb991e279fb8492b3fe5388f43", null ],
     [ "GetVertices", "class_killer_engine_1_1_game_object.html#acc70b878397cc3b67a4def4e0a5c3608", null ],
+    [ "InitOGL", "class_killer_engine_1_1_game_object.html#a96429ffe945a7ed36f90da16a1df8ee3", null ],
     [ "IsSprite", "class_killer_engine_1_1_game_object.html#aa600e197626a1ae3495ffbf4548a33af", null ],
     [ "LoadMesh", "class_killer_engine_1_1_game_object.html#ae5121da4943d5f5291b96ad0b5785f89", null ],
     [ "LoadOBJ", "class_killer_engine_1_1_game_object.html#ad8455051e936a61f8beba250bbecc075", null ],

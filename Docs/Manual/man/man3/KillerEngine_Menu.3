@@ -1,0 +1,335 @@
+.TH "KillerEngine::Menu" 3 "Tue May 14 2019" "Killer Engine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+KillerEngine::Menu
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Menu\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMenu\fP (void)"
+.br
+.ti -1c
+.RI "\fB~Menu\fP (void)"
+.br
+.ti -1c
+.RI "void \fBAddItem\fP (\fBMenuItem\fP item)"
+.br
+.ti -1c
+.RI "void \fBRemoveItem\fP (\fBU32\fP index)"
+.br
+.ti -1c
+.RI "void \fBMoveSelectorUp\fP (void)"
+.br
+.ti -1c
+.RI "void \fBMoveSelectorDown\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetSelectorPosition\fP (\fBU32\fP index)"
+.br
+.ti -1c
+.RI "void \fBCallSelectedAction\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetWrap\fP (bool state)"
+.br
+.ti -1c
+.RI "bool \fBGetWrap\fP (void)"
+.br
+.ti -1c
+.RI "\fBU32\fP \fBGetTotalItems\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetPosition\fP (const \fBKM::Point\fP &pos)"
+.br
+.ti -1c
+.RI "void \fBSetPosition\fP (\fBF32\fP xPos, \fBF32\fP yPos)"
+.br
+.ti -1c
+.RI "const \fBKM::Point\fP & \fBGetPosition\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetItemOffset\fP (const \fBKM::Point\fP &offset)"
+.br
+.ti -1c
+.RI "void \fBSetItemOffset\fP (\fBF32\fP xPos, \fBF32\fP yPos)"
+.br
+.ti -1c
+.RI "const \fBKM::Point\fP & \fBGetItemOffset\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetSelectorOffset\fP (const \fBKM::Point\fP &offset)"
+.br
+.ti -1c
+.RI "void \fBSetSelectorOffset\fP (\fBF32\fP xPos, \fBF32\fP yPos)"
+.br
+.ti -1c
+.RI "const \fBKM::Point\fP & \fBGetSelectorOffset\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetTitleOffset\fP (const \fBKM::Point\fP &pos)"
+.br
+.ti -1c
+.RI "void \fBSetTitleOffset\fP (\fBF32\fP xPos, \fBF32\fP yPos)"
+.br
+.ti -1c
+.RI "const \fBKM::Point\fP & \fBGetTitleOffset\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetTitle\fP (const \fBText\fP &text)"
+.br
+.ti -1c
+.RI "void \fBSetTitle\fP (shared_ptr< \fBText\fP > text)"
+.br
+.ti -1c
+.RI "shared_ptr< \fBText\fP > \fBGetTitle\fP (void)"
+.br
+.ti -1c
+.RI "const std::vector< \fBMenuItem\fP > & \fBGetItemList\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetSelector\fP (\fBGameObject\fP *obj)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fB_UpdateItemPositions\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fB_wrap\fP"
+.br
+.RI "Configures if the selector should wrap around the \fBMenu\fP or not\&. True == wrap, false == Don't wrap\&. "
+.ti -1c
+.RI "\fBU32\fP \fB_selectorPosIndex\fP"
+.br
+.RI "Index that tracks the location of the selector in relation to _itemList\&. "
+.ti -1c
+.RI "\fBKM::Point\fP \fB_menuPos\fP"
+.br
+.RI "Position of the \fBMenu\fP\&. Used to update everything in \fBMenu::_UpdateItemPositions\fP\&. "
+.ti -1c
+.RI "\fBKM::Point\fP \fB_itemOffset\fP"
+.br
+.RI "Offset of each \fBMenuItem\fP from the one before it\&. "
+.ti -1c
+.RI "\fBKM::Point\fP \fB_selectorOffset\fP"
+.br
+.RI "Offset of the selector from the \fBMenuItem\fP it is next to\&. "
+.ti -1c
+.RI "\fBKM::Point\fP \fB_offsetFromTitle\fP"
+.br
+.RI "Offset of the first \fBMenuItem\fP from the title\&. "
+.ti -1c
+.RI "shared_ptr< \fBText\fP > \fB_title\fP"
+.br
+.RI "Pointer to the a \fBText\fP title\&. "
+.ti -1c
+.RI "std::vector< \fBMenuItem\fP > \fB_itemList\fP"
+.br
+.RI "Internal list of all MenuItems\&. "
+.ti -1c
+.RI "\fBGameObject\fP * \fB_selector\fP"
+.br
+.RI "Selector to move and activate MenuItems\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A basic menu class to help create in game menus\&. These are similar to Doom style menues\&. There is a selector that can be any type of \fBGameObject\fP, followed by \fBText\fP with an optional title\&. The \fBText\fP is wrapped into a \fBMenuItem\fP, complete with a callback function to determine what happens when an item is activated\&. An item is activated when the selector is next to is and \fBMenu::CallSelectedAction\fP is called\&.
+.PP
+This is not a super robust menu system\&. The follow features could help it out a lot\&.
+.IP "1." 4
+It could use an active state, so that it can be toggled on and off\&.
+.IP "2." 4
+AddItem could use a parameter to allow to set a new position for an item\&. For example, add a new item to the top or middle of the list instead of just the end\&. 
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Menu::Menu (void)"
+Default constructor\&. No implemenatation\&. Sets everything to 0, except the selectorPosIndex, which is set to UINT_MAX\&. 
+.SS "Menu::~Menu (void)"
+Default desctructor\&. Clears the itemList\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void Menu::_UpdateItemPositions (void)\fC [private]\fP"
+Updates the title, and all MenuItems in the list to the current position, based on _menuPos and the offsets\&. 
+.SS "void Menu::AddItem (\fBMenuItem\fP item)"
+Adds a new \fBMenuItem\fP to the bottom of the list\&. If no MenuItems are present yet, it sets the first item below the title, if one is present\&. It also set up the selector position, if it hasn't been set yet\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP is the new item to add to the list\&. 
+.RE
+.PP
+
+.SS "void Menu::CallSelectedAction (void)"
+Calls the currently select \fBMenuItem\fP callback Action function\&. If this is not set, nothing happens\&. 
+.SS "const std::vector<\fBMenuItem\fP>& KillerEngine::Menu::GetItemList (void)\fC [inline]\fP"
+Returns the list of all MenuItems for the \fBMenu\fP\&. 
+.SS "const \fBKM::Point\fP& KillerEngine::Menu::GetItemOffset (void)\fC [inline]\fP"
+Returns the current offset of each time to the one before it\&. 
+.SS "const \fBKM::Point\fP& KillerEngine::Menu::GetPosition (void)\fC [inline]\fP"
+Returns the position of the \fBMenu\fP\&. 
+.SS "const \fBKM::Point\fP& KillerEngine::Menu::GetSelectorOffset (void)\fC [inline]\fP"
+Returns the offset for the selector from the item it is next to\&. 
+.SS "shared_ptr<\fBText\fP> KillerEngine::Menu::GetTitle (void)\fC [inline]\fP"
+Returns a shared_ptr to the Title of the \fBMenu\fP\&. 
+.SS "const \fBKM::Point\fP& KillerEngine::Menu::GetTitleOffset (void)\fC [inline]\fP"
+Returns the current offset for the first item from the title\&. 
+.SS "\fBU32\fP KillerEngine::Menu::GetTotalItems (void)\fC [inline]\fP"
+Returns the total number of items in the \fBMenu\fP\&. This calls std::vector::size 
+.SS "bool KillerEngine::Menu::GetWrap (void)\fC [inline]\fP"
+Returns if the \fBMenu\fP is currently configured to wrap or not\&. 
+.SS "void Menu::MoveSelectorDown (void)"
+Moves the selector down one position on the list\&. If it reaches the bottom, it will either stop or wrap, based on the configuration\&. 
+.SS "void Menu::MoveSelectorUp (void)"
+Moves the selector up one position on the list\&. If it reaches the top, it will either stop, or wrap, based on the configuration\&. 
+.SS "void Menu::RemoveItem (\fBU32\fP index)"
+Removes item given the position from the list\&. The rest of the list is rearranged to suppor this\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP is the item to remove\&. These are 0 indexed\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Menu::SetItemOffset (const \fBKM::Point\fP & offset)\fC [inline]\fP"
+Sets the offset of each item from the one above it\&. Calls \fBMenu::_UpdateItemPositions\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoffset\fP is the offset\&. This is added to the \fBMenuItem::pos\fP, so it should be negative to go left or down, and positive to go right or up\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Menu::SetItemOffset (\fBF32\fP xPos, \fBF32\fP yPos)\fC [inline]\fP"
+Sets the offset of each item from the one before it\&. Calls \fBMenu::_UpdateItemPositions\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxPos\fP is the offset\&. Should be negative to go left or positive to go right\&. 
+.br
+\fIyPos\fP is the offset\&. Should be negative to down or positive to go up\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Menu::SetPosition (const \fBKM::Point\fP & pos)\fC [inline]\fP"
+Updates the position of the \fBMenu\fP, the title and all the items\&. Calls \fBMenu::_UpdateItemPositions\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP is the new position of the whole \fBMenu\fP\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Menu::SetPosition (\fBF32\fP xPos, \fBF32\fP yPos)\fC [inline]\fP"
+Updates the position of the \fBMenu\fP, the title and all the items\&. Calls \fBMenu::_UpdateItemPositions\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxPos\fP is the x coodinate position\&. 
+.br
+\fIyPos\fP is the y coodinate position\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Menu::SetSelector (\fBGameObject\fP * obj)\fC [inline]\fP"
+Sets the selector for the \fBMenu\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP is a pointer to the \fBGameObject\fP type that will act as the selector\&. If itemList is not empty, it will set the selector to the first position\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Menu::SetSelectorOffset (const \fBKM::Point\fP & offset)\fC [inline]\fP"
+Sets the offset for the selector from the item it is next to\&. Calls \fBMenu::_UpdateItemPositions\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoffset\fP is the offset\&. Should be positive to move it right or up, and negative to move it left or down\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Menu::SetSelectorOffset (\fBF32\fP xPos, \fBF32\fP yPos)\fC [inline]\fP"
+Sets the offset for the selector from the item it is next to\&. Calls \fBMenu::_UpdateItemPositions\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxPos\fP is the offset\&. Should be negative to go left or positive to go right\&. 
+.br
+\fIyPos\fP is the offset\&. Should be negative to down or positive to go up\&. 
+.RE
+.PP
+
+.SS "void Menu::SetSelectorPosition (\fBU32\fP index)"
+Manually sets the selector to a given position in the list\&. If the index is out of range, nothing happens\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP is the 0 indexed position to set the selector to\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Menu::SetTitle (const \fBText\fP & text)\fC [inline]\fP"
+Sets the title for the menu\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP is the title\&. It will be converted to a shared_ptr<Text>\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Menu::SetTitle (shared_ptr< \fBText\fP > text)\fC [inline]\fP"
+Sets the title for the menu\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP is the title\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Menu::SetTitleOffset (const \fBKM::Point\fP & pos)\fC [inline]\fP"
+Sets the offset for the first item in the list from the title\&. Calls \fBMenu::_UpdateItemPositions\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP is the offset from the title\&. Should be positive to move it up or right, negative for down or left\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Menu::SetTitleOffset (\fBF32\fP xPos, \fBF32\fP yPos)\fC [inline]\fP"
+Sets the offset for the first item in the list from the title\&. Calls \fBMenu::_UpdateItemPositions\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxPos\fP is the offset\&. Should be negative to go left or positive to go right\&. 
+.br
+\fIyPos\fP is the offset\&. Should be negative to down or positive to go up\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Menu::SetWrap (bool state)\fC [inline]\fP"
+Sets if the menu selector should wrap when it reaches the top or bottom\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP configures the options\&. True for wrapping, false for no wrapping\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Killer Engine from the source code\&.

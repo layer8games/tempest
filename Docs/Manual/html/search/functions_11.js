@@ -11,6 +11,7 @@ var searchData=
   ['real_5fsqr',['REAL_SQR',['../_atom_8h.html#a23914c0a41c63c6a7869e6e4c466204a',1,'Atom.h']]],
   ['registerparticleforce',['RegisterParticleForce',['../class_killer_engine_1_1_level.html#a062658b2775b37edb1c06665e87e5abc',1,'KillerEngine::Level']]],
   ['remove',['Remove',['../class_killer_physics_1_1_force_registry.html#a8d5d15b48c6301fc2e141509b8ac2dfb',1,'KillerPhysics::ForceRegistry::Remove(shared_ptr&lt; Particle &gt; particle, shared_ptr&lt; ForceGenerator &gt; forceGen)'],['../class_killer_physics_1_1_force_registry.html#a09b9c7eebc1c4172a666d678a21f8ce4',1,'KillerPhysics::ForceRegistry::Remove(shared_ptr&lt; RigidBody &gt; body, shared_ptr&lt; ForceGenerator &gt; forceGen)']]],
+  ['removeitem',['RemoveItem',['../class_killer_engine_1_1_menu.html#ab160d39e36c84a83c904bfedbf053224',1,'KillerEngine::Menu']]],
   ['removelevel',['RemoveLevel',['../class_killer_engine_1_1_level_manager.html#a3ca8cb0e378e7b8263c4669d9d8879e3',1,'KillerEngine::LevelManager']]],
   ['removeobjectfromlevel',['RemoveObjectFromLevel',['../class_killer_engine_1_1_level.html#a128b2440a436be3e29c58d8ef194dcd4',1,'KillerEngine::Level::RemoveObjectFromLevel()'],['../class_killer_engine_1_1_level_manager.html#a893e321ff0c7a084b464b154735e912d',1,'KillerEngine::LevelManager::RemoveObjectFromLevel()']]],
   ['render',['Render',['../class_killer_engine_1_1_engine.html#a0544104c7bffacec72851a2074ac8102',1,'KillerEngine::Engine::Render()'],['../class_killer_engine_1_1_level_manager.html#a51683140c6c2b0823709275a1f862d2f',1,'KillerEngine::LevelManager::Render()']]],

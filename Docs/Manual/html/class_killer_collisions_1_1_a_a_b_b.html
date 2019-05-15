@@ -139,8 +139,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad6663c9b328ee8ec92a7b4402b921475"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34835e97311fc91f418ae41c155939d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_collisions_1_1_a_a_b_b.html#a34835e97311fc91f418ae41c155939d6">SetHalfDimensions</a> (<a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> w, <a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> h, <a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> d)</td></tr>
 <tr class="separator:a34835e97311fc91f418ae41c155939d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a121ae6c08174fedbfeef27c20b4488d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_collisions_1_1_a_a_b_b.html#a121ae6c08174fedbfeef27c20b4488d4">SetHalfDimensions</a> (const <a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a> &amp;scale)</td></tr>
+<tr class="separator:a121ae6c08174fedbfeef27c20b4488d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a940c1cd6f7c101e017797e64bcee92bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_collisions_1_1_a_a_b_b.html#a940c1cd6f7c101e017797e64bcee92bd">SetDimensions</a> (<a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> w, <a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> h, <a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> d)</td></tr>
 <tr class="separator:a940c1cd6f7c101e017797e64bcee92bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bdc39c6405a99c5cad8d0a45955333f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_collisions_1_1_a_a_b_b.html#a3bdc39c6405a99c5cad8d0a45955333f">SetDimensions</a> (const <a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a> &amp;scale)</td></tr>
+<tr class="separator:a3bdc39c6405a99c5cad8d0a45955333f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -548,7 +552,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a940c1cd6f7c101e017797e64bcee92bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a940c1cd6f7c101e017797e64bcee92bd">&#9670;&nbsp;</a></span>SetDimensions()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a940c1cd6f7c101e017797e64bcee92bd">&#9670;&nbsp;</a></span>SetDimensions() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -597,6 +601,38 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a3bdc39c6405a99c5cad8d0a45955333f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bdc39c6405a99c5cad8d0a45955333f">&#9670;&nbsp;</a></span>SetDimensions() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerCollisions::AABB::SetDimensions </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a> &amp;&#160;</td>
+          <td class="paramname"><em>scale</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets the extent of the <a class="el" href="class_killer_collisions_1_1_a_a_b_b.html">AABB</a>. Because these are half values, the input is divided by half. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scale</td><td>is the new extent. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a7adbb3efb97d8a462518c7bf509ff8a7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7adbb3efb97d8a462518c7bf509ff8a7">&#9670;&nbsp;</a></span>SetHalfDepth()</h2>
 
@@ -630,7 +666,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a34835e97311fc91f418ae41c155939d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34835e97311fc91f418ae41c155939d6">&#9670;&nbsp;</a></span>SetHalfDimensions()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a34835e97311fc91f418ae41c155939d6">&#9670;&nbsp;</a></span>SetHalfDimensions() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -673,6 +709,38 @@ Private Attributes</h2></td></tr>
     <tr><td class="paramname">w</td><td>is the new half width extent. </td></tr>
     <tr><td class="paramname">h</td><td>is the new half height extent. </td></tr>
     <tr><td class="paramname">d</td><td>is the new half depth extent. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a121ae6c08174fedbfeef27c20b4488d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a121ae6c08174fedbfeef27c20b4488d4">&#9670;&nbsp;</a></span>SetHalfDimensions() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerCollisions::AABB::SetHalfDimensions </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a> &amp;&#160;</td>
+          <td class="paramname"><em>scale</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets the new half extent of the <a class="el" href="class_killer_collisions_1_1_a_a_b_b.html">AABB</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scale</td><td>is the new extent to be used. </td></tr>
   </table>
   </dd>
 </dl>

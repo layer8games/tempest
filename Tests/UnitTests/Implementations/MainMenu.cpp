@@ -40,11 +40,10 @@ void MainMenu::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	_mainTitle.AddText("BOXES vs TRIANGLES");
 
 	_menu.SetPosition(-_mainTitle.GetWidth(), top - (top * 0.1f));
-	//_menu.SetPosition(0.0f, 0.0f);
-	//_menu.SetTitleOffset(_mainTitle.GetWidth(), top + (top * 0.1f));
 	_menu.SetTitleOffset(_mainTitle.GetWidth() / 2.0f, -top * 0.333f);
 	_menu.SetItemOffset(0.0f, -60.0f);
 	_menu.SetSelectorOffset(-50.0f, 0.0f);
+	_menu.SetWrap(true);
 
 	KE::MenuItem level1 { };
 	level1.text = shared_ptr<KE::Text>(new KE::Text("Moving Boxes", KE::FontManager::Instance()->GetFont(100)));

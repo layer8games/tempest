@@ -1,4 +1,4 @@
-.TH "KillerEngine::GameObject" 3 "Mon Apr 22 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::GameObject" 3 "Tue May 14 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -7,7 +7,7 @@ KillerEngine::GameObject
 .br
 .PP
 .PP
-Inherited by \fBBoxes::Box\fP, \fBBoxes::Cannon\fP, \fBBoxes::Cube\fP, \fBDefinedObject\fP, \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \fBKillerPhysics::Particle\fP, \fBKillerPhysics::RigidBody\fP, and \fBTestLevelDefinedGameObject\fP\&.
+Inherited by \fBBoxes::Box\fP, \fBBoxes::Cannon\fP, \fBBoxes::Cube\fP, \fBDefinedObject\fP, \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \fBKillerPhysics::Particle\fP, \fBKillerPhysics::RigidBody\fP, \fBMenuSelector\fP, and \fBTestLevelDefinedGameObject\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
@@ -22,6 +22,9 @@ Inherited by \fBBoxes::Box\fP, \fBBoxes::Cannon\fP, \fBBoxes::Cube\fP, \fBDefine
 .br
 .ti -1c
 .RI "virtual void \fBv_InitBuffers\fP (void)"
+.br
+.ti -1c
+.RI "void \fBInitOGL\fP (void)"
 .br
 .ti -1c
 .RI "void \fBUpdateInternals\fP (void)"

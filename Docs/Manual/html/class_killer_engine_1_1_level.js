@@ -9,6 +9,7 @@ var class_killer_engine_1_1_level =
     [ "AddParticleToLevel", "class_killer_engine_1_1_level.html#ad1d7733e7a4b294cb7f2ef05dc2b0a2b", null ],
     [ "AddParticleToLevel", "class_killer_engine_1_1_level.html#a35556fbe0f081220f328ff47ad87f8f8", null ],
     [ "AddTextToLevel", "class_killer_engine_1_1_level.html#a3be6f68566fa11a1d6ed74b6a20c7113", null ],
+    [ "AddTextToLevel", "class_killer_engine_1_1_level.html#a9a737b562d1979d1d652b5256b675c15", null ],
     [ "GetBottomBorder", "class_killer_engine_1_1_level.html#a6c02892ad4f551016bd305f82e03614d", null ],
     [ "GetCamera", "class_killer_engine_1_1_level.html#a642495c25256fbaeae542ac4287f8059", null ],
     [ "GetDepth", "class_killer_engine_1_1_level.html#abe898753c0935d5f5f4d6ab9ed956195", null ],

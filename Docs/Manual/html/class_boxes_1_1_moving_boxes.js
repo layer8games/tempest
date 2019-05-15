@@ -3,6 +3,7 @@ var class_boxes_1_1_moving_boxes =
     [ "MovingBoxes", "class_boxes_1_1_moving_boxes.html#a61da2b7720c75f6d8cba85151488fe8c", null ],
     [ "~MovingBoxes", "class_boxes_1_1_moving_boxes.html#a409d9d4c6224870f6756b7315e325f2b", null ],
     [ "CheckBoxEdge", "class_boxes_1_1_moving_boxes.html#a8fff26d98ae278d44cfd331fe06c7f49", null ],
+    [ "CheckCollisions", "class_boxes_1_1_moving_boxes.html#a98c91e23d7d7b8313b2db2bf54724022", null ],
     [ "v_InitLevel", "class_boxes_1_1_moving_boxes.html#a4309f270b25ac5ff25939f22b4e819f0", null ],
     [ "v_Update", "class_boxes_1_1_moving_boxes.html#a31697d926e9c1f969c294f5c4069b4e3", null ],
     [ "_activeBox", "class_boxes_1_1_moving_boxes.html#a6364d401d6f28813bf84cecc94dadbb0", null ],

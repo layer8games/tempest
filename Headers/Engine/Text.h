@@ -58,6 +58,11 @@ namespace KillerEngine
 */
 		explicit Text(string text);
 
+/*!
+	Creates a Text with Glyphs for each character in a string with a given Font. Calls Text::AddText to set up everything.
+	\param text are the desires characters. 
+	\param font is the given Font. Should come from the FontManager. 
+*/
 		Text(string text, shared_ptr<Font> font);
 
 /*!

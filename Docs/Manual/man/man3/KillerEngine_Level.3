@@ -1,4 +1,4 @@
-.TH "KillerEngine::Level" 3 "Mon Apr 22 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Level" 3 "Tue May 14 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -54,6 +54,9 @@ Inherited by \fBBoxes::Ballistics\fP, \fBBoxes::Demo3D\fP, \fBBoxes::FireworksDe
 .br
 .ti -1c
 .RI "void \fBAddTextToLevel\fP (const \fBText\fP &text)"
+.br
+.ti -1c
+.RI "void \fBAddTextToLevel\fP (shared_ptr< \fBText\fP > text)"
 .br
 .ti -1c
 .RI "void \fBRemoveObjectFromLevel\fP (\fBU32\fP id)"
@@ -288,6 +291,15 @@ Adds the Glyphs in a \fBText\fP to the \fBLevel\fP as GameObjects\&.
 \fBParameters:\fP
 .RS 4
 \fItext\fP is the \fBText\fP to get the Glyphs from\&. 
+.RE
+.PP
+
+.SS "void Level::AddTextToLevel (shared_ptr< \fBText\fP > text)"
+Adds the Glyphs in a \fBText\fP to the \fBLevel\fP as GameObjects\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP is shared pointer \fBText\fP to get the Glyphs from\&. 
 .RE
 .PP
 

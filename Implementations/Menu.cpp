@@ -14,6 +14,7 @@ _menuPos(0.0f, 0.0f),
 _itemOffset(0.0f, 0.0f),
 _selectorOffset(0.0f, 0.0f),
 _offsetFromTitle(0.0, 0.0f),
+_title(nullptr),
 _itemList(),
 _selector(nullptr)
 {  }
@@ -133,6 +134,11 @@ void Menu::CallSelectedAction(void)
 //==========================================================================================================================
 void Menu::_UpdateItemPositions(void)
 {
+	if(_title != nullptr)
+	{
+		_title->SetPosition(_menuPos);
+	}
+
 	if(!_itemList.empty())
 	{
 		_itemList[0].pos = _menuPos + _offsetFromTitle;

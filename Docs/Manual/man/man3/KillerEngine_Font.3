@@ -1,4 +1,4 @@
-.TH "KillerEngine::Font" 3 "Mon Apr 22 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Font" 3 "Tue May 14 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -30,6 +30,9 @@ KillerEngine::Font
 .RI "\fBFont\fP & \fBoperator=\fP (const \fBFont\fP &font)"
 .br
 .ti -1c
+.RI "bool \fBGetInitialized\fP (void) const"
+.br
+.ti -1c
 .RI "void \fBSetNumCharacters\fP (\fBS32\fP num)"
 .br
 .ti -1c
@@ -58,14 +61,21 @@ KillerEngine::Font
 
 .in +1c
 .ti -1c
+.RI "bool \fB_initialized\fP"
+.br
+.RI "Initialization state of the \fBFont\fP\&. "
+.ti -1c
 .RI "\fBS32\fP \fB_numCharacters\fP"
 .br
+.RI "Number of characters found in the \fBFont\fP\&. 128 for ACCII, 256 for UTF8\&. "
 .ti -1c
 .RI "\fBU32\fP \fB_fontSize\fP"
 .br
+.RI "Size of the \fBFont\fP\&. Should be used like a text font for weight\&. "
 .ti -1c
 .RI "string \fB_fontName\fP"
 .br
+.RI "Name of the font\&. Not used for anything really\&. "
 .ti -1c
 .RI "CharacterDataMap \fB_characterGlyphs\fP"
 .br
@@ -102,12 +112,40 @@ Copy Constructor\&. Calls GetTextureID(), GetFile() and \fBGetName()\fP\&.
 .PP 
 .SS "CharacterDataMap KillerEngine::Font::GetAllCharacterGlyphs (void) const\fC [inline]\fP"
 Returns the map containing all data for all characters found in the loaded font\&. The ID of each character is found in the \&.fnt file and is the ASCII int value of a char 
+.SS "\fBCharacterData\fP KillerEngine::Font::GetCharacterData (char c)\fC [inline]\fP"
+Returns data for a single character\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIc\fP is the desired data character\&. 
+.RE
+.PP
+
+.SS "bool KillerEngine::Font::GetInitialized (void) const\fC [inline]\fP"
+Returns if the \fBFont\fP has been initialized yet\&. This allows for temporary Fonts that have not been fully created yet\&. 
 .SS "const string KillerEngine::Font::GetName (void) const\fC [inline]\fP"
 Returns the current name of the font\&. Not used in any major way\&. 
+.SS "\fBS32\fP KillerEngine::Font::GetNumCharacters (void) const\fC [inline]\fP"
+Returns the number of characters found in the font\&. 128 for ACCII, 256 for UTF8\&. 
+.SS "\fBU32\fP KillerEngine::Font::GetSize (void) const\fC [inline]\fP"
+Returns the current weight of the font\&. 
+.SS "void Font::Init (string fontName, string filePath, \fBU32\fP fontSize)"
+Initializes the \fBFont\fP based on the file path and size\&. This holds most of the FreeType code that creates everything that is needed for the font\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfontName\fP is the name of the font\&. 
+.br
+\fIfilePath\fP is the relative path to the font file\&. Should be a ttf file\&. 
+.br
+\fIfontSize\fP is weight of the font\&. This should match what you'd find in a text editor, ie: 12, 18, 24\&. etc\&. 
+.RE
+.PP
+
 .SS "\fBFont\fP & Font::operator= (const \fBFont\fP * font)"
-Copies \fBFont\fP pointer\&. Calls GetTextureID(), GetFile(), \fBGetName()\fP and GetCharacterData()\&. 
+Copies \fBFont\fP pointer\&. Calls GetTextureID(), GetFile(), \fBGetName()\fP and \fBGetCharacterData()\fP\&. 
 .SS "\fBFont\fP & Font::operator= (const \fBFont\fP & font)"
-Copies \fBFont\fP reference\&. Calls GetTextureID(), GetFile(), \fBGetName()\fP and GetCharacterData()\&. 
+Copies \fBFont\fP reference\&. Calls GetTextureID(), GetFile(), \fBGetName()\fP and \fBGetCharacterData()\fP\&. 
 .SS "void KillerEngine::Font::SetName (string fontName)\fC [inline]\fP"
 Set's the name of font\&. Not used actively in any major way\&. 
 .PP
@@ -117,6 +155,17 @@ Set's the name of font\&. Not used actively in any major way\&.
 .RE
 .PP
 
+.SS "void KillerEngine::Font::SetNumCharacters (\fBS32\fP num)\fC [inline]\fP"
+Sets the number of characters that the font contains\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum\fP is the number of characters\&. Set 128 for ACCII, 256 for UTF8 
+.RE
+.PP
+
+.SS "void KillerEngine::Font::SetSize (\fBU32\fP size)\fC [inline]\fP"
+Sets the weight of the \fBFont\fP\&. Does not re-intialize\&. 
 
 .SH "Author"
 .PP 

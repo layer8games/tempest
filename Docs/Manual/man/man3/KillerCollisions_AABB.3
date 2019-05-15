@@ -1,4 +1,4 @@
-.TH "KillerCollisions::AABB" 3 "Mon Apr 22 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerCollisions::AABB" 3 "Tue May 14 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -72,7 +72,13 @@ KillerCollisions::AABB
 .RI "void \fBSetHalfDimensions\fP (\fBF32\fP w, \fBF32\fP h, \fBF32\fP d)"
 .br
 .ti -1c
+.RI "void \fBSetHalfDimensions\fP (const \fBKM::Vector3\fP &scale)"
+.br
+.ti -1c
 .RI "void \fBSetDimensions\fP (\fBF32\fP w, \fBF32\fP h, \fBF32\fP d)"
+.br
+.ti -1c
+.RI "void \fBSetDimensions\fP (const \fBKM::Vector3\fP &scale)"
 .br
 .in -1c
 .SS "Private Attributes"
@@ -171,6 +177,15 @@ Sets all of the full extents of the \fBAABB\fP\&. Because these are all stored a
 .RE
 .PP
 
+.SS "void KillerCollisions::AABB::SetDimensions (const \fBKM::Vector3\fP & scale)\fC [inline]\fP"
+Sets the extent of the \fBAABB\fP\&. Because these are half values, the input is divided by half\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscale\fP is the new extent\&. 
+.RE
+.PP
+
 .SS "void KillerCollisions::AABB::SetHalfDepth (\fBF32\fP d)\fC [inline]\fP"
 Sets the half depth extent of the \fBAABB\fP\&. 
 .PP
@@ -190,6 +205,15 @@ Sets all of the half extents of the \fBAABB\fP\&.
 \fIh\fP is the new half height extent\&. 
 .br
 \fId\fP is the new half depth extent\&. 
+.RE
+.PP
+
+.SS "void KillerCollisions::AABB::SetHalfDimensions (const \fBKM::Vector3\fP & scale)\fC [inline]\fP"
+Sets the new half extent of the \fBAABB\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscale\fP is the new extent to be used\&. 
 .RE
 .PP
 

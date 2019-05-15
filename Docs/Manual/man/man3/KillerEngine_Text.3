@@ -1,4 +1,4 @@
-.TH "KillerEngine::Text" 3 "Mon Apr 22 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Text" 3 "Tue May 14 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -13,6 +13,12 @@ KillerEngine::Text
 .in +1c
 .ti -1c
 .RI "\fBText\fP (void)"
+.br
+.ti -1c
+.RI "\fBText\fP (string text)"
+.br
+.ti -1c
+.RI "\fBText\fP (string text, shared_ptr< \fBFont\fP > font)"
 .br
 .ti -1c
 .RI "\fB~Text\fP (void)"
@@ -96,6 +102,12 @@ KillerEngine::Text
 .ti -1c
 .RI "void \fB_UpdateColors\fP (void)"
 .br
+.ti -1c
+.RI "void \fB_UpdateGlyphData\fP (\fBU32\fP index)"
+.br
+.ti -1c
+.RI "void \fB_CreateCharacterList\fP (void)"
+.br
 .in -1c
 .SS "Private Attributes"
 
@@ -123,7 +135,7 @@ KillerEngine::Text
 .ti -1c
 .RI "std::vector< shared_ptr< \fBGlyph\fP > > \fB_characterList\fP"
 .br
-.RI "List of all generated Glyphs\&. "
+.RI "List of all generated Glyphs\&. Should match _text\&. "
 .ti -1c
 .RI "\fBKM::Vector3\fP \fB_scale\fP"
 .br
@@ -142,14 +154,45 @@ There are a lot of things that can be done to optimize this class and these idea
 .PP 
 .SS "Text::Text (void)"
 Default constructor\&. Sets scale and color to 1\&.0f, everything else to 0 or null\&. 
+.SS "Text::Text (string text)\fC [explicit]\fP"
+String to \fBText\fP conversion function\&. Calls \fBText::AddText\fP to set up the class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP is the string that will be used to create the \fBText\fP\&. 
+.RE
+.PP
+
+.SS "Text::Text (string text, shared_ptr< \fBFont\fP > font)"
+Creates a \fBText\fP with Glyphs for each character in a string with a given \fBFont\fP\&. Calls \fBText::AddText\fP to set up everything\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP are the desires characters\&. 
+.br
+\fIfont\fP is the given \fBFont\fP\&. Should come from the \fBFontManager\fP\&. 
+.RE
+.PP
+
 .SS "Text::~Text (void)"
 Default destructor\&. No function\&. 
 .SH "Member Function Documentation"
 .PP 
+.SS "void Text::_CreateCharacterList (void)\fC [private]\fP"
+Creates or Recreates the character list, forcing it to match with the text\&. 
 .SS "void Text::_UpdateActive (void)\fC [private]\fP"
 Iterates over each \fBGlyph\fP calling GameObject::SetActive() for each, using _active\&. 
 .SS "void Text::_UpdateColors (void)\fC [private]\fP"
 Iterates over each \fBGlyph\fP calling GameObject::SetColor() for each, using _color\&. 
+.SS "void Text::_UpdateGlyphData (\fBU32\fP index)\fC [private]\fP"
+Updates a \fBGlyph\fP\&. This sets the data, the sprite, color, scale and other values based on the font\&. If the \fBGlyph\fP has been added to the characterList already, it will update and edit the existing \fBGlyph\fP, other wise a new one will be created and added to the list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP is the character number in the _text\&. This should coorespond the index in _characterList\&. 
+.RE
+.PP
+
 .SS "void Text::_UpdatePositions (void)\fC [private]\fP"
 Iterates over each \fBGlyph\fP calling GameObject::SetPosition() for each \fBGlyph\fP, updating the position, including the xAdvnace\&. 
 .SS "void Text::_UpdateScales (void)\fC [private]\fP"
@@ -210,7 +253,7 @@ Sets the \fBColor\fP for the \fBText\fP and each \fBGlyph\fP that has been added
 .RE
 .PP
 
-.SS "void KillerEngine::Text::SetFont (shared_ptr< \fBFont\fP > font)\fC [inline]\fP"
+.SS "void Text::SetFont (shared_ptr< \fBFont\fP > font)"
 Sets the font for the \fBText\fP and all of the Glyphs, if there are any\&. 
 .PP
 \fBParameters:\fP
