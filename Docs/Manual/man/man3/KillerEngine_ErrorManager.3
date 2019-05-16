@@ -1,4 +1,4 @@
-.TH "KillerEngine::ErrorManager" 3 "Tue May 14 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::ErrorManager" 3 "Wed May 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -15,7 +15,7 @@ KillerEngine::ErrorManager
 .RI "\fB~ErrorManager\fP (void)"
 .br
 .ti -1c
-.RI "void \fBSetError\fP (\fBErrorCode\fP code, string message)"
+.RI "void \fBSetError\fP (ErrorCode code, string message)"
 .br
 .ti -1c
 .RI "void \fBDisplayErrors\fP (void)"
@@ -43,7 +43,7 @@ KillerEngine::ErrorManager
 .br
 .RI "Total count of errors\&. "
 .ti -1c
-.RI "map< \fBU32\fP, \fBErrorCode\fP > \fB_errorCodes\fP"
+.RI "map< \fBU32\fP, ErrorCode > \fB_errorCodes\fP"
 .br
 .RI "List of active error codes\&. "
 .ti -1c
@@ -74,7 +74,7 @@ Default constructor\&. No special actions are taken\&. Protected because this cl
 Displays any errors that have been added to the manager\&. This function loops over all the errors that have been added and displayed them one by one\&. Messages are never removed once they are thrown\&. 
 .SS "shared_ptr< \fBErrorManager\fP > ErrorManager::Instance (void)\fC [static]\fP"
 Singlton function\&. Returns pointer to global \fBErrorManager\fP instance\&. 
-.SS "void ErrorManager::SetError (\fBErrorCode\fP code, string message)"
+.SS "void ErrorManager::SetError (ErrorCode code, string message)"
 Adds an error into the Manager's map of errors\&. Any number of message can be in the Manager\&. 
 .PP
 \fBParameters:\fP

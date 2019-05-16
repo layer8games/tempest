@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_error_manager.
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a768a9e20a2a01bf3d69357c7386b0e02"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#a768a9e20a2a01bf3d69357c7386b0e02">~ErrorManager</a> (void)</td></tr>
 <tr class="separator:a768a9e20a2a01bf3d69357c7386b0e02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1985ec212295b58c27d0377978b348cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#a1985ec212295b58c27d0377978b348cc">SetError</a> (<a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7d">ErrorCode</a> code, string message)</td></tr>
+<tr class="memitem:a1985ec212295b58c27d0377978b348cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#a1985ec212295b58c27d0377978b348cc">SetError</a> (ErrorCode code, string message)</td></tr>
 <tr class="separator:a1985ec212295b58c27d0377978b348cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26f8ed34b78234ca563205ed1fa5d7d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#a26f8ed34b78234ca563205ed1fa5d7d6">DisplayErrors</a> (void)</td></tr>
 <tr class="separator:a26f8ed34b78234ca563205ed1fa5d7d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -126,7 +126,7 @@ Private Attributes</h2></td></tr>
 <tr class="memdesc:a57f92ffde7d6a18ba31e6b0417a2f3ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total count of errors. <br /></td></tr>
 <tr class="separator:a57f92ffde7d6a18ba31e6b0417a2f3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf9f6e4427348e318a33bae8820e0d57"><td class="memItemLeft" align="right" valign="top"><a id="acf9f6e4427348e318a33bae8820e0d57"></a>
-map&lt; <a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a>, <a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7d">ErrorCode</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#acf9f6e4427348e318a33bae8820e0d57">_errorCodes</a></td></tr>
+map&lt; <a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a>, ErrorCode &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#acf9f6e4427348e318a33bae8820e0d57">_errorCodes</a></td></tr>
 <tr class="memdesc:acf9f6e4427348e318a33bae8820e0d57"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of active error codes. <br /></td></tr>
 <tr class="separator:acf9f6e4427348e318a33bae8820e0d57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42abac6899f6b7d27701396cd0f1585f"><td class="memItemLeft" align="right" valign="top"><a id="a42abac6899f6b7d27701396cd0f1585f"></a>
@@ -246,7 +246,7 @@ static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_error_manager.
         <tr>
           <td class="memname">void ErrorManager::SetError </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7d">ErrorCode</a>&#160;</td>
+          <td class="paramtype">ErrorCode&#160;</td>
           <td class="paramname"><em>code</em>, </td>
         </tr>
         <tr>

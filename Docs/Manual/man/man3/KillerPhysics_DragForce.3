@@ -1,4 +1,4 @@
-.TH "KillerPhysics::DragForce" 3 "Tue May 14 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::DragForce" 3 "Wed May 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -18,6 +18,9 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .br
 .ti -1c
 .RI "\fBDragForce\fP (\fBreal\fP drag)"
+.br
+.ti -1c
+.RI "\fB~DragForce\fP (void)"
 .br
 .ti -1c
 .RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle\fP > particle) final"
@@ -72,6 +75,8 @@ Sets starting values for the \fBDragForce\fP\&.
 .RE
 .PP
 
+.SS "DragForce::~DragForce (void)"
+Default Destructor\&. Not implemented\&. 
 .SH "Member Function Documentation"
 .PP 
 .SS "\fBreal\fP KillerPhysics::DragForce::GetDrag (void)\fC [inline]\fP"

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['gameobject',['GameObject',['../class_killer_engine_1_1_game_object.html',1,'KillerEngine::GameObject'],['../_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7dab5dce158bda530c5e8bd24579ef27469',1,'KillerEngine::GAMEOBJECT()']]],
+  ['gameobject',['GameObject',['../class_killer_engine_1_1_game_object.html',1,'KillerEngine']]],
   ['getacceleration',['GetAcceleration',['../class_killer_physics_1_1_particle.html#aa8d7959af7e3b6c8aba3529576daf683',1,'KillerPhysics::Particle']]],
   ['getactive',['GetActive',['../class_killer_engine_1_1_text.html#a3b4ca3d24e6eba6d0240eee1693a4b20',1,'KillerEngine::Text']]],
   ['getactivelevel',['GetActiveLevel',['../class_killer_engine_1_1_level_manager.html#a54f5e55baf08df7baf315de2d79dcf21',1,'KillerEngine::LevelManager']]],
@@ -44,6 +44,8 @@ var searchData=
   ['getlevelheight',['GetLevelHeight',['../class_killer_engine_1_1_level.html#a547eaf343b5b083f02564699ed6df675',1,'KillerEngine::Level']]],
   ['getlevelwidth',['GetLevelWidth',['../class_killer_engine_1_1_level.html#a8034fa734b4b72166f88aa428156f296',1,'KillerEngine::Level']]],
   ['getmass',['GetMass',['../class_killer_physics_1_1_particle.html#aac7276a13cfd10ead621849e32243f7a',1,'KillerPhysics::Particle']]],
+  ['getmousecoord',['GetMouseCoord',['../class_killer_engine_1_1_controller.html#ae8798400b854ae7c70aedc1e7c58e256',1,'KillerEngine::Controller']]],
+  ['getmousecoordinscreen',['GetMouseCoordInScreen',['../class_killer_engine_1_1_controller.html#ab2bca001e4fb440b828753f9599f69de',1,'KillerEngine::Controller']]],
   ['getmousepos',['GetMousePos',['../class_killer_engine_1_1_win_program.html#a7ac70235d322481b65aa0f8c24db2165',1,'KillerEngine::WinProgram']]],
   ['getmouseposinscreen',['GetMousePosInScreen',['../class_killer_engine_1_1_win_program.html#a38a5b5ad6cea65f1da4441123f18e456',1,'KillerEngine::WinProgram']]],
   ['getname',['GetName',['../class_killer_engine_1_1_font.html#a801f7154d3a09f20b159d201e489bc04',1,'KillerEngine::Font']]],
@@ -76,7 +78,6 @@ var searchData=
   ['getvelocity',['GetVelocity',['../class_killer_physics_1_1_particle.html#a13dd821e42b2e342fa5710db8e9109ce',1,'KillerPhysics::Particle']]],
   ['getwidth',['GetWidth',['../class_killer_collisions_1_1_a_a_b_b.html#a71a447dfc20cf8657dbba4489f33f3a9',1,'KillerCollisions::AABB::GetWidth()'],['../class_killer_engine_1_1_text.html#a64ed1c0091d4b89917679e9e9908862c',1,'KillerEngine::Text::GetWidth()'],['../class_killer_engine_1_1_texture.html#a9970f66d9510e4b9ff1e7205b70c7245',1,'KillerEngine::Texture::GetWidth()'],['../class_killer_engine_1_1_win_program.html#a6a3912a9171bcd8d4a4c5303ed6d0d6d',1,'KillerEngine::WinProgram::GetWidth()']]],
   ['getwrap',['GetWrap',['../class_killer_engine_1_1_menu.html#a696d2bb96cabb3d241c14be48e990269',1,'KillerEngine::Menu']]],
-  ['glfw',['GLFW',['../_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7dad8221400ed9967805603ae4809e9ba6a',1,'KillerEngine']]],
   ['glyph',['Glyph',['../class_killer_engine_1_1_glyph.html',1,'KillerEngine::Glyph'],['../class_killer_engine_1_1_glyph.html#a72b3714bef7fb72255315aba4448800c',1,'KillerEngine::Glyph::Glyph(void)'],['../class_killer_engine_1_1_glyph.html#a6ac5c49902e8945a26d6a5a668279bdf',1,'KillerEngine::Glyph::Glyph(const Glyph &amp;glyph)']]],
   ['gravityforce',['GravityForce',['../class_killer_physics_1_1_gravity_force.html',1,'KillerPhysics::GravityForce'],['../class_killer_physics_1_1_gravity_force.html#a8678cfc959688d3d6152da3ca5420d25',1,'KillerPhysics::GravityForce::GravityForce(void)'],['../class_killer_physics_1_1_gravity_force.html#a8be61d7d49ca196725d835f4ba7eaf0d',1,'KillerPhysics::GravityForce::GravityForce(const KM::Vector4 &amp;gravity)']]]
 ];

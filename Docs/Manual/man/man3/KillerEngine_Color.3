@@ -1,4 +1,4 @@
-.TH "KillerEngine::Color" 3 "Tue May 14 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Color" 3 "Wed May 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -25,6 +25,9 @@ KillerEngine::Color
 .br
 .ti -1c
 .RI "\fBColor\fP (const \fBColor\fP &c)"
+.br
+.ti -1c
+.RI "\fB~Color\fP (void)"
 .br
 .ti -1c
 .RI "const \fBF32\fP & \fBoperator[]\fP (int i) const"
@@ -112,6 +115,8 @@ Copy constructor\&. Calls Color::GetRed Color::GetGreen Color::GetBlue Color::Ge
 .RE
 .PP
 
+.SS "Color::~Color (void)"
+Default Constructor\&. Not implemented\&. 
 .SH "Member Function Documentation"
 .PP 
 .SS "const \fBF32\fP* KillerEngine::Color::GetPointer (void) const\fC [inline]\fP"

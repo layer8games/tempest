@@ -43,6 +43,8 @@ var searchData=
   ['getlevelheight',['GetLevelHeight',['../class_killer_engine_1_1_level.html#a547eaf343b5b083f02564699ed6df675',1,'KillerEngine::Level']]],
   ['getlevelwidth',['GetLevelWidth',['../class_killer_engine_1_1_level.html#a8034fa734b4b72166f88aa428156f296',1,'KillerEngine::Level']]],
   ['getmass',['GetMass',['../class_killer_physics_1_1_particle.html#aac7276a13cfd10ead621849e32243f7a',1,'KillerPhysics::Particle']]],
+  ['getmousecoord',['GetMouseCoord',['../class_killer_engine_1_1_controller.html#ae8798400b854ae7c70aedc1e7c58e256',1,'KillerEngine::Controller']]],
+  ['getmousecoordinscreen',['GetMouseCoordInScreen',['../class_killer_engine_1_1_controller.html#ab2bca001e4fb440b828753f9599f69de',1,'KillerEngine::Controller']]],
   ['getmousepos',['GetMousePos',['../class_killer_engine_1_1_win_program.html#a7ac70235d322481b65aa0f8c24db2165',1,'KillerEngine::WinProgram']]],
   ['getmouseposinscreen',['GetMousePosInScreen',['../class_killer_engine_1_1_win_program.html#a38a5b5ad6cea65f1da4441123f18e456',1,'KillerEngine::WinProgram']]],
   ['getname',['GetName',['../class_killer_engine_1_1_font.html#a801f7154d3a09f20b159d201e489bc04',1,'KillerEngine::Font']]],

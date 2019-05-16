@@ -1,4 +1,4 @@
-.TH "KillerEngine::Controller" 3 "Tue May 14 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Controller" 3 "Wed May 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -73,17 +73,19 @@ KillerEngine::Controller
 .ti -1c
 .RI "\fBKM::Point\fP \fB_leftClickCoordinates\fP"
 .br
-.RI "Coordinates of last left click\&. "
+.RI "Coordinates of last left click\&. Unused\&. "
 .ti -1c
 .RI "\fBKM::Point\fP \fB_rightClickCoordinates\fP"
 .br
-.RI "Coordinates of last right click\&. "
+.RI "Coordinates of last right click\&. Unused\&. "
 .ti -1c
 .RI "\fBKM::Point\fP \fB_leftClickCoordInScreen\fP"
 .br
+.RI "Cached value of last left click in screen space\&. Unused\&. "
 .ti -1c
 .RI "\fBKM::Point\fP \fB_rightClickCoordInScreen\fP"
 .br
+.RI "Cached value of last right click in screen space\&. Unused\&. "
 .in -1c
 .SS "Static Private Attributes"
 
@@ -141,6 +143,10 @@ Returns true if k is not being pressed during this frame
 Returns true if k has been released this frame\&.  k Keys: Desired keycode 
 .SS "const \fBKM::Point\fP KillerEngine::Controller::GetLeftMouseCoord (void) const\fC [inline]\fP"
 Returns the raw coordinates of a Left Click in screen space\&. 
+.SS "const \fBKM::Point\fP Controller::GetMouseCoord (void)"
+Returns the raw mouse coordinates from the \fBWinProgram\fP\&. This is with the origin in the top left corner of the screen\&. 
+.SS "const \fBKM::Point\fP Controller::GetMouseCoordInScreen (void)"
+Returns the mouse coordinates in screen space, with the origin in the center of the screen\&. Wrapper around \fBWinProgram\fP\&. 
 .SS "const \fBKM::Point\fP KillerEngine::Controller::GetRightMouseCoord (void) const\fC [inline]\fP"
 Returns the raw coordinates of a Right click in screen space 
 .SS "shared_ptr< \fBController\fP > Controller::Instance (void)\fC [static]\fP"
