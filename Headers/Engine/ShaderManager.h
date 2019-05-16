@@ -34,30 +34,11 @@ namespace KillerEngine
 //==========================================================================================================================
 		static shared_ptr<ShaderManager> Instance(void);
 
-		void AddShader(U32 id, shared_ptr<Shader> shader)
-		{
-			_loadedShaders.insert({id, shader});
-
-			if(_loadedShaders.find(id) == _loadedShaders.end())
-			{
-				ErrorManager::Instance()->SetError(ENGINE, "ShaderManager::AddShader unable to Added shader");
-			}
-		}
+		void AddShader(U32 id, shared_ptr<Shader> shader);
 
 		void LoadShader(U32 id, std::vector<ShaderData> data);
 
-		shared_ptr<Shader> GetShader(U32 id)
-		{
-			if(_loadedShaders.find(id) != _loadedShaders.end())
-			{
-				return _loadedShaders[id];
-			}
-			else
-			{
-				ErrorManager::Instance()->SetError(ENGINE, "ShaderManager::GetShader No such Shader! ID = " + id);
-				return nullptr;
-			}
-		}
+		shared_ptr<Shader> GetShader(U32 id);
 
 	protected:
 //==========================================================================================================================

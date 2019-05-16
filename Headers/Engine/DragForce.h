@@ -47,6 +47,9 @@ namespace KillerPhysics
 */
 		DragForce(real drag);
 
+/*!
+	Default Destructor. Not implemented.
+*/
 		~DragForce(void);
 
 //==========================================================================================================================

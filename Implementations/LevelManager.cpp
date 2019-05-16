@@ -7,8 +7,10 @@ using namespace KillerEngine;
 //
 //==========================================================================================================================
 LevelManager::LevelManager(void) 
-: 
-_activeLevel(nullptr)
+:
+_levels(),
+_activeLevel(nullptr),
+_activeLevelID(UINT_MAX)
 {  }
 
 LevelManager::~LevelManager(void)

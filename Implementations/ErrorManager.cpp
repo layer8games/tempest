@@ -9,8 +9,10 @@ using namespace KillerEngine;
 //
 //==========================================================================================================================
 ErrorManager::ErrorManager(void) 
-: 
-_numErrors(0) 
+:
+_numErrors(0),
+_errorCodes(),
+_errorMessages()
 {  }
 
 ErrorManager::~ErrorManager(void)

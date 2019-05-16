@@ -468,7 +468,7 @@ namespace KillerMath
 	Used to access the ith column of the Matrix4.
 	\param i is the index to return. Cannot be greater than 3. There are only 4 columns. 
 */
-		const Vector4& operator[](int i) const
+		inline const Vector4& operator[](int i) const
 		{
 			//could be a bug here...
 			//assert(i > 0 && i < 4);
@@ -479,7 +479,7 @@ namespace KillerMath
 	Used to access the ith column of the Matrix4. This version allows you to edit the values in the column.
 	\param i is the index to return. Cannot be greater than 3. There are only 4 columns. 
 */
-		Vector4& operator[](int i)
+		inline Vector4& operator[](int i)
 		{
 			//could be a bug here...
 			//assert(i > 0 && i < 4);

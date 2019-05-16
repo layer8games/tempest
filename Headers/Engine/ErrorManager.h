@@ -15,10 +15,11 @@ namespace KillerEngine
 //Enum Error codes
 //
 //==========================================================================================================================
-/*! \file ErrorManager.h */
-/*! \enum ErrorCode Error codes that are used to give a hint as to where to code that is throwing the error is written. These are disaplyed
+/*! 
+	\enum ErrorCode Error codes that are used to give a hint as to where to code that is throwing the error is written. These are disaplyed
 	to the user in a pop up window when the end application is run. These are paired with a more detailed message when the
-	end error is set. */	
+	end error is set. 
+*/	
 	enum ErrorCode 
 	{
 		NOT_ERROR, 			///< Default value. Shouldn't ever be used.
@@ -38,8 +39,10 @@ namespace KillerEngine
 //==========================================================================================================================
 //Documentation
 //==========================================================================================================================
-/*! A singleton class that will display any errors that can happen during the initialization of any of the components of the 
-	engine. It will be flushed out later to include more details. */
+/*! 
+	A singleton class that will display any errors that can happen during the initialization of any of the components of the 
+	engine. It will be flushed out later to include more details. 
+*/
 	class ErrorManager 
 	{
 	public:
@@ -48,7 +51,9 @@ namespace KillerEngine
 //Destructor
 //
 //==========================================================================================================================
-/*! Default destructor. No special actions taken */		
+/*! 
+	Default destructor. No special actions taken 
+*/		
 		~ErrorManager(void);
 
 //==========================================================================================================================
@@ -56,7 +61,9 @@ namespace KillerEngine
 //Singleton Functions
 //
 //==========================================================================================================================		
-/*! Singlton function. Returns pointer to global ErrorManager instance. */		
+/*! 
+	Singlton function. Returns pointer to global ErrorManager instance. 
+*/		
 		static shared_ptr<ErrorManager> Instance(void);
 
 //==========================================================================================================================
@@ -64,14 +71,18 @@ namespace KillerEngine
 //ErrorManager Functions
 //
 //==========================================================================================================================
-/*! Adds an error into the Manager's map of errors. Any number of message can be in the Manager.
+/*! 
+	Adds an error into the Manager's map of errors. Any number of message can be in the Manager.
 	\param code ErrorCode: Displayed to hint where the error happened.
 	\param message string: A string that will be displayed to the user giving additional details about the nature of the 
-	error. */
+	error. 
+*/
 		void SetError(ErrorCode code, string message);
 
-/*! Displays any errors that have been added to the manager. This function loops over all the errors that have been added
-	and displayed them one by one. Messages are never removed once they are thrown. */		
+/*! 
+	Displays any errors that have been added to the manager. This function loops over all the errors that have been added
+	and displayed them one by one. Messages are never removed once they are thrown. 
+*/		
 		void DisplayErrors(void);
 
 	protected:
@@ -80,7 +91,9 @@ namespace KillerEngine
 //Constructor
 //
 //==========================================================================================================================
-/*! Default constructor. No special actions are taken. Protected because this class follows the singleton pattern */		
+/*! 
+	Default constructor. No special actions are taken. Protected because this class follows the singleton pattern 
+*/		
 		ErrorManager(void);
 
 	private:

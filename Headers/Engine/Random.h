@@ -1,29 +1,3 @@
-/*========================================================================
-Random number generator. It is based on the c++11 STL random, using the
-mersene twist algorithm. 
-
-Has an optional singleton. Unlike most singletons in the engine, Random is
-allowed to create other instances. The singleton is there for convience only
-
-RandomInt -> Returns a 32 bit signed it between min and max.
-
-RandomLong -> Returns a 64 bit signed it between min and max. 
-
-RandomFloat -> Returns a random 32 bit floating point between min and max
-
-RandomDouble -> Returns a 64 bit floating point between min and max
-
-RandomVector42 -> Returns a Vector42 with x and y between min and max
-
-RandomVector43 -> Returns a Vector43 with x, y and z between min and max
-
-RandomQuaternion -> Returns a Quaternion with x,y,z and w between min and max
-
-This is not free to use, and cannot be used without the express permission
-of KillerWave.
-
-Written by Maxwell Miller
-========================================================================*/
 #pragma once
 
 //===== Engine Includes =====

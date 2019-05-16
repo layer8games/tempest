@@ -1,15 +1,3 @@
-/*=========================================================================
-The Texture struct is used to save and hold information about a texture that
-has already been loaded into memory. It is there to save the GLUINT ID that 
-is returned from DevIL that represents the saved texture that is fully loaded
-into memory. 
-
-
-This is not free to use, and cannot be used without the express permission
-of KillerWave.
-
-Written by Maxwell Miller
-=========================================================================*/
 #pragma once
 
 //=====Killer1 includes=====

@@ -82,14 +82,14 @@ namespace KillerEngine
 
 		void MakeSprite(void);
 
-		const KM::Matrix4& GetModelMatrix(void) const
+		inline const KM::Matrix4& GetModelMatrix(void) const
 		{
 			return _modelTOWorldCache;
 		}
 
 		//temporary idea. 
 		//In Matrix4, add Translate vs Transform vs Rotate
-		const KM::Matrix4 GetModelMatrixRot(void) const
+		inline const KM::Matrix4 GetModelMatrixRot(void) const
 		{
 			KM::Matrix4 mat = _modelTOWorldCache; 
 			mat.Translate(0.0f, 0.0f, 0.0f);
@@ -462,12 +462,12 @@ namespace KillerEngine
 		}
 
 	protected:
-		KM::Point& _AccessPosition(void)
+		inline KM::Point& _AccessPosition(void)
 		{
 			return _position;
 		}
 
-		KM::Quaternion& _AccessOrientation(void)
+		inline KM::Quaternion& _AccessOrientation(void)
 		{
 			return _orientation;
 		}

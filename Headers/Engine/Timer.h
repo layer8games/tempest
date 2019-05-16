@@ -1,18 +1,3 @@
-/*========================================================================
-The high precision timer for the Killer1 Engine. At the time of writting
-this the timer is windows specific, but cross platform functionality is
-planned in the future. 
-
-It uses the GLFW function glfwGetTime, located in the WinProgram to get
-the total time that the glfw window has been open. It used to have a 
-customer frequency timer, but this turned out to be too eratic, and 
-was removed.  
-
-This is not free to use, and cannot be used without the express permission
-of KillerWave.
-
-Written by Maxwell Miller
-========================================================================*/
 #pragma once
 
 //=====Killer1 includes=====

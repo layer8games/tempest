@@ -23,8 +23,10 @@ namespace KillerEngine
 //==========================================================================================================================
 //Documentation
 //==========================================================================================================================
-/*! This is an implementation of a GameObject which will reprents static, unmoving background objects which the player will 
-	not be allowed to pass through. These are things like rocks, trees, houses, etc.  */	
+/*! 
+	This is an implementation of a GameObject which will reprents static, unmoving background objects which the player will 
+	not be allowed to pass through. These are things like rocks, trees, houses, etc.  
+*/	
 	class EnvironmentObject : public GameObject
 	{
 	public:
@@ -33,10 +35,14 @@ namespace KillerEngine
 //Constructors	 	
 //
 //==========================================================================================================================
-/*! Default Constructor. No special actions taken. */
+/*! 
+	Default Constructor. No special actions taken. 
+*/
 		EnvironmentObject(void);
 
-/*! Calls GameObject::SetPosition and GameObject::SetDimensions. */		
+/*! 
+	Calls GameObject::SetPosition and GameObject::SetDimensions. 
+*/		
 		EnvironmentObject(const KM::Point& pos, F32 w, F32 h);
 
 /*! Default Destructor. No special action taken. */		
@@ -46,7 +52,9 @@ namespace KillerEngine
 //Virtual Functions
 //
 //==========================================================================================================================
-/*! Empty function, needed because its a pure virtual function. */
+/*! 
+	Empty function, needed because its a pure virtual function. 
+*/
 		inline void v_Update(void) final
 		{  }
 

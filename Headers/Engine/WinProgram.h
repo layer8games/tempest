@@ -1,20 +1,3 @@
-/*==========================================================================//!
-@file
-
-Framework that will open a window in the designated operating system which
-will be where the renderer will draw what it needs to for the game to be a
-game. There will be system specific code in this section which will be how
-the game will run on each system that is supported. 
-
-Supported system:
-	Windows
-
-
-This is not free to use, and cannot be used without the express permission
-of KillerWave.
-
-Written by Maxwell Miller
-===========================================================================*/
 #pragma once
 
 //=====Killer1 includes=====

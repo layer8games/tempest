@@ -1,13 +1,3 @@
-/*========================================================================
-This class will hold all the data for a string of text that will be drawn
-to the screen. It will use the font class and the texture manager to keep
-track of all the character data and the texture for the font. 
-
-This is not free to use, and cannot be used without the express permission
-of KillerWave.
-
-Written by Maxwell Miller
-========================================================================*/
 #pragma once
 
 //=====Engine includes=====
@@ -90,7 +80,7 @@ namespace KillerEngine
 	 \param x sets the first coordinate.
 	 \param y sets the second coordinate.
 */
-		void SetPosition(F32 x, F32 y)
+		inline void SetPosition(F32 x, F32 y)
 		{
 			_pos[0] = x;
 			_pos[1] = y;

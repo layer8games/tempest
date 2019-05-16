@@ -66,7 +66,7 @@ namespace KillerMath
 /*! 
 	Returns the pointer to the array of elements. 
 */
-		const real* GetElems(void) const
+		inline const real* GetElems(void) const
 		{
 			return _data;
 		}
