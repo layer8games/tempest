@@ -22,6 +22,10 @@ Written by Maxwell Miller
 #include <Engine/Controller.h>
 #include <Engine/Engine.h>
 
+//===== OpenAL =====
+#include <OpenAL/al.h>
+#include <OpenAL/alc.h>
+
 namespace KE = KillerEngine;
 namespace KM = KillerMath;
 
@@ -62,6 +66,31 @@ namespace Boxes
 		Box 	 _green;
 		Box 	 _blue;
 		KE::Text _mainTitle;
+
+		ALCdevice* _device;
+		ALCcontext* _context;
+		ALuint _source;
+		ALuint _buffer;
 	};
+
+	//returns a list of audio devices. Part of OpenAL tests
+	static void list_audio_devices(const ALCchar* devices)
+	{
+		const ALCchar* device = devices, *next = devices + 1;
+		size_t len = 0;
+
+		fprintf(stdout, "Devices list:\n");
+		fprintf(stdout, "-----------\n");
+
+		while(device && *device != '\0' && next && *next != '\0')
+		{
+			fprintf(stdout, "%s\n", device);
+			len = strlen(device);
+			device += (len + 1);
+			next += (len + 2);
+		}
+
+		fprintf(stdout, "-----------\n");
+	}
 
 }//End namespace
