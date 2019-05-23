@@ -128,12 +128,26 @@ namespace Boxes
 		return a;
 	}
 
+/*
+
+here are the headers you need:
+
+R I F F ~ 4 ü   W A V E f m t                D ¼      ▒          L I S T R      I N F O I A R T        K o m i k u     I C M T í       U R L :   h t t p : / / f r e e m u s i c a r c h i v e . o r g / m u s i c / K o m i k u / C a p t a i n _ G l o u g l o u s _ I n c r e d i b l e _ W e e k _ S o u n d t r a c k / S k a t e
+ C o m m e n t s :   h t t p : / / f r e e m u s i c a r c h i v e . o r g /
+ C u r a t o r :
+ C o p y r i g h t :       I C R D        2 0 1 8 - 0 7 - 1 4 T 0 4 : 3 7 : 0 5   I G N R        E l e c t r o n i c     I N A M        S k a t e   I P R D .       C a p t a i n   G l o u g l o u ' s   I n c r e d i b l e   W e e k   S o u n d t r a c k   I P R T        4   I S F T        L a v f 5 8 . 2 7 . 1 0 3   d a t a 
+
+If it does not say "data" then you need to move along until it does. 
+
+*/
+
 	//Location and size of data is found here: http://www.topherlee.com/software/pcm-tut-wavformat.html
 	static char* LoadWAV(string filename, int& channels, int& sampleRate, int& bps, int& size)
 	{
+		std::ifstream in(filename.c_str());		
+
 		char buffer[4];
 
-		std::ifstream in(filename.c_str());
 		in.read(buffer, 4);//Chunk ID
 
 		if(strncmp(buffer, "RIFF", 4) != 0)
@@ -193,13 +207,29 @@ namespace Boxes
 
 		bps = ConvertToInt(buffer, 2);
 
-		//Skip character data, which marks the start of the data that we care about. 
+		//Skip character data, which marks the start of the data that we care about.
+		//Gotta check here for the right thing.  
 		in.read(buffer, 4);//"data" chunk. 
+
+		while(strncmp(buffer, "data", 4) != 0)
+		{
+			if(strncmp(buffer, "LIST", 4) != 0)
+			{
+				in.read(buffer, 2);
+				int goTo = ConvertToInt(buffer, 2);
+				//error here. need to find out how to skip goTo bytes
+				in.seekg(in.tellg(), goTo);
+			}
+
+			in.read(buffer, 4);
+			std::cout << buffer[0] << buffer[1] << buffer[2] << buffer[3] << std::endl;
+
+		}
 
 		if(strncmp(buffer, "data", 4) != 0)
 		{
-			std::cout << "Error here, may be extra data in your file\n" <<
-					  buffer[0] << buffer[1] << buffer[2] << buffer[3] << std::endl;
+			std::cout << "Error here, may be extra data in your file\n" 
+					  << buffer[0] << buffer[1] << buffer[2] << buffer[3] << std::endl;
 		}
 
 		in.read(buffer, 4); //Get size of the data
@@ -214,11 +244,12 @@ namespace Boxes
 					  << size << std::endl;
 		}
 
-		char* data = new char[size];
 
-		in.read(data, size);//Read audio data into buffer, return.
+		char* data = new char[1];
 
-		//in.close();
+		//in.read(data, size);//Read audio data into buffer, return.
+
+		in.close();
 
 		return data;	
 	}
@@ -260,7 +291,7 @@ namespace Boxes
 				std::cout << "000\n";
 				return 0;
 			}	
-		}
+		}	
 	}
 
 }//End namespace
