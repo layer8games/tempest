@@ -226,6 +226,13 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	int size;
 
 	_data = LoadWAV("../Assets/Audio/Komiku_04_Skate.wav", channels, sampleRate, bps, size);
+	
+	std::cout << "Print out data\n\n";
+	for(int i = 0; i < size; ++i)
+	{
+		std::cout << _data[i] << " ";
+	}
+	std::cout << std::endl;
 
 	U32 format;
 

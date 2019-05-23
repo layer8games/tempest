@@ -134,7 +134,7 @@ namespace Boxes
 		char buffer[4];
 
 		std::ifstream in(filename.c_str());
-		in.read(buffer, 4);
+		in.read(buffer, 4);//Chunk ID
 
 		if(strncmp(buffer, "RIFF", 4) != 0)
 		{
@@ -196,9 +196,17 @@ namespace Boxes
 		//Skip character data, which marks the start of the data that we care about. 
 		in.read(buffer, 4);//"data" chunk. 
 
+		if(strncmp(buffer, "data", 4) != 0)
+		{
+			std::cout << "Error here, may be extra data in your file\n" <<
+					  buffer[0] << buffer[1] << buffer[2] << buffer[3] << std::endl;
+		}
+
 		in.read(buffer, 4); //Get size of the data
 
 		size = ConvertToInt(buffer, 4);
+
+		std::cout << "size: " << size << std::endl;
 
 		if(size < 0)
 		{
