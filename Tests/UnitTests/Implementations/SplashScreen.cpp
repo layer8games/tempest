@@ -1,5 +1,4 @@
 #include <Boxes/SplashScreen.h>
-#include <iostream>
 
 using namespace Boxes;
 //=============================================================================
@@ -15,12 +14,22 @@ _blue(),
 _mainTitle(),
 _device(nullptr),
 _context(nullptr),
-_source(0),
-_buffer(0)
+_sourceID(0),
+_bufferID(0),
+_data(nullptr)
 {  }
  
 SplashScreen::~SplashScreen(void) 
-{  }
+{
+	//Remove later:
+	delete[] _data;
+	
+	//Order matters here, free source before buffer
+	alDeleteSources(1, &_sourceID);
+	alDeleteBuffers(1, &_bufferID);
+	alcDestroyContext(_context);
+	alcCloseDevice(_device);
+}
 
 //=============================================================================
 //
@@ -84,7 +93,11 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	}
 	else
 	{
-		list_audio_devices(alcGetString(NULL, ALC_DEVICE_SPECIFIER));
+		//Could get a list for a tool here, letting the user select
+		//which audio device they want to use. This is purely optional, 
+		//passing NULL to alcOpenDevice will select the devault one,
+		//or maybe create context is what selects that. Look it up. 
+		//list_audio_devices(alcGetString(NULL, ALC_DEVICE_SPECIFIER));
 	}
 
 	error = alGetError();
@@ -96,6 +109,13 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 
 	//Create a context and make it active
 	_context = alcCreateContext(_device, NULL);
+
+	error = alGetError();
+
+	if(!_context || error != AL_NO_ERROR)
+	{
+		std::cout << "Oops! couln't create create context\n";
+	}
 
 	if(!alcMakeContextCurrent(_context))
 	{
@@ -109,6 +129,7 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 		std::cout << "Oops! There was an error after the context was made current\n";
 	}
 
+/*
 	//Configure listener
 	ALfloat listernOri[] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f };
 
@@ -135,9 +156,10 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	{
 		std::cout << "Oops! There was an error setting listener orientation\n";
 	}
+*/
 
 	//generate sources
-	alGenSources((ALuint)1, &_source);
+	alGenSources(1, &_sourceID);
 
 	error = alGetError();
 	if(error != AL_NO_ERROR)
@@ -145,7 +167,8 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 		std::cout << "Oops! There was an error generating the source\n";
 	}
 
-	alSourcef(_source, AL_PITCH, 1.0f);
+/*	
+	alSourcef(_sourceID, AL_PITCH, 1.0f);
 
 	error = alGetError();
 	if(error != AL_NO_ERROR)
@@ -153,7 +176,7 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 		std::cout << "Oops! There was an error setting source pitch\n";
 	}
 
-	alSourcef(_source, AL_GAIN, 1.0f);
+	alSourcef(_sourceID, AL_GAIN, 1.0f);
 
 	error = alGetError();
 	if(error != AL_NO_ERROR)
@@ -161,7 +184,7 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 		std::cout << "Oops! There was an error setting source gain\n";
 	}
 
-	alSource3f(_source, AL_POSITION, 0.0f, 0.0f, 0.0f);
+	alSource3f(_sourceID, AL_POSITION, 0.0f, 0.0f, 0.0f);
 
 	error = alGetError();
 	if(error != AL_NO_ERROR)
@@ -169,7 +192,7 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 		std::cout << "Oops! There was an error setting source pos\n";
 	}
 
-	alSource3f(_source, AL_VELOCITY, 0.0f, 0.0f, 0.0f);
+	alSource3f(_sourceID, AL_VELOCITY, 0.0f, 0.0f, 0.0f);
 
 	error = alGetError();
 	if(error != AL_NO_ERROR)
@@ -177,16 +200,17 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 		std::cout << "Oops! There was an error setting source velocity\n";
 	}
 
-	alSourcei(_source, AL_LOOPING, AL_FALSE);
+	alSourcei(_sourceID, AL_LOOPING, AL_FALSE);
 
 	error = alGetError();
 	if(error != AL_NO_ERROR)
 	{
 		std::cout << "Oops! There was an error setting source looping\n";
 	}
+*/
 
 	//generate buffer
-	alGenBuffers((ALuint)1, &_buffer);
+	alGenBuffers(1, &_bufferID);
 
 	error = alGetError();
 	if(error != AL_NO_ERROR)
@@ -196,18 +220,82 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 
 	//load audio into buffer
 	//buffer data
-	ALsizei size, freq;
-	ALenum format;
-	ALvoid *data;
-	ALboolean loop = AL_FALSE;
+	int channels; 
+	int sampleRate;
+	int bps;
+	int size;
 
-	alutLoadWAVFile("../Assets/Audio/Komiku_04_Skate.wav");
+	_data = LoadWAV("../Assets/Audio/Komiku_04_Skate.wav", channels, sampleRate, bps, size);
+
+	U32 format;
+
+	if(channels == 1)
+	{
+		if(bps == 8)
+		{
+			format = AL_FORMAT_MONO8;
+		}
+		else
+		{
+			format = AL_FORMAT_MONO16;
+		}
+	}
+	else
+	{
+		if(bps == 8)
+		{
+			format = AL_FORMAT_STEREO8;
+		}
+		else
+		{
+			format = AL_FORMAT_STEREO16;
+		}	
+	}
+
+	//Load in the sound data to the buffer
+	alBufferData(_bufferID, format, _data, size, sampleRate);
 
 	error = alGetError();
 	if(error != AL_NO_ERROR)
 	{
-		std::cout << "Oops! There was an error loading the wav file\n";
+		std::cout << "Oops! There was an error loading the buffer data\n";
+
+		string code;
+		
+		switch (error) 
+		{
+		  case AL_NO_ERROR: code = "AL_NO_ERROR";
+		  case AL_INVALID_NAME: code = "AL_INVALID_NAME";
+		  case AL_INVALID_ENUM: code = "AL_INVALID_ENUM";
+		  case AL_INVALID_VALUE: code = "AL_INVALID_VALUE";
+		  case AL_INVALID_OPERATION: code = "AL_INVALID_OPERATION";
+		  case AL_OUT_OF_MEMORY: code = "AL_OUT_OF_MEMORY";
+		  /* ... */
+		  default:
+		    std::cout << "code fails: " << error << std::endl;
+		    code = "Unknown error code";
+		}
+
+		std::cout << "error code: " << code << std::endl;
 	}
+
+	//Attach buffer to source
+	alSourcei(_sourceID, AL_BUFFER, _bufferID);
+
+	error = alGetError();
+	if(error != AL_NO_ERROR)
+	{
+		std::cout << "Oops! There was an error attaching the buffer to the source\n";
+	}
+
+	alSourcePlay(_sourceID);
+
+	error = alGetError();
+	if(error != AL_NO_ERROR)
+	{
+		std::cout << "Oops! There was an error trying to play the source\n";
+	}
+
 }
 
 //=============================================================================
@@ -217,6 +305,7 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 //=============================================================================
 void SplashScreen::v_Update(void) 
 {
+
 	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ESCAPE))
 	{
 		KE::Engine::Instance()->End();
@@ -243,6 +332,6 @@ void SplashScreen::v_Update(void)
 	
 	else 
 	{ 
-		KE::LevelManager::Instance()->SetActiveLevel(2);
+		//KE::LevelManager::Instance()->SetActiveLevel(2);
 	}
 }
