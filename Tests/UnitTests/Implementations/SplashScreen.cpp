@@ -129,7 +129,6 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 		std::cout << "Oops! There was an error after the context was made current\n";
 	}
 
-/*
 	//Configure listener
 	ALfloat listernOri[] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f };
 
@@ -156,7 +155,6 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	{
 		std::cout << "Oops! There was an error setting listener orientation\n";
 	}
-*/
 
 	//generate sources
 	alGenSources(1, &_sourceID);
@@ -167,7 +165,6 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 		std::cout << "Oops! There was an error generating the source\n";
 	}
 
-/*	
 	alSourcef(_sourceID, AL_PITCH, 1.0f);
 
 	error = alGetError();
@@ -207,7 +204,6 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	{
 		std::cout << "Oops! There was an error setting source looping\n";
 	}
-*/
 
 	//generate buffer
 	alGenBuffers(1, &_bufferID);
@@ -226,13 +222,15 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	int size;
 
 	_data = LoadWAV("../Assets/Audio/Komiku_04_Skate.wav", channels, sampleRate, bps, size);
-	
+
+/*	
 	std::cout << "Print out data\n\n";
 	for(int i = 0; i < size; ++i)
 	{
 		std::cout << _data[i] << " ";
 	}
 	std::cout << std::endl;
+*/
 
 	U32 format;
 
@@ -296,12 +294,6 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	}
 
 	alSourcePlay(_sourceID);
-
-	error = alGetError();
-	if(error != AL_NO_ERROR)
-	{
-		std::cout << "Oops! There was an error trying to play the source\n";
-	}
 
 }
 

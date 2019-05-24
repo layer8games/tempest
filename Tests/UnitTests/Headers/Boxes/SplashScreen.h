@@ -128,130 +128,87 @@ namespace Boxes
 		return a;
 	}
 
-/*
+//Header values for WAV file. Values are in bytes. 
+	const U32 WAV_CHANNELS_OFFSET = 22;
+	const U32 WAV_CHANNELS_SIZE = 2;
 
-here are the headers you need:
+	const U32 WAV_SAMPLE_RATE_OFFSET = 24;
+	const U32 WAV_SAMPLE_RATE_SIZE = 4;
 
-R I F F ~ 4 ü   W A V E f m t                D ¼      ▒          L I S T R      I N F O I A R T        K o m i k u     I C M T í       U R L :   h t t p : / / f r e e m u s i c a r c h i v e . o r g / m u s i c / K o m i k u / C a p t a i n _ G l o u g l o u s _ I n c r e d i b l e _ W e e k _ S o u n d t r a c k / S k a t e
- C o m m e n t s :   h t t p : / / f r e e m u s i c a r c h i v e . o r g /
- C u r a t o r :
- C o p y r i g h t :       I C R D        2 0 1 8 - 0 7 - 1 4 T 0 4 : 3 7 : 0 5   I G N R        E l e c t r o n i c     I N A M        S k a t e   I P R D .       C a p t a i n   G l o u g l o u ' s   I n c r e d i b l e   W e e k   S o u n d t r a c k   I P R T        4   I S F T        L a v f 5 8 . 2 7 . 1 0 3   d a t a 
+	const U32 WAV_BYTE_RATE_OFFSET = 34;
+	const U32 WAV_BYTE_RATE_SIZE = 2;
 
-If it does not say "data" then you need to move along until it does. 
+	const U32 WAV_DATA_OFFSET = 36;
+	const U32 WAV_DATA_HEADER_SIZE = 4;
+	const U32 WAV_DATA_SIZE_INFO_SIZE = 2;
 
-*/
+	static void GetIndexRange(char* source, char* dest, int offset, int len)
+	{
+		for(int i = 0; i < len; ++i)
+		{
+			dest[i] = source[offset + i];
+		}
+	}
 
 	//Location and size of data is found here: http://www.topherlee.com/software/pcm-tut-wavformat.html
 	static char* LoadWAV(string filename, int& channels, int& sampleRate, int& bps, int& size)
 	{
-		std::ifstream in(filename.c_str());		
+		std::ifstream in(filename.c_str());
 
-		char buffer[4];
+		//Get the total size of the file
+		in.seekg(0, in.end);
+ 
+        int totalSize = (int)in.tellg();
+ 
+        in.seekg(0, in.beg);
+ 
+        //Save the whole file to a buffer using read
+        char* buffer = new char[totalSize];
+ 
+        in.read(buffer, totalSize);
 
-		in.read(buffer, 4);//Chunk ID
+        //Extract info about the audio file.
+        char info[4];
 
-		if(strncmp(buffer, "RIFF", 4) != 0)
+        GetIndexRange(buffer, info, WAV_CHANNELS_OFFSET, WAV_CHANNELS_SIZE);
+
+        channels = ConvertToInt(info, WAV_CHANNELS_SIZE);
+
+        GetIndexRange(buffer, info, WAV_SAMPLE_RATE_OFFSET, WAV_SAMPLE_RATE_SIZE);
+
+        sampleRate = ConvertToInt(info, WAV_SAMPLE_RATE_SIZE);
+
+        GetIndexRange(buffer, info, WAV_BYTE_RATE_OFFSET, WAV_BYTE_RATE_SIZE);
+
+        bps = ConvertToInt(info, WAV_BYTE_RATE_SIZE);
+
+        //Extract the data itself.
+        GetIndexRange(buffer, info, WAV_DATA_OFFSET, WAV_DATA_HEADER_SIZE);
+
+        U32 POSITION = WAV_DATA_OFFSET + WAV_DATA_HEADER_SIZE;
+        U32 moveTo = 0;
+
+        while(strncmp(info, "data", 4) != 0)
 		{
-			std::cout << "Error here, not a valid WAV file, RIFF not found in header\n This was found instead: "
-					  << buffer[0] << buffer[1] << buffer[2] << buffer[3] << std::endl;
-		}
-
-		in.read(buffer, 4);//size of file. Not used. Read it to skip over it.  
-		
-		in.read(buffer, 4);//Format, should be WAVE
-
-		if(strncmp(buffer, "WAVE", 4) != 0)
-		{
-			std::cout << "Error here, not a valid WAV file, WAVE not found in header.\n This was found instead: "
-					  << buffer[0] << buffer[1] << buffer[2] << buffer[3] << std::endl;
-		}
-
-		in.read(buffer, 4);//Format Space Marker. should equal fmt (space)
-
-		if(strncmp(buffer, "fmt ", 4) != 0)
-		{
-			std::cout << "Error here, not a valid WAV file, Format Marker not found in header.\n This was found instead: "
-					  << buffer[0] << buffer[1] << buffer[2] << buffer[3] << std::endl;
-		}
-
-		in.read(buffer, 4);//Length of format data. Should be 16 for PCM, meaning uncompressed.
-
-		if(ConvertToInt(buffer, 4) != 16)
-		{
-			std::cout << "Error here, not a valid WAV file, format length wrong in header.\n This was found instead: "
-					  << ConvertToInt(buffer, 4) << std::endl;
-		}
-
-		in.read(buffer, 2);//Type of format, 1 = PCM
-
-		if(ConvertToInt(buffer, 2) != 1)
-		{
-			std::cout << "Error here, not a valid WAV file, file not in PCM format.\n This was found instead: "
-					  << ConvertToInt(buffer, 4) << std::endl;
-		}
-
-		in.read(buffer, 2);//Get number of channels. 
-
-		//Assume at this point that we are dealing with a WAV file. This value is needed by OpenAL
-		channels = ConvertToInt(buffer, 2);
-
-		in.read(buffer, 4);//Get sampler rate. 
-
-		sampleRate = ConvertToInt(buffer, 4);
-
-		//Skip Byte Rate and Block Align. Maybe use later?
-		in.read(buffer, 4);//Block Allign
-		in.read(buffer, 2);//ByteRate
-
-		in.read(buffer, 2);//Get Bits Per Sample
-
-		bps = ConvertToInt(buffer, 2);
-
-		//Skip character data, which marks the start of the data that we care about.
-		//Gotta check here for the right thing.  
-		in.read(buffer, 4);//"data" chunk. 
-
-		while(strncmp(buffer, "data", 4) != 0)
-		{
-			if(strncmp(buffer, "LIST", 4) != 0)
+			if(strncmp(info, "LIST", 4) == 0)
 			{
-				in.read(buffer, 2);
-				int goTo = ConvertToInt(buffer, 2);
-				//error here. need to find out how to skip goTo bytes
-				in.seekg(in.tellg(), goTo);
+				GetIndexRange(buffer, info, POSITION, WAV_DATA_SIZE_INFO_SIZE);
+
+				moveTo = ConvertToInt(info, WAV_DATA_SIZE_INFO_SIZE);			
 			}
-
-			in.read(buffer, 4);
-			std::cout << buffer[0] << buffer[1] << buffer[2] << buffer[3] << std::endl;
-
+			//Set new position, move foreward one for rough check
+			GetIndexRange(buffer, info, moveTo, WAV_DATA_HEADER_SIZE);
+			POSITION = moveTo;
+			moveTo = ++POSITION;
 		}
 
-		if(strncmp(buffer, "data", 4) != 0)
-		{
-			std::cout << "Error here, may be extra data in your file\n" 
-					  << buffer[0] << buffer[1] << buffer[2] << buffer[3] << std::endl;
-		}
+		U32 DATA_SIZE_POSITION = POSITION - 1 + WAV_DATA_HEADER_SIZE;
 
-		in.read(buffer, 4); //Get size of the data
+		GetIndexRange(buffer, info, DATA_SIZE_POSITION, 4);
 
-		size = ConvertToInt(buffer, 4);
+		size = ConvertToInt(info, 4);
 
-		std::cout << "size: " << size << std::endl;
-
-		if(size < 0)
-		{
-			std::cout << "Error here, not a valid WAV file, size of file reports 0.\n This was found instead: "
-					  << size << std::endl;
-		}
-
-
-		char* data = new char[1];
-
-		//in.read(data, size);//Read audio data into buffer, return.
-
-		in.close();
-
-		return data;	
+        return buffer;
 	}
 
 	static U32 GetALFormat(U32 channels, U32 bps)
