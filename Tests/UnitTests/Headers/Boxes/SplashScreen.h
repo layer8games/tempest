@@ -129,18 +129,17 @@ namespace Boxes
 	}
 
 //Header values for WAV file. Values are in bytes. 
-	const U32 WAV_CHANNELS_OFFSET = 22;
-	const U32 WAV_CHANNELS_SIZE = 2;
+	const U32 NUM_CHANNELS_OFFSET = 6;
+	const U32 CHANNELS_SIZE = 2;
+	
+	const U32 SAMPLE_RATE_OFFSET = 8;
+	const U32 SAMPLE_RATE_SIZE = 4;
+	
+	const U32 BPS_OFFSET = 18;
+	const U32 BPS_SIZE = 2;
 
-	const U32 WAV_SAMPLE_RATE_OFFSET = 24;
-	const U32 WAV_SAMPLE_RATE_SIZE = 4;
-
-	const U32 WAV_BYTE_RATE_OFFSET = 34;
-	const U32 WAV_BYTE_RATE_SIZE = 2;
-
-	const U32 WAV_DATA_OFFSET = 36;
-	const U32 WAV_DATA_HEADER_SIZE = 4;
-	const U32 WAV_DATA_SIZE_INFO_SIZE = 2;
+	const U32 LIST_SIZE = 2;
+	const U32 DATA_SIZE = 4;
 
 	static void GetIndexRange(char* source, char* dest, int offset, int len)
 	{
@@ -170,43 +169,52 @@ namespace Boxes
         //Extract info about the audio file.
         char info[4];
 
-        GetIndexRange(buffer, info, WAV_CHANNELS_OFFSET, WAV_CHANNELS_SIZE);
+        for(int i = 0; i < totalSize; ++i)
+        {
+        	//Get the current buffer data
+        	GetIndexRange(buffer, info, i, 4);
+        	
+        	if(strncmp(info, "fmt ", 4) == 0)
+        	{
+        		//Move the position past the title
+        		i += 4;
 
-        channels = ConvertToInt(info, WAV_CHANNELS_SIZE);
+        		//Get the number of channels
+        		GetIndexRange(buffer, info, i+NUM_CHANNELS_OFFSET, CHANNELS_SIZE);
+        		channels = ConvertToInt(info, CHANNELS_SIZE);
 
-        GetIndexRange(buffer, info, WAV_SAMPLE_RATE_OFFSET, WAV_SAMPLE_RATE_SIZE);
+        		//Get the sample rate
+        		GetIndexRange(buffer, info, i+SAMPLE_RATE_OFFSET, SAMPLE_RATE_SIZE);
+        		sampleRate = ConvertToInt(info, SAMPLE_RATE_SIZE);
 
-        sampleRate = ConvertToInt(info, WAV_SAMPLE_RATE_SIZE);
+        		//Get the byte rate
+        		GetIndexRange(buffer, info, i+BPS_OFFSET, BPS_SIZE);
+        		bps = ConvertToInt(info, BPS_SIZE);
+        	}
 
-        GetIndexRange(buffer, info, WAV_BYTE_RATE_OFFSET, WAV_BYTE_RATE_SIZE);
-
-        bps = ConvertToInt(info, WAV_BYTE_RATE_SIZE);
-
-        //Extract the data itself.
-        GetIndexRange(buffer, info, WAV_DATA_OFFSET, WAV_DATA_HEADER_SIZE);
-
-        U32 POSITION = WAV_DATA_OFFSET + WAV_DATA_HEADER_SIZE;
-        U32 moveTo = 0;
-
-        while(strncmp(info, "data", 4) != 0)
-		{
-			if(strncmp(info, "LIST", 4) == 0)
+        	if(strncmp(info, "LIST", 4) == 0)
 			{
-				GetIndexRange(buffer, info, POSITION, WAV_DATA_SIZE_INFO_SIZE);
+				//Move the position past the title
+				i += 4;
+				
+				//Get the size of the list
+				GetIndexRange(buffer, info, i, LIST_SIZE);
 
-				moveTo = ConvertToInt(info, WAV_DATA_SIZE_INFO_SIZE);			
+				//Skip past the list
+				i = i + ConvertToInt(info, LIST_SIZE);			
 			}
-			//Set new position, move foreward one for rough check
-			GetIndexRange(buffer, info, moveTo, WAV_DATA_HEADER_SIZE);
-			POSITION = moveTo;
-			moveTo = ++POSITION;
-		}
 
-		U32 DATA_SIZE_POSITION = POSITION - 1 + WAV_DATA_HEADER_SIZE;
+        	if(strncmp(info, "data", 4) == 0)
+        	{
+        		//Move the position past the title
+        		i += 4;
 
-		GetIndexRange(buffer, info, DATA_SIZE_POSITION, 4);
-
-		size = ConvertToInt(info, 4);
+        		//Get the size of the data chunk
+        		GetIndexRange(buffer, info, i, DATA_SIZE);
+        		size = ConvertToInt(info, DATA_SIZE);
+        		i = totalSize;
+        	}
+        }	
 
         return buffer;
 	}
@@ -217,17 +225,14 @@ namespace Boxes
 		{
 			if(bps == 8)
 			{
-				std::cout << "mono8\n";
 				return AL_FORMAT_MONO8;
 			}
 			else if(bps == 16)
 			{
-				std::cout << "mono16\n";
 				return AL_FORMAT_MONO16;
 			}
 			else
 			{
-				std::cout << "0000\n";
 				return 0;
 			}
 		}
@@ -235,17 +240,14 @@ namespace Boxes
 		{
 			if(bps == 8)
 			{
-				std::cout << "stereo8\n";
 				return AL_FORMAT_STEREO8;
 			}
 			else if(bps == 16)
 			{
-				std::cout << "stereo16\n";
 				return AL_FORMAT_STEREO16;
 			}
 			else
 			{
-				std::cout << "000\n";
 				return 0;
 			}	
 		}	

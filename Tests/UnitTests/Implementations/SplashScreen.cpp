@@ -197,7 +197,7 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 		std::cout << "Oops! There was an error setting source velocity\n";
 	}
 
-	alSourcei(_sourceID, AL_LOOPING, AL_FALSE);
+	alSourcei(_sourceID, AL_LOOPING, AL_TRUE);
 
 	error = alGetError();
 	if(error != AL_NO_ERROR)
@@ -221,41 +221,10 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	int bps;
 	int size;
 
-	_data = LoadWAV("../Assets/Audio/Komiku_04_Skate.wav", channels, sampleRate, bps, size);
+	_data = LoadWAV("../Assets/Audio/nihil_strength.wav", channels, sampleRate, bps, size);
 
-/*	
-	std::cout << "Print out data\n\n";
-	for(int i = 0; i < size; ++i)
-	{
-		std::cout << _data[i] << " ";
-	}
-	std::cout << std::endl;
-*/
-
-	U32 format;
-
-	if(channels == 1)
-	{
-		if(bps == 8)
-		{
-			format = AL_FORMAT_MONO8;
-		}
-		else
-		{
-			format = AL_FORMAT_MONO16;
-		}
-	}
-	else
-	{
-		if(bps == 8)
-		{
-			format = AL_FORMAT_STEREO8;
-		}
-		else
-		{
-			format = AL_FORMAT_STEREO16;
-		}	
-	}
+	//Get the format
+	U32 format = GetALFormat(channels, bps);
 
 	//Load in the sound data to the buffer
 	alBufferData(_bufferID, format, _data, size, sampleRate);
