@@ -133,6 +133,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\AudioClip.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\AudioManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\BoundingSphere.h">
       <SubType>
       </SubType>
@@ -243,6 +251,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\AnchoredSpring.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\AudioClip.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\AudioManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>

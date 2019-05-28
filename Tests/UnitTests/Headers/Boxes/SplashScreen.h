@@ -75,6 +75,7 @@ namespace Boxes
 		ALCdevice* _device;
 		ALCcontext* _context;
 		U32 _sourceID;
+		
 		U32 _bufferID;
 		char* _data;
 	};
