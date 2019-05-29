@@ -137,7 +137,15 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\AudioListener.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\AudioManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\AudioSource.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -258,7 +266,15 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\AudioListener.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\AudioManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\AudioSource.cpp">
       <SubType>
       </SubType>
     </ClCompile>

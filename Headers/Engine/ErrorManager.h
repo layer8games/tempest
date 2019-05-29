@@ -35,6 +35,7 @@ namespace KillerEngine
 		TEXTURE_MANAGER, 	///< Indicates an error in the TextureManager class of the engine. 
 		GAMEOBJECT,			///< Indicates an error in the GameObject class of the engine. 
 		FREETYPE,			///< Indicates an error in the code wrapper around FreeType.
+		AUDIO 				///< Indicates an error in OpenAL code wrappers.
 	};
 //==========================================================================================================================
 //Documentation

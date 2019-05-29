@@ -135,6 +135,9 @@
     <ClCompile Include="..\..\Implementations\t_Menu.cpp">
       <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\t_AudioClip.cpp">
+      <Filter>Source Code\UnitTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\Docs\TestStatus.txt">

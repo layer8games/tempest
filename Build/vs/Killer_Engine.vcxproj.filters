@@ -184,6 +184,12 @@
     <Filter Include="Source Code\KillerEngine\AudioClip">
       <UniqueIdentifier>{73f7ea20-7f7c-4f04-8673-63659ad6dbaa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\KillerEngine\AudioListener">
+      <UniqueIdentifier>{8c7dc3e0-cdc2-4efa-8c4c-f881da2ae409}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerEngine\AudioSource">
+      <UniqueIdentifier>{95e2e84a-b12d-42be-98df-7422a5f653a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -330,6 +336,12 @@
     <ClInclude Include="..\..\Headers\Engine\AudioClip.h">
       <Filter>Source Code\KillerEngine\AudioClip</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\AudioSource.h">
+      <Filter>Source Code\KillerEngine\AudioSource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\AudioListener.h">
+      <Filter>Source Code\KillerEngine\AudioListener</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -463,6 +475,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\AudioClip.cpp">
       <Filter>Source Code\KillerEngine\AudioClip</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\AudioListener.cpp">
+      <Filter>Source Code\KillerEngine\AudioListener</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\AudioSource.cpp">
+      <Filter>Source Code\KillerEngine\AudioSource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

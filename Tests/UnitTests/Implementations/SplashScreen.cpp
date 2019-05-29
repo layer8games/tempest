@@ -69,7 +69,7 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	_mainTitle.AddText("BOXES vs TRIANGLES");
 	_mainTitle.SetPosition(KM::Point(-_mainTitle.GetWidth(), top - (top * 0.1f)));
 	Level::AddTextToLevel(_mainTitle);
-
+/*
 	//===== OpenAL Tests =====
 	//Get a device
 	ALCenum error;
@@ -244,7 +244,6 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 		  case AL_INVALID_VALUE: code = "AL_INVALID_VALUE";
 		  case AL_INVALID_OPERATION: code = "AL_INVALID_OPERATION";
 		  case AL_OUT_OF_MEMORY: code = "AL_OUT_OF_MEMORY";
-		  /* ... */
 		  default:
 		    std::cout << "code fails: " << error << std::endl;
 		    code = "Unknown error code";
@@ -263,7 +262,7 @@ void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	}
 
 	alSourcePlay(_sourceID);
-
+*/
 }
 
 //=============================================================================

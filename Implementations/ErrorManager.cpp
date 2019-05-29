@@ -111,6 +111,10 @@ void ErrorManager::DisplayErrors(void)
 					std::cout << "FREETYPE Error: " << _errorMessages[i].c_str() << std::endl;
 					MessageBox(NULL, _errorMessages[i].c_str(), "FREETYPE", MB_ICONERROR | MB_OK);					
 				break;
+				case AUDIO:
+					std::cout << "AUDIO Error: " << _errorMessages[i].c_str() << std::endl;
+					MessageBox(NULL, _errorMessages[i].c_str(), "AUDIO", MB_ICONERROR | MB_OK);					
+				break;
 				default:
 					//TODO::handle case 
 				break;

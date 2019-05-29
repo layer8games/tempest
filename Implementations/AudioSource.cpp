@@ -1,0 +1,172 @@
+#include <Engine/AudioSource.h>
+
+using namespace KillerEngine;
+//==========================================================================================================================
+//
+//Constructors	 	
+//
+//==========================================================================================================================
+AudioSource::AudioSource(void)
+:
+_playing(false),
+_looping(false),
+_sourceID(0),
+_pitch(1.0f),
+_gain(1.0f),
+_position(0.0f, 0.0f, 0.0f),
+_velocity(0.0f, 0.0f, 0.0f),
+_clip(nullptr)
+{
+	AudioManager::Instance();
+
+	ALCenum error = alGetError();
+
+	//generate sources
+	alGenSources(1, &_sourceID);
+
+	error = alGetError();
+	if(error != AL_NO_ERROR)
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioSource::Constructor: There was an error generating a source! " + AudioManager::Instance()->GetALCerror(error));
+	}
+
+	SetPitch(_pitch);
+
+	SetGain(_gain);
+
+	SetPosition(_position);
+
+	SetVelocity(_velocity);
+
+	SetLooping(_looping);
+}
+
+AudioSource::~AudioSource(void)
+{  }
+
+//==========================================================================================================================
+//
+//Functions
+//
+//==========================================================================================================================
+void AudioSource::Play(void)
+{
+	if(_clip != nullptr && !_playing)
+	{
+		alSourcePlay(_sourceID);
+
+		ALCenum error = alGetError();
+		if(error != AL_NO_ERROR)
+		{
+			ErrorManager::Instance()->SetError(AUDIO, "AudioSource::Play: Unable to play clip! " + AudioManager::Instance()->GetALCerror(error));
+		}
+	}
+}
+
+void AudioSource::Stop(void)
+{
+	if(_clip != nullptr && _playing)
+	{
+		alSourceStop(_sourceID);
+		
+		ALCenum error = alGetError();
+		if(error != AL_NO_ERROR)
+		{
+			ErrorManager::Instance()->SetError(AUDIO, "AudioSource::Pause: Unable to stop clip! " + AudioManager::Instance()->GetALCerror(error));
+		}
+	}
+}
+
+void AudioSource::Pause(void)
+{
+	if(_clip != nullptr && _playing)
+	{
+		alSourceStop(_sourceID);
+		
+		ALCenum error = alGetError();
+		if(error != AL_NO_ERROR)
+		{
+			ErrorManager::Instance()->SetError(AUDIO, "AudioSource::Pause: Unable to pause clip! " + AudioManager::Instance()->GetALCerror(error));
+		}
+	}
+}
+
+void AudioSource::AddClip(shared_ptr<AudioClip> clip)
+{
+	_clip = clip;
+
+	if(_clip->GetBufferID() <= 0)
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioSource::AddClip: Clip buffer has no data!");
+		return;
+	}
+
+	alSourcei(_sourceID, AL_BUFFER, _clip->GetBufferID());
+
+	ALCenum error = alGetError();
+	if(error != AL_NO_ERROR)
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioSource::AddClip: Unable to add clip to source! alSourcei failed! " + AudioManager::Instance()->GetALCerror(error));
+	}
+}
+
+//==========================================================================================================================
+//
+//Accessors
+//
+//==========================================================================================================================
+void AudioSource::SetLooping(bool state)
+{
+	_looping = state;
+	alSourcei(_sourceID, AL_LOOPING, _looping);
+
+	ALCenum error = alGetError();
+	if(error != AL_NO_ERROR)
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::Constructor: There was an error setting source looping! " + AudioManager::Instance()->GetALCerror(error));
+	}
+}
+
+void AudioSource::SetPitch(F32 pitch)
+{
+	alSourcef(_sourceID, AL_PITCH, _pitch);
+
+	ALCenum error = alGetError();
+	if(error != AL_NO_ERROR)
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::Constructor: There was an error setting source pitch! " + AudioManager::Instance()->GetALCerror(error));
+	}
+}
+
+void AudioSource::SetGain(F32 gain)
+{
+	alSourcef(_sourceID, AL_GAIN, _gain);
+
+	ALCenum error = alGetError();
+	if(error != AL_NO_ERROR)
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::Constructor: There was an error setting source gain! " + AudioManager::Instance()->GetALCerror(error));
+	}
+}
+
+void AudioSource::SetPosition(const KM::Vector3& pos)
+{
+	alSource3f(_sourceID, AL_POSITION, _position[x], _position[y], _position[z]);
+
+	ALCenum error = alGetError();
+	if(error != AL_NO_ERROR)
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::Constructor: There was an error setting source pos! " + AudioManager::Instance()->GetALCerror(error));
+	}
+}
+
+void AudioSource::SetVelocity(const KM::Vector3& vel)
+{
+	alSource3f(_sourceID, AL_VELOCITY, _velocity[x], _velocity[y], _velocity[z]);
+
+	ALCenum error = alGetError();
+	if(error != AL_NO_ERROR)
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::Constructor: There was an error setting source velocity! " + AudioManager::Instance()->GetALCerror(error));
+	}
+}

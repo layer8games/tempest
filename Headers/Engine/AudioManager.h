@@ -2,6 +2,11 @@
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
+#include <Engine/ErrorManager.h>
+
+//===== OpenAL =====
+#include <OpenAL/al.h>
+#include <OpenAL/alc.h>
 
 namespace KillerEngine
 {
@@ -22,6 +27,8 @@ namespace KillerEngine
 //==========================================================================================================================
 		static shared_ptr<AudioManager> Instance(void);
 
+		string GetALCerror(ALCenum error);
+
 	protected:
 //==========================================================================================================================
 //Constructor
@@ -30,6 +37,8 @@ namespace KillerEngine
 
 	private:
 		static shared_ptr<AudioManager> _instance;
+		ALCdevice* 						_device;
+		ALCcontext* 					_context;
 		
 	};//end Class
 }//end Namespace
