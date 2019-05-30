@@ -60,7 +60,7 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
-		inline void SetListner(shared_ptr<AudioListener> listener)
+		inline void SetListener(shared_ptr<AudioListener> listener)
 		{
 			_listener = listener;
 		}
