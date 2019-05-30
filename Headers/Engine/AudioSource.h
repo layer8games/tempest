@@ -10,6 +10,8 @@ namespace KM = KillerMath;
 
 namespace KillerEngine
 {
+	class AudioClip;
+
 	class AudioSource
 	{
 	public:

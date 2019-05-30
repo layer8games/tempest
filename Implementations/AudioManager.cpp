@@ -9,7 +9,10 @@ using namespace KillerEngine;
 AudioManager::AudioManager(void)
 :
 _device(nullptr),
-_context(nullptr)
+_context(nullptr),
+_listener(nullptr),
+_clips(),
+_sources()
 {
 	ALCenum error;
 
@@ -152,6 +155,80 @@ shared_ptr<AudioManager> AudioManager::Instance(void)
 	return _instance;
 }
 
+void AudioManager::AddClip(U32 id, shared_ptr<AudioClip> clip)
+{
+	_clips.insert({id, clip});
+
+	if(_clips.find(id) == _clips.end())
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::AddClip: Unable to add clip with id " + id);
+	}
+}
+
+void AudioManager::RemoveClip(U32 id)
+{
+	auto clip = _clips.find(id);
+	_clips.erase(clip);
+
+	if(_clips.find(id) != _clips.end())
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::RemoveClip: Unable to remove clip with id " + id);
+	}
+}
+
+void AudioManager::AddSource(U32 id, shared_ptr<AudioSource> source)
+{
+	_sources.insert({id, source});
+
+	if(_sources.find(id) == _sources.end())
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::AddSource: Unable to add source with id " + id);
+	}
+}
+
+void AudioManager::RemoveSource(U32 id)
+{
+	auto source = _sources.find(id);
+	_sources.erase(source);
+
+	if(_sources.find(id) != _sources.end())
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::RemoveSource: Unable to remove source with id " + id);
+	}
+}
+
+void AudioManager::PlaySource(U32 id)
+{
+	if(_sources.find(id) != _sources.end())
+	{
+		_sources[id]->Play();
+	}
+}
+
+void AudioManager::StopSource(U32 id)
+{
+	if(_sources.find(id) != _sources.end())
+	{
+		_sources[id]->Stop();
+	}
+}
+
+void AudioManager::PauseSource(U32 id)
+{
+	if(_sources.find(id) != _sources.end())
+	{
+		_sources[id]->Pause();
+	}
+}
+
+void AudioManager::AddClipToSource(U32 clipID, U32 sourceID)
+{
+	if(_clips.find(clipID) != _clips.end() && _sources.find(sourceID) != _sources.end())
+	{
+		_sources[sourceID]->AddClip(_clips[clipID]);
+	}
+}
+
 string AudioManager::GetALCerror(ALCenum error)
 {
 	switch (error) 
@@ -171,4 +248,24 @@ string AudioManager::GetALCerror(ALCenum error)
 	  default:
 	    return "Unknown error code";
 	}
+}
+
+shared_ptr<AudioClip> AudioManager::GetClip(U32 id)
+{
+	if(_clips.find(id) != _clips.end())
+	{
+		return _clips[id];
+	}
+
+	return nullptr;
+}
+
+shared_ptr<AudioSource> AudioManager::GetSource(U32 id)
+{
+	if(_sources.find(id) != _sources.end())
+	{
+		return _sources[id];
+	}
+
+	return nullptr;
 }
