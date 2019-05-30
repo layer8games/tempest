@@ -59,9 +59,39 @@ void AudioListener::SetPosition(const KM::Vector3& pos)
 	}
 }
 
+void AudioListener::SetPosition(F32 xVal, F32 yVal, F32 zVal)
+{
+	_position[x] = xVal;
+	_position[y] = yVal;
+	_position[z] = zVal;
+
+	alListener3f(AL_POSITION, _position[x], _position[y], _position[z]);
+	
+	ALCenum error = alGetError();
+	if(error != AL_NO_ERROR)
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "Oops! There was an error setting the listener pos\n");
+	}
+}
+
 void AudioListener::SetVelocity(const KM::Vector3 vel)
 {
 	_velocity = vel;
+
+	alListener3f(AL_VELOCITY, _velocity[x], _velocity[y], _velocity[z]);
+
+	ALCenum error = alGetError();
+	if(error != AL_NO_ERROR)
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "Oops! There was an error setting listener velocity\n");
+	}
+}
+
+void AudioListener::SetVelocity(F32 xVal, F32 yVal, F32 zVal)
+{
+	_velocity[x] = xVal;
+	_velocity[y] = yVal;
+	_velocity[z] = zVal;
 
 	alListener3f(AL_VELOCITY, _velocity[x], _velocity[y], _velocity[z]);
 

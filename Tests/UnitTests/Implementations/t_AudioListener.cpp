@@ -92,6 +92,32 @@ BOOST_AUTO_TEST_CASE(AudioListenerAccessors)
 	delete orienationCheck;
 
 	//Position
+	listener.SetPosition(1.0f, 2.0f, 3.0f);
+
+	BOOST_CHECK_EQUAL(listener.GetPosition()[x], 1.0f);
+	BOOST_CHECK_EQUAL(listener.GetPosition()[y], 2.0f);
+	BOOST_CHECK_EQUAL(listener.GetPosition()[z], 3.0f);
+
+	F32 xPos, yPos, zPos;
+
+	alGetListener3f(AL_POSITION, &xPos, &yPos, &zPos);
+
+	BOOST_CHECK_EQUAL(xPos, 1.0f);
+	BOOST_CHECK_EQUAL(yPos, 2.0f);
+	BOOST_CHECK_EQUAL(zPos, 3.0f);
 
 	//Velocity
+	listener.SetVelocity(8.0f, 9.0f, 10.0f);
+
+	BOOST_CHECK_EQUAL(listener.GetVelocity()[x], 8.0f);
+	BOOST_CHECK_EQUAL(listener.GetVelocity()[y], 9.0f);
+	BOOST_CHECK_EQUAL(listener.GetVelocity()[z], 10.0f);
+
+	F32 xVel, yVel, zVel;
+
+	alGetListener3f(AL_VELOCITY, &xVel, &yVel, &zVel);
+
+	BOOST_CHECK_EQUAL(xVel, 8.0f);
+	BOOST_CHECK_EQUAL(yVel, 9.0f);
+	BOOST_CHECK_EQUAL(zVel, 10.0f);
 }

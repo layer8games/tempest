@@ -40,6 +40,8 @@ namespace KillerEngine
 
 		void SetPosition(const KM::Vector3& pos);
 
+		void SetPosition(F32 xVal, F32 yVal, F32 zVal);
+
 		inline const KM::Vector3& GetVelocity(void) const
 		{
 			return _velocity;
@@ -47,6 +49,7 @@ namespace KillerEngine
 
 		void SetVelocity(const KM::Vector3 vel);
 
+		void SetVelocity(F32 xVal, F32 yVal, F32 zVal);
 
 	private:
 		F32 		_orientation[6];
