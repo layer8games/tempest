@@ -73,12 +73,16 @@ namespace KillerEngine
 
 		void SetPosition(const KM::Vector3& pos);
 
+		void SetPosition(F32 xVal, F32 yVal, F32 zVal);
+
 		const KM::Vector3& GetPosition(void) const
 		{
 			return _position;
 		}
 
 		void SetVelocity(const KM::Vector3& vel);
+
+		void SetVelocity(F32 xVal, F32 yVal, F32 zVal);
 
 		const KM::Vector3& GetVelocity(void) const
 		{

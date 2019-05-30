@@ -129,6 +129,7 @@ void AudioSource::SetLooping(bool state)
 
 void AudioSource::SetPitch(F32 pitch)
 {
+	_pitch = pitch;
 	alSourcef(_sourceID, AL_PITCH, _pitch);
 
 	ALCenum error = alGetError();
@@ -140,6 +141,7 @@ void AudioSource::SetPitch(F32 pitch)
 
 void AudioSource::SetGain(F32 gain)
 {
+	_gain = gain;
 	alSourcef(_sourceID, AL_GAIN, _gain);
 
 	ALCenum error = alGetError();
@@ -151,6 +153,21 @@ void AudioSource::SetGain(F32 gain)
 
 void AudioSource::SetPosition(const KM::Vector3& pos)
 {
+	_position = pos;
+	alSource3f(_sourceID, AL_POSITION, _position[x], _position[y], _position[z]);
+
+	ALCenum error = alGetError();
+	if(error != AL_NO_ERROR)
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::Constructor: There was an error setting source pos! " + AudioManager::Instance()->GetALCerror(error));
+	}
+}
+
+void AudioSource::SetPosition(F32 xVal, F32 yVal, F32 zVal)
+{
+	_position[x] = xVal;
+	_position[y] = yVal;
+	_position[z] = zVal;
 	alSource3f(_sourceID, AL_POSITION, _position[x], _position[y], _position[z]);
 
 	ALCenum error = alGetError();
@@ -162,6 +179,21 @@ void AudioSource::SetPosition(const KM::Vector3& pos)
 
 void AudioSource::SetVelocity(const KM::Vector3& vel)
 {
+	_velocity = vel;
+	alSource3f(_sourceID, AL_VELOCITY, _velocity[x], _velocity[y], _velocity[z]);
+
+	ALCenum error = alGetError();
+	if(error != AL_NO_ERROR)
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::Constructor: There was an error setting source velocity! " + AudioManager::Instance()->GetALCerror(error));
+	}
+}
+
+void AudioSource::SetVelocity(F32 xVal, F32 yVal, F32 zVal)
+{
+	_velocity[x] = xVal;
+	_velocity[y] = yVal;
+	_velocity[z] = zVal;
 	alSource3f(_sourceID, AL_VELOCITY, _velocity[x], _velocity[y], _velocity[z]);
 
 	ALCenum error = alGetError();

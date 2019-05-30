@@ -135,6 +135,8 @@
     <ClCompile Include="..\..\Implementations\Springs.cpp" />
     <ClCompile Include="..\..\Implementations\t_AABB.cpp" />
     <ClCompile Include="..\..\Implementations\t_AudioClip.cpp" />
+    <ClCompile Include="..\..\Implementations\t_AudioListener.cpp" />
+    <ClCompile Include="..\..\Implementations\t_AudioSource.cpp" />
     <ClCompile Include="..\..\Implementations\t_BoundingSphere.cpp">
       <SubType>
       </SubType>

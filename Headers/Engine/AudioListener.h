@@ -49,7 +49,7 @@ namespace KillerEngine
 
 
 	private:
-		F32* 		_orientation;
+		F32 		_orientation[6];
 		KM::Vector3 _position;
 		KM::Vector3 _velocity;
 

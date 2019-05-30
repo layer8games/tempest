@@ -8,7 +8,7 @@ using namespace KillerEngine;
 //==========================================================================================================================
 AudioListener::AudioListener(void)
 :
-_orientation(new F32[6]),
+_orientation{0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f},
 _position(0.0f, 0.0f, 1.0f),
 _velocity(0.0f, 0.0f, 0.0f)
 {
@@ -30,7 +30,12 @@ AudioListener::~AudioListener(void)
 
 void AudioListener::SetOrientation(F32* orientation)
 {
-	_orientation = orientation;
+	_orientation[0] = orientation[0];
+	_orientation[1] = orientation[1];
+	_orientation[2] = orientation[2];
+	_orientation[3] = orientation[3];
+	_orientation[4] = orientation[4];
+	_orientation[5] = orientation[5];
 
 	alListenerfv(AL_ORIENTATION, _orientation);
 
