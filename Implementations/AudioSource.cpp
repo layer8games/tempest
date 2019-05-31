@@ -43,6 +43,7 @@ _clip(nullptr)
 
 AudioSource::~AudioSource(void)
 {
+	_clip = nullptr;
 	alDeleteSources(1, &_sourceID);
 }
 

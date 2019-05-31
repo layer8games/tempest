@@ -63,27 +63,27 @@ BOOST_AUTO_TEST_CASE(AudioManagerAddAndRemove)
 {
 	KE::AudioListener listener{ };
 
-	KE::AudioManager::Instance()->SetListener(shared_ptr<KE::AudioListener>(&listener));
+	//KE::AudioManager::Instance()->SetListener(shared_ptr<KE::AudioListener>(&listener));
 
 	KE::AudioClip clip { };
 	clip.LoadWAV("../Assets/Audio/Komiku_04_Skate.wav");
 
-	KE::AudioManager::Instance()->AddClip(1, shared_ptr<KE::AudioClip>(&clip));
+	//KE::AudioManager::Instance()->AddClip(1, shared_ptr<KE::AudioClip>(&clip));
 
 	KE::AudioClip clip2 { };
 	clip2.LoadWAV("../Assets/Audio/Komiku_07_Battle_of_Pogs.wav");
 
 	KE::AudioSource source { };
-	source.AddClip(shared_ptr<KE::AudioClip>(&clip2));
+	//source.AddClip(shared_ptr<KE::AudioClip>(&clip2));
 
-	KE::AudioManager::Instance()->AddSource(1, shared_ptr<KE::AudioSource>(&source));
-	KE::AudioManager::Instance()->AddClip(2, shared_ptr<KE::AudioClip>(&clip2));
+	//KE::AudioManager::Instance()->AddSource(1, shared_ptr<KE::AudioSource>(&source));
+	//KE::AudioManager::Instance()->AddClip(2, shared_ptr<KE::AudioClip>(&clip2));
 
 	KE::AudioSource source2 { };
 
-	KE::AudioManager::Instance()->AddSource(2, shared_ptr<KE::AudioSource>(&source2));
+	//KE::AudioManager::Instance()->AddSource(2, shared_ptr<KE::AudioSource>(&source2));
 
-	KE::AudioManager::Instance()->AddClipToSource(1, 2);
+	//KE::AudioManager::Instance()->AddClipToSource(1, 2);
 
 	//Add assertions here	
 }

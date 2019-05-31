@@ -93,6 +93,11 @@ namespace KillerEngine
 
 		const shared_ptr<AudioClip> GetClip(void) const
 		{
+			if(_clip == nullptr)
+			{
+				return nullptr;
+			}
+			
 			return _clip;
 		}
 

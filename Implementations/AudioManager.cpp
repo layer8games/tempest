@@ -131,6 +131,11 @@ Function:
 
 AudioManager::~AudioManager(void)
 {
+	_listener = nullptr;
+
+	_clips.clear();
+	_sources.clear();
+
 	alcDestroyContext(_context);
 	alcCloseDevice(_device);
 }
