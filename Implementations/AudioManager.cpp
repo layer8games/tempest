@@ -40,37 +40,6 @@ _sources()
 	{
 		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::Constructor: Unable to make context current! " + GetALCerror(error));
 	}
-
-//==========================================================================================================================
-//Move to listener later
-//==========================================================================================================================
-	//Configure listener
-	ALfloat listernOrientation[] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f };
-
-	alListener3f(AL_POSITION, 0.0f, 0.0f, 1.0f);
-	error = alGetError();
-
-	if(error != AL_NO_ERROR)
-	{
-		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::Constructor: There was an error setting the listener pos! " + GetALCerror(error));
-	}
-
-	alListener3f(AL_VELOCITY, 0.0f, 0.0f, 0.0f);
-
-	error = alGetError();
-	if(error != AL_NO_ERROR)
-	{
-		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::Constructor: There was an error setting listener velocity! " + GetALCerror(error));
-	}
-
-	alListenerfv(AL_ORIENTATION, listernOrientation);
-	
-	error = alGetError();
-	if(error != AL_NO_ERROR)
-	{
-		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::Constructor: There was an error setting listener orientation! " + GetALCerror(error));
-	}
-
 /*
 	TODO: not sure where this code should live. It could possible be put into WinProgram, but maybe it should stay here.
 		  This check should happen around here though, or at least before here. This would allow for the user to select

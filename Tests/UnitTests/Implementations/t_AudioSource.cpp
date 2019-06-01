@@ -129,33 +129,29 @@ BOOST_AUTO_TEST_CASE(AudioSourceAccessors)
 
 BOOST_AUTO_TEST_CASE(AudioSourceClipInterations)
 {
-	/*
-	Too many errors to deal with... need to work it out though. This is a critical system.
 
 	KE::AudioSource source { };
 
-	KE::AudioClip clip { };
+	shared_ptr<KE::AudioClip> clip = make_shared<KE::AudioClip>();
 
-	clip.LoadWAV("../Assets/Audio/Komiku_04_Skate.wav");
+	clip->LoadWAV("../Assets/Audio/Komiku_04_Skate.wav");
 
-	BOOST_CHECK_GT(static_cast<S32>(clip.GetBufferID()), 1);
-	BOOST_CHECK_EQUAL(clip.GetChannels(), 2);
-	BOOST_CHECK_EQUAL(clip.GetSampleRate(), 44100);
-	BOOST_CHECK_EQUAL(clip.GetBPS(), 16);
-	BOOST_CHECK_EQUAL(clip.GetSize(), 8467200);
-	BOOST_CHECK_EQUAL(clip.GetALFormat(), AL_FORMAT_STEREO16);
+	BOOST_CHECK_GT(static_cast<S32>(clip->GetBufferID()), 1);
+	BOOST_CHECK_EQUAL(clip->GetChannels(), 2);
+	BOOST_CHECK_EQUAL(clip->GetSampleRate(), 44100);
+	BOOST_CHECK_EQUAL(clip->GetBPS(), 16);
+	BOOST_CHECK_EQUAL(clip->GetSize(), 8467200);
+	BOOST_CHECK_EQUAL(clip->GetALFormat(), AL_FORMAT_STEREO16);
 	
-	//source.AddClip(make_shared<KE::AudioClip>(clip));
+	source.AddClip(clip);
 
 	shared_ptr<KE::AudioClip> clipCopy = source.GetClip();
 
 	BOOST_CHECK_NE(clipCopy, nullptr);
-	//BOOST_CHECK_GT(static_cast<S32>(clipCopy->GetBufferID()), 1);
-	//BOOST_CHECK_EQUAL(clipCopy->GetChannels(), 2);
-	//BOOST_CHECK_EQUAL(clipCopy->GetSampleRate(), 44100);
-	//BOOST_CHECK_EQUAL(clipCopy->GetBPS(), 16);
-	//BOOST_CHECK_EQUAL(clipCopy->GetSize(), 8467200);
-	//BOOST_CHECK_EQUAL(clipCopy->GetALFormat(), AL_FORMAT_STEREO16);
-*/
-
+	BOOST_CHECK_GT(static_cast<S32>(clipCopy->GetBufferID()), 1);
+	BOOST_CHECK_EQUAL(clipCopy->GetChannels(), 2);
+	BOOST_CHECK_EQUAL(clipCopy->GetSampleRate(), 44100);
+	BOOST_CHECK_EQUAL(clipCopy->GetBPS(), 16);
+	BOOST_CHECK_EQUAL(clipCopy->GetSize(), 8467200);
+	BOOST_CHECK_EQUAL(clipCopy->GetALFormat(), AL_FORMAT_STEREO16);
 }

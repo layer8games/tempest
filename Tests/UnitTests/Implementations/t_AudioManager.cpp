@@ -61,29 +61,29 @@ namespace KE = KillerEngine;
 
 BOOST_AUTO_TEST_CASE(AudioManagerAddAndRemove)
 {
-	KE::AudioListener listener{ };
+	shared_ptr<KE::AudioListener> listener = make_shared<KE::AudioListener>();
 
-	//KE::AudioManager::Instance()->SetListener(shared_ptr<KE::AudioListener>(&listener));
+	KE::AudioManager::Instance()->SetListener(listener);
 
-	KE::AudioClip clip { };
-	clip.LoadWAV("../Assets/Audio/Komiku_04_Skate.wav");
+	shared_ptr<KE::AudioClip> clip = make_shared<KE::AudioClip>();
+	clip->LoadWAV("../Assets/Audio/Komiku_04_Skate.wav");
 
-	//KE::AudioManager::Instance()->AddClip(1, shared_ptr<KE::AudioClip>(&clip));
+	KE::AudioManager::Instance()->AddClip(1, clip);
 
-	KE::AudioClip clip2 { };
-	clip2.LoadWAV("../Assets/Audio/Komiku_07_Battle_of_Pogs.wav");
+	shared_ptr<KE::AudioClip> clip2 = make_shared<KE::AudioClip>();
+	clip2->LoadWAV("../Assets/Audio/Komiku_07_Battle_of_Pogs.wav");
 
-	KE::AudioSource source { };
-	//source.AddClip(shared_ptr<KE::AudioClip>(&clip2));
+	shared_ptr<KE::AudioSource> source = make_shared<KE::AudioSource>();
+	source->AddClip(clip2);
 
-	//KE::AudioManager::Instance()->AddSource(1, shared_ptr<KE::AudioSource>(&source));
-	//KE::AudioManager::Instance()->AddClip(2, shared_ptr<KE::AudioClip>(&clip2));
+	KE::AudioManager::Instance()->AddSource(1, source);
+	KE::AudioManager::Instance()->AddClip(2, clip2);
 
-	KE::AudioSource source2 { };
+	shared_ptr<KE::AudioSource> source2 = make_shared<KE::AudioSource>();
 
-	//KE::AudioManager::Instance()->AddSource(2, shared_ptr<KE::AudioSource>(&source2));
+	KE::AudioManager::Instance()->AddSource(2, source2);
 
-	//KE::AudioManager::Instance()->AddClipToSource(1, 2);
+	KE::AudioManager::Instance()->AddClipToSource(1, 2);
 
 	//Add assertions here	
 }

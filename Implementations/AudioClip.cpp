@@ -51,6 +51,8 @@ void AudioClip::LoadWAV(string filename)
 
     in.read(_data, totalSize);
 
+    in.close();
+
     //Extract info about the audio file.
     char info[4];
 
