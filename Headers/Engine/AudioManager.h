@@ -39,9 +39,13 @@ namespace KillerEngine
 
 		void AddClip(U32 id, shared_ptr<AudioClip> clip);
 
+		void LoadClip(U32 id, string filepath);
+
 		void RemoveClip(U32 id);
 
 		void AddSource(U32 id, shared_ptr<AudioSource> source);
+
+		void LoadSource(U32 id);
 
 		void RemoveSource(U32 id);
 
@@ -60,6 +64,11 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================
+		inline void SetListener(void)
+		{
+			_listener = make_shared<AudioListener>();
+		}
+
 		inline void SetListener(shared_ptr<AudioListener> listener)
 		{
 			_listener = listener;

@@ -63,6 +63,7 @@ void AudioSource::Play(void)
 		{
 			ErrorManager::Instance()->SetError(AUDIO, "AudioSource::Play: Unable to play clip! " + AudioManager::Instance()->GetALCerror(error));
 		}
+		_playing = true;
 	}
 }
 
@@ -77,6 +78,8 @@ void AudioSource::Stop(void)
 		{
 			ErrorManager::Instance()->SetError(AUDIO, "AudioSource::Pause: Unable to stop clip! " + AudioManager::Instance()->GetALCerror(error));
 		}
+
+		_playing = false;
 	}
 }
 
@@ -84,13 +87,15 @@ void AudioSource::Pause(void)
 {
 	if(_clip != nullptr && _playing)
 	{
-		alSourceStop(_sourceID);
+		alSourcePause(_sourceID);
 		
 		ALCenum error = alGetError();
 		if(error != AL_NO_ERROR)
 		{
 			ErrorManager::Instance()->SetError(AUDIO, "AudioSource::Pause: Unable to pause clip! " + AudioManager::Instance()->GetALCerror(error));
 		}
+
+		_playing = false;
 	}
 }
 

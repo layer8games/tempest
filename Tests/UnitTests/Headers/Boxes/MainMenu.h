@@ -23,6 +23,7 @@ Written by Maxwell Miller
 #include <Engine/Point.h>
 #include <Engine/Color.h>
 #include <Engine/Menu.h>
+#include <Engine/AudioManager.h>
 
 namespace KE = KillerEngine;
 namespace KM = KillerMath;

@@ -76,8 +76,11 @@ void MovingBoxes::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 //=============================================================================
 void MovingBoxes::v_Update(void) 
 {
+	KE::AudioManager::Instance()->PlaySource(2);
+	
 	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ESCAPE)) 
 	{ 
+		KE::AudioManager::Instance()->StopSource(2);
 		KE::LevelManager::Instance()->SetActiveLevel(2); 
 	}
 

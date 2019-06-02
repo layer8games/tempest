@@ -83,7 +83,43 @@ BOOST_AUTO_TEST_CASE(AudioManagerAddAndRemove)
 
 	KE::AudioManager::Instance()->AddSource(2, source2);
 
-	KE::AudioManager::Instance()->AddClipToSource(1, 2);
+	KE::AudioManager::Instance()->AddClipToSource(2, 2);
 
-	//Add assertions here	
+	//Check that sources and clips have been added correctly. 
+	//Assuming that not nullptr is enough to know its ok. 
+	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetListener(), nullptr);
+	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetClip(1), nullptr);
+	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetSource(1), nullptr);
+	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetSource(2)->GetClip(), nullptr);
+
+	//Check that we can remove clips and sources
+	KE::AudioManager::Instance()->RemoveClip(1);
+	KE::AudioManager::Instance()->RemoveSource(1);
+
+	BOOST_CHECK_EQUAL(KE::AudioManager::Instance()->GetClip(1), nullptr);
+	BOOST_CHECK_EQUAL(KE::AudioManager::Instance()->GetSource(1), nullptr);
+
+	//Check that load clip is working
+	KE::AudioManager::Instance()->LoadClip(3, "../Assets/Audio/Komiku_04_Skate.wav");
+	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetClip(3), nullptr);
+
+	shared_ptr<KE::AudioSource> source3 = make_shared<KE::AudioSource>();
+	KE::AudioManager::Instance()->AddSource(3, source);
+
+	KE::AudioManager::Instance()->AddClipToSource(3, 3);
+
+	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetSource(3), nullptr);
+	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetSource(3)->GetClip(), nullptr);
+
+	//Check for SetListener(void)
+	//First, unset the listener. Then call SetListener(void)
+	KE::AudioManager::Instance()->SetListener(nullptr);
+	BOOST_CHECK_EQUAL(KE::AudioManager::Instance()->GetListener(), nullptr);
+
+	KE::AudioManager::Instance()->SetListener();
+	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetListener(), nullptr);
+
+	//Test Load Source
+	KE::AudioManager::Instance()->LoadSource(4);
+	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetSource(4), nullptr);
 }

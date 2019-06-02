@@ -56,6 +56,10 @@ Written by Maxwell Miller
 #include <Engine/Engine.h>
 #include <Engine/Color.h>
 #include <Engine/Shader.h>
+#include <Engine/AudioManager.h>
+#include <Engine/AudioSource.h>
+#include <Engine/AudioClip.h>
+
 namespace KE = KillerEngine;
 
 //=====Game Includes=====
@@ -103,8 +107,36 @@ BOOST_AUTO_TEST_CASE(UITests)
 	KE::TextureManager::Instance()->LoadTexture(503, "../Assets/Textures/Course/bunny_diffuse.jpg");
 	KE::TextureManager::Instance()->LoadTexture(504, "../Assets/Textures/Course/tile_floor.jpg");
 
+	KE::ErrorManager::Instance()->DisplayErrors();
+
 	KE::FontManager::Instance()->LoadFont(100, "ariel", "../Assets/Fonts/arial.ttf", 18);
 	KE::FontManager::Instance()->LoadFont(101, "bank_gothic", "../Assets/Fonts/bank_gothic.ttf", 18);
+
+	KE::ErrorManager::Instance()->DisplayErrors();
+
+	KE::AudioManager::Instance()->SetListener();
+	
+	shared_ptr<KE::AudioClip> skate = make_shared<KE::AudioClip>();
+	skate->LoadWAV("../Assets/Audio/Komiku_04_Skate.wav");
+	shared_ptr<KE::AudioClip> battle = make_shared<KE::AudioClip>();
+	battle->LoadWAV("../Assets/Audio/Komiku_07_Battle_of_Pogs.wav");
+	shared_ptr<KE::AudioSource> background = make_shared<KE::AudioSource>();
+	background->AddClip(skate);
+	
+	shared_ptr<KE::AudioSource> movingBoxesBackground = make_shared<KE::AudioSource>();
+	movingBoxesBackground->AddClip(battle);
+
+	KE::ErrorManager::Instance()->DisplayErrors();
+
+	KE::AudioManager::Instance()->AddClip(1, skate);
+	KE::AudioManager::Instance()->AddClip(2, battle);
+	KE::AudioManager::Instance()->AddSource(1, background);
+	KE::AudioManager::Instance()->AddSource(2, movingBoxesBackground);
+
+	//KE::AudioManager::Instance()->LoadClip(1, "../Assets/Audio/Komiku_04_Skate.wav");
+	//KE::AudioManager::Instance()->LoadClip(2, "../Assets/Audio/Komiku_07_Battle_of_Pogs.wav");
+	//KE::AudioManager::Instance()->LoadSource(1);
+	//KE::AudioManager::Instance()->AddClipToSource(1, 1);
 	
 	//continue adding textures for glfw tests
 

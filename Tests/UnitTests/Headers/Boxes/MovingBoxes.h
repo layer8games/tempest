@@ -24,6 +24,7 @@ Written by Maxwell Miller
 #include <Engine/Color.h>
 #include <Engine/Timer.h>
 #include <Engine/GameObject.h>
+#include <Engine/AudioManager.h>
 
 #include <Boxes/Box.h>
 

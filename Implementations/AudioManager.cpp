@@ -139,6 +139,19 @@ void AudioManager::AddClip(U32 id, shared_ptr<AudioClip> clip)
 	}
 }
 
+void AudioManager::LoadClip(U32 id, string filepath)
+{
+	shared_ptr<KE::AudioClip> clip = make_shared<KE::AudioClip>();
+	clip->LoadWAV(filepath);
+
+	_clips.insert({id, clip});
+
+	if(_clips.find(id) == _clips.end())
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::AddClip: Unable to add clip with id " + id);
+	}
+}
+
 void AudioManager::RemoveClip(U32 id)
 {
 	auto clip = _clips.find(id);
@@ -152,6 +165,18 @@ void AudioManager::RemoveClip(U32 id)
 
 void AudioManager::AddSource(U32 id, shared_ptr<AudioSource> source)
 {
+	_sources.insert({id, source});
+
+	if(_sources.find(id) == _sources.end())
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::AddSource: Unable to add source with id " + id);
+	}
+}
+
+void AudioManager::LoadSource(U32 id)
+{
+	shared_ptr<AudioSource> source = make_shared<AudioSource>();
+
 	_sources.insert({id, source});
 
 	if(_sources.find(id) == _sources.end())

@@ -86,11 +86,12 @@ void MainMenu::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 
 void MainMenu::v_Update(void)
 {
+	KE::AudioManager::Instance()->PlaySource(1);
 	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ESCAPE))
 	{
+		KE::AudioManager::Instance()->StopSource(1);
 		KE::Engine::Instance()->End();
 	}
-
 
 	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::UP_ARROW))
 	{
@@ -105,6 +106,7 @@ void MainMenu::v_Update(void)
 
 	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ENTER))
 	{
+		KE::AudioManager::Instance()->StopSource(1);
 		_menu.CallSelectedAction();
 	}
 }
