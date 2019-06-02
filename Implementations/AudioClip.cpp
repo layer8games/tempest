@@ -16,7 +16,9 @@ _bps(0),
 _size(0),
 _alFormat(0),
 _data(nullptr)
-{  }
+{
+    AudioManager::Instance();
+}
 
 AudioClip::~AudioClip(void)
 {

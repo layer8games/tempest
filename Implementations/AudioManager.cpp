@@ -220,6 +220,14 @@ void AudioManager::PauseSource(U32 id)
 	}
 }
 
+void AudioManager::RestartSource(U32 id)
+{
+	if(_sources.find(id) != _sources.end())
+	{
+		_sources[id]->Restart();
+	}
+}
+
 void AudioManager::AddClipToSource(U32 clipID, U32 sourceID)
 {
 	if(_clips.find(clipID) != _clips.end() && _sources.find(sourceID) != _sources.end())

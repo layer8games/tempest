@@ -99,6 +99,18 @@ void AudioSource::Pause(void)
 	}
 }
 
+void AudioSource::Restart(void)
+{
+	alSourcePlay(_sourceID);
+
+	ALCenum error = alGetError();
+	if(error != AL_NO_ERROR)
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioSource::Play: Unable to play clip! " + AudioManager::Instance()->GetALCerror(error));
+	}
+	_playing = true;
+}
+
 void AudioSource::AddClip(shared_ptr<AudioClip> clip)
 {
 	_clip = clip;
