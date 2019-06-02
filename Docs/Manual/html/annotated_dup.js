@@ -23,6 +23,10 @@ var annotated_dup =
       [ "PotentailContact", "struct_killer_collisions_1_1_potentail_contact.html", "struct_killer_collisions_1_1_potentail_contact" ]
     ] ],
     [ "KillerEngine", null, [
+      [ "AudioClip", "class_killer_engine_1_1_audio_clip.html", "class_killer_engine_1_1_audio_clip" ],
+      [ "AudioListener", "class_killer_engine_1_1_audio_listener.html", "class_killer_engine_1_1_audio_listener" ],
+      [ "AudioManager", "class_killer_engine_1_1_audio_manager.html", "class_killer_engine_1_1_audio_manager" ],
+      [ "AudioSource", "class_killer_engine_1_1_audio_source.html", "class_killer_engine_1_1_audio_source" ],
       [ "Camera", "class_killer_engine_1_1_camera.html", "class_killer_engine_1_1_camera" ],
       [ "CharacterData", "struct_killer_engine_1_1_character_data.html", "struct_killer_engine_1_1_character_data" ],
       [ "Color", "class_killer_engine_1_1_color.html", "class_killer_engine_1_1_color" ],
@@ -76,8 +80,15 @@ var annotated_dup =
       [ "RigidBody", "class_killer_physics_1_1_rigid_body.html", "class_killer_physics_1_1_rigid_body" ],
       [ "SpringForce", "class_killer_physics_1_1_spring_force.html", "class_killer_physics_1_1_spring_force" ]
     ] ],
+    [ "_EAXEXCLUSIONPROPERTIES", "struct___e_a_x_e_x_c_l_u_s_i_o_n_p_r_o_p_e_r_t_i_e_s.html", "struct___e_a_x_e_x_c_l_u_s_i_o_n_p_r_o_p_e_r_t_i_e_s" ],
+    [ "_EAXOBSTRUCTIONPROPERTIES", "struct___e_a_x_o_b_s_t_r_u_c_t_i_o_n_p_r_o_p_e_r_t_i_e_s.html", "struct___e_a_x_o_b_s_t_r_u_c_t_i_o_n_p_r_o_p_e_r_t_i_e_s" ],
+    [ "_EAXOCCLUSIONPROPERTIES", "struct___e_a_x_o_c_c_l_u_s_i_o_n_p_r_o_p_e_r_t_i_e_s.html", "struct___e_a_x_o_c_c_l_u_s_i_o_n_p_r_o_p_e_r_t_i_e_s" ],
+    [ "_EAXREVERBPROPERTIES", "struct___e_a_x_r_e_v_e_r_b_p_r_o_p_e_r_t_i_e_s.html", "struct___e_a_x_r_e_v_e_r_b_p_r_o_p_e_r_t_i_e_s" ],
+    [ "_EAXVECTOR", "struct___e_a_x_v_e_c_t_o_r.html", "struct___e_a_x_v_e_c_t_o_r" ],
+    [ "_EFXLOWPASSFILTER", "struct___e_f_x_l_o_w_p_a_s_s_f_i_l_t_e_r.html", "struct___e_f_x_l_o_w_p_a_s_s_f_i_l_t_e_r" ],
     [ "DefinedObject", "class_defined_object.html", "class_defined_object" ],
     [ "DefinedObject3D", "class_defined_object3_d.html", "class_defined_object3_d" ],
+    [ "EFXEAXREVERBPROPERTIES", "struct_e_f_x_e_a_x_r_e_v_e_r_b_p_r_o_p_e_r_t_i_e_s.html", "struct_e_f_x_e_a_x_r_e_v_e_r_b_p_r_o_p_e_r_t_i_e_s" ],
     [ "MenuSelector", "class_menu_selector.html", "class_menu_selector" ],
     [ "TestLevel", "class_test_level.html", "class_test_level" ],
     [ "TestLevelDefinedGameObject", "class_test_level_defined_game_object.html", "class_test_level_defined_game_object" ]

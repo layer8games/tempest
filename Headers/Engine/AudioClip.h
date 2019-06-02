@@ -149,7 +149,7 @@ namespace KillerEngine
 //==========================================================================================================================
 
 /*!
-	Header values for WAV file. Values are in bytes. These values are pretty rigid and will only work on .wav files.
+	\enum Header values for WAV file. Values are in bytes. These values are pretty rigid and will only work on .wav files.
 */
 		enum HeaderOffsets
 		{

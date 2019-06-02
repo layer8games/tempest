@@ -1,8 +1,18 @@
 var hierarchy =
 [
+    [ "_EAXEXCLUSIONPROPERTIES", "struct___e_a_x_e_x_c_l_u_s_i_o_n_p_r_o_p_e_r_t_i_e_s.html", null ],
+    [ "_EAXOBSTRUCTIONPROPERTIES", "struct___e_a_x_o_b_s_t_r_u_c_t_i_o_n_p_r_o_p_e_r_t_i_e_s.html", null ],
+    [ "_EAXOCCLUSIONPROPERTIES", "struct___e_a_x_o_c_c_l_u_s_i_o_n_p_r_o_p_e_r_t_i_e_s.html", null ],
+    [ "_EAXREVERBPROPERTIES", "struct___e_a_x_r_e_v_e_r_b_p_r_o_p_e_r_t_i_e_s.html", null ],
+    [ "_EAXVECTOR", "struct___e_a_x_v_e_c_t_o_r.html", null ],
+    [ "_EFXLOWPASSFILTER", "struct___e_f_x_l_o_w_p_a_s_s_f_i_l_t_e_r.html", null ],
     [ "KillerPhysics::ForceRegistry::_ParticleForceRegistration", "struct_killer_physics_1_1_force_registry_1_1___particle_force_registration.html", null ],
     [ "KillerPhysics::ForceRegistry::_RigidBodyRegistration", "struct_killer_physics_1_1_force_registry_1_1___rigid_body_registration.html", null ],
     [ "KillerCollisions::AABB", "class_killer_collisions_1_1_a_a_b_b.html", null ],
+    [ "KillerEngine::AudioClip", "class_killer_engine_1_1_audio_clip.html", null ],
+    [ "KillerEngine::AudioListener", "class_killer_engine_1_1_audio_listener.html", null ],
+    [ "KillerEngine::AudioManager", "class_killer_engine_1_1_audio_manager.html", null ],
+    [ "KillerEngine::AudioSource", "class_killer_engine_1_1_audio_source.html", null ],
     [ "KillerCollisions::BoundingSphere", "class_killer_collisions_1_1_bounding_sphere.html", null ],
     [ "KillerPhysics::BVHNode< BoundingVolumeClass >", "class_killer_physics_1_1_b_v_h_node.html", null ],
     [ "KillerEngine::Camera", "class_killer_engine_1_1_camera.html", [
@@ -13,6 +23,7 @@ var hierarchy =
     [ "KillerEngine::Color", "class_killer_engine_1_1_color.html", null ],
     [ "KillerPhysics::Contact", "class_killer_physics_1_1_contact.html", null ],
     [ "KillerEngine::Controller", "class_killer_engine_1_1_controller.html", null ],
+    [ "EFXEAXREVERBPROPERTIES", "struct_e_f_x_e_a_x_r_e_v_e_r_b_p_r_o_p_e_r_t_i_e_s.html", null ],
     [ "KillerEngine::Engine", "class_killer_engine_1_1_engine.html", null ],
     [ "KillerEngine::ErrorManager", "class_killer_engine_1_1_error_manager.html", null ],
     [ "KillerEngine::Font", "class_killer_engine_1_1_font.html", null ],

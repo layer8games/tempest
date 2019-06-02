@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['efxeaxreverbproperties',['EFXEAXREVERBPROPERTIES',['../struct_e_f_x_e_a_x_r_e_v_e_r_b_p_r_o_p_e_r_t_i_e_s.html',1,'']]],
   ['enablemousecursor',['EnableMouseCursor',['../class_killer_engine_1_1_win_program.html#a019bf127cea1bab3ec61a05cf0e649b0',1,'KillerEngine::WinProgram']]],
   ['end',['End',['../class_killer_engine_1_1_engine.html#a6d9e9ce47304aa613b12d7756787eb38',1,'KillerEngine::Engine']]],
   ['endgame',['EndGame',['../class_killer_engine_1_1_level_manager.html#aefaf5b1d035996cafe84fbefe8a416e2',1,'KillerEngine::LevelManager']]],

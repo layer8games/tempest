@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['errorcode',['ErrorCode',['../_error_manager_8h.html#a38b3f7789f5579a6cbc14d3875ddaa7d',1,'KillerEngine']]]
+  ['headeroffsets',['HeaderOffsets',['../class_killer_engine_1_1_audio_clip.html#a69b95ff8a0dda14f21feb7478854c20b',1,'KillerEngine::AudioClip']]]
 ];
