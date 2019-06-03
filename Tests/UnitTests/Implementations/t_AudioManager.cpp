@@ -47,7 +47,7 @@ Written by Maxwell Miller
 
 	AudioManager::LoadClip(U32 id, string filepath) => Should be created
 
-*/
+
 
 #include <boost/test/unit_test.hpp>
 #include <UnitTests/TestHelper.h>
@@ -123,3 +123,5 @@ BOOST_AUTO_TEST_CASE(AudioManagerAddAndRemove)
 	KE::AudioManager::Instance()->LoadSource(4);
 	BOOST_CHECK_NE(KE::AudioManager::Instance()->GetSource(4), nullptr);
 }
+
+*/

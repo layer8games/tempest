@@ -30,8 +30,8 @@ DEALINGS IN THE SOFTWARE.
 
 
 Written by Maxwell Miller
--------------------------------------------------------------*/
-
+*-------------------------------------------------------------*/
+/*
 #include <boost/test/unit_test.hpp>
 #include <UnitTests/TestHelper.h>
 #include <Engine/Atom.h>
@@ -121,3 +121,5 @@ BOOST_AUTO_TEST_CASE(AudioListenerAccessors)
 	BOOST_CHECK_EQUAL(yVel, 9.0f);
 	BOOST_CHECK_EQUAL(zVel, 10.0f);
 }
+
+*/
