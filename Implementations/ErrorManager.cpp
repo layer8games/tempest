@@ -44,9 +44,9 @@ shared_ptr<ErrorManager> ErrorManager::Instance(void)
 //=======================================================================================================	
 void ErrorManager::SetError(ErrorCode code, string message) 
 {
-	_errorCodes[_numErrors]	   = code;
-	_errorMessages[_numErrors] = message;
-	_numErrors++;
+	//_errorCodes.push_back(code);
+	//_errorMessages.push_back(message);
+	//_numErrors++;
 }
 
 //=======================================================================================================
@@ -56,7 +56,7 @@ void ErrorManager::DisplayErrors(void)
 {
 	if (_numErrors > 0) 
 	{
-		for (U32 i = 0; i < _numErrors; i++) 
+		for (U32 i = 0; i < _numErrors; ++i) 
 		{
 			switch (_errorCodes[i]) 
 			{
@@ -65,7 +65,8 @@ void ErrorManager::DisplayErrors(void)
 				break;					 
 				case UNKNOWN_ERROR: 
 					std::cout << "UNKNOWN_ERROR: " << _errorMessages[i].c_str() << std::endl;
-					MessageBox(NULL, _errorMessages[i].c_str(), "UNKNOWN", MB_ICONERROR | MB_OK);					
+					//MessageBox(NULL, _errorMessages[i].c_str(), "UNKNOWN", MB_ICONERROR | MB_OK);
+					//ProgramWindow::Instance()->AddMessageBox(_errorMessages[i], "UNKNOWN");
 				break;
 				case APPLICATION: 
 					std::cout << "APPLICATION Error: " << _errorMessages[i].c_str() << std::endl;
@@ -119,6 +120,9 @@ void ErrorManager::DisplayErrors(void)
 					//TODO::handle case 
 				break;
 			}
-		}	
+		}
+
+		_errorMessages.clear();
+		_errorCodes.clear();	
 	}
 }

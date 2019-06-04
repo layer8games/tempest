@@ -208,6 +208,8 @@ namespace KillerEngine
 			return glfwGetTime();
 		}
 
+		//void AddMessageBox(string errCode, string errMessage) {  }
+
 //==========================================================================================================================
 //
 //Callback Functions

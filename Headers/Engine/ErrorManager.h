@@ -2,10 +2,10 @@
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
+//#include <Engine/ProgramWindow.h>
 
 //=====STL includes=====
-#include <map>
-using std::map;
+#include <vector>
 
 namespace KillerEngine 
 {
@@ -101,7 +101,7 @@ namespace KillerEngine
 		static shared_ptr<ErrorManager> _instance;	///< Global singleton instance.
 
 		U32       			 _numErrors;			///< Total count of errors.
-		map<U32, ErrorCode>  _errorCodes;			///< List of active error codes.
-		map<U32, string>     _errorMessages;		///< List of active error messages.
+		std::vector<ErrorCode>  	 _errorCodes;			///< List of active error codes.
+		std::vector<string>     	 _errorMessages;		///< List of active error messages.
 	};//End class
 }//End namespace

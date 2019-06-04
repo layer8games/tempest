@@ -353,6 +353,13 @@ const KM::Point ProgramWindow::GetMousePosInScreen(void)
     return KM::Point(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
 }
 
+/*
+void ProgramWindow::AddMessageBox(string errCode, string errMessage)
+{
+    MessageBox(NULL, errMessage.c_str(), errCode.c_str(), MB_ICONERROR | MB_OKCANCEL);
+}
+*/
+
 //==========================================================================================================================
 //
 //Callback Functions
