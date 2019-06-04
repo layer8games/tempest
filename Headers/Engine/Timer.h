@@ -2,7 +2,7 @@
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
-#include <Engine/WinProgram.h>
+#include <Engine/ProgramWindow.h>
 
 namespace KE = KillerEngine;
 
@@ -13,7 +13,7 @@ namespace KillerMath
 	this the timer is windows specific, but cross platform functionality is
 	planned in the future. 
 
-	It uses the GLFW function glfwGetTime, located in the WinProgram to get
+	It uses the GLFW function glfwGetTime, located in the ProgramWindow to get
 	the total time that the glfw window has been open. It used to have a 
 	customer frequency timer, but this turned out to be too eratic, and 
 	was removed.  
@@ -116,7 +116,7 @@ namespace KillerMath
 //==========================================================================================================================		
 /*!
 	This updates the _totalTime and _deltaTime values. This is where all of the magic happens. Should be called once per frame.
-	It called WinProgram::GetTime().
+	It called ProgramWindow::GetTime().
 */
 		void Update (void);
 		

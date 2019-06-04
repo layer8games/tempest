@@ -136,9 +136,6 @@
     <Filter Include="Source Code\KillerEngine\Texture">
       <UniqueIdentifier>{70216902-edb5-4822-8aec-ed808572d931}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerEngine\WindowProgram">
-      <UniqueIdentifier>{381d786c-065e-4c73-9294-7079cbccce17}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\KillerCollision">
       <UniqueIdentifier>{133d8e31-217f-4f8c-9467-0e6e8ed02fb3}</UniqueIdentifier>
     </Filter>
@@ -190,6 +187,9 @@
     <Filter Include="Source Code\KillerEngine\AudioSource">
       <UniqueIdentifier>{95e2e84a-b12d-42be-98df-7422a5f653a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\KillerEngine\ProgramWindow">
+      <UniqueIdentifier>{381d786c-065e-4c73-9294-7079cbccce17}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -209,9 +209,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Timer.h">
       <Filter>Source Code\KillerMath\Timer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\WinProgram.h">
-      <Filter>Source Code\KillerEngine\WindowProgram</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\EnvironmentObject.h">
       <Filter>Source Code\KillerEngine\GameObjects\EnvironmentObj</Filter>
@@ -342,6 +339,9 @@
     <ClInclude Include="..\..\Headers\Engine\AudioListener.h">
       <Filter>Source Code\KillerEngine\AudioListener</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\ProgramWindow.h">
+      <Filter>Source Code\KillerEngine\ProgramWindow</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -358,9 +358,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Timer.cpp">
       <Filter>Source Code\KillerMath\Timer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\WinProgram.cpp">
-      <Filter>Source Code\KillerEngine\WindowProgram</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\EnvironmentObject.cpp">
       <Filter>Source Code\KillerEngine\GameObjects\EnvironmentObj</Filter>
@@ -481,6 +478,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\AudioSource.cpp">
       <Filter>Source Code\KillerEngine\AudioSource</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\ProgramWindow.cpp">
+      <Filter>Source Code\KillerEngine\ProgramWindow</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

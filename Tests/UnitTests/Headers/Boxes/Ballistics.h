@@ -12,7 +12,7 @@ Written by Maxwell Miller
 //=====Engine includes=====
 #include <Engine/Atom.h>
 #include <Engine/LevelManager.h>
-#include <Engine/WinProgram.h>
+#include <Engine/ProgramWindow.h>
 #include <Engine/Level.h>
 #include <Engine/Controller.h>
 #include <Engine/TextureManager.h>

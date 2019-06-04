@@ -41,8 +41,8 @@ FPSCamera::~FPSCamera(void)
 void FPSCamera::v_Update(void)
 {
 	KM::Point mouseCoord = Controller::Instance()->GetMouseCoord();
-	S32 width = WinProgram::Instance()->GetWidth();
-	S32 height = WinProgram::Instance()->GetHeight();
+	S32 width = ProgramWindow::Instance()->GetWidth();
+	S32 height = ProgramWindow::Instance()->GetHeight();
 
 	//Set yaw and pitch for rotate
 	_deltaYaw = static_cast<F32>((width / 2.0f - mouseCoord[0])) * _mouseSensitivity;
@@ -50,7 +50,7 @@ void FPSCamera::v_Update(void)
 
 	v_Rotate();
 
-	WinProgram::Instance()->ResetMouseCursor();
+	ProgramWindow::Instance()->ResetMouseCursor();
 }
 
 void FPSCamera::v_Rotate(void)

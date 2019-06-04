@@ -1,4 +1,4 @@
-#include <Engine/WinProgram.h>
+#include <Engine/ProgramWindow.h>
 #include <iostream>
 
 using namespace KillerEngine;
@@ -8,7 +8,7 @@ using namespace KillerEngine;
 //Constructors
 //
 //==========================================================================================================================   
-WinProgram::WinProgram(void) 
+ProgramWindow::ProgramWindow(void) 
 : 
 _isFullScreen(false),
 _running(false),
@@ -22,25 +22,25 @@ _bgColor(),
 _window(nullptr)
 {  }
 
-WinProgram::~WinProgram(void)
+ProgramWindow::~ProgramWindow(void)
 {  }
 //==========================================================================================================================
 //
-//WinProgram Functions
+//ProgramWindow Functions
 //
 //==========================================================================================================================
 //=======================================================================================================
 //Instance
 //=======================================================================================================
-shared_ptr<WinProgram> WinProgram::_instance = NULL;
-int WinProgram::_totalWidth = 0;
-int WinProgram::_totalHeight = 0;
+shared_ptr<ProgramWindow> ProgramWindow::_instance = NULL;
+int ProgramWindow::_totalWidth = 0;
+int ProgramWindow::_totalHeight = 0;
 
-shared_ptr<WinProgram> WinProgram::Instance(void) 
+shared_ptr<ProgramWindow> ProgramWindow::Instance(void) 
 {
     if(_instance == NULL) 
     { 
-        _instance = shared_ptr<WinProgram>(new WinProgram());
+        _instance = shared_ptr<ProgramWindow>(new ProgramWindow());
     }
     return _instance;
 }
@@ -48,7 +48,7 @@ shared_ptr<WinProgram> WinProgram::Instance(void)
 //==========================================================================================================================
 //Init
 //==========================================================================================================================
-void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen) 
+void ProgramWindow::Init(S32 width, S32 height, string wndName, bool isFullScreen) 
 {
 	_running = true;
 	_isFullScreen = isFullScreen;
@@ -62,7 +62,7 @@ void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen)
 
     if(!glfwInit())
     {
-    	ErrorManager::Instance()->SetError(OPENGL, "Failed to init GLFW. WinProgram.");
+    	ErrorManager::Instance()->SetError(OPENGL, "Failed to init GLFW. ProgramWindow.");
     }
 
     //Set up your opengl context
@@ -92,7 +92,7 @@ void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen)
     
     if(_window == NULL)
     {
-    	ErrorManager::Instance()->SetError(OPENGL, "Failed to create GLFW window. WinProgram.");
+    	ErrorManager::Instance()->SetError(OPENGL, "Failed to create GLFW window. ProgramWindow.");
     }
 
     glfwMakeContextCurrent(_window);
@@ -105,14 +105,14 @@ void WinProgram::Init(S32 width, S32 height, string wndName, bool isFullScreen)
     glewExperimental = GL_TRUE;
     if(glewInit() != GLEW_OK)
     {
-    	ErrorManager::Instance()->SetError(OPENGL, "Failed to init glew. WinProgram.");
+    	ErrorManager::Instance()->SetError(OPENGL, "Failed to init glew. ProgramWindow.");
     }
 
     glViewport(0, 0, _totalWidth, _totalHeight);
     glEnable(GL_DEPTH_TEST);
 }
 
-void WinProgram::ProcessEvents(void)
+void ProgramWindow::ProcessEvents(void)
 {
 	glfwPollEvents();
 }
@@ -120,13 +120,13 @@ void WinProgram::ProcessEvents(void)
 //=======================================================================================================
 //BufferSwap
 //=======================================================================================================
-void WinProgram::BufferSwap(void)
+void ProgramWindow::BufferSwap(void)
 { 
     glfwSwapBuffers(_window);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-Keys WinProgram::ConvertKeyCodes(int key)
+Keys ProgramWindow::ConvertKeyCodes(int key)
 {
     switch(key)
     {
@@ -253,7 +253,7 @@ Keys WinProgram::ConvertKeyCodes(int key)
     }
 }
 
-void WinProgram::DisplayFPS(void)
+void ProgramWindow::DisplayFPS(void)
 {
 	static F64 elapsed = 0.0f;
 	static U32 frameCount = 0;
@@ -283,7 +283,7 @@ void WinProgram::DisplayFPS(void)
 	++frameCount;
 }
 
-void WinProgram::ToggleWireFrame(void)
+void ProgramWindow::ToggleWireFrame(void)
 {
     _wireFrame = !_wireFrame;
 
@@ -297,27 +297,27 @@ void WinProgram::ToggleWireFrame(void)
     }
 }
 
-void WinProgram::ResetMouseCursor(void)
+void ProgramWindow::ResetMouseCursor(void)
 {
     glfwSetCursorPos(_window, _totalWidth / 2.0f, _totalHeight / 2.0f);
 }
 
-void WinProgram::EnableMouseCursor(void)
+void ProgramWindow::EnableMouseCursor(void)
 {
     glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 }
 
-void WinProgram::DisableMouseCursor(void)
+void ProgramWindow::DisableMouseCursor(void)
 {
     glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
 
-void WinProgram::HideMouseCursor(void)
+void ProgramWindow::HideMouseCursor(void)
 {
     glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 }
 
-const KM::Point WinProgram::GetMousePos(void)
+const KM::Point ProgramWindow::GetMousePos(void)
 {
     F64 mouseX, mouseY;
     glfwGetCursorPos(_window, &mouseX, &mouseY);
@@ -335,7 +335,7 @@ const KM::Point WinProgram::GetMousePos(void)
     return KM::Point(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
 }
 
-const KM::Point WinProgram::GetMousePosInScreen(void)
+const KM::Point ProgramWindow::GetMousePosInScreen(void)
 {
     F64 mouseX, mouseY;
     glfwGetCursorPos(_window, &mouseX, &mouseY);
@@ -361,7 +361,7 @@ const KM::Point WinProgram::GetMousePosInScreen(void)
 //=======================================================================================================
 //OnKey
 //=======================================================================================================    
-void WinProgram::OnKey(GLFWwindow* window, int key, int scancode, int action, int mods)
+void ProgramWindow::OnKey(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     if(action == GLFW_PRESS)
     {
@@ -376,7 +376,7 @@ void WinProgram::OnKey(GLFWwindow* window, int key, int scancode, int action, in
 //==========================================================================================================================
 //OnResize
 //==========================================================================================================================
-void WinProgram::OnResize(GLFWwindow* window, int width, int height)
+void ProgramWindow::OnResize(GLFWwindow* window, int width, int height)
 {
     _totalWidth = width;
     _totalHeight = height;
@@ -386,7 +386,7 @@ void WinProgram::OnResize(GLFWwindow* window, int width, int height)
 //==========================================================================================================================
 //OnMouseMove
 //==========================================================================================================================
-void WinProgram::OnMouseClick(GLFWwindow* window, int button, int action, int mods)
+void ProgramWindow::OnMouseClick(GLFWwindow* window, int button, int action, int mods)
 {   
     if(button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
     {
@@ -410,7 +410,7 @@ void WinProgram::OnMouseClick(GLFWwindow* window, int button, int action, int mo
 //==========================================================================================================================
 //OnMouseMove
 //==========================================================================================================================
-void WinProgram::OnMouseMove(GLFWwindow* window, F64 posX, F64 posY)
+void ProgramWindow::OnMouseMove(GLFWwindow* window, F64 posX, F64 posY)
 {
     //Controller::Instance()->SetMouseCoord(KM::Vector4(static_cast<F32>(posX), static_cast<F32>(posY)));
 }

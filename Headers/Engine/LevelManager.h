@@ -17,7 +17,7 @@ Written by Maxwell Miller
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
 #include <Engine/Level.h>
-#include <Engine/WinProgram.h>
+#include <Engine/ProgramWindow.h>
 #include <Engine/GameObject.h>
 #include <Engine/ErrorManager.h>
 
@@ -96,11 +96,11 @@ namespace KillerEngine
 		}
 
 /*! 
-	Starts the process to shut down the game. Wrapper around WinProgram::EndRunning. 
+	Starts the process to shut down the game. Wrapper around ProgramWindow::EndRunning. 
 */
 		void EndGame(void)
 		{
-			WinProgram::Instance()->EndRunning();
+			ProgramWindow::Instance()->EndRunning();
 		}
 
 /*! 

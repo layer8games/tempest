@@ -27,7 +27,7 @@ namespace KillerEngine
 	Supported system:
 		Windows	 
 */
-	class WinProgram
+	class ProgramWindow
 	{	
 	public:
 //==========================================================================================================================
@@ -38,7 +38,7 @@ namespace KillerEngine
 /*! 
 	No behavior. 
 */
-		~WinProgram(void);
+		~ProgramWindow(void);
 
 //==========================================================================================================================
 //
@@ -46,7 +46,7 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 /*! 
-	Closes down the WinProgram and ends the program. 
+	Closes down the ProgramWindow and ends the program. 
 */
 		inline void EndRunning(void) 
 		{ 
@@ -123,13 +123,13 @@ namespace KillerEngine
 
 //==========================================================================================================================
 //
-//WinProgram Functions
+//ProgramWindow Functions
 //
 //==========================================================================================================================
 /*! 
 	Singleton function. Returns the global pointer to the program window. 
 */
-		static shared_ptr<WinProgram> Instance(void);
+		static shared_ptr<ProgramWindow> Instance(void);
 
 /*! Sets up program window. Makes all calls needed to start up a window. This is a helper function that takes are of all the
 	glfw calls needed.
@@ -250,7 +250,7 @@ namespace KillerEngine
 		static void OnMouseMove(GLFWwindow* window, F64 posX, F64 posY);
 
 	private:
-		static shared_ptr<WinProgram> _instance;		///< Singleton instance. Global pointer, allows only one WinProgram to be active.
+		static shared_ptr<ProgramWindow> _instance;		///< Singleton instance. Global pointer, allows only one ProgramWindow to be active.
 		static S32     				  _totalWidth;		///< Total width of the window in pixels.
 		static S32     				  _totalHeight;		///< Total height of the window in pixels.
 		
@@ -275,7 +275,7 @@ namespace KillerEngine
 /*! 
 	By default, sets all numeric values to 0, all bools to false, the _wndName to "Killer Engine" and _window to a null pointer.  
 */
-		WinProgram(void);
+		ProgramWindow(void);
 
 	};	
 }//End namespace

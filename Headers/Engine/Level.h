@@ -15,7 +15,7 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/GameObject.h>
-#include <Engine/WinProgram.h>
+#include <Engine/ProgramWindow.h>
 #include <Engine/TextureManager.h>
 #include <Engine/EnvironmentObject.h>
 #include <Engine/Vector4.h>
@@ -220,7 +220,7 @@ namespace KillerEngine
 */
 		inline void ActivateBackgroundColor(void) 
 		{ 
-			WinProgram::Instance()->SetBackgroundColor(_bgColor); 
+			ProgramWindow::Instance()->SetBackgroundColor(_bgColor); 
 		}
 		
 /*!

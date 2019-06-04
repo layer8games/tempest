@@ -30,7 +30,7 @@ void MainMenu::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	Level::SetLevelHeight(h);
 	Level::SetBackgroundColor(c);
 
-	F32 top = KE::WinProgram::Instance()->GetScreenTop();
+	F32 top = KE::ProgramWindow::Instance()->GetScreenTop();
 
 	_selector.SetColor(KE::Color(1.0f, 0.0f, 0.0f));
 	_selector.SetTexture(KE::TextureManager::Instance()->GetTexture(100));

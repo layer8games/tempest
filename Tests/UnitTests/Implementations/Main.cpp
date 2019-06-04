@@ -50,7 +50,7 @@ Written by Maxwell Miller
 #include <Engine/Timer.h>
 #include <Engine/LevelManager.h>
 #include <Engine/Controller.h>
-#include <Engine/WinProgram.h>
+#include <Engine/ProgramWindow.h>
 #include <Engine/TextureManager.h>
 #include <Engine/FontManager.h>
 #include <Engine/Engine.h>
@@ -183,6 +183,6 @@ BOOST_AUTO_TEST_CASE(UITests)
 		KE::Engine::Instance()->Render();
 		KE::ErrorManager::Instance()->DisplayErrors();
 
-		KE::WinProgram::Instance()->DisplayFPS();
+		KE::ProgramWindow::Instance()->DisplayFPS();
 	}
 }

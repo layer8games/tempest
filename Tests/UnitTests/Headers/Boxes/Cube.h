@@ -8,7 +8,7 @@
 #include <Engine/Color.h>
 #include <Engine/Vertex.h>
 #include <Engine/Timer.h>
-#include <Engine/WinProgram.h>
+#include <Engine/ProgramWindow.h>
 
 namespace KE = KillerEngine;
 namespace KM = KillerMath;

@@ -8,7 +8,7 @@
 #include <Engine/CharacterData.h>
 #include <Engine/Color.h>
 #include <Engine/Matrix4.h>
-#include <Engine/WinProgram.h>
+#include <Engine/ProgramWindow.h>
 #include <Engine/ShaderManager.h>
 
 namespace KM = KillerMath;

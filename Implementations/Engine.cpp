@@ -20,9 +20,9 @@ Engine::Engine(void)
 //=======================================================================================================
 void Engine::Init(const S32 width, const S32 height, const string title, const bool fullscreen) 
 {
-	WinProgram::Instance()->Init(width, height, title, fullscreen);
+	ProgramWindow::Instance()->Init(width, height, title, fullscreen);
 
-	//Controller::Instance()->Init(WinProgram::Instance()->GetHINSTANCE(), WinProgram::Instance()->GetHWND());
+	//Controller::Instance()->Init(ProgramWindow::Instance()->GetHINSTANCE(), ProgramWindow::Instance()->GetHWND());
 
 	ErrorManager::Instance()->DisplayErrors();
 }
@@ -40,7 +40,7 @@ void Engine::ShutDown(void)
 //=======================================================================================================
 void Engine::Update(void) 
 {
-	WinProgram::Instance()->ProcessEvents();
+	ProgramWindow::Instance()->ProcessEvents();
 
 	KM::Timer::Instance()->Update();
 	
@@ -58,7 +58,7 @@ void Engine::Render(void)
 {
 	LevelManager::Instance()->Render();
 
-	WinProgram::Instance()->BufferSwap();
+	ProgramWindow::Instance()->BufferSwap();
 	
 	ErrorManager::Instance()->DisplayErrors();
 }

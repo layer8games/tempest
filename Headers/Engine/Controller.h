@@ -2,7 +2,7 @@
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
-#include <Engine/WinProgram.h>
+#include <Engine/ProgramWindow.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Matrix4.h>
 #include <Engine/Point.h>
@@ -99,7 +99,7 @@ namespace KillerEngine
 //==========================================================================================================================	
 /*! 
 	Human input device controller. Abstract Keyboard input is received through a system all found in the *Program class. 
-	For example, in WinProgram, when windows gets a key input message for a key down even, KeyDown(Keys k) is called.
+	For example, in ProgramWindow, when windows gets a key input message for a key down even, KeyDown(Keys k) is called.
 
 	Two enums are defined. 
 
@@ -140,25 +140,25 @@ namespace KillerEngine
 		void Update(void);
 
 /*! 
-	Used by WinProgram to set when a key is pressed down, based on system signals.
+	Used by ProgramWindow to set when a key is pressed down, based on system signals.
 	\param k Keys: Keycode for key that has been pressed down. 
 */
 		void KeyDown(Keys k);
 
 /*! 
-	Used by WinProgram to set when a key is no longer detected to be held down. 
+	Used by ProgramWindow to set when a key is no longer detected to be held down. 
 	\param k Keys: Keycode for key that has been released. 
 */
 		void KeyUp(Keys k);
 
 
 /*! 
-	Returns the raw mouse coordinates from the WinProgram. This is with the origin in the top left corner of the screen. 
+	Returns the raw mouse coordinates from the ProgramWindow. This is with the origin in the top left corner of the screen. 
 */
 		const KM::Point GetMouseCoord(void);
 
 /*! 
-	Returns the mouse coordinates in screen space, with the origin in the center of the screen. Wrapper around WinProgram. 
+	Returns the mouse coordinates in screen space, with the origin in the center of the screen. Wrapper around ProgramWindow. 
 */
 		const KM::Point GetMouseCoordInScreen(void);
 
