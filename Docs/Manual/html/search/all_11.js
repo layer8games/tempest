@@ -29,7 +29,7 @@ var searchData=
   ['render',['Render',['../class_killer_engine_1_1_engine.html#a0544104c7bffacec72851a2074ac8102',1,'KillerEngine::Engine::Render()'],['../class_killer_engine_1_1_level_manager.html#a51683140c6c2b0823709275a1f862d2f',1,'KillerEngine::LevelManager::Render()']]],
   ['renderobjects',['RenderObjects',['../class_killer_engine_1_1_level.html#a976f42d11931d94fa5799c09c9415b98',1,'KillerEngine::Level']]],
   ['reset',['Reset',['../class_killer_math_1_1_matrix3.html#a37c4c8f544b712b46bed8e172e9e0726',1,'KillerMath::Matrix3::Reset()'],['../class_killer_math_1_1_matrix4.html#a13e9c1358c5e6d6a6987e6c0063eae5d',1,'KillerMath::Matrix4::Reset()'],['../class_killer_math_1_1_point.html#a9776a05a5a6132e82317b59366989f38',1,'KillerMath::Point::Reset()'],['../class_killer_math_1_1_vector3.html#abfda8b19668a59edc1da618e005b1764',1,'KillerMath::Vector3::Reset()'],['../class_killer_math_1_1_vector4.html#acdb8eca36f1f3e3fd59318f80906f389',1,'KillerMath::Vector4::Reset()']]],
-  ['resetmousecursor',['ResetMouseCursor',['../class_killer_engine_1_1_win_program.html#a1c1bb1ffae092f13dd5fb42d5a4eaa2c',1,'KillerEngine::WinProgram']]],
+  ['resetmousecursor',['ResetMouseCursor',['../class_killer_engine_1_1_program_window.html#a2bb0834e2227127e2543dcad5518151e',1,'KillerEngine::ProgramWindow']]],
   ['restart',['Restart',['../class_killer_engine_1_1_audio_source.html#a974079330c2137c97af37a811d50ad73',1,'KillerEngine::AudioSource']]],
   ['restartsource',['RestartSource',['../class_killer_engine_1_1_audio_manager.html#ab4507ab4b63910c98fb573809b46dd2e',1,'KillerEngine::AudioManager']]],
   ['rigidbody',['RigidBody',['../class_killer_physics_1_1_rigid_body.html',1,'KillerPhysics']]],

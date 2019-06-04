@@ -1,4 +1,4 @@
-.TH "KillerEngine::Engine" 3 "Sat Jun 1 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Engine" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -81,7 +81,7 @@ Wrapper for \fBLevelManager::AddLevel()\fP\&. Adds level that can be set as acti
 .SS "void KillerEngine::Engine::End (void)\fC [inline]\fP"
 Wrapper for LevelManager::SetRunning()\&. Sets Running to false\&. This stops the Main Game Loop from running\&. Calling this is the same as Quitting the program\&. 
 .SS "void Engine::Init (const \fBS32\fP width, const \fBS32\fP height, const string title, const bool fullscreen)"
-Wrapper for \fBWinProgram::Init\fP\&. Sets up the Window and OpenGL 
+Wrapper for \fBProgramWindow::Init\fP\&. Sets up the Window and OpenGL 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -102,7 +102,7 @@ Wrapper for steps needed to render\&. Calls the following in order
 .IP "\(bu" 2
 \fBLevelManager::Render()\fP
 .IP "\(bu" 2
-\fBWinProgram::BufferSwap()\fP
+\fBProgramWindow::BufferSwap()\fP
 .IP "\(bu" 2
 \fBErrorManager::DisplayErrors()\fP 
 .PP
@@ -123,7 +123,7 @@ Wrapper for \fBLevelManager::ShutDown(void)\fP
 .SS "void Engine::Update (void)"
 Wrapper for steps needed update steps\&. Calls the following in order\&.
 .IP "\(bu" 2
-WinProgram::ProcessWndEvents()
+ProgramWindow::ProcessWndEvents()
 .IP "\(bu" 2
 Timer::Update()
 .IP "\(bu" 2

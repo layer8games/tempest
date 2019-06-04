@@ -14,6 +14,7 @@ var searchData=
   ['position',['position',['../struct_killer_engine_1_1_vertex.html#ae27638e38d3a04c5d2aff44ca5d281b5',1,'KillerEngine::Vertex']]],
   ['potentailcontact',['PotentailContact',['../struct_killer_collisions_1_1_potentail_contact.html',1,'KillerCollisions']]],
   ['potentialcontact',['PotentialContact',['../struct_killer_physics_1_1_potential_contact.html',1,'KillerPhysics']]],
-  ['processevents',['ProcessEvents',['../class_killer_engine_1_1_win_program.html#a1e7caa302600352c3ca66301ead19032',1,'KillerEngine::WinProgram']]],
+  ['processevents',['ProcessEvents',['../class_killer_engine_1_1_program_window.html#a53fdf908c9670d60fcbe7da60c8babef',1,'KillerEngine::ProgramWindow']]],
+  ['programwindow',['ProgramWindow',['../class_killer_engine_1_1_program_window.html',1,'KillerEngine::ProgramWindow'],['../class_killer_engine_1_1_program_window.html#a1f47765979adabbf7f91c3a2b4f5bd88',1,'KillerEngine::ProgramWindow::ProgramWindow()']]],
   ['projectile',['Projectile',['../class_boxes_1_1_projectile.html',1,'Boxes']]]
 ];

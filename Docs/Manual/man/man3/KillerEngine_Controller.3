@@ -1,4 +1,4 @@
-.TH "KillerEngine::Controller" 3 "Sat Jun 1 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Controller" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -97,7 +97,7 @@ KillerEngine::Controller
 .in -1c
 .SH "Detailed Description"
 .PP 
-Human input device controller\&. Abstract Keyboard input is received through a system all found in the *Program class\&. For example, in \fBWinProgram\fP, when windows gets a key input message for a key down even, \fBKeyDown(Keys k)\fP is called\&.
+Human input device controller\&. Abstract Keyboard input is received through a system all found in the *Program class\&. For example, in \fBProgramWindow\fP, when windows gets a key input message for a key down even, \fBKeyDown(Keys k)\fP is called\&.
 .PP
 Two enums are defined\&.
 .PP
@@ -144,15 +144,15 @@ Returns true if k has been released this frame\&.  k Keys: Desired keycode
 .SS "const \fBKM::Point\fP KillerEngine::Controller::GetLeftMouseCoord (void) const\fC [inline]\fP"
 Returns the raw coordinates of a Left Click in screen space\&. 
 .SS "const \fBKM::Point\fP Controller::GetMouseCoord (void)"
-Returns the raw mouse coordinates from the \fBWinProgram\fP\&. This is with the origin in the top left corner of the screen\&. 
+Returns the raw mouse coordinates from the \fBProgramWindow\fP\&. This is with the origin in the top left corner of the screen\&. 
 .SS "const \fBKM::Point\fP Controller::GetMouseCoordInScreen (void)"
-Returns the mouse coordinates in screen space, with the origin in the center of the screen\&. Wrapper around \fBWinProgram\fP\&. 
+Returns the mouse coordinates in screen space, with the origin in the center of the screen\&. Wrapper around \fBProgramWindow\fP\&. 
 .SS "const \fBKM::Point\fP KillerEngine::Controller::GetRightMouseCoord (void) const\fC [inline]\fP"
 Returns the raw coordinates of a Right click in screen space 
 .SS "shared_ptr< \fBController\fP > Controller::Instance (void)\fC [static]\fP"
 Singleton function to get global instance of \fBController\fP\&. 
 .SS "void Controller::KeyDown (Keys k)"
-Used by \fBWinProgram\fP to set when a key is pressed down, based on system signals\&. 
+Used by \fBProgramWindow\fP to set when a key is pressed down, based on system signals\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -161,7 +161,7 @@ Used by \fBWinProgram\fP to set when a key is pressed down, based on system sign
 .PP
 
 .SS "void Controller::KeyUp (Keys k)"
-Used by \fBWinProgram\fP to set when a key is no longer detected to be held down\&. 
+Used by \fBProgramWindow\fP to set when a key is no longer detected to be held down\&. 
 .PP
 \fBParameters:\fP
 .RS 4

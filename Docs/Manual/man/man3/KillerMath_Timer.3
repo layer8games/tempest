@@ -1,4 +1,4 @@
-.TH "KillerMath::Timer" 3 "Sat Jun 1 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Timer" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -103,7 +103,7 @@ KillerMath::Timer
 .PP 
 The high precision timer for the Killer1 Engine\&. At the time of writting this the timer is windows specific, but cross platform functionality is planned in the future\&.
 .PP
-It uses the GLFW function glfwGetTime, located in the WinProgram to get the total time that the glfw window has been open\&. It used to have a customer frequency timer, but this turned out to be too eratic, and was removed\&. 
+It uses the GLFW function glfwGetTime, located in the ProgramWindow to get the total time that the glfw window has been open\&. It used to have a customer frequency timer, but this turned out to be too eratic, and was removed\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "Timer::~Timer (void)"
@@ -154,7 +154,7 @@ This will attempt to move _deltaTime forward one single frame, at 60 frames per 
 .SS "\fBF64\fP KillerMath::Timer::TotalTime (void) const\fC [inline]\fP"
 Returns the total time that the program has been running\&. 
 .SS "void Timer::Update (void)"
-This updates the _totalTime and _deltaTime values\&. This is where all of the magic happens\&. Should be called once per frame\&. It called WinProgram::GetTime()\&. 
+This updates the _totalTime and _deltaTime values\&. This is where all of the magic happens\&. Should be called once per frame\&. It called ProgramWindow::GetTime()\&. 
 
 .SH "Author"
 .PP 

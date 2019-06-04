@@ -1,7 +1,5 @@
 var NAVTREEINDEX7 =
 {
-"struct_killer_physics_1_1_force_registry_1_1___particle_force_registration.html#ab1a448a507c915a13f1f065f4c9bc3ca":[1,0,4,6,0,1],
-"struct_killer_physics_1_1_force_registry_1_1___rigid_body_registration.html":[1,0,4,6,1],
 "struct_killer_physics_1_1_force_registry_1_1___rigid_body_registration.html#a6b54443ac76befd230a1f2dd1cc4b0f3":[1,0,4,6,1,0],
 "struct_killer_physics_1_1_force_registry_1_1___rigid_body_registration.html#ac258d35fe4ead798236498b1ca48b32e":[1,0,4,6,1,1],
 "struct_killer_physics_1_1_force_registry_1_1___rigid_body_registration.html#ad4917fa3a6f4d0598755d9d5fb9cd70b":[1,0,4,6,1,2],

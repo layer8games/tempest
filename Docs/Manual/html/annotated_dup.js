@@ -44,6 +44,7 @@ var annotated_dup =
       [ "Menu", "class_killer_engine_1_1_menu.html", "class_killer_engine_1_1_menu" ],
       [ "MenuItem", "struct_killer_engine_1_1_menu_item.html", "struct_killer_engine_1_1_menu_item" ],
       [ "OrbitCamera", "class_killer_engine_1_1_orbit_camera.html", "class_killer_engine_1_1_orbit_camera" ],
+      [ "ProgramWindow", "class_killer_engine_1_1_program_window.html", "class_killer_engine_1_1_program_window" ],
       [ "Shader", "class_killer_engine_1_1_shader.html", "class_killer_engine_1_1_shader" ],
       [ "ShaderData", "struct_killer_engine_1_1_shader_data.html", "struct_killer_engine_1_1_shader_data" ],
       [ "ShaderManager", "class_killer_engine_1_1_shader_manager.html", "class_killer_engine_1_1_shader_manager" ],
@@ -51,8 +52,7 @@ var annotated_dup =
       [ "Text", "class_killer_engine_1_1_text.html", "class_killer_engine_1_1_text" ],
       [ "Texture", "class_killer_engine_1_1_texture.html", "class_killer_engine_1_1_texture" ],
       [ "TextureManager", "class_killer_engine_1_1_texture_manager.html", "class_killer_engine_1_1_texture_manager" ],
-      [ "Vertex", "struct_killer_engine_1_1_vertex.html", "struct_killer_engine_1_1_vertex" ],
-      [ "WinProgram", "class_killer_engine_1_1_win_program.html", "class_killer_engine_1_1_win_program" ]
+      [ "Vertex", "struct_killer_engine_1_1_vertex.html", "struct_killer_engine_1_1_vertex" ]
     ] ],
     [ "KillerMath", null, [
       [ "Matrix3", "class_killer_math_1_1_matrix3.html", "class_killer_math_1_1_matrix3" ],

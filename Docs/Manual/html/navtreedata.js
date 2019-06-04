@@ -58,7 +58,7 @@ var NAVTREEINDEX =
 "class_killer_math_1_1_matrix3.html#a367d63fb90d10e5060493b5c170fdfcd",
 "class_killer_math_1_1_vector3.html#a65b6e7d4281508312f9cc1c79b77a7f6",
 "class_killer_physics_1_1_rigid_body.html#a22c938f4c7b9fee38e21d44507708878",
-"struct_killer_physics_1_1_force_registry_1_1___particle_force_registration.html#ab1a448a507c915a13f1f065f4c9bc3ca"
+"struct_killer_physics_1_1_force_registry_1_1___rigid_body_registration.html#a6b54443ac76befd230a1f2dd1cc4b0f3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
