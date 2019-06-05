@@ -78,6 +78,14 @@ namespace KillerEngine
 	\param levelID is the index to set to active.  
 */
 		void SetActiveLevel(U32 levelID);
+
+/*! 
+	Changes the active level to be a new level. This level is NOT stored in the levels data base and will be deleted when
+	the active level is changed again. This allows for levels to be lazy loaded, for quick switching, or to not be loaded 
+	into memory until they are set to active. Level::v_Init is called before it is set to active.
+	\param level is the new Level that will be set to active.
+*/
+		void SetActiveLevel(shared_ptr<Level> level);
 		
 /*! 
 	Returns the ID of the active Level state.  

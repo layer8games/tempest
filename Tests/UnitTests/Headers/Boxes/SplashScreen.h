@@ -50,7 +50,7 @@ namespace Boxes
 //Virtual functions
 //
 //==========================================================================================================================		
-		void v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c);
+		void v_InitLevel();
 		
 		void v_Update(void);
 	

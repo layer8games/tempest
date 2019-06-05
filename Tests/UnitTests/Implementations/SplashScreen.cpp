@@ -24,13 +24,12 @@ SplashScreen::~SplashScreen(void)
 //InitLevel
 //
 //=============================================================================
-void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c) 
+void SplashScreen::v_InitLevel(void) 
 {
-
-	Level::SetID(id);
-	Level::SetLevelWidth(w);
-	Level::SetLevelHeight(h);
-	Level::SetBackgroundColor(c);
+	Level::SetID(SPLASH_SCREEN_ID);
+	Level::SetLevelWidth(KE::GameWindow::Instance()->GetWidth());
+	Level::SetLevelHeight(KE::GameWindow::Instance()->GetHeight());
+	Level::SetBackgroundColor(KE::Color(0.0f, 0.0f, 0.0f));
 
 	F32 left = KE::GameWindow::Instance()->GetScreenLeft();
 	F32 right = KE::GameWindow::Instance()->GetScreenRight();

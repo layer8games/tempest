@@ -60,10 +60,23 @@ void LevelManager::RemoveLevel(U32 levelID)
 //==========================================================================================================================
 void LevelManager::SetActiveLevel(U32 levelID) 
 {
+	if(_activeLevelID == 0)
+	{
+		_activeLevel.reset();
+	}
+
 	_activeLevelID = levelID;
 	auto level = _levels.find(levelID);
 	_activeLevel = level->second;
 	_activeLevel->ActivateBackgroundColor();
+}
+
+void LevelManager::SetActiveLevel(shared_ptr<Level> level)
+{
+	_activeLevelID = 0;
+	level->v_Init();
+
+	_activeLevel = level;
 }
 
 //==========================================================================================================================
