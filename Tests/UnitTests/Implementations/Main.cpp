@@ -175,14 +175,19 @@ BOOST_AUTO_TEST_CASE(UITests)
 	KE::Engine::Instance()->SetActiveLevel(1);
 
 	if(KE::ErrorManager::Instance()->DisplayErrors())
+	{
 		KE::Engine::Instance()->End();
+	}
 
 	while (KE::Engine::Instance()->Running()) 
 	{
 		KE::Engine::Instance()->Update();
-		KE::ErrorManager::Instance()->DisplayErrors();
 		KE::Engine::Instance()->Render();
-		KE::ErrorManager::Instance()->DisplayErrors();
+		
+		if(KE::ErrorManager::Instance()->DisplayErrors())
+		{
+			KE::Engine::Instance()->End();
+		}
 
 		KE::GameWindow::Instance()->DisplayFPS();
 	}

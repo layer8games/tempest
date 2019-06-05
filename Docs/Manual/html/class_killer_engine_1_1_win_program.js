@@ -2,6 +2,7 @@ var class_killer_engine_1_1_win_program =
 [
     [ "~WinProgram", "class_killer_engine_1_1_win_program.html#a513faa7c01cdde8099b12dc9f6969f0e", null ],
     [ "WinProgram", "class_killer_engine_1_1_win_program.html#ab782c1fd306fb9660bbfe145e17bc513", null ],
+    [ "AddMessageBox", "class_killer_engine_1_1_win_program.html#a888a35d693ac62d8239fc1b8d9a02009", null ],
     [ "BufferSwap", "class_killer_engine_1_1_win_program.html#af2fbc4e18cf69cd925e9ec5272638594", null ],
     [ "DisableMouseCursor", "class_killer_engine_1_1_win_program.html#a1a29b6818e14cf8ec80e511aa9ea2383", null ],
     [ "DisplayFPS", "class_killer_engine_1_1_win_program.html#aab1011c8ef85bbe76ac1d174d720e815", null ],

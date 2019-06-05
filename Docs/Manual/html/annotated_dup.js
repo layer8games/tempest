@@ -38,13 +38,13 @@ var annotated_dup =
       [ "FontManager", "class_killer_engine_1_1_font_manager.html", "class_killer_engine_1_1_font_manager" ],
       [ "FPSCamera", "class_killer_engine_1_1_f_p_s_camera.html", "class_killer_engine_1_1_f_p_s_camera" ],
       [ "GameObject", "class_killer_engine_1_1_game_object.html", "class_killer_engine_1_1_game_object" ],
+      [ "GameWindow", "class_killer_engine_1_1_game_window.html", "class_killer_engine_1_1_game_window" ],
       [ "Glyph", "class_killer_engine_1_1_glyph.html", "class_killer_engine_1_1_glyph" ],
       [ "Level", "class_killer_engine_1_1_level.html", "class_killer_engine_1_1_level" ],
       [ "LevelManager", "class_killer_engine_1_1_level_manager.html", "class_killer_engine_1_1_level_manager" ],
       [ "Menu", "class_killer_engine_1_1_menu.html", "class_killer_engine_1_1_menu" ],
       [ "MenuItem", "struct_killer_engine_1_1_menu_item.html", "struct_killer_engine_1_1_menu_item" ],
       [ "OrbitCamera", "class_killer_engine_1_1_orbit_camera.html", "class_killer_engine_1_1_orbit_camera" ],
-      [ "ProgramWindow", "class_killer_engine_1_1_program_window.html", "class_killer_engine_1_1_program_window" ],
       [ "Shader", "class_killer_engine_1_1_shader.html", "class_killer_engine_1_1_shader" ],
       [ "ShaderData", "struct_killer_engine_1_1_shader_data.html", "struct_killer_engine_1_1_shader_data" ],
       [ "ShaderManager", "class_killer_engine_1_1_shader_manager.html", "class_killer_engine_1_1_shader_manager" ],
@@ -52,7 +52,8 @@ var annotated_dup =
       [ "Text", "class_killer_engine_1_1_text.html", "class_killer_engine_1_1_text" ],
       [ "Texture", "class_killer_engine_1_1_texture.html", "class_killer_engine_1_1_texture" ],
       [ "TextureManager", "class_killer_engine_1_1_texture_manager.html", "class_killer_engine_1_1_texture_manager" ],
-      [ "Vertex", "struct_killer_engine_1_1_vertex.html", "struct_killer_engine_1_1_vertex" ]
+      [ "Vertex", "struct_killer_engine_1_1_vertex.html", "struct_killer_engine_1_1_vertex" ],
+      [ "WinProgram", "class_killer_engine_1_1_win_program.html", "class_killer_engine_1_1_win_program" ]
     ] ],
     [ "KillerMath", null, [
       [ "Matrix3", "class_killer_math_1_1_matrix3.html", "class_killer_math_1_1_matrix3" ],

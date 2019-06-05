@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['particle',['Particle',['../class_killer_physics_1_1_particle.html',1,'KillerPhysics::Particle'],['../class_killer_physics_1_1_particle.html#a89fff65ae37da07ca215b117e88f12aa',1,'KillerPhysics::Particle::Particle(void)'],['../class_killer_physics_1_1_particle.html#ab4143190fe35b013a5be767b79e3996b',1,'KillerPhysics::Particle::Particle(const Particle *particle)'],['../class_killer_physics_1_1_particle.html#af8e8c2ba8d0fe1e8a72af8322fb127ef',1,'KillerPhysics::Particle::Particle(const Particle &amp;particle)'],['../struct_killer_physics_1_1_force_registry_1_1___particle_force_registration.html#a9db0f04a102cdebf2c1397e4b09403d8',1,'KillerPhysics::ForceRegistry::_ParticleForceRegistration::particle()']]],
+  ['particle',['Particle',['../class_killer_physics_1_1_particle.html',1,'KillerPhysics::Particle'],['../struct_killer_physics_1_1_force_registry_1_1___particle_force_registration.html#a9db0f04a102cdebf2c1397e4b09403d8',1,'KillerPhysics::ForceRegistry::_ParticleForceRegistration::particle()'],['../class_killer_physics_1_1_particle.html#a89fff65ae37da07ca215b117e88f12aa',1,'KillerPhysics::Particle::Particle(void)'],['../class_killer_physics_1_1_particle.html#ab4143190fe35b013a5be767b79e3996b',1,'KillerPhysics::Particle::Particle(const Particle *particle)'],['../class_killer_physics_1_1_particle.html#af8e8c2ba8d0fe1e8a72af8322fb127ef',1,'KillerPhysics::Particle::Particle(const Particle &amp;particle)']]],
   ['particlecontact',['ParticleContact',['../class_killer_physics_1_1_particle_contact.html',1,'KillerPhysics']]],
   ['particlecontactresolver',['ParticleContactResolver',['../class_killer_physics_1_1_particle_contact_resolver.html',1,'KillerPhysics']]],
   ['particleregistry',['ParticleRegistry',['../class_killer_physics_1_1_force_registry.html#a2d13f52fbff43723f4caeb56092f45fe',1,'KillerPhysics::ForceRegistry']]],
@@ -14,7 +14,6 @@ var searchData=
   ['position',['position',['../struct_killer_engine_1_1_vertex.html#ae27638e38d3a04c5d2aff44ca5d281b5',1,'KillerEngine::Vertex']]],
   ['potentailcontact',['PotentailContact',['../struct_killer_collisions_1_1_potentail_contact.html',1,'KillerCollisions']]],
   ['potentialcontact',['PotentialContact',['../struct_killer_physics_1_1_potential_contact.html',1,'KillerPhysics']]],
-  ['processevents',['ProcessEvents',['../class_killer_engine_1_1_program_window.html#a53fdf908c9670d60fcbe7da60c8babef',1,'KillerEngine::ProgramWindow']]],
-  ['programwindow',['ProgramWindow',['../class_killer_engine_1_1_program_window.html',1,'KillerEngine::ProgramWindow'],['../class_killer_engine_1_1_program_window.html#a1f47765979adabbf7f91c3a2b4f5bd88',1,'KillerEngine::ProgramWindow::ProgramWindow()']]],
+  ['processevents',['ProcessEvents',['../class_killer_engine_1_1_game_window.html#a264cba663565470720bb0d0270e02162',1,'KillerEngine::GameWindow::ProcessEvents()'],['../class_killer_engine_1_1_win_program.html#a1e7caa302600352c3ca66301ead19032',1,'KillerEngine::WinProgram::ProcessEvents()']]],
   ['projectile',['Projectile',['../class_boxes_1_1_projectile.html',1,'Boxes']]]
 ];

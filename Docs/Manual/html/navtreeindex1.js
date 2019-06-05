@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"class_boxes_1_1_projectile.html#ac7e2779126f0258bb33ae56d418e53eb":[1,0,0,10,0],
 "class_boxes_1_1_projectile.html#acfb63269aa89bb7073cbcc4bb8fa6165":[1,0,0,10,1],
 "class_boxes_1_1_projectile.html#aebf2a96f64ae0e6cc5316082770a3054":[1,0,0,10,6],
 "class_boxes_1_1_projectile.html#af12b78cac8d5463b4ad9f4b0c993b83e":[1,0,0,10,7],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "class_killer_engine_1_1_camera.html#ae849115bef91dc20436ae8841c839c17":[1,0,2,4,40],
 "class_killer_engine_1_1_camera.html#aeeb4c3e137218765fdad0040a93c473a":[1,0,2,4,15],
 "class_killer_engine_1_1_camera.html#af05df58d6b2436e95ad526defbcaf394":[1,0,2,4,9],
-"class_killer_engine_1_1_camera.html#af0c7b006223fb2ecae333eb6c56c1e9c":[1,0,2,4,16],
-"class_killer_engine_1_1_camera.html#af1a51abc8896836d251ed0ac2a211014":[1,0,2,4,13]
+"class_killer_engine_1_1_camera.html#af0c7b006223fb2ecae333eb6c56c1e9c":[1,0,2,4,16]
 };

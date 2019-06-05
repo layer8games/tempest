@@ -18,7 +18,10 @@ KillerEngine::ErrorManager
 .RI "void \fBSetError\fP (ErrorCode code, string message)"
 .br
 .ti -1c
-.RI "void \fBDisplayErrors\fP (void)"
+.RI "bool \fBDisplayErrors\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetConsoleOut\fP (bool state)"
 .br
 .in -1c
 .SS "Static Public Member Functions"
@@ -35,19 +38,30 @@ KillerEngine::ErrorManager
 .RI "\fBErrorManager\fP (void)"
 .br
 .in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fB_MessageBox\fP (string errorMessage, string errorCode)"
+.br
+.in -1c
 .SS "Private Attributes"
 
 .in +1c
+.ti -1c
+.RI "bool \fB_consoleOut\fP"
+.br
+.RI "Flag that sets if errors should be read out to the console as well\&. "
 .ti -1c
 .RI "\fBU32\fP \fB_numErrors\fP"
 .br
 .RI "Total count of errors\&. "
 .ti -1c
-.RI "map< \fBU32\fP, ErrorCode > \fB_errorCodes\fP"
+.RI "std::vector< ErrorCode > \fB_errorCodes\fP"
 .br
 .RI "List of active error codes\&. "
 .ti -1c
-.RI "map< \fBU32\fP, string > \fB_errorMessages\fP"
+.RI "std::vector< string > \fB_errorMessages\fP"
 .br
 .RI "List of active error messages\&. "
 .in -1c
@@ -70,10 +84,30 @@ Default destructor\&. No special actions taken
 Default constructor\&. No special actions are taken\&. Protected because this class follows the singleton pattern 
 .SH "Member Function Documentation"
 .PP 
-.SS "void ErrorManager::DisplayErrors (void)"
+.SS "bool ErrorManager::_MessageBox (string errorMessage, string errorCode)\fC [inline]\fP, \fC [private]\fP"
+Helper functions\&. Displays the MessageBox, and returns true if Yes is clicked, false if No is clicked\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIerrorMessage\fP is the string that will display in the box\&. 
+.br
+\fIerrorCode\fP is a string version of the ErrorCode that was submited for this error\&. 
+.RE
+.PP
+
+.SS "bool ErrorManager::DisplayErrors (void)"
 Displays any errors that have been added to the manager\&. This function loops over all the errors that have been added and displayed them one by one\&. Messages are never removed once they are thrown\&. 
 .SS "shared_ptr< \fBErrorManager\fP > ErrorManager::Instance (void)\fC [static]\fP"
 Singlton function\&. Returns pointer to global \fBErrorManager\fP instance\&. 
+.SS "void KillerEngine::ErrorManager::SetConsoleOut (bool state)\fC [inline]\fP"
+Sets if errors should be displayed on the console as well as a MessageBox 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP sets the new console state\&. True to pump errors to console 
+.RE
+.PP
+
 .SS "void ErrorManager::SetError (ErrorCode code, string message)"
 Adds an error into the Manager's map of errors\&. Any number of message can be in the Manager\&. 
 .PP

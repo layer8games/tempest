@@ -7,6 +7,5 @@ var searchData=
   ['point',['Point',['../class_killer_math_1_1_point.html',1,'KillerMath']]],
   ['potentailcontact',['PotentailContact',['../struct_killer_collisions_1_1_potentail_contact.html',1,'KillerCollisions']]],
   ['potentialcontact',['PotentialContact',['../struct_killer_physics_1_1_potential_contact.html',1,'KillerPhysics']]],
-  ['programwindow',['ProgramWindow',['../class_killer_engine_1_1_program_window.html',1,'KillerEngine']]],
   ['projectile',['Projectile',['../class_boxes_1_1_projectile.html',1,'Boxes']]]
 ];

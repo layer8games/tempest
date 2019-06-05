@@ -170,7 +170,7 @@ static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_controller.htm
 <tr class="separator:a0e7ead9b571318c2f5742b3f33c4064d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Human input device controller. Abstract Keyboard input is received through a system all found in the *Program class. For example, in <a class="el" href="class_killer_engine_1_1_program_window.html">ProgramWindow</a>, when windows gets a key input message for a key down even, <a class="el" href="class_killer_engine_1_1_controller.html#a5f774944c889c33dbfe11aff682484f1">KeyDown(Keys k)</a> is called.</p>
+<div class="textblock"><p>Human input device controller. Abstract Keyboard input is received through a system all found in the *Program class. For example, in <a class="el" href="class_killer_engine_1_1_game_window.html">GameWindow</a>, when windows gets a key input message for a key down even, <a class="el" href="class_killer_engine_1_1_controller.html#a5f774944c889c33dbfe11aff682484f1">KeyDown(Keys k)</a> is called.</p>
 <p>Two enums are defined.</p>
 <p>KeyStates represents all the possible states that a key can have. KEY_RELEASED means that the key is not pressed. KEY_UP means that the key was released this frame.</p>
 <p>Keys represents all the supported keys.</p>
@@ -329,7 +329,7 @@ static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_controller.htm
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns the raw mouse coordinates from the <a class="el" href="class_killer_engine_1_1_program_window.html">ProgramWindow</a>. This is with the origin in the top left corner of the screen. </p>
+<p>Returns the raw mouse coordinates from the <a class="el" href="class_killer_engine_1_1_game_window.html">GameWindow</a>. This is with the origin in the top left corner of the screen. </p>
 
 </div>
 </div>
@@ -348,7 +348,7 @@ static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_controller.htm
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns the mouse coordinates in screen space, with the origin in the center of the screen. Wrapper around <a class="el" href="class_killer_engine_1_1_program_window.html">ProgramWindow</a>. </p>
+<p>Returns the mouse coordinates in screen space, with the origin in the center of the screen. Wrapper around <a class="el" href="class_killer_engine_1_1_game_window.html">GameWindow</a>. </p>
 
 </div>
 </div>
@@ -421,7 +421,7 @@ static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_controller.htm
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Used by <a class="el" href="class_killer_engine_1_1_program_window.html">ProgramWindow</a> to set when a key is pressed down, based on system signals. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Used by <a class="el" href="class_killer_engine_1_1_game_window.html">GameWindow</a> to set when a key is pressed down, based on system signals. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">k</td><td>Keys: Keycode for key that has been pressed down. </td></tr>
   </table>
@@ -445,7 +445,7 @@ static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_controller.htm
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Used by <a class="el" href="class_killer_engine_1_1_program_window.html">ProgramWindow</a> to set when a key is no longer detected to be held down. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Used by <a class="el" href="class_killer_engine_1_1_game_window.html">GameWindow</a> to set when a key is no longer detected to be held down. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">k</td><td>Keys: Keycode for key that has been released. </td></tr>
   </table>
@@ -474,8 +474,8 @@ static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_controller.htm
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_controller_8h_source.html">Controller.h</a></li>
-<li>C:/Projects/Killer_Engine/Implementations/Controller.cpp</li>
+<li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_controller_8h_source.html">Controller.h</a></li>
+<li>F:/Projects/Killer_Engine/Implementations/Controller.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

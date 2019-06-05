@@ -54,6 +54,7 @@ var hierarchy =
     [ "GameObject3D", null, [
       [ "DefinedObject3D", "class_defined_object3_d.html", null ]
     ] ],
+    [ "KillerEngine::GameWindow", "class_killer_engine_1_1_game_window.html", null ],
     [ "KillerEngine::Level", "class_killer_engine_1_1_level.html", [
       [ "Boxes::Ballistics", "class_boxes_1_1_ballistics.html", null ],
       [ "Boxes::Demo3D", "class_boxes_1_1_demo3_d.html", null ],
@@ -77,7 +78,6 @@ var hierarchy =
     [ "KillerMath::Point", "class_killer_math_1_1_point.html", null ],
     [ "KillerCollisions::PotentailContact< PhysicsObject >", "struct_killer_collisions_1_1_potentail_contact.html", null ],
     [ "KillerPhysics::PotentialContact", "struct_killer_physics_1_1_potential_contact.html", null ],
-    [ "KillerEngine::ProgramWindow", "class_killer_engine_1_1_program_window.html", null ],
     [ "KillerMath::Quaternion", "class_killer_math_1_1_quaternion.html", null ],
     [ "KillerMath::Random", "class_killer_math_1_1_random.html", null ],
     [ "KillerEngine::Shader", "class_killer_engine_1_1_shader.html", null ],
@@ -90,5 +90,6 @@ var hierarchy =
     [ "KillerMath::Timer", "class_killer_math_1_1_timer.html", null ],
     [ "KillerMath::Vector3", "class_killer_math_1_1_vector3.html", null ],
     [ "KillerMath::Vector4", "class_killer_math_1_1_vector4.html", null ],
-    [ "KillerEngine::Vertex", "struct_killer_engine_1_1_vertex.html", null ]
+    [ "KillerEngine::Vertex", "struct_killer_engine_1_1_vertex.html", null ],
+    [ "KillerEngine::WinProgram", "class_killer_engine_1_1_win_program.html", null ]
 ];

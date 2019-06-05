@@ -15,6 +15,7 @@ var searchData=
   ['_7eerrormanager',['~ErrorManager',['../class_killer_engine_1_1_error_manager.html#a768a9e20a2a01bf3d69357c7386b0e02',1,'KillerEngine::ErrorManager']]],
   ['_7eforcegenerator',['~ForceGenerator',['../class_killer_physics_1_1_force_generator.html#a5b037f1c0acf35e0a9edb37a56210b15',1,'KillerPhysics::ForceGenerator']]],
   ['_7eforceregistry',['~ForceRegistry',['../class_killer_physics_1_1_force_registry.html#abaa035a21d6415034a5dfa11acf7aa32',1,'KillerPhysics::ForceRegistry']]],
+  ['_7egamewindow',['~GameWindow',['../class_killer_engine_1_1_game_window.html#aa76af1083e0deb9ebb41d0d3abb71791',1,'KillerEngine::GameWindow']]],
   ['_7eglyph',['~Glyph',['../class_killer_engine_1_1_glyph.html#a05a169a0de4f83e573c3dcd6aef33568',1,'KillerEngine::Glyph']]],
   ['_7egravityforce',['~GravityForce',['../class_killer_physics_1_1_gravity_force.html#a1f4da4360411bd22e506de1ec9fc1b21',1,'KillerPhysics::GravityForce']]],
   ['_7elevel',['~Level',['../class_killer_engine_1_1_level.html#a3164b75538259d026c034927e977c43b',1,'KillerEngine::Level']]],

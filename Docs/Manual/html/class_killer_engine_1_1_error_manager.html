@@ -90,6 +90,7 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_error_manager.
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_killer_engine_1_1_error_manager-members.html">List of all members</a>  </div>
@@ -106,8 +107,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a768a9e20a2a01bf3d69357c7386b0e02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1985ec212295b58c27d0377978b348cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#a1985ec212295b58c27d0377978b348cc">SetError</a> (ErrorCode code, string message)</td></tr>
 <tr class="separator:a1985ec212295b58c27d0377978b348cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26f8ed34b78234ca563205ed1fa5d7d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#a26f8ed34b78234ca563205ed1fa5d7d6">DisplayErrors</a> (void)</td></tr>
-<tr class="separator:a26f8ed34b78234ca563205ed1fa5d7d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb66440998f133a25f08387c687e857f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#abb66440998f133a25f08387c687e857f">DisplayErrors</a> (void)</td></tr>
+<tr class="separator:abb66440998f133a25f08387c687e857f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab03e8de3fb8ad351b1608882a7988c26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#ab03e8de3fb8ad351b1608882a7988c26">SetConsoleOut</a> (bool state)</td></tr>
+<tr class="separator:ab03e8de3fb8ad351b1608882a7988c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -119,20 +122,29 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a9a690a2295078adc0f44d664037bdbaf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#a9a690a2295078adc0f44d664037bdbaf">ErrorManager</a> (void)</td></tr>
 <tr class="separator:a9a690a2295078adc0f44d664037bdbaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ae2949fab3355fc3401bd63d9893e47de"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#ae2949fab3355fc3401bd63d9893e47de">_MessageBox</a> (string errorMessage, string errorCode)</td></tr>
+<tr class="separator:ae2949fab3355fc3401bd63d9893e47de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:af5fc26dcf1ca71fda9f36b6f46bf35a5"><td class="memItemLeft" align="right" valign="top"><a id="af5fc26dcf1ca71fda9f36b6f46bf35a5"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#af5fc26dcf1ca71fda9f36b6f46bf35a5">_consoleOut</a></td></tr>
+<tr class="memdesc:af5fc26dcf1ca71fda9f36b6f46bf35a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag that sets if errors should be read out to the console as well. <br /></td></tr>
+<tr class="separator:af5fc26dcf1ca71fda9f36b6f46bf35a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57f92ffde7d6a18ba31e6b0417a2f3ea"><td class="memItemLeft" align="right" valign="top"><a id="a57f92ffde7d6a18ba31e6b0417a2f3ea"></a>
 <a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#a57f92ffde7d6a18ba31e6b0417a2f3ea">_numErrors</a></td></tr>
 <tr class="memdesc:a57f92ffde7d6a18ba31e6b0417a2f3ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total count of errors. <br /></td></tr>
 <tr class="separator:a57f92ffde7d6a18ba31e6b0417a2f3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf9f6e4427348e318a33bae8820e0d57"><td class="memItemLeft" align="right" valign="top"><a id="acf9f6e4427348e318a33bae8820e0d57"></a>
-map&lt; <a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a>, ErrorCode &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#acf9f6e4427348e318a33bae8820e0d57">_errorCodes</a></td></tr>
-<tr class="memdesc:acf9f6e4427348e318a33bae8820e0d57"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of active error codes. <br /></td></tr>
-<tr class="separator:acf9f6e4427348e318a33bae8820e0d57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42abac6899f6b7d27701396cd0f1585f"><td class="memItemLeft" align="right" valign="top"><a id="a42abac6899f6b7d27701396cd0f1585f"></a>
-map&lt; <a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a>, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#a42abac6899f6b7d27701396cd0f1585f">_errorMessages</a></td></tr>
-<tr class="memdesc:a42abac6899f6b7d27701396cd0f1585f"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of active error messages. <br /></td></tr>
-<tr class="separator:a42abac6899f6b7d27701396cd0f1585f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a656318f3ca59fae786c139bdd1e94671"><td class="memItemLeft" align="right" valign="top"><a id="a656318f3ca59fae786c139bdd1e94671"></a>
+std::vector&lt; ErrorCode &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#a656318f3ca59fae786c139bdd1e94671">_errorCodes</a></td></tr>
+<tr class="memdesc:a656318f3ca59fae786c139bdd1e94671"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of active error codes. <br /></td></tr>
+<tr class="separator:a656318f3ca59fae786c139bdd1e94671"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af78a01fdba1f79b5eae89e9df39ddbc6"><td class="memItemLeft" align="right" valign="top"><a id="af78a01fdba1f79b5eae89e9df39ddbc6"></a>
+std::vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_error_manager.html#af78a01fdba1f79b5eae89e9df39ddbc6">_errorMessages</a></td></tr>
+<tr class="memdesc:af78a01fdba1f79b5eae89e9df39ddbc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of active error messages. <br /></td></tr>
+<tr class="separator:af78a01fdba1f79b5eae89e9df39ddbc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -191,14 +203,57 @@ static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_error_manager.
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a26f8ed34b78234ca563205ed1fa5d7d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26f8ed34b78234ca563205ed1fa5d7d6">&#9670;&nbsp;</a></span>DisplayErrors()</h2>
+<a id="ae2949fab3355fc3401bd63d9893e47de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2949fab3355fc3401bd63d9893e47de">&#9670;&nbsp;</a></span>_MessageBox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ErrorManager::_MessageBox </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>errorMessage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>errorCode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Helper functions. Displays the MessageBox, and returns true if Yes is clicked, false if No is clicked. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">errorMessage</td><td>is the string that will display in the box. </td></tr>
+    <tr><td class="paramname">errorCode</td><td>is a string version of the ErrorCode that was submited for this error. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abb66440998f133a25f08387c687e857f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb66440998f133a25f08387c687e857f">&#9670;&nbsp;</a></span>DisplayErrors()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ErrorManager::DisplayErrors </td>
+          <td class="memname">bool ErrorManager::DisplayErrors </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -234,6 +289,38 @@ static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_error_manager.
 </table>
 </div><div class="memdoc">
 <p>Singlton function. Returns pointer to global <a class="el" href="class_killer_engine_1_1_error_manager.html">ErrorManager</a> instance. </p>
+
+</div>
+</div>
+<a id="ab03e8de3fb8ad351b1608882a7988c26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab03e8de3fb8ad351b1608882a7988c26">&#9670;&nbsp;</a></span>SetConsoleOut()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::ErrorManager::SetConsoleOut </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets if errors should be displayed on the console as well as a MessageBox </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>sets the new console state. True to pump errors to console </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -273,8 +360,8 @@ static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_error_manager.
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_error_manager_8h_source.html">ErrorManager.h</a></li>
-<li>C:/Projects/Killer_Engine/Implementations/ErrorManager.cpp</li>
+<li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_error_manager_8h_source.html">ErrorManager.h</a></li>
+<li>F:/Projects/Killer_Engine/Implementations/ErrorManager.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

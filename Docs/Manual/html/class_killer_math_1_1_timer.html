@@ -175,7 +175,7 @@ static shared_ptr&lt; <a class="el" href="class_killer_math_1_1_timer.html">Time
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The high precision timer for the Killer1 Engine. At the time of writting this the timer is windows specific, but cross platform functionality is planned in the future.</p>
-<p>It uses the GLFW function glfwGetTime, located in the ProgramWindow to get the total time that the glfw window has been open. It used to have a customer frequency timer, but this turned out to be too eratic, and was removed. </p>
+<p>It uses the GLFW function glfwGetTime, located in the GameWindow to get the total time that the glfw window has been open. It used to have a customer frequency timer, but this turned out to be too eratic, and was removed. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af87243f09ef5b58b889fb4a7284b526d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af87243f09ef5b58b889fb4a7284b526d">&#9670;&nbsp;</a></span>~Timer()</h2>
@@ -516,13 +516,13 @@ static shared_ptr&lt; <a class="el" href="class_killer_math_1_1_timer.html">Time
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This updates the _totalTime and _deltaTime values. This is where all of the magic happens. Should be called once per frame. It called ProgramWindow::GetTime(). </p>
+<p>This updates the _totalTime and _deltaTime values. This is where all of the magic happens. Should be called once per frame. It called GameWindow::GetTime(). </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_timer_8h_source.html">Timer.h</a></li>
-<li>C:/Projects/Killer_Engine/Implementations/Timer.cpp</li>
+<li>F:/Projects/Killer_Engine/Headers/Engine/<a class="el" href="_timer_8h_source.html">Timer.h</a></li>
+<li>F:/Projects/Killer_Engine/Implementations/Timer.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
