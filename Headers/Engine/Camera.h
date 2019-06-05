@@ -16,7 +16,7 @@ Written by Maxwell Miller
 
 //=====Killer includes=====
 #include <Engine/Atom.h>
-#include <Engine/ProgramWindow.h>
+#include <Engine/GameWindow.h>
 #include <Engine/Matrix4.h>
 #include <Engine/Vector4.h>
 #include <Engine/Point.h>
@@ -66,7 +66,7 @@ namespace KillerEngine
 //Camera Functions
 //
 //==========================================================================================================================
-/*! Sets private Matrix4 to use an orthogrphic projection. This calls the ProgramWindow to get the demensions for the Matrix4. 
+/*! Sets private Matrix4 to use an orthogrphic projection. This calls the GameWindow to get the demensions for the Matrix4. 
 	\param none
 */
 		void SetOrthographic(void);

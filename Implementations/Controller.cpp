@@ -58,11 +58,11 @@ void Controller::KeyDown(Keys k)
 
 	if(k == LEFT_MOUSE)
 	{
-		_leftClickCoordinates = ProgramWindow::Instance()->GetMousePos();
+		_leftClickCoordinates = GameWindow::Instance()->GetMousePos();
 	}
 	else if(k == RIGHT_MOUSE)
 	{
-		_rightClickCoordinates = ProgramWindow::Instance()->GetMousePos();
+		_rightClickCoordinates = GameWindow::Instance()->GetMousePos();
 	}
 }
 
@@ -74,12 +74,12 @@ void Controller::KeyUp(Keys k)
 
 const KM::Point Controller::GetMouseCoord(void)
 {
-	return ProgramWindow::Instance()->GetMousePos();
+	return GameWindow::Instance()->GetMousePos();
 }
 
 const KM::Point Controller::GetMouseCoordInScreen(void)
 {
-	return ProgramWindow::Instance()->GetMousePosInScreen();
+	return GameWindow::Instance()->GetMousePosInScreen();
 }
 
 void Controller::Update(void)

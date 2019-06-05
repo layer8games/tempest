@@ -245,7 +245,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\ProgramWindow.h" />
+    <ClInclude Include="..\..\Headers\Engine\GameWindow.h" />
     <ClInclude Include="..\..\Headers\Engine\Text.h" />
     <ClInclude Include="..\..\Headers\Engine\Texture.h" />
     <ClInclude Include="..\..\Headers\Engine\TextureManager.h" />
@@ -372,7 +372,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector4.cpp" />
-    <ClCompile Include="..\..\Implementations\ProgramWindow.cpp" />
+    <ClCompile Include="..\..\Implementations\GameWindow.cpp" />
     <ClCompile Include="..\..\Implementations\Text.cpp" />
     <ClCompile Include="..\..\Implementations\TextureManager.cpp" />
     <ClCompile Include="..\..\Implementations\Timer.cpp" />

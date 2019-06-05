@@ -4,7 +4,7 @@
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Controller.h>
-#include <Engine/ProgramWindow.h>
+#include <Engine/GameWindow.h>
 #include <Engine/Timer.h>
 #include <Engine/LevelManager.h>
 //#include <Engine/TextureManager.h>
@@ -33,7 +33,7 @@ namespace KillerEngine
 //
 //==========================================================================================================================
 /*! 
-	Wrapper for ProgramWindow::Init. Sets up the Window and OpenGL
+	Wrapper for GameWindow::Init. Sets up the Window and OpenGL
 	\param width S32: describes width of window.
 	\param height S32: describes height of the window.
 	\param title string: sent to system to generate title of window.
@@ -47,13 +47,13 @@ namespace KillerEngine
 /*! Check if simulation is still running. */
 		inline bool Running(void) 
 		{ 
-			return ProgramWindow::Instance()->GetRunning(); 
+			return GameWindow::Instance()->GetRunning(); 
 		}
 
 /*! Wrapper for LevelManager::SetRunning(). Sets Running to false. This stops the Main Game Loop from running. Calling this is the same as Quitting the program. */ 
 		inline void End(void) 
 		{ 
-			ProgramWindow::Instance()->EndRunning(); 
+			GameWindow::Instance()->EndRunning(); 
 		}
 		
 /*!  
@@ -76,7 +76,7 @@ namespace KillerEngine
 
 /*! 
 	Wrapper for steps needed update steps. Calls the following in order.
-	 - ProgramWindow::ProcessWndEvents()
+	 - GameWindow::ProcessWndEvents()
 	 - Timer::Update()
 	 - Controller::Update()
 	 - LevelManager::Update()
@@ -87,7 +87,7 @@ namespace KillerEngine
 /*! 
 	Wrapper for steps needed to render. Calls the following in order
 	- LevelManager::Render()
-	- ProgramWindow::BufferSwap()
+	- GameWindow::BufferSwap()
 	- ErrorManager::DisplayErrors() 
 */
 		void Render(void);

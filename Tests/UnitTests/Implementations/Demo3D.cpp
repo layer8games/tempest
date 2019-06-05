@@ -188,7 +188,7 @@ void Demo3D::v_Update(void)
 	}
 	else if(KE::Controller::Instance()->GetKeyDown(KE::Keys::F11))
 	{
-		KE::ProgramWindow::Instance()->ToggleWireFrame();
+		KE::GameWindow::Instance()->ToggleWireFrame();
 	}
 	else if(KE::Controller::Instance()->GetKeyDown(KE::Keys::F1))
 	{
@@ -197,12 +197,12 @@ void Demo3D::v_Update(void)
 		if(!_useOrbit)
 		{
 			Level::SetCamera(&_fpsCamera);
-			KE::ProgramWindow::Instance()->DisableMouseCursor();
+			KE::GameWindow::Instance()->DisableMouseCursor();
 		}
 		else
 		{
 			Level::SetCamera(&_orbitCamera);
-			KE::ProgramWindow::Instance()->EnableMouseCursor();
+			KE::GameWindow::Instance()->EnableMouseCursor();
 		}
 	}
 

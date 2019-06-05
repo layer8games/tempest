@@ -26,15 +26,16 @@ SplashScreen::~SplashScreen(void)
 //=============================================================================
 void SplashScreen::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c) 
 {
+
 	Level::SetID(id);
 	Level::SetLevelWidth(w);
 	Level::SetLevelHeight(h);
 	Level::SetBackgroundColor(c);
 
-	F32 left = KE::ProgramWindow::Instance()->GetScreenLeft();
-	F32 right = KE::ProgramWindow::Instance()->GetScreenRight();
-	F32 bottom = KE::ProgramWindow::Instance()->GetScreenBottom();
-	F32 top = KE::ProgramWindow::Instance()->GetScreenTop();
+	F32 left = KE::GameWindow::Instance()->GetScreenLeft();
+	F32 right = KE::GameWindow::Instance()->GetScreenRight();
+	F32 bottom = KE::GameWindow::Instance()->GetScreenBottom();
+	F32 top = KE::GameWindow::Instance()->GetScreenTop();
 
 	_red.SetPosition(0.0f, 0.0f);
 	_red.SetTexture(KE::TextureManager::Instance()->GetTexture(100));
@@ -79,7 +80,7 @@ void SplashScreen::v_Update(void)
 	KM::Point bluePos  = _blue.GetPosition();
 	F32 redWidth   = _red.GetScale()[1];
 
-	if(greenPos[1] >= KE::ProgramWindow::Instance()->GetScreenBottom()) 
+	if(greenPos[1] >= KE::GameWindow::Instance()->GetScreenBottom()) 
 	{
 		_green.SetDirection(0.0f, -1.0f);
 

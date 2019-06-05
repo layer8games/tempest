@@ -40,10 +40,10 @@ Camera::~Camera(void)
 //==========================================================================================================================
 void Camera::SetOrthographic(void)
 {
-	F32 left = ProgramWindow::Instance()->GetScreenLeft();
-	F32 right = ProgramWindow::Instance()->GetScreenRight(); 
-	F32 bottom = ProgramWindow::Instance()->GetScreenBottom(); 
-	F32 top = ProgramWindow::Instance()->GetScreenTop(); 
+	F32 left = GameWindow::Instance()->GetScreenLeft();
+	F32 right = GameWindow::Instance()->GetScreenRight(); 
+	F32 bottom = GameWindow::Instance()->GetScreenBottom(); 
+	F32 top = GameWindow::Instance()->GetScreenTop(); 
 	F32 nearPlane=-100.0f; 
 	F32 farPlane=100.0f;
 
@@ -57,8 +57,8 @@ void Camera::SetOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearP
 
 void Camera::SetPerspective(void)
 {
-	F32 w = static_cast<F32>(ProgramWindow::Instance()->GetWidth());
-	F32 h = static_cast<F32>(ProgramWindow::Instance()->GetHeight());
+	F32 w = static_cast<F32>(GameWindow::Instance()->GetWidth());
+	F32 h = static_cast<F32>(GameWindow::Instance()->GetHeight());
 
 	_projection.MakePerspective(90.0f,  //field of view
 								w / h,  //aspect ratio

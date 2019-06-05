@@ -11,7 +11,7 @@ Written by Maxwell Miller
 //Killer1 includes
 #include <Engine/Atom.h>
 #include <Engine/LevelManager.h>
-#include <Engine/ProgramWindow.h>
+#include <Engine/GameWindow.h>
 #include <Engine/Level.h>
 #include <Engine/Timer.h>
 #include <Engine/TextureManager.h>
@@ -22,6 +22,7 @@ Written by Maxwell Miller
 #include <Engine/Controller.h>
 #include <Engine/Engine.h>
 #include <Engine/AudioManager.h>
+#include <Engine/ErrorManager.h>
 
 namespace KE = KillerEngine;
 namespace KM = KillerMath;

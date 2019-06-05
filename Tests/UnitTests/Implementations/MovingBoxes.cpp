@@ -38,10 +38,10 @@ void MovingBoxes::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	F32 width = static_cast<F32>(w);
 	F32 height = static_cast<F32>(h);
 
-	_left = KE::ProgramWindow::Instance()->GetScreenLeft();
-	_right = KE::ProgramWindow::Instance()->GetScreenRight();
-	_bottom = KE::ProgramWindow::Instance()->GetScreenBottom();
-	_top = KE::ProgramWindow::Instance()->GetScreenTop();
+	_left = KE::GameWindow::Instance()->GetScreenLeft();
+	_right = KE::GameWindow::Instance()->GetScreenRight();
+	_bottom = KE::GameWindow::Instance()->GetScreenBottom();
+	_top = KE::GameWindow::Instance()->GetScreenTop();
 
 	_levelTitle.SetFont(KE::FontManager::Instance()->GetFont(100));
 	_levelTitle.AddText("Moving Boxes");

@@ -50,7 +50,7 @@ Written by Maxwell Miller
 #include <Engine/Timer.h>
 #include <Engine/LevelManager.h>
 #include <Engine/Controller.h>
-#include <Engine/ProgramWindow.h>
+#include <Engine/GameWindow.h>
 #include <Engine/TextureManager.h>
 #include <Engine/FontManager.h>
 #include <Engine/Engine.h>
@@ -174,7 +174,8 @@ BOOST_AUTO_TEST_CASE(UITests)
 	
 	KE::Engine::Instance()->SetActiveLevel(1);
 
-	KE::ErrorManager::Instance()->DisplayErrors();
+	if(KE::ErrorManager::Instance()->DisplayErrors())
+		KE::Engine::Instance()->End();
 
 	while (KE::Engine::Instance()->Running()) 
 	{
@@ -183,6 +184,6 @@ BOOST_AUTO_TEST_CASE(UITests)
 		KE::Engine::Instance()->Render();
 		KE::ErrorManager::Instance()->DisplayErrors();
 
-		KE::ProgramWindow::Instance()->DisplayFPS();
+		KE::GameWindow::Instance()->DisplayFPS();
 	}
 }

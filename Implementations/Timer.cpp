@@ -13,7 +13,7 @@ _clamp(false),
 _deltaTime(0.0f),
 _timeScale(1.0f),
 _totalTime(0.0f),
-_pastTime(KE::ProgramWindow::Instance()->GetTime()),
+_pastTime(KE::GameWindow::Instance()->GetTime()),
 _currentTime(_pastTime),
 _paused(false) 
 {  }
@@ -52,7 +52,7 @@ void Timer::Update(void)
 {
 	if(!_paused) 
 	{
-		_currentTime = KE::ProgramWindow::Instance()->GetTime();
+		_currentTime = KE::GameWindow::Instance()->GetTime();
 		_deltaTime = static_cast<real>((_currentTime - _pastTime) * _timeScale);
 		_pastTime = _currentTime;
 

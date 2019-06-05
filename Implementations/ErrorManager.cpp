@@ -10,6 +10,7 @@ using namespace KillerEngine;
 //==========================================================================================================================
 ErrorManager::ErrorManager(void) 
 :
+_consoleOut(false),
 _numErrors(0),
 _errorCodes(),
 _errorMessages()
@@ -44,77 +45,170 @@ shared_ptr<ErrorManager> ErrorManager::Instance(void)
 //=======================================================================================================	
 void ErrorManager::SetError(ErrorCode code, string message) 
 {
-	//_errorCodes.push_back(code);
-	//_errorMessages.push_back(message);
-	//_numErrors++;
+	_errorCodes.push_back(code);
+	_errorMessages.push_back(message);
+	_numErrors++;
 }
 
 //=======================================================================================================
 //DisplayErrors
 //=======================================================================================================
-void ErrorManager::DisplayErrors(void) 
+bool ErrorManager::DisplayErrors(void) 
 {
 	if (_numErrors > 0) 
 	{
 		for (U32 i = 0; i < _numErrors; ++i) 
 		{
+			//Set extra text in message
+			_errorMessages[i] += "\nWould you like to close the game?";
+
 			switch (_errorCodes[i]) 
 			{
 				case NOT_ERROR:
 					//TODO::Need to log these some how
 				break;					 
 				case UNKNOWN_ERROR: 
-					std::cout << "UNKNOWN_ERROR: " << _errorMessages[i].c_str() << std::endl;
-					//MessageBox(NULL, _errorMessages[i].c_str(), "UNKNOWN", MB_ICONERROR | MB_OK);
-					//ProgramWindow::Instance()->AddMessageBox(_errorMessages[i], "UNKNOWN");
+					if(_consoleOut) 
+					{
+						std::cout << "UNKNOWN_ERROR: " << _errorMessages[i].c_str() << std::endl;
+					}
+					
+					if(_MessageBox(_errorMessages[i], "UNKNOWN_ERROR Found"))
+					{
+						return true;
+					}
 				break;
 				case APPLICATION: 
-					std::cout << "APPLICATION Error: " << _errorMessages[i].c_str() << std::endl;
-					MessageBox(NULL, _errorMessages[i].c_str(), "APPLICATION", MB_ICONERROR | MB_OK);					
+					if(_consoleOut) 
+					{
+						std::cout << "APPLICATION Error: " << _errorMessages[i].c_str() << std::endl;
+					}
+					
+					if(_MessageBox(_errorMessages[i], "APPLICATION Found"))
+					{
+						return true;
+					}
 				break;
 				case ENGINE: 
-					std::cout << "ENGINE Error: " << _errorMessages[i].c_str() << std::endl;
-					MessageBox(NULL, _errorMessages[i].c_str(), "KILLER_ENGINE", MB_ICONERROR | MB_OK);					
+					if(_consoleOut) 
+					{
+						std::cout << "ENGINE Error: " << _errorMessages[i].c_str() << std::endl;
+					}
+					
+					if(_MessageBox(_errorMessages[i], "KILLER_ENGINE Found"))
+					{
+						return true;
+					}
 				break;
 				case MATH:
-					std::cout << "MATH error: " << _errorMessages[i].c_str() << std::endl;
-					MessageBox(NULL, _errorMessages[i].c_str(), "MATH", MB_ICONERROR | MB_OK);
+					if(_consoleOut)
+					{
+						std::cout << "MATH error: " << _errorMessages[i].c_str() << std::endl;
+					}
+					
+					if(_MessageBox(_errorMessages[i], "MATH Found"))
+					{
+						return true;
+					}
 				break;
 				case PHYSICS: 
-					std::cout << "PHYCIS Error: " << _errorMessages[i].c_str() << std::endl;
-					MessageBox(NULL, _errorMessages[i].c_str(), "PHYCIS", MB_ICONERROR | MB_OK);					
+					if(_consoleOut)
+					{
+						std::cout << "PHYSICS Error: " << _errorMessages[i].c_str() << std::endl;
+					}
+					
+					if(_MessageBox(_errorMessages[i], "PHYSICS Found"))
+					{
+						return true;
+					}
 				break;
 				case WINDOWS: 
-					std::cout << "WINDOWS Error: " << _errorMessages[i].c_str() << std::endl;
-					MessageBox(NULL, _errorMessages[i].c_str(), "WINDOWS", MB_ICONERROR | MB_OK);					
+					if(_consoleOut)
+					{
+						std::cout << "WINDOWS Error: " << _errorMessages[i].c_str() << std::endl;
+					}
+					
+					if(_MessageBox(_errorMessages[i], "WINDOWS Found"))
+					{
+						return true;
+					}				
 				break;
 				case OPENGL: 
-					std::cout << "OPENGL Error: " << _errorMessages[i].c_str() << std::endl;
-					MessageBox(NULL, _errorMessages[i].c_str(), "OPENGL", MB_ICONERROR | MB_OK);					
+					if(_consoleOut)
+					{
+						std::cout << "OPENGL Error: " << _errorMessages[i].c_str() << std::endl;
+					}
+					
+					if(_MessageBox(_errorMessages[i], "OPENGL Found"))
+					{
+						return true;
+					}				
 				break;
 				case SHADER:
-					std::cout << "SHADER Error: " << _errorMessages[i].c_str() << std::endl;
-					MessageBox(NULL, _errorMessages[i].c_str(), "SHADER", MB_ICONERROR | MB_OK);					
+					if(_consoleOut)
+					{
+						std::cout << "SHADER Error: " << _errorMessages[i].c_str() << std::endl;
+					}
+					
+					if(_MessageBox(_errorMessages[i], "SHADER Found"))
+					{
+						return true;
+					}				
 				break;
 				case GLFW:
-					std::cout << "GLFW Error: " << _errorMessages[i].c_str() << std::endl;
-					MessageBox(NULL, _errorMessages[i].c_str(), "GLFW", MB_ICONERROR | MB_OK);					
+					if(_consoleOut)
+					{
+						std::cout << "GLFW Error: " << _errorMessages[i].c_str() << std::endl;
+					}
+					
+					if(_MessageBox(_errorMessages[i], "GLFW Found"))
+					{
+						return true;
+					}
 				break;
 				case TEXTURE_MANAGER:
-					std::cout << "TEXTURE_MANAGER Error: " << _errorMessages[i].c_str() << std::endl;
-					MessageBox(NULL, _errorMessages[i].c_str(), "TEXTURE_MANAGER", MB_ICONERROR | MB_OK);					
+					if(_consoleOut)
+					{
+						std::cout << "TEXTURE_MANAGER Error: " << _errorMessages[i].c_str() << std::endl;
+					}
+					
+					if(_MessageBox(_errorMessages[i], "TEXTURE_MANAGER Found"))
+					{
+						return true;
+					}
 				break;
 				case GAMEOBJECT:
-					std::cout << "GAMEOBJECT Error: " << _errorMessages[i].c_str() << std::endl;
-					MessageBox(NULL, _errorMessages[i].c_str(), "GAMEOBJECT", MB_ICONERROR | MB_OK);					
+					if(_consoleOut)
+					{
+						std::cout << "GAMEOBJECT Error: " << _errorMessages[i].c_str() << std::endl;
+					}
+					
+					if(_MessageBox(_errorMessages[i], "GAMEOBJECT Found"))
+					{
+						return true;
+					}
 				break;
 				case FREETYPE:
-					std::cout << "FREETYPE Error: " << _errorMessages[i].c_str() << std::endl;
-					MessageBox(NULL, _errorMessages[i].c_str(), "FREETYPE", MB_ICONERROR | MB_OK);					
+					if(_consoleOut)
+					{
+						std::cout << "FREETYPE Error: " << _errorMessages[i].c_str() << std::endl;
+					}
+					
+					if(_MessageBox(_errorMessages[i], "FREETYPE Found"))
+					{
+						return true;
+					}
 				break;
 				case AUDIO:
-					std::cout << "AUDIO Error: " << _errorMessages[i].c_str() << std::endl;
-					MessageBox(NULL, _errorMessages[i].c_str(), "AUDIO", MB_ICONERROR | MB_OK);					
+					if(_consoleOut)
+					{
+						std::cout << "AUDIO Error: " << _errorMessages[i].c_str() << std::endl;
+					}
+					
+					if(_MessageBox(_errorMessages[i], "AUDIO Found"))
+					{
+						return true;
+					}
 				break;
 				default:
 					//TODO::handle case 
@@ -123,6 +217,21 @@ void ErrorManager::DisplayErrors(void)
 		}
 
 		_errorMessages.clear();
-		_errorCodes.clear();	
+		_errorCodes.clear();
+		_numErrors = 0;	
+	}
+
+	return false;
+}
+
+bool ErrorManager::_MessageBox(string errorMessage, string errorCode)
+{
+	if(MessageBox(NULL, errorMessage.c_str(), errorCode.c_str(), MB_ICONERROR | MB_YESNO) == IDYES)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }

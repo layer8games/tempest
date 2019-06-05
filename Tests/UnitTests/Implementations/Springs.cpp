@@ -29,7 +29,7 @@ void Springs::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	Level::SetLevelHeight(h);
 	Level::SetBackgroundColor(c);
 
-	F32 top = KE::ProgramWindow::Instance()->GetScreenTop();
+	F32 top = KE::GameWindow::Instance()->GetScreenTop();
 
 	_levelTitle.SetFont(KE::FontManager::Instance()->GetFont(100));
 	_levelTitle.AddText("Spring Demo");

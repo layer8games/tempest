@@ -2,7 +2,6 @@
 
 //=====Engine includes=====
 #include <Engine/Atom.h>
-//#include <Engine/ProgramWindow.h>
 
 //=====STL includes=====
 #include <vector>
@@ -84,7 +83,16 @@ namespace KillerEngine
 	Displays any errors that have been added to the manager. This function loops over all the errors that have been added
 	and displayed them one by one. Messages are never removed once they are thrown. 
 */		
-		void DisplayErrors(void);
+		bool DisplayErrors(void);
+
+/*!
+	Sets if errors should be displayed on the console as well as a MessageBox
+	\param state sets the new console state. True to pump errors to console
+*/
+		inline void SetConsoleOut(bool state)
+		{
+			_consoleOut = state;
+		}
 
 	protected:
 //==========================================================================================================================
@@ -98,10 +106,27 @@ namespace KillerEngine
 		ErrorManager(void);
 
 	private:
-		static shared_ptr<ErrorManager> _instance;	///< Global singleton instance.
+//==========================================================================================================================
+//
+//Private Functions
+//
+//==========================================================================================================================
+/*!
+	Helper functions. Displays the MessageBox, and returns true if Yes is clicked, false if No is clicked.
+	\param errorMessage is the string that will display in the box. 
+	\param errorCode is a string version of the ErrorCode that was submited for this error.
+*/
+		inline bool _MessageBox(string errorMessage, string errorCode);
 
-		U32       			 _numErrors;			///< Total count of errors.
-		std::vector<ErrorCode>  	 _errorCodes;			///< List of active error codes.
-		std::vector<string>     	 _errorMessages;		///< List of active error messages.
+//==========================================================================================================================
+//
+//Data
+//
+//==========================================================================================================================
+		static shared_ptr<ErrorManager> _instance;			///< Global singleton instance.
+		bool 							_consoleOut;		///< Flag that sets if errors should be read out to the console as well.
+		U32       			 			_numErrors;			///< Total count of errors.
+		std::vector<ErrorCode>  	 	_errorCodes;		///< List of active error codes.
+		std::vector<string>     	 	_errorMessages;		///< List of active error messages.
 	};//End class
 }//End namespace
