@@ -27,6 +27,7 @@ Written by Maxwell Miller
 #include <Engine/AudioManager.h>
 
 #include <Boxes/Box.h>
+#include <Boxes/DataBases.h>
 
 #include <iostream>
 
@@ -43,16 +44,16 @@ namespace Boxes
 //Constructors
 //
 //==========================================================================================================================
-		MovingBoxes(void);
+		MovingBoxes(void) final;
 		
-		~MovingBoxes(void);
+		~MovingBoxes(void) final;
 
 //==========================================================================================================================
 //
 //Virtual functions
 //
 //==========================================================================================================================
-		void v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c);
+		void v_Init(void);
 		
 		void v_Update(void);
 
@@ -79,7 +80,7 @@ namespace Boxes
 		Box 	 _bluebox;
 		Box 	 _greenbox;
 		KE::Text _levelTitle;
-		Box* 	 _activeBox;
+		//Box* 	 _activeBox;
 	};
 
 }//End namespace

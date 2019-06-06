@@ -1,5 +1,4 @@
 #include <Boxes/MovingBoxes.h>
-#include <iostream>
 
 using namespace Boxes;
 
@@ -17,26 +16,30 @@ _top(0.0f),
 _redbox(),
 _bluebox(),
 _greenbox(),
-_levelTitle(),
-_activeBox(nullptr)
+_levelTitle()
+//_activeBox(nullptr)
 {  }
 
-MovingBoxes::~MovingBoxes(void) {  }
+MovingBoxes::~MovingBoxes(void) 
+{
+	//_activeBox = nullptr;
+}
 
 //=============================================================================
 //
 //InitLevel
 //
 //=============================================================================
-void MovingBoxes::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c) 
+void MovingBoxes::v_Init(void) 
 { 
-	Level::SetID(id);
-	Level::SetLevelWidth(w);
-	Level::SetLevelHeight(h);
-	Level::SetBackgroundColor(c);
 
-	F32 width = static_cast<F32>(w);
-	F32 height = static_cast<F32>(h);
+	Level::SetID(MOVING_BOXES_ID);
+	Level::SetWidth(KE::GameWindow::Instance()->GetWidth());
+	Level::SetHeight(KE::GameWindow::Instance()->GetHeight());
+	Level::SetBackgroundColor(KE::Color(0.2f, 0.2f, 0.2f));
+
+	F32 width = static_cast<F32>(KE::GameWindow::Instance()->GetWidth());
+	F32 height = static_cast<F32>(KE::GameWindow::Instance()->GetHeight());
 
 	_left = KE::GameWindow::Instance()->GetScreenLeft();
 	_right = KE::GameWindow::Instance()->GetScreenRight();
@@ -52,21 +55,21 @@ void MovingBoxes::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	_redbox.SetTexture(KE::TextureManager::Instance()->GetTexture(100));
 	_redbox.SetScale(32.0f, 32.0f);
 	_redbox.InitBounding();
-	Level::AddObjectToLevel(_redbox);
+	Level::AddObjectToLevel(shared_ptr<Box>(&_redbox));
 
 	_greenbox.SetPosition(_left / 3.0f, 0.0f);
 	_greenbox.SetTexture(KE::TextureManager::Instance()->GetTexture(101));
 	_greenbox.SetScale(32.0f, 32.0f);
 	_greenbox.InitBounding();
-	Level::AddObjectToLevel(_greenbox);
+	//Level::AddObjectToLevel(_greenbox);
 
 	_bluebox.SetPosition(_right / 3.0f, 0.0f);
 	_bluebox.SetTexture(KE::TextureManager::Instance()->GetTexture(102));
 	_bluebox.SetScale(32.0f, 32.0f);
 	_bluebox.InitBounding();
-	Level::AddObjectToLevel(_bluebox);
+	//Level::AddObjectToLevel(_bluebox);
 
-	_activeBox = &_redbox;
+	//_activeBox = &_redbox;	
 }
 
 //=============================================================================
@@ -76,12 +79,13 @@ void MovingBoxes::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 //=============================================================================
 void MovingBoxes::v_Update(void) 
 {
+/*	
 	KE::AudioManager::Instance()->PlaySource(2);
 	
 	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ESCAPE)) 
 	{ 
 		KE::AudioManager::Instance()->StopSource(2);
-		KE::LevelManager::Instance()->SetActiveLevel(2); 
+		KE::LevelManager::Instance()->SetActiveLevel(MAIN_MENU_ID); 
 	}
 
 	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ONE)) 
@@ -146,6 +150,7 @@ void MovingBoxes::v_Update(void)
 	CheckBoxEdge(_bluebox);
 
 	CheckCollisions();
+*/	
 }//End update
 
 //==========================================================================================================================
@@ -182,6 +187,7 @@ void MovingBoxes::CheckBoxEdge(KE::GameObject& b)
 
 void MovingBoxes::CheckCollisions(void)
 {
+/*
 	if(_redbox.OverlapCheck(_greenbox) || _redbox.OverlapCheck(_bluebox))
 	{
 		_redbox.OnCollide();
@@ -196,4 +202,5 @@ void MovingBoxes::CheckCollisions(void)
 	{
 		_bluebox.OnCollide();
 	}
+*/
 }

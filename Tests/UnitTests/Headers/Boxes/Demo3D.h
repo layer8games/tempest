@@ -17,6 +17,7 @@ namespace KE = KillerEngine;
 namespace KM = KillerMath;
 
 #include <Boxes/Cube.h>
+#include <Boxes/DataBases.h>
 
 namespace Boxes
 {
@@ -42,7 +43,7 @@ namespace Boxes
 //Functions
 //
 //==========================================================================================================================
-		void v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c) final;
+		void v_Init(void) final;
 
 		void v_Update(void) final;
 

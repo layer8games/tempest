@@ -78,7 +78,7 @@ namespace KillerEngine
 	\param h is the height of the Level. 
 
 */
-		virtual void v_InitLevel(void)=0;
+		virtual void v_Init(void)=0;
 
 /*!
 	Abstract function. Used to control what needs to happen during an update. Please note, objects added to the level 
@@ -226,7 +226,7 @@ namespace KillerEngine
 /*!
 	Returns the width of the play area of the Level.
 */
-		inline S32 GetLevelWidth(void) const 
+		inline S32 GetWidth(void) const 
 		{ 
 			return _width; 
 		}
@@ -234,7 +234,7 @@ namespace KillerEngine
 /*!
 	Returns the height of the play area of the Level.
 */
-		inline S32 GetLevelHeight(void) const 
+		inline S32 GetHeight(void) const 
 		{ 
 			return _height; 
 		}
@@ -243,7 +243,7 @@ namespace KillerEngine
 	Changes the width of the play area of the Level.
 	\param w is the new width.
 */
-		inline void SetLevelWidth(S32 w)  
+		inline void SetWidth(S32 w)  
 		{ 
 			_width = w; 
 		}
@@ -252,7 +252,7 @@ namespace KillerEngine
 	Changes the height of the play area of the Level.
 	\param h is the new height.
 */
-		inline void SetLevelHeight(S32 h) 
+		inline void SetHeight(S32 h) 
 		{ 
 			_height = h; 
 		}
@@ -260,7 +260,7 @@ namespace KillerEngine
 /*!
 	Helper function that allows you to change the play area dimensions at the same time. 
 */
-		inline void SetLevelDimensions(S32 w, S32 h) 
+		inline void SetDimensions(S32 w, S32 h) 
 		{ 
 			_width  = w; 
 			_height = h; 
@@ -309,7 +309,7 @@ namespace KillerEngine
 	\param right is the right border.
 	\param left is the left border.
 */
-		inline void SetLevelBorders(S32 top, S32 bottom, S32 right, S32 left)
+		inline void SetBorders(S32 top, S32 bottom, S32 right, S32 left)
 		{
 			_topBorder = top;
 			_bottomBorder = bottom;

@@ -31,7 +31,7 @@ _forceRegistry()
 
 Level::~Level(void)
 {
-	delete _camera;
+	_camera = nullptr;
 	_gameObjects.clear();
 	_particles.clear();
 }

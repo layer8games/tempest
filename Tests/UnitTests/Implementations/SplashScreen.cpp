@@ -12,7 +12,9 @@ _red(),
 _green(),
 _blue(),
 _mainTitle()
-{  }
+{
+	Level::SetID(SPLASH_SCREEN_ID);
+}
  
 SplashScreen::~SplashScreen(void) 
 {
@@ -24,11 +26,10 @@ SplashScreen::~SplashScreen(void)
 //InitLevel
 //
 //=============================================================================
-void SplashScreen::v_InitLevel(void) 
+void SplashScreen::v_Init(void) 
 {
-	Level::SetID(SPLASH_SCREEN_ID);
-	Level::SetLevelWidth(KE::GameWindow::Instance()->GetWidth());
-	Level::SetLevelHeight(KE::GameWindow::Instance()->GetHeight());
+	Level::SetWidth(KE::GameWindow::Instance()->GetWidth());
+	Level::SetHeight(KE::GameWindow::Instance()->GetHeight());
 	Level::SetBackgroundColor(KE::Color(0.0f, 0.0f, 0.0f));
 
 	F32 left = KE::GameWindow::Instance()->GetScreenLeft();
@@ -97,6 +98,6 @@ void SplashScreen::v_Update(void)
 	else 
 	{ 
 		KE::AudioManager::Instance()->PauseSource(1);
-		KE::LevelManager::Instance()->SetActiveLevel(2);
+		KE::LevelManager::Instance()->SetActiveLevel(MAIN_MENU_ID);
 	}
 }

@@ -24,15 +24,15 @@ Ballistics::~Ballistics(void) {  }
 //InitLevel
 //
 //=============================================================================
-void Ballistics::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
+void Ballistics::v_Init(void)
 {
-	Level::SetID(id);
-	Level::SetLevelWidth(w);
-	Level::SetLevelHeight(h);
-	Level::SetBackgroundColor(c);
+	Level::SetID(BALLISTICS_ID);
+	Level::SetWidth(KE::GameWindow::Instance()->GetWidth());
+	Level::SetHeight(KE::GameWindow::Instance()->GetHeight());
+	Level::SetBackgroundColor(KE::Color(0.2f, 0.2f, 0.2f));
 
-	F32 width = static_cast<F32>(w);
-	F32 height = static_cast<F32>(h);
+	F32 width = static_cast<F32>(Level::GetWidth());
+	F32 height = static_cast<F32>(Level::GetHeight());
 
 	F32 left = -width / 2.0f;
 	F32 right = width / 2.0f;

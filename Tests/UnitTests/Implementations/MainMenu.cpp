@@ -23,12 +23,12 @@ MainMenu::~MainMenu(void)
 //Virtual Functions
 //
 //==========================================================================================================================
-void MainMenu::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
+void MainMenu::v_Init(void)
 {
-	Level::SetID(id);
-	Level::SetLevelWidth(w);
-	Level::SetLevelHeight(h);
-	Level::SetBackgroundColor(c);
+	Level::SetID(MAIN_MENU_ID);
+	Level::SetWidth(KE::GameWindow::Instance()->GetWidth());
+	Level::SetHeight(KE::GameWindow::Instance()->GetHeight());
+	Level::SetBackgroundColor(KE::Color(0.2f, 0.2f, 0.2f));
 
 	F32 top = KE::GameWindow::Instance()->GetScreenTop();
 

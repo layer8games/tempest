@@ -74,6 +74,15 @@ namespace KillerEngine
 			LevelManager::Instance()->SetActiveLevel(id); 
 		}
 
+/*!
+	Wrapper for LevelManager::SetActive(void). Sets the temporary active level.
+	\param level is the pointer to set active
+*/
+		inline void SetActiveLevel(shared_ptr<Level> level)
+		{
+			LevelManager::Instance()->SetActiveLevel(level);
+		}
+
 /*! 
 	Wrapper for steps needed update steps. Calls the following in order.
 	 - GameWindow::ProcessWndEvents()

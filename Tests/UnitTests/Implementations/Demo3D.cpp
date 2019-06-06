@@ -27,12 +27,12 @@ _fpsCamera()
 Demo3D::~Demo3D(void)
 {  }
 
-void Demo3D::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
+void Demo3D::v_Init(void)
 {
-	Level::SetID(id);
-	Level::SetLevelWidth(w);
-	Level::SetLevelHeight(h);
-	Level::SetBackgroundColor(c);
+	Level::SetID(DEMO3D_ID);
+	Level::SetWidth(KE::GameWindow::Instance()->GetWidth());
+	Level::SetHeight(KE::GameWindow::Instance()->GetHeight());
+	Level::SetBackgroundColor(KE::Color(0.2f, 0.4f, 0.5f));
 
 	//Set up Cameras
 	F32 left = -25.0f;
@@ -57,7 +57,7 @@ void Demo3D::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 
 	KE::ShaderManager::Instance()->LoadShader(ligthShaderID, shaderData);
 
-	_orbitCamera.SetPerspective(45.0f, static_cast<F32>(w) / static_cast<F32>(h), 0.1f, 100.0f);
+	_orbitCamera.SetPerspective(45.0f, static_cast<F32>(Level::GetWidth()) / static_cast<F32>(Level::GetHeight()), 0.1f, 100.0f);
 	//_orbitCamera.SetOrthographic(left, right, bottom, top, 0.01f, 100.0f);
 	_orbitCamera.SetPosition(0.0f, 0.0f, 0.0f);
 	//Offset for robot to look right
@@ -67,7 +67,7 @@ void Demo3D::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	_orbitCamera.SetUpVector(0.0f, 1.0f, 0.0f);
 	_orbitCamera.SetMouseSensitivity(0.25f);
 
-	_fpsCamera.SetPerspective(45.0f, static_cast<F32>(w) / static_cast<F32>(h), 0.1f, 100.0f);
+	_fpsCamera.SetPerspective(45.0f, static_cast<F32>(Level::GetWidth()) / static_cast<F32>(Level::GetHeight()), 0.1f, 100.0f);
 	//_fpsCamera.SetOrthographic(left, right, bottom, top, -100.0f, 100.0f);
 	_fpsCamera.SetPosition(0.0f, 0.0f, 0.0f);
 	_fpsCamera.SetMoveSpeed(10.0f);

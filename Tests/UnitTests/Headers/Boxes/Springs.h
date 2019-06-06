@@ -23,6 +23,8 @@ Written by Maxwell Miller
 #include <Engine/Vector4.h>
 #include <Engine/Point.h>
 
+#include <Boxes/DataBases.h>
+
 namespace KE = KillerEngine;
 namespace KP = KillerPhysics;
 namespace KM = KillerMath;
@@ -46,9 +48,9 @@ namespace Boxes
 //Virtual Functions
 //
 //==========================================================================================================================
-		void v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c);
+		void v_Init(void) final;
 
-		void v_Update(void);
+		void v_Update(void) final;
 
 	private:
 		KE::Text			_levelTitle;

@@ -24,11 +24,13 @@ Written by Maxwell Miller
 #include <Engine/AudioManager.h>
 #include <Engine/ErrorManager.h>
 
+
 namespace KE = KillerEngine;
 namespace KM = KillerMath;
 
 //=====Box includes=====
 #include <Boxes/Box.h>
+#include <Boxes/DataBases.h>
 
 namespace Boxes 
 {
@@ -50,9 +52,9 @@ namespace Boxes
 //Virtual functions
 //
 //==========================================================================================================================		
-		void v_InitLevel();
+		void v_Init() final;
 		
-		void v_Update(void);
+		void v_Update(void) final;
 	
 	private:
 //==========================================================================================================================

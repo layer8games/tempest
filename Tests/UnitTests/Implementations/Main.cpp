@@ -74,17 +74,9 @@ namespace KE = KillerEngine;
 
 using namespace Boxes;
 
-//void 
-
-enum LevelID
+class Blank
 {
-	SPLASH_SCREEN_ID = 1,
-	MAIN_MENU_ID = 2,
-	MOVING_BOXES_ID = 3,
-	BALLISTICS_ID = 4,
-	FIREWORKS_ID = 5,
-	SPRINGS_ID = 6, 
-	DEMO3D_ID = 7
+	
 };
 
 BOOST_AUTO_TEST_CASE(UITests)
@@ -155,35 +147,37 @@ BOOST_AUTO_TEST_CASE(UITests)
 
 
 	//=====Add Levels=====
-	shared_ptr<SplashScreen> splashScreen { new SplashScreen() };
-	//splashScreen->v_InitLevel(1, wndWidth, wndHeight, KE::Color(0.0f, 0.0f, 0.0f));
-	KE::Engine::Instance()->AddLevelToManager(splashScreen);
 	
-	shared_ptr<MainMenu> mainMenu { new MainMenu() };
-	//mainMenu->v_InitLevel(2, wndWidth, wndHeight, KE::Color(0.2f, 0.2f, 0.2f));
+	//shared_ptr<SplashScreen> splashScreen = make_shared<SplashScreen>();
+	//KE::Engine::Instance()->SetActiveLevel(splashScreen);
+	
+	shared_ptr<MainMenu> mainMenu = make_shared<MainMenu>();
+	mainMenu->v_Init();
 	KE::Engine::Instance()->AddLevelToManager(mainMenu);
+	KE::Engine::Instance()->SetActiveLevel(MAIN_MENU_ID);
 
-	shared_ptr<MovingBoxes> movingBoxes { new MovingBoxes() };
-	//movingBoxes->v_InitLevel(3, wndWidth, wndHeight, KE::Color(0.2f, 0.2f, 0.2f));
-	KE::Engine::Instance()->AddLevelToManager(movingBoxes);
+	shared_ptr<MovingBoxes> boxes = make_shared<MovingBoxes>();
+	boxes->v_Init();
 
-	shared_ptr<Ballistics> levelBallistics { new Ballistics() };
+	boxes.reset();
+
+	//shared_ptr<Ballistics> levelBallistics { new Ballistics() };
 	//levelBallistics->v_InitLevel(4, wndWidth, wndHeight, KE::Color(0.2f, 0.2f, 0.2f));
-	KE::Engine::Instance()->AddLevelToManager(levelBallistics);
+	//KE::Engine::Instance()->AddLevelToManager(levelBallistics);
 
-	shared_ptr<FireworksDemo> fireworks { new FireworksDemo() };
+	//shared_ptr<FireworksDemo> fireworks { new FireworksDemo() };
 	//fireworks->v_InitLevel(5, wndWidth, wndHeight, KE::Color(0.2f, 0.2f, 0.2f));
-	KE::Engine::Instance()->AddLevelToManager(fireworks);
+	//KE::Engine::Instance()->AddLevelToManager(fireworks);
 
-	shared_ptr<Springs> springs { new Springs() };
+	//shared_ptr<Springs> springs { new Springs() };
 	//springs->v_InitLevel(6, wndWidth, wndHeight, KE::Color(0.2f, 0.2f, 0.2f));
-	KE::Engine::Instance()->AddLevelToManager(springs);
+	//KE::Engine::Instance()->AddLevelToManager(springs);
 
-	shared_ptr<Demo3D> demo3D { new Demo3D() };
+	//shared_ptr<Demo3D> demo3D { new Demo3D() };
 	//demo3D->v_InitLevel(7, wndWidth, wndHeight, KE::Color(0.2f, 0.4f, 0.5f));
-	KE::Engine::Instance()->AddLevelToManager(demo3D);
+	//KE::Engine::Instance()->AddLevelToManager(demo3D);
 	
-	KE::Engine::Instance()->SetActiveLevel(1);
+	//KE::Engine::Instance()->SetActiveLevel(1);
 
 	if(KE::ErrorManager::Instance()->DisplayErrors())
 	{

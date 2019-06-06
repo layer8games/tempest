@@ -22,12 +22,12 @@ FireworksDemo::~FireworksDemo(void)
 //Virtual Functions
 //
 //==========================================================================================================================	
-void FireworksDemo::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
+void FireworksDemo::v_Init(void)
 {
-	Level::SetID(id);
-	Level::SetLevelWidth(w);
-	Level::SetLevelHeight(h);
-	Level::SetBackgroundColor(c);
+	Level::SetID(FIREWORKS_ID);
+	Level::SetWidth(KE::GameWindow::Instance()->GetWidth());
+	Level::SetHeight(KE::GameWindow::Instance()->GetHeight());
+	Level::SetBackgroundColor(KE::Color(0.2f, 0.2f, 0.2f));
 
 	F32 top = KE::GameWindow::Instance()->GetScreenTop();
 
@@ -36,7 +36,7 @@ void FireworksDemo::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 	_levelTitle.SetPosition(KM::Point(-_levelTitle.GetWidth(), top - (top * 0.1f)));
 	Level::AddTextToLevel(_levelTitle);
 
-	_firework.SetLevelID(id);
+	_firework.SetLevelID(FIREWORKS_ID);
 	_firework.SetTexture(KE::TextureManager::Instance()->GetTexture(102));
 	_firework.SetScale(15.0f, 15.0f);
 	_firework.SetPosition(0.0f, 0.0f);

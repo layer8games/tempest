@@ -22,6 +22,7 @@ Written by Maxwell Miller
 
 //===== Box Includes =====
 #include <Boxes/Firework.h>
+#include <Boxes/DataBases.h>
 
 namespace KE = KillerEngine;
 
@@ -45,9 +46,9 @@ namespace Boxes
 //Virtual Functions
 //
 //==========================================================================================================================
-		void v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c);
+		void v_Init(void) final;
 		
-		void v_Update(void);
+		void v_Update(void) final;
 	
 	private:
 		PayloadPool _pool;
