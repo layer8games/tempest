@@ -27,7 +27,6 @@ namespace KC = KillerCollisions;
 
 namespace Boxes
 {
-
 	class Box : public KE::GameObject 
 	{
 	public:
@@ -107,5 +106,7 @@ namespace Boxes
 		KM::Vector4 			_direction;
 		KC::AABB				_boundingBox;
 	};
+
+	typedef shared_ptr<Box> p_Box;
 
 }//End namespace

@@ -62,9 +62,9 @@ namespace Boxes
 //Members
 //
 //==========================================================================================================================		
-		Box 	 _red;
-		Box 	 _green;
-		Box 	 _blue;
+		p_Box 	 _red;
+		p_Box 	 _green;
+		p_Box 	 _blue;
 		KE::Text _mainTitle;
 	};//End Class
 }

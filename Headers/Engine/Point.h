@@ -190,6 +190,12 @@ namespace KillerMath
 			_data[z] = zVal;
 		}
 
+		inline void Set(F32 xVal, F32 yVal)
+		{
+			_data[x] = xVal;
+			_data[y] = yVal;
+		}
+
 //==========================================================================================================================
 //
 //operator Overloads

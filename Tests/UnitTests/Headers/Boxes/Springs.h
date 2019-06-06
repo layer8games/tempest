@@ -54,17 +54,17 @@ namespace Boxes
 
 	private:
 		KE::Text			_levelTitle;
-		KP::GravityForce    _gravity;
-		KP::Particle 		_box1OtherEnd;
-		KP::Particle 		_box1;
-		KP::SpringForce     _box1Spring;
-		KM::Point			_box2Anchor;
-		KP::Particle 		_box2;
-		KP::AnchoredSpring  _box2Spring;
-		KP::Particle 		_box3OtherEnd;
-		KP::Particle 		_box3;
-		KP::SpringForce     _box3Spring;
-		KP::Particle 		_box4;
-		KP::BuoyantForce    _box4BuoyantForce;
+		shared_ptr<KP::GravityForce>    _gravity;
+		shared_ptr<KP::Particle> 		_box1OtherEnd;
+		shared_ptr<KP::Particle> 		_box1;
+		shared_ptr<KP::SpringForce>     _box1Spring;
+		shared_ptr<KM::Point>			_box2Anchor;
+		shared_ptr<KP::Particle> 		_box2;
+		shared_ptr<KP::AnchoredSpring>  _box2Spring;
+		shared_ptr<KP::Particle> 		_box3OtherEnd;
+		shared_ptr<KP::Particle> 		_box3;
+		shared_ptr<KP::SpringForce>     _box3Spring;
+		shared_ptr<KP::Particle> 		_box4;
+		shared_ptr<KP::BuoyantForce>    _box4BuoyantForce;
 	};
 }
