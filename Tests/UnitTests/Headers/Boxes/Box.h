@@ -52,9 +52,9 @@ namespace Boxes
 //==========================================================================================================================		
 		void v_Update(void);
 
-		inline bool OverlapCheck(const Box& other)
+		inline bool OverlapCheck(const shared_ptr<Box> other)
 		{
-			return _boundingBox.TestCollision(other.GetBounding());
+			return _boundingBox.TestCollision(other->GetBounding());
 		}
 
 		void OnCollide(void);

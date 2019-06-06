@@ -156,11 +156,6 @@ BOOST_AUTO_TEST_CASE(UITests)
 	KE::Engine::Instance()->AddLevelToManager(mainMenu);
 	KE::Engine::Instance()->SetActiveLevel(MAIN_MENU_ID);
 
-	shared_ptr<MovingBoxes> boxes = make_shared<MovingBoxes>();
-	boxes->v_Init();
-
-	boxes.reset();
-
 	//shared_ptr<Ballistics> levelBallistics { new Ballistics() };
 	//levelBallistics->v_InitLevel(4, wndWidth, wndHeight, KE::Color(0.2f, 0.2f, 0.2f));
 	//KE::Engine::Instance()->AddLevelToManager(levelBallistics);

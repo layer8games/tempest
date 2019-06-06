@@ -13,16 +13,19 @@ _left(0.0f),
 _right(0.0f), 
 _bottom(0.0f),
 _top(0.0f),
-_redbox(),
-_bluebox(),
-_greenbox(),
-_levelTitle()
-//_activeBox(nullptr)
+_redbox(make_shared<Box>()),
+_bluebox(make_shared<Box>()),
+_greenbox(make_shared<Box>()),
+_levelTitle(),
+_activeBox(nullptr)
 {  }
 
 MovingBoxes::~MovingBoxes(void) 
 {
-	//_activeBox = nullptr;
+	_activeBox.reset();
+	_redbox.reset();
+	_bluebox.reset();
+	_greenbox.reset();
 }
 
 //=============================================================================
@@ -51,23 +54,23 @@ void MovingBoxes::v_Init(void)
 	_levelTitle.SetPosition(KM::Point(-_levelTitle.GetWidth(), _top - (_top * 0.1f)));
 	Level::AddTextToLevel(_levelTitle);
 
-	_redbox.SetPosition(0.0f, _top / 3.0f);
-	_redbox.SetTexture(KE::TextureManager::Instance()->GetTexture(100));
-	_redbox.SetScale(32.0f, 32.0f);
-	_redbox.InitBounding();
-	Level::AddObjectToLevel(shared_ptr<Box>(&_redbox));
+	_redbox->SetPosition(0.0f, _top / 3.0f);
+	_redbox->SetTexture(KE::TextureManager::Instance()->GetTexture(100));
+	_redbox->SetScale(32.0f, 32.0f);
+	_redbox->InitBounding();
+	Level::AddObjectToLevel(_redbox);
 
-	_greenbox.SetPosition(_left / 3.0f, 0.0f);
-	_greenbox.SetTexture(KE::TextureManager::Instance()->GetTexture(101));
-	_greenbox.SetScale(32.0f, 32.0f);
-	_greenbox.InitBounding();
-	//Level::AddObjectToLevel(_greenbox);
+	_greenbox->SetPosition(_left / 3.0f, 0.0f);
+	_greenbox->SetTexture(KE::TextureManager::Instance()->GetTexture(101));
+	_greenbox->SetScale(32.0f, 32.0f);
+	_greenbox->InitBounding();
+	Level::AddObjectToLevel(_greenbox);
 
-	_bluebox.SetPosition(_right / 3.0f, 0.0f);
-	_bluebox.SetTexture(KE::TextureManager::Instance()->GetTexture(102));
-	_bluebox.SetScale(32.0f, 32.0f);
-	_bluebox.InitBounding();
-	//Level::AddObjectToLevel(_bluebox);
+	_bluebox->SetPosition(_right / 3.0f, 0.0f);
+	_bluebox->SetTexture(KE::TextureManager::Instance()->GetTexture(102));
+	_bluebox->SetScale(32.0f, 32.0f);
+	_bluebox->InitBounding();
+	Level::AddObjectToLevel(_bluebox);
 
 	//_activeBox = &_redbox;	
 }
@@ -79,26 +82,26 @@ void MovingBoxes::v_Init(void)
 //=============================================================================
 void MovingBoxes::v_Update(void) 
 {
-/*	
 	KE::AudioManager::Instance()->PlaySource(2);
 	
 	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ESCAPE)) 
 	{ 
 		KE::AudioManager::Instance()->StopSource(2);
 		KE::LevelManager::Instance()->SetActiveLevel(MAIN_MENU_ID); 
+		return;
 	}
 
 	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ONE)) 
 	{ 
-		_activeBox = &_redbox;
+		_activeBox = _redbox;
 	}
 	else if(KE::Controller::Instance()->GetKeyDown(KE::Keys::TWO)) 
 	{ 
-		_activeBox = &_greenbox; 
+		_activeBox = _greenbox; 
 	}
 	else if(KE::Controller::Instance()->GetKeyDown(KE::Keys::THREE)) 
 	{ 
-		_activeBox = &_bluebox;
+		_activeBox = _bluebox;
 	}
 
 	bool up = KE::Controller::Instance()->GetKeyDown(KE::Keys::UP_ARROW);
@@ -150,7 +153,6 @@ void MovingBoxes::v_Update(void)
 	CheckBoxEdge(_bluebox);
 
 	CheckCollisions();
-*/	
 }//End update
 
 //==========================================================================================================================
@@ -158,9 +160,9 @@ void MovingBoxes::v_Update(void)
 //MovingBoxes functions
 //
 //==========================================================================================================================	
-void MovingBoxes::CheckBoxEdge(KE::GameObject& b)
+void MovingBoxes::CheckBoxEdge(shared_ptr<Box> b)
 {
-	KM::Point tempPos = b.GetPosition();
+	KM::Point tempPos = b->GetPosition();
 
 	//Righ/Left check
 	if(tempPos[0] >= _right) 
@@ -182,25 +184,25 @@ void MovingBoxes::CheckBoxEdge(KE::GameObject& b)
 		tempPos[1] = _top;
 	}
 
-	b.SetPosition(tempPos);
+	b->SetPosition(tempPos);
 }
 
 void MovingBoxes::CheckCollisions(void)
 {
-/*
-	if(_redbox.OverlapCheck(_greenbox) || _redbox.OverlapCheck(_bluebox))
+
+	if(_redbox->OverlapCheck(_greenbox) || _redbox->OverlapCheck(_bluebox))
 	{
-		_redbox.OnCollide();
+		_redbox->OnCollide();
 	}
 
-	if(_greenbox.OverlapCheck(_redbox) || _greenbox.OverlapCheck(_bluebox))
+	if(_greenbox->OverlapCheck(_redbox) || _greenbox->OverlapCheck(_bluebox))
 	{
-		_greenbox.OnCollide();
+		_greenbox->OnCollide();
 	}
 
-	if(_bluebox.OverlapCheck(_redbox) || _bluebox.OverlapCheck(_greenbox))
+	if(_bluebox->OverlapCheck(_redbox) || _bluebox->OverlapCheck(_greenbox))
 	{
-		_bluebox.OnCollide();
+		_bluebox->OnCollide();
 	}
-*/
+
 }

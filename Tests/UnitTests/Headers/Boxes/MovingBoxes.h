@@ -62,7 +62,7 @@ namespace Boxes
 //MovingBoxes functions
 //
 //==========================================================================================================================		
-		void CheckBoxEdge(KE::GameObject& b);
+		void CheckBoxEdge(shared_ptr<Box> b);
 
 		void CheckCollisions(void);
 
@@ -76,11 +76,11 @@ namespace Boxes
 		F32 	 _right;
 		F32 	 _bottom;
 		F32 	 _top;
-		Box 	 _redbox;
-		Box 	 _bluebox;
-		Box 	 _greenbox;
+		shared_ptr<Box> 	 _redbox;
+		shared_ptr<Box> 	 _bluebox;
+		shared_ptr<Box> 	 _greenbox;
 		KE::Text _levelTitle;
-		//Box* 	 _activeBox;
+		shared_ptr<Box> 	 _activeBox;
 	};
 
 }//End namespace
