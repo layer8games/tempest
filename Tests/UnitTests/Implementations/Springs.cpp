@@ -22,12 +22,12 @@ _box4BuoyantForce()
 Springs::~Springs()
 {  }
 
-void Springs::v_Init(void)
+void Springs::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
 {
-	Level::SetID(SPRINGS_ID);
-	Level::SetWidth(KE::GameWindow::Instance()->GetWidth());
-	Level::SetHeight(KE::GameWindow::Instance()->GetHeight());
-	Level::SetBackgroundColor(KE::Color(0.2f, 0.2f, 0.2f));
+	Level::SetID(id);
+	Level::SetWidth(w);
+	Level::SetHeight(h);
+	Level::SetBackgroundColor(c);
 
 	F32 top = KE::GameWindow::Instance()->GetScreenTop();
 
@@ -58,13 +58,13 @@ void Springs::v_Init(void)
 	_box1.SetColor(1.0f, 0.0f, 0.0f);
 	_box1.SetPosition(0.0f, 100.0f);
 
-	_box1Spring.SetOtherEnd(_box1OtherEnd);
+	_box1Spring.SetOtherEnd(shared_ptr<KP::Particle>(&_box1OtherEnd));
 	_box1Spring.SetSpringConstant(2000.0f);
 	_box1Spring.SetRestLength(10.0f);
-	Level::AddParticleToLevel(_box1, _box1Spring);
+	Level::AddParticleToLevel(shared_ptr<KP::Particle>(&_box1), shared_ptr<KP::SpringForce>(&_box1Spring));
 
 	//===== Box2 Anchored Spring =====
-	_box2Anchor.Set(400.0f, 200.0f);
+	_box2Anchor = KM::Point(400.0f, 200.0f);
 	_box2.MakeSprite();
 	_box2.SetMass(1.0f);
 	_box2.SetDamping(0.8f);
@@ -75,7 +75,7 @@ void Springs::v_Init(void)
 	_box2Spring.SetAnchor(_box2Anchor);
 	_box2Spring.SetSpringConstant(2000.0f);
 	_box2Spring.SetRestLength(1.0f);
-	Level::AddParticleToLevel(_box2, _box2Spring);
+	Level::AddParticleToLevel(shared_ptr<KP::Particle>(&_box2), shared_ptr<KP::AnchoredSpring>(&_box2Spring));
 
 	//===== Box3, standard Spring =====
 	_box3OtherEnd.MakeSprite();
@@ -99,26 +99,26 @@ void Springs::v_Init(void)
 	_box3Spring.SetSpringConstant(2000.0f);
 	_box3Spring.SetRestLength(100.0f);
 	_box3Spring.MakeBungie(true);
-	Level::AddParticleToLevel(_box3, _box3Spring);
-	Level::RegisterParticleForce(_box3, _gravity);
+	Level::AddParticleToLevel(shared_ptr<KP::Particle>(&_box3), shared_ptr<KP::SpringForce>(&_box3Spring));
+	Level::RegisterParticleForce(shared_ptr<KP::Particle>(&_box3), shared_ptr<KP::GravityForce>(&_gravity));
 
 	//===== Box4 Buoyant Force =====
 	/*
 Needs work...
 
-	_box4->SetMass(1.0f);
-	_box4->SetDamping(0.8f);
-	//_box4->SetScale(10.0f, 10.0f);
-	//_box4->SetColor(1.0f, 1.0f, 0.0f);
-	_box4->SetPosition(800.0f, 300.0f);
+	_box4.SetMass(1.0f);
+	_box4.SetDamping(0.8f);
+	//_box4.SetScale(10.0f, 10.0f);
+	//_box4.SetColor(1.0f, 1.0f, 0.0f);
+	_box4.SetPosition(800.0f, 300.0f);
 
-	_box4BuoyantForce->SetMaxDepth(300.0f);
-	_box4BuoyantForce->SetObjectVolume(10.0f);
-	_box4BuoyantForce->SetLiquidHeight(600.0f);
-	_box4BuoyantForce->SetLiquidDensity(10.0f);
+	_box4BuoyantForce.SetMaxDepth(300.0f);
+	_box4BuoyantForce.SetObjectVolume(10.0f);
+	_box4BuoyantForce.SetLiquidHeight(600.0f);
+	_box4BuoyantForce.SetLiquidDensity(10.0f);
 
-	_forceRegistry->Add(shared_ptr<KP::Particle>(&_box4), shared_ptr<KP::ParticleBuoyantForce>(&_box4BuoyantForce));
-	//_forceRegistry->Add(shared_ptr<KP::Particle>(&_box4), shared_ptr<KP::GravityForce>(&_gravity));
+	_forceRegistry.Add(shared_ptr<KP::Particle>(&_box4), shared_ptr<KP::ParticleBuoyantForce>(&_box4BuoyantForce));
+	//_forceRegistry.Add(shared_ptr<KP::Particle>(&_box4), shared_ptr<KP::GravityForce>(&_gravity));
 	//Level::AddObjectToLevel(_box4);
 */	
 }

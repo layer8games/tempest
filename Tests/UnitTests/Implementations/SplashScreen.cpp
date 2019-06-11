@@ -8,9 +8,9 @@ using namespace Boxes;
 //=============================================================================
 SplashScreen::SplashScreen(void) 
 : 
-_red(make_shared<Box>()),
-_green(make_shared<Box>()),
-_blue(make_shared<Box>()),
+_red(ProjectFactory::Instance()->MakeBox()),
+_green(ProjectFactory::Instance()->MakeBox()),
+_blue(ProjectFactory::Instance()->MakeBox()),
 _mainTitle()
 {
 	Level::SetID(SPLASH_SCREEN_ID);

@@ -16,7 +16,7 @@ namespace KM = KillerMath;
 namespace KillerEngine
 {
 	class Glyph;
-	typedef shared_ptr<Glyph> P_Glyph;
+	typedef shared_ptr<Glyph> p_Glyph;
 
 /*!
 	A sprite based UI character to be rendered at run time. It gets its data from a Font, which informs it of its size and

@@ -8,7 +8,8 @@
 
 namespace KillerEngine 
 {
-	
+	class ErrorManager;
+	typedef shared_ptr<ErrorManager> p_ErrorManager;
 //==========================================================================================================================
 //
 //Enum Error codes
@@ -64,7 +65,7 @@ namespace KillerEngine
 /*! 
 	Singlton function. Returns pointer to global ErrorManager instance. 
 */		
-		static shared_ptr<ErrorManager> Instance(void);
+		static p_ErrorManager Instance(void);
 
 //==========================================================================================================================
 //
@@ -123,7 +124,7 @@ namespace KillerEngine
 //Data
 //
 //==========================================================================================================================
-		static shared_ptr<ErrorManager> _instance;			///< Global singleton instance.
+		static p_ErrorManager _instance;			///< Global singleton instance.
 		bool 							_consoleOut;		///< Flag that sets if errors should be read out to the console as well.
 		U32       			 			_numErrors;			///< Total count of errors.
 		std::vector<ErrorCode>  	 	_errorCodes;		///< List of active error codes.

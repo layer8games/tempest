@@ -190,7 +190,7 @@
     <Filter Include="Source Code\KillerEngine\GameWindow">
       <UniqueIdentifier>{381d786c-065e-4c73-9294-7079cbccce17}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerEngine\KillerFactory">
+    <Filter Include="Source Code\KillerEngine\EngineFactory">
       <UniqueIdentifier>{7e26eddb-1905-4038-b22e-66c0c820e244}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -345,8 +345,8 @@
     <ClInclude Include="..\..\Headers\Engine\GameWindow.h">
       <Filter>Source Code\KillerEngine\GameWindow</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\KillerFactory.h">
-      <Filter>Source Code\KillerEngine\KillerFactory</Filter>
+    <ClInclude Include="..\..\Headers\Engine\EngineFactory.h">
+      <Filter>Source Code\KillerEngine\EngineFactory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -488,8 +488,8 @@
     <ClCompile Include="..\..\Implementations\GameWindow.cpp">
       <Filter>Source Code\KillerEngine\GameWindow</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\KillerFactory.cpp">
-      <Filter>Source Code\KillerEngine\KillerFactory</Filter>
+    <ClCompile Include="..\..\Implementations\EngineFactory.cpp">
+      <Filter>Source Code\KillerEngine\EngineFactory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

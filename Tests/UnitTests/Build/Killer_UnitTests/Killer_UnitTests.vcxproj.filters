@@ -49,6 +49,9 @@
     <Filter Include="Source Code\UITest\SpringsDemo">
       <UniqueIdentifier>{0953da12-5e75-4b5b-8cfa-37ed9edbb711}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\UITest\ProjectFactory">
+      <UniqueIdentifier>{2f72640a-f8de-4c45-af51-4acafee2b1be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\t_Quaternion.cpp">
@@ -147,6 +150,9 @@
     <ClCompile Include="..\..\Implementations\t_AudioManager.cpp">
       <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\ProjectFactory.cpp">
+      <Filter>Source Code\UITest\ProjectFactory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\Docs\TestStatus.txt">
@@ -195,6 +201,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Boxes\DataBases.h">
       <Filter>Source Code\UITest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Boxes\ProjectFactory.h">
+      <Filter>Source Code\UITest\ProjectFactory</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

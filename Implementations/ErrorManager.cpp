@@ -24,13 +24,13 @@ ErrorManager::~ErrorManager(void)
 //Singleton Functions
 //
 //==========================================================================================================================
-shared_ptr<ErrorManager> ErrorManager::_instance = NULL;
+p_ErrorManager ErrorManager::_instance = NULL;
 
-shared_ptr<ErrorManager> ErrorManager::Instance(void) 
+p_ErrorManager ErrorManager::Instance(void) 
 {
 	if(_instance == NULL) 
 	{ 
-		_instance = shared_ptr<ErrorManager>(new ErrorManager()); 
+		_instance = p_ErrorManager(new ErrorManager()); 
 	}
 	return _instance;
 }

@@ -174,7 +174,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GameObject.h" />
-    <ClInclude Include="..\..\Headers\Engine\KillerFactory.h">
+    <ClInclude Include="..\..\Headers\Engine\EngineFactory.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -312,7 +312,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObject.cpp" />
-    <ClCompile Include="..\..\Implementations\KillerFactory.cpp">
+    <ClCompile Include="..\..\Implementations\EngineFactory.cpp">
       <SubType>
       </SubType>
     </ClCompile>

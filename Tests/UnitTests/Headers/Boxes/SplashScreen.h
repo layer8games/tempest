@@ -31,6 +31,7 @@ namespace KM = KillerMath;
 //=====Box includes=====
 #include <Boxes/Box.h>
 #include <Boxes/DataBases.h>
+#include <Boxes/ProjectFactory.h>
 
 namespace Boxes 
 {

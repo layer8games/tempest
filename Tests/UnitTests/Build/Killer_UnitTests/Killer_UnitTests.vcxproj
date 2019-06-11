@@ -122,6 +122,10 @@
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Ballistics.cpp" />
     <ClCompile Include="..\..\Implementations\Box.cpp" />
+    <ClCompile Include="..\..\Implementations\ProjectFactory.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\Cannon.cpp" />
     <ClCompile Include="..\..\Implementations\Cube.cpp" />
     <ClCompile Include="..\..\Implementations\Demo3D.cpp" />
@@ -180,6 +184,10 @@
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Boxes\Ballistics.h" />
     <ClInclude Include="..\..\Headers\Boxes\Box.h" />
+    <ClInclude Include="..\..\Headers\Boxes\ProjectFactory.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Boxes\Cannon.h" />
     <ClInclude Include="..\..\Headers\Boxes\Cube.h" />
     <ClInclude Include="..\..\Headers\Boxes\DataBases.h">

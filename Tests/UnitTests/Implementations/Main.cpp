@@ -148,13 +148,13 @@ BOOST_AUTO_TEST_CASE(UITests)
 
 	//=====Add Levels=====
 	
-	//shared_ptr<SplashScreen> splashScreen = make_shared<SplashScreen>();
-	//KE::Engine::Instance()->SetActiveLevel(splashScreen);
+	shared_ptr<SplashScreen> splashScreen = make_shared<SplashScreen>();
+	KE::Engine::Instance()->SetActiveLevel(splashScreen);
 	
 	shared_ptr<MainMenu> mainMenu = make_shared<MainMenu>();
 	mainMenu->v_Init();
 	KE::Engine::Instance()->AddLevelToManager(mainMenu);
-	KE::Engine::Instance()->SetActiveLevel(MAIN_MENU_ID);
+	//KE::Engine::Instance()->SetActiveLevel(MAIN_MENU_ID);
 
 	//shared_ptr<Ballistics> levelBallistics { new Ballistics() };
 	//levelBallistics->v_InitLevel(4, wndWidth, wndHeight, KE::Color(0.2f, 0.2f, 0.2f));
