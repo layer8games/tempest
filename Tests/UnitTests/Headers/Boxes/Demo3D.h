@@ -18,6 +18,7 @@ namespace KM = KillerMath;
 
 #include <Boxes/Cube.h>
 #include <Boxes/DataBases.h>
+#include <Boxes/ProjectFactory.h>
 
 namespace Boxes
 {
@@ -49,13 +50,13 @@ namespace Boxes
 
 	private:
 		bool			_useOrbit;
-		Cube   			_crate1;
-		Cube 			_crate2;
-		Cube 			_floor;
-		Cube 			_robot;
-		Cube 			_bowlingPin;
-		Cube 			_bunny;
-		Cube 			_light;
+		p_Cube   		_crate1;
+		p_Cube 			_crate2;
+		p_Cube 			_floor;
+		p_Cube 			_robot;
+		p_Cube 			_bowlingPin;
+		p_Cube 			_bunny;
+		p_Cube 			_light;
 		F32 			_lightMovAngle;
 		KE::OrbitCamera _orbitCamera;
 		KE::FPSCamera   _fpsCamera;

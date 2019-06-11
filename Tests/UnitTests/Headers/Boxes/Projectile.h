@@ -29,6 +29,9 @@ namespace KP = KillerPhysics;
 
 namespace Boxes
 {
+	class Projectile;
+	typedef shared_ptr<Projectile> p_Projectile;
+
 	enum ProjectileType
 	{
 		BULLET,

@@ -10,13 +10,13 @@ using namespace Boxes;
 Demo3D::Demo3D(void)
 :
 _useOrbit(true),
-_crate1(),
-_crate2(),
-_floor(),
-_robot(),
-_bowlingPin(),
-_bunny(),
-_light(),
+_crate1(nullptr),
+_crate2(nullptr),
+_floor(nullptr),
+_robot(nullptr),
+_bowlingPin(nullptr),
+_bunny(nullptr),
+_light(nullptr),
 _lightMovAngle(0.0f),
 _orbitCamera(),
 _fpsCamera()
@@ -62,7 +62,7 @@ void Demo3D::v_Init(void)
 	_orbitCamera.SetPosition(0.0f, 0.0f, 0.0f);
 	//Offset for robot to look right
 	KM::Vector4 targetPos {};
-	targetPos = _robot.GetPosition();
+	targetPos = _robot->GetPosition();
 	_orbitCamera.SetTarget(targetPos[0], targetPos[1] + 3.0f, targetPos[2]);
 	_orbitCamera.SetUpVector(0.0f, 1.0f, 0.0f);
 	_orbitCamera.SetMouseSensitivity(0.25f);
@@ -76,64 +76,70 @@ void Demo3D::v_Init(void)
 
 	Level::SetCamera(&_orbitCamera);
 
-	//Crate1	
-	_crate1.InitCube("../Assets/Models/Course/crate.obj");
-	_crate1.SetPosition(-5.0f, 0.0f, 0.0f);
-	_crate1.SetTexture(KE::TextureManager::Instance()->GetTexture(500));
-	_crate1.SetColor(1.0f, 0.0f, 0.0f);
+	//Crate1
+	_crate1 = ProjectFactory::Instance()->MakeCube();
+	_crate1->InitCube("../Assets/Models/Course/crate.obj");
+	_crate1->SetPosition(-5.0f, 0.0f, 0.0f);
+	_crate1->SetTexture(KE::TextureManager::Instance()->GetTexture(500));
+	_crate1->SetColor(1.0f, 0.0f, 0.0f);
 	Level::AddObjectToLevel(_crate1);
 
 	//Crate2
-	_crate2.InitCube("../Assets/Models/Course/crate.obj");
-	_crate2.SetPosition(5.0f, 0.0f, 0.0f);
-	_crate2.SetTexture(KE::TextureManager::Instance()->GetTexture(501));
-	_crate2.SetColor(0.0f, 1.0f, 0.0f);
-	//_crate2.SetActive(false);
+	_crate2 = ProjectFactory::Instance()->MakeCube();
+	_crate2->InitCube("../Assets/Models/Course/crate.obj");
+	_crate2->SetPosition(5.0f, 0.0f, 0.0f);
+	_crate2->SetTexture(KE::TextureManager::Instance()->GetTexture(501));
+	_crate2->SetColor(0.0f, 1.0f, 0.0f);
+	//_crate2->SetActive(false);
 	Level::AddObjectToLevel(_crate2);
 
 	//Robot	
-	_robot.InitCube("../Assets/Models/Course/robot.obj");
-	_robot.SetPosition(0.0f, -1.0f, -2.0f);
-	_robot.SetTexture(KE::TextureManager::Instance()->GetTexture(502));
-	_robot.SetColor(0.5f, 0.5f, 0.5f);
-	//_robot.SetActive(false);
+	_robot = ProjectFactory::Instance()->MakeCube();
+	_robot->InitCube("../Assets/Models/Course/robot.obj");
+	_robot->SetPosition(0.0f, -1.0f, -2.0f);
+	_robot->SetTexture(KE::TextureManager::Instance()->GetTexture(502));
+	_robot->SetColor(0.5f, 0.5f, 0.5f);
+	//_robot->SetActive(false);
 	Level::AddObjectToLevel(_robot);
 
 	//Bowling Pin
-	_bowlingPin.InitCube("../Assets/Models/Course/bowling_pin.obj");
-	_bowlingPin.SetPosition(0.0f, 0.0f, 4.0f);
-	_bowlingPin.SetScale(0.1f, 0.1f, 0.1f);
-	_bowlingPin.SetActive(false);
-	//_bowlingPin.SetTexture(pinTexture);
+	_bowlingPin = ProjectFactory::Instance()->MakeCube();
+	_bowlingPin->InitCube("../Assets/Models/Course/bowling_pin.obj");
+	_bowlingPin->SetPosition(0.0f, 0.0f, 4.0f);
+	_bowlingPin->SetScale(0.1f, 0.1f, 0.1f);
+	_bowlingPin->SetActive(false);
+	//_bowlingPin->SetTexture(pinTexture);
 	Level::AddObjectToLevel(_bowlingPin);
 	
 	//Bunny
-	_bunny.InitCube("../Assets/Models/Course/bunny.obj");
-	_bunny.SetPosition(-2.0f, 0.0f, 0.0f);
-	_bunny.SetScale(0.7f, 0.7f, 0.7f);
-	//_bunny.SetActive(false);
-	//_bunny.SetTexture(KE::TextureManager::Instance()->GetTexture(503));
+	_bunny = ProjectFactory::Instance()->MakeCube();
+	_bunny->InitCube("../Assets/Models/Course/bunny.obj");
+	_bunny->SetPosition(-2.0f, 0.0f, 0.0f);
+	_bunny->SetScale(0.7f, 0.7f, 0.7f);
+	//_bunny->SetActive(false);
+	//_bunny->SetTexture(KE::TextureManager::Instance()->GetTexture(503));
 	Level::AddObjectToLevel(_bunny);
 
 	//Floor
-	_floor.InitCube("../Assets/Models/Course/floor.obj");
-	_floor.SetPosition(0.0f, -1.0f, 0.0f);
-	_floor.SetScale(10.0f, 0.1f, 10.0f);
-	_floor.SetTexture(KE::TextureManager::Instance()->GetTexture(504));
-	//_floor.SetActive(false);
+	_floor = ProjectFactory::Instance()->MakeCube();
+	_floor->InitCube("../Assets/Models/Course/floor.obj");
+	_floor->SetPosition(0.0f, -1.0f, 0.0f);
+	_floor->SetScale(10.0f, 0.1f, 10.0f);
+	_floor->SetTexture(KE::TextureManager::Instance()->GetTexture(504));
+	//_floor->SetActive(false);
 	Level::AddObjectToLevel(_floor);
 
-	
-
-	_light.InitCube("../Assets/Models/Course/light.obj", ligthShaderID);
-	_light.SetPosition(0.0f, 2.0f, 8.0f);
-	_light.SetActiveUpdate(false);
-	_light.SetActive(false);
+	//Light
+	_light = ProjectFactory::Instance()->MakeCube();
+	_light->InitCube("../Assets/Models/Course/light.obj", ligthShaderID);
+	_light->SetPosition(0.0f, 2.0f, 8.0f);
+	_light->SetActiveUpdate(false);
+	_light->SetActive(false);
 	Level::AddObjectToLevel(_light);	
 
 	KE::Color lightColor(1.0f, 1.0f, 1.0f);	
 	lightColor.UseAlpha(false);
-	KM::Point lightPos = _light.GetPosition();
+	KM::Point lightPos = _light->GetPosition();
 	KM::Vector3 lightDirection{ 0.0f, -0.9f, -0.17f };
 	KE::Color ambient{ 1.0f, 1.0f, 1.0f };
 	ambient.UseAlpha(false);
@@ -158,7 +164,7 @@ void Demo3D::v_Init(void)
 	Level::SetObjectUniforms("light.direction", lightDirection);
 
 
-	_light.SetUniform("lightColor", lightColor);
+	_light->SetUniform("lightColor", lightColor);
 
 
 	KE::Color ambientMat{ 0.1f, 0.1f, 0.1f };
@@ -171,12 +177,12 @@ void Demo3D::v_Init(void)
 	Level::SetObjectUniforms("material.specular", specularMat);
 	Level::SetObjectUniforms("material.shininess", shininess);
 
-	_crate1.SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
-	_crate2.SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
-	_robot.SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
-	_bowlingPin.SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
-	_bunny.SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
-	_floor.SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_crate1->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_crate2->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_robot->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_bowlingPin->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_bunny->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
+	_floor->SetUniformSampler("material.diffuseMap", 0); //Texture slot 0
 
 }
 
@@ -256,9 +262,9 @@ void Demo3D::v_Update(void)
 
 	//Move Light Code
 	_lightMovAngle += KM::Timer::Instance()->DeltaTime() * 50.0f;
-	_light.SetPositionX(8.0f * sin(RADIAN(_lightMovAngle)));
+	_light->SetPositionX(8.0f * sin(RADIAN(_lightMovAngle)));
 	
-	KM::Point lightPos = _light.GetPosition();
+	KM::Point lightPos = _light->GetPosition();
 
 	//Update view Position
 	Level::SetObjectUniforms("view_position", viewPos);

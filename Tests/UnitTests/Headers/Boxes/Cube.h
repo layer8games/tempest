@@ -15,6 +15,9 @@ namespace KM = KillerMath;
 
 namespace Boxes
 {
+	class Cube;
+	typedef shared_ptr<Cube> p_Cube;
+
 	class Cube : public KE::GameObject
 	{
 	public:

@@ -28,6 +28,7 @@ namespace KM = KillerMath;
 #include <Boxes/Cannon.h>
 #include <Boxes/Projectile.h>
 #include <Boxes/DataBases.h>
+#include <Boxes/ProjectFactory.h>
 
 namespace Boxes
 {
@@ -64,7 +65,6 @@ namespace Boxes
 		KE::Text 							_levelTitle;
 		Cannon								_cannon;
 		KP::GravityForce					_gravityForce;
-		std::vector<shared_ptr<Projectile>> _projectilePool;
-		Projectile test;
+		std::vector<p_Projectile> 			_projectilePool;
 	};
 }//end namespace

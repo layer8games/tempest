@@ -58,7 +58,7 @@ void Ballistics::v_Init(void)
 	shared_ptr<KP::GravityForce> gravity{&_gravityForce};
 	for(U32 i = 0; i < _poolSize; ++i)
 	{
-		shared_ptr<Projectile> p{new Projectile()};
+		p_Projectile p = ProjectFactory::Instance()->MakeProjectile();
 		p->SetScale(10.0f, 10.0f);
 		_projectilePool.push_back(p);
 		Level::AddParticleToLevel(p, gravity);
