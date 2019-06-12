@@ -3,6 +3,7 @@
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/RigidBody2D.h>
+#include <Engine/RigidBody3D.h>
 
 namespace KillerPhysics
 {
@@ -24,6 +25,11 @@ namespace KillerPhysics
 		inline p_RigidBody2D MakeRigidBody2D(void)
 		{
 			return p_RigidBody2D(new RigidBody2D());
+		}
+
+		inline p_RigidBody3D MakeRigidBody3D(void)
+		{
+			return p_RigidBody3D(new RigidBody3D());
 		}
 
 //==========================================================================================================================
