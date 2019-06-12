@@ -13,9 +13,9 @@ _left(0.0f),
 _right(0.0f), 
 _bottom(0.0f),
 _top(0.0f),
-_redbox(make_shared<Box>()),
-_bluebox(make_shared<Box>()),
-_greenbox(make_shared<Box>()),
+_redbox(ProjectFactory::Instance()->MakeBox()),
+_bluebox(ProjectFactory::Instance()->MakeBox()),
+_greenbox(ProjectFactory::Instance()->MakeBox()),
 _levelTitle(),
 _activeBox(nullptr)
 {  }

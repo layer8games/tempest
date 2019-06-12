@@ -23,12 +23,13 @@ Written by Maxwell Miller
 //===== Box Includes =====
 #include <Boxes/Firework.h>
 #include <Boxes/DataBases.h>
+#include <Boxes/ProjectFactory.h>
 
 namespace KE = KillerEngine;
 
 namespace Boxes
 {
-	typedef std::vector<shared_ptr<Payload>> PayloadPool;
+	typedef std::vector<p_Payload> PayloadPool;
 
 	class FireworksDemo : public KE::Level
 	{
@@ -53,7 +54,7 @@ namespace Boxes
 	private:
 		PayloadPool _pool;
 		KE::Text 	_levelTitle;
-		Firework 	_firework;
+		p_Firework 	_firework;
 		F32			_speed;
 		
 	};//end Class

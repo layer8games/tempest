@@ -61,11 +61,7 @@ void Demo3D::v_Init(void)
 	//_orbitCamera.SetOrthographic(left, right, bottom, top, 0.01f, 100.0f);
 	_orbitCamera.SetPosition(0.0f, 0.0f, 0.0f);
 	//Offset for robot to look right
-	KM::Vector4 targetPos {};
-	targetPos = _robot->GetPosition();
-	_orbitCamera.SetTarget(targetPos[0], targetPos[1] + 3.0f, targetPos[2]);
-	_orbitCamera.SetUpVector(0.0f, 1.0f, 0.0f);
-	_orbitCamera.SetMouseSensitivity(0.25f);
+	
 
 	_fpsCamera.SetPerspective(45.0f, static_cast<F32>(Level::GetWidth()) / static_cast<F32>(Level::GetHeight()), 0.1f, 100.0f);
 	//_fpsCamera.SetOrthographic(left, right, bottom, top, -100.0f, 100.0f);
@@ -146,6 +142,11 @@ void Demo3D::v_Init(void)
 	KE::Color specular{ 1.0f, 1.0f, 1.0f };
 	specular.UseAlpha(false);
 
+	KM::Point targetPos = _robot->GetPosition();
+	_orbitCamera.SetTarget(targetPos[0], targetPos[1] + 3.0f, targetPos[2]);
+	_orbitCamera.SetUpVector(0.0f, 1.0f, 0.0f);
+	_orbitCamera.SetMouseSensitivity(0.25f);
+
 	//Add the following: 
 	// point:
 	// set uniform name = light.constant = 1.0f
@@ -190,7 +191,8 @@ void Demo3D::v_Update(void)
 {
 	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ESCAPE))
 	{
-		KE::Engine::Instance()->SetActiveLevel(2);
+		KE::Engine::Instance()->SetActiveLevel(MAIN_MENU_ID);
+		return;
 	}
 	else if(KE::Controller::Instance()->GetKeyDown(KE::Keys::F11))
 	{

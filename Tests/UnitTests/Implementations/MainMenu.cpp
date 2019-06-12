@@ -9,7 +9,7 @@ using namespace Boxes;
 //==========================================================================================================================
 MainMenu::MainMenu(void) 
 : 
-_selector(),
+_selector(ProjectFactory::Instance()->MakeBox()),
 _menu(),
 _menuItemFont(),
 _mainTitle()
@@ -32,9 +32,9 @@ void MainMenu::v_Init(void)
 
 	F32 top = KE::GameWindow::Instance()->GetScreenTop();
 
-	_selector.SetColor(KE::Color(1.0f, 0.0f, 0.0f));
-	_selector.SetTexture(KE::TextureManager::Instance()->GetTexture(100));
-	_selector.SetScale(15.0f, 15.0f);
+	_selector->SetColor(KE::Color(1.0f, 0.0f, 0.0f));
+	_selector->SetTexture(KE::TextureManager::Instance()->GetTexture(100));
+	_selector->SetScale(15.0f, 15.0f);
 
 	_mainTitle.SetFont(KE::FontManager::Instance()->GetFont(101));
 	_mainTitle.AddText("BOXES vs TRIANGLES");
@@ -49,17 +49,17 @@ void MainMenu::v_Init(void)
 	level1.text = shared_ptr<KE::Text>(new KE::Text("Moving Boxes", KE::FontManager::Instance()->GetFont(100)));
 	level1.Action = &MenuItem_Level1Action;
 
-	KE::MenuItem ballistics { };
-	ballistics.text = shared_ptr<KE::Text>(new KE::Text("Ballistic", KE::FontManager::Instance()->GetFont(100)));
-	ballistics.Action = &MenuItem_BallisticsAction;
+	//KE::MenuItem ballistics { };
+	//ballistics.text = shared_ptr<KE::Text>(new KE::Text("Ballistic", KE::FontManager::Instance()->GetFont(100)));
+	//ballistics.Action = &MenuItem_BallisticsAction;
 
-	KE::MenuItem firework { };
-	firework.text = shared_ptr<KE::Text>(new KE::Text("Firework Demo", KE::FontManager::Instance()->GetFont(100)));
-	firework.Action = &MenuItem_FireworkAction;
+	//KE::MenuItem firework { };
+	//firework.text = shared_ptr<KE::Text>(new KE::Text("Firework Demo", KE::FontManager::Instance()->GetFont(100)));
+	//firework.Action = &MenuItem_FireworkAction;
 
-	KE::MenuItem springs { };
-	springs.text = shared_ptr<KE::Text>(new KE::Text("Springs Demo", KE::FontManager::Instance()->GetFont(100)));
-	springs.Action = &MenuItem_SpringsAction;
+	//KE::MenuItem springs { };
+	//springs.text = shared_ptr<KE::Text>(new KE::Text("Springs Demo", KE::FontManager::Instance()->GetFont(100)));
+	//springs.Action = &MenuItem_SpringsAction;
 
 	KE::MenuItem opengl { };
 	opengl.text = shared_ptr<KE::Text>(new KE::Text("3D Level", KE::FontManager::Instance()->GetFont(100)));
@@ -69,17 +69,17 @@ void MainMenu::v_Init(void)
 	Level::AddObjectToLevel(_selector);
 	Level::AddTextToLevel(_mainTitle);
 	Level::AddTextToLevel(level1.text);
-	Level::AddTextToLevel(ballistics.text);
-	Level::AddTextToLevel(firework.text);
-	Level::AddTextToLevel(springs.text);
+	//Level::AddTextToLevel(ballistics.text);
+	//Level::AddTextToLevel(firework.text);
+	//Level::AddTextToLevel(springs.text);
 	Level::AddTextToLevel(opengl.text);
 
-	_menu.SetSelector(&_selector);
+	_menu.SetSelector(_selector);
 	_menu.SetTitle(_mainTitle);
 	_menu.AddItem(level1);
-	_menu.AddItem(ballistics);
-	_menu.AddItem(firework);
-	_menu.AddItem(springs);
+	//_menu.AddItem(ballistics);
+	//_menu.AddItem(firework);
+	//_menu.AddItem(springs);
 	_menu.AddItem(opengl);
 
 }

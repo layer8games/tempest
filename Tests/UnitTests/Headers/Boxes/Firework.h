@@ -40,7 +40,9 @@ namespace Boxes
 		bool spawnNew;
 	};
 
-	typedef std::vector<shared_ptr<Payload>> PayloadPool;
+	typedef shared_ptr<Payload> p_Payload;
+	typedef std::vector<p_Payload> PayloadPool;
+
 
 	class Firework : public KP::Particle
 	{
@@ -107,4 +109,5 @@ namespace Boxes
 		U32 				 			 _maxSize;
 		KM::Matrix4 					 _projection;
 	};//end Class
+	typedef shared_ptr<Firework> p_Firework;
 }//end Namespace

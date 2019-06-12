@@ -28,6 +28,7 @@ Written by Maxwell Miller
 
 #include <Boxes/Box.h>
 #include <Boxes/DataBases.h>
+#include <Boxes/ProjectFactory.h>
 
 #include <iostream>
 
@@ -62,7 +63,7 @@ namespace Boxes
 //MovingBoxes functions
 //
 //==========================================================================================================================		
-		void CheckBoxEdge(shared_ptr<Box> b);
+		void CheckBoxEdge(p_Box b);
 
 		void CheckCollisions(void);
 
@@ -76,11 +77,11 @@ namespace Boxes
 		F32 	 _right;
 		F32 	 _bottom;
 		F32 	 _top;
-		shared_ptr<Box> 	 _redbox;
-		shared_ptr<Box> 	 _bluebox;
-		shared_ptr<Box> 	 _greenbox;
+		p_Box 	 _redbox;
+		p_Box 	 _bluebox;
+		p_Box 	 _greenbox;
 		KE::Text _levelTitle;
-		shared_ptr<Box> 	 _activeBox;
+		p_Box 	 _activeBox;
 	};
 
 }//End namespace

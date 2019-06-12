@@ -22,12 +22,12 @@ _box4BuoyantForce()
 Springs::~Springs()
 {  }
 
-void Springs::v_InitLevel(U32 id, S32 w, S32 h, const KE::Color& c)
+void Springs::v_Init(void)
 {
-	Level::SetID(id);
-	Level::SetWidth(w);
-	Level::SetHeight(h);
-	Level::SetBackgroundColor(c);
+	Level::SetID(SPRINGS_ID);
+	Level::SetWidth(KE::GameWindow::Instance()->GetWidth());
+	Level::SetHeight(KE::GameWindow::Instance()->GetHeight());
+	Level::SetBackgroundColor(KE::Color(0.2f, 0.2f, 0.2f));
 
 	F32 top = KE::GameWindow::Instance()->GetScreenTop();
 
@@ -127,6 +127,7 @@ void Springs::v_Update(void)
 {
 	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ESCAPE)) 
 	{ 
-		KE::LevelManager::Instance()->SetActiveLevel(2); 
+		KE::LevelManager::Instance()->SetActiveLevel(MAIN_MENU_ID);
+		return; 
 	}
 }

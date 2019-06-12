@@ -93,6 +93,7 @@ void Level::AddObjectToLevel(shared_ptr<GameObject> obj)
 	}
 }
 
+
 void Level::AddParticleToLevel(const KP::Particle& particle)
 {
 	_particles.insert({ particle.GetID(), shared_ptr<KP::Particle>(const_cast<KP::Particle*>(&particle)) });

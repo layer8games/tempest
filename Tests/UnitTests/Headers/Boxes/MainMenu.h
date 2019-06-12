@@ -36,6 +36,7 @@ namespace KM = KillerMath;
 #include <Boxes/FireworksDemo.h>
 #include <Boxes/Springs.h>
 #include <Boxes/Demo3D.h>
+#include <Boxes/ProjectFactory.h>
 
 namespace Boxes
 {
@@ -70,7 +71,7 @@ namespace Boxes
 //Menu Members. For now the menu is going to be hard coded into this level. There is a project added to make this an enigine
 //feature, so when that is completed this will be replaced. 
 //==========================================================================================================================				
-		Box 	    _selector;
+		p_Box 	    _selector;
 		KE::Menu 	_menu;
 		KE::Font    _menuItemFont;
 		KE::Text    _mainTitle;
@@ -88,22 +89,22 @@ namespace Boxes
 
 	static void MenuItem_BallisticsAction(void)
 	{
-		KE::Engine::Instance()->SetActiveLevel(4);
+		KE::Engine::Instance()->SetActiveLevel(make_shared<Ballistics>());
 	}
 
 	static void MenuItem_FireworkAction(void)
 	{
-		KE::Engine::Instance()->SetActiveLevel(5);
+		KE::Engine::Instance()->SetActiveLevel(make_shared<FireworksDemo>());
 	}
 
 	static void MenuItem_SpringsAction(void)
 	{
-		KE::Engine::Instance()->SetActiveLevel(6);
+		KE::Engine::Instance()->SetActiveLevel(make_shared<Springs>());
 	}
 
 	static void MenuItem_OpenglAction(void)
 	{
-		KE::Engine::Instance()->SetActiveLevel(7);
+		KE::Engine::Instance()->SetActiveLevel(make_shared<Demo3D>());
 	}
 }
 

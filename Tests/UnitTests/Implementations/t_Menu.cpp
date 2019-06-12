@@ -155,28 +155,28 @@ BOOST_AUTO_TEST_CASE(MenuItemSelector)
 	menu.AddItem(item1);
 	menu.AddItem(item2);
 
-	MenuSelector selector { };
-	selector.SetActive(false);
+	shared_ptr<MenuSelector> selector = make_shared<MenuSelector>();
+	selector->SetActive(false);
 
-	menu.SetSelector(&selector);
+	menu.SetSelector(selector);
 
-	BOOST_CHECK_EQUAL(selector.GetPosition()[x], -10.0f);
-	BOOST_CHECK_EQUAL(selector.GetPosition()[y], -150.0f);
+	BOOST_CHECK_EQUAL(selector->GetPosition()[x], -10.0f);
+	BOOST_CHECK_EQUAL(selector->GetPosition()[y], -150.0f);
 
 	menu.MoveSelectorDown();
 
-	BOOST_CHECK_EQUAL(selector.GetPosition()[x], -10.0f);
-	BOOST_CHECK_EQUAL(selector.GetPosition()[y], -175.0f);
+	BOOST_CHECK_EQUAL(selector->GetPosition()[x], -10.0f);
+	BOOST_CHECK_EQUAL(selector->GetPosition()[y], -175.0f);
 
 	menu.MoveSelectorUp();
 
-	BOOST_CHECK_EQUAL(selector.GetPosition()[x], -10.0f);
-	BOOST_CHECK_EQUAL(selector.GetPosition()[y], -150.0f);
+	BOOST_CHECK_EQUAL(selector->GetPosition()[x], -10.0f);
+	BOOST_CHECK_EQUAL(selector->GetPosition()[y], -150.0f);
 
 	menu.SetSelectorPosition(1);
 
-	BOOST_CHECK_EQUAL(selector.GetPosition()[x], -10.0f);
-	BOOST_CHECK_EQUAL(selector.GetPosition()[y], -175.0f);
+	BOOST_CHECK_EQUAL(selector->GetPosition()[x], -10.0f);
+	BOOST_CHECK_EQUAL(selector->GetPosition()[y], -175.0f);
 
 	menu.SetSelectorPosition(0);
 	menu.CallSelectedAction();

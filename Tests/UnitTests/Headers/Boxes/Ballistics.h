@@ -25,6 +25,7 @@ namespace KE = KillerEngine;
 namespace KM = KillerMath;
 
 //=====Box includes=====
+#include <Boxes/DataBases.h>
 #include <Boxes/Cannon.h>
 #include <Boxes/Projectile.h>
 #include <Boxes/DataBases.h>
@@ -63,7 +64,7 @@ namespace Boxes
 		U32									_poolSize;
 		ProjectileType			  			_activeProjectileType;
 		KE::Text 							_levelTitle;
-		Cannon								_cannon;
+		p_Cannon							_cannon;
 		KP::GravityForce					_gravityForce;
 		std::vector<p_Projectile> 			_projectilePool;
 	};

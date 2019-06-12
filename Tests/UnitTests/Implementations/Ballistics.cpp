@@ -12,12 +12,17 @@ Ballistics::Ballistics(void)
 _poolSize(10),
 _activeProjectileType(ProjectileType::BULLET),
 _levelTitle(),
-_cannon(),
+_cannon(nullptr),
 _gravityForce(KM::Vector4(0.0f, -100.0f)),
 _projectilePool()
 {  }
 
-Ballistics::~Ballistics(void) {  }
+Ballistics::~Ballistics(void)
+{
+	_cannon.reset();
+
+	_projectilePool.clear();
+}
 
 //=============================================================================
 //
@@ -46,13 +51,14 @@ void Ballistics::v_Init(void)
 	
 
 	//=====Setup GameObjects=====
+	_cannon = ProjectFactory::Instance()->MakeCannon();
 	//minus because left and bottom are already negative
-	_cannon.SetPosition(left - (left / 10.0f), bottom - (bottom / 10.0f));
-	_cannon.SetScale(25.0f, 25.0f);
-	_cannon.SetMovementSpeed(120.0f);
-	_cannon.SetTopBoundary(top);
-	_cannon.SetBottomBoundary(bottom);
-	_cannon.SetTexture(KE::TextureManager::Instance()->GetTexture(300));
+	_cannon->SetPosition(left - (left / 10.0f), bottom - (bottom / 10.0f));
+	_cannon->SetScale(25.0f, 25.0f);
+	_cannon->SetMovementSpeed(120.0f);
+	_cannon->SetTopBoundary(top);
+	_cannon->SetBottomBoundary(bottom);
+	_cannon->SetTexture(KE::TextureManager::Instance()->GetTexture(300));
 	Level::AddObjectToLevel(_cannon);
 
 	shared_ptr<KP::GravityForce> gravity{&_gravityForce};
@@ -77,7 +83,8 @@ void Ballistics::v_Update(void)
 {
 	if(KE::Controller::Instance()->GetKeyDown(KE::Keys::ESCAPE)) 
 	{ 
-		KE::LevelManager::Instance()->SetActiveLevel(2); 
+		KE::LevelManager::Instance()->SetActiveLevel(MAIN_MENU_ID);
+		return;
 	}
 
 	//===== Get User Input =====
@@ -110,7 +117,7 @@ void Ballistics::v_Update(void)
 	{ 
 		KM::Point input = KE::Controller::Instance()->GetMouseCoordInScreen();
 
-		KM::Vector4 heading = KM::Vector4(input - _cannon.GetPosition());
+		KM::Vector4 heading = KM::Vector4(input - _cannon->GetPosition());
 
 		heading.Normalize();
 		
@@ -118,7 +125,7 @@ void Ballistics::v_Update(void)
 		{
 			if(!i->GetActive())
 			{
-				_cannon.Fire(heading, i, _activeProjectileType);
+				_cannon->Fire(heading, i, _activeProjectileType);
 				break;
 			}
 		}

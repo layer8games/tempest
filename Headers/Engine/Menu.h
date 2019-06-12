@@ -289,7 +289,7 @@ namespace KillerEngine
 	\param obj is a pointer to the GameObject type that will act as the selector. If itemList is not empty, it will set
 	the selector to the first position. 
 */
-		inline void SetSelector(GameObject* obj)
+		inline void SetSelector(shared_ptr<GameObject> obj)
 		{
 			_selector = obj;
 
@@ -324,7 +324,7 @@ namespace KillerEngine
 		KM::Point 				_offsetFromTitle;	///< Offset of the first MenuItem from the title. 
 		shared_ptr<Text>		_title;				///< Pointer to the a Text title. 
 		std::vector<MenuItem> 	_itemList;			///< Internal list of all MenuItems. 
-		GameObject*				_selector;			///< Selector to move and activate MenuItems. 
+		shared_ptr<GameObject>	_selector;			///< Selector to move and activate MenuItems. 
 		
 	};//end Class
 }//end Namespace

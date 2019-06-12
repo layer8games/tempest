@@ -35,6 +35,9 @@ namespace KP = KillerPhysics;
 
 namespace Boxes
 {
+	class Cannon;
+	typedef shared_ptr<Cannon> p_Cannon;
+
 	class Cannon : public KE::GameObject
 	{
 	public:
