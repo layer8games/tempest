@@ -15,7 +15,7 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/GameObject.h>
-#include <Engine/Particle.h>
+#include <Engine/RigidBody2D.h>
 #include <Engine/Random.h>
 #include <Engine/LevelManager.h>
 #include <Engine/Level.h>
@@ -34,7 +34,7 @@ namespace Boxes
 {
 	struct Payload
 	{
-		KP::Particle particle;
+		KP::RigidBody2D RigidBody2D;
 		F32 timeAlive;
 		U32 spawnNewRule;
 		bool spawnNew;
@@ -44,7 +44,7 @@ namespace Boxes
 	typedef std::vector<p_Payload> PayloadPool;
 
 
-	class Firework : public KP::Particle
+	class Firework : public KP::RigidBody2D
 	{
 	public:
 //==========================================================================================================================

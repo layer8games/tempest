@@ -19,7 +19,7 @@ Written by Maxwell Miller
 //=====Killer2D includes=====
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
-#include <Engine/Particle.h>
+#include <Engine/RigidBody2D.h>
 #include <Engine/Timer.h>
 #include <Engine/TextureManager.h>
 
@@ -42,7 +42,7 @@ namespace Boxes
 		GRENADE
 	};
 
-	class Projectile : public KP::Particle
+	class Projectile : public KP::RigidBody2D
 	{
 	public:
 //==========================================================================================================================

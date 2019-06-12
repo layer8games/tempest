@@ -78,16 +78,16 @@ namespace KillerPhysics
 /*!
 	The y value of the position of the object is checked against the max depth. If the object has reached the max depth, then
 	it is given a +y force, scaled by the density and volume, until it reaches the height. Untested.
-	\param particle is the pointer to the object that will have the force affect it. 
+	\param RigidBody2D is the pointer to the object that will have the force affect it. 
 */
-		void v_UpdateForce(shared_ptr<Particle> particle);
+		void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D);
 
 /*!
 	The y value of the position of the object is checked against the max depth. If the object has reached the max depth, then
 	it is given a +y force, scaled by the density and volume, until it reaches the height. Untested.
 	\param body is the pointer to the object that will have the force affect it. 
 */
-		void v_UpdateForce(shared_ptr<RigidBody> body) final;
+		void v_UpdateForce(shared_ptr<RigidBody3D> body) final;
 
 //==========================================================================================================================
 //

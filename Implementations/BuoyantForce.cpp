@@ -32,10 +32,10 @@ BuoyantForce::~BuoyantForce(void)
 //Virtual Functions
 //
 //==========================================================================================================================
-void BuoyantForce::v_UpdateForce(shared_ptr<Particle> particle)
+void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 {
 //=====Calculate Depth of object=====
-	real depth = particle->GetPosition()[1]; //Get the y val
+	real depth = RigidBody2D->GetPosition()[1]; //Get the y val
 
 	//Out of liquid check
 	if(depth >= _liquidHeight + _maxDepth) 
@@ -50,18 +50,18 @@ void BuoyantForce::v_UpdateForce(shared_ptr<Particle> particle)
 	{
 		force[1] = _liquidDensity * _objectVolume;
 
-		particle->AddForce(force);
+		RigidBody2D->AddForce(force);
 	}
 	else
 	{
 		force[1] = _liquidDensity * _objectVolume * (depth - _maxDepth - _liquidHeight) / 2 * _maxDepth;
 
-		particle->AddForce(force);
+		RigidBody2D->AddForce(force);
 	}	
 }
 
 //TODO: Implement
-void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody> body)
+void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody3D> body)
 {
 	real depth = body->GetPosition()[1];
 

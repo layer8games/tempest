@@ -35,8 +35,8 @@ Written by Maxwell Miller
 #include <boost/test/unit_test.hpp>
 #include <Engine/Atom.h>
 #include <Engine/BroadPhaseCollision.h>
-#include <Engine/Particle.h>
-#include <Engine/RigidBody.h>
+#include <Engine/RigidBody2D.h>
+#include <Engine/RigidBody3D.h>
 #include <Engine/Point.h>
 #include <Engine/BoundingSphere.h>
 
@@ -46,7 +46,7 @@ namespace KM = KillerMath;
 
 BOOST_AUTO_TEST_CASE(BVH_Constructor)
 {
-	KC::Node<KC::BoundingSphere, KP::Particle> node;
+	KC::Node<KC::BoundingSphere, KP::RigidBody2D> node;
 
 	BOOST_CHECK_EQUAL(node.IsLeaf(), false);
 }

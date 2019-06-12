@@ -143,15 +143,15 @@ void LevelManager::AddObjectToLevel(U32 id, shared_ptr<GameObject> obj)
 	} 
 }
 
-void LevelManager::AddParticleToLevel(U32 id, shared_ptr<KP::Particle> particle, shared_ptr<KP::ForceGenerator> generator)
+void LevelManager::AddRigidBody2DToLevel(U32 id, shared_ptr<KP::RigidBody2D> RigidBody2D, shared_ptr<KP::ForceGenerator> generator)
 {
 	if(_levels.find(id) != _levels.end()) 
 	{ 
-		_levels[id]->AddParticleToLevel(particle, generator); 
+		_levels[id]->AddRigidBody2DToLevel(RigidBody2D, generator); 
 	} 
 	else
 	{
-		ErrorManager::Instance()->SetError(ENGINE, "LevelManager -> Tried to call the AddParticle2DToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
+		ErrorManager::Instance()->SetError(ENGINE, "LevelManager -> Tried to call the AddRigidBody2D2DToLevel() function for a level that does not exist. ID = " + std::to_string(id));	
 	} 
 }
 

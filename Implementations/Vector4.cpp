@@ -108,7 +108,7 @@ void Vector4::Reset(F32 val)
 }
 
 //===== Math Helper Functions =====
-void Vector4::AddScaledVector4(const Vector4& vec, F32 scale)
+void Vector4::AddScaledVector(const Vector4& vec, F32 scale)
 {
 	_data[x] += vec[x] * scale;
 	_data[y] += vec[y] * scale;
@@ -116,6 +116,28 @@ void Vector4::AddScaledVector4(const Vector4& vec, F32 scale)
 	if(!_2D)
 	{
 		_data[z] += vec[z] * scale;
+	}
+}
+
+void Vector4::AddScaledVector(const Vector3& vec, F32 scale)
+{
+	_data[x] += vec[x] * scale;
+	_data[y] += vec[y] * scale;
+
+	if(!_2D)
+	{
+		_data[z] += vec[z] * scale;
+	}
+}
+
+void Vector4::AddScaledPoint(const Point& point, F32 scale)
+{
+	_data[x] += point[x] * scale;
+	_data[y] += point[y] * scale;
+
+	if(!_2D)
+	{
+		_data[z] += point[z] * scale;
 	}
 }
 //==========================================================================================================================

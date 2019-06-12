@@ -37,7 +37,7 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/Level.h>
 #include <Engine/GameObject.h>
-#include <Engine/Particle.h>
+#include <Engine/RigidBody2D.h>
 
 namespace KE = KillerEngine;
 namespace KP = KillerPhysics;
@@ -122,20 +122,20 @@ BOOST_AUTO_TEST_CASE(LevelAddAndRemoveObjects)
 	already spent too much time trying to get this to work. Calling it for now, since this is an
 	issue in the unit test framework, not the code itself.
 
-	shared_ptr<KP::Particle> particle { new KP::Particle() };
+	shared_ptr<KP::RigidBody2D> RigidBody2D { new KP::RigidBody2D() };
 
-	U32 particleID = particle->GetID();
+	U32 RigidBody2DID = RigidBody2D->GetID();
 
-	test->AddObjectToLevel(particle);
+	test->AddObjectToLevel(RigidBody2D);
 
-	auto particleCopy = test->GetParticle(particleID);
+	auto RigidBody2DCopy = test->GetRigidBody2D(RigidBody2DID);
 
-	BOOST_CHECK_EQUAL(particleCopy->GetID(), particleID);
+	BOOST_CHECK_EQUAL(RigidBody2DCopy->GetID(), RigidBody2DID);
 
-	test->RemoveObjectFromLevel(particleID);
+	test->RemoveObjectFromLevel(RigidBody2DID);
 
-	auto particleCopy2 = test->GetParticle(particleID);
+	auto RigidBody2DCopy2 = test->GetRigidBody2D(RigidBody2DID);
 
-	BOOST_CHECK_EQUAL(particleCopy2, nullptr);
+	BOOST_CHECK_EQUAL(RigidBody2DCopy2, nullptr);
 */
 }

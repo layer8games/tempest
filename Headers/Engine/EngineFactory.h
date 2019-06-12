@@ -6,9 +6,6 @@
 
 namespace KillerEngine
 {
-	class EngineFactory;
-	typedef shared_ptr<EngineFactory> P_EngineFactory;
-
 	class EngineFactory
 	{
 	public:
@@ -34,7 +31,7 @@ namespace KillerEngine
 //Singleton Functions
 //
 //==========================================================================================================================
-		static P_EngineFactory Instance(void);
+		static shared_ptr<EngineFactory> Instance(void);
 
 	protected:
 //==========================================================================================================================
@@ -45,9 +42,9 @@ namespace KillerEngine
 		EngineFactory(void);
 
 	private:
-		static P_EngineFactory _instance;
+		static shared_ptr<EngineFactory> _instance;
 		
 	};//end Class
 
-	
+	typedef shared_ptr<EngineFactory> P_EngineFactory;
 }//end Namespace

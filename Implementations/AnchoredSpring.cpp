@@ -24,11 +24,11 @@ _restLength(restLength)
 AnchoredSpring::~AnchoredSpring(void)
 {  }
 
-void AnchoredSpring::v_UpdateForce(shared_ptr<Particle> particle)
+void AnchoredSpring::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 {
 	//Calculate the Vector4 of the spring
 	KM::Vector4 force {};
-	force = particle->GetPosition();
+	force = RigidBody2D->GetPosition();
 	force -= _anchor;
 
 	//Calculate the magnitude of the force
@@ -38,11 +38,11 @@ void AnchoredSpring::v_UpdateForce(shared_ptr<Particle> particle)
 	//Calculate the final force and apply it
 	force.Normalize();
 	force *= static_cast<F32>(magnitude);
-	particle->AddForce(force);
+	RigidBody2D->AddForce(force);
 }
 
 //TODO: Implement
-void AnchoredSpring::v_UpdateForce(shared_ptr<RigidBody> body)
+void AnchoredSpring::v_UpdateForce(shared_ptr<RigidBody3D> body)
 {
 	KM::Vector4 force {}; 
 	force = body->GetPosition();

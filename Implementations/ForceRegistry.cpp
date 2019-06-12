@@ -9,7 +9,7 @@ using namespace KillerPhysics;
 //==========================================================================================================================
 ForceRegistry::ForceRegistry(void)
 :
-_particleRegistrations(),
+_RigidBody2DRegistrations(),
 _bodyRegistrations()
 {  }
 
@@ -21,41 +21,41 @@ ForceRegistry::~ForceRegistry(void)
 //ForceRegistry functions
 //
 //==========================================================================================================================	
-void ForceRegistry::Add(shared_ptr<Particle> particle, shared_ptr<ForceGenerator> forceGen)
+void ForceRegistry::Add(shared_ptr<RigidBody2D> RigidBody2D, shared_ptr<ForceGenerator> forceGen)
 {
-	_ParticleForceRegistration registration;
-	registration.particle = particle;
+	_RigidBody2DForceRegistration registration;
+	registration.RigidBody2D = RigidBody2D;
 	registration.forceGen = forceGen;
 
-	_particleRegistrations.push_back(registration);
+	_RigidBody2DRegistrations.push_back(registration);
 }
 
-void ForceRegistry::Add(shared_ptr<RigidBody> body, shared_ptr<ForceGenerator> forceGen)
+void ForceRegistry::Add(shared_ptr<RigidBody3D> body, shared_ptr<ForceGenerator> forceGen)
 {
-	_RigidBodyRegistration registration;
+	_RigidBody3DRegistration registration;
 	registration.body = body;
 	registration.forceGen = forceGen;
 
 	_bodyRegistrations.push_back(registration);
 }
 
-void ForceRegistry::Remove(shared_ptr<Particle> particle, shared_ptr<ForceGenerator> forceGen)
+void ForceRegistry::Remove(shared_ptr<RigidBody2D> RigidBody2D, shared_ptr<ForceGenerator> forceGen)
 {
-	_ParticleForceRegistration registration;
-	registration.particle = particle;
+	_RigidBody2DForceRegistration registration;
+	registration.RigidBody2D = RigidBody2D;
 	registration.forceGen = forceGen;
 
-	auto it = std::find(_particleRegistrations.begin(), _particleRegistrations.end(), registration);
+	auto it = std::find(_RigidBody2DRegistrations.begin(), _RigidBody2DRegistrations.end(), registration);
 
-	if(it != _particleRegistrations.end())
+	if(it != _RigidBody2DRegistrations.end())
 	{
-		_particleRegistrations.erase(it);
+		_RigidBody2DRegistrations.erase(it);
 	}
 }
 
-void ForceRegistry::Remove(shared_ptr<RigidBody> body, shared_ptr<ForceGenerator> forceGen)
+void ForceRegistry::Remove(shared_ptr<RigidBody3D> body, shared_ptr<ForceGenerator> forceGen)
 {
-	_RigidBodyRegistration registration;
+	_RigidBody3DRegistration registration;
 	registration.body = body;
 	registration.forceGen = forceGen;
 
@@ -69,16 +69,16 @@ void ForceRegistry::Remove(shared_ptr<RigidBody> body, shared_ptr<ForceGenerator
 
 void ForceRegistry::Clear(void)
 {
-	_particleRegistrations.clear();
+	_RigidBody2DRegistrations.clear();
 }
 
 void ForceRegistry::UpdateForces(void)
 {
-	for(auto i : _particleRegistrations)
+	for(auto i : _RigidBody2DRegistrations)
 	{
-		if(i.particle->GetActive()) 
+		if(i.RigidBody2D->GetActive()) 
 		{
-			i.forceGen->v_UpdateForce(i.particle);
+			i.forceGen->v_UpdateForce(i.RigidBody2D);
 		}
 	}
 

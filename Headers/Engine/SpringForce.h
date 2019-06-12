@@ -61,7 +61,7 @@ namespace KillerPhysics
 	\param springConstant determines the "stiffness" of the spring.
 	\param restLength determines how long before the spring "snaps" back.
 */
-		SpringForce(shared_ptr<Particle> otherEnd, real springConstant, real restLength);
+		SpringForce(shared_ptr<RigidBody2D> otherEnd, real springConstant, real restLength);
 
 /*!
 	Not implemented.
@@ -75,16 +75,16 @@ namespace KillerPhysics
 /*!
 	Calculate the length of the spring, then creates a force to pull the object towards the other end if it is far enough 
 	away.
-	\param particle is the object that will be acted on by the spring.
+	\param RigidBody2D is the object that will be acted on by the spring.
 */
-		void v_UpdateForce(shared_ptr<Particle> particle) final;
+		void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D) final;
 
 /*!
 	Calculate the length of the spring, then creates a force to pull the object towards the other end if it is far enough 
 	away. This has been implemented but not tested. 
 	\param body is the object that will be acted on by the spring.
 */
-		void v_UpdateForce(shared_ptr<RigidBody> body) final;
+		void v_UpdateForce(shared_ptr<RigidBody3D> body) final;
 
 //==========================================================================================================================
 //
@@ -109,7 +109,7 @@ namespace KillerPhysics
 	Changes the location of the other end of the spring.
 	\param end is the new opposite end of the spring.
 */
-		inline void SetOtherEnd(shared_ptr<Particle> end) 
+		inline void SetOtherEnd(shared_ptr<RigidBody2D> end) 
 		{ 
 			_otherEnd = end; 
 		}
@@ -133,7 +133,7 @@ namespace KillerPhysics
 		}
 	
 	private:
-		shared_ptr<Particle> _otherEnd;			///< Other end of the spring. Consider changing to a GameObject.
+		shared_ptr<RigidBody2D> _otherEnd;			///< Other end of the spring. Consider changing to a GameObject.
 		real 				 _springConstant;	///< Determines the "stiffness" of the spring. The higher this value is, the more force the spring can make.
 		real 				 _restLength;		///< Length of the spring at rest. When an object reaches this length, a force will be acted on it. 
 		bool				 _isBungie;			///< Changes the state of the spring to use only pull forces, allowing the spring to "scrunch" up.

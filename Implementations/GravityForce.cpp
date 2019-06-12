@@ -25,17 +25,17 @@ GravityForce::~GravityForce(void)
 //Virtual Functions
 //
 //==========================================================================================================================
-void GravityForce::v_UpdateForce(shared_ptr<Particle> particle)
+void GravityForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 {
-	if(!particle->HasFiniteMass()) 
+	if(!RigidBody2D->HasFiniteMass()) 
 	{
 		return;
 	}
 
-	particle->AddForce(_gravityAcc * particle->GetMass());
+	RigidBody2D->AddForce(_gravityAcc * RigidBody2D->GetMass());
 }
 
-void GravityForce::v_UpdateForce(shared_ptr<RigidBody> body)
+void GravityForce::v_UpdateForce(shared_ptr<RigidBody3D> body)
 {
 	if(body->HasFiniteMass()) 
 	{

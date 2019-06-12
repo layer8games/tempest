@@ -58,10 +58,10 @@ void Springs::v_Init(void)
 	_box1.SetColor(1.0f, 0.0f, 0.0f);
 	_box1.SetPosition(0.0f, 100.0f);
 
-	_box1Spring.SetOtherEnd(shared_ptr<KP::Particle>(&_box1OtherEnd));
+	_box1Spring.SetOtherEnd(shared_ptr<KP::RigidBody2D>(&_box1OtherEnd));
 	_box1Spring.SetSpringConstant(2000.0f);
 	_box1Spring.SetRestLength(10.0f);
-	Level::AddParticleToLevel(shared_ptr<KP::Particle>(&_box1), shared_ptr<KP::SpringForce>(&_box1Spring));
+	Level::AddRigidBody2DToLevel(shared_ptr<KP::RigidBody2D>(&_box1), shared_ptr<KP::SpringForce>(&_box1Spring));
 
 	//===== Box2 Anchored Spring =====
 	_box2Anchor = KM::Point(400.0f, 200.0f);
@@ -75,7 +75,7 @@ void Springs::v_Init(void)
 	_box2Spring.SetAnchor(_box2Anchor);
 	_box2Spring.SetSpringConstant(2000.0f);
 	_box2Spring.SetRestLength(1.0f);
-	Level::AddParticleToLevel(shared_ptr<KP::Particle>(&_box2), shared_ptr<KP::AnchoredSpring>(&_box2Spring));
+	Level::AddRigidBody2DToLevel(shared_ptr<KP::RigidBody2D>(&_box2), shared_ptr<KP::AnchoredSpring>(&_box2Spring));
 
 	//===== Box3, standard Spring =====
 	_box3OtherEnd.MakeSprite();
@@ -95,12 +95,12 @@ void Springs::v_Init(void)
 	_box3.SetColor(0.0f, 0.0f, 1.0f);
 	_box3.SetPosition(40.0f, 0.0f);
 
-	_box3Spring.SetOtherEnd(shared_ptr<KP::Particle>(&_box3OtherEnd));
+	_box3Spring.SetOtherEnd(shared_ptr<KP::RigidBody2D>(&_box3OtherEnd));
 	_box3Spring.SetSpringConstant(2000.0f);
 	_box3Spring.SetRestLength(100.0f);
 	_box3Spring.MakeBungie(true);
-	Level::AddParticleToLevel(shared_ptr<KP::Particle>(&_box3), shared_ptr<KP::SpringForce>(&_box3Spring));
-	Level::RegisterParticleForce(shared_ptr<KP::Particle>(&_box3), shared_ptr<KP::GravityForce>(&_gravity));
+	Level::AddRigidBody2DToLevel(shared_ptr<KP::RigidBody2D>(&_box3), shared_ptr<KP::SpringForce>(&_box3Spring));
+	Level::RegisterRigidBody2DForce(shared_ptr<KP::RigidBody2D>(&_box3), shared_ptr<KP::GravityForce>(&_gravity));
 
 	//===== Box4 Buoyant Force =====
 	/*
@@ -117,8 +117,8 @@ Needs work...
 	_box4BuoyantForce.SetLiquidHeight(600.0f);
 	_box4BuoyantForce.SetLiquidDensity(10.0f);
 
-	_forceRegistry.Add(shared_ptr<KP::Particle>(&_box4), shared_ptr<KP::ParticleBuoyantForce>(&_box4BuoyantForce));
-	//_forceRegistry.Add(shared_ptr<KP::Particle>(&_box4), shared_ptr<KP::GravityForce>(&_gravity));
+	_forceRegistry.Add(shared_ptr<KP::RigidBody2D>(&_box4), shared_ptr<KP::RigidBody2DBuoyantForce>(&_box4BuoyantForce));
+	//_forceRegistry.Add(shared_ptr<KP::RigidBody2D>(&_box4), shared_ptr<KP::GravityForce>(&_gravity));
 	//Level::AddObjectToLevel(_box4);
 */	
 }

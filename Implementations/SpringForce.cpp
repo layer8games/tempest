@@ -18,7 +18,7 @@ _restLength(1),
 _isBungie(false)
 {  }
 
-SpringForce::SpringForce(shared_ptr<Particle> otherEnd, real springConstatant, real restLength)
+SpringForce::SpringForce(shared_ptr<RigidBody2D> otherEnd, real springConstatant, real restLength)
 :
 _otherEnd(otherEnd),
 _springConstant(springConstatant),
@@ -34,11 +34,11 @@ SpringForce::~SpringForce(void)
 //Virtual Functions
 //
 //==========================================================================================================================
-void SpringForce::v_UpdateForce(shared_ptr<Particle> particle)
+void SpringForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 {
 //=====Calculate Vector4 of the spring=====
 	KM::Vector4 force {};
-	force = particle->GetPosition();
+	force = RigidBody2D->GetPosition();
 	force -= _otherEnd->GetPosition();
 
 //=====Calculate magnitude of force=====
@@ -56,11 +56,11 @@ void SpringForce::v_UpdateForce(shared_ptr<Particle> particle)
 	force.Normalize();
 	force *= static_cast<F32>(-magnitude);
 
-	particle->AddForce(force);
+	RigidBody2D->AddForce(force);
 }
 
 //TODO: Implement
-void SpringForce::v_UpdateForce(shared_ptr<RigidBody> body)
+void SpringForce::v_UpdateForce(shared_ptr<RigidBody3D> body)
 {
 	KM::Vector4 force {};
 	force = body->GetPosition();

@@ -163,11 +163,25 @@ namespace KillerMath
 
 //===== Math Helper Functions =====
 /*!
-	Adds a Vector4 scaled by a value to this Vector4. 
+	Adds a Vector4 scaled by a value to this Vector4. The w component is ignored.
 	\param vec is the Vector4 that will be added to this one. 
 	\param scale is the amount the added Vector4 will be scaled by.
 */
-		void AddScaledVector4(const Vector4& vec, F32 scale);
+		void AddScaledVector(const Vector4& vec, F32 scale);
+
+/*!
+	Adds a Vector3 scaled by a value to this Vector4. 
+	\param vec is the Vector3 that will be added to this one. 
+	\param scale is the amount the added Vector4 will be scaled by.
+*/
+		void AddScaledVector(const Vector3& vec, F32 scale);
+
+/*!
+	Adds a Point scaled by a value to this Vector4. 
+	\param point is the Point that will be added to this one. 
+	\param scale is the amount the added Vector4 will be scaled by.
+*/
+		void AddScaledPoint(const Point& point, F32 scale);	
 
 //==========================================================================================================================
 //

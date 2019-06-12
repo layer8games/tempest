@@ -67,7 +67,7 @@ void Ballistics::v_Init(void)
 		p_Projectile p = ProjectFactory::Instance()->MakeProjectile();
 		p->SetScale(10.0f, 10.0f);
 		_projectilePool.push_back(p);
-		Level::AddParticleToLevel(p, gravity);
+		Level::AddRigidBody2DToLevel(p, gravity);
 	}
 
 	//TODO:: Once level's call init when they are set to active, this can be removed

@@ -13,8 +13,8 @@ namespace KE = KillerEngine;
 namespace KillerPhysics
 {
 /*! 
-	Registry to find out which particles need forces. It keeps track of which objects need specific forces for their development. 
-	There is also untested functionality to allow for a RigidBody registration. These registrations are called every frame to add
+	Registry to find out which RigidBody2Ds need forces. It keeps track of which objects need specific forces for their development. 
+	There is also untested functionality to allow for a RigidBody3D registration. These registrations are called every frame to add
 	the accompanying force to the object. 
 
 	It is based on the Cyclone engine design found in "Game Physics Engine Development, second edition" by Ian Millington. 
@@ -43,27 +43,27 @@ namespace KillerPhysics
 //
 //==========================================================================================================================		
 /*! 
-	 Creates a new _ParticleForceRegistration. Adds the args to the new _ParticleForceRegistration, then saves this into the
+	 Creates a new _RigidBody2DForceRegistration. Adds the args to the new _RigidBody2DForceRegistration, then saves this into the
 	 instance.
-	 \param particle is the pointer to be registered and saved. 
+	 \param RigidBody2D is the pointer to be registered and saved. 
 	 \param forceGen is the force that will be saved with the object.
 */
-		void Add(shared_ptr<Particle> particle, shared_ptr<ForceGenerator> forceGen);
+		void Add(shared_ptr<RigidBody2D> RigidBody2D, shared_ptr<ForceGenerator> forceGen);
 
 /*! 
-	Creates a new  _RigidBodyRegistration. Adds the args to the new _RigidBodyRegistration, then saves this into the instance.
+	Creates a new  _RigidBody3DRegistration. Adds the args to the new _RigidBody3DRegistration, then saves this into the instance.
 	\param body is the pointer to be registered and saved. 
 	\param forceGen is the force that will be saved with the object.
 */
-		void Add(shared_ptr<RigidBody> body, shared_ptr<ForceGenerator> forceGen);
+		void Add(shared_ptr<RigidBody3D> body, shared_ptr<ForceGenerator> forceGen);
 
 /*! 
 	Removes the registration matching the pointer args from the instance. This has some cost, since it creates a new registration,
 	then uses this to compare with every registration, until the needed registration is found. There is room to optimize here.
-	\param particle is the object that needs to be removed. 
+	\param RigidBody2D is the object that needs to be removed. 
 	\param forceGen is the matching force that also needs to be removed.  
 */
-		void Remove(shared_ptr<Particle> particle, shared_ptr<ForceGenerator> forceGen);
+		void Remove(shared_ptr<RigidBody2D> RigidBody2D, shared_ptr<ForceGenerator> forceGen);
 
 /*! 
 	Removes the registration matching the pointer args from the instance. This has some cost, since it creates a new registration,
@@ -71,7 +71,7 @@ namespace KillerPhysics
 	\param body is the object that needs to be removed. 
 	\param forceGen is the matching force that also needs to be removed.  	 
 */
-		void Remove(shared_ptr<RigidBody> body, shared_ptr<ForceGenerator> forceGen);
+		void Remove(shared_ptr<RigidBody3D> body, shared_ptr<ForceGenerator> forceGen);
 
 /*! 
 	Removed all saved registrations by clearing the list of saved registrations. 
@@ -86,23 +86,23 @@ namespace KillerPhysics
 		
 	private:
 //==========================================================================================================================
-//This struct will keep track of one force generator, and the particle that uses it. 
+//This struct will keep track of one force generator, and the RigidBody2D that uses it. 
 //==========================================================================================================================		
 /*! 
-	Private struct type that pairs a single Particle with a ForceGenerator.
+	Private struct type that pairs a single RigidBody2D with a ForceGenerator.
 */
-		struct _ParticleForceRegistration
+		struct _RigidBody2DForceRegistration
 		{
-			shared_ptr<Particle> 	   particle;						///< Pointer to object saved to add force to later.
+			shared_ptr<RigidBody2D> 	   RigidBody2D;						///< Pointer to object saved to add force to later.
 			shared_ptr<ForceGenerator> forceGen;						///< Pointer to force saved to be added to object later.
 
 /*! 
 	Returns true if another registration matches this one. 
 	\param p is the registration to be compared against.  
 */
-			bool operator ==(_ParticleForceRegistration p)
+			bool operator ==(_RigidBody2DForceRegistration p)
 			{
-				if(p.particle == particle && p.forceGen == forceGen)
+				if(p.RigidBody2D == RigidBody2D && p.forceGen == forceGen)
 					return true;
 				else
 					return false;
@@ -110,18 +110,18 @@ namespace KillerPhysics
 		};//end struct
 
 /*! 
-	Private struct type that pairs a single RigidBody with a ForceGenerators.
+	Private struct type that pairs a single RigidBody3D with a ForceGenerators.
 */
-		struct _RigidBodyRegistration
+		struct _RigidBody3DRegistration
 		{
-			shared_ptr<RigidBody> 	   body;							///< Pointer to object saved to add force to later.
+			shared_ptr<RigidBody3D> 	   body;							///< Pointer to object saved to add force to later.
 			shared_ptr<ForceGenerator> forceGen;						///< Pointer to force saved to be added to object later.
 
 /*! 
 	Returns true if another registration matches this one. 
 	\param b is the registration to be compared against.  
 */
-			bool operator ==(_RigidBodyRegistration b)
+			bool operator ==(_RigidBody3DRegistration b)
 			{
 				if(b.body == body && b.forceGen == forceGen)
 					return true;
@@ -131,16 +131,16 @@ namespace KillerPhysics
 		};
 
 /*! 
-	Alias type for Particle Registration Vector4. 
+	Alias type for RigidBody2D Registration Vector4. 
 */
-		typedef std::vector<_ParticleForceRegistration> ParticleRegistry;
+		typedef std::vector<_RigidBody2DForceRegistration> RigidBody2DRegistry;
 /*! 
-	Alias type for RigidBody registration Vector4. 
+	Alias type for RigidBody3D registration Vector4. 
 */
-		typedef std::vector<_RigidBodyRegistration> RigidBodyRegistry;
+		typedef std::vector<_RigidBody3DRegistration> RigidBody3DRegistry;
 		
-		ParticleRegistry _particleRegistrations;					///< Saved list of all Particle objects registered with a ForceGenerator.
-		RigidBodyRegistry _bodyRegistrations;						///< Saved list of all RigidBody objects registered with a ForceGenerator.
+		RigidBody2DRegistry _RigidBody2DRegistrations;					///< Saved list of all RigidBody2D objects registered with a ForceGenerator.
+		RigidBody3DRegistry _bodyRegistrations;						///< Saved list of all RigidBody3D objects registered with a ForceGenerator.
 
 	};//end class
 }//end namespacef

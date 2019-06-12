@@ -118,12 +118,6 @@
     <Filter Include="Source Code\KillerPhysics\Forces\Springs\BuoyantForce">
       <UniqueIdentifier>{7e96f329-fb0c-44bf-bd44-69755cdf143f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerPhysics\RigidBody">
-      <UniqueIdentifier>{c249fc9b-461f-4338-8fb6-84a67018f196}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerPhysics\Particle">
-      <UniqueIdentifier>{57925e0b-6c1a-46f2-92b3-fb68a9630ebe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\KillerPhysics\Contacts">
       <UniqueIdentifier>{51060f2b-30e0-4b75-a6f5-ad0625443185}</UniqueIdentifier>
     </Filter>
@@ -193,6 +187,18 @@
     <Filter Include="Source Code\KillerEngine\EngineFactory">
       <UniqueIdentifier>{7e26eddb-1905-4038-b22e-66c0c820e244}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\KillerPhysics\RigidBodies">
+      <UniqueIdentifier>{c249fc9b-461f-4338-8fb6-84a67018f196}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerPhysics\RigidBodies\3D">
+      <UniqueIdentifier>{a90d33f7-8d59-4428-8aa9-5eb3975b2f3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerPhysics\RigidBodies\2D">
+      <UniqueIdentifier>{57925e0b-6c1a-46f2-92b3-fb68a9630ebe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\KillerPhysics\PhysicsFactory">
+      <UniqueIdentifier>{f661ea09-a9a5-462e-91bd-9e3bf611f900}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -243,9 +249,6 @@
     <ClInclude Include="..\..\Headers\Engine\GameObject.h">
       <Filter>Source Code\KillerEngine\GameObjects\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Particle.h">
-      <Filter>Source Code\KillerPhysics\Particle</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Text.h">
       <Filter>Source Code\KillerEngine\Text</Filter>
     </ClInclude>
@@ -257,9 +260,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\FontManager.h">
       <Filter>Source Code\KillerEngine\Managers\FontManager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\RigidBody.h">
-      <Filter>Source Code\KillerPhysics\RigidBody</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ForceGenerator.h">
       <Filter>Source Code\KillerPhysics\Forces\Generator Base</Filter>
@@ -348,6 +348,15 @@
     <ClInclude Include="..\..\Headers\Engine\EngineFactory.h">
       <Filter>Source Code\KillerEngine\EngineFactory</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\RigidBody3D.h">
+      <Filter>Source Code\KillerPhysics\RigidBodies\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\RigidBody2D.h">
+      <Filter>Source Code\KillerPhysics\RigidBodies\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\PhysicsFactory.h">
+      <Filter>Source Code\KillerPhysics\PhysicsFactory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -395,9 +404,6 @@
     <ClCompile Include="..\..\Implementations\GameObject.cpp">
       <Filter>Source Code\KillerEngine\GameObjects\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Particle.cpp">
-      <Filter>Source Code\KillerPhysics\Particle</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Text.cpp">
       <Filter>Source Code\KillerEngine\Text</Filter>
     </ClCompile>
@@ -409,9 +415,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\FontManager.cpp">
       <Filter>Source Code\KillerEngine\Managers\FontManager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\RigidBody.cpp">
-      <Filter>Source Code\KillerPhysics\RigidBody</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ForceGenerator.cpp">
       <Filter>Source Code\KillerPhysics\Forces\Generator Base</Filter>
@@ -490,6 +493,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\EngineFactory.cpp">
       <Filter>Source Code\KillerEngine\EngineFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\RigidBody3D.cpp">
+      <Filter>Source Code\KillerPhysics\RigidBodies\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\RigidBody2D.cpp">
+      <Filter>Source Code\KillerPhysics\RigidBodies\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\PhysicsFactory.cpp">
+      <Filter>Source Code\KillerPhysics\PhysicsFactory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

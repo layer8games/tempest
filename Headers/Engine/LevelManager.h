@@ -126,12 +126,12 @@ namespace KillerEngine
 		void AddObjectToLevel(U32 id, shared_ptr<GameObject> obj);
 
 /*! 
-	 Allows object to be added to level. Wrapper around Level::AddParticleToLevel.
+	 Allows object to be added to level. Wrapper around Level::AddRigidBody2DToLevel.
 	 \param id is the key for the Level that the object will be added to. 
-	 \param particle is the object pointer to add.
-	 \param generator is an optional KillerPhysics::ForcerGenerator pointer to add to the particle.
+	 \param RigidBody2D is the object pointer to add.
+	 \param generator is an optional KillerPhysics::ForcerGenerator pointer to add to the RigidBody2D.
 */
-		void AddParticleToLevel(U32 id, shared_ptr<KP::Particle> particle, shared_ptr<KP::ForceGenerator> generator=nullptr);
+		void AddRigidBody2DToLevel(U32 id, shared_ptr<KP::RigidBody2D> RigidBody2D, shared_ptr<KP::ForceGenerator> generator=nullptr);
 		
 /*! 
 	Removes an object from a Level. Wrapper around Level::RemoveObjectFromLevel. This assumes that ID are unique for all GameObject. 

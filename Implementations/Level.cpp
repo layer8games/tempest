@@ -23,7 +23,7 @@ _bgColor(),
 _ID(0),
 _camera(new Camera()),
 _gameObjects(),
-_particles(),
+_RigidBody2Ds(),
 _forceRegistry()
 {
 	_camera->SetOrthographic();
@@ -33,7 +33,7 @@ Level::~Level(void)
 {
 	_camera = nullptr;
 	_gameObjects.clear();
-	_particles.clear();
+	_RigidBody2Ds.clear();
 }
 
 //==========================================================================================================================
@@ -45,7 +45,7 @@ void Level::v_Integrate(void)
 {
 	_forceRegistry.UpdateForces();
 
-	for(auto i : _particles)
+	for(auto i : _RigidBody2Ds)
 	{
 		if(i.second->GetActive())
 		{
@@ -94,43 +94,43 @@ void Level::AddObjectToLevel(shared_ptr<GameObject> obj)
 }
 
 
-void Level::AddParticleToLevel(const KP::Particle& particle)
+void Level::AddRigidBody2DToLevel(const KP::RigidBody2D& RigidBody2D)
 {
-	_particles.insert({ particle.GetID(), shared_ptr<KP::Particle>(const_cast<KP::Particle*>(&particle)) });
-	_particles[particle.GetID()]->SetUniform("projection", _camera->GetProjectionMatrix4());
+	_RigidBody2Ds.insert({ RigidBody2D.GetID(), shared_ptr<KP::RigidBody2D>(const_cast<KP::RigidBody2D*>(&RigidBody2D)) });
+	_RigidBody2Ds[RigidBody2D.GetID()]->SetUniform("projection", _camera->GetProjectionMatrix4());
 
-	if(_particles.find(particle.GetID()) == _particles.end())
+	if(_RigidBody2Ds.find(RigidBody2D.GetID()) == _RigidBody2Ds.end())
 	{
-		ErrorManager::Instance()->SetError(ENGINE, "Level::AddParticleToLevel Unable to add Particle to level.");
+		ErrorManager::Instance()->SetError(ENGINE, "Level::AddRigidBody2DToLevel Unable to add RigidBody2D to level.");
 	}
 }
 
-void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle)
+void Level::AddRigidBody2DToLevel(shared_ptr<KP::RigidBody2D> RigidBody2D)
 {
-	particle->SetUniform("projection", _camera->GetProjectionMatrix4());
+	RigidBody2D->SetUniform("projection", _camera->GetProjectionMatrix4());
 
-	_particles.insert({particle->GetID(), particle});
+	_RigidBody2Ds.insert({RigidBody2D->GetID(), RigidBody2D});
 
-	if(_particles.find(particle->GetID()) == _particles.end())
+	if(_RigidBody2Ds.find(RigidBody2D->GetID()) == _RigidBody2Ds.end())
 	{
-		ErrorManager::Instance()->SetError(ENGINE, "Level::AddParticleToLevel Unable to add Particle to level.");	
+		ErrorManager::Instance()->SetError(ENGINE, "Level::AddRigidBody2DToLevel Unable to add RigidBody2D to level.");	
 	}
 }
 
-void Level::AddParticleToLevel(shared_ptr<KP::Particle> particle, shared_ptr<KP::ForceGenerator> generator)
+void Level::AddRigidBody2DToLevel(shared_ptr<KP::RigidBody2D> RigidBody2D, shared_ptr<KP::ForceGenerator> generator)
 {
-	particle->SetUniform("projection", _camera->GetProjectionMatrix4());
+	RigidBody2D->SetUniform("projection", _camera->GetProjectionMatrix4());
 
-	_particles.insert({particle->GetID(), particle});
+	_RigidBody2Ds.insert({RigidBody2D->GetID(), RigidBody2D});
 
-	if(_particles.find(particle->GetID()) == _particles.end())
+	if(_RigidBody2Ds.find(RigidBody2D->GetID()) == _RigidBody2Ds.end())
 	{
-		ErrorManager::Instance()->SetError(ENGINE, "Unable to Add Particle to Level. Level.h line 80");
+		ErrorManager::Instance()->SetError(ENGINE, "Unable to Add RigidBody2D to Level. Level.h line 80");
 	}
 
 	if(generator != nullptr)
 	{
-		_forceRegistry.Add(particle, generator);
+		_forceRegistry.Add(RigidBody2D, generator);
 	}
 }
 
@@ -167,9 +167,9 @@ void Level::RemoveObjectFromLevel(U32 id)
 	{
 		_gameObjects.erase(id);
 	}
-	else if(_particles.find(id) != _particles.end())
+	else if(_RigidBody2Ds.find(id) != _RigidBody2Ds.end())
 	{
-		_particles.erase(id);
+		_RigidBody2Ds.erase(id);
 	}
 	else
 	{
@@ -193,7 +193,7 @@ void Level::UpdateObjects(void)
 		}
 	}
 
-	for(auto i : _particles)
+	for(auto i : _RigidBody2Ds)
 	{
 		if(i.second->GetActiveUpdate())
 		{
@@ -217,7 +217,7 @@ void Level::RenderObjects(void)
 		}
 	}
 
-	for(auto i : _particles)
+	for(auto i : _RigidBody2Ds)
 	{
 		if(i.second->GetActiveRender())
 		{
@@ -244,9 +244,9 @@ shared_ptr<GameObject> Level::GetGameObject(U32 id)
 	return obj;
 }
 
-shared_ptr<KP::Particle> Level::GetParticle(U32 id)
+shared_ptr<KP::RigidBody2D> Level::GetRigidBody2D(U32 id)
 {
-	shared_ptr<KP::Particle> obj = _particles[id];
+	shared_ptr<KP::RigidBody2D> obj = _RigidBody2Ds[id];
 
 	if(obj == nullptr)
 	{

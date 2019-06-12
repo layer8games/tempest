@@ -46,14 +46,14 @@ void FireworksDemo::v_Init(void)
 	_firework->SetPosition(0.0f, 0.0f);
 	_firework->SetMass(1.0f);
 	_firework->SetMaxSize(100);
-	Level::AddParticleToLevel(_firework, nullptr);
+	Level::AddRigidBody2DToLevel(_firework, nullptr);
 
 	for(U32 i = 0; i < _firework->GetMaxSize(); ++i)
 	{
 		p_Payload payload = ProjectFactory::Instance()->MakePayload();
-		payload->particle.MakeSprite();
-		payload->particle.SetActive(false);
-		Level::AddParticleToLevel(payload->particle);
+		payload->RigidBody2D.MakeSprite();
+		payload->RigidBody2D.SetActive(false);
+		Level::AddRigidBody2DToLevel(payload->RigidBody2D);
 		_pool.push_back(payload);
 	}
 

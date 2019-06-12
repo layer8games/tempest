@@ -634,12 +634,12 @@ BOOST_AUTO_TEST_CASE(Vector4Resetvoid)
 	BOOST_CHECK_EQUAL(Vector4Test[w], 0.0f);
 }
 
-BOOST_AUTO_TEST_CASE(Vector4AddScaledVector4) 
+BOOST_AUTO_TEST_CASE(Vector4AddScaledVector) 
 {
 	KM::Vector4 Vector4Test {15.0f, 25.0f, 45.0f};
 	KM::Vector4 scaled {45.0f, 10.0f, 20.0f};
 
-	Vector4Test.AddScaledVector4(scaled, 10);
+	Vector4Test.AddScaledVector(scaled, 10);
 
 	BOOST_CHECK_EQUAL(Vector4Test[x], 465.0f);
 	BOOST_CHECK_EQUAL(Vector4Test[y], 125.0f);
@@ -648,7 +648,7 @@ BOOST_AUTO_TEST_CASE(Vector4AddScaledVector4)
 
 	KM::Vector4 Vector4Test2 {15.0f, 25.0f};
 	Vector4Test2.Make2D();
-	Vector4Test2.AddScaledVector4(scaled, 10);
+	Vector4Test2.AddScaledVector(scaled, 10);
 
 	BOOST_CHECK_EQUAL(Vector4Test2[x], 465.0f);
 	BOOST_CHECK_EQUAL(Vector4Test2[y], 125.0f);

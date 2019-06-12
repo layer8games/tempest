@@ -21,7 +21,7 @@ namespace KE = KillerEngine;
 namespace KillerPhysics
 {
 /*! 
-	A physics ForceGenerator for Particle and RigidBody objects which simulates Gravity. By default this is set to -y.
+	A physics ForceGenerator for RigidBody2D and RigidBody3D objects which simulates Gravity. By default this is set to -y.
 
 	It is based on the Cyclone engine design found in "Game Physics Engine Development, second edition" by Ian Millington. 
 */
@@ -55,16 +55,16 @@ namespace KillerPhysics
 //
 //==========================================================================================================================		
 /*! 
-	If particle does not have infinite mass, the acceleration is added using KillerPhysics::Particle::AddForce.
-	\param particle is the pointer to the object that will have the acceleration added to it.  
+	If RigidBody2D does not have infinite mass, the acceleration is added using KillerPhysics::RigidBody2D::AddForce.
+	\param RigidBody2D is the pointer to the object that will have the acceleration added to it.  
 */
-		void v_UpdateForce(shared_ptr<Particle> particle) final;
+		void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D) final;
 
 /*! 
-	If particle does not have infinite mass, the acceleration is added using KillerPhysics::RigidBody::AddForce.
+	If RigidBody2D does not have infinite mass, the acceleration is added using KillerPhysics::RigidBody3D::AddForce.
 	\param body is the pointer to the object that will have the acceleration added to it.  
 */
-		void v_UpdateForce(shared_ptr<RigidBody> body) final;
+		void v_UpdateForce(shared_ptr<RigidBody3D> body) final;
 
 //==========================================================================================================================
 //

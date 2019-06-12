@@ -3,8 +3,8 @@
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/Timer.h>
-#include <Engine/Particle.h>
-#include <Engine/RigidBody.h>
+#include <Engine/RigidBody2D.h>
+#include <Engine/RigidBody3D.h>
 
 namespace KM = KillerMath;
 namespace KE = KillerEngine;
@@ -48,16 +48,16 @@ namespace KillerPhysics
 /*!
 	Unimplemented virtual function. Each force defines what happens during an update. This is the part that will make the 
 	forces different.
-	\param particle defines this as the Particle object version.
+	\param RigidBody2D defines this as the RigidBody2D object version.
 */
-		virtual void v_UpdateForce(shared_ptr<Particle> particle)=0;
+		virtual void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)=0;
 
 /*!
 	Unimplemented virtual function. Each force defines what happens during an update. This is the part that will make the 
 	forces different.
-	\param particle defines this as the RigidBody object version.
+	\param RigidBody2D defines this as the RigidBody3D object version.
 */
-		virtual void v_UpdateForce(shared_ptr<RigidBody> body)=0;
+		virtual void v_UpdateForce(shared_ptr<RigidBody3D> body)=0;
 
 	private:
 

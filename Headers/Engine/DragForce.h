@@ -4,8 +4,8 @@
 #include <Engine/Atom.h>
 #include <Engine/ForceGenerator.h>
 #include <Engine/Vector4.h>
-#include <Engine/Particle.h>
-#include <Engine/RigidBody.h>
+#include <Engine/RigidBody2D.h>
+#include <Engine/RigidBody3D.h>
 
 namespace KM = KillerMath;
 namespace KE = KillerEngine;
@@ -60,16 +60,16 @@ namespace KillerPhysics
 /*!
 	Adds a force to the object based on the drag coefficient and the velocity of the object. For details, see the class 
 	description. 
-	\param particle is the pointer to the object that will have the forced added to it, and will be used to determine what the force is.
+	\param RigidBody2D is the pointer to the object that will have the forced added to it, and will be used to determine what the force is.
 */
-		void v_UpdateForce(shared_ptr<Particle> particle) final;
+		void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D) final;
 
 /*!
 	Adds a force to the object based on the drag coefficient and the velocity of the object. For details, see the class 
 	description. 
 	\param body is the pointer to the object that will have the forced added to it, and will be used to determine what the force is.
 */
-		void v_UpdateForce(shared_ptr<RigidBody> body) final;
+		void v_UpdateForce(shared_ptr<RigidBody3D> body) final;
 
 //==========================================================================================================================
 //

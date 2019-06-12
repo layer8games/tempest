@@ -19,7 +19,7 @@ Written by Maxwell Miller
 #include <Engine/AnchoredSpring.h>
 #include <Engine/BuoyantForce.h>
 #include <Engine/GravityForce.h>
-#include <Engine/Particle.h>
+#include <Engine/RigidBody2D.h>
 #include <Engine/Vector4.h>
 #include <Engine/Point.h>
 
@@ -56,16 +56,16 @@ namespace Boxes
 	private:
 		KE::Text			_levelTitle;
 		KP::GravityForce    _gravity;
-		KP::Particle 		_box1OtherEnd;
-		KP::Particle 		_box1;
+		KP::RigidBody2D 		_box1OtherEnd;
+		KP::RigidBody2D 		_box1;
 		KP::SpringForce     _box1Spring;
 		KM::Point			_box2Anchor;
-		KP::Particle 		_box2;
+		KP::RigidBody2D 		_box2;
 		KP::AnchoredSpring  _box2Spring;
-		KP::Particle 		_box3OtherEnd;
-		KP::Particle 		_box3;
+		KP::RigidBody2D 		_box3OtherEnd;
+		KP::RigidBody2D 		_box3;
 		KP::SpringForce     _box3Spring;
-		KP::Particle 		_box4;
+		KP::RigidBody2D 		_box4;
 		KP::BuoyantForce    _box4BuoyantForce;
 	};
 }
