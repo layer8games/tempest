@@ -168,6 +168,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\t_RigidBody2D.cpp" />
     <ClCompile Include="..\..\Implementations\t_Timer.cpp">
       <SubType>
       </SubType>

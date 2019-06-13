@@ -153,6 +153,9 @@
     <ClCompile Include="..\..\Implementations\ProjectFactory.cpp">
       <Filter>Source Code\UITest\ProjectFactory</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\t_RigidBody2D.cpp">
+      <Filter>Source Code\UnitTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\Docs\TestStatus.txt">
