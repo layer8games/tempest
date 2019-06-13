@@ -47,12 +47,16 @@ class Object : KE::GameObject
 {
 public:
 	Object(void)
+	: p_body(nullptr)
 	{  }
 
 	~Object(void)
 	{
 		p_body.reset();
 	}
+
+	void v_Update(void) final
+	{  }
 
 	KP::p_RigidBody2D p_body;
 };
@@ -86,5 +90,9 @@ BOOST_AUTO_TEST_CASE(RigidBody2DConstructor)
 
 BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
 {
-	
+	Object obj { };
+
+	obj.p_body = KE::EngineFactory::Instance()->MakeRigidBody2D();
+
+	BOOST_CHECK_NE(obj.p_body, nullptr);
 }
