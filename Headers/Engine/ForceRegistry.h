@@ -48,14 +48,14 @@ namespace KillerPhysics
 	 \param RigidBody2D is the pointer to be registered and saved. 
 	 \param forceGen is the force that will be saved with the object.
 */
-		void Add(shared_ptr<RigidBody2D> RigidBody2D, shared_ptr<ForceGenerator> forceGen);
+		void Add(p_RigidBody2D RigidBody2D, p_ForceGenerator forceGen);
 
 /*! 
 	Creates a new  _RigidBody3DRegistration. Adds the args to the new _RigidBody3DRegistration, then saves this into the instance.
 	\param body is the pointer to be registered and saved. 
 	\param forceGen is the force that will be saved with the object.
 */
-		void Add(shared_ptr<RigidBody3D> body, shared_ptr<ForceGenerator> forceGen);
+		void Add(p_RigidBody3D body, p_ForceGenerator forceGen);
 
 /*! 
 	Removes the registration matching the pointer args from the instance. This has some cost, since it creates a new registration,
@@ -63,7 +63,7 @@ namespace KillerPhysics
 	\param RigidBody2D is the object that needs to be removed. 
 	\param forceGen is the matching force that also needs to be removed.  
 */
-		void Remove(shared_ptr<RigidBody2D> RigidBody2D, shared_ptr<ForceGenerator> forceGen);
+		void Remove(p_RigidBody2D RigidBody2D, p_ForceGenerator forceGen);
 
 /*! 
 	Removes the registration matching the pointer args from the instance. This has some cost, since it creates a new registration,
@@ -71,7 +71,7 @@ namespace KillerPhysics
 	\param body is the object that needs to be removed. 
 	\param forceGen is the matching force that also needs to be removed.  	 
 */
-		void Remove(shared_ptr<RigidBody3D> body, shared_ptr<ForceGenerator> forceGen);
+		void Remove(p_RigidBody3D body, p_ForceGenerator forceGen);
 
 /*! 
 	Removed all saved registrations by clearing the list of saved registrations. 
@@ -93,8 +93,8 @@ namespace KillerPhysics
 */
 		struct _RigidBody2DForceRegistration
 		{
-			shared_ptr<RigidBody2D> 	   RigidBody2D;						///< Pointer to object saved to add force to later.
-			shared_ptr<ForceGenerator> forceGen;						///< Pointer to force saved to be added to object later.
+			p_RigidBody2D 	   		   RigidBody2D;						///< Pointer to object saved to add force to later.
+			p_ForceGenerator forceGen;						///< Pointer to force saved to be added to object later.
 
 /*! 
 	Returns true if another registration matches this one. 
@@ -114,8 +114,8 @@ namespace KillerPhysics
 */
 		struct _RigidBody3DRegistration
 		{
-			shared_ptr<RigidBody3D> 	   body;							///< Pointer to object saved to add force to later.
-			shared_ptr<ForceGenerator> forceGen;						///< Pointer to force saved to be added to object later.
+			p_RigidBody3D 	   body;							///< Pointer to object saved to add force to later.
+			p_ForceGenerator forceGen;						///< Pointer to force saved to be added to object later.
 
 /*! 
 	Returns true if another registration matches this one. 
@@ -139,8 +139,8 @@ namespace KillerPhysics
 */
 		typedef std::vector<_RigidBody3DRegistration> RigidBody3DRegistry;
 		
-		RigidBody2DRegistry _RigidBody2DRegistrations;					///< Saved list of all RigidBody2D objects registered with a ForceGenerator.
-		RigidBody3DRegistry _bodyRegistrations;						///< Saved list of all RigidBody3D objects registered with a ForceGenerator.
+		RigidBody2DRegistry _body2DRegistrations;					///< Saved list of all RigidBody2D objects registered with a ForceGenerator.
+		RigidBody3DRegistry _body3DRegistrations;						///< Saved list of all RigidBody3D objects registered with a ForceGenerator.
 
 	};//end class
 }//end namespacef

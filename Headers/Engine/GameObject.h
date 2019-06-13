@@ -288,6 +288,11 @@ namespace KillerEngine
 			_orientation.AddScaledVector(vec, scale);
 		}
 
+		inline void NormalizeOrientation(void)
+		{
+			_orientation.Normalize();
+		}
+
 //===== Color =====		
 		inline void SetColor(const Color& col)
 		{

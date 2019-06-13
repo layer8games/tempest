@@ -2,6 +2,7 @@
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
+#include <Engine/ErrorManager.h>
 #include <Engine/Timer.h>
 #include <Engine/Vector4.h>
 #include <Engine/Point.h>
@@ -42,6 +43,17 @@ namespace KillerPhysics
 //Accessors
 //
 //==========================================================================================================================
+//===== Active =====
+		inline void SetActive(bool state)
+		{
+			_active = state;
+		}
+
+		bool GetActive(void) const;
+
+//===== Object Position =====
+		const KM::Point& GetPosition(void);
+
 //===== Inertia Tensor =====
 		inline const KM::Matrix4& GetInverseInertiaTensor(void) const
 		{
@@ -223,7 +235,12 @@ namespace KillerPhysics
 //Data
 //
 //==========================================================================================================================
-		weak_ptr<GameObject> _obj;
+		bool 		_active;
+		bool 	   _isAwake;
+		real 	   _inverseMass;
+		real 	   _linearDamping;
+		real 	   _angularDamping;
+		weak_ptr<KE::GameObject> _obj;
 		KM::Matrix4 _inverseInertiaTensor;
 		KM::Matrix4 _inverseInertiaTensorInWorld;
 		KM::Vector4 _velocity;
@@ -231,10 +248,7 @@ namespace KillerPhysics
 		KM::Vector4 _rotation;
 		KM::Vector4 _forceAccum;
 		KM::Vector4 _torqueAccum;
-		real 	   _inverseMass;
-		real 	   _linearDamping;
-		real 	   _angularDamping;
-		bool 	   _isAwake;	
+			
 
 	};//end Class
 

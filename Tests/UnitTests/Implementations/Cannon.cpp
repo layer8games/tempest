@@ -61,6 +61,6 @@ void Cannon::Fire(const KM::Vector4& heading, shared_ptr<Projectile> projectile,
 {
 	projectile->SetType(type);
 	projectile->SetPosition(GameObject::GetPosition());
-	projectile->AddScaledVelocity(heading, projectile->GetSpeedScale());
+	//projectile->AddScaledVelocity(heading, projectile->GetSpeedScale());
 	projectile->SetActive(true);
 }

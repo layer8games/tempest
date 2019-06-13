@@ -9,8 +9,8 @@ using namespace KillerPhysics;
 //==========================================================================================================================
 ForceRegistry::ForceRegistry(void)
 :
-_RigidBody2DRegistrations(),
-_bodyRegistrations()
+_body2DRegistrations(),
+_body3DRegistrations()
 {  }
 
 ForceRegistry::~ForceRegistry(void)
@@ -27,7 +27,7 @@ void ForceRegistry::Add(shared_ptr<RigidBody2D> RigidBody2D, shared_ptr<ForceGen
 	registration.RigidBody2D = RigidBody2D;
 	registration.forceGen = forceGen;
 
-	_RigidBody2DRegistrations.push_back(registration);
+	_body2DRegistrations.push_back(registration);
 }
 
 void ForceRegistry::Add(shared_ptr<RigidBody3D> body, shared_ptr<ForceGenerator> forceGen)
@@ -36,7 +36,7 @@ void ForceRegistry::Add(shared_ptr<RigidBody3D> body, shared_ptr<ForceGenerator>
 	registration.body = body;
 	registration.forceGen = forceGen;
 
-	_bodyRegistrations.push_back(registration);
+	_body3DRegistrations.push_back(registration);
 }
 
 void ForceRegistry::Remove(shared_ptr<RigidBody2D> RigidBody2D, shared_ptr<ForceGenerator> forceGen)
@@ -45,11 +45,11 @@ void ForceRegistry::Remove(shared_ptr<RigidBody2D> RigidBody2D, shared_ptr<Force
 	registration.RigidBody2D = RigidBody2D;
 	registration.forceGen = forceGen;
 
-	auto it = std::find(_RigidBody2DRegistrations.begin(), _RigidBody2DRegistrations.end(), registration);
+	auto it = std::find(_body2DRegistrations.begin(), _body2DRegistrations.end(), registration);
 
-	if(it != _RigidBody2DRegistrations.end())
+	if(it != _body2DRegistrations.end())
 	{
-		_RigidBody2DRegistrations.erase(it);
+		_body2DRegistrations.erase(it);
 	}
 }
 
@@ -59,22 +59,22 @@ void ForceRegistry::Remove(shared_ptr<RigidBody3D> body, shared_ptr<ForceGenerat
 	registration.body = body;
 	registration.forceGen = forceGen;
 
-	auto it = std::find(_bodyRegistrations.begin(), _bodyRegistrations.end(), registration);
+	auto it = std::find(_body3DRegistrations.begin(), _body3DRegistrations.end(), registration);
 
-	if(it != _bodyRegistrations.end())
+	if(it != _body3DRegistrations.end())
 	{
-		_bodyRegistrations.erase(it);
+		_body3DRegistrations.erase(it);
 	}
 }
 
 void ForceRegistry::Clear(void)
 {
-	_RigidBody2DRegistrations.clear();
+	_body2DRegistrations.clear();
 }
 
 void ForceRegistry::UpdateForces(void)
 {
-	for(auto i : _RigidBody2DRegistrations)
+	for(auto i : _body2DRegistrations)
 	{
 		if(i.RigidBody2D->GetActive()) 
 		{
@@ -82,7 +82,7 @@ void ForceRegistry::UpdateForces(void)
 		}
 	}
 
-	for(auto i : _bodyRegistrations)
+	for(auto i : _body3DRegistrations)
 	{
 		if(i.body->GetActive())
 		{

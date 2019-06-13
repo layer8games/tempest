@@ -44,17 +44,17 @@ void FireworksDemo::v_Init(void)
 	_firework->SetTexture(KE::TextureManager::Instance()->GetTexture(102));
 	_firework->SetScale(15.0f, 15.0f);
 	_firework->SetPosition(0.0f, 0.0f);
-	_firework->SetMass(1.0f);
+	//_firework->SetMass(1.0f);
 	_firework->SetMaxSize(100);
-	Level::AddRigidBody2DToLevel(_firework, nullptr);
+	Level::AddObjectToLevel(_firework);
 
 	for(U32 i = 0; i < _firework->GetMaxSize(); ++i)
 	{
-		p_Payload payload = ProjectFactory::Instance()->MakePayload();
-		payload->RigidBody2D.MakeSprite();
-		payload->RigidBody2D.SetActive(false);
-		Level::AddRigidBody2DToLevel(payload->RigidBody2D);
-		_pool.push_back(payload);
+		//p_Payload payload = ProjectFactory::Instance()->MakePayload();
+		//payload->RigidBody2D.MakeSprite();
+		//payload->SetActive(false);
+		//Level::AddObjectToLevel(payload->RigidBody2D);
+		//_pool.push_back(payload);
 	}
 
 	_firework->SetPool(_pool);
@@ -87,22 +87,22 @@ void FireworksDemo::v_Update(void)
 	//Move firework check
 	if(KE::Controller::Instance()->GetKeyHeld(KE::Keys::UP_ARROW))
 	{
-		_firework->SetVelocity(0.0f, _speed);
+		//_firework->SetVelocity(0.0f, _speed);
 	}
 	else if(KE::Controller::Instance()->GetKeyHeld(KE::Keys::DOWN_ARROW))
 	{
-		_firework->SetVelocity(0.0f, -_speed);
+		//_firework->SetVelocity(0.0f, -_speed);
 	}
 	else if(KE::Controller::Instance()->GetKeyHeld(KE::Keys::RIGHT_ARROW))
 	{
-		_firework->SetVelocity(_speed, 0.0f);
+		//_firework->SetVelocity(_speed, 0.0f);
 	}
 	else if(KE::Controller::Instance()->GetKeyHeld(KE::Keys::LEFT_ARROW))
 	{
-		_firework->SetVelocity(-_speed, 0.0f);
+		//_firework->SetVelocity(-_speed, 0.0f);
 	}
 	else if(KE::Controller::Instance()->GetKeyHeld(KE::Keys::SPACE))
 	{
-		_firework->SetVelocity(0.0f, 0.0f);
+		//_firework->SetVelocity(0.0f, 0.0f);
 	}
 }

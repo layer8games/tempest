@@ -80,13 +80,13 @@ namespace KillerPhysics
 	Adds a force to a RigidBody2D in relation to the objects position and the anchor point.
 	\param RigidBody2D is the object that will recieve the force.
 */
-		void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D) final;
+		void v_UpdateForce(p_RigidBody2D body) final;
 
 /*!
 	Adds a force to a RigidBody3D in relation to the objects position and the anchor point.
 	\param body is the object that will recieve the force.
 */
-		void v_UpdateForce(shared_ptr<RigidBody3D> body) final;
+		void v_UpdateForce(p_RigidBody3D body) final;
 
 //==========================================================================================================================
 //

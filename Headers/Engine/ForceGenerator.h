@@ -50,16 +50,18 @@ namespace KillerPhysics
 	forces different.
 	\param RigidBody2D defines this as the RigidBody2D object version.
 */
-		virtual void v_UpdateForce(p_RidgidBody2D body)=0;
+		virtual void v_UpdateForce(p_RigidBody2D body)=0;
 
 /*!
 	Unimplemented virtual function. Each force defines what happens during an update. This is the part that will make the 
 	forces different.
 	\param RigidBody2D defines this as the RigidBody3D object version.
 */
-		virtual void v_UpdateForce(p_RidgidBody3D body)=0;
+		virtual void v_UpdateForce(p_RigidBody3D body)=0;
 
 	private:
 
 	};//end class
+
+	typedef shared_ptr<ForceGenerator> p_ForceGenerator;
 }//end namespace

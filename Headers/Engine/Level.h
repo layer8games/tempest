@@ -21,10 +21,10 @@ Written by Maxwell Miller
 #include <Engine/Vector4.h>
 #include <Engine/Color.h>
 #include <Engine/Text.h>
-#include <Engine/RigidBody2D.h>
 #include <Engine/ForceRegistry.h>
 #include <Engine/Camera.h>
 #include <Engine/Text.h>
+#include <Engine/RigidBody2D.h>
 
 namespace KM = KillerMath;
 namespace KP = KillerPhysics;
@@ -85,12 +85,6 @@ namespace KillerEngine
 	are already being updated as part of Level::UpdateLevel.
 */
 		virtual void v_Update(void)=0;
-
-/*!
-	Abstract function. Calls KillerPhysics::ForceRegistry::UpdateForces, then loops over each Physics object, calling
-	KillerPhysics::RigidBody2D::v_Integrate function. It is virtual to allow for optional customization.
-*/
-		virtual void v_Integrate(void);
 		
 /*!
 	Wrapper around Level::RenderObjects. It is virtual to allow for optional customization.
@@ -117,37 +111,16 @@ namespace KillerEngine
 	Adds GameObject pointer to the Level.
 	\param obj is the pointer to be added.
 */
-		void AddObjectToLevel(shared_ptr<GameObject> obj);
-
-/*!
-	Even though KillerPhysics::RigidBody2D is a GameObject, the compiler can't tell the difference. This adds the physics object to 
-	the Level.
-	\param RigidBody2D converted to a shared_ptr and added to the level. 
-*/
-		void AddRigidBody2DToLevel(const KP::RigidBody2D& RigidBody2D);
-
-/*!
-	Even though KillerPhysics::RigidBody2D is a GameObject, the compiler can't tell the difference. This adds the physics object to 
-	the Level.
-	\param RigidBody2D is the pointer to be added to the Level.
-*/
-		void AddRigidBody2DToLevel(shared_ptr<KP::RigidBody2D> RigidBody2D);
-
-/*!
-	Helper function that allows to add a KillerPhysics::RigidBody2D and register it a force at the same time. 
-	\param RigidBody2D is the pointer to add.
-	\param is the optional force to register the RigidBody2D with.
-*/
-		void AddRigidBody2DToLevel(shared_ptr<KP::RigidBody2D> RigidBody2D, shared_ptr<KP::ForceGenerator> generator=nullptr);
+		void AddObjectToLevel(p_GameObject obj);
 
 /*!
 	Registers a KillerPhysics::RigidBody2D with a KillerPhysics::ForcerGenerator. This only works because they are pointers. 
 	\param RigidBody2D is the pointer that needs to be registered with the generator. 
 	\param generator is the force to apply to the RigidBody2D.
 */
-		inline void RegisterRigidBody2DForce(shared_ptr<KP::RigidBody2D> RigidBody2D, shared_ptr<KP::ForceGenerator> generator)
+		inline void RegisterRigidBody2DForce(KP::p_RigidBody2D body, KP::p_ForceGenerator generator)
 		{
-			_forceRegistry.Add(RigidBody2D, generator);
+			_forceRegistry.Add(body, generator);
 		}
 
 /*!
@@ -191,11 +164,6 @@ namespace KillerEngine
 		inline void SetObjectUniforms(string name, const T& type)
 		{
 			for(auto i : _gameObjects)
-			{
-				i.second->SetUniform(name, type);
-			}
-
-			for(auto i : _RigidBody2Ds)
 			{
 				i.second->SetUniform(name, type);
 			}
@@ -456,13 +424,7 @@ namespace KillerEngine
 	Returns GameObject with ID.
 	\param id is the ID of the object to get. Should coorespond to GameObject::_ID. 
 */
-		shared_ptr<GameObject> GetGameObject(U32 id);
-
-/*! 
-	Returns KillerPhysics::RigidBody2D with ID.
-	\param id is the ID of the object to get. Should coorespond to the GameObject::_ID. 
-*/
-		shared_ptr<KP::RigidBody2D> GetRigidBody2D(U32 id);
+		p_GameObject GetGameObject(U32 id);
 		
 	private:
 //==========================================================================================================================
@@ -482,8 +444,7 @@ namespace KillerEngine
 		Color   _bgColor;											///< Color used for the background of the rendering window.
 		U32     _ID;												///< ID used in the LevelManager.
 		Camera* _camera;											///< Pointer to a Camera object. 
-		std::map<U32, shared_ptr<GameObject>>	  _gameObjects;		///< List of all GameObjects included in the Level.
-		std::map<U32, shared_ptr<KP::RigidBody2D>>   _RigidBody2Ds;		///< List of all KillerPhysics::RigidBody2Ds in the Level.
+		std::map<U32, p_GameObject>	  _gameObjects;		///< List of all GameObjects included in the Level.
 		KP::ForceRegistry _forceRegistry; 							///< KillerPhysics::ForceRegistry used to allow physics forces to be applied.
 	};
 }//End namespace

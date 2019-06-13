@@ -13,12 +13,12 @@ of KillerWave.
 
 Written by Maxwell Miller
 =========================================================================*/
-#ifndef PROJECTILE_H
-#define PROJECTILE_H
+#pragma once
 
 //=====Killer2D includes=====
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
+#include <Engine/GameObject.h>
 #include <Engine/RigidBody2D.h>
 #include <Engine/Timer.h>
 #include <Engine/TextureManager.h>
@@ -29,9 +29,6 @@ namespace KP = KillerPhysics;
 
 namespace Boxes
 {
-	class Projectile;
-	typedef shared_ptr<Projectile> p_Projectile;
-
 	enum ProjectileType
 	{
 		BULLET,
@@ -42,7 +39,7 @@ namespace Boxes
 		GRENADE
 	};
 
-	class Projectile : public KP::RigidBody2D
+	class Projectile : public KE::GameObject
 	{
 	public:
 //==========================================================================================================================
@@ -85,5 +82,6 @@ namespace Boxes
 		ProjectileType 			   _type;
 
 	};//end class Projectile
+
+	typedef shared_ptr<Projectile> p_Projectile;
 }//end namespace
-#endif

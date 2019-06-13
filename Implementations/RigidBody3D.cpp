@@ -8,6 +8,11 @@ using namespace KillerPhysics;
 //==========================================================================================================================
 RigidBody3D::RigidBody3D(void)
 :
+_active(true),
+_isAwake(false),
+_inverseMass(1.0f),
+_linearDamping(0.999f),
+_angularDamping(0.999f),
 _obj(),
 _inverseInertiaTensor(0.0f),
 _inverseInertiaTensorInWorld(0.0f),
@@ -15,11 +20,7 @@ _velocity(0.0f),
 _acceleration(0.0f),
 _rotation(0.0f),
 _forceAccum(0.0f),
-_torqueAccum(0.0f),
-_inverseMass(1.0f),
-_linearDamping(0.999f),
-_angularDamping(0.999f),
-_isAwake(false)
+_torqueAccum(0.0f)
 {  }
 
 RigidBody3D::~RigidBody3D(void)
@@ -34,6 +35,12 @@ RigidBody3D::~RigidBody3D(void)
 //==========================================================================================================================
 void RigidBody3D::Integrate(void)
 {
+	if(_obj.expired())
+	{
+		KE::ErrorManager::Instance()->SetError(KE::PHYSICS, "RigidBody3D::Integrate: object not set!");
+		return;
+	}
+
 	F32 delta = KM::Timer::Instance()->DeltaTime();
 
 	assert(delta > 0.0f);
@@ -62,20 +69,29 @@ void RigidBody3D::Integrate(void)
 	ClearAccumulators();
 }
 
-void RigidBody3D::CalculateDerivedData(KM::Quaternion& orientation, const KM::Matrix4& modelMat)
+void RigidBody3D::CalculateDerivedData(void)
 {
-	orientation.Normalize();
+	auto object = _obj.lock();
+	object->NormalizeOrientation();
 
-	_inverseInertiaTensorInWorld = modelMat.Transform3x3(_inverseInertiaTensor);
+	_inverseInertiaTensorInWorld = object->GetModelMatrix().Transform3x3(_inverseInertiaTensor);
 }
 //==========================================================================================================================
 //Point Forces
 //==========================================================================================================================
 //Given in world space coordinates
-void RigidBody3D::AddForceAtPoint(KM::Point& pos, const KM::Vector4& force, const KM::Vector4& point)
+void RigidBody3D::AddForceAtPoint(const KM::Vector4& force, const KM::Vector4& point)
 {
+	if(_obj.expired())
+	{
+		KE::ErrorManager::Instance()->SetError(KE::PHYSICS, "RigidBody3D::AddForceAtPoint: object not set!");
+		return;
+	}
+
+	auto object = _obj.lock();
+
 	KM::Vector4 pt {};
-	pt -= pos;
+	pt -= object->GetPosition();
 
 	_forceAccum += force; 
 	_torqueAccum += pt.CrossProduct(force);
@@ -84,10 +100,18 @@ void RigidBody3D::AddForceAtPoint(KM::Point& pos, const KM::Vector4& force, cons
 }	
 
 //Force given in world space, point given in local space
-void RigidBody3D::AddForceAtLocalPoint(KM::Point& pos, const KM::Vector4& force, const KM::Vector4& point, const KM::Matrix4& rotationMat)
+void RigidBody3D::AddForceAtLocalPoint(const KM::Vector4& force, const KM::Vector4& point)
 {
-	KM::Vector4 pt = rotationMat * point;
-	AddForceAtPoint(pos, force, pt);
+	if(_obj.expired())
+	{
+		KE::ErrorManager::Instance()->SetError(KE::PHYSICS, "RigidBody3D::AddForceAtLocalPoint: object not set!");
+		return;
+	}
+
+	auto object = _obj.lock();
+	
+	KM::Vector4 pt = object->GetModelMatrixRot() * point;
+	AddForceAtPoint(force, pt);
 }
 
 //==========================================================================================================================
@@ -103,6 +127,25 @@ const real RigidBody3D::GetMass(void)
 	{
 		return static_cast<real>(1.0f) / _inverseMass;
 	}
+}
+
+bool RigidBody3D::GetActive(void) const
+{
+	if(!_obj.expired())
+	{
+		auto object = _obj.lock();
+		return object->GetActive() && _active;
+	}
+
+	return _active;
+}
+
+const KM::Point& RigidBody3D::GetPosition(void)
+{
+	assert(!_obj.expired());
+
+	auto object = _obj.lock();
+	return object->GetPosition();
 }
 
 /*

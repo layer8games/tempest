@@ -73,6 +73,7 @@ void Firework::InitPayload(U32 rule, KM::Point pos)
 
 		for(U32 i = 1; i < 80; ++i)
 		{
+			/*
 			_pool[i]->RigidBody2D.SetPosition(pos);
 			_pool[i]->RigidBody2D.SetColor(1.0f, 1.0f, 0.25f);
 			_pool[i]->RigidBody2D.SetScale(2.0f, 2.0f);
@@ -84,6 +85,7 @@ void Firework::InitPayload(U32 rule, KM::Point pos)
 			_pool[i]->timeAlive = random.RandomFloat(1.0f, 3.0f);
 			_pool[i]->RigidBody2D.SetActive(true);
 			_pool[i]->spawnNew = false;
+			*/
 		}		
 	}
 	else if(rule == 2)
@@ -91,6 +93,7 @@ void Firework::InitPayload(U32 rule, KM::Point pos)
 		F32 speedModifier = 80.0f;
 		for(U32 i = 0; i < 75; ++i)
 		{
+			/*
 			_pool[i]->RigidBody2D.SetPosition(pos);
 			_pool[i]->RigidBody2D.SetColor(1.0f, 1.0f, 0.25f);
 			_pool[i]->RigidBody2D.SetScale(1.0f, 1.0f);
@@ -101,6 +104,7 @@ void Firework::InitPayload(U32 rule, KM::Point pos)
 			_pool[i]->timeAlive = random.RandomFloat(1.0f, 3.0f);
 			_pool[i]->RigidBody2D.SetActive(true);
 			_pool[i]->spawnNew = false;
+			*/
 		}
 	}
 	else if(rule == 3)
@@ -108,6 +112,7 @@ void Firework::InitPayload(U32 rule, KM::Point pos)
 		F32 speedModifier = 25.0f;
 		for(int i = 0; i < 10; ++i)
 		{
+			/*
 			_pool[i]->RigidBody2D.SetPosition(pos);
 			_pool[i]->RigidBody2D.SetColor(1.0f, 1.0f, 0.25f);
 			_pool[i]->RigidBody2D.SetScale(5.0f, 5.0f);
@@ -119,6 +124,7 @@ void Firework::InitPayload(U32 rule, KM::Point pos)
 			_pool[i]->spawnNew = true;
 			_pool[i]->RigidBody2D.SetActive(true);
 			_pool[i]->spawnNewRule = 4;
+			*/
 		}
 	}	
 	else if(rule == 4)
@@ -130,6 +136,7 @@ void Firework::InitPayload(U32 rule, KM::Point pos)
 		{
 			if(!_pool[index]->RigidBody2D.GetActive())
 			{
+				/*
 				_pool[index]->RigidBody2D.SetPosition(pos);
 				_pool[index]->RigidBody2D.SetColor(1.0f, 1.0f, 0.25f);
 				_pool[index]->RigidBody2D.SetScale(5.0f, 5.0f);
@@ -140,6 +147,7 @@ void Firework::InitPayload(U32 rule, KM::Point pos)
 				_pool[index]->timeAlive = random.RandomFloat(1.0f, 3.0f);
 				_pool[index]->RigidBody2D.SetActive(true);
 				_pool[index]->spawnNew = false;
+				*/
 				++count;
 			}
 
@@ -161,6 +169,7 @@ void Firework::Reset(U32 rule)
 {
 	for(U32 i = 0; i < _pool.size(); ++i)
 	{
+		/*
 		_pool[i]->RigidBody2D.SetPosition(0.0f, 0.0f);
 		_pool[i]->RigidBody2D.SetColor(0.0f, 0.0f, 0.0f);
 		_pool[i]->RigidBody2D.SetScale(0.0f, 0.0f);
@@ -170,6 +179,7 @@ void Firework::Reset(U32 rule)
 		_pool[i]->RigidBody2D.SetDamping(0.0f);
 		_pool[i]->timeAlive = 0.0f;
 		_pool[i]->RigidBody2D.SetActive(false);
+		*/
 	}
 
 	InitPayload(rule, GameObject::GetPosition());

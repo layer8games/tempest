@@ -44,7 +44,7 @@ namespace Boxes
 	typedef std::vector<p_Payload> PayloadPool;
 
 
-	class Firework : public KP::RigidBody2D
+	class Firework : public KE::GameObject
 	{
 	public:
 //==========================================================================================================================

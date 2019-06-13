@@ -39,6 +39,7 @@ void Springs::v_Init(void)
 
 	_gravity.SetGravityAcceleration(KM::Vector4(0.0f, -1000.0f));
 
+	/*
 	//===== Setup GameObjects =====
 	//===== Box1, standard Spring =====
 	_box1OtherEnd.MakeSprite();

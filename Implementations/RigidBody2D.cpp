@@ -10,13 +10,14 @@ using namespace KillerPhysics;
 //==========================================================================================================================
 RigidBody2D::RigidBody2D(void)
 :
+_active(true),
+_inverseMass(1.0f),
+_damping(0.999f),
 _obj(),
 _velocity(0.0f),
 _acceleration(0.0f),
 _forceAccum(0.0f),
-_gravityForce(0.0f),
-_inverseMass(1.0f),
-_damping(0.999f)
+_gravityForce(0.0f)
 {  }
 
 RigidBody2D::RigidBody2D(const RigidBody2D* RigidBody2D)
@@ -51,6 +52,12 @@ RigidBody2D::~RigidBody2D(void)
 //==========================================================================================================================
 void RigidBody2D::Integrate(void)
 {
+	if(_obj.expired())
+	{
+		KE::ErrorManager::Instance()->SetError(KE::PHYSICS, "RigidBody2D::Integrate: object not set!");
+		return;
+	}
+
 	if(_inverseMass == 0) return;
 
 	F32 delta = KM::Timer::Instance()->DeltaTime();
@@ -88,6 +95,26 @@ void RigidBody2D::AddForce(const KM::Vector4 force)
 //Accessors
 //
 //==========================================================================================================================
+bool RigidBody2D::GetActive(void) const
+{
+	if(!_obj.expired())
+	{
+		auto object = _obj.lock();
+		return object->GetActive() && _active;
+	}
+
+	return _active;
+}
+
+const KM::Point& RigidBody2D::GetPosition(void) const
+{
+	assert(!_obj.expired());
+
+	auto object = _obj.lock();
+
+	return object->GetPosition();
+}
+
 const real RigidBody2D::GetMass(void)
 {
 	if(_inverseMass == 0.0f)
