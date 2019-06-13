@@ -283,6 +283,11 @@ namespace KillerEngine
 			_orientation[3] = zVal;
 		}
 
+		inline void AddScaledOrientation(const KM::Vector4 vec, F32 scale)
+		{
+			_orientation.AddScaledVector(vec, scale);
+		}
+
 //===== Color =====		
 		inline void SetColor(const Color& col)
 		{
@@ -504,5 +509,6 @@ namespace KillerEngine
 		U32 					_ID;
 		GLuint 					_vao;
 		GLuint 					_vbo[NUM_VBO];
-	};
+	};//End class
+	typedef shared_ptr<GameObject> p_GameObject;
 }

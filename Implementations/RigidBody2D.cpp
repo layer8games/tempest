@@ -10,6 +10,7 @@ using namespace KillerPhysics;
 //==========================================================================================================================
 RigidBody2D::RigidBody2D(void)
 :
+_obj(),
 _velocity(0.0f),
 _acceleration(0.0f),
 _forceAccum(0.0f),
@@ -39,14 +40,16 @@ _damping(RigidBody2D.GetDamping())
 {  }
 
 RigidBody2D::~RigidBody2D(void)
-{  }
+{
+	_obj.reset();
+}
 
 //==========================================================================================================================
 //
 //Functions
 //
 //==========================================================================================================================
-void RigidBody2D::Integrate(KM::Point& pos)
+void RigidBody2D::Integrate(void)
 {
 	if(_inverseMass == 0) return;
 
@@ -54,7 +57,8 @@ void RigidBody2D::Integrate(KM::Point& pos)
 
 	assert(delta > 0.0f);
 
-	pos.AddScaledVector(_velocity, delta);
+	auto object = _obj.lock();
+	object->AddScaledPosition(_velocity, delta);
 
 	KM::Vector4 resultingAcc = _acceleration;
 	

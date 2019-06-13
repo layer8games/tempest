@@ -8,6 +8,7 @@ using namespace KillerPhysics;
 //==========================================================================================================================
 RigidBody3D::RigidBody3D(void)
 :
+_obj(),
 _inverseInertiaTensor(0.0f),
 _inverseInertiaTensorInWorld(0.0f),
 _velocity(0.0f),
@@ -22,21 +23,24 @@ _isAwake(false)
 {  }
 
 RigidBody3D::~RigidBody3D(void)
-{  }
+{
+	_obj.reset();
+}
 
 //==========================================================================================================================
 //
 //Functions
 //
 //==========================================================================================================================
-void RigidBody3D::Integrate(KM::Point& pos, KM::Quaternion& orientation, const KM::Matrix4& modelMat)
+void RigidBody3D::Integrate(void)
 {
 	F32 delta = KM::Timer::Instance()->DeltaTime();
 
 	assert(delta > 0.0f);
 
-	pos.AddScaledVector(_velocity, delta);
-	orientation.AddScaledVector(_rotation, delta);
+	auto object = _obj.lock();
+	object->AddScaledPosition(_velocity, delta);
+	object->AddScaledOrientation(_rotation, delta);
 
 	KM::Vector4 resultingAcc = _acceleration;
 
@@ -54,7 +58,7 @@ void RigidBody3D::Integrate(KM::Point& pos, KM::Quaternion& orientation, const K
 	_rotation *= real_pow(_angularDamping, delta);
 
 
-	CalculateDerivedData(orientation, modelMat);
+	CalculateDerivedData();
 	ClearAccumulators();
 }
 

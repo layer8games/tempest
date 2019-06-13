@@ -7,6 +7,7 @@
 #include <Engine/Point.h>
 #include <Engine/Quaternion.h>
 #include <Engine/Matrix4.h>
+#include <Engine/GameObject.h>
 
 namespace KM = KillerMath;
 namespace KE = KillerEngine;
@@ -32,9 +33,9 @@ namespace KillerPhysics
 //Functions
 //
 //==========================================================================================================================		
-		void Integrate(KM::Point& pos, KM::Quaternion& orientation, const KM::Matrix4& modelMat);
+		void Integrate(void);
 
-		void CalculateDerivedData(KM::Quaternion& orientation, const KM::Matrix4& modelMat);
+		void CalculateDerivedData(void);
 
 //==========================================================================================================================
 //
@@ -150,12 +151,10 @@ namespace KillerPhysics
 		}
 
 		//Given in world space coordinates
-		//reivew in book with change
-		void AddForceAtPoint(KM::Point& pos, const KM::Vector4& force, const KM::Vector4& point);
+		void AddForceAtPoint(const KM::Vector4& force, const KM::Vector4& point);
 
 		//Force given in world space, point given in local space
-		//review in book with change
-		void AddForceAtLocalPoint(KM::Point& pos, const KM::Vector4& force, const KM::Vector4& point, const KM::Matrix4& rotationMat);
+		void AddForceAtLocalPoint(const KM::Vector4& force, const KM::Vector4& point);
 
 //===== Mass =====
 		inline real GetInverseMass(void) const
@@ -224,6 +223,7 @@ namespace KillerPhysics
 //Data
 //
 //==========================================================================================================================
+		weak_ptr<GameObject> _obj;
 		KM::Matrix4 _inverseInertiaTensor;
 		KM::Matrix4 _inverseInertiaTensorInWorld;
 		KM::Vector4 _velocity;

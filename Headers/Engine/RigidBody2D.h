@@ -5,6 +5,7 @@
 #include <Engine/Timer.h>
 #include <Engine/Vector4.h>
 #include <Engine/Point.h>
+#include <Engine/GameObject.h>
 
 //===== Standard includes =====
 #include <cassert>
@@ -65,7 +66,7 @@ namespace KillerPhysics
 	based off the acceleration, and the position based off the velocity. Forces that are applied to this RigidBody2D are taken
 	into account for this update. All forces are cleared at the end of the integration step.
 */
-		void Integrate(KM::Point& pos);
+		void Integrate(void);
 
 /*!
 	Removed all forces that have been applied to the RigidBody2D this frame.
@@ -82,6 +83,11 @@ namespace KillerPhysics
 //Accessors
 //
 //==========================================================================================================================
+		inline void SetObj(weak_ptr<KE::GameObject> obj)
+		{
+			_obj = obj;
+		}
+
 //===== Velocity =====
 /*!
 	Returns the current velocity of the RigidBody2D.
@@ -282,6 +288,7 @@ namespace KillerPhysics
 //Data
 //
 //==========================================================================================================================
+		weak_ptr<KE::GameObject> _obj;
 		KM::Vector4 _velocity;		///< Represents the rate of change, otherwise known as the first differential of the position.
 		KM::Vector4 _acceleration;	///< Reprsent the rate of change of the velocity, otherwise known as the second differential of the position.
 		KM::Vector4 _forceAccum;		///< Using D'Lambert's principal, this reprsents the combined forces that will as on this RigidBody2D for exactly 1 frame.
