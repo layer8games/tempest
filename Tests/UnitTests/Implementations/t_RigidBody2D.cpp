@@ -95,4 +95,8 @@ BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
 	obj.p_body = KE::EngineFactory::Instance()->MakeRigidBody2D();
 
 	BOOST_CHECK_NE(obj.p_body, nullptr);
+
+	obj.p_body.SetVelocity(1.0f, 1.0f, 0.0f);
+	obj.p_body.SetAcceleration(-0.25f, 0.0f, 1.0f);
+	obj.SetPosition(1.0f, 1.0f, 1.0f);
 }
