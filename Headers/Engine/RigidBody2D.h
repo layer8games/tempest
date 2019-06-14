@@ -91,7 +91,7 @@ namespace KillerPhysics
 
 		bool GetActive(void) const;
 
-		inline void SetObj(weak_ptr<KE::GameObject> obj)
+		inline void SetObject(KE::GameObject* obj)
 		{
 			_obj = obj;
 		}
@@ -301,7 +301,7 @@ namespace KillerPhysics
 		bool 	   				 _active;
 		real 	   				 _inverseMass;	///< The inverse mass of the object, written like 1/mass. This is an optimization to avoid uneeded operations. 
 		real 	   				 _damping;		///< Damping is a substitute for friction. It represents the rate of acceleration decay. 0.0f means heavy friction, close to 1 means almost none. Do not set to 1. A good value for no decay is 0.999f.
-		weak_ptr<KE::GameObject> _obj;
+		KE::GameObject* _obj;
 		KM::Vector4 			 _velocity;		///< Represents the rate of change, otherwise known as the first differential of the position.
 		KM::Vector4 			 _acceleration;	///< Reprsent the rate of change of the velocity, otherwise known as the second differential of the position.
 		KM::Vector4 			 _forceAccum;		///< Using D'Lambert's principal, this reprsents the combined forces that will as on this RigidBody2D for exactly 1 frame.

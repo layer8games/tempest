@@ -13,7 +13,7 @@ RigidBody2D::RigidBody2D(void)
 _active(true),
 _inverseMass(1.0f),
 _damping(0.999f),
-_obj(),
+_obj(nullptr),
 _velocity(0.0f),
 _acceleration(0.0f),
 _forceAccum(0.0f),
@@ -42,7 +42,7 @@ _damping(RigidBody2D.GetDamping())
 
 RigidBody2D::~RigidBody2D(void)
 {
-	_obj.reset();
+	_obj = nullptr;
 }
 
 //==========================================================================================================================
@@ -52,7 +52,8 @@ RigidBody2D::~RigidBody2D(void)
 //==========================================================================================================================
 void RigidBody2D::Integrate(void)
 {
-	if(_obj.expired())
+	//if(_obj.expired())
+	if(_obj == nullptr)
 	{
 		KE::ErrorManager::Instance()->SetError(KE::PHYSICS, "RigidBody2D::Integrate: object not set!");
 		return;
@@ -64,8 +65,9 @@ void RigidBody2D::Integrate(void)
 
 	assert(delta > 0.0f);
 
-	auto object = _obj.lock();
-	object->AddScaledPosition(_velocity, delta);
+	//auto object = _obj.lock();
+	//object->AddScaledPosition(_velocity, delta);
+	_obj->AddScaledPosition(_velocity, delta);
 
 	KM::Vector4 resultingAcc = _acceleration;
 	
@@ -97,10 +99,12 @@ void RigidBody2D::AddForce(const KM::Vector4 force)
 //==========================================================================================================================
 bool RigidBody2D::GetActive(void) const
 {
-	if(!_obj.expired())
+	//if(!_obj.expired())
+	if(_obj != nullptr)
 	{
-		auto object = _obj.lock();
-		return object->GetActive() && _active;
+		//auto object = _obj.lock();
+		//return object->GetActive() && _active;
+		return _obj->GetActive() && _active;
 	}
 
 	return _active;
@@ -108,11 +112,14 @@ bool RigidBody2D::GetActive(void) const
 
 const KM::Point& RigidBody2D::GetPosition(void) const
 {
-	assert(!_obj.expired());
+	//assert(!_obj.expired());
+	assert(_obj != nullptr);
 
-	auto object = _obj.lock();
+	//auto object = _obj.lock();
 
-	return object->GetPosition();
+	//return object->GetPosition();
+
+	return _obj->GetPosition();
 }
 
 const real RigidBody2D::GetMass(void)

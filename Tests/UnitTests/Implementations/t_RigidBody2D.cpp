@@ -38,12 +38,15 @@ Written by Maxwell Miller
 #include <Engine/GameObject.h>
 #include <Engine/Vector4.h>
 #include <Engine/EngineFactory.h>
+#include <Engine/ErrorManager.h>
+
+#include <iostream>
 
 namespace KE = KillerEngine;
 namespace KM = KillerMath;
 namespace KP = KillerPhysics;
 
-class Object : KE::GameObject
+class Object : public KE::GameObject
 {
 public:
 	Object(void)
@@ -57,6 +60,13 @@ public:
 
 	void v_Update(void) final
 	{  }
+
+	void SetBody(void)
+	{
+		p_body = KE::EngineFactory::Instance()->MakeRigidBody2D();
+		//p_body->SetObject(shared_ptr<Object>(this));
+		p_body->SetObject(this);
+	}
 
 	KP::p_RigidBody2D p_body;
 };
@@ -91,12 +101,51 @@ BOOST_AUTO_TEST_CASE(RigidBody2DConstructor)
 BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
 {
 	Object obj { };
+	obj.SetBody();
 
-	obj.p_body = KE::EngineFactory::Instance()->MakeRigidBody2D();
+	//obj.p_body = KE::EngineFactory::Instance()->MakeRigidBody2D();
+	//obj.p_body->SetObject(shared_ptr<Object>(&obj));
 
 	BOOST_CHECK_NE(obj.p_body, nullptr);
 
-	obj.p_body.SetVelocity(1.0f, 1.0f, 0.0f);
-	obj.p_body.SetAcceleration(-0.25f, 0.0f, 1.0f);
+	obj.p_body->SetVelocity(1.0f, 1.0f, 0.0f);
+	obj.p_body->SetAcceleration(-0.25f, 0.0f, 1.0f);
 	obj.SetPosition(1.0f, 1.0f, 1.0f);
+
+	obj.p_body->Integrate();
+	KE::ErrorManager::Instance()->DisplayErrors();
+
+	BOOST_CHECK_GE(obj.GetPosition()[x], 1.0f);
+	BOOST_CHECK_GE(obj.GetPosition()[y], 1.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition()[z], 1.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition()[w], 1.0f);
+
+	BOOST_CHECK_LT(obj.p_body->GetVelocity()[x], 1.0f);
+	//Damping will reduce, hence Less Than, not Equal
+	BOOST_CHECK_LT(obj.p_body->GetVelocity()[y], 1.0f);
+	BOOST_CHECK_GT(obj.p_body->GetVelocity()[z], 0.0f);
+	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[w], 0.0f);
+
+	obj.p_body->Integrate();
+	obj.p_body->Integrate();
+	obj.p_body->Integrate();
+	obj.p_body->Integrate();
+	obj.p_body->Integrate();
+	obj.p_body->Integrate();
+	obj.p_body->Integrate();
+
+	BOOST_CHECK_GT(obj.GetPosition()[x], 1.0f);
+	BOOST_CHECK_GT(obj.GetPosition()[y], 1.0f);
+	BOOST_CHECK_GT(obj.GetPosition()[z], 1.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition()[w], 1.0f);
+
+	BOOST_CHECK_LT(obj.p_body->GetVelocity()[x], 1.0f);
+	//Damping will reduce
+	BOOST_CHECK_LT(obj.p_body->GetVelocity()[y], 1.0f);
+	BOOST_CHECK_GT(obj.p_body->GetVelocity()[z], 0.0f);
+	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[w], 0.0f);
 }
+
+//Needed:
+//Test Mass in Integrate step
+//Test Damping in Integrate step
