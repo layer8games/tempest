@@ -28,6 +28,9 @@ FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
+Needed:
+Test Damping in Integrate step
+Test that the Rigidbody is actually 2d. This means that z should always be 0.
 
 Written by Maxwell Miller
 -------------------------------------------------------------*/
@@ -108,16 +111,16 @@ BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
 
 	BOOST_CHECK_NE(obj.p_body, nullptr);
 
-	obj.p_body->SetVelocity(1.0f, 1.0f, 0.0f);
-	obj.p_body->SetAcceleration(-0.25f, 0.0f, 1.0f);
-	obj.SetPosition(1.0f, 1.0f, 1.0f);
+	obj.p_body->SetVelocity(1.0f, 1.0f);
+	obj.p_body->SetAcceleration(-0.25f, 0.0f);
+	obj.SetPosition(1.0f, 1.0f);
 
 	obj.p_body->Integrate();
 	KE::ErrorManager::Instance()->DisplayErrors();
 
 	BOOST_CHECK_GE(obj.GetPosition()[x], 1.0f);
 	BOOST_CHECK_GE(obj.GetPosition()[y], 1.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition()[z], 1.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition()[z], 0.0f);
 	BOOST_CHECK_EQUAL(obj.GetPosition()[w], 1.0f);
 
 	BOOST_CHECK_LT(obj.p_body->GetVelocity()[x], 1.0f);
@@ -126,17 +129,14 @@ BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
 	BOOST_CHECK_GT(obj.p_body->GetVelocity()[z], 0.0f);
 	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[w], 0.0f);
 
-	obj.p_body->Integrate();
-	obj.p_body->Integrate();
-	obj.p_body->Integrate();
-	obj.p_body->Integrate();
-	obj.p_body->Integrate();
-	obj.p_body->Integrate();
-	obj.p_body->Integrate();
+	for(int i = 0; i < 10; ++i)
+	{
+		obj.p_body->Integrate();
+	}
 
 	BOOST_CHECK_GT(obj.GetPosition()[x], 1.0f);
 	BOOST_CHECK_GT(obj.GetPosition()[y], 1.0f);
-	BOOST_CHECK_GT(obj.GetPosition()[z], 1.0f);
+	BOOST_CHECK_GT(obj.GetPosition()[z], 0.0f);
 	BOOST_CHECK_EQUAL(obj.GetPosition()[w], 1.0f);
 
 	BOOST_CHECK_LT(obj.p_body->GetVelocity()[x], 1.0f);
@@ -146,6 +146,39 @@ BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
 	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[w], 0.0f);
 }
 
-//Needed:
-//Test Mass in Integrate step
-//Test Damping in Integrate step
+BOOST_AUTO_TEST_CASE(RigidBody2DZeroMass)
+{
+	Object obj { };
+	obj.SetBody();
+	obj.p_body->SetInverseMass(0.0f);
+
+	obj.SetPosition(15.0f, 12.0f);
+	obj.p_body->SetVelocity(1.0f, 1.0f);
+
+	obj.p_body->Integrate();
+
+	BOOST_CHECK_EQUAL(obj.GetPosition()[x], 15.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition()[y], 12.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition()[z], 0.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition()[w], 1.0f);
+}
+
+BOOST_AUTO_TEST_CASE(RigidBody2DDampingTest)
+{
+	Object obj { };
+	obj.SetBody();
+
+	obj.p_body->SetVelocity(10.0f, 20.0f);
+	obj.p_body->SetDamping(0.999f);
+
+	
+	
+	for(int i = 0; i < 100; ++i)
+	{
+		obj.p_body->Integrate();
+	}
+
+	//test that vel is decreasing
+}
+
+

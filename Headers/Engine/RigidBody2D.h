@@ -129,19 +129,6 @@ namespace KillerPhysics
 		}
 
 /*!
-	 Directly sets the velocity of the RigidBody2D, ignoring acceleration and physics. This can be viewed as an impulse, but permanent. 
-	 \param x is the value for the x part of the velocity.
-	 \param y is the value for the y part of the velocity.
-	 \parar z is the value for the z part of the velocity.
-*/
-		inline void SetVelocity(F32 x, F32 y, F32 z)
-		{
-			_velocity[0] = x;
-			_velocity[1] = y;
-			_velocity[2] = z;
-		}
-
-/*!
 	Directly add a scaled Vector4y into the current velocity. 
 	\param vec is the Vector4 to be added. 
 	\param scale is the F32 that vec will be scaled by before it is added into the velocity. 
@@ -179,19 +166,6 @@ namespace KillerPhysics
 		{
 			_acceleration[0] = x;
 			_acceleration[1] = y;
-		}
-
-/*!
-	Directly set the acceleration of the RigidBody2D without regards to physics or the current value of the acceleration.
-	\param x is the value for the x element of the acceleration.
-	\param y is the value for the y element of the acceleration.
-	\param z is the value for teh z element of the acceleration.
-*/
-		inline void SetAcceleration(F32 x, F32 y, F32 z)
-		{
-			_acceleration[0] = x;
-			_acceleration[1] = y;
-			_acceleration[2] = z;
 		}
 
 /*!

@@ -18,7 +18,12 @@ _velocity(0.0f),
 _acceleration(0.0f),
 _forceAccum(0.0f),
 _gravityForce(0.0f)
-{  }
+{
+	_velocity.Make2D();
+	_acceleration.Make2D();
+	_forceAccum.Make2D();
+	_gravityForce.Make2D();
+}
 
 RigidBody2D::RigidBody2D(const RigidBody2D* RigidBody2D)
 :
