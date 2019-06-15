@@ -28,10 +28,6 @@ FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
-Needed:
-Test Damping in Integrate step
-Test that the Rigidbody is actually 2d. This means that z should always be 0.
-
 Written by Maxwell Miller
 -------------------------------------------------------------*/
 
@@ -42,8 +38,6 @@ Written by Maxwell Miller
 #include <Engine/Vector4.h>
 #include <Engine/EngineFactory.h>
 #include <Engine/ErrorManager.h>
-
-#include <iostream>
 
 namespace KE = KillerEngine;
 namespace KM = KillerMath;
@@ -67,7 +61,6 @@ public:
 	void SetBody(void)
 	{
 		p_body = KE::EngineFactory::Instance()->MakeRigidBody2D();
-		//p_body->SetObject(shared_ptr<Object>(this));
 		p_body->SetObject(this);
 	}
 
@@ -106,9 +99,6 @@ BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
 	Object obj { };
 	obj.SetBody();
 
-	//obj.p_body = KE::EngineFactory::Instance()->MakeRigidBody2D();
-	//obj.p_body->SetObject(shared_ptr<Object>(&obj));
-
 	BOOST_CHECK_NE(obj.p_body, nullptr);
 
 	obj.p_body->SetVelocity(1.0f, 1.0f);
@@ -126,7 +116,7 @@ BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
 	BOOST_CHECK_LT(obj.p_body->GetVelocity()[x], 1.0f);
 	//Damping will reduce, hence Less Than, not Equal
 	BOOST_CHECK_LT(obj.p_body->GetVelocity()[y], 1.0f);
-	BOOST_CHECK_GT(obj.p_body->GetVelocity()[z], 0.0f);
+	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[z], 0.0f);
 	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[w], 0.0f);
 
 	for(int i = 0; i < 10; ++i)
@@ -136,13 +126,13 @@ BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
 
 	BOOST_CHECK_GT(obj.GetPosition()[x], 1.0f);
 	BOOST_CHECK_GT(obj.GetPosition()[y], 1.0f);
-	BOOST_CHECK_GT(obj.GetPosition()[z], 0.0f);
+	BOOST_CHECK_EQUAL(obj.GetPosition()[z], 0.0f);
 	BOOST_CHECK_EQUAL(obj.GetPosition()[w], 1.0f);
 
 	BOOST_CHECK_LT(obj.p_body->GetVelocity()[x], 1.0f);
 	//Damping will reduce
 	BOOST_CHECK_LT(obj.p_body->GetVelocity()[y], 1.0f);
-	BOOST_CHECK_GT(obj.p_body->GetVelocity()[z], 0.0f);
+	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[z], 0.0f);
 	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[w], 0.0f);
 }
 
@@ -169,16 +159,13 @@ BOOST_AUTO_TEST_CASE(RigidBody2DDampingTest)
 	obj.SetBody();
 
 	obj.p_body->SetVelocity(10.0f, 20.0f);
-	obj.p_body->SetDamping(0.999f);
+	obj.p_body->SetDamping(0.0f);
 
-	
-	
-	for(int i = 0; i < 100; ++i)
-	{
-		obj.p_body->Integrate();
-	}
+	obj.p_body->Integrate();
 
-	//test that vel is decreasing
+	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[x], 0.0f);
+	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[y], 0.0f);
+	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[z], 0.0f);
+	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[w], 0.0f);
 }
-
 

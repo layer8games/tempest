@@ -1,5 +1,4 @@
 #include <Engine/RigidBody2D.h>
-#include <iostream>
 
 using namespace KillerPhysics;
 
