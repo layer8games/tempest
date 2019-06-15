@@ -1,6 +1,5 @@
 /*------------------------------------------------------------
-A Force Generator type for Gravity. This will test an integration
-between the Force Generators and RigidBodies 2D and 3D
+A Integration test for the ForceRegistry system
 
 Uses the boost test library.
 
@@ -33,25 +32,27 @@ Written by Maxwell Miller
 
 #include <boost/test/unit_test.hpp>
 #include <Engine/Atom.h>
+#include <Engine/ForceRegistry.h>
 #include <Engine/GravityForce.h>
 #include <Engine/RigidBody2D.h>
 #include <Engine/RigidBody3D.h>
 #include <Engine/Vector4.h>
 #include <Engine/EngineFactory.h>
+#include <Engine/PhysicsFactory.h>
 
 namespace KP = KillerPhysics;
 namespace KM = KillerMath;
 
-class ForcesObject : public KE::GameObject
+class ForceRegObject : public KE::GameObject
 {
 public:
-	ForcesObject(void)
+	ForceRegObject(void)
 	: p_body2D(nullptr), p_body3D(nullptr)
 	{
 		GameObject::SetOrientation(1.0f);
 	}
 
-	~ForcesObject(void)
+	~ForceRegObject(void)
 	{
 		p_body2D.reset();
 		p_body3D.reset();
@@ -76,16 +77,20 @@ public:
 	KP::p_RigidBody3D p_body3D;
 };
 
-BOOST_AUTO_TEST_CASE(GravityForceRigidBody2D)
+BOOST_AUTO_TEST_CASE(ForceRegistryRigidBody2DGravity)
 {
-	KP::GravityForce gravity { };
-	ForcesObject obj { };
-	obj.SetBody2D();
+	KP::ForceRegistry registry { };
+	ForceRegObject obj { };
 	obj.SetPosition(0.0f, 20.0f, 0.0f);
+	obj.SetBody2D();
+
+	KP::p_GravityForce p_gravity = KP::PhysicsFactory::Instance()->MakeGravityForce();
+
+	registry.Add(obj.p_body2D, p_gravity);
 
 	for(int i = 0; i < 50; ++i)
 	{
-		gravity.v_UpdateForce(obj.p_body2D);
+		registry.UpdateForces();
 		obj.p_body2D->Integrate();
 	}
 
@@ -96,30 +101,34 @@ BOOST_AUTO_TEST_CASE(GravityForceRigidBody2D)
 
 	obj.SetPosition(20.0f, 0.0f, 0.0f);
 	obj.p_body2D->SetVelocity(0.0f, 0.0f, 0.0f);
-	gravity.Set(KM::Vector4(-1.0f, 0.0f, 0.0f));
+	p_gravity->Set(1.0f, 0.0f, 1.0f);
 
 	for(int i = 0; i < 50; ++i)
 	{
-		gravity.v_UpdateForce(obj.p_body2D);
+		registry.UpdateForces();
 		obj.p_body2D->Integrate();
-	}	
+	}
 
-	BOOST_CHECK_LT(obj.GetPosition()[x], 20.0f);
+	BOOST_CHECK_GT(obj.GetPosition()[x], 20.0f);
 	BOOST_CHECK_EQUAL(obj.GetPosition()[y], 0.0f);
 	BOOST_CHECK_EQUAL(obj.GetPosition()[z], 0.0f);
 	BOOST_CHECK_EQUAL(obj.GetPosition()[w], 1.0f);
 }
 
-BOOST_AUTO_TEST_CASE(GravityForceRigidBody3D)
+BOOST_AUTO_TEST_CASE(ForceRegistryRigidBody3DGravity)
 {
-	KP::GravityForce gravity { };
-	ForcesObject obj { };
-	obj.SetBody3D();
+	KP::ForceRegistry registry { };
+	ForceRegObject obj { };
 	obj.SetPosition(0.0f, 20.0f, 0.0f);
+	obj.SetBody3D();
+
+	KP::p_GravityForce p_gravity = KP::PhysicsFactory::Instance()->MakeGravityForce();
+
+	registry.Add(obj.p_body3D, p_gravity);
 
 	for(int i = 0; i < 50; ++i)
 	{
-		gravity.v_UpdateForce(obj.p_body3D);
+		registry.UpdateForces();
 		obj.p_body3D->Integrate();
 	}
 
@@ -130,16 +139,16 @@ BOOST_AUTO_TEST_CASE(GravityForceRigidBody3D)
 
 	obj.SetPosition(20.0f, 0.0f, 0.0f);
 	obj.p_body3D->SetVelocity(0.0f, 0.0f, 0.0f);
-	gravity.Set(KM::Vector4(-1.0f, 0.0f, 0.0f));
+	p_gravity->Set(1.0f, 0.0f, 1.0f);
 
 	for(int i = 0; i < 50; ++i)
 	{
-		gravity.v_UpdateForce(obj.p_body3D);
+		registry.UpdateForces();
 		obj.p_body3D->Integrate();
-	}	
+	}
 
-	BOOST_CHECK_LT(obj.GetPosition()[x], 20.0f);
+	BOOST_CHECK_GT(obj.GetPosition()[x], 20.0f);
 	BOOST_CHECK_EQUAL(obj.GetPosition()[y], 0.0f);
-	BOOST_CHECK_EQUAL(obj.GetPosition()[z], 0.0f);
+	BOOST_CHECK_GT(obj.GetPosition()[z], 0.0f);
 	BOOST_CHECK_EQUAL(obj.GetPosition()[w], 1.0f);
 }

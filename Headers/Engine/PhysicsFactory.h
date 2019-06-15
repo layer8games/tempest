@@ -4,6 +4,7 @@
 #include <Engine/Atom.h>
 #include <Engine/RigidBody2D.h>
 #include <Engine/RigidBody3D.h>
+#include <Engine/GravityForce.h>
 
 namespace KillerPhysics
 {
@@ -30,6 +31,11 @@ namespace KillerPhysics
 		inline p_RigidBody3D MakeRigidBody3D(void)
 		{
 			return p_RigidBody3D(new RigidBody3D());
+		}
+
+		inline p_GravityForce MakeGravityForce(void)
+		{
+			return p_GravityForce(new GravityForce());
 		}
 
 //==========================================================================================================================

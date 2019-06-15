@@ -37,7 +37,7 @@ void GravityForce::v_UpdateForce(p_RigidBody2D body)
 
 void GravityForce::v_UpdateForce(p_RigidBody3D body)
 {
-	if(body->HasFiniteMass()) 
+	if(!body->HasFiniteMass()) 
 	{
 		return;
 	}
