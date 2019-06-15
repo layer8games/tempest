@@ -135,6 +135,8 @@
     <ClCompile Include="..\..\Implementations\MainMenu.cpp" />
     <ClCompile Include="..\..\Implementations\MovingBoxes.cpp" />
     <ClCompile Include="..\..\Implementations\Projectile.cpp" />
+    <ClCompile Include="..\..\Implementations\t_ForceGenerators.cpp" />
+    <ClCompile Include="..\..\Implementations\t_RigidBody3D.cpp" />
     <ClCompile Include="..\..\Implementations\SplashScreen.cpp" />
     <ClCompile Include="..\..\Implementations\Springs.cpp" />
     <ClCompile Include="..\..\Implementations\t_AABB.cpp" />

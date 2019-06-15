@@ -220,6 +220,12 @@ namespace KillerPhysics
 			return _isAwake;
 		}
 
+//===== GameObject =====
+		inline void SetObject(KE::GameObject* obj)
+		{
+			_obj = obj;
+		}
+
 	private:
 //==========================================================================================================================
 //
@@ -240,7 +246,7 @@ namespace KillerPhysics
 		real 	   _inverseMass;
 		real 	   _linearDamping;
 		real 	   _angularDamping;
-		weak_ptr<KE::GameObject> _obj;
+		KE::GameObject* _obj;
 		KM::Matrix4 _inverseInertiaTensor;
 		KM::Matrix4 _inverseInertiaTensorInWorld;
 		KM::Vector4 _velocity;

@@ -55,16 +55,16 @@ namespace KillerPhysics
 //
 //==========================================================================================================================		
 /*! 
-	If RigidBody2D does not have infinite mass, the acceleration is added using KillerPhysics::RigidBody2D::AddForce.
-	\param RigidBody2D is the pointer to the object that will have the acceleration added to it.  
-*/
-		void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D) final;
-
-/*! 
-	If RigidBody2D does not have infinite mass, the acceleration is added using KillerPhysics::RigidBody3D::AddForce.
+	If body does not have infinite mass, the acceleration is added using KillerPhysics::RigidBody2D::AddForce.
 	\param body is the pointer to the object that will have the acceleration added to it.  
 */
-		void v_UpdateForce(shared_ptr<RigidBody3D> body) final;
+		void v_UpdateForce(p_RigidBody2D body) final;
+
+/*! 
+	If body does not have infinite mass, the acceleration is added using KillerPhysics::RigidBody3D::AddForce.
+	\param body is the pointer to the object that will have the acceleration added to it.  
+*/
+		void v_UpdateForce(p_RigidBody3D body) final;
 
 //==========================================================================================================================
 //
@@ -75,12 +75,26 @@ namespace KillerPhysics
 	Changes the acceleration the force will cause on an object.
 	\param gravity is the new acceleration. 
 */
-		inline void SetGravityAcceleration(KM::Vector4& gravity)
+		inline void Set(KM::Vector4& gravity)
 		{
 			_gravityAcc = gravity;
+		}
+
+/*! 
+	Changes the acceleration the force will cause on an object.
+	\param xVal is the new acceration along the x axis;
+	\param yVal is the new acceration along the y axis;
+	\param zVal is the new acceration along the z axis; 
+*/
+		inline void Set(F32 xVal, F32 yVal, F32 zVal)
+		{
+			_gravityAcc[x] = xVal;
+			_gravityAcc[y] = yVal;
+			_gravityAcc[z] = zVal;
 		}
 
 	private:
 		KM::Vector4 _gravityAcc;		///< The acceleration saved for this force.
 	};//end class
+	typedef shared_ptr<GravityForce> p_GravityForce;
 }//end namespace

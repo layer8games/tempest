@@ -108,8 +108,8 @@ BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
 	obj.p_body->Integrate();
 	KE::ErrorManager::Instance()->DisplayErrors();
 
-	BOOST_CHECK_GE(obj.GetPosition()[x], 1.0f);
-	BOOST_CHECK_GE(obj.GetPosition()[y], 1.0f);
+	BOOST_CHECK_GT(obj.GetPosition()[x], 1.0f);
+	BOOST_CHECK_GT(obj.GetPosition()[y], 1.0f);
 	BOOST_CHECK_EQUAL(obj.GetPosition()[z], 0.0f);
 	BOOST_CHECK_EQUAL(obj.GetPosition()[w], 1.0f);
 
@@ -134,6 +134,12 @@ BOOST_AUTO_TEST_CASE(RigidBody2DGameObjectIntegration)
 	BOOST_CHECK_LT(obj.p_body->GetVelocity()[y], 1.0f);
 	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[z], 0.0f);
 	BOOST_CHECK_EQUAL(obj.p_body->GetVelocity()[w], 0.0f);
+
+	
+	BOOST_CHECK_EQUAL(obj.p_body->GetActive(), true);
+
+	obj.SetActive(false);
+	BOOST_CHECK_EQUAL(obj.p_body->GetActive(), false);
 }
 
 BOOST_AUTO_TEST_CASE(RigidBody2DZeroMass)

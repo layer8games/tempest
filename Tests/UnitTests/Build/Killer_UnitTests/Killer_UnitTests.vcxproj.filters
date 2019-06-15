@@ -156,6 +156,12 @@
     <ClCompile Include="..\..\Implementations\t_RigidBody2D.cpp">
       <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\t_RigidBody3D.cpp">
+      <Filter>Source Code\UnitTests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\t_ForceGenerators.cpp">
+      <Filter>Source Code\UnitTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\Docs\TestStatus.txt">

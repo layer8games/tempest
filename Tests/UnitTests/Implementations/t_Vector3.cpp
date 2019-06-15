@@ -413,7 +413,7 @@ BOOST_AUTO_TEST_CASE(Vector3AddScaledVector3)
 	KM::Vector3 Vector3Test {15.0f, 25.0f, 45.0f};
 	KM::Vector3 scaled {45.0f, 10.0f, 20.0f};
 
-	Vector3Test.AddScaledVector3(scaled, 10);
+	Vector3Test.AddScaledVector(scaled, 10);
 
 	BOOST_CHECK_EQUAL(Vector3Test[x], 465.0f);
 	BOOST_CHECK_EQUAL(Vector3Test[y], 125.0f);
@@ -421,7 +421,7 @@ BOOST_AUTO_TEST_CASE(Vector3AddScaledVector3)
 
 	KM::Vector3 Vector3Test2 {15.0f, 25.0f};
 	Vector3Test2.Make2D();
-	Vector3Test2.AddScaledVector3(scaled, 10);
+	Vector3Test2.AddScaledVector(scaled, 10);
 
 	BOOST_CHECK_EQUAL(Vector3Test2[x], 465.0f);
 	BOOST_CHECK_EQUAL(Vector3Test2[y], 125.0f);

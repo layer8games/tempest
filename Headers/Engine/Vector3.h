@@ -151,7 +151,11 @@ namespace KillerMath
 	\param vec is the Vector3 that will be added to this one. 
 	\param scale is the amount the added Vector3 will be scaled by.
 */
-		void AddScaledVector3(const Vector3& vec, F32 scale);
+		void AddScaledVector(const Vector3& vec, F32 scale);
+
+		void AddScaledVector(const Vector4& vec, F32 scale);
+
+		void AddScaledVector(const Point& point, F32 scale);
 
 //==========================================================================================================================
 //

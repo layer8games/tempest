@@ -197,17 +197,17 @@ namespace KillerEngine
 			_position = pos;
 		}
 
-		inline void SetPosition(F32 x, F32 y)
+		inline void SetPosition(F32 xVal, F32 yVal)
 		{
-			_position[0] = x;
-			_position[1] = y;
+			_position[0] = xVal;
+			_position[1] = yVal;
 		}
 
-		inline void SetPosition(F32 x, F32 y, F32 z)
+		inline void SetPosition(F32 xVal, F32 yVal, F32 zVal)
 		{
-			_position[0] = x;
-			_position[1] = y;
-			_position[2] = z;
+			_position[x] = xVal;
+			_position[y] = yVal;
+			_position[z] = zVal;
 		}
 
 		inline void SetPositionX(F32 xval)
@@ -226,6 +226,11 @@ namespace KillerEngine
 		}
 
 		inline void AddScaledPosition(const KM::Vector4& pos, F32 scale)
+		{
+			_position.AddScaledVector(pos, scale);
+		}
+
+		inline void AddScaledPosition(const KM::Vector3& pos, F32 scale)
 		{
 			_position.AddScaledVector(pos, scale);
 		}
@@ -273,6 +278,14 @@ namespace KillerEngine
 		inline void SetOrientation(const KM::Quaternion& q)
 		{
 			_orientation = q;
+		}
+
+		inline void SetOrientation(F32 val)
+		{
+			_orientation[0] = val;
+			_orientation[1] = val;
+			_orientation[2] = val;
+			_orientation[3] = val;
 		}
 
 		inline void SetOrientation(F32 wVal, F32 xVal, F32 yVal, F32 zVal)

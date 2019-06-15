@@ -37,7 +37,7 @@ void Springs::v_Init(void)
 	Level::AddTextToLevel(_levelTitle);
 
 
-	_gravity.SetGravityAcceleration(KM::Vector4(0.0f, -1000.0f));
+	_gravity.Set(KM::Vector4(0.0f, -1000.0f));
 
 	/*
 	//===== Setup GameObjects =====
