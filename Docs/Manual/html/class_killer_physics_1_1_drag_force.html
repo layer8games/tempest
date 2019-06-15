@@ -114,10 +114,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9144ae562e2f2effdfcc3d6cb2ba706f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a020b470cebf96e33e07b4b01ce4d41"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_drag_force.html#a0a020b470cebf96e33e07b4b01ce4d41">~DragForce</a> (void)</td></tr>
 <tr class="separator:a0a020b470cebf96e33e07b4b01ce4d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a434595b93d53d5fd035354099371f53d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_drag_force.html#a434595b93d53d5fd035354099371f53d">v_UpdateForce</a> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">Particle</a> &gt; particle) final</td></tr>
-<tr class="separator:a434595b93d53d5fd035354099371f53d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5f64c481e0fabdf5f6d7b1ae5b95bb7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_drag_force.html#ab5f64c481e0fabdf5f6d7b1ae5b95bb7">v_UpdateForce</a> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body.html">RigidBody</a> &gt; body) final</td></tr>
-<tr class="separator:ab5f64c481e0fabdf5f6d7b1ae5b95bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0329bf48ffeca0d6ca290172ccd74d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_drag_force.html#ab0329bf48ffeca0d6ca290172ccd74d5">v_UpdateForce</a> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body2_d.html">RigidBody2D</a> &gt; <a class="el" href="class_killer_physics_1_1_rigid_body2_d.html">RigidBody2D</a>) final</td></tr>
+<tr class="separator:ab0329bf48ffeca0d6ca290172ccd74d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1124996c175bb78f88cb6f9d749c2e6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_drag_force.html#a1124996c175bb78f88cb6f9d749c2e6f">v_UpdateForce</a> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body3_d.html">RigidBody3D</a> &gt; body) final</td></tr>
+<tr class="separator:a1124996c175bb78f88cb6f9d749c2e6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54c9ae545e49efea4dafb04e09761202"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_drag_force.html#a54c9ae545e49efea4dafb04e09761202">SetDrag</a> (<a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a> d)</td></tr>
 <tr class="separator:a54c9ae545e49efea4dafb04e09761202"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1ddc83e92c1c5f08122501726f1c47b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_drag_force.html#af1ddc83e92c1c5f08122501726f1c47b">GetDrag</a> (void)</td></tr>
@@ -127,6 +127,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1718a48e9761ea422bf1b25b8ef5e7f9 inherit pub_methods_class_killer_physics_1_1_force_generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b037f1c0acf35e0a9edb37a56210b15 inherit pub_methods_class_killer_physics_1_1_force_generator"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_force_generator.html#a5b037f1c0acf35e0a9edb37a56210b15">~ForceGenerator</a> (void)</td></tr>
 <tr class="separator:a5b037f1c0acf35e0a9edb37a56210b15 inherit pub_methods_class_killer_physics_1_1_force_generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82de4e588cbe920d72d0cd1476d76601 inherit pub_methods_class_killer_physics_1_1_force_generator"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_force_generator.html#a82de4e588cbe920d72d0cd1476d76601">v_UpdateForce</a> (p_RigidBody2D body)=0</td></tr>
+<tr class="separator:a82de4e588cbe920d72d0cd1476d76601 inherit pub_methods_class_killer_physics_1_1_force_generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6835b2f1be658a802bb072bf94e9a94 inherit pub_methods_class_killer_physics_1_1_force_generator"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_force_generator.html#ab6835b2f1be658a802bb072bf94e9a94">v_UpdateForce</a> (p_RigidBody3D body)=0</td></tr>
+<tr class="separator:ab6835b2f1be658a802bb072bf94e9a94 inherit pub_methods_class_killer_physics_1_1_force_generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -270,8 +274,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a434595b93d53d5fd035354099371f53d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a434595b93d53d5fd035354099371f53d">&#9670;&nbsp;</a></span>v_UpdateForce() <span class="overload">[1/2]</span></h2>
+<a id="ab0329bf48ffeca0d6ca290172ccd74d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0329bf48ffeca0d6ca290172ccd74d5">&#9670;&nbsp;</a></span>v_UpdateForce() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -282,30 +286,28 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void DragForce::v_UpdateForce </td>
           <td>(</td>
-          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">Particle</a> &gt;&#160;</td>
-          <td class="paramname"><em>particle</em></td><td>)</td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body2_d.html">RigidBody2D</a> &gt;&#160;</td>
+          <td class="paramname"><em>RigidBody2D</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">final</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">final</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 <p>Adds a force to the object based on the drag coefficient and the velocity of the object. For details, see the class description. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">particle</td><td>is the pointer to the object that will have the forced added to it, and will be used to determine what the force is. </td></tr>
+    <tr><td class="paramname"><a class="el" href="class_killer_physics_1_1_rigid_body2_d.html">RigidBody2D</a></td><td>is the pointer to the object that will have the forced added to it, and will be used to determine what the force is. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_killer_physics_1_1_force_generator.html#ad20e80d2345b1b8fc8818dbc3e67ff9e">KillerPhysics::ForceGenerator</a>.</p>
-
 </div>
 </div>
-<a id="ab5f64c481e0fabdf5f6d7b1ae5b95bb7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5f64c481e0fabdf5f6d7b1ae5b95bb7">&#9670;&nbsp;</a></span>v_UpdateForce() <span class="overload">[2/2]</span></h2>
+<a id="a1124996c175bb78f88cb6f9d749c2e6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1124996c175bb78f88cb6f9d749c2e6f">&#9670;&nbsp;</a></span>v_UpdateForce() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -316,14 +318,14 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void DragForce::v_UpdateForce </td>
           <td>(</td>
-          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body.html">RigidBody</a> &gt;&#160;</td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body3_d.html">RigidBody3D</a> &gt;&#160;</td>
           <td class="paramname"><em>body</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">final</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">final</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -333,8 +335,6 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p>Implements <a class="el" href="class_killer_physics_1_1_force_generator.html#a98befcf1f44462f90bf589b098b27665">KillerPhysics::ForceGenerator</a>.</p>
 
 </div>
 </div>

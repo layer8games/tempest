@@ -1,4 +1,4 @@
-.TH "Boxes::Ballistics" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "Boxes::Ballistics" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,10 +12,10 @@ Inherits \fBKillerEngine::Level\fP\&.
 
 .in +1c
 .ti -1c
-.RI "void \fBv_InitLevel\fP (\fBU32\fP id, \fBS32\fP w, \fBS32\fP h, const \fBKE::Color\fP &c)"
+.RI "void \fBv_Init\fP (void) final"
 .br
 .ti -1c
-.RI "void \fBv_Update\fP (void)"
+.RI "void \fBv_Update\fP (void) final"
 .br
 .in -1c
 .SS "Private Member Functions"
@@ -38,21 +38,18 @@ Inherits \fBKillerEngine::Level\fP\&.
 .RI "\fBKE::Text\fP \fB_levelTitle\fP"
 .br
 .ti -1c
-.RI "\fBCannon\fP \fB_cannon\fP"
+.RI "p_Cannon \fB_cannon\fP"
 .br
 .ti -1c
 .RI "\fBKP::GravityForce\fP \fB_gravityForce\fP"
 .br
 .ti -1c
-.RI "std::vector< shared_ptr< \fBProjectile\fP > > \fB_projectilePool\fP"
-.br
-.ti -1c
-.RI "\fBProjectile\fP \fBtest\fP"
+.RI "std::vector< p_Projectile > \fB_projectilePool\fP"
 .br
 .in -1c
 .SH "Member Function Documentation"
 .PP 
-.SS "void Ballistics::v_InitLevel (\fBU32\fP id, \fBS32\fP w, \fBS32\fP h, const \fBKE::Color\fP & c)\fC [virtual]\fP"
+.SS "void Ballistics::v_Init (void)\fC [final]\fP, \fC [virtual]\fP"
 Abstract function\&. Used to Initialize the default values, instantiate any objects that will be used and generally get things ready to go\&. 
 .PP
 \fBParameters:\fP
@@ -67,7 +64,7 @@ Abstract function\&. Used to Initialize the default values, instantiate any obje
 
 .PP
 Implements \fBKillerEngine::Level\fP\&.
-.SS "void Ballistics::v_Update (void)\fC [virtual]\fP"
+.SS "void Ballistics::v_Update (void)\fC [final]\fP, \fC [virtual]\fP"
 Abstract function\&. Used to control what needs to happen during an update\&. Please note, objects added to the level are already being updated as part of Level::UpdateLevel\&. 
 .PP
 Implements \fBKillerEngine::Level\fP\&.

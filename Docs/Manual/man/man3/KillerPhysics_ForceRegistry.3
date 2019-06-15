@@ -1,4 +1,4 @@
-.TH "KillerPhysics::ForceRegistry" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::ForceRegistry" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,10 +12,10 @@ KillerPhysics::ForceRegistry
 
 .in +1c
 .ti -1c
-.RI "struct \fB_ParticleForceRegistration\fP"
+.RI "struct \fB_RigidBody2DForceRegistration\fP"
 .br
 .ti -1c
-.RI "struct \fB_RigidBodyRegistration\fP"
+.RI "struct \fB_RigidBody3DRegistration\fP"
 .br
 .in -1c
 .SS "Public Member Functions"
@@ -28,16 +28,16 @@ KillerPhysics::ForceRegistry
 .RI "\fB~ForceRegistry\fP (void)"
 .br
 .ti -1c
-.RI "void \fBAdd\fP (shared_ptr< \fBParticle\fP > particle, shared_ptr< \fBForceGenerator\fP > forceGen)"
+.RI "void \fBAdd\fP (p_RigidBody2D \fBRigidBody2D\fP, p_ForceGenerator forceGen)"
 .br
 .ti -1c
-.RI "void \fBAdd\fP (shared_ptr< \fBRigidBody\fP > body, shared_ptr< \fBForceGenerator\fP > forceGen)"
+.RI "void \fBAdd\fP (p_RigidBody3D body, p_ForceGenerator forceGen)"
 .br
 .ti -1c
-.RI "void \fBRemove\fP (shared_ptr< \fBParticle\fP > particle, shared_ptr< \fBForceGenerator\fP > forceGen)"
+.RI "void \fBRemove\fP (p_RigidBody2D \fBRigidBody2D\fP, p_ForceGenerator forceGen)"
 .br
 .ti -1c
-.RI "void \fBRemove\fP (shared_ptr< \fBRigidBody\fP > body, shared_ptr< \fBForceGenerator\fP > forceGen)"
+.RI "void \fBRemove\fP (p_RigidBody3D body, p_ForceGenerator forceGen)"
 .br
 .ti -1c
 .RI "void \fBClear\fP (void)"
@@ -50,35 +50,35 @@ KillerPhysics::ForceRegistry
 
 .in +1c
 .ti -1c
-.RI "typedef std::vector< \fB_ParticleForceRegistration\fP > \fBParticleRegistry\fP"
+.RI "typedef std::vector< \fB_RigidBody2DForceRegistration\fP > \fBRigidBody2DRegistry\fP"
 .br
 .ti -1c
-.RI "typedef std::vector< \fB_RigidBodyRegistration\fP > \fBRigidBodyRegistry\fP"
+.RI "typedef std::vector< \fB_RigidBody3DRegistration\fP > \fBRigidBody3DRegistry\fP"
 .br
 .in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
-.RI "\fBParticleRegistry\fP \fB_particleRegistrations\fP"
+.RI "\fBRigidBody2DRegistry\fP \fB_body2DRegistrations\fP"
 .br
-.RI "Saved list of all \fBParticle\fP objects registered with a \fBForceGenerator\fP\&. "
+.RI "Saved list of all \fBRigidBody2D\fP objects registered with a \fBForceGenerator\fP\&. "
 .ti -1c
-.RI "\fBRigidBodyRegistry\fP \fB_bodyRegistrations\fP"
+.RI "\fBRigidBody3DRegistry\fP \fB_body3DRegistrations\fP"
 .br
-.RI "Saved list of all \fBRigidBody\fP objects registered with a \fBForceGenerator\fP\&. "
+.RI "Saved list of all \fBRigidBody3D\fP objects registered with a \fBForceGenerator\fP\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 
-Registry to find out which particles need forces\&. It keeps track of which objects need specific forces for their development\&. There is also untested functionality to allow for a \fBRigidBody\fP registration\&. These registrations are called every frame to add the accompanying force to the object\&.
+Registry to find out which RigidBody2Ds need forces\&. It keeps track of which objects need specific forces for their development\&. There is also untested functionality to allow for a \fBRigidBody3D\fP registration\&. These registrations are called every frame to add the accompanying force to the object\&.
 .PP
 It is based on the Cyclone engine design found in 'Game Physics Engine Development, second edition' by Ian Millington\&. 
 .SH "Member Typedef Documentation"
 .PP 
-.SS "typedef std::vector<\fB_ParticleForceRegistration\fP> \fBKillerPhysics::ForceRegistry::ParticleRegistry\fP\fC [private]\fP"
-Alias type for \fBParticle\fP Registration Vector4\&. 
-.SS "typedef std::vector<\fB_RigidBodyRegistration\fP> \fBKillerPhysics::ForceRegistry::RigidBodyRegistry\fP\fC [private]\fP"
-Alias type for \fBRigidBody\fP registration Vector4\&. 
+.SS "typedef std::vector<\fB_RigidBody2DForceRegistration\fP> \fBKillerPhysics::ForceRegistry::RigidBody2DRegistry\fP\fC [private]\fP"
+Alias type for \fBRigidBody2D\fP Registration Vector4\&. 
+.SS "typedef std::vector<\fB_RigidBody3DRegistration\fP> \fBKillerPhysics::ForceRegistry::RigidBody3DRegistry\fP\fC [private]\fP"
+Alias type for \fBRigidBody3D\fP registration Vector4\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "ForceRegistry::ForceRegistry (void)"
@@ -87,19 +87,19 @@ Sets everything to 0\&.
 No implementation\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void ForceRegistry::Add (shared_ptr< \fBParticle\fP > particle, shared_ptr< \fBForceGenerator\fP > forceGen)"
-Creates a new \fB_ParticleForceRegistration\fP\&. Adds the args to the new \fB_ParticleForceRegistration\fP, then saves this into the instance\&. 
+.SS "void KillerPhysics::ForceRegistry::Add (p_RigidBody2D RigidBody2D, p_ForceGenerator forceGen)"
+Creates a new \fB_RigidBody2DForceRegistration\fP\&. Adds the args to the new \fB_RigidBody2DForceRegistration\fP, then saves this into the instance\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIparticle\fP is the pointer to be registered and saved\&. 
+\fI\fBRigidBody2D\fP\fP is the pointer to be registered and saved\&. 
 .br
 \fIforceGen\fP is the force that will be saved with the object\&. 
 .RE
 .PP
 
-.SS "void ForceRegistry::Add (shared_ptr< \fBRigidBody\fP > body, shared_ptr< \fBForceGenerator\fP > forceGen)"
-Creates a new \fB_RigidBodyRegistration\fP\&. Adds the args to the new \fB_RigidBodyRegistration\fP, then saves this into the instance\&. 
+.SS "void KillerPhysics::ForceRegistry::Add (p_RigidBody3D body, p_ForceGenerator forceGen)"
+Creates a new \fB_RigidBody3DRegistration\fP\&. Adds the args to the new \fB_RigidBody3DRegistration\fP, then saves this into the instance\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -111,18 +111,18 @@ Creates a new \fB_RigidBodyRegistration\fP\&. Adds the args to the new \fB_Rigid
 
 .SS "void ForceRegistry::Clear (void)"
 Removed all saved registrations by clearing the list of saved registrations\&. 
-.SS "void ForceRegistry::Remove (shared_ptr< \fBParticle\fP > particle, shared_ptr< \fBForceGenerator\fP > forceGen)"
+.SS "void KillerPhysics::ForceRegistry::Remove (p_RigidBody2D RigidBody2D, p_ForceGenerator forceGen)"
 Removes the registration matching the pointer args from the instance\&. This has some cost, since it creates a new registration, then uses this to compare with every registration, until the needed registration is found\&. There is room to optimize here\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIparticle\fP is the object that needs to be removed\&. 
+\fI\fBRigidBody2D\fP\fP is the object that needs to be removed\&. 
 .br
 \fIforceGen\fP is the matching force that also needs to be removed\&. 
 .RE
 .PP
 
-.SS "void ForceRegistry::Remove (shared_ptr< \fBRigidBody\fP > body, shared_ptr< \fBForceGenerator\fP > forceGen)"
+.SS "void KillerPhysics::ForceRegistry::Remove (p_RigidBody3D body, p_ForceGenerator forceGen)"
 Removes the registration matching the pointer args from the instance\&. This has some cost, since it creates a new registration, then uses this to compare with every registration, until the needed registration is found\&. There is room to optimize here\&. 
 .PP
 \fBParameters:\fP

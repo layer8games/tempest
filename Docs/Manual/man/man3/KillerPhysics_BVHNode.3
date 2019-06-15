@@ -1,4 +1,4 @@
-.TH "KillerPhysics::BVHNode< BoundingVolumeClass >" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::BVHNode< BoundingVolumeClass >" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -10,7 +10,7 @@ KillerPhysics::BVHNode< BoundingVolumeClass >
 
 .in +1c
 .ti -1c
-.RI "\fBBVHNode\fP (shared_ptr< \fBBVHNode\fP > parent, const BoundingVolumeClass &volume, shared_ptr< \fBRigidBody\fP > body=nullptr)"
+.RI "\fBBVHNode\fP (shared_ptr< \fBBVHNode\fP > parent, const BoundingVolumeClass &volume, shared_ptr< RigidBody > body=nullptr)"
 .br
 .ti -1c
 .RI "bool \fBIsLeaf\fP (void) const"
@@ -19,7 +19,7 @@ KillerPhysics::BVHNode< BoundingVolumeClass >
 .RI "\fBU32\fP \fBGetPotentialContacts\fP (\fBPotentialContact\fP *contacts, \fBU32\fP limit) const"
 .br
 .ti -1c
-.RI "void \fBInsert\fP (shared_ptr< \fBRigidBody\fP > newBody, const BoundingVolumeClass &newVolume)"
+.RI "void \fBInsert\fP (shared_ptr< RigidBody > newBody, const BoundingVolumeClass &newVolume)"
 .br
 .in -1c
 .SS "Public Attributes"
@@ -35,7 +35,7 @@ KillerPhysics::BVHNode< BoundingVolumeClass >
 .RI "BoundingVolumeClass \fBvolume\fP"
 .br
 .ti -1c
-.RI "shared_ptr< \fBRigidBody\fP > \fBbody\fP"
+.RI "shared_ptr< RigidBody > \fBbody\fP"
 .br
 .in -1c
 .SS "Protected Member Functions"

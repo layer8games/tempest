@@ -1,4 +1,4 @@
-.TH "Boxes::MovingBoxes" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "Boxes::MovingBoxes" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,13 +12,13 @@ Inherits \fBKillerEngine::Level\fP\&.
 
 .in +1c
 .ti -1c
-.RI "void \fBv_InitLevel\fP (\fBU32\fP id, \fBS32\fP w, \fBS32\fP h, const \fBKE::Color\fP &c)"
+.RI "void \fBv_Init\fP (void)"
 .br
 .ti -1c
 .RI "void \fBv_Update\fP (void)"
 .br
 .ti -1c
-.RI "void \fBCheckBoxEdge\fP (\fBKE::GameObject\fP &b)"
+.RI "void \fBCheckBoxEdge\fP (p_Box b)"
 .br
 .ti -1c
 .RI "void \fBCheckCollisions\fP (void)"
@@ -40,24 +40,24 @@ Inherits \fBKillerEngine::Level\fP\&.
 .RI "\fBF32\fP \fB_top\fP"
 .br
 .ti -1c
-.RI "\fBBox\fP \fB_redbox\fP"
+.RI "p_Box \fB_redbox\fP"
 .br
 .ti -1c
-.RI "\fBBox\fP \fB_bluebox\fP"
+.RI "p_Box \fB_bluebox\fP"
 .br
 .ti -1c
-.RI "\fBBox\fP \fB_greenbox\fP"
+.RI "p_Box \fB_greenbox\fP"
 .br
 .ti -1c
 .RI "\fBKE::Text\fP \fB_levelTitle\fP"
 .br
 .ti -1c
-.RI "\fBBox\fP * \fB_activeBox\fP"
+.RI "p_Box \fB_activeBox\fP"
 .br
 .in -1c
 .SH "Member Function Documentation"
 .PP 
-.SS "void MovingBoxes::v_InitLevel (\fBU32\fP id, \fBS32\fP w, \fBS32\fP h, const \fBKE::Color\fP & c)\fC [virtual]\fP"
+.SS "void MovingBoxes::v_Init (void)\fC [virtual]\fP"
 Abstract function\&. Used to Initialize the default values, instantiate any objects that will be used and generally get things ready to go\&. 
 .PP
 \fBParameters:\fP

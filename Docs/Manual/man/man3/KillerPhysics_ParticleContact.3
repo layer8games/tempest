@@ -1,4 +1,4 @@
-.TH "KillerPhysics::ParticleContact" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::ParticleContact" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -16,7 +16,7 @@ KillerPhysics::ParticleContact
 .RI "void \fBSetContactNormal\fP (\fBKM::Vector4\fP &normal)"
 .br
 .ti -1c
-.RI "void \fBSetContacts\fP (shared_ptr< \fBParticle\fP > particle1, shared_ptr< \fBParticle\fP > particle2=nullptr)"
+.RI "void \fBSetContacts\fP (shared_ptr< Particle > particle1, shared_ptr< Particle > particle2=nullptr)"
 .br
 .ti -1c
 .RI "void \fBSetPenetration\fP (\fBreal\fP penetration)"
@@ -25,10 +25,10 @@ KillerPhysics::ParticleContact
 .RI "\fBreal\fP \fBGetPenetration\fP (void)"
 .br
 .ti -1c
-.RI "const shared_ptr< \fBParticle\fP > \fBGetParticleOne\fP (void)"
+.RI "const shared_ptr< Particle > \fBGetParticleOne\fP (void)"
 .br
 .ti -1c
-.RI "const shared_ptr< \fBParticle\fP > \fBGetParticleTwo\fP (void)"
+.RI "const shared_ptr< Particle > \fBGetParticleTwo\fP (void)"
 .br
 .ti -1c
 .RI "void \fBResolve\fP (void)"
@@ -51,7 +51,7 @@ KillerPhysics::ParticleContact
 
 .in +1c
 .ti -1c
-.RI "shared_ptr< \fBParticle\fP > \fB_particles\fP [2]"
+.RI "shared_ptr< Particle > \fB_particles\fP [2]"
 .br
 .ti -1c
 .RI "shared_ptr< \fBKM::Vector4\fP > \fB_particleMovements\fP [2]"

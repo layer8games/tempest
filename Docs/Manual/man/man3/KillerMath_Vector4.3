@@ -1,4 +1,4 @@
-.TH "KillerMath::Vector4" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Vector4" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -66,7 +66,13 @@ KillerMath::Vector4
 .RI "void \fBReset\fP (\fBF32\fP val=0\&.0f)"
 .br
 .ti -1c
-.RI "void \fBAddScaledVector4\fP (const \fBVector4\fP &vec, \fBF32\fP scale)"
+.RI "void \fBAddScaledVector\fP (const \fBVector4\fP &vec, \fBF32\fP scale)"
+.br
+.ti -1c
+.RI "void \fBAddScaledVector\fP (const \fBVector3\fP &vec, \fBF32\fP scale)"
+.br
+.ti -1c
+.RI "void \fBAddScaledPoint\fP (const \fBPoint\fP &point, \fBF32\fP scale)"
 .br
 .ti -1c
 .RI "const \fBF32\fP * \fBGetElems\fP (void) const"
@@ -288,12 +294,34 @@ Copy a \fBPoint\fP into a \fBVector4\fP\&. W is set to 0\&.
 Destructor\&. It does not do anything\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void Vector4::AddScaledVector4 (const \fBVector4\fP & vec, \fBF32\fP scale)"
-Adds a \fBVector4\fP scaled by a value to this \fBVector4\fP\&. 
+.SS "void Vector4::AddScaledPoint (const \fBPoint\fP & point, \fBF32\fP scale)"
+Adds a \fBPoint\fP scaled by a value to this \fBVector4\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpoint\fP is the \fBPoint\fP that will be added to this one\&. 
+.br
+\fIscale\fP is the amount the added \fBVector4\fP will be scaled by\&. 
+.RE
+.PP
+
+.SS "void Vector4::AddScaledVector (const \fBVector4\fP & vec, \fBF32\fP scale)"
+Adds a \fBVector4\fP scaled by a value to this \fBVector4\fP\&. The w component is ignored\&. 
 .PP
 \fBParameters:\fP
 .RS 4
 \fIvec\fP is the \fBVector4\fP that will be added to this one\&. 
+.br
+\fIscale\fP is the amount the added \fBVector4\fP will be scaled by\&. 
+.RE
+.PP
+
+.SS "void Vector4::AddScaledVector (const \fBVector3\fP & vec, \fBF32\fP scale)"
+Adds a \fBVector3\fP scaled by a value to this \fBVector4\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP is the \fBVector3\fP that will be added to this one\&. 
 .br
 \fIscale\fP is the amount the added \fBVector4\fP will be scaled by\&. 
 .RE

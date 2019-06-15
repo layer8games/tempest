@@ -113,6 +113,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4e951ac8906346a26efc5620c9768bf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42b05bccc84e2bf48a7b8dcdcefacfad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_engine.html#a42b05bccc84e2bf48a7b8dcdcefacfad">SetActiveLevel</a> (const <a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a> id)</td></tr>
 <tr class="separator:a42b05bccc84e2bf48a7b8dcdcefacfad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bcdbfdbb3e90091d972ab3322ed6ab0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_engine.html#a8bcdbfdbb3e90091d972ab3322ed6ab0">SetActiveLevel</a> (shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt; level)</td></tr>
+<tr class="separator:a8bcdbfdbb3e90091d972ab3322ed6ab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac59557583a80e4d48faa5e59a55e1a62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_engine.html#ac59557583a80e4d48faa5e59a55e1a62">Update</a> (void)</td></tr>
 <tr class="separator:ac59557583a80e4d48faa5e59a55e1a62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0544104c7bffacec72851a2074ac8102"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_engine.html#a0544104c7bffacec72851a2074ac8102">Render</a> (void)</td></tr>
@@ -353,7 +355,7 @@ static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_engine.html">E
 </div>
 </div>
 <a id="a42b05bccc84e2bf48a7b8dcdcefacfad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42b05bccc84e2bf48a7b8dcdcefacfad">&#9670;&nbsp;</a></span>SetActiveLevel()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a42b05bccc84e2bf48a7b8dcdcefacfad">&#9670;&nbsp;</a></span>SetActiveLevel() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -378,6 +380,38 @@ static shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_engine.html">E
 <p>Wrapper for LevelManager::SetActive(). Sets level with id to be active level </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>const U32: id of level. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8bcdbfdbb3e90091d972ab3322ed6ab0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bcdbfdbb3e90091d972ab3322ed6ab0">&#9670;&nbsp;</a></span>SetActiveLevel() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KillerEngine::Engine::SetActiveLevel </td>
+          <td>(</td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt;&#160;</td>
+          <td class="paramname"><em>level</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Wrapper for LevelManager::SetActive(void). Sets the temporary active level. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>is the pointer to set active </td></tr>
   </table>
   </dd>
 </dl>

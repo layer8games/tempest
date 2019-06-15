@@ -1,4 +1,4 @@
-.TH "KillerEngine::LevelManager" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::LevelManager" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -27,6 +27,9 @@ KillerEngine::LevelManager
 .RI "void \fBSetActiveLevel\fP (\fBU32\fP levelID)"
 .br
 .ti -1c
+.RI "void \fBSetActiveLevel\fP (shared_ptr< \fBLevel\fP > level)"
+.br
+.ti -1c
 .RI "\fBU32\fP \fBGetActiveLevelID\fP (void)"
 .br
 .ti -1c
@@ -40,9 +43,6 @@ KillerEngine::LevelManager
 .br
 .ti -1c
 .RI "void \fBAddObjectToLevel\fP (\fBU32\fP id, shared_ptr< \fBGameObject\fP > obj)"
-.br
-.ti -1c
-.RI "void \fBAddParticleToLevel\fP (\fBU32\fP id, shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ForceGenerator\fP > generator=nullptr)"
 .br
 .ti -1c
 .RI "void \fBRemoveObjectFromLevel\fP (\fBU32\fP levelID, \fBU32\fP objID)"
@@ -136,19 +136,6 @@ Allows object to be added to level\&. Wrapper around \fBLevel::AddObjectToLevel\
 .RE
 .PP
 
-.SS "void LevelManager::AddParticleToLevel (\fBU32\fP id, shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ForceGenerator\fP > generator = \fCnullptr\fP)"
-Allows object to be added to level\&. Wrapper around \fBLevel::AddParticleToLevel\fP\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIid\fP is the key for the \fBLevel\fP that the object will be added to\&. 
-.br
-\fIparticle\fP is the object pointer to add\&. 
-.br
-\fIgenerator\fP is an optional KillerPhysics::ForcerGenerator pointer to add to the particle\&. 
-.RE
-.PP
-
 .SS "void KillerEngine::LevelManager::EndGame (void)\fC [inline]\fP"
 Starts the process to shut down the game\&. Wrapper around \fBGameWindow::EndRunning\fP\&. 
 .SS "shared_ptr<\fBLevel\fP> KillerEngine::LevelManager::GetActiveLevel (void)\fC [inline]\fP"
@@ -188,10 +175,19 @@ Changes the state to have a different active \fBLevel\fP\&.
 .RE
 .PP
 
+.SS "void LevelManager::SetActiveLevel (shared_ptr< \fBLevel\fP > level)"
+Changes the active level to be a new level\&. This level is NOT stored in the levels data base and will be deleted when the active level is changed again\&. This allows for levels to be lazy loaded, for quick switching, or to not be loaded into memory until they are set to active\&. \fBLevel::v_Init\fP is called before it is set to active\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevel\fP is the new \fBLevel\fP that will be set to active\&. 
+.RE
+.PP
+
 .SS "void KillerEngine::LevelManager::ShutDown (void)\fC [inline]\fP"
 Helper function that deletes the instance from global memory\&. 
 .SS "void LevelManager::Update (void)"
-Calls all functions on the active \fBLevel\fP state needed to update that state\&. This includes \fBLevel::v_Integrate\fP, \fBLevel::UpdateLevel\fP, \fBLevel::UpdateObjects\fP and \fBLevel::v_Update\fP\&. 
+Calls all functions on the active \fBLevel\fP state needed to update that state\&. This includes Level::v_Integrate, \fBLevel::UpdateLevel\fP, \fBLevel::UpdateObjects\fP and \fBLevel::v_Update\fP\&. 
 
 .SH "Author"
 .PP 

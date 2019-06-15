@@ -115,10 +115,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1718a48e9761ea422bf1b25b8ef5e7f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b037f1c0acf35e0a9edb37a56210b15"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_force_generator.html#a5b037f1c0acf35e0a9edb37a56210b15">~ForceGenerator</a> (void)</td></tr>
 <tr class="separator:a5b037f1c0acf35e0a9edb37a56210b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad20e80d2345b1b8fc8818dbc3e67ff9e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_force_generator.html#ad20e80d2345b1b8fc8818dbc3e67ff9e">v_UpdateForce</a> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">Particle</a> &gt; particle)=0</td></tr>
-<tr class="separator:ad20e80d2345b1b8fc8818dbc3e67ff9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98befcf1f44462f90bf589b098b27665"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_force_generator.html#a98befcf1f44462f90bf589b098b27665">v_UpdateForce</a> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body.html">RigidBody</a> &gt; body)=0</td></tr>
-<tr class="separator:a98befcf1f44462f90bf589b098b27665"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82de4e588cbe920d72d0cd1476d76601"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_force_generator.html#a82de4e588cbe920d72d0cd1476d76601">v_UpdateForce</a> (p_RigidBody2D body)=0</td></tr>
+<tr class="separator:a82de4e588cbe920d72d0cd1476d76601"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6835b2f1be658a802bb072bf94e9a94"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_force_generator.html#ab6835b2f1be658a802bb072bf94e9a94">v_UpdateForce</a> (p_RigidBody3D body)=0</td></tr>
+<tr class="separator:ab6835b2f1be658a802bb072bf94e9a94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="class_killer_physics_1_1_force_generator.html">ForceGenerator</a> provides the interface for forces to be generated and then accumulated by anything that uses forces for physics calculations.</p>
@@ -171,8 +171,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad20e80d2345b1b8fc8818dbc3e67ff9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad20e80d2345b1b8fc8818dbc3e67ff9e">&#9670;&nbsp;</a></span>v_UpdateForce() <span class="overload">[1/2]</span></h2>
+<a id="a82de4e588cbe920d72d0cd1476d76601"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82de4e588cbe920d72d0cd1476d76601">&#9670;&nbsp;</a></span>v_UpdateForce() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -183,41 +183,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void KillerPhysics::ForceGenerator::v_UpdateForce </td>
           <td>(</td>
-          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">Particle</a> &gt;&#160;</td>
-          <td class="paramname"><em>particle</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Unimplemented virtual function. Each force defines what happens during an update. This is the part that will make the forces different. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">particle</td><td>defines this as the <a class="el" href="class_killer_physics_1_1_particle.html">Particle</a> object version. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implemented in <a class="el" href="class_killer_physics_1_1_anchored_spring.html#a2085a53e7e88fc0e12cc113a2613fb47">KillerPhysics::AnchoredSpring</a>, <a class="el" href="class_killer_physics_1_1_buoyant_force.html#ae381681835dcb964110f1101f19a4282">KillerPhysics::BuoyantForce</a>, <a class="el" href="class_killer_physics_1_1_spring_force.html#ac8c8024f680644eec0ce37def759ffec">KillerPhysics::SpringForce</a>, <a class="el" href="class_killer_physics_1_1_drag_force.html#a434595b93d53d5fd035354099371f53d">KillerPhysics::DragForce</a>, and <a class="el" href="class_killer_physics_1_1_gravity_force.html#aa40fbdc6f9b37b650417c2cf2aaae096">KillerPhysics::GravityForce</a>.</p>
-
-</div>
-</div>
-<a id="a98befcf1f44462f90bf589b098b27665"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98befcf1f44462f90bf589b098b27665">&#9670;&nbsp;</a></span>v_UpdateForce() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void KillerPhysics::ForceGenerator::v_UpdateForce </td>
-          <td>(</td>
-          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body.html">RigidBody</a> &gt;&#160;</td>
+          <td class="paramtype">p_RigidBody2D&#160;</td>
           <td class="paramname"><em>body</em></td><td>)</td>
           <td></td>
         </tr>
@@ -230,12 +196,46 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Unimplemented virtual function. Each force defines what happens during an update. This is the part that will make the forces different. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">particle</td><td>defines this as the <a class="el" href="class_killer_physics_1_1_rigid_body.html">RigidBody</a> object version. </td></tr>
+    <tr><td class="paramname"><a class="el" href="class_killer_physics_1_1_rigid_body2_d.html">RigidBody2D</a></td><td>defines this as the <a class="el" href="class_killer_physics_1_1_rigid_body2_d.html">RigidBody2D</a> object version. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_killer_physics_1_1_buoyant_force.html#a7cb2c5dd2b981271327cbd462ed82f78">KillerPhysics::BuoyantForce</a>, <a class="el" href="class_killer_physics_1_1_anchored_spring.html#afb77328e8132e53c92a546b4049a5a37">KillerPhysics::AnchoredSpring</a>, <a class="el" href="class_killer_physics_1_1_spring_force.html#a3f1e83bcb4910bc0d087559604cb932c">KillerPhysics::SpringForce</a>, <a class="el" href="class_killer_physics_1_1_drag_force.html#ab5f64c481e0fabdf5f6d7b1ae5b95bb7">KillerPhysics::DragForce</a>, and <a class="el" href="class_killer_physics_1_1_gravity_force.html#a3ac2e422b05cded1fe2e3af2ad38cac1">KillerPhysics::GravityForce</a>.</p>
+<p>Implemented in <a class="el" href="class_killer_physics_1_1_anchored_spring.html#a45c2b01da16b62a5f49d2391ca293a3f">KillerPhysics::AnchoredSpring</a>, and <a class="el" href="class_killer_physics_1_1_gravity_force.html#a2e58dbd5978ed8e8596c5ac486c3090a">KillerPhysics::GravityForce</a>.</p>
+
+</div>
+</div>
+<a id="ab6835b2f1be658a802bb072bf94e9a94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6835b2f1be658a802bb072bf94e9a94">&#9670;&nbsp;</a></span>v_UpdateForce() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void KillerPhysics::ForceGenerator::v_UpdateForce </td>
+          <td>(</td>
+          <td class="paramtype">p_RigidBody3D&#160;</td>
+          <td class="paramname"><em>body</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Unimplemented virtual function. Each force defines what happens during an update. This is the part that will make the forces different. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="class_killer_physics_1_1_rigid_body2_d.html">RigidBody2D</a></td><td>defines this as the <a class="el" href="class_killer_physics_1_1_rigid_body3_d.html">RigidBody3D</a> object version. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_killer_physics_1_1_anchored_spring.html#aedabf9f544a1a769588024890ce795c0">KillerPhysics::AnchoredSpring</a>, and <a class="el" href="class_killer_physics_1_1_gravity_force.html#a2b65ee89f5a3a1e4833cbef2ab433ed4">KillerPhysics::GravityForce</a>.</p>
 
 </div>
 </div>

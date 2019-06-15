@@ -56,6 +56,7 @@ var class_killer_math_1_1_point =
     [ "operator[]", "class_killer_math_1_1_point.html#a0b31ad3ae4a2ce2ba6c6ab33cd35d655", null ],
     [ "Reset", "class_killer_math_1_1_point.html#a9776a05a5a6132e82317b59366989f38", null ],
     [ "Set", "class_killer_math_1_1_point.html#a20e85d56fc104fce9f42af9a8a29420e", null ],
+    [ "Set", "class_killer_math_1_1_point.html#a1839db18204c4ed57265ab7fa3df8191", null ],
     [ "SqrMagnitude", "class_killer_math_1_1_point.html#ac87f242b406d0a7eb3375213b5f40254", null ],
     [ "_2D", "class_killer_math_1_1_point.html#ae375c777df75da73f6905154b66d14ca", null ],
     [ "_data", "class_killer_math_1_1_point.html#a5a8a4f97d7c2d3a36a58078cb40935ad", null ]

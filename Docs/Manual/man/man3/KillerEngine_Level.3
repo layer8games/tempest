@@ -1,4 +1,4 @@
-.TH "KillerEngine::Level" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Level" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -20,13 +20,10 @@ Inherited by \fBBoxes::Ballistics\fP, \fBBoxes::Demo3D\fP, \fBBoxes::FireworksDe
 .RI "virtual \fB~Level\fP (void)"
 .br
 .ti -1c
-.RI "virtual void \fBv_InitLevel\fP (\fBU32\fP id, \fBS32\fP w, \fBS32\fP h, const \fBColor\fP &c)=0"
+.RI "virtual void \fBv_Init\fP (void)=0"
 .br
 .ti -1c
 .RI "virtual void \fBv_Update\fP (void)=0"
-.br
-.ti -1c
-.RI "virtual void \fBv_Integrate\fP (void)"
 .br
 .ti -1c
 .RI "virtual void \fBv_Render\fP (void)"
@@ -38,19 +35,10 @@ Inherited by \fBBoxes::Ballistics\fP, \fBBoxes::Demo3D\fP, \fBBoxes::FireworksDe
 .RI "void \fBAddObjectToLevel\fP (const \fBGameObject\fP &obj)"
 .br
 .ti -1c
-.RI "void \fBAddObjectToLevel\fP (shared_ptr< \fBGameObject\fP > obj)"
+.RI "void \fBAddObjectToLevel\fP (p_GameObject obj)"
 .br
 .ti -1c
-.RI "void \fBAddParticleToLevel\fP (const \fBKP::Particle\fP &particle)"
-.br
-.ti -1c
-.RI "void \fBAddParticleToLevel\fP (shared_ptr< \fBKP::Particle\fP > particle)"
-.br
-.ti -1c
-.RI "void \fBAddParticleToLevel\fP (shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ForceGenerator\fP > generator=nullptr)"
-.br
-.ti -1c
-.RI "void \fBRegisterParticleForce\fP (shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ForceGenerator\fP > generator)"
+.RI "void \fBRegisterRigidBody2DForce\fP (KP::p_RigidBody2D body, KP::p_ForceGenerator generator)"
 .br
 .ti -1c
 .RI "void \fBAddTextToLevel\fP (const \fBText\fP &text)"
@@ -77,19 +65,19 @@ Inherited by \fBBoxes::Ballistics\fP, \fBBoxes::Demo3D\fP, \fBBoxes::FireworksDe
 .RI "void \fBActivateBackgroundColor\fP (void)"
 .br
 .ti -1c
-.RI "\fBS32\fP \fBGetLevelWidth\fP (void) const"
+.RI "\fBS32\fP \fBGetWidth\fP (void) const"
 .br
 .ti -1c
-.RI "\fBS32\fP \fBGetLevelHeight\fP (void) const"
+.RI "\fBS32\fP \fBGetHeight\fP (void) const"
 .br
 .ti -1c
-.RI "void \fBSetLevelWidth\fP (\fBS32\fP w)"
+.RI "void \fBSetWidth\fP (\fBS32\fP w)"
 .br
 .ti -1c
-.RI "void \fBSetLevelHeight\fP (\fBS32\fP h)"
+.RI "void \fBSetHeight\fP (\fBS32\fP h)"
 .br
 .ti -1c
-.RI "void \fBSetLevelDimensions\fP (\fBS32\fP w, \fBS32\fP h)"
+.RI "void \fBSetDimensions\fP (\fBS32\fP w, \fBS32\fP h)"
 .br
 .ti -1c
 .RI "void \fBSetTopBorder\fP (\fBS32\fP top)"
@@ -104,7 +92,7 @@ Inherited by \fBBoxes::Ballistics\fP, \fBBoxes::Demo3D\fP, \fBBoxes::FireworksDe
 .RI "void \fBSetLeftBorder\fP (\fBS32\fP left)"
 .br
 .ti -1c
-.RI "void \fBSetLevelBorders\fP (\fBS32\fP top, \fBS32\fP bottom, \fBS32\fP right, \fBS32\fP left)"
+.RI "void \fBSetBorders\fP (\fBS32\fP top, \fBS32\fP bottom, \fBS32\fP right, \fBS32\fP left)"
 .br
 .ti -1c
 .RI "\fBS32\fP \fBGetTopBorder\fP (void) const"
@@ -155,10 +143,7 @@ Inherited by \fBBoxes::Ballistics\fP, \fBBoxes::Demo3D\fP, \fBBoxes::FireworksDe
 .RI "void \fBSetCameraOrthographic\fP (\fBF32\fP left, \fBF32\fP right, \fBF32\fP bottom, \fBF32\fP top, \fBF32\fP nearPlane, \fBF32\fP farPlane)"
 .br
 .ti -1c
-.RI "shared_ptr< \fBGameObject\fP > \fBGetGameObject\fP (\fBU32\fP id)"
-.br
-.ti -1c
-.RI "shared_ptr< \fBKP::Particle\fP > \fBGetParticle\fP (\fBU32\fP id)"
+.RI "p_GameObject \fBGetGameObject\fP (\fBU32\fP id)"
 .br
 .in -1c
 .SS "Private Attributes"
@@ -213,13 +198,9 @@ Inherited by \fBBoxes::Ballistics\fP, \fBBoxes::Demo3D\fP, \fBBoxes::FireworksDe
 .br
 .RI "Pointer to a \fBCamera\fP object\&. "
 .ti -1c
-.RI "std::map< \fBU32\fP, shared_ptr< \fBGameObject\fP > > \fB_gameObjects\fP"
+.RI "std::map< \fBU32\fP, p_GameObject > \fB_gameObjects\fP"
 .br
 .RI "List of all GameObjects included in the \fBLevel\fP\&. "
-.ti -1c
-.RI "std::map< \fBU32\fP, shared_ptr< \fBKP::Particle\fP > > \fB_particles\fP"
-.br
-.RI "List of all KillerPhysics::Particles in the \fBLevel\fP\&. "
 .ti -1c
 .RI "\fBKP::ForceRegistry\fP \fB_forceRegistry\fP"
 .br
@@ -247,41 +228,12 @@ Converts the ref to a smart_ptr and adds the \fBGameObject\fP to the \fBLevel\fP
 .RE
 .PP
 
-.SS "void Level::AddObjectToLevel (shared_ptr< \fBGameObject\fP > obj)"
+.SS "void KillerEngine::Level::AddObjectToLevel (p_GameObject obj)"
 Adds \fBGameObject\fP pointer to the \fBLevel\fP\&. 
 .PP
 \fBParameters:\fP
 .RS 4
 \fIobj\fP is the pointer to be added\&. 
-.RE
-.PP
-
-.SS "void Level::AddParticleToLevel (const \fBKP::Particle\fP & particle)"
-Even though \fBKillerPhysics::Particle\fP is a \fBGameObject\fP, the compiler can't tell the difference\&. This adds the physics object to the \fBLevel\fP\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIparticle\fP converted to a shared_ptr and added to the level\&. 
-.RE
-.PP
-
-.SS "void Level::AddParticleToLevel (shared_ptr< \fBKP::Particle\fP > particle)"
-Even though \fBKillerPhysics::Particle\fP is a \fBGameObject\fP, the compiler can't tell the difference\&. This adds the physics object to the \fBLevel\fP\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIparticle\fP is the pointer to be added to the \fBLevel\fP\&. 
-.RE
-.PP
-
-.SS "void Level::AddParticleToLevel (shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ForceGenerator\fP > generator = \fCnullptr\fP)"
-Helper function that allows to add a \fBKillerPhysics::Particle\fP and register it a force at the same time\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIparticle\fP is the pointer to add\&. 
-.br
-\fIis\fP the optional force to register the particle with\&. 
 .RE
 .PP
 
@@ -320,37 +272,28 @@ Returns \fBGameObject\fP with ID\&.
 .RE
 .PP
 
+.SS "\fBS32\fP KillerEngine::Level::GetHeight (void) const\fC [inline]\fP"
+Returns the height of the play area of the \fBLevel\fP\&. 
 .SS "\fBU32\fP KillerEngine::Level::GetID (void) const\fC [inline]\fP"
 Returns the \fBLevel\fP ID\&. This will only match the \fBLevelManager\fP ID if you set it correctly\&. 
 .SS "\fBS32\fP KillerEngine::Level::GetLeftBorder (void) const\fC [inline]\fP"
 Returns the left border\&. 
-.SS "\fBS32\fP KillerEngine::Level::GetLevelHeight (void) const\fC [inline]\fP"
-Returns the height of the play area of the \fBLevel\fP\&. 
-.SS "\fBS32\fP KillerEngine::Level::GetLevelWidth (void) const\fC [inline]\fP"
-Returns the width of the play area of the \fBLevel\fP\&. 
 .SS "\fBS32\fP KillerEngine::Level::GetNearBorder (void)\fC [inline]\fP"
 Returns the near border of the play area\&. 
-.SS "shared_ptr< \fBKP::Particle\fP > Level::GetParticle (\fBU32\fP id)"
-Returns \fBKillerPhysics::Particle\fP with ID\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIid\fP is the ID of the object to get\&. Should coorespond to the GameObject::_ID\&. 
-.RE
-.PP
-
 .SS "\fBS32\fP KillerEngine::Level::GetRightBorder (void) const\fC [inline]\fP"
 Returns the right border\&. 
 .SS "\fBS32\fP KillerEngine::Level::GetTopBorder (void) const\fC [inline]\fP"
 Returns the top border\&. 
-.SS "void KillerEngine::Level::RegisterParticleForce (shared_ptr< \fBKP::Particle\fP > particle, shared_ptr< \fBKP::ForceGenerator\fP > generator)\fC [inline]\fP"
-Registers a \fBKillerPhysics::Particle\fP with a KillerPhysics::ForcerGenerator\&. This only works because they are pointers\&. 
+.SS "\fBS32\fP KillerEngine::Level::GetWidth (void) const\fC [inline]\fP"
+Returns the width of the play area of the \fBLevel\fP\&. 
+.SS "void KillerEngine::Level::RegisterRigidBody2DForce (KP::p_RigidBody2D body, KP::p_ForceGenerator generator)\fC [inline]\fP"
+Registers a \fBKillerPhysics::RigidBody2D\fP with a KillerPhysics::ForcerGenerator\&. This only works because they are pointers\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIparticle\fP is the pointer that needs to be registered with the generator\&. 
+\fIRigidBody2D\fP is the pointer that needs to be registered with the generator\&. 
 .br
-\fIgenerator\fP is the force to apply to the particle\&. 
+\fIgenerator\fP is the force to apply to the RigidBody2D\&. 
 .RE
 .PP
 
@@ -364,9 +307,24 @@ Removes the \fBGameObject\fP with id from the \fBLevel\fP\&.
 .PP
 
 .SS "void Level::RenderObjects (void)"
-Loops over all of the \fBGameObject\fP and \fBKillerPhysics::Particle\fP that have been added to the \fBLevel\fP, and calls GameObject::v_Render if they are active for rendering\&. 
+Loops over all of the \fBGameObject\fP and \fBKillerPhysics::RigidBody2D\fP that have been added to the \fBLevel\fP, and calls GameObject::v_Render if they are active for rendering\&. 
 .SS "void KillerEngine::Level::SetBackgroundColor (const \fBColor\fP & c)\fC [inline]\fP"
 Changes the set background color for the \fBLevel\fP\&. It also calls \fBLevel::ActivateBackgroundColor\fP 
+.SS "void KillerEngine::Level::SetBorders (\fBS32\fP top, \fBS32\fP bottom, \fBS32\fP right, \fBS32\fP left)\fC [inline]\fP"
+Helper function to set all borders of the play area of the \fBLevel\fP at the same time\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItop\fP is the top border\&. 
+.br
+\fIbottom\fP is the bottom border\&. 
+.br
+\fIright\fP is the right border\&. 
+.br
+\fIleft\fP is the left border\&. 
+.RE
+.PP
+
 .SS "void KillerEngine::Level::SetBottomBorder (\fBS32\fP bottom)\fC [inline]\fP"
 Set the bottom bounds\&. 
 .PP
@@ -401,8 +359,19 @@ Wrapper around \fBCamera::SetOrthographic\fP with the same arguments\&.
 
 .SS "void KillerEngine::Level::SetDepth (\fBS32\fP d)\fC [inline]\fP"
 Sets the depth of the play area 
+.SS "void KillerEngine::Level::SetDimensions (\fBS32\fP w, \fBS32\fP h)\fC [inline]\fP"
+Helper function that allows you to change the play area dimensions at the same time\&. 
 .SS "void KillerEngine::Level::SetFarBorder (\fBS32\fP f)\fC [inline]\fP"
 Sets the far border of the play area\&. 
+.SS "void KillerEngine::Level::SetHeight (\fBS32\fP h)\fC [inline]\fP"
+Changes the height of the play area of the \fBLevel\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIh\fP is the new height\&. 
+.RE
+.PP
+
 .SS "void KillerEngine::Level::SetID (\fBU32\fP id)\fC [inline]\fP"
 Sets a new ID for the \fBLevel\fP\&. Use with caution\&. 
 .SS "void KillerEngine::Level::SetLeftBorder (\fBS32\fP left)\fC [inline]\fP"
@@ -414,45 +383,10 @@ Set the left bounds\&.
 .RE
 .PP
 
-.SS "void KillerEngine::Level::SetLevelBorders (\fBS32\fP top, \fBS32\fP bottom, \fBS32\fP right, \fBS32\fP left)\fC [inline]\fP"
-Helper function to set all borders of the play area of the \fBLevel\fP at the same time\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fItop\fP is the top border\&. 
-.br
-\fIbottom\fP is the bottom border\&. 
-.br
-\fIright\fP is the right border\&. 
-.br
-\fIleft\fP is the left border\&. 
-.RE
-.PP
-
-.SS "void KillerEngine::Level::SetLevelDimensions (\fBS32\fP w, \fBS32\fP h)\fC [inline]\fP"
-Helper function that allows you to change the play area dimensions at the same time\&. 
-.SS "void KillerEngine::Level::SetLevelHeight (\fBS32\fP h)\fC [inline]\fP"
-Changes the height of the play area of the \fBLevel\fP\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIh\fP is the new height\&. 
-.RE
-.PP
-
-.SS "void KillerEngine::Level::SetLevelWidth (\fBS32\fP w)\fC [inline]\fP"
-Changes the width of the play area of the \fBLevel\fP\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIw\fP is the new width\&. 
-.RE
-.PP
-
 .SS "void KillerEngine::Level::SetNearBorder (\fBS32\fP n)\fC [inline]\fP"
 Sets the near border of the play area\&. 
 .SS "template<class T > void KillerEngine::Level::SetObjectUniforms (string name, const T & type)\fC [inline]\fP"
-Loops over all GameObjects and \fBKillerPhysics::Particle\fP that have bee added to the level and calls GameObject::SetUniform for the type that is passed in\&. This is a template function\&. 
+Loops over all GameObjects and \fBKillerPhysics::RigidBody2D\fP that have bee added to the level and calls GameObject::SetUniform for the type that is passed in\&. This is a template function\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -480,11 +414,20 @@ Set the top bounds\&.
 .RE
 .PP
 
+.SS "void KillerEngine::Level::SetWidth (\fBS32\fP w)\fC [inline]\fP"
+Changes the width of the play area of the \fBLevel\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIw\fP is the new width\&. 
+.RE
+.PP
+
 .SS "void Level::UpdateLevel (void)"
 Default actions that need to be called each frame\&. Right now, that is only Camera::v_Update\&. 
 .SS "void Level::UpdateObjects (void)"
-Loops over all of the \fBGameObject\fP and \fBKillerPhysics::Particle\fP that have been added to the \fBLevel\fP, and calls GameObject::v_Update if they are active for updates\&. 
-.SS "virtual void KillerEngine::Level::v_InitLevel (\fBU32\fP id, \fBS32\fP w, \fBS32\fP h, const \fBColor\fP & c)\fC [pure virtual]\fP"
+Loops over all of the \fBGameObject\fP and \fBKillerPhysics::RigidBody2D\fP that have been added to the \fBLevel\fP, and calls GameObject::v_Update if they are active for updates\&. 
+.SS "virtual void KillerEngine::Level::v_Init (void)\fC [pure virtual]\fP"
 Abstract function\&. Used to Initialize the default values, instantiate any objects that will be used and generally get things ready to go\&. 
 .PP
 \fBParameters:\fP
@@ -498,15 +441,13 @@ Abstract function\&. Used to Initialize the default values, instantiate any obje
 .PP
 
 .PP
-Implemented in \fBTestLevel\fP, \fBBoxes::MovingBoxes\fP, \fBBoxes::MainMenu\fP, \fBBoxes::SplashScreen\fP, \fBBoxes::Ballistics\fP, \fBBoxes::Springs\fP, \fBBoxes::FireworksDemo\fP, and \fBBoxes::Demo3D\fP\&.
-.SS "void Level::v_Integrate (void)\fC [virtual]\fP"
-Abstract function\&. Calls \fBKillerPhysics::ForceRegistry::UpdateForces\fP, then loops over each Physics object, calling KillerPhysics::Particle::v_Integrate function\&. It is virtual to allow for optional customization\&. 
+Implemented in \fBBoxes::MainMenu\fP, \fBTestLevel\fP, \fBBoxes::MovingBoxes\fP, \fBBoxes::SplashScreen\fP, \fBBoxes::Ballistics\fP, \fBBoxes::Springs\fP, \fBBoxes::FireworksDemo\fP, and \fBBoxes::Demo3D\fP\&.
 .SS "void Level::v_Render (void)\fC [virtual]\fP"
 Wrapper around \fBLevel::RenderObjects\fP\&. It is virtual to allow for optional customization\&. 
 .SS "virtual void KillerEngine::Level::v_Update (void)\fC [pure virtual]\fP"
 Abstract function\&. Used to control what needs to happen during an update\&. Please note, objects added to the level are already being updated as part of \fBLevel::UpdateLevel\fP\&. 
 .PP
-Implemented in \fBTestLevel\fP, \fBBoxes::MovingBoxes\fP, \fBBoxes::MainMenu\fP, \fBBoxes::SplashScreen\fP, \fBBoxes::Ballistics\fP, \fBBoxes::Springs\fP, \fBBoxes::FireworksDemo\fP, and \fBBoxes::Demo3D\fP\&.
+Implemented in \fBBoxes::MainMenu\fP, \fBTestLevel\fP, \fBBoxes::MovingBoxes\fP, \fBBoxes::SplashScreen\fP, \fBBoxes::Ballistics\fP, \fBBoxes::Springs\fP, \fBBoxes::FireworksDemo\fP, and \fBBoxes::Demo3D\fP\&.
 
 .SH "Author"
 .PP 

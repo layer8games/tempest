@@ -1,4 +1,4 @@
-.TH "KillerEngine::GameObject" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::GameObject" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -7,7 +7,7 @@ KillerEngine::GameObject
 .br
 .PP
 .PP
-Inherited by \fBBoxes::Box\fP, \fBBoxes::Cannon\fP, \fBBoxes::Cube\fP, \fBDefinedObject\fP, \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \fBKillerPhysics::Particle\fP, \fBKillerPhysics::RigidBody\fP, \fBMenuSelector\fP, and \fBTestLevelDefinedGameObject\fP\&.
+Inherited by \fBBoxes::Box\fP, \fBBoxes::Cannon\fP, \fBBoxes::Cube\fP, \fBBoxes::Firework\fP, \fBBoxes::Projectile\fP, \fBDefinedObject\fP, \fBForceRegObject\fP, \fBForcesObject\fP, \fBKillerEngine::EnvironmentObject\fP, \fBKillerEngine::Glyph\fP, \fBMenuSelector\fP, \fBObject\fP, \fBObject3D\fP, and \fBTestLevelDefinedGameObject\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
@@ -93,10 +93,10 @@ Inherited by \fBBoxes::Box\fP, \fBBoxes::Cannon\fP, \fBBoxes::Cube\fP, \fBDefine
 .RI "void \fBSetPosition\fP (const \fBKM::Point\fP &pos)"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (\fBF32\fP x, \fBF32\fP y)"
+.RI "void \fBSetPosition\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
 .br
 .ti -1c
-.RI "void \fBSetPosition\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
+.RI "void \fBSetPosition\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .ti -1c
 .RI "void \fBSetPositionX\fP (\fBF32\fP xval)"
@@ -109,6 +109,9 @@ Inherited by \fBBoxes::Box\fP, \fBBoxes::Cannon\fP, \fBBoxes::Cube\fP, \fBDefine
 .br
 .ti -1c
 .RI "void \fBAddScaledPosition\fP (const \fBKM::Vector4\fP &pos, \fBF32\fP scale)"
+.br
+.ti -1c
+.RI "void \fBAddScaledPosition\fP (const \fBKM::Vector3\fP &pos, \fBF32\fP scale)"
 .br
 .ti -1c
 .RI "void \fBAddScaledPosition\fP (const \fBKM::Point\fP &point, \fBF32\fP scale)"
@@ -135,7 +138,16 @@ Inherited by \fBBoxes::Box\fP, \fBBoxes::Cannon\fP, \fBBoxes::Cube\fP, \fBDefine
 .RI "void \fBSetOrientation\fP (const \fBKM::Quaternion\fP &q)"
 .br
 .ti -1c
+.RI "void \fBSetOrientation\fP (\fBF32\fP val)"
+.br
+.ti -1c
 .RI "void \fBSetOrientation\fP (\fBF32\fP wVal, \fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
+.br
+.ti -1c
+.RI "void \fBAddScaledOrientation\fP (const \fBKM::Vector4\fP vec, \fBF32\fP scale)"
+.br
+.ti -1c
+.RI "void \fBNormalizeOrientation\fP (void)"
 .br
 .ti -1c
 .RI "void \fBSetColor\fP (const \fBColor\fP &col)"

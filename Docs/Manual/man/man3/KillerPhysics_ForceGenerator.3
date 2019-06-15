@@ -1,4 +1,4 @@
-.TH "KillerPhysics::ForceGenerator" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::ForceGenerator" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -20,10 +20,10 @@ Inherited by \fBKillerPhysics::AnchoredSpring\fP, \fBKillerPhysics::BuoyantForce
 .RI "virtual \fB~ForceGenerator\fP (void)"
 .br
 .ti -1c
-.RI "virtual void \fBv_UpdateForce\fP (shared_ptr< \fBParticle\fP > particle)=0"
+.RI "virtual void \fBv_UpdateForce\fP (p_RigidBody2D body)=0"
 .br
 .ti -1c
-.RI "virtual void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody\fP > body)=0"
+.RI "virtual void \fBv_UpdateForce\fP (p_RigidBody3D body)=0"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -39,28 +39,28 @@ No implemenation\&.
 No implementation\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "virtual void KillerPhysics::ForceGenerator::v_UpdateForce (shared_ptr< \fBParticle\fP > particle)\fC [pure virtual]\fP"
+.SS "virtual void KillerPhysics::ForceGenerator::v_UpdateForce (p_RigidBody2D body)\fC [pure virtual]\fP"
 Unimplemented virtual function\&. Each force defines what happens during an update\&. This is the part that will make the forces different\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIparticle\fP defines this as the \fBParticle\fP object version\&. 
+\fI\fBRigidBody2D\fP\fP defines this as the \fBRigidBody2D\fP object version\&. 
 .RE
 .PP
 
 .PP
-Implemented in \fBKillerPhysics::AnchoredSpring\fP, \fBKillerPhysics::BuoyantForce\fP, \fBKillerPhysics::SpringForce\fP, \fBKillerPhysics::DragForce\fP, and \fBKillerPhysics::GravityForce\fP\&.
-.SS "virtual void KillerPhysics::ForceGenerator::v_UpdateForce (shared_ptr< \fBRigidBody\fP > body)\fC [pure virtual]\fP"
+Implemented in \fBKillerPhysics::AnchoredSpring\fP, and \fBKillerPhysics::GravityForce\fP\&.
+.SS "virtual void KillerPhysics::ForceGenerator::v_UpdateForce (p_RigidBody3D body)\fC [pure virtual]\fP"
 Unimplemented virtual function\&. Each force defines what happens during an update\&. This is the part that will make the forces different\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIparticle\fP defines this as the \fBRigidBody\fP object version\&. 
+\fI\fBRigidBody2D\fP\fP defines this as the \fBRigidBody3D\fP object version\&. 
 .RE
 .PP
 
 .PP
-Implemented in \fBKillerPhysics::BuoyantForce\fP, \fBKillerPhysics::AnchoredSpring\fP, \fBKillerPhysics::SpringForce\fP, \fBKillerPhysics::DragForce\fP, and \fBKillerPhysics::GravityForce\fP\&.
+Implemented in \fBKillerPhysics::AnchoredSpring\fP, and \fBKillerPhysics::GravityForce\fP\&.
 
 .SH "Author"
 .PP 

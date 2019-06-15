@@ -1,4 +1,4 @@
-.TH "KillerPhysics::GravityForce" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::GravityForce" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -23,13 +23,16 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .RI "\fB~GravityForce\fP (void)"
 .br
 .ti -1c
-.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle\fP > particle) final"
+.RI "void \fBv_UpdateForce\fP (p_RigidBody2D body) final"
 .br
 .ti -1c
-.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody\fP > body) final"
+.RI "void \fBv_UpdateForce\fP (p_RigidBody3D body) final"
 .br
 .ti -1c
-.RI "void \fBSetGravityAcceleration\fP (\fBKM::Vector4\fP &gravity)"
+.RI "void \fBSet\fP (\fBKM::Vector4\fP &gravity)"
+.br
+.ti -1c
+.RI "void \fBSet\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 .br
 .in -1c
 .SS "Private Attributes"
@@ -42,7 +45,7 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .in -1c
 .SH "Detailed Description"
 .PP 
-A physics \fBForceGenerator\fP for \fBParticle\fP and \fBRigidBody\fP objects which simulates Gravity\&. By default this is set to -y\&.
+A physics \fBForceGenerator\fP for \fBRigidBody2D\fP and \fBRigidBody3D\fP objects which simulates Gravity\&. By default this is set to -y\&.
 .PP
 It is based on the Cyclone engine design found in 'Game Physics Engine Development, second edition' by Ian Millington\&. 
 .SH "Constructor & Destructor Documentation"
@@ -62,7 +65,7 @@ Sets acceleration to \fBKillerMath::Vector4\fP sent in\&.
 No implemenation\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void KillerPhysics::GravityForce::SetGravityAcceleration (\fBKM::Vector4\fP & gravity)\fC [inline]\fP"
+.SS "void KillerPhysics::GravityForce::Set (\fBKM::Vector4\fP & gravity)\fC [inline]\fP"
 Changes the acceleration the force will cause on an object\&. 
 .PP
 \fBParameters:\fP
@@ -71,19 +74,32 @@ Changes the acceleration the force will cause on an object\&.
 .RE
 .PP
 
-.SS "void GravityForce::v_UpdateForce (shared_ptr< \fBParticle\fP > particle)\fC [final]\fP, \fC [virtual]\fP"
-If particle does not have infinite mass, the acceleration is added using \fBKillerPhysics::Particle::AddForce\fP\&. 
+.SS "void KillerPhysics::GravityForce::Set (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)\fC [inline]\fP"
+Changes the acceleration the force will cause on an object\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIparticle\fP is the pointer to the object that will have the acceleration added to it\&. 
+\fIxVal\fP is the new acceration along the x axis; 
+.br
+\fIyVal\fP is the new acceration along the y axis; 
+.br
+\fIzVal\fP is the new acceration along the z axis; 
+.RE
+.PP
+
+.SS "void GravityForce::v_UpdateForce (p_RigidBody2D body)\fC [final]\fP, \fC [virtual]\fP"
+If body does not have infinite mass, the acceleration is added using \fBKillerPhysics::RigidBody2D::AddForce\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbody\fP is the pointer to the object that will have the acceleration added to it\&. 
 .RE
 .PP
 
 .PP
 Implements \fBKillerPhysics::ForceGenerator\fP\&.
-.SS "void GravityForce::v_UpdateForce (shared_ptr< \fBRigidBody\fP > body)\fC [final]\fP, \fC [virtual]\fP"
-If particle does not have infinite mass, the acceleration is added using KillerPhysics::RigidBody::AddForce\&. 
+.SS "void GravityForce::v_UpdateForce (p_RigidBody3D body)\fC [final]\fP, \fC [virtual]\fP"
+If body does not have infinite mass, the acceleration is added using KillerPhysics::RigidBody3D::AddForce\&. 
 .PP
 \fBParameters:\fP
 .RS 4

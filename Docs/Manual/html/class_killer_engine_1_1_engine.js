@@ -7,6 +7,7 @@ var class_killer_engine_1_1_engine =
     [ "Render", "class_killer_engine_1_1_engine.html#a0544104c7bffacec72851a2074ac8102", null ],
     [ "Running", "class_killer_engine_1_1_engine.html#a839aaf9ee031bb12b4f1d08453c2f068", null ],
     [ "SetActiveLevel", "class_killer_engine_1_1_engine.html#a42b05bccc84e2bf48a7b8dcdcefacfad", null ],
+    [ "SetActiveLevel", "class_killer_engine_1_1_engine.html#a8bcdbfdbb3e90091d972ab3322ed6ab0", null ],
     [ "ShutDown", "class_killer_engine_1_1_engine.html#aeb2929a81f40a12b16f07417be420530", null ],
     [ "Update", "class_killer_engine_1_1_engine.html#ac59557583a80e4d48faa5e59a55e1a62", null ]
 ];

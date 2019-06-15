@@ -114,10 +114,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1c0e927f169948f4b1c0accdcd1699f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a1e7da564225e73453d056dfb41d2cb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_buoyant_force.html#a8a1e7da564225e73453d056dfb41d2cb">~BuoyantForce</a> (void)</td></tr>
 <tr class="separator:a8a1e7da564225e73453d056dfb41d2cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae381681835dcb964110f1101f19a4282"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_buoyant_force.html#ae381681835dcb964110f1101f19a4282">v_UpdateForce</a> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">Particle</a> &gt; particle)</td></tr>
-<tr class="separator:ae381681835dcb964110f1101f19a4282"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7cb2c5dd2b981271327cbd462ed82f78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_buoyant_force.html#a7cb2c5dd2b981271327cbd462ed82f78">v_UpdateForce</a> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body.html">RigidBody</a> &gt; body) final</td></tr>
-<tr class="separator:a7cb2c5dd2b981271327cbd462ed82f78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99ce90cace5b9dfe509009766c647154"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_buoyant_force.html#a99ce90cace5b9dfe509009766c647154">v_UpdateForce</a> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body2_d.html">RigidBody2D</a> &gt; <a class="el" href="class_killer_physics_1_1_rigid_body2_d.html">RigidBody2D</a>)</td></tr>
+<tr class="separator:a99ce90cace5b9dfe509009766c647154"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1edcd13bd0c53bfcf67a57a1ac53d965"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_buoyant_force.html#a1edcd13bd0c53bfcf67a57a1ac53d965">v_UpdateForce</a> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body3_d.html">RigidBody3D</a> &gt; body) final</td></tr>
+<tr class="separator:a1edcd13bd0c53bfcf67a57a1ac53d965"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2029c32b9e72ad511a94118edd19df2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_buoyant_force.html#ad2029c32b9e72ad511a94118edd19df2">SetMaxDepth</a> (<a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a> depth)</td></tr>
 <tr class="separator:ad2029c32b9e72ad511a94118edd19df2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a355925043bb22ded12da64f783f2c7dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_buoyant_force.html#a355925043bb22ded12da64f783f2c7dc">SetObjectVolume</a> (<a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a> volume)</td></tr>
@@ -131,6 +131,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1718a48e9761ea422bf1b25b8ef5e7f9 inherit pub_methods_class_killer_physics_1_1_force_generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b037f1c0acf35e0a9edb37a56210b15 inherit pub_methods_class_killer_physics_1_1_force_generator"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_force_generator.html#a5b037f1c0acf35e0a9edb37a56210b15">~ForceGenerator</a> (void)</td></tr>
 <tr class="separator:a5b037f1c0acf35e0a9edb37a56210b15 inherit pub_methods_class_killer_physics_1_1_force_generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82de4e588cbe920d72d0cd1476d76601 inherit pub_methods_class_killer_physics_1_1_force_generator"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_force_generator.html#a82de4e588cbe920d72d0cd1476d76601">v_UpdateForce</a> (p_RigidBody2D body)=0</td></tr>
+<tr class="separator:a82de4e588cbe920d72d0cd1476d76601 inherit pub_methods_class_killer_physics_1_1_force_generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6835b2f1be658a802bb072bf94e9a94 inherit pub_methods_class_killer_physics_1_1_force_generator"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_force_generator.html#ab6835b2f1be658a802bb072bf94e9a94">v_UpdateForce</a> (p_RigidBody3D body)=0</td></tr>
+<tr class="separator:ab6835b2f1be658a802bb072bf94e9a94 inherit pub_methods_class_killer_physics_1_1_force_generator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -364,42 +368,32 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae381681835dcb964110f1101f19a4282"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae381681835dcb964110f1101f19a4282">&#9670;&nbsp;</a></span>v_UpdateForce() <span class="overload">[1/2]</span></h2>
+<a id="a99ce90cace5b9dfe509009766c647154"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99ce90cace5b9dfe509009766c647154">&#9670;&nbsp;</a></span>v_UpdateForce() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void BuoyantForce::v_UpdateForce </td>
           <td>(</td>
-          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">Particle</a> &gt;&#160;</td>
-          <td class="paramname"><em>particle</em></td><td>)</td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body2_d.html">RigidBody2D</a> &gt;&#160;</td>
+          <td class="paramname"><em>RigidBody2D</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>The y value of the position of the object is checked against the max depth. If the object has reached the max depth, then it is given a +y force, scaled by the density and volume, until it reaches the height. Untested. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">particle</td><td>is the pointer to the object that will have the force affect it. </td></tr>
+    <tr><td class="paramname"><a class="el" href="class_killer_physics_1_1_rigid_body2_d.html">RigidBody2D</a></td><td>is the pointer to the object that will have the force affect it. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_killer_physics_1_1_force_generator.html#ad20e80d2345b1b8fc8818dbc3e67ff9e">KillerPhysics::ForceGenerator</a>.</p>
-
 </div>
 </div>
-<a id="a7cb2c5dd2b981271327cbd462ed82f78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7cb2c5dd2b981271327cbd462ed82f78">&#9670;&nbsp;</a></span>v_UpdateForce() <span class="overload">[2/2]</span></h2>
+<a id="a1edcd13bd0c53bfcf67a57a1ac53d965"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1edcd13bd0c53bfcf67a57a1ac53d965">&#9670;&nbsp;</a></span>v_UpdateForce() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -410,14 +404,14 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void BuoyantForce::v_UpdateForce </td>
           <td>(</td>
-          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body.html">RigidBody</a> &gt;&#160;</td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body3_d.html">RigidBody3D</a> &gt;&#160;</td>
           <td class="paramname"><em>body</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">final</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">final</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -427,8 +421,6 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p>Implements <a class="el" href="class_killer_physics_1_1_force_generator.html#a98befcf1f44462f90bf589b098b27665">KillerPhysics::ForceGenerator</a>.</p>
 
 </div>
 </div>

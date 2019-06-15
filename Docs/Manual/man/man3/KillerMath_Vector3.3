@@ -1,4 +1,4 @@
-.TH "KillerMath::Vector3" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerMath::Vector3" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -60,7 +60,13 @@ KillerMath::Vector3
 .RI "void \fBReset\fP (\fBF32\fP val=0\&.0f)"
 .br
 .ti -1c
-.RI "void \fBAddScaledVector3\fP (const \fBVector3\fP &vec, \fBF32\fP scale)"
+.RI "void \fBAddScaledVector\fP (const \fBVector3\fP &vec, \fBF32\fP scale)"
+.br
+.ti -1c
+.RI "void \fBAddScaledVector\fP (const \fBVector4\fP &vec, \fBF32\fP scale)"
+.br
+.ti -1c
+.RI "void \fBAddScaledVector\fP (const \fBPoint\fP &point, \fBF32\fP scale)"
 .br
 .ti -1c
 .RI "const \fBF32\fP * \fBGetElems\fP (void) const"
@@ -237,7 +243,7 @@ Convert a \fBVector4\fP into a \fBVector3\fP\&.
 No implementation\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void Vector3::AddScaledVector3 (const \fBVector3\fP & vec, \fBF32\fP scale)"
+.SS "void Vector3::AddScaledVector (const \fBVector3\fP & vec, \fBF32\fP scale)"
 Adds a \fBVector3\fP scaled by a value to this \fBVector3\fP\&. 
 .PP
 \fBParameters:\fP

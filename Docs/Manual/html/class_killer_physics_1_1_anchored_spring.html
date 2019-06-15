@@ -114,10 +114,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af71d3f640556c0c313f190a5230b0f5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07971b0d41c333b863ba5aeb491021c9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_anchored_spring.html#a07971b0d41c333b863ba5aeb491021c9">~AnchoredSpring</a> (void)</td></tr>
 <tr class="separator:a07971b0d41c333b863ba5aeb491021c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2085a53e7e88fc0e12cc113a2613fb47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_anchored_spring.html#a2085a53e7e88fc0e12cc113a2613fb47">v_UpdateForce</a> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">Particle</a> &gt; particle) final</td></tr>
-<tr class="separator:a2085a53e7e88fc0e12cc113a2613fb47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb77328e8132e53c92a546b4049a5a37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_anchored_spring.html#afb77328e8132e53c92a546b4049a5a37">v_UpdateForce</a> (shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body.html">RigidBody</a> &gt; body) final</td></tr>
-<tr class="separator:afb77328e8132e53c92a546b4049a5a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45c2b01da16b62a5f49d2391ca293a3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_anchored_spring.html#a45c2b01da16b62a5f49d2391ca293a3f">v_UpdateForce</a> (p_RigidBody2D body) final</td></tr>
+<tr class="separator:a45c2b01da16b62a5f49d2391ca293a3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedabf9f544a1a769588024890ce795c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_anchored_spring.html#aedabf9f544a1a769588024890ce795c0">v_UpdateForce</a> (p_RigidBody3D body) final</td></tr>
+<tr class="separator:aedabf9f544a1a769588024890ce795c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a620b5cc6dbac01bf66b247377a131f42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_anchored_spring.html#a620b5cc6dbac01bf66b247377a131f42">SetAnchor</a> (const <a class="el" href="class_killer_math_1_1_point.html">KM::Point</a> &amp;anchor)</td></tr>
 <tr class="separator:a620b5cc6dbac01bf66b247377a131f42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af43bbab114f1fed0c59030bed65e474e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_physics_1_1_anchored_spring.html#af43bbab114f1fed0c59030bed65e474e">SetSpringConstant</a> (<a class="el" href="_atom_8h.html#a031f8951175b43076c2084a6c2173410">real</a> constant)</td></tr>
@@ -339,8 +339,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a2085a53e7e88fc0e12cc113a2613fb47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2085a53e7e88fc0e12cc113a2613fb47">&#9670;&nbsp;</a></span>v_UpdateForce() <span class="overload">[1/2]</span></h2>
+<a id="a45c2b01da16b62a5f49d2391ca293a3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45c2b01da16b62a5f49d2391ca293a3f">&#9670;&nbsp;</a></span>v_UpdateForce() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -351,41 +351,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void AnchoredSpring::v_UpdateForce </td>
           <td>(</td>
-          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">Particle</a> &gt;&#160;</td>
-          <td class="paramname"><em>particle</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">final</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Adds a force to a <a class="el" href="class_killer_physics_1_1_particle.html">Particle</a> in relation to the objects position and the anchor point. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">particle</td><td>is the object that will recieve the force. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="class_killer_physics_1_1_force_generator.html#ad20e80d2345b1b8fc8818dbc3e67ff9e">KillerPhysics::ForceGenerator</a>.</p>
-
-</div>
-</div>
-<a id="afb77328e8132e53c92a546b4049a5a37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb77328e8132e53c92a546b4049a5a37">&#9670;&nbsp;</a></span>v_UpdateForce() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void AnchoredSpring::v_UpdateForce </td>
-          <td>(</td>
-          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_rigid_body.html">RigidBody</a> &gt;&#160;</td>
+          <td class="paramtype">p_RigidBody2D&#160;</td>
           <td class="paramname"><em>body</em></td><td>)</td>
           <td></td>
         </tr>
@@ -396,14 +362,48 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Adds a force to a <a class="el" href="class_killer_physics_1_1_rigid_body.html">RigidBody</a> in relation to the objects position and the anchor point. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Adds a force to a <a class="el" href="class_killer_physics_1_1_rigid_body2_d.html">RigidBody2D</a> in relation to the objects position and the anchor point. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="class_killer_physics_1_1_rigid_body2_d.html">RigidBody2D</a></td><td>is the object that will recieve the force. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_killer_physics_1_1_force_generator.html#a82de4e588cbe920d72d0cd1476d76601">KillerPhysics::ForceGenerator</a>.</p>
+
+</div>
+</div>
+<a id="aedabf9f544a1a769588024890ce795c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedabf9f544a1a769588024890ce795c0">&#9670;&nbsp;</a></span>v_UpdateForce() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AnchoredSpring::v_UpdateForce </td>
+          <td>(</td>
+          <td class="paramtype">p_RigidBody3D&#160;</td>
+          <td class="paramname"><em>body</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">final</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Adds a force to a <a class="el" href="class_killer_physics_1_1_rigid_body3_d.html">RigidBody3D</a> in relation to the objects position and the anchor point. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">body</td><td>is the object that will recieve the force. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_killer_physics_1_1_force_generator.html#a98befcf1f44462f90bf589b098b27665">KillerPhysics::ForceGenerator</a>.</p>
+<p>Implements <a class="el" href="class_killer_physics_1_1_force_generator.html#ab6835b2f1be658a802bb072bf94e9a94">KillerPhysics::ForceGenerator</a>.</p>
 
 </div>
 </div>

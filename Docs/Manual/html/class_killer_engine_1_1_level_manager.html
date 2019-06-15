@@ -112,6 +112,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3ca8cb0e378e7b8263c4669d9d8879e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19af362df8714408dd170f4fb641dd34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a19af362df8714408dd170f4fb641dd34">SetActiveLevel</a> (<a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a> levelID)</td></tr>
 <tr class="separator:a19af362df8714408dd170f4fb641dd34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb51650017710a552771a9116e81a05a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#afb51650017710a552771a9116e81a05a">SetActiveLevel</a> (shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt; level)</td></tr>
+<tr class="separator:afb51650017710a552771a9116e81a05a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97b74d38bd42947b0acae30c5638994d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a97b74d38bd42947b0acae30c5638994d">GetActiveLevelID</a> (void)</td></tr>
 <tr class="separator:a97b74d38bd42947b0acae30c5638994d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54f5e55baf08df7baf315de2d79dcf21"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a54f5e55baf08df7baf315de2d79dcf21">GetActiveLevel</a> (void)</td></tr>
@@ -122,8 +124,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1197fc4f7243547cc1fec15926510362"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab4779908189b4abac4ceb7745fd1d7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#aab4779908189b4abac4ceb7745fd1d7a">AddObjectToLevel</a> (<a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a> id, shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &gt; obj)</td></tr>
 <tr class="separator:aab4779908189b4abac4ceb7745fd1d7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae70ed48da72d461067605898b22bf0cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#ae70ed48da72d461067605898b22bf0cc">AddParticleToLevel</a> (<a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a> id, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt; particle, shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_force_generator.html">KP::ForceGenerator</a> &gt; generator=nullptr)</td></tr>
-<tr class="separator:ae70ed48da72d461067605898b22bf0cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a893e321ff0c7a084b464b154735e912d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a893e321ff0c7a084b464b154735e912d">RemoveObjectFromLevel</a> (<a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a> levelID, <a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a> objID)</td></tr>
 <tr class="separator:a893e321ff0c7a084b464b154735e912d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f1608d9c79fc20af8bd9df607f4955a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_killer_engine_1_1_level_manager.html#a4f1608d9c79fc20af8bd9df607f4955a">Update</a> (void)</td></tr>
@@ -302,48 +302,6 @@ static <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelMana
   <table class="params">
     <tr><td class="paramname">id</td><td>is the key for the <a class="el" href="class_killer_engine_1_1_level.html">Level</a> that the object will be added to. </td></tr>
     <tr><td class="paramname">obj</td><td>is the object pointer to add. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ae70ed48da72d461067605898b22bf0cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae70ed48da72d461067605898b22bf0cc">&#9670;&nbsp;</a></span>AddParticleToLevel()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void LevelManager::AddParticleToLevel </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_atom_8h.html#a696390429f2f3b644bde8d0322a24124">U32</a>&#160;</td>
-          <td class="paramname"><em>id</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_particle.html">KP::Particle</a> &gt;&#160;</td>
-          <td class="paramname"><em>particle</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_physics_1_1_force_generator.html">KP::ForceGenerator</a> &gt;&#160;</td>
-          <td class="paramname"><em>generator</em> = <code>nullptr</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Allows object to be added to level. Wrapper around <a class="el" href="class_killer_engine_1_1_level.html#a7b7af310ae110e409e8351e4fbed4759">Level::AddParticleToLevel</a>. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">id</td><td>is the key for the <a class="el" href="class_killer_engine_1_1_level.html">Level</a> that the object will be added to. </td></tr>
-    <tr><td class="paramname">particle</td><td>is the object pointer to add. </td></tr>
-    <tr><td class="paramname">generator</td><td>is an optional KillerPhysics::ForcerGenerator pointer to add to the particle. </td></tr>
   </table>
   </dd>
 </dl>
@@ -537,7 +495,7 @@ static <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelMana
 </div>
 </div>
 <a id="a19af362df8714408dd170f4fb641dd34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a19af362df8714408dd170f4fb641dd34">&#9670;&nbsp;</a></span>SetActiveLevel()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a19af362df8714408dd170f4fb641dd34">&#9670;&nbsp;</a></span>SetActiveLevel() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -554,6 +512,30 @@ static <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelMana
 <p>Changes the state to have a different active <a class="el" href="class_killer_engine_1_1_level.html">Level</a>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">levelID</td><td>is the index to set to active. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="afb51650017710a552771a9116e81a05a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb51650017710a552771a9116e81a05a">&#9670;&nbsp;</a></span>SetActiveLevel() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LevelManager::SetActiveLevel </td>
+          <td>(</td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_level.html">Level</a> &gt;&#160;</td>
+          <td class="paramname"><em>level</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Changes the active level to be a new level. This level is NOT stored in the levels data base and will be deleted when the active level is changed again. This allows for levels to be lazy loaded, for quick switching, or to not be loaded into memory until they are set to active. <a class="el" href="class_killer_engine_1_1_level.html#ae5dfe1bafe58ccc217e826f8daae015b">Level::v_Init</a> is called before it is set to active. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">level</td><td>is the new <a class="el" href="class_killer_engine_1_1_level.html">Level</a> that will be set to active. </td></tr>
   </table>
   </dd>
 </dl>
@@ -602,7 +584,7 @@ static <a class="el" href="class_killer_engine_1_1_level_manager.html">LevelMana
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Calls all functions on the active <a class="el" href="class_killer_engine_1_1_level.html">Level</a> state needed to update that state. This includes <a class="el" href="class_killer_engine_1_1_level.html#a9bacfc94408e29abb0e38ce6e788c0a2">Level::v_Integrate</a>, <a class="el" href="class_killer_engine_1_1_level.html#a4812e4f88b745499785fe19709cf7a3d">Level::UpdateLevel</a>, <a class="el" href="class_killer_engine_1_1_level.html#abfe26b484c3972eb8d6df069491cce8a">Level::UpdateObjects</a> and <a class="el" href="class_killer_engine_1_1_level.html#a52ee149ac4606f7fc4295a3a10d4c8f7">Level::v_Update</a>. </p>
+<p>Calls all functions on the active <a class="el" href="class_killer_engine_1_1_level.html">Level</a> state needed to update that state. This includes Level::v_Integrate, <a class="el" href="class_killer_engine_1_1_level.html#a4812e4f88b745499785fe19709cf7a3d">Level::UpdateLevel</a>, <a class="el" href="class_killer_engine_1_1_level.html#abfe26b484c3972eb8d6df069491cce8a">Level::UpdateObjects</a> and <a class="el" href="class_killer_engine_1_1_level.html#a52ee149ac4606f7fc4295a3a10d4c8f7">Level::v_Update</a>. </p>
 
 </div>
 </div>

@@ -1,4 +1,4 @@
-.TH "KillerPhysics::SpringForce" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::SpringForce" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -17,22 +17,22 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .RI "\fBSpringForce\fP (void)"
 .br
 .ti -1c
-.RI "\fBSpringForce\fP (shared_ptr< \fBParticle\fP > otherEnd, \fBreal\fP springConstant, \fBreal\fP restLength)"
+.RI "\fBSpringForce\fP (shared_ptr< \fBRigidBody2D\fP > otherEnd, \fBreal\fP springConstant, \fBreal\fP restLength)"
 .br
 .ti -1c
 .RI "\fB~SpringForce\fP (void)"
 .br
 .ti -1c
-.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle\fP > particle) final"
+.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody2D\fP > \fBRigidBody2D\fP) final"
 .br
 .ti -1c
-.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody\fP > body) final"
+.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody3D\fP > body) final"
 .br
 .ti -1c
 .RI "void \fBMakeBungie\fP (bool state)"
 .br
 .ti -1c
-.RI "void \fBSetOtherEnd\fP (shared_ptr< \fBParticle\fP > end)"
+.RI "void \fBSetOtherEnd\fP (shared_ptr< \fBRigidBody2D\fP > end)"
 .br
 .ti -1c
 .RI "void \fBSetSpringConstant\fP (\fBreal\fP constant)"
@@ -45,7 +45,7 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 
 .in +1c
 .ti -1c
-.RI "shared_ptr< \fBParticle\fP > \fB_otherEnd\fP"
+.RI "shared_ptr< \fBRigidBody2D\fP > \fB_otherEnd\fP"
 .br
 .RI "Other end of the spring\&. Consider changing to a GameObject\&. "
 .ti -1c
@@ -94,7 +94,7 @@ The force generator cannot be re-used\&. For each unique spring-like force we ne
 .PP 
 .SS "SpringForce::SpringForce (void)"
 Sets spring constant to 1, rest length to 1, everything else to default or false\&. 
-.SS "SpringForce::SpringForce (shared_ptr< \fBParticle\fP > otherEnd, \fBreal\fP springConstant, \fBreal\fP restLength)"
+.SS "SpringForce::SpringForce (shared_ptr< \fBRigidBody2D\fP > otherEnd, \fBreal\fP springConstant, \fBreal\fP restLength)"
 Allows you to set up \fBSpringForce\fP in a single call\&. 
 .PP
 \fBParameters:\fP
@@ -113,7 +113,7 @@ Not implemented\&.
 .PP 
 .SS "void KillerPhysics::SpringForce::MakeBungie (bool state)\fC [inline]\fP"
 Sets state to be bungie-like\&. This means that it will only produce pull forces\&. If the rest length is not at full, it will not product any force\&. 
-.SS "void KillerPhysics::SpringForce::SetOtherEnd (shared_ptr< \fBParticle\fP > end)\fC [inline]\fP"
+.SS "void KillerPhysics::SpringForce::SetOtherEnd (shared_ptr< \fBRigidBody2D\fP > end)\fC [inline]\fP"
 Changes the location of the other end of the spring\&. 
 .PP
 \fBParameters:\fP
@@ -140,18 +140,16 @@ Changes the 'striffness' of the spring\&.
 .RE
 .PP
 
-.SS "void SpringForce::v_UpdateForce (shared_ptr< \fBParticle\fP > particle)\fC [final]\fP, \fC [virtual]\fP"
+.SS "void SpringForce::v_UpdateForce (shared_ptr< \fBRigidBody2D\fP > RigidBody2D)\fC [final]\fP"
 Calculate the length of the spring, then creates a force to pull the object towards the other end if it is far enough away\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIparticle\fP is the object that will be acted on by the spring\&. 
+\fI\fBRigidBody2D\fP\fP is the object that will be acted on by the spring\&. 
 .RE
 .PP
 
-.PP
-Implements \fBKillerPhysics::ForceGenerator\fP\&.
-.SS "void SpringForce::v_UpdateForce (shared_ptr< \fBRigidBody\fP > body)\fC [final]\fP, \fC [virtual]\fP"
+.SS "void SpringForce::v_UpdateForce (shared_ptr< \fBRigidBody3D\fP > body)\fC [final]\fP"
 Calculate the length of the spring, then creates a force to pull the object towards the other end if it is far enough away\&. This has been implemented but not tested\&. 
 .PP
 \fBParameters:\fP
@@ -160,8 +158,6 @@ Calculate the length of the spring, then creates a force to pull the object towa
 .RE
 .PP
 
-.PP
-Implements \fBKillerPhysics::ForceGenerator\fP\&.
 
 .SH "Author"
 .PP 

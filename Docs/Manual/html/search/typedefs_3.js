@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['s16',['S16',['../_atom_8h.html#a6d241ad21a823c90d4835380787db5d4',1,'Atom.h']]],
-  ['s32',['S32',['../_atom_8h.html#a39c786017723555afb9e8b85accec0de',1,'Atom.h']]],
-  ['s64',['S64',['../_atom_8h.html#a1d293e5c494dd6826239b02f5fe98e7f',1,'Atom.h']]],
-  ['s8',['S8',['../_atom_8h.html#af1475a0bb1962ef08dd1f78bd5dba87a',1,'Atom.h']]]
+  ['u16',['U16',['../_atom_8h.html#a0a0a322d5fa4a546d293a77ba8b4a71f',1,'Atom.h']]],
+  ['u32',['U32',['../_atom_8h.html#a696390429f2f3b644bde8d0322a24124',1,'Atom.h']]],
+  ['u64',['U64',['../_atom_8h.html#a25809e0734a149248fcf5831efa4e33d',1,'Atom.h']]],
+  ['u8',['U8',['../_atom_8h.html#aa63ef7b996d5487ce35a5a66601f3e73',1,'Atom.h']]]
 ];

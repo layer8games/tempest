@@ -1,4 +1,4 @@
-.TH "TestLevel" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "TestLevel" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,7 +12,7 @@ Inherits \fBKillerEngine::Level\fP\&.
 
 .in +1c
 .ti -1c
-.RI "void \fBv_InitLevel\fP (\fBU32\fP id, \fBS32\fP w, \fBS32\fP h, const \fBKE::Color\fP &c) final"
+.RI "void \fBv_Init\fP (void) final"
 .br
 .ti -1c
 .RI "void \fBv_Update\fP (void) final"
@@ -20,7 +20,7 @@ Inherits \fBKillerEngine::Level\fP\&.
 .in -1c
 .SH "Member Function Documentation"
 .PP 
-.SS "void TestLevel::v_InitLevel (\fBU32\fP id, \fBS32\fP w, \fBS32\fP h, const \fBKE::Color\fP & c)\fC [inline]\fP, \fC [final]\fP, \fC [virtual]\fP"
+.SS "void TestLevel::v_Init (void)\fC [inline]\fP, \fC [final]\fP, \fC [virtual]\fP"
 Abstract function\&. Used to Initialize the default values, instantiate any objects that will be used and generally get things ready to go\&. 
 .PP
 \fBParameters:\fP

@@ -1,4 +1,4 @@
-.TH "KillerEngine::Menu" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Menu" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -93,7 +93,7 @@ KillerEngine::Menu
 .RI "const std::vector< \fBMenuItem\fP > & \fBGetItemList\fP (void)"
 .br
 .ti -1c
-.RI "void \fBSetSelector\fP (\fBGameObject\fP *obj)"
+.RI "void \fBSetSelector\fP (shared_ptr< \fBGameObject\fP > obj)"
 .br
 .in -1c
 .SS "Private Member Functions"
@@ -139,7 +139,7 @@ KillerEngine::Menu
 .br
 .RI "Internal list of all MenuItems\&. "
 .ti -1c
-.RI "\fBGameObject\fP * \fB_selector\fP"
+.RI "shared_ptr< \fBGameObject\fP > \fB_selector\fP"
 .br
 .RI "Selector to move and activate MenuItems\&. "
 .in -1c
@@ -244,7 +244,7 @@ Updates the position of the \fBMenu\fP, the title and all the items\&. Calls \fB
 .RE
 .PP
 
-.SS "void KillerEngine::Menu::SetSelector (\fBGameObject\fP * obj)\fC [inline]\fP"
+.SS "void KillerEngine::Menu::SetSelector (shared_ptr< \fBGameObject\fP > obj)\fC [inline]\fP"
 Sets the selector for the \fBMenu\fP\&. 
 .PP
 \fBParameters:\fP

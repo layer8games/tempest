@@ -1,4 +1,4 @@
-.TH "KillerPhysics::AnchoredSpring" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::AnchoredSpring" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -23,10 +23,10 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .RI "\fB~AnchoredSpring\fP (void)"
 .br
 .ti -1c
-.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle\fP > particle) final"
+.RI "void \fBv_UpdateForce\fP (p_RigidBody2D body) final"
 .br
 .ti -1c
-.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody\fP > body) final"
+.RI "void \fBv_UpdateForce\fP (p_RigidBody3D body) final"
 .br
 .ti -1c
 .RI "void \fBSetAnchor\fP (const \fBKM::Point\fP &anchor)"
@@ -133,19 +133,19 @@ Changes the 'striffness' of the spring\&.
 .RE
 .PP
 
-.SS "void AnchoredSpring::v_UpdateForce (shared_ptr< \fBParticle\fP > particle)\fC [final]\fP, \fC [virtual]\fP"
-Adds a force to a \fBParticle\fP in relation to the objects position and the anchor point\&. 
+.SS "void AnchoredSpring::v_UpdateForce (p_RigidBody2D body)\fC [final]\fP, \fC [virtual]\fP"
+Adds a force to a \fBRigidBody2D\fP in relation to the objects position and the anchor point\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIparticle\fP is the object that will recieve the force\&. 
+\fI\fBRigidBody2D\fP\fP is the object that will recieve the force\&. 
 .RE
 .PP
 
 .PP
 Implements \fBKillerPhysics::ForceGenerator\fP\&.
-.SS "void AnchoredSpring::v_UpdateForce (shared_ptr< \fBRigidBody\fP > body)\fC [final]\fP, \fC [virtual]\fP"
-Adds a force to a \fBRigidBody\fP in relation to the objects position and the anchor point\&. 
+.SS "void AnchoredSpring::v_UpdateForce (p_RigidBody3D body)\fC [final]\fP, \fC [virtual]\fP"
+Adds a force to a \fBRigidBody3D\fP in relation to the objects position and the anchor point\&. 
 .PP
 \fBParameters:\fP
 .RS 4

@@ -1,4 +1,4 @@
-.TH "KillerPhysics::DragForce" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::DragForce" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -23,10 +23,10 @@ Inherits \fBKillerPhysics::ForceGenerator\fP\&.
 .RI "\fB~DragForce\fP (void)"
 .br
 .ti -1c
-.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBParticle\fP > particle) final"
+.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody2D\fP > \fBRigidBody2D\fP) final"
 .br
 .ti -1c
-.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody\fP > body) final"
+.RI "void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody3D\fP > body) final"
 .br
 .ti -1c
 .RI "void \fBSetDrag\fP (\fBreal\fP d)"
@@ -90,18 +90,16 @@ Changes the drag coefficient\&.
 .RE
 .PP
 
-.SS "void DragForce::v_UpdateForce (shared_ptr< \fBParticle\fP > particle)\fC [final]\fP, \fC [virtual]\fP"
+.SS "void DragForce::v_UpdateForce (shared_ptr< \fBRigidBody2D\fP > RigidBody2D)\fC [final]\fP"
 Adds a force to the object based on the drag coefficient and the velocity of the object\&. For details, see the class description\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIparticle\fP is the pointer to the object that will have the forced added to it, and will be used to determine what the force is\&. 
+\fI\fBRigidBody2D\fP\fP is the pointer to the object that will have the forced added to it, and will be used to determine what the force is\&. 
 .RE
 .PP
 
-.PP
-Implements \fBKillerPhysics::ForceGenerator\fP\&.
-.SS "void DragForce::v_UpdateForce (shared_ptr< \fBRigidBody\fP > body)\fC [final]\fP, \fC [virtual]\fP"
+.SS "void DragForce::v_UpdateForce (shared_ptr< \fBRigidBody3D\fP > body)\fC [final]\fP"
 Adds a force to the object based on the drag coefficient and the velocity of the object\&. For details, see the class description\&. 
 .PP
 \fBParameters:\fP
@@ -110,8 +108,6 @@ Adds a force to the object based on the drag coefficient and the velocity of the
 .RE
 .PP
 
-.PP
-Implements \fBKillerPhysics::ForceGenerator\fP\&.
 
 .SH "Author"
 .PP 

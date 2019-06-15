@@ -1,4 +1,4 @@
-.TH "KillerEngine::Engine" 3 "Tue Jun 4 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerEngine::Engine" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -28,6 +28,9 @@ KillerEngine::Engine
 .br
 .ti -1c
 .RI "void \fBSetActiveLevel\fP (const \fBU32\fP id)"
+.br
+.ti -1c
+.RI "void \fBSetActiveLevel\fP (shared_ptr< \fBLevel\fP > level)"
 .br
 .ti -1c
 .RI "void \fBUpdate\fP (void)"
@@ -115,6 +118,15 @@ Wrapper for LevelManager::SetActive()\&. Sets level with id to be active level
 \fBParameters:\fP
 .RS 4
 \fIid\fP const U32: id of level\&. 
+.RE
+.PP
+
+.SS "void KillerEngine::Engine::SetActiveLevel (shared_ptr< \fBLevel\fP > level)\fC [inline]\fP"
+Wrapper for LevelManager::SetActive(void)\&. Sets the temporary active level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevel\fP is the pointer to set active 
 .RE
 .PP
 
