@@ -49,9 +49,9 @@ void MainMenu::v_Init(void)
 	level1.text = shared_ptr<KE::Text>(new KE::Text("Moving Boxes", KE::FontManager::Instance()->GetFont(100)));
 	level1.Action = &MenuItem_Level1Action;
 
-	//KE::MenuItem ballistics { };
-	//ballistics.text = shared_ptr<KE::Text>(new KE::Text("Ballistic", KE::FontManager::Instance()->GetFont(100)));
-	//ballistics.Action = &MenuItem_BallisticsAction;
+	KE::MenuItem ballistics { };
+	ballistics.text = shared_ptr<KE::Text>(new KE::Text("Ballistic", KE::FontManager::Instance()->GetFont(100)));
+	ballistics.Action = &MenuItem_BallisticsAction;
 
 	//KE::MenuItem firework { };
 	//firework.text = shared_ptr<KE::Text>(new KE::Text("Firework Demo", KE::FontManager::Instance()->GetFont(100)));
@@ -69,7 +69,7 @@ void MainMenu::v_Init(void)
 	Level::AddObjectToLevel(_selector);
 	Level::AddTextToLevel(_mainTitle);
 	Level::AddTextToLevel(level1.text);
-	//Level::AddTextToLevel(ballistics.text);
+	Level::AddTextToLevel(ballistics.text);
 	//Level::AddTextToLevel(firework.text);
 	//Level::AddTextToLevel(springs.text);
 	Level::AddTextToLevel(opengl.text);
@@ -77,7 +77,7 @@ void MainMenu::v_Init(void)
 	_menu.SetSelector(_selector);
 	_menu.SetTitle(_mainTitle);
 	_menu.AddItem(level1);
-	//_menu.AddItem(ballistics);
+	_menu.AddItem(ballistics);
 	//_menu.AddItem(firework);
 	//_menu.AddItem(springs);
 	_menu.AddItem(opengl);

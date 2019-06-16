@@ -57,7 +57,12 @@ namespace Boxes
 //==========================================================================================================================
 		void v_Update(void);
 
-		void Fire(const KM::Vector4& heading, shared_ptr<Projectile> projectile, ProjectileType type);
+		void Fire(const KM::Vector4& heading, ProjectileType type);
+
+		void AddToPool(p_Projectile p)
+		{
+			_projectilePool.push_back(p);
+		}
 
 //==========================================================================================================================
 //
@@ -125,5 +130,6 @@ namespace Boxes
 		F32						  			 _topBoundary;
 		KM::Vector4							 _upDirection;
 		KM::Vector4							 _downDirection;
+		std::vector<p_Projectile> 			 _projectilePool;
 	};
 }//end namespace

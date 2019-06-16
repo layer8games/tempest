@@ -22,6 +22,8 @@ Written by Maxwell Miller
 #include <Engine/RigidBody2D.h>
 #include <Engine/Timer.h>
 #include <Engine/TextureManager.h>
+#include <Engine/PhysicsFactory.h>
+#include <Engine/Point.h>
 
 namespace KE = KillerEngine;
 namespace KM = KillerMath;
@@ -75,11 +77,23 @@ namespace Boxes
 
 		ProjectileType GetType(void);
 
+		inline void AddScaledVelocity(const KM::Vector4& vec, F32 scale)
+		{
+			p_rigidBody->AddScaledVelocity(vec, scale);
+		}
+
+		inline KP::p_RigidBody2D GetRigidBody(void)
+		{
+			return p_rigidBody;
+		}
+
 	private:
 		F32  		   			   _maxDistance;
-		F32  		   			   _distanceTraveled;
+		F32  		   			   _sqrDistance;
 		F32			   			   _speedScale;
+		KM::Point 				   _startingLocation;
 		ProjectileType 			   _type;
+		KP::p_RigidBody2D 		   p_rigidBody;
 
 	};//end class Projectile
 

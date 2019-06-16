@@ -20,6 +20,7 @@ Written by Maxwell Miller
 #include <Engine/Text.h>
 #include <Engine/Vector4.h>
 #include <Engine/Color.h>
+#include <Engine/PhysicsFactory.h>
 
 namespace KE = KillerEngine;
 namespace KM = KillerMath;
@@ -65,7 +66,6 @@ namespace Boxes
 		ProjectileType			  			_activeProjectileType;
 		KE::Text 							_levelTitle;
 		p_Cannon							_cannon;
-		KP::GravityForce					_gravityForce;
-		std::vector<p_Projectile> 			_projectilePool;
+		KP::p_GravityForce					p_gravityForce;
 	};
 }//end namespace

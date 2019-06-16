@@ -13,13 +13,16 @@ _movementSpeed(1.0f),
 _bottomBoundary(0.0f),
 _topBoundary(700.0f),
 _upDirection(0.0f, 1.0f),
-_downDirection(0.0f, -1.0f)
+_downDirection(0.0f, -1.0f),
+_projectilePool()
 {
 	GameObject::MakeSprite();
 }
 
 Cannon::~Cannon(void)
-{  }
+{
+	_projectilePool.clear();
+}
 //==========================================================================================================================
 //
 //Update
@@ -57,10 +60,17 @@ void Cannon::v_Update(void)
 	}	
 }
 
-void Cannon::Fire(const KM::Vector4& heading, shared_ptr<Projectile> projectile, ProjectileType type)
+void Cannon::Fire(const KM::Vector4& heading, ProjectileType type)
 {
-	projectile->SetType(type);
-	projectile->SetPosition(GameObject::GetPosition());
-	//projectile->AddScaledVelocity(heading, projectile->GetSpeedScale());
-	projectile->SetActive(true);
+	for(auto projectile : _projectilePool)
+	{
+		if(!projectile->GetActive())
+		{
+			projectile->SetPosition(GameObject::GetPosition());
+			projectile->SetType(type);
+			projectile->AddScaledVelocity(heading, projectile->GetSpeedScale());
+			projectile->SetActive(true);
+			return;
+		}
+	}
 }

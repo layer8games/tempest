@@ -13,15 +13,15 @@ _poolSize(10),
 _activeProjectileType(ProjectileType::BULLET),
 _levelTitle(),
 _cannon(nullptr),
-_gravityForce(KM::Vector4(0.0f, -100.0f)),
-_projectilePool()
-{  }
+p_gravityForce(nullptr)
+{
+	p_gravityForce = KP::PhysicsFactory::Instance()->MakeGravityForce();
+	p_gravityForce->Set(0.0f, -100.0f, 0.0f);
+}
 
 Ballistics::~Ballistics(void)
 {
 	_cannon.reset();
-
-	_projectilePool.clear();
 }
 
 //=============================================================================
@@ -61,14 +61,14 @@ void Ballistics::v_Init(void)
 	_cannon->SetTexture(KE::TextureManager::Instance()->GetTexture(300));
 	Level::AddObjectToLevel(_cannon);
 
-	shared_ptr<KP::GravityForce> gravity{&_gravityForce};
+	
 	for(U32 i = 0; i < _poolSize; ++i)
 	{
 		p_Projectile p = ProjectFactory::Instance()->MakeProjectile();
 		p->SetScale(10.0f, 10.0f);
-		_projectilePool.push_back(p);
+		_cannon->AddToPool(p);
 		Level::AddObjectToLevel(p);
-		//Need to register gravity with this projectile
+		Level::RegisterRigidBody2DForce(p->GetRigidBody(), p_gravityForce);
 	}
 
 	//TODO:: Once level's call init when they are set to active, this can be removed
@@ -121,14 +121,7 @@ void Ballistics::v_Update(void)
 		KM::Vector4 heading = KM::Vector4(input - _cannon->GetPosition());
 
 		heading.Normalize();
-		
-		for(auto i : _projectilePool)
-		{
-			if(!i->GetActive())
-			{
-				_cannon->Fire(heading, i, _activeProjectileType);
-				break;
-			}
-		}
+				
+		_cannon->Fire(heading, _activeProjectileType);
 	}
 }

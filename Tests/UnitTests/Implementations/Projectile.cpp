@@ -1,4 +1,5 @@
 #include <Boxes/Projectile.h>
+#include <iostream>
 
 using namespace Boxes;
 
@@ -9,17 +10,23 @@ using namespace Boxes;
 //==========================================================================================================================
 Projectile::Projectile(void) 
 : 
-_maxDistance(25),
-_distanceTraveled(0),
+_maxDistance(25*25),
+_sqrDistance(0),
 _speedScale(0),
-_type()
+_startingLocation(0.0f),
+_type(),
+p_rigidBody(nullptr)
 {
 	GameObject::MakeSprite();
 	GameObject::SetActive(false);
+	p_rigidBody = KP::PhysicsFactory::Instance()->MakeRigidBody2D();
+	p_rigidBody->SetObject(this);
 }
 
 Projectile::~Projectile(void)
-{  }
+{
+	p_rigidBody.reset();
+}
 
 //==========================================================================================================================
 //
@@ -28,14 +35,17 @@ Projectile::~Projectile(void)
 //==========================================================================================================================
 void Projectile::v_Update(void)
 {		
-	_distanceTraveled += KM::Timer::Instance()->DeltaTime();
+	KM::Point deltaPos = _startingLocation - GameObject::GetPosition();
+	_sqrDistance = deltaPos.SqrMagnitude();
 	
-	if(_distanceTraveled >= _maxDistance) 
+	if(_sqrDistance >= _maxDistance) 
 	{ 
 		GameObject::SetActive(false);
-		_distanceTraveled = 0;
-		//RigidBody2D::SetVelocity(0.0f, 0.0f);
+		_sqrDistance = 0;
+		p_rigidBody->SetVelocity(0.0f, 0.0f);
 	}
+
+	p_rigidBody->Integrate();
 }
 
 //==========================================================================================================================
@@ -45,12 +55,12 @@ void Projectile::v_Update(void)
 //==========================================================================================================================	
 void Projectile::SetMaxDistance(F32 dist)
 {
-	_maxDistance = dist;
+	_maxDistance = dist * dist;
 }
 
 F32 Projectile::GetMaxDistance(void)
 {
-	return _maxDistance;
+	return real_sqrt(_maxDistance);
 }
 
 void Projectile::SetSpeedScale(F32 scale)
@@ -65,58 +75,60 @@ F32 Projectile::GetSpeedScale(void)
 
 void Projectile::SetType(ProjectileType type)
 {
+	_startingLocation = GameObject::GetPosition();
+
 	switch(type)
 	{
 		case BULLET:
-			_maxDistance = 3.0f;
-			//RigidBody2D::SetMass(25.0f);
-			//RigidBody2D::SetDamping(0.99f);
-			//RigidBody2D::SetAcceleration(0.0f, 0.0f);
+			SetMaxDistance(800.0f);
+			p_rigidBody->SetMass(1000.0f);
+			p_rigidBody->SetDamping(0.99f);
+			p_rigidBody->SetAcceleration(0.0f, 0.0f);
 			GameObject::SetScale(5.0f, 5.0f);
 			GameObject::SetTexture(KE::TextureManager::Instance()->GetTexture(301));
-			_speedScale = 300.0f;
+			_speedScale = 1000.0f;
 			break;
 		case ARTILLERY:
-			_maxDistance = 4.0f;
-			//RigidBody2D::SetMass(75.0f);
-			//RigidBody2D::SetDamping(0.6f);
-			//RigidBody2D::SetAcceleration(0.0f, 0.0f);
+			SetMaxDistance(1000.0f);
+			p_rigidBody->SetMass(8000.0f);
+			p_rigidBody->SetDamping(0.6f);
+			p_rigidBody->SetAcceleration(0.0f, 0.0f);
 			GameObject::SetScale(15.0f, 15.0f);
 			GameObject::SetTexture(KE::TextureManager::Instance()->GetTexture(302));
-			_speedScale = 350.0f;
+			_speedScale = 1000.0f;
 			break;
 		case MISSILE:
-			_maxDistance = 6.0f;
-			//RigidBody2D::SetMass(50.0f);
-			//RigidBody2D::SetDamping(0.99f);
-			//RigidBody2D::SetAcceleration(50.0f, 0.0f);
+			SetMaxDistance(1000.0f);
+			p_rigidBody->SetMass(500.0f);
+			p_rigidBody->SetDamping(0.99f);
+			p_rigidBody->SetAcceleration(500.0f, 0.0f);
 			GameObject::SetScale(20.0f, 20.0f);
 			GameObject::SetTexture(KE::TextureManager::Instance()->GetTexture(303));
-			_speedScale = 200.0f;
+			_speedScale = 300.0f;
 			break;
 		case FIRE_BALL:
-			_maxDistance = 3.0f;
-			//RigidBody2D::SetMass(50.0f);
-			//RigidBody2D::SetDamping(0.99f);
-			//RigidBody2D::SetAcceleration(10.0f, 0.0f);
+			SetMaxDistance(300.0f);
+			p_rigidBody->SetMass(50.0f);
+			p_rigidBody->SetDamping(0.99f);
+			p_rigidBody->SetAcceleration(10.0f, 0.0f);
 			GameObject::SetScale(7.5f, 7.5f);
 			GameObject::SetTexture(KE::TextureManager::Instance()->GetTexture(304));
 			_speedScale = 250.0;
 			break;
 		case LAZER:
-			_maxDistance = 10.0f;
-			//RigidBody2D::SetMass(0.1f);
-			//RigidBody2D::SetDamping(0.99f);
-			//RigidBody2D::SetAcceleration(0.0f, 0.0f);
+			SetMaxDistance(6000.0f);
+			p_rigidBody->SetMass(0.1f);
+			p_rigidBody->SetDamping(0.99f);
+			p_rigidBody->SetAcceleration(0.0f, 0.0f);
 			GameObject::SetScale(10.0f, 7.5f);
 			GameObject::SetTexture(KE::TextureManager::Instance()->GetTexture(305));
 			_speedScale	= 900.0f;
 			break;
 		case GRENADE:
-			_maxDistance = 3.0f;
-			//RigidBody2D::SetMass(75.0f);
-			//RigidBody2D::SetDamping(0.25f);
-			//RigidBody2D::SetAcceleration(0.0f, 0.0f);
+			SetMaxDistance(200.0f);
+			p_rigidBody->SetMass(75.0f);
+			p_rigidBody->SetDamping(0.25f);
+			p_rigidBody->SetAcceleration(0.0f, 0.0f);
 			GameObject::SetScale(15.0f, 15.0f);
 			GameObject::SetTexture(KE::TextureManager::Instance()->GetTexture(306));
 			_speedScale	= 350.0f;
