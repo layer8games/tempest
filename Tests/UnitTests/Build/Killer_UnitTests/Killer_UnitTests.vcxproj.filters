@@ -165,6 +165,9 @@
     <ClCompile Include="..\..\Implementations\t_ForceRegistry.cpp">
       <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\Payload.cpp">
+      <Filter>Source Code\UITest\Firework Demo\Firework</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\Docs\TestStatus.txt">
@@ -216,6 +219,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Boxes\ProjectFactory.h">
       <Filter>Source Code\UITest\ProjectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Boxes\Payload.h">
+      <Filter>Source Code\UITest\Firework Demo\Firework</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

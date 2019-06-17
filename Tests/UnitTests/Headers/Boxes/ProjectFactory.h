@@ -2,11 +2,17 @@
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
+#include <Engine/PhysicsFactory.h>
+
+namespace KP = KillerPhysics;
+
+//===== Boxes Includes =====
 #include <Boxes/Box.h>
 #include <Boxes/Cannon.h>
 #include <Boxes/Projectile.h>
 #include <Boxes/Cube.h>
 #include <Boxes/Firework.h>
+#include <Boxes/Payload.h>
 
 namespace Boxes
 {
@@ -40,7 +46,9 @@ namespace Boxes
 
 		inline p_Projectile MakeProjectile(void)
 		{
-			return p_Projectile(new Projectile());
+			p_Projectile p = new Projectile();
+			p->SetBody(KP::PhysicsFactory::Instance()->MakeRigidBody2D());
+			return p;
 		}
 
 		inline p_Cube MakeCube(void)

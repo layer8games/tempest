@@ -29,8 +29,6 @@ namespace KE = KillerEngine;
 
 namespace Boxes
 {
-	typedef std::vector<p_Payload> PayloadPool;
-
 	class FireworksDemo : public KE::Level
 	{
 	public:
@@ -52,7 +50,6 @@ namespace Boxes
 		void v_Update(void) final;
 	
 	private:
-		PayloadPool _pool;
 		KE::Text 	_levelTitle;
 		p_Firework 	_firework;
 		F32			_speed;

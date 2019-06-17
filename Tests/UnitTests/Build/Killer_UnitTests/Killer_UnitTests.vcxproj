@@ -122,6 +122,10 @@
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Ballistics.cpp" />
     <ClCompile Include="..\..\Implementations\Box.cpp" />
+    <ClCompile Include="..\..\Implementations\Payload.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\ProjectFactory.cpp">
       <SubType>
       </SubType>
@@ -188,6 +192,10 @@
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Boxes\Ballistics.h" />
     <ClInclude Include="..\..\Headers\Boxes\Box.h" />
+    <ClInclude Include="..\..\Headers\Boxes\Payload.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Boxes\ProjectFactory.h">
       <SubType>
       </SubType>

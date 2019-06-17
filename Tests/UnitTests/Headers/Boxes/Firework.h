@@ -30,19 +30,12 @@ namespace KP = KillerPhysics;
 //===== STL includes =====
 #include <vector>
 
+//===== Boxes Includes =====
+#include <Boxes/Payload.h>
+
 namespace Boxes
 {
-	struct Payload
-	{
-		KP::RigidBody2D RigidBody2D;
-		F32 timeAlive;
-		U32 spawnNewRule;
-		bool spawnNew;
-	};
-
-	typedef shared_ptr<Payload> p_Payload;
 	typedef std::vector<p_Payload> PayloadPool;
-
 
 	class Firework : public KE::GameObject
 	{
@@ -99,9 +92,12 @@ namespace Boxes
 			_projection = projection;
 		}
 
-		void InitPayload(U32 rule, KM::Point pos);
-
 		void Reset(U32 rule);
+
+		void AddPayload(p_Payload payload)
+		{
+			_pool.push_back(payload);
+		}
 
 	private:
 		PayloadPool 					 _pool;
