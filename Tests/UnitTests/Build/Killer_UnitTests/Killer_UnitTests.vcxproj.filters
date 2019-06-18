@@ -31,12 +31,6 @@
     <Filter Include="Source Code\UITest\MovingBoxes\Box">
       <UniqueIdentifier>{797bdd7e-1c43-40b2-8457-74d85d716b07}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\UITest\Firework Demo">
-      <UniqueIdentifier>{a0782278-624d-4515-a2ab-5721f78037a1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\UITest\Firework Demo\Firework">
-      <UniqueIdentifier>{97890cdf-61ca-4af8-a829-20067a3cfcfe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\UITest\MainMenu">
       <UniqueIdentifier>{6c0f69e9-12d9-4a95-b76d-cbd12aae91b2}</UniqueIdentifier>
     </Filter>
@@ -45,9 +39,6 @@
     </Filter>
     <Filter Include="Source Code\UITest\SplashScreen">
       <UniqueIdentifier>{87836b19-4c76-4fc5-8e6f-ef964f3505b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\UITest\SpringsDemo">
-      <UniqueIdentifier>{0953da12-5e75-4b5b-8cfa-37ed9edbb711}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Code\UITest\ProjectFactory">
       <UniqueIdentifier>{2f72640a-f8de-4c45-af51-4acafee2b1be}</UniqueIdentifier>
@@ -111,12 +102,6 @@
     <ClCompile Include="..\..\Implementations\Cube.cpp">
       <Filter>Source Code\UITest\Demo3D\Cube</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\FireworkDemo.cpp">
-      <Filter>Source Code\UITest\Firework Demo</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Firework.cpp">
-      <Filter>Source Code\UITest\Firework Demo\Firework</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Main.cpp">
       <Filter>Source Code</Filter>
     </ClCompile>
@@ -125,9 +110,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\SplashScreen.cpp">
       <Filter>Source Code\UITest\SplashScreen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Springs.cpp">
-      <Filter>Source Code\UITest\SpringsDemo</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\t_BoundingVolumeHierarchy.cpp">
       <Filter>Source Code\UnitTests</Filter>
@@ -165,9 +147,6 @@
     <ClCompile Include="..\..\Implementations\t_ForceRegistry.cpp">
       <Filter>Source Code\UnitTests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Payload.cpp">
-      <Filter>Source Code\UITest\Firework Demo\Firework</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\Docs\TestStatus.txt">
@@ -196,20 +175,11 @@
     <ClInclude Include="..\..\Headers\Boxes\Cube.h">
       <Filter>Source Code\UITest\Demo3D\Cube</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Boxes\FireworksDemo.h">
-      <Filter>Source Code\UITest\Firework Demo</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Boxes\Firework.h">
-      <Filter>Source Code\UITest\Firework Demo\Firework</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Boxes\MainMenu.h">
       <Filter>Source Code\UITest\MainMenu</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Boxes\SplashScreen.h">
       <Filter>Source Code\UITest\SplashScreen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Boxes\Springs.h">
-      <Filter>Source Code\UITest\SpringsDemo</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\UnitTests\TestHelper.h">
       <Filter>Source Code</Filter>
@@ -219,9 +189,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Boxes\ProjectFactory.h">
       <Filter>Source Code\UITest\ProjectFactory</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Boxes\Payload.h">
-      <Filter>Source Code\UITest\Firework Demo\Firework</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,8 +11,6 @@ namespace KP = KillerPhysics;
 #include <Boxes/Cannon.h>
 #include <Boxes/Projectile.h>
 #include <Boxes/Cube.h>
-#include <Boxes/Firework.h>
-#include <Boxes/Payload.h>
 
 namespace Boxes
 {
@@ -49,20 +47,6 @@ namespace Boxes
 		inline p_Cube MakeCube(void)
 		{
 			return p_Cube(new Cube());
-		}
-
-		inline p_Firework MakeFirework(void)
-		{
-			return p_Firework(new Firework());
-		}
-
-		inline p_Payload MakePayload(void)
-		{
-			//return p_Payload(new Payload());
-			//shared_ptr<Payload> p = make_shared<Payload>();
-			p_Payload p = p_Payload(new Payload());
-			p->SetBody(KP::PhysicsFactory::Instance()->MakeRigidBody2D());
-			return p;
 		}
 
 //==========================================================================================================================
