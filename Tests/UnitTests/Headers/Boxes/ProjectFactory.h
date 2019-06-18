@@ -16,9 +16,6 @@ namespace KP = KillerPhysics;
 
 namespace Boxes
 {
-	class ProjectFactory;
-	typedef shared_ptr<ProjectFactory> p_ProjectFactory;
-
 	class ProjectFactory
 	{
 	public:
@@ -46,9 +43,7 @@ namespace Boxes
 
 		inline p_Projectile MakeProjectile(void)
 		{
-			p_Projectile p = new Projectile();
-			p->SetBody(KP::PhysicsFactory::Instance()->MakeRigidBody2D());
-			return p;
+			return p_Projectile(new Projectile());
 		}
 
 		inline p_Cube MakeCube(void)
@@ -63,7 +58,11 @@ namespace Boxes
 
 		inline p_Payload MakePayload(void)
 		{
-			return p_Payload(new Payload());
+			//return p_Payload(new Payload());
+			//shared_ptr<Payload> p = make_shared<Payload>();
+			p_Payload p = p_Payload(new Payload());
+			p->SetBody(KP::PhysicsFactory::Instance()->MakeRigidBody2D());
+			return p;
 		}
 
 //==========================================================================================================================
@@ -71,7 +70,7 @@ namespace Boxes
 //Singleton Functions
 //
 //==========================================================================================================================
-		static p_ProjectFactory Instance(void);
+		static shared_ptr<ProjectFactory> Instance(void);
 
 //==========================================================================================================================
 //
@@ -82,7 +81,8 @@ namespace Boxes
 		ProjectFactory(void);
 
 	private:
-		static p_ProjectFactory _instance;
+		static shared_ptr<ProjectFactory> _instance;
 
 	};//end Class
+	typedef shared_ptr<ProjectFactory> p_ProjectFactory;
 }//end Namespace

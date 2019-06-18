@@ -1,14 +1,3 @@
-/*========================================================================
-A basic Object that will demo fireworks that are created procedurally though
-the logic of the physics engine. The bulk of this code came from teh book
-Game Physics Engine Development by Ian Millington. I have altered the 
-code to fit my engine, but this is the example given in chapter 4
-
-This is not free to use, and cannot be used without the express permission
-of KillerWave.
-
-Written by Maxwell Miller
-========================================================================*/
 #pragma once
 
 //=====Engine Includes=====
@@ -35,7 +24,7 @@ namespace KP = KillerPhysics;
 
 namespace Boxes
 {
-	typedef std::vector<p_Payload> PayloadPool;
+	typedef std::vector<shared_ptr<Payload>> PayloadPool;
 
 	class Firework : public KE::GameObject
 	{
@@ -62,11 +51,6 @@ namespace Boxes
 //Functions
 //
 //==========================================================================================================================
-		inline void SetPool(PayloadPool pool)
-		{
-			_pool = pool;
-		}
-
 		inline void SetMaxSize(U32 size)
 		{
 			_maxSize = size;
@@ -94,7 +78,7 @@ namespace Boxes
 
 		void Reset(U32 rule);
 
-		void AddPayload(p_Payload payload)
+		void AddPayload(shared_ptr<Payload> payload)
 		{
 			_pool.push_back(payload);
 		}

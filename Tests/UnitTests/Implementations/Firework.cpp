@@ -36,20 +36,15 @@ Firework::~Firework(void)
 //==========================================================================================================================
 void Firework::v_Update(void)
 {
-	for(U32 i = 0; i < _pool.size(); ++i)
+	for(auto payload : _pool)
 	{
-		if(_pool[i]->timeAlive > 0.0f && _pool[i]->RigidBody2D.GetActive())
+		else if(payload->GetActive())
 		{
-			_pool[i]->timeAlive -= KM::Timer::Instance()->DeltaTime();
-		}
-		else if(_pool[i]->RigidBody2D.GetActive())
-		{
-			_pool[i]->RigidBody2D.SetActive(false);
+			payload->SetActive(false);
 			
-			if(_pool[i]->spawnNew)
+			if(payload->GetSpawnNew())
 			{
-				_pool[i]->spawnNew = false;
-				InitPayload(_pool[i]->spawnNewRule, _pool[i]->RigidBody2D.GetPosition());
+				InitPayload(payload->GetSpawnNewRule(), payload->GetPosition());
 				break;
 			}
 		}
@@ -64,20 +59,17 @@ void Firework::v_Update(void)
 //==========================================================================================================================
 void Firework::Reset(U32 rule)
 {
-	for(U32 i = 0; i < _pool.size(); ++i)
+	for(auto payload : _pool)
 	{
-		/*
-		_pool[i]->RigidBody2D.SetPosition(0.0f, 0.0f);
-		_pool[i]->RigidBody2D.SetColor(0.0f, 0.0f, 0.0f);
-		_pool[i]->RigidBody2D.SetScale(0.0f, 0.0f);
-		_pool[i]->RigidBody2D.SetVelocity(0.0f, 0.0f);
-		_pool[i]->RigidBody2D.SetAcceleration(0.0f, 0.0f);
-		_pool[i]->RigidBody2D.SetMass(0.001f);
-		_pool[i]->RigidBody2D.SetDamping(0.0f);
-		_pool[i]->timeAlive = 0.0f;
-		_pool[i]->RigidBody2D.SetActive(false);
-		*/
+		
+		payload->SetPosition(0.0f, 0.0f);
+		payload->SetColor(0.0f, 0.0f, 0.0f);
+		payload->SetScale(0.0f, 0.0f);
+		payload->GetBody()->SetVelocity(0.0f, 0.0f);
+		payload->GetBody()->SetAcceleration(0.0f, 0.0f);
+		payload->GetBody()->SetMass(0.001f);
+		payload->GetBody()->SetDamping(0.0f);
+		payload->SetTimeAlive(0.0f);
+		payload->SetActive(false);
 	}
-
-	InitPayload(rule, GameObject::GetPosition());
 }

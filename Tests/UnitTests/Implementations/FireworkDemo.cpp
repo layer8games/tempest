@@ -16,7 +16,6 @@ _speed(100.0f)
 
 FireworksDemo::~FireworksDemo(void)
 {
-	_pool.clear();
 	_firework.reset();
 }
 
@@ -57,7 +56,7 @@ void FireworksDemo::v_Init(void)
 		//_pool.push_back(payload);
 	}
 
-	_firework->SetPool(_pool);
+	//_firework->SetPool(_pool);
 	_firework->Reset(1);
 }
 
