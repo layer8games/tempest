@@ -160,6 +160,6 @@ namespace KillerEngine
 		S32    _width;   ///< Width of the Texture. Not currently used for anything. Storing just for record keeping I guess. 
 		S32    _height;  ///< Height of the Texture. Not currently used for anything. Storing just for record keeping.
 		
-	};
-
-}
+	};//End class
+	typedef shared_ptr<Texture> p_Texture;
+}//End namespace

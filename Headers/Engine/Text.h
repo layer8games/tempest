@@ -308,5 +308,5 @@ namespace KillerEngine
 		std::vector<shared_ptr<Glyph>>	_characterList;		///< List of all generated Glyphs. Should match _text.
 		KM::Vector3 					_scale;				///< The scaling factor used for each Glyph.
 		Color 							_color;				///< The Color used for each Glyph.
-	};
-}
+	};//End class
+}//End namespace

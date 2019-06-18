@@ -65,7 +65,7 @@ namespace KillerEngine
 
 /*! 
 	Adds a Texture to manager. ID will be used to call it back. 
-	\tex is the Texture to add. It is converted into a shared_ptr<Texture>. 
+	\tex is the Texture to add. It is converted into a p_Texture. 
 */
 		void AddTexture(U32 id, const Texture& tex);
 
@@ -73,13 +73,13 @@ namespace KillerEngine
 	Adds a pointer to a Texture into the manager. ID will be used to call it back.
 	\param tex is the shared pointer to add.  
 */
-		void AddTexture(U32 id, shared_ptr<Texture> tex);
+		void AddTexture(U32 id, p_Texture tex);
 		
 /*! 
 	Returns the Texture pointer stored with ID.
 	\param id is the Texture id that you wish to return. Used as a key in a map. 
 */
-		const shared_ptr<Texture> GetTexture(U32 id);
+		const p_Texture GetTexture(U32 id);
 
 	protected:
 //==========================================================================================================================
@@ -94,7 +94,7 @@ namespace KillerEngine
 		
 	private:
 		static shared_ptr<TextureManager> _instance;			///< Pointer to self used as global data in Singleton pattern
-		map<U32, shared_ptr<Texture>> 	  _loadedTextures;		///< Database of all added Texture pointers that can be accessed.
+		map<U32, p_Texture> 	  _loadedTextures;		///< Database of all added Texture pointers that can be accessed.
 
 	};
 }//End namespace
