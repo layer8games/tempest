@@ -87,7 +87,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <ProgramDataBaseFileName>$(ProjectDir)..\..\Bin\$(PlatformName)_$(Configuration)\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(ProjectDir)..\..\Bin\</ProgramDataBaseFileName>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

@@ -3,14 +3,14 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <OutDir>$(ProjectDir)..\..\Bin\$(PlatformName)_$(Configuration)\</OutDir>
+    <OutDir>$(ProjectDir)..\..\Bin\</OutDir>
     <IntDir>$(ProjectDir)..\..\Temp\$(ProjectName)_$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_$(PlatformName)_$(Configuration)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\Lib\Headers\;$(ProjectDir)..\..\Headers\</AdditionalIncludeDirectories>
-      <ProgramDataBaseFileName>$(ProjectDir)..\..\Bin\$(PlatformName)_$(Configuration)\</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(ProjectDir)..\..\Bin\</ProgramDataBaseFileName>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(ProjectDir)..\..\Lib\</AdditionalLibraryDirectories>
