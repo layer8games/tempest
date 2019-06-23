@@ -485,15 +485,12 @@ namespace KillerEngine
 		}
 
 	protected:
-		inline KM::Point& _AccessPosition(void)
-		{
-			return _position;
-		}
+		KM::Point 	   _position;
+		KM::Vector3    _scale;
+		KM::Quaternion _orientation;
+		Color 		   _color;
 
-		inline KM::Quaternion& _AccessOrientation(void)
-		{
-			return _orientation;
-		}
+		
 
 	private:
 		std::vector<U32> _SplitU32(string text, char delim) const;
@@ -515,10 +512,8 @@ namespace KillerEngine
 		std::vector<U32> 		_indices;
 		std::vector<F32> 		_uvList;
 		KM::Matrix4 			_modelTOWorldCache;
-		KM::Point				_position;
-		KM::Vector3 			_scale;
-		KM::Quaternion 			_orientation;
-		Color 					_color;
+		
+		
 		shared_ptr<Texture>		_texture;
 		shared_ptr<Shader>		_shader;
 		bool					_activeUpdate;

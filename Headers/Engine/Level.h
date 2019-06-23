@@ -1,14 +1,3 @@
-/*========================================================================
-A Level is what the different states of game will be. Each Level re-
-presents  
-
-The Level can render 2D and 3D objects with and without physics. 
-
-This is not free to use, and cannot be used without the express permission
-of KillerWave.
-
-Written by Maxwell Miller
-========================================================================*/
 #pragma once
 
 //===Killer1 includes===
@@ -37,11 +26,11 @@ namespace KP = KillerPhysics;
 
 namespace KillerEngine 
 {
-/*!
-	The Level is the building block for game project. It holds all of the objects that will be rendered to the screen and 
-	controls what the update logic is. The Level itself is an abstract class, intended to be implemented on the user end.
-	Some engines will call this a scene or a world. 
-*/
+
+///	The Level is the building block for game project. It holds all of the objects that will be rendered to the screen and 
+///	controls what the update logic is. The Level itself is an abstract class, intended to be implemented on the user end.
+///	Some engines will call this a scene or a world. 
+
 	class Level
 	{
 //==========================================================================================================================
@@ -55,14 +44,12 @@ namespace KillerEngine
 //Constructors
 //
 //==========================================================================================================================		
-/*!
-	Sets call values to 0 and calls default constructors. 
-*/
+
+///	Sets call values to 0 and calls default constructors. 
 		Level(void);
 
-/*!
-	Deletes the pointer to the Camera. 
-*/
+
+///	Deletes the pointer to the Camera. 
 		virtual ~Level(void);
 
 //==========================================================================================================================
@@ -70,25 +57,22 @@ namespace KillerEngine
 //Virtual Functions
 //
 //==========================================================================================================================
-/*!
-	Abstract function. Used to Initialize the default values, instantiate any objects that will be used and generally get 
-	things ready to go.
-	\param id is the ID used in the LevelManager.
-	\param w is the width of the Level.
-	\param h is the height of the Level. 
 
-*/
+///	Abstract function. Used to Initialize the default values, instantiate any objects that will be used and generally get 
+///	things ready to go.
+///	\param id is the ID used in the LevelManager.
+///	\param w is the width of the Level.
+///	\param h is the height of the Level. 
+
 		virtual void v_Init(void)=0;
 
-/*!
-	Abstract function. Used to control what needs to happen during an update. Please note, objects added to the level 
-	are already being updated as part of Level::UpdateLevel.
-*/
+
+///	Abstract function. Used to control what needs to happen during an update. Please note, objects added to the level 
+///	are already being updated as part of Level::UpdateLevel.
 		virtual void v_Update(void)=0;
 		
-/*!
-	Wrapper around Level::RenderObjects. It is virtual to allow for optional customization.
-*/
+
+///	Wrapper around Level::RenderObjects. It is virtual to allow for optional customization.
 		virtual void v_Render(void);
 
 //==========================================================================================================================
@@ -96,70 +80,60 @@ namespace KillerEngine
 //Camera Functions
 //
 //==========================================================================================================================
-/*!
-	Default actions that need to be called each frame. Right now, that is only Camera::v_Update.
-*/
+
+///	Default actions that need to be called each frame. Right now, that is only Camera::v_Update.
 		void UpdateLevel(void);
 
-/*!
-	Converts the ref to a smart_ptr and adds the GameObject to the Level.
-	\param obj is the object to be added.
-*/
+
+///	Converts the ref to a smart_ptr and adds the GameObject to the Level.
+///	\param obj is the object to be added.
 		void AddObjectToLevel(const GameObject& obj);
 
-/*!
-	Adds GameObject pointer to the Level.
-	\param obj is the pointer to be added.
-*/
+
+///	Adds GameObject pointer to the Level.
+///	\param obj is the pointer to be added.
 		void AddObjectToLevel(p_GameObject obj);
 
-/*!
-	Registers a KillerPhysics::RigidBody2D with a KillerPhysics::ForcerGenerator. This only works because they are pointers. 
-	\param RigidBody2D is the pointer that needs to be registered with the generator. 
-	\param generator is the force to apply to the RigidBody2D.
-*/
+
+///	Registers a KillerPhysics::RigidBody2D with a KillerPhysics::ForcerGenerator. This only works because they are pointers. 
+///	\param RigidBody2D is the pointer that needs to be registered with the generator. 
+///	\param generator is the force to apply to the RigidBody2D.
 		inline void RegisterRigidBody2DForce(KP::p_RigidBody2D body, KP::p_ForceGenerator generator)
 		{
 			_forceRegistry.Add(body, generator);
 		}
 
-/*!
-	Adds the Glyphs in a Text to the Level as GameObjects.
-	\param text is the Text to get the Glyphs from.
-*/
+
+///	Adds the Glyphs in a Text to the Level as GameObjects.
+///	\param text is the Text to get the Glyphs from.
 		void AddTextToLevel(const Text& text);
 
-/*!
-	Adds the Glyphs in a Text to the Level as GameObjects.
-	\param text is shared pointer Text to get the Glyphs from.
-*/
+
+///	Adds the Glyphs in a Text to the Level as GameObjects.
+///	\param text is shared pointer Text to get the Glyphs from.
 		void AddTextToLevel(shared_ptr<Text> text);
 
 		
-/*!
-	Removes the GameObject with id from the Level.
-	\param id of the GameObject to remove.
-*/
+
+///	Removes the GameObject with id from the Level.
+///	\param id of the GameObject to remove.
 		void RemoveObjectFromLevel(U32 id);
 
-/*!
-	Loops over all of the GameObject and KillerPhysics::RigidBody2D that have been added to the Level, and calls GameObject::v_Update
-	if they are active for updates. 
-*/
+
+///	Loops over all of the GameObject and KillerPhysics::RigidBody2D that have been added to the Level, and calls GameObject::v_Update
+///	if they are active for updates. 
 		void UpdateObjects(void);
 
-/*!
-	Loops over all of the GameObject and KillerPhysics::RigidBody2D that have been added to the Level, and calls GameObject::v_Render
-	if they are active for rendering. 
-*/
+
+///	Loops over all of the GameObject and KillerPhysics::RigidBody2D that have been added to the Level, and calls GameObject::v_Render
+///	if they are active for rendering. 
 		void RenderObjects(void);
 
-/*! 
-	Loops over all GameObjects and KillerPhysics::RigidBody2D that have bee added to the level and calls GameObject::SetUniform for the
-	type that is passed in. This is a template function. 
-	\param name is the name of the uniform to set. This must match what is found in the shader. 
-	\param type is the dynamic type that is passed into the shader.  
-*/
+ 
+///	Loops over all GameObjects and KillerPhysics::RigidBody2D that have bee added to the level and calls GameObject::SetUniform for the
+///	type that is passed in. This is a template function. 
+///	\param name is the name of the uniform to set. This must match what is found in the shader. 
+///	\param type is the dynamic type that is passed into the shader.  
 		template <class T>
 		inline void SetObjectUniforms(string name, const T& type)
 		{
@@ -174,109 +148,97 @@ namespace KillerEngine
 //Accessors
 //
 //==========================================================================================================================		
-/*!
-	Changes the set background color for the Level. It also calls Level::ActivateBackgroundColor
-*/
+
+///	Changes the set background color for the Level. It also calls Level::ActivateBackgroundColor
 		inline void SetBackgroundColor(const Color& c) 
 		{ 
 			_bgColor = c;
 			ActivateBackgroundColor();
 		}
 		
-/*!
-	Forces the current background color to be activated in OpenGL.
-*/
+
+///	Forces the current background color to be activated in OpenGL.
 		inline void ActivateBackgroundColor(void) 
 		{ 
 			GameWindow::Instance()->SetBackgroundColor(_bgColor); 
 		}
 		
-/*!
-	Returns the width of the play area of the Level.
-*/
+
+///	Returns the width of the play area of the Level.
 		inline S32 GetWidth(void) const 
 		{ 
 			return _width; 
 		}
 		
-/*!
-	Returns the height of the play area of the Level.
-*/
+
+///	Returns the height of the play area of the Level.
 		inline S32 GetHeight(void) const 
 		{ 
 			return _height; 
 		}
 		
-/*!
-	Changes the width of the play area of the Level.
-	\param w is the new width.
-*/
+
+///	Changes the width of the play area of the Level.
+///	\param w is the new width.
 		inline void SetWidth(S32 w)  
 		{ 
 			_width = w; 
 		}
 		
-/*!
-	Changes the height of the play area of the Level.
-	\param h is the new height.
-*/
+
+///	Changes the height of the play area of the Level.
+///	\param h is the new height.
 		inline void SetHeight(S32 h) 
 		{ 
 			_height = h; 
 		}
 		
-/*!
-	Helper function that allows you to change the play area dimensions at the same time. 
-*/
+
+///	Helper function that allows you to change the play area dimensions at the same time. 
 		inline void SetDimensions(S32 w, S32 h) 
 		{ 
 			_width  = w; 
 			_height = h; 
 		}
 		
-/*!
-	Set the top bounds.
-	\param top is the new border.
-*/
+
+///	Set the top bounds.
+///	\param top is the new border.
 		inline void SetTopBorder(S32 top) 
 		{ 
 			_topBorder = top; 
 		}
 
-/*!
-	Set the bottom bounds.
-	\param bottom is the new border.
-*/
+
+///	Set the bottom bounds.
+///	\param bottom is the new border.
 		inline void SetBottomBorder(S32 bottom) 
 		{ 
 			_bottomBorder = bottom; 
 		}
 
-/*!
-	Set the right bounds.
-	\param right is the new border.
-*/
+
+///	Set the right bounds.
+///	\param right is the new border.
 		inline void SetRightBorder(S32 right) 
 		{ 
 			_rightBorder = right;
 		}
 
-/*!
-	Set the left bounds.
-	\param left is the new border.
-*/
+
+///	Set the left bounds.
+///	\param left is the new border.
 		inline void SetLeftBorder(S32 left) 
 		{ 
 			_leftBorder = left; 
 		}
 
-/*!
-	Helper function to set all borders of the play area of the Level at the same time. 
-	\param top is the top border.
-	\param bottom is the bottom border.
-	\param right is the right border.
-	\param left is the left border.
-*/
+
+///	Helper function to set all borders of the play area of the Level at the same time. 
+///	\param top is the top border.
+///	\param bottom is the bottom border.
+///	\param right is the right border.
+///	\param left is the left border.
 		inline void SetBorders(S32 top, S32 bottom, S32 right, S32 left)
 		{
 			_topBorder = top;
@@ -285,145 +247,128 @@ namespace KillerEngine
 			_rightBorder = right;
 		}
 		
-/*!
-	Returns the top border.
-*/
+
+///	Returns the top border.
 		inline S32 GetTopBorder(void) const 
 		{ 
 			return _topBorder; 
 		}
 
-/*!
-	 Returns the bottom border.
-*/
+
+///	 Returns the bottom border.
 		inline S32 GetBottomBorder(void) const 
 		{ 
 			return _bottomBorder; 
 		}
 		
-/*!
-	Returns the left border.
-*/
+
+///	Returns the left border.
 		inline S32 GetLeftBorder(void) const 
 		{ 
 			return _leftBorder; 
 		}
 
-/*!
-	Returns the right border.
-*/
+
+///	Returns the right border.
 		inline S32 GetRightBorder(void) const 
 		{
 			return _rightBorder; 
 		}
 
-/*! 
-	 Sets the depth of the play area 
-*/
+ 
+///	 Sets the depth of the play area 
 		inline void SetDepth(S32 d)
 		{
 			_depth = d;
 		}
 
-/*! 
-	 Returns the depth of the play area.
-*/
+ 
+///	 Returns the depth of the play area.
 		inline S32 GetDepth(void)
 		{
 			return _depth;
 		}
 
-/*! 
-	 Sets the near border of the play area. 
-*/
+ 
+///	 Sets the near border of the play area. 
 		inline void SetNearBorder(S32 n)
 		{
 			_nearBorder = n;
 		}
 
-/*! 
-	 Sets the far border of the play area. 
-*/
+ 
+///	 Sets the far border of the play area. 
 		inline void SetFarBorder(S32 f)
 		{
 			_farBorder = f;
 		}
 
-/*! 
-	Returns the near border of the play area.  
-*/
+ 
+///	Returns the near border of the play area.  
 		inline S32 GetNearBorder(void)
 		{
 			return _nearBorder;
 		}
 
-/*! 
-	Returns the far border of the play area.  
-*/
+ 
+///	Returns the far border of the play area.  
 		inline S32 GetFarBorder(void)
 		{
 			return _farBorder;
 		}
 
-/*!
-	Sets a new ID for the Level. Use with caution.
-*/
+
+///	Sets a new ID for the Level. Use with caution.
 		inline void SetID(U32 id) 
 		{ 
 			_ID = id; 
 		}
 
-/*!
-	Returns the Level ID. This will only match the LevelManager ID if you set it correctly.
-*/
+
+///	Returns the Level ID. This will only match the LevelManager ID if you set it correctly.
 		inline U32 GetID(void) const 
 		{ 
 			return _ID; 
 		}
 
 //===== Camera =====
-/*!
-	Sets the camera to a new Camera pointer, allowing you to change the Camera at run time. 
-*/
+
+///	Sets the camera to a new Camera pointer, allowing you to change the Camera at run time. 
 		inline void SetCamera(Camera* cam)
 		{
 			_camera = cam;
 		}
 
-/*!
-	Returns the current Camera.
-*/
+
+///	Returns the current Camera.
 		inline const Camera* GetCamera(void)
 		{
 			return _camera;
 		}
 
-/*!
-	Wrapper around Camera::SetOrthographic.
-*/
+
+///	Wrapper around Camera::SetOrthographic.
 		inline void SetCameraOrthographic(void)
 		{
 			_camera->SetOrthographic();
 		}
 
-/*! 
-	Wrapper around Camera::SetOrthographic with the same arguments. 
-	\param left is the left boundary of the projection.
-	\param right is the right boundary of the projection. 
-	\param bottom is the bottom boundary of the projection. 
-	\param top is the uppder boundary of the projection. 
-	\param nearPlane is the close boundary of the projection.
-	\param farPlane is the distant boundary of the projection.
-*/
+ 
+///	Wrapper around Camera::SetOrthographic with the same arguments. 
+///	\param left is the left boundary of the projection.
+///	\param right is the right boundary of the projection. 
+///	\param bottom is the bottom boundary of the projection. 
+///	\param top is the uppder boundary of the projection. 
+///	\param nearPlane is the close boundary of the projection.
+///	\param farPlane is the distant boundary of the projection.
 		void SetCameraOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)
 		{
 			_camera->SetOrthographic(left, right, bottom, top, nearPlane, farPlane);
 		}
 
-/*! 
-	Returns GameObject with ID.
-	\param id is the ID of the object to get. Should coorespond to GameObject::_ID. 
-*/
+ 
+///	Returns GameObject with ID.
+///	\param id is the ID of the object to get. Should coorespond to GameObject::_ID. 
 		p_GameObject GetGameObject(U32 id);
 		
 	private:

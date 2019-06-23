@@ -67,7 +67,7 @@ void Level::AddObjectToLevel(const GameObject& obj)
 	}
 }
 
-void Level::AddObjectToLevel(shared_ptr<GameObject> obj)
+void Level::AddObjectToLevel(p_GameObject obj)
 {
 	obj->SetUniform("projection", _camera->GetProjectionMatrix4());
 
