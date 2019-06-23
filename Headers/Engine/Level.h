@@ -392,4 +392,5 @@ namespace KillerEngine
 		std::map<U32, p_GameObject>	  _gameObjects;		///< List of all GameObjects included in the Level.
 		KP::ForceRegistry _forceRegistry; 							///< KillerPhysics::ForceRegistry used to allow physics forces to be applied.
 	};
+	typedef shared_ptr<Level> p_Level;
 }//End namespace

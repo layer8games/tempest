@@ -65,7 +65,7 @@ namespace KillerEngine
 	Adds a Level into the state machine that can then be set to active to be in use. 
 	\param level is added into the database, with Level::GetID used to index.  
 */
-		void AddLevel(shared_ptr<Level> level);
+		void AddLevel(p_Level level);
 		
 /*! 
 	Removes Level from database. 
@@ -85,7 +85,7 @@ namespace KillerEngine
 	into memory until they are set to active. Level::v_Init is called before it is set to active.
 	\param level is the new Level that will be set to active.
 */
-		void SetActiveLevel(shared_ptr<Level> level);
+		void SetActiveLevel(p_Level level);
 		
 /*! 
 	Returns the ID of the active Level state.  
@@ -98,7 +98,7 @@ namespace KillerEngine
 /*! 
 	Returns a pointer to the active Level state. 
 */
-		inline shared_ptr<Level> GetActiveLevel(void)
+		inline p_Level GetActiveLevel(void)
 		{
 			return _activeLevel;
 		}
@@ -156,10 +156,10 @@ namespace KillerEngine
 		LevelManager(void);
 
 	private:
-		std::map<U32, shared_ptr<Level>> _levels;			///< Database of Levels that can be activated. 
-		shared_ptr<Level> 				 _activeLevel;		///< Pointer to active Level from database. 
-		U32 				   			_activeLevelID;		///< The ID of the active Level. 
-		static LevelManager*     		_instance;			///< Singletone pointer to global version of LevelManager. 
+		std::map<U32, p_Level> _levels;			///< Database of Levels that can be activated. 
+		p_Level 			   _activeLevel;	///< Pointer to active Level from database. 
+		U32 				   _activeLevelID;	///< The ID of the active Level. 
+		static LevelManager*   _instance;		///< Singletone pointer to global version of LevelManager. 
 
 	};
 

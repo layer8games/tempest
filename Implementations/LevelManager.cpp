@@ -37,7 +37,7 @@ LevelManager* LevelManager::Instance(void)
 //Level Accessors
 //
 //==========================================================================================================================
-void LevelManager::AddLevel(shared_ptr<Level> level) 
+void LevelManager::AddLevel(p_Level level) 
 {
 	_levels.insert({level->GetID(), level});
 	
@@ -71,7 +71,7 @@ void LevelManager::SetActiveLevel(U32 levelID)
 	_activeLevel->ActivateBackgroundColor();
 }
 
-void LevelManager::SetActiveLevel(shared_ptr<Level> level)
+void LevelManager::SetActiveLevel(p_Level level)
 {
 	_activeLevelID = 0;
 	level->v_Init();
