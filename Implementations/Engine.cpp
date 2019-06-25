@@ -23,8 +23,12 @@ void Engine::Init(const S32 width, const S32 height, const string title, const b
 	GameWindow::Instance()->Init(width, height, title, fullscreen);
 
 	//Controller::Instance()->Init(GameWindow::Instance()->GetHINSTANCE(), GameWindow::Instance()->GetHWND());
-
-	ErrorManager::Instance()->DisplayErrors();
+	
+	//If User indicated they want to close they Game
+	if(ErrorManager::Instance()->DisplayErrors())
+	{
+		End();
+	}
 }
 
 //==========================================================================================================================
@@ -48,7 +52,11 @@ void Engine::Update(void)
 	
 	LevelManager::Instance()->Update();
 
-	ErrorManager::Instance()->DisplayErrors();
+	//If User indicated they want to close they Game
+	if(ErrorManager::Instance()->DisplayErrors())
+	{
+		End();
+	}
 }
 
 //=======================================================================================================
@@ -60,7 +68,11 @@ void Engine::Render(void)
 
 	GameWindow::Instance()->BufferSwap();
 	
-	ErrorManager::Instance()->DisplayErrors();
+	//If User indicated they want to close they Game
+	if(ErrorManager::Instance()->DisplayErrors())
+	{
+		End();
+	}
 }
 
 //==========================================================================================================================

@@ -66,6 +66,14 @@ void TextureManager::AddTexture(U32 id, p_Texture tex)
 	}
 }
 
+void TextureManager::RemoveTexture(U32 id)
+{
+	if(_loadedTextures.find(id) != _loadedTextures.end())
+	{
+		_loadedTextures.erase(id);
+	}
+}
+
 const p_Texture TextureManager::GetTexture(U32 id)
 { 
 	if(_loadedTextures.find(id) == _loadedTextures.end())

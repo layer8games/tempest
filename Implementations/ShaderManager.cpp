@@ -10,7 +10,8 @@ ShaderManager::ShaderManager(void)
 :
 _loadedShaders()
 {
-	_LoadDefaultShaders();
+	//TODO: This needs re-thought out. It wont work in Game Projects
+	//_LoadDefaultShaders();
 }
 
 ShaderManager::~ShaderManager(void)
