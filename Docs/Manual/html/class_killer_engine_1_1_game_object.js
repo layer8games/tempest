@@ -3,8 +3,6 @@ var class_killer_engine_1_1_game_object =
     [ "GameObject", "class_killer_engine_1_1_game_object.html#a78da814b13c8bf344ba0c5f72cb22af3", null ],
     [ "GameObject", "class_killer_engine_1_1_game_object.html#a1bfa4ebd9416925b75c10ecda05bfae6", null ],
     [ "~GameObject", "class_killer_engine_1_1_game_object.html#a3b086987a48c14ebe80939bd66d5f1c8", null ],
-    [ "_AccessOrientation", "class_killer_engine_1_1_game_object.html#ae2b75b003f8d58d740447e5f78e5625f", null ],
-    [ "_AccessPosition", "class_killer_engine_1_1_game_object.html#a05e8f2ad431a066761d302a7ecfca93e", null ],
     [ "_CalculateCachedData", "class_killer_engine_1_1_game_object.html#a0c4b0a025c4d6630095673379d88d8c9", null ],
     [ "_SplitF32", "class_killer_engine_1_1_game_object.html#a1a2be0fd6a48a76903377592ded79426", null ],
     [ "_SplitString", "class_killer_engine_1_1_game_object.html#a20fab8ada3c036ad018991dbfd432dca", null ],

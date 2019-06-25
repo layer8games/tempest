@@ -10,7 +10,7 @@ var annotated_dup =
       [ "FireworksDemo", "class_boxes_1_1_fireworks_demo.html", "class_boxes_1_1_fireworks_demo" ],
       [ "MainMenu", "class_boxes_1_1_main_menu.html", "class_boxes_1_1_main_menu" ],
       [ "MovingBoxes", "class_boxes_1_1_moving_boxes.html", "class_boxes_1_1_moving_boxes" ],
-      [ "Payload", "struct_boxes_1_1_payload.html", "struct_boxes_1_1_payload" ],
+      [ "Payload", "class_boxes_1_1_payload.html", "class_boxes_1_1_payload" ],
       [ "ProjectFactory", "class_boxes_1_1_project_factory.html", "class_boxes_1_1_project_factory" ],
       [ "Projectile", "class_boxes_1_1_projectile.html", "class_boxes_1_1_projectile" ],
       [ "SplashScreen", "class_boxes_1_1_splash_screen.html", "class_boxes_1_1_splash_screen" ],

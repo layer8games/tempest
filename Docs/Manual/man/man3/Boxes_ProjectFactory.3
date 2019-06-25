@@ -1,4 +1,4 @@
-.TH "Boxes::ProjectFactory" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
+.TH "Boxes::ProjectFactory" 3 "Mon Jun 24 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -21,25 +21,19 @@ Boxes::ProjectFactory
 .ti -1c
 .RI "p_Cube \fBMakeCube\fP (void)"
 .br
-.ti -1c
-.RI "p_Firework \fBMakeFirework\fP (void)"
-.br
-.ti -1c
-.RI "p_Payload \fBMakePayload\fP (void)"
-.br
 .in -1c
 .SS "Static Public Member Functions"
 
 .in +1c
 .ti -1c
-.RI "static p_ProjectFactory \fBInstance\fP (void)"
+.RI "static shared_ptr< \fBProjectFactory\fP > \fBInstance\fP (void)"
 .br
 .in -1c
 .SS "Static Private Attributes"
 
 .in +1c
 .ti -1c
-.RI "static p_ProjectFactory \fB_instance\fP = nullptr"
+.RI "static shared_ptr< \fBProjectFactory\fP > \fB_instance\fP = nullptr"
 .br
 .in -1c
 

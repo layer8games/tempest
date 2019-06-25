@@ -1,4 +1,4 @@
-.TH "Boxes::Cannon" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
+.TH "Boxes::Cannon" 3 "Mon Jun 24 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -15,7 +15,10 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "void \fBv_Update\fP (void)"
 .br
 .ti -1c
-.RI "void \fBFire\fP (const \fBKM::Vector4\fP &heading, shared_ptr< \fBProjectile\fP > projectile, ProjectileType type)"
+.RI "void \fBFire\fP (const \fBKM::Vector4\fP &heading, ProjectileType type)"
+.br
+.ti -1c
+.RI "void \fBAddToPool\fP (p_Projectile p)"
 .br
 .ti -1c
 .RI "void \fBSetMovementSpeed\fP (\fBF32\fP speed)"
@@ -65,6 +68,9 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .br
 .ti -1c
 .RI "\fBKM::Vector4\fP \fB_downDirection\fP"
+.br
+.ti -1c
+.RI "std::vector< p_Projectile > \fB_projectilePool\fP"
 .br
 .in -1c
 .SS "Additional Inherited Members"

@@ -1,4 +1,4 @@
-.TH "Boxes::Payload" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
+.TH "Boxes::Payload" 3 "Mon Jun 24 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,22 +6,54 @@ Boxes::Payload
 .SH SYNOPSIS
 .br
 .PP
-.SS "Public Attributes"
+.PP
+Inherits \fBKillerEngine::GameObject\fP\&.
+.SS "Public Member Functions"
 
 .in +1c
 .ti -1c
-.RI "\fBKP::RigidBody2D\fP \fBRigidBody2D\fP"
+.RI "void \fBv_Update\fP (void)"
 .br
 .ti -1c
-.RI "\fBF32\fP \fBtimeAlive\fP"
+.RI "void \fBSetBody\fP (KP::p_RigidBody2D body)"
 .br
 .ti -1c
-.RI "\fBU32\fP \fBspawnNewRule\fP"
+.RI "KP::p_RigidBody2D \fBGetBody\fP (void)"
 .br
 .ti -1c
-.RI "bool \fBspawnNew\fP"
+.RI "void \fBInit\fP (PayloadSpawnRule rule, const \fBKM::Point\fP &pos)"
+.br
+.ti -1c
+.RI "void \fBSetTimeAlive\fP (\fBF32\fP t)"
+.br
+.ti -1c
+.RI "\fBF32\fP \fBGetTimeAlive\fP (void) const"
+.br
+.ti -1c
+.RI "PayloadSpawnRule \fBGetSpawnNewRule\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBGetSpawnNew\fP (void) const"
 .br
 .in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "KP::p_RigidBody2D \fBp_body\fP"
+.br
+.ti -1c
+.RI "\fBF32\fP \fB_timeAlive\fP"
+.br
+.ti -1c
+.RI "PayloadSpawnRule \fB_spawnNewRule\fP"
+.br
+.ti -1c
+.RI "bool \fB_spawnNew\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
 
 .SH "Author"
 .PP 

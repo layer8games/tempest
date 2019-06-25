@@ -2,7 +2,8 @@ var class_boxes_1_1_cannon =
 [
     [ "Cannon", "class_boxes_1_1_cannon.html#adc16627c3e4e6b324db7ebdd7740c4b7", null ],
     [ "~Cannon", "class_boxes_1_1_cannon.html#af624ff8d8b479f093ab2409491870e32", null ],
-    [ "Fire", "class_boxes_1_1_cannon.html#a3612e287a8c558df01487bcf72a4ebae", null ],
+    [ "AddToPool", "class_boxes_1_1_cannon.html#a40e878977eb33bcde1db27b08d3b4414", null ],
+    [ "Fire", "class_boxes_1_1_cannon.html#a61a69fa01454ae75847e34eeea8425ac", null ],
     [ "GetBottomBoundary", "class_boxes_1_1_cannon.html#a5c7dfff241ab762230b516a1d28bf421", null ],
     [ "GetDownDirection", "class_boxes_1_1_cannon.html#ad4d2ba1834e2443bc0ea106a309e69e8", null ],
     [ "GetMovementSpeed", "class_boxes_1_1_cannon.html#aa94478b46676203e79585d8fcef6d7e6", null ],
@@ -17,6 +18,7 @@ var class_boxes_1_1_cannon =
     [ "_bottomBoundary", "class_boxes_1_1_cannon.html#a4b6f2fe9c50caeacae53a6e15efb0247", null ],
     [ "_downDirection", "class_boxes_1_1_cannon.html#a82e2cea7525434f708b55f45f07d8899", null ],
     [ "_movementSpeed", "class_boxes_1_1_cannon.html#a5a170e2d67afba3ce1dbbd315a711c3a", null ],
+    [ "_projectilePool", "class_boxes_1_1_cannon.html#a44dd8b356d4e68b7eceb2132c0175bd9", null ],
     [ "_topBoundary", "class_boxes_1_1_cannon.html#abba52819b97e8712d708bc0d6450099c", null ],
     [ "_upDirection", "class_boxes_1_1_cannon.html#a7c5767bb40c20c87d42b51449f3d2531", null ]
 ];

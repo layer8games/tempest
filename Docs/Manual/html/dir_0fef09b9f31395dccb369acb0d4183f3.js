@@ -10,6 +10,7 @@ var dir_0fef09b9f31395dccb369acb0d4183f3 =
     [ "FireworksDemo.h", "_fireworks_demo_8h_source.html", null ],
     [ "MainMenu.h", "_main_menu_8h_source.html", null ],
     [ "MovingBoxes.h", "_moving_boxes_8h_source.html", null ],
+    [ "Payload.h", "_payload_8h_source.html", null ],
     [ "ProjectFactory.h", "_project_factory_8h_source.html", null ],
     [ "Projectile.h", "_projectile_8h_source.html", null ],
     [ "SplashScreen.h", "_splash_screen_8h_source.html", null ],

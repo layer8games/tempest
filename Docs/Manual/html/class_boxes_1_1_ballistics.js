@@ -7,8 +7,7 @@ var class_boxes_1_1_ballistics =
     [ "v_Update", "class_boxes_1_1_ballistics.html#a6ec5ae20e91cae9757e8c3971e3e1a62", null ],
     [ "_activeProjectileType", "class_boxes_1_1_ballistics.html#ad9f05e736967dc586dbf9a12a971a1d5", null ],
     [ "_cannon", "class_boxes_1_1_ballistics.html#ace7de9e399ff6baa51dccea3628738c1", null ],
-    [ "_gravityForce", "class_boxes_1_1_ballistics.html#af6be2c4aafc547e98b0b2b001ab4214d", null ],
     [ "_levelTitle", "class_boxes_1_1_ballistics.html#a3ad9f1b2f0bb741309bc564db1a4f83d", null ],
     [ "_poolSize", "class_boxes_1_1_ballistics.html#a3607e9c3e32210f181bfc4da4ad5a492", null ],
-    [ "_projectilePool", "class_boxes_1_1_ballistics.html#a149d598f7409abbb155391005fb62375", null ]
+    [ "p_gravityForce", "class_boxes_1_1_ballistics.html#a11cc170fd5acb638d02cf85932728348", null ]
 ];

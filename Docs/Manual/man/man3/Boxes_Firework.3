@@ -1,4 +1,4 @@
-.TH "Boxes::Firework" 3 "Sat Jun 15 2019" "Killer Engine" \" -*- nroff -*-
+.TH "Boxes::Firework" 3 "Mon Jun 24 2019" "Killer Engine" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -18,9 +18,6 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "void \fBv_Update\fP (void)"
 .br
 .ti -1c
-.RI "void \fBSetPool\fP (PayloadPool pool)"
-.br
-.ti -1c
 .RI "void \fBSetMaxSize\fP (\fBU32\fP size)"
 .br
 .ti -1c
@@ -36,10 +33,10 @@ Inherits \fBKillerEngine::GameObject\fP\&.
 .RI "void \fBSetProjection\fP (const \fBKM::Matrix4\fP projection)"
 .br
 .ti -1c
-.RI "void \fBInitPayload\fP (\fBU32\fP rule, \fBKM::Point\fP pos)"
+.RI "void \fBReset\fP (\fBU32\fP rule)"
 .br
 .ti -1c
-.RI "void \fBReset\fP (\fBU32\fP rule)"
+.RI "void \fBAddPayload\fP (shared_ptr< \fBPayload\fP > payload)"
 .br
 .in -1c
 .SS "Private Attributes"

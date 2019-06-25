@@ -88,7 +88,7 @@ $(document).ready(function(){initNavTree('class_killer_engine_1_1_game_object.ht
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
@@ -107,16 +107,17 @@ Inheritance diagram for KillerEngine::GameObject:</div>
 <area href="class_boxes_1_1_cannon.html" alt="Boxes::Cannon" shape="rect" coords="203,112,396,136"/>
 <area href="class_boxes_1_1_cube.html" alt="Boxes::Cube" shape="rect" coords="203,168,396,192"/>
 <area href="class_boxes_1_1_firework.html" alt="Boxes::Firework" shape="rect" coords="203,224,396,248"/>
-<area href="class_boxes_1_1_projectile.html" alt="Boxes::Projectile" shape="rect" coords="203,280,396,304"/>
-<area href="class_defined_object.html" alt="DefinedObject" shape="rect" coords="203,336,396,360"/>
-<area href="class_force_reg_object.html" alt="ForceRegObject" shape="rect" coords="203,392,396,416"/>
-<area href="class_forces_object.html" alt="ForcesObject" shape="rect" coords="203,448,396,472"/>
-<area href="class_killer_engine_1_1_environment_object.html" alt="KillerEngine::EnvironmentObject" shape="rect" coords="203,504,396,528"/>
-<area href="class_killer_engine_1_1_glyph.html" alt="KillerEngine::Glyph" shape="rect" coords="203,560,396,584"/>
-<area href="class_menu_selector.html" alt="MenuSelector" shape="rect" coords="203,616,396,640"/>
-<area href="class_object.html" alt="Object" shape="rect" coords="203,672,396,696"/>
-<area href="class_object3_d.html" alt="Object3D" shape="rect" coords="203,728,396,752"/>
-<area href="class_test_level_defined_game_object.html" alt="TestLevelDefinedGameObject" shape="rect" coords="203,784,396,808"/>
+<area href="class_boxes_1_1_payload.html" alt="Boxes::Payload" shape="rect" coords="203,280,396,304"/>
+<area href="class_boxes_1_1_projectile.html" alt="Boxes::Projectile" shape="rect" coords="203,336,396,360"/>
+<area href="class_defined_object.html" alt="DefinedObject" shape="rect" coords="203,392,396,416"/>
+<area href="class_force_reg_object.html" alt="ForceRegObject" shape="rect" coords="203,448,396,472"/>
+<area href="class_forces_object.html" alt="ForcesObject" shape="rect" coords="203,504,396,528"/>
+<area href="class_killer_engine_1_1_environment_object.html" alt="KillerEngine::EnvironmentObject" shape="rect" coords="203,560,396,584"/>
+<area href="class_killer_engine_1_1_glyph.html" alt="KillerEngine::Glyph" shape="rect" coords="203,616,396,640"/>
+<area href="class_menu_selector.html" alt="MenuSelector" shape="rect" coords="203,672,396,696"/>
+<area href="class_object.html" alt="Object" shape="rect" coords="203,728,396,752"/>
+<area href="class_object3_d.html" alt="Object3D" shape="rect" coords="203,784,396,808"/>
+<area href="class_test_level_defined_game_object.html" alt="TestLevelDefinedGameObject" shape="rect" coords="203,840,396,864"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -354,14 +355,20 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetUVList</b> (std::v
 void&#160;</td><td class="memItemRight" valign="bottom"><b>AddUV</b> (<a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> val)</td></tr>
 <tr class="separator:a2911805950435aa0d755c0e872822a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a05e8f2ad431a066761d302a7ecfca93e"><td class="memItemLeft" align="right" valign="top"><a id="a05e8f2ad431a066761d302a7ecfca93e"></a>
-<a class="el" href="class_killer_math_1_1_point.html">KM::Point</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>_AccessPosition</b> (void)</td></tr>
-<tr class="separator:a05e8f2ad431a066761d302a7ecfca93e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2b75b003f8d58d740447e5f78e5625f"><td class="memItemLeft" align="right" valign="top"><a id="ae2b75b003f8d58d740447e5f78e5625f"></a>
-<a class="el" href="class_killer_math_1_1_quaternion.html">KM::Quaternion</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>_AccessOrientation</b> (void)</td></tr>
-<tr class="separator:ae2b75b003f8d58d740447e5f78e5625f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a61f771edc00e73403d2609f2f84305d8"><td class="memItemLeft" align="right" valign="top"><a id="a61f771edc00e73403d2609f2f84305d8"></a>
+<a class="el" href="class_killer_math_1_1_point.html">KM::Point</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_position</b></td></tr>
+<tr class="separator:a61f771edc00e73403d2609f2f84305d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91ec7e5da9913ae534edb37001e152df"><td class="memItemLeft" align="right" valign="top"><a id="a91ec7e5da9913ae534edb37001e152df"></a>
+<a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_scale</b></td></tr>
+<tr class="separator:a91ec7e5da9913ae534edb37001e152df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65d6f0bd07df1667782a7da56d680b3d"><td class="memItemLeft" align="right" valign="top"><a id="a65d6f0bd07df1667782a7da56d680b3d"></a>
+<a class="el" href="class_killer_math_1_1_quaternion.html">KM::Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_orientation</b></td></tr>
+<tr class="separator:a65d6f0bd07df1667782a7da56d680b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a069f696b45743ccd6a7fa86e4e0142a9"><td class="memItemLeft" align="right" valign="top"><a id="a069f696b45743ccd6a7fa86e4e0142a9"></a>
+<a class="el" href="class_killer_engine_1_1_color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_color</b></td></tr>
+<tr class="separator:a069f696b45743ccd6a7fa86e4e0142a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -392,18 +399,6 @@ std::vector&lt; <a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46
 <tr class="memitem:a433adc835e55d094d890f36244295437"><td class="memItemLeft" align="right" valign="top"><a id="a433adc835e55d094d890f36244295437"></a>
 <a class="el" href="class_killer_math_1_1_matrix4.html">KM::Matrix4</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_modelTOWorldCache</b></td></tr>
 <tr class="separator:a433adc835e55d094d890f36244295437"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61f771edc00e73403d2609f2f84305d8"><td class="memItemLeft" align="right" valign="top"><a id="a61f771edc00e73403d2609f2f84305d8"></a>
-<a class="el" href="class_killer_math_1_1_point.html">KM::Point</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_position</b></td></tr>
-<tr class="separator:a61f771edc00e73403d2609f2f84305d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91ec7e5da9913ae534edb37001e152df"><td class="memItemLeft" align="right" valign="top"><a id="a91ec7e5da9913ae534edb37001e152df"></a>
-<a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_scale</b></td></tr>
-<tr class="separator:a91ec7e5da9913ae534edb37001e152df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65d6f0bd07df1667782a7da56d680b3d"><td class="memItemLeft" align="right" valign="top"><a id="a65d6f0bd07df1667782a7da56d680b3d"></a>
-<a class="el" href="class_killer_math_1_1_quaternion.html">KM::Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_orientation</b></td></tr>
-<tr class="separator:a65d6f0bd07df1667782a7da56d680b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a069f696b45743ccd6a7fa86e4e0142a9"><td class="memItemLeft" align="right" valign="top"><a id="a069f696b45743ccd6a7fa86e4e0142a9"></a>
-<a class="el" href="class_killer_engine_1_1_color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_color</b></td></tr>
-<tr class="separator:a069f696b45743ccd6a7fa86e4e0142a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a10c3dfe4528909783dfdb26dc035e5"><td class="memItemLeft" align="right" valign="top"><a id="a3a10c3dfe4528909783dfdb26dc035e5"></a>
 shared_ptr&lt; <a class="el" href="class_killer_engine_1_1_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_texture</b></td></tr>
 <tr class="separator:a3a10c3dfe4528909783dfdb26dc035e5"><td class="memSeparator" colspan="2">&#160;</td></tr>

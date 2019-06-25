@@ -4,7 +4,7 @@ var class_killer_engine_1_1_level =
     [ "~Level", "class_killer_engine_1_1_level.html#a3164b75538259d026c034927e977c43b", null ],
     [ "ActivateBackgroundColor", "class_killer_engine_1_1_level.html#a29500a40202e95e5f477cbfac0341655", null ],
     [ "AddObjectToLevel", "class_killer_engine_1_1_level.html#a6c25717c005902808795dee87bba6cdc", null ],
-    [ "AddObjectToLevel", "class_killer_engine_1_1_level.html#ae621359857c8993e0cbf40fbb793c1e8", null ],
+    [ "AddObjectToLevel", "class_killer_engine_1_1_level.html#a12703dec5e535dba37f62b4891f391d1", null ],
     [ "AddTextToLevel", "class_killer_engine_1_1_level.html#a3be6f68566fa11a1d6ed74b6a20c7113", null ],
     [ "AddTextToLevel", "class_killer_engine_1_1_level.html#a9a737b562d1979d1d652b5256b675c15", null ],
     [ "GetBottomBorder", "class_killer_engine_1_1_level.html#a6c02892ad4f551016bd305f82e03614d", null ],

@@ -127,6 +127,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>SetType</b> (Projecti
 <tr class="memitem:aaf233fac4eba82b93870da1e0b8cebb2"><td class="memItemLeft" align="right" valign="top"><a id="aaf233fac4eba82b93870da1e0b8cebb2"></a>
 ProjectileType&#160;</td><td class="memItemRight" valign="bottom"><b>GetType</b> (void)</td></tr>
 <tr class="separator:aaf233fac4eba82b93870da1e0b8cebb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf9c4a381450021ecba8d8768855f15a"><td class="memItemLeft" align="right" valign="top"><a id="abf9c4a381450021ecba8d8768855f15a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AddScaledVelocity</b> (const <a class="el" href="class_killer_math_1_1_vector4.html">KM::Vector4</a> &amp;vec, <a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a> scale)</td></tr>
+<tr class="separator:abf9c4a381450021ecba8d8768855f15a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cc18b740d675ade7483dc43b9c3cc38"><td class="memItemLeft" align="right" valign="top"><a id="a6cc18b740d675ade7483dc43b9c3cc38"></a>
+KP::p_RigidBody2D&#160;</td><td class="memItemRight" valign="bottom"><b>GetRigidBody</b> (void)</td></tr>
+<tr class="separator:a6cc18b740d675ade7483dc43b9c3cc38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_killer_engine_1_1_game_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_killer_engine_1_1_game_object')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_killer_engine_1_1_game_object.html">KillerEngine::GameObject</a></td></tr>
 <tr class="memitem:a1bfa4ebd9416925b75c10ecda05bfae6 inherit pub_methods_class_killer_engine_1_1_game_object"><td class="memItemLeft" align="right" valign="top"><a id="a1bfa4ebd9416925b75c10ecda05bfae6"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>GameObject</b> (const <a class="el" href="class_killer_engine_1_1_game_object.html">GameObject</a> &amp;obj)</td></tr>
@@ -362,25 +368,37 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a9e33c13dbe288cd0fc1f0ec0f1e8942e"><td class="memItemLeft" align="right" valign="top"><a id="a9e33c13dbe288cd0fc1f0ec0f1e8942e"></a>
 <a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_maxDistance</b></td></tr>
 <tr class="separator:a9e33c13dbe288cd0fc1f0ec0f1e8942e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe7f7de8b9e955861d8fd03758dae197"><td class="memItemLeft" align="right" valign="top"><a id="afe7f7de8b9e955861d8fd03758dae197"></a>
-<a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_distanceTraveled</b></td></tr>
-<tr class="separator:afe7f7de8b9e955861d8fd03758dae197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3afe6f2aff882218f98abb507cfe570"><td class="memItemLeft" align="right" valign="top"><a id="ab3afe6f2aff882218f98abb507cfe570"></a>
+<a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_sqrDistance</b></td></tr>
+<tr class="separator:ab3afe6f2aff882218f98abb507cfe570"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c50aeee79368d07f49627debb95a66f"><td class="memItemLeft" align="right" valign="top"><a id="a8c50aeee79368d07f49627debb95a66f"></a>
 <a class="el" href="_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b">F32</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_speedScale</b></td></tr>
 <tr class="separator:a8c50aeee79368d07f49627debb95a66f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af422d7340bc78a222858219813fcff74"><td class="memItemLeft" align="right" valign="top"><a id="af422d7340bc78a222858219813fcff74"></a>
+<a class="el" href="class_killer_math_1_1_point.html">KM::Point</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_startingLocation</b></td></tr>
+<tr class="separator:af422d7340bc78a222858219813fcff74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa262a24eb64bc1679a88cbdcf4db16e6"><td class="memItemLeft" align="right" valign="top"><a id="aa262a24eb64bc1679a88cbdcf4db16e6"></a>
 ProjectileType&#160;</td><td class="memItemRight" valign="bottom"><b>_type</b></td></tr>
 <tr class="separator:aa262a24eb64bc1679a88cbdcf4db16e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac612d542a5eb61de65be5def5f1cf21a"><td class="memItemLeft" align="right" valign="top"><a id="ac612d542a5eb61de65be5def5f1cf21a"></a>
+KP::p_RigidBody2D&#160;</td><td class="memItemRight" valign="bottom"><b>p_rigidBody</b></td></tr>
+<tr class="separator:ac612d542a5eb61de65be5def5f1cf21a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pro_methods_class_killer_engine_1_1_game_object"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_killer_engine_1_1_game_object')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_killer_engine_1_1_game_object.html">KillerEngine::GameObject</a></td></tr>
-<tr class="memitem:a05e8f2ad431a066761d302a7ecfca93e inherit pro_methods_class_killer_engine_1_1_game_object"><td class="memItemLeft" align="right" valign="top"><a id="a05e8f2ad431a066761d302a7ecfca93e"></a>
-<a class="el" href="class_killer_math_1_1_point.html">KM::Point</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>_AccessPosition</b> (void)</td></tr>
-<tr class="separator:a05e8f2ad431a066761d302a7ecfca93e inherit pro_methods_class_killer_engine_1_1_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2b75b003f8d58d740447e5f78e5625f inherit pro_methods_class_killer_engine_1_1_game_object"><td class="memItemLeft" align="right" valign="top"><a id="ae2b75b003f8d58d740447e5f78e5625f"></a>
-<a class="el" href="class_killer_math_1_1_quaternion.html">KM::Quaternion</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>_AccessOrientation</b> (void)</td></tr>
-<tr class="separator:ae2b75b003f8d58d740447e5f78e5625f inherit pro_methods_class_killer_engine_1_1_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_class_killer_engine_1_1_game_object"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_killer_engine_1_1_game_object')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_killer_engine_1_1_game_object.html">KillerEngine::GameObject</a></td></tr>
+<tr class="memitem:a61f771edc00e73403d2609f2f84305d8 inherit pro_attribs_class_killer_engine_1_1_game_object"><td class="memItemLeft" align="right" valign="top"><a id="a61f771edc00e73403d2609f2f84305d8"></a>
+<a class="el" href="class_killer_math_1_1_point.html">KM::Point</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_position</b></td></tr>
+<tr class="separator:a61f771edc00e73403d2609f2f84305d8 inherit pro_attribs_class_killer_engine_1_1_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91ec7e5da9913ae534edb37001e152df inherit pro_attribs_class_killer_engine_1_1_game_object"><td class="memItemLeft" align="right" valign="top"><a id="a91ec7e5da9913ae534edb37001e152df"></a>
+<a class="el" href="class_killer_math_1_1_vector3.html">KM::Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_scale</b></td></tr>
+<tr class="separator:a91ec7e5da9913ae534edb37001e152df inherit pro_attribs_class_killer_engine_1_1_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65d6f0bd07df1667782a7da56d680b3d inherit pro_attribs_class_killer_engine_1_1_game_object"><td class="memItemLeft" align="right" valign="top"><a id="a65d6f0bd07df1667782a7da56d680b3d"></a>
+<a class="el" href="class_killer_math_1_1_quaternion.html">KM::Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_orientation</b></td></tr>
+<tr class="separator:a65d6f0bd07df1667782a7da56d680b3d inherit pro_attribs_class_killer_engine_1_1_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a069f696b45743ccd6a7fa86e4e0142a9 inherit pro_attribs_class_killer_engine_1_1_game_object"><td class="memItemLeft" align="right" valign="top"><a id="a069f696b45743ccd6a7fa86e4e0142a9"></a>
+<a class="el" href="class_killer_engine_1_1_color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_color</b></td></tr>
+<tr class="separator:a069f696b45743ccd6a7fa86e4e0142a9 inherit pro_attribs_class_killer_engine_1_1_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>F:/Projects/Killer_Engine/Tests/UnitTests/Headers/Boxes/<a class="el" href="_projectile_8h_source.html">Projectile.h</a></li>

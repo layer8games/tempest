@@ -4,7 +4,7 @@ var searchData=
   ['particlecontactresolver',['ParticleContactResolver',['../class_killer_physics_1_1_particle_contact_resolver.html',1,'KillerPhysics']]],
   ['pause',['Pause',['../class_killer_engine_1_1_audio_source.html#a45984191cdd671c18d2f4739875f16f8',1,'KillerEngine::AudioSource']]],
   ['pausesource',['PauseSource',['../class_killer_engine_1_1_audio_manager.html#a7ed5a82d8b52ba1377059d9219db973d',1,'KillerEngine::AudioManager']]],
-  ['payload',['Payload',['../struct_boxes_1_1_payload.html',1,'Boxes']]],
+  ['payload',['Payload',['../class_boxes_1_1_payload.html',1,'Boxes']]],
   ['physicsfactory',['PhysicsFactory',['../class_killer_physics_1_1_physics_factory.html',1,'KillerPhysics']]],
   ['play',['Play',['../class_killer_engine_1_1_audio_source.html#adf8f5e5630d410f768ac6de07fef9048',1,'KillerEngine::AudioSource']]],
   ['playsource',['PlaySource',['../class_killer_engine_1_1_audio_manager.html#acb359fdef9a0e756ae3d61d31941e685',1,'KillerEngine::AudioManager']]],
