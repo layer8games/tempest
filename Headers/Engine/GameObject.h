@@ -92,7 +92,7 @@ namespace KillerEngine
 		inline const KM::Matrix4 GetModelMatrixRot(void) const
 		{
 			KM::Matrix4 mat = _modelTOWorldCache; 
-			mat.Translate(0.0f, 0.0f, 0.0f);
+			mat.SetTranslate(0.0f, 0.0f, 0.0f);
 			return mat;
 		}
 
