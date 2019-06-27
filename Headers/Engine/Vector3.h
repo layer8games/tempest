@@ -66,7 +66,12 @@ namespace KillerMath
 	Copy Constructor. It explicitly copies all data into new Vector3. 
 	\param v is the Vector3 to copy. 
 */
+		//Add explicit key word and fix errors
 		Vector3(const Vector3& v);
+
+/// Copy Constructor. It explicitely copies all data into new Vector3 from a Point
+/// \param p is the Point to copy.
+		Vector3(const Point& p);
 
 /*!
 	Convert a Vector4 into a Vector3.

@@ -39,7 +39,14 @@ _data{v[x], v[y], v[z]}
 
 Vector3::Vector3(const Vector4& v)
 :
+_2D(v.Is2D()),
 _data{v[x], v[y], v[z]}
+{  }
+
+Vector3::Vector3(const Point& p)
+:
+_2D(p.Is2D()),
+_data{p[x], p[y], p[z]}
 {  }
 
 Vector3::~Vector3(void)

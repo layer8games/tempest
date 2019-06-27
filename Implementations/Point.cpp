@@ -215,6 +215,32 @@ Point& Point::operator+=(const Vector4& vec)
 	return *this;
 }
 
+Point Point::operator+(const Vector3& vec) const
+{
+	if (_2D)
+	{
+		return Point(_data[x] + vec[x],
+					 _data[y] + vec[y]);
+	}
+
+	return Point(_data[x] + vec[x],
+				 _data[y] + vec[y],
+				 _data[z] + vec[z]);
+}
+
+Point& Point::operator+=(const Vector3& vec)
+{
+	_data[x] += vec[x];
+	_data[y] += vec[y];
+
+	if (!_2D)
+	{
+		_data[z] += vec[z];
+	}
+
+	return *this;
+}
+
 Point Point::operator+(shared_ptr<Point> point) const
 {
 	const F32* vals = point->GetElems();

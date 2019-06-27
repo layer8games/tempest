@@ -246,6 +246,10 @@ namespace KillerMath
 */
 		Point operator+(const Vector4& vec) const;
 
+	///Point addtion. This is done componentwise.
+	///\param ved is added into a new Point.
+		Point operator+(const Vector3& vec) const;
+
 /*!
 	Point addition equal. This is done componentwise.
 	\param point is the Point to add into this Point.
@@ -257,6 +261,10 @@ namespace KillerMath
 	\param vec is the Vector4 to add into this Point.
 */
 		Point& operator+=(const Vector4& vec);
+
+	///Point addition equal. This is done componentwise.
+	///\param vec is the Vector4 to add into this Point.
+		Point& operator+=(const Vector3& vec);
 
 //===== Add by scalar =====
 /*!
