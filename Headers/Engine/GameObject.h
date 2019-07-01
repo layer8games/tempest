@@ -13,10 +13,12 @@
 #include <Engine/Quaternion.h>
 #include <Engine/Texture.h>
 #include <Engine/ShaderManager.h>
+#include <Engine/AABB.h>
 
 namespace KM = KillerMath;
+namespace KC = KillerCollisions;
 
-#include <Extern/rapidxml.hpp>
+#include <rapidxml.hpp>
 
 //===== STL inludes =====
 #include <vector>
@@ -119,7 +121,7 @@ namespace KillerEngine
 
 		inline void SetActive(bool state)
 		{
-			if(!_activeRender || !_activeRender)
+			if(!_activeUpdate || !_activeRender)
 			{
 				v_Awake();
 			}
@@ -204,12 +206,14 @@ namespace KillerEngine
 		inline void SetPosition(const KM::Point& pos)
 		{
 			_position = pos;
+			_boundingBox.SetCenter(_position);
 		}
 
 		inline void SetPosition(F32 xVal, F32 yVal)
 		{
 			_position[0] = xVal;
 			_position[1] = yVal;
+			_boundingBox.SetCenter(_position);
 		}
 
 		inline void SetPosition(F32 xVal, F32 yVal, F32 zVal)
@@ -217,36 +221,43 @@ namespace KillerEngine
 			_position[x] = xVal;
 			_position[y] = yVal;
 			_position[z] = zVal;
+			_boundingBox.SetCenter(_position);
 		}
 
 		inline void SetPositionX(F32 xval)
 		{
 			_position[0] = xval;
+			_boundingBox.SetCenter(_position);
 		}
 
 		inline void SetPositionY(F32 yVal)
 		{
 			_position[1] = yVal;
+			_boundingBox.SetCenter(_position);
 		}
 
 		inline void SetPositionZ(F32 zVal)
 		{
 			_position[2] = zVal;
+			_boundingBox.SetCenter(_position);
 		}
 
 		inline void AddScaledPosition(const KM::Vector4& pos, F32 scale)
 		{
 			_position.AddScaledVector(pos, scale);
+			_boundingBox.SetCenter(_position);
 		}
 
 		inline void AddScaledPosition(const KM::Vector3& pos, F32 scale)
 		{
 			_position.AddScaledVector(pos, scale);
+			_boundingBox.SetCenter(_position);
 		}
 
 		inline void AddScaledPosition(const KM::Point& point, F32 scale)
 		{
 			_position.AddScaledPoint(point, scale);
+			_boundingBox.SetCenter(_position);
 		}
 
 //===== Scale =====
@@ -258,24 +269,28 @@ namespace KillerEngine
 		inline void SetScale(const KM::Vector3& scale)
 		{
 			_scale = scale;
+			_boundingBox.SetHalfDimensions(_scale);
 		}
 
 		inline void SetScale(F32 val)
 		{
 			_scale = val;
+			_boundingBox.SetHalfDimensions(_scale);
 		}
 
 		inline void SetScale(F32 xVal, F32 yVal)
 		{
 			_scale[0] = xVal;
 			_scale[1] = yVal;
+			_boundingBox.SetHalfDimensions(_scale);
 		}
 
 		inline void SetScale(F32 xVal, F32 yVal, F32 zVal)
 		{
 			_scale[0] = xVal;
 			_scale[1] = yVal;
-			_scale[2] = zVal;	
+			_scale[2] = zVal;
+			_boundingBox.SetHalfDimensions(_scale);
 		}
 
 //===== Orientation =====
@@ -328,9 +343,27 @@ namespace KillerEngine
 			_color[2] = blue;
 		}
 
+		inline void SetColor(F32 val)
+		{
+			_color[0] = val;
+			_color[1] = val;
+			_color[2] = val;
+		}
+
 		inline const Color& GetColor(void) const
 		{
 			return _color;
+		}
+
+//===== AABB Bounding Volume =====
+		inline bool OverlapCheck(const shared_ptr<GameObject> other)
+		{
+			return _boundingBox.TestCollision(other->GetBounding());
+		}
+
+		inline const KC::AABB& GetBounding(void) const
+		{
+			return _boundingBox;
 		}
 
 //===== Texture =====
@@ -491,15 +524,7 @@ namespace KillerEngine
 		inline void AddUV(F32 val)
 		{
 			_uvList.push_back(val);
-		}
-
-	protected:
-		KM::Point 	   _position;
-		KM::Vector3    _scale;
-		KM::Quaternion _orientation;
-		Color 		   _color;
-
-		
+		}	
 
 	private:
 		std::vector<U32> _SplitU32(string text, char delim) const;
@@ -515,14 +540,16 @@ namespace KillerEngine
 //Data
 //
 //==========================================================================================================================		
-		static U32				_nextID;
-		
+		static U32				_nextID;	
 		std::vector<Vertex> 	_vertices;
 		std::vector<U32> 		_indices;
 		std::vector<F32> 		_uvList;
-		KM::Matrix4 			_modelTOWorldCache;
-		
-		
+		KM::Matrix4 			_modelTOWorldCache;		
+		KM::Point 				_position;
+		KM::Vector3				_scale;
+		KM::Quaternion			_orientation;
+		Color 					_color;
+		KC::AABB				_boundingBox;
 		shared_ptr<Texture>		_texture;
 		shared_ptr<Shader>		_shader;
 		bool					_activeUpdate;

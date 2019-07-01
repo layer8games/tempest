@@ -113,6 +113,15 @@ namespace KillerEngine
 			return _data; 
 		}
 
+/// Set all values in the color to a single value.
+/// \param val is the value to set rgb to.
+		inline void Set(F32 val)
+		{
+			_data[0] = val;
+			_data[1] = val;
+			_data[2] = val;
+		}
+
 	private:
 		bool _alpha;
 		F32 _data[4];
