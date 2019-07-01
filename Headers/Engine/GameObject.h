@@ -67,6 +67,9 @@ namespace KillerEngine
 
 		virtual void v_InitBuffers(void);
 
+		virtual void v_Awake(void)
+		{ }
+
 //==========================================================================================================================
 //
 //Functions
@@ -116,12 +119,18 @@ namespace KillerEngine
 
 		inline void SetActive(bool state)
 		{
+			if(!_activeRender || !_activeRender)
+			{
+				v_Awake();
+			}
+			
 			_activeUpdate = state;
 			_activeRender = state;
 		}
 
 		inline void SetActive(void)
 		{
+			v_Awake();
 			_activeUpdate = true;
 			_activeRender = true;
 		}
