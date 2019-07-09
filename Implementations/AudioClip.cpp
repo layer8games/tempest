@@ -37,9 +37,15 @@ AudioClip::~AudioClip(void)
 //==========================================================================================================================
 void AudioClip::LoadWAV(string filename)
 {
-	AudioManager::Instance();
+	//AudioManager::Instance();
 
     std::ifstream in(filename.c_str());
+
+	if(!in)
+	{
+		ErrorManager::Instance()->SetError(AUDIO, "AudioClip::LoadWAV: Unable to open file " + filename);
+		return;
+	}
 
 	//Get the total size of the file
 	in.seekg(0, in.end);
@@ -118,13 +124,15 @@ void AudioClip::LoadWAV(string filename)
         ErrorManager::Instance()->SetError(AUDIO, "AudioClip: LoadWAV: Failed to generate buffer! " + AudioManager::Instance()->GetALCerror(error));
     }
 
+	std::cout << "format " << _alFormat << std::endl;
+
     alBufferData(_bufferID, _alFormat, _data, _size, _sampleRate);
 
     error = alGetError();
 
     if(error != AL_NO_ERROR)
     {
-        ErrorManager::Instance()->SetError(AUDIO, "AudioClip: LoadWAV: Failed to loaded data into buffer! " + AudioManager::Instance()->GetALCerror(error));
+        ErrorManager::Instance()->SetError(AUDIO, "AudioClip: LoadWAV: Failed to load data into buffer! " + AudioManager::Instance()->GetALCerror(error));
     }
 }
 

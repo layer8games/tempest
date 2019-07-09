@@ -94,6 +94,9 @@ BOOST_AUTO_TEST_CASE(UITests)
 
 	KE::Engine::Instance()->Init(wndWidth, wndHeight, wndTitle, wndFullScreen);
 
+	KE::AudioManager::Instance();
+	KE::ErrorManager::Instance()->DisplayErrors();
+
 //=====Pre-Load Assets=====	
 	KE::TextureManager::Instance()->LoadTexture(100, "../Assets/Textures/Boxes/red_box_32_32.png");
 	KE::TextureManager::Instance()->LoadTexture(101, "../Assets/Textures/Boxes/green_box_32_32.png");
@@ -119,6 +122,8 @@ BOOST_AUTO_TEST_CASE(UITests)
 	KE::ErrorManager::Instance()->DisplayErrors();
 
 	KE::AudioManager::Instance()->SetListener();
+
+	
 	
 	shared_ptr<KE::AudioClip> skate = make_shared<KE::AudioClip>();
 	skate->LoadWAV("../Assets/Audio/Komiku_04_Skate.wav");
