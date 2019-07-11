@@ -11,7 +11,7 @@ ShaderManager::ShaderManager(void)
 _loadedShaders()
 {
 	//TODO: This needs re-thought out. It wont work in Game Projects
-	_LoadDefaultShaders();
+	//_LoadDefaultShaders();
 }
 
 ShaderManager::~ShaderManager(void)

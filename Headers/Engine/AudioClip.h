@@ -172,4 +172,5 @@ namespace KillerEngine
 		char* _data;			///< Data buffer for the file. This is the full file, headers included.
 		
 	};//end Class
+	typedef shared_ptr<AudioClip> p_AudioClip;
 }//end Namespace

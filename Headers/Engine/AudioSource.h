@@ -202,4 +202,5 @@ namespace KillerEngine
 		KM::Vector3 _velocity;		 ///< World space velocity of the source.
 		shared_ptr<AudioClip> _clip; ///< AudioClip holds the buffer the plays the sounds. Assume one clip per source for now.
 	};//end Class
+	typedef shared_ptr<AudioSource> p_AudioSource;
 }//end Namespace
