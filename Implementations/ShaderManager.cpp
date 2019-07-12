@@ -90,6 +90,7 @@ shared_ptr<Shader> ShaderManager::GetShader(U32 id)
 //==========================================================================================================================
 void ShaderManager::_LoadDefaultShaders(void)
 {
+/*
 	//===== Add Sprite Shader =====
 	shared_ptr<Shader> spriteShader(new Shader());
 	std::vector<ShaderData> shaderData;
@@ -123,5 +124,5 @@ void ShaderManager::_LoadDefaultShaders(void)
 	glyphShader->LoadShader(shaderData);
 
 	AddShader(GLYPH, glyphShader);
-
+*/
 }
