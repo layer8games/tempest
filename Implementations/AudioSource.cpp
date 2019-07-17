@@ -1,4 +1,5 @@
 #include <Engine/AudioSource.h>
+#include <iostream>
 
 using namespace KillerEngine;
 //==========================================================================================================================
@@ -8,7 +9,6 @@ using namespace KillerEngine;
 //==========================================================================================================================
 AudioSource::AudioSource(void)
 :
-_playing(false),
 _looping(false),
 _sourceID(0),
 _pitch(1.0f),
@@ -52,9 +52,25 @@ AudioSource::~AudioSource(void)
 //Functions
 //
 //==========================================================================================================================
+bool AudioSource::GetPlaying(void) const
+{
+	ALint state = _GetPlayState();
+
+	if(state == AL_PLAYING)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
 void AudioSource::Play(void)
 {
-	if(_clip != nullptr && !_playing)
+	ALint state = _GetPlayState();
+	
+	if(_clip != nullptr && state == AL_INITIAL || state == AL_STOPPED || state == AL_PAUSED)
 	{
 		alSourcePlay(_sourceID);
 
@@ -63,13 +79,14 @@ void AudioSource::Play(void)
 		{
 			ErrorManager::Instance()->SetError(AUDIO, "AudioSource::Play: Unable to play clip! " + AudioManager::Instance()->GetALCerror(error));
 		}
-		_playing = true;
 	}
 }
 
 void AudioSource::Stop(void)
 {
-	if(_clip != nullptr && _playing)
+	ALint state = _GetPlayState();
+	
+	if(_clip != nullptr && state == AL_PLAYING)
 	{
 		alSourceStop(_sourceID);
 		
@@ -78,14 +95,14 @@ void AudioSource::Stop(void)
 		{
 			ErrorManager::Instance()->SetError(AUDIO, "AudioSource::Pause: Unable to stop clip! " + AudioManager::Instance()->GetALCerror(error));
 		}
-
-		_playing = false;
 	}
 }
 
 void AudioSource::Pause(void)
 {
-	if(_clip != nullptr && _playing)
+	ALint state = _GetPlayState();
+	
+	if(_clip != nullptr && state == AL_PLAYING)
 	{
 		alSourcePause(_sourceID);
 		
@@ -94,8 +111,6 @@ void AudioSource::Pause(void)
 		{
 			ErrorManager::Instance()->SetError(AUDIO, "AudioSource::Pause: Unable to pause clip! " + AudioManager::Instance()->GetALCerror(error));
 		}
-
-		_playing = false;
 	}
 }
 
@@ -108,7 +123,6 @@ void AudioSource::Restart(void)
 	{
 		ErrorManager::Instance()->SetError(AUDIO, "AudioSource::Play: Unable to play clip! " + AudioManager::Instance()->GetALCerror(error));
 	}
-	_playing = true;
 }
 
 void AudioSource::AddClip(shared_ptr<AudioClip> clip)
@@ -221,4 +235,11 @@ void AudioSource::SetVelocity(F32 xVal, F32 yVal, F32 zVal)
 	{
 		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::Constructor: There was an error setting source velocity! " + AudioManager::Instance()->GetALCerror(error));
 	}
+}
+
+ALint AudioSource::_GetPlayState(void) const
+{
+	ALint state;
+	alGetSourcei(_sourceID, AL_SOURCE_STATE, &state);
+	return state;
 }

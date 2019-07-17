@@ -79,10 +79,7 @@ namespace KillerEngine
 /*!
 	Returns true if the clip is already playing. 
 */
-		inline bool GetPlaying(void) const
-		{
-			return _playing;
-		}
+		bool GetPlaying(void) const;
 
 /*!
 	 Sets if the clip should loop as it plays. 
@@ -193,7 +190,13 @@ namespace KillerEngine
 		}
 
 	private:
-		bool _playing;				 ///< True if the source is currently playing.
+//==========================================================================================================================
+//
+//Private Functions
+//
+//==========================================================================================================================		
+		S32 _GetPlayState(void) const;
+		
 		bool _looping;				 ///< True if the source should loop when it reaches the end.
 		U32 _sourceID;				 ///< OpenAL handle to the source generated in OpenAL.
 		F32 _pitch;					 ///< Pitch level for the source.
