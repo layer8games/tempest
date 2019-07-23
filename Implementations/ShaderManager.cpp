@@ -11,7 +11,7 @@ ShaderManager::ShaderManager(void)
 _loadedShaders()
 {
 	//TODO: This needs re-thought out. It wont work in Game Projects
-	//_LoadDefaultShaders();
+	_LoadDefaultShaders();
 }
 
 ShaderManager::~ShaderManager(void)
@@ -90,7 +90,6 @@ shared_ptr<Shader> ShaderManager::GetShader(U32 id)
 //==========================================================================================================================
 void ShaderManager::_LoadDefaultShaders(void)
 {
-/*
 	//===== Add Sprite Shader =====
 	shared_ptr<Shader> spriteShader(new Shader());
 	std::vector<ShaderData> shaderData;
@@ -124,5 +123,4 @@ void ShaderManager::_LoadDefaultShaders(void)
 	glyphShader->LoadShader(shaderData);
 
 	AddShader(GLYPH, glyphShader);
-*/
 }

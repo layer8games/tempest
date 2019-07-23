@@ -121,4 +121,6 @@ namespace KillerEngine
 		char 		  _character;		///< Raw character that the Glyph represents on screen.
 		CharacterData _characterData;	///< Various data needed to render and position the Glyph.
 	};//end Class
+
+	typedef shared_ptr<Glyph> p_Glyph;
 }//end Namespace

@@ -84,7 +84,7 @@ void Level::AddTextToLevel(const Text& text)
 	//text->SetUniforms("projection", _camera->GetProjectionMatrix4());
 
 	//_textList.push_back(text);
-	std::vector<shared_ptr<Glyph>> v = text.GetCharacterList();
+	std::vector<p_Glyph> v = text.GetCharacterList();
 	for(auto i : v)
 	{
 		AddObjectToLevel(i);
@@ -93,10 +93,20 @@ void Level::AddTextToLevel(const Text& text)
 
 void Level::AddTextToLevel(shared_ptr<Text> text)
 {
-	std::vector<shared_ptr<Glyph>> v = text->GetCharacterList();
+	std::vector<p_Glyph> v = text->GetCharacterList();
 	for(auto i : v)
 	{
 		AddObjectToLevel(i);
+	}
+}
+
+void Level::RemoveTextFromLevel(const Text& text)
+{
+	std::vector<p_Glyph> v = text.GetCharacterList();
+
+	for(auto i : v)
+	{
+		RemoveObjectFromLevel(i->GetID());
 	}
 }
 

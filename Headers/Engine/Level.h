@@ -113,6 +113,10 @@ namespace KillerEngine
 ///	\param text is shared pointer Text to get the Glyphs from.
 		void AddTextToLevel(shared_ptr<Text> text);
 
+/// Removes the Glyphs in a Text from the Level based on their GameObject::_ID
+/// \param text is the Text that contains the Glyphs to remove
+	void RemoveTextFromLevel(const Text& text);
+
 		
 
 ///	Removes the GameObject with id from the Level.

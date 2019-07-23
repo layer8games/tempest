@@ -57,6 +57,7 @@ Text::~Text(void)
 //==========================================================================================================================
 void Text::AddText(string text)
 {
+	_characterList.clear();
 	_text = text;
 	_CreateCharacterList();
 
