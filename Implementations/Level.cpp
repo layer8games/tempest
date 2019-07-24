@@ -110,6 +110,15 @@ void Level::RemoveTextFromLevel(const Text& text)
 	}
 }
 
+void Level::UpdateText(Text& text, string updatedCharacters)
+{
+	RemoveTextFromLevel(text);
+
+	text.AddText(updatedCharacters);
+
+	AddTextToLevel(text);
+}
+
 //=============================================================================
 //
 //RemoveObjectFromLevel

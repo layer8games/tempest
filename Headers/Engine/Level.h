@@ -117,7 +117,11 @@ namespace KillerEngine
 /// \param text is the Text that contains the Glyphs to remove
 	void RemoveTextFromLevel(const Text& text);
 
-		
+/// Update Text to display new Glyphs. This is a wrapper around RemoveTextFromLevel and AddTextToLevel. This will edit the existing 
+/// Text object to have the new string that is passed in.
+/// \param text is the Text that contains the Glyphs to update
+/// \param updatedCharacters is the new string that will be sent to Text::AddText, updating text.
+	void UpdateText(Text& text, string updatedCharacters);
 
 ///	Removes the GameObject with id from the Level.
 ///	\param id of the GameObject to remove.
