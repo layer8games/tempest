@@ -58,11 +58,11 @@ bool AudioSource::GetPlaying(void) const
 
 	if(state == AL_PLAYING)
 	{
-		return false;
+		return true;
 	}
 	else
 	{
-		return true;
+		return false;
 	}
 }
 
