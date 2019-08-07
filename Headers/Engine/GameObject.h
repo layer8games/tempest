@@ -69,8 +69,10 @@ namespace KillerEngine
 
 		virtual void v_InitBuffers(void);
 
-		virtual void v_Awake(void)
-		{ }
+		inline virtual void v_Awake(void)
+		{
+			DefaultAwake();
+		}
 
 //==========================================================================================================================
 //
@@ -525,6 +527,10 @@ namespace KillerEngine
 		{
 			_uvList.push_back(val);
 		}	
+
+	
+	protected:
+		void DefaultAwake(void);
 
 	private:
 		std::vector<U32> _SplitU32(string text, char delim) const;

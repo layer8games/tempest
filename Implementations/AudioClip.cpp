@@ -1,5 +1,4 @@
 #include <Engine/AudioClip.h>
-#include <iostream>
 
 using namespace KillerEngine;
 //==========================================================================================================================
@@ -123,8 +122,6 @@ void AudioClip::LoadWAV(string filename)
     {
         ErrorManager::Instance()->SetError(AUDIO, "AudioClip: LoadWAV: Failed to generate buffer! " + AudioManager::Instance()->GetALCerror(error));
     }
-
-	std::cout << "format " << _alFormat << std::endl;
 
     alBufferData(_bufferID, _alFormat, _data, _size, _sampleRate);
 
