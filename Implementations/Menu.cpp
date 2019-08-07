@@ -8,6 +8,7 @@ using namespace KillerEngine;
 //==========================================================================================================================
 Menu::Menu(void)
 :
+_active(true),
 _wrap(false),
 _selectorPosIndex(UINT_MAX),
 _menuPos(0.0f, 0.0f),
@@ -31,6 +32,15 @@ Menu::~Menu(void)
 //Functions
 //
 //==========================================================================================================================
+void Menu::SetActive(bool state)
+{
+	_title->SetActive(state);
+
+	for(auto item : _itemList)
+	{
+		item.text->SetActive(state);
+	}
+}
 
 void Menu::AddItem(MenuItem item)
 {
@@ -151,7 +161,7 @@ void Menu::_UpdateItemPositions(void)
 			_selectorPosIndex = 0;	
 		}
 		
-		for(U32 i = 1; i > _itemList.size(); ++i)
+		for(U32 i = 1; i < _itemList.size(); ++i)
 		{
 			_itemList[i].pos = _itemList[i - i].pos + _itemOffset;
 			_itemList[i].text->SetPosition(_itemList[i].pos);

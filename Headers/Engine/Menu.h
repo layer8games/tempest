@@ -61,6 +61,18 @@ namespace KillerEngine
 //Fucntions
 //
 //==========================================================================================================================
+///	Returns if the Menu and all its items are active
+		inline bool GetActive(void) const
+		{
+			return _active;
+		}
+
+
+///	Sets the Menu and all its items to the given state, true = active, false = not active
+///	\param state is the new state you wish to set.
+		void SetActive(bool state);
+
+
 /*!
 	 Adds a new MenuItem to the bottom of the list. If no MenuItems are present yet, it sets the first item below the title, 
 	 if one is present. It also set up the selector position, if it hasn't been set yet. 
@@ -316,6 +328,7 @@ namespace KillerEngine
 //Data
 //
 //==========================================================================================================================
+		bool					_active;			///< Sets if the menu and all its items are active for rendering and update.
 		bool					_wrap;				///< Configures if the selector should wrap around the Menu or not. True == wrap, false == Don't wrap.
 		U32 					_selectorPosIndex;	///< Index that tracks the location of the selector in relation to _itemList.
 		KM::Point 				_menuPos;			///< Position of the Menu. Used to update everything in Menu::_UpdateItemPositions

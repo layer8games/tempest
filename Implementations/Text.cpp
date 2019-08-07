@@ -33,7 +33,7 @@ _color(1.0f)
 	AddText(text);
 }
 
-Text::Text(string text, shared_ptr<Font> font)
+Text::Text(string text, p_Font font)
 :
 _active(true),
 _totalWidth(0.0f),
@@ -44,6 +44,21 @@ _characterList(),
 _scale(1.0f, 1.0f),
 _color(1.0f)
 {
+	AddText(text);
+}
+
+Text::Text(string text, Font& font)
+	:
+	_active(true),
+	_totalWidth(0.0f),
+	_pos(0.0f),
+	_text(),
+	_font(),
+	_characterList(),
+	_scale(1.0f, 1.0f),
+	_color(1.0f)
+{
+	_font = p_Font(&font);
 	AddText(text);
 }
 
@@ -74,7 +89,7 @@ void Text::AddText(string text)
 		
 }//End AddText
 
-void Text::SetFont(shared_ptr<Font> font)
+void Text::SetFont(p_Font font)
 {
 	if(!font->GetInitialized())
 	{

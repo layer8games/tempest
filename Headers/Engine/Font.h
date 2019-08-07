@@ -177,5 +177,6 @@ typedef std::map<char, CharacterData> CharacterDataMap;
 		U32 	 		 _fontSize;			///< Size of the Font. Should be used like a text font for weight. 
 		string   		 _fontName;			///< Name of the font. Not used for anything really. 
 		CharacterDataMap _characterGlyphs; 	///< All data from .fnt file stored in a RenderText can use for placement.
-	};
-}
+	};//End Font
+	typedef shared_ptr<Font> p_Font;
+}//End namespace

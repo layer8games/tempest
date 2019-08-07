@@ -53,7 +53,13 @@ namespace KillerEngine
 	\param text are the desires characters. 
 	\param font is the given Font. Should come from the FontManager. 
 */
-		Text(string text, shared_ptr<Font> font);
+		Text(string text, p_Font font);
+
+
+///	Creates a Text with Glyphs for each character in a string with a given Font. Calls Text::AddText to set up everything.
+///	\param text are the desires characters.
+///	\param font is the given Font. Should come from the FontManager.
+		Text(string text, Font& font);
 
 /*!
 	Default destructor. No function.
@@ -169,7 +175,7 @@ namespace KillerEngine
 	Sets the font for the Text and all of the Glyphs, if there are any. 
 	\param font is the new Font that will be saved in this Text.
 */
-		void SetFont(shared_ptr<Font> font);
+		void SetFont(p_Font font);
 
 /*! 
 	Sets the font for the Text and all of the Glyphs, if there are any. 
@@ -177,7 +183,7 @@ namespace KillerEngine
 */
 		inline void SetFont(Font& font) 
 		{ 
-			_font = shared_ptr<Font>(&font); 
+			_font = p_Font(&font); 
 
 			//Need to update each glyph. Bug to fix later.
 		}
@@ -185,7 +191,7 @@ namespace KillerEngine
 /*! 
 	Returns the font Text is using. 
 */
-		inline const shared_ptr<Font> GetFont(void)
+		inline const p_Font GetFont(void)
 		{
 			return _font;
 		}
@@ -304,9 +310,10 @@ namespace KillerEngine
 		F32 							_totalWidth;		///< Total space the Text will take up on screen.
 		KM::Point 						_pos;				///< Position of the first Glyph in the Text.
 		string 	   						_text;				///< The string used to generate each Glyph.
-		shared_ptr<Font>				_font;				///< The Font used to generate each Glyph.
+		p_Font				_font;				///< The Font used to generate each Glyph.
 		std::vector<shared_ptr<Glyph>>	_characterList;		///< List of all generated Glyphs. Should match _text.
 		KM::Vector3 					_scale;				///< The scaling factor used for each Glyph.
 		Color 							_color;				///< The Color used for each Glyph.
 	};//End class
+	typedef shared_ptr<Text> p_Text;
 }//End namespace
