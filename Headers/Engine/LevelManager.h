@@ -118,6 +118,14 @@ namespace KillerEngine
 */
 		void AddObjectToLevel(U32 id, const GameObject& obj);
 
+/// Allows GameObject to be added to the currently active level. This is of great use when you have an GameObject that is going
+/// to be dynamically created by another object at runtime, that may not know about which Level it is part of.
+/// \param obj is the GameObject to add.
+		inline void AddObject(const p_GameObject obj)
+		{
+			_activeLevel->AddObjectToLevel(obj);
+		}
+
 /*! 
 	 Allows object to be added to level. Wrapper around Level::AddObjectToLevel.
 	 \param id is the key for the Level that the object will be added to. 
