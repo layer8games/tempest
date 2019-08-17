@@ -100,6 +100,12 @@ void Point::Reset(F32 val)
 	_data[w] = 1.0f;
 }
 
+F32 Point::Distance(const Point& p) const
+{
+	Point length = *this - p;
+	return length.Magnitude();
+}
+
 //===== Math Helper Functions =====
 void Point::AddScaledPoint(const Point& point, F32 scale)
 {

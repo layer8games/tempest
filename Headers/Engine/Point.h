@@ -152,6 +152,10 @@ namespace KillerMath
 */
 		void Reset(F32 val=0.0f);
 
+/// Gives the distance from this to another Point. Creates a Point and calls Mag.
+/// \param other is the Point we are getting the distance to. 
+		F32 Distance(const Point& p) const;
+
 //===== Math Helper Functions =====
 /*!
 	Adds a Point scaled by a value to this Point. 
