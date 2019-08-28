@@ -39,11 +39,7 @@ Written by Maxwell Miller
 //Required file. Simply here to get the test framework set up.
 //
 //==========================================================================================================================
-#if DEBUG
-	#pragma comment(lib, "Killer_Engine_Win32_Debug.lib")
-#else
-	#pragma comment(lib, "Killer_Engine_Win32_Release.lib")
-#endif
+#pragma comment(lib, "Killer_Engine_Win32_Debug.lib")
 
 #define BOOST_TEST_MAIN KillerUnitTests
 

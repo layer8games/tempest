@@ -123,7 +123,7 @@ namespace KillerEngine
 
 		inline void SetActive(bool state)
 		{
-			if(!_activeUpdate && !_activeRender)
+			if(!_activeUpdate || !_activeRender)
 			{
 				v_Awake();
 			}
