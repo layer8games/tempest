@@ -15,6 +15,7 @@
     <ClCompile>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup />
