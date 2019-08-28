@@ -43,6 +43,8 @@ Written by Maxwell Miller
 
 #define BOOST_TEST_MAIN KillerUnitTests
 
+#include <iostream>
+
 #include <boost/test/unit_test.hpp>
 #include <boost/test/debug.hpp>
 //=====Engine Includes=====
@@ -127,6 +129,10 @@ BOOST_AUTO_TEST_CASE(UITests)
 	
 	shared_ptr<KE::AudioClip> skate = make_shared<KE::AudioClip>();
 	skate->LoadWAV("../Assets/Audio/Komiku_04_Skate.wav");
+
+	std::cout << "first loaded wav\n";
+	KE::ErrorManager::Instance()->DisplayErrors();
+
 	shared_ptr<KE::AudioClip> battle = make_shared<KE::AudioClip>();
 	battle->LoadWAV("../Assets/Audio/Komiku_07_Battle_of_Pogs.wav");
 	shared_ptr<KE::AudioSource> background = make_shared<KE::AudioSource>();

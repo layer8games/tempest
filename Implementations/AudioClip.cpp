@@ -1,4 +1,5 @@
 #include <Engine/AudioClip.h>
+#include <iostream>
 
 using namespace KillerEngine;
 //==========================================================================================================================
@@ -38,6 +39,8 @@ void AudioClip::LoadWAV(string filename)
 {
 	//AudioManager::Instance();
 
+	std::cout << "Let's test the wav reading\n";
+
     std::ifstream in(filename.c_str());
 
 	if(!in)
@@ -51,6 +54,8 @@ void AudioClip::LoadWAV(string filename)
 
     int totalSize = (int)in.tellg();
 
+	std::cout << "total size = " << totalSize << std::endl;
+
     in.seekg(0, in.beg);
 
     //Save the whole file to a buffer using read
@@ -59,6 +64,14 @@ void AudioClip::LoadWAV(string filename)
     in.read(_data, totalSize);
 
     in.close();
+
+	//print data for testing
+	for(int i = 0; i < totalSize; ++i)
+	{
+		std::cout << _data[i];
+	}
+
+	std::cout << std::endl;
 
     //Extract info about the audio file.
     char info[4];
