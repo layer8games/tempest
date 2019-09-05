@@ -60,8 +60,6 @@ void MovingBoxes::v_Init(void)
 	_redbox->InitBounding();
 	Level::AddObjectToLevel(_redbox);
 
-	_activeBox = _redbox;
-
 	_greenbox->SetPosition(_left / 3.0f, 0.0f);
 	_greenbox->SetTexture(KE::TextureManager::Instance()->GetTexture(101));
 	_greenbox->SetScale(32.0f, 32.0f);
