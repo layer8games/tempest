@@ -59,8 +59,14 @@ _vbo{0}
 
 GameObject::~GameObject(void)
 {
-	glDeleteBuffers(NUM_VBO, _vbo);
-	glDeleteVertexArrays(1, &_vao);
+	bool deleteMe = false;
+	for(S32 i = 0; i < NUM_VBO; ++i)
+	{
+		if(_vbo[i] > 0) deleteMe = true;
+	}
+	
+	if(deleteMe) glDeleteBuffers(NUM_VBO, _vbo);
+	if(_vao > 0) glDeleteVertexArrays(1, &_vao);
 }
 
 //==========================================================================================================================
