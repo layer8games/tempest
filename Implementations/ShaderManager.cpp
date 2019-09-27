@@ -96,11 +96,11 @@ void ShaderManager::_LoadDefaultShaders(void)
 	ShaderData vs;
 	ShaderData fs;
 	
-	vs.filePath = "../Assets/Shaders/Default/sprite_vertex.glsl";
+	vs.filePath = "./Assets/Shaders/Default/sprite_vertex.glsl";
 	vs.type = ShaderType::VERTEX;
 	shaderData.push_back(vs);
 
-	fs.filePath = "../Assets/Shaders/Default/sprite_fragment.glsl";
+	fs.filePath = "./Assets/Shaders/Default/sprite_fragment.glsl";
 	fs.type = ShaderType::FRAGMENT;
 	shaderData.push_back(fs);
 
@@ -112,11 +112,11 @@ void ShaderManager::_LoadDefaultShaders(void)
 	shared_ptr<Shader> glyphShader(new Shader());
 	shaderData.clear();
 
-	vs.filePath = "../Assets/Shaders/Default/glyph_vertex.glsl";
+	vs.filePath = "./Assets/Shaders/Default/glyph_vertex.glsl";
 	vs.type = ShaderType::VERTEX;
 	shaderData.push_back(vs);
 
-	fs.filePath = "../Assets/Shaders/Default/glyph_fragment.glsl";
+	fs.filePath = "./Assets/Shaders/Default/glyph_fragment.glsl";
 	fs.type = ShaderType::FRAGMENT;
 	shaderData.push_back(fs);
 
