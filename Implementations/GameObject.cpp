@@ -59,8 +59,17 @@ _vbo{0}
 
 GameObject::~GameObject(void)
 {
-	glDeleteBuffers(NUM_VBO, _vbo);
-	glDeleteVertexArrays(1, &_vao);
+	bool clear = false;
+	for(S32 i = 0; i < NUM_VBO; ++i)
+	{
+		if(_vbo[i] > 0)
+		{
+			clear = true;
+		}
+	}
+
+	if(clear) glDeleteBuffers(NUM_VBO, _vbo);
+	if(_vao > 0) glDeleteVertexArrays(1, &_vao);
 }
 
 //==========================================================================================================================
@@ -89,7 +98,7 @@ void GameObject::v_Render(void)
 
 	SetUniform("model", GetModelMatrix());
 
-	glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
+	glDrawArrays(GL_TRIANGLES, 0, static_cast<U32>(_vertices.size()));
 
 	_shader->Use(false);
 	BindVAO(false);

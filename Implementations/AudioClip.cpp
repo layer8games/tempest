@@ -16,7 +16,8 @@ _size(0),
 _alFormat(0),
 _data(nullptr)
 {
-    AudioManager::Instance();
+    // TODO: This is a bad pattern. Find a better way to take care of this
+	AudioManager::Instance();
 }
 
 AudioClip::~AudioClip(void)
@@ -242,7 +243,7 @@ void AudioClip::LoadWAV2(string filename)
 	}
 
 	S32 sampleSize = fmt->numChannels * fmt->bitsPerSample / 8;
-	S32 dataBytes = _ChunkEnd(data, swapped) - data;
+	S32 dataBytes = static_cast<S32>(_ChunkEnd(data, swapped) - data);
 	S32 dataSamples = dataBytes / sampleSize;
 
 	// endian swap if audio is 16 bit

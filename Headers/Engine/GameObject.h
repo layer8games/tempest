@@ -456,7 +456,7 @@ namespace KillerEngine
 //===== NumVertices =====
 		inline U32 GetNumVertices(void)
 		{
-			return _vertices.size();
+			return static_cast<U32>(_vertices.size());
 		}
 
 //===== Vertex =====
