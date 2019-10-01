@@ -11,6 +11,9 @@
     </Lib>
     <Link>
       <AdditionalDependencies>OpenGL32.lib;GL3W.lib;SOIL.lib;freetype.lib;OpenAL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>msvrt.lib;libcmtd.lib;msvcrtd.lib</IgnoreSpecificDefaultLibraries>
     </Link>
     <ClCompile>
       <AdditionalUsingDirectories>
