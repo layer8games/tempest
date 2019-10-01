@@ -1,4 +1,5 @@
 #include <Engine/GameObject.h>
+#include <iostream>
 
 using namespace KillerEngine;
 
@@ -68,8 +69,16 @@ GameObject::~GameObject(void)
 		}
 	}
 
-	if(clear) glDeleteBuffers(NUM_VBO, _vbo);
-	if(_vao > 0) glDeleteVertexArrays(1, &_vao);
+	if(clear)
+	{
+		std::cout << "buffers are going to try to delete\n";
+		glDeleteBuffers(NUM_VBO, _vbo);
+	}
+	if(_vao > 0)
+	{
+		std::cout << "vao is going to try to destroy\n";
+		glDeleteVertexArrays(1, &_vao);
+	}
 }
 
 //==========================================================================================================================
