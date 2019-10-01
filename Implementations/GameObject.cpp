@@ -107,7 +107,7 @@ void GameObject::v_Render(void)
 
 	SetUniform("model", GetModelMatrix());
 
-	glDrawArrays(GL_TRIANGLES, 0, static_cast<U32>(_vertices.size()));
+	glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
 
 	_shader->Use(false);
 	BindVAO(false);

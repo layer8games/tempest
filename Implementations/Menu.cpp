@@ -90,7 +90,7 @@ void Menu::MoveSelectorUp(void)
 	{
 		if(_wrap)
 		{
-			_selectorPosIndex = static_cast<U32>(_itemList.size() - 1);
+			_selectorPosIndex = _itemList.size() - 1; 	
 		}
 	}
 	else

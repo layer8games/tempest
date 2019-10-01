@@ -74,8 +74,7 @@ Point Point::CrossProduct(const Point& point) const
 
 F32 Point::Magnitude(void)
 {
-	// TODO: Resolve this issue. Consider createing F32 row1 = _data[x] * _data[x];
-	return sqrt((_data[x] * _data[x]) + (_data[y] * _data[y]) + (_data[z] * _data[z]));
+	return sqrt(_data[x] * _data[x] + _data[y] * _data[y] + _data[z] * _data[z]);
 }
 
 F32 Point::SqrMagnitude(void)

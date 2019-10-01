@@ -201,10 +201,10 @@ Matrix3 Matrix3::RotateX(F32 val)
 	val = RADIAN(val);
 	Matrix3 mat{1.0f};
 
-	mat[1][y] = static_cast<F32>(cos(val));
-	mat[1][z] = static_cast<F32>(-sin(val));
-	mat[2][y] = static_cast<F32>(sin(val));
-	mat[2][z] = static_cast<F32>(cos(val));
+	mat[1][y] = cos(val);
+	mat[1][z] = -sin(val);
+	mat[2][y] = sin(val);
+	mat[2][z] = cos(val);
 
 	return mat;
 }
@@ -214,10 +214,10 @@ Matrix3 Matrix3::RotateY(F32 val)
 	val = RADIAN(val);
 	Matrix3 mat{1.0f};
 
-	mat[0][x] = static_cast<F32>(cos(val));
-	mat[0][z] = static_cast<F32>(sin(val));
-	mat[2][x] = static_cast<F32>(-sin(val));
-	mat[2][z] = static_cast<F32>(cos(val));
+	mat[0][x] = cos(val);
+	mat[0][z] = sin(val);
+	mat[2][x] = -sin(val);
+	mat[2][z] = cos(val);
 
 	return mat;
 }
@@ -227,10 +227,10 @@ Matrix3 Matrix3::RotateZ(F32 val)
 	val = RADIAN(val);
 	Matrix3 mat{1.0f};
 
-	mat[0][x] = static_cast<F32>(cos(val));
-	mat[0][y] = static_cast<F32>(-sin(val));
-	mat[1][x] = static_cast<F32>(sin(val));
-	mat[1][y] = static_cast<F32>(cos(val));
+	mat[0][x] = cos(val);
+	mat[0][y] = -sin(val);
+	mat[1][x] = sin(val);
+	mat[1][y] = cos(val);
 
 	return mat;
 }
@@ -241,20 +241,20 @@ void Matrix3::SetRotateX(F32 val)
 
 	MakeIdentity();
 
-	_data[1][y] = static_cast<F32>(cos(val));
-	_data[1][z] = static_cast<F32>(-sin(val));
-	_data[2][y] = static_cast<F32>(sin(val));
-	_data[2][z] = static_cast<F32>(cos(val));
+	_data[1][y] = cos(val);
+	_data[1][z] = -sin(val);
+	_data[2][y] = sin(val);
+	_data[2][z] = cos(val);
 }
 
 void Matrix3::AddRotateX(F32 val)
 {
 	val = RADIAN(val);
 
-	_data[1][y] += static_cast<F32>(cos(val));
-	_data[1][z] += static_cast<F32>(-sin(val));
-	_data[2][y] += static_cast<F32>(sin(val));
-	_data[2][z] += static_cast<F32>(cos(val));
+	_data[1][y] += cos(val);
+	_data[1][z] += -sin(val);
+	_data[2][y] += sin(val);
+	_data[2][z] += cos(val);
 }
 
 void Matrix3::SetRotateY(F32 val)
@@ -263,20 +263,20 @@ void Matrix3::SetRotateY(F32 val)
 
 	MakeIdentity();
 
-	_data[0][x] = static_cast<F32>(cos(val));
-	_data[0][z] = static_cast<F32>(sin(val));
-	_data[2][x] = static_cast<F32>(-sin(val));
-	_data[2][z] = static_cast<F32>(cos(val));
+	_data[0][x] = cos(val);
+	_data[0][z] = sin(val);
+	_data[2][x] = -sin(val);
+	_data[2][z] = cos(val);
 }
 
 void Matrix3::AddRotateY(F32 val)
 {
 	val = RADIAN(val);
 
-	_data[0][x] += static_cast<F32>(cos(val));
-	_data[0][y] += static_cast<F32>(sin(val));
-	_data[2][x] += static_cast<F32>(-sin(val));
-	_data[2][y] += static_cast<F32>(cos(val));
+	_data[0][x] += cos(val);
+	_data[0][y] += sin(val);
+	_data[2][x] += -sin(val);
+	_data[2][y] += cos(val);	
 }
 
 void Matrix3::SetRotateZ(F32 val)
@@ -285,20 +285,20 @@ void Matrix3::SetRotateZ(F32 val)
 
 	MakeIdentity();
 
-	_data[0][x] = static_cast<F32>(cos(val));
-	_data[0][y] = static_cast<F32>(-sin(val));
-	_data[1][x] = static_cast<F32>(sin(val));
-	_data[1][y] = static_cast<F32>(cos(val));
+	_data[0][x] = cos(val);
+	_data[0][y] = -sin(val);
+	_data[1][x] = sin(val);
+	_data[1][y] = cos(val);
 }
 
 void Matrix3::AddRotateZ(F32 val)
 {
 	val = RADIAN(val);
 
-	_data[0][x] += static_cast<F32>(cos(val));
-	_data[0][y] += static_cast<F32>(-sin(val));
-	_data[1][x] += static_cast<F32>(sin(val));
-	_data[1][y] += static_cast<F32>(cos(val));
+	_data[0][x] += cos(val);
+	_data[0][y] += -sin(val);
+	_data[1][x] += sin(val);
+	_data[1][y] += cos(val);
 }
 
 void Matrix3::SetRotate(F32 xVal, F32 yVal, F32 zVal)
@@ -309,15 +309,15 @@ void Matrix3::SetRotate(F32 xVal, F32 yVal, F32 zVal)
 
 	MakeIdentity();
 
-	_data[0][x] = static_cast<F32>(cos(yVal) * cos(zVal));
-	_data[0][y] = static_cast<F32>(-cos(yVal) * sin(zVal));
-	_data[0][z] = static_cast<F32>(sin(yVal));
-	_data[1][x] = static_cast<F32>(cos(xVal) * sin(zVal) + sin(xVal) * sin(yVal) * cos(zVal));
-	_data[1][y] = static_cast<F32>(cos(xVal) * cos(zVal) - sin(xVal) * sin(yVal) * sin(zVal));
-	_data[1][z] = static_cast<F32>(-sin(xVal) * cos(yVal));
-	_data[2][x] = static_cast<F32>(sin(xVal) * sin(zVal) - cos(xVal) * sin(yVal) * cos(zVal));
-	_data[2][y] = static_cast<F32>(sin(xVal) * cos(zVal) + cos(xVal) * sin(yVal) * sin(zVal));
-	_data[2][z] = static_cast<F32>(cos(xVal) * cos(yVal));
+	_data[0][x] = cos(yVal) * cos(zVal);
+	_data[0][y] = -cos(yVal) * sin(zVal);
+	_data[0][z] = sin(yVal);
+	_data[1][x] = cos(xVal) * sin(zVal) + sin(xVal) * sin(yVal) * cos(zVal);
+	_data[1][y] = cos(xVal) * cos(zVal) - sin(xVal) * sin(yVal) * sin(zVal);
+	_data[1][z] = -sin(xVal) * cos(yVal);
+	_data[2][x] = sin(xVal) * sin(zVal) - cos(xVal) * sin(yVal) * cos(zVal);
+	_data[2][y] = sin(xVal) * cos(zVal) + cos(xVal) * sin(yVal) * sin(zVal);
+	_data[2][z] = cos(xVal) * cos(yVal);
 }
 
 void Matrix3::AddRotation(F32 xVal, F32 yVal, F32 zVal)
@@ -326,15 +326,15 @@ void Matrix3::AddRotation(F32 xVal, F32 yVal, F32 zVal)
 	yVal = RADIAN(yVal);
 	zVal = RADIAN(zVal);
 
-	_data[0][x] += static_cast<F32>(cos(yVal) * cos(zVal));
-	_data[0][y] += static_cast<F32>(-cos(yVal) * sin(zVal));
-	_data[0][z] += static_cast<F32>(sin(yVal));
-	_data[1][x] += static_cast<F32>(cos(xVal) * sin(zVal) + sin(xVal) * sin(yVal) * cos(zVal));
-	_data[1][y] += static_cast<F32>(cos(xVal) * cos(zVal) - sin(xVal) * sin(yVal) * sin(zVal));
-	_data[1][z] += static_cast<F32>(-sin(xVal) * cos(yVal));
-	_data[2][x] += static_cast<F32>(sin(xVal) * sin(zVal) - cos(xVal) * sin(yVal) * cos(zVal));
-	_data[2][y] += static_cast<F32>(sin(xVal) * cos(zVal) + cos(xVal) * sin(yVal) * sin(zVal));
-	_data[2][z] += static_cast<F32>(cos(xVal) * cos(yVal));
+	_data[0][x] += cos(yVal) * cos(zVal);
+	_data[0][y] += -cos(yVal) * sin(zVal);
+	_data[0][z] += sin(yVal);
+	_data[1][x] += cos(xVal) * sin(zVal) + sin(xVal) * sin(yVal) * cos(zVal);
+	_data[1][y] += cos(xVal) * cos(zVal) - sin(xVal) * sin(yVal) * sin(zVal);
+	_data[1][z] += -sin(xVal) * cos(yVal);
+	_data[2][x] += sin(xVal) * sin(zVal) - cos(xVal) * sin(yVal) * cos(zVal);
+	_data[2][y] += sin(xVal) * cos(zVal) + cos(xVal) * sin(yVal) * sin(zVal);
+	_data[2][z] += cos(xVal) * cos(yVal);
 }
 
 void Matrix3::SetOrientation(const Quaternion& q)
