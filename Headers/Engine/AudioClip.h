@@ -63,8 +63,6 @@ constexpr auto DATA_ID = 0x61746164;		// 'DATA'
 ///	the audio file in a buffer that is registered with OpenAL. This is used later to actually play back the file. This is
 ///	where all the magic happens. 
 ///	\param filename is the path to the file to be read. Should live in ../Assets/Audio by convention.
-		void LoadWAV(string filename);
-
 		void LoadWAV2(string filename);
 
 //==========================================================================================================================
@@ -76,38 +74,6 @@ constexpr auto DATA_ID = 0x61746164;		// 'DATA'
 		const U32 GetBufferID(void) const
 		{
 			return _bufferID;
-		}
-
-///	Returns the number of channels the audio file has. 0 by default. Usually this will be 1 for mono and 2 for stereo. 
-		const U32 GetChannels(void) const
-		{
-			return _channels;
-		}	
-
-///	Returns the sample rate the audio file has. 0 by default. This represents the frequency of the audio file, usually it 
-///	will be 44100 for most .wav files. 
-		const U32 GetSampleRate(void) const
-		{
-			return _sampleRate;
-		}
-
-///	Returns the bit rate of the file. 0 by default. This will be either 8 or 16, usually.
-		const U32 GetBPS(void) const
-		{
-			return _bps;
-		}
-
-///	Returns the size in bits of the audio part of the file (does not include headers). 0 by default. This number should be
-///	pretty big.
-		const U32 GetSize(void) const
-		{
-			return _size;
-		}
-
-///	Returns the internal format that OpenAL uses to idenify the clip. Will be 0 by default. 
-		const U32 GetALFormat(void) const
-		{
-			return _alFormat;
 		}
 
 	private:
@@ -137,9 +103,6 @@ constexpr auto DATA_ID = 0x61746164;		// 'DATA'
 ///	\param offset is how far into source to start slicing. 
 ///	\param len is how many elements past offset to slice into dest.
 		void _GetIndexRange(char* source, char* dest, int offset, int len);
-
-///	Reads the internal members to determine what the AL Format is. If no file has been loaded, then _alFormat will be set to 0;
-		void _SetALFormat(void);
 
 		char* _FindChunk(char* fileBegin, char* fileEnd, S32 desiredID, S32 swapped);
 
@@ -181,11 +144,6 @@ constexpr auto DATA_ID = 0x61746164;		// 'DATA'
 		};
 
 		U32   _bufferID;		///< OpenAL buffer handle. This is the ID OpenAL uses, similar to OpenGL's handles. 
-		U32   _channels;		///< Number of channels the audio file has. 
-		U32	  _sampleRate;		///< Sample play rate for the file. 
-		U32   _bps;				///< Byte rate for the file. 
-		U32   _size;			///< Size of the audio portion of the file. 
-		U32   _alFormat;		///< Format marker OpenAL uses to determine how to play the file. 
 		char* _data;			///< Data buffer for the file. This is the full file, headers included.
 		
 	};//end Class

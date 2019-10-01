@@ -142,7 +142,7 @@ void AudioManager::AddClip(U32 id, shared_ptr<AudioClip> clip)
 void AudioManager::LoadClip(U32 id, string filepath)
 {
 	shared_ptr<KE::AudioClip> clip = make_shared<KE::AudioClip>();
-	clip->LoadWAV(filepath);
+	clip->LoadWAV2(filepath);
 
 	_clips.insert({id, clip});
 
