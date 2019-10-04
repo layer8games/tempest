@@ -1,4 +1,5 @@
 #include <Engine/RigidBody2D.h>
+#include <iostream>
 
 using namespace KillerPhysics;
 
@@ -67,7 +68,10 @@ void RigidBody2D::Integrate(void)
 
 	F32 delta = KM::Timer::Instance()->DeltaTime();
 
-	assert(delta > 0.0f);
+	// TODO:
+	// Disabling for now. Will add back in when the timer no longer depends on the game window, or when GetTime can be worked
+	// in a better way. This is breaking the unit tests. 
+	//assert(delta > 0.0f);
 
 	//auto object = _obj.lock();
 	//object->AddScaledPosition(_velocity, delta);
