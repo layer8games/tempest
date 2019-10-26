@@ -71,12 +71,10 @@ GameObject::~GameObject(void)
 
 	if(clear)
 	{
-		std::cout << "buffers are going to try to delete\n";
 		glDeleteBuffers(NUM_VBO, _vbo);
 	}
 	if(_vao > 0)
 	{
-		std::cout << "vao is going to try to destroy\n";
 		glDeleteVertexArrays(1, &_vao);
 	}
 }
