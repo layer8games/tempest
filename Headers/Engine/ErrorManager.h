@@ -44,7 +44,7 @@ namespace KillerEngine
 	A singleton class that will display any errors that can happen during the initialization of any of the components of the 
 	engine. It will be flushed out later to include more details. 
 */
-	class ErrorManager 
+	class ErrorManager
 	{
 	public:
 //==========================================================================================================================

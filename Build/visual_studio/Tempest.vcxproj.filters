@@ -199,6 +199,9 @@
     <Filter Include="Source Code\KillerPhysics\PhysicsFactory">
       <UniqueIdentifier>{f661ea09-a9a5-462e-91bd-9e3bf611f900}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\KillerEngine\Main">
+      <UniqueIdentifier>{26ec3754-d460-4781-8590-32515faec28f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -502,6 +505,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\PhysicsFactory.cpp">
       <Filter>Source Code\KillerPhysics\PhysicsFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\dllmain.cpp">
+      <Filter>Source Code\KillerEngine\Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -3,7 +3,8 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <TargetExt>.lib</TargetExt>
+    <TargetExt>
+    </TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <Lib>
