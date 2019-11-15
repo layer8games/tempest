@@ -1,6 +1,6 @@
 #include <Engine/Timer.h>
 
-using namespace KillerMath;
+using namespace TempestMath;
 
 //==========================================================================================================================
 //
@@ -22,7 +22,7 @@ Timer::Timer()
 	LARGE_INTEGER li;
 	if(!QueryPerformanceFrequency(&li))
 	{
-		KE::ErrorManager::Instance()->SetError(KE::MATH, "Timer::_QueryCounter:: Call to QueryPerformanceFrequency failed. This is a really bad thing!");
+		TE::ErrorManager::Instance()->SetError(TE::MATH, "Timer::_QueryCounter:: Call to QueryPerformanceFrequency failed. This is a really bad thing!");
 	}
 
 	_pcFreq = static_cast<F64>(li.QuadPart) / 1000.0;

@@ -14,6 +14,12 @@ Written by Maxwell Miller
 ========================================================================*/
 #pragma once
 
+#ifdef TEMPEST_EXPORTS
+#define TEMPEST_API __declspec(dllexport)
+#else
+#define TEMPEST_API __declspec(dllimport)
+#endif
+
 //Includes. These will be the files that everything will need to have access to
 //=====Killer1 Engine Includes=====
 

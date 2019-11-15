@@ -5,9 +5,9 @@
 #include <Engine/Point.h>
 #include <Engine/Vector3.h>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
-namespace KillerCollisions
+namespace TempestCollisions
 {
 /*!
 	An Axis Alligned Bounding Box used to do rough collission detection. It used a center, half-lengths set up to compute 
@@ -33,7 +33,7 @@ namespace KillerCollisions
 	\param h is the full height of the AABB. It is divided by 2 to get the half height that is stored. 
 	\param d is the full depth of the AABB. It is divided by 2 to get the half depth that is stored. 
 */
-		AABB(const KM::Point& center, F32 w, F32 h, F32 d);
+		AABB(const TM::Point& center, F32 w, F32 h, F32 d);
 
 		//TODO: Consider adding constructor that will combine 2 AABB's. 
 
@@ -65,7 +65,7 @@ namespace KillerCollisions
 	Sets the location of the center of the sphere. This is the position in local space for the object it encompasses. 
 	\param c is the new center. The w component is set to 0.
 */
-		inline void SetCenter(const KM::Point& c)
+		inline void SetCenter(const TM::Point& c)
 		{
 			_center = c;
 		}
@@ -86,7 +86,7 @@ namespace KillerCollisions
 /*!
 	 Returns the center of the AABB.
 */
-		inline const KM::Point& GetCenter(void) const
+		inline const TM::Point& GetCenter(void) const
 		{
 			return _center;
 		}
@@ -216,7 +216,7 @@ namespace KillerCollisions
 	Sets the new half extent of the AABB 
 	\param scale is the new extent to be used. 
 */
-		inline void SetHalfDimensions(const KM::Vector3& scale)
+		inline void SetHalfDimensions(const TM::Vector3& scale)
 		{
 			_halfScale = scale;
 		}
@@ -239,14 +239,14 @@ namespace KillerCollisions
 	Sets the extent of the AABB. Because these are half values, the input is divided by half.
 	\param scale is the new extent.  
 */
-		inline void SetDimensions(const KM::Vector3& scale)
+		inline void SetDimensions(const TM::Vector3& scale)
 		{
 			_halfScale = scale / 2.0f;
 		}
 
 	private:
-		KM::Point   _center;		///< Center location of the AABB. This is the posistion represented in world space of the object that holds it. 
-		KM::Vector3 _halfScale;		///< The half sizes of the bounding volume along the 3 axies, x, y and z.	 
+		TM::Point   _center;		///< Center location of the AABB. This is the posistion represented in world space of the object that holds it. 
+		TM::Vector3 _halfScale;		///< The half sizes of the bounding volume along the 3 axies, x, y and z.	 
 		
 	};//end Class
 }//end Namespace

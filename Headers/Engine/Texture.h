@@ -7,7 +7,7 @@
 //===== Image Library =====
 #include <SOIL/SOIL.h>
 
-namespace KillerEngine 
+namespace Tempest 
 {
 /*!
 	The Texture class is used to save and hold information about a texture that has already been loaded into memory. It used

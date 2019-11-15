@@ -1,6 +1,6 @@
 #include <Engine/Random.h>
 
-using namespace KillerMath;
+using namespace TempestMath;
 
 //==========================================================================================================================
 //

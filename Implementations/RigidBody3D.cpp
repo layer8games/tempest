@@ -1,6 +1,6 @@
 #include <Engine/RigidBody3D.h>
 
-using namespace KillerPhysics;
+using namespace TempestPhysics;
 //==========================================================================================================================
 //
 //Constructors	 	
@@ -37,13 +37,13 @@ void RigidBody3D::Integrate(void)
 {
 	if(_obj == nullptr)
 	{
-		KE::ErrorManager::Instance()->SetError(KE::PHYSICS, "RigidBody3D::Integrate: object not set!");
+		TE::ErrorManager::Instance()->SetError(TE::PHYSICS, "RigidBody3D::Integrate: object not set!");
 		return;
 	}
 
 	if(_inverseMass == 0) return;
 
-	F32 delta = KM::Timer::Instance()->DeltaTime();
+	F32 delta = TM::Timer::Instance()->DeltaTime();
 
 	// TODO:
 	// Disabling for now. Will add back in when the timer no longer depends on the game window, or when GetTime can be worked
@@ -53,7 +53,7 @@ void RigidBody3D::Integrate(void)
 	_obj->AddScaledPosition(_velocity, delta);
 	_obj->AddScaledOrientation(_rotation, delta);
 
-	KM::Vector4 resultingAcc = _acceleration;
+	TM::Vector4 resultingAcc = _acceleration;
 
 	//Optional hard coded gravity should be added here
 
@@ -63,7 +63,7 @@ void RigidBody3D::Integrate(void)
 	_velocity *= real_pow(_linearDamping, delta);
 
 
-	KM::Vector4 angularAcc = _inverseInertiaTensorInWorld * _torqueAccum;
+	TM::Vector4 angularAcc = _inverseInertiaTensorInWorld * _torqueAccum;
 
 	_rotation.AddScaledVector(angularAcc, delta);
 	_rotation *= real_pow(_angularDamping, delta);
@@ -83,15 +83,15 @@ void RigidBody3D::CalculateDerivedData(void)
 //Point Forces
 //==========================================================================================================================
 //Given in world space coordinates
-void RigidBody3D::AddForceAtPoint(const KM::Vector4& force, const KM::Vector4& point)
+void RigidBody3D::AddForceAtPoint(const TM::Vector4& force, const TM::Vector4& point)
 {
 	if(_obj == nullptr)
 	{
-		KE::ErrorManager::Instance()->SetError(KE::PHYSICS, "RigidBody3D::AddForceAtPoint: object not set!");
+		TE::ErrorManager::Instance()->SetError(TE::PHYSICS, "RigidBody3D::AddForceAtPoint: object not set!");
 		return;
 	}
 
-	KM::Vector4 pt {};
+	TM::Vector4 pt {};
 	pt -= _obj->GetPosition();
 
 	_forceAccum += force; 
@@ -101,15 +101,15 @@ void RigidBody3D::AddForceAtPoint(const KM::Vector4& force, const KM::Vector4& p
 }	
 
 //Force given in world space, point given in local space
-void RigidBody3D::AddForceAtLocalPoint(const KM::Vector4& force, const KM::Vector4& point)
+void RigidBody3D::AddForceAtLocalPoint(const TM::Vector4& force, const TM::Vector4& point)
 {
 	if(_obj == nullptr)
 	{
-		KE::ErrorManager::Instance()->SetError(KE::PHYSICS, "RigidBody3D::AddForceAtLocalPoint: object not set!");
+		TE::ErrorManager::Instance()->SetError(TE::PHYSICS, "RigidBody3D::AddForceAtLocalPoint: object not set!");
 		return;
 	}
 	
-	KM::Vector4 pt = _obj->GetModelMatrixRot() * point;
+	TM::Vector4 pt = _obj->GetModelMatrixRot() * point;
 	AddForceAtPoint(force, pt);
 }
 
@@ -138,7 +138,7 @@ bool RigidBody3D::GetActive(void) const
 	return _active;
 }
 
-const KM::Point& RigidBody3D::GetPosition(void)
+const TM::Point& RigidBody3D::GetPosition(void)
 {
 	assert(_obj != nullptr);
 

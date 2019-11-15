@@ -1,6 +1,6 @@
 #include <Engine/Engine.h>
 
-using namespace KillerEngine;
+using namespace Tempest;
 
 //==========================================================================================================================
 //
@@ -46,7 +46,7 @@ void Engine::Update(void)
 {
 	GameWindow::Instance()->ProcessEvents();
 
-	KM::Timer::Instance()->Update();
+	TM::Timer::Instance()->Update();
 	
 	Controller::Instance()->Update();
 	

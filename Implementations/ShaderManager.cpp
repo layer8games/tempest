@@ -1,6 +1,6 @@
 #include <Engine/ShaderManager.h>
 
-using namespace KillerEngine;
+using namespace Tempest;
 //==========================================================================================================================
 //
 //Constructors	 	

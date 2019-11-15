@@ -10,12 +10,12 @@
 #include <Engine/Glyph.h>
 #include <Engine/Color.h>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
 //=====STL includes=====
 #include <vector>
 
-namespace KillerEngine
+namespace Tempest
 {
 /*!
 	This class will hold all the data for a string of text that will be drawn
@@ -75,7 +75,7 @@ namespace KillerEngine
 	Updates the position of each Glyph in the Text.
 	\param pos is the new position that will be used to start the update of each Glyph.
 */
-		inline void SetPosition(const KM::Point& pos)
+		inline void SetPosition(const TM::Point& pos)
 		{
 			_pos = pos;
 			_UpdatePositions();
@@ -111,7 +111,7 @@ namespace KillerEngine
 	\param name is the name of the uniform that will be set. 
 	\param Matrix4 is the transformation Matrix4 to be used by each Glyph. 
 */
-		void SetUniforms(string name, const KM::Matrix4& Matrix4);
+		void SetUniforms(string name, const TM::Matrix4& Matrix4);
 
 //==========================================================================================================================
 //
@@ -208,7 +208,7 @@ namespace KillerEngine
 	Sets the scale of the Text and updates any Glyphs. Calls GameObject::SetScale()
 	\param s is the Vector4 used as the scale.
 */
-		inline void SetScale(const KM::Vector3& s)
+		inline void SetScale(const TM::Vector3& s)
 		{
 			_scale = s;
 			_UpdateScales();
@@ -224,7 +224,7 @@ namespace KillerEngine
 /*! 
 	Returns the current scale of the Text. 
 */
-		inline const KM::Vector3& GetScale(void)
+		inline const TM::Vector3& GetScale(void)
 		{
 			return _scale;
 		}
@@ -308,11 +308,11 @@ namespace KillerEngine
 //==========================================================================================================================
 		bool 							_active;			///< Active state of Text and each Glyph.
 		F32 							_totalWidth;		///< Total space the Text will take up on screen.
-		KM::Point 						_pos;				///< Position of the first Glyph in the Text.
+		TM::Point 						_pos;				///< Position of the first Glyph in the Text.
 		string 	   						_text;				///< The string used to generate each Glyph.
 		p_Font				_font;				///< The Font used to generate each Glyph.
 		std::vector<shared_ptr<Glyph>>	_characterList;		///< List of all generated Glyphs. Should match _text.
-		KM::Vector3 					_scale;				///< The scaling factor used for each Glyph.
+		TM::Vector3 					_scale;				///< The scaling factor used for each Glyph.
 		Color 							_color;				///< The Color used for each Glyph.
 	};//End class
 	typedef shared_ptr<Text> p_Text;

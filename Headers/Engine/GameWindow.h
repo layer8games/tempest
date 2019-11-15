@@ -8,12 +8,12 @@
 #include <Engine/Timer.h>
 #include <Engine/Point.h>
 
-namespace KM = KillerMath; 
+namespace TM = TempestMath; 
 
 //===== STL Includes =====
 #include <sstream>
 
-namespace KillerEngine 
+namespace Tempest 
 {
 	class Controller;
 	enum Keys;
@@ -192,13 +192,13 @@ namespace KillerEngine
 /*! 
 	Returns the position of the mouse cursor with the origin in the top left of the program window, ranging from 0 to 1. 
 */
-		const KM::Point GetMousePos(void);
+		const TM::Point GetMousePos(void);
 
 /*! 
 	Returns the position of the mouse cursor in pixels with the origin in the center of the program window, randing from the
 	program windows up - down - left - right values. Very important, this is in Screen Space, not world space.
 */
-		const KM::Point GetMousePosInScreen(void);
+		const TM::Point GetMousePosInScreen(void);
 
 /*! 
 	Wrapper around glfwGetTime. Used to find out how long the program has been running in miliseconds. Used by the KillerMath::Timer. 

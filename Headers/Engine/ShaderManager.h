@@ -9,7 +9,7 @@
 #include <map>
 #include <vector>
 
-namespace KillerEngine
+namespace Tempest
 {
 	enum DefaultShaderID
 	{

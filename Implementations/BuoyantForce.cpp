@@ -1,6 +1,6 @@
 #include <Engine/BuoyantForce.h>
 
-using namespace KillerPhysics;
+using namespace TempestPhysics;
 
 
 //==========================================================================================================================
@@ -43,7 +43,7 @@ void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 		return;
 	}
 	
-	KM::Vector4 force(0.0f);
+	TM::Vector4 force(0.0f);
 
 	//Max Depth check
 	if(depth <= _liquidHeight - _maxDepth)
@@ -70,7 +70,7 @@ void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody3D> body)
 		return;
 	}
 
-	KM::Vector4 force(0.0f);
+	TM::Vector4 force(0.0f);
 
 	if(depth <= _liquidHeight - _maxDepth)
 	{

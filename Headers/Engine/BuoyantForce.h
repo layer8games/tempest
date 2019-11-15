@@ -5,9 +5,9 @@
 #include <Engine/ForceGenerator.h>
 #include <Engine/Vector4.h>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
-namespace KillerPhysics
+namespace TempestPhysics
 {
 /*!
 	A spring-like force that creates a bobbing effect, like the one experienced by a boat on water.

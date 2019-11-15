@@ -11,10 +11,10 @@
 //===== Standard includes =====
 #include <cassert>
 
-namespace KM = KillerMath;
-namespace KE = KillerEngine;
+namespace TM = TempestMath;
+namespace TE = Tempest;
 
-namespace KillerPhysics
+namespace TempestPhysics
 {
 /*!
 	The RigidBody2D class reprsents a point mass. This means that we pretend that it has no area, that it is a single point 
@@ -77,7 +77,7 @@ namespace KillerPhysics
 /*!
 	Adds a force that will act upon this RigidBody2D. This is done by adding the combined forces into the acceleration of the RigidBody2D.
 */
-		void AddForce(const KM::Vector4 force);
+		void AddForce(const TM::Vector4 force);
 
 //==========================================================================================================================
 //
@@ -91,18 +91,18 @@ namespace KillerPhysics
 
 		bool GetActive(void) const;
 
-		inline void SetObject(KE::GameObject* obj)
+		inline void SetObject(TE::GameObject* obj)
 		{
 			_obj = obj;
 		}
 
-		const KM::Point& GetPosition(void) const;
+		const TM::Point& GetPosition(void) const;
 
 //===== Velocity =====
 /*!
 	Returns the current velocity of the RigidBody2D.
 */
-		inline const KM::Vector4& GetVelocity(void) const
+		inline const TM::Vector4& GetVelocity(void) const
 		{
 			return _velocity;
 		}
@@ -111,7 +111,7 @@ namespace KillerPhysics
 	 Directly sets the velocity of the RigidBody2D, ignoring acceleration and physics. This can be viewed as an impulse, but permanent.
 	 \param vel is the value set for the velocity. Disregards what the velocity was. 
 */
-		inline void SetVelocity(const KM::Vector4& vel)
+		inline void SetVelocity(const TM::Vector4& vel)
 		{
 			_velocity = vel;
 		}
@@ -146,7 +146,7 @@ namespace KillerPhysics
 	\param vec is the Vector4 to be added. 
 	\param scale is the F32 that vec will be scaled by before it is added into the velocity. 
 */
-		inline void AddScaledVelocity(const KM::Vector4& vec, F32 scale)
+		inline void AddScaledVelocity(const TM::Vector4& vec, F32 scale)
 		{
 			_velocity.AddScaledVector(vec, scale);
 		}
@@ -155,7 +155,7 @@ namespace KillerPhysics
 /*!
 	Returns the current acceleration of the RigidBody2D. 
 */
-		inline const KM::Vector4& GetAcceleration(void) const
+		inline const TM::Vector4& GetAcceleration(void) const
 		{
 			return _acceleration;
 		}
@@ -164,7 +164,7 @@ namespace KillerPhysics
 	Directly set the acceleration of the RigidBody2D without regards to physics or the current value of the acceleration. 
 	\param acc is the new value of the acceleration.
 */
-		inline void SetAcceleration(const KM::Vector4& acc)
+		inline void SetAcceleration(const TM::Vector4& acc)
 		{
 			_acceleration = acc;
 		}
@@ -199,7 +199,7 @@ namespace KillerPhysics
 	\param vec is the Vector4 to be added. 
 	\param scale is the F32 that vec will be scaled by before it is added into the acceleration. 
 */		
-		inline void AddScaledAcceleration(const KM::Vector4& acc, F32 scale)
+		inline void AddScaledAcceleration(const TM::Vector4& acc, F32 scale)
 		{
 			_acceleration.AddScaledVector(acc, scale);
 		}
@@ -208,7 +208,7 @@ namespace KillerPhysics
 /*!
 	Returns the total amount of all the forces applied to this RigidBody2D for this frame added together.
 */
-		inline const KM::Vector4& GetForces(void) const
+		inline const TM::Vector4& GetForces(void) const
 		{
 			return _forceAccum;
 		}
@@ -217,7 +217,7 @@ namespace KillerPhysics
 /*!
 	Returns the value cached to represent the force of gravity on this RigidBody2D.
 */
-		inline const KM::Vector4& GetGravityForce(void) const
+		inline const TM::Vector4& GetGravityForce(void) const
 		{
 			return _gravityForce;
 		}
@@ -226,7 +226,7 @@ namespace KillerPhysics
 	Sets the cached value that represents the force of gravity on this RigidBody2D.
 	\param grav is the value that the gravity force will be set to.
 */
-		inline void SetGravityForce(const KM::Vector4& grav)
+		inline void SetGravityForce(const TM::Vector4& grav)
 		{
 			_gravityForce = grav;
 		}
@@ -301,11 +301,11 @@ namespace KillerPhysics
 		bool 	   				 _active;
 		real 	   				 _inverseMass;	///< The inverse mass of the object, written like 1/mass. This is an optimization to avoid uneeded operations. 
 		real 	   				 _damping;		///< Damping is a substitute for friction. It represents the rate of acceleration decay. 0.0f means heavy friction, close to 1 means almost none. Do not set to 1. A good value for no decay is 0.999f.
-		KE::GameObject* _obj;
-		KM::Vector4 			 _velocity;		///< Represents the rate of change, otherwise known as the first differential of the position.
-		KM::Vector4 			 _acceleration;	///< Reprsent the rate of change of the velocity, otherwise known as the second differential of the position.
-		KM::Vector4 			 _forceAccum;		///< Using D'Lambert's principal, this reprsents the combined forces that will as on this RigidBody2D for exactly 1 frame.
-		KM::Vector4 			 _gravityForce;	///< An optimization, gravity does not have to be treated like other forces, it can permanately be cached. 
+		TE::GameObject* _obj;
+		TM::Vector4 			 _velocity;		///< Represents the rate of change, otherwise known as the first differential of the position.
+		TM::Vector4 			 _acceleration;	///< Reprsent the rate of change of the velocity, otherwise known as the second differential of the position.
+		TM::Vector4 			 _forceAccum;		///< Using D'Lambert's principal, this reprsents the combined forces that will as on this RigidBody2D for exactly 1 frame.
+		TM::Vector4 			 _gravityForce;	///< An optimization, gravity does not have to be treated like other forces, it can permanately be cached. 
 
 	};
 	typedef shared_ptr<RigidBody2D> p_RigidBody2D;

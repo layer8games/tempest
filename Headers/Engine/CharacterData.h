@@ -13,7 +13,7 @@ Written by Maxwell Miller
 #include <Engine/Atom.h>
 #include <Engine/Texture.h>
 
-namespace KillerEngine
+namespace Tempest
 {
 	struct CharacterData
 	{

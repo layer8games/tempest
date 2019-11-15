@@ -1,6 +1,6 @@
 #include <Engine/AudioSource.h>
 
-using namespace KillerEngine;
+using namespace Tempest;
 //==========================================================================================================================
 //
 //Constructors	 	
@@ -184,7 +184,7 @@ void AudioSource::SetGain(F32 gain)
 	}
 }
 
-void AudioSource::SetPosition(const KM::Vector3& pos)
+void AudioSource::SetPosition(const TM::Vector3& pos)
 {
 	_position = pos;
 	alSource3f(_sourceID, AL_POSITION, _position[x], _position[y], _position[z]);
@@ -210,7 +210,7 @@ void AudioSource::SetPosition(F32 xVal, F32 yVal, F32 zVal)
 	}
 }
 
-void AudioSource::SetVelocity(const KM::Vector3& vel)
+void AudioSource::SetVelocity(const TM::Vector3& vel)
 {
 	_velocity = vel;
 	alSource3f(_sourceID, AL_VELOCITY, _velocity[x], _velocity[y], _velocity[z]);

@@ -6,12 +6,12 @@
 #include <Engine/ErrorManager.h>
 #include <Engine/Matrix4.h>
 #include <Engine/Point.h>
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
 //=====DirectInput includes=====
 //#include <dinput.h>
 
-namespace KillerEngine 
+namespace Tempest 
 {
 /// States that a key is allowed to be in. 
 	enum KeyStates
@@ -155,17 +155,17 @@ namespace KillerEngine
 /*! 
 	Returns the raw mouse coordinates from the GameWindow. This is with the origin in the top left corner of the screen. 
 */
-		const KM::Point GetMouseCoord(void);
+		const TM::Point GetMouseCoord(void);
 
 /*! 
 	Returns the mouse coordinates in screen space, with the origin in the center of the screen. Wrapper around GameWindow. 
 */
-		const KM::Point GetMouseCoordInScreen(void);
+		const TM::Point GetMouseCoordInScreen(void);
 
 /*! 
 	Returns the raw coordinates of a Left Click in screen space. 
 */
-		inline const KM::Point GetLeftMouseCoord(void) const
+		inline const TM::Point GetLeftMouseCoord(void) const
 		{ 
 			return _leftClickCoordinates; 
 		}
@@ -173,7 +173,7 @@ namespace KillerEngine
 /*! 
 	Returns the raw coordinates of a Right click in screen space 
 */		
-		inline const KM::Point GetRightMouseCoord(void) const
+		inline const TM::Point GetRightMouseCoord(void) const
 		{ 
 			return _rightClickCoordinates; 
 		}
@@ -216,9 +216,9 @@ namespace KillerEngine
 		KeyStates 	_keyStates[TOTAL_KEYS];			///< Array of states for each key, indexed by ID.
 		bool 		_pastActiveKeys[TOTAL_KEYS];	///< Array of keys in a pressed state as of last frame, indexed by ID.
 		bool		_curActiveKeys[TOTAL_KEYS];		///< Array of keys in a pressed state as of this frame, indexed by ID.
-		KM::Point 	_leftClickCoordinates;			///< Coordinates of last left click. Unused. 
-		KM::Point	_rightClickCoordinates;			///< Coordinates of last right click. Unused.
-		KM::Point 	_leftClickCoordInScreen;		///< Cached value of last left click in screen space. Unused. 
-		KM::Point 	_rightClickCoordInScreen;		///< Cached value of last right click in screen space. Unused. 
+		TM::Point 	_leftClickCoordinates;			///< Coordinates of last left click. Unused. 
+		TM::Point	_rightClickCoordinates;			///< Coordinates of last right click. Unused.
+		TM::Point 	_leftClickCoordInScreen;		///< Cached value of last left click in screen space. Unused. 
+		TM::Point 	_rightClickCoordInScreen;		///< Cached value of last right click in screen space. Unused. 
 	};
 }//End namespace

@@ -1,6 +1,6 @@
 #include <Engine/EnvironmentObject.h>
 
-using namespace KillerEngine;
+using namespace Tempest;
 
 //==========================================================================================================================
 //
@@ -10,7 +10,7 @@ using namespace KillerEngine;
 EnvironmentObject::EnvironmentObject(void)
 {  }
 
-EnvironmentObject::EnvironmentObject(const KM::Point& pos, F32 w, F32 h)
+EnvironmentObject::EnvironmentObject(const TM::Point& pos, F32 w, F32 h)
 {
 	GameObject::SetPosition(pos);
 }

@@ -11,9 +11,9 @@
 #include <Engine/GameWindow.h>
 #include <Engine/ShaderManager.h>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
-namespace KillerEngine
+namespace Tempest
 {
 	class Glyph;
 	typedef shared_ptr<Glyph> p_Glyph;

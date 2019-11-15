@@ -1,6 +1,6 @@
 #include <Engine/Color.h>
 
-using namespace KillerEngine;
+using namespace Tempest;
 //==========================================================================================================================
 //
 //Constructors	 	

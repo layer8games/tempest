@@ -5,9 +5,9 @@
 #include <Engine/ForceGenerator.h>
 #include <Engine/Vector4.h>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
-namespace KillerPhysics
+namespace TempestPhysics
 {
 /*!
 	A spring-like force that can be used with the Killer Engine.

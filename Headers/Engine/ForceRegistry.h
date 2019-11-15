@@ -4,13 +4,13 @@
 #include <Engine/Atom.h>
 #include <Engine/ForceGenerator.h>
 
-namespace KM = KillerMath;
-namespace KE = KillerEngine;
+namespace TM = TempestMath;
+namespace TE = Tempest;
 
 //=====STL includes=====
 #include <vector>
 
-namespace KillerPhysics
+namespace TempestPhysics
 {
 /*! 
 	Registry to find out which RigidBody2Ds need forces. It keeps track of which objects need specific forces for their development. 

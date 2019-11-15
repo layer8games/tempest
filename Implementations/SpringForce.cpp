@@ -1,6 +1,6 @@
 #include <Engine/SpringForce.h>
 
-using namespace KillerPhysics;
+using namespace TempestPhysics;
 
 //==========================================================================================================================
 //SpringForce
@@ -37,7 +37,7 @@ SpringForce::~SpringForce(void)
 void SpringForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 {
 //=====Calculate Vector4 of the spring=====
-	KM::Vector4 force {};
+	TM::Vector4 force {};
 	force = RigidBody2D->GetPosition();
 	force -= _otherEnd->GetPosition();
 
@@ -62,7 +62,7 @@ void SpringForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 //TODO: Implement
 void SpringForce::v_UpdateForce(shared_ptr<RigidBody3D> body)
 {
-	KM::Vector4 force {};
+	TM::Vector4 force {};
 	force = body->GetPosition();
 	force -= _otherEnd->GetPosition();
 

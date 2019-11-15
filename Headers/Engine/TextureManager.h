@@ -8,7 +8,7 @@
 #include <map>
 using std::map;
 
-namespace KillerEngine 
+namespace Tempest 
 {
 ///	The TextureManager is a singleton class that will control when and how all textures are added to memory from the disc. 
 ///	SOIL is the library used to actually load the images from the hard drive and use the image data to create the texture.

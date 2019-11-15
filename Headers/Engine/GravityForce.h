@@ -15,10 +15,10 @@ Written by Maxwell Miller
 #include <Engine/ForceGenerator.h>
 #include <Engine/Vector4.h>
 
-namespace KM = KillerMath;
-namespace KE = KillerEngine;
+namespace TM = TempestMath;
+namespace TE = Tempest;
 
-namespace KillerPhysics
+namespace TempestPhysics
 {
 /*! 
 	A physics ForceGenerator for RigidBody2D and RigidBody3D objects which simulates Gravity. By default this is set to -y.
@@ -42,7 +42,7 @@ namespace KillerPhysics
 	Sets acceleration to KillerMath::Vector4 sent in.
 	\param gravity will be the value set for the acceleration. 
 */
-		GravityForce(const KM::Vector4& gravity);
+		GravityForce(const TM::Vector4& gravity);
 
 /*! 
 	No implemenation. 
@@ -75,7 +75,7 @@ namespace KillerPhysics
 	Changes the acceleration the force will cause on an object.
 	\param gravity is the new acceleration. 
 */
-		inline void Set(KM::Vector4& gravity)
+		inline void Set(TM::Vector4& gravity)
 		{
 			_gravityAcc = gravity;
 		}
@@ -94,7 +94,7 @@ namespace KillerPhysics
 		}
 
 	private:
-		KM::Vector4 _gravityAcc;		///< The acceleration saved for this force.
+		TM::Vector4 _gravityAcc;		///< The acceleration saved for this force.
 	};//end class
 	typedef shared_ptr<GravityForce> p_GravityForce;
 }//end namespace

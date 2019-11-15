@@ -1,7 +1,7 @@
 #include <Engine/AABB.h>
 #include <iostream>
 
-using namespace KillerCollisions;
+using namespace TempestCollisions;
 //==========================================================================================================================
 //
 //Constructors	 	
@@ -13,7 +13,7 @@ _center(0.0f, 0.0f, 0.0f),
 _halfScale(0.0f, 0.0f, 0.0f)
 {  }
 
-AABB::AABB(const KM::Point& center, F32 w, F32 h, F32 d)
+AABB::AABB(const TM::Point& center, F32 w, F32 h, F32 d)
 :
 _center(center),
 _halfScale(w / 2.0f, h / 2.0f, d / 2.0f)

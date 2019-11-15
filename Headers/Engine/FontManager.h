@@ -8,7 +8,7 @@
 //===== STL includes =====
 #include <map>
 
-namespace KillerEngine
+namespace Tempest
 {
 	class FontManager
 	{

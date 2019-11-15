@@ -6,10 +6,10 @@
 #include <Engine/RigidBody2D.h>
 #include <Engine/RigidBody3D.h>
 
-namespace KM = KillerMath;
-namespace KE = KillerEngine;
+namespace TM = TempestMath;
+namespace TE = Tempest;
 
-namespace KillerPhysics
+namespace TempestPhysics
 {
 //==========================================================================================================================
 //Force Generator

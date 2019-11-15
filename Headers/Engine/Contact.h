@@ -11,9 +11,9 @@
 #include <Engine/Atom.h>
 #include <Engine/Vector4.h>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
-namespace KillerPhysics
+namespace TempestPhysics
 {
 	class Contact
 	{
@@ -33,8 +33,8 @@ namespace KillerPhysics
 //
 //==========================================================================================================================
 	private:
-		KM::Vector4 _contactPoint;
-		KM::Vector4 _collissionNormal;
+		TM::Vector4 _contactPoint;
+		TM::Vector4 _collissionNormal;
 		real 	    _penetrationDepth;
 		real 	    _collissionRestitution;
 		real 	    _friction;

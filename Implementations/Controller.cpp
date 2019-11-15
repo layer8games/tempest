@@ -1,6 +1,6 @@
 #include <Engine/Controller.h>
 
-using namespace KillerEngine;
+using namespace Tempest;
 
 //==========================================================================================================================
 //
@@ -72,12 +72,12 @@ void Controller::KeyUp(Keys k)
 
 }
 
-const KM::Point Controller::GetMouseCoord(void)
+const TM::Point Controller::GetMouseCoord(void)
 {
 	return GameWindow::Instance()->GetMousePos();
 }
 
-const KM::Point Controller::GetMouseCoordInScreen(void)
+const TM::Point Controller::GetMouseCoordInScreen(void)
 {
 	return GameWindow::Instance()->GetMousePosInScreen();
 }

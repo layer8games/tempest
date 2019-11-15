@@ -21,12 +21,12 @@ Written by Maxwell Miller
 #include <Engine/GameObject.h>
 #include <Engine/ErrorManager.h>
 
-namespace KP = KillerPhysics;
+namespace TP = TempestPhysics;
 
 //=====STL includes=====
 #include <map>
 
-namespace KillerEngine 
+namespace Tempest 
 {
 /*! 
 	The holder and controller of the the Level objects. This will act as both a singleton and a state matching controller, where 

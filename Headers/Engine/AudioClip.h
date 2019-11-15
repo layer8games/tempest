@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <errno.h>
 
-namespace KillerEngine
+namespace Tempest
 {
 // Macro to swap endian values
 #define SWAP_32(value)                 \
@@ -40,7 +40,7 @@ constexpr auto DATA_ID = 0x61746164;		// 'DATA'
 
 
 ///	A wrapper around an OpenAL audio buffer. This stores a clip of audio that, after added to an AudioSource, can be played.
-	class AudioClip
+	class TEMPEST_API AudioClip
 	{
 	public:
 //==========================================================================================================================

@@ -1,6 +1,6 @@
 #include <Engine/AudioManager.h>
 
-using namespace KillerEngine;
+using namespace Tempest;
 //==========================================================================================================================
 //
 //Constructors	 	
@@ -141,7 +141,7 @@ void AudioManager::AddClip(U32 id, shared_ptr<AudioClip> clip)
 
 void AudioManager::LoadClip(U32 id, string filepath)
 {
-	shared_ptr<KE::AudioClip> clip = make_shared<KE::AudioClip>();
+	shared_ptr<TE::AudioClip> clip = make_shared<TE::AudioClip>();
 	clip->LoadWAV2(filepath);
 
 	_clips.insert({id, clip});

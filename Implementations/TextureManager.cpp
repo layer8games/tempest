@@ -1,7 +1,7 @@
 #include <Engine/TextureManager.h>
 #include <iostream>
 
-using namespace KillerEngine;
+using namespace Tempest;
 
 //==========================================================================================================================
 //

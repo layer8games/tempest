@@ -6,7 +6,7 @@
 
 #include <assert.h>
 
-namespace KillerMath
+namespace TempestMath
 {
 //==========================================================================================================================
 //Documentation

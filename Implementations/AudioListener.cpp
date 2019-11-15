@@ -1,6 +1,6 @@
 #include <Engine/AudioListener.h>
 
-using namespace KillerEngine;
+using namespace Tempest;
 //==========================================================================================================================
 //
 //Constructors	 	
@@ -46,7 +46,7 @@ void AudioListener::SetOrientation(F32* orientation)
 	}
 }
 
-void AudioListener::SetPosition(const KM::Vector3& pos)
+void AudioListener::SetPosition(const TM::Vector3& pos)
 {
 	_position = pos;
 
@@ -74,7 +74,7 @@ void AudioListener::SetPosition(F32 xVal, F32 yVal, F32 zVal)
 	}
 }
 
-void AudioListener::SetVelocity(const KM::Vector3 vel)
+void AudioListener::SetVelocity(const TM::Vector3 vel)
 {
 	_velocity = vel;
 

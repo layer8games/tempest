@@ -7,10 +7,10 @@
 #include <Engine/RigidBody2D.h>
 #include <Engine/RigidBody3D.h>
 
-namespace KM = KillerMath;
-namespace KE = KillerEngine;
+namespace TM = TempestMath;
+namespace TE = Tempest;
 
-namespace KillerPhysics
+namespace TempestPhysics
 {
 /*!
 	A Drag or friction simulator. It takes in a physics object, then will reduce its overall velocity by an ammount each

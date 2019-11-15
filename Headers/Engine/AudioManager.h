@@ -14,7 +14,7 @@
 //===== STL Includes =====
 #include <map>
 
-namespace KillerEngine
+namespace Tempest
 {
 	class AudioListener;
 	class AudioClip;

@@ -6,7 +6,7 @@
 //===== STL includes =====
 #include <cassert>
 
-namespace KillerEngine
+namespace Tempest
 {
 //==========================================================================================================================
 //Documentations

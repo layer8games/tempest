@@ -1,6 +1,6 @@
 #include <Engine/Point.h>
 
-using namespace KillerMath;
+using namespace TempestMath;
 
 //==========================================================================================================================
 //
@@ -63,7 +63,7 @@ Point Point::CrossProduct(const Point& point) const
 {
 	if(_2D)
 	{
-		KE::ErrorManager::Instance()->SetError(KE::ErrorCode::MATH, "Attempted to perform CrossProduct on 2D Point. Point.cpp ln 60");
+		TE::ErrorManager::Instance()->SetError(TE::ErrorCode::MATH, "Attempted to perform CrossProduct on 2D Point. Point.cpp ln 60");
 		return Point(0.0f);
 	}
 

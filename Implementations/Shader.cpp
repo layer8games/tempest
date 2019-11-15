@@ -1,7 +1,7 @@
 #include <Engine/Shader.h>
 #include <iostream>
 
-using namespace KillerEngine;
+using namespace Tempest;
 //==========================================================================================================================
 //
 //Constructors	 	
@@ -128,25 +128,25 @@ void Shader::SetUniform(const GLchar* name, const F32 val)
 	glUniform1f(location, val);
 }
 
-void Shader::SetUniform(const GLchar* name, const KM::Vector4& vec)
+void Shader::SetUniform(const GLchar* name, const TM::Vector4& vec)
 {
 	GLuint location = _GetUniformLocation(name);
 	glUniform4f(location, vec[0], vec[1], vec[2], vec[3]);
 }
 
-void Shader::SetUniform(const GLchar* name, const KM::Vector3& vec)
+void Shader::SetUniform(const GLchar* name, const TM::Vector3& vec)
 {
 	GLuint location = _GetUniformLocation(name);
 	glUniform3f(location, vec[0], vec[1], vec[2]);
 }
 
-void Shader::SetUniform(const GLchar* name, const KM::Point& point)
+void Shader::SetUniform(const GLchar* name, const TM::Point& point)
 {
 	GLuint location = _GetUniformLocation(name);
 	glUniform4f(location, point[0], point[1], point[2], point[3]);
 }
 
-void Shader::SetUniform(const GLchar* name, KM::Matrix4 mat)
+void Shader::SetUniform(const GLchar* name, TM::Matrix4 mat)
 {
 	GLuint location = _GetUniformLocation(name);
 	glUniformMatrix4fv(location, 1, GL_FALSE, &mat.GetElems()[0]);

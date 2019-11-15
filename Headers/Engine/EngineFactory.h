@@ -6,9 +6,9 @@
 #include <Engine/RigidBody2D.h>
 #include <Engine/RigidBody3D.h>
 
-namespace KP = KillerPhysics;
+namespace TP = TempestPhysics;
 
-namespace KillerEngine
+namespace Tempest
 {
 	class EngineFactory
 	{
@@ -30,14 +30,14 @@ namespace KillerEngine
 			return make_shared<Glyph>();
 		}
 
-		inline KP::p_RigidBody2D MakeRigidBody2D(void)
+		inline TP::p_RigidBody2D MakeRigidBody2D(void)
 		{
-			return KP::p_RigidBody2D(new KP::RigidBody2D());
+			return TP::p_RigidBody2D(new TP::RigidBody2D());
 		}
 
-		inline KP::p_RigidBody3D MakeRigidBody3D(void)
+		inline TP::p_RigidBody3D MakeRigidBody3D(void)
 		{
-			return KP::p_RigidBody3D(new KP::RigidBody3D());
+			return TP::p_RigidBody3D(new TP::RigidBody3D());
 		}
 
 //==========================================================================================================================

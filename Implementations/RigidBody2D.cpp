@@ -1,7 +1,7 @@
 #include <Engine/RigidBody2D.h>
 #include <iostream>
 
-using namespace KillerPhysics;
+using namespace TempestPhysics;
 
 //==========================================================================================================================
 //
@@ -60,13 +60,13 @@ void RigidBody2D::Integrate(void)
 	//if(_obj.expired())
 	if(_obj == nullptr)
 	{
-		KE::ErrorManager::Instance()->SetError(KE::PHYSICS, "RigidBody2D::Integrate: object not set!");
+		TE::ErrorManager::Instance()->SetError(TE::PHYSICS, "RigidBody2D::Integrate: object not set!");
 		return;
 	}
 
 	if(_inverseMass == 0) return;
 
-	F32 delta = KM::Timer::Instance()->DeltaTime();
+	F32 delta = TM::Timer::Instance()->DeltaTime();
 
 	// TODO:
 	// Disabling for now. Will add back in when the timer no longer depends on the game window, or when GetTime can be worked
@@ -77,7 +77,7 @@ void RigidBody2D::Integrate(void)
 	//object->AddScaledPosition(_velocity, delta);
 	_obj->AddScaledPosition(_velocity, delta);
 
-	KM::Vector4 resultingAcc = _acceleration;
+	TM::Vector4 resultingAcc = _acceleration;
 	
 	resultingAcc += _gravityForce;
 
@@ -95,7 +95,7 @@ void RigidBody2D::ClearAccumulator(void)
 	_forceAccum.Reset();
 }
 
-void RigidBody2D::AddForce(const KM::Vector4 force)
+void RigidBody2D::AddForce(const TM::Vector4 force)
 {
 	_forceAccum += force;
 }
@@ -118,7 +118,7 @@ bool RigidBody2D::GetActive(void) const
 	return _active;
 }
 
-const KM::Point& RigidBody2D::GetPosition(void) const
+const TM::Point& RigidBody2D::GetPosition(void) const
 {
 	//assert(!_obj.expired());
 	assert(_obj != nullptr);

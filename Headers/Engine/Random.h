@@ -11,7 +11,7 @@
 #include <ctime>
 
 
-namespace KillerMath
+namespace TempestMath
 {
 //==========================================================================================================================
 //Documentation

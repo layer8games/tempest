@@ -3,7 +3,7 @@
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 
-namespace KillerCollisions
+namespace TempestCollisions
 {
 	class OBB
 	{

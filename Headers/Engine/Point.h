@@ -6,13 +6,13 @@
 #include <Engine/Vector4.h>
 #include <Engine/Vector3.h>
 
-namespace KE = KillerEngine;
+namespace TE = Tempest;
 
 
 //===== Stnadard inlcudes =====
 #include <cassert>
 
-namespace KillerMath
+namespace TempestMath
 {
 	class Vector4;
 	class Vector3;

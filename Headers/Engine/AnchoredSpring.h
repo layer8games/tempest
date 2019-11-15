@@ -5,9 +5,9 @@
 #include <Engine/ForceGenerator.h>
 #include <Engine/Vector4.h>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
-namespace KillerPhysics
+namespace TempestPhysics
 {
 /*!
 	A spring-like force that is anchored to a specific point. This can act like a chain, or a rubber band like force.
@@ -64,7 +64,7 @@ namespace KillerPhysics
 	\param springConstant is the "stiffness" of the spring.
 	\param restLength is the length of the spring.
 */
-		AnchoredSpring(const KM::Point& anchor, real springConstant, real restLength);
+		AnchoredSpring(const TM::Point& anchor, real springConstant, real restLength);
 
 /*!
 	No implementation.
@@ -97,7 +97,7 @@ namespace KillerPhysics
 	Changes the location of the other end of the spring.
 	\param end is the new opposite end of the spring.
 */
-		inline void SetAnchor(const KM::Point& anchor)
+		inline void SetAnchor(const TM::Point& anchor)
 		{
 			_anchor = anchor;
 		}
@@ -121,7 +121,7 @@ namespace KillerPhysics
 		}
 
 	private:
-		KM::Point	_anchor;			///< The location of the anchor point of the spring.
+		TM::Point	_anchor;			///< The location of the anchor point of the spring.
 		real 		_springConstant;	///< Determines the "stiffness" of the spring. The higher this value is, the more force the spring can make.
 		real		_restLength;		///< Length of the spring at rest. When an object reaches this length, a force will be acted on it. 
 	};//end AnchoredSpring

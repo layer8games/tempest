@@ -8,7 +8,7 @@
 #include <vector>
 #include <cassert>
 
-namespace KillerMath 
+namespace TempestMath 
 {
 //==========================================================================================================================
 //Documentation

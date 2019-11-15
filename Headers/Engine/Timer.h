@@ -4,9 +4,9 @@
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 
-namespace KE = KillerEngine;
+namespace TE = Tempest;
 
-namespace KillerMath 
+namespace TempestMath 
 {
 ///	The high precision timer for the Killer1 Engine. At the time of writting
 ///	this the timer is windows specific, but cross platform functionality is

@@ -15,8 +15,8 @@
 #include <Engine/Text.h>
 #include <Engine/RigidBody2D.h>
 
-namespace KM = KillerMath;
-namespace KP = KillerPhysics;
+namespace TM = TempestMath;
+namespace TP = TempestPhysics;
 
 //=====STL includes=====
 #include <map>
@@ -24,7 +24,7 @@ namespace KP = KillerPhysics;
 #include <fstream>
 #include <algorithm>
 
-namespace KillerEngine 
+namespace Tempest 
 {
 
 ///	The Level is the building block for game project. It holds all of the objects that will be rendered to the screen and 
@@ -98,7 +98,7 @@ namespace KillerEngine
 ///	Registers a KillerPhysics::RigidBody2D with a KillerPhysics::ForcerGenerator. This only works because they are pointers. 
 ///	\param RigidBody2D is the pointer that needs to be registered with the generator. 
 ///	\param generator is the force to apply to the RigidBody2D.
-		inline void RegisterRigidBody2DForce(KP::p_RigidBody2D body, KP::p_ForceGenerator generator)
+		inline void RegisterRigidBody2DForce(TP::p_RigidBody2D body, TP::p_ForceGenerator generator)
 		{
 			_forceRegistry.Add(body, generator);
 		}
@@ -398,7 +398,7 @@ namespace KillerEngine
 		U32     _ID;												///< ID used in the LevelManager.
 		Camera* _camera;											///< Pointer to a Camera object. 
 		std::map<U32, p_GameObject>	  _gameObjects;		///< List of all GameObjects included in the Level.
-		KP::ForceRegistry _forceRegistry; 							///< KillerPhysics::ForceRegistry used to allow physics forces to be applied.
+		TP::ForceRegistry _forceRegistry; 							///< KillerPhysics::ForceRegistry used to allow physics forces to be applied.
 	};
 	typedef shared_ptr<Level> p_Level;
 }//End namespace

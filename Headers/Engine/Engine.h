@@ -9,9 +9,9 @@
 #include <Engine/LevelManager.h>
 //#include <Engine/TextureManager.h>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
-namespace KillerEngine 
+namespace Tempest 
 {
 //==========================================================================================================================
 //Documentation

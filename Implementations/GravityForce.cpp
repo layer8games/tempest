@@ -1,6 +1,6 @@
 #include <Engine/GravityForce.h>
 
-using namespace KillerPhysics;
+using namespace TempestPhysics;
 
 //==========================================================================================================================
 //
@@ -12,7 +12,7 @@ GravityForce::GravityForce(void)
 _gravityAcc(0.0f, -1.0f, 0.0f)
 {  }
 
-GravityForce::GravityForce(const KM::Vector4& gravity) 
+GravityForce::GravityForce(const TM::Vector4& gravity) 
 : 
 _gravityAcc(gravity)
 {  }

@@ -4,9 +4,9 @@
 #include <Engine/Atom.h>
 #include <Engine/Point.h>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
-namespace KillerCollisions
+namespace TempestCollisions
 {
 /*!
 	The BoundingSphere is a basic bounding volume that can be used for simple, course collision tests. It is represented by
@@ -34,7 +34,7 @@ namespace KillerCollisions
 	\param center is the value for center. 
 	\param radius is the value for radius. 
 */
-		BoundingSphere(const KM::Point& center, real radius);
+		BoundingSphere(const TM::Point& center, real radius);
 
 /*! 
 	Special constructor that combines the volumes of 2 BoundingSpheres into one sphere that emcompasses both volumes. 
@@ -91,7 +91,7 @@ namespace KillerCollisions
 	Set new center.
 	\param pos is the new location of the center.
 */
-		inline void SetCenter(const KM::Point& pos)
+		inline void SetCenter(const TM::Point& pos)
 		{
 			_center = pos;
 		}
@@ -112,7 +112,7 @@ namespace KillerCollisions
 /*! 
 	Get the location of the center. 
 */
-		inline const KM::Point& GetCenter(void) const
+		inline const TM::Point& GetCenter(void) const
 		{
 			return _center;
 		}
@@ -140,7 +140,7 @@ namespace KillerCollisions
 //Data
 //
 //==========================================================================================================================	
-		KM::Point _center; 	///< Center of the sphere.
+		TM::Point _center; 	///< Center of the sphere.
 		real 	  _radius;	///< Radius of the sphere.
 
 	};//end Class

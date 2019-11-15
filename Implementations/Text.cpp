@@ -1,6 +1,6 @@
 #include <Engine/Text.h>
 
-using namespace KillerEngine;
+using namespace Tempest;
 
 //==========================================================================================================================
 //
@@ -76,7 +76,7 @@ void Text::AddText(string text)
 	_text = text;
 	_CreateCharacterList();
 
-	KM::Point currentPos = _pos;
+	TM::Point currentPos = _pos;
 
 	if(_font != nullptr)
 	{
@@ -116,7 +116,7 @@ void Text::SetTextColor(const Color& col)
 	}
 }
 
-void Text::SetUniforms(string name, const KM::Matrix4& Matrix4)
+void Text::SetUniforms(string name, const TM::Matrix4& Matrix4)
 {
 	for(auto i : _characterList)
 	{
@@ -126,7 +126,7 @@ void Text::SetUniforms(string name, const KM::Matrix4& Matrix4)
 
 void Text::_UpdatePositions(void)
 {
-	KM::Point currentPos = _pos;
+	TM::Point currentPos = _pos;
 	
 	if(_font != nullptr)
 	{

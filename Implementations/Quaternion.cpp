@@ -1,6 +1,6 @@
 #include <Engine/Quaternion.h>
 
-using namespace KillerMath;
+using namespace TempestMath;
 
 //==========================================================================================================================
 //

@@ -6,9 +6,9 @@
 #include <Engine/Point.h>
 #include <Engine/Color.h>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
-namespace KillerEngine
+namespace Tempest
 {
 /*!
 	Helper struct to keep track of UV coordinates for a texture. 
@@ -40,8 +40,8 @@ namespace KillerEngine
 */
 	struct Vertex
 	{
-		KM::Point position;	///< Position of the vertex, in model space.
-		KM::Vector4 normal;		///< The normal of the vertext in model space.
+		TM::Point position;	///< Position of the vertex, in model space.
+		TM::Vector4 normal;		///< The normal of the vertext in model space.
 		TexCoord   texCoord;	///< If there is an attached texture, this holds its information.
 		Color 	   color;		///< Color values for the vertext.
 
@@ -56,7 +56,7 @@ namespace KillerEngine
 	Sets up the position, everything else is set to 0. 
 	\param pos is the starting position for the vertext. Should be in model space. 
 */
-		Vertex(KM::Point pos)
+		Vertex(TM::Point pos)
 		: position(pos), normal(0.0f), texCoord(0.0f, 0.0f), color()
 		{  }
 
@@ -65,7 +65,7 @@ namespace KillerEngine
 	\param pos is the starting position in model space. 
 	\param color is the starting color. 
 */
-		Vertex(const KM::Point& pos, Color col)
+		Vertex(const TM::Point& pos, Color col)
 		: position(pos), normal(0.0f), texCoord(0.0f, 0.0f), color(col)
 		{  }
 
@@ -75,7 +75,7 @@ namespace KillerEngine
 	\param u sets the u value in a texture coord.
 	\param v sets the v value in a texture coord. 
 */
-		Vertex(const KM::Point& pos, F32 u, F32 v)
+		Vertex(const TM::Point& pos, F32 u, F32 v)
 		: position(pos), normal(0.0f), texCoord(u, v), color()
 		{  }
 
@@ -84,7 +84,7 @@ namespace KillerEngine
 	\param pos is the starting position in model space. 
 	\param norm is the surface normal. Should be normalized, in model space.  
 */
-		Vertex(const KM::Point& pos, const KM::Vector4& norm)
+		Vertex(const TM::Point& pos, const TM::Vector4& norm)
 		: position(pos), normal(norm), texCoord(0.0f, 0.0f), color()
 		{  }
 
@@ -95,7 +95,7 @@ namespace KillerEngine
 	\param u sets the u value in a texture coord. 
 	\param v sets the v values in a texture coord.  
 */
-		Vertex(const KM::Point& pos, const KM::Vector4& norm, F32 u, F32 v)
+		Vertex(const TM::Point& pos, const TM::Vector4& norm, F32 u, F32 v)
 		: position(pos), normal(norm), texCoord(u, v), color()
 		{  }	
 	};

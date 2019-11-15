@@ -13,12 +13,12 @@ Written by Maxwell Miller
 #include <Engine/GameObject.h>
 #include <Engine/Point.h>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
 //===== STL Includes =====
 #include <memory>
 
-namespace KillerEngine
+namespace Tempest
 {
 //==========================================================================================================================
 //Documentation
@@ -43,7 +43,7 @@ namespace KillerEngine
 /*! 
 	Calls GameObject::SetPosition and GameObject::SetDimensions. 
 */		
-		EnvironmentObject(const KM::Point& pos, F32 w, F32 h);
+		EnvironmentObject(const TM::Point& pos, F32 w, F32 h);
 
 /*! Default Destructor. No special action taken. */		
 		~EnvironmentObject(void);

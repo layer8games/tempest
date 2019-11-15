@@ -1,7 +1,7 @@
 #include <Engine/BoundingSphere.h>
 #include <iostream>
 
-using namespace KillerCollisions;
+using namespace TempestCollisions;
 //==========================================================================================================================
 //
 //Constructors	 	
@@ -13,7 +13,7 @@ _center(0.0f),
 _radius(0.0f)
 {  }
 
-BoundingSphere::BoundingSphere(const KM::Point& center, real radius)
+BoundingSphere::BoundingSphere(const TM::Point& center, real radius)
 :
 _center(center),
 _radius(radius)
@@ -24,7 +24,7 @@ BoundingSphere::BoundingSphere(const BoundingSphere& one, const BoundingSphere& 
 _center(0.0f),
 _radius(0.0f)
 {
-	KM::Point centerOffset = two.GetCenter() - one.GetCenter();
+	TM::Point centerOffset = two.GetCenter() - one.GetCenter();
 	real distanceSquared = centerOffset.SqrMagnitude();
 	real radiusDiff = two.GetRadius() - one.GetRadius();
 
@@ -67,7 +67,7 @@ BoundingSphere::~BoundingSphere(void)
 //==========================================================================================================================
 bool BoundingSphere::TestCollision(const BoundingSphere& other) const
 {
-	KM::Point distance = _center - other.GetCenter();
+	TM::Point distance = _center - other.GetCenter();
 	
 	//The dot product of a Point and itself is the squred magnitude, but with less steps. 
 	real distanceSquared = distance.Dot(distance);

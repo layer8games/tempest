@@ -9,7 +9,7 @@
 //===== Stnadard inlcudes =====
 #include <cassert>
 
-namespace KillerMath
+namespace TempestMath
 {
 	class Vector3;
 	class Point;

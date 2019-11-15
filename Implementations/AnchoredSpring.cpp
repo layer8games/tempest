@@ -1,6 +1,6 @@
 #include <Engine/AnchoredSpring.h>
 
-using namespace KillerPhysics;
+using namespace TempestPhysics;
 
 //==========================================================================================================================
 //
@@ -14,7 +14,7 @@ _springConstant(1),
 _restLength(1)
 {  }
 
-AnchoredSpring::AnchoredSpring(const KM::Point& anchor, real springConstant, real restLength)
+AnchoredSpring::AnchoredSpring(const TM::Point& anchor, real springConstant, real restLength)
 :
 _anchor(anchor),
 _springConstant(springConstant),
@@ -27,7 +27,7 @@ AnchoredSpring::~AnchoredSpring(void)
 void AnchoredSpring::v_UpdateForce(p_RigidBody2D RigidBody2D)
 {
 	//Calculate the Vector4 of the spring
-	KM::Vector4 force {};
+	TM::Vector4 force {};
 	force = RigidBody2D->GetPosition();
 	force -= _anchor;
 
@@ -44,7 +44,7 @@ void AnchoredSpring::v_UpdateForce(p_RigidBody2D RigidBody2D)
 //TODO: Implement
 void AnchoredSpring::v_UpdateForce(p_RigidBody3D body)
 {
-	KM::Vector4 force {}; 
+	TM::Vector4 force {}; 
 	force = body->GetPosition();
 	force -= _anchor;
 

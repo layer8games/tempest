@@ -6,7 +6,7 @@
 //=====STL includes=====
 #include <vector>
 
-namespace KillerEngine 
+namespace Tempest 
 {
 	class ErrorManager;
 	typedef shared_ptr<ErrorManager> p_ErrorManager;

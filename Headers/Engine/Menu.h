@@ -6,19 +6,19 @@
 #include <Engine/Text.h>
 #include <Engine/GameObject.h>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
 //===== STL Includes =====
 #include <vector>
 
-namespace KillerEngine
+namespace Tempest
 {
 /*!
 	A struct to hold all the information needed for an item in a Menu. 
 */
 	struct MenuItem
 	{
-		KM::Point 		  pos;	///< Position of the Text. Used for quick reference, useful even though its duplicated. 
+		TM::Point 		  pos;	///< Position of the Text. Used for quick reference, useful even though its duplicated. 
 		shared_ptr<Text>  text;	///< Pointer a Text, used for the look of the item in the Menu. Call Level::AddTextToLevel first. 
 
 /*!
@@ -143,7 +143,7 @@ namespace KillerEngine
 	Updates the position of the Menu, the title and all the items. Calls Menu::_UpdateItemPositions
 	\param pos is the new position of the whole Menu. 
 */
-		inline void SetPosition(const KM::Point& pos)
+		inline void SetPosition(const TM::Point& pos)
 		{
 			_menuPos = pos;
 			_UpdateItemPositions();
@@ -164,7 +164,7 @@ namespace KillerEngine
 /*!
 	Returns the position of the Menu. 
 */
-		inline const KM::Point& GetPosition(void)
+		inline const TM::Point& GetPosition(void)
 		{
 			return _menuPos;
 		}
@@ -174,7 +174,7 @@ namespace KillerEngine
 	 \param offset is the offset. This is added to the MenuItem::pos, so it should be negative to go left or 
 	 down, and positive to go right or up. 
 */
-		inline void SetItemOffset(const KM::Point& offset)
+		inline void SetItemOffset(const TM::Point& offset)
 		{
 			_itemOffset = offset;
 			_UpdateItemPositions();
@@ -195,7 +195,7 @@ namespace KillerEngine
 /*!
 	Returns the current offset of each time to the one before it.
 */
-		inline const KM::Point& GetItemOffset(void)
+		inline const TM::Point& GetItemOffset(void)
 		{
 			return _itemOffset;
 		}
@@ -204,7 +204,7 @@ namespace KillerEngine
 	Sets the offset for the selector from the item it is next to. Calls Menu::_UpdateItemPositions 
 	\param offset is the offset. Should be positive to move it right or up, and negative to move it left or down. 
 */
-		inline void SetSelectorOffset(const KM::Point& offset)
+		inline void SetSelectorOffset(const TM::Point& offset)
 		{
 			_selectorOffset = offset;
 			_UpdateItemPositions();
@@ -225,7 +225,7 @@ namespace KillerEngine
 /*!
 	Returns the offset for the selector from the item it is next to. 
 */
-		inline const KM::Point& GetSelectorOffset(void)
+		inline const TM::Point& GetSelectorOffset(void)
 		{
 			return _selectorOffset;
 		}
@@ -234,7 +234,7 @@ namespace KillerEngine
 	 Sets the offset for the first item in the list from the title. Calls Menu::_UpdateItemPositions
 	 \param pos is the offset from the title. Should be positive to move it up or right, negative for down or left. 
 */
-		inline void SetTitleOffset(const KM::Point& pos)
+		inline void SetTitleOffset(const TM::Point& pos)
 		{
 			_offsetFromTitle = pos;
 			_UpdateItemPositions();
@@ -255,7 +255,7 @@ namespace KillerEngine
 /*!
 	Returns the current offset for the first item from the title. 
 */
-		inline const KM::Point& GetTitleOffset(void)
+		inline const TM::Point& GetTitleOffset(void)
 		{
 			return _offsetFromTitle;
 		}
@@ -266,7 +266,7 @@ namespace KillerEngine
 */
 		inline void SetTitle(const Text& text)
 		{
-			_title = shared_ptr<Text>(const_cast<KE::Text*>(&text));
+			_title = shared_ptr<Text>(const_cast<TE::Text*>(&text));
 			_title->SetPosition(_menuPos);
 		}
 
@@ -331,10 +331,10 @@ namespace KillerEngine
 		bool					_active;			///< Sets if the menu and all its items are active for rendering and update.
 		bool					_wrap;				///< Configures if the selector should wrap around the Menu or not. True == wrap, false == Don't wrap.
 		U32 					_selectorPosIndex;	///< Index that tracks the location of the selector in relation to _itemList.
-		KM::Point 				_menuPos;			///< Position of the Menu. Used to update everything in Menu::_UpdateItemPositions
-		KM::Point 		 		_itemOffset;		///< Offset of each MenuItem from the one before it. 
-		KM::Point 				_selectorOffset;	///< Offset of the selector from the MenuItem it is next to. 
-		KM::Point 				_offsetFromTitle;	///< Offset of the first MenuItem from the title. 
+		TM::Point 				_menuPos;			///< Position of the Menu. Used to update everything in Menu::_UpdateItemPositions
+		TM::Point 		 		_itemOffset;		///< Offset of each MenuItem from the one before it. 
+		TM::Point 				_selectorOffset;	///< Offset of the selector from the MenuItem it is next to. 
+		TM::Point 				_offsetFromTitle;	///< Offset of the first MenuItem from the title. 
 		shared_ptr<Text>		_title;				///< Pointer to the a Text title. 
 		std::vector<MenuItem> 	_itemList;			///< Internal list of all MenuItems. 
 		shared_ptr<GameObject>	_selector;			///< Selector to move and activate MenuItems. 

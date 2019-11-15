@@ -10,7 +10,7 @@
 #include <Engine/Matrix4.h>
 #include <Engine/Texture.h>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
 //=====STL includes=====
 #include <vector>
@@ -20,7 +20,7 @@ namespace KM = KillerMath;
 
 using std::map;
 
-namespace KillerEngine
+namespace Tempest
 {
 /*! 
 	Helper struct to hold the type of shader contained. Allows for functions to be able to build Shaders dynamically. 
@@ -112,28 +112,28 @@ namespace KillerEngine
 	 \param naem is the name of the uniform in the shader. 
 	 \param vec is the KillerMath::Vector4 to pass along into the shader. x, y, z and w will be passed into the shader. 
 */
-		void SetUniform(const GLchar* name, const KM::Vector4& vec);
+		void SetUniform(const GLchar* name, const TM::Vector4& vec);
 
 /*! 
 	Helper function to set a uniform in the shader. Wrapper around glUniform3f.
 	\param name is the name of the uniform in the shader. 
 	\param vec is the KillerMath::Vector3 to pass into the shader. x, y and z will be passed into the shader.
 */
-		void SetUniform(const GLchar* name, const KM::Vector3& vec);
+		void SetUniform(const GLchar* name, const TM::Vector3& vec);
 
 /*! 
 	Helper function to set a uniform in the shader. Wrapper around glUniform3f.
 	\param name is the name of the uniform in the shader. 
 	\param point is the KillerMath::Point to pass into the shader. x, y, z and w will be passed into the shader.
 */
-		void SetUniform(const GLchar* name, const KM::Point& point);
+		void SetUniform(const GLchar* name, const TM::Point& point);
 
 /*! 
 	Helper function to set a uniform in the shader. Wrapper around glUniformMatrix44fv.
 	\param name is the name of the uniform in the shader.
 	\param mat is the KillerMath::Matrix4 to pass into the shader. All 16 values will be passed in.
 */
-		void SetUniform(const GLchar* name, KM::Matrix4 mat);
+		void SetUniform(const GLchar* name, TM::Matrix4 mat);
 
 /*! 
 	 Helper function to set a uniform in the shader. This is used to activate more than one texture in the shader. The 

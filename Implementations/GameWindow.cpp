@@ -1,7 +1,7 @@
 #include <Engine/GameWindow.h>
 #include <iostream>
 
-using namespace KillerEngine;
+using namespace Tempest;
 
 //==========================================================================================================================
 //
@@ -258,7 +258,7 @@ void GameWindow::DisplayFPS(void)
 	static F64 elapsed = 0.0f;
 	static U32 frameCount = 0;
 
-	F32 delta = KM::Timer::Instance()->DeltaTime();
+	F32 delta = TM::Timer::Instance()->DeltaTime();
 
 	elapsed += delta;
 
@@ -317,7 +317,7 @@ void GameWindow::HideMouseCursor(void)
     glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 }
 
-const KM::Point GameWindow::GetMousePos(void)
+const TM::Point GameWindow::GetMousePos(void)
 {
     F64 mouseX, mouseY;
     glfwGetCursorPos(_window, &mouseX, &mouseY);
@@ -332,10 +332,10 @@ const KM::Point GameWindow::GetMousePos(void)
     //TODO:: This should probably be done through a Matrix4 transform
     //but for now, this seems way easier. 
 
-    return KM::Point(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
+    return TM::Point(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
 }
 
-const KM::Point GameWindow::GetMousePosInScreen(void)
+const TM::Point GameWindow::GetMousePosInScreen(void)
 {
     F64 mouseX, mouseY;
     glfwGetCursorPos(_window, &mouseX, &mouseY);
@@ -350,7 +350,7 @@ const KM::Point GameWindow::GetMousePosInScreen(void)
     //TODO:: This should probably be done through a Matrix4 transform
     //but for now, this seems way easier. 
 
-    return KM::Point(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
+    return TM::Point(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
 }
 
 //==========================================================================================================================
@@ -412,5 +412,5 @@ void GameWindow::OnMouseClick(GLFWwindow* window, int button, int action, int mo
 //==========================================================================================================================
 void GameWindow::OnMouseMove(GLFWwindow* window, F64 posX, F64 posY)
 {
-    //Controller::Instance()->SetMouseCoord(KM::Vector4(static_cast<F32>(posX), static_cast<F32>(posY)));
+    //Controller::Instance()->SetMouseCoord(TM::Vector4(static_cast<F32>(posX), static_cast<F32>(posY)));
 }

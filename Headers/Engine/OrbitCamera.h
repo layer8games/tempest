@@ -5,9 +5,9 @@
 #include <Engine/Camera.h>
 #include <Engine/Vector4.h>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
-namespace KillerEngine
+namespace Tempest
 {
 	class OrbitCamera : public Camera
 	{
@@ -34,9 +34,9 @@ namespace KillerEngine
 		//If you use this, make sure to comment out the Vector4 update 
 		//in the implementation
 /*
-		inline const virtual KM::Matrix4 GetViewMatrix4(void)
+		inline const virtual TM::Matrix4 GetViewMatrix4(void)
 		{
-			return KM::Matrix4::FPSView(_position, _yaw, _pitch);
+			return TM::Matrix4::FPSView(_position, _yaw, _pitch);
 		}
 */
 		void Orbit(void);

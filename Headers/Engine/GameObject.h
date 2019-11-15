@@ -15,8 +15,8 @@
 #include <Engine/ShaderManager.h>
 #include <Engine/AABB.h>
 
-namespace KM = KillerMath;
-namespace KC = KillerCollisions;
+namespace TM = TempestMath;
+namespace TC = TempestCollisions;
 
 #include <rapidxml.hpp>
 
@@ -28,7 +28,7 @@ namespace KC = KillerCollisions;
 #include <regex>
 #include <stdlib.h>
 
-namespace KillerEngine
+namespace Tempest
 {
 	enum BufferData
 	{
@@ -89,16 +89,16 @@ namespace KillerEngine
 
 		void MakeSprite(void);
 
-		inline const KM::Matrix4& GetModelMatrix(void) const
+		inline const TM::Matrix4& GetModelMatrix(void) const
 		{
 			return _modelTOWorldCache;
 		}
 
 		//temporary idea. 
 		//In Matrix4, add Translate vs Transform vs Rotate
-		inline const KM::Matrix4 GetModelMatrixRot(void) const
+		inline const TM::Matrix4 GetModelMatrixRot(void) const
 		{
-			KM::Matrix4 mat = _modelTOWorldCache; 
+			TM::Matrix4 mat = _modelTOWorldCache; 
 			mat.SetTranslate(0.0f, 0.0f, 0.0f);
 			return mat;
 		}
@@ -200,12 +200,12 @@ namespace KillerEngine
 		}
 
 //===== Position =====
-		inline const KM::Point& GetPosition(void) const
+		inline const TM::Point& GetPosition(void) const
 		{
 			return _position;
 		}
 
-		inline void SetPosition(const KM::Point& pos)
+		inline void SetPosition(const TM::Point& pos)
 		{
 			_position = pos;
 			_boundingBox.SetCenter(_position);
@@ -244,31 +244,31 @@ namespace KillerEngine
 			_boundingBox.SetCenter(_position);
 		}
 
-		inline void AddScaledPosition(const KM::Vector4& pos, F32 scale)
+		inline void AddScaledPosition(const TM::Vector4& pos, F32 scale)
 		{
 			_position.AddScaledVector(pos, scale);
 			_boundingBox.SetCenter(_position);
 		}
 
-		inline void AddScaledPosition(const KM::Vector3& pos, F32 scale)
+		inline void AddScaledPosition(const TM::Vector3& pos, F32 scale)
 		{
 			_position.AddScaledVector(pos, scale);
 			_boundingBox.SetCenter(_position);
 		}
 
-		inline void AddScaledPosition(const KM::Point& point, F32 scale)
+		inline void AddScaledPosition(const TM::Point& point, F32 scale)
 		{
 			_position.AddScaledPoint(point, scale);
 			_boundingBox.SetCenter(_position);
 		}
 
 //===== Scale =====
-		inline const KM::Vector3& GetScale(void) const
+		inline const TM::Vector3& GetScale(void) const
 		{
 			return _scale;
 		}
 
-		inline void SetScale(const KM::Vector3& scale)
+		inline void SetScale(const TM::Vector3& scale)
 		{
 			_scale = scale;
 			_boundingBox.SetHalfDimensions(_scale);
@@ -296,12 +296,12 @@ namespace KillerEngine
 		}
 
 //===== Orientation =====
-		inline const KM::Quaternion& GetOrientation(void) const
+		inline const TM::Quaternion& GetOrientation(void) const
 		{
 			return _orientation;
 		}
 
-		inline void SetOrientation(const KM::Quaternion& q)
+		inline void SetOrientation(const TM::Quaternion& q)
 		{
 			_orientation = q;
 		}
@@ -322,7 +322,7 @@ namespace KillerEngine
 			_orientation[3] = zVal;
 		}
 
-		inline void AddScaledOrientation(const KM::Vector4 vec, F32 scale)
+		inline void AddScaledOrientation(const TM::Vector4 vec, F32 scale)
 		{
 			_orientation.AddScaledVector(vec, scale);
 		}
@@ -363,7 +363,7 @@ namespace KillerEngine
 			return _boundingBox.TestCollision(other->GetBounding());
 		}
 
-		inline const KC::AABB& GetBounding(void) const
+		inline const TC::AABB& GetBounding(void) const
 		{
 			return _boundingBox;
 		}
@@ -411,25 +411,25 @@ namespace KillerEngine
 			_shader->SetUniform(name.c_str(), val);
 		}
 
-		inline void SetUniform(string name, const KM::Vector4& vec)
+		inline void SetUniform(string name, const TM::Vector4& vec)
 		{
 			_shader->Use();
 			_shader->SetUniform(name.c_str(), vec);
 		}
 
-		inline void SetUniform(string name, const KM::Vector3& vec)
+		inline void SetUniform(string name, const TM::Vector3& vec)
 		{
 			_shader->Use();
 			_shader->SetUniform(name.c_str(), vec);
 		}
 
-		inline void SetUniform(string name, const KM::Point& point)
+		inline void SetUniform(string name, const TM::Point& point)
 		{
 			_shader->Use();
 			_shader->SetUniform(name.c_str(), point);
 		}
 
-		inline void SetUniform(string name, const KM::Matrix4& mat)
+		inline void SetUniform(string name, const TM::Matrix4& mat)
 		{
 			_shader->Use();
 			_shader->SetUniform(name.c_str(), mat);
@@ -550,12 +550,12 @@ namespace KillerEngine
 		std::vector<Vertex> 	_vertices;
 		std::vector<U32> 		_indices;
 		std::vector<F32> 		_uvList;
-		KM::Matrix4 			_modelTOWorldCache;		
-		KM::Point 				_position;
-		KM::Vector3				_scale;
-		KM::Quaternion			_orientation;
+		TM::Matrix4 			_modelTOWorldCache;		
+		TM::Point 				_position;
+		TM::Vector3				_scale;
+		TM::Quaternion			_orientation;
 		Color 					_color;
-		KC::AABB				_boundingBox;
+		TC::AABB				_boundingBox;
 		shared_ptr<Texture>		_texture;
 		shared_ptr<Shader>		_shader;
 		bool					_activeUpdate;

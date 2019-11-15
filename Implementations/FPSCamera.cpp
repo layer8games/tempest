@@ -1,6 +1,6 @@
 #include <Engine/FPSCamera.h>
 
-using namespace KillerEngine;
+using namespace Tempest;
 //==========================================================================================================================
 //
 //Constructors
@@ -18,7 +18,7 @@ _deadZone(0.01f)
 	_pitch = 0.0f;
 }
 
-FPSCamera::FPSCamera(const KM::Point& position, F32 yaw, F32 pitch)
+FPSCamera::FPSCamera(const TM::Point& position, F32 yaw, F32 pitch)
 :
 _worldUp(0.0f, 1.0f, 0.0f),
 _zoomSensitivity(1.0f),
@@ -40,7 +40,7 @@ FPSCamera::~FPSCamera(void)
 //==========================================================================================================================
 void FPSCamera::v_Update(void)
 {
-	KM::Point mouseCoord = Controller::Instance()->GetMouseCoord();
+	TM::Point mouseCoord = Controller::Instance()->GetMouseCoord();
 	S32 width = GameWindow::Instance()->GetWidth();
 	S32 height = GameWindow::Instance()->GetHeight();
 
@@ -66,9 +66,9 @@ void FPSCamera::v_Rotate(void)
 	_deltaPitch = 0.0f;
 }
 
-void FPSCamera::v_Move(const KM::Vector4& offset)
+void FPSCamera::v_Move(const TM::Vector4& offset)
 {
-	_position += offset * _moveSpeed * KM::Timer::Instance()->DeltaTime();
+	_position += offset * _moveSpeed * TM::Timer::Instance()->DeltaTime();
 	_v_UpdateCameraVector4s();
 }
 

@@ -1,6 +1,6 @@
 #include <Engine/Matrix4.h>
 
-using namespace KillerMath;
+using namespace TempestMath;
 
 //==========================================================================================================================
 //

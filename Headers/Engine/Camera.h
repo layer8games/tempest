@@ -26,16 +26,16 @@ Written by Maxwell Miller
 
 #include <vector>
 
-namespace KM = KillerMath;
+namespace TM = TempestMath;
 
-namespace KillerEngine
+namespace Tempest
 {
 //==========================================================================================================================
 //
 //Camera
 //
 //==========================================================================================================================	
-	class Camera
+	class TEMPEST_API Camera
 	{
 	public:
 //==========================================================================================================================
@@ -58,7 +58,7 @@ namespace KillerEngine
 		virtual void v_Update(void)
 		{  }
 
-		virtual void v_Move(const KM::Vector4& offset)
+		virtual void v_Move(const TM::Vector4& offset)
 		{  }
 
 //==========================================================================================================================
@@ -66,31 +66,28 @@ namespace KillerEngine
 //Camera Functions
 //
 //==========================================================================================================================
-/*! Sets private Matrix4 to use an orthogrphic projection. This calls the GameWindow to get the demensions for the Matrix4. 
-	\param none
-*/
+	/// Sets private Matrix4 to use an orthogrphic projection. This calls the GameWindow to get the demensions for the Matrix4. 
+	/// \param none
 		void SetOrthographic(void);
 
 		void SetOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane);
 
-/*! Sets the private Matrix4 to use a perspective projection. Values are hard coded for now. 
-	\param none
-*/
+	/// Sets the private Matrix4 to use a perspective projection. Values are hard coded for now. 
+	/// \param none
 		void SetPerspective(void);
 
 		void SetPerspective(F32 fov, F32 aspect, F32 nearPlane, F32 farPlane);
 
-/*! Helper function to set the projection Matrix4 to be an identity Matrix4. 
-	\param none
-*/
+	/// Helper function to set the projection Matrix4 to be an identity Matrix4. 
+	/// \param none
 		void SetDefaultMatrix4(void);
 
-		inline const virtual KM::Matrix4 GetViewMatrix4(void)
+		inline const virtual TM::Matrix4 GetViewMatrix4(void)
 		{
-			return KM::Matrix4::LookAt(_position, _target, _up);
+			return TM::Matrix4::LookAt(_position, _target, _up);
 		}
 
-		inline const KM::Matrix4& GetProjectionMatrix4(void)
+		inline const TM::Matrix4& GetProjectionMatrix4(void)
 		{
 			return _projection;
 		}
@@ -129,27 +126,27 @@ namespace KillerEngine
 			_position[2] = z;
 		}
 
-		inline void SetPosition(const KM::Point& point)
+		inline void SetPosition(const TM::Point& point)
 		{
 			_position = point;
 		}
 
 		inline void ScalePosition(F32 x, F32 y, F32 scale)
 		{
-			_position.AddScaledPoint(KM::Point(x, y), scale);
+			_position.AddScaledPoint(TM::Point(x, y), scale);
 		}
 
 		inline void ScalePosition(F32 x, F32 y, F32 z, F32 scale)
 		{
-			_position.AddScaledPoint(KM::Point(x, y, z), scale);
+			_position.AddScaledPoint(TM::Point(x, y, z), scale);
 		}
 
-		inline void ScalePosition(const KM::Point& point, F32 scale)
+		inline void ScalePosition(const TM::Point& point, F32 scale)
 		{
 			_position.AddScaledPoint(point, scale);
 		}
 
-		inline const KM::Point& GetPosition(void) const
+		inline const TM::Point& GetPosition(void) const
 		{
 			return _position;
 		}
@@ -157,7 +154,7 @@ namespace KillerEngine
 //==========================================================================================================================
 //Target
 //==========================================================================================================================
-		inline void SetTarget(const KM::Point& target)
+		inline void SetTarget(const TM::Point& target)
 		{
 			_target = target;
 		}
@@ -176,7 +173,7 @@ namespace KillerEngine
 			_target[2] = zVal;
 		}
 
-		inline const KM::Point& GetTarget(void)
+		inline const TM::Point& GetTarget(void)
 		{
 			return _target;
 		}		
@@ -198,12 +195,12 @@ namespace KillerEngine
 			_up[2] = zVal;
 		}
 
-		inline void SetUpVector(const KM::Vector4& vec)
+		inline void SetUpVector(const TM::Vector4& vec)
 		{
 			_up	 = vec;
 		}
 
-		inline const KM::Vector4& GetUpVector(void) const
+		inline const TM::Vector4& GetUpVector(void) const
 		{
 			return _up;
 		}
@@ -229,12 +226,12 @@ namespace KillerEngine
 			_look[2] = zVal;
 		}
 
-		inline void SetLookVector(const KM::Vector4& vec)
+		inline void SetLookVector(const TM::Vector4& vec)
 		{
 			_look = vec;
 		}
 
-		inline const KM::Vector4& GetLookVector(void) const
+		inline const TM::Vector4& GetLookVector(void) const
 		{
 			return _look;
 		}
@@ -260,12 +257,12 @@ namespace KillerEngine
 			_right[2] = zVal;
 		}
 
-		inline void SetRightVector(const KM::Vector4& vec)
+		inline void SetRightVector(const TM::Vector4& vec)
 		{
 			_right = vec;
 		}
 
-		inline const KM::Vector4& GetRightVector(void) const
+		inline const TM::Vector4& GetRightVector(void) const
 		{
 			return _right;
 		}
@@ -321,16 +318,16 @@ namespace KillerEngine
 //
 //==========================================================================================================================		
 		Color  							_background;	///< Background color of current level.
-		KM::Matrix4 					_projection;	///< Projection Matrix4 (Orthographic or Perspective). Not used 
+		TM::Matrix4 					_projection;	///< Projection Matrix4 (Orthographic or Perspective). Not used 
 		
 	protected:
-		KM::Point  						_position;		///< Position of Camera in world space.
-		KM::Point 						_target;
-		KM::Vector4 					_up;
-		KM::Vector4 					_look;
-		KM::Vector4 					_right;
-		KM::Point 						_currentMouseCoords;
-		KM::Point 						_lastMouseCoords;
+		TM::Point  						_position;		///< Position of Camera in world space.
+		TM::Point 						_target;
+		TM::Vector4 					_up;
+		TM::Vector4 					_look;
+		TM::Vector4 					_right;
+		TM::Point 						_currentMouseCoords;
+		TM::Point 						_lastMouseCoords;
 		F32								_mouseSensitivity;
 		F32 							_yaw;
 		F32 							_pitch;
@@ -338,4 +335,5 @@ namespace KillerEngine
 		F32								_deltaPitch;
 		F32 							_fov;
 	};//end Camera
+	typedef shared_ptr<Camera> p_Camera;
 }//end namespace

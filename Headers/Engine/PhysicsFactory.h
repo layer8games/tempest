@@ -6,7 +6,7 @@
 #include <Engine/RigidBody3D.h>
 #include <Engine/GravityForce.h>
 
-namespace KillerPhysics
+namespace TempestPhysics
 {
 	class PhysicsFactory
 	{

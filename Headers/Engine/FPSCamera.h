@@ -4,7 +4,7 @@
 #include <Engine/Atom.h>
 #include <Engine/Camera.h>
 
-namespace KillerEngine
+namespace Tempest
 {
 	class FPSCamera : public Camera
 	{
@@ -16,7 +16,7 @@ namespace KillerEngine
 //==========================================================================================================================		
 		FPSCamera(void);
 
-		FPSCamera(const KM::Point& position, F32 yaw, F32 pitch);
+		FPSCamera(const TM::Point& position, F32 yaw, F32 pitch);
 
 		~FPSCamera(void);
 
@@ -29,19 +29,19 @@ namespace KillerEngine
 
 		virtual void v_Rotate(void) final;
 
-		virtual void v_Move(const KM::Vector4& offset) final;
+		virtual void v_Move(const TM::Vector4& offset) final;
 
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================
-	 	inline void SetWorldUp(const KM::Vector4 vec)
+	 	inline void SetWorldUp(const TM::Vector4 vec)
 		{
 			_worldUp = vec;
 		}
 
-		inline const KM::Vector4& GetWorldUp(void)
+		inline const TM::Vector4& GetWorldUp(void)
 		{
 			return _worldUp;
 		}
@@ -79,7 +79,7 @@ namespace KillerEngine
 //Data
 //
 //==========================================================================================================================
-		KM::Vector4 _worldUp;
+		TM::Vector4 _worldUp;
 		F64 	   _zoomSensitivity;
 		F32 	   _moveSpeed;
 		F32		   _deadZone;

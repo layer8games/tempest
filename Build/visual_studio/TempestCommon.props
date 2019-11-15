@@ -7,7 +7,9 @@
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <UndefinePreprocessorDefinitions>TEMPEST_EXPORTS</UndefinePreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions>
+      </UndefinePreprocessorDefinitions>
+      <PreprocessorDefinitions>TEMPEST_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup />

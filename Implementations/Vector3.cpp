@@ -1,6 +1,6 @@
 #include <Engine/Vector3.h>
 
-using namespace KillerMath;
+using namespace TempestMath;
 
 //==========================================================================================================================
 //

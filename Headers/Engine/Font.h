@@ -16,7 +16,7 @@
 #include <map>
 #include <list>
 
-namespace KillerEngine
+namespace Tempest
 {
 
 typedef std::map<char, CharacterData> CharacterDataMap;
