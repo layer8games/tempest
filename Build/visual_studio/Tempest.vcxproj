@@ -170,6 +170,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\EngineAtom.h" />
     <ClInclude Include="..\..\Headers\Engine\FontManager.h">
       <SubType>
       </SubType>
