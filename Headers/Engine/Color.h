@@ -11,15 +11,15 @@ namespace Tempest
 //==========================================================================================================================
 //Documentations
 //==========================================================================================================================
-/*! A structure to hold basic colors for all Sprites to sent to OGL in order to render things
+	/// A structure to hold basic colors for all Sprites to sent to OGL in order to render things
+	
+	/// There will be 4 values per color so that it can be sent to a vec4 in OGL before it is used to actually control the colors 
+	/// of anything in the shader. This is stored in an array for convience of passing the whole array out 
+	/// when the time comes.  
 
-	There will be 4 values per color so that it can be sent to a vec4 in OGL before it is used to actually control the colors 
-	of anything in the shader. This is stored in an array for convience of passing the whole array out 
-	when the time comes.  
-
-	Where values are set, they are required to be normalized, that is between 0.0f and 1.0f. This is because the colors need
-	to be represented this for OpenGL. Asserts are used at compile time to make sure that this is true. */
-	class Color 
+	/// Where values are set, they are required to be normalized, that is between 0.0f and 1.0f. This is because the colors need
+	/// to be represented this for OpenGL. Asserts are used at compile time to make sure that this is true.
+	class TEMPEST_API Color 
 	{
 	public:
 //==========================================================================================================================
@@ -27,35 +27,33 @@ namespace Tempest
 //Constructors
 //
 //==========================================================================================================================
-/*! Default Constructor. Sets Red Green and Blue to 0.0f, and Alpha to 1.0f */		
+	/// Default Constructor. Sets Red Green and Blue to 0.0f, and Alpha to 1.0f 
 		Color(void);
 		
-/*! Single Value Constructor. Sets Red, Green and Blue to value. The value needs to be between 0.0f and 1.0f. Alpha is set to 
-	1.0f by default.
-	\param col F32: value used to set RGB values. */		
+	/// Single Value Constructor. Sets Red, Green and Blue to value. The value needs to be between 0.0f and 1.0f. Alpha is set to
+	/// 1.0f by default.
+	/// \param col F32: value used to set RGB values.
 		explicit Color(F32 col);
 
-/*! Three value Constructor. Sets Red, Green and Blue accordingly. Values need to be between 0.0f and 1.0f. Alpha is set to 1.0f 
-	by default.
-	\param red F32: value for Red.
-	\param green F32: value for Green.
-	\param blue F32: value for Blue. */		
+	/// Three value Constructor. Sets Red, Green and Blue accordingly. Values need to be between 0.0f and 1.0f. Alpha is set to 1.0f 
+	/// by default.
+	/// \param red F32: value for Red.
+	/// \param green F32: value for Green.
+	/// \param blue F32: value for Blue.
 		Color(F32 red, F32 green, F32 blue);
 		
-/*! Four value Constructor. Sets Red, Green and Blue accordingly. Values need to be between 0.0f and 1.0f by default.
-	\param red F32: value for Red.
-	\param green F32: value for Green.
-	\param blue F32: value for Blue. 
-	\param alpha F32: value for Alpha. */		
+	/// Four value Constructor. Sets Red, Green and Blue accordingly. Values need to be between 0.0f and 1.0f by default.
+	/// \param red F32: value for Red.
+	/// \param green F32: value for Green.
+	/// \param blue F32: value for Blue. 
+	/// \param alpha F32: value for Alpha.
 		Color(F32 red, F32 green, F32 blue, F32 alpha);
 		
-/*! Copy constructor. Calls Color::GetRed Color::GetGreen Color::GetBlue Color::GetAlpha to set values. 
-	\param c = Color&: color to copy*/
+	/// Copy constructor. Calls Color::GetRed Color::GetGreen Color::GetBlue Color::GetAlpha to set values. 
+	/// \param c = Color&: color to copy
 		Color(const Color& c);
 
-/*! 
-	Default Constructor. Not implemented. 
-*/
+	/// Default Constructor. Not implemented. 
 		~Color(void);
 
 //==========================================================================================================================
@@ -87,27 +85,21 @@ namespace Tempest
 //
 //Accessors
 //
-//==========================================================================================================================
-/*! 
-	Checks if the alpha channel should be considered for this Color. 
-*/
+//========================================================================================================================== 
+	/// Checks if the alpha channel should be considered for this Color. 
 		inline bool HasAlpha(void) const
 		{
 			return _alpha;
 		}
 
-/*! 
-	Sets if the alpha channel should be considered for this Color.
-	\param state is the new state that will be set. 
-*/
+	/// Sets if the alpha channel should be considered for this Color.
+	/// \param state is the new state that will be set. 
 		inline void UseAlpha(bool state)
 		{
 			_alpha = state;
 		}
 
-/*! 
-	Creates and returns an array with the 4 color values in it as a pointer. 
-*/
+	/// Creates and returns an array with the 4 color values in it as a pointer. 
 		inline const F32* GetPointer(void) const 
 		{ 
 			return _data; 
@@ -127,4 +119,5 @@ namespace Tempest
 		F32 _data[4];
 
 	};
+	typedef shared_ptr<Color> p_Color;
 }//End namespace

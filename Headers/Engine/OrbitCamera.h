@@ -9,7 +9,7 @@ namespace TM = TempestMath;
 
 namespace Tempest
 {
-	class OrbitCamera : public Camera
+	class TEMPEST_API OrbitCamera : public Camera
 	{
 	public:
 //==========================================================================================================================
@@ -65,4 +65,5 @@ namespace Tempest
 		F32 _radius;
 
 	};//end OrbitCamera
+	typedef shared_ptr<OrbitCamera> p_OrbitCamera;
 }//end Namespace

@@ -10,504 +10,504 @@
     <Filter Include="Source Code">
       <UniqueIdentifier>{ed9bde4f-7cd2-4615-9aae-49be835522c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerEngine">
-      <UniqueIdentifier>{243e5de8-1940-47ac-84ef-f53a25554886}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Atom">
-      <UniqueIdentifier>{cd2e098b-d0b5-443f-a980-bb5adc24d8b8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Camera">
-      <UniqueIdentifier>{e63d13b7-e9e9-4c1b-8403-7f3d194c5129}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Color">
-      <UniqueIdentifier>{5d83855b-baf9-4d27-bc54-347079ecb506}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Controller">
-      <UniqueIdentifier>{949bad72-f361-4e38-b352-64dbb4371cd2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Engine">
-      <UniqueIdentifier>{66fd72d2-3739-4584-a963-04c6b35f6d8d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Font">
-      <UniqueIdentifier>{8ee5872e-c61d-47ce-889d-c375d165cfae}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\GameObjects">
-      <UniqueIdentifier>{5c9e9e45-d24d-478b-867f-8057a804f074}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\GameObjects\GameObject">
-      <UniqueIdentifier>{271c9817-2622-490e-9c17-2d9949d87bc9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\GameObjects\EnvironmentObj">
-      <UniqueIdentifier>{e34428c4-21e7-40f7-9fe0-9eb037b1e2e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\GameObjects\Glyph">
-      <UniqueIdentifier>{22c25915-f8de-4ccd-b648-edfd4f055e14}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Level">
-      <UniqueIdentifier>{3820084b-1115-47ff-b532-adca4671f2e9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Managers">
-      <UniqueIdentifier>{67b296c5-708e-48ea-aef8-d6da2a5ae0cb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Managers\TextureManager">
-      <UniqueIdentifier>{9cf645df-f4b4-417c-92f1-1c4cc356a975}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Managers\LevelManager">
-      <UniqueIdentifier>{0848391e-09fc-4949-ad36-3ea60b4741da}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Managers\ErrorManager">
-      <UniqueIdentifier>{ce3f617a-fab4-4c47-8413-bfad33649533}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Managers\ShaderManager">
-      <UniqueIdentifier>{b86f9cee-c90e-4b5e-9a71-5bc9fcc0a055}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Managers\FontManager">
-      <UniqueIdentifier>{628dddcc-7234-492d-a7d2-24ed7ef95ef1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerMath">
-      <UniqueIdentifier>{4b9e6bed-5956-4340-8293-4302ef41d7fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerMath\LinearAlgebra">
-      <UniqueIdentifier>{f7ce502c-f857-4759-98ab-dd273a5641ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerMath\LinearAlgebra\Vector">
-      <UniqueIdentifier>{2d795523-a23d-4211-b17f-2919e5a6a30f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerMath\LinearAlgebra\Matrix">
-      <UniqueIdentifier>{b47791cc-1241-40a1-9bf3-9df0eb96250c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerMath\LinearAlgebra\Point">
-      <UniqueIdentifier>{78f25389-9b6a-4fa7-9efc-4b9cde25a36f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerMath\Timer">
-      <UniqueIdentifier>{d95a6a48-7e2e-4741-b39d-f6a1c763e14d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerMath\Quaternion">
-      <UniqueIdentifier>{c515a409-dc39-49f7-98ad-057c2f9db072}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerMath\Random">
-      <UniqueIdentifier>{1f3a7113-0f33-4da8-9c3d-2d1d584a3c1f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerPhysics">
-      <UniqueIdentifier>{9e6deab4-04ba-4e5d-a927-ac83649188fa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerPhysics\Forces">
-      <UniqueIdentifier>{b3088a5e-674e-4070-880b-75d7bacedb04}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerPhysics\Forces\Drag">
-      <UniqueIdentifier>{9011a0d8-6c97-4773-b187-acb0d27376d6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerPhysics\Forces\Gravity">
-      <UniqueIdentifier>{2feda301-ee03-4ffc-b0ea-625d489dac2e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerPhysics\Forces\Registry">
-      <UniqueIdentifier>{0b7fb099-81e9-43aa-8090-714b6099f722}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerPhysics\Forces\Generator Base">
-      <UniqueIdentifier>{128415f5-4bcb-47fa-8bd6-af05ac197f78}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerPhysics\Forces\Springs">
-      <UniqueIdentifier>{90b3a85a-49e6-4ef0-b9f4-28445503896b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerPhysics\Forces\Springs\Default">
-      <UniqueIdentifier>{77b9ec57-89f0-4b28-9ccd-ac36c1a1d928}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerPhysics\Forces\Springs\AnchoredSpring">
-      <UniqueIdentifier>{80ec5136-074d-41e9-a703-5d3de0472230}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerPhysics\Forces\Springs\BuoyantForce">
-      <UniqueIdentifier>{7e96f329-fb0c-44bf-bd44-69755cdf143f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerPhysics\Contacts">
-      <UniqueIdentifier>{51060f2b-30e0-4b75-a6f5-ad0625443185}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Shader">
-      <UniqueIdentifier>{712aa763-23a4-43a6-8130-dd06474fa5a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Text">
-      <UniqueIdentifier>{7e0d93d1-f85e-4c81-9b66-d130c9d7e5df}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Texture">
-      <UniqueIdentifier>{70216902-edb5-4822-8aec-ed808572d931}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerCollision">
+    <Filter Include="Source Code\Collision">
       <UniqueIdentifier>{133d8e31-217f-4f8c-9467-0e6e8ed02fb3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerCollision\BoundingVolumes">
+    <Filter Include="Source Code\Collision\BoundingVolumes">
       <UniqueIdentifier>{a688bc6e-bae3-4150-a91d-8668d2316cf3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerCollision\BoundingVolumes\Sphere">
+    <Filter Include="Source Code\Collision\BoundingVolumes\Sphere">
       <UniqueIdentifier>{1ee31c7c-3c01-40f8-be00-d9f83ab4613b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerCollision\BoundingVolumes\BoundingBoxes">
+    <Filter Include="Source Code\Collision\BoundingVolumes\BoundingBoxes">
       <UniqueIdentifier>{2f9f53e3-9379-4bff-a340-09c5a03b4f1d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Vertex">
-      <UniqueIdentifier>{313dca8f-e2fb-4717-9a11-3f2a117715e9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Camera\Default">
-      <UniqueIdentifier>{e7845e79-d40a-4caa-8155-921be8665cfa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Camera\Orbit">
-      <UniqueIdentifier>{68ca543c-cf23-4f33-b950-473d0ffc8bd7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Camera\FPS">
-      <UniqueIdentifier>{398c9621-a3c6-45f5-8d4e-80557f2d0ef8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\AxisAligned">
+    <Filter Include="Source Code\Collision\BoundingVolumes\BoundingBoxes\AxisAligned">
       <UniqueIdentifier>{b284a455-a2fb-4c42-ad61-eaa2ff66a65c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\Oriented">
+    <Filter Include="Source Code\Collision\BoundingVolumes\BoundingBoxes\Oriented">
       <UniqueIdentifier>{05bd94d4-af3d-442a-930b-95aa6f8ac3b6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerCollision\BoundingVolumeHierarchies">
+    <Filter Include="Source Code\Collision\BoundingVolumeHierarchies">
       <UniqueIdentifier>{9f42f7c3-de5f-447d-b2c2-5297fcadfa37}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerEngine\CharacterData">
-      <UniqueIdentifier>{9b6669af-d33e-478b-8f0d-d88f5ba7a68c}</UniqueIdentifier>
+    <Filter Include="Source Code\Engine">
+      <UniqueIdentifier>{243e5de8-1940-47ac-84ef-f53a25554886}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerEngine\Menu">
-      <UniqueIdentifier>{0a1cd979-9cd6-4c96-9cc1-bf2d699202af}</UniqueIdentifier>
+    <Filter Include="Source Code\Engine\Atom">
+      <UniqueIdentifier>{cd2e098b-d0b5-443f-a980-bb5adc24d8b8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerEngine\Managers\AudioManager">
+    <Filter Include="Source Code\Engine\Camera">
+      <UniqueIdentifier>{e63d13b7-e9e9-4c1b-8403-7f3d194c5129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Camera\Default">
+      <UniqueIdentifier>{e7845e79-d40a-4caa-8155-921be8665cfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Camera\Orbit">
+      <UniqueIdentifier>{68ca543c-cf23-4f33-b950-473d0ffc8bd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Camera\FPS">
+      <UniqueIdentifier>{398c9621-a3c6-45f5-8d4e-80557f2d0ef8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Color">
+      <UniqueIdentifier>{5d83855b-baf9-4d27-bc54-347079ecb506}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Controller">
+      <UniqueIdentifier>{949bad72-f361-4e38-b352-64dbb4371cd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Engine">
+      <UniqueIdentifier>{66fd72d2-3739-4584-a963-04c6b35f6d8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Font">
+      <UniqueIdentifier>{8ee5872e-c61d-47ce-889d-c375d165cfae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\GameObjects">
+      <UniqueIdentifier>{5c9e9e45-d24d-478b-867f-8057a804f074}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\GameObjects\GameObject">
+      <UniqueIdentifier>{271c9817-2622-490e-9c17-2d9949d87bc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\GameObjects\EnvironmentObj">
+      <UniqueIdentifier>{e34428c4-21e7-40f7-9fe0-9eb037b1e2e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\GameObjects\Glyph">
+      <UniqueIdentifier>{22c25915-f8de-4ccd-b648-edfd4f055e14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Level">
+      <UniqueIdentifier>{3820084b-1115-47ff-b532-adca4671f2e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Managers">
+      <UniqueIdentifier>{67b296c5-708e-48ea-aef8-d6da2a5ae0cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Managers\TextureManager">
+      <UniqueIdentifier>{9cf645df-f4b4-417c-92f1-1c4cc356a975}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Managers\LevelManager">
+      <UniqueIdentifier>{0848391e-09fc-4949-ad36-3ea60b4741da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Managers\ErrorManager">
+      <UniqueIdentifier>{ce3f617a-fab4-4c47-8413-bfad33649533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Managers\ShaderManager">
+      <UniqueIdentifier>{b86f9cee-c90e-4b5e-9a71-5bc9fcc0a055}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Managers\FontManager">
+      <UniqueIdentifier>{628dddcc-7234-492d-a7d2-24ed7ef95ef1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Managers\AudioManager">
       <UniqueIdentifier>{41777693-ed48-4aed-bd87-5b22b173ec28}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerEngine\AudioClip">
+    <Filter Include="Source Code\Engine\Shader">
+      <UniqueIdentifier>{712aa763-23a4-43a6-8130-dd06474fa5a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Text">
+      <UniqueIdentifier>{7e0d93d1-f85e-4c81-9b66-d130c9d7e5df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Texture">
+      <UniqueIdentifier>{70216902-edb5-4822-8aec-ed808572d931}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\CharacterData">
+      <UniqueIdentifier>{9b6669af-d33e-478b-8f0d-d88f5ba7a68c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Menu">
+      <UniqueIdentifier>{0a1cd979-9cd6-4c96-9cc1-bf2d699202af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\AudioClip">
       <UniqueIdentifier>{73f7ea20-7f7c-4f04-8673-63659ad6dbaa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerEngine\AudioListener">
+    <Filter Include="Source Code\Engine\AudioListener">
       <UniqueIdentifier>{8c7dc3e0-cdc2-4efa-8c4c-f881da2ae409}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerEngine\AudioSource">
+    <Filter Include="Source Code\Engine\AudioSource">
       <UniqueIdentifier>{95e2e84a-b12d-42be-98df-7422a5f653a7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerEngine\GameWindow">
+    <Filter Include="Source Code\Engine\GameWindow">
       <UniqueIdentifier>{381d786c-065e-4c73-9294-7079cbccce17}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerEngine\EngineFactory">
+    <Filter Include="Source Code\Engine\EngineFactory">
       <UniqueIdentifier>{7e26eddb-1905-4038-b22e-66c0c820e244}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerPhysics\RigidBodies">
+    <Filter Include="Source Code\Engine\Main">
+      <UniqueIdentifier>{26ec3754-d460-4781-8590-32515faec28f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Math">
+      <UniqueIdentifier>{4b9e6bed-5956-4340-8293-4302ef41d7fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Math\LinearAlgebra">
+      <UniqueIdentifier>{f7ce502c-f857-4759-98ab-dd273a5641ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Math\LinearAlgebra\Vector">
+      <UniqueIdentifier>{2d795523-a23d-4211-b17f-2919e5a6a30f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Math\LinearAlgebra\Matrix">
+      <UniqueIdentifier>{b47791cc-1241-40a1-9bf3-9df0eb96250c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Math\LinearAlgebra\Point">
+      <UniqueIdentifier>{78f25389-9b6a-4fa7-9efc-4b9cde25a36f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Math\Timer">
+      <UniqueIdentifier>{d95a6a48-7e2e-4741-b39d-f6a1c763e14d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Math\Quaternion">
+      <UniqueIdentifier>{c515a409-dc39-49f7-98ad-057c2f9db072}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Math\Random">
+      <UniqueIdentifier>{1f3a7113-0f33-4da8-9c3d-2d1d584a3c1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Math\Vertex">
+      <UniqueIdentifier>{313dca8f-e2fb-4717-9a11-3f2a117715e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Physics">
+      <UniqueIdentifier>{9e6deab4-04ba-4e5d-a927-ac83649188fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Physics\Forces">
+      <UniqueIdentifier>{b3088a5e-674e-4070-880b-75d7bacedb04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Physics\Forces\Drag">
+      <UniqueIdentifier>{9011a0d8-6c97-4773-b187-acb0d27376d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Physics\Forces\Gravity">
+      <UniqueIdentifier>{2feda301-ee03-4ffc-b0ea-625d489dac2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Physics\Forces\Registry">
+      <UniqueIdentifier>{0b7fb099-81e9-43aa-8090-714b6099f722}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Physics\Forces\Generator Base">
+      <UniqueIdentifier>{128415f5-4bcb-47fa-8bd6-af05ac197f78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Physics\Forces\Springs">
+      <UniqueIdentifier>{90b3a85a-49e6-4ef0-b9f4-28445503896b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Physics\Forces\Springs\Default">
+      <UniqueIdentifier>{77b9ec57-89f0-4b28-9ccd-ac36c1a1d928}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Physics\Forces\Springs\AnchoredSpring">
+      <UniqueIdentifier>{80ec5136-074d-41e9-a703-5d3de0472230}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Physics\Forces\Springs\BuoyantForce">
+      <UniqueIdentifier>{7e96f329-fb0c-44bf-bd44-69755cdf143f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Physics\Contacts">
+      <UniqueIdentifier>{51060f2b-30e0-4b75-a6f5-ad0625443185}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Physics\RigidBodies">
       <UniqueIdentifier>{c249fc9b-461f-4338-8fb6-84a67018f196}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerPhysics\RigidBodies\3D">
+    <Filter Include="Source Code\Physics\RigidBodies\3D">
       <UniqueIdentifier>{a90d33f7-8d59-4428-8aa9-5eb3975b2f3f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerPhysics\RigidBodies\2D">
+    <Filter Include="Source Code\Physics\RigidBodies\2D">
       <UniqueIdentifier>{57925e0b-6c1a-46f2-92b3-fb68a9630ebe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\KillerPhysics\PhysicsFactory">
+    <Filter Include="Source Code\Physics\PhysicsFactory">
       <UniqueIdentifier>{f661ea09-a9a5-462e-91bd-9e3bf611f900}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\KillerEngine\Main">
-      <UniqueIdentifier>{26ec3754-d460-4781-8590-32515faec28f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
-      <Filter>Source Code\KillerEngine\Atom</Filter>
+      <Filter>Source Code\Engine\Atom</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Controller.h">
-      <Filter>Source Code\KillerEngine\Controller</Filter>
+      <Filter>Source Code\Engine\Controller</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ErrorManager.h">
-      <Filter>Source Code\KillerEngine\Managers\ErrorManager</Filter>
+      <Filter>Source Code\Engine\Managers\ErrorManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Font.h">
-      <Filter>Source Code\KillerEngine\Font</Filter>
+      <Filter>Source Code\Engine\Font</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\TextureManager.h">
-      <Filter>Source Code\KillerEngine\Managers\TextureManager</Filter>
+      <Filter>Source Code\Engine\Managers\TextureManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Timer.h">
-      <Filter>Source Code\KillerMath\Timer</Filter>
+      <Filter>Source Code\Math\Timer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\EnvironmentObject.h">
-      <Filter>Source Code\KillerEngine\GameObjects\EnvironmentObj</Filter>
+      <Filter>Source Code\Engine\GameObjects\EnvironmentObj</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Quaternion.h">
-      <Filter>Source Code\KillerMath\Quaternion</Filter>
+      <Filter>Source Code\Math\Quaternion</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Color.h">
-      <Filter>Source Code\KillerEngine\Color</Filter>
+      <Filter>Source Code\Engine\Color</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Level.h">
-      <Filter>Source Code\KillerEngine\Level</Filter>
+      <Filter>Source Code\Engine\Level</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\LevelManager.h">
-      <Filter>Source Code\KillerEngine\Managers\LevelManager</Filter>
+      <Filter>Source Code\Engine\Managers\LevelManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Texture.h">
-      <Filter>Source Code\KillerEngine\Texture</Filter>
+      <Filter>Source Code\Engine\Texture</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Random.h">
-      <Filter>Source Code\KillerMath\Random</Filter>
+      <Filter>Source Code\Math\Random</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Engine.h">
-      <Filter>Source Code\KillerEngine\Engine</Filter>
+      <Filter>Source Code\Engine\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Shader.h">
-      <Filter>Source Code\KillerEngine\Shader</Filter>
+      <Filter>Source Code\Engine\Shader</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GameObject.h">
-      <Filter>Source Code\KillerEngine\GameObjects\GameObject</Filter>
+      <Filter>Source Code\Engine\GameObjects\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Text.h">
-      <Filter>Source Code\KillerEngine\Text</Filter>
+      <Filter>Source Code\Engine\Text</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Glyph.h">
-      <Filter>Source Code\KillerEngine\GameObjects\Glyph</Filter>
+      <Filter>Source Code\Engine\GameObjects\Glyph</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ShaderManager.h">
-      <Filter>Source Code\KillerEngine\Managers\ShaderManager</Filter>
+      <Filter>Source Code\Engine\Managers\ShaderManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\FontManager.h">
-      <Filter>Source Code\KillerEngine\Managers\FontManager</Filter>
+      <Filter>Source Code\Engine\Managers\FontManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ForceGenerator.h">
-      <Filter>Source Code\KillerPhysics\Forces\Generator Base</Filter>
+      <Filter>Source Code\Physics\Forces\Generator Base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GravityForce.h">
-      <Filter>Source Code\KillerPhysics\Forces\Gravity</Filter>
+      <Filter>Source Code\Physics\Forces\Gravity</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ForceRegistry.h">
-      <Filter>Source Code\KillerPhysics\Forces\Registry</Filter>
+      <Filter>Source Code\Physics\Forces\Registry</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Contact.h">
-      <Filter>Source Code\KillerPhysics\Contacts</Filter>
+      <Filter>Source Code\Physics\Contacts</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\BoundingSphere.h">
-      <Filter>Source Code\KillerCollision\BoundingVolumes\Sphere</Filter>
+      <Filter>Source Code\Collision\BoundingVolumes\Sphere</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\AnchoredSpring.h">
-      <Filter>Source Code\KillerPhysics\Forces\Springs\AnchoredSpring</Filter>
+      <Filter>Source Code\Physics\Forces\Springs\AnchoredSpring</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\BuoyantForce.h">
-      <Filter>Source Code\KillerPhysics\Forces\Springs\BuoyantForce</Filter>
+      <Filter>Source Code\Physics\Forces\Springs\BuoyantForce</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\SpringForce.h">
-      <Filter>Source Code\KillerPhysics\Forces\Springs\Default</Filter>
+      <Filter>Source Code\Physics\Forces\Springs\Default</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\DragForce.h">
-      <Filter>Source Code\KillerPhysics\Forces\Drag</Filter>
+      <Filter>Source Code\Physics\Forces\Drag</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Matrix4.h">
-      <Filter>Source Code\KillerMath\LinearAlgebra\Matrix</Filter>
+      <Filter>Source Code\Math\LinearAlgebra\Matrix</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Matrix3.h">
-      <Filter>Source Code\KillerMath\LinearAlgebra\Matrix</Filter>
+      <Filter>Source Code\Math\LinearAlgebra\Matrix</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Point.h">
-      <Filter>Source Code\KillerMath\LinearAlgebra\Point</Filter>
+      <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vector4.h">
-      <Filter>Source Code\KillerMath\LinearAlgebra\Vector</Filter>
+      <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vector3.h">
-      <Filter>Source Code\KillerMath\LinearAlgebra\Vector</Filter>
+      <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vertex.h">
-      <Filter>Source Code\Vertex</Filter>
+      <Filter>Source Code\Math\Vertex</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\CharacterData.h">
-      <Filter>Source Code\KillerEngine\CharacterData</Filter>
+      <Filter>Source Code\Engine\CharacterData</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Camera.h">
-      <Filter>Source Code\KillerEngine\Camera\Default</Filter>
+      <Filter>Source Code\Engine\Camera\Default</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\OrbitCamera.h">
-      <Filter>Source Code\KillerEngine\Camera\Orbit</Filter>
+      <Filter>Source Code\Engine\Camera\Orbit</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\FPSCamera.h">
-      <Filter>Source Code\KillerEngine\Camera\FPS</Filter>
+      <Filter>Source Code\Engine\Camera\FPS</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\BroadPhaseCollision.h">
-      <Filter>Source Code\KillerCollision\BoundingVolumeHierarchies</Filter>
+      <Filter>Source Code\Collision\BoundingVolumeHierarchies</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\AABB.h">
-      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\AxisAligned</Filter>
+      <Filter>Source Code\Collision\BoundingVolumes\BoundingBoxes\AxisAligned</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\OBB.h">
-      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\Oriented</Filter>
+      <Filter>Source Code\Collision\BoundingVolumes\BoundingBoxes\Oriented</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Menu.h">
-      <Filter>Source Code\KillerEngine\Menu</Filter>
+      <Filter>Source Code\Engine\Menu</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\AudioManager.h">
-      <Filter>Source Code\KillerEngine\Managers\AudioManager</Filter>
+      <Filter>Source Code\Engine\Managers\AudioManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\AudioClip.h">
-      <Filter>Source Code\KillerEngine\AudioClip</Filter>
+      <Filter>Source Code\Engine\AudioClip</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\AudioSource.h">
-      <Filter>Source Code\KillerEngine\AudioSource</Filter>
+      <Filter>Source Code\Engine\AudioSource</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\AudioListener.h">
-      <Filter>Source Code\KillerEngine\AudioListener</Filter>
+      <Filter>Source Code\Engine\AudioListener</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GameWindow.h">
-      <Filter>Source Code\KillerEngine\GameWindow</Filter>
+      <Filter>Source Code\Engine\GameWindow</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\EngineFactory.h">
-      <Filter>Source Code\KillerEngine\EngineFactory</Filter>
+      <Filter>Source Code\Engine\EngineFactory</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\RigidBody3D.h">
-      <Filter>Source Code\KillerPhysics\RigidBodies\3D</Filter>
+      <Filter>Source Code\Physics\RigidBodies\3D</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\RigidBody2D.h">
-      <Filter>Source Code\KillerPhysics\RigidBodies\2D</Filter>
+      <Filter>Source Code\Physics\RigidBodies\2D</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\PhysicsFactory.h">
-      <Filter>Source Code\KillerPhysics\PhysicsFactory</Filter>
+      <Filter>Source Code\Physics\PhysicsFactory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
-      <Filter>Source Code\KillerEngine\Controller</Filter>
+      <Filter>Source Code\Engine\Controller</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ErrorManager.cpp">
-      <Filter>Source Code\KillerEngine\Managers\ErrorManager</Filter>
+      <Filter>Source Code\Engine\Managers\ErrorManager</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Font.cpp">
-      <Filter>Source Code\KillerEngine\Font</Filter>
+      <Filter>Source Code\Engine\Font</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\TextureManager.cpp">
-      <Filter>Source Code\KillerEngine\Managers\TextureManager</Filter>
+      <Filter>Source Code\Engine\Managers\TextureManager</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Timer.cpp">
-      <Filter>Source Code\KillerMath\Timer</Filter>
+      <Filter>Source Code\Math\Timer</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\EnvironmentObject.cpp">
-      <Filter>Source Code\KillerEngine\GameObjects\EnvironmentObj</Filter>
+      <Filter>Source Code\Engine\GameObjects\EnvironmentObj</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Quaternion.cpp">
-      <Filter>Source Code\KillerMath\Quaternion</Filter>
+      <Filter>Source Code\Math\Quaternion</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Color.cpp">
-      <Filter>Source Code\KillerEngine\Color</Filter>
+      <Filter>Source Code\Engine\Color</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Level.cpp">
-      <Filter>Source Code\KillerEngine\Level</Filter>
+      <Filter>Source Code\Engine\Level</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\LevelManager.cpp">
-      <Filter>Source Code\KillerEngine\Managers\LevelManager</Filter>
+      <Filter>Source Code\Engine\Managers\LevelManager</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Texture.cpp">
-      <Filter>Source Code\KillerEngine\Texture</Filter>
+      <Filter>Source Code\Engine\Texture</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Random.cpp">
-      <Filter>Source Code\KillerMath\Random</Filter>
+      <Filter>Source Code\Math\Random</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Engine.cpp">
-      <Filter>Source Code\KillerEngine\Engine</Filter>
+      <Filter>Source Code\Engine\Engine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Shader.cpp">
-      <Filter>Source Code\KillerEngine\Shader</Filter>
+      <Filter>Source Code\Engine\Shader</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObject.cpp">
-      <Filter>Source Code\KillerEngine\GameObjects\GameObject</Filter>
+      <Filter>Source Code\Engine\GameObjects\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Text.cpp">
-      <Filter>Source Code\KillerEngine\Text</Filter>
+      <Filter>Source Code\Engine\Text</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Glyph.cpp">
-      <Filter>Source Code\KillerEngine\GameObjects\Glyph</Filter>
+      <Filter>Source Code\Engine\GameObjects\Glyph</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ShaderManager.cpp">
-      <Filter>Source Code\KillerEngine\Managers\ShaderManager</Filter>
+      <Filter>Source Code\Engine\Managers\ShaderManager</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\FontManager.cpp">
-      <Filter>Source Code\KillerEngine\Managers\FontManager</Filter>
+      <Filter>Source Code\Engine\Managers\FontManager</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ForceGenerator.cpp">
-      <Filter>Source Code\KillerPhysics\Forces\Generator Base</Filter>
+      <Filter>Source Code\Physics\Forces\Generator Base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GravityForce.cpp">
-      <Filter>Source Code\KillerPhysics\Forces\Gravity</Filter>
+      <Filter>Source Code\Physics\Forces\Gravity</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ForceRegistry.cpp">
-      <Filter>Source Code\KillerPhysics\Forces\Registry</Filter>
+      <Filter>Source Code\Physics\Forces\Registry</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Contact.cpp">
-      <Filter>Source Code\KillerPhysics\Contacts</Filter>
+      <Filter>Source Code\Physics\Contacts</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\BoundingSphere.cpp">
-      <Filter>Source Code\KillerCollision\BoundingVolumes\Sphere</Filter>
+      <Filter>Source Code\Collision\BoundingVolumes\Sphere</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\AnchoredSpring.cpp">
-      <Filter>Source Code\KillerPhysics\Forces\Springs\AnchoredSpring</Filter>
+      <Filter>Source Code\Physics\Forces\Springs\AnchoredSpring</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\BuoyantForce.cpp">
-      <Filter>Source Code\KillerPhysics\Forces\Springs\BuoyantForce</Filter>
+      <Filter>Source Code\Physics\Forces\Springs\BuoyantForce</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\SpringForce.cpp">
-      <Filter>Source Code\KillerPhysics\Forces\Springs\Default</Filter>
+      <Filter>Source Code\Physics\Forces\Springs\Default</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\DragForce.cpp">
-      <Filter>Source Code\KillerPhysics\Forces\Drag</Filter>
+      <Filter>Source Code\Physics\Forces\Drag</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Matrix4.cpp">
-      <Filter>Source Code\KillerMath\LinearAlgebra\Matrix</Filter>
+      <Filter>Source Code\Math\LinearAlgebra\Matrix</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Matrix3.cpp">
-      <Filter>Source Code\KillerMath\LinearAlgebra\Matrix</Filter>
+      <Filter>Source Code\Math\LinearAlgebra\Matrix</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Point.cpp">
-      <Filter>Source Code\KillerMath\LinearAlgebra\Point</Filter>
+      <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector4.cpp">
-      <Filter>Source Code\KillerMath\LinearAlgebra\Vector</Filter>
+      <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector3.cpp">
-      <Filter>Source Code\KillerMath\LinearAlgebra\Vector</Filter>
+      <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Camera.cpp">
-      <Filter>Source Code\KillerEngine\Camera\Default</Filter>
+      <Filter>Source Code\Engine\Camera\Default</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\OrbitCamera.cpp">
-      <Filter>Source Code\KillerEngine\Camera\Orbit</Filter>
+      <Filter>Source Code\Engine\Camera\Orbit</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\FPSCamera.cpp">
-      <Filter>Source Code\KillerEngine\Camera\FPS</Filter>
+      <Filter>Source Code\Engine\Camera\FPS</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\AABB.cpp">
-      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\AxisAligned</Filter>
+      <Filter>Source Code\Collision\BoundingVolumes\BoundingBoxes\AxisAligned</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\OBB.cpp">
-      <Filter>Source Code\KillerCollision\BoundingVolumes\BoundingBoxes\Oriented</Filter>
+      <Filter>Source Code\Collision\BoundingVolumes\BoundingBoxes\Oriented</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Menu.cpp">
-      <Filter>Source Code\KillerEngine\Menu</Filter>
+      <Filter>Source Code\Engine\Menu</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\AudioManager.cpp">
-      <Filter>Source Code\KillerEngine\Managers\AudioManager</Filter>
+      <Filter>Source Code\Engine\Managers\AudioManager</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\AudioClip.cpp">
-      <Filter>Source Code\KillerEngine\AudioClip</Filter>
+      <Filter>Source Code\Engine\AudioClip</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\AudioListener.cpp">
-      <Filter>Source Code\KillerEngine\AudioListener</Filter>
+      <Filter>Source Code\Engine\AudioListener</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\AudioSource.cpp">
-      <Filter>Source Code\KillerEngine\AudioSource</Filter>
+      <Filter>Source Code\Engine\AudioSource</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GameWindow.cpp">
-      <Filter>Source Code\KillerEngine\GameWindow</Filter>
+      <Filter>Source Code\Engine\GameWindow</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\EngineFactory.cpp">
-      <Filter>Source Code\KillerEngine\EngineFactory</Filter>
+      <Filter>Source Code\Engine\EngineFactory</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\RigidBody3D.cpp">
-      <Filter>Source Code\KillerPhysics\RigidBodies\3D</Filter>
+      <Filter>Source Code\Physics\RigidBodies\3D</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\RigidBody2D.cpp">
-      <Filter>Source Code\KillerPhysics\RigidBodies\2D</Filter>
+      <Filter>Source Code\Physics\RigidBodies\2D</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\PhysicsFactory.cpp">
-      <Filter>Source Code\KillerPhysics\PhysicsFactory</Filter>
+      <Filter>Source Code\Physics\PhysicsFactory</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\dllmain.cpp">
-      <Filter>Source Code\KillerEngine\Main</Filter>
+      <Filter>Source Code\Engine\Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

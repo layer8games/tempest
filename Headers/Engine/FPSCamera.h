@@ -6,7 +6,7 @@
 
 namespace Tempest
 {
-	class FPSCamera : public Camera
+	class TEMPEST_API FPSCamera : public Camera
 	{
 	public:
 //==========================================================================================================================
@@ -80,9 +80,10 @@ namespace Tempest
 //
 //==========================================================================================================================
 		TM::Vector4 _worldUp;
-		F64 	   _zoomSensitivity;
-		F32 	   _moveSpeed;
-		F32		   _deadZone;
+		F64 	    _zoomSensitivity;
+		F32 	    _moveSpeed;
+		F32		    _deadZone;
 
 	};//end FPSCamera
+	typedef shared_ptr<FPSCamera> p_FPSCamera;
 }//end Namespace

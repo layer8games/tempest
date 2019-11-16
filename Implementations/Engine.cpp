@@ -80,9 +80,9 @@ void Engine::Render(void)
 //Singleton functions
 //
 //==========================================================================================================================
-shared_ptr<Engine> Engine::_instance = NULL;
+p_Engine Engine::_instance = NULL;
 
-shared_ptr<Engine> Engine::Instance(void) 
+p_Engine Engine::Instance(void) 
 {
 	if(_instance == NULL) 
 	{ 
