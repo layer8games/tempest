@@ -10,7 +10,7 @@
 
 # Build results
 
-Bin/
+Bin/*
 [Oo]bj/
 [Tt]emp/
 
