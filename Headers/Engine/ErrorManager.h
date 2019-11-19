@@ -8,18 +8,14 @@
 
 namespace Tempest 
 {
-	class ErrorManager;
-	typedef shared_ptr<ErrorManager> p_ErrorManager;
 //==========================================================================================================================
 //
 //Enum Error codes
 //
-//==========================================================================================================================
-/*! 
-	\enum ErrorCode Error codes that are used to give a hint as to where to code that is throwing the error is written. These are disaplyed
-	to the user in a pop up window when the end application is run. These are paired with a more detailed message when the
-	end error is set. 
-*/	
+//========================================================================================================================== 
+///	\enum ErrorCode Error codes that are used to give a hint as to where to code that is throwing the error is written. These are disaplyed
+///	to the user in a pop up window when the end application is run. These are paired with a more detailed message when the
+///	end error is set. 
 	enum TEMPEST_API ErrorCode 
 	{
 		NOT_ERROR, 			///< Default value. Shouldn't ever be used.
@@ -42,7 +38,7 @@ namespace Tempest
 //==========================================================================================================================
 ///	A singleton class that will display any errors that can happen during the initialization of any of the components of the 
 ///	engine. It will be flushed out later to include more details. 
-	class TEMPEST_API ErrorManager
+	class ErrorManager
 	{
 	public:
 //==========================================================================================================================
@@ -51,7 +47,7 @@ namespace Tempest
 //
 //========================================================================================================================== 
 ///	Default destructor. No special actions taken 	
-		~ErrorManager(void);
+		TEMPEST_API ~ErrorManager(void);
 
 //==========================================================================================================================
 //
@@ -59,7 +55,7 @@ namespace Tempest
 //
 //==========================================================================================================================		
 ///	Singlton function. Returns pointer to global ErrorManager instance. 	
-		static p_ErrorManager Instance(void);
+		TEMPEST_API static shared_ptr<ErrorManager> Instance(void);
 
 //==========================================================================================================================
 //
@@ -70,11 +66,11 @@ namespace Tempest
 ///	\param code ErrorCode: Displayed to hint where the error happened.
 ///	\param message string: A string that will be displayed to the user giving additional details about the nature of the 
 ///	error. 
-		void SetError(ErrorCode code, string message);
+		TEMPEST_API void SetError(ErrorCode code, string message);
 
 ///	Displays any errors that have been added to the manager. This function loops over all the errors that have been added
 ///	and displayed them one by one. Messages are never removed once they are thrown. 	
-		bool DisplayErrors(void);
+		TEMPEST_API bool DisplayErrors(void);
 
 ///	Sets if errors should be displayed on the console as well as a MessageBox
 ///	\param state sets the new console state. True to pump errors to console
@@ -101,17 +97,18 @@ namespace Tempest
 ///	Helper functions. Displays the MessageBox, and returns true if Yes is clicked, false if No is clicked.
 ///	\param errorMessage is the string that will display in the box. 
 ///	\param errorCode is a string version of the ErrorCode that was submited for this error.
-		inline bool _MessageBox(string errorMessage, string errorCode);
+		bool _MessageBox(string errorMessage, string errorCode);
 
 //==========================================================================================================================
 //
 //Data
 //
 //==========================================================================================================================
-		static p_ErrorManager			_instance;			///< Global singleton instance.
+		static shared_ptr<ErrorManager>	_instance;			///< Global singleton instance.
 		bool 							_consoleOut;		///< Flag that sets if errors should be read out to the console as well.
 		U32       			 			_numErrors;			///< Total count of errors.
 		std::vector<ErrorCode>  	 	_errorCodes;		///< List of active error codes.
 		std::vector<string>     	 	_errorMessages;		///< List of active error messages.
 	};//End class
+	typedef shared_ptr<ErrorManager> p_ErrorManager;
 }//End namespace

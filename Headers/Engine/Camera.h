@@ -35,7 +35,7 @@ namespace Tempest
 //Camera
 //
 //==========================================================================================================================	
-	class TEMPEST_API Camera
+	class Camera
 	{
 	public:
 //==========================================================================================================================
@@ -43,22 +43,22 @@ namespace Tempest
 //Constructor
 //
 //==========================================================================================================================
-		Camera(void);
+		TEMPEST_API Camera(void);
 
-		~Camera(void);
+		TEMPEST_API ~Camera(void);
 
 //==========================================================================================================================
 //
 //Virtual Functions
 //
 //==========================================================================================================================
-		virtual void v_Rotate(void)
+		inline virtual void v_Rotate(void)
 		{  }
 
-		virtual void v_Update(void)
+		inline virtual void v_Update(void)
 		{  }
 
-		virtual void v_Move(const TM::Vector4& offset)
+		inline virtual void v_Move(const TM::Vector4& offset)
 		{  }
 
 //==========================================================================================================================
@@ -68,19 +68,19 @@ namespace Tempest
 //==========================================================================================================================
 	/// Sets private Matrix4 to use an orthogrphic projection. This calls the GameWindow to get the demensions for the Matrix4. 
 	/// \param none
-		void SetOrthographic(void);
+		TEMPEST_API void SetOrthographic(void);
 
-		void SetOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane);
+		TEMPEST_API void SetOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane);
 
 	/// Sets the private Matrix4 to use a perspective projection. Values are hard coded for now. 
 	/// \param none
-		void SetPerspective(void);
+		TEMPEST_API void SetPerspective(void);
 
-		void SetPerspective(F32 fov, F32 aspect, F32 nearPlane, F32 farPlane);
+		TEMPEST_API void SetPerspective(F32 fov, F32 aspect, F32 nearPlane, F32 farPlane);
 
 	/// Helper function to set the projection Matrix4 to be an identity Matrix4. 
 	/// \param none
-		void SetDefaultMatrix4(void);
+		TEMPEST_API void SetDefaultMatrix4(void);
 
 		inline const virtual TM::Matrix4 GetViewMatrix4(void)
 		{
@@ -100,7 +100,7 @@ namespace Tempest
 //==========================================================================================================================
 //Background Color
 //==========================================================================================================================
-		inline void SetColor(const Color& col) 
+		inline void SetColor(const Color& col)
 		{ 
 			_background = col; 
 		}
@@ -309,7 +309,7 @@ namespace Tempest
 		}
 
 	private:
-		virtual void _v_UpdateCameraVectors(void)
+		inline virtual void _v_UpdateCameraVectors(void)
 		{  }
 
 //==========================================================================================================================

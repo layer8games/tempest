@@ -40,7 +40,7 @@ constexpr auto DATA_ID = 0x61746164;		// 'DATA'
 
 
 ///	A wrapper around an OpenAL audio buffer. This stores a clip of audio that, after added to an AudioSource, can be played.
-	class TEMPEST_API AudioClip
+	class AudioClip
 	{
 	public:
 //==========================================================================================================================
@@ -49,11 +49,11 @@ constexpr auto DATA_ID = 0x61746164;		// 'DATA'
 //
 //==========================================================================================================================
 ///	Calls AudioManager::Instance to make sure that the context and device has been set up in OpenAL before use. 
-		AudioClip(void);
+		TEMPEST_API AudioClip(void);
 
 
 ///	Calls delete[] on the data array to free that resource. Deletes the buffer handle from OpenAL. 
-		~AudioClip(void);
+		TEMPEST_API ~AudioClip(void);
 //==========================================================================================================================
 //
 //Functions
@@ -63,7 +63,7 @@ constexpr auto DATA_ID = 0x61746164;		// 'DATA'
 ///	the audio file in a buffer that is registered with OpenAL. This is used later to actually play back the file. This is
 ///	where all the magic happens. 
 ///	\param filename is the path to the file to be read. Should live in ../Assets/Audio by convention.
-		void LoadWAV2(string filename);
+		TEMPEST_API void LoadWAV2(string filename);
 
 //==========================================================================================================================
 //
@@ -71,7 +71,7 @@ constexpr auto DATA_ID = 0x61746164;		// 'DATA'
 //
 //==========================================================================================================================
 ///	Returns the buffer handle from OpenAL. 
-		const U32 GetBufferID(void) const
+		inline const U32 GetBufferID(void) const
 		{
 			return _bufferID;
 		}
