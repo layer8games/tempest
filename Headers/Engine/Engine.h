@@ -21,7 +21,7 @@ namespace Tempest
 
 /// A lot of the functions that will be here will not be required to use in order to use the engine. They will be present 
 /// as helper classes, not intended for required use. 
-	class TEMPEST_API Engine
+	class Engine
 	{
 
 	public:
@@ -35,10 +35,10 @@ namespace Tempest
 /// \param height S32: describes height of the window.
 /// \param title string: sent to system to generate title of window.
 /// \param fullscreen bool: tells system to use fullscreen or not. 
-		void Init(const S32 width, const S32 height, const string title, const bool fullscreen);
+		TEMPEST_API void Init(const S32 width, const S32 height, const string title, const bool fullscreen);
 
 /// Wrapper for LevelManager::ShutDown(void)
-		void ShutDown(void);
+		TEMPEST_API void ShutDown(void);
 		
 /// Check if simulation is still running.
 		inline bool Running(void) 
@@ -79,13 +79,13 @@ namespace Tempest
 /// - Controller::Update()
 /// - LevelManager::Update()
 /// - ErrorManager::DisplayErrors()	
-		void Update(void);
+		TEMPEST_API void Update(void);
 
 /// Wrapper for steps needed to render. Calls the following in order
 /// - LevelManager::Render()
 /// - GameWindow::BufferSwap()
 /// - ErrorManager::DisplayErrors() 
-		void Render(void);
+		TEMPEST_API void Render(void);
 
 //==========================================================================================================================
 //
@@ -93,7 +93,7 @@ namespace Tempest
 //
 //==========================================================================================================================
 /// Singleton function to get global instance of Engine.
-		static shared_ptr<Engine> Instance();		
+		TEMPEST_API static shared_ptr<Engine> Instance();
 
 	protected:
 //==========================================================================================================================

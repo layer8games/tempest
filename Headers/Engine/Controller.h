@@ -107,7 +107,7 @@ namespace Tempest
 
 /// Update handles the logic of changing they key states, with two KeyState arrays holding the current key states, that is 
 /// the key states of this frame and the past key states, that is the key states from last frame. 
-	class TEMPEST_API Controller
+	class Controller
 	{
 	public:
 //==========================================================================================================================
@@ -115,10 +115,10 @@ namespace Tempest
 //Singleton Functions
 //
 //========================================================================================================================== /// 	Singleton function to get global instance of Controller. 
-		static shared_ptr<Controller> Instance();
+		TEMPEST_API static shared_ptr<Controller> Instance();
 
 /// Destructor. No special functions within it. 
-		~Controller(void);
+		TEMPEST_API ~Controller(void);
 
 //==========================================================================================================================
 //
@@ -126,22 +126,21 @@ namespace Tempest
 //
 //==========================================================================================================================
 /// Sets the new state of each key. 
-		void Update(void);
+		TEMPEST_API void Update(void);
 
 /// Used by GameWindow to set when a key is pressed down, based on system signals.
 /// \param k Keys: Keycode for key that has been pressed down. 
-		void KeyDown(Keys k);
+		TEMPEST_API void KeyDown(Keys k);
  
 /// Used by GameWindow to set when a key is no longer detected to be held down. 
 /// \param k Keys: Keycode for key that has been released. 
-		void KeyUp(Keys k);
-
+		TEMPEST_API void KeyUp(Keys k);
 
 /// Returns the raw mouse coordinates from the GameWindow. This is with the origin in the top left corner of the screen. 
-		const TM::Point GetMouseCoord(void);
+		TEMPEST_API const TM::Point GetMouseCoord(void);
 
 /// Returns the mouse coordinates in screen space, with the origin in the center of the screen. Wrapper around GameWindow. 
-		const TM::Point GetMouseCoordInScreen(void);
+		TEMPEST_API const TM::Point GetMouseCoordInScreen(void);
 
 /// Returns the raw coordinates of a Left Click in screen space. 
 		inline const TM::Point GetLeftMouseCoord(void) const
@@ -157,19 +156,19 @@ namespace Tempest
 
 /// Returns true if k has been pressed down this frame.
 /// \param k Keys: Desired keycode. 
-		bool GetKeyDown(Keys k);
+		TEMPEST_API bool GetKeyDown(Keys k);
 
 /// Returns true if k has been held down longer than 1 frame.
 /// \param k Keys: Desired keycode
-		bool GetKeyHeld(Keys k);
+		TEMPEST_API bool GetKeyHeld(Keys k);
 
 /// Returns true if k has been released this frame.
 /// \params k Keys: Desired keycode 
-		bool GetKeyUp(Keys k);
+		TEMPEST_API bool GetKeyUp(Keys k);
 
 /// Returns true if k is not being pressed during this frame
 /// \param k Keys: Desired keycode
-		bool GetKeyReleased(Keys k);
+		TEMPEST_API bool GetKeyReleased(Keys k);
 
 	protected:
 //==========================================================================================================================

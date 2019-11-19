@@ -30,7 +30,7 @@ namespace TC = TempestCollisions;
 
 namespace Tempest
 {
-	enum BufferData
+	enum TEMPEST_API BufferData
 	{
 		VERTEX_BUFFER = 0,
 		VERTEX_POS = 0,
@@ -44,7 +44,7 @@ namespace Tempest
 		NUM_VBO = 5
 	};
 	
-	class TEMPEST_API GameObject
+	class GameObject
 	{
 	public:
 //==========================================================================================================================
@@ -52,11 +52,11 @@ namespace Tempest
 //Constructors
 //
 //==========================================================================================================================
-		GameObject(void);
+		TEMPEST_API GameObject(void);
 
-		GameObject(const GameObject& obj);
+		TEMPEST_API GameObject(const GameObject& obj);
 
-		virtual ~GameObject(void);
+		TEMPEST_API virtual ~GameObject(void);
 
 //==========================================================================================================================
 //
@@ -65,9 +65,9 @@ namespace Tempest
 //==========================================================================================================================
 		virtual void v_Update(void)=0;
 
-		virtual void v_Render(void);
+		TEMPEST_API virtual void v_Render(void);
 
-		virtual void v_InitBuffers(void);
+		TEMPEST_API virtual void v_InitBuffers(void);
 
 		inline virtual void v_Awake(void)
 		{
@@ -79,15 +79,15 @@ namespace Tempest
 //Functions
 //
 //==========================================================================================================================
-		void InitOGL(void);
+		TEMPEST_API void InitOGL(void);
 
-		void UpdateInternals(void);
+		TEMPEST_API void UpdateInternals(void);
 
-		bool LoadOBJ(string filepath);
+		TEMPEST_API bool LoadOBJ(string filepath);
 
-		void LoadMesh(string filepath);
+		TEMPEST_API void LoadMesh(string filepath);
 
-		void MakeSprite(void);
+		TEMPEST_API void MakeSprite(void);
 
 		inline const TM::Matrix4& GetModelMatrix(void) const
 		{
@@ -530,7 +530,7 @@ namespace Tempest
 
 	
 	protected:
-		void DefaultAwake(void);
+		TEMPEST_API void DefaultAwake(void);
 
 	private:
 		std::vector<U32> _SplitU32(string text, char delim) const;

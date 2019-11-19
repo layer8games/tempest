@@ -25,7 +25,7 @@ namespace Tempest
 /// later on.
 	
 /// CreateCharacter is a CharSprite Factory. This may be important to know.
-	class TEMPEST_API Font
+	class Font
 	{
 	public:
 		typedef std::map<char, CharacterData> CharacterDataMap;
@@ -36,16 +36,16 @@ namespace Tempest
 //==========================================================================================================================
 
 ///	Default Constructor. No special actions taken. 
-		Font(void);
+		TEMPEST_API Font(void);
 
 /// Copy Constructor. Calls GetTextureID(), GetFile() and GetName(). 
 /// \param f Font&: Font to be copied.
-		Font(const Font& f);
+		TEMPEST_API Font(const Font& f);
 
  
 ///	Copy Constructor. Calls GetTextureID(), GetFile() and GetName(). 
 ///	\param f Font*: Font to be copied.
-		Font(const Font* f);
+		TEMPEST_API Font(const Font* f);
 
 //==========================================================================================================================
 //
@@ -57,7 +57,7 @@ namespace Tempest
 ///	\param fontName is the name of the font. 
 ///	\param filePath is the relative path to the font file. Should be a ttf file. 
 ///	\param fontSize is weight of the font. This should match what you'd find in a text editor, ie: 12, 18, 24. etc.
-	void Init(string fontName, string filePath, U32 fontSize);
+		TEMPEST_API void Init(string fontName, string filePath, U32 fontSize);
 
 //==========================================================================================================================
 //
@@ -65,10 +65,10 @@ namespace Tempest
 //
 //========================================================================================================================== 
 ///	Copies Font pointer. Calls GetTextureID(), GetFile(), GetName() and GetCharacterData(). 
-		Font& operator=(const Font* font);
+		TEMPEST_API Font& operator=(const Font* font);
 
 ///	Copies Font reference. Calls GetTextureID(), GetFile(), GetName() and GetCharacterData(). 
-		Font& operator=(const Font& font);
+		TEMPEST_API Font& operator=(const Font& font);
 
 //==========================================================================================================================
 //

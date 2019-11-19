@@ -17,7 +17,7 @@ namespace Tempest
 {
 ///	A sprite based UI character to be rendered at run time. It gets its data from a Font, which informs it of its size and
 ///	its texture. 
-	class TEMPEST_API Glyph : public GameObject
+	class Glyph : public GameObject
 	{
 	public:
 //==========================================================================================================================
@@ -26,13 +26,13 @@ namespace Tempest
 //
 //==========================================================================================================================
 ///	No special behavior.
-		Glyph(void);
+		TEMPEST_API Glyph(void);
 
 ///	Copies data from getters. 
-		Glyph(const Glyph& glyph);
+		TEMPEST_API Glyph(const Glyph& glyph);
 
 ///	No special behavior.
-		~Glyph(void);
+		TEMPEST_API ~Glyph(void);
 
 //==========================================================================================================================
 //
@@ -45,10 +45,10 @@ namespace Tempest
 
 ///	Provides specific Rendering calls. This sets a Glyph specific uniform called sprite_color. No special behavior other than
 ///	that.
-		void v_Render(void) final;
+		TEMPEST_API void v_Render(void) final;
 
 ///	Initializes the Glyph as a sprite, sets Glyph shader. 
-		void Init(void);
+		TEMPEST_API void Init(void);
 
 //==========================================================================================================================
 //

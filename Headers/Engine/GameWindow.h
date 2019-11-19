@@ -27,7 +27,7 @@ namespace Tempest
 	Supported system:
 		Windows	 
 */
-	class TEMPEST_API GameWindow
+	class GameWindow
 	{	
 	public:
 //==========================================================================================================================
@@ -36,7 +36,7 @@ namespace Tempest
 //
 //========================================================================================================================== 
 ///	No behavior. 
-		~GameWindow(void);
+		TEMPEST_API ~GameWindow(void);
 
 //==========================================================================================================================
 //
@@ -107,7 +107,7 @@ namespace Tempest
 //
 //==========================================================================================================================
 ///	Singleton function. Returns the global pointer to the program window. 
-		static shared_ptr<GameWindow> Instance(void);
+		TEMPEST_API static shared_ptr<GameWindow> Instance(void);
 
 /// Sets up program window. Makes all calls needed to start up a window. This is a helper function that takes are of all the
 ///	glfw calls needed.
@@ -115,45 +115,45 @@ namespace Tempest
 ///	\param height of created window
 ///	\param wndName title of window
 ///	\param isFullScreen sets if the system makes the window fullscreen	
-		void Init(S32 width, S32 height, string wndName, bool isFullScreen);
+		TEMPEST_API void Init(S32 width, S32 height, string wndName, bool isFullScreen);
 	 
 ///	Wrapper around glfwPollEvents. This polls any pending events. Used to capture user Input. 
-		void ProcessEvents(void);
+		TEMPEST_API void ProcessEvents(void);
 		
 ///	Wrapper around glfwSwapBuffers and glClear. Swap buffers will place the back buffer, that has been getting drawn to, 
 ///	as the active buffer, and glClear will set the background color, setting up the next frame to be drawn. 
-		void BufferSwap(void);
+		TEMPEST_API void BufferSwap(void);
 
 ///	Converts the glfw key codes into a key code that the engine can understand.
 ///	\param key is the glfw key code to be converted. 
-		static Keys ConvertKeyCodes(int key);
+		TEMPEST_API static Keys ConvertKeyCodes(int key);
 
 ///	Toggle that allows the frames per second to be displayed in the title of the window. 
-		void DisplayFPS(void);
+		TEMPEST_API void DisplayFPS(void);
  
 ///	Toggle that changes the rendering to only use wireframes, drawing the lines the represent edges in a mesh instead of
 ///	filling in the faces. Used for debugging.  
-		void ToggleWireFrame(void);
+		TEMPEST_API void ToggleWireFrame(void);
  
 ///	Moves the mouse cursor to the center of the program window. 
-		void ResetMouseCursor(void);
+		TEMPEST_API void ResetMouseCursor(void);
 
 ///	Toggles the mouse cursor to be displayed.  
-		void EnableMouseCursor(void);
+		TEMPEST_API void EnableMouseCursor(void);
 
 ///	Toggles the mouse cursor to no longer be displayed. This is true both inside and outside the program window, meaning that if you 
 ///	call this, your mouse will no longer work, until you either close the program or re-enable it using EnableMouseCursor(). 
-		void DisableMouseCursor(void);
+		TEMPEST_API void DisableMouseCursor(void);
 
 ///	Toggles the mouse cursor to not be displayed in the program window. Outside of the program window it will behave as normal. 
-		void HideMouseCursor(void);
+		TEMPEST_API void HideMouseCursor(void);
 
 ///	Returns the position of the mouse cursor with the origin in the top left of the program window, ranging from 0 to 1. 
-		const TM::Point GetMousePos(void);
+		TEMPEST_API const TM::Point GetMousePos(void);
 
 ///	Returns the position of the mouse cursor in pixels with the origin in the center of the program window, randing from the
 ///	program windows up - down - left - right values. Very important, this is in Screen Space, not world space.
-		const TM::Point GetMousePosInScreen(void);
+		TEMPEST_API const TM::Point GetMousePosInScreen(void);
 
 ///	Wrapper around glfwGetTime. Used to find out how long the program has been running in miliseconds. Used by the KillerMath::Timer. 
 		inline F64 GetTime(void)
@@ -172,13 +172,13 @@ namespace Tempest
 ///	\param scancode is a platform specific token for each key pressed. 
 ///	\param action stores if it was a press or release
 ///	\param mods represents modifier keys; ctrl, shift, alt.
-		static void OnKey(GLFWwindow* window, int key, int scancode, int action, int mods);
+		TEMPEST_API static void OnKey(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 ///	Callback function for glfw. Controls what happens when the screen is resized by the user (in the operating system). 
 ///	\param window is the pointer to the glfw window instance we are changing. 
 ///	\param width is the new total width of the window. 
 ///	\param height is the new total height of the window.
-		static void OnResize(GLFWwindow* window, int width, int height);
+		TEMPEST_API static void OnResize(GLFWwindow* window, int width, int height);
 
 ///	Callback function for glfw. Controls what happens when a mouse click happens (right, left, middle or any other). Currently, 
 ///	only right and left clicks are considered.  
@@ -186,13 +186,13 @@ namespace Tempest
 ///	\param button is the mouse button being pressed. 
 ///	\param action is the state, release or press.
 ///	\param mods represents modifier keys; ctrl, shift, alt.
-		static void OnMouseClick(GLFWwindow* window, int button, int action, int mods);
+		TEMPEST_API static void OnMouseClick(GLFWwindow* window, int button, int action, int mods);
 
 ///	Callback function for glfw. Controls what happens when the mouse is detected to move. Currently not implemented.  
 ///	\param window is the pointer to the glfw window instance we are changing. 
 ///	\param posX stores the x position value
 ///	\param posY stores the y posiition value. 
-		static void OnMouseMove(GLFWwindow* window, F64 posX, F64 posY);
+		TEMPEST_API static void OnMouseMove(GLFWwindow* window, F64 posX, F64 posY);
 
 	private:
 		static shared_ptr<GameWindow> _instance;		///< Singleton instance. Global pointer, allows only one GameWindow to be active.

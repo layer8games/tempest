@@ -19,7 +19,7 @@ namespace Tempest
 
 /// Where values are set, they are required to be normalized, that is between 0.0f and 1.0f. This is because the colors need
 /// to be represented this for OpenGL. Asserts are used at compile time to make sure that this is true.
-	class TEMPEST_API Color 
+	class Color 
 	{
 	public:
 //==========================================================================================================================
@@ -28,33 +28,33 @@ namespace Tempest
 //
 //==========================================================================================================================
 /// Default Constructor. Sets Red Green and Blue to 0.0f, and Alpha to 1.0f 
-		Color(void);
+		TEMPEST_API Color(void);
 		
 /// Single Value Constructor. Sets Red, Green and Blue to value. The value needs to be between 0.0f and 1.0f. Alpha is set to
 /// 1.0f by default.
 /// \param col F32: value used to set RGB values.
-		explicit Color(F32 col);
+		TEMPEST_API explicit Color(F32 col);
 
 /// Three value Constructor. Sets Red, Green and Blue accordingly. Values need to be between 0.0f and 1.0f. Alpha is set to 1.0f 
 /// by default.
 /// \param red F32: value for Red.
 /// \param green F32: value for Green.
 /// \param blue F32: value for Blue.
-		Color(F32 red, F32 green, F32 blue);
+		TEMPEST_API Color(F32 red, F32 green, F32 blue);
 		
 /// Four value Constructor. Sets Red, Green and Blue accordingly. Values need to be between 0.0f and 1.0f by default.
 /// \param red F32: value for Red.
 /// \param green F32: value for Green.
 /// \param blue F32: value for Blue. 
 /// \param alpha F32: value for Alpha.
-		Color(F32 red, F32 green, F32 blue, F32 alpha);
+		TEMPEST_API Color(F32 red, F32 green, F32 blue, F32 alpha);
 		
 /// Copy constructor. Calls Color::GetRed Color::GetGreen Color::GetBlue Color::GetAlpha to set values. 
 /// \param c = Color&: color to copy
-		Color(const Color& c);
+		TEMPEST_API Color(const Color& c);
 
 /// Default Constructor. Not implemented. 
-		~Color(void);
+		TEMPEST_API ~Color(void);
 
 //==========================================================================================================================
 //

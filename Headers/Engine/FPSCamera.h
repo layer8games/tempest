@@ -6,7 +6,7 @@
 
 namespace Tempest
 {
-	class TEMPEST_API FPSCamera : public Camera
+	class FPSCamera : public Camera
 	{
 	public:
 //==========================================================================================================================
@@ -14,22 +14,22 @@ namespace Tempest
 //Constructors
 //
 //==========================================================================================================================		
-		FPSCamera(void);
+		TEMPEST_API FPSCamera(void);
 
-		FPSCamera(const TM::Point& position, F32 yaw, F32 pitch);
+		TEMPEST_API FPSCamera(const TM::Point& position, F32 yaw, F32 pitch);
 
-		~FPSCamera(void);
+		TEMPEST_API ~FPSCamera(void);
 
 //==========================================================================================================================
 //
 //Virtual Functions
 //
 //==========================================================================================================================
-		virtual void v_Update(void) final;
+		TEMPEST_API virtual void v_Update(void) final;
 
-		virtual void v_Rotate(void) final;
+		TEMPEST_API virtual void v_Rotate(void) final;
 
-		virtual void v_Move(const TM::Vector4& offset) final;
+		TEMPEST_API virtual void v_Move(const TM::Vector4& offset) final;
 
 //==========================================================================================================================
 //

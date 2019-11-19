@@ -31,7 +31,7 @@ namespace Tempest
 ///	controls what the update logic is. The Level itself is an abstract class, intended to be implemented on the user end.
 ///	Some engines will call this a scene or a world. 
 
-	class TEMPEST_API Level
+	class Level
 	{
 //==========================================================================================================================
 //
@@ -46,11 +46,11 @@ namespace Tempest
 //==========================================================================================================================		
 
 ///	Sets call values to 0 and calls default constructors. 
-		Level(void);
+		TEMPEST_API Level(void);
 
 
 ///	Deletes the pointer to the Camera. 
-		virtual ~Level(void);
+		TEMPEST_API virtual ~Level(void);
 
 //==========================================================================================================================
 //
@@ -63,17 +63,16 @@ namespace Tempest
 ///	\param id is the ID used in the LevelManager.
 ///	\param w is the width of the Level.
 ///	\param h is the height of the Level. 
-
-		virtual void v_Init(void)=0;
+		TEMPEST_API virtual void v_Init(void)=0;
 
 
 ///	Abstract function. Used to control what needs to happen during an update. Please note, objects added to the level 
 ///	are already being updated as part of Level::UpdateLevel.
-		virtual void v_Update(void)=0;
+		TEMPEST_API virtual void v_Update(void)=0;
 		
 
 ///	Wrapper around Level::RenderObjects. It is virtual to allow for optional customization.
-		virtual void v_Render(void);
+		TEMPEST_API virtual void v_Render(void);
 
 //==========================================================================================================================
 //
@@ -82,17 +81,17 @@ namespace Tempest
 //==========================================================================================================================
 
 ///	Default actions that need to be called each frame. Right now, that is only Camera::v_Update.
-		void UpdateLevel(void);
+		TEMPEST_API void UpdateLevel(void);
 
 
 ///	Converts the ref to a smart_ptr and adds the GameObject to the Level.
 ///	\param obj is the object to be added.
-		void AddObjectToLevel(const GameObject& obj);
+		TEMPEST_API void AddObjectToLevel(const GameObject& obj);
 
 
 ///	Adds GameObject pointer to the Level.
 ///	\param obj is the pointer to be added.
-		void AddObjectToLevel(p_GameObject obj);
+		TEMPEST_API void AddObjectToLevel(p_GameObject obj);
 
 
 ///	Registers a KillerPhysics::RigidBody2D with a KillerPhysics::ForcerGenerator. This only works because they are pointers. 
@@ -106,36 +105,34 @@ namespace Tempest
 
 ///	Adds the Glyphs in a Text to the Level as GameObjects.
 ///	\param text is the Text to get the Glyphs from.
-		void AddTextToLevel(const Text& text);
+		TEMPEST_API void AddTextToLevel(const Text& text);
 
 
 ///	Adds the Glyphs in a Text to the Level as GameObjects.
 ///	\param text is shared pointer Text to get the Glyphs from.
-		void AddTextToLevel(shared_ptr<Text> text);
+		TEMPEST_API void AddTextToLevel(shared_ptr<Text> text);
 
 /// Removes the Glyphs in a Text from the Level based on their GameObject::_ID
 /// \param text is the Text that contains the Glyphs to remove
-	void RemoveTextFromLevel(const Text& text);
+		TEMPEST_API void RemoveTextFromLevel(const Text& text);
 
 /// Update Text to display new Glyphs. This is a wrapper around RemoveTextFromLevel and AddTextToLevel. This will edit the existing 
 /// Text object to have the new string that is passed in.
 /// \param text is the Text that contains the Glyphs to update
 /// \param updatedCharacters is the new string that will be sent to Text::AddText, updating text.
-	void UpdateText(Text& text, string updatedCharacters);
+		TEMPEST_API void UpdateText(Text& text, string updatedCharacters);
 
 ///	Removes the GameObject with id from the Level.
 ///	\param id of the GameObject to remove.
-		void RemoveObjectFromLevel(U32 id);
-
+		TEMPEST_API void RemoveObjectFromLevel(U32 id);
 
 ///	Loops over all of the GameObject and KillerPhysics::RigidBody2D that have been added to the Level, and calls GameObject::v_Update
 ///	if they are active for updates. 
-		void UpdateObjects(void);
-
+		TEMPEST_API void UpdateObjects(void);
 
 ///	Loops over all of the GameObject and KillerPhysics::RigidBody2D that have been added to the Level, and calls GameObject::v_Render
 ///	if they are active for rendering. 
-		void RenderObjects(void);
+		TEMPEST_API void RenderObjects(void);
 
  
 ///	Loops over all GameObjects and KillerPhysics::RigidBody2D that have bee added to the level and calls GameObject::SetUniform for the
@@ -377,7 +374,7 @@ namespace Tempest
  
 ///	Returns GameObject with ID.
 ///	\param id is the ID of the object to get. Should coorespond to GameObject::_ID. 
-		p_GameObject GetGameObject(U32 id);
+		TEMPEST_API p_GameObject GetGameObject(U32 id);
 		
 	private:
 //==========================================================================================================================

@@ -17,7 +17,7 @@ namespace Tempest
 //========================================================================================================================== 
 ///	This is an implementation of a GameObject which will reprents static, unmoving background objects which the player will 
 ///	not be allowed to pass through. These are things like rocks, trees, houses, etc.  
-	class TEMPEST_API EnvironmentObject : public GameObject
+	class EnvironmentObject : public GameObject
 	{
 	public:
 //==========================================================================================================================
@@ -26,13 +26,13 @@ namespace Tempest
 //
 //==========================================================================================================================
 ///	Default Constructor. No special actions taken. 
-		EnvironmentObject(void);
+		TEMPEST_API EnvironmentObject(void);
 
 ///	Calls GameObject::SetPosition and GameObject::SetDimensions. 	
-		EnvironmentObject(const TM::Point& pos, F32 w, F32 h);
+		TEMPEST_API EnvironmentObject(const TM::Point& pos, F32 w, F32 h);
 
 /// Default Destructor. No special action taken.
-		~EnvironmentObject(void);
+		TEMPEST_API ~EnvironmentObject(void);
 //==========================================================================================================================
 //
 //Virtual Functions

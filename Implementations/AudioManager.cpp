@@ -117,9 +117,9 @@ AudioManager::~AudioManager(void)
 //==========================================================================================================================
 //Singleton
 //==========================================================================================================================
-shared_ptr<AudioManager> AudioManager::_instance = nullptr;
+p_AudioManager AudioManager::_instance = nullptr;
 
-shared_ptr<AudioManager> AudioManager::Instance(void)
+p_AudioManager AudioManager::Instance(void)
 {
 	if(_instance == nullptr)
 	{
@@ -257,7 +257,7 @@ string AudioManager::GetALCerror(ALCenum error)
 	}
 }
 
-shared_ptr<AudioClip> AudioManager::GetClip(U32 id)
+p_AudioClip AudioManager::GetClip(U32 id)
 {
 	if(_clips.find(id) != _clips.end())
 	{
@@ -267,7 +267,7 @@ shared_ptr<AudioClip> AudioManager::GetClip(U32 id)
 	return nullptr;
 }
 
-shared_ptr<AudioSource> AudioManager::GetSource(U32 id)
+p_AudioSource AudioManager::GetSource(U32 id)
 {
 	if(_sources.find(id) != _sources.end())
 	{

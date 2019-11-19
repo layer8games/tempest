@@ -9,7 +9,7 @@ namespace TM = TempestMath;
 
 namespace Tempest
 {
-	class TEMPEST_API OrbitCamera : public Camera
+	class OrbitCamera : public Camera
 	{
 	public:
 //==========================================================================================================================
@@ -17,18 +17,18 @@ namespace Tempest
 //Constructors
 //
 //==========================================================================================================================
-		OrbitCamera(void);
+		TEMPEST_API OrbitCamera(void);
 
-		~OrbitCamera(void);
+		TEMPEST_API ~OrbitCamera(void);
 
 //==========================================================================================================================
 //
 //Functions
 //
 //==========================================================================================================================		
-		virtual void v_Rotate(void) final;
+		TEMPEST_API virtual void v_Rotate(void) final;
 
-		virtual void v_Update(void) final;
+		TEMPEST_API virtual void v_Update(void) final;
 
 		//to test later
 		//If you use this, make sure to comment out the Vector4 update 
@@ -39,9 +39,9 @@ namespace Tempest
 			return TM::Matrix4::FPSView(_position, _yaw, _pitch);
 		}
 */
-		void Orbit(void);
+		TEMPEST_API void Orbit(void);
 
-		void Zoom(void);
+		TEMPEST_API void Zoom(void);
 
 //==========================================================================================================================
 //
