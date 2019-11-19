@@ -20,7 +20,7 @@ namespace Tempest
 	to the user in a pop up window when the end application is run. These are paired with a more detailed message when the
 	end error is set. 
 */	
-	enum ErrorCode 
+	enum TEMPEST_API ErrorCode 
 	{
 		NOT_ERROR, 			///< Default value. Shouldn't ever be used.
 		UNKNOWN_ERROR,		///< Fall through code, indicates an error in the setting of an error.
@@ -40,21 +40,17 @@ namespace Tempest
 //==========================================================================================================================
 //Documentation
 //==========================================================================================================================
-/*! 
-	A singleton class that will display any errors that can happen during the initialization of any of the components of the 
-	engine. It will be flushed out later to include more details. 
-*/
-	class ErrorManager
+///	A singleton class that will display any errors that can happen during the initialization of any of the components of the 
+///	engine. It will be flushed out later to include more details. 
+	class TEMPEST_API ErrorManager
 	{
 	public:
 //==========================================================================================================================
 //
 //Destructor
 //
-//==========================================================================================================================
-/*! 
-	Default destructor. No special actions taken 
-*/		
+//========================================================================================================================== 
+///	Default destructor. No special actions taken 	
 		~ErrorManager(void);
 
 //==========================================================================================================================
@@ -62,9 +58,7 @@ namespace Tempest
 //Singleton Functions
 //
 //==========================================================================================================================		
-/*! 
-	Singlton function. Returns pointer to global ErrorManager instance. 
-*/		
+///	Singlton function. Returns pointer to global ErrorManager instance. 	
 		static p_ErrorManager Instance(void);
 
 //==========================================================================================================================
@@ -72,24 +66,18 @@ namespace Tempest
 //ErrorManager Functions
 //
 //==========================================================================================================================
-/*! 
-	Adds an error into the Manager's map of errors. Any number of message can be in the Manager.
-	\param code ErrorCode: Displayed to hint where the error happened.
-	\param message string: A string that will be displayed to the user giving additional details about the nature of the 
-	error. 
-*/
+///	Adds an error into the Manager's map of errors. Any number of message can be in the Manager.
+///	\param code ErrorCode: Displayed to hint where the error happened.
+///	\param message string: A string that will be displayed to the user giving additional details about the nature of the 
+///	error. 
 		void SetError(ErrorCode code, string message);
 
-/*! 
-	Displays any errors that have been added to the manager. This function loops over all the errors that have been added
-	and displayed them one by one. Messages are never removed once they are thrown. 
-*/		
+///	Displays any errors that have been added to the manager. This function loops over all the errors that have been added
+///	and displayed them one by one. Messages are never removed once they are thrown. 	
 		bool DisplayErrors(void);
 
-/*!
-	Sets if errors should be displayed on the console as well as a MessageBox
-	\param state sets the new console state. True to pump errors to console
-*/
+///	Sets if errors should be displayed on the console as well as a MessageBox
+///	\param state sets the new console state. True to pump errors to console
 		inline void SetConsoleOut(bool state)
 		{
 			_consoleOut = state;
@@ -101,9 +89,7 @@ namespace Tempest
 //Constructor
 //
 //==========================================================================================================================
-/*! 
-	Default constructor. No special actions are taken. Protected because this class follows the singleton pattern 
-*/		
+///	Default constructor. No special actions are taken. Protected because this class follows the singleton pattern 	
 		ErrorManager(void);
 
 	private:
@@ -112,11 +98,9 @@ namespace Tempest
 //Private Functions
 //
 //==========================================================================================================================
-/*!
-	Helper functions. Displays the MessageBox, and returns true if Yes is clicked, false if No is clicked.
-	\param errorMessage is the string that will display in the box. 
-	\param errorCode is a string version of the ErrorCode that was submited for this error.
-*/
+///	Helper functions. Displays the MessageBox, and returns true if Yes is clicked, false if No is clicked.
+///	\param errorMessage is the string that will display in the box. 
+///	\param errorCode is a string version of the ErrorCode that was submited for this error.
 		inline bool _MessageBox(string errorMessage, string errorCode);
 
 //==========================================================================================================================

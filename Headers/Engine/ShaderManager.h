@@ -11,13 +11,13 @@
 
 namespace Tempest
 {
-	enum DefaultShaderID
+	enum TEMPEST_API DefaultShaderID
 	{
 		SPRITE = 0,
 		GLYPH = 1
 	};
 
-	class ShaderManager
+	class TEMPEST_API ShaderManager
 	{
 	public:
 //==========================================================================================================================

@@ -14,7 +14,7 @@ namespace Tempest
 ///	SOIL is the library used to actually load the images from the hard drive and use the image data to create the texture.
 ///	Once a Texture is created, it can be accessed by ID to copy a pointer to the Texture. This means that each Texture can
 ///	be shared between multiple objects. 
-	class TextureManager
+	class TEMPEST_API TextureManager
 	{
 	public:
 //==========================================================================================================================

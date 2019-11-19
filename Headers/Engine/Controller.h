@@ -22,9 +22,9 @@ namespace Tempest
 		KEY_RELEASED
 	};
 
-	/// Keycodes to access specific Key state. Each value is used to represent keys that are pressed by the user.
-	/// These codes represent all possible key inputs. In order to add support for a new key, this enum must be 
-	/// updated 
+/// Keycodes to access specific Key state. Each value is used to represent keys that are pressed by the user.
+/// These codes represent all possible key inputs. In order to add support for a new key, this enum must be 
+/// updated 
 	enum TEMPEST_API Keys 
 	{
 		NO_KEY, 			///<Used as a fall through to indicated an error 
@@ -95,18 +95,18 @@ namespace Tempest
 //==========================================================================================================================
 //Documentation
 //==========================================================================================================================	 
-	/// Human input device controller. Abstract Keyboard input is received through a system all found in the *Program class. 
-	/// For example, in GameWindow, when windows gets a key input message for a key down even, KeyDown(Keys k) is called.
+/// Human input device controller. Abstract Keyboard input is received through a system all found in the *Program class. 
+/// For example, in GameWindow, when windows gets a key input message for a key down even, KeyDown(Keys k) is called.
 
-	/// Two enums are defined. 
+/// Two enums are defined. 
 
-	/// KeyStates represents all the possible states that a key can have. KEY_RELEASED  means that the key is not pressed. KEY_UP 
-	/// means that the key was released this frame. 
+/// KeyStates represents all the possible states that a key can have. KEY_RELEASED  means that the key is not pressed. KEY_UP 
+/// means that the key was released this frame. 
 
-	/// Keys represents all the supported keys. 
+/// Keys represents all the supported keys. 
 
-	/// Update handles the logic of changing they key states, with two KeyState arrays holding the current key states, that is 
-	/// the key states of this frame and the past key states, that is the key states from last frame. 
+/// Update handles the logic of changing they key states, with two KeyState arrays holding the current key states, that is 
+/// the key states of this frame and the past key states, that is the key states from last frame. 
 	class TEMPEST_API Controller
 	{
 	public:
@@ -114,11 +114,10 @@ namespace Tempest
 //
 //Singleton Functions
 //
-//========================================================================================================================== 
-/// 	Singleton function to get global instance of Controller. 
+//========================================================================================================================== /// 	Singleton function to get global instance of Controller. 
 		static shared_ptr<Controller> Instance();
 
-	/// Destructor. No special functions within it. 
+/// Destructor. No special functions within it. 
 		~Controller(void);
 
 //==========================================================================================================================
@@ -126,50 +125,50 @@ namespace Tempest
 //Controller Functions
 //
 //==========================================================================================================================
-	/// Sets the new state of each key. 
+/// Sets the new state of each key. 
 		void Update(void);
 
-	/// Used by GameWindow to set when a key is pressed down, based on system signals.
-	/// \param k Keys: Keycode for key that has been pressed down. 
+/// Used by GameWindow to set when a key is pressed down, based on system signals.
+/// \param k Keys: Keycode for key that has been pressed down. 
 		void KeyDown(Keys k);
  
-	/// Used by GameWindow to set when a key is no longer detected to be held down. 
-	/// \param k Keys: Keycode for key that has been released. 
+/// Used by GameWindow to set when a key is no longer detected to be held down. 
+/// \param k Keys: Keycode for key that has been released. 
 		void KeyUp(Keys k);
 
 
-	/// Returns the raw mouse coordinates from the GameWindow. This is with the origin in the top left corner of the screen. 
+/// Returns the raw mouse coordinates from the GameWindow. This is with the origin in the top left corner of the screen. 
 		const TM::Point GetMouseCoord(void);
 
-	/// Returns the mouse coordinates in screen space, with the origin in the center of the screen. Wrapper around GameWindow. 
+/// Returns the mouse coordinates in screen space, with the origin in the center of the screen. Wrapper around GameWindow. 
 		const TM::Point GetMouseCoordInScreen(void);
 
-	/// Returns the raw coordinates of a Left Click in screen space. 
+/// Returns the raw coordinates of a Left Click in screen space. 
 		inline const TM::Point GetLeftMouseCoord(void) const
 		{ 
 			return _leftClickCoordinates; 
 		}
 
-	/// Returns the raw coordinates of a Right click in screen space 
+/// Returns the raw coordinates of a Right click in screen space 
 		inline const TM::Point GetRightMouseCoord(void) const
 		{ 
 			return _rightClickCoordinates; 
 		}
 
-	/// Returns true if k has been pressed down this frame.
-	/// \param k Keys: Desired keycode. 
+/// Returns true if k has been pressed down this frame.
+/// \param k Keys: Desired keycode. 
 		bool GetKeyDown(Keys k);
 
-	/// Returns true if k has been held down longer than 1 frame.
-	/// \param k Keys: Desired keycode
+/// Returns true if k has been held down longer than 1 frame.
+/// \param k Keys: Desired keycode
 		bool GetKeyHeld(Keys k);
 
-	/// Returns true if k has been released this frame.
-	/// \params k Keys: Desired keycode 
+/// Returns true if k has been released this frame.
+/// \params k Keys: Desired keycode 
 		bool GetKeyUp(Keys k);
 
-	/// Returns true if k is not being pressed during this frame
-	/// \param k Keys: Desired keycode
+/// Returns true if k is not being pressed during this frame
+/// \param k Keys: Desired keycode
 		bool GetKeyReleased(Keys k);
 
 	protected:

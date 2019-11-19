@@ -16,11 +16,11 @@ namespace Tempest
 //==========================================================================================================================
 //Documentation
 //========================================================================================================================== 
-	/// The KillerEngine class is designed to be the interface to starting up the Engine. This class will really just be a 
-	/// function and instance holder for other classes in the engine, but will actually do very little of its own. 
+/// The KillerEngine class is designed to be the interface to starting up the Engine. This class will really just be a 
+/// function and instance holder for other classes in the engine, but will actually do very little of its own. 
 
-	/// A lot of the functions that will be here will not be required to use in order to use the engine. They will be present 
-	/// as helper classes, not intended for required use. 
+/// A lot of the functions that will be here will not be required to use in order to use the engine. They will be present 
+/// as helper classes, not intended for required use. 
 	class TEMPEST_API Engine
 	{
 
@@ -30,61 +30,61 @@ namespace Tempest
 //Interface
 //
 //==========================================================================================================================
-	/// Wrapper for GameWindow::Init. Sets up the Window and OpenGL
-	/// \param width S32: describes width of window.
-	/// \param height S32: describes height of the window.
-	/// \param title string: sent to system to generate title of window.
-	/// \param fullscreen bool: tells system to use fullscreen or not. 
+/// Wrapper for GameWindow::Init. Sets up the Window and OpenGL
+/// \param width S32: describes width of window.
+/// \param height S32: describes height of the window.
+/// \param title string: sent to system to generate title of window.
+/// \param fullscreen bool: tells system to use fullscreen or not. 
 		void Init(const S32 width, const S32 height, const string title, const bool fullscreen);
 
-	/// Wrapper for LevelManager::ShutDown(void)
+/// Wrapper for LevelManager::ShutDown(void)
 		void ShutDown(void);
 		
-	/// Check if simulation is still running.
+/// Check if simulation is still running.
 		inline bool Running(void) 
 		{ 
 			return GameWindow::Instance()->GetRunning(); 
 		}
 
-	/// Wrapper for LevelManager::SetRunning(). Sets Running to false. This stops the Main Game Loop from running. Calling this is the same as Quitting the program.
+/// Wrapper for LevelManager::SetRunning(). Sets Running to false. This stops the Main Game Loop from running. Calling this is the same as Quitting the program.
 		inline void End(void) 
 		{ 
 			GameWindow::Instance()->EndRunning(); 
 		}
 		
-	/// Wrapper for LevelManager::AddLevel(). Adds level that can be set as active. 
-	/// \param level shared_ptr<Level>: Level to be added. 
+/// Wrapper for LevelManager::AddLevel(). Adds level that can be set as active. 
+/// \param level shared_ptr<Level>: Level to be added. 
 		inline void AddLevelToManager(shared_ptr<Level> level)
 		{ 
 			LevelManager::Instance()->AddLevel(level); 
 		}
 
-	/// Wrapper for LevelManager::SetActive(). Sets level with id to be active level
-	/// \param id const U32: id of level. 
+/// Wrapper for LevelManager::SetActive(). Sets level with id to be active level
+/// \param id const U32: id of level. 
 		inline void SetActiveLevel(const U32 id) 
 		{ 
 			LevelManager::Instance()->SetActiveLevel(id); 
 		}
 
-	/// Wrapper for LevelManager::SetActive(void). Sets the temporary active level.
-	/// \param level is the pointer to set active
+/// Wrapper for LevelManager::SetActive(void). Sets the temporary active level.
+/// \param level is the pointer to set active
 		inline void SetActiveLevel(shared_ptr<Level> level)
 		{
 			LevelManager::Instance()->SetActiveLevel(level);
 		}
 
-	/// Wrapper for steps needed update steps. Calls the following in order.
-	/// - GameWindow::ProcessWndEvents()
-	/// - Timer::Update()
-	/// - Controller::Update()
-	/// - LevelManager::Update()
-	/// - ErrorManager::DisplayErrors()	
+/// Wrapper for steps needed update steps. Calls the following in order.
+/// - GameWindow::ProcessWndEvents()
+/// - Timer::Update()
+/// - Controller::Update()
+/// - LevelManager::Update()
+/// - ErrorManager::DisplayErrors()	
 		void Update(void);
 
-	/// Wrapper for steps needed to render. Calls the following in order
-	/// - LevelManager::Render()
-	/// - GameWindow::BufferSwap()
-	/// - ErrorManager::DisplayErrors() 
+/// Wrapper for steps needed to render. Calls the following in order
+/// - LevelManager::Render()
+/// - GameWindow::BufferSwap()
+/// - ErrorManager::DisplayErrors() 
 		void Render(void);
 
 //==========================================================================================================================
@@ -92,7 +92,7 @@ namespace Tempest
 //Singleton functions
 //
 //==========================================================================================================================
-	/// Singleton function to get global instance of Engine.
+/// Singleton function to get global instance of Engine.
 		static shared_ptr<Engine> Instance();		
 
 	protected:
@@ -101,7 +101,7 @@ namespace Tempest
 //Constructor
 //
 //==========================================================================================================================		
-	/// Default Constructor. It does not do anything. 	
+/// Default Constructor. It does not do anything. 	
 		Engine(void);
 
 	private:

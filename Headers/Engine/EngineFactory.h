@@ -10,7 +10,7 @@ namespace TP = TempestPhysics;
 
 namespace Tempest
 {
-	class EngineFactory
+	class TEMPEST_API EngineFactory
 	{
 	public:
 //==========================================================================================================================

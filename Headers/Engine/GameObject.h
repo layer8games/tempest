@@ -44,7 +44,7 @@ namespace Tempest
 		NUM_VBO = 5
 	};
 	
-	class GameObject
+	class TEMPEST_API GameObject
 	{
 	public:
 //==========================================================================================================================

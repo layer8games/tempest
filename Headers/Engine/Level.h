@@ -31,7 +31,7 @@ namespace Tempest
 ///	controls what the update logic is. The Level itself is an abstract class, intended to be implemented on the user end.
 ///	Some engines will call this a scene or a world. 
 
-	class Level
+	class TEMPEST_API Level
 	{
 //==========================================================================================================================
 //
@@ -385,20 +385,20 @@ namespace Tempest
 //Data
 //
 //==========================================================================================================================		
-		S32     _width;												///< Total width of the play area in the Level. Enforced only by convention.
-		S32     _height;											///< Total height of the play area in the Level. Enforced only by convention.
-		S32     _topBorder;											///< Optional "north" border of the Level.
-		S32     _bottomBorder;										///< Optional "south" border of the Level.
-		S32     _rightBorder;										///< Optional "east" border of the Level.
-		S32     _leftBorder;										///< Optional "west" border of the Level.
-		S32		_depth; 											///< Total depth of the play area in the Level.
-		S32		_nearBorder;										///< Optional close border of the Level.
-		S32 	_farBorder;											///< Optional far border of the Level.
-		Color   _bgColor;											///< Color used for the background of the rendering window.
-		U32     _ID;												///< ID used in the LevelManager.
-		Camera* _camera;											///< Pointer to a Camera object. 
+		S32     _width;									///< Total width of the play area in the Level. Enforced only by convention.
+		S32     _height;								///< Total height of the play area in the Level. Enforced only by convention.
+		S32     _topBorder;								///< Optional "north" border of the Level.
+		S32     _bottomBorder;							///< Optional "south" border of the Level.
+		S32     _rightBorder;							///< Optional "east" border of the Level.
+		S32     _leftBorder;							///< Optional "west" border of the Level.
+		S32		_depth; 								///< Total depth of the play area in the Level.
+		S32		_nearBorder;							///< Optional close border of the Level.
+		S32 	_farBorder;								///< Optional far border of the Level.
+		Color   _bgColor;								///< Color used for the background of the rendering window.
+		U32     _ID;									///< ID used in the LevelManager.
+		Camera* _camera;								///< Pointer to a Camera object. 
 		std::map<U32, p_GameObject>	  _gameObjects;		///< List of all GameObjects included in the Level.
-		TP::ForceRegistry _forceRegistry; 							///< KillerPhysics::ForceRegistry used to allow physics forces to be applied.
+		TP::ForceRegistry _forceRegistry; 				///< KillerPhysics::ForceRegistry used to allow physics forces to be applied.
 	};
 	typedef shared_ptr<Level> p_Level;
 }//End namespace

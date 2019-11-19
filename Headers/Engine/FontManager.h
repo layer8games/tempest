@@ -10,7 +10,7 @@
 
 namespace Tempest
 {
-	class FontManager
+	class TEMPEST_API FontManager
 	{
 	public:
 //==========================================================================================================================
