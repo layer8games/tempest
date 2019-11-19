@@ -40,4 +40,5 @@ namespace TempestPhysics
 		real 	    _friction;
 		
 	};//end Class
+	typedef shared_ptr<Contact> p_Contact;
 }//end Namespace

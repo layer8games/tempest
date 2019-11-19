@@ -257,6 +257,5 @@ namespace TempestPhysics
 			
 
 	};//end Class
-
 	typedef shared_ptr<RigidBody3D> p_RigidBody3D;
 }//end Namespace

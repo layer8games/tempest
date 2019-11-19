@@ -131,6 +131,5 @@ namespace TempestMath
 		F64  _currentTime;	///< The time stamp of this frame. 
 		S64	 _counterStart; ///< This is the starting point of the counter.
 		
-	};
-
-}//End namespace
+	};// end class
+}//end namespace

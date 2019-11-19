@@ -21,7 +21,7 @@ ForceRegistry::~ForceRegistry(void)
 //ForceRegistry functions
 //
 //==========================================================================================================================	
-void ForceRegistry::Add(shared_ptr<RigidBody2D> RigidBody2D, shared_ptr<ForceGenerator> forceGen)
+void ForceRegistry::Add(p_RigidBody2D RigidBody2D, p_ForceGenerator forceGen)
 {
 	_RigidBody2DForceRegistration registration;
 	registration.RigidBody2D = RigidBody2D;
@@ -30,7 +30,7 @@ void ForceRegistry::Add(shared_ptr<RigidBody2D> RigidBody2D, shared_ptr<ForceGen
 	_body2DRegistrations.push_back(registration);
 }
 
-void ForceRegistry::Add(shared_ptr<RigidBody3D> body, shared_ptr<ForceGenerator> forceGen)
+void ForceRegistry::Add(p_RigidBody3D body, p_ForceGenerator forceGen)
 {
 	_RigidBody3DRegistration registration;
 	registration.body = body;
@@ -39,7 +39,7 @@ void ForceRegistry::Add(shared_ptr<RigidBody3D> body, shared_ptr<ForceGenerator>
 	_body3DRegistrations.push_back(registration);
 }
 
-void ForceRegistry::Remove(shared_ptr<RigidBody2D> RigidBody2D, shared_ptr<ForceGenerator> forceGen)
+void ForceRegistry::Remove(p_RigidBody2D RigidBody2D, p_ForceGenerator forceGen)
 {
 	_RigidBody2DForceRegistration registration;
 	registration.RigidBody2D = RigidBody2D;
@@ -53,7 +53,7 @@ void ForceRegistry::Remove(shared_ptr<RigidBody2D> RigidBody2D, shared_ptr<Force
 	}
 }
 
-void ForceRegistry::Remove(shared_ptr<RigidBody3D> body, shared_ptr<ForceGenerator> forceGen)
+void ForceRegistry::Remove(p_RigidBody3D body, p_ForceGenerator forceGen)
 {
 	_RigidBody3DRegistration registration;
 	registration.body = body;
