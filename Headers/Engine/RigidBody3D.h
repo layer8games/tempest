@@ -25,18 +25,18 @@ namespace TempestPhysics
 //Constructors	 	
 //
 //==========================================================================================================================
-		RigidBody3D(void);
+		TEMPEST_API RigidBody3D(void);
 
-		~RigidBody3D(void);
+		TEMPEST_API ~RigidBody3D(void);
 
 //==========================================================================================================================
 //
 //Functions
 //
 //==========================================================================================================================		
-		void Integrate(void);
+		TEMPEST_API void Integrate(void);
 
-		void CalculateDerivedData(void);
+		TEMPEST_API void CalculateDerivedData(void);
 
 //==========================================================================================================================
 //
@@ -163,10 +163,10 @@ namespace TempestPhysics
 		}
 
 		//Given in world space coordinates
-		void AddForceAtPoint(const TM::Vector4& force, const TM::Vector4& point);
+		TEMPEST_API void AddForceAtPoint(const TM::Vector4& force, const TM::Vector4& point);
 
 		//Force given in world space, point given in local space
-		void AddForceAtLocalPoint(const TM::Vector4& force, const TM::Vector4& point);
+		TEMPEST_API void AddForceAtLocalPoint(const TM::Vector4& force, const TM::Vector4& point);
 
 //===== Mass =====
 		inline real GetInverseMass(void) const

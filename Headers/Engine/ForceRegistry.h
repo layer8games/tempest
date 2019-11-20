@@ -25,10 +25,10 @@ namespace TempestPhysics
 //
 //==========================================================================================================================		 
 ///Sets everything to 0. 
-		ForceRegistry(void);
+		TEMPEST_API ForceRegistry(void);
 
 ///	No implementation. 
-		~ForceRegistry(void);
+		TEMPEST_API ~ForceRegistry(void);
 
 //==========================================================================================================================
 //
@@ -39,31 +39,31 @@ namespace TempestPhysics
 ///	 instance.
 ///	 \param RigidBody2D is the pointer to be registered and saved. 
 ///	 \param forceGen is the force that will be saved with the object.
-		void Add(p_RigidBody2D RigidBody2D, p_ForceGenerator forceGen);
+		TEMPEST_API void Add(p_RigidBody2D RigidBody2D, p_ForceGenerator forceGen);
 
 ///	Creates a new  _RigidBody3DRegistration. Adds the args to the new _RigidBody3DRegistration, then saves this into the instance.
 ///	\param body is the pointer to be registered and saved. 
 ///	\param forceGen is the force that will be saved with the object.
-		void Add(p_RigidBody3D body, p_ForceGenerator forceGen);
+		TEMPEST_API void Add(p_RigidBody3D body, p_ForceGenerator forceGen);
 
 ///	Removes the registration matching the pointer args from the instance. This has some cost, since it creates a new registration,
 ///	then uses this to compare with every registration, until the needed registration is found. There is room to optimize here.
 ///	\param RigidBody2D is the object that needs to be removed. 
 ///	\param forceGen is the matching force that also needs to be removed.  
-		void Remove(p_RigidBody2D RigidBody2D, p_ForceGenerator forceGen);
+		TEMPEST_API void Remove(p_RigidBody2D RigidBody2D, p_ForceGenerator forceGen);
  
 ///	Removes the registration matching the pointer args from the instance. This has some cost, since it creates a new registration,
 ///	then uses this to compare with every registration, until the needed registration is found. There is room to optimize here.
 ///	\param body is the object that needs to be removed. 
 ///	\param forceGen is the matching force that also needs to be removed.  	 
-		void Remove(p_RigidBody3D body, p_ForceGenerator forceGen);
+		TEMPEST_API void Remove(p_RigidBody3D body, p_ForceGenerator forceGen);
 
 ///	Removed all saved registrations by clearing the list of saved registrations. 
-		void Clear(void);
+		TEMPEST_API void Clear(void);
 
 ///	Iterates over all registered objects, adding the force to the accompanying object. This is what will cause a force to act 
 ///	on the object. This is where the magic happens.  
-		void UpdateForces(void);
+		TEMPEST_API void UpdateForces(void);
 		
 	private:
 //==========================================================================================================================

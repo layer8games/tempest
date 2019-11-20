@@ -11,7 +11,7 @@ namespace Tempest
 {
 ///	The Texture class is used to save and hold information about a texture that has already been loaded into memory. It used
 ///	the SOIL library to save the Texture data into OpenGL, along with several wrappers to work with that data. 
-	class TEMPEST_API Texture 
+	class Texture 
 	{
 	public:	
 //==========================================================================================================================
@@ -20,28 +20,28 @@ namespace Tempest
 //
 //==========================================================================================================================		
 ///	Sets all values to 0 by default.
-		Texture(void);
+		TEMPEST_API Texture(void);
 
 ///	Calls LoadTexture to set up Texture at creation
 ///	\param filePath is used to generate Texture.
-		explicit Texture(string filePath);
+		TEMPEST_API explicit Texture(string filePath);
 
 ///	Sets values up based on existing data. 
 ///	\param id is an existing OpenGL handle that can be used. 
 ///	\param width is the total width in pixels of the Texture. 
 ///	\param height is the total height in pixels of the Texture.
-		Texture(GLuint id, S32 width, S32 height);
+		TEMPEST_API Texture(GLuint id, S32 width, S32 height);
 
 ///	Copy from T into Texture. 
 ///	\param T is the texture to copy by ref.
-		Texture(const Texture& T);
+		TEMPEST_API Texture(const Texture& T);
 
 ///	Copy from T into Texture. 
 ///	\param T is the pointer to copy. 
-		Texture(const Texture* T);
+		TEMPEST_API Texture(const Texture* T);
 
 ///	Calls glDeleteTextures to clean up memory.
-		~Texture(void);
+		TEMPEST_API ~Texture(void);
 
 //==========================================================================================================================
 //
@@ -94,11 +94,11 @@ namespace Tempest
 //==========================================================================================================================
 ///	Assignment from ref. Copies all data as expected. 
 ///	\param T is the ref to copy. 
-		Texture& operator=(const Texture& T);
+		TEMPEST_API Texture& operator=(const Texture& T);
 
 ///	Assignment from pointer. Copies all data as expected. 
 ///	\param T is the pointer to copy. 
-		Texture& operator=(const Texture* T);
+		TEMPEST_API Texture& operator=(const Texture* T);
 
 //==========================================================================================================================
 //
@@ -109,15 +109,15 @@ namespace Tempest
 ///	memory in the GPU for the Texture to be used later. 
 ///	\param filePath is the path on the hardrive to image to Open. This is relative to your working directory. 
 ///	\param generateMipMaps allows you to control if OpenGL performs the operations needed to create mipmaps. True by default. 
-		void LoadTexture(string filePath, bool generateMipMaps=true);
+		TEMPEST_API void LoadTexture(string filePath, bool generateMipMaps=true);
 
 ///	Binds or Unbinds the Texture to the designated texUnit in OpenGL.
 ///	\param state controls if we are binding or unbinding. True (default) means binding, false means unbinding.
 ///	\param texUnit specifies which texUnit gets the Texture in OpenGL, if you are using multiple textures on a single object. 0 by default. 
-		void Bind(bool state=true, GLuint texUnit=0) const;
+		TEMPEST_API void Bind(bool state=true, GLuint texUnit=0) const;
 
 ///	Unbinds the Texture from OpenGL.
-		void UnBind(void) const;
+		TEMPEST_API void UnBind(void) const;
 
 	private:	
 		GLuint _handle;  ///< ID used by OpenGL as handle to the memory this Texture takes up on the GPU.

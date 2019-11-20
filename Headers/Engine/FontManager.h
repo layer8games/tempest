@@ -10,7 +10,7 @@
 
 namespace Tempest
 {
-	class TEMPEST_API FontManager
+	class FontManager
 	{
 	public:
 //==========================================================================================================================
@@ -18,22 +18,22 @@ namespace Tempest
 //Constructors	 	
 //
 //==========================================================================================================================
-		~FontManager(void);
+		TEMPEST_API ~FontManager(void);
 
 //==========================================================================================================================
 //
 //Fucntions
 //
 //==========================================================================================================================
-		static shared_ptr<FontManager> Instance(void);
+		TEMPEST_API static shared_ptr<FontManager> Instance(void);
 
-		void LoadFont(U32 id, string fontName, string filePath, U32 size);
+		TEMPEST_API void LoadFont(U32 id, string fontName, string filePath, U32 size);
 
-		void AddFont(U32 id, shared_ptr<Font> font);
+		TEMPEST_API void AddFont(U32 id, shared_ptr<Font> font);
 
-		void AddFont(U32 id, Font& font);
+		TEMPEST_API void AddFont(U32 id, Font& font);
 
-		shared_ptr<Font> GetFont(U32 id);
+		TEMPEST_API shared_ptr<Font> GetFont(U32 id);
 
 	protected:
 //==========================================================================================================================

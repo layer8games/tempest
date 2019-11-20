@@ -25,7 +25,7 @@ namespace Tempest
 ///	passed in. This means that there is no shared re-use of the Glyph. This is because each one needs a unique position.
 ///	There could be some clever wasy to get around this using instancing, but this will require more work, and I wanted
 ///	to just get the class working. 
-	class TEMPEST_API Text
+	class Text
 	{
 	public:
 //==========================================================================================================================
@@ -34,25 +34,25 @@ namespace Tempest
 //
 //==========================================================================================================================
 ///	Default constructor. Sets scale and color to 1.0f, everything else to 0 or null.
-		Text(void);
+		TEMPEST_API Text(void);
 
 ///	String to Text conversion function. Calls Text::AddText to set up the class. 
 ///	\param text is the string that will be used to create the Text. 
-		explicit Text(string text);
+		TEMPEST_API explicit Text(string text);
 
 ///	Creates a Text with Glyphs for each character in a string with a given Font. Calls Text::AddText to set up everything.
 ///	\param text are the desires characters. 
 ///	\param font is the given Font. Should come from the FontManager. 
-		Text(string text, p_Font font);
+		TEMPEST_API Text(string text, p_Font font);
 
 
 ///	Creates a Text with Glyphs for each character in a string with a given Font. Calls Text::AddText to set up everything.
 ///	\param text are the desires characters.
 ///	\param font is the given Font. Should come from the FontManager.
-		Text(string text, Font& font);
+		TEMPEST_API Text(string text, Font& font);
 
 ///	Default destructor. No function.
-		~Text(void);
+		TEMPEST_API ~Text(void);
 
 //==========================================================================================================================
 //
@@ -80,16 +80,16 @@ namespace Tempest
 ///	This does not so much add additional text to the Text as set's what string of Glpyhs will be set. This does incure the 
 ///	cost of creating all of the Glyph characters in the Text. This creates a unique Glyph for each character in the Text. 
 ///	\param text is the string that will be turned into Glyphs.  
-		void AddText(string text);
+		TEMPEST_API void AddText(string text);
 
 ///	Sets the color of each Glyph in the Text.
 ///	\param col is the Color each Glyph is set to.  
-		void SetTextColor(const Color& col);
+		TEMPEST_API void SetTextColor(const Color& col);
 
 ///	A wrapper function that calls GameObject::SetUniform on each Glyph using the input. 
 ///	\param name is the name of the uniform that will be set. 
 ///	\param Matrix4 is the transformation Matrix4 to be used by each Glyph. 
-		void SetUniforms(string name, const TM::Matrix4& Matrix4);
+		TEMPEST_API void SetUniforms(string name, const TM::Matrix4& Matrix4);
 
 //==========================================================================================================================
 //
@@ -139,7 +139,7 @@ namespace Tempest
 
 ///	Sets the font for the Text and all of the Glyphs, if there are any. 
 ///	\param font is the new Font that will be saved in this Text.
-		void SetFont(p_Font font);
+		TEMPEST_API void SetFont(p_Font font);
 
 ///	Sets the font for the Text and all of the Glyphs, if there are any. 
 ///	\param font is the new Font that will be saved in this Text.	 

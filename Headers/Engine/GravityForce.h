@@ -31,14 +31,14 @@ namespace TempestPhysics
 //
 //==========================================================================================================================		
 ///	Sets default acceleration to 0, -1, 0. 
-		GravityForce(void);
+		TEMPEST_API GravityForce(void);
 
 ///	Sets acceleration to KillerMath::Vector4 sent in.
 ///	\param gravity will be the value set for the acceleration. 
-		GravityForce(const TM::Vector4& gravity);
+		TEMPEST_API GravityForce(const TM::Vector4& gravity);
 
 ///	No implemenation. 
-		~GravityForce(void);
+		TEMPEST_API ~GravityForce(void);
 
 //==========================================================================================================================
 //
@@ -47,11 +47,11 @@ namespace TempestPhysics
 //==========================================================================================================================		
 ///	If body does not have infinite mass, the acceleration is added using KillerPhysics::RigidBody2D::AddForce.
 ///	\param body is the pointer to the object that will have the acceleration added to it.  
-		void v_UpdateForce(p_RigidBody2D body) final;
+		TEMPEST_API void v_UpdateForce(p_RigidBody2D body) final;
 
 ///	If body does not have infinite mass, the acceleration is added using KillerPhysics::RigidBody3D::AddForce.
 ///	\param body is the pointer to the object that will have the acceleration added to it.  
-		void v_UpdateForce(p_RigidBody3D body) final;
+		TEMPEST_API void v_UpdateForce(p_RigidBody3D body) final;
 
 //==========================================================================================================================
 //

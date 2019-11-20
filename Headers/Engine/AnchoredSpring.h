@@ -38,16 +38,16 @@ namespace TempestPhysics
 //
 //==========================================================================================================================		
 ///	Sets all values to 1, with anchor at 0.
-		AnchoredSpring(void);
+		TEMPEST_API AnchoredSpring(void);
 
 ///	Sets up the default values of the spring.
 ///	\param anchor is the location of the anchor point.
 ///	\param springConstant is the "stiffness" of the spring.
 ///	\param restLength is the length of the spring.
-		AnchoredSpring(const TM::Point& anchor, real springConstant, real restLength);
+		TEMPEST_API AnchoredSpring(const TM::Point& anchor, real springConstant, real restLength);
 
 ///	No implementation.
-		~AnchoredSpring(void);
+		TEMPEST_API ~AnchoredSpring(void);
 
 //==========================================================================================================================
 //
@@ -56,11 +56,11 @@ namespace TempestPhysics
 //==========================================================================================================================
 ///	Adds a force to a RigidBody2D in relation to the objects position and the anchor point.
 ///	\param RigidBody2D is the object that will recieve the force.
-		void v_UpdateForce(p_RigidBody2D body) final;
+		TEMPEST_API void v_UpdateForce(p_RigidBody2D body) final;
 
 ///	Adds a force to a RigidBody3D in relation to the objects position and the anchor point.
 ///	\param body is the object that will recieve the force.
-		void v_UpdateForce(p_RigidBody3D body) final;
+		TEMPEST_API void v_UpdateForce(p_RigidBody3D body) final;
 
 //==========================================================================================================================
 //

@@ -23,7 +23,7 @@ using std::map;
 namespace Tempest
 { 
 ///	Helper struct to hold the type of shader contained. Allows for functions to be able to build Shaders dynamically. 
-	enum TEMPEST_API ShaderType
+	enum  ShaderType
 	{
 		VERTEX,
 		FRAGMENT
@@ -34,7 +34,7 @@ namespace Tempest
 ///	\param filePath is the path to the specific shader on the hard drive. This will be the source code for one shader 
 ///	stage, ie a vertex shader source file. 
 ///	\param type is the type of shader this file path is, ie VERTEX for a vertext shader file.
-	struct TEMPEST_API ShaderData
+	struct ShaderData
 	{
 		string filePath;
 		ShaderType type;
@@ -46,7 +46,7 @@ namespace Tempest
 ///	amoung common objects, such as the sprites or model primitiives. 
 ///	It can also return an abritrary shader that does not get saved by the class over all. This function acts as a wrapper 
 ///	around the calls needed to complile GLSL shaders.  
-	class TEMPEST_API Shader
+	class Shader
 	{
 	public:
 //==========================================================================================================================
@@ -55,10 +55,10 @@ namespace Tempest
 //
 //==========================================================================================================================
 ///	Initializes the Uniform Locations and sets the shader handle to 0. 
-		Shader(void);
+		TEMPEST_API Shader(void);
 
 ///	Sets the GL Program to 0, deletes the shader from OpenGL. 
-		~Shader(void);
+		TEMPEST_API ~Shader(void);
 
 //==========================================================================================================================
 //
@@ -67,11 +67,11 @@ namespace Tempest
 //==========================================================================================================================
 ///	Takes in a list of ShaderData, looping over it to compile each shader, then link them together. 
 ///	\param shaders is the list of shaders that will be compiled and linked.  
-		void LoadShader(std::vector<ShaderData> shaders);
+		TEMPEST_API void LoadShader(std::vector<ShaderData> shaders);
  
 ///	Wrapper aroudn glUseProgram. Sets this shader to be active in OpenGL for rendering. 
 ///	\param state is an optional flag. True = set to active, false = set inactive, this is done by calling glUseProgram(0). 
-		void Use(bool state=true);
+		TEMPEST_API void Use(bool state=true);
 
 //==========================================================================================================================
 //
@@ -81,44 +81,44 @@ namespace Tempest
 ///	Helper function to set a uniform in the shader. Wrapper around glUniform1f.
 ///	\param name is the name of the uniform in the shader. 
 ///	\param val is the value to pass into the shader.  
-		void SetUniform(const GLchar* name, const F32 val);
+		TEMPEST_API void SetUniform(const GLchar* name, const F32 val);
 
 ///	 Helper function to set a uniform in the shader. Wrapper around glUniform4f.
 ///	 \param naem is the name of the uniform in the shader. 
 ///	 \param vec is the KillerMath::Vector4 to pass along into the shader. x, y, z and w will be passed into the shader. 
-		void SetUniform(const GLchar* name, const TM::Vector4& vec);
+		TEMPEST_API void SetUniform(const GLchar* name, const TM::Vector4& vec);
 
 ///	Helper function to set a uniform in the shader. Wrapper around glUniform3f.
 ///	\param name is the name of the uniform in the shader. 
 ///	\param vec is the KillerMath::Vector3 to pass into the shader. x, y and z will be passed into the shader.
-		void SetUniform(const GLchar* name, const TM::Vector3& vec);
+		TEMPEST_API void SetUniform(const GLchar* name, const TM::Vector3& vec);
 
 ///	Helper function to set a uniform in the shader. Wrapper around glUniform3f.
 ///	\param name is the name of the uniform in the shader. 
 ///	\param point is the KillerMath::Point to pass into the shader. x, y, z and w will be passed into the shader.
-		void SetUniform(const GLchar* name, const TM::Point& point);
+		TEMPEST_API void SetUniform(const GLchar* name, const TM::Point& point);
 
 ///	Helper function to set a uniform in the shader. Wrapper around glUniformMatrix44fv.
 ///	\param name is the name of the uniform in the shader.
 ///	\param mat is the KillerMath::Matrix4 to pass into the shader. All 16 values will be passed in.
-		void SetUniform(const GLchar* name, TM::Matrix4 mat);
+		TEMPEST_API void SetUniform(const GLchar* name, TM::Matrix4 mat);
  
 ///	 Helper function to set a uniform in the shader. This is used to activate more than one texture in the shader. The 
 ///	 default is to set all textures to slot 0, this allows for multiple slots to be set. Wrapper around glActiveTexture 
 ///	 and glUniform1i.
 ///	\param name is the name of the uniform in the shader.
 ///	\param texSlot is the index Texture slot to activate. 
-		void SetUniformSampler(const GLchar* name, S32 texSlot);
+		TEMPEST_API void SetUniformSampler(const GLchar* name, S32 texSlot);
 
 ///	Helper function to set a uniform in the shader. Wrapper around glUniform4f. Sets the r,g,b and a.
 ///	\param name is the name of the uniform in the shader. 
 ///	\param col is the Color to set in the shader.
-		void SetUniform(const GLchar* name, const Color& col);
+		TEMPEST_API void SetUniform(const GLchar* name, const Color& col);
  
 ///	 Helper function to set a uniform in the shader. Wrapper around glUniform3f. Sets the r, g, and b.
 ///	\param name is the name of the uniform in the shader. 
 ///	\param col is the Color to set in the shader.
-		void SetUniformVec3(const GLchar* name, const Color& col);
+		TEMPEST_API void SetUniformVec3(const GLchar* name, const Color& col);
 
 		inline GLuint GetProgram(void) const
 		{
@@ -150,7 +150,7 @@ namespace Tempest
 //
 //==========================================================================================================================		
 ///	Copy assignment operator. Copies both the shader handle from OpenGL and the cached shader locations.  
-		Shader& operator=(const Shader& shader);
+		TEMPEST_API Shader& operator=(const Shader& shader);
 	
 	private:
 //==========================================================================================================================

@@ -34,16 +34,16 @@ namespace TempestPhysics
 //==========================================================================================================================
 ///	Default Constructor. All data values are set to 0, except for _inverseMass, which is set to 1, and _damping, which is set
 ///	to 0.999f.
-		RigidBody2D(void);
+		TEMPEST_API RigidBody2D(void);
 
 ///	Pointer Copy Constructor. This is here because of some errors that were being thrown at one point. It is a full copy. 
-		RigidBody2D(const RigidBody2D* RigidBody2D);
+		TEMPEST_API RigidBody2D(const RigidBody2D* RigidBody2D);
 
 ///	Reference Copy Constructor. This was the perfered method of copy, I don't even know if this will be used any more.
-		RigidBody2D(const RigidBody2D& RigidBody2D);
+		TEMPEST_API RigidBody2D(const RigidBody2D& RigidBody2D);
 
 ///	Default destructor. Virtual because this class is a child of the GameObject. It performs no function.
-		virtual ~RigidBody2D(void);
+		TEMPEST_API virtual ~RigidBody2D(void);
 
 //==========================================================================================================================
 //
@@ -53,13 +53,13 @@ namespace TempestPhysics
 ///	Integrate is where the physical poperties of a point mass are simulated. An algorithm is used to update the velocity 
 ///	based off the acceleration, and the position based off the velocity. Forces that are applied to this RigidBody2D are taken
 ///	into account for this update. All forces are cleared at the end of the integration step.
-		void Integrate(void);
+		TEMPEST_API void Integrate(void);
 
 ///	Removed all forces that have been applied to the RigidBody2D this frame.
-		void ClearAccumulator(void);
+		TEMPEST_API void ClearAccumulator(void);
 
 ///	Adds a force that will act upon this RigidBody2D. This is done by adding the combined forces into the acceleration of the RigidBody2D.
-		void AddForce(const TM::Vector4 force);
+		TEMPEST_API void AddForce(const TM::Vector4 force);
 
 //==========================================================================================================================
 //

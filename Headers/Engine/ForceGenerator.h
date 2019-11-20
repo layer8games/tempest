@@ -26,10 +26,10 @@ namespace TempestPhysics
 //
 //==========================================================================================================================
 ///	No implemenation.
-		ForceGenerator(void);
+		TEMPEST_API ForceGenerator(void);
 
 ///	No implementation.
-		virtual ~ForceGenerator(void);
+		TEMPEST_API virtual ~ForceGenerator(void);
 
 
 //==========================================================================================================================

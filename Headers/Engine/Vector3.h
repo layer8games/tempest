@@ -24,7 +24,7 @@ namespace TempestMath
 ///	Unlike the Vector4, there is no w, so there is no difference between a position and a direction, like in the Point vs Vector4
 ///	classes. This class exists for when something doesn't need that extra data that comes with the w element. This can save on 
 ///	memory and computation. The Matrix3 class uses it, for example.
-	class TEMPEST_API Vector3
+	class Vector3
 	{
 	public:
 //==========================================================================================================================
@@ -33,38 +33,38 @@ namespace TempestMath
 //
 //========================================================================================================================== 
 ///	Default construtor. Sets all values to 0, and _2D to false.	
-		Vector3(void);
+		TEMPEST_API Vector3(void);
 
 ///	Single input conversion constructor. It will set the x, y and z components to the input. _2D is false. 
 ///	\param val F32: Input value for x, y and z.	
-		explicit Vector3(F32 val);
+		TEMPEST_API explicit Vector3(F32 val);
 
 ///	Two input constructor. Set's x and y accordingly. Z is set to 0.
 ///	\param x is the value for x.
 ///	\param y is the value for y.
-		Vector3(F32 x, F32 y);
+		TEMPEST_API Vector3(F32 x, F32 y);
 
 ///	Three input constructor.
 ///	\param x is the value for x.
 ///	\param y is the value for y.
 ///	\param z is the value for z.
-		Vector3(F32 x, F32 y, F32 z);
+		TEMPEST_API Vector3(F32 x, F32 y, F32 z);
  
 ///	Copy Constructor. It explicitly copies all data into new Vector3. 
 ///	\param v is the Vector3 to copy. 
 		//Add explicit key word and fix errors
-		Vector3(const Vector3& v);
+		TEMPEST_API Vector3(const Vector3& v);
 
 /// Copy Constructor. It explicitely copies all data into new Vector3 from a Point
 /// \param p is the Point to copy.
-		Vector3(const Point& p);
+		TEMPEST_API Vector3(const Point& p);
 
 ///	Convert a Vector4 into a Vector3.
 ///	\param v is the Vector4 to convert.
-		explicit Vector3(const Vector4& v);
+		TEMPEST_API explicit Vector3(const Vector4& v);
 
 ///	No implementation.	
-		~Vector3(void);
+		TEMPEST_API ~Vector3(void);
 
 //==========================================================================================================================
 //
@@ -95,34 +95,34 @@ namespace TempestMath
 //===== Vector3 Special functions =====
 ///	Performs a Dot or Scalar product in the order of this * other.
 ///	\param vec is the left hand argument in the operation.	
-		F32 Dot(const Vector3& vec) const;
+		TEMPEST_API F32 Dot(const Vector3& vec) const;
 
 ///	Performs a Cross or Vector3 production in the order of this cross other.
 ///	\param vec is the left hand argument in the operation.				
-		Vector3 CrossProduct(const Vector3& vec) const;
+		TEMPEST_API Vector3 CrossProduct(const Vector3& vec) const;
 
 ///	Returns the length of the Vector3. Caution, this uses the square root function.
-		F32 Magnitude(void);
+		TEMPEST_API F32 Magnitude(void);
 
 ///	Returns the squard length of the Vector3. It avoids the cost of the square root function.
-		F32 SqrMagnitude(void);
+		TEMPEST_API F32 SqrMagnitude(void);
 
 ///	Changes the Vector3 into a unit Vector3 by converting its magnitude to exaclty 1.0. This is an expensive operation.
-		void Normalize(void);
+		TEMPEST_API void Normalize(void);
 
 ///	Sets all values to input. Does not check for _2D before changing z. 
 ///	\param val is the value x, y and z will get. Default value is 0.
-		void Reset(F32 val=0.0f);
+		TEMPEST_API void Reset(F32 val=0.0f);
 
 //===== Math Helper Functions =====
 ///	Adds a Vector3 scaled by a value to this Vector3. 
 ///	\param vec is the Vector3 that will be added to this one. 
 ///	\param scale is the amount the added Vector3 will be scaled by.
-		void AddScaledVector(const Vector3& vec, F32 scale);
+		TEMPEST_API void AddScaledVector(const Vector3& vec, F32 scale);
 
-		void AddScaledVector(const Vector4& vec, F32 scale);
+		TEMPEST_API void AddScaledVector(const Vector4& vec, F32 scale);
 
-		void AddScaledVector(const Point& point, F32 scale);
+		TEMPEST_API void AddScaledVector(const Point& point, F32 scale);
 
 //==========================================================================================================================
 //
@@ -169,42 +169,42 @@ namespace TempestMath
 //===== Copy Assignment =====		
 ///	Copy assignment from Vector3.
 ///	\param vec is the Vector3 to copy into this Vector3.
-		Vector3& operator=(const Vector3& vec);
+		TEMPEST_API Vector3& operator=(const Vector3& vec);
 
 ///	Copy assignment from scalar.
 ///	\param val is the value all elements will be set to. 2D check is done before z is changed.
-		Vector3& operator=(F32 val);
+		TEMPEST_API Vector3& operator=(F32 val);
 
 //===== Add by Vector3 =====
 ///	Vector3 addtion. This is done componentwise.
 ///	\param vec is the Vector3 to add into a new Vector3.
-		Vector3 operator+(const Vector3& vec) const;
+		TEMPEST_API Vector3 operator+(const Vector3& vec) const;
 
 ///	Vector3 addition equal. This is done componentwise.
 ///	\param vec is the Vector3 to add into this Vector3.
-		Vector3& operator+=(const Vector3& vec);
+		TEMPEST_API Vector3& operator+=(const Vector3& vec);
 
 //===== Add by scalar =====
 ///	Scalar addition. Each value is added into. 2D check done before z is changed.
 ///	\param val is added into the elements of a new Vector3.
-		Vector3 operator+(F32 val) const;
+		TEMPEST_API Vector3 operator+(F32 val) const;
 
 ///	Scalar addition. Each value is added into. 2D check done before z is changed.
 ///	\param val is added into each element of this Vector3.
-		Vector3& operator+=(F32 val);
+		TEMPEST_API Vector3& operator+=(F32 val);
 
 ///	Shared Pointer addition. A helper to allow arithmetic with shared_ptr<Vector3>.
 ///	\param vec is the shared_ptr<Vector3> that is added into each element of a new Vector3.
-		Vector3 operator+(shared_ptr<Vector3> vec) const;
+		TEMPEST_API Vector3 operator+(shared_ptr<Vector3> vec) const;
 
 //===== Subtract by Vector3 =====
 ///	Vector3 subtraction. This is done componentwise. 2D check done before z is changed. 
 ///	\param vec is the Vector3 subtracted from the new Vector3.
-		Vector3 operator-(const Vector3& vec) const;
+		TEMPEST_API Vector3 operator-(const Vector3& vec) const;
 
 ///	Vector3 subtraction. This is done componenetwise. 2D check done before z is changed. 
 ///	\param vec is the Vector3ed subtractd from this Vector3.
-		Vector3& operator-=(const Vector3& vec);
+		TEMPEST_API Vector3& operator-=(const Vector3& vec);
 
 //===== Negation and increment =====
 ///	Changes the sign of each element of the Vector3. If 2D, z is not changed.
@@ -271,69 +271,69 @@ namespace TempestMath
 //===== Subtract by scalar =====
 ///	Scalar subtraction. 2D check is done before z is changed. 
 ///	\param val is the scalar subtracted from the new Vector3.
-		Vector3 operator-(F32 val) const;
+		TEMPEST_API Vector3 operator-(F32 val) const;
 
 ///	Sclara subtraction. 2D check is done before z is changed. 
 ///	\param val is the scalar subtracted from each element of this Vector3.
-		Vector3& operator-=(F32 val);
+		TEMPEST_API Vector3& operator-=(F32 val);
 
 //===== Component-wise multiply by Vector3 =====
 ///	Vector3 multiplication. This is a componentwise multiplication, scaling one Vector3 by another. 2D check done before z is changed.
 ///	\param vec is the Vector3 multiplied by the new Vector3.
-		Vector3 operator*(const Vector3 vec) const;
+		TEMPEST_API Vector3 operator*(const Vector3 vec) const;
 
 ///	Vector3 multiplication. This is a componentwise multiplication, scaling one Vector3 by another. 2D check done before z is changed.
 ///	\param vec is the Vector3 multiplied by this Vector3.
-		Vector3& operator*=(const Vector3 vec);
+		TEMPEST_API Vector3& operator*=(const Vector3 vec);
 
 //===== Mutliply by Scalar =====
 ///	Scalar multiplication. This is a componentwise multiplication, scaling the Vector3 by the scalar. 2D check done before z is changed.
 ///	\param val is the scalar multiplied by the new Vector3.
-		Vector3 operator*(F32 val) const;
+		TEMPEST_API Vector3 operator*(F32 val) const;
 
 ///	Scalar multiplication. This is a componentwise multiplication, scaling the Vector3 by the scalar. 2D check done before z is changed.
 ///	\param val is the scalar multiplied by this Vector3.
-		Vector3& operator*=(F32 val);
+		TEMPEST_API Vector3& operator*=(F32 val);
 
 //===== Divide by scalar =====
 ///	Scalar division. This is done componentwise. 2D check done before z is changed. 
 ///	\param val is the scalar the new Vector3 is divided by.
-		Vector3 operator/(F32 val) const;
+		TEMPEST_API Vector3 operator/(F32 val) const;
 
 ///	Scalar division. This is done componentwise. 2D check done before z is changed. 
 ///	\param val is the scalar this Vector3 is divided by.
-		Vector3& operator/=(F32 val);
+		TEMPEST_API Vector3& operator/=(F32 val);
 
 //===== Comparison =====
 ///	Greater than comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of this are 
 ///	greater than all elements of the other Vector3.
 ///	\param vec is the Vector3 this Vector3 will be compared against.
-		bool operator>(const Vector3& vec) const;
+		TEMPEST_API bool operator>(const Vector3& vec) const;
 
 ///	Less than comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of this are 
 ///	less than all elements of the other Vector3.
 ///	\param vec is the Vector3 this Vector3 will be compared against.
-		bool operator<(const Vector3& vec) const;
+		TEMPEST_API bool operator<(const Vector3& vec) const;
 
 ///	Greater than or equal to comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements 
 ///	of this are greater than or equal to all elements of the other Vector3.
 ///	\param vec is the Vector3 this Vector3 will be compared against.
-		bool operator>=(const Vector3& vec) const;
+		TEMPEST_API bool operator>=(const Vector3& vec) const;
 
 ///	Less than or equal to comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of 
 ///	this are less than or equal to all elements of the other Vector3.
 ///	\param vec is the Vector3 this Vector3 will be compared against.
-		bool operator<=(const Vector3& vec) const;
+		TEMPEST_API bool operator<=(const Vector3& vec) const;
 
 ///	Equality comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of this are equal 
 ///	to all elements of other Vector3. 
 ///	\param vec is the Vector3 this Vector3 will be compared against. 
-		bool operator==(const Vector3& vec) const;
+		TEMPEST_API bool operator==(const Vector3& vec) const;
 
 ///	False equality comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of this are 
 ///	not equal to all elements of other Vector3. 
 ///	\param vec is the Vector3 this Vector3 will be compared against. 
-		bool operator!=(const Vector3& vec) const;
+		TEMPEST_API bool operator!=(const Vector3& vec) const;
 
 
 	private:

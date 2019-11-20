@@ -17,7 +17,7 @@ namespace Tempest
 		GLYPH = 1
 	};
 
-	class TEMPEST_API ShaderManager
+	class ShaderManager
 	{
 	public:
 //==========================================================================================================================
@@ -25,20 +25,20 @@ namespace Tempest
 //Constructors	 	
 //
 //==========================================================================================================================
-		~ShaderManager(void);
+		TEMPEST_API ~ShaderManager(void);
 
 //==========================================================================================================================
 //
 //Functions
 //
 //==========================================================================================================================
-		static shared_ptr<ShaderManager> Instance(void);
+		TEMPEST_API static shared_ptr<ShaderManager> Instance(void);
 
-		void AddShader(U32 id, shared_ptr<Shader> shader);
+		TEMPEST_API void AddShader(U32 id, shared_ptr<Shader> shader);
 
-		void LoadShader(U32 id, std::vector<ShaderData> data);
+		TEMPEST_API void LoadShader(U32 id, std::vector<ShaderData> data);
 
-		shared_ptr<Shader> GetShader(U32 id);
+		TEMPEST_API shared_ptr<Shader> GetShader(U32 id);
 
 	protected:
 //==========================================================================================================================

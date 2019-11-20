@@ -29,14 +29,14 @@ namespace TempestPhysics
 //
 //==========================================================================================================================
 ///	Sets all values to 0.
-		DragForce(void);
+		TEMPEST_API DragForce(void);
 
 ///	Sets starting values for the DragForce.
 ///	\param drag is the starting values for the drag cooefficient. Drag squared is set to drag * drag.
-		DragForce(real drag);
+		TEMPEST_API DragForce(real drag);
 
 ///	Default Destructor. Not implemented.
-		~DragForce(void);
+		TEMPEST_API ~DragForce(void);
 
 //==========================================================================================================================
 //
@@ -46,12 +46,12 @@ namespace TempestPhysics
 ///	Adds a force to the object based on the drag coefficient and the velocity of the object. For details, see the class 
 ///	description. 
 ///	\param RigidBody2D is the pointer to the object that will have the forced added to it, and will be used to determine what the force is.
-		void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D) final;
+		TEMPEST_API void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D) final;
 
 ///	Adds a force to the object based on the drag coefficient and the velocity of the object. For details, see the class 
 ///	description. 
 ///	\param body is the pointer to the object that will have the forced added to it, and will be used to determine what the force is.
-		void v_UpdateForce(shared_ptr<RigidBody3D> body) final;
+		TEMPEST_API void v_UpdateForce(shared_ptr<RigidBody3D> body) final;
 
 //==========================================================================================================================
 //

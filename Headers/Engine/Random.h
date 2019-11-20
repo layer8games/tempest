@@ -29,16 +29,16 @@ namespace TempestMath
 //
 //==========================================================================================================================
 ///	Default constructor. Sets the _generator to the current time, to keep it random. 
-		Random(void);
+		TEMPEST_API Random(void);
 
 ///	Default destructor. Doesn't have any function. 
-		~Random(void);
+		TEMPEST_API ~Random(void);
 
 //==========================================================================================================================
 //Singleton Option
 //==========================================================================================================================
 ///	Basic Singleton pattern. Allows access to global copy. Not required for use. 				
-		static shared_ptr<Random> Instance(void);
+		TEMPEST_API static shared_ptr<Random> Instance(void);
 //==========================================================================================================================
 //
 //Functions
@@ -47,33 +47,33 @@ namespace TempestMath
 ///	Returns a 32 bit signed it between min and max.
 ///	\param min is the floor value. 
 ///	\param max is the ceiling value.
-		S32 RandomInt(S32 min, S32 max);
+		TEMPEST_API S32 RandomInt(S32 min, S32 max);
 
 ///	Returns a 64 bit signed it between min and max.
 ///	\param min is the floor value. 
 ///	\param max is the ceiling value.
-		S64 RandomLong(S64 min, S64 max);
+		TEMPEST_API S64 RandomLong(S64 min, S64 max);
 
 ///	Returns a random 32 bit floating point between min and max
 ///	\param min is the floor value. 
 ///	\param max is the ceiling value.
-		F32 RandomFloat(F32 min, F32 max);
+		TEMPEST_API F32 RandomFloat(F32 min, F32 max);
 
 ///	Returns a 64 bit floating point between min and max
 ///	\param min is the floor value. 
 ///	\param max is the ceiling value.
-		F64 RandomDouble(F64 min, F64 max);
+		TEMPEST_API F64 RandomDouble(F64 min, F64 max);
 
 ///	Returns a Vector4 with x, y and z (depending on flag) between min and max
 ///	\param min is the floor value. 
 ///	\param max is the ceiling value.
 ///	\param is2d determins if the z value should be set. false by default, it will be set to 0 unless true.
-		Vector4 RandomVector4(F32 min, F32 max, bool is2d=false);
+		TEMPEST_API Vector4 RandomVector4(F32 min, F32 max, bool is2d=false);
 
 ///	Returns a Quaternion with w,x,y and z between min and max
 ///	\param min is the floor value. 
 ///	\param max is the ceiling value.
-		Quaternion RandomQuaternion(F32 min, F32 max);
+		TEMPEST_API Quaternion RandomQuaternion(F32 min, F32 max);
 
 	private:
 		std::mt19937 	  		  _generator; ///< STL Mersenne twister engine instance.

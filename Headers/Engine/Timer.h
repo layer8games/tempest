@@ -20,7 +20,7 @@ namespace TempestMath
 	{ 
 	public:
 ///	Default Destructor. Does not do anything. 
-		~Timer(void);
+		TEMPEST_API ~Timer(void);
 
 //==========================================================================================================================
 //
@@ -30,9 +30,7 @@ namespace TempestMath
 
 ///	Singleton pattern function. Returns a pointer to the globabl version of the timer. This is the only way to use the timer,
 ///	ensuring that there will only ever be 1 version of it running. 
-		static shared_ptr<Timer> Instance(void);
-
-
+		TEMPEST_API static shared_ptr<Timer> Instance(void);
 
 //==========================================================================================================================
 //
@@ -41,12 +39,11 @@ namespace TempestMath
 //==========================================================================================================================		
 ///	This updates the _totalTime and _deltaTime values. This is where all of the magic happens. Should be called once per frame.
 ///	It called GameWindow::GetTime().
-		void Update (void);
+		TEMPEST_API void Update (void);
 		
 ///	This will attempt to move _deltaTime forward one single frame, at 60 frames per second. Note: Maybe this should be updated
 ///	to be configurable?
-
-		void SingleStep(void);
+		TEMPEST_API void SingleStep(void);
 
 //==========================================================================================================================
 //

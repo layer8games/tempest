@@ -37,17 +37,17 @@ namespace TempestPhysics
 //
 //==========================================================================================================================
 ///	Sets all values to 0 and the desity to 1000.
-		BuoyantForce(void);
+		TEMPEST_API BuoyantForce(void);
 
 ///	Sets the values of the force.
 ///	\param maxDepth is the value for the depth the object is able to reach.
 ///	\param objVolume is the value for the volume of the object.
 ///	\param liquidHeight is the value for the height of the liquid.
 ///	\param liquidDensity is the value for the desity, with a default of 1000 set.
-		BuoyantForce::BuoyantForce(real maxDepth, real objVolume, real liquidHeight, real liquidDensity=1000.0f);
+		TEMPEST_API BuoyantForce::BuoyantForce(real maxDepth, real objVolume, real liquidHeight, real liquidDensity=1000.0f);
 
 ///	Not implemenated.
-		~BuoyantForce(void);
+		TEMPEST_API ~BuoyantForce(void);
 //==========================================================================================================================
 //
 //Virtual Functions
@@ -56,12 +56,12 @@ namespace TempestPhysics
 ///	The y value of the position of the object is checked against the max depth. If the object has reached the max depth, then
 ///	it is given a +y force, scaled by the density and volume, until it reaches the height. Untested.
 ///	\param RigidBody2D is the pointer to the object that will have the force affect it. 
-		void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D);
+		TEMPEST_API void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D);
 
 ///	The y value of the position of the object is checked against the max depth. If the object has reached the max depth, then
 ///	it is given a +y force, scaled by the density and volume, until it reaches the height. Untested.
 ///	\param body is the pointer to the object that will have the force affect it. 
-		void v_UpdateForce(shared_ptr<RigidBody3D> body) final;
+		TEMPEST_API void v_UpdateForce(shared_ptr<RigidBody3D> body) final;
 
 //==========================================================================================================================
 //

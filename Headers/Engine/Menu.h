@@ -14,7 +14,7 @@ namespace TM = TempestMath;
 namespace Tempest
 {
 ///	A struct to hold all the information needed for an item in a Menu. 
-	struct TEMPEST_API MenuItem
+	struct MenuItem
 	{
 		TM::Point 		  pos;	///< Position of the Text. Used for quick reference, useful even though its duplicated. 
 		shared_ptr<Text>  text;	///< Pointer a Text, used for the look of the item in the Menu. Call Level::AddTextToLevel first. 
@@ -31,7 +31,7 @@ namespace Tempest
 ///	1. It could use an active state, so that it can be toggled on and off.
 ///	2. AddItem could use a parameter to allow to set a new position for an item. For example, add a new item to the top or
 ///	   middle of the list instead of just the end.  
-	class TEMPEST_API Menu
+	class Menu
 	{
 	public:
 //==========================================================================================================================
@@ -40,10 +40,10 @@ namespace Tempest
 //
 //==========================================================================================================================
 ///	Default constructor. No implemenatation. Sets everything to 0, except the selectorPosIndex, which is set to UINT_MAX.
-		Menu(void);
+		TEMPEST_API Menu(void);
 
 ///	Default desctructor. Clears the itemList.
-		~Menu(void);
+		TEMPEST_API ~Menu(void);
 
 //==========================================================================================================================
 //
@@ -59,32 +59,32 @@ namespace Tempest
 
 ///	Sets the Menu and all its items to the given state, true = active, false = not active
 ///	\param state is the new state you wish to set.
-		void SetActive(bool state);
+		TEMPEST_API void SetActive(bool state);
 
 
 ///	 Adds a new MenuItem to the bottom of the list. If no MenuItems are present yet, it sets the first item below the title, 
 ///	 if one is present. It also set up the selector position, if it hasn't been set yet. 
 ///	 \param item is the new item to add to the list. 
-		void AddItem(MenuItem item);
+		TEMPEST_API void AddItem(MenuItem item);
 
 ///	Removes item given the position from the list. The rest of the list is rearranged to suppor this. 
 ///	\param index is the item to remove. These are 0 indexed.
-		void RemoveItem(U32 index);
+		TEMPEST_API void RemoveItem(U32 index);
 
 ///	Moves the selector up one position on the list. If it reaches the top, it will either stop, or wrap, based on the 
 ///	configuration. 
-		void MoveSelectorUp(void);
+		TEMPEST_API void MoveSelectorUp(void);
 
 ///	Moves the selector down one position on the list. If it reaches the bottom, it will either stop or wrap, based on the
 ///	configuration. 
-		void MoveSelectorDown(void);
+		TEMPEST_API void MoveSelectorDown(void);
 
 ///	Manually sets the selector to a given position in the list. If the index is out of range, nothing happens. 
 ///	\param index is the 0 indexed position to set the selector to. 
-		void SetSelectorPosition(U32 index);
+		TEMPEST_API void SetSelectorPosition(U32 index);
 
 ///	Calls the currently select MenuItem callback Action function. If this is not set, nothing happens. 
-		void CallSelectedAction(void);
+		TEMPEST_API void CallSelectedAction(void);
 
 //==========================================================================================================================
 //

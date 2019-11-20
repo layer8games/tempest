@@ -36,16 +36,16 @@ namespace TempestPhysics
 //
 //==========================================================================================================================
 ///	Sets spring constant to 1, rest length to 1, everything else to default or false.
-		SpringForce(void);
+		TEMPEST_API SpringForce(void);
 
 ///	Allows you to set up SpringForce in a single call.
 ///	\param otherEnd is the far end of the spring.
 ///	\param springConstant determines the "stiffness" of the spring.
 ///	\param restLength determines how long before the spring "snaps" back.
-		SpringForce(shared_ptr<RigidBody2D> otherEnd, real springConstant, real restLength);
+		TEMPEST_API SpringForce(shared_ptr<RigidBody2D> otherEnd, real springConstant, real restLength);
 
 ///	Not implemented.
-		~SpringForce(void);
+		TEMPEST_API ~SpringForce(void);
 //==========================================================================================================================
 //
 //Virtual Functions
@@ -54,12 +54,12 @@ namespace TempestPhysics
 ///	Calculate the length of the spring, then creates a force to pull the object towards the other end if it is far enough 
 ///	away.
 ///	\param RigidBody2D is the object that will be acted on by the spring.
-		void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D) final;
+		TEMPEST_API void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D) final;
 
 ///	Calculate the length of the spring, then creates a force to pull the object towards the other end if it is far enough 
 ///	away. This has been implemented but not tested. 
 ///	\param body is the object that will be acted on by the spring.
-		void v_UpdateForce(shared_ptr<RigidBody3D> body) final;
+		TEMPEST_API void v_UpdateForce(shared_ptr<RigidBody3D> body) final;
 
 //==========================================================================================================================
 //

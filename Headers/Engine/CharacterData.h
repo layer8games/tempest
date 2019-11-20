@@ -15,7 +15,7 @@ Written by Maxwell Miller
 
 namespace Tempest
 {
-	struct TEMPEST_API CharacterData
+	struct CharacterData
 	{
 		S32 width;
 		S32 height;
