@@ -71,7 +71,7 @@ namespace TempestPhysics
 			_active = state;
 		}
 
-		bool GetActive(void) const;
+		TEMPEST_API bool GetActive(void) const;
 
 		inline void SetObject(TE::GameObject* obj)
 		{
@@ -209,7 +209,7 @@ namespace TempestPhysics
 		}
 
 ///	Returns the actual Mass of the RigidBody2D object.
-		const real GetMass(void);
+		TEMPEST_API const real GetMass(void);
 
 ///	Sets the actual Mass of the RigidBody2D object. Because Mass is stored as the inverse, that is 1/mass, this involves
 ///	some math to set up the inverse.

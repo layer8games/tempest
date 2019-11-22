@@ -49,7 +49,7 @@ namespace TempestPhysics
 			_active = state;
 		}
 
-		bool GetActive(void) const;
+		TEMPEST_API bool GetActive(void) const;
 
 //===== Object Position =====
 		const TM::Point& GetPosition(void);
@@ -184,7 +184,7 @@ namespace TempestPhysics
 			return _inverseMass >= 0.0f;
 		}
 
-		const real GetMass(void);
+		TEMPEST_API const real GetMass(void);
 
 		inline void SetMass(real mass)
 		{

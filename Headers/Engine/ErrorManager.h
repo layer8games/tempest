@@ -104,7 +104,7 @@ namespace Tempest
 //Data
 //
 //==========================================================================================================================
-		static shared_ptr<ErrorManager>	_instance;			///< Global singleton instance.
+		TEMPEST_API static shared_ptr<ErrorManager>	_instance;			///< Global singleton instance.
 		bool 							_consoleOut;		///< Flag that sets if errors should be read out to the console as well.
 		U32       			 			_numErrors;			///< Total count of errors.
 		std::vector<ErrorCode>  	 	_errorCodes;		///< List of active error codes.
