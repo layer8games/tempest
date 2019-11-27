@@ -71,7 +71,7 @@ void Timer::Update(void)
 		_deltaTime = static_cast<real>((_currentTime - _pastTime) * _timeScale);
 		_pastTime = _currentTime;
 
-		if(_clamp && _deltaTime < 0.001f || _deltaTime > 1.0f)
+		if(_clamp && _deltaTime < 0.016f || _deltaTime > 1.0f)
 		{ 
 			_deltaTime = 0.016f; 
 		}
