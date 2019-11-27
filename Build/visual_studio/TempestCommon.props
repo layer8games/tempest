@@ -11,6 +11,7 @@
       </UndefinePreprocessorDefinitions>
       <PreprocessorDefinitions>TEMPEST_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link />
   </ItemDefinitionGroup>
   <ItemGroup />
 </Project>
