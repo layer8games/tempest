@@ -196,8 +196,8 @@ namespace Tempest
 
 	private:
 		static shared_ptr<GameWindow> _instance;		///< Singleton instance. Global pointer, allows only one GameWindow to be active.
-		static S32     				  _totalWidth;		///< Total width of the window in pixels.
-		static S32     				  _totalHeight;		///< Total height of the window in pixels.
+		TEMPEST_API static S32     				  _totalWidth;		///< Total width of the window in pixels.
+		TEMPEST_API static S32     				  _totalHeight;		///< Total height of the window in pixels.
 		
 		bool    _isFullScreen;							///< Fullscreen state of the window. True means full screen, false means not full screen.
 		bool 	_running;								///< Running state of the window. True means its running, false means its time for shutdown. 

@@ -256,7 +256,7 @@ namespace Tempest
 //
 //==========================================================================================================================
 ///	Updates the title, and all MenuItems in the list to the current position, based on _menuPos and the offsets. 
-		void _UpdateItemPositions(void);
+		TEMPEST_API void _UpdateItemPositions(void);
 
 //==========================================================================================================================
 //

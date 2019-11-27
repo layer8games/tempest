@@ -220,22 +220,22 @@ namespace Tempest
 //
 //==========================================================================================================================
 ///	Iterates over each Glyph calling GameObject::SetPosition() for each Glyph, updating the position, including the xAdvnace. 
-		void _UpdatePositions(void);
+		TEMPEST_API void _UpdatePositions(void);
  
 ///	Iterates over each Glyph calling GameObject::SetActive() for each, using _active.
-		void _UpdateActive(void);
+		TEMPEST_API void _UpdateActive(void);
 
 ///	Iterates over each Glyph calling GameObject::SetScale() for each, using _scale.
-		void _UpdateScales(void);
+		TEMPEST_API void _UpdateScales(void);
 
 ///	Iterates over each Glyph calling GameObject::SetColor() for each, using _color. 
-		void _UpdateColors(void);
+		TEMPEST_API void _UpdateColors(void);
 
 ///	Updates a Glyph. This sets the data, the sprite, color, scale and other values based on the font. If the Glyph has been
 ///	added to the characterList already, it will update and edit the existing Glyph, other wise a new one will be created 
 ///	and added to the list. 
 ///	\param index is the character number in the _text. This should coorespond the index in _characterList. 
-		void _UpdateGlyphData(U32 index);
+		TEMPEST_API void _UpdateGlyphData(U32 index);
 
 ///	Creates or Recreates the character list, forcing it to match with the text.  
 		void _CreateCharacterList(void);
