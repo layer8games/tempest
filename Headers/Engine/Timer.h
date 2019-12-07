@@ -3,6 +3,7 @@
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
+#include <Engine/GameWindow.h>
 
 namespace TE = Tempest;
 

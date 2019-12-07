@@ -67,7 +67,8 @@ void Timer::Update(void)
 {
 	if(!_paused) 
 	{
-		_currentTime = _QueryCounter();
+		//_currentTime = _QueryCounter();
+		_currentTime = TE::GameWindow::Instance()->GetTime();
 		_deltaTime = static_cast<real>((_currentTime - _pastTime) * _timeScale);
 		_pastTime = _currentTime;
 
