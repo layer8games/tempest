@@ -1,0 +1,149 @@
+.TH "Tempest::Color" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tempest::Color \- A structure to hold basic colors for all Sprites to sent to OGL in order to render things\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Color\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "TEMPEST_API \fBColor\fP (void)"
+.br
+.RI "Default Constructor\&. Sets Red Green and Blue to 0\&.0f, and Alpha to 1\&.0f\&. "
+.ti -1c
+.RI "TEMPEST_API \fBColor\fP (\fBF32\fP col)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fBColor\fP (\fBF32\fP red, \fBF32\fP green, \fBF32\fP blue)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fBColor\fP (\fBF32\fP red, \fBF32\fP green, \fBF32\fP blue, \fBF32\fP alpha)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fBColor\fP (const \fBColor\fP &c)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fB~Color\fP (void)"
+.br
+.RI "Default Constructor\&. Not implemented\&. "
+.ti -1c
+.RI "const \fBF32\fP & \fBoperator[]\fP (int i) const"
+.br
+.ti -1c
+.RI "\fBF32\fP & \fBoperator[]\fP (int i)"
+.br
+.ti -1c
+.RI "\fBColor\fP & \fBoperator=\fP (const \fBColor\fP &c)"
+.br
+.ti -1c
+.RI "bool \fBHasAlpha\fP (void) const"
+.br
+.RI "Checks if the alpha channel should be considered for this \fBColor\fP\&. "
+.ti -1c
+.RI "void \fBUseAlpha\fP (bool state)"
+.br
+.ti -1c
+.RI "const \fBF32\fP * \fBGetPointer\fP (void) const"
+.br
+.RI "Creates and returns an array with the 4 color values in it as a pointer\&. "
+.ti -1c
+.RI "void \fBSet\fP (\fBF32\fP val)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fB_alpha\fP"
+.br
+.ti -1c
+.RI "\fBF32\fP \fB_data\fP [4]"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A structure to hold basic colors for all Sprites to sent to OGL in order to render things\&. 
+
+There will be 4 values per color so that it can be sent to a vec4 in OGL before it is used to actually control the colors of anything in the shader\&. This is stored in an array for convience of passing the whole array out when the time comes\&. 
+.br
+ Where values are set, they are required to be normalized, that is between 0\&.0f and 1\&.0f\&. This is because the colors need to be represented this for OpenGL\&. Asserts are used at compile time to make sure that this is true\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Color::Color (\fBF32\fP col)\fC [explicit]\fP"
+Single Value Constructor\&. Sets Red, Green and Blue to value\&. The value needs to be between 0\&.0f and 1\&.0f\&. Alpha is set to 1\&.0f by default\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcol\fP F32: value used to set RGB values\&. 
+.RE
+.PP
+
+.SS "Color::Color (\fBF32\fP red, \fBF32\fP green, \fBF32\fP blue)"
+Three value Constructor\&. Sets Red, Green and Blue accordingly\&. Values need to be between 0\&.0f and 1\&.0f\&. Alpha is set to 1\&.0f by default\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIred\fP F32: value for Red\&. 
+.br
+\fIgreen\fP F32: value for Green\&. 
+.br
+\fIblue\fP F32: value for Blue\&. 
+.RE
+.PP
+
+.SS "Color::Color (\fBF32\fP red, \fBF32\fP green, \fBF32\fP blue, \fBF32\fP alpha)"
+Four value Constructor\&. Sets Red, Green and Blue accordingly\&. Values need to be between 0\&.0f and 1\&.0f by default\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIred\fP F32: value for Red\&. 
+.br
+\fIgreen\fP F32: value for Green\&. 
+.br
+\fIblue\fP F32: value for Blue\&. 
+.br
+\fIalpha\fP F32: value for Alpha\&. 
+.RE
+.PP
+
+.SS "Color::Color (const \fBColor\fP & c)"
+Copy constructor\&. Calls Color::GetRed Color::GetGreen Color::GetBlue Color::GetAlpha to set values\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIc\fP = \fBColor\fP&: color to copy 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Tempest::Color::Set (\fBF32\fP val)\fC [inline]\fP"
+Set all values in the color to a single value\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIval\fP is the value to set rgb to\&. 
+.RE
+.PP
+
+.SS "void Tempest::Color::UseAlpha (bool state)\fC [inline]\fP"
+Sets if the alpha channel should be considered for this \fBColor\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstate\fP is the new state that will be set\&. 
+.br
+ 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Tempest from the source code\&.

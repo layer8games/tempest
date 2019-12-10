@@ -1,0 +1,239 @@
+.TH "Tempest::Camera" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tempest::Camera
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBTempest::FPSCamera\fP, and \fBTempest::OrbitCamera\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBv_Rotate\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBv_Update\fP (void)"
+.br
+.ti -1c
+.RI "virtual void \fBv_Move\fP (const \fBTM::Vector4\fP &offset)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBSetOrthographic\fP (void)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBSetOrthographic\fP (\fBF32\fP left, \fBF32\fP right, \fBF32\fP bottom, \fBF32\fP top, \fBF32\fP nearPlane, \fBF32\fP farPlane)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBSetPerspective\fP (void)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBSetPerspective\fP (\fBF32\fP fov, \fBF32\fP aspect, \fBF32\fP nearPlane, \fBF32\fP farPlane)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBSetDefaultMatrix4\fP (void)"
+.br
+.ti -1c
+.RI "const virtual \fBTM::Matrix4\fP \fBGetViewMatrix4\fP (void)"
+.br
+.ti -1c
+.RI "const \fBTM::Matrix4\fP & \fBGetProjectionMatrix4\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetColor\fP (const \fBColor\fP &col)"
+.br
+.ti -1c
+.RI "const \fBColor\fP & \fBGetBackgroundColor\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetPosition\fP (\fBF32\fP x, \fBF32\fP y)"
+.br
+.ti -1c
+.RI "void \fBSetPosition\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
+.br
+.ti -1c
+.RI "void \fBSetPosition\fP (const \fBTM::Point\fP &point)"
+.br
+.ti -1c
+.RI "void \fBScalePosition\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP scale)"
+.br
+.ti -1c
+.RI "void \fBScalePosition\fP (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z, \fBF32\fP scale)"
+.br
+.ti -1c
+.RI "void \fBScalePosition\fP (const \fBTM::Point\fP &point, \fBF32\fP scale)"
+.br
+.ti -1c
+.RI "const \fBTM::Point\fP & \fBGetPosition\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetTarget\fP (const \fBTM::Point\fP &target)"
+.br
+.ti -1c
+.RI "void \fBSetTarget\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
+.br
+.ti -1c
+.RI "void \fBSetTarget\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
+.br
+.ti -1c
+.RI "const \fBTM::Point\fP & \fBGetTarget\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetUpVector\fP (\fBF32\fP val)"
+.br
+.ti -1c
+.RI "void \fBSetUpVector\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
+.br
+.ti -1c
+.RI "void \fBSetUpVector\fP (const \fBTM::Vector4\fP &vec)"
+.br
+.ti -1c
+.RI "const \fBTM::Vector4\fP & \fBGetUpVector\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetLookVector\fP (\fBF32\fP val)"
+.br
+.ti -1c
+.RI "void \fBSetLookVector\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
+.br
+.ti -1c
+.RI "void \fBSetLookVector\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
+.br
+.ti -1c
+.RI "void \fBSetLookVector\fP (const \fBTM::Vector4\fP &vec)"
+.br
+.ti -1c
+.RI "const \fBTM::Vector4\fP & \fBGetLookVector\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetRightVector\fP (\fBF32\fP val)"
+.br
+.ti -1c
+.RI "void \fBSetRightVector\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
+.br
+.ti -1c
+.RI "void \fBSetRightVector\fP (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
+.br
+.ti -1c
+.RI "void \fBSetRightVector\fP (const \fBTM::Vector4\fP &vec)"
+.br
+.ti -1c
+.RI "const \fBTM::Vector4\fP & \fBGetRightVector\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetMouseSensitivity\fP (\fBF32\fP val)"
+.br
+.ti -1c
+.RI "\fBF32\fP \fBGetMouseSensitivity\fP (void)"
+.br
+.ti -1c
+.RI "\fBF32\fP \fBGetYaw\fP (void) const"
+.br
+.ti -1c
+.RI "\fBF32\fP \fBGetPitch\fP (void) const"
+.br
+.ti -1c
+.RI "void \fBSetFOV\fP (\fBF32\fP val)"
+.br
+.ti -1c
+.RI "\fBF32\fP \fBGetFOV\fP (void) const"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBTM::Point\fP \fB_position\fP"
+.br
+.RI "Position of \fBCamera\fP in world space\&. "
+.ti -1c
+.RI "\fBTM::Point\fP \fB_target\fP"
+.br
+.ti -1c
+.RI "\fBTM::Vector4\fP \fB_up\fP"
+.br
+.ti -1c
+.RI "\fBTM::Vector4\fP \fB_look\fP"
+.br
+.ti -1c
+.RI "\fBTM::Vector4\fP \fB_right\fP"
+.br
+.ti -1c
+.RI "\fBTM::Point\fP \fB_currentMouseCoords\fP"
+.br
+.ti -1c
+.RI "\fBTM::Point\fP \fB_lastMouseCoords\fP"
+.br
+.ti -1c
+.RI "\fBF32\fP \fB_mouseSensitivity\fP"
+.br
+.ti -1c
+.RI "\fBF32\fP \fB_yaw\fP"
+.br
+.ti -1c
+.RI "\fBF32\fP \fB_pitch\fP"
+.br
+.ti -1c
+.RI "\fBF32\fP \fB_deltaYaw\fP"
+.br
+.ti -1c
+.RI "\fBF32\fP \fB_deltaPitch\fP"
+.br
+.ti -1c
+.RI "\fBF32\fP \fB_fov\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fB_v_UpdateCameraVectors\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBColor\fP \fB_background\fP"
+.br
+.RI "Background color of current level\&. "
+.ti -1c
+.RI "\fBTM::Matrix4\fP \fB_projection\fP"
+.br
+.RI "Projection Matrix4 (Orthographic or Perspective)\&. Not used\&. "
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "void Camera::SetDefaultMatrix4 (void)"
+Helper function to set the projection Matrix4 to be an identity Matrix4\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInone\fP 
+.RE
+.PP
+
+.SS "void Camera::SetOrthographic (void)"
+Sets private Matrix4 to use an orthogrphic projection\&. This calls the \fBGameWindow\fP to get the demensions for the Matrix4\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInone\fP 
+.RE
+.PP
+
+.SS "void Camera::SetPerspective (void)"
+Sets the private Matrix4 to use a perspective projection\&. Values are hard coded for now\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fInone\fP 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Tempest from the source code\&.

@@ -1,0 +1,76 @@
+.TH "Tempest::FPSCamera" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tempest::FPSCamera
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBTempest::Camera\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "TEMPEST_API \fBFPSCamera\fP (const \fBTM::Point\fP &position, \fBF32\fP yaw, \fBF32\fP pitch)"
+.br
+.ti -1c
+.RI "virtual TEMPEST_API void \fBv_Update\fP (void) final"
+.br
+.ti -1c
+.RI "virtual TEMPEST_API void \fBv_Rotate\fP (void) final"
+.br
+.ti -1c
+.RI "virtual TEMPEST_API void \fBv_Move\fP (const \fBTM::Vector4\fP &offset) final"
+.br
+.ti -1c
+.RI "void \fBSetWorldUp\fP (const \fBTM::Vector4\fP vec)"
+.br
+.ti -1c
+.RI "const \fBTM::Vector4\fP & \fBGetWorldUp\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetZoom\fP (\fBF64\fP val)"
+.br
+.ti -1c
+.RI "\fBF64\fP \fBGetZoom\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetMoveSpeed\fP (\fBF32\fP val)"
+.br
+.ti -1c
+.RI "\fBF32\fP \fBGetMoveSpeed\fP (void)"
+.br
+.ti -1c
+.RI "void \fBSetDeadZone\fP (\fBF32\fP val)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fB_v_UpdateCameraVector4s\fP (void)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBTM::Vector4\fP \fB_worldUp\fP"
+.br
+.ti -1c
+.RI "\fBF64\fP \fB_zoomSensitivity\fP"
+.br
+.ti -1c
+.RI "\fBF32\fP \fB_moveSpeed\fP"
+.br
+.ti -1c
+.RI "\fBF32\fP \fB_deadZone\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Tempest from the source code\&.

@@ -1,0 +1,129 @@
+.TH "Tempest::TextureManager" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tempest::TextureManager
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <TextureManager\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "TEMPEST_API \fB~TextureManager\fP (void)"
+.br
+.RI "Clears all of the saved Textures\&. "
+.ti -1c
+.RI "TEMPEST_API void \fBLoadTexture\fP (\fBU32\fP id, string filePath)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBAddTexture\fP (\fBU32\fP id, const \fBTexture\fP &tex)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBAddTexture\fP (\fBU32\fP id, p_Texture tex)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBRemoveTexture\fP (\fBU32\fP id)"
+.br
+.ti -1c
+.RI "const TEMPEST_API p_Texture \fBGetTexture\fP (\fBU32\fP id)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static TEMPEST_API shared_ptr< \fBTextureManager\fP > \fBInstance\fP (void)"
+.br
+.RI "Singleton function\&. Returns the global pointer to the \fBTextureManager\fP\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTextureManager\fP (void)"
+.br
+.RI "Calls default, empty constructor on map\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "map< \fBU32\fP, p_Texture > \fB_loadedTextures\fP"
+.br
+.RI "Database of all added \fBTexture\fP pointers that can be accessed\&. "
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBTextureManager\fP > \fB_instance\fP = nullptr"
+.br
+.RI "Pointer to self used as global data in Singleton pattern\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+The \fBTextureManager\fP is a singleton class that will control when and how all textures are added to memory from the disc\&. SOIL is the library used to actually load the images from the hard drive and use the image data to create the texture\&. Once a \fBTexture\fP is created, it can be accessed by ID to copy a pointer to the \fBTexture\fP\&. This means that each \fBTexture\fP can be shared between multiple objects\&. 
+.br
+ 
+.SH "Member Function Documentation"
+.PP 
+.SS "void TextureManager::AddTexture (\fBU32\fP id, const \fBTexture\fP & tex)"
+Adds a \fBTexture\fP to manager\&. ID will be used to call it back\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP is the id the \fBTexture\fP will be registered with 
+.br
+\fItex\fP is the \fBTexture\fP that will be cached\&. 
+.RE
+.PP
+
+.SS "void TextureManager::AddTexture (\fBU32\fP id, p_Texture tex)"
+Adds a pointer to a \fBTexture\fP into the manager\&. ID will be used to call it back\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItex\fP is the shared pointer to add\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "const p_Texture TextureManager::GetTexture (\fBU32\fP id)"
+Returns the \fBTexture\fP pointer stored with ID\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP is the \fBTexture\fP id that you wish to return\&. Used as a key in a map\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "void TextureManager::LoadTexture (\fBU32\fP id, string filePath)"
+Creates a new \fBTexture\fP using the \fBTexture::Texture(string)\fP constructor\&. Saves by calling AddTexture\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilePath\fP is the path to the image on the hard drive\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "void TextureManager::RemoveTexture (\fBU32\fP id)"
+Remove the \fBTexture\fP with the given ID 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP is the ID of the registered \fBTexture\fP 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Tempest from the source code\&.

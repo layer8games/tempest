@@ -1,0 +1,115 @@
+.TH "TempestPhysics::BuoyantForce" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TempestPhysics::BuoyantForce
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <BuoyantForce\&.h>\fP
+.PP
+Inherits \fBTempestPhysics::ForceGenerator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "TEMPEST_API \fBBuoyantForce\fP (void)"
+.br
+.RI "Sets all values to 0 and the desity to 1000\&. "
+.ti -1c
+.RI "TEMPEST_API \fBBuoyantForce::BuoyantForce\fP (\fBreal\fP maxDepth, \fBreal\fP objVolume, \fBreal\fP liquidHeight, \fBreal\fP liquidDensity=1000\&.0f)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fB~BuoyantForce\fP (void)"
+.br
+.RI "Not implemenated\&. "
+.ti -1c
+.RI "TEMPEST_API void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody2D\fP > \fBRigidBody2D\fP)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBv_UpdateForce\fP (shared_ptr< \fBRigidBody3D\fP > body) final"
+.br
+.ti -1c
+.RI "void \fBSetMaxDepth\fP (\fBreal\fP depth)"
+.br
+.RI "Changes the max depth\&. "
+.ti -1c
+.RI "void \fBSetObjectVolume\fP (\fBreal\fP volume)"
+.br
+.RI "Changes the volume of the objects affect by the force\&.\&. "
+.ti -1c
+.RI "void \fBSetLiquidHeight\fP (\fBreal\fP hieght)"
+.br
+.RI "Changes the height of the liquid\&. "
+.ti -1c
+.RI "void \fBSetLiquidDensity\fP (\fBreal\fP density)"
+.br
+.RI "Changes the density of the liquid\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBreal\fP \fB_maxDepth\fP"
+.br
+.RI "The depth that when reached and object will be pushed up from\&. "
+.ti -1c
+.RI "\fBreal\fP \fB_objectVolume\fP"
+.br
+.RI "Volume of the object\&. This should be moved into the object itself\&. "
+.ti -1c
+.RI "\fBreal\fP \fB_liquidHeight\fP"
+.br
+.RI "Hight of the top of the liquid\&. This is where the object will be pushed to\&. "
+.ti -1c
+.RI "\fBreal\fP \fB_liquidDensity\fP"
+.br
+.RI "The thickness of the liquid\&. Will change how fast the object is pushed\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A spring-like force that creates a bobbing effect, like the one experienced by a boat on water\&. It uses Hooks law to generate the amount of force based on the distance that the spring is extended\&. The base equation is: f = -k * delta * l Where delta is the distance that the spring has been moved and k is what is known as the 'spring constant', a value that represents the 'stiffness' of the spring\&. For our terms, the equation will look like this: f = -k(l - l^0) Where l is the location of the end of the spring, and l^0 is the reseting position of the spring\&. Since this is a Vector4 force, the Vector4 version of the law looks like this: f = -l(|d| - l^0)^d Where |d| is the magnitude or length of d, which is distance away from l^0 our spring now is, and ^d is a unit Vector4 version of d\&. Also: d = xA - xB Where xA is the position of the spring attached to our object, and xB is the end of the spring\&. Usage: The force generator cannot be re-used\&. For each unique spring-like force we need to have its own Spring like force\&. Each spring-like force is created with a pointer to the object at the other end of the spring, the length of the spring, and the spring constant\&. This then must be registered with a ForceRegistry*\&. Using depth, volume, height and desity of hypothetical liquid, it will generate a force to push an object up\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "TEMPEST_API TempestPhysics::BuoyantForce::BuoyantForce::BuoyantForce (\fBreal\fP maxDepth, \fBreal\fP objVolume, \fBreal\fP liquidHeight, \fBreal\fP liquidDensity = \fC1000\&.0f\fP)"
+Sets the values of the force\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fImaxDepth\fP is the value for the depth the object is able to reach\&. 
+.br
+\fIobjVolume\fP is the value for the volume of the object\&. 
+.br
+\fIliquidHeight\fP is the value for the height of the liquid\&. 
+.br
+\fIliquidDensity\fP is the value for the desity, with a default of 1000 set\&. 
+.RE
+.PP
+
+.SS "void BuoyantForce::v_UpdateForce (shared_ptr< \fBRigidBody2D\fP > RigidBody2D)"
+The y value of the position of the object is checked against the max depth\&. If the object has reached the max depth, then it is given a +y force, scaled by the density and volume, until it reaches the height\&. Untested\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fI\fBRigidBody2D\fP\fP is the pointer to the object that will have the force affect it\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "void BuoyantForce::v_UpdateForce (shared_ptr< \fBRigidBody3D\fP > body)\fC [final]\fP"
+The y value of the position of the object is checked against the max depth\&. If the object has reached the max depth, then it is given a +y force, scaled by the density and volume, until it reaches the height\&. Untested\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIbody\fP is the pointer to the object that will have the force affect it\&. 
+.br
+ 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Tempest from the source code\&.

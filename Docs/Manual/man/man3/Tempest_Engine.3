@@ -1,0 +1,159 @@
+.TH "Tempest::Engine" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tempest::Engine
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Engine\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "TEMPEST_API void \fBInit\fP (const \fBS32\fP width, const \fBS32\fP height, const string title, const bool fullscreen)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBShutDown\fP (void)"
+.br
+.RI "Wrapper for \fBLevelManager::ShutDown(void)\fP "
+.ti -1c
+.RI "bool \fBRunning\fP (void)"
+.br
+.RI "Check if simulation is still running\&. "
+.ti -1c
+.RI "void \fBEnd\fP (void)"
+.br
+.RI "Wrapper for LevelManager::SetRunning()\&. Sets Running to false\&. This stops the Main Game Loop from running\&. Calling this is the same as Quitting the program\&. "
+.ti -1c
+.RI "void \fBAddLevelToManager\fP (shared_ptr< \fBLevel\fP > level)"
+.br
+.ti -1c
+.RI "void \fBSetActiveLevel\fP (const \fBU32\fP id)"
+.br
+.ti -1c
+.RI "void \fBSetActiveLevel\fP (shared_ptr< \fBLevel\fP > level)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBUpdate\fP (void)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBRender\fP (void)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static TEMPEST_API shared_ptr< \fBEngine\fP > \fBInstance\fP ()"
+.br
+.RI "Singleton function to get global instance of \fBEngine\fP\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEngine\fP (void)"
+.br
+.RI "Default Constructor\&. It does not do anything\&. 
+.br
+ "
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBEngine\fP > \fB_instance\fP = NULL"
+.br
+.RI "Singleton global instance\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+The KillerEngine class is designed to be the interface to starting up the \fBEngine\fP\&. This class will really just be a function and instance holder for other classes in the engine, but will actually do very little of its own\&. 
+.br
+ A lot of the functions that will be here will not be required to use in order to use the engine\&. They will be present as helper classes, not intended for required use\&. 
+.br
+ 
+.SH "Member Function Documentation"
+.PP 
+.SS "void Tempest::Engine::AddLevelToManager (shared_ptr< \fBLevel\fP > level)\fC [inline]\fP"
+Wrapper for \fBLevelManager::AddLevel()\fP\&. Adds level that can be set as active\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIlevel\fP shared_ptr<Level>: \fBLevel\fP to be added\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "void Engine::Init (const \fBS32\fP width, const \fBS32\fP height, const string title, const bool fullscreen)"
+Wrapper for \fBGameWindow::Init\fP\&. Sets up the Window and OpenGL 
+.PP
+\fBParameters\fP
+.RS 4
+\fIwidth\fP S32: describes width of window\&. 
+.br
+\fIheight\fP S32: describes height of the window\&. 
+.br
+\fItitle\fP string: sent to system to generate title of window\&. 
+.br
+\fIfullscreen\fP bool: tells system to use fullscreen or not\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "void Engine::Render (void)"
+Wrapper for steps needed to render\&. Calls the following in order
+.IP "\(bu" 2
+\fBLevelManager::Render()\fP
+.IP "\(bu" 2
+\fBGameWindow::BufferSwap()\fP
+.IP "\(bu" 2
+\fBErrorManager::DisplayErrors()\fP 
+.br
+ 
+.PP
+
+.SS "void Tempest::Engine::SetActiveLevel (const \fBU32\fP id)\fC [inline]\fP"
+Wrapper for LevelManager::SetActive()\&. Sets level with id to be active level 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP const U32: id of level\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "void Tempest::Engine::SetActiveLevel (shared_ptr< \fBLevel\fP > level)\fC [inline]\fP"
+Wrapper for LevelManager::SetActive(void)\&. Sets the temporary active level\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIlevel\fP is the pointer to set active 
+.RE
+.PP
+
+.SS "void Engine::Update (void)"
+Wrapper for steps needed update steps\&. Calls the following in order\&.
+.IP "\(bu" 2
+GameWindow::ProcessWndEvents()
+.IP "\(bu" 2
+Timer::Update()
+.IP "\(bu" 2
+\fBController::Update()\fP
+.IP "\(bu" 2
+\fBLevelManager::Update()\fP
+.IP "\(bu" 2
+\fBErrorManager::DisplayErrors()\fP 
+.br
+ 
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Tempest from the source code\&.

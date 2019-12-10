@@ -1,0 +1,281 @@
+.TH "TempestMath::Quaternion" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TempestMath::Quaternion
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Quaternion\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "TEMPEST_API \fBQuaternion\fP (void)"
+.br
+.RI "Default Constructor\&. Sets 
+.br
+ "
+.ti -1c
+.RI "TEMPEST_API \fBQuaternion\fP (\fBreal\fP value)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fBQuaternion\fP (\fBreal\fP wVal, \fBreal\fP xVal, \fBreal\fP yVal, \fBreal\fP zVal)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fBQuaternion\fP (const \fBQuaternion\fP &q)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fB~Quaternion\fP (void)"
+.br
+.RI "Default Destructor\&. Has no direct function at this time\&. "
+.ti -1c
+.RI "const \fBreal\fP * \fBGetElems\fP (void) const"
+.br
+.RI "Returns the pointer to the array of elements\&. "
+.ti -1c
+.RI "const \fBF32\fP & \fBoperator[]\fP (int i) const"
+.br
+.ti -1c
+.RI "\fBF32\fP & \fBoperator[]\fP (int i)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fBQuaternion\fP \fBoperator/\fP (\fBreal\fP d)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fBQuaternion\fP & \fBoperator/=\fP (\fBreal\fP d)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fBQuaternion\fP \fBoperator*\fP (\fBreal\fP m)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fBQuaternion\fP \fBoperator*\fP (const \fBQuaternion\fP &q2)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fBQuaternion\fP & \fBoperator*=\fP (\fBreal\fP m)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fBQuaternion\fP & \fBoperator*=\fP (const \fBQuaternion\fP &q2)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fBreal\fP \fBMagnitude\fP (void)"
+.br
+.RI "Returns the length of the rotation that this \fBQuaternion\fP represents\&. "
+.ti -1c
+.RI "TEMPEST_API \fBQuaternion\fP \fBConjugate\fP (void)"
+.br
+.RI "Returns a new \fBQuaternion\fP that represents the negation of the \fBVector4\fP portion of the \fBQuaternion\fP\&. "
+.ti -1c
+.RI "TEMPEST_API \fBQuaternion\fP \fBInverse\fP (void)"
+.br
+.RI "Returns a new \fBQuaternion\fP that represents the Conjugate divided by the Magnitude of this \fBQuaternion\fP\&. "
+.ti -1c
+.RI "TEMPEST_API \fBQuaternion\fP \fBDifference\fP (\fBQuaternion\fP &Q)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fBreal\fP \fBDot\fP (\fBQuaternion\fP &Q)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBNegate\fP (void)"
+.br
+.ti -1c
+.RI "TEMPEST_API \fBQuaternion\fP \fBOpposite\fP (void)"
+.br
+.RI "Like Negate, but returns the result\&. Should probably be removed later\&. "
+.ti -1c
+.RI "TEMPEST_API void \fBNormalize\fP (void)"
+.br
+.RI "Makes the length of the rotation that this \fBQuaternion\fP represents be exactly 1\&. 
+.br
+ "
+.ti -1c
+.RI "TEMPEST_API void \fBAddScaledVector\fP (const \fBVector4\fP &vec, \fBF32\fP scale)"
+.br
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBw\fP = 0, \fBx\fP = 1, \fBy\fP = 2, \fBz\fP = 3 }"
+.br
+.RI "Alias set up to allow a refernce to each element that is more human readable in the code\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBreal\fP \fB_data\fP [4]"
+.br
+.RI "Array that stores the values for each element\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Quaternions will handle the rotational math that the engine will use\&. This class is the holder of these functions\&. The \fBQuaternion\fP is represent by an Array of 4 F32 values\&. These include w, x, y, z\&. Unlike the \fBVector4\fP, w is the first element\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Quaternion::Quaternion (\fBreal\fP value)\fC [explicit]\fP"
+Conversion constructor\&. Sets all elements to the same value\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP is what each element will be set to\&. 
+.RE
+.PP
+
+.SS "Quaternion::Quaternion (\fBreal\fP wVal, \fBreal\fP xVal, \fBreal\fP yVal, \fBreal\fP zVal)"
+Four value constructor\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIwVal\fP is the value that w will be set to\&. 
+.br
+\fIxVal\fP is the value that x will be set to\&. 
+.br
+\fIyVal\fP is the value that y will be set to\&. 
+.br
+\fIzVal\fP is the value that z will be set to\&. 
+.RE
+.PP
+
+.SS "Quaternion::Quaternion (const \fBQuaternion\fP & q)"
+Copy constructor\&. Calls the [] operator to get the elements to copy into this \fBQuaternion\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIq\fP is the \fBQuaternion\fP that will be copied\&. 
+.br
+ 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Quaternion::AddScaledVector (const \fBVector4\fP & vec, \fBF32\fP scale)"
+Adds a scaled \fBVector4\fP into this one\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIq\fP is the \fBQuaternion\fP to be added\&. 
+.br
+\fIscale\fP is the amount q will be scaled by\&. 
+.RE
+.PP
+
+.SS "\fBQuaternion\fP Quaternion::Difference (\fBQuaternion\fP & Q)"
+Returns a \fBQuaternion\fP that reprsents the angular displacement between this \fBQuaternion\fP and another\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIQ\fP is the other \fBQuaternion\fP in the displacement\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "\fBreal\fP Quaternion::Dot (\fBQuaternion\fP & Q)"
+Returns the Dot Product between this \fBQuaternion\fP and another\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIQ\fP is the other \fBQuaternion\fP that this Quaterion will perform the operation against\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "void Quaternion::Negate (void)"
+
+.PP
+\fBBug\fP
+.RS 4
+This should be changed to be the - operator\&. Multiplies all elements of this \fBQuaternion\fP by -1\&. 
+.RE
+.PP
+
+.SS "\fBQuaternion\fP Quaternion::operator* (const \fBQuaternion\fP & q2)"
+\fBQuaternion\fP multiplication\&. Similar to the \fBVector4::CrossProduct\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIq2\fP is the \fBQuaternion\fP that the new \fBQuaternion\fP will be multiplied with\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "\fBQuaternion\fP Quaternion::operator* (\fBreal\fP m)"
+Scalar multiplication\&. Performs a compoenent wise multiplication\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIm\fP is the value that all the elements of the new \fBQuaternion\fP will be multiplied by\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "\fBQuaternion\fP & Quaternion::operator*= (const \fBQuaternion\fP & q2)"
+\fBQuaternion\fP multiplication\&. Similar to the \fBVector4::CrossProduct\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIq2\fP is the \fBQuaternion\fP that this \fBQuaternion\fP will be multiplied with\&. 
+.RE
+.PP
+
+.SS "\fBQuaternion\fP & Quaternion::operator*= (\fBreal\fP m)"
+Scalar multiplication\&. Performs a component wise operation\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIm\fP is the value by which this \fBQuaternion\fP will be multiplied by\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "\fBQuaternion\fP Quaternion::operator/ (\fBreal\fP d)"
+Scalar division\&. Performs a component wise division 
+.PP
+\fBParameters\fP
+.RS 4
+\fId\fP is the value that all elements of the new \fBQuaternion\fP will be divided by\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "\fBQuaternion\fP & Quaternion::operator/= (\fBreal\fP d)"
+Scalar division\&. Performs a component wise division 
+.PP
+\fBParameters\fP
+.RS 4
+\fId\fP is the value that all elements of this \fBQuaternion\fP will be divided by\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "\fBF32\fP& TempestMath::Quaternion::operator[] (int i)\fC [inline]\fP"
+Allows you to index into the \fBQuaternion\fP to change the value\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIi\fP is the index you wish to change\&. 0 = x, 1 = y, 2 = z, 3 = w\&. 
+.RE
+.PP
+
+.SS "const \fBF32\fP& TempestMath::Quaternion::operator[] (int i) const\fC [inline]\fP"
+Allows you to index into the \fBQuaternion\fP to read the value\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIi\fP is the index you wish to read\&. 0 = x, 1 = y, 2 = z, 3 = w\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Tempest from the source code\&.
