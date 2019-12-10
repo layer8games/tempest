@@ -67,6 +67,8 @@ void Timer::Update(void)
 {
 	if(!_paused) 
 	{
+		// Original version for getting the time. This currently makes the game run too fast on some systems. The GameWindow
+		// version relies on glfw
 		//_currentTime = _QueryCounter();
 		_currentTime = TE::GameWindow::Instance()->GetTime();
 		_deltaTime = static_cast<real>((_currentTime - _pastTime) * _timeScale);
