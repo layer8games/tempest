@@ -1,4 +1,4 @@
-.TH "rapidxml::memory_pool< Ch >" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
+.TH "rapidxml::memory_pool< Ch >" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -112,9 +112,11 @@ This class is used by the parser to create new nodes and attributes, without ove
 .br
  To obtain absolutely top performance from the parser, it is important that all nodes are allocated from a single, contiguous block of memory\&. Otherwise, cache misses when jumping between two (or more) disjoint blocks of memory can slow down parsing quite considerably\&. If required, you can tweak \fCRAPIDXML_STATIC_POOL_SIZE\fP, \fCRAPIDXML_DYNAMIC_POOL_SIZE\fP and \fCRAPIDXML_ALIGNMENT\fP to obtain best wasted memory to performance compromise\&. To do it, define their values before \fBrapidxml\&.hpp\fP file is included\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fICh\fP Character type of created nodes\&. 
+.br
+ 
 .RE
 .PP
 
@@ -127,7 +129,7 @@ Destroys pool and frees all the memory\&. This causes memory occupied by nodes a
 .SS "template<class Ch  = char> \fBxml_attribute\fP<Ch>* \fBrapidxml::memory_pool\fP< Ch >::allocate_attribute (const Ch * name = \fC0\fP, const Ch * value = \fC0\fP, std::size_t name_size = \fC0\fP, std::size_t value_size = \fC0\fP)\fC [inline]\fP"
 Allocates a new attribute from the pool, and optionally assigns name and value to it\&. If the allocation request cannot be accomodated, this function will throw \fCstd::bad_alloc\fP\&. If exceptions are disabled by defining RAPIDXML_NO_EXCEPTIONS, this function will call rapidxml::parse_error_handler() function\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIname\fP Name to assign to the attribute, or 0 to assign no name\&. 
 .br
@@ -138,7 +140,7 @@ Allocates a new attribute from the pool, and optionally assigns name and value t
 \fIvalue_size\fP Size of value to assign, or 0 to automatically calculate size from value string\&. 
 .RE
 .PP
-\fBReturns:\fP
+\fBReturns\fP
 .RS 4
 Pointer to allocated attribute\&. This pointer will never be NULL\&. 
 .RE
@@ -147,7 +149,7 @@ Pointer to allocated attribute\&. This pointer will never be NULL\&.
 .SS "template<class Ch  = char> \fBxml_node\fP<Ch>* \fBrapidxml::memory_pool\fP< Ch >::allocate_node (\fBnode_type\fP type, const Ch * name = \fC0\fP, const Ch * value = \fC0\fP, std::size_t name_size = \fC0\fP, std::size_t value_size = \fC0\fP)\fC [inline]\fP"
 Allocates a new node from the pool, and optionally assigns name and value to it\&. If the allocation request cannot be accomodated, this function will throw \fCstd::bad_alloc\fP\&. If exceptions are disabled by defining RAPIDXML_NO_EXCEPTIONS, this function will call rapidxml::parse_error_handler() function\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fItype\fP Type of node to create\&. 
 .br
@@ -160,7 +162,7 @@ Allocates a new node from the pool, and optionally assigns name and value to it\
 \fIvalue_size\fP Size of value to assign, or 0 to automatically calculate size from value string\&. 
 .RE
 .PP
-\fBReturns:\fP
+\fBReturns\fP
 .RS 4
 Pointer to allocated node\&. This pointer will never be NULL\&. 
 .RE
@@ -169,14 +171,14 @@ Pointer to allocated node\&. This pointer will never be NULL\&.
 .SS "template<class Ch  = char> Ch* \fBrapidxml::memory_pool\fP< Ch >::allocate_string (const Ch * source = \fC0\fP, std::size_t size = \fC0\fP)\fC [inline]\fP"
 Allocates a char array of given size from the pool, and optionally copies a given string to it\&. If the allocation request cannot be accomodated, this function will throw \fCstd::bad_alloc\fP\&. If exceptions are disabled by defining RAPIDXML_NO_EXCEPTIONS, this function will call rapidxml::parse_error_handler() function\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIsource\fP String to initialize the allocated memory with, or 0 to not initialize it\&. 
 .br
 \fIsize\fP Number of characters to allocate, or zero to calculate it automatically from source string length; if size is 0, source string must be specified and null terminated\&. 
 .RE
 .PP
-\fBReturns:\fP
+\fBReturns\fP
 .RS 4
 Pointer to allocated char array\&. This pointer will never be NULL\&. 
 .RE
@@ -187,14 +189,14 @@ Clears the pool\&. This causes memory occupied by nodes allocated by the pool to
 .SS "template<class Ch  = char> \fBxml_node\fP<Ch>* \fBrapidxml::memory_pool\fP< Ch >::clone_node (const \fBxml_node\fP< Ch > * source, \fBxml_node\fP< Ch > * result = \fC0\fP)\fC [inline]\fP"
 Clones an \fBxml_node\fP and its hierarchy of child nodes and attributes\&. Nodes and attributes are allocated from this memory pool\&. Names and values are not cloned, they are shared between the clone and the source\&. Result node can be optionally specified as a second parameter, in which case its contents will be replaced with cloned source node\&. This is useful when you want to clone entire document\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIsource\fP Node to clone\&. 
 .br
 \fIresult\fP Node to put results in, or 0 to automatically allocate result node 
 .RE
 .PP
-\fBReturns:\fP
+\fBReturns\fP
 .RS 4
 Pointer to cloned node\&. This pointer will never be NULL\&. 
 .RE
@@ -215,7 +217,7 @@ void free(void *pointer); \fP
 .br
  
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIaf\fP Allocation function, or 0 to restore default function 
 .br
@@ -226,4 +228,4 @@ void free(void *pointer); \fP
 
 .SH "Author"
 .PP 
-Generated automatically by Doxygen for Killer Engine from the source code\&.
+Generated automatically by Doxygen for Tempest from the source code\&.

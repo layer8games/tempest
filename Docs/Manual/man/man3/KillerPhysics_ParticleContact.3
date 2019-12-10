@@ -1,4 +1,4 @@
-.TH "KillerPhysics::ParticleContact" 3 "Mon Jun 24 2019" "Killer Engine" \" -*- nroff -*-
+.TH "KillerPhysics::ParticleContact" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -13,7 +13,7 @@ KillerPhysics::ParticleContact
 .RI "void \fBSetRestitution\fP (\fBreal\fP restitution)"
 .br
 .ti -1c
-.RI "void \fBSetContactNormal\fP (\fBKM::Vector4\fP &normal)"
+.RI "void \fBSetContactNormal\fP (KM::Vector4 &normal)"
 .br
 .ti -1c
 .RI "void \fBSetContacts\fP (shared_ptr< Particle > particle1, shared_ptr< Particle > particle2=nullptr)"
@@ -54,10 +54,10 @@ KillerPhysics::ParticleContact
 .RI "shared_ptr< Particle > \fB_particles\fP [2]"
 .br
 .ti -1c
-.RI "shared_ptr< \fBKM::Vector4\fP > \fB_particleMovements\fP [2]"
+.RI "shared_ptr< KM::Vector4 > \fB_particleMovements\fP [2]"
 .br
 .ti -1c
-.RI "\fBKM::Vector4\fP \fB_contactNormal\fP"
+.RI "KM::Vector4 \fB_contactNormal\fP"
 .br
 .ti -1c
 .RI "\fBreal\fP \fB_restitution\fP"
@@ -69,4 +69,4 @@ KillerPhysics::ParticleContact
 
 .SH "Author"
 .PP 
-Generated automatically by Doxygen for Killer Engine from the source code\&.
+Generated automatically by Doxygen for Tempest from the source code\&.

@@ -11,6 +11,7 @@ var _atom_8h =
     [ "real_sin", "_atom_8h.html#a794a500a3b790ab2475f9c89b631fefd", null ],
     [ "real_sqrt", "_atom_8h.html#a62fde4217f637e745572c33e37e8d842", null ],
     [ "real_tan", "_atom_8h.html#a47f2d5ebb257f94835028dbcb0efb49d", null ],
+    [ "TEMPEST_API", "_atom_8h.html#afb3a13f980573988906783fd010f2413", null ],
     [ "F32", "_atom_8h.html#a841d3674577a1e86afdc2f4845f46c4b", null ],
     [ "F64", "_atom_8h.html#adc9896ee12db3bb116fc63b3464c72c7", null ],
     [ "real", "_atom_8h.html#a031f8951175b43076c2084a6c2173410", null ],

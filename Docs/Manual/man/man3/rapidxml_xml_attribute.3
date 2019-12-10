@@ -1,4 +1,4 @@
-.TH "rapidxml::xml_attribute< Ch >" 3 "Thu Jan 10 2019" "Killer Engine" \" -*- nroff -*-
+.TH "rapidxml::xml_attribute< Ch >" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -52,7 +52,7 @@ Inherits \fBrapidxml::xml_base< Ch >\fP\&.
 class rapidxml::xml_attribute< Ch >"
 Class representing attribute node of XML document\&. Each attribute has name and value strings, which are available through \fBname()\fP and \fBvalue()\fP functions (inherited from \fBxml_base\fP)\&. Note that after parse, both name and value of attribute will point to interior of source text used for parsing\&. Thus, this text must persist in memory for the lifetime of attribute\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fICh\fP Character type to use\&. 
 .RE
@@ -67,7 +67,7 @@ Constructs an empty attribute with the specified type\&. Consider using \fBmemor
 .SS "template<class Ch = char> \fBxml_document\fP<Ch>* \fBrapidxml::xml_attribute\fP< Ch >::document () const\fC [inline]\fP"
 Gets document of which attribute is a child\&. 
 .PP
-\fBReturns:\fP
+\fBReturns\fP
 .RS 4
 Pointer to document that contains this attribute, or 0 if there is no parent document\&. 
 .RE
@@ -76,7 +76,7 @@ Pointer to document that contains this attribute, or 0 if there is no parent doc
 .SS "template<class Ch = char> \fBxml_attribute\fP<Ch>* \fBrapidxml::xml_attribute\fP< Ch >::next_attribute (const Ch * name = \fC0\fP, std::size_t name_size = \fC0\fP, bool case_sensitive = \fCtrue\fP) const\fC [inline]\fP"
 Gets next attribute, optionally matching attribute name\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIname\fP Name of attribute to find, or 0 to return next attribute regardless of its name; this string doesn't have to be zero-terminated if name_size is non-zero 
 .br
@@ -85,7 +85,7 @@ Gets next attribute, optionally matching attribute name\&.
 \fIcase_sensitive\fP Should name comparison be case-sensitive; non case-sensitive comparison works properly only for ASCII characters 
 .RE
 .PP
-\fBReturns:\fP
+\fBReturns\fP
 .RS 4
 Pointer to found attribute, or 0 if not found\&. 
 .RE
@@ -94,7 +94,7 @@ Pointer to found attribute, or 0 if not found\&.
 .SS "template<class Ch = char> \fBxml_attribute\fP<Ch>* \fBrapidxml::xml_attribute\fP< Ch >::previous_attribute (const Ch * name = \fC0\fP, std::size_t name_size = \fC0\fP, bool case_sensitive = \fCtrue\fP) const\fC [inline]\fP"
 Gets previous attribute, optionally matching attribute name\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIname\fP Name of attribute to find, or 0 to return previous attribute regardless of its name; this string doesn't have to be zero-terminated if name_size is non-zero 
 .br
@@ -103,7 +103,7 @@ Gets previous attribute, optionally matching attribute name\&.
 \fIcase_sensitive\fP Should name comparison be case-sensitive; non case-sensitive comparison works properly only for ASCII characters 
 .RE
 .PP
-\fBReturns:\fP
+\fBReturns\fP
 .RS 4
 Pointer to found attribute, or 0 if not found\&. 
 .RE
@@ -112,4 +112,4 @@ Pointer to found attribute, or 0 if not found\&.
 
 .SH "Author"
 .PP 
-Generated automatically by Doxygen for Killer Engine from the source code\&.
+Generated automatically by Doxygen for Tempest from the source code\&.
