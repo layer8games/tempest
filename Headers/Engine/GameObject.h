@@ -30,6 +30,7 @@ namespace TC = TempestCollisions;
 
 namespace Tempest
 {
+/// Helper ID's for shader info. This should probably be moved to a new home. 	
 	enum TEMPEST_API BufferData
 	{
 		VERTEX_BUFFER = 0,
@@ -44,6 +45,9 @@ namespace Tempest
 		NUM_VBO = 5
 	};
 	
+/// The GameObject may be the backbone of Tempest. This is the basic object that will exist in the game. It is the root of 
+/// all rendered and interactive objects in the games. It is not a manager. This is an abstract class, so it is meant to be
+/// full implemented as needed. This holds the generic ideas of what makes up the most basic type of Object in the game Level.
 	class GameObject
 	{
 	public:
@@ -52,10 +56,13 @@ namespace Tempest
 //Constructors
 //
 //==========================================================================================================================
+/// Sets up initial values. Most of them are set to 0. Active is set to true.
 		TEMPEST_API GameObject(void);
 
+/// Copies a GameObject.
 		TEMPEST_API GameObject(const GameObject& obj);
 
+/// Deletes the buffers that are used for the shader. These should probably be moved. 
 		TEMPEST_API virtual ~GameObject(void);
 
 //==========================================================================================================================
@@ -63,12 +70,20 @@ namespace Tempest
 //Virtual Functions
 //
 //==========================================================================================================================
+/// Abstract function. This update is called one per frame, if the object is registered with the GameObjectManager and is
+/// Update Active.
 		virtual void v_Update(void)=0;
 
+/// Default Render will check if there is a texture attached to the Object, make the shader on the object active, and will
+/// send the vertices that have been added to the object to OpenGL using glDrawArrays. This is virtual because it can be 
+/// overloaded if this is not what you need for rendering.
 		TEMPEST_API virtual void v_Render(void);
 
+/// By default, this will create a 6 point box, used in sprites. It can be overloaded if you need something different in your
+/// buffer.
 		TEMPEST_API virtual void v_InitBuffers(void);
 
+/// Called when the Object is made active. Calls DefaultAwake. Can be overloaded if you need something different.		
 		inline virtual void v_Awake(void)
 		{
 			DefaultAwake();
@@ -79,16 +94,26 @@ namespace Tempest
 //Functions
 //
 //==========================================================================================================================
+/// Calls glGenVertexArrays and glGenBuffers for the needs of this object. 
 		TEMPEST_API void InitOGL(void);
 
+/// Calls _CalculateCachedData. The idea is that the data for the Object can be cached, and this updates that cache. 
+/// This has some issues since it is not always called. 
 		TEMPEST_API void UpdateInternals(void);
 
+/// Loads a model from a wavefront object (.obj file). I would call this a hacked version of file processing, but it does work.		
+/// \param filepath is the path to the model to be loaded.
 		TEMPEST_API bool LoadOBJ(string filepath);
 
+/// Loads model from a .dae file. This does not work at all. I have considered removing it completely. 
+/// \param filepath is the file to be loaded.
 		TEMPEST_API void LoadMesh(string filepath);
 
+/// Calls all the needed functions to make this Object act like a sprite. This is a replacement for a full sprite class.
 		TEMPEST_API void MakeSprite(void);
 
+/// Returns the "view" matrix, the transform needed to get the object transformed into world space. This is used by opengl for
+/// rendering.
 		inline const TM::Matrix4& GetModelMatrix(void) const
 		{
 			return _modelTOWorldCache;
@@ -96,6 +121,8 @@ namespace Tempest
 
 		//temporary idea. 
 		//In Matrix4, add Translate vs Transform vs Rotate
+/// A temporary experiment meant to return the "view" matrix, with the rotations. This is a first attempt to make rotations 
+/// work, but it didn't really work out very well. Issue #51 should fix this. 
 		inline const TM::Matrix4 GetModelMatrixRot(void) const
 		{
 			TM::Matrix4 mat = _modelTOWorldCache; 
