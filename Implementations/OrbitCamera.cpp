@@ -8,7 +8,9 @@ using namespace Tempest;
 //==========================================================================================================================
 OrbitCamera::OrbitCamera(void)
 :
-_radius(10.0f)
+_radius(10.0f),
+_minRadius(2.0f),
+_maxRadius(80.0f)
 {  }
 
 OrbitCamera::~OrbitCamera(void)
