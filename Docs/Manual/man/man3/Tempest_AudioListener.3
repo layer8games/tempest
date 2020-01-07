@@ -1,4 +1,4 @@
-.TH "Tempest::AudioListener" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.TH "Tempest::AudioListener" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -76,7 +76,7 @@ No implemenatation\&. The listener is not an OpenAL object, it is just a state o
 .PP
 Returns the current position of the listenser\&. Note, this is the cached version, OpenAL is not queried for these values\&. Sets a new orientation for the listener\&. This needs to be a 6 value array, or there will be issues\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIorienation\fP is the new orientation as an array\&. void \fBSetOrientation(F32* orientation)\fP; 
 .RE
@@ -85,7 +85,7 @@ Returns the current position of the listenser\&. Note, this is the cached versio
 .SS "void AudioListener::SetOrientation (\fBF32\fP * orientation)"
 Sets a new orientation for the listener\&. This needs to be a 6 value array, or there will be issues\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIorienation\fP is the new orientation as an array\&. 
 .RE
@@ -94,7 +94,7 @@ Sets a new orientation for the listener\&. This needs to be a 6 value array, or 
 .SS "void AudioListener::SetPosition (const \fBTM::Vector3\fP & pos)"
 Sets the new position state of the listener\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIpos\fP is the new position in world space\&. 
 .RE
@@ -103,7 +103,7 @@ Sets the new position state of the listener\&.
 .SS "void AudioListener::SetPosition (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 Sets the new position state of the listener\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIxVal\fP is the new x position in world space\&. 
 .br
@@ -116,7 +116,7 @@ Sets the new position state of the listener\&.
 .SS "void AudioListener::SetVelocity (const \fBTM::Vector3\fP vel)"
 Sets the new velocity state of the listener\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIvel\fP is the new velocity in world space\&. 
 .RE
@@ -125,7 +125,7 @@ Sets the new velocity state of the listener\&.
 .SS "void AudioListener::SetVelocity (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 Sets the new velocity state of the listener\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIxVal\fP is the new x velocity in world space\&. 
 .br

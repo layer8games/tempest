@@ -1,4 +1,4 @@
-.TH "KillerEngine::WinProgram" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.TH "KillerEngine::WinProgram" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -175,16 +175,12 @@ KillerEngine::WinProgram
 Framework that will open a window in the designated operating system which will be where the renderer will draw what it needs to for the game to be a game\&. There will be system specific code in this section which will be how the game will run on each system that is supported\&.
 .PP
 Supported system: Windows 
-.br
- 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "WinProgram::~WinProgram (void)"
 No behavior\&. 
 .SS "WinProgram::WinProgram (void)\fC [protected]\fP"
 By default, sets all numeric values to 0, all bools to false, the _wndName to 'Killer Engine' and _window to a null pointer\&. 
-.br
- 
 .SH "Member Function Documentation"
 .PP 
 .SS "void WinProgram::BufferSwap (void)"
@@ -192,7 +188,7 @@ Wrapper around glfwSwapBuffers and glClear\&. Swap buffers will place the back b
 .SS "Keys WinProgram::ConvertKeyCodes (int key)\fC [static]\fP"
 Converts the glfw key codes into a key code that the engine can understand\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIkey\fP is the glfw key code to be converted\&. 
 .RE
@@ -204,8 +200,6 @@ Toggles the mouse cursor to no longer be displayed\&. This is true both inside a
 Toggle that allows the frames per second to be displayed in the title of the window\&. 
 .SS "void WinProgram::EnableMouseCursor (void)"
 Toggles the mouse cursor to be displayed\&. 
-.br
- 
 .SS "void KillerEngine::WinProgram::EndRunning (void)\fC [inline]\fP"
 Closes down the \fBWinProgram\fP and ends the program\&. 
 .SS "\fBS32\fP KillerEngine::WinProgram::GetHeight (void)\fC [inline]\fP"
@@ -233,7 +227,7 @@ Toggles the mouse cursor to not be displayed in the program window\&. Outside of
 .SS "void WinProgram::Init (\fBS32\fP width, \fBS32\fP height, string wndName, bool isFullScreen)"
 Sets up program window\&. Makes all calls needed to start up a window\&. This is a helper function that takes are of all the glfw calls needed\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIwidth\fP of created window 
 .br
@@ -250,7 +244,7 @@ Singleton function\&. Returns the global pointer to the program window\&.
 .SS "void WinProgram::OnKey (GLFWwindow * window, int key, int scancode, int action, int mods)\fC [static]\fP"
 Callback function for glfw\&. Controls what happens when a key is pressed\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIwindow\fP is the pointer to the glfw window instance we are checking\&. 
 .br
@@ -267,9 +261,7 @@ Callback function for glfw\&. Controls what happens when a key is pressed\&.
 .SS "void WinProgram::OnMouseClick (GLFWwindow * window, int button, int action, int mods)\fC [static]\fP"
 Callback function for glfw\&. Controls what happens when a mouse click happens (right, left, middle or any other)\&. Currently, only right and left clicks are considered\&. 
 .br
- 
-.PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIwindow\fP is the pointer to the glfw window instance we are changing\&. 
 .br
@@ -284,9 +276,7 @@ Callback function for glfw\&. Controls what happens when a mouse click happens (
 .SS "void WinProgram::OnMouseMove (GLFWwindow * window, \fBF64\fP posX, \fBF64\fP posY)\fC [static]\fP"
 Callback function for glfw\&. Controls what happens when the mouse is detected to move\&. Currently not implemented\&. 
 .br
- 
-.PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIwindow\fP is the pointer to the glfw window instance we are changing\&. 
 .br
@@ -299,7 +289,7 @@ Callback function for glfw\&. Controls what happens when the mouse is detected t
 .SS "void WinProgram::OnResize (GLFWwindow * window, int width, int height)\fC [static]\fP"
 Callback function for glfw\&. Controls what happens when the screen is resized by the user (in the operating system)\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIwindow\fP is the pointer to the glfw window instance we are changing\&. 
 .br
@@ -316,7 +306,7 @@ Moves the mouse cursor to the center of the program window\&.
 .SS "void KillerEngine::WinProgram::SetBackgroundColor (const Color & c)\fC [inline]\fP"
 Sets the color OpenGL will use to color the background of the program window\&. This includes the call to actually change that color state in OpenGL\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIc\fP is the new color that will be set\&. 
 .RE
@@ -324,8 +314,6 @@ Sets the color OpenGL will use to color the background of the program window\&. 
 
 .SS "void WinProgram::ToggleWireFrame (void)"
 Toggle that changes the rendering to only use wireframes, drawing the lines the represent edges in a mesh instead of filling in the faces\&. Used for debugging\&. 
-.br
- 
 
 .SH "Author"
 .PP 

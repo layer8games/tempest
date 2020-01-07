@@ -1,4 +1,4 @@
-.TH "Tempest::GameObject" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.TH "Tempest::GameObject" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -7,13 +7,24 @@ Tempest::GameObject
 .br
 .PP
 .PP
+\fC#include <GameObject\&.h>\fP
+.PP
 Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
+.RI "TEMPEST_API \fBGameObject\fP (void)"
+.br
+.RI "Sets up initial values\&. Most of them are set to 0\&. Active is set to true\&. "
+.ti -1c
 .RI "TEMPEST_API \fBGameObject\fP (const \fBGameObject\fP &obj)"
 .br
+.RI "Copies a \fBGameObject\fP\&. "
+.ti -1c
+.RI "virtual TEMPEST_API \fB~GameObject\fP (void)"
+.br
+.RI "Deletes the buffers that are used for the shader\&. These should probably be moved\&. "
 .ti -1c
 .RI "virtual void \fBv_Update\fP (void)=0"
 .br
@@ -26,9 +37,11 @@ Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .ti -1c
 .RI "virtual void \fBv_Awake\fP (void)"
 .br
+.RI "Called when the Object is made active\&. Calls DefaultAwake\&. Can be overloaded if you need something different\&. "
 .ti -1c
 .RI "TEMPEST_API void \fBInitOGL\fP (void)"
 .br
+.RI "Calls glGenVertexArrays and glGenBuffers for the needs of this object\&. "
 .ti -1c
 .RI "TEMPEST_API void \fBUpdateInternals\fP (void)"
 .br
@@ -41,6 +54,7 @@ Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .ti -1c
 .RI "TEMPEST_API void \fBMakeSprite\fP (void)"
 .br
+.RI "Calls all the needed functions to make this Object act like a sprite\&. This is a replacement for a full sprite class\&. "
 .ti -1c
 .RI "const \fBTM::Matrix4\fP & \fBGetModelMatrix\fP (void) const"
 .br
@@ -340,6 +354,45 @@ Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .RI "static \fBU32\fP \fB_nextID\fP = 1"
 .br
 .in -1c
+.SH "Detailed Description"
+.PP 
+The \fBGameObject\fP may be the backbone of Tempest\&. This is the basic object that will exist in the game\&. It is the root of all rendered and interactive objects in the games\&. It is not a manager\&. This is an abstract class, so it is meant to be full implemented as needed\&. This holds the generic ideas of what makes up the most basic type of Object in the game \fBLevel\fP\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "const \fBTM::Matrix4\fP& Tempest::GameObject::GetModelMatrix (void) const\fC [inline]\fP"
+Returns the 'view' matrix, the transform needed to get the object transformed into world space\&. This is used by opengl for rendering\&. 
+.SS "const \fBTM::Matrix4\fP Tempest::GameObject::GetModelMatrixRot (void) const\fC [inline]\fP"
+A temporary experiment meant to return the 'view' matrix, with the rotations\&. This is a first attempt to make rotations work, but it didn't really work out very well\&. Issue #51 should fix this\&. 
+.SS "void GameObject::LoadMesh (string filepath)"
+Loads model from a \&.dae file\&. This does not work at all\&. I have considered removing it completely\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilepath\fP is the file to be loaded\&. 
+.RE
+.PP
+
+.SS "bool GameObject::LoadOBJ (string filepath)"
+Loads a model from a wavefront object (\&.obj file)\&. I would call this a hacked version of file processing, but it does work\&. 
+.br
+\fBParameters:\fP
+.RS 4
+\fIfilepath\fP is the path to the model to be loaded\&. 
+.RE
+.PP
+
+.SS "void GameObject::UpdateInternals (void)"
+Calls _CalculateCachedData\&. The idea is that the data for the Object can be cached, and this updates that cache\&. This has some issues since it is not always called\&. 
+.SS "void GameObject::v_InitBuffers (void)\fC [virtual]\fP"
+By default, this will create a 6 point box, used in sprites\&. It can be overloaded if you need something different in your buffer\&. 
+.SS "void GameObject::v_Render (void)\fC [virtual]\fP"
+Default Render will check if there is a texture attached to the Object, make the shader on the object active, and will send the vertices that have been added to the object to OpenGL using glDrawArrays\&. This is virtual because it can be overloaded if this is not what you need for rendering\&. 
+.PP
+Reimplemented in \fBTempest::Glyph\fP\&.
+.SS "virtual void Tempest::GameObject::v_Update (void)\fC [pure virtual]\fP"
+Abstract function\&. This update is called one per frame, if the object is registered with the GameObjectManager and is Update Active\&. 
+.PP
+Implemented in \fBTempest::Glyph\fP, and \fBTempest::EnvironmentObject\fP\&.
 
 .SH "Author"
 .PP 

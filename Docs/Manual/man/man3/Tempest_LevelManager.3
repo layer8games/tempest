@@ -1,4 +1,4 @@
-.TH "Tempest::LevelManager" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.TH "Tempest::LevelManager" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -18,9 +18,7 @@ Tempest::LevelManager
 .ti -1c
 .RI "void \fBShutDown\fP (void)"
 .br
-.RI "Helper function that deletes the instance from global memory\&. 
-.br
- "
+.RI "Helper function that deletes the instance from global memory\&. "
 .ti -1c
 .RI "TEMPEST_API void \fBAddLevel\fP (p_Level level)"
 .br
@@ -36,9 +34,7 @@ Tempest::LevelManager
 .ti -1c
 .RI "\fBU32\fP \fBGetActiveLevelID\fP (void)"
 .br
-.RI "Returns the ID of the active \fBLevel\fP state\&. 
-.br
- "
+.RI "Returns the ID of the active \fBLevel\fP state\&. "
 .ti -1c
 .RI "p_Level \fBGetActiveLevel\fP (void)"
 .br
@@ -81,9 +77,7 @@ Tempest::LevelManager
 .ti -1c
 .RI "\fBLevelManager\fP (void)"
 .br
-.RI "Sets active \fBLevel\fP state to a nullptr\&. 
-.br
- "
+.RI "Sets active \fBLevel\fP state to a nullptr\&. "
 .in -1c
 .SS "Private Attributes"
 
@@ -112,25 +106,21 @@ Tempest::LevelManager
 .SH "Detailed Description"
 .PP 
 The holder and controller of the the \fBLevel\fP objects\&. This will act as both a singleton and a state matching controller, where each \fBLevel\fP will be a state that can be set to active\&. For now, all of the states that are to be used will be instantiated during the initialization in the main loop, however later, each \fBLevel\fP will only be created once it is called, as part of a loading screen\&. 
-.br
- 
 .SH "Member Function Documentation"
 .PP 
 .SS "void LevelManager::AddLevel (p_Level level)"
 Adds a \fBLevel\fP into the state machine that can then be set to active to be in use\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIlevel\fP is added into the database, with \fBLevel::GetID\fP used to index\&. 
-.br
- 
 .RE
 .PP
 
 .SS "void Tempest::LevelManager::AddObject (const p_GameObject obj)\fC [inline]\fP"
 Allows \fBGameObject\fP to be added to the currently active level\&. This is of great use when you have an \fBGameObject\fP that is going to be dynamically created by another object at runtime, that may not know about which \fBLevel\fP it is part of\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIobj\fP is the \fBGameObject\fP to add\&. 
 .RE
@@ -139,7 +129,7 @@ Allows \fBGameObject\fP to be added to the currently active level\&. This is of 
 .SS "void LevelManager::AddObjectToLevel (\fBU32\fP id, const \fBGameObject\fP & obj)"
 Allows object to be added to level\&. Wrapper around \fBLevel::AddObjectToLevel\fP\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIid\fP is the key for the \fBLevel\fP that the object will be added to\&. 
 .br
@@ -150,7 +140,7 @@ Allows object to be added to level\&. Wrapper around \fBLevel::AddObjectToLevel\
 .SS "void LevelManager::AddObjectToLevel (\fBU32\fP id, shared_ptr< \fBGameObject\fP > obj)"
 Allows object to be added to level\&. Wrapper around \fBLevel::AddObjectToLevel\fP\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIid\fP is the key for the \fBLevel\fP that the object will be added to\&. 
 .br
@@ -161,51 +151,43 @@ Allows object to be added to level\&. Wrapper around \fBLevel::AddObjectToLevel\
 .SS "void LevelManager::RemoveLevel (\fBU32\fP levelID)"
 Removes \fBLevel\fP from database\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIlevelID\fP is the index to delete\&. 
-.br
- 
 .RE
 .PP
 
 .SS "void LevelManager::RemoveObjectFromLevel (\fBU32\fP levelID, \fBU32\fP objID)"
 Removes an object from a \fBLevel\fP\&. Wrapper around \fBLevel::RemoveObjectFromLevel\fP\&. This assumes that ID are unique for all \fBGameObject\fP\&. I don't know if this is true, so be careful\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIlevelID\fP is the key for the \fBLevel\fP that the object will be removed from\&. 
 .br
 \fIobjID\fP is the \fBGameObject\fP ID to remove\&. 
-.br
- 
-.RE
-.PP
-
-.SS "void LevelManager::SetActiveLevel (p_Level level)"
-Changes the active level to be a new level\&. This level is NOT stored in the levels data base and will be deleted when the active level is changed again\&. This allows for levels to be lazy loaded, for quick switching, or to not be loaded into memory until they are set to active\&. \fBLevel::v_Init\fP is called before it is set to active\&. 
-.PP
-\fBParameters\fP
-.RS 4
-\fIlevel\fP is the new \fBLevel\fP that will be set to active\&. 
 .RE
 .PP
 
 .SS "void LevelManager::SetActiveLevel (\fBU32\fP levelID)"
 Changes the state to have a different active \fBLevel\fP\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIlevelID\fP is the index to set to active\&. 
-.br
- 
+.RE
+.PP
+
+.SS "void LevelManager::SetActiveLevel (p_Level level)"
+Changes the active level to be a new level\&. This level is NOT stored in the levels data base and will be deleted when the active level is changed again\&. This allows for levels to be lazy loaded, for quick switching, or to not be loaded into memory until they are set to active\&. \fBLevel::v_Init\fP is called before it is set to active\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevel\fP is the new \fBLevel\fP that will be set to active\&. 
 .RE
 .PP
 
 .SS "void LevelManager::Update (void)"
 Calls all functions on the active \fBLevel\fP state needed to update that state\&. This includes Level::v_Integrate, \fBLevel::UpdateLevel\fP, \fBLevel::UpdateObjects\fP and \fBLevel::v_Update\fP\&. 
-.br
- 
 
 .SH "Author"
 .PP 

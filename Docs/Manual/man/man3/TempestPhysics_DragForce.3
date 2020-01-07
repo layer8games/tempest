@@ -1,4 +1,4 @@
-.TH "TempestPhysics::DragForce" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.TH "TempestPhysics::DragForce" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -58,7 +58,7 @@ A Drag or friction simulator\&. It takes in a physics object, then will reduce i
 .SS "DragForce::DragForce (\fBreal\fP drag)"
 Sets starting values for the \fBDragForce\fP\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIdrag\fP is the starting values for the drag cooefficient\&. Drag squared is set to drag * drag\&. 
 .RE
@@ -69,18 +69,16 @@ Sets starting values for the \fBDragForce\fP\&.
 .SS "void TempestPhysics::DragForce::SetDrag (\fBreal\fP d)\fC [inline]\fP"
 Changes the drag coefficient\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fId\fP is the new coefficient\&. Drag squared is set to d * d\&. 
-.br
- 
 .RE
 .PP
 
 .SS "void DragForce::v_UpdateForce (shared_ptr< \fBRigidBody2D\fP > RigidBody2D)\fC [final]\fP"
 Adds a force to the object based on the drag coefficient and the velocity of the object\&. For details, see the class description\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fI\fBRigidBody2D\fP\fP is the pointer to the object that will have the forced added to it, and will be used to determine what the force is\&. 
 .RE
@@ -89,7 +87,7 @@ Adds a force to the object based on the drag coefficient and the velocity of the
 .SS "void DragForce::v_UpdateForce (shared_ptr< \fBRigidBody3D\fP > body)\fC [final]\fP"
 Adds a force to the object based on the drag coefficient and the velocity of the object\&. For details, see the class description\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIbody\fP is the pointer to the object that will have the forced added to it, and will be used to determine what the force is\&. 
 .RE

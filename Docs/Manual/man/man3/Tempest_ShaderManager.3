@@ -1,4 +1,4 @@
-.TH "Tempest::ShaderManager" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.TH "Tempest::ShaderManager" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -39,9 +39,7 @@ Tempest::ShaderManager
 .ti -1c
 .RI "\fBShaderManager\fP (void)"
 .br
-.RI "No implementation 
-.br
- "
+.RI "No implementation\&. "
 .in -1c
 .SS "Private Member Functions"
 
@@ -76,7 +74,7 @@ Internal function that loads a series of default Shaders\&. These are then regis
 .SS "void ShaderManager::AddShader (\fBU32\fP id, shared_ptr< \fBShader\fP > shader)"
 Registers a previously created \fBShader\fP with the Manager\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIid\fP is used to recall the \fBShader\fP when it is needed\&. 
 .br
@@ -87,7 +85,7 @@ Registers a previously created \fBShader\fP with the Manager\&.
 .SS "shared_ptr< \fBShader\fP > ShaderManager::GetShader (\fBU32\fP id)"
 Recalls a previously registered \fBShader\fP for use\&. A pointer is returned\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIid\fP must map to a shader that has previously been created\&. If a bad ID is passed, an error is thrown\&. 
 .RE
@@ -96,7 +94,7 @@ Recalls a previously registered \fBShader\fP for use\&. A pointer is returned\&.
 .SS "void ShaderManager::LoadShader (\fBU32\fP id, std::vector< \fBShaderData\fP > data)"
 Creates and registers a new \fBShader\fP into the manager\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIid\fP is used to recall the \fBShader\fP\&. 
 .br

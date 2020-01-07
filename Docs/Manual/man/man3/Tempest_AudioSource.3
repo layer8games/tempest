@@ -1,4 +1,4 @@
-.TH "Tempest::AudioSource" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.TH "Tempest::AudioSource" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -128,47 +128,33 @@ Tempest::AudioSource
 .SH "Detailed Description"
 .PP 
 An \fBAudioSource\fP is the location from which an \fBAudioClip\fP will play\&. This holds a clip, a position, and velocity, and can be told to start, stop or pause its play\&. Currently the source only supports one clip, but later could support many clips in the form of buffers\&. This is a more advanced way to use OpenAL that is currently not supported\&. 
-.br
- 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "AudioSource::AudioSource (void)"
 Calls \fBAudioManager::Instance\fP to make sure that there is a device and context set up before the source is created with OpenAL\&. It then sets up the source with OpenAL and saves the handle for use later\&. 
-.br
- 
 .SH "Member Function Documentation"
 .PP 
 .SS "void AudioSource::AddClip (shared_ptr< \fBAudioClip\fP > clip)"
 Sets the clip that this source will use when it is played\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIclip\fP is a pointer to the clip that will be played\&. The clip should already have data, using the AudioClip::LoadWAV function\&. If it does not, then this will not play anything\&. 
-.br
- 
 .RE
 .PP
 
 .SS "const \fBTM::Vector3\fP& Tempest::AudioSource::GetPosition (void) const\fC [inline]\fP"
 Returns the position of the source\&. This should be in world space\&. Note, this is the cached version, it does not query OpenAL for this value\&. 
-.br
- 
 .SS "const \fBTM::Vector3\fP& Tempest::AudioSource::GetVelocity (void) const\fC [inline]\fP"
 Returns the velocity of the source\&. This should be in world space\&. Note, this is the cached version, it does not query OpenAL for this value\&. 
-.br
- 
 .SS "void AudioSource::Play (void)"
 Plays the clip that this source has\&. If the clip is already playing, nothing happens\&. This is different from what OpenAL does, where it will start a clip over if it is already playing\&. 
-.br
- 
 .SS "void AudioSource::Restart (void)"
 If the clip is already playing, then it will start the clip over from the beginning\&. If it is not currently playing, then it will start playing from the beginning\&. 
-.br
- 
 .SS "void AudioSource::SetGain (\fBF32\fP gain)"
 Sets the gain level for the source\&. This makes a call to OpenAL to set the state in OpenAL\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIgain\fP is the new gain level\&. 
 .RE
@@ -177,40 +163,34 @@ Sets the gain level for the source\&. This makes a call to OpenAL to set the sta
 .SS "void AudioSource::SetLooping (bool state)"
 Sets if the clip should loop as it plays\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIstate\fP should be true if you want the clip to loop, and false if you do not\&. 
-.br
- 
 .RE
 .PP
 
 .SS "void AudioSource::SetPitch (\fBF32\fP pitch)"
 Sets the pitch level for the source\&. This makes a call to OpenAL to set the state in OpenAL\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIpitch\fP is the new pitch level\&. 
-.br
- 
 .RE
 .PP
 
 .SS "void AudioSource::SetPosition (const \fBTM::Vector3\fP & pos)"
 Sets the position of the source in the sound space\&. This should be the same as world space\&. This makes a call to set the position in OpenAL\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIpos\fP is the new position of the source\&. 
-.br
- 
 .RE
 .PP
 
 .SS "void AudioSource::SetPosition (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 Sets the position of the source in the sound space\&. This should be the same as world space\&. This makes a call to set the position in OpenAL\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIxVal\fP is the new x position of the source\&. 
 .br
@@ -223,18 +203,16 @@ Sets the position of the source in the sound space\&. This should be the same as
 .SS "void AudioSource::SetVelocity (const \fBTM::Vector3\fP & vel)"
 Sets the velocity of the source in the sound space\&. This should be in world space coordinates\&. This makes a call to set the velocity in OpenAL\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIvel\fP is the new velocity of the source\&. 
-.br
- 
 .RE
 .PP
 
 .SS "void AudioSource::SetVelocity (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 Sets the velocity of the source in the sound space\&. This should be in world space coordinates\&. This makes a call to set the velocity in OpenAL\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIxVal\fP is the new x velocity of the source\&. 
 .br

@@ -1,4 +1,4 @@
-.TH "Tempest::Engine" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.TH "Tempest::Engine" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -56,9 +56,7 @@ Tempest::Engine
 .ti -1c
 .RI "\fBEngine\fP (void)"
 .br
-.RI "Default Constructor\&. It does not do anything\&. 
-.br
- "
+.RI "Default Constructor\&. It does not do anything\&. "
 .in -1c
 .SS "Static Private Attributes"
 
@@ -70,28 +68,22 @@ Tempest::Engine
 .in -1c
 .SH "Detailed Description"
 .PP 
-The KillerEngine class is designed to be the interface to starting up the \fBEngine\fP\&. This class will really just be a function and instance holder for other classes in the engine, but will actually do very little of its own\&. 
-.br
- A lot of the functions that will be here will not be required to use in order to use the engine\&. They will be present as helper classes, not intended for required use\&. 
-.br
- 
+The KillerEngine class is designed to be the interface to starting up the \fBEngine\fP\&. This class will really just be a function and instance holder for other classes in the engine, but will actually do very little of its own\&. A lot of the functions that will be here will not be required to use in order to use the engine\&. They will be present as helper classes, not intended for required use\&. 
 .SH "Member Function Documentation"
 .PP 
 .SS "void Tempest::Engine::AddLevelToManager (shared_ptr< \fBLevel\fP > level)\fC [inline]\fP"
 Wrapper for \fBLevelManager::AddLevel()\fP\&. Adds level that can be set as active\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIlevel\fP shared_ptr<Level>: \fBLevel\fP to be added\&. 
-.br
- 
 .RE
 .PP
 
 .SS "void Engine::Init (const \fBS32\fP width, const \fBS32\fP height, const string title, const bool fullscreen)"
 Wrapper for \fBGameWindow::Init\fP\&. Sets up the Window and OpenGL 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIwidth\fP S32: describes width of window\&. 
 .br
@@ -100,8 +92,6 @@ Wrapper for \fBGameWindow::Init\fP\&. Sets up the Window and OpenGL
 \fItitle\fP string: sent to system to generate title of window\&. 
 .br
 \fIfullscreen\fP bool: tells system to use fullscreen or not\&. 
-.br
- 
 .RE
 .PP
 
@@ -113,25 +103,21 @@ Wrapper for steps needed to render\&. Calls the following in order
 \fBGameWindow::BufferSwap()\fP
 .IP "\(bu" 2
 \fBErrorManager::DisplayErrors()\fP 
-.br
- 
 .PP
 
 .SS "void Tempest::Engine::SetActiveLevel (const \fBU32\fP id)\fC [inline]\fP"
 Wrapper for LevelManager::SetActive()\&. Sets level with id to be active level 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIid\fP const U32: id of level\&. 
-.br
- 
 .RE
 .PP
 
 .SS "void Tempest::Engine::SetActiveLevel (shared_ptr< \fBLevel\fP > level)\fC [inline]\fP"
 Wrapper for LevelManager::SetActive(void)\&. Sets the temporary active level\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIlevel\fP is the pointer to set active 
 .RE
@@ -149,8 +135,6 @@ Timer::Update()
 \fBLevelManager::Update()\fP
 .IP "\(bu" 2
 \fBErrorManager::DisplayErrors()\fP 
-.br
- 
 .PP
 
 

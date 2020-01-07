@@ -1,4 +1,4 @@
-.TH "rapidxml::parse_error" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.TH "rapidxml::parse_error" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -50,7 +50,7 @@ Parse error exception\&. This exception is thrown by the parser when an error oc
 .SS "virtual const char* rapidxml::parse_error::what () const\fC [inline]\fP, \fC [virtual]\fP"
 Gets human readable description of error\&. 
 .PP
-\fBReturns\fP
+\fBReturns:\fP
 .RS 4
 Pointer to null terminated description of the error\&. 
 .RE
@@ -59,7 +59,7 @@ Pointer to null terminated description of the error\&.
 .SS "template<class Ch > Ch* rapidxml::parse_error::where () const\fC [inline]\fP"
 Gets pointer to character data where error happened\&. Ch should be the same as char type of \fBxml_document\fP that produced the error\&. 
 .PP
-\fBReturns\fP
+\fBReturns:\fP
 .RS 4
 Pointer to location within the parsed string where error occured\&. 
 .RE

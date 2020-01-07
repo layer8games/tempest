@@ -1,4 +1,4 @@
-.TH "Tempest::OrbitCamera" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.TH "Tempest::OrbitCamera" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -7,25 +7,53 @@ Tempest::OrbitCamera
 .br
 .PP
 .PP
+\fC#include <OrbitCamera\&.h>\fP
+.PP
 Inherits \fBTempest::Camera\fP\&.
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
+.RI "TEMPEST_API \fBOrbitCamera\fP (void)"
+.br
+.RI "Sets the initial radius to be 10\&.0f, the minRadius to be 2\&.0f and the maxRadius to be 80\&.0f\&. "
+.ti -1c
+.RI "TEMPEST_API \fB~OrbitCamera\fP (void)"
+.br
+.RI "No implementation\&. "
+.ti -1c
 .RI "virtual TEMPEST_API void \fBv_Rotate\fP (void) final"
 .br
+.RI "Uses the updated values of the camera to perform the rotation\&. "
 .ti -1c
 .RI "virtual TEMPEST_API void \fBv_Update\fP (void) final"
 .br
+.RI "Called once per frame, uses the Base \fBCamera\fP to get the updated mouse coords, updates rotational values to match\&. "
 .ti -1c
 .RI "TEMPEST_API void \fBOrbit\fP (void)"
 .br
+.RI "Uses the base \fBCamera\fP to orbit around the set point\&. "
 .ti -1c
 .RI "TEMPEST_API void \fBZoom\fP (void)"
 .br
+.RI "Moves the \fBCamera\fP closer to or further away from the target, based on the value of the radius\&. "
 .ti -1c
 .RI "void \fBSetRadius\fP (\fBF32\fP val)"
 .br
+.ti -1c
+.RI "void \fBSetMinRadius\fP (\fBF32\fP val)"
+.br
+.ti -1c
+.RI "\fBF32\fP \fBGetMinRadius\fP (void)"
+.br
+.RI "Return the current min radius\&. "
+.ti -1c
+.RI "void \fBSetMaxRaidus\fP (\fBF32\fP val)"
+.br
+.ti -1c
+.RI "\fBF32\fP \fBGetMaxRadius\fP (void)"
+.br
+.RI "Returns the current max radius\&. "
 .in -1c
 .SS "Private Member Functions"
 
@@ -33,6 +61,7 @@ Inherits \fBTempest::Camera\fP\&.
 .ti -1c
 .RI "virtual void \fB_v_UpdateCameraVectors\fP (void)"
 .br
+.RI "Updates the \fBCamera\fP vectors, used in Rotate and Orbit\&. "
 .in -1c
 .SS "Private Attributes"
 
@@ -40,8 +69,47 @@ Inherits \fBTempest::Camera\fP\&.
 .ti -1c
 .RI "\fBF32\fP \fB_radius\fP"
 .br
+.ti -1c
+.RI "\fBF32\fP \fB_minRadius\fP"
+.br
+.RI "Distance of the view port from the target\&. "
+.ti -1c
+.RI "\fBF32\fP \fB_maxRadius\fP"
+.br
+.RI "Min radius\&. "
 .in -1c
 .SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A classic Orbital camera\&. This is similar to the camera used in a lot of 3rd person games, like World of Warcraft\&. A Point in space is set, and the camera will then move around that point in a circle\&. This includes the ability to get closer to and further from that point\&. ToDO: Need to make the Target a param that can be updated\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void Tempest::OrbitCamera::SetMaxRaidus (\fBF32\fP val)\fC [inline]\fP"
+Sets the new maximum radius\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the new max radius\&. 
+.RE
+.PP
+
+.SS "void Tempest::OrbitCamera::SetMinRadius (\fBF32\fP val)\fC [inline]\fP"
+Sets the minimum possible Radius\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the new min radius\&. 
+.RE
+.PP
+
+.SS "void Tempest::OrbitCamera::SetRadius (\fBF32\fP val)\fC [inline]\fP"
+Updates the radius of the \fBCamera\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the new radius\&. It will be clamped to min and max\&. 
+.RE
+.PP
 
 
 .SH "Author"

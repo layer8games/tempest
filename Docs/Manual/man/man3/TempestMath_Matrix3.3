@@ -1,4 +1,4 @@
-.TH "TempestMath::Matrix3" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.TH "TempestMath::Matrix3" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -31,7 +31,7 @@ TempestMath::Matrix3
 .RI "TEMPEST_API \fBMatrix3\fP (const \fBMatrix3\fP &M)"
 .br
 .ti -1c
-.RI "const TEMPEST_API std::vector< \fBF32\fP > \fBGetElems\fP (void) const"
+.RI "TEMPEST_API const std::vector< \fBF32\fP > \fBGetElems\fP (void) const"
 .br
 .RI "Return the array containing all the elements\&. "
 .ti -1c
@@ -186,7 +186,7 @@ The \fBMatrix3\fP is a 3x3 Matrix meant to be mathematically sound\&. The functi
 .SS "Matrix3::Matrix3 (\fBF32\fP m00, \fBF32\fP m01, \fBF32\fP m02, \fBF32\fP m10, \fBF32\fP m11, \fBF32\fP m12, \fBF32\fP m20, \fBF32\fP m21, \fBF32\fP m22)"
 All value constructor\&. Takes a list of values and turns them into a \fBMatrix3\fP of the same mapping\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIm00\fP is the value for element m00\&. 
 .br
@@ -211,11 +211,9 @@ All value constructor\&. Takes a list of values and turns them into a \fBMatrix3
 .SS "Matrix3::Matrix3 (const \fBMatrix3\fP & M)"
 Copy Constructor\&. Calls \fBMatrix3\fP::[] to, which will copy the \fBVector4\fP from each colume of M into this Matrix\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIM\fP is the matrix to copy into this one\&. 
-.br
- 
 .RE
 .PP
 
@@ -224,7 +222,7 @@ Copy Constructor\&. Calls \fBMatrix3\fP::[] to, which will copy the \fBVector4\f
 .SS "\fBF32\fP Matrix3::_Cofactor (\fBF32\fP c00, \fBF32\fP c01, \fBF32\fP c10, \fBF32\fP c11) const\fC [private]\fP"
 Returns the cofactor for the sub matrix made up of the 3 \fBVector4\fP passed in\&. This is used in Matrix4::Inverse as part of what is called a Classic Adjoint\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIc00\fP is the first element of the first column of the sub matrix\&. 
 .br
@@ -233,8 +231,6 @@ Returns the cofactor for the sub matrix made up of the 3 \fBVector4\fP passed in
 \fIc10\fP is the first element of the second column of the sub matrix\&. 
 .br
 \fIc11\fP is the second element of the second column of the sub matrix\&. 
-.br
- 
 .RE
 .PP
 
@@ -246,11 +242,9 @@ Creates rotation around the x axis without resetting other values\&.
 Completely untested and probably not working at all\&. 
 .RE
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIx\fP Degree of rotation around x axis\&. Calls \fBRADIAN()\fP 
-.br
- 
 .RE
 .PP
 
@@ -262,11 +256,9 @@ Creates rotation around the x axis without resetting other values\&.
 Completely untested and probably not working at all\&. 
 .RE
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIx\fP Degree of rotation around x axis\&. Calls \fBRADIAN()\fP 
-.br
- 
 .RE
 .PP
 
@@ -278,11 +270,9 @@ Creates rotation around the z axis without resetting other values\&.
 Completely untested and probably not working at all\&. 
 .RE
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIz\fP F32\&. Degree of rotation around z axis\&. Calls \fBRADIAN()\fP 
-.br
- 
 .RE
 .PP
 
@@ -294,7 +284,7 @@ Creates rotation around the x, y and z axis, in that order, without resetting ot
 Not working at all\&. The math is wrong, and rotations are not working in general\&. 
 .RE
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIx\fP F32\&. Degree of rotation around the x axis\&. Calls \fBRADIAN()\fP 
 .br
@@ -304,10 +294,34 @@ Not working at all\&. The math is wrong, and rotations are not working in genera
 .RE
 .PP
 
+.SS "void Matrix3::AddScale (\fBF32\fP xVal, \fBF32\fP yVal)"
+Increases the scaling translation in 2D\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP Value of scale on x axis\&. 
+.br
+\fIy\fP Value of scale on y axis\&. 
+.RE
+.PP
+
+.SS "void Matrix3::AddScale (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
+Increases the scaling translation in 3D\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP Value of scale on x axis\&. 
+.br
+\fIy\fP Value of scale on y axis\&. 
+.br
+\fIz\fP Value of scale on z axis\&. 
+.RE
+.PP
+
 .SS "void Matrix3::AddScale (const \fBVector3\fP & vec)"
 Increases the scaling translation equal to the x y and z values in a \fBVector3\fP\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIvec\fP contains the values that will increase the scale\&. 
 .RE
@@ -316,48 +330,18 @@ Increases the scaling translation equal to the x y and z values in a \fBVector3\
 .SS "void Matrix3::AddScale (const \fBVector4\fP & vec)"
 Increases the scaling translation equal to the x y and z values in a \fBVector4\fP\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIvec\fP contains the values that will increase the scale\&. 
-.RE
-.PP
-
-.SS "void Matrix3::AddScale (\fBF32\fP xVal, \fBF32\fP yVal)"
-Increases the scaling translation in 2D\&. 
-.PP
-\fBParameters\fP
-.RS 4
-\fIx\fP Value of scale on x axis\&. 
-.br
-\fIy\fP Value of scale on y axis\&. 
-.br
- 
-.RE
-.PP
-
-.SS "void Matrix3::AddScale (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
-Increases the scaling translation in 3D\&. 
-.PP
-\fBParameters\fP
-.RS 4
-\fIx\fP Value of scale on x axis\&. 
-.br
-\fIy\fP Value of scale on y axis\&. 
-.br
-\fIz\fP Value of scale on z axis\&. 
-.br
- 
 .RE
 .PP
 
 .SS "void Matrix3::ComponentMulti (const \fBMatrix3\fP & M)"
 Also known as a straight multiplication\&. Multiplies each value of this \fBMatrix4\fP by the matching value of M\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIM\fP \fBMatrix4\fP&\&. Right hand value to multiply by\&. 
-.br
- 
 .RE
 .PP
 
@@ -366,7 +350,7 @@ Returns the determinate of this matrix\&. This has many uses, and if you are not
 .SS "TEMPEST_API \fBMatrix3\fP TempestMath::Matrix3::Matrix3::Transform (const \fBMatrix3\fP & mat) const"
 Helper function that will return the transformed version of a matrix\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fImat\fP is transformed\&. 
 .RE
@@ -375,150 +359,106 @@ Helper function that will return the transformed version of a matrix\&.
 .SS "TEMPEST_API \fBVector4\fP TempestMath::Matrix3::Matrix3::Transform (const \fBVector4\fP & vec) const"
 Helper function that will return the transformed version of a vector\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIvec\fP is transformed\&. 
-.br
- 
 .RE
 .PP
 
 .SS "\fBMatrix3\fP Matrix3::operator* (const \fBMatrix3\fP & mat) const"
 Performs a \fBMatrix4\fP style multiplication\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fImat\fP is the matrix that is multiplied by this matrix\&. 
-.br
- 
 .RE
 .PP
 
 .SS "\fBVector4\fP Matrix3::operator* (const \fBVector4\fP & vec) const"
 Performs \fBMatrix4\fP multiplication with \fBVector4\fP\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIvec\fP is the vector that is multiplied by this matrix\&. 
-.br
- 
 .RE
 .PP
 
 .SS "\fBMatrix3\fP & Matrix3::operator/= (\fBF32\fP val)"
 Divides each element of this matrix, setting it to the results\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIval\fP is the value that this matrix is divided by\&. 
-.br
- 
 .RE
 .PP
 
 .SS "\fBMatrix3\fP & Matrix3::operator= (const \fBMatrix3\fP & mat)"
 Assigns this matrix to be equal to the values of another\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fImat\fP is the matrix that is copied\&. 
-.br
- 
-.RE
-.PP
-
-.SS "\fBVector3\fP& TempestMath::Matrix3::operator[] (int i)\fC [inline]\fP"
-Used to access the ith column of the \fBMatrix4\fP\&. This version allows you to edit the values in the column\&. 
-.PP
-\fBParameters\fP
-.RS 4
-\fIi\fP is the index to return\&. Cannot be greater than 3\&. There are only 4 columns\&. 
-.br
- 
 .RE
 .PP
 
 .SS "const \fBVector3\fP& TempestMath::Matrix3::operator[] (int i) const\fC [inline]\fP"
 Used to access the ith column of the \fBMatrix4\fP\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIi\fP is the index to return\&. Cannot be greater than 3\&. There are only 4 columns\&. 
-.br
- 
+.RE
+.PP
+
+.SS "\fBVector3\fP& TempestMath::Matrix3::operator[] (int i)\fC [inline]\fP"
+Used to access the ith column of the \fBMatrix4\fP\&. This version allows you to edit the values in the column\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP is the index to return\&. Cannot be greater than 3\&. There are only 4 columns\&. 
 .RE
 .PP
 
 .SS "void Matrix3::Reset (\fBF32\fP val = \fC0\&.0f\fP)"
 Sets all the values of the \fBMatrix4\fP to 0, with the diagnal set to val\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIval\fP Value of the diagnal of the \fBMatrix4\fP\&. 
-.br
- 
 .RE
 .PP
 
 .SS "\fBMatrix3\fP Matrix3::RotateX (\fBF32\fP val)\fC [static]\fP"
 Creates a matrix that will perform a rotation around the x axis\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIval\fP is the angle to rotate in degrees\&. 
-.br
- 
 .RE
 .PP
 
 .SS "\fBMatrix3\fP Matrix3::RotateY (\fBF32\fP val)\fC [static]\fP"
 Creates a matrix that will perform a rotation around the y axis\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIval\fP is the angle to rotate in degrees\&. 
-.br
- 
 .RE
 .PP
 
 .SS "\fBMatrix3\fP Matrix3::RotateZ (\fBF32\fP val)\fC [static]\fP"
 Creates a matrix that will perform a rotation around the z axis\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIval\fP is the angle to rotate in degrees\&. 
-.br
- 
-.RE
-.PP
-
-.SS "\fBMatrix3\fP Matrix3::Scale (const \fBVector3\fP & vec)\fC [static]\fP"
-Creates a matrix that will perform a scaling translation equal to the x y and z values in a \fBVector3\fP\&. 
-.PP
-\fBParameters\fP
-.RS 4
-\fIvec\fP contains the values used in the scaling\&. 
-.br
- 
-.RE
-.PP
-
-.SS "\fBMatrix3\fP Matrix3::Scale (const \fBVector4\fP & vec)\fC [static]\fP"
-Creates a matrix that will perform a scaling translation equal to the x y and z values in a \fBVector4\fP\&. 
-.PP
-\fBParameters\fP
-.RS 4
-\fIvec\fP contains the values used in the scaling\&. 
-.br
- 
 .RE
 .PP
 
 .SS "\fBMatrix3\fP Matrix3::Scale (\fBF32\fP xVal, \fBF32\fP yVal)\fC [static]\fP"
 Creates a matrix that will perform a scaling transformation in 2D\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIxVal\fP is the amount to scale in the x axis\&. 
 .br
@@ -529,37 +469,49 @@ Creates a matrix that will perform a scaling transformation in 2D\&.
 .SS "\fBMatrix3\fP Matrix3::Scale (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)\fC [static]\fP"
 Creates a matrix that will perform a scaling transformation in 3D\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIxVal\fP is the amount to scale in the x axis\&. 
 .br
 \fIyVal\fP is the amount to scale in the y axis\&. 
 .br
 \fIzVal\fP is the amount to scale in the z axis\&. 
-.br
- 
+.RE
+.PP
+
+.SS "\fBMatrix3\fP Matrix3::Scale (const \fBVector3\fP & vec)\fC [static]\fP"
+Creates a matrix that will perform a scaling translation equal to the x y and z values in a \fBVector3\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP contains the values used in the scaling\&. 
+.RE
+.PP
+
+.SS "\fBMatrix3\fP Matrix3::Scale (const \fBVector4\fP & vec)\fC [static]\fP"
+Creates a matrix that will perform a scaling translation equal to the x y and z values in a \fBVector4\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP contains the values used in the scaling\&. 
 .RE
 .PP
 
 .SS "void Matrix3::SetAsInverse (const \fBMatrix3\fP & mat)"
 Changes this matrix to equal the inverse of another\&. Warning, very expsenive function to call\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fImat\fP inverse will be set to this matrix\&. 
-.br
- 
 .RE
 .PP
 
 .SS "void Matrix3::SetOrientation (const \fBQuaternion\fP & q)"
 Sets the rotational transform of the matrix equal to the orientation contained in teh \fBQuaternion\fP\&. This is currently untested\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIq\fP conatins the orientation to set\&. 
-.br
- 
 .RE
 .PP
 
@@ -571,15 +523,13 @@ Resets the \fBMatrix3\fP and creates an \fBMatrix3\fP which will perform a rotat
 Not working at all\&. The math is wrong, and rotations are not working in general\&. 
 .RE
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIx\fP F32\&. Degree of rotation around the x axis\&. Calls \fBRADIAN()\fP 
 .br
 \fIy\fP F32\&. Degree of rotation around the y axis\&. Calls \fBRADIAN()\fP 
 .br
 \fIz\fP F32\&. Degree of rotation around the z axis\&. Calls \fBRADIAN()\fP 
-.br
- 
 .RE
 .PP
 
@@ -591,11 +541,9 @@ Resets \fBMatrix3\fP and creates rotation around the x axis\&. Call MakeIdentiy(
 This is not working at all\&. 
 .RE
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIx\fP F32\&. Degree of rotation around x axis\&. Calls \fBRADIAN()\fP 
-.br
- 
 .RE
 .PP
 
@@ -607,11 +555,9 @@ Resets \fBMatrix4\fP and creates rotation around the y axis\&. Call MakeIdentiy(
 This is not working at all\&. 
 .RE
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIx\fP Degree of rotation around x axis\&. Calls \fBRADIAN()\fP 
-.br
- 
 .RE
 .PP
 
@@ -623,40 +569,16 @@ Resets \fBMatrix3\fP and creates rotation around the z axis\&. Call MakeIdentiy(
 This is not working at all\&. 
 .RE
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIz\fP F32\&. Degree of rotation around z axis\&. Calls \fBRADIAN()\fP 
-.br
- 
-.RE
-.PP
-
-.SS "void Matrix3::SetScale (const \fBVector3\fP & vec)"
-Sets this matrix to perform a scaling translation equal to the x y and z values in a \fBVector3\fP\&. 
-.PP
-\fBParameters\fP
-.RS 4
-\fIvec\fP contains the values used in the scaling\&. 
-.br
- 
-.RE
-.PP
-
-.SS "void Matrix3::SetScale (const \fBVector4\fP & vec)"
-Sets this matrix to perform a scaling translation equal to the x y and z values in a \fBVector4\fP\&. 
-.PP
-\fBParameters\fP
-.RS 4
-\fIvec\fP contains the values used in the scaling\&. 
-.br
- 
 .RE
 .PP
 
 .SS "void Matrix3::SetScale (\fBF32\fP xVal, \fBF32\fP yVal)"
 Sets this matrix to perform a scaling transformation in 2D\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIxVal\fP is the amount to scale in the x axis\&. 
 .br
@@ -667,15 +589,31 @@ Sets this matrix to perform a scaling transformation in 2D\&.
 .SS "void Matrix3::SetScale (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 Sets this matrix to perform a scaling transformation in 3D\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIxVal\fP is the amount to scale in the x axis\&. 
 .br
 \fIyVal\fP is the amount to scale in the y axis\&. 
 .br
 \fIzVal\fP is the amount to scale in the z axis\&. 
-.br
- 
+.RE
+.PP
+
+.SS "void Matrix3::SetScale (const \fBVector3\fP & vec)"
+Sets this matrix to perform a scaling translation equal to the x y and z values in a \fBVector3\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP contains the values used in the scaling\&. 
+.RE
+.PP
+
+.SS "void Matrix3::SetScale (const \fBVector4\fP & vec)"
+Sets this matrix to perform a scaling translation equal to the x y and z values in a \fBVector4\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP contains the values used in the scaling\&. 
 .RE
 .PP
 

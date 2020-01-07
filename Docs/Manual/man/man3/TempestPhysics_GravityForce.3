@@ -1,4 +1,4 @@
-.TH "TempestPhysics::GravityForce" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.TH "TempestPhysics::GravityForce" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -48,57 +48,47 @@ Inherits \fBTempestPhysics::ForceGenerator\fP\&.
 .SH "Detailed Description"
 .PP 
 A physics \fBForceGenerator\fP for \fBRigidBody2D\fP and \fBRigidBody3D\fP objects which simulates Gravity\&. By default this is set to -y\&. It is based on the Cyclone engine design found in 'Game Physics Engine Development, second edition' by Ian Millington\&. 
-.br
- 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "GravityForce::GravityForce (const \fBTM::Vector4\fP & gravity)"
 Sets acceleration to KillerMath::Vector4 sent in\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIgravity\fP will be the value set for the acceleration\&. 
-.br
- 
 .RE
 .PP
 
 .SH "Member Function Documentation"
 .PP 
+.SS "void TempestPhysics::GravityForce::Set (\fBTM::Vector4\fP & gravity)\fC [inline]\fP"
+Changes the acceleration the force will cause on an object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgravity\fP is the new acceleration\&. 
+.RE
+.PP
+
 .SS "void TempestPhysics::GravityForce::Set (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)\fC [inline]\fP"
 Changes the acceleration the force will cause on an object\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIxVal\fP is the new acceration along the x axis; 
 .br
 \fIyVal\fP is the new acceration along the y axis; 
 .br
 \fIzVal\fP is the new acceration along the z axis; 
-.br
- 
-.RE
-.PP
-
-.SS "void TempestPhysics::GravityForce::Set (\fBTM::Vector4\fP & gravity)\fC [inline]\fP"
-Changes the acceleration the force will cause on an object\&. 
-.PP
-\fBParameters\fP
-.RS 4
-\fIgravity\fP is the new acceleration\&. 
-.br
- 
 .RE
 .PP
 
 .SS "void GravityForce::v_UpdateForce (p_RigidBody2D body)\fC [final]\fP, \fC [virtual]\fP"
 If body does not have infinite mass, the acceleration is added using KillerPhysics::RigidBody2D::AddForce\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIbody\fP is the pointer to the object that will have the acceleration added to it\&. 
-.br
- 
 .RE
 .PP
 
@@ -107,11 +97,9 @@ Implements \fBTempestPhysics::ForceGenerator\fP\&.
 .SS "void GravityForce::v_UpdateForce (p_RigidBody3D body)\fC [final]\fP, \fC [virtual]\fP"
 If body does not have infinite mass, the acceleration is added using KillerPhysics::RigidBody3D::AddForce\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIbody\fP is the pointer to the object that will have the acceleration added to it\&. 
-.br
- 
 .RE
 .PP
 

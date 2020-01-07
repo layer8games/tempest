@@ -1,4 +1,4 @@
-.TH "Tempest::ErrorManager" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.TH "Tempest::ErrorManager" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -14,9 +14,7 @@ Tempest::ErrorManager
 .ti -1c
 .RI "TEMPEST_API \fB~ErrorManager\fP (void)"
 .br
-.RI "Default destructor\&. No special actions taken 
-.br
- "
+.RI "Default destructor\&. No special actions taken\&. "
 .ti -1c
 .RI "TEMPEST_API void \fBSetError\fP (ErrorCode code, string message)"
 .br
@@ -33,9 +31,7 @@ Tempest::ErrorManager
 .ti -1c
 .RI "static TEMPEST_API shared_ptr< \fBErrorManager\fP > \fBInstance\fP (void)"
 .br
-.RI "Singlton function\&. Returns pointer to global \fBErrorManager\fP instance\&. 
-.br
- "
+.RI "Singlton function\&. Returns pointer to global \fBErrorManager\fP instance\&. "
 .in -1c
 .SS "Protected Member Functions"
 
@@ -43,9 +39,7 @@ Tempest::ErrorManager
 .ti -1c
 .RI "\fBErrorManager\fP (void)"
 .br
-.RI "Default constructor\&. No special actions are taken\&. Protected because this class follows the singleton pattern 
-.br
- "
+.RI "Default constructor\&. No special actions are taken\&. Protected because this class follows the singleton pattern\&. "
 .in -1c
 .SS "Private Member Functions"
 
@@ -85,14 +79,12 @@ Tempest::ErrorManager
 .SH "Detailed Description"
 .PP 
 A singleton class that will display any errors that can happen during the initialization of any of the components of the engine\&. It will be flushed out later to include more details\&. 
-.br
- 
 .SH "Member Function Documentation"
 .PP 
 .SS "bool ErrorManager::_MessageBox (string errorMessage, string errorCode)\fC [private]\fP"
 Helper functions\&. Displays the MessageBox, and returns true if Yes is clicked, false if No is clicked\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIerrorMessage\fP is the string that will display in the box\&. 
 .br
@@ -102,12 +94,10 @@ Helper functions\&. Displays the MessageBox, and returns true if Yes is clicked,
 
 .SS "bool ErrorManager::DisplayErrors (void)"
 Displays any errors that have been added to the manager\&. This function loops over all the errors that have been added and displayed them one by one\&. Messages are never removed once they are thrown\&. 
-.br
- 
 .SS "void Tempest::ErrorManager::SetConsoleOut (bool state)\fC [inline]\fP"
 Sets if errors should be displayed on the console as well as a MessageBox 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIstate\fP sets the new console state\&. True to pump errors to console 
 .RE
@@ -116,13 +106,11 @@ Sets if errors should be displayed on the console as well as a MessageBox
 .SS "void ErrorManager::SetError (ErrorCode code, string message)"
 Adds an error into the Manager's map of errors\&. Any number of message can be in the Manager\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIcode\fP ErrorCode: Displayed to hint where the error happened\&. 
 .br
 \fImessage\fP string: A string that will be displayed to the user giving additional details about the nature of the error\&. 
-.br
- 
 .RE
 .PP
 

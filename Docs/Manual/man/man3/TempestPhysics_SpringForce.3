@@ -1,4 +1,4 @@
-.TH "TempestPhysics::SpringForce" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.TH "TempestPhysics::SpringForce" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -71,7 +71,7 @@ A spring-like force that can be used with the Killer Engine\&. It uses Hooks law
 .SS "SpringForce::SpringForce (shared_ptr< \fBRigidBody2D\fP > otherEnd, \fBreal\fP springConstant, \fBreal\fP restLength)"
 Allows you to set up \fBSpringForce\fP in a single call\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIotherEnd\fP is the far end of the spring\&. 
 .br
@@ -88,7 +88,7 @@ Sets state to be bungie-like\&. This means that it will only produce pull forces
 .SS "void TempestPhysics::SpringForce::SetOtherEnd (shared_ptr< \fBRigidBody2D\fP > end)\fC [inline]\fP"
 Changes the location of the other end of the spring\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIend\fP is the new opposite end of the spring\&. 
 .RE
@@ -97,7 +97,7 @@ Changes the location of the other end of the spring\&.
 .SS "void TempestPhysics::SpringForce::SetRestLength (\fBreal\fP length)\fC [inline]\fP"
 Changes the length of the invisible spring\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIlength\fP is the new value for the rest length\&. 
 .RE
@@ -106,18 +106,16 @@ Changes the length of the invisible spring\&.
 .SS "void TempestPhysics::SpringForce::SetSpringConstant (\fBreal\fP constant)\fC [inline]\fP"
 Changes the 'striffness' of the spring\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIconstant\fP is the new value for the spring constant\&. 
-.br
- 
 .RE
 .PP
 
 .SS "void SpringForce::v_UpdateForce (shared_ptr< \fBRigidBody2D\fP > RigidBody2D)\fC [final]\fP"
 Calculate the length of the spring, then creates a force to pull the object towards the other end if it is far enough away\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fI\fBRigidBody2D\fP\fP is the object that will be acted on by the spring\&. 
 .RE
@@ -126,7 +124,7 @@ Calculate the length of the spring, then creates a force to pull the object towa
 .SS "void SpringForce::v_UpdateForce (shared_ptr< \fBRigidBody3D\fP > body)\fC [final]\fP"
 Calculate the length of the spring, then creates a force to pull the object towards the other end if it is far enough away\&. This has been implemented but not tested\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIbody\fP is the object that will be acted on by the spring\&. 
 .RE

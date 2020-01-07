@@ -143,11 +143,15 @@ namespace Tempest
 //
 //==========================================================================================================================
 //===== All Active =====
+/// Get the active state of the GameObject. Returns true if is active update and active render		
 		inline const bool GetActive(void) const
 		{
 			return _activeUpdate && _activeRender;
 		}
 
+/// Sets the active sate of the object. If either update or render is in active, v_Awake is called. Both update and rendering
+/// are set to active. 
+/// \param state is the new state, no default value.
 		inline void SetActive(bool state)
 		{
 			if(!_activeUpdate || !_activeRender)
@@ -159,6 +163,7 @@ namespace Tempest
 			_activeRender = state;
 		}
 
+/// Sets update and render to active and calls v_Awake		
 		inline void SetActive(void)
 		{
 			v_Awake();
@@ -166,6 +171,7 @@ namespace Tempest
 			_activeRender = true;
 		}
 
+/// Sets update and render to inactive.		
 		inline void SetInactive(void)
 		{
 			_activeUpdate = false;
@@ -173,71 +179,89 @@ namespace Tempest
 		}
 
 //===== Active Update =====		
+/// Returns true if update is active. 		
 		inline const bool GetActiveUpdate(void) const
 		{
 			return _activeUpdate;
 		}
 
+/// Set active update state. v_Awake is not called.
+/// \param state is the new state for update. 
 		inline void SetActiveUpdate(bool state)
 		{
 			_activeUpdate = state;
 		}
 
+/// Set update to active. v_Awake is not called.		
 		inline void SetActiveUpdate(void)
 		{
 			_activeUpdate = true;
 		}
 
+/// Set update to not active. 		
 		inline void SetInactiveUpdate(void)
 		{
 			_activeUpdate = false;
 		}
 
 //===== Active Render =====
+/// Returns true if render is active.		
 		inline const bool GetActiveRender(void) const
 		{
 			return _activeRender;
 		}
 
+/// Set a new state for render. v_Awake is not called.
+/// \param state is the new state for render.
 		inline void SetActiveRender(bool state)
 		{
 			_activeRender = state;
 		}
 
+/// Set render to active. v_Awake is not called.
 		inline void SetActiveRender(void)
 		{
 			_activeRender = true;
 		}
 
+/// Set render to not active.		
 		inline void SetInactiveRender(void)
 		{
 			_activeRender = false;
 		}
 
 //===== Is Sprite =====
+/// Returns true is the GameObject has had MakeSprite called, or is considered to be a sprite.		
 		inline bool IsSprite(void) const
 		{
 			return _isSprite;
 		}
 
 //===== ID =====
+/// Returns the ID for the GameObject.		
 		inline const U32 GetID(void) const
 		{
 			return _ID;
 		}
-
+	
 //===== Position =====
+/// Returns the current position of the GameObject in world space.		
 		inline const TM::Point& GetPosition(void) const
 		{
 			return _position;
 		}
 
+/// Set the position of the GameObject in world space. The bounding boxes center location is also updated.
+/// \param pos is the new position for the object and bounding box.
 		inline void SetPosition(const TM::Point& pos)
 		{
 			_position = pos;
 			_boundingBox.SetCenter(_position);
 		}
 
+/// Set the x and y values of the GameObject in world space. The bounding box center is updated. 
+/// \param xVal is the new x offset.
+/// \param yVal is the new y offset.
 		inline void SetPosition(F32 xVal, F32 yVal)
 		{
 			_position[0] = xVal;
@@ -245,6 +269,10 @@ namespace Tempest
 			_boundingBox.SetCenter(_position);
 		}
 
+/// Set the x, y and z values of the GameObject in world space. The bounding box center is updated. 
+/// \param xVal is the new x offset.
+/// \param yVal is the new y offset.
+/// \param zVal is the new z offset.
 		inline void SetPosition(F32 xVal, F32 yVal, F32 zVal)
 		{
 			_position[x] = xVal;
@@ -253,36 +281,51 @@ namespace Tempest
 			_boundingBox.SetCenter(_position);
 		}
 
+/// Set just the x value of the GameObject in world space. Bounding box center is updated.
+/// \param xval is the new x offset.
 		inline void SetPositionX(F32 xval)
 		{
 			_position[0] = xval;
 			_boundingBox.SetCenter(_position);
 		}
 
+/// Set just the y value of the GameObject in world space. Bounding box center is updated.
+/// \param yVal is the new y offset.		
 		inline void SetPositionY(F32 yVal)
 		{
 			_position[1] = yVal;
 			_boundingBox.SetCenter(_position);
 		}
 
+/// Set just the z value of the GameObject in world space. Bounding box center is updated.
+/// \param zVal is the new z offset.
 		inline void SetPositionZ(F32 zVal)
 		{
 			_position[2] = zVal;
 			_boundingBox.SetCenter(_position);
 		}
 
+/// Set the Position of the GameObject scaled by a factor. Vector4::AddScaledVector is called. Bounding Box is updated. 
+/// \param pos is the new position for the object.
+/// \param scale is the factor that the pos is scaled by.
 		inline void AddScaledPosition(const TM::Vector4& pos, F32 scale)
 		{
 			_position.AddScaledVector(pos, scale);
 			_boundingBox.SetCenter(_position);
 		}
 
+/// Set the Position of the GameObject scaled by a factor. Vector3::AddScaledVector is called. Bounding Box is updated. 
+/// \param pos is the new position for the object.
+/// \param scale is the factor that the pos is scaled by.
 		inline void AddScaledPosition(const TM::Vector3& pos, F32 scale)
 		{
 			_position.AddScaledVector(pos, scale);
 			_boundingBox.SetCenter(_position);
 		}
 
+/// Set the Position of the GameObject scaled by a factor. Point::AddScaledVector is called. Bounding Box is updated. 
+/// \param pos is the new position for the object.
+/// \param scale is the factor that the pos is scaled by.		
 		inline void AddScaledPosition(const TM::Point& point, F32 scale)
 		{
 			_position.AddScaledPoint(point, scale);
@@ -290,23 +333,30 @@ namespace Tempest
 		}
 
 //===== Scale =====
+/// Return the current scale factor for the GameObject.		
 		inline const TM::Vector3& GetScale(void) const
 		{
 			return _scale;
 		}
 
+/// Sets a new scale factor for the GameObject. Bounding Box is updated.
+/// \param scale is set as the new scale. No matrix is updated.
 		inline void SetScale(const TM::Vector3& scale)
 		{
 			_scale = scale;
 			_boundingBox.SetHalfDimensions(_scale);
 		}
 
+/// Set all values of the scale to a single value. Bounding Box is updated.
 		inline void SetScale(F32 val)
 		{
 			_scale = val;
 			_boundingBox.SetHalfDimensions(_scale);
 		}
 
+/// Set x and y scale factors. Bounding Box is updated. 
+/// \pararm xVal is the new scale factor on the x axis.
+/// \pararm yVal is the new scale factor on the y axis.
 		inline void SetScale(F32 xVal, F32 yVal)
 		{
 			_scale[0] = xVal;
@@ -314,6 +364,10 @@ namespace Tempest
 			_boundingBox.SetHalfDimensions(_scale);
 		}
 
+/// Set x, y and z scale factors. Bounding Box is updated. 
+/// \pararm xVal is the new scale factor on the x axis.
+/// \pararm yVal is the new scale factor on the y axis.
+/// \pararm zVal is the new scale factor on the z axis.
 		inline void SetScale(F32 xVal, F32 yVal, F32 zVal)
 		{
 			_scale[0] = xVal;

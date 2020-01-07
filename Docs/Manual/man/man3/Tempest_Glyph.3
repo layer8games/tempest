@@ -1,4 +1,4 @@
-.TH "Tempest::Glyph" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.TH "Tempest::Glyph" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -67,31 +67,29 @@ Inherits \fBTempest::GameObject\fP\&.
 .SH "Detailed Description"
 .PP 
 A sprite based UI character to be rendered at run time\&. It gets its data from a \fBFont\fP, which informs it of its size and its texture\&. 
-.br
- 
 .SH "Member Function Documentation"
 .PP 
-.SS "void Tempest::Glyph::SetCharacter (char character, const \fBCharacterData\fP & characterData)\fC [inline]\fP"
-Partial set up of the \fBGlyph\fP \fBCharacterData\fP\&. 
-.PP
-\fBParameters\fP
-.RS 4
-\fIcharacter\fP is the raw character this \fBGlyph\fP is\&. 
-.br
-\fIcharacterData\fP comes from the \fBFont\fP and stores various data the character needs\&. 
-.RE
-.PP
-
 .SS "void Tempest::Glyph::SetCharacter (char character, shared_ptr< \fBTexture\fP > tex, const \fBCharacterData\fP & characterData)\fC [inline]\fP"
 Sets up the \fBCharacterData\fP that the \fBGlyph\fP will represent\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIcharacter\fP is the raw character this \fBGlyph\fP is\&. 
 .br
 \fItex\fP is the \fBTexture\fP from the \fBFont\fP used to draw the character \fBGlyph\fP\&. 
 .br
 \fIcharacterData\fP comes from the \fBFont\fP and stores various data the character need\&. 
+.RE
+.PP
+
+.SS "void Tempest::Glyph::SetCharacter (char character, const \fBCharacterData\fP & characterData)\fC [inline]\fP"
+Partial set up of the \fBGlyph\fP \fBCharacterData\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcharacter\fP is the raw character this \fBGlyph\fP is\&. 
+.br
+\fIcharacterData\fP comes from the \fBFont\fP and stores various data the character needs\&. 
 .RE
 .PP
 

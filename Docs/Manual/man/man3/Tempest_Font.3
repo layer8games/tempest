@@ -1,4 +1,4 @@
-.TH "Tempest::Font" 3 "Mon Dec 9 2019" "Tempest" \" -*- nroff -*-
+.TH "Tempest::Font" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -65,9 +65,7 @@ Tempest::Font \- CreateCharacter is a CharSprite Factory\&. This may be importan
 .ti -1c
 .RI "const string \fBGetName\fP (void) const"
 .br
-.RI "Returns the current name of the font\&. Not used in any major way\&. 
-.br
- "
+.RI "Returns the current name of the font\&. Not used in any major way\&. "
 .ti -1c
 .RI "CharacterDataMap \fBGetAllCharacterGlyphs\fP (void) const"
 .br
@@ -109,7 +107,7 @@ The \fBFont\fP class is used to open a \&.fnt file, extract the needed character
 .SS "Font::Font (const \fBFont\fP & f)"
 Copy Constructor\&. Calls GetTextureID(), GetFile() and \fBGetName()\fP\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIf\fP \fBFont\fP&: \fBFont\fP to be copied\&. 
 .RE
@@ -118,7 +116,7 @@ Copy Constructor\&. Calls GetTextureID(), GetFile() and \fBGetName()\fP\&.
 .SS "Font::Font (const \fBFont\fP * f)"
 Copy Constructor\&. Calls GetTextureID(), GetFile() and \fBGetName()\fP\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIf\fP Font*: \fBFont\fP to be copied\&. 
 .RE
@@ -128,23 +126,19 @@ Copy Constructor\&. Calls GetTextureID(), GetFile() and \fBGetName()\fP\&.
 .PP 
 .SS "CharacterDataMap Tempest::Font::GetAllCharacterGlyphs (void) const\fC [inline]\fP"
 Returns the map containing all data for all characters found in the loaded font\&. The ID of each character is found in the \&.fnt file and is the ASCII int value of a char 
-.br
- 
 .SS "\fBCharacterData\fP Tempest::Font::GetCharacterData (char c)\fC [inline]\fP"
 Returns data for a single character\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIc\fP is the desired data character\&. 
-.br
- 
 .RE
 .PP
 
 .SS "void Font::Init (string fontName, string filePath, \fBU32\fP fontSize)"
 Initializes the \fBFont\fP based on the file path and size\&. This holds most of the FreeType code that creates everything that is needed for the font\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIfontName\fP is the name of the font\&. 
 .br
@@ -157,18 +151,16 @@ Initializes the \fBFont\fP based on the file path and size\&. This holds most of
 .SS "void Tempest::Font::SetName (string fontName)\fC [inline]\fP"
 Set's the name of font\&. Not used actively in any major way\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fIfontName\fP string: New name of the font\&. 
-.br
- 
 .RE
 .PP
 
 .SS "void Tempest::Font::SetNumCharacters (\fBS32\fP num)\fC [inline]\fP"
 Sets the number of characters that the font contains\&. 
 .PP
-\fBParameters\fP
+\fBParameters:\fP
 .RS 4
 \fInum\fP is the number of characters\&. Set 128 for ACCII, 256 for UTF8 
 .RE
