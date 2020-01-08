@@ -377,16 +377,21 @@ namespace Tempest
 		}
 
 //===== Orientation =====
+/// Returns the current orientation of the GameObject		
 		inline const TM::Quaternion& GetOrientation(void) const
 		{
 			return _orientation;
 		}
 
+/// Set a new orientation for the GameObject.
+/// \param q is the new orienation.
 		inline void SetOrientation(const TM::Quaternion& q)
 		{
 			_orientation = q;
 		}
 
+/// Set the orienation of the GameObject to a single value
+/// \pararm val is the value all 4 components of the orientation will be set to.
 		inline void SetOrientation(F32 val)
 		{
 			_orientation[0] = val;
@@ -395,6 +400,11 @@ namespace Tempest
 			_orientation[3] = val;
 		}
 
+/// Set the orientation of the GameObject without having to create a Quaternion
+/// \param wVal sets the w component.
+/// \param xVal sets the x component.
+/// \param yVal sets the y component.
+/// \param zVal sets the z component.
 		inline void SetOrientation(F32 wVal, F32 xVal, F32 yVal, F32 zVal)
 		{
 			_orientation[0] = wVal;
@@ -403,22 +413,32 @@ namespace Tempest
 			_orientation[3] = zVal;
 		}
 
+/// Update to orientation by a Vector4 value scaled. This called Quaternion::AddScaledVector
+/// \param vec is a converted value to scale the orientation by. 
+/// \param scale is the value to scale the orientation by.
 		inline void AddScaledOrientation(const TM::Vector4 vec, F32 scale)
 		{
 			_orientation.AddScaledVector(vec, scale);
 		}
 
+/// Changes the length of the orientation to be 1.0. Calls Quaternion::Normalize.
 		inline void NormalizeOrientation(void)
 		{
 			_orientation.Normalize();
 		}
 
 //===== Color =====		
+/// Change the color of the GameObject.
+/// \param col is the new color.
 		inline void SetColor(const Color& col)
 		{
 			_color = col;
 		}
 
+/// Change the color of the GameObject without having to create a Color object. Alpha is ommited.
+/// \param red is the value of red in the color, should range from 0.0f to 1.0f.
+/// \param green is the value of green in the color, should range from 0.0f to 1.0f.
+/// \param blue is the value of blue in the color, should range from 0.0f to 1.0f.
 		inline void SetColor(F32 red, F32 green, F32 blue)
 		{
 			_color[0] = red;
@@ -426,108 +446,139 @@ namespace Tempest
 			_color[2] = blue;
 		}
 
-		inline void SetColor(F32 val)
-		{
-			_color[0] = val;
-			_color[1] = val;
-			_color[2] = val;
-		}
-
+/// Return the color of the GameObject		
 		inline const Color& GetColor(void) const
 		{
 			return _color;
 		}
 
 //===== AABB Bounding Volume =====
+/// Helper wrapper for AABB::TestCollission. This checks if the Bounding Box of another GameObject is overlapping this GameObject.
+/// Returns true if the bounding boxes overlap.
+/// \param other is the GameObject to test against.
 		inline bool OverlapCheck(const shared_ptr<GameObject> other)
 		{
 			return _boundingBox.TestCollision(other->GetBounding());
 		}
 
+/// Return the bounding boxe of this GameObject.		
 		inline const TC::AABB& GetBounding(void) const
 		{
 			return _boundingBox;
 		}
 
 //===== Texture =====
+/// Change the texture of the GameObject. 
+/// \param texture is the new texture for the GameObject.
 		inline void SetTexture(shared_ptr<Texture> texture)
 		{
 			_texture = texture;
 		}
 
+/// Return the current texture pointer for the GameObject.		
 		inline shared_ptr<Texture> GetTexture(void) const
 		{
 			return _texture;
 		}
 
+/// Helper wrapper to call Texture::Bind on the texture that is saved on this GameObject.		
 		inline void BindTexture(bool state=true)
 		{
 			_texture->Bind(state);
 		}
 
 //===== Shader =====
+/// Returns the current shader for this GameObject.		
 		inline const shared_ptr<Shader> GetShader(void) const
 		{
 			return _shader;
 		}
 
+/// Change the shader for this GameObject.		
 		inline void SetShader(const shared_ptr<Shader> shader)
 		{
 			_shader = shader;
 		}
 
+/// Helper wrapper, calls Shader::LoadShader to initialize the Shader on this GameObject.
+/// \param shaderData is an array of programs to be compiled and added to the Shader.
 		inline void LoadShader(std::vector<ShaderData> shaderData)
 		{
 			_shader->LoadShader(shaderData);
 		}
 
+/// Helper wrapper, calls Shader::Use to set the current shader as active for OpenGL		
 		inline void UseShader(bool state=true)
 		{
 			_shader->Use(state);
 		}
 
+/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
+/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
+/// \param val is the float to be passed into the uniform.
 		inline void SetUniform(string name, const F32 val)
 		{
 			_shader->Use();
 			_shader->SetUniform(name.c_str(), val);
 		}
 
+/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
+/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
+/// \param vec is the Vector4 to be passed into the uniform
 		inline void SetUniform(string name, const TM::Vector4& vec)
 		{
 			_shader->Use();
 			_shader->SetUniform(name.c_str(), vec);
 		}
 
+/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
+/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
+/// \param vec is the Vector3 to be passed into the uniform.
 		inline void SetUniform(string name, const TM::Vector3& vec)
 		{
 			_shader->Use();
 			_shader->SetUniform(name.c_str(), vec);
 		}
 
+/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
+/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
+/// \param point is passed as a Vector4 into the uniform.
 		inline void SetUniform(string name, const TM::Point& point)
 		{
 			_shader->Use();
 			_shader->SetUniform(name.c_str(), point);
 		}
 
+/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
+/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
+/// \param mat is passed into the uniform as a Matrix4
 		inline void SetUniform(string name, const TM::Matrix4& mat)
 		{
 			_shader->Use();
 			_shader->SetUniform(name.c_str(), mat);
 		}
 
+/// Helper wrapper, calls Shader::Use and Shader::SetUniformSampler
+/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
+/// \param texSlot is used to look up the needed sampler in the shader.
 		inline void SetUniformSampler(string name, S32 texSlot)
 		{
 			_shader->Use();
 			_shader->SetUniformSampler(name.c_str(), texSlot);
 		}
 
+/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
+/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
+/// \param col is passed into the uniform as a color4.
 		inline void SetUniform(string name, const Color& col)
 		{
 			_shader->Use();
 			_shader->SetUniform(name.c_str(), col);
 		}
 
+/// Helper wrapper, calls Shader::Use and Shader::SetUniformVec3. 
+/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
+/// \param col is passed into the shader, to be used as a color3
 		inline void SetUniformVec3(string name, const Color& col)
 		{
 			_shader->Use();
@@ -535,49 +586,63 @@ namespace Tempest
 		}
 
 //===== NumVertices =====
+/// Return the number of vertices this GameObjects mesh has.		
 		inline U32 GetNumVertices(void)
 		{
 			return _vertices.size();
 		}
 
 //===== Vertex =====
+/// Manually add a single vertex to the GameObjects mesh.
+/// \param vert is the vertice to manually add.
 		inline void AddVertex(const Vertex&  vert)
 		{
 			_vertices.push_back(vert);
 		}
 
+/// Set the vertices previously created for the GameObject.
+/// \param vertices is an array of vertices that will act as the mesh for the GameObject.
 		inline void SetVertices(std::vector<Vertex> vertices)
 		{
 			_vertices = vertices;
 		}
 
+/// Return the mesh of vertices the GameObject has.		
 		inline std::vector<Vertex> GetVertices(void) const
 		{
 			return _vertices;
 		}
 
 //===== Indices =====		
+/// Manually add a single index for the mesh, used for rendering
+/// \param index is added.
 		inline void AddIndex(U32 index)
 		{
 			_indices.push_back(index);
 		}
 
+/// Set indices to be used in rendering. These are used as an optimization in rendering.
+/// \param indices is an array of indices to be added.
 		inline void SetIndices(std::vector<U32> indices)
 		{
 			_indices = indices;
 		}
 
+/// Return the array of indices used for the GameObject.		
 		inline std::vector<U32> GetIndices(void) const
 		{
 			return _indices;
 		}
 
 //===== VAO =====
+/// Return the currently used Vertex Array Object for the GameObject. Used for rendering by OpenGL		
 		inline GLuint GetVAO(void) const
 		{
 			return _vao;
 		}
 
+/// The Vertex Array Object needs to be bound before OpenGL can render this object. This is what sets the vertices for
+/// this object on the video card. This is part of the magic.
 		inline void BindVAO(bool state=true)
 		{
 			if(state) 
@@ -591,6 +656,9 @@ namespace Tempest
 		}
 
 //===== VBO =====
+/// Bind the Vertex Buffer Object. This is needed before the vertices can be added to the buffer.
+/// \param buffer contains the data to be sent into the buffer.
+/// \param state is an optional value. This is currently unused.
 		void BindVBO(BufferData buffer, bool state=true);
 
 //===== Uv List =====
