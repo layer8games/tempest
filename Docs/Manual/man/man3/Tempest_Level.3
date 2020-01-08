@@ -1,4 +1,4 @@
-.TH "Tempest::Level" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
+.TH "Tempest::Level" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -280,7 +280,7 @@ Returns \fBGameObject\fP with ID\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIid\fP is the ID of the object to get\&. Should coorespond to GameObject::_ID\&. 
+\fIid\fP is the ID of the object to get\&. Should coorespond to \fBGameObject::_ID\fP\&. 
 .RE
 .PP
 
@@ -305,7 +305,7 @@ Removes the \fBGameObject\fP with id from the \fBLevel\fP\&.
 .PP
 
 .SS "void Level::RemoveTextFromLevel (const \fBText\fP & text)"
-Removes the Glyphs in a \fBText\fP from the \fBLevel\fP based on their GameObject::_ID 
+Removes the Glyphs in a \fBText\fP from the \fBLevel\fP based on their \fBGameObject::_ID\fP 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -377,7 +377,7 @@ Set the left bounds\&.
 .PP
 
 .SS "template<class T > void Tempest::Level::SetObjectUniforms (string name, const T & type)\fC [inline]\fP"
-Loops over all GameObjects and KillerPhysics::RigidBody2D that have bee added to the level and calls GameObject::SetUniform for the type that is passed in\&. This is a template function\&. 
+Loops over all GameObjects and KillerPhysics::RigidBody2D that have bee added to the level and calls \fBGameObject::SetUniform\fP for the type that is passed in\&. This is a template function\&. 
 .PP
 \fBParameters:\fP
 .RS 4

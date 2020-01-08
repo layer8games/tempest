@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['defaultawake',['DefaultAwake',['../class_tempest_1_1_game_object.html#aedee98f1793d131f52cf02b98735539a',1,'Tempest::GameObject']]],
   ['degree',['DEGREE',['../_atom_8h.html#ae302d253ab1b2c8dc0f0f95f75f67fc1',1,'Atom.h']]],
   ['deltatime',['DeltaTime',['../class_tempest_math_1_1_timer.html#a730de1b89a111e053921a1384615b792',1,'TempestMath::Timer']]],
   ['determinate',['Determinate',['../class_tempest_math_1_1_matrix3.html#a1a9dae063b0a9668cb66b20d270c86ae',1,'TempestMath::Matrix3::Determinate()'],['../class_tempest_math_1_1_matrix4.html#ad34fa56ecdbca73c2b36bd45496b9a2e',1,'TempestMath::Matrix4::Determinate()']]],

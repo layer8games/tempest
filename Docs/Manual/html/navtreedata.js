@@ -32,7 +32,7 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
+        [ "Variables", "functions_vars.html", "functions_vars" ],
         [ "Typedefs", "functions_type.html", null ]
       ] ]
     ] ],
@@ -54,11 +54,11 @@ var NAVTREEINDEX =
 ".html",
 "class_tempest_1_1_audio_manager.html#a7972dd33a42e7c176b2cbfb6ac7b87fc",
 "class_tempest_1_1_game_object.html#a345d664cd90c22267919f12454ecc627",
-"class_tempest_1_1_menu.html#adf9c2c8259e51049fcf865c3b604ce0c",
-"class_tempest_math_1_1_matrix4.html#a8e6a720713f26926d358680832b2ea6a",
-"class_tempest_math_1_1_vector4.html#ab4927a758db742daf121112196b1ec16",
-"classrapidxml_1_1xml__base.html#aa807062868d671a8c798d9d1bf016988",
-"struct_tempest_1_1_tex_coord.html#a1edbf2b0c0e477fb388129a9be07e55f"
+"class_tempest_1_1_menu.html#ae36a074859aac82997e0ceb0cfceed78",
+"class_tempest_math_1_1_matrix4.html#a902e3d66dad3a383e3b2779ba3fd6fd6",
+"class_tempest_math_1_1_vector4.html#abaa555cf52bc1b878203147852b75a78",
+"classrapidxml_1_1xml__base.html#ae55060ae958c6e6465d6c8db852ec6ce",
+"struct_tempest_1_1_character_data.html#a4bdf21413243afebe21d038f5f8e52c0"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

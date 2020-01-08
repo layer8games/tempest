@@ -108,6 +108,12 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>_activeLevelID
 : <a class="el" href="class_tempest_1_1_level_manager.html#aca90948fe5cf55666d785b16165b037d">Tempest::LevelManager</a>
 </li>
+<li>_activeRender
+: <a class="el" href="class_tempest_1_1_game_object.html#a73eedbab240610521848f02333fbce58">Tempest::GameObject</a>
+</li>
+<li>_activeUpdate
+: <a class="el" href="class_tempest_1_1_game_object.html#a38f347654a2ab10a54347c0e40b58ef1">Tempest::GameObject</a>
+</li>
 <li>_anchor
 : <a class="el" href="class_tempest_physics_1_1_anchored_spring.html#aaa4560c5e20478466cb5d0dbb9b7adaa">TempestPhysics::AnchoredSpring</a>
 </li>
@@ -132,8 +138,14 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>_bottomBorder
 : <a class="el" href="class_tempest_1_1_level.html#ab6d5232b0fc33f4ce1977dffeae1960c">Tempest::Level</a>
 </li>
+<li>_boundingBox
+: <a class="el" href="class_tempest_1_1_game_object.html#ac727fa18f655246637f23170a94aae54">Tempest::GameObject</a>
+</li>
 <li>_bufferID
 : <a class="el" href="class_tempest_1_1_audio_clip.html#add1f7fc4bc0c3afda8f7e6d1c2720981">Tempest::AudioClip</a>
+</li>
+<li>_CalculateCachedData()
+: <a class="el" href="class_tempest_1_1_game_object.html#a0c4b0a025c4d6630095673379d88d8c9">Tempest::GameObject</a>
 </li>
 <li>_camera
 : <a class="el" href="class_tempest_1_1_level.html#ae61be5bdf02f33980fa5716bf2a0cdb1">Tempest::Level</a>
@@ -171,7 +183,8 @@ $(document).ready(function(){initNavTree('functions.html','');});
 , <a class="el" href="class_tempest_math_1_1_matrix4.html#a841162ca74976b11d4002ab137aba308">TempestMath::Matrix4</a>
 </li>
 <li>_color
-: <a class="el" href="class_tempest_1_1_text.html#acd60dda34f94d5f0c92938afde5bbcbe">Tempest::Text</a>
+: <a class="el" href="class_tempest_1_1_game_object.html#ab6d9877ae90e8dc1a9f6f1167ffb2223">Tempest::GameObject</a>
+, <a class="el" href="class_tempest_1_1_text.html#acd60dda34f94d5f0c92938afde5bbcbe">Tempest::Text</a>
 </li>
 <li>_consoleOut
 : <a class="el" href="class_tempest_1_1_error_manager.html#aeb37b97ce1277a52badab08ae84eb57e">Tempest::ErrorManager</a>
@@ -295,7 +308,11 @@ $(document).ready(function(){initNavTree('functions.html','');});
 , <a class="el" href="class_tempest_1_1_texture.html#a6a5a3dbaf44d5b38277212924d9e79d7">Tempest::Texture</a>
 </li>
 <li>_ID
-: <a class="el" href="class_tempest_1_1_level.html#a50e7803822de173ebe98bcf3f7b1d76d">Tempest::Level</a>
+: <a class="el" href="class_tempest_1_1_game_object.html#a8c64de45bfcf36014d062e108cebc434">Tempest::GameObject</a>
+, <a class="el" href="class_tempest_1_1_level.html#a50e7803822de173ebe98bcf3f7b1d76d">Tempest::Level</a>
+</li>
+<li>_indices
+: <a class="el" href="class_tempest_1_1_game_object.html#a9594d7c64f9cb9f556b0faae5452c745">Tempest::GameObject</a>
 </li>
 <li>_initialized
 : <a class="el" href="class_tempest_1_1_font.html#aa765d8ab86aadf1a334a20bfe676f0d1">Tempest::Font</a>
@@ -325,6 +342,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>_isFullScreen
 : <a class="el" href="class_killer_engine_1_1_win_program.html#aaacad996e56859ec2b79b77ad765b2e8">KillerEngine::WinProgram</a>
 , <a class="el" href="class_tempest_1_1_game_window.html#a67e67c04ed3dc7facf290a4413e66fb1">Tempest::GameWindow</a>
+</li>
+<li>_isSprite
+: <a class="el" href="class_tempest_1_1_game_object.html#ac8b87eda85bdd10f011b8e3fb871e39e">Tempest::GameObject</a>
 </li>
 <li>_itemList
 : <a class="el" href="class_tempest_1_1_menu.html#a93e6c2ab2d71fd87aec441d8ab84d386">Tempest::Menu</a>
@@ -393,6 +413,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>_minRadius
 : <a class="el" href="class_tempest_1_1_orbit_camera.html#a41766263470a52f8fbc0ad11ec0ec862">Tempest::OrbitCamera</a>
 </li>
+<li>_modelTOWorldCache
+: <a class="el" href="class_tempest_1_1_game_object.html#a3c1ab8b77e2cc3430baf0faf88b10c3f">Tempest::GameObject</a>
+</li>
 <li>_mouseSensitivity
 : <a class="el" href="class_tempest_1_1_camera.html#a30edebea5fe926dc44f60c9428a03096">Tempest::Camera</a>
 </li>
@@ -401,6 +424,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </li>
 <li>_nearBorder
 : <a class="el" href="class_tempest_1_1_level.html#a23ed3e361b0a80dfba60b3b7ee29c57f">Tempest::Level</a>
+</li>
+<li>_nextID
+: <a class="el" href="class_tempest_1_1_game_object.html#a54bb956549b9d09cd2a9fbd6acd55b87">Tempest::GameObject</a>
 </li>
 <li>_numCharacters
 : <a class="el" href="class_tempest_1_1_font.html#a1ddd96fa167cfd34f41a716b1a5b2dd1">Tempest::Font</a>
@@ -419,6 +445,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </li>
 <li>_orientation
 : <a class="el" href="class_tempest_1_1_audio_listener.html#adf0c94bbcd1c23dec38bd40bc4d98473">Tempest::AudioListener</a>
+, <a class="el" href="class_tempest_1_1_game_object.html#aa89f36ed4e926b99a2162a83dfe227fe">Tempest::GameObject</a>
 </li>
 <li>_otherEnd
 : <a class="el" href="class_tempest_physics_1_1_spring_force.html#a844dbb6f4db80615f97dfd80fce1c48e">TempestPhysics::SpringForce</a>
@@ -446,6 +473,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="class_tempest_1_1_audio_listener.html#a24d4835f1e6f505e954b98be65f94e6f">Tempest::AudioListener</a>
 , <a class="el" href="class_tempest_1_1_audio_source.html#a0b839aed40e210d5d290b0c269798db5">Tempest::AudioSource</a>
 , <a class="el" href="class_tempest_1_1_camera.html#a937ebff585d25b9a32ec70fafb330e10">Tempest::Camera</a>
+, <a class="el" href="class_tempest_1_1_game_object.html#a53c061310220a44d35273815e1e11dae">Tempest::GameObject</a>
 </li>
 <li>_projection
 : <a class="el" href="class_tempest_1_1_camera.html#a46c610f4ab2e289ecf805aa36439c33d">Tempest::Camera</a>
@@ -479,7 +507,8 @@ $(document).ready(function(){initNavTree('functions.html','');});
 , <a class="el" href="class_tempest_1_1_game_window.html#af0d99f02bd5e5092e19938a00d244871">Tempest::GameWindow</a>
 </li>
 <li>_scale
-: <a class="el" href="class_tempest_1_1_text.html#aef888eb9ed6220e83982c35291256e05">Tempest::Text</a>
+: <a class="el" href="class_tempest_1_1_game_object.html#a718e7d3c7609d93816b5a07861a91c9e">Tempest::GameObject</a>
+, <a class="el" href="class_tempest_1_1_text.html#aef888eb9ed6220e83982c35291256e05">Tempest::Text</a>
 </li>
 <li>_selector
 : <a class="el" href="class_tempest_1_1_menu.html#a337f4d43528bcfc52b3316a21a8af912">Tempest::Menu</a>
@@ -490,6 +519,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>_selectorPosIndex
 : <a class="el" href="class_tempest_1_1_menu.html#a48b1011a95814c67a3734dc1c40e99d5">Tempest::Menu</a>
 </li>
+<li>_shader
+: <a class="el" href="class_tempest_1_1_game_object.html#a748e5a9200ddadac3f73d52ce43ca734">Tempest::GameObject</a>
+</li>
 <li>_shaderProgram
 : <a class="el" href="class_tempest_1_1_shader.html#af026f59d14b7f3ccfb0af166db7d5681">Tempest::Shader</a>
 </li>
@@ -498,6 +530,15 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </li>
 <li>_sources
 : <a class="el" href="class_tempest_1_1_audio_manager.html#aa599268348f7454ad4ff330ad8a9f0d2">Tempest::AudioManager</a>
+</li>
+<li>_SplitF32()
+: <a class="el" href="class_tempest_1_1_game_object.html#a1a2be0fd6a48a76903377592ded79426">Tempest::GameObject</a>
+</li>
+<li>_SplitString()
+: <a class="el" href="class_tempest_1_1_game_object.html#a20fab8ada3c036ad018991dbfd432dca">Tempest::GameObject</a>
+</li>
+<li>_SplitU32()
+: <a class="el" href="class_tempest_1_1_game_object.html#ac0478e08baf66966d9aa2426de4b76f6">Tempest::GameObject</a>
 </li>
 <li>_springConstant
 : <a class="el" href="class_tempest_physics_1_1_anchored_spring.html#aef75348696348c239067541aac574e92">TempestPhysics::AnchoredSpring</a>
@@ -508,6 +549,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </li>
 <li>_text
 : <a class="el" href="class_tempest_1_1_text.html#ae70cb584579328e023c9230562c385f3">Tempest::Text</a>
+</li>
+<li>_texture
+: <a class="el" href="class_tempest_1_1_game_object.html#a36c6bac3daf828b43b42e19f32bb17c4">Tempest::GameObject</a>
 </li>
 <li>_timeScale
 : <a class="el" href="class_tempest_math_1_1_timer.html#af63e05b2a5f1f5bf0bd3ee710a3c0963">TempestMath::Timer</a>
@@ -558,6 +602,9 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <li>_UpdateScales()
 : <a class="el" href="class_tempest_1_1_text.html#acdd8b848d882d3d6629cbe4b85fe2fe5">Tempest::Text</a>
 </li>
+<li>_uvList
+: <a class="el" href="class_tempest_1_1_game_object.html#a9d93b410673c98c7b77a48c590c19b87">Tempest::GameObject</a>
+</li>
 <li>_v_UpdateCameraVector4s()
 : <a class="el" href="class_tempest_1_1_f_p_s_camera.html#a3c626985bb921b0865b3caabbacf9555">Tempest::FPSCamera</a>
 </li>
@@ -565,10 +612,19 @@ $(document).ready(function(){initNavTree('functions.html','');});
 : <a class="el" href="class_tempest_1_1_camera.html#a26b42cd1a250b4bdcd1c615e2f8ff399">Tempest::Camera</a>
 , <a class="el" href="class_tempest_1_1_orbit_camera.html#a95617370d63daa1108698ac6aa4348b2">Tempest::OrbitCamera</a>
 </li>
+<li>_vao
+: <a class="el" href="class_tempest_1_1_game_object.html#a533ae75f1d49a7b06fb4fd8e35d5b610">Tempest::GameObject</a>
+</li>
+<li>_vbo
+: <a class="el" href="class_tempest_1_1_game_object.html#ad2834c793c85b633abbf15f2ad19f67e">Tempest::GameObject</a>
+</li>
 <li>_velocity
 : <a class="el" href="class_tempest_1_1_audio_listener.html#ad76fb6bbed78960e4ca7f523511aa850">Tempest::AudioListener</a>
 , <a class="el" href="class_tempest_1_1_audio_source.html#a687be04e45267a4bb1edbfafb4fd0e16">Tempest::AudioSource</a>
 , <a class="el" href="class_tempest_physics_1_1_rigid_body2_d.html#aea6cf378beff61fe76b2be248124b2cc">TempestPhysics::RigidBody2D</a>
+</li>
+<li>_vertices
+: <a class="el" href="class_tempest_1_1_game_object.html#a9a70642095e7ec4ed49ad8ee269fe08b">Tempest::GameObject</a>
 </li>
 <li>_width
 : <a class="el" href="class_tempest_1_1_level.html#abb2aaf9ad8ebf9e68a0594e0f35ff56f">Tempest::Level</a>

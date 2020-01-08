@@ -7,7 +7,7 @@ var searchData=
   ['loadclip',['LoadClip',['../class_tempest_1_1_audio_manager.html#ad976cd7e2d69131f2e4b1e38ac696ffa',1,'Tempest::AudioManager']]],
   ['loadmesh',['LoadMesh',['../class_tempest_1_1_game_object.html#ae5121da4943d5f5291b96ad0b5785f89',1,'Tempest::GameObject']]],
   ['loadobj',['LoadOBJ',['../class_tempest_1_1_game_object.html#ad8455051e936a61f8beba250bbecc075',1,'Tempest::GameObject']]],
-  ['loadshader',['LoadShader',['../class_tempest_1_1_shader.html#a26dbf318c788cd33b2ce2f76e1ed6f74',1,'Tempest::Shader::LoadShader()'],['../class_tempest_1_1_shader_manager.html#a949fedc5317c8671b9c475b0f74bf1e9',1,'Tempest::ShaderManager::LoadShader()']]],
+  ['loadshader',['LoadShader',['../class_tempest_1_1_game_object.html#a2ff32dc18d36be329ed8c3272df8c001',1,'Tempest::GameObject::LoadShader()'],['../class_tempest_1_1_shader.html#a26dbf318c788cd33b2ce2f76e1ed6f74',1,'Tempest::Shader::LoadShader()'],['../class_tempest_1_1_shader_manager.html#a949fedc5317c8671b9c475b0f74bf1e9',1,'Tempest::ShaderManager::LoadShader()']]],
   ['loadsource',['LoadSource',['../class_tempest_1_1_audio_manager.html#ad6b2becda09308c7c0a91859f07d7872',1,'Tempest::AudioManager']]],
   ['loadtexture',['LoadTexture',['../class_tempest_1_1_texture.html#ad1d24b557afbfd47d7b4618b69c7fae4',1,'Tempest::Texture::LoadTexture()'],['../class_tempest_1_1_texture_manager.html#aced0a64e4016931052cb48ea6bd93ae0',1,'Tempest::TextureManager::LoadTexture()']]],
   ['loadwav2',['LoadWAV2',['../class_tempest_1_1_audio_clip.html#ad0faf0b8d6178a799c152ea420d5df52',1,'Tempest::AudioClip']]],

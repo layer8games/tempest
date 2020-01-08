@@ -17,5 +17,6 @@ var searchData=
   ['node_5fpi',['node_pi',['../rapidxml_8hpp.html#abb456db38f7efb746c4330eed6072a7caeb73b472e77347b9aa89525f16493b87',1,'rapidxml']]],
   ['node_5ftype',['node_type',['../rapidxml_8hpp.html#abb456db38f7efb746c4330eed6072a7c',1,'rapidxml']]],
   ['normal',['normal',['../struct_tempest_1_1_vertex.html#a1fa271adb9b053315c25df1182c6a5dd',1,'Tempest::Vertex']]],
-  ['normalize',['Normalize',['../class_tempest_math_1_1_point.html#a000bb568e842866a54c74926d60e898b',1,'TempestMath::Point::Normalize()'],['../class_tempest_math_1_1_quaternion.html#a4499cb212b359d1590f8cc97ab0cbd24',1,'TempestMath::Quaternion::Normalize()'],['../class_tempest_math_1_1_vector3.html#a42667fa4fe72baf4330e0e918d0f2a37',1,'TempestMath::Vector3::Normalize()'],['../class_tempest_math_1_1_vector4.html#a893a3dd468d288b39641f507f7fc858c',1,'TempestMath::Vector4::Normalize()']]]
+  ['normalize',['Normalize',['../class_tempest_math_1_1_point.html#a000bb568e842866a54c74926d60e898b',1,'TempestMath::Point::Normalize()'],['../class_tempest_math_1_1_quaternion.html#a4499cb212b359d1590f8cc97ab0cbd24',1,'TempestMath::Quaternion::Normalize()'],['../class_tempest_math_1_1_vector3.html#a42667fa4fe72baf4330e0e918d0f2a37',1,'TempestMath::Vector3::Normalize()'],['../class_tempest_math_1_1_vector4.html#a893a3dd468d288b39641f507f7fc858c',1,'TempestMath::Vector4::Normalize()']]],
+  ['normalizeorientation',['NormalizeOrientation',['../class_tempest_1_1_game_object.html#a5061e683bbb216a464db48b121b27bed',1,'Tempest::GameObject']]]
 ];

@@ -13,5 +13,6 @@ var searchData=
   ['updateobjects',['UpdateObjects',['../class_tempest_1_1_level.html#abfe26b484c3972eb8d6df069491cce8a',1,'Tempest::Level']]],
   ['updatetext',['UpdateText',['../class_tempest_1_1_level.html#a7a7ed71423a2899a61a86b6a312f9082',1,'Tempest::Level']]],
   ['use',['Use',['../class_tempest_1_1_shader.html#acd00cf10ae9fecb542659d8efaf6cd47',1,'Tempest::Shader']]],
-  ['usealpha',['UseAlpha',['../class_tempest_1_1_color.html#a75e27b80164f1ba7316e30511b0d752d',1,'Tempest::Color']]]
+  ['usealpha',['UseAlpha',['../class_tempest_1_1_color.html#a75e27b80164f1ba7316e30511b0d752d',1,'Tempest::Color']]],
+  ['useshader',['UseShader',['../class_tempest_1_1_game_object.html#a6118979db05762d45abc217722a4f864',1,'Tempest::GameObject']]]
 ];

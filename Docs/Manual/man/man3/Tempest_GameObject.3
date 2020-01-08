@@ -1,4 +1,4 @@
-.TH "Tempest::GameObject" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
+.TH "Tempest::GameObject" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -64,48 +64,60 @@ Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .ti -1c
 .RI "const bool \fBGetActive\fP (void) const"
 .br
+.RI "Get the active state of the \fBGameObject\fP\&. Returns true if is active update and active render\&. "
 .ti -1c
 .RI "void \fBSetActive\fP (bool state)"
 .br
 .ti -1c
 .RI "void \fBSetActive\fP (void)"
 .br
+.RI "Sets update and render to active and calls v_Awake\&. "
 .ti -1c
 .RI "void \fBSetInactive\fP (void)"
 .br
+.RI "Sets update and render to inactive\&. "
 .ti -1c
 .RI "const bool \fBGetActiveUpdate\fP (void) const"
 .br
+.RI "Returns true if update is active\&. "
 .ti -1c
 .RI "void \fBSetActiveUpdate\fP (bool state)"
 .br
 .ti -1c
 .RI "void \fBSetActiveUpdate\fP (void)"
 .br
+.RI "Set update to active\&. v_Awake is not called\&. "
 .ti -1c
 .RI "void \fBSetInactiveUpdate\fP (void)"
 .br
+.RI "Set update to not active\&. "
 .ti -1c
 .RI "const bool \fBGetActiveRender\fP (void) const"
 .br
+.RI "Returns true if render is active\&. "
 .ti -1c
 .RI "void \fBSetActiveRender\fP (bool state)"
 .br
 .ti -1c
 .RI "void \fBSetActiveRender\fP (void)"
 .br
+.RI "Set render to active\&. v_Awake is not called\&. "
 .ti -1c
 .RI "void \fBSetInactiveRender\fP (void)"
 .br
+.RI "Set render to not active\&. "
 .ti -1c
 .RI "bool \fBIsSprite\fP (void) const"
 .br
+.RI "Returns true is the \fBGameObject\fP has had MakeSprite called, or is considered to be a sprite\&. "
 .ti -1c
 .RI "const \fBU32\fP \fBGetID\fP (void) const"
 .br
+.RI "Returns the ID for the \fBGameObject\fP\&. "
 .ti -1c
 .RI "const \fBTM::Point\fP & \fBGetPosition\fP (void) const"
 .br
+.RI "Returns the current position of the \fBGameObject\fP in world space\&. "
 .ti -1c
 .RI "void \fBSetPosition\fP (const \fBTM::Point\fP &pos)"
 .br
@@ -136,12 +148,14 @@ Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .ti -1c
 .RI "const \fBTM::Vector3\fP & \fBGetScale\fP (void) const"
 .br
+.RI "Return the current scale factor for the \fBGameObject\fP\&. "
 .ti -1c
 .RI "void \fBSetScale\fP (const \fBTM::Vector3\fP &scale)"
 .br
 .ti -1c
 .RI "void \fBSetScale\fP (\fBF32\fP val)"
 .br
+.RI "Set all values of the scale to a single value\&. Bounding Box is updated\&. "
 .ti -1c
 .RI "void \fBSetScale\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
 .br
@@ -151,6 +165,7 @@ Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .ti -1c
 .RI "const \fBTM::Quaternion\fP & \fBGetOrientation\fP (void) const"
 .br
+.RI "Returns the current orientation of the \fBGameObject\fP\&. "
 .ti -1c
 .RI "void \fBSetOrientation\fP (const \fBTM::Quaternion\fP &q)"
 .br
@@ -166,6 +181,7 @@ Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .ti -1c
 .RI "void \fBNormalizeOrientation\fP (void)"
 .br
+.RI "Changes the length of the orientation to be 1\&.0\&. Calls Quaternion::Normalize\&. "
 .ti -1c
 .RI "void \fBSetColor\fP (const \fBColor\fP &col)"
 .br
@@ -173,38 +189,42 @@ Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .RI "void \fBSetColor\fP (\fBF32\fP red, \fBF32\fP green, \fBF32\fP blue)"
 .br
 .ti -1c
-.RI "void \fBSetColor\fP (\fBF32\fP val)"
-.br
-.ti -1c
 .RI "const \fBColor\fP & \fBGetColor\fP (void) const"
 .br
+.RI "Return the color of the \fBGameObject\fP\&. "
 .ti -1c
 .RI "bool \fBOverlapCheck\fP (const shared_ptr< \fBGameObject\fP > other)"
 .br
 .ti -1c
 .RI "const \fBTC::AABB\fP & \fBGetBounding\fP (void) const"
 .br
+.RI "Return the bounding boxe of this \fBGameObject\fP\&. "
 .ti -1c
 .RI "void \fBSetTexture\fP (shared_ptr< \fBTexture\fP > texture)"
 .br
 .ti -1c
 .RI "shared_ptr< \fBTexture\fP > \fBGetTexture\fP (void) const"
 .br
+.RI "Return the current texture pointer for the \fBGameObject\fP\&. "
 .ti -1c
 .RI "void \fBBindTexture\fP (bool state=true)"
 .br
+.RI "Helper wrapper to call \fBTexture::Bind\fP on the texture that is saved on this \fBGameObject\fP\&. "
 .ti -1c
 .RI "const shared_ptr< \fBShader\fP > \fBGetShader\fP (void) const"
 .br
+.RI "Returns the current shader for this \fBGameObject\fP\&. "
 .ti -1c
 .RI "void \fBSetShader\fP (const shared_ptr< \fBShader\fP > shader)"
 .br
+.RI "Change the shader for this \fBGameObject\fP\&. "
 .ti -1c
 .RI "void \fBLoadShader\fP (std::vector< \fBShaderData\fP > shaderData)"
 .br
 .ti -1c
 .RI "void \fBUseShader\fP (bool state=true)"
 .br
+.RI "Helper wrapper, calls \fBShader::Use\fP to set the current shader as active for OpenGL\&. "
 .ti -1c
 .RI "void \fBSetUniform\fP (string name, const \fBF32\fP val)"
 .br
@@ -232,6 +252,7 @@ Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .ti -1c
 .RI "\fBU32\fP \fBGetNumVertices\fP (void)"
 .br
+.RI "Return the number of vertices this GameObjects mesh has\&. "
 .ti -1c
 .RI "void \fBAddVertex\fP (const \fBVertex\fP &vert)"
 .br
@@ -241,6 +262,7 @@ Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .ti -1c
 .RI "std::vector< \fBVertex\fP > \fBGetVertices\fP (void) const"
 .br
+.RI "Return the mesh of vertices the \fBGameObject\fP has\&. "
 .ti -1c
 .RI "void \fBAddIndex\fP (\fBU32\fP index)"
 .br
@@ -250,9 +272,11 @@ Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .ti -1c
 .RI "std::vector< \fBU32\fP > \fBGetIndices\fP (void) const"
 .br
+.RI "Return the array of indices used for the \fBGameObject\fP\&. "
 .ti -1c
 .RI "GLuint \fBGetVAO\fP (void) const"
 .br
+.RI "Return the currently used \fBVertex\fP Array Object for the \fBGameObject\fP\&. Used for rendering by OpenGL\&. "
 .ti -1c
 .RI "void \fBBindVAO\fP (bool state=true)"
 .br
@@ -262,6 +286,7 @@ Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .ti -1c
 .RI "std::vector< \fBF32\fP > \fBGetUVList\fP (void) const"
 .br
+.RI "Return the UV index list saved for this object\&. "
 .ti -1c
 .RI "void \fBSetUVList\fP (std::vector< \fBF32\fP > list)"
 .br
@@ -275,6 +300,7 @@ Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .ti -1c
 .RI "TEMPEST_API void \fBDefaultAwake\fP (void)"
 .br
+.RI "Default code to be run when v_Awake is called\&. "
 .in -1c
 .SS "Private Member Functions"
 
@@ -291,6 +317,7 @@ Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .ti -1c
 .RI "void \fB_CalculateCachedData\fP (void)"
 .br
+.RI "Creates a data cache of the model to world transformation matrix\&. This can help with objects that use their matrix a lot\&. "
 .in -1c
 .SS "Private Attributes"
 
@@ -298,54 +325,71 @@ Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .ti -1c
 .RI "std::vector< \fBVertex\fP > \fB_vertices\fP"
 .br
+.RI "Array of vertices used for rendering\&. This is the mesh of the object\&. "
 .ti -1c
 .RI "std::vector< \fBU32\fP > \fB_indices\fP"
 .br
+.RI "Rendering optimization\&. An array of indices used to help render the mesh without duplicated vertices\&. "
 .ti -1c
 .RI "std::vector< \fBF32\fP > \fB_uvList\fP"
 .br
+.RI "Array of UV pair values, used to render a texture on the mesh\&. "
 .ti -1c
 .RI "\fBTM::Matrix4\fP \fB_modelTOWorldCache\fP"
 .br
+.RI "Cache of the model to world transformation matrix\&. "
 .ti -1c
 .RI "\fBTM::Point\fP \fB_position\fP"
 .br
+.RI "Position of the object in world space\&. "
 .ti -1c
 .RI "\fBTM::Vector3\fP \fB_scale\fP"
 .br
+.RI "Scale of the object in world space\&. "
 .ti -1c
 .RI "\fBTM::Quaternion\fP \fB_orientation\fP"
 .br
+.RI "Orientation of the object in world space\&. Untested\&. "
 .ti -1c
 .RI "\fBColor\fP \fB_color\fP"
 .br
+.RI "\fBColor\fP that should be used to tint the object\&. How it affects the object depends on what shader you are using\&. "
 .ti -1c
 .RI "\fBTC::AABB\fP \fB_boundingBox\fP"
 .br
+.RI "Collision bounding box for the object\&. Is active and set up by default\&. "
 .ti -1c
 .RI "shared_ptr< \fBTexture\fP > \fB_texture\fP"
 .br
+.RI "\fBTexture\fP used when rendering the object\&. Set to null by default\&. "
 .ti -1c
 .RI "shared_ptr< \fBShader\fP > \fB_shader\fP"
 .br
+.RI "\fBShader\fP used for rendering\&. Should come from the \fBShaderManager\fP\&. Set to null by default\&. "
 .ti -1c
 .RI "bool \fB_activeUpdate\fP"
 .br
+.RI "State of the object in the update loop\&. If true, v_Update will be called\&. "
 .ti -1c
 .RI "bool \fB_activeRender\fP"
 .br
+.RI "State of the object in the render loop\&. If true, v_Render will be called\&. "
 .ti -1c
 .RI "bool \fB_isSprite\fP"
 .br
+.RI "Helper flag to let the engine know if this object is a 2D sprite vs a 3D model\&. "
 .ti -1c
 .RI "\fBU32\fP \fB_ID\fP"
 .br
+.RI "ID should be unique, but this system needs to be changed\&. "
 .ti -1c
 .RI "GLuint \fB_vao\fP"
 .br
+.RI "\fBVertex\fP Array Object, used in OpenGL\&. See OGL documentation for details\&. "
 .ti -1c
 .RI "GLuint \fB_vbo\fP [NUM_VBO]"
 .br
+.RI "\fBVertex\fP Buffer Object, used in OpenGL\&. See OGL documentation for details\&. "
 .in -1c
 .SS "Static Private Attributes"
 
@@ -353,12 +397,130 @@ Inherited by \fBTempest::EnvironmentObject\fP, and \fBTempest::Glyph\fP\&.
 .ti -1c
 .RI "static \fBU32\fP \fB_nextID\fP = 1"
 .br
+.RI "This is an early attempt to ensure that all ID as unique\&. This is a flawed approach\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 
 The \fBGameObject\fP may be the backbone of Tempest\&. This is the basic object that will exist in the game\&. It is the root of all rendered and interactive objects in the games\&. It is not a manager\&. This is an abstract class, so it is meant to be full implemented as needed\&. This holds the generic ideas of what makes up the most basic type of Object in the game \fBLevel\fP\&. 
 .SH "Member Function Documentation"
 .PP 
+.SS "std::vector< \fBF32\fP > GameObject::_SplitF32 (string text, char delim) const\fC [private]\fP"
+Helper function to split a list of numbers apart\&. This is intended to be used with a list of numbers separated by a standard character, for instance, a list of space or comma separated numbers\&. The numbers are read as strings and converted into F32 types\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP is string to break apart\&. It should be numbers separated by a common character\&. 
+.br
+\fIdelim\fP is the character that separates each number in list\&. 
+.RE
+.PP
+
+.SS "std::vector< string > GameObject::_SplitString (string text, char delim) const\fC [private]\fP"
+Helper function to split a list of numbers apart\&. This is intended to be used with a list of characters separated by a standard character, for instance, a list of space or comma separated numbers\&. The numbers are read as strings and converted into string types\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP is string to break apart\&. It should be characters separated by a common character\&. 
+.br
+\fIdelim\fP is the character that separates each number in list\&. 
+.RE
+.PP
+
+.SS "std::vector< \fBU32\fP > GameObject::_SplitU32 (string text, char delim) const\fC [private]\fP"
+Helper function to split a list of numbers apart\&. This is intended to be used with a list of numbers separated by a standard character, for instance, a list of space or comma separated numbers\&. The numbers are read as strings and converted into U32 types\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP is string to break apart\&. It should be numbers separated by a common character\&. 
+.br
+\fIdelim\fP is the character that separates each number in list\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::AddIndex (\fBU32\fP index)\fC [inline]\fP"
+Manually add a single index for the mesh, used for rendering 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP is added\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::AddScaledOrientation (const \fBTM::Vector4\fP vec, \fBF32\fP scale)\fC [inline]\fP"
+Update to orientation by a Vector4 value scaled\&. This called Quaternion::AddScaledVector 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvec\fP is a converted value to scale the orientation by\&. 
+.br
+\fIscale\fP is the value to scale the orientation by\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::AddScaledPosition (const \fBTM::Vector4\fP & pos, \fBF32\fP scale)\fC [inline]\fP"
+Set the Position of the \fBGameObject\fP scaled by a factor\&. Vector4::AddScaledVector is called\&. Bounding Box is updated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP is the new position for the object\&. 
+.br
+\fIscale\fP is the factor that the pos is scaled by\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::AddScaledPosition (const \fBTM::Vector3\fP & pos, \fBF32\fP scale)\fC [inline]\fP"
+Set the Position of the \fBGameObject\fP scaled by a factor\&. Vector3::AddScaledVector is called\&. Bounding Box is updated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP is the new position for the object\&. 
+.br
+\fIscale\fP is the factor that the pos is scaled by\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::AddScaledPosition (const \fBTM::Point\fP & point, \fBF32\fP scale)\fC [inline]\fP"
+Set the Position of the \fBGameObject\fP scaled by a factor\&. Point::AddScaledVector is called\&. Bounding Box is updated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP is the new position for the object\&. 
+.br
+\fIscale\fP is the factor that the pos is scaled by\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::AddUV (\fBF32\fP val)\fC [inline]\fP"
+Manually add a single UV to the UV list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP is the single value to be added\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::AddVertex (const \fBVertex\fP & vert)\fC [inline]\fP"
+Manually add a single vertex to the GameObjects mesh\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvert\fP is the vertice to manually add\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::BindVAO (bool state = \fCtrue\fP)\fC [inline]\fP"
+The \fBVertex\fP Array Object needs to be bound before OpenGL can render this object\&. This is what sets the vertices for this object on the video card\&. This is part of the magic\&. 
+.SS "void GameObject::BindVBO (BufferData buffer, bool state = \fCtrue\fP)"
+Bind the \fBVertex\fP Buffer Object\&. This is needed before the vertices can be added to the buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP contains the data to be sent into the buffer\&. 
+.br
+\fIstate\fP is an optional value\&. This is currently unused\&. 
+.RE
+.PP
+
 .SS "const \fBTM::Matrix4\fP& Tempest::GameObject::GetModelMatrix (void) const\fC [inline]\fP"
 Returns the 'view' matrix, the transform needed to get the object transformed into world space\&. This is used by opengl for rendering\&. 
 .SS "const \fBTM::Matrix4\fP Tempest::GameObject::GetModelMatrixRot (void) const\fC [inline]\fP"
@@ -378,6 +540,296 @@ Loads a model from a wavefront object (\&.obj file)\&. I would call this a hacke
 \fBParameters:\fP
 .RS 4
 \fIfilepath\fP is the path to the model to be loaded\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::LoadShader (std::vector< \fBShaderData\fP > shaderData)\fC [inline]\fP"
+Helper wrapper, calls \fBShader::LoadShader\fP to initialize the \fBShader\fP on this \fBGameObject\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIshaderData\fP is an array of programs to be compiled and added to the \fBShader\fP\&. 
+.RE
+.PP
+
+.SS "bool Tempest::GameObject::OverlapCheck (const shared_ptr< \fBGameObject\fP > other)\fC [inline]\fP"
+Helper wrapper for AABB::TestCollission\&. This checks if the Bounding Box of another \fBGameObject\fP is overlapping this \fBGameObject\fP\&. Returns true if the bounding boxes overlap\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP is the \fBGameObject\fP to test against\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetActive (bool state)\fC [inline]\fP"
+Sets the active sate of the object\&. If either update or render is in active, v_Awake is called\&. Both update and rendering are set to active\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP is the new state, no default value\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetActiveRender (bool state)\fC [inline]\fP"
+Set a new state for render\&. v_Awake is not called\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP is the new state for render\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetActiveUpdate (bool state)\fC [inline]\fP"
+Set active update state\&. v_Awake is not called\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP is the new state for update\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetColor (const \fBColor\fP & col)\fC [inline]\fP"
+Change the color of the \fBGameObject\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcol\fP is the new color\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetColor (\fBF32\fP red, \fBF32\fP green, \fBF32\fP blue)\fC [inline]\fP"
+Change the color of the \fBGameObject\fP without having to create a \fBColor\fP object\&. Alpha is ommited\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIred\fP is the value of red in the color, should range from 0\&.0f to 1\&.0f\&. 
+.br
+\fIgreen\fP is the value of green in the color, should range from 0\&.0f to 1\&.0f\&. 
+.br
+\fIblue\fP is the value of blue in the color, should range from 0\&.0f to 1\&.0f\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetIndices (std::vector< \fBU32\fP > indices)\fC [inline]\fP"
+Set indices to be used in rendering\&. These are used as an optimization in rendering\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindices\fP is an array of indices to be added\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetOrientation (const \fBTM::Quaternion\fP & q)\fC [inline]\fP"
+Set a new orientation for the \fBGameObject\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP is the new orienation\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetOrientation (\fBF32\fP val)\fC [inline]\fP"
+Set the orienation of the \fBGameObject\fP to a single value  val is the value all 4 components of the orientation will be set to\&. 
+.SS "void Tempest::GameObject::SetOrientation (\fBF32\fP wVal, \fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)\fC [inline]\fP"
+Set the orientation of the \fBGameObject\fP without having to create a Quaternion 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwVal\fP sets the w component\&. 
+.br
+\fIxVal\fP sets the x component\&. 
+.br
+\fIyVal\fP sets the y component\&. 
+.br
+\fIzVal\fP sets the z component\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetPosition (const \fBTM::Point\fP & pos)\fC [inline]\fP"
+Set the position of the \fBGameObject\fP in world space\&. The bounding boxes center location is also updated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP is the new position for the object and bounding box\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetPosition (\fBF32\fP xVal, \fBF32\fP yVal)\fC [inline]\fP"
+Set the x and y values of the \fBGameObject\fP in world space\&. The bounding box center is updated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxVal\fP is the new x offset\&. 
+.br
+\fIyVal\fP is the new y offset\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetPosition (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)\fC [inline]\fP"
+Set the x, y and z values of the \fBGameObject\fP in world space\&. The bounding box center is updated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxVal\fP is the new x offset\&. 
+.br
+\fIyVal\fP is the new y offset\&. 
+.br
+\fIzVal\fP is the new z offset\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetPositionX (\fBF32\fP xval)\fC [inline]\fP"
+Set just the x value of the \fBGameObject\fP in world space\&. Bounding box center is updated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxval\fP is the new x offset\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetPositionY (\fBF32\fP yVal)\fC [inline]\fP"
+Set just the y value of the \fBGameObject\fP in world space\&. Bounding box center is updated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIyVal\fP is the new y offset\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetPositionZ (\fBF32\fP zVal)\fC [inline]\fP"
+Set just the z value of the \fBGameObject\fP in world space\&. Bounding box center is updated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIzVal\fP is the new z offset\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetScale (const \fBTM::Vector3\fP & scale)\fC [inline]\fP"
+Sets a new scale factor for the \fBGameObject\fP\&. Bounding Box is updated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscale\fP is set as the new scale\&. No matrix is updated\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetScale (\fBF32\fP xVal, \fBF32\fP yVal)\fC [inline]\fP"
+Set x and y scale factors\&. Bounding Box is updated\&.  xVal is the new scale factor on the x axis\&.  yVal is the new scale factor on the y axis\&. 
+.SS "void Tempest::GameObject::SetScale (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)\fC [inline]\fP"
+Set x, y and z scale factors\&. Bounding Box is updated\&.  xVal is the new scale factor on the x axis\&.  yVal is the new scale factor on the y axis\&.  zVal is the new scale factor on the z axis\&. 
+.SS "void Tempest::GameObject::SetTexture (shared_ptr< \fBTexture\fP > texture)\fC [inline]\fP"
+Change the texture of the \fBGameObject\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItexture\fP is the new texture for the \fBGameObject\fP\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetUniform (string name, const \fBF32\fP val)\fC [inline]\fP"
+Helper wrapper, calls \fBShader::Use\fP and \fBShader::SetUniform\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is used to looked up if the uniform has been cached yet, and if it exists\&. 
+.br
+\fIval\fP is the float to be passed into the uniform\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetUniform (string name, const \fBTM::Vector4\fP & vec)\fC [inline]\fP"
+Helper wrapper, calls \fBShader::Use\fP and \fBShader::SetUniform\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is used to looked up if the uniform has been cached yet, and if it exists\&. 
+.br
+\fIvec\fP is the Vector4 to be passed into the uniform 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetUniform (string name, const \fBTM::Vector3\fP & vec)\fC [inline]\fP"
+Helper wrapper, calls \fBShader::Use\fP and \fBShader::SetUniform\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is used to looked up if the uniform has been cached yet, and if it exists\&. 
+.br
+\fIvec\fP is the Vector3 to be passed into the uniform\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetUniform (string name, const \fBTM::Point\fP & point)\fC [inline]\fP"
+Helper wrapper, calls \fBShader::Use\fP and \fBShader::SetUniform\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is used to looked up if the uniform has been cached yet, and if it exists\&. 
+.br
+\fIpoint\fP is passed as a Vector4 into the uniform\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetUniform (string name, const \fBTM::Matrix4\fP & mat)\fC [inline]\fP"
+Helper wrapper, calls \fBShader::Use\fP and \fBShader::SetUniform\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is used to looked up if the uniform has been cached yet, and if it exists\&. 
+.br
+\fImat\fP is passed into the uniform as a Matrix4 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetUniform (string name, const \fBColor\fP & col)\fC [inline]\fP"
+Helper wrapper, calls \fBShader::Use\fP and \fBShader::SetUniform\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is used to looked up if the uniform has been cached yet, and if it exists\&. 
+.br
+\fIcol\fP is passed into the uniform as a color4\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetUniformSampler (string name, \fBS32\fP texSlot)\fC [inline]\fP"
+Helper wrapper, calls \fBShader::Use\fP and \fBShader::SetUniformSampler\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is used to looked up if the uniform has been cached yet, and if it exists\&. 
+.br
+\fItexSlot\fP is used to look up the needed sampler in the shader\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetUniformVec3 (string name, const \fBColor\fP & col)\fC [inline]\fP"
+Helper wrapper, calls \fBShader::Use\fP and \fBShader::SetUniformVec3\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP is used to looked up if the uniform has been cached yet, and if it exists\&. 
+.br
+\fIcol\fP is passed into the shader, to be used as a color3 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetUVList (std::vector< \fBF32\fP > list)\fC [inline]\fP"
+Change the UV index list for this object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlist\fP is an array of UV's or this objects texture rendering\&. 
+.RE
+.PP
+
+.SS "void Tempest::GameObject::SetVertices (std::vector< \fBVertex\fP > vertices)\fC [inline]\fP"
+Set the vertices previously created for the \fBGameObject\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvertices\fP is an array of vertices that will act as the mesh for the \fBGameObject\fP\&. 
 .RE
 .PP
 

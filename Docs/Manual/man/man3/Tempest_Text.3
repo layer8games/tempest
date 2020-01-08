@@ -1,4 +1,4 @@
-.TH "Tempest::Text" 3 "Tue Jan 7 2020" "Tempest" \" -*- nroff -*-
+.TH "Tempest::Text" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -106,19 +106,19 @@ Tempest::Text
 .ti -1c
 .RI "TEMPEST_API void \fB_UpdatePositions\fP (void)"
 .br
-.RI "Iterates over each \fBGlyph\fP calling GameObject::SetPosition() for each \fBGlyph\fP, updating the position, including the xAdvnace\&. "
+.RI "Iterates over each \fBGlyph\fP calling \fBGameObject::SetPosition()\fP for each \fBGlyph\fP, updating the position, including the xAdvnace\&. "
 .ti -1c
 .RI "TEMPEST_API void \fB_UpdateActive\fP (void)"
 .br
-.RI "Iterates over each \fBGlyph\fP calling GameObject::SetActive() for each, using _active\&. "
+.RI "Iterates over each \fBGlyph\fP calling \fBGameObject::SetActive()\fP for each, using _active\&. "
 .ti -1c
 .RI "TEMPEST_API void \fB_UpdateScales\fP (void)"
 .br
-.RI "Iterates over each \fBGlyph\fP calling GameObject::SetScale() for each, using _scale\&. "
+.RI "Iterates over each \fBGlyph\fP calling \fBGameObject::SetScale()\fP for each, using _scale\&. "
 .ti -1c
 .RI "TEMPEST_API void \fB_UpdateColors\fP (void)"
 .br
-.RI "Iterates over each \fBGlyph\fP calling GameObject::SetColor() for each, using _color\&. "
+.RI "Iterates over each \fBGlyph\fP calling \fBGameObject::SetColor()\fP for each, using _color\&. "
 .ti -1c
 .RI "TEMPEST_API void \fB_UpdateGlyphData\fP (\fBU32\fP index)"
 .br
@@ -291,7 +291,7 @@ Updates the position of each \fBGlyph\fP in the \fBText\fP\&.
 .PP
 
 .SS "void Tempest::Text::SetScale (const \fBTM::Vector3\fP & s)\fC [inline]\fP"
-Sets the scale of the \fBText\fP and updates any Glyphs\&. Calls GameObject::SetScale() 
+Sets the scale of the \fBText\fP and updates any Glyphs\&. Calls \fBGameObject::SetScale()\fP 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -300,7 +300,7 @@ Sets the scale of the \fBText\fP and updates any Glyphs\&. Calls GameObject::Set
 .PP
 
 .SS "void Tempest::Text::SetScale (\fBF32\fP xScale, \fBF32\fP yScale)\fC [inline]\fP"
-Sets the scale of the \fBText\fP and updates any Glyphs\&. Calls GameObject::SetScale() 
+Sets the scale of the \fBText\fP and updates any Glyphs\&. Calls \fBGameObject::SetScale()\fP 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -320,7 +320,7 @@ Sets the color of each \fBGlyph\fP in the \fBText\fP\&.
 .PP
 
 .SS "void Text::SetUniforms (string name, const \fBTM::Matrix4\fP & Matrix4)"
-A wrapper function that calls GameObject::SetUniform on each \fBGlyph\fP using the input\&. 
+A wrapper function that calls \fBGameObject::SetUniform\fP on each \fBGlyph\fP using the input\&. 
 .PP
 \fBParameters:\fP
 .RS 4

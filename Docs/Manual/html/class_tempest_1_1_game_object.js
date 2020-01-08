@@ -52,7 +52,6 @@ var class_tempest_1_1_game_object =
     [ "SetActiveUpdate", "class_tempest_1_1_game_object.html#a9586a49b6dd73e72922f47e5698c3370", null ],
     [ "SetColor", "class_tempest_1_1_game_object.html#a4a78df621fdbe336d6906a8fb43cef59", null ],
     [ "SetColor", "class_tempest_1_1_game_object.html#a73de27f7371bcf3bf88141d8fe031d3e", null ],
-    [ "SetColor", "class_tempest_1_1_game_object.html#a8cb72c13dc303b90b72fa73d3b7e06d5", null ],
     [ "SetInactive", "class_tempest_1_1_game_object.html#aaed91ec3e56967e2703a2e024e1b4612", null ],
     [ "SetInactiveRender", "class_tempest_1_1_game_object.html#a4ca2dc1d885ab1e49bec0b1ef69e5a90", null ],
     [ "SetInactiveUpdate", "class_tempest_1_1_game_object.html#aaeb6755cc4e0ddd7fa9925854ad2ab00", null ],

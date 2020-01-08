@@ -1,6 +1,5 @@
 var NAVTREEINDEX5 =
 {
-"class_tempest_math_1_1_vector4.html#ab4927a758db742daf121112196b1ec16":[1,0,6,7,34],
 "class_tempest_math_1_1_vector4.html#abaa555cf52bc1b878203147852b75a78":[1,0,6,7,64],
 "class_tempest_math_1_1_vector4.html#abf08ca5e2ade77f4469d4b315e4245a8":[1,0,6,7,38],
 "class_tempest_math_1_1_vector4.html#ac4f25d477ce8e8327f2760b4c585306a":[1,0,6,7,26],
@@ -249,5 +248,6 @@ var NAVTREEINDEX5 =
 "classrapidxml_1_1xml__base.html#a6af65de5e59ac497cd69838f8a89d602":[1,0,3,3,6],
 "classrapidxml_1_1xml__base.html#a81e63ec4bfd2d7ef0a6c2ed49be6e623":[1,0,3,3,8],
 "classrapidxml_1_1xml__base.html#a90d5f660f078f66563fd7b2d8387ccb0":[1,0,3,3,12],
-"classrapidxml_1_1xml__base.html#aa3a49d8ceddb8a8d7edb773a2226b89c":[1,0,3,3,14]
+"classrapidxml_1_1xml__base.html#aa3a49d8ceddb8a8d7edb773a2226b89c":[1,0,3,3,14],
+"classrapidxml_1_1xml__base.html#aa807062868d671a8c798d9d1bf016988":[1,0,3,3,5]
 };

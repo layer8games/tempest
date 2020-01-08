@@ -662,32 +662,53 @@ namespace Tempest
 		void BindVBO(BufferData buffer, bool state=true);
 
 //===== Uv List =====
+/// Return the UV index list saved for this object.		
 		inline std::vector<F32> GetUVList(void) const
 		{
 			return _uvList;
 		}
 
+/// Change the UV index list for this object.
+/// \param list is an array of UV's or this objects texture rendering.
 		inline void SetUVList(std::vector<F32> list)
 		{
 			_uvList = list;
 		}
 
+/// Manually add a single UV to the UV list.
+/// \param val is the single value to be added.
 		inline void AddUV(F32 val)
 		{
 			_uvList.push_back(val);
 		}	
 
-	
 	protected:
+/// Default code to be run when v_Awake is called.		
 		TEMPEST_API void DefaultAwake(void);
 
 	private:
+/// Helper function to split a list of numbers apart. This is intended to be used with a list of numbers separated by a 
+/// standard character, for instance, a list of space or comma separated numbers. The numbers are read as strings and
+/// converted into U32 types.
+/// \param text is string to break apart. It should be numbers separated by a common character.
+/// \param delim is the character that separates each number in list.
 		std::vector<U32> _SplitU32(string text, char delim) const;
 		
+/// Helper function to split a list of numbers apart. This is intended to be used with a list of numbers separated by a 
+/// standard character, for instance, a list of space or comma separated numbers. The numbers are read as strings and
+/// converted into F32 types.
+/// \param text is string to break apart. It should be numbers separated by a common character.
+/// \param delim is the character that separates each number in list. 		
 		std::vector<F32> _SplitF32(string text, char delim) const;
 
+/// Helper function to split a list of numbers apart. This is intended to be used with a list of characters separated by a 
+/// standard character, for instance, a list of space or comma separated numbers. The numbers are read as strings and
+/// converted into string types.
+/// \param text is string to break apart. It should be characters separated by a common character.
+/// \param delim is the character that separates each number in list.		
 		std::vector<string> _SplitString(string text, char delim) const;
 
+/// Creates a data cache of the model to world transformation matrix. This can help with objects that use their matrix a lot.		
 		void _CalculateCachedData(void);
 
 //==========================================================================================================================
@@ -695,24 +716,24 @@ namespace Tempest
 //Data
 //
 //==========================================================================================================================		
-		static U32				_nextID;	
-		std::vector<Vertex> 	_vertices;
-		std::vector<U32> 		_indices;
-		std::vector<F32> 		_uvList;
-		TM::Matrix4 			_modelTOWorldCache;		
-		TM::Point 				_position;
-		TM::Vector3				_scale;
-		TM::Quaternion			_orientation;
-		Color 					_color;
-		TC::AABB				_boundingBox;
-		shared_ptr<Texture>		_texture;
-		shared_ptr<Shader>		_shader;
-		bool					_activeUpdate;
-		bool					_activeRender;
-		bool 					_isSprite;
-		U32 					_ID;
-		GLuint 					_vao;
-		GLuint 					_vbo[NUM_VBO];
+		static U32				_nextID;				///< This is an early attempt to ensure that all ID as unique. This is a flawed approach.	
+		std::vector<Vertex> 	_vertices;				///< Array of vertices used for rendering. This is the mesh of the object.
+		std::vector<U32> 		_indices;				///< Rendering optimization. An array of indices used to help render the mesh without duplicated vertices.
+		std::vector<F32> 		_uvList;				///< Array of UV pair values, used to render a texture on the mesh.
+		TM::Matrix4 			_modelTOWorldCache;		///< Cache of the model to world transformation matrix. 
+		TM::Point 				_position;				///< Position of the object in world space.
+		TM::Vector3				_scale;					///< Scale of the object in world space.
+		TM::Quaternion			_orientation;			///< Orientation of the object in world space. Untested.
+		Color 					_color;					///< Color that should be used to tint the object. How it affects the object depends on what shader you are using.
+		TC::AABB				_boundingBox;			///< Collision bounding box for the object. Is active and set up by default.
+		shared_ptr<Texture>		_texture;				///< Texture used when rendering the object. Set to null by default.
+		shared_ptr<Shader>		_shader;				///< Shader used for rendering. Should come from the ShaderManager. Set to null by default.
+		bool					_activeUpdate;			///< State of the object in the update loop. If true, v_Update will be called. 
+		bool					_activeRender;			///< State of the object in the render loop. If true, v_Render will be called.
+		bool 					_isSprite;				///< Helper flag to let the engine know if this object is a 2D sprite vs a 3D model.
+		U32 					_ID;					///< ID should be unique, but this system needs to be changed.
+		GLuint 					_vao;					///< Vertex Array Object, used in OpenGL. See OGL documentation for details.
+		GLuint 					_vbo[NUM_VBO];			///< Vertex Buffer Object, used in OpenGL. See OGL documentation for details.
 	};//End class
 	typedef shared_ptr<GameObject> p_GameObject;
 }

@@ -1,6 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"class_tempest_math_1_1_matrix4.html#a8e6a720713f26926d358680832b2ea6a":[1,0,6,1,19],
 "class_tempest_math_1_1_matrix4.html#a902e3d66dad3a383e3b2779ba3fd6fd6":[1,0,6,1,15],
 "class_tempest_math_1_1_matrix4.html#a964a1fef0efb416e91b3881413028f9f":[1,0,6,1,52],
 "class_tempest_math_1_1_matrix4.html#a9851e5aa3a400469a6c1161516e0656c":[1,0,6,1,37],
@@ -249,5 +248,6 @@ var NAVTREEINDEX4 =
 "class_tempest_math_1_1_vector4.html#ab069d0267dec8bb5e2ef480e6cb0ea9a":[1,0,6,7,2],
 "class_tempest_math_1_1_vector4.html#ab0e34465dbcdaab2bacc60f0ee638b02":[1,0,6,7,57],
 "class_tempest_math_1_1_vector4.html#ab3f0d6b959a7a0b52e777b6f346df07d":[1,0,6,7,61],
-"class_tempest_math_1_1_vector4.html#ab42d23f818451b7a94f3dae00452b539":[1,0,6,7,8]
+"class_tempest_math_1_1_vector4.html#ab42d23f818451b7a94f3dae00452b539":[1,0,6,7,8],
+"class_tempest_math_1_1_vector4.html#ab4927a758db742daf121112196b1ec16":[1,0,6,7,34]
 };
