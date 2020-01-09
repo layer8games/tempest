@@ -13,7 +13,7 @@ using namespace Tempest;
 //==========================================================================================================================
 Camera::Camera(void) 
 : 
-_background(1.0f), 
+_bgColor(1.0f), 
 _projection(1.0f),
 _position(0.0f),
 _target(0.0f, 0.0f, -1.0f),
@@ -38,32 +38,9 @@ Camera::~Camera(void)
 //Camera Functions
 //
 //==========================================================================================================================
-void Camera::SetOrthographic(void)
-{
-	F32 left = GameWindow::Instance()->GetScreenLeft();
-	F32 right = GameWindow::Instance()->GetScreenRight(); 
-	F32 bottom = GameWindow::Instance()->GetScreenBottom(); 
-	F32 top = GameWindow::Instance()->GetScreenTop(); 
-	F32 nearPlane=-100.0f; 
-	F32 farPlane=100.0f;
-
-	_projection.MakeOrthographic(left, right, bottom, top, nearPlane, farPlane);
-}
-
 void Camera::SetOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)
 {
 	_projection.MakeOrthographic(left, right, bottom, top, nearPlane, farPlane);
-}
-
-void Camera::SetPerspective(void)
-{
-	F32 w = static_cast<F32>(GameWindow::Instance()->GetWidth());
-	F32 h = static_cast<F32>(GameWindow::Instance()->GetHeight());
-
-	_projection.MakePerspective(90.0f,  //field of view
-								w / h,  //aspect ratio
-								0.1f, 	//near
-								2000.0f);//far
 }
 
 void Camera::SetPerspective(F32 fov, F32 aspect, F32 nearPlane, F32 farPlane)

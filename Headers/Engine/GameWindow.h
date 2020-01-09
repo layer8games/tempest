@@ -7,6 +7,7 @@
 #include <Engine/Color.h>
 #include <Engine/Timer.h>
 #include <Engine/Point.h>
+#include <Engine/Camera.h>
 
 namespace TM = TempestMath; 
 
@@ -16,17 +17,16 @@ namespace TM = TempestMath;
 namespace Tempest 
 {
 	class Controller;
+	class Camera;
+	typedef shared_ptr<Camera> p_Camera;
 	enum Keys;
-
-/*! 
-	Framework that will open a window in the designated operating system which
-	will be where the renderer will draw what it needs to for the game to be a
-	game. There will be system specific code in this section which will be how
-	the game will run on each system that is supported. 
-
-	Supported system:
-		Windows	 
-*/
+ 
+///	Framework that will open a window in the designated operating system which
+///	will be where the renderer will draw what it needs to for the game to be a
+///	game. There will be system specific code in this section which will be how
+///	the game will run on each system that is supported. 
+///	Supported system:
+///		Windows	 
 	class GameWindow
 	{	
 	public:
@@ -38,6 +38,72 @@ namespace Tempest
 ///	No behavior. 
 		TEMPEST_API ~GameWindow(void);
 
+//==========================================================================================================================
+//
+//GameWindow Functions
+//
+//==========================================================================================================================
+///	Singleton function. Returns the global pointer to the program window. 
+		TEMPEST_API static shared_ptr<GameWindow> Instance(void);
+
+/// Sets up program window. Makes all calls needed to start up a window. This is a helper function that takes are of all the
+///	glfw calls needed.
+///	\param width of created window
+///	\param height of created window
+///	\param wndName title of window
+///	\param isFullScreen sets if the system makes the window fullscreen	
+		TEMPEST_API void Init(S32 width, S32 height, string wndName, bool isFullScreen, bool initDefaultCam=true);
+
+/// Processes all commands needed to run each frame.
+		TEMPEST_API void Update(void);
+		
+///	Wrapper around glfwPollEvents. This polls any pending events. Used to capture user Input. 
+		TEMPEST_API void ProcessEvents(void);
+
+///	Wrapper around glfwSwapBuffers and glClear. Swap buffers will place the back buffer, that has been getting drawn to, 
+///	as the active buffer, and glClear will set the background color, setting up the next frame to be drawn. 
+		TEMPEST_API void BufferSwap(void);
+
+///	Converts the glfw key codes into a key code that the engine can understand.
+///	\param key is the glfw key code to be converted. 
+		TEMPEST_API static Keys ConvertKeyCodes(int key);
+
+///	Toggle that allows the frames per second to be displayed in the title of the window. 
+		TEMPEST_API void DisplayFPS(void);
+
+///	Toggle that changes the rendering to only use wireframes, drawing the lines the represent edges in a mesh instead of
+///	filling in the faces. Used for debugging.  
+		TEMPEST_API void ToggleWireFrame(void);
+
+///	Moves the mouse cursor to the center of the program window. 
+		TEMPEST_API void ResetMouseCursor(void);
+
+///	Toggles the mouse cursor to be displayed.  
+		TEMPEST_API void EnableMouseCursor(void);
+
+///	Toggles the mouse cursor to no longer be displayed. This is true both inside and outside the program window, meaning that if you 
+///	call this, your mouse will no longer work, until you either close the program or re-enable it using EnableMouseCursor(). 
+		TEMPEST_API void DisableMouseCursor(void);
+
+///	Toggles the mouse cursor to not be displayed in the program window. Outside of the program window it will behave as normal. 
+		TEMPEST_API void HideMouseCursor(void);
+
+///	Returns the position of the mouse cursor with the origin in the top left of the program window, ranging from 0 to 1. 
+		TEMPEST_API const TM::Point GetMousePos(void);
+
+///	Returns the position of the mouse cursor in pixels with the origin in the center of the program window, randing from the
+///	program windows up - down - left - right values. Very important, this is in Screen Space, not world space.
+		TEMPEST_API const TM::Point GetMousePosInScreen(void);
+
+///	Wrapper around glfwGetTime. Used to find out how long the program has been running in miliseconds. Used by the KillerMath::Timer. 
+		inline F64 GetTime(void)
+		{
+			return glfwGetTime();
+		}
+
+/// Reset to Camera to a default, orthographic projection based Camera object.
+		TEMPEST_API void ResetCamera(void);
+		
 //==========================================================================================================================
 //
 //Accessors
@@ -92,73 +158,16 @@ namespace Tempest
 			return _bottom; 
 		}
 
-///	Sets the color OpenGL will use to color the background of the program window. This includes the call to actually change
-///	that color state in OpenGL.
-///	\param c is the new color that will be set. 
-		inline void SetBackgroundColor(const Color& c)
+///	Sets the camera to a new Camera pointer, allowing you to change the Camera at run time. 
+		inline void SetCamera(p_Camera cam)
 		{
-			_bgColor = c;
-			glClearColor(_bgColor[0], _bgColor[1], _bgColor[2], _bgColor[3]);
+			_camera = cam;
 		}
 
-//==========================================================================================================================
-//
-//GameWindow Functions
-//
-//==========================================================================================================================
-///	Singleton function. Returns the global pointer to the program window. 
-		TEMPEST_API static shared_ptr<GameWindow> Instance(void);
-
-/// Sets up program window. Makes all calls needed to start up a window. This is a helper function that takes are of all the
-///	glfw calls needed.
-///	\param width of created window
-///	\param height of created window
-///	\param wndName title of window
-///	\param isFullScreen sets if the system makes the window fullscreen	
-		TEMPEST_API void Init(S32 width, S32 height, string wndName, bool isFullScreen);
-	 
-///	Wrapper around glfwPollEvents. This polls any pending events. Used to capture user Input. 
-		TEMPEST_API void ProcessEvents(void);
-		
-///	Wrapper around glfwSwapBuffers and glClear. Swap buffers will place the back buffer, that has been getting drawn to, 
-///	as the active buffer, and glClear will set the background color, setting up the next frame to be drawn. 
-		TEMPEST_API void BufferSwap(void);
-
-///	Converts the glfw key codes into a key code that the engine can understand.
-///	\param key is the glfw key code to be converted. 
-		TEMPEST_API static Keys ConvertKeyCodes(int key);
-
-///	Toggle that allows the frames per second to be displayed in the title of the window. 
-		TEMPEST_API void DisplayFPS(void);
- 
-///	Toggle that changes the rendering to only use wireframes, drawing the lines the represent edges in a mesh instead of
-///	filling in the faces. Used for debugging.  
-		TEMPEST_API void ToggleWireFrame(void);
- 
-///	Moves the mouse cursor to the center of the program window. 
-		TEMPEST_API void ResetMouseCursor(void);
-
-///	Toggles the mouse cursor to be displayed.  
-		TEMPEST_API void EnableMouseCursor(void);
-
-///	Toggles the mouse cursor to no longer be displayed. This is true both inside and outside the program window, meaning that if you 
-///	call this, your mouse will no longer work, until you either close the program or re-enable it using EnableMouseCursor(). 
-		TEMPEST_API void DisableMouseCursor(void);
-
-///	Toggles the mouse cursor to not be displayed in the program window. Outside of the program window it will behave as normal. 
-		TEMPEST_API void HideMouseCursor(void);
-
-///	Returns the position of the mouse cursor with the origin in the top left of the program window, ranging from 0 to 1. 
-		TEMPEST_API const TM::Point GetMousePos(void);
-
-///	Returns the position of the mouse cursor in pixels with the origin in the center of the program window, randing from the
-///	program windows up - down - left - right values. Very important, this is in Screen Space, not world space.
-		TEMPEST_API const TM::Point GetMousePosInScreen(void);
-
-///	Wrapper around glfwGetTime. Used to find out how long the program has been running in miliseconds. Used by the KillerMath::Timer. 
-		inline F64 GetTime(void)
+///	Returns the current Camera.
+		inline const p_Camera GetCamera(void)
 		{
-			return glfwGetTime();
+			return _camera;
 		}
 
 //==========================================================================================================================
@@ -207,8 +216,8 @@ namespace Tempest
 		F32     _top;									///< Top boundary of window in pixels with origin in the center of the window.
 		F32     _bottom;								///< Bottom boundary of the window in pixels with origin in the center of the window.
 		string  _wndName;								///< Title used for the window.
-		Color 	_bgColor;								///< Background color OpenGL will use in rendering for the window.
-		GLFWwindow* _window;							///< Pointer to the glfw window instance. 
+		GLFWwindow* _window;							///< Pointer to the glfw window instance.
+		p_Camera _camera;
 
 
 	protected:

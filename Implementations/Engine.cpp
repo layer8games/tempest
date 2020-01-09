@@ -44,7 +44,7 @@ void Engine::ShutDown(void)
 //=======================================================================================================
 void Engine::Update(void) 
 {
-	GameWindow::Instance()->ProcessEvents();
+	GameWindow::Instance()->Update();
 
 	TM::Timer::Instance()->Update();
 	

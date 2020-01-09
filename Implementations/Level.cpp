@@ -21,16 +21,12 @@ _nearBorder(0),
 _farBorder(0),
 _bgColor(),
 _ID(0),
-_camera(new Camera()),
 _gameObjects(),
 _forceRegistry()
-{
-	_camera->SetOrthographic();
-}
+{  }
 
 Level::~Level(void)
 {
-	_camera = nullptr;
 	_gameObjects.clear();
 }
 
@@ -53,13 +49,12 @@ void Level::v_Render(void)
 void Level::UpdateLevel(void)
 {
 	_forceRegistry.UpdateForces();
-	_camera->v_Update();
 }
 
 void Level::AddObjectToLevel(const GameObject& obj)
 {
 	_gameObjects.insert({ obj.GetID(), shared_ptr<GameObject>(const_cast<GameObject*>(&obj)) });
-	_gameObjects[obj.GetID()]->SetUniform("projection", _camera->GetProjectionMatrix4());
+	_gameObjects[obj.GetID()]->SetUniform("projection", GameWindow::Instance()->GetCamera()->GetProjectionMatrix4());
 
 	if(_gameObjects.find(obj.GetID()) == _gameObjects.end())
 	{
@@ -69,7 +64,7 @@ void Level::AddObjectToLevel(const GameObject& obj)
 
 void Level::AddObjectToLevel(p_GameObject obj)
 {
-	obj->SetUniform("projection", _camera->GetProjectionMatrix4());
+	obj->SetUniform("projection", GameWindow::Instance()->GetCamera()->GetProjectionMatrix4());
 
 	_gameObjects.insert({obj->GetID(), obj});
 
@@ -153,25 +148,24 @@ void Level::UpdateObjects(void)
 		}
 	}
 }
-
+	
 void Level::RenderObjects(void)
 {
-//==========================================================================================================================
-//Render Sprites
-//==========================================================================================================================	
 	for(auto i : _gameObjects)
 	{
 		if(i.second->GetActiveRender())
 		{
-			i.second->SetUniform("view", _camera->GetViewMatrix4());
+			i.second->SetUniform("view", GameWindow::Instance()->GetCamera()->GetViewMatrix4());
 			i.second->v_Render();
 		}
 	}	
 }
 
-//==========================================================================================================================
-//GetObjects
-//==========================================================================================================================
+void Level::DefaultAwake(void)
+{
+	GameWindow::Instance()->ResetCamera();
+	ActivateBackgroundColor();
+}
 
 shared_ptr<GameObject> Level::GetGameObject(U32 id)
 {

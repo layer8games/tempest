@@ -18,12 +18,15 @@ _left(0),
 _top(0), 
 _bottom(0),
 _wndName("Killer Engine"),
-_bgColor(),
-_window(nullptr)
+_window(nullptr),
+_camera(nullptr)
 {  }
 
 GameWindow::~GameWindow(void)
-{  }
+{
+    _camera = nullptr;
+    glfwDestroyWindow(_window);
+}
 //==========================================================================================================================
 //
 //GameWindow Functions
@@ -48,7 +51,7 @@ shared_ptr<GameWindow> GameWindow::Instance(void)
 //==========================================================================================================================
 //Init
 //==========================================================================================================================
-void GameWindow::Init(S32 width, S32 height, string wndName, bool isFullScreen) 
+void GameWindow::Init(S32 width, S32 height, string wndName, bool isFullScreen, bool initDefaultCam) 
 {
 	_running = true;
 	_isFullScreen = isFullScreen;
@@ -110,6 +113,17 @@ void GameWindow::Init(S32 width, S32 height, string wndName, bool isFullScreen)
 
     glViewport(0, 0, _totalWidth, _totalHeight);
     glEnable(GL_DEPTH_TEST);
+
+    if(initDefaultCam)
+    {
+        ResetCamera();
+    }
+}// End Init
+
+void GameWindow::Update(void)
+{
+    ProcessEvents();
+    _camera->v_Update();
 }
 
 void GameWindow::ProcessEvents(void)
@@ -351,6 +365,12 @@ const TM::Point GameWindow::GetMousePosInScreen(void)
     //but for now, this seems way easier. 
 
     return TM::Point(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
+}
+
+void GameWindow::ResetCamera(void)
+{
+    _camera = make_shared<Camera>();
+    _camera->SetOrthographic(_left, _right, _bottom, _top, -100.0f, 100.0f);
 }
 
 //==========================================================================================================================

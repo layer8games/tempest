@@ -11,7 +11,6 @@
 #include <Engine/Color.h>
 #include <Engine/Text.h>
 #include <Engine/ForceRegistry.h>
-#include <Engine/Camera.h>
 #include <Engine/Text.h>
 #include <Engine/RigidBody2D.h>
 
@@ -73,6 +72,13 @@ namespace Tempest
 
 ///	Wrapper around Level::RenderObjects. It is virtual to allow for optional customization.
 		TEMPEST_API virtual void v_Render(void);
+
+/// Called when the Level is made active, or when its created, this defines a series of actions to be taken in order for this
+/// Level to be up and going.
+		TEMPEST_API virtual void v_Awake(void)
+		{
+			DefaultAwake();
+		}
 
 //==========================================================================================================================
 //
@@ -148,6 +154,9 @@ namespace Tempest
 			}
 		}
 
+/// Default behavior for a standard awake. Behavior: Calls GameWindow::ResetCamera
+		void DefaultAwake(void);
+
 //==========================================================================================================================
 //
 //Accessors
@@ -165,7 +174,7 @@ namespace Tempest
 ///	Forces the current background color to be activated in OpenGL.
 		inline void ActivateBackgroundColor(void) 
 		{ 
-			GameWindow::Instance()->SetBackgroundColor(_bgColor); 
+			GameWindow::Instance()->GetCamera()->SetColor(_bgColor); 
 		}
 		
 
@@ -331,46 +340,10 @@ namespace Tempest
 
 
 ///	Returns the Level ID. This will only match the LevelManager ID if you set it correctly.
-		inline U32 GetID(void) const 
-		{ 
-			return _ID; 
-		}
-
-//===== Camera =====
-
-///	Sets the camera to a new Camera pointer, allowing you to change the Camera at run time. 
-		inline void SetCamera(Camera* cam)
+		inline U32 GetID(void) const
 		{
-			_camera = cam;
+			return _ID;
 		}
-
-
-///	Returns the current Camera.
-		inline const Camera* GetCamera(void)
-		{
-			return _camera;
-		}
-
-
-///	Wrapper around Camera::SetOrthographic.
-		inline void SetCameraOrthographic(void)
-		{
-			_camera->SetOrthographic();
-		}
-
- 
-///	Wrapper around Camera::SetOrthographic with the same arguments. 
-///	\param left is the left boundary of the projection.
-///	\param right is the right boundary of the projection. 
-///	\param bottom is the bottom boundary of the projection. 
-///	\param top is the uppder boundary of the projection. 
-///	\param nearPlane is the close boundary of the projection.
-///	\param farPlane is the distant boundary of the projection.
-		void SetCameraOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)
-		{
-			_camera->SetOrthographic(left, right, bottom, top, nearPlane, farPlane);
-		}
-
  
 ///	Returns GameObject with ID.
 ///	\param id is the ID of the object to get. Should coorespond to GameObject::_ID. 
@@ -393,7 +366,6 @@ namespace Tempest
 		S32 	_farBorder;								///< Optional far border of the Level.
 		Color   _bgColor;								///< Color used for the background of the rendering window.
 		U32     _ID;									///< ID used in the LevelManager.
-		Camera* _camera;								///< Pointer to a Camera object. 
 		std::map<U32, p_GameObject>	  _gameObjects;		///< List of all GameObjects included in the Level.
 		TP::ForceRegistry _forceRegistry; 				///< KillerPhysics::ForceRegistry used to allow physics forces to be applied.
 	};

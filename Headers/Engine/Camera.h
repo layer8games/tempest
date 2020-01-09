@@ -2,7 +2,6 @@
 
 //=====Killer includes=====
 #include <Engine/Atom.h>
-#include <Engine/GameWindow.h>
 #include <Engine/Matrix4.h>
 #include <Engine/Vector4.h>
 #include <Engine/Point.h>
@@ -60,10 +59,6 @@ namespace Tempest
 //Camera Functions
 //
 //==========================================================================================================================
-/// Sets private Matrix4 to use an orthogrphic projection. This calls the GameWindow to get the demensions for the Matrix4. 
-/// \param none
-		TEMPEST_API void SetOrthographic(void);
-
 /// Sets private Matrix4 to use an orthogrphic projection. The params should be sent in game units. For instance, the default 
 ///	version of this function calls the GameWindow dimensions to size the projection size. 
 /// \param left is the left border of the view port.
@@ -73,10 +68,6 @@ namespace Tempest
 /// \param nearPlane is the close (next to the view) border of the view port.
 /// \param farPlane is the distance border of the view port, ie. the max view distance.
 		TEMPEST_API void SetOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane);
-
-/// Sets the private Matrix4 to use a perspective projection. Values are hard coded for now. 
-/// \param none
-		TEMPEST_API void SetPerspective(void);
 
 /// Sets the private Matrix4 to use a perspective projection. 
 /// \param fov is the field of view for the view port. 70 to 90 is a good range for this.
@@ -108,18 +99,32 @@ namespace Tempest
 //==========================================================================================================================
 //Background Color
 //==========================================================================================================================
-/// Sets the background color of the view. This is untested and may be duplicated data from the GameWindow. This is not in
-/// use yet, but should be when Tempest#44 is implemented.
+///	Change the color OpenGL will use to color the background of the program window. This includes the call to actually change
+///	that color state in OpenGL.
 /// \param col is the new color to set.
 		inline void SetColor(const Color& col)
 		{ 
-			_background = col; 
+			_bgColor = col;
+			glClearColor(_bgColor[0], _bgColor[1], _bgColor[2], _bgColor[3]);
+		}
+
+///	Change the color OpenGL will use to color the background of the program window. This includes the call to actually change
+///	that color state in OpenGL.
+/// \param red should be between 0 and 1.
+/// \param green should be between 0 and 1.
+/// \param blue should be between 0 and 1.
+		inline void SetColor(F32 red, F32 green, F32 blue)
+		{
+			_bgColor[0] = red;
+			_bgColor[1] = green;
+			_bgColor[2] = blue;
+			glClearColor(_bgColor[0], _bgColor[1], _bgColor[2], _bgColor[3]);
 		}
 
 /// Returns the current background color. Not currently in use.
 		inline const Color& GetBackgroundColor(void) const
 		{
-			return _background;
+			return _bgColor;
 		}
 
 //==========================================================================================================================
@@ -402,7 +407,7 @@ namespace Tempest
 //Data
 //
 //==========================================================================================================================		
-		Color  							_background;			///< Background color of current level. Not in use yet.
+		Color  							_bgColor;			///< Background color of current level. Not in use yet.
 		TM::Matrix4 					_projection;			///< Projection Matrix4 (Orthographic or Perspective). Not used 
 		
 	protected:

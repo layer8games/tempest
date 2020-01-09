@@ -68,7 +68,7 @@ void LevelManager::SetActiveLevel(U32 levelID)
 	_activeLevelID = levelID;
 	auto level = _levels.find(levelID);
 	_activeLevel = level->second;
-	_activeLevel->ActivateBackgroundColor();
+	_activeLevel->v_Awake();
 }
 
 void LevelManager::SetActiveLevel(p_Level level)
@@ -77,6 +77,7 @@ void LevelManager::SetActiveLevel(p_Level level)
 	level->v_Init();
 
 	_activeLevel = level;
+	_activeLevel->v_Awake();
 }
 
 //==========================================================================================================================
