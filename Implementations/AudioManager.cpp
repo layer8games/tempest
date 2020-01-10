@@ -123,7 +123,7 @@ p_AudioManager AudioManager::Instance(void)
 {
 	if(_instance == nullptr)
 	{
-		_instance = shared_ptr<AudioManager>(new AudioManager());
+		_instance = p_AudioManager(new AudioManager());
 	}
 
 	return _instance;
