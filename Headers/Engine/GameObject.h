@@ -567,103 +567,6 @@ namespace Tempest
 		{
 			_mesh.GetShader()->Use();
 			_mesh.GetShader()->SetUniformVec3(name.c_str(), col);
-		}
-
-//===== NumVertices =====
-/// Return the number of vertices this GameObjects mesh has.		
-		inline U32 GetNumVertices(void)
-		{
-			return _vertices.size();
-		}
-
-//===== Vertex =====
-/// Manually add a single vertex to the GameObjects mesh.
-/// \param vert is the vertice to manually add.
-		inline void AddVertex(const Vertex&  vert)
-		{
-			_vertices.push_back(vert);
-		}
-
-/// Set the vertices previously created for the GameObject.
-/// \param vertices is an array of vertices that will act as the mesh for the GameObject.
-		inline void SetVertices(std::vector<Vertex> vertices)
-		{
-			_vertices = vertices;
-		}
-
-/// Return the mesh of vertices the GameObject has.		
-		inline std::vector<Vertex> GetVertices(void) const
-		{
-			return _vertices;
-		}
-
-//===== Indices =====		
-/// Manually add a single index for the mesh, used for rendering
-/// \param index is added.
-		inline void AddIndex(U32 index)
-		{
-			_indices.push_back(index);
-		}
-
-/// Set indices to be used in rendering. These are used as an optimization in rendering.
-/// \param indices is an array of indices to be added.
-		inline void SetIndices(std::vector<U32> indices)
-		{
-			_indices = indices;
-		}
-
-/// Return the array of indices used for the GameObject.		
-		inline std::vector<U32> GetIndices(void) const
-		{
-			return _indices;
-		}
-
-//===== VAO =====
-/// Return the currently used Vertex Array Object for the GameObject. Used for rendering by OpenGL		
-		inline GLuint GetVAO(void) const
-		{
-			return _vao;
-		}
-
-/// The Vertex Array Object needs to be bound before OpenGL can render this object. This is what sets the vertices for
-/// this object on the video card. This is part of the magic.
-		inline void BindVAO(bool state=true)
-		{
-			if(state) 
-			{
-				glBindVertexArray(_vao);
-			}
-			else
-			{
-				glBindVertexArray(0);
-			}
-		}
-
-//===== VBO =====
-/// Bind the Vertex Buffer Object. This is needed before the vertices can be added to the buffer.
-/// \param buffer contains the data to be sent into the buffer.
-/// \param state is an optional value. This is currently unused.
-		void BindVBO(BufferData buffer, bool state=true);
-
-//===== Uv List =====
-/// Return the UV index list saved for this object.		
-		inline std::vector<F32> GetUVList(void) const
-		{
-			return _uvList;
-		}
-
-/// Change the UV index list for this object.
-/// \param list is an array of UV's or this objects texture rendering.
-		inline void SetUVList(std::vector<F32> list)
-		{
-			_uvList = list;
-		}
-
-/// Manually add a single UV to the UV list.
-/// \param val is the single value to be added.
-		inline void AddUV(F32 val)
-		{
-			_uvList.push_back(val);
 		}	
 
 	protected:
@@ -709,7 +612,6 @@ namespace Tempest
 		Color 					_color;					///< Color that should be used to tint the object. How it affects the object depends on what shader you are using.
 		TC::AABB				_boundingBox;			///< Collision bounding box for the object. Is active and set up by default.
 		Mesh					_mesh;
-		shared_ptr<Texture>		_texture;				///< Texture used when rendering the object. Set to null by default.
 		bool					_activeUpdate;			///< State of the object in the update loop. If true, v_Update will be called. 
 		bool					_activeRender;			///< State of the object in the render loop. If true, v_Render will be called.
 		U32 					_ID;					///< ID should be unique, but this system needs to be changed.

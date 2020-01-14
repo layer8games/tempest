@@ -116,7 +116,7 @@ namespace Tempest
 ///	Helper function to set a uniform in the shader. Wrapper around glUniformMatrix44fv.
 ///	\param name is the name of the uniform in the shader.
 ///	\param mat is the KillerMath::Matrix4 to pass into the shader. All 16 values will be passed in.
-		TEMPEST_API void SetUniform(const GLchar* name, TM::Matrix4 mat);
+		TEMPEST_API void SetUniform(const GLchar* name, const TM::Matrix4& mat);
  
 ///	 Helper function to set a uniform in the shader. This is used to activate more than one texture in the shader. The 
 ///	 default is to set all textures to slot 0, this allows for multiple slots to be set. Wrapper around glActiveTexture 

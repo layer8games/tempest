@@ -146,7 +146,7 @@ void Shader::SetUniform(const GLchar* name, const TM::Point& point)
 	glUniform4f(location, point[0], point[1], point[2], point[3]);
 }
 
-void Shader::SetUniform(const GLchar* name, TM::Matrix4 mat)
+void Shader::SetUniform(const GLchar* name, const TM::Matrix4& mat)
 {
 	GLuint location = _GetUniformLocation(name);
 	glUniformMatrix4fv(location, 1, GL_FALSE, &mat.GetElems()[0]);

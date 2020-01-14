@@ -17,9 +17,6 @@ U32 GameObject::_nextID = 1;
 //==========================================================================================================================
 GameObject::GameObject(void)
 :
-_vertices(),
-_indices(),
-_uvList(),
 _modelTOWorldCache(),
 _position(0.0f),
 _scale(1.0f),
@@ -27,57 +24,28 @@ _orientation(0.0f),
 _color(1.0f),
 _boundingBox(),
 _texture(nullptr),
-_shader(nullptr),
 _activeUpdate(true),
 _activeRender(true),
-_isSprite(false),
-_ID(_nextID),
-_vao(0),
-_vbo{0}
+_ID(_nextID)
 {
 	++_nextID;	
 }
 
 GameObject::GameObject(const GameObject& obj)
 :
-_vertices(obj.GetVertices()),
-_indices(obj.GetIndices()),
-_uvList(obj.GetUVList()),
 _modelTOWorldCache(obj.GetModelMatrix()),
 _position(obj.GetPosition()),
 _scale(obj.GetScale()),
 _orientation(obj.GetOrientation()),
 _color(obj.GetColor()),
 _texture(obj.GetTexture()),
-_shader(obj.GetShader()),
 _activeUpdate(obj.GetActiveUpdate()),
 _activeRender(obj.GetActiveRender()),
-_isSprite(obj.IsSprite()),
-_ID(obj.GetID()),
-_vao(obj.GetVAO()),
-_vbo{0}
+_ID(obj.GetID())
 {  }
 
 GameObject::~GameObject(void)
-{
-	bool clear = false;
-	for(S32 i = 0; i < NUM_VBO; ++i)
-	{
-		if(_vbo[i] > 0)
-		{
-			clear = true;
-		}
-	}
-
-	if(clear)
-	{
-		glDeleteBuffers(NUM_VBO, _vbo);
-	}
-	if(_vao > 0)
-	{
-		glDeleteVertexArrays(1, &_vao);
-	}
-}
+{  }
 
 //==========================================================================================================================
 //
@@ -535,25 +503,6 @@ void GameObject::MakeSprite(void)
 	v_InitBuffers();
 
 	_shader = ShaderManager::Instance()->GetShader(SPRITE);
-}
-
-void GameObject::BindVBO(BufferData buffer, bool state)
-{
-	switch(buffer)
-	{
-		case VERTEX_BUFFER:
-			glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
-		break;
-		case FRAGMENT_BUFFER:
-			glBindBuffer(GL_ARRAY_BUFFER, _vbo[FRAGMENT_BUFFER]);
-		break;
-		case TEX_COORD_BUFFER:
-			glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
-		break;
-		default:
-			ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::BindVBO: No such buffer");
-		break;
-	}
 }
 
 //==========================================================================================================================
