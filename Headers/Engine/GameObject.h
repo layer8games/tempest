@@ -14,6 +14,7 @@
 #include <Engine/Texture.h>
 #include <Engine/ShaderManager.h>
 #include <Engine/AABB.h>
+#include <Engine/Mesh.h>
 
 namespace TM = TempestMath;
 namespace TC = TempestCollisions;
@@ -30,21 +31,6 @@ namespace TC = TempestCollisions;
 
 namespace Tempest
 {
-/// Helper ID's for shader info. This should probably be moved to a new home. 	
-	enum TEMPEST_API BufferData
-	{
-		VERTEX_BUFFER = 0,
-		VERTEX_POS = 0,
-		FRAGMENT_BUFFER = 1,
-		FRAGMENT_POS = 2,
-		TEX_COORD_BUFFER = 2,
-		TEX_COORD_POS = 1,
-		INDEX_BUFFER = 3,
-		NORMAL_BUFFER = 4,
-		NORMAL_POS = 3,
-		NUM_VBO = 5
-	};
-	
 /// The GameObject may be the backbone of Tempest. This is the basic object that will exist in the game. It is the root of 
 /// all rendered and interactive objects in the games. It is not a manager. This is an abstract class, so it is meant to be
 /// full implemented as needed. This holds the generic ideas of what makes up the most basic type of Object in the game Level.
@@ -228,13 +214,6 @@ namespace Tempest
 		inline void SetInactiveRender(void)
 		{
 			_activeRender = false;
-		}
-
-//===== Is Sprite =====
-/// Returns true is the GameObject has had MakeSprite called, or is considered to be a sprite.		
-		inline bool IsSprite(void) const
-		{
-			return _isSprite;
 		}
 
 //===== ID =====
@@ -487,39 +466,44 @@ namespace Tempest
 			_texture->Bind(state);
 		}
 
-//===== Shader =====
-/// Returns the current shader for this GameObject.		
-		inline const shared_ptr<Shader> GetShader(void) const
+//===== Mesh and Shader =====
+		inline U32 GetMeshNumVertices(void) const
 		{
-			return _shader;
+			return _mesh.GetNumVertices();
+		}
+
+/// Returns the current shader for this GameObject.		
+		inline const p_Shader GetMeshShader(void) const
+		{
+			return _mesh.GetShader();
 		}
 
 /// Change the shader for this GameObject.		
-		inline void SetShader(const shared_ptr<Shader> shader)
+		inline void SetMeshShader(const p_Shader shader)
 		{
-			_shader = shader;
+			_mesh.SetShader(shader);
 		}
 
 /// Helper wrapper, calls Shader::LoadShader to initialize the Shader on this GameObject.
 /// \param shaderData is an array of programs to be compiled and added to the Shader.
-		inline void LoadShader(std::vector<ShaderData> shaderData)
+		inline void LoadMeshShader(std::vector<ShaderData> shaderData)
 		{
-			_shader->LoadShader(shaderData);
+			_mesh.GetShader()->LoadShader(shaderData);
 		}
 
 /// Helper wrapper, calls Shader::Use to set the current shader as active for OpenGL		
-		inline void UseShader(bool state=true)
+		inline void UseMeshShader(bool state=true)
 		{
-			_shader->Use(state);
+			_mesh.GetShader()->Use(state);
 		}
 
 /// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
 /// \param name is used to looked up if the uniform has been cached yet, and if it exists.
 /// \param val is the float to be passed into the uniform.
-		inline void SetUniform(string name, const F32 val)
+		inline void SetMeshShaderUniform(string name, const F32 val)
 		{
-			_shader->Use();
-			_shader->SetUniform(name.c_str(), val);
+			_mesh.GetShader()->Use();
+			_mesh.GetShader()->SetUniform(name.c_str(), val);
 		}
 
 /// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
@@ -527,8 +511,8 @@ namespace Tempest
 /// \param vec is the Vector4 to be passed into the uniform
 		inline void SetUniform(string name, const TM::Vector4& vec)
 		{
-			_shader->Use();
-			_shader->SetUniform(name.c_str(), vec);
+			_mesh.GetShader()->Use();
+			_mesh.GetShader()->SetUniform(name.c_str(), vec);
 		}
 
 /// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
@@ -536,8 +520,8 @@ namespace Tempest
 /// \param vec is the Vector3 to be passed into the uniform.
 		inline void SetUniform(string name, const TM::Vector3& vec)
 		{
-			_shader->Use();
-			_shader->SetUniform(name.c_str(), vec);
+			_mesh.GetShader()->Use();
+			_mesh.GetShader()->SetUniform(name.c_str(), vec);
 		}
 
 /// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
@@ -545,8 +529,8 @@ namespace Tempest
 /// \param point is passed as a Vector4 into the uniform.
 		inline void SetUniform(string name, const TM::Point& point)
 		{
-			_shader->Use();
-			_shader->SetUniform(name.c_str(), point);
+			_mesh.GetShader()->Use();
+			_mesh.GetShader()->SetUniform(name.c_str(), point);
 		}
 
 /// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
@@ -554,8 +538,8 @@ namespace Tempest
 /// \param mat is passed into the uniform as a Matrix4
 		inline void SetUniform(string name, const TM::Matrix4& mat)
 		{
-			_shader->Use();
-			_shader->SetUniform(name.c_str(), mat);
+			_mesh.GetShader()->Use();
+			_mesh.GetShader()->SetUniform(name.c_str(), mat);
 		}
 
 /// Helper wrapper, calls Shader::Use and Shader::SetUniformSampler
@@ -563,8 +547,8 @@ namespace Tempest
 /// \param texSlot is used to look up the needed sampler in the shader.
 		inline void SetUniformSampler(string name, S32 texSlot)
 		{
-			_shader->Use();
-			_shader->SetUniformSampler(name.c_str(), texSlot);
+			_mesh.GetShader()->Use();
+			_mesh.GetShader()->SetUniformSampler(name.c_str(), texSlot);
 		}
 
 /// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
@@ -572,8 +556,8 @@ namespace Tempest
 /// \param col is passed into the uniform as a color4.
 		inline void SetUniform(string name, const Color& col)
 		{
-			_shader->Use();
-			_shader->SetUniform(name.c_str(), col);
+			_mesh.GetShader()->Use();
+			_mesh.GetShader()->SetUniform(name.c_str(), col);
 		}
 
 /// Helper wrapper, calls Shader::Use and Shader::SetUniformVec3. 
@@ -581,8 +565,8 @@ namespace Tempest
 /// \param col is passed into the shader, to be used as a color3
 		inline void SetUniformVec3(string name, const Color& col)
 		{
-			_shader->Use();
-			_shader->SetUniformVec3(name.c_str(), col);
+			_mesh.GetShader()->Use();
+			_mesh.GetShader()->SetUniformVec3(name.c_str(), col);
 		}
 
 //===== NumVertices =====
@@ -717,23 +701,19 @@ namespace Tempest
 //
 //==========================================================================================================================		
 		static U32				_nextID;				///< This is an early attempt to ensure that all ID as unique. This is a flawed approach.	
-		std::vector<Vertex> 	_vertices;				///< Array of vertices used for rendering. This is the mesh of the object.
-		std::vector<U32> 		_indices;				///< Rendering optimization. An array of indices used to help render the mesh without duplicated vertices.
-		std::vector<F32> 		_uvList;				///< Array of UV pair values, used to render a texture on the mesh.
+		
 		TM::Matrix4 			_modelTOWorldCache;		///< Cache of the model to world transformation matrix. 
 		TM::Point 				_position;				///< Position of the object in world space.
 		TM::Vector3				_scale;					///< Scale of the object in world space.
 		TM::Quaternion			_orientation;			///< Orientation of the object in world space. Untested.
 		Color 					_color;					///< Color that should be used to tint the object. How it affects the object depends on what shader you are using.
 		TC::AABB				_boundingBox;			///< Collision bounding box for the object. Is active and set up by default.
+		Mesh					_mesh;
 		shared_ptr<Texture>		_texture;				///< Texture used when rendering the object. Set to null by default.
-		shared_ptr<Shader>		_shader;				///< Shader used for rendering. Should come from the ShaderManager. Set to null by default.
 		bool					_activeUpdate;			///< State of the object in the update loop. If true, v_Update will be called. 
 		bool					_activeRender;			///< State of the object in the render loop. If true, v_Render will be called.
-		bool 					_isSprite;				///< Helper flag to let the engine know if this object is a 2D sprite vs a 3D model.
 		U32 					_ID;					///< ID should be unique, but this system needs to be changed.
-		GLuint 					_vao;					///< Vertex Array Object, used in OpenGL. See OGL documentation for details.
-		GLuint 					_vbo[NUM_VBO];			///< Vertex Buffer Object, used in OpenGL. See OGL documentation for details.
+		
 	};//End class
 	typedef shared_ptr<GameObject> p_GameObject;
 }

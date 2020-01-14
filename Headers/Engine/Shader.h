@@ -22,7 +22,22 @@ using std::map;
 
 namespace Tempest
 { 
-///	Helper struct to hold the type of shader contained. Allows for functions to be able to build Shaders dynamically. 
+	/// Helper ID's for shader info. This should probably be moved to a new home. 	
+	enum TEMPEST_API BufferData
+	{
+		VERTEX_BUFFER = 0,
+		VERTEX_POS = 0,
+		FRAGMENT_BUFFER = 1,
+		FRAGMENT_POS = 2,
+		TEX_COORD_BUFFER = 2,
+		TEX_COORD_POS = 1,
+		INDEX_BUFFER = 3,
+		NORMAL_BUFFER = 4,
+		NORMAL_POS = 3,
+		NUM_VBO = 5
+	};
+	
+	///	Helper struct to hold the type of shader contained. Allows for functions to be able to build Shaders dynamically. 
 	enum  ShaderType
 	{
 		VERTEX,

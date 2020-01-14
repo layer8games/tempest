@@ -202,6 +202,12 @@
     <Filter Include="Source Code\Physics\PhysicsFactory">
       <UniqueIdentifier>{f661ea09-a9a5-462e-91bd-9e3bf611f900}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\Mesh">
+      <UniqueIdentifier>{ab077edb-e62a-4faf-87dc-ab188472c08d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Mesh\Base">
+      <UniqueIdentifier>{799b322b-c4f1-4d55-a103-88dc6f801bb4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -360,6 +366,9 @@
     <ClInclude Include="..\..\Headers\Engine\PhysicsFactory.h">
       <Filter>Source Code\Physics\PhysicsFactory</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Mesh.h">
+      <Filter>Source Code\Engine\Mesh\Base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -508,6 +517,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\dllmain.cpp">
       <Filter>Source Code\Engine\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Mesh.cpp">
+      <Filter>Source Code\Engine\Mesh\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
