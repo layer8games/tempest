@@ -435,50 +435,50 @@ namespace Tempest
 		/// \param texture is the new texture for the GameObject.
 		inline void SetMeshTexture(p_Texture texture)
 		{
-			_mesh->SetTexture(texture);
+			_mesh.SetTexture(texture);
 		}
 
 		/// Helper wrapper to call Texture::Bind on the texture that is saved on this GameObject.		
 		inline void BindMeshTexture(bool state=true)
 		{
-			_mesh->BindTexture(state);
+			_mesh.BindTexture(state);
 		}
 
 //===== Mesh and Shader =====
-		inline void SetMesh(std::unique_ptr<Mesh> mesh)
+		inline void SetMesh(const Mesh& mesh)
 		{
-			_mesh = std::move(mesh);
+			_mesh = mesh;
 		}
 
 		/// Call Mesh to get the number of vertices.
 		inline U32 GetMeshNumVertices(void) const
 		{
-			return _mesh->GetNumVertices();
+			return _mesh.GetNumVertices();
 		}
 
 		/// Returns the current shader for this GameObject.		
 		inline const p_Shader GetMeshShader(void) const
 		{
-			return _mesh->GetShader();
+			return _mesh.GetShader();
 		}
 
 		/// Change the shader for this GameObject.		
 		inline void SetMeshShader(const p_Shader shader)
 		{
-			_mesh->SetShader(shader);
+			_mesh.SetShader(shader);
 		}
 
 		/// Helper wrapper, calls Shader::LoadShader to initialize the Shader on this GameObject.
 		/// \param shaderData is an array of programs to be compiled and added to the Shader.
 		inline void LoadMeshShader(std::vector<ShaderData> shaderData)
 		{
-			_mesh->GetShader()->LoadShader(shaderData);
+			_mesh.GetShader()->LoadShader(shaderData);
 		}
 
 		/// Helper wrapper, calls Shader::Use to set the current shader as active for OpenGL		
 		inline void UseMeshShader(bool state=true)
 		{
-			_mesh->GetShader()->Use(state);
+			_mesh.GetShader()->Use(state);
 		}
 
 		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
@@ -486,8 +486,8 @@ namespace Tempest
 		/// \param val is the float to be passed into the uniform.
 		inline void SetMeshShaderUniform(string name, const F32 val)
 		{
-			_mesh->GetShader()->Use();
-			_mesh->GetShader()->SetUniform(name.c_str(), val);
+			_mesh.GetShader()->Use();
+			_mesh.GetShader()->SetUniform(name.c_str(), val);
 		}
 
 		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
@@ -495,8 +495,8 @@ namespace Tempest
 		/// \param vec is the Vector4 to be passed into the uniform
 		inline void SetUniform(string name, const TM::Vector4& vec)
 		{
-			_mesh->GetShader()->Use();
-			_mesh->GetShader()->SetUniform(name.c_str(), vec);
+			_mesh.GetShader()->Use();
+			_mesh.GetShader()->SetUniform(name.c_str(), vec);
 		}
 
 		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
@@ -504,8 +504,8 @@ namespace Tempest
 		/// \param vec is the Vector3 to be passed into the uniform.
 		inline void SetUniform(string name, const TM::Vector3& vec)
 		{
-			_mesh->GetShader()->Use();
-			_mesh->GetShader()->SetUniform(name.c_str(), vec);
+			_mesh.GetShader()->Use();
+			_mesh.GetShader()->SetUniform(name.c_str(), vec);
 		}
 
 		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
@@ -513,8 +513,8 @@ namespace Tempest
 		/// \param point is passed as a Vector4 into the uniform.
 		inline void SetUniform(string name, const TM::Point& point)
 		{
-			_mesh->GetShader()->Use();
-			_mesh->GetShader()->SetUniform(name.c_str(), point);
+			_mesh.GetShader()->Use();
+			_mesh.GetShader()->SetUniform(name.c_str(), point);
 		}
 
 		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
@@ -522,8 +522,8 @@ namespace Tempest
 		/// \param mat is passed into the uniform as a Matrix4
 		inline void SetUniform(string name, const TM::Matrix4& mat)
 		{
-			_mesh->GetShader()->Use();
-			_mesh->GetShader()->SetUniform(name.c_str(), mat);
+			_mesh.GetShader()->Use();
+			_mesh.GetShader()->SetUniform(name.c_str(), mat);
 		}
 
 		/// Helper wrapper, calls Shader::Use and Shader::SetUniformSampler
@@ -531,8 +531,8 @@ namespace Tempest
 		/// \param texSlot is used to look up the needed sampler in the shader.
 		inline void SetUniformSampler(string name, S32 texSlot)
 		{
-			_mesh->GetShader()->Use();
-			_mesh->GetShader()->SetUniformSampler(name.c_str(), texSlot);
+			_mesh.GetShader()->Use();
+			_mesh.GetShader()->SetUniformSampler(name.c_str(), texSlot);
 		}
 
 		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
@@ -540,8 +540,8 @@ namespace Tempest
 		/// \param col is passed into the uniform as a color4.
 		inline void SetUniform(string name, const Color& col)
 		{
-			_mesh->GetShader()->Use();
-			_mesh->GetShader()->SetUniform(name.c_str(), col);
+			_mesh.GetShader()->Use();
+			_mesh.GetShader()->SetUniform(name.c_str(), col);
 		}
 
 		/// Helper wrapper, calls Shader::Use and Shader::SetUniformVec3. 
@@ -549,8 +549,8 @@ namespace Tempest
 		/// \param col is passed into the shader, to be used as a color3
 		inline void SetUniformVec3(string name, const Color& col)
 		{
-			_mesh->GetShader()->Use();
-			_mesh->GetShader()->SetUniformVec3(name.c_str(), col);
+			_mesh.GetShader()->Use();
+			_mesh.GetShader()->SetUniformVec3(name.c_str(), col);
 		}	
 
 	protected:
@@ -573,7 +573,7 @@ namespace Tempest
 		TM::Quaternion			_orientation;			///< Orientation of the object in world space. Untested.
 		Color 					_color;					///< Color that should be used to tint the object. How it affects the object depends on what shader you are using.
 		TC::AABB				_boundingBox;			///< Collision bounding box for the object. Is active and set up by default.
-		std::unique_ptr<Mesh>	_mesh;					///< Mesh data for the GameObject. This is a pointer because the Mesh needs a pointer to the GameObject.
+		Mesh					_mesh;					///< Mesh data for the GameObject. This is a pointer because the Mesh needs a pointer to the GameObject.
 		bool					_activeUpdate;			///< State of the object in the update loop. If true, v_Update will be called. 
 		bool					_activeRender;			///< State of the object in the render loop. If true, v_Render will be called.
 		U32 					_ID;					///< ID should be unique, but this system needs to be changed.

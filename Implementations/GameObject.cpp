@@ -60,7 +60,7 @@ void GameObject::v_Render(void)
 
 void GameObject::DefaultRender(void)
 {
-	_mesh->v_Render(_modelTOWorldCache);
+	_mesh.v_Render(_modelTOWorldCache);
 }
 
 //==========================================================================================================================
