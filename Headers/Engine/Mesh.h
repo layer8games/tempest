@@ -4,10 +4,17 @@
 #include <Engine/Atom.h>
 #include <Engine/Vertex.h>
 #include <Engine/Shader.h>
-#include <Engine/GameObject.h>
+#include <Engine/Matrix4.h>
+
+#include <rapidxml.hpp>
 
 //===== STL includes =====
 #include <vector>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
+#include <regex>
+#include <stdlib.h>
 
 namespace Tempest
 {
@@ -28,12 +35,12 @@ namespace Tempest
 	//Functions
 	//
 	//==========================================================================================================================
-		TEMPEST_API virtual void v_Render(void)
+		TEMPEST_API virtual void v_Render(const TM::Matrix4& modelMatrix)
 		{
-			DefaultRender();
+			DefaultRender(modelMatrix);
 		}
 
-		TEMPEST_API void DefaultRender(void);
+		TEMPEST_API void DefaultRender(const TM::Matrix4& modelMatrix);
 
 
 		/// By default, this will create a 6 point box, used in sprites. It can be overloaded if you need something different in your
@@ -209,12 +216,11 @@ namespace Tempest
 //==========================================================================================================================
 //Data
 //==========================================================================================================================		
-		p_GameObject			_gameObject;
 		std::vector<Vertex> 	_vertices;				///< Array of vertices used for rendering. This is the mesh of the object.
 		std::vector<U32> 		_indices;				///< Rendering optimization. An array of indices used to help render the mesh without duplicated vertices.
 		std::vector<F32> 		_uvList;				///< Array of UV pair values, used to render a texture on the mesh.
 		p_Shader				_shader;				///< Shader used for rendering. Should come from the ShaderManager. Set to null by default.
-		shared_ptr<Texture>		_texture;				///< Texture used when rendering the object. Set to null by default.
+		p_Texture		_texture;				///< Texture used when rendering the object. Set to null by default.
 		GLuint 					_vao;					///< Vertex Array Object, used in OpenGL. See OGL documentation for details.
 		GLuint 					_vbo[NUM_VBO];			///< Vertex Buffer Object, used in OpenGL. See OGL documentation for details.
 

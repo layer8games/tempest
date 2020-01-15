@@ -38,7 +38,7 @@ Mesh::~Mesh(void)
 //==========================================================================================================================
 
 
-void Mesh::DefaultRender(void)
+void Mesh::DefaultRender(const TM::Matrix4& modelMatrix)
 {
 	_shader->Use(true);
 	BindVAO(true);
@@ -49,7 +49,7 @@ void Mesh::DefaultRender(void)
 		_shader->SetUniform("has_texture", true);
 	}
 
-	_shader->SetUniform("model", _gameObject->GetModelMatrix());
+	_shader->SetUniform("model", modelMatrix);
 
 	glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
 
