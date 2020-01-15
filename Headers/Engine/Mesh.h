@@ -141,6 +141,25 @@ namespace Tempest
 			_uvList.push_back(val);
 		}
 
+//===== Texture =====
+/// Change the texture of the GameObject. 
+/// \param texture is the new texture for the GameObject.
+		inline void SetTexture(shared_ptr<Texture> texture)
+		{
+			_texture = texture;
+		}
+
+/// Return the current texture pointer for the GameObject.		
+		inline shared_ptr<Texture> GetTexture(void) const
+		{
+			return _texture;
+		}
+
+		inline void BindTexture(bool state=true)
+		{
+			_texture->Bind(state);
+		}
+
 	private:
 		p_GameObject			_gameObject;
 		std::vector<Vertex> 	_vertices;				///< Array of vertices used for rendering. This is the mesh of the object.

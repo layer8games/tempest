@@ -449,21 +449,15 @@ namespace Tempest
 //===== Texture =====
 /// Change the texture of the GameObject. 
 /// \param texture is the new texture for the GameObject.
-		inline void SetTexture(shared_ptr<Texture> texture)
+		inline void SetMeshTexture(shared_ptr<Texture> texture)
 		{
-			_texture = texture;
-		}
-
-/// Return the current texture pointer for the GameObject.		
-		inline shared_ptr<Texture> GetTexture(void) const
-		{
-			return _texture;
+			_mesh.SetTexture(texture);
 		}
 
 /// Helper wrapper to call Texture::Bind on the texture that is saved on this GameObject.		
-		inline void BindTexture(bool state=true)
+		inline void BindMeshTexture(bool state=true)
 		{
-			_texture->Bind(state);
+			_mesh.BindTexture(state);
 		}
 
 //===== Mesh and Shader =====
