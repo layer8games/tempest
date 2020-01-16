@@ -40,24 +40,24 @@ Glyph& Glyph::operator=(const Glyph& glyph)
 //==========================================================================================================================
 void Glyph::v_Render(void)
 {
-	GameObject::UseMeshShader(true);
+	_mesh.GetShader()->Use(true);
 
-	GameObject::SetUniform("sprite_color", GameObject::GetColor());
-	GameObject::SetUniform("model", GameObject::GetModelMatrix());
+	_mesh.GetShader()->SetUniform("sprite_color", GameObject::GetColor());
+	_mesh.GetShader()->SetUniform("model", GameObject::GetModelMatrix());
 	
-	GameObject::BindTexture(true);
-	GameObject::BindVAO(true);
+	_mesh.GetTexture()->Bind(true);
+	_mesh.BindVAO(true);
 
-	glDrawArrays(GL_TRIANGLES, 0, GameObject::GetNumVertices());
+	glDrawArrays(GL_TRIANGLES, 0, _mesh.GetNumVertices());
 
-	GameObject::UseMeshShader(false);
-	GameObject::BindTexture(false);
-	GameObject::BindVAO(false);
+	_mesh.GetShader()->Use(false);
+	_mesh.GetTexture()->Bind(false);
+	_mesh.BindVAO(false);
 }
 
 void Glyph::Init(void)
 {
-	GameObject::MakeSprite();
-
-	GameObject::SetMeshShader(ShaderManager::Instance()->GetShader(GLYPH));
+	// TODO: Need to instatiate a Sprite, with Shader and add it to the GameObject as the Mesh
+	//GameObject::MakeSprite();
+	//GameObject::SetMeshShader(ShaderManager::Instance()->GetShader(GLYPH));
 }

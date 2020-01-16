@@ -186,11 +186,6 @@ namespace Tempest
 			return _texture;
 		}
 
-		inline void BindTexture(bool state=true)
-		{
-			_texture->Bind(state);
-		}
-
 	private:
 		/// Helper function to split a list of numbers apart. This is intended to be used with a list of numbers separated by a 
 		/// standard character, for instance, a list of space or comma separated numbers. The numbers are read as strings and
@@ -220,10 +215,10 @@ namespace Tempest
 		std::vector<U32> 		_indices;				///< Rendering optimization. An array of indices used to help render the mesh without duplicated vertices.
 		std::vector<F32> 		_uvList;				///< Array of UV pair values, used to render a texture on the mesh.
 		p_Shader				_shader;				///< Shader used for rendering. Should come from the ShaderManager. Set to null by default.
-		p_Texture		_texture;				///< Texture used when rendering the object. Set to null by default.
+		p_Texture				_texture;				///< Texture used when rendering the object. Set to null by default.
 		GLuint 					_vao;					///< Vertex Array Object, used in OpenGL. See OGL documentation for details.
 		GLuint 					_vbo[NUM_VBO];			///< Vertex Buffer Object, used in OpenGL. See OGL documentation for details.
 
 	};//end Class
-	shared_ptr<Mesh> p_Mesh;
+	typedef shared_ptr<Mesh> p_Mesh;
 }

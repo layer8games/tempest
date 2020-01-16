@@ -29,8 +29,6 @@ namespace TC = TempestCollisions;
 
 namespace Tempest
 {
-	class Mesh;
-
 	/// The GameObject may be the backbone of Tempest. This is the basic object that will exist in the game. It is the root of 
 	/// all rendered and interactive objects in the games. It is not a manager. This is an abstract class, so it is meant to be
 	/// full implemented as needed. This holds the generic ideas of what makes up the most basic type of Object in the game Level.
@@ -396,6 +394,8 @@ namespace Tempest
 		inline void SetColor(const Color& col)
 		{
 			_color = col;
+
+			_mesh.GetShader()->SetUniform("color", _color);
 		}
 
 		/// Change the color of the GameObject without having to create a Color object. Alpha is ommited.
@@ -407,6 +407,8 @@ namespace Tempest
 			_color[0] = red;
 			_color[1] = green;
 			_color[2] = blue;
+
+			_mesh.GetShader()->SetUniform("color", _color);
 		}
 
 		/// Return the color of the GameObject		
@@ -430,132 +432,18 @@ namespace Tempest
 			return _boundingBox;
 		}
 
-//===== Texture =====
-		/// Change the texture of the GameObject. 
-		/// \param texture is the new texture for the GameObject.
-		inline void SetMeshTexture(p_Texture texture)
-		{
-			_mesh.SetTexture(texture);
-		}
-
-		/// Helper wrapper to call Texture::Bind on the texture that is saved on this GameObject.		
-		inline void BindMeshTexture(bool state=true)
-		{
-			_mesh.BindTexture(state);
-		}
-
-//===== Mesh and Shader =====
+//===== Mesh =====
 		inline void SetMesh(const Mesh& mesh)
 		{
 			_mesh = mesh;
-		}
-
-		/// Call Mesh to get the number of vertices.
-		inline U32 GetMeshNumVertices(void) const
-		{
-			return _mesh.GetNumVertices();
-		}
-
-		/// Returns the current shader for this GameObject.		
-		inline const p_Shader GetMeshShader(void) const
-		{
-			return _mesh.GetShader();
-		}
-
-		/// Change the shader for this GameObject.		
-		inline void SetMeshShader(const p_Shader shader)
-		{
-			_mesh.SetShader(shader);
-		}
-
-		/// Helper wrapper, calls Shader::LoadShader to initialize the Shader on this GameObject.
-		/// \param shaderData is an array of programs to be compiled and added to the Shader.
-		inline void LoadMeshShader(std::vector<ShaderData> shaderData)
-		{
-			_mesh.GetShader()->LoadShader(shaderData);
-		}
-
-		/// Helper wrapper, calls Shader::Use to set the current shader as active for OpenGL		
-		inline void UseMeshShader(bool state=true)
-		{
-			_mesh.GetShader()->Use(state);
-		}
-
-		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
-		/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
-		/// \param val is the float to be passed into the uniform.
-		inline void SetMeshShaderUniform(string name, const F32 val)
-		{
-			_mesh.GetShader()->Use();
-			_mesh.GetShader()->SetUniform(name.c_str(), val);
-		}
-
-		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
-		/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
-		/// \param vec is the Vector4 to be passed into the uniform
-		inline void SetUniform(string name, const TM::Vector4& vec)
-		{
-			_mesh.GetShader()->Use();
-			_mesh.GetShader()->SetUniform(name.c_str(), vec);
-		}
-
-		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
-		/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
-		/// \param vec is the Vector3 to be passed into the uniform.
-		inline void SetUniform(string name, const TM::Vector3& vec)
-		{
-			_mesh.GetShader()->Use();
-			_mesh.GetShader()->SetUniform(name.c_str(), vec);
-		}
-
-		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
-		/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
-		/// \param point is passed as a Vector4 into the uniform.
-		inline void SetUniform(string name, const TM::Point& point)
-		{
-			_mesh.GetShader()->Use();
-			_mesh.GetShader()->SetUniform(name.c_str(), point);
-		}
-
-		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
-		/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
-		/// \param mat is passed into the uniform as a Matrix4
-		inline void SetUniform(string name, const TM::Matrix4& mat)
-		{
-			_mesh.GetShader()->Use();
-			_mesh.GetShader()->SetUniform(name.c_str(), mat);
-		}
-
-		/// Helper wrapper, calls Shader::Use and Shader::SetUniformSampler
-		/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
-		/// \param texSlot is used to look up the needed sampler in the shader.
-		inline void SetUniformSampler(string name, S32 texSlot)
-		{
-			_mesh.GetShader()->Use();
-			_mesh.GetShader()->SetUniformSampler(name.c_str(), texSlot);
-		}
-
-		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
-		/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
-		/// \param col is passed into the uniform as a color4.
-		inline void SetUniform(string name, const Color& col)
-		{
-			_mesh.GetShader()->Use();
-			_mesh.GetShader()->SetUniform(name.c_str(), col);
-		}
-
-		/// Helper wrapper, calls Shader::Use and Shader::SetUniformVec3. 
-		/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
-		/// \param col is passed into the shader, to be used as a color3
-		inline void SetUniformVec3(string name, const Color& col)
-		{
-			_mesh.GetShader()->Use();
-			_mesh.GetShader()->SetUniformVec3(name.c_str(), col);
 		}	
 
 	protected:
 		/// Default code to be run when v_Awake is called.		
 		TEMPEST_API void DefaultAwake(void);
+	
+		//===== Protected data =====
+		Mesh _mesh;					///< Mesh data for the GameObject. I've made this protected in order to allow Objects to define their own mesh parameters. 
 
 	private:
 		/// Creates a data cache of the model to world transformation matrix. This can help with objects that use their matrix a lot.		
@@ -573,7 +461,6 @@ namespace Tempest
 		TM::Quaternion			_orientation;			///< Orientation of the object in world space. Untested.
 		Color 					_color;					///< Color that should be used to tint the object. How it affects the object depends on what shader you are using.
 		TC::AABB				_boundingBox;			///< Collision bounding box for the object. Is active and set up by default.
-		Mesh					_mesh;					///< Mesh data for the GameObject. This is a pointer because the Mesh needs a pointer to the GameObject.
 		bool					_activeUpdate;			///< State of the object in the update loop. If true, v_Update will be called. 
 		bool					_activeRender;			///< State of the object in the render loop. If true, v_Render will be called.
 		U32 					_ID;					///< ID should be unique, but this system needs to be changed.
