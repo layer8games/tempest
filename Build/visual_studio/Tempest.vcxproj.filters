@@ -172,9 +172,6 @@
     <Filter Include="Source Code\Physics\Forces\Registry">
       <UniqueIdentifier>{0b7fb099-81e9-43aa-8090-714b6099f722}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Physics\Forces\Generator Base">
-      <UniqueIdentifier>{128415f5-4bcb-47fa-8bd6-af05ac197f78}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Physics\Forces\Springs">
       <UniqueIdentifier>{90b3a85a-49e6-4ef0-b9f4-28445503896b}</UniqueIdentifier>
     </Filter>
@@ -207,6 +204,9 @@
     </Filter>
     <Filter Include="Source Code\Engine\Mesh\Base">
       <UniqueIdentifier>{799b322b-c4f1-4d55-a103-88dc6f801bb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Physics\Forces\Base">
+      <UniqueIdentifier>{128415f5-4bcb-47fa-8bd6-af05ac197f78}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -271,7 +271,7 @@
       <Filter>Source Code\Engine\Managers\FontManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ForceGenerator.h">
-      <Filter>Source Code\Physics\Forces\Generator Base</Filter>
+      <Filter>Source Code\Physics\Forces\Base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GravityForce.h">
       <Filter>Source Code\Physics\Forces\Gravity</Filter>
@@ -429,7 +429,7 @@
       <Filter>Source Code\Engine\Managers\FontManager</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ForceGenerator.cpp">
-      <Filter>Source Code\Physics\Forces\Generator Base</Filter>
+      <Filter>Source Code\Physics\Forces\Base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GravityForce.cpp">
       <Filter>Source Code\Physics\Forces\Gravity</Filter>
