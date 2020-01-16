@@ -208,6 +208,9 @@
     <Filter Include="Source Code\Engine\GameObjects\Base">
       <UniqueIdentifier>{271c9817-2622-490e-9c17-2d9949d87bc9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\Mesh\Sprite">
+      <UniqueIdentifier>{a3dc20e3-75c0-459a-a6f5-65cfbd710ea2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -369,6 +372,9 @@
     <ClInclude Include="..\..\Headers\Engine\Mesh.h">
       <Filter>Source Code\Engine\Mesh\Base</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Sprite.h">
+      <Filter>Source Code\Engine\Mesh\Sprite</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -520,6 +526,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Mesh.cpp">
       <Filter>Source Code\Engine\Mesh\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Sprite.cpp">
+      <Filter>Source Code\Engine\Mesh\Sprite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

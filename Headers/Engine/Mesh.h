@@ -186,7 +186,7 @@ namespace Tempest
 			return _texture;
 		}
 
-	private:
+	protected:
 		/// Helper function to split a list of numbers apart. This is intended to be used with a list of numbers separated by a 
 		/// standard character, for instance, a list of space or comma separated numbers. The numbers are read as strings and
 		/// converted into U32 types.
