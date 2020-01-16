@@ -64,9 +64,6 @@
     <Filter Include="Source Code\Engine\GameObjects">
       <UniqueIdentifier>{5c9e9e45-d24d-478b-867f-8057a804f074}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Engine\GameObjects\GameObject">
-      <UniqueIdentifier>{271c9817-2622-490e-9c17-2d9949d87bc9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Engine\GameObjects\EnvironmentObj">
       <UniqueIdentifier>{e34428c4-21e7-40f7-9fe0-9eb037b1e2e4}</UniqueIdentifier>
     </Filter>
@@ -208,6 +205,9 @@
     <Filter Include="Source Code\Physics\Forces\Base">
       <UniqueIdentifier>{128415f5-4bcb-47fa-8bd6-af05ac197f78}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\GameObjects\Base">
+      <UniqueIdentifier>{271c9817-2622-490e-9c17-2d9949d87bc9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -256,7 +256,7 @@
       <Filter>Source Code\Engine\Shader</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GameObject.h">
-      <Filter>Source Code\Engine\GameObjects\GameObject</Filter>
+      <Filter>Source Code\Engine\GameObjects\Base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Text.h">
       <Filter>Source Code\Engine\Text</Filter>
@@ -414,7 +414,7 @@
       <Filter>Source Code\Engine\Shader</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObject.cpp">
-      <Filter>Source Code\Engine\GameObjects\GameObject</Filter>
+      <Filter>Source Code\Engine\GameObjects\Base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Text.cpp">
       <Filter>Source Code\Engine\Text</Filter>

@@ -8,6 +8,14 @@ using namespace Tempest;
 //
 //==========================================================================================================================
 Mesh::Mesh(void)
+	:
+	_vertices(),
+	_indices(),
+	_uvList(),
+	_shader(nullptr),
+	_texture(nullptr),
+	_vao(0),
+	_vbo{0}
 {  }
 
 Mesh::~Mesh(void)

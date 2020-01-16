@@ -16,16 +16,17 @@ U32 GameObject::_nextID = 1;
 //
 //==========================================================================================================================
 GameObject::GameObject(void)
-:
-_modelTOWorldCache(),
-_position(0.0f),
-_scale(1.0f),
-_orientation(0.0f),
-_color(1.0f),
-_boundingBox(),
-_activeUpdate(true),
-_activeRender(true),
-_ID(_nextID)
+	:
+	_mesh(),
+	_modelTOWorldCache(),
+	_position(0.0f),
+	_scale(1.0f),
+	_orientation(0.0f),
+	_color(1.0f),
+	_boundingBox(),
+	_activeUpdate(true),
+	_activeRender(true),
+	_ID(_nextID)
 {
 	++_nextID;	
 }
