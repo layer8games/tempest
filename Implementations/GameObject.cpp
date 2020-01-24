@@ -28,6 +28,7 @@ _color(1.0f),
 _boundingBox(),
 _texture(nullptr),
 _shader(nullptr),
+_mesh(nullptr),
 _activeUpdate(true),
 _activeRender(true),
 _isSprite(false),
@@ -87,7 +88,7 @@ GameObject::~GameObject(void)
 //==========================================================================================================================
 //v_Render
 //==========================================================================================================================
-void GameObject::v_Render(void)
+void GameObject::DefaultRender(void)
 {
 	_shader->Use(true);
 	BindVAO(true);
@@ -105,7 +106,15 @@ void GameObject::v_Render(void)
 
 	SetUniform("model", GetModelMatrix());
 
-	glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
+	// Temporary logic. Remove when ready to refactor all Objects
+	if(_mesh != nullptr)
+	{
+		_mesh->v_Render(_vertices.size());
+	}
+	else
+	{
+		glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
+	}
 
 	_shader->Use(false);
 	BindVAO(false);

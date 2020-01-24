@@ -191,6 +191,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Mesh.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\OBB.h">
       <SubType>
       </SubType>
@@ -331,6 +335,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Menu.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Mesh.cpp">
       <SubType>
       </SubType>
     </ClCompile>

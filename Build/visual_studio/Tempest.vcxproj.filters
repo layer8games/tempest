@@ -64,9 +64,6 @@
     <Filter Include="Source Code\Engine\GameObjects">
       <UniqueIdentifier>{5c9e9e45-d24d-478b-867f-8057a804f074}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Engine\GameObjects\GameObject">
-      <UniqueIdentifier>{271c9817-2622-490e-9c17-2d9949d87bc9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Engine\GameObjects\EnvironmentObj">
       <UniqueIdentifier>{e34428c4-21e7-40f7-9fe0-9eb037b1e2e4}</UniqueIdentifier>
     </Filter>
@@ -202,6 +199,12 @@
     <Filter Include="Source Code\Physics\PhysicsFactory">
       <UniqueIdentifier>{f661ea09-a9a5-462e-91bd-9e3bf611f900}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\GameObjects\Base">
+      <UniqueIdentifier>{271c9817-2622-490e-9c17-2d9949d87bc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Mesh">
+      <UniqueIdentifier>{10f2aa3d-bd04-44f5-b4be-99113c705037}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -250,7 +253,7 @@
       <Filter>Source Code\Engine\Shader</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GameObject.h">
-      <Filter>Source Code\Engine\GameObjects\GameObject</Filter>
+      <Filter>Source Code\Engine\GameObjects\Base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Text.h">
       <Filter>Source Code\Engine\Text</Filter>
@@ -360,6 +363,9 @@
     <ClInclude Include="..\..\Headers\Engine\PhysicsFactory.h">
       <Filter>Source Code\Physics\PhysicsFactory</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Mesh.h">
+      <Filter>Source Code\Engine\Mesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -405,7 +411,7 @@
       <Filter>Source Code\Engine\Shader</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObject.cpp">
-      <Filter>Source Code\Engine\GameObjects\GameObject</Filter>
+      <Filter>Source Code\Engine\GameObjects\Base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Text.cpp">
       <Filter>Source Code\Engine\Text</Filter>
@@ -508,6 +514,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\dllmain.cpp">
       <Filter>Source Code\Engine\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Mesh.cpp">
+      <Filter>Source Code\Engine\Mesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
