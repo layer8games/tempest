@@ -20,16 +20,6 @@
 namespace TM = TempestMath;
 namespace TC = TempestCollisions;
 
-#include <rapidxml.hpp>
-
-//===== STL inludes =====
-#include <vector>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <regex>
-#include <stdlib.h>
-
 namespace Tempest
 {
 	/// The GameObject may be the backbone of Tempest. This is the basic object that will exist in the game. It is the root of 
@@ -87,14 +77,6 @@ namespace Tempest
 		/// Calls _CalculateCachedData. The idea is that the data for the Object can be cached, and this updates that cache. 
 		/// This has some issues since it is not always called. 
 		TEMPEST_API void UpdateInternals(void);
-
-		/// Loads a model from a wavefront object (.obj file). I would call this a hacked version of file processing, but it does work.		
-		/// \param filepath is the path to the model to be loaded.
-		TEMPEST_API bool LoadOBJ(string filepath);
-
-		/// Loads model from a .dae file. This does not work at all. I have considered removing it completely. 
-		/// \param filepath is the file to be loaded.
-		TEMPEST_API void LoadMesh(string filepath);
 
 		/// Calls all the needed functions to make this Object act like a sprite. This is a replacement for a full sprite class.
 		TEMPEST_API void MakeSprite(void);
@@ -501,31 +483,15 @@ namespace Tempest
 		/// Default code to Render the Object.
 		TEMPEST_API void DefaultRender(void);
 
+//==========================================================================================================================
+//
+//Protected Data
+//
+//==========================================================================================================================		
 		p_Shader				_shader;				///< Shader used for rendering. Should come from the ShaderManager. Set to null by default.
 		p_Mesh					_mesh;					///< Collection of vertices that make up the body of the rendered object.
 
 	private:
-		/// Helper function to split a list of numbers apart. This is intended to be used with a list of numbers separated by a 
-		/// standard character, for instance, a list of space or comma separated numbers. The numbers are read as strings and
-		/// converted into U32 types.
-		/// \param text is string to break apart. It should be numbers separated by a common character.
-		/// \param delim is the character that separates each number in list.
-		std::vector<U32> _SplitU32(string text, char delim) const;
-		
-		/// Helper function to split a list of numbers apart. This is intended to be used with a list of numbers separated by a 
-		/// standard character, for instance, a list of space or comma separated numbers. The numbers are read as strings and
-		/// converted into F32 types.
-		/// \param text is string to break apart. It should be numbers separated by a common character.
-		/// \param delim is the character that separates each number in list. 		
-		std::vector<F32> _SplitF32(string text, char delim) const;
-
-		/// Helper function to split a list of numbers apart. This is intended to be used with a list of characters separated by a 
-		/// standard character, for instance, a list of space or comma separated numbers. The numbers are read as strings and
-		/// converted into string types.
-		/// \param text is string to break apart. It should be characters separated by a common character.
-		/// \param delim is the character that separates each number in list.		
-		std::vector<string> _SplitString(string text, char delim) const;
-
 		/// Creates a data cache of the model to world transformation matrix. This can help with objects that use their matrix a lot.		
 		void _CalculateCachedData(void);
 

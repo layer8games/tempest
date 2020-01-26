@@ -144,3 +144,367 @@ void Mesh::BindVBO(BufferData buffer)
 			break;
 	}
 }
+
+bool Mesh::LoadOBJ(string filepath)
+{
+	std::vector<U32> vertexIndices, uvIndices, normalIndices;
+	std::vector<TM::Point> tempVertices;
+	std::vector<TM::Vector4> tempNormals;
+	std::vector<TexCoord> tempUVs;
+
+	if(filepath.find(".obj") != std::string::npos)
+	{
+		std::ifstream file(filepath, std::ios::in);
+
+		if(!file)
+		{
+			ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadOBJ => unable to open " + filepath);
+			return false;
+		}
+
+		string lineBuffer;
+		while(std::getline(file, lineBuffer))
+		{
+			std::stringstream ss(lineBuffer);
+			string command;
+			ss >> command;
+
+			if(command == "v")
+			{
+				TM::Point vertex;
+				S32 dimension = 0;
+
+				while(dimension < 3 && ss >> vertex[dimension])
+				{
+					++dimension;
+				}
+
+				tempVertices.push_back(vertex);
+			}
+			else if(command == "vt")
+			{
+				TexCoord uv;
+
+				ss >> uv.u;
+				ss >> uv.v;
+
+				tempUVs.push_back(uv);
+			}
+			else if(command == "vn")
+			{
+				TM::Vector4 normal;
+				S32 dimension = 0;
+
+				while(dimension < 3 && ss >> normal[dimension])
+				{
+					++dimension;
+				}
+
+				normal[3] = 0.0f;
+				normal.Normalize();
+
+				tempNormals.push_back(normal);
+			}
+			else if(command == "f")
+			{
+				string faceData;
+				S32 vertexIndex, uvIndex, normalIndex;
+
+				while(ss >> faceData)
+				{
+					std::vector<string> data = _SplitString(faceData, '/');
+
+					//check for vertex data
+					if(data[0].size() > 0)
+					{
+						sscanf_s(data[0].c_str(), "%d", &vertexIndex);
+						vertexIndices.push_back(vertexIndex);
+					}
+
+					//check for texture coordinate data
+					if(data.size() >= 1)
+					{
+						if(data[1].size() > 0)
+						{
+							sscanf_s(data[1].c_str(), "%d", &uvIndex);
+							uvIndices.push_back(uvIndex);
+						}
+					}
+
+					//check for normal data
+					if(data.size() >= 2)
+					{
+						if(data[2].size() > 0)
+						{
+							sscanf_s(data[2].c_str(), "%d", &normalIndex);
+							normalIndices.push_back(normalIndex);
+						}
+					}
+				}
+			}
+		}
+
+		file.close();
+
+		for(U32 i = 0; i < vertexIndices.size(); ++i)
+		{
+			Vertex meshVertex;
+
+			if(tempVertices.size() > 0)
+			{
+				meshVertex.position = tempVertices[vertexIndices[i] - 1];
+			}
+
+			if(tempUVs.size() > 0)
+			{
+				meshVertex.texCoord = tempUVs[uvIndices[i] - 1];
+			}
+
+			if(tempNormals.size() > 0)
+			{
+				meshVertex.normal = tempNormals[normalIndices[i] - 1];
+			}
+
+			AddVertex(meshVertex);
+		}
+
+		InitOpenGLData();
+
+		return true;
+	}
+
+	return false;
+}
+
+/*
+	This whole second has some severe issues. First, the way that uv's are set is not working at all. The geometry (vertices)
+	are working pretty good, but they can't be colored at all, which is a big problem.
+
+	Additionally, there needs to be more checks that the xml finds what its looking for so that elements that aren't there don't
+	crash the whole program. That is why the materials are commented out, if you happen to make a model that does not have any,
+	an exception will be thrown, which is not desired.
+
+	The way that colors are used also needs to be refactored, so that colored materials can be added from blender and work. For
+	now, this method should not be used at all.
+*/
+void Mesh::LoadMesh(string filepath)
+{
+	ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh Deprecated function, do not call!");
+	return;
+
+	if(filepath.find(".dae") == std::string::npos)
+	{
+		ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh => Tried to load mesh in the wrong format. " + filepath);
+		return;
+	}
+
+	std::vector<F32> vertexData;
+	std::vector<Vertex> vertices;
+	std::vector<F32> uvData;
+	std::vector<TexCoord> texCoordValues;
+
+	std::smatch match{};
+	std::regex vertexRegex(".*mesh-positions");
+	std::regex uvRegex(".*mesh-map.*");
+
+	std::ifstream file(filepath);
+
+	if(!file)
+	{
+		ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh => Failed to open file: " + filepath);
+		return;
+	}
+
+	std::vector<char> buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+	//xml file must be 0 terminating
+	buffer.push_back('\0');
+
+	file.close();
+
+	rapidxml::xml_document<char> doc;
+	doc.parse<0>(&buffer[0]);
+
+	//Set root node
+	rapidxml::xml_node<>* root_node = doc.first_node("COLLADA");
+
+//===== TO DO =====
+//Will need to be able to capture normal data. Here is the code that can do that.
+//I am just not sure what to do with that code yet. 
+
+//===== Get Data =====
+	rapidxml::xml_node<>* data = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh")->first_node("source");
+
+	for(rapidxml::xml_node<>* i = data; i; i = i->next_sibling("source"))
+	{
+		string attrib = i->first_attribute("id")->value();
+
+		if(std::regex_match(attrib, match, vertexRegex))
+		{
+			rapidxml::xml_node<>* access = i->first_node("float_array");
+			vertexData = _SplitF32(access->value(), ' ');
+
+			for(U32 i = 0; i < vertexData.size(); i += 3)
+			{
+				//vertices.push_back(Vertex(TM::Vector4(vertexData[i], vertexData[i+1], vertexData[i+2])));
+				AddVertex(Vertex(TM::Point(vertexData[i], vertexData[i + 1], vertexData[i + 2])));
+			}
+		}
+		else if(std::regex_match(attrib, match, uvRegex))
+		{
+			rapidxml::xml_node<>* access = i->first_node("float_array");
+			uvData = _SplitF32(access->value(), ' ');
+
+			for(U32 i = 0; i < uvData.size(); i += 2)
+			{
+				texCoordValues.push_back(TexCoord(uvData[i], uvData[i + 1]));
+			}
+		}
+	}
+
+//===== Get Materials =====
+/*
+	std::map<string, Color&> materials;
+
+	data = root_node->first_node("library_effects")->first_node("effect");
+	rapidxml::xml_node<>* mat_id = root_node->first_node("library_materials")->first_node("material");
+
+	for(rapidxml::xml_node<>* i = data; i; i = i->next_sibling("effect"))
+	{
+		data = i->first_node("profile_COMMON")->first_node("technique")->first_node("phong")->first_node("diffuse")->first_node("color");
+
+		std::vector<F32> values = _SplitF32(data->value(), ' ');
+
+		string id = mat_id->first_attribute("id")->value();
+		mat_id = mat_id->next_sibling("material");
+
+		materials.insert({id, Color(values[0], values[1], values[2], values[3])});
+
+		if(materials.find(id) == materials.end())
+		{
+			ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh, unable to load color from matrial");
+		}
+	}
+*/
+
+	//Get indices
+	data = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh")->first_node("polylist");
+
+	for(rapidxml::xml_node<>* i = data; i; i = i->next_sibling("polylist"))
+	{
+/*
+		string id = i->first_attribute("material")->value();
+
+		Color mat = materials.find(id)->second;
+*/
+		data = i->first_node("p");
+
+		std::vector<U32> indices = _SplitU32(data->value(), ' ');
+
+		std::vector<U32> vertexIndices;
+		std::vector<U32> uvIndices;
+
+		//count the stride
+		S32 stride = 0;
+		S32 vertexOffset = -1;
+		S32 uvOffset = -1;
+
+		std::regex vertexRegex("VERTEX");
+		std::regex uvRegex("TEXCOORD");
+
+		for(rapidxml::xml_node<>* j = i->first_node("input"); j; j = j->next_sibling("input"))
+		{
+			++stride;
+
+			string attrib = j->first_attribute("semantic")->value();
+
+			if(std::regex_match(attrib, match, vertexRegex))
+			{
+				vertexOffset = atoi(j->first_attribute("offset")->value());
+			}
+			else if(std::regex_match(attrib, match, uvRegex))
+			{
+				uvOffset = atoi(j->first_attribute("offset")->value());
+			}
+		}
+
+		if(stride == 0)
+		{
+			ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh: No stride found. That means there is no input, and your xml file is wrong");
+		}
+
+		for(U32 i = 0; i < indices.size(); i+=stride)
+		{
+			if(vertexOffset >= 0)
+			{
+				vertexIndices.push_back(indices[i + vertexOffset]);
+			}
+
+			if(uvOffset >= 0)
+			{
+				uvIndices.push_back(indices[i + uvOffset]);
+			}
+		}
+		// TODO:: Fix later. This stuff is in the Mesh now, and this verison doesn't work anyway	
+		//for(U32 i = 0; i < vertexIndices.size(); ++i)
+		//{
+		//	S32 index = vertexIndices[i];
+		//	S32 uvIndex = uvIndices[i];
+
+		//	TexCoord coord = texCoordValues[uvIndex];			
+		//	_vertices[index].texCoord = coord;
+		//}
+
+		//for(U32 i = 0; i < uvIndices.size(); ++i)
+		//{
+		//	_uvList.push_back(texCoordValues[i].u);
+		//	_uvList.push_back(texCoordValues[i].v);
+		//}	
+
+		//SetIndices(vertexIndices);
+	}
+}//end LoadMesh
+
+//==========================================================================================================================
+//Private
+//==========================================================================================================================
+std::vector<U32> Mesh::_SplitU32(string text, char delim) const
+{
+	std::vector<U32> data;
+	std::stringstream stream(text);
+	string item;
+
+	while(std::getline(stream, item, delim))
+	{
+		data.push_back(static_cast<U32>(std::stoi(item.c_str())));
+	}
+
+	return data;
+}
+
+std::vector<F32> Mesh::_SplitF32(string text, char delim) const
+{
+	std::vector<F32> data;
+	std::stringstream stream(text);
+	string item;
+
+	while(std::getline(stream, item, delim))
+	{
+		data.push_back(strtof(item.c_str(), nullptr));
+	}
+
+	return data;
+}
+
+std::vector<string> Mesh::_SplitString(string text, char delim) const
+{
+	std::vector<string> data;
+	std::stringstream stream(text);
+	string item;
+
+	while(std::getline(stream, item, delim))
+	{
+		data.push_back(item);
+	}
+
+	return data;
+}

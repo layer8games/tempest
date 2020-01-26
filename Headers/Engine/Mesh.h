@@ -6,6 +6,16 @@
 #include <Engine/ErrorManager.h>
 #include <Engine/Vertex.h>
 
+#include <rapidxml.hpp>
+
+//===== STL inludes =====
+#include <vector>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
+#include <regex>
+#include <stdlib.h>
+
 namespace Tempest
 {
 	class Mesh
@@ -32,6 +42,14 @@ namespace Tempest
 		TEMPEST_API void DefaultRender(void);
 
 		TEMPEST_API void InitOpenGLData(void);
+
+		/// Loads a model from a wavefront object (.obj file). I would call this a hacked version of file processing, but it does work.		
+		/// \param filepath is the path to the model to be loaded.
+		TEMPEST_API bool LoadOBJ(string filepath);
+
+		/// Loads model from a .dae file. This does not work at all. I have considered removing it completely. 
+		/// \param filepath is the file to be loaded.
+		TEMPEST_API void LoadMesh(string filepath);
 
 		//===== VAO =====
 		/// Return the currently used Vertex Array Object for the GameObject. Used for rendering by OpenGL		
@@ -131,6 +149,31 @@ namespace Tempest
 		}
 
 	private:
+		/// Helper function to split a list of numbers apart. This is intended to be used with a list of numbers separated by a 
+		/// standard character, for instance, a list of space or comma separated numbers. The numbers are read as strings and
+		/// converted into U32 types.
+		/// \param text is string to break apart. It should be numbers separated by a common character.
+		/// \param delim is the character that separates each number in list.
+		std::vector<U32> _SplitU32(string text, char delim) const;
+
+		/// Helper function to split a list of numbers apart. This is intended to be used with a list of numbers separated by a 
+		/// standard character, for instance, a list of space or comma separated numbers. The numbers are read as strings and
+		/// converted into F32 types.
+		/// \param text is string to break apart. It should be numbers separated by a common character.
+		/// \param delim is the character that separates each number in list. 		
+		std::vector<F32> _SplitF32(string text, char delim) const;
+
+		/// Helper function to split a list of numbers apart. This is intended to be used with a list of characters separated by a 
+		/// standard character, for instance, a list of space or comma separated numbers. The numbers are read as strings and
+		/// converted into string types.
+		/// \param text is string to break apart. It should be characters separated by a common character.
+		/// \param delim is the character that separates each number in list.		
+		std::vector<string> _SplitString(string text, char delim) const;
+
+
+	//==========================================================================================================================
+	// Data
+	//==========================================================================================================================
 		std::vector<Vertex> 	_vertices;				///< Array of vertices used for rendering. This is the mesh of the object.
 		std::vector<U32> 		_indices;				///< Rendering optimization. An array of indices used to help render the mesh without duplicated vertices.
 		std::vector<F32> 		_uvList;				///< Array of UV pair values, used to render a texture on the mesh.
