@@ -16,47 +16,45 @@ U32 GameObject::_nextID = 1;
 //
 //==========================================================================================================================
 GameObject::GameObject(void)
-:
-_vertices(),
-_indices(),
-_uvList(),
-_modelTOWorldCache(),
-_position(0.0f),
-_scale(1.0f),
-_orientation(0.0f),
-_color(1.0f),
-_boundingBox(),
-_texture(nullptr),
-_shader(nullptr),
-_mesh(nullptr),
-_activeUpdate(true),
-_activeRender(true),
-_isSprite(false),
-_ID(_nextID),
-_vao(0),
-_vbo{0}
+	:
+	_vertices(),
+	_indices(),
+	_uvList(),
+	_modelTOWorldCache(),
+	_position(0.0f),
+	_scale(1.0f),
+	_orientation(0.0f),
+	_color(1.0f),
+	_boundingBox(),
+	_texture(nullptr),
+	_shader(nullptr),
+	_mesh(make_shared<Mesh>()),
+	_activeUpdate(true),
+	_activeRender(true),
+	_isSprite(false),
+	_ID(_nextID),
+	_vbo{0}
 {
 	++_nextID;	
 }
 
 GameObject::GameObject(const GameObject& obj)
-:
-_vertices(obj.GetVertices()),
-_indices(obj.GetIndices()),
-_uvList(obj.GetUVList()),
-_modelTOWorldCache(obj.GetModelMatrix()),
-_position(obj.GetPosition()),
-_scale(obj.GetScale()),
-_orientation(obj.GetOrientation()),
-_color(obj.GetColor()),
-_texture(obj.GetTexture()),
-_shader(obj.GetShader()),
-_activeUpdate(obj.GetActiveUpdate()),
-_activeRender(obj.GetActiveRender()),
-_isSprite(obj.IsSprite()),
-_ID(obj.GetID()),
-_vao(obj.GetVAO()),
-_vbo{0}
+	:
+	_vertices(obj.GetVertices()),
+	_indices(obj.GetIndices()),
+	_uvList(obj.GetUVList()),
+	_modelTOWorldCache(obj.GetModelMatrix()),
+	_position(obj.GetPosition()),
+	_scale(obj.GetScale()),
+	_orientation(obj.GetOrientation()),
+	_color(obj.GetColor()),
+	_texture(obj.GetTexture()),
+	_shader(obj.GetShader()),
+	_activeUpdate(obj.GetActiveUpdate()),
+	_activeRender(obj.GetActiveRender()),
+	_isSprite(obj.IsSprite()),
+	_ID(obj.GetID()),
+	_vbo{0}
 {  }
 
 GameObject::~GameObject(void)
@@ -74,10 +72,6 @@ GameObject::~GameObject(void)
 	{
 		glDeleteBuffers(NUM_VBO, _vbo);
 	}
-	if(_vao > 0)
-	{
-		glDeleteVertexArrays(1, &_vao);
-	}
 }
 
 //==========================================================================================================================
@@ -91,7 +85,7 @@ GameObject::~GameObject(void)
 void GameObject::DefaultRender(void)
 {
 	_shader->Use(true);
-	BindVAO(true);
+	_mesh->BindVAO(true);
 
 	if(_texture != nullptr)
 	{
@@ -117,7 +111,7 @@ void GameObject::DefaultRender(void)
 	}
 
 	_shader->Use(false);
-	BindVAO(false);
+	_mesh->BindVAO(false);
 
 	if(_texture != nullptr)
 	{
@@ -153,7 +147,7 @@ void GameObject::v_InitBuffers(void)
 		vertTexCoords.push_back(i.texCoord.v);
 	}
 
-	glBindVertexArray(_vao);
+	_mesh->BindVAO(true);
 
 	glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
 	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPosition.size()), &vertPosition[0], GL_STATIC_DRAW);
@@ -188,10 +182,7 @@ void GameObject::v_InitBuffers(void)
 //==========================================================================================================================
 void GameObject::InitOGL(void)
 {
-	if(_vao == 0)
-	{
-		glGenVertexArrays(1, &_vao);
-	}
+	_mesh->InitOpenGLData();
 
 	glGenBuffers(NUM_VBO, _vbo);
 }

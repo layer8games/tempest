@@ -15,6 +15,7 @@
 #include <Engine/ShaderManager.h>
 #include <Engine/AABB.h>
 #include <Engine/Mesh.h>
+#include <Engine/BufferData.h>
 
 namespace TM = TempestMath;
 namespace TC = TempestCollisions;
@@ -31,21 +32,6 @@ namespace TC = TempestCollisions;
 
 namespace Tempest
 {
-	/// Helper ID's for shader info. This should probably be moved to a new home. 	
-	enum TEMPEST_API BufferData
-	{
-		VERTEX_BUFFER = 0,
-		VERTEX_POS = 0,
-		FRAGMENT_BUFFER = 1,
-		FRAGMENT_POS = 2,
-		TEX_COORD_BUFFER = 2,
-		TEX_COORD_POS = 1,
-		INDEX_BUFFER = 3,
-		NORMAL_BUFFER = 4,
-		NORMAL_POS = 3,
-		NUM_VBO = 5
-	};
-	
 	/// The GameObject may be the backbone of Tempest. This is the basic object that will exist in the game. It is the root of 
 	/// all rendered and interactive objects in the games. It is not a manager. This is an abstract class, so it is meant to be
 	/// full implemented as needed. This holds the generic ideas of what makes up the most basic type of Object in the game Level.
@@ -644,27 +630,6 @@ namespace Tempest
 			return _indices;
 		}
 
-//===== VAO =====
-		/// Return the currently used Vertex Array Object for the GameObject. Used for rendering by OpenGL		
-		inline GLuint GetVAO(void) const
-		{
-			return _vao;
-		}
-
-		/// The Vertex Array Object needs to be bound before OpenGL can render this object. This is what sets the vertices for
-		/// this object on the video card. This is part of the magic.
-		inline void BindVAO(bool state=true)
-		{
-			if(state) 
-			{
-				glBindVertexArray(_vao);
-			}
-			else
-			{
-				glBindVertexArray(0);
-			}
-		}
-
 //===== VBO =====
 		/// Bind the Vertex Buffer Object. This is needed before the vertices can be added to the buffer.
 		/// \param buffer contains the data to be sent into the buffer.
@@ -746,7 +711,6 @@ namespace Tempest
 		bool					_activeRender;			///< State of the object in the render loop. If true, v_Render will be called.
 		bool 					_isSprite;				///< Helper flag to let the engine know if this object is a 2D sprite vs a 3D model.
 		U32 					_ID;					///< ID should be unique, but this system needs to be changed.
-		GLuint 					_vao;					///< Vertex Array Object, used in OpenGL. See OGL documentation for details.
 		GLuint 					_vbo[NUM_VBO];			///< Vertex Buffer Object, used in OpenGL. See OGL documentation for details.
 	};//End class
 	typedef shared_ptr<GameObject> p_GameObject;

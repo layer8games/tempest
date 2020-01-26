@@ -8,10 +8,22 @@ using namespace Tempest;
 //
 //==========================================================================================================================
 Mesh::Mesh(void)
+	:
+	_vao(0)
+{  }
+
+Mesh::Mesh(const Mesh& mesh)
+	:
+	_vao(mesh.GetVAO())
 {  }
 
 Mesh::~Mesh(void)
-{  }
+{
+	if(_vao > 0)
+	{
+		glDeleteVertexArrays(1, &_vao);
+	}
+}
 
 //==========================================================================================================================
 //
@@ -21,4 +33,12 @@ Mesh::~Mesh(void)
 void Mesh::v_Render(U32 count)
 {
 	glDrawArrays(GL_TRIANGLES, 0, count);
+}
+
+void Mesh::InitOpenGLData(void)
+{
+	if(_vao == 0)
+	{
+		glGenVertexArrays(1, &_vao);
+	}
 }

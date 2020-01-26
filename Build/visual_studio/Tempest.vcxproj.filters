@@ -205,6 +205,9 @@
     <Filter Include="Source Code\Engine\Mesh">
       <UniqueIdentifier>{10f2aa3d-bd04-44f5-b4be-99113c705037}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\DataTypes">
+      <UniqueIdentifier>{a677ddb4-9ca3-4573-a5f0-54bc09e3668d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -365,6 +368,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Mesh.h">
       <Filter>Source Code\Engine\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\BufferData.h">
+      <Filter>Source Code\Engine\DataTypes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
