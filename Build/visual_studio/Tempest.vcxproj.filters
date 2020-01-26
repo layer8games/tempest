@@ -202,11 +202,14 @@
     <Filter Include="Source Code\Engine\GameObjects\Base">
       <UniqueIdentifier>{271c9817-2622-490e-9c17-2d9949d87bc9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Engine\Mesh">
-      <UniqueIdentifier>{10f2aa3d-bd04-44f5-b4be-99113c705037}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Engine\DataTypes">
       <UniqueIdentifier>{a677ddb4-9ca3-4573-a5f0-54bc09e3668d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Meshes">
+      <UniqueIdentifier>{10f2aa3d-bd04-44f5-b4be-99113c705037}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Meshes\Base">
+      <UniqueIdentifier>{83539038-f7e3-4377-8d3c-8fd0cbaf8330}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -366,11 +369,11 @@
     <ClInclude Include="..\..\Headers\Engine\PhysicsFactory.h">
       <Filter>Source Code\Physics\PhysicsFactory</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Mesh.h">
-      <Filter>Source Code\Engine\Mesh</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\BufferData.h">
       <Filter>Source Code\Engine\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Mesh.h">
+      <Filter>Source Code\Engine\Meshes\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -522,7 +525,7 @@
       <Filter>Source Code\Engine\Main</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Mesh.cpp">
-      <Filter>Source Code\Engine\Mesh</Filter>
+      <Filter>Source Code\Engine\Meshes\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

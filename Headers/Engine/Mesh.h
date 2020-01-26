@@ -20,7 +20,7 @@ namespace Tempest
 
 		TEMPEST_API Mesh(const Mesh& mesh);
 
-		TEMPEST_API ~Mesh(void);
+		TEMPEST_API virtual ~Mesh(void);
 
 	//==========================================================================================================================
 	//
@@ -28,6 +28,8 @@ namespace Tempest
 	//
 	//==========================================================================================================================
 		TEMPEST_API virtual void v_Render(void);
+
+		TEMPEST_API void DefaultRender(void);
 
 		TEMPEST_API void InitOpenGLData(void);
 

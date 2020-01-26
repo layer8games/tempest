@@ -54,6 +54,11 @@ Mesh::~Mesh(void)
 //==========================================================================================================================
 void Mesh::v_Render(void)
 {
+	DefaultRender();
+}
+
+void Mesh::DefaultRender(void)
+{
 	glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
 }
 
