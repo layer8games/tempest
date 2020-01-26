@@ -59,7 +59,7 @@ namespace Tempest
 		inline void SetCharacter(char character, shared_ptr<Texture> tex, const CharacterData& characterData)
 		{
 			_character = character;
-			_mesh.SetTexture(tex);
+			SetTexture(tex);
 			_characterData = characterData;
 		}
 

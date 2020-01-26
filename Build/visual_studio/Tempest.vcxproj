@@ -261,10 +261,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Sprite.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vector3.h">
       <SubType>
       </SubType>
@@ -389,10 +385,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ShaderManager.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Sprite.cpp">
       <SubType>
       </SubType>
     </ClCompile>
