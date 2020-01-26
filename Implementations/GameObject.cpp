@@ -89,14 +89,6 @@ void GameObject::DefaultRender(void)
 }
 
 //==========================================================================================================================
-//v_InitVertexData
-//==========================================================================================================================
-void GameObject::v_InitBuffers(void)
-{
-	_mesh->InitOpenGLData();
-}
-
-//==========================================================================================================================
 //
 //Functions
 //==========================================================================================================================
@@ -117,15 +109,37 @@ void GameObject::MakeSprite(void)
 
 	TM::Point top(0.0f, 0.5f);
 
-	_mesh->AddVertex(Vertex(topLeft, 0.0f, 0.0f));
-	_mesh->AddVertex(Vertex(topRight, 1.0f, 0.0f));
-	_mesh->AddVertex(Vertex(bottomRight, 1.0f, 1.0f));
+	TexCoord uvTopLeft {0.0f, 0.0f};
+	TexCoord uvTopRight {1.0f, 0.0f};
+	TexCoord uvBottomLeft {0.0f, 1.0f};
+	TexCoord uvBottomRight(1.0f, 1.0f);
 
-	_mesh->AddVertex(Vertex(topLeft, 0.0f, 0.0f));
-	_mesh->AddVertex(Vertex(bottomRight, 1.0f, 1.0f));
-	_mesh->AddVertex(Vertex(bottomLeft, 0.0f, 1.0f));
+	Vertex one { };
+	one.position = topLeft;
+	one.texCoord = uvTopLeft;
+	
+	Vertex two { };
+	two.position = topRight;
+	two.texCoord = uvTopRight;
+	
+	Vertex three { };
+	three.position = bottomRight;
+	three.texCoord = uvBottomRight;
 
-	v_InitBuffers();
+	Vertex four { };
+	four.position = bottomLeft;
+	four.texCoord = uvBottomLeft;
+
+
+	_mesh->AddVertex(one);
+	_mesh->AddVertex(two);
+	_mesh->AddVertex(three);
+
+	_mesh->AddVertex(one);
+	_mesh->AddVertex(three);
+	_mesh->AddVertex(four);
+
+	_mesh->InitOpenGLData();
 
 	_shader = ShaderManager::Instance()->GetShader(SPRITE);
 }

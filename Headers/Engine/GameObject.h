@@ -9,7 +9,6 @@
 #include <Engine/Vector4.h>
 #include <Engine/Matrix4.h>
 #include <Engine/Color.h>
-#include <Engine/Vertex.h>
 #include <Engine/Quaternion.h>
 #include <Engine/Texture.h>
 #include <Engine/ShaderManager.h>
@@ -58,10 +57,6 @@ namespace Tempest
 		{
 			DefaultRender();
 		}
-
-		/// By default, this will create a 6 point box, used in sprites. It can be overloaded if you need something different in your
-		/// buffer.
-		TEMPEST_API virtual void v_InitBuffers(void);
 
 		/// Called when the Object is made active. Calls DefaultAwake. Can be overloaded if you need something different.		
 		inline virtual void v_Awake(void)
