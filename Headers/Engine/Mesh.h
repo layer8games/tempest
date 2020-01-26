@@ -2,6 +2,8 @@
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
+#include <Engine/BufferData.h>
+#include <Engine/ErrorManager.h>
 
 namespace Tempest
 {
@@ -49,8 +51,15 @@ namespace Tempest
 			}
 		}
 
+		//===== VBO =====
+		/// Bind the Vertex Buffer Object. This is needed before the vertices can be added to the buffer.
+		/// \param buffer contains the data to be sent into the buffer.
+		/// \param state is an optional value. This is currently unused.
+		void BindVBO(BufferData buffer);
+
 	private:
 		GLuint 					_vao;					///< Vertex Array Object, used in OpenGL. See OGL documentation for details.
+		GLuint 					_vbo[NUM_VBO];			///< Vertex Buffer Object, used in OpenGL. See OGL documentation for details.
 
 	};//end Class
 	typedef shared_ptr<Mesh> p_Mesh;

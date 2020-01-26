@@ -84,9 +84,6 @@ namespace Tempest
 //Functions
 //
 //==========================================================================================================================
-		/// Calls glGenVertexArrays and glGenBuffers for the needs of this object. 
-		TEMPEST_API void InitOGL(void);
-
 		/// Calls _CalculateCachedData. The idea is that the data for the Object can be cached, and this updates that cache. 
 		/// This has some issues since it is not always called. 
 		TEMPEST_API void UpdateInternals(void);
@@ -630,12 +627,6 @@ namespace Tempest
 			return _indices;
 		}
 
-//===== VBO =====
-		/// Bind the Vertex Buffer Object. This is needed before the vertices can be added to the buffer.
-		/// \param buffer contains the data to be sent into the buffer.
-		/// \param state is an optional value. This is currently unused.
-		void BindVBO(BufferData buffer, bool state=true);
-
 //===== Uv List =====
 		/// Return the UV index list saved for this object.		
 		inline std::vector<F32> GetUVList(void) const
@@ -711,7 +702,6 @@ namespace Tempest
 		bool					_activeRender;			///< State of the object in the render loop. If true, v_Render will be called.
 		bool 					_isSprite;				///< Helper flag to let the engine know if this object is a 2D sprite vs a 3D model.
 		U32 					_ID;					///< ID should be unique, but this system needs to be changed.
-		GLuint 					_vbo[NUM_VBO];			///< Vertex Buffer Object, used in OpenGL. See OGL documentation for details.
 	};//End class
 	typedef shared_ptr<GameObject> p_GameObject;
 }

@@ -32,8 +32,7 @@ GameObject::GameObject(void)
 	_activeUpdate(true),
 	_activeRender(true),
 	_isSprite(false),
-	_ID(_nextID),
-	_vbo{0}
+	_ID(_nextID)
 {
 	++_nextID;	
 }
@@ -53,26 +52,11 @@ GameObject::GameObject(const GameObject& obj)
 	_activeUpdate(obj.GetActiveUpdate()),
 	_activeRender(obj.GetActiveRender()),
 	_isSprite(obj.IsSprite()),
-	_ID(obj.GetID()),
-	_vbo{0}
+	_ID(obj.GetID())
 {  }
 
 GameObject::~GameObject(void)
-{
-	bool clear = false;
-	for(S32 i = 0; i < NUM_VBO; ++i)
-	{
-		if(_vbo[i] > 0)
-		{
-			clear = true;
-		}
-	}
-
-	if(clear)
-	{
-		glDeleteBuffers(NUM_VBO, _vbo);
-	}
-}
+{  }
 
 //==========================================================================================================================
 //
@@ -125,7 +109,7 @@ void GameObject::DefaultRender(void)
 //==========================================================================================================================
 void GameObject::v_InitBuffers(void)
 {
-	InitOGL();
+	_mesh->InitOpenGLData();
 
 	std::vector<F32> vertPosition;
 	std::vector<F32> vertNormals;
@@ -149,14 +133,16 @@ void GameObject::v_InitBuffers(void)
 
 	_mesh->BindVAO(true);
 
-	glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
+	//glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
+	_mesh->BindVBO(VERTEX_BUFFER);
 	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPosition.size()), &vertPosition[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(VERTEX_POS);
 
 	if(vertNormals.size() > 0)
 	{
-		glBindBuffer(GL_ARRAY_BUFFER, _vbo[NORMAL_BUFFER]);
+		//glBindBuffer(GL_ARRAY_BUFFER, _vbo[NORMAL_BUFFER]);
+		_mesh->BindVBO(NORMAL_BUFFER);
 		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertNormals.size()), &vertNormals[0], GL_STATIC_DRAW);
 		glVertexAttribPointer(NORMAL_POS, 4, GL_FLOAT, GL_FALSE, 0 , NULL);
 		glEnableVertexAttribArray(NORMAL_POS);				
@@ -167,7 +153,8 @@ void GameObject::v_InitBuffers(void)
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
+		//glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
+		_mesh->BindVBO(TEX_COORD_BUFFER);
 		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertTexCoords.size()), &vertTexCoords[0], GL_STATIC_DRAW);
 		glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
 		glEnableVertexAttribArray(TEX_COORD_POS);	
@@ -180,13 +167,6 @@ void GameObject::v_InitBuffers(void)
 //
 //Functions
 //==========================================================================================================================
-void GameObject::InitOGL(void)
-{
-	_mesh->InitOpenGLData();
-
-	glGenBuffers(NUM_VBO, _vbo);
-}
-
 void GameObject::UpdateInternals(void)
 {
 	_CalculateCachedData();
@@ -535,25 +515,6 @@ void GameObject::MakeSprite(void)
 	v_InitBuffers();
 
 	_shader = ShaderManager::Instance()->GetShader(SPRITE);
-}
-
-void GameObject::BindVBO(BufferData buffer, bool state)
-{
-	switch(buffer)
-	{
-		case VERTEX_BUFFER:
-			glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
-		break;
-		case FRAGMENT_BUFFER:
-			glBindBuffer(GL_ARRAY_BUFFER, _vbo[FRAGMENT_BUFFER]);
-		break;
-		case TEX_COORD_BUFFER:
-			glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
-		break;
-		default:
-			ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::BindVBO: No such buffer");
-		break;
-	}
 }
 
 //==========================================================================================================================
