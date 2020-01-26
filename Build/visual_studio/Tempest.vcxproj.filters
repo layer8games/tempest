@@ -211,6 +211,9 @@
     <Filter Include="Source Code\Engine\Meshes\Base">
       <UniqueIdentifier>{83539038-f7e3-4377-8d3c-8fd0cbaf8330}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\Keys">
+      <UniqueIdentifier>{3d9f0fd4-1b6a-42b3-8430-6a59a9269109}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -374,6 +377,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Mesh.h">
       <Filter>Source Code\Engine\Meshes\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Keys.h">
+      <Filter>Source Code\Engine\Keys</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
