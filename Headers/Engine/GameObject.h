@@ -460,6 +460,7 @@ namespace Tempest
 		inline void SetTexture(p_Texture texture)
 		{
 			_texture = texture;
+			_shader->SetUniform("has_texture", true);
 		}
 
 		/// Return the current texture pointer for the GameObject.		
@@ -487,166 +488,11 @@ namespace Tempest
 			_shader = shader;
 		}
 
-		/// Helper wrapper, calls Shader::LoadShader to initialize the Shader on this GameObject.
-		/// \param shaderData is an array of programs to be compiled and added to the Shader.
-		inline void LoadShader(std::vector<ShaderData> shaderData)
-		{
-			_shader->LoadShader(shaderData);
-		}
-
-		/// Helper wrapper, calls Shader::Use to set the current shader as active for OpenGL		
-		inline void UseShader(bool state=true)
-		{
-			_shader->Use(state);
-		}
-
-		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
-		/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
-		/// \param val is the float to be passed into the uniform.
-		inline void SetUniform(string name, const F32 val)
-		{
-			_shader->Use();
-			_shader->SetUniform(name.c_str(), val);
-		}
-
-		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
-		/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
-		/// \param vec is the Vector4 to be passed into the uniform
-		inline void SetUniform(string name, const TM::Vector4& vec)
-		{
-			_shader->Use();
-			_shader->SetUniform(name.c_str(), vec);
-		}
-
-		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
-		/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
-		/// \param vec is the Vector3 to be passed into the uniform.
-		inline void SetUniform(string name, const TM::Vector3& vec)
-		{
-			_shader->Use();
-			_shader->SetUniform(name.c_str(), vec);
-		}
-
-		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
-		/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
-		/// \param point is passed as a Vector4 into the uniform.
-		inline void SetUniform(string name, const TM::Point& point)
-		{
-			_shader->Use();
-			_shader->SetUniform(name.c_str(), point);
-		}
-
-		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
-		/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
-		/// \param mat is passed into the uniform as a Matrix4
-		inline void SetUniform(string name, const TM::Matrix4& mat)
-		{
-			_shader->Use();
-			_shader->SetUniform(name.c_str(), mat);
-		}
-
-		/// Helper wrapper, calls Shader::Use and Shader::SetUniformSampler
-		/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
-		/// \param texSlot is used to look up the needed sampler in the shader.
-		inline void SetUniformSampler(string name, S32 texSlot)
-		{
-			_shader->Use();
-			_shader->SetUniformSampler(name.c_str(), texSlot);
-		}
-
-		/// Helper wrapper, calls Shader::Use and Shader::SetUniform. 
-		/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
-		/// \param col is passed into the uniform as a color4.
-		inline void SetUniform(string name, const Color& col)
-		{
-			_shader->Use();
-			_shader->SetUniform(name.c_str(), col);
-		}
-
-		/// Helper wrapper, calls Shader::Use and Shader::SetUniformVec3. 
-		/// \param name is used to looked up if the uniform has been cached yet, and if it exists.
-		/// \param col is passed into the shader, to be used as a color3
-		inline void SetUniformVec3(string name, const Color& col)
-		{
-			_shader->Use();
-			_shader->SetUniformVec3(name.c_str(), col);
-		}
-
 		//===== Mesh =====
 		inline void SetMesh(p_Mesh mesh)
 		{
 			_mesh = mesh;
 		}
-
-//===== NumVertices =====
-		/// Return the number of vertices this GameObjects mesh has.		
-		inline U32 GetNumVertices(void)
-		{
-			return _vertices.size();
-		}
-
-//===== Vertex =====
-		/// Manually add a single vertex to the GameObjects mesh.
-		/// \param vert is the vertice to manually add.
-		inline void AddVertex(const Vertex&  vert)
-		{
-			_vertices.push_back(vert);
-		}
-
-		/// Set the vertices previously created for the GameObject.
-		/// \param vertices is an array of vertices that will act as the mesh for the GameObject.
-		inline void SetVertices(std::vector<Vertex> vertices)
-		{
-			_vertices = vertices;
-		}
-
-		/// Return the mesh of vertices the GameObject has.		
-		inline std::vector<Vertex> GetVertices(void) const
-		{
-			return _vertices;
-		}
-
-//===== Indices =====		
-		/// Manually add a single index for the mesh, used for rendering
-		/// \param index is added.
-		inline void AddIndex(U32 index)
-		{
-			_indices.push_back(index);
-		}
-
-		/// Set indices to be used in rendering. These are used as an optimization in rendering.
-		/// \param indices is an array of indices to be added.
-		inline void SetIndices(std::vector<U32> indices)
-		{
-			_indices = indices;
-		}
-
-		/// Return the array of indices used for the GameObject.		
-		inline std::vector<U32> GetIndices(void) const
-		{
-			return _indices;
-		}
-
-//===== Uv List =====
-		/// Return the UV index list saved for this object.		
-		inline std::vector<F32> GetUVList(void) const
-		{
-			return _uvList;
-		}
-
-		/// Change the UV index list for this object.
-		/// \param list is an array of UV's or this objects texture rendering.
-		inline void SetUVList(std::vector<F32> list)
-		{
-			_uvList = list;
-		}
-
-		/// Manually add a single UV to the UV list.
-		/// \param val is the single value to be added.
-		inline void AddUV(F32 val)
-		{
-			_uvList.push_back(val);
-		}	
 
 	protected:
 		/// Default code to be run when v_Awake is called.		
@@ -654,6 +500,9 @@ namespace Tempest
 
 		/// Default code to Render the Object.
 		TEMPEST_API void DefaultRender(void);
+
+		p_Shader				_shader;				///< Shader used for rendering. Should come from the ShaderManager. Set to null by default.
+		p_Mesh					_mesh;					///< Collection of vertices that make up the body of the rendered object.
 
 	private:
 		/// Helper function to split a list of numbers apart. This is intended to be used with a list of numbers separated by a 
@@ -686,18 +535,13 @@ namespace Tempest
 //
 //==========================================================================================================================		
 		static U32				_nextID;				///< This is an early attempt to ensure that all ID as unique. This is a flawed approach.	
-		std::vector<Vertex> 	_vertices;				///< Array of vertices used for rendering. This is the mesh of the object.
-		std::vector<U32> 		_indices;				///< Rendering optimization. An array of indices used to help render the mesh without duplicated vertices.
-		std::vector<F32> 		_uvList;				///< Array of UV pair values, used to render a texture on the mesh.
 		TM::Matrix4 			_modelTOWorldCache;		///< Cache of the model to world transformation matrix. 
 		TM::Point 				_position;				///< Position of the object in world space.
 		TM::Vector3				_scale;					///< Scale of the object in world space.
 		TM::Quaternion			_orientation;			///< Orientation of the object in world space. Untested.
 		Color 					_color;					///< Color that should be used to tint the object. How it affects the object depends on what shader you are using.
-		TC::AABB				_boundingBox;			///< Collision bounding box for the object. Is active and set up by default.
 		p_Texture				_texture;				///< Texture used when rendering the object. Set to null by default.
-		p_Shader				_shader;				///< Shader used for rendering. Should come from the ShaderManager. Set to null by default.
-		p_Mesh					_mesh;					///< Collection of vertices that make up the body of the rendered object.
+		TC::AABB				_boundingBox;			///< Collision bounding box for the object. Is active and set up by default.
 		bool					_activeUpdate;			///< State of the object in the update loop. If true, v_Update will be called. 
 		bool					_activeRender;			///< State of the object in the render loop. If true, v_Render will be called.
 		bool 					_isSprite;				///< Helper flag to let the engine know if this object is a 2D sprite vs a 3D model.

@@ -17,9 +17,6 @@ U32 GameObject::_nextID = 1;
 //==========================================================================================================================
 GameObject::GameObject(void)
 	:
-	_vertices(),
-	_indices(),
-	_uvList(),
 	_modelTOWorldCache(),
 	_position(0.0f),
 	_scale(1.0f),
@@ -39,9 +36,6 @@ GameObject::GameObject(void)
 
 GameObject::GameObject(const GameObject& obj)
 	:
-	_vertices(obj.GetVertices()),
-	_indices(obj.GetIndices()),
-	_uvList(obj.GetUVList()),
 	_modelTOWorldCache(obj.GetModelMatrix()),
 	_position(obj.GetPosition()),
 	_scale(obj.GetScale()),
@@ -73,34 +67,24 @@ void GameObject::DefaultRender(void)
 
 	if(_texture != nullptr)
 	{
-		_texture->Bind();
-		SetUniform("has_texture", true);
+		BindTexture(true);
 	}
 
 	if(_isSprite)
 	{
-		SetUniform("sprite_color", _color);
+		_shader->SetUniform("sprite_color", _color);
 	}
+		
+	_shader->SetUniform("model", GetModelMatrix());
 
-	SetUniform("model", GetModelMatrix());
-
-	// Temporary logic. Remove when ready to refactor all Objects
-	if(_mesh != nullptr)
-	{
-		_mesh->v_Render(_vertices.size());
-	}
-	else
-	{
-		glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
-	}
+	_mesh->v_Render();
 
 	_shader->Use(false);
 	_mesh->BindVAO(false);
 
 	if(_texture != nullptr)
 	{
-		_texture->UnBind();
-		SetUniform("has_texture", false);
+		BindTexture(false);
 	}
 }
 
@@ -111,56 +95,56 @@ void GameObject::v_InitBuffers(void)
 {
 	_mesh->InitOpenGLData();
 
-	std::vector<F32> vertPosition;
-	std::vector<F32> vertNormals;
-	std::vector<F32> vertTexCoords;
+	//std::vector<F32> vertPosition;
+	//std::vector<F32> vertNormals;
+	//std::vector<F32> vertTexCoords;
 
-	for(auto i : _vertices)
-	{
-		vertPosition.push_back(i.position[0]);
-		vertPosition.push_back(i.position[1]);
-		vertPosition.push_back(i.position[2]);
-		vertPosition.push_back(i.position[3]);
+	//for(auto i : _vertices)
+	//{
+	//	vertPosition.push_back(i.position[0]);
+	//	vertPosition.push_back(i.position[1]);
+	//	vertPosition.push_back(i.position[2]);
+	//	vertPosition.push_back(i.position[3]);
 
-		vertNormals.push_back(i.normal[0]);
-		vertNormals.push_back(i.normal[1]);
-		vertNormals.push_back(i.normal[2]);
-		vertNormals.push_back(i.normal[3]);
+	//	vertNormals.push_back(i.normal[0]);
+	//	vertNormals.push_back(i.normal[1]);
+	//	vertNormals.push_back(i.normal[2]);
+	//	vertNormals.push_back(i.normal[3]);
 
-		vertTexCoords.push_back(i.texCoord.u);
-		vertTexCoords.push_back(i.texCoord.v);
-	}
+	//	vertTexCoords.push_back(i.texCoord.u);
+	//	vertTexCoords.push_back(i.texCoord.v);
+	//}
 
-	_mesh->BindVAO(true);
+	//_mesh->BindVAO(true);
 
-	//glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
-	_mesh->BindVBO(VERTEX_BUFFER);
-	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPosition.size()), &vertPosition[0], GL_STATIC_DRAW);
-	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-	glEnableVertexAttribArray(VERTEX_POS);
+	////glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
+	//_mesh->BindVBO(VERTEX_BUFFER);
+	//glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPosition.size()), &vertPosition[0], GL_STATIC_DRAW);
+	//glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+	//glEnableVertexAttribArray(VERTEX_POS);
 
-	if(vertNormals.size() > 0)
-	{
-		//glBindBuffer(GL_ARRAY_BUFFER, _vbo[NORMAL_BUFFER]);
-		_mesh->BindVBO(NORMAL_BUFFER);
-		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertNormals.size()), &vertNormals[0], GL_STATIC_DRAW);
-		glVertexAttribPointer(NORMAL_POS, 4, GL_FLOAT, GL_FALSE, 0 , NULL);
-		glEnableVertexAttribArray(NORMAL_POS);				
-	}
+	//if(vertNormals.size() > 0)
+	//{
+	//	//glBindBuffer(GL_ARRAY_BUFFER, _vbo[NORMAL_BUFFER]);
+	//	_mesh->BindVBO(NORMAL_BUFFER);
+	//	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertNormals.size()), &vertNormals[0], GL_STATIC_DRAW);
+	//	glVertexAttribPointer(NORMAL_POS, 4, GL_FLOAT, GL_FALSE, 0 , NULL);
+	//	glEnableVertexAttribArray(NORMAL_POS);				
+	//}
 
-	if(vertTexCoords.size() > 0)
-	{
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//if(vertTexCoords.size() > 0)
+	//{
+	//	glEnable(GL_BLEND);
+	//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		//glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
-		_mesh->BindVBO(TEX_COORD_BUFFER);
-		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertTexCoords.size()), &vertTexCoords[0], GL_STATIC_DRAW);
-		glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
-		glEnableVertexAttribArray(TEX_COORD_POS);	
-	}
+	//	//glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
+	//	_mesh->BindVBO(TEX_COORD_BUFFER);
+	//	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertTexCoords.size()), &vertTexCoords[0], GL_STATIC_DRAW);
+	//	glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0 , NULL);
+	//	glEnableVertexAttribArray(TEX_COORD_POS);	
+	//}
 
-	glBindVertexArray(0);
+	//glBindVertexArray(0);
 }
 
 //==========================================================================================================================
@@ -292,7 +276,7 @@ bool GameObject::LoadOBJ(string filepath)
 				meshVertex.normal = tempNormals[normalIndices[i] - 1];
 			}
 
-			_vertices.push_back(meshVertex);
+			_mesh->AddVertex(meshVertex);
 		}		
 
 		v_InitBuffers();
@@ -373,7 +357,7 @@ void GameObject::LoadMesh(string filepath)
 		 	for(U32 i = 0; i < vertexData.size(); i += 3)
 			{
 				//vertices.push_back(Vertex(TM::Vector4(vertexData[i], vertexData[i+1], vertexData[i+2])));
-				AddVertex(Vertex(TM::Point(vertexData[i], vertexData[i+1], vertexData[i+2])));
+				_mesh->AddVertex(Vertex(TM::Point(vertexData[i], vertexData[i+1], vertexData[i+2])));
 			}
 		}
 		else if(std::regex_match(attrib, match, uvRegex))
@@ -471,23 +455,23 @@ void GameObject::LoadMesh(string filepath)
 				uvIndices.push_back(indices[i + uvOffset]);
 			}
 		}
-	
-		for(U32 i = 0; i < vertexIndices.size(); ++i)
-		{
-			S32 index = vertexIndices[i];
-			S32 uvIndex = uvIndices[i];
+		// TODO:: Fix later. This stuff is in the Mesh now, and this verison doesn't work anyway	
+		//for(U32 i = 0; i < vertexIndices.size(); ++i)
+		//{
+		//	S32 index = vertexIndices[i];
+		//	S32 uvIndex = uvIndices[i];
 
-			TexCoord coord = texCoordValues[uvIndex];			
-			_vertices[index].texCoord = coord;
-		}
+		//	TexCoord coord = texCoordValues[uvIndex];			
+		//	_vertices[index].texCoord = coord;
+		//}
 
-		for(U32 i = 0; i < uvIndices.size(); ++i)
-		{
-			_uvList.push_back(texCoordValues[i].u);
-			_uvList.push_back(texCoordValues[i].v);
-		}	
+		//for(U32 i = 0; i < uvIndices.size(); ++i)
+		//{
+		//	_uvList.push_back(texCoordValues[i].u);
+		//	_uvList.push_back(texCoordValues[i].v);
+		//}	
 
-		SetIndices(vertexIndices);
+		//SetIndices(vertexIndices);
 	}
 }//end LoadMesh
 
@@ -495,7 +479,7 @@ void GameObject::MakeSprite(void)
 {
 	_isSprite = true;
 	_position.Make2D();
-	_vertices.clear();
+	//_vertices.clear();
 
 	TM::Point topRight(1.0f, 1.0f, 0.0f);
 	TM::Point topLeft(-1.0f, 1.0f, 0.0f);
@@ -504,13 +488,13 @@ void GameObject::MakeSprite(void)
 
 	TM::Point top(0.0f, 0.5f);
 
-	AddVertex(Vertex(topLeft, 0.0f, 0.0f));
-	AddVertex(Vertex(topRight, 1.0f, 0.0f));
-	AddVertex(Vertex(bottomRight, 1.0f, 1.0f));
+	_mesh->AddVertex(Vertex(topLeft, 0.0f, 0.0f));
+	_mesh->AddVertex(Vertex(topRight, 1.0f, 0.0f));
+	_mesh->AddVertex(Vertex(bottomRight, 1.0f, 1.0f));
 
-	AddVertex(Vertex(topLeft, 0.0f, 0.0f));
-	AddVertex(Vertex(bottomRight, 1.0f, 1.0f));
-	AddVertex(Vertex(bottomLeft, 0.0f, 1.0f));
+	_mesh->AddVertex(Vertex(topLeft, 0.0f, 0.0f));
+	_mesh->AddVertex(Vertex(bottomRight, 1.0f, 1.0f));
+	_mesh->AddVertex(Vertex(bottomLeft, 0.0f, 1.0f));
 
 	v_InitBuffers();
 
