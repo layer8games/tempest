@@ -12,9 +12,16 @@ Mesh::Mesh(void)
 	_vertices(),
 	_indices(),
 	_uvList(),
-	_shader(nullptr),
-	_texture(nullptr),
 	_vao(0),
+	_vbo{0}
+{  }
+
+Mesh::Mesh(const Mesh& mesh)
+	:
+	_vertices(mesh.GetVertices()),
+	_indices(mesh.GetIndices()),
+	_uvList(mesh.GetUVList()),
+	_vao(mesh.GetVAO()),
 	_vbo{0}
 {  }
 
@@ -33,6 +40,7 @@ Mesh::~Mesh(void)
 	{
 		glDeleteBuffers(NUM_VBO, _vbo);
 	}
+	
 	if(_vao > 0)
 	{
 		glDeleteVertexArrays(1, &_vao);
@@ -44,36 +52,24 @@ Mesh::~Mesh(void)
 //Functions
 //
 //==========================================================================================================================
-
-
-void Mesh::DefaultRender(const TM::Matrix4& modelMatrix)
+void Mesh::v_Render(void)
 {
-	_shader->Use(true);
-	BindVAO(true);
-
-	if(_texture != nullptr)
-	{
-		_texture->Bind();
-		_shader->SetUniform("has_texture", true);
-	}
-
-	_shader->SetUniform("model", modelMatrix);
-
-	glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
-
-	_shader->Use(false);
-	BindVAO(false);
-
-	if(_texture != nullptr)
-	{
-		_texture->UnBind();
-		_shader->SetUniform("has_texture", false);
-	}
+	DefaultRender();
 }
 
-void Mesh::DefaultInitBuffers(void)
+void Mesh::DefaultRender(void)
 {
-	InitOpenGL();
+	glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
+}
+
+void Mesh::InitOpenGLData(void)
+{
+	if(_vao == 0)
+	{
+		glGenVertexArrays(1, &_vao);
+	}
+
+	glGenBuffers(NUM_VBO, _vbo);
 
 	std::vector<F32> vertPosition;
 	std::vector<F32> vertNormals;
@@ -95,16 +91,18 @@ void Mesh::DefaultInitBuffers(void)
 		vertTexCoords.push_back(i.texCoord.v);
 	}
 
-	glBindVertexArray(_vao);
+	BindVAO(true);
 
-	glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
+	//glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
+	BindVBO(VERTEX_BUFFER);
 	glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertPosition.size()), &vertPosition[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(VERTEX_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 	glEnableVertexAttribArray(VERTEX_POS);
 
 	if(vertNormals.size() > 0)
 	{
-		glBindBuffer(GL_ARRAY_BUFFER, _vbo[NORMAL_BUFFER]);
+		//glBindBuffer(GL_ARRAY_BUFFER, _vbo[NORMAL_BUFFER]);
+		BindVBO(NORMAL_BUFFER);
 		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertNormals.size()), &vertNormals[0], GL_STATIC_DRAW);
 		glVertexAttribPointer(NORMAL_POS, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 		glEnableVertexAttribArray(NORMAL_POS);
@@ -115,7 +113,8 @@ void Mesh::DefaultInitBuffers(void)
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
+		//glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
+		BindVBO(TEX_COORD_BUFFER);
 		glBufferData(GL_ARRAY_BUFFER, (sizeof(F32) * vertTexCoords.size()), &vertTexCoords[0], GL_STATIC_DRAW);
 		glVertexAttribPointer(TEX_COORD_POS, 2, GL_FLOAT, GL_FALSE, 0, NULL);
 		glEnableVertexAttribArray(TEX_COORD_POS);
@@ -124,32 +123,25 @@ void Mesh::DefaultInitBuffers(void)
 	glBindVertexArray(0);
 }
 
-void Mesh::InitOpenGL(void)
-{
-	if(_vao == 0)
-	{
-		glGenVertexArrays(1, &_vao);
-	}
-
-	glGenBuffers(NUM_VBO, _vbo);
-}
-
-void Mesh::BindVBO(BufferData buffer, bool state)
+void Mesh::BindVBO(BufferData buffer)
 {
 	switch(buffer)
 	{
 		case VERTEX_BUFFER:
-		glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
-		break;
+			glBindBuffer(GL_ARRAY_BUFFER, _vbo[VERTEX_BUFFER]);
+			break;
 		case FRAGMENT_BUFFER:
-		glBindBuffer(GL_ARRAY_BUFFER, _vbo[FRAGMENT_BUFFER]);
-		break;
+			glBindBuffer(GL_ARRAY_BUFFER, _vbo[FRAGMENT_BUFFER]);
+			break;
 		case TEX_COORD_BUFFER:
-		glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
-		break;
+			glBindBuffer(GL_ARRAY_BUFFER, _vbo[TEX_COORD_BUFFER]);
+			break;
+		case NORMAL_BUFFER:
+			glBindBuffer(GL_ARRAY_BUFFER, _vbo[NORMAL_BUFFER]);
+			break;
 		default:
-		ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::BindVBO: No such buffer");
-		break;
+			ErrorManager::Instance()->SetError(GAMEOBJECT, "Mesh::BindVBO: No such buffer");
+			break;
 	}
 }
 
@@ -273,10 +265,10 @@ bool Mesh::LoadOBJ(string filepath)
 				meshVertex.normal = tempNormals[normalIndices[i] - 1];
 			}
 
-			_vertices.push_back(meshVertex);
+			AddVertex(meshVertex);
 		}
 
-		v_InitBuffers();
+		InitOpenGLData();
 
 		return true;
 	}
@@ -335,11 +327,11 @@ void Mesh::LoadMesh(string filepath)
 	//Set root node
 	rapidxml::xml_node<>* root_node = doc.first_node("COLLADA");
 
-	//===== TO DO =====
-	//Will need to be able to capture normal data. Here is the code that can do that.
-	//I am just not sure what to do with that code yet. 
+//===== TO DO =====
+//Will need to be able to capture normal data. Here is the code that can do that.
+//I am just not sure what to do with that code yet. 
 
-	//===== Get Data =====
+//===== Get Data =====
 	rapidxml::xml_node<>* data = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh")->first_node("source");
 
 	for(rapidxml::xml_node<>* i = data; i; i = i->next_sibling("source"))
@@ -369,41 +361,41 @@ void Mesh::LoadMesh(string filepath)
 		}
 	}
 
-	//===== Get Materials =====
-	/*
-		std::map<string, Color&> materials;
+//===== Get Materials =====
+/*
+	std::map<string, Color&> materials;
 
-		data = root_node->first_node("library_effects")->first_node("effect");
-		rapidxml::xml_node<>* mat_id = root_node->first_node("library_materials")->first_node("material");
+	data = root_node->first_node("library_effects")->first_node("effect");
+	rapidxml::xml_node<>* mat_id = root_node->first_node("library_materials")->first_node("material");
 
-		for(rapidxml::xml_node<>* i = data; i; i = i->next_sibling("effect"))
+	for(rapidxml::xml_node<>* i = data; i; i = i->next_sibling("effect"))
+	{
+		data = i->first_node("profile_COMMON")->first_node("technique")->first_node("phong")->first_node("diffuse")->first_node("color");
+
+		std::vector<F32> values = _SplitF32(data->value(), ' ');
+
+		string id = mat_id->first_attribute("id")->value();
+		mat_id = mat_id->next_sibling("material");
+
+		materials.insert({id, Color(values[0], values[1], values[2], values[3])});
+
+		if(materials.find(id) == materials.end())
 		{
-			data = i->first_node("profile_COMMON")->first_node("technique")->first_node("phong")->first_node("diffuse")->first_node("color");
-
-			std::vector<F32> values = _SplitF32(data->value(), ' ');
-
-			string id = mat_id->first_attribute("id")->value();
-			mat_id = mat_id->next_sibling("material");
-
-			materials.insert({id, Color(values[0], values[1], values[2], values[3])});
-
-			if(materials.find(id) == materials.end())
-			{
-				ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh, unable to load color from matrial");
-			}
+			ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh, unable to load color from matrial");
 		}
-	*/
+	}
+*/
 
 	//Get indices
 	data = root_node->first_node("library_geometries")->first_node("geometry")->first_node("mesh")->first_node("polylist");
 
 	for(rapidxml::xml_node<>* i = data; i; i = i->next_sibling("polylist"))
 	{
-		/*
-				string id = i->first_attribute("material")->value();
+/*
+		string id = i->first_attribute("material")->value();
 
-				Color mat = materials.find(id)->second;
-		*/
+		Color mat = materials.find(id)->second;
+*/
 		data = i->first_node("p");
 
 		std::vector<U32> indices = _SplitU32(data->value(), ' ');
@@ -440,7 +432,7 @@ void Mesh::LoadMesh(string filepath)
 			ErrorManager::Instance()->SetError(GAMEOBJECT, "GameObject::LoadMesh: No stride found. That means there is no input, and your xml file is wrong");
 		}
 
-		for(U32 i = 0; i < indices.size(); i += stride)
+		for(U32 i = 0; i < indices.size(); i+=stride)
 		{
 			if(vertexOffset >= 0)
 			{
@@ -452,26 +444,29 @@ void Mesh::LoadMesh(string filepath)
 				uvIndices.push_back(indices[i + uvOffset]);
 			}
 		}
+		// TODO:: Fix later. This stuff is in the Mesh now, and this verison doesn't work anyway	
+		//for(U32 i = 0; i < vertexIndices.size(); ++i)
+		//{
+		//	S32 index = vertexIndices[i];
+		//	S32 uvIndex = uvIndices[i];
 
-		for(U32 i = 0; i < vertexIndices.size(); ++i)
-		{
-			S32 index = vertexIndices[i];
-			S32 uvIndex = uvIndices[i];
+		//	TexCoord coord = texCoordValues[uvIndex];			
+		//	_vertices[index].texCoord = coord;
+		//}
 
-			TexCoord coord = texCoordValues[uvIndex];
-			_vertices[index].texCoord = coord;
-		}
+		//for(U32 i = 0; i < uvIndices.size(); ++i)
+		//{
+		//	_uvList.push_back(texCoordValues[i].u);
+		//	_uvList.push_back(texCoordValues[i].v);
+		//}	
 
-		for(U32 i = 0; i < uvIndices.size(); ++i)
-		{
-			_uvList.push_back(texCoordValues[i].u);
-			_uvList.push_back(texCoordValues[i].v);
-		}
-
-		SetIndices(vertexIndices);
+		//SetIndices(vertexIndices);
 	}
 }//end LoadMesh
 
+//==========================================================================================================================
+//Private
+//==========================================================================================================================
 std::vector<U32> Mesh::_SplitU32(string text, char delim) const
 {
 	std::vector<U32> data;

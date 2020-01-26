@@ -54,8 +54,7 @@ void Level::UpdateLevel(void)
 void Level::AddObjectToLevel(const GameObject& obj)
 {
 	_gameObjects.insert({ obj.GetID(), shared_ptr<GameObject>(const_cast<GameObject*>(&obj)) });
-	// TODO:: Think about how this operation should happen. Right now this is not possible.
-	//_gameObjects[obj.GetID()]->SetUniform("projection", GameWindow::Instance()->GetCamera()->GetProjectionMatrix4());
+	_gameObjects[obj.GetID()]->GetShader()->SetUniform("projection", GameWindow::Instance()->GetCamera()->GetProjectionMatrix4());
 
 	if(_gameObjects.find(obj.GetID()) == _gameObjects.end())
 	{
@@ -65,8 +64,7 @@ void Level::AddObjectToLevel(const GameObject& obj)
 
 void Level::AddObjectToLevel(p_GameObject obj)
 {
-	// TODO:: Think about how this operation should happen. Right now this is not possible.
-	//obj->SetUniform("projection", GameWindow::Instance()->GetCamera()->GetProjectionMatrix4());
+	obj->GetShader()->SetUniform("projection", GameWindow::Instance()->GetCamera()->GetProjectionMatrix4());
 
 	_gameObjects.insert({obj->GetID(), obj});
 
@@ -157,8 +155,7 @@ void Level::RenderObjects(void)
 	{
 		if(i.second->GetActiveRender())
 		{
-			// TODO:: Think about how this operation should happen. Right now this is not possible.
-			//i.second->SetUniform("view", GameWindow::Instance()->GetCamera()->GetViewMatrix4());
+			i.second->GetShader()->SetUniform("view", GameWindow::Instance()->GetCamera()->GetViewMatrix4());
 			i.second->v_Render();
 		}
 	}	

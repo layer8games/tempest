@@ -116,6 +116,14 @@ void Text::SetTextColor(const Color& col)
 	}
 }
 
+//void Text::SetUniforms(string name, const TM::Matrix4& mat)
+//{
+//	for(auto i : _characterList)
+//	{
+//		i->GetShader()->SetUniform(name, mat);
+//	}
+//}
+
 void Text::_UpdatePositions(void)
 {
 	TM::Point currentPos = _pos;
@@ -161,7 +169,6 @@ void Text::_UpdateColors(void)
 
 void Text::_UpdateGlyphData(U32 index)
 {
-	// TODO:: This needs to be used correctly. It should be refactored to set up the Glyph correctly.
 	if(_characterList.size() != _text.size())
 	{
 		_CreateCharacterList();
@@ -171,7 +178,7 @@ void Text::_UpdateGlyphData(U32 index)
 		CharacterData data = _font->GetCharacterData(_text[index]);
 		_characterList[index]->SetScale(static_cast<F32>(data.width), static_cast<F32>(data.height));
 		_characterList[index]->SetColor(_color);
-		//_characterList[index]->SetTexture(data.texture);
+		_characterList[index]->SetTexture(data.texture);
 		_characterList[index]->SetCharacter(_text[index], data);
 		_totalWidth += data.width;
 	}		

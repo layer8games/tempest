@@ -8,6 +8,7 @@
 #include <Engine/Timer.h>
 #include <Engine/Point.h>
 #include <Engine/Camera.h>
+#include <Engine/Keys.h>
 
 namespace TM = TempestMath; 
 
@@ -16,10 +17,8 @@ namespace TM = TempestMath;
 
 namespace Tempest 
 {
-	class Controller;
 	class Camera;
 	typedef shared_ptr<Camera> p_Camera;
-	enum Keys;
  
 ///	Framework that will open a window in the designated operating system which
 ///	will be where the renderer will draw what it needs to for the game to be a

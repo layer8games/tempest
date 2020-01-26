@@ -122,62 +122,70 @@ void Shader::Use(bool state)
 //Accessors
 //
 //==========================================================================================================================
-void Shader::SetUniform(const GLchar* name, const F32 val)
+void Shader::SetUniform(string name, const F32 val)
 {
-	GLuint location = _GetUniformLocation(name);
+	Use();
+	GLuint location = _GetUniformLocation(name.c_str());
 	glUniform1f(location, val);
 }
 
-void Shader::SetUniform(const GLchar* name, const TM::Vector4& vec)
+void Shader::SetUniform(string name, const TM::Vector4& vec)
 {
-	GLuint location = _GetUniformLocation(name);
+	Use();
+	GLuint location = _GetUniformLocation(name.c_str());
 	glUniform4f(location, vec[0], vec[1], vec[2], vec[3]);
 }
 
-void Shader::SetUniform(const GLchar* name, const TM::Vector3& vec)
+void Shader::SetUniform(string name, const TM::Vector3& vec)
 {
-	GLuint location = _GetUniformLocation(name);
+	Use();
+	GLuint location = _GetUniformLocation(name.c_str());
 	glUniform3f(location, vec[0], vec[1], vec[2]);
 }
 
-void Shader::SetUniform(const GLchar* name, const TM::Point& point)
+void Shader::SetUniform(string name, const TM::Point& point)
 {
-	GLuint location = _GetUniformLocation(name);
+	Use();
+	GLuint location = _GetUniformLocation(name.c_str());
 	glUniform4f(location, point[0], point[1], point[2], point[3]);
 }
 
-void Shader::SetUniform(const GLchar* name, const TM::Matrix4& mat)
+void Shader::SetUniform(string name, const TM::Matrix4& mat)
 {
-	GLuint location = _GetUniformLocation(name);
+	Use();
+	GLuint location = _GetUniformLocation(name.c_str());
 	glUniformMatrix4fv(location, 1, GL_FALSE, &mat.GetElems()[0]);
 }
 
-void Shader::SetUniformSampler(const GLchar* name, S32 texSlot)
+void Shader::SetUniformSampler(string name, S32 texSlot)
 {
+	Use();
 	glActiveTexture(GL_TEXTURE0 + texSlot);
 
-	GLuint location = _GetUniformLocation(name);
+	GLuint location = _GetUniformLocation(name.c_str());
 
 	glUniform1i(location, texSlot);	
 }
 
-void Shader::SetUniform(const GLchar* name, const Color& col)
+void Shader::SetUniform(string name, const Color& col)
 {
+	Use();
 	if(col.HasAlpha())
 	{
-		GLuint location = _GetUniformLocation(name);
+		GLuint location = _GetUniformLocation(name.c_str());
 		glUniform4f(location, col[0], col[1], col[2], col[3]);	
 	}
 	else
 	{
-		GLuint location = _GetUniformLocation(name);
+		GLuint location = _GetUniformLocation(name.c_str());
 		glUniform3f(location, col[0], col[1], col[2]);	
 	}
 }
 
-void Shader::SetUniformVec3(const GLchar* name, const Color& col)
+void Shader::SetUniformVec3(string name, const Color& col)
 {
-	GLuint location = _GetUniformLocation(name);
+	Use();
+	GLuint location = _GetUniformLocation(name.c_str());
 	glUniform3f(location, col[0], col[1], col[2]);
 }
 

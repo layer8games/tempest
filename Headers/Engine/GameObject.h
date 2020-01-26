@@ -9,23 +9,15 @@
 #include <Engine/Vector4.h>
 #include <Engine/Matrix4.h>
 #include <Engine/Color.h>
-#include <Engine/Vertex.h>
 #include <Engine/Quaternion.h>
 #include <Engine/Texture.h>
 #include <Engine/ShaderManager.h>
 #include <Engine/AABB.h>
 #include <Engine/Mesh.h>
+#include <Engine/BufferData.h>
 
 namespace TM = TempestMath;
 namespace TC = TempestCollisions;
-
-//===== STL inludes =====
-#include <vector>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <regex>
-#include <stdlib.h>
 
 namespace Tempest
 {
@@ -61,9 +53,10 @@ namespace Tempest
 		/// Default Render will check if there is a texture attached to the Object, make the shader on the object active, and will
 		/// send the vertices that have been added to the object to OpenGL using glDrawArrays. This is virtual because it can be 
 		/// overloaded if this is not what you need for rendering.
-		TEMPEST_API virtual void v_Render(void);
-
-		TEMPEST_API void DefaultRender(void);
+		inline virtual void v_Render(void)
+		{
+			DefaultRender();
+		}
 
 		/// Called when the Object is made active. Calls DefaultAwake. Can be overloaded if you need something different.		
 		inline virtual void v_Awake(void)
@@ -79,6 +72,9 @@ namespace Tempest
 		/// Calls _CalculateCachedData. The idea is that the data for the Object can be cached, and this updates that cache. 
 		/// This has some issues since it is not always called. 
 		TEMPEST_API void UpdateInternals(void);
+
+		/// Calls all the needed functions to make this Object act like a sprite. This is a replacement for a full sprite class.
+		TEMPEST_API void MakeSprite(void);
 
 		/// Returns the "view" matrix, the transform needed to get the object transformed into world space. This is used by opengl for
 		/// rendering.
@@ -196,6 +192,13 @@ namespace Tempest
 		inline void SetInactiveRender(void)
 		{
 			_activeRender = false;
+		}
+
+//===== Is Sprite =====
+		/// Returns true is the GameObject has had MakeSprite called, or is considered to be a sprite.		
+		inline bool IsSprite(void) const
+		{
+			return _isSprite;
 		}
 
 //===== ID =====
@@ -394,8 +397,6 @@ namespace Tempest
 		inline void SetColor(const Color& col)
 		{
 			_color = col;
-
-			_mesh.GetShader()->SetUniform("color", _color);
 		}
 
 		/// Change the color of the GameObject without having to create a Color object. Alpha is ommited.
@@ -407,8 +408,6 @@ namespace Tempest
 			_color[0] = red;
 			_color[1] = green;
 			_color[2] = blue;
-
-			_mesh.GetShader()->SetUniform("color", _color);
 		}
 
 		/// Return the color of the GameObject		
@@ -432,18 +431,60 @@ namespace Tempest
 			return _boundingBox;
 		}
 
-//===== Mesh =====
-		inline void SetMesh(const Mesh& mesh)
+//===== Texture =====
+		/// Change the texture of the GameObject. 
+		/// \param texture is the new texture for the GameObject.
+		inline void SetTexture(p_Texture texture)
+		{
+			_texture = texture;
+			_shader->SetUniform("has_texture", true);
+		}
+
+		/// Return the current texture pointer for the GameObject.		
+		inline p_Texture GetTexture(void) const
+		{
+			return _texture;
+		}
+
+		/// Helper wrapper to call Texture::Bind on the texture that is saved on this GameObject.		
+		inline void BindTexture(bool state=true)
+		{
+			_texture->Bind(state);
+		}
+
+//===== Shader =====
+		/// Returns the current shader for this GameObject.		
+		inline const p_Shader GetShader(void) const
+		{
+			return _shader;
+		}
+
+		/// Change the shader for this GameObject.		
+		inline void SetShader(const p_Shader shader)
+		{
+			_shader = shader;
+		}
+
+		//===== Mesh =====
+		inline void SetMesh(p_Mesh mesh)
 		{
 			_mesh = mesh;
-		}	
+		}
 
 	protected:
 		/// Default code to be run when v_Awake is called.		
 		TEMPEST_API void DefaultAwake(void);
-	
-		//===== Protected data =====
-		Mesh _mesh;					///< Mesh data for the GameObject. I've made this protected in order to allow Objects to define their own mesh parameters. 
+
+		/// Default code to Render the Object.
+		TEMPEST_API void DefaultRender(void);
+
+//==========================================================================================================================
+//
+//Protected Data
+//
+//==========================================================================================================================		
+		p_Shader				_shader;				///< Shader used for rendering. Should come from the ShaderManager. Set to null by default.
+		p_Mesh					_mesh;					///< Collection of vertices that make up the body of the rendered object.
 
 	private:
 		/// Creates a data cache of the model to world transformation matrix. This can help with objects that use their matrix a lot.		
@@ -460,11 +501,12 @@ namespace Tempest
 		TM::Vector3				_scale;					///< Scale of the object in world space.
 		TM::Quaternion			_orientation;			///< Orientation of the object in world space. Untested.
 		Color 					_color;					///< Color that should be used to tint the object. How it affects the object depends on what shader you are using.
+		p_Texture				_texture;				///< Texture used when rendering the object. Set to null by default.
 		TC::AABB				_boundingBox;			///< Collision bounding box for the object. Is active and set up by default.
 		bool					_activeUpdate;			///< State of the object in the update loop. If true, v_Update will be called. 
 		bool					_activeRender;			///< State of the object in the render loop. If true, v_Render will be called.
+		bool 					_isSprite;				///< Helper flag to let the engine know if this object is a 2D sprite vs a 3D model.
 		U32 					_ID;					///< ID should be unique, but this system needs to be changed.
-		
 	};//End class
 	typedef shared_ptr<GameObject> p_GameObject;
 }

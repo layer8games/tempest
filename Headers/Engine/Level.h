@@ -150,8 +150,7 @@ namespace Tempest
 		{
 			for(auto i : _gameObjects)
 			{
-				// TODO:: Refactor during Tempest issue #64
-				//i.second->SetUniform(name, type);
+				i.second->GetShader()->SetUniform(name, type);
 			}
 		}
 
