@@ -64,9 +64,6 @@
     <Filter Include="Source Code\Engine\GameObjects">
       <UniqueIdentifier>{5c9e9e45-d24d-478b-867f-8057a804f074}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Engine\GameObjects\GameObject">
-      <UniqueIdentifier>{271c9817-2622-490e-9c17-2d9949d87bc9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Engine\GameObjects\EnvironmentObj">
       <UniqueIdentifier>{e34428c4-21e7-40f7-9fe0-9eb037b1e2e4}</UniqueIdentifier>
     </Filter>
@@ -172,9 +169,6 @@
     <Filter Include="Source Code\Physics\Forces\Registry">
       <UniqueIdentifier>{0b7fb099-81e9-43aa-8090-714b6099f722}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Physics\Forces\Generator Base">
-      <UniqueIdentifier>{128415f5-4bcb-47fa-8bd6-af05ac197f78}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Physics\Forces\Springs">
       <UniqueIdentifier>{90b3a85a-49e6-4ef0-b9f4-28445503896b}</UniqueIdentifier>
     </Filter>
@@ -202,8 +196,23 @@
     <Filter Include="Source Code\Physics\PhysicsFactory">
       <UniqueIdentifier>{f661ea09-a9a5-462e-91bd-9e3bf611f900}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Engine\Managers\GameObjectManager">
-      <UniqueIdentifier>{8c376df0-0a10-46b7-aa53-68db57274d42}</UniqueIdentifier>
+    <Filter Include="Source Code\Engine\GameObjects\Base">
+      <UniqueIdentifier>{271c9817-2622-490e-9c17-2d9949d87bc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\DataTypes">
+      <UniqueIdentifier>{a677ddb4-9ca3-4573-a5f0-54bc09e3668d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Meshes">
+      <UniqueIdentifier>{10f2aa3d-bd04-44f5-b4be-99113c705037}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Meshes\Base">
+      <UniqueIdentifier>{83539038-f7e3-4377-8d3c-8fd0cbaf8330}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Keys">
+      <UniqueIdentifier>{3d9f0fd4-1b6a-42b3-8430-6a59a9269109}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Physics\Forces\Base">
+      <UniqueIdentifier>{b8170690-0859-4a19-9554-81d8376cbc94}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -253,7 +262,7 @@
       <Filter>Source Code\Engine\Shader</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GameObject.h">
-      <Filter>Source Code\Engine\GameObjects\GameObject</Filter>
+      <Filter>Source Code\Engine\GameObjects\Base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Text.h">
       <Filter>Source Code\Engine\Text</Filter>
@@ -266,9 +275,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\FontManager.h">
       <Filter>Source Code\Engine\Managers\FontManager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\ForceGenerator.h">
-      <Filter>Source Code\Physics\Forces\Generator Base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GravityForce.h">
       <Filter>Source Code\Physics\Forces\Gravity</Filter>
@@ -363,8 +369,17 @@
     <ClInclude Include="..\..\Headers\Engine\PhysicsFactory.h">
       <Filter>Source Code\Physics\PhysicsFactory</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\GameObjectManager.h">
-      <Filter>Source Code\Engine\Managers\GameObjectManager</Filter>
+    <ClInclude Include="..\..\Headers\Engine\BufferData.h">
+      <Filter>Source Code\Engine\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Mesh.h">
+      <Filter>Source Code\Engine\Meshes\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Keys.h">
+      <Filter>Source Code\Engine\Keys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\ForceGenerator.h">
+      <Filter>Source Code\Physics\Forces\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -411,7 +426,7 @@
       <Filter>Source Code\Engine\Shader</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObject.cpp">
-      <Filter>Source Code\Engine\GameObjects\GameObject</Filter>
+      <Filter>Source Code\Engine\GameObjects\Base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Text.cpp">
       <Filter>Source Code\Engine\Text</Filter>
@@ -424,9 +439,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\FontManager.cpp">
       <Filter>Source Code\Engine\Managers\FontManager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\ForceGenerator.cpp">
-      <Filter>Source Code\Physics\Forces\Generator Base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GravityForce.cpp">
       <Filter>Source Code\Physics\Forces\Gravity</Filter>
@@ -515,8 +527,11 @@
     <ClCompile Include="..\..\Implementations\dllmain.cpp">
       <Filter>Source Code\Engine\Main</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\GameObjectManager.cpp">
-      <Filter>Source Code\Engine\Managers\GameObjectManager</Filter>
+    <ClCompile Include="..\..\Implementations\Mesh.cpp">
+      <Filter>Source Code\Engine\Meshes\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\ForceGenerator.cpp">
+      <Filter>Source Code\Physics\Forces\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

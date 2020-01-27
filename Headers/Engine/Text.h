@@ -89,7 +89,7 @@ namespace Tempest
 ///	A wrapper function that calls GameObject::SetUniform on each Glyph using the input. 
 ///	\param name is the name of the uniform that will be set. 
 ///	\param Matrix4 is the transformation Matrix4 to be used by each Glyph. 
-		TEMPEST_API void SetUniforms(string name, const TM::Matrix4& Matrix4);
+		//TEMPEST_API void SetUniforms(string name, const TM::Matrix4& mat);
 
 //==========================================================================================================================
 //

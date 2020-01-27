@@ -116,13 +116,13 @@ void Text::SetTextColor(const Color& col)
 	}
 }
 
-void Text::SetUniforms(string name, const TM::Matrix4& Matrix4)
-{
-	for(auto i : _characterList)
-	{
-		i->SetUniform(name, Matrix4);
-	}
-}
+//void Text::SetUniforms(string name, const TM::Matrix4& mat)
+//{
+//	for(auto i : _characterList)
+//	{
+//		i->GetShader()->SetUniform(name, mat);
+//	}
+//}
 
 void Text::_UpdatePositions(void)
 {

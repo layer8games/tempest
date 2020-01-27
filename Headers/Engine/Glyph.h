@@ -43,9 +43,6 @@ namespace Tempest
 		void v_Update(void) final
 		{  }
 
-///	Provides specific Rendering calls. This sets a Glyph specific uniform called sprite_color. No special behavior other than
-///	that.
-		TEMPEST_API void v_Render(void) final;
 
 ///	Initializes the Glyph as a sprite, sets Glyph shader. 
 		TEMPEST_API void Init(void);
@@ -62,7 +59,7 @@ namespace Tempest
 		inline void SetCharacter(char character, shared_ptr<Texture> tex, const CharacterData& characterData)
 		{
 			_character = character;
-			GameObject::SetTexture(tex);
+			SetTexture(tex);
 			_characterData = characterData;
 		}
 
