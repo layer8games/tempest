@@ -187,6 +187,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\GameObjectManager.h" />
     <ClInclude Include="..\..\Headers\Engine\Keys.h">
       <SubType>
       </SubType>
@@ -338,6 +339,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\GameObjectManager.cpp" />
     <ClCompile Include="..\..\Implementations\Matrix3.cpp">
       <SubType>
       </SubType>

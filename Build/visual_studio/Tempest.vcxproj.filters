@@ -214,6 +214,9 @@
     <Filter Include="Source Code\Physics\Forces\Base">
       <UniqueIdentifier>{b8170690-0859-4a19-9554-81d8376cbc94}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\Managers\GameObjectManager">
+      <UniqueIdentifier>{5206c94d-8318-46c4-b163-86b7c385ba74}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -381,6 +384,9 @@
     <ClInclude Include="..\..\Headers\Engine\ForceGenerator.h">
       <Filter>Source Code\Physics\Forces\Base</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\GameObjectManager.h">
+      <Filter>Source Code\Engine\Managers\GameObjectManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -532,6 +538,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ForceGenerator.cpp">
       <Filter>Source Code\Physics\Forces\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\GameObjectManager.cpp">
+      <Filter>Source Code\Engine\Managers\GameObjectManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
