@@ -2,6 +2,11 @@
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
+#include <Engine/GameObject.h>
+#include <Engine/ErrorManager.h>
+
+//===== STL includes =====
+#include <map>
 
 namespace Tempest
 {
@@ -12,26 +17,40 @@ namespace Tempest
 	/// and will look these up for rendering and updating. Only persisten, multilevel objects should be registered in this way. 
 	class GameObjectManager
 	{
+		typedef	std::map<U32, p_GameObject> ObjectRegistry; 
+
 	public:
 	//==========================================================================================================================
 	//
 	//Constructors	 	
 	//
 	//==========================================================================================================================
-		~GameObjectManager(void);
+		TEMPEST_API ~GameObjectManager(void);
 
 	//==========================================================================================================================
 	//
 	//Functions
 	//
 	//==========================================================================================================================
-		static shared_ptr<GameObjectManager> Instance(void);
+		TEMPEST_API static shared_ptr<GameObjectManager> Instance(void);
+
+		TEMPEST_API void Add(p_GameObject obj);
+
+		TEMPEST_API void Remove(U32 id);
+
+		TEMPEST_API p_GameObject GetGameObject(U32 id);
+
+		inline U32 Count(void)
+		{
+			return _registry.size();
+		}
 
 	protected:
-		GameObjectManager(void);
+		TEMPEST_API GameObjectManager(void);
 
 	private:
-		static shared_ptr<GameObjectManager> _instance;
+		static shared_ptr<GameObjectManager>	_instance;
+		ObjectRegistry							_registry;
 
 	};//end Class
 	typedef shared_ptr<GameObjectManager> p_GameObjectManager;

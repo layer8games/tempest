@@ -8,6 +8,8 @@ using namespace Tempest;
 //
 //==========================================================================================================================
 GameObjectManager::GameObjectManager(void)
+	:
+	_registry()
 {  }
 
 GameObjectManager::~GameObjectManager(void)
@@ -28,4 +30,47 @@ p_GameObjectManager GameObjectManager::Instance(void)
 	}
 
 	return _instance;
+}
+
+void GameObjectManager::Add(p_GameObject obj)
+{	
+	if(_registry.count(obj->GetID()) == 0)
+	{
+		_registry.insert({obj->GetID(), obj});
+		
+		if(_registry.find(obj->GetID()) == _registry.end())
+		{
+			ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject to level.");
+		}
+	}
+	else
+	{
+		ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::Add attempted to add ID that already exists. ID = " + obj->GetID());
+	}
+	
+}
+
+void GameObjectManager::Remove(U32 id)
+{
+	if(_registry.count(id) == 1)
+	{
+		_registry.erase(id);
+	}
+	else
+	{
+		ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::Remove: no object found with id= " + id);
+	}
+}
+
+p_GameObject GameObjectManager::GetGameObject(U32 id)
+{
+	if(_registry.count(id) == 1)
+	{
+		return _registry[id];
+	}
+	else
+	{
+		ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::GetGameObject: no object found with id= " + id);
+		return nullptr;
+	}
 }
