@@ -6,8 +6,8 @@
 #include <Engine/Controller.h>
 #include <Engine/GameWindow.h>
 #include <Engine/Timer.h>
-#include <Engine/LevelManager.h>
-//#include <Engine/TextureManager.h>
+#include <Engine/Level.h>
+#include <Engine/GameObjectManager.h>
 
 namespace TM = TempestMath;
 
@@ -36,9 +36,6 @@ namespace Tempest
 /// \param title string: sent to system to generate title of window.
 /// \param fullscreen bool: tells system to use fullscreen or not. 
 		TEMPEST_API void Init(const S32 width, const S32 height, const string title, const bool fullscreen);
-
-/// Wrapper for LevelManager::ShutDown(void)
-		TEMPEST_API void ShutDown(void);
 		
 /// Check if simulation is still running.
 		inline bool Running(void) 
@@ -51,26 +48,12 @@ namespace Tempest
 		{ 
 			GameWindow::Instance()->EndRunning(); 
 		}
-		
-/// Wrapper for LevelManager::AddLevel(). Adds level that can be set as active. 
-/// \param level shared_ptr<Level>: Level to be added. 
-		inline void AddLevelToManager(shared_ptr<Level> level)
-		{ 
-			LevelManager::Instance()->AddLevel(level); 
-		}
-
-/// Wrapper for LevelManager::SetActive(). Sets level with id to be active level
-/// \param id const U32: id of level. 
-		inline void SetActiveLevel(const U32 id) 
-		{ 
-			LevelManager::Instance()->SetActiveLevel(id); 
-		}
 
 /// Wrapper for LevelManager::SetActive(void). Sets the temporary active level.
 /// \param level is the pointer to set active
-		inline void SetActiveLevel(shared_ptr<Level> level)
+		inline void SetActiveLevel(p_Level level)
 		{
-			LevelManager::Instance()->SetActiveLevel(level);
+			_activeLevel = level;
 		}
 
 /// Wrapper for steps needed update steps. Calls the following in order.
@@ -111,6 +94,7 @@ namespace Tempest
 //
 //==========================================================================================================================
 		static shared_ptr<Engine> _instance;	///< Singleton global instance.
+		p_Level					  _activeLevel; 
 	};
 	typedef shared_ptr<Engine> p_Engine;
 }//End namespace

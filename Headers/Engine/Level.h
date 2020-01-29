@@ -75,10 +75,13 @@ namespace Tempest
 
 /// Called when the Level is made active, or when its created, this defines a series of actions to be taken in order for this
 /// Level to be up and going.
-		TEMPEST_API virtual void v_Awake(void)
+		TEMPEST_API virtual void v_Enter(void)
 		{
-			DefaultAwake();
+			DefaultEnter();
 		}
+
+		/// Default behavior for a standard awake. Behavior: Calls GameWindow::ResetCamera
+		TEMPEST_API void DefaultEnter(void);
 
 //==========================================================================================================================
 //
@@ -148,14 +151,11 @@ namespace Tempest
 		template <class T>
 		inline void SetObjectUniforms(string name, const T& type)
 		{
-			for(auto i : _gameObjects)
+			for(auto i : _localGameObjects)
 			{
 				i.second->GetShader()->SetUniform(name, type);
 			}
 		}
-
-/// Default behavior for a standard awake. Behavior: Calls GameWindow::ResetCamera
-		void DefaultAwake(void);
 
 //==========================================================================================================================
 //
@@ -366,7 +366,7 @@ namespace Tempest
 		S32 	_farBorder;								///< Optional far border of the Level.
 		Color   _bgColor;								///< Color used for the background of the rendering window.
 		U32     _ID;									///< ID used in the LevelManager.
-		std::map<U32, p_GameObject>	  _gameObjects;		///< List of all GameObjects included in the Level.
+		std::map<U32, p_GameObject>	  _localGameObjects;		///< List of all GameObjects included in the Level.
 		TP::ForceRegistry _forceRegistry; 				///< KillerPhysics::ForceRegistry used to allow physics forces to be applied.
 	};
 	typedef shared_ptr<Level> p_Level;

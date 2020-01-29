@@ -29,14 +29,6 @@ void Engine::Init(const S32 width, const S32 height, const string title, const b
 	{
 		End();
 	}
-}
-
-//==========================================================================================================================
-//ShutDown
-//==========================================================================================================================
-void Engine::ShutDown(void)
-{
-	LevelManager::Instance()->ShutDown();
 }	
 
 //=======================================================================================================
@@ -50,7 +42,9 @@ void Engine::Update(void)
 	
 	Controller::Instance()->Update();
 	
-	LevelManager::Instance()->Update();
+	GameObjectManager::Instance()->UpdateObjects();
+
+	_activeLevel->v_Update();
 
 	//If User indicated they want to close they Game
 	if(ErrorManager::Instance()->DisplayErrors())
@@ -64,7 +58,9 @@ void Engine::Update(void)
 //=======================================================================================================
 void Engine::Render(void) 
 {
-	LevelManager::Instance()->Render();
+	GameObjectManager::Instance()->RenderObjects();
+
+	_activeLevel->v_Render();
 
 	GameWindow::Instance()->BufferSwap();
 	

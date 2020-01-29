@@ -21,13 +21,13 @@ _nearBorder(0),
 _farBorder(0),
 _bgColor(),
 _ID(0),
-_gameObjects(),
+_localGameObjects(),
 _forceRegistry()
 {  }
 
 Level::~Level(void)
 {
-	_gameObjects.clear();
+	_localGameObjects.clear();
 }
 
 //==========================================================================================================================
@@ -38,6 +38,12 @@ Level::~Level(void)
 void Level::v_Render(void)
 { 
 	RenderObjects(); 
+}
+
+void Level::DefaultEnter(void)
+{
+	GameWindow::Instance()->ResetCamera();
+	ActivateBackgroundColor();
 }
 
 //==========================================================================================================================
@@ -53,10 +59,10 @@ void Level::UpdateLevel(void)
 
 void Level::AddObjectToLevel(const GameObject& obj)
 {
-	_gameObjects.insert({ obj.GetID(), shared_ptr<GameObject>(const_cast<GameObject*>(&obj)) });
-	_gameObjects[obj.GetID()]->GetShader()->SetUniform("projection", GameWindow::Instance()->GetCamera()->GetProjectionMatrix4());
+	_localGameObjects.insert({ obj.GetID(), shared_ptr<GameObject>(const_cast<GameObject*>(&obj)) });
+	_localGameObjects[obj.GetID()]->GetShader()->SetUniform("projection", GameWindow::Instance()->GetCamera()->GetProjectionMatrix4());
 
-	if(_gameObjects.find(obj.GetID()) == _gameObjects.end())
+	if(_localGameObjects.find(obj.GetID()) == _localGameObjects.end())
 	{
 		ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject to level.");
 	}
@@ -66,9 +72,9 @@ void Level::AddObjectToLevel(p_GameObject obj)
 {
 	obj->GetShader()->SetUniform("projection", GameWindow::Instance()->GetCamera()->GetProjectionMatrix4());
 
-	_gameObjects.insert({obj->GetID(), obj});
+	_localGameObjects.insert({obj->GetID(), obj});
 
-	if(_gameObjects.find(obj->GetID()) == _gameObjects.end())
+	if(_localGameObjects.find(obj->GetID()) == _localGameObjects.end())
 	{
 		ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject to level.");
 	}
@@ -122,9 +128,9 @@ void Level::UpdateText(Text& text, string updatedCharacters)
 void Level::RemoveObjectFromLevel(U32 id)
 {
 	//Assume that if an ID is not a GameObject, then it could be derived type.
-	if(_gameObjects.find(id) != _gameObjects.end())
+	if(_localGameObjects.find(id) != _localGameObjects.end())
 	{
-		_gameObjects.erase(id);
+		_localGameObjects.erase(id);
 	}
 	else
 	{
@@ -139,7 +145,7 @@ void Level::RemoveObjectFromLevel(U32 id)
 //==========================================================================================================================	
 void Level::UpdateObjects(void)
 {
-	for(auto i : _gameObjects)
+	for(auto i : _localGameObjects)
 	{
 		if(i.second->GetActiveUpdate())
 		{
@@ -151,7 +157,7 @@ void Level::UpdateObjects(void)
 	
 void Level::RenderObjects(void)
 {
-	for(auto i : _gameObjects)
+	for(auto i : _localGameObjects)
 	{
 		if(i.second->GetActiveRender())
 		{
@@ -161,15 +167,9 @@ void Level::RenderObjects(void)
 	}	
 }
 
-void Level::DefaultAwake(void)
-{
-	GameWindow::Instance()->ResetCamera();
-	ActivateBackgroundColor();
-}
-
 shared_ptr<GameObject> Level::GetGameObject(U32 id)
 {
-	shared_ptr<GameObject> obj = _gameObjects[id];
+	shared_ptr<GameObject> obj = _localGameObjects[id];
 
 	if(obj == nullptr)
 	{

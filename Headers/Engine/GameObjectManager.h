@@ -4,6 +4,7 @@
 #include <Engine/Atom.h>
 #include <Engine/GameObject.h>
 #include <Engine/ErrorManager.h>
+#include <Engine/GameWindow.h>
 
 //===== STL includes =====
 #include <map>
@@ -44,6 +45,10 @@ namespace Tempest
 		{
 			return _registry.size();
 		}
+
+		TEMPEST_API void UpdateObjects(void);
+
+		TEMPEST_API void RenderObjects(void);
 
 	protected:
 		TEMPEST_API GameObjectManager(void);

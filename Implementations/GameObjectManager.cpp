@@ -74,3 +74,26 @@ p_GameObject GameObjectManager::GetGameObject(U32 id)
 		return nullptr;
 	}
 }
+
+void GameObjectManager::UpdateObjects(void)
+{
+	for(auto obj : _registry)
+	{
+		if(obj.second->GetActiveUpdate())
+		{
+			obj.second->v_Update();
+		}
+	}
+}
+
+void GameObjectManager::RenderObjects(void)
+{
+	for(auto obj : _registry)
+	{
+		if(obj.second->GetActiveRender())
+		{
+			obj.second->GetShader()->SetUniform("view", GameWindow::Instance()->GetCamera()->GetViewMatrix4());
+			obj.second->v_Render();
+		}
+	}
+}

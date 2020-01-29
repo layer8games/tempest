@@ -27,12 +27,6 @@ namespace Tempest
 ///	Singleton fucntion. Returns the global pointer used to access the manager. 
 		TEMPEST_API static LevelManager* Instance();
 
-///	Helper function that deletes the instance from global memory.  
-		void ShutDown(void)
-		{
-			delete _instance;
-		}
-
 //==========================================================================================================================
 //
 //Accessors
@@ -40,76 +34,14 @@ namespace Tempest
 //========================================================================================================================== 
 ///	Adds a Level into the state machine that can then be set to active to be in use. 
 ///	\param level is added into the database, with Level::GetID used to index.  
-		TEMPEST_API void AddLevel(p_Level level);
+		TEMPEST_API void Add(p_Level level);
 		
 ///	Removes Level from database. 
 ///	\param levelID is the index to delete.  
-		TEMPEST_API void RemoveLevel(U32 levelID);
-		 
-///	Changes the state to have a different active Level.
-///	\param levelID is the index to set to active.  
-		TEMPEST_API void SetActiveLevel(U32 levelID);
-
-///	Changes the active level to be a new level. This level is NOT stored in the levels data base and will be deleted when
-///	the active level is changed again. This allows for levels to be lazy loaded, for quick switching, or to not be loaded 
-///	into memory until they are set to active. Level::v_Init is called before it is set to active.
-///	\param level is the new Level that will be set to active.
-		TEMPEST_API void SetActiveLevel(p_Level level);
-		
-///	Returns the ID of the active Level state.  
-		U32 GetActiveLevelID(void) 
-		{ 
-			return _activeLevelID; 
-		}
+		TEMPEST_API void Remove(U32 levelID);
 
 ///	Returns a pointer to the active Level state. 
-		inline p_Level GetActiveLevel(void)
-		{
-			return _activeLevel;
-		}
- 
-///	Starts the process to shut down the game. Wrapper around GameWindow::EndRunning. 
-		void EndGame(void)
-		{
-			GameWindow::Instance()->EndRunning();
-		}
-
-///	 Allows object to be added to level. Wrapper around Level::AddObjectToLevel.
-///	 \param id is the key for the Level that the object will be added to. 
-///	 \param obj is the object to add.
-		TEMPEST_API void AddObjectToLevel(U32 id, const GameObject& obj);
-
-/// Allows GameObject to be added to the currently active level. This is of great use when you have an GameObject that is going
-/// to be dynamically created by another object at runtime, that may not know about which Level it is part of.
-/// \param obj is the GameObject to add.
-		inline void AddObject(const p_GameObject obj)
-		{
-			_activeLevel->AddObjectToLevel(obj);
-		}
- 
-///	 Allows object to be added to level. Wrapper around Level::AddObjectToLevel.
-///	 \param id is the key for the Level that the object will be added to. 
-///	 \param obj is the object pointer to add.
-		TEMPEST_API void AddObjectToLevel(U32 id, shared_ptr<GameObject> obj);
-		
-///	Removes an object from a Level. Wrapper around Level::RemoveObjectFromLevel. This assumes that ID are unique for all GameObject. 
-///	I don't know if this is true, so be careful. 
-///	\param levelID is the key for the Level that the object will be removed from. 
-///	\param objID is the GameObject ID to remove. 
-		TEMPEST_API void RemoveObjectFromLevel(U32 levelID, U32 objID);
-
-//==========================================================================================================================
-//
-//Integrators
-//
-//========================================================================================================================== 
-///	Calls all functions on the active Level state needed to update that state. This includes Level::v_Integrate, 
-/// Level::UpdateLevel,
-///	Level::UpdateObjects and Level::v_Update. 
-		TEMPEST_API void Update(void);
-		
-///	Calls all of the functions on the active Level state needed to render the state. Calls Level::v_Render. 
-		TEMPEST_API void Render(void);
+		TEMPEST_API p_Level GetLevel(U32 levelID);
 
 	protected: 
 ///	Sets active Level state to a nullptr.  
@@ -117,8 +49,6 @@ namespace Tempest
 
 	private:
 		std::map<U32, p_Level> _levels;			///< Database of Levels that can be activated. 
-		p_Level 			   _activeLevel;	///< Pointer to active Level from database. 
-		U32 				   _activeLevelID;	///< The ID of the active Level. 
 		static LevelManager*   _instance;		///< Singletone pointer to global version of LevelManager. 
 
 	};
