@@ -26,6 +26,7 @@ namespace Tempest
 	//Constructors	 	
 	//
 	//==========================================================================================================================
+		/// No implementation. 
 		TEMPEST_API ~GameObjectManager(void);
 
 	//==========================================================================================================================
@@ -33,29 +34,38 @@ namespace Tempest
 	//Functions
 	//
 	//==========================================================================================================================
+		/// Singleton pattern used for Global nature of the Manager.
 		TEMPEST_API static shared_ptr<GameObjectManager> Instance(void);
 
+		/// Add a GameObject to the Manager. 
+		/// \param obj calls GameObject::GetID, then attempts to insert GameObject into the map. 
 		TEMPEST_API void Add(p_GameObject obj);
 
+		/// Remove the GameObject with \param id from the Manager, if it exists. 
 		TEMPEST_API void Remove(U32 id);
 
+		/// Return pointer to GameObject with \param id if it exists.
 		TEMPEST_API p_GameObject GetGameObject(U32 id);
 
+		/// Return a count of all the GameObjects that have been registered with the manager.
 		inline U32 Count(void)
 		{
 			return _registry.size();
 		}
 
+		/// Loop over all registered GameObjects calling GameObject::v_Update.
 		TEMPEST_API void UpdateObjects(void);
 
+		/// Loop over all registered GameObjects calling GameObject::v_Render.
 		TEMPEST_API void RenderObjects(void);
 
 	protected:
+		/// Protected constructor part of the Singleton pattern. 
 		TEMPEST_API GameObjectManager(void);
 
 	private:
-		static shared_ptr<GameObjectManager>	_instance;
-		ObjectRegistry							_registry;
+		static shared_ptr<GameObjectManager>	_instance;	///< Singleton pattern global instance. 
+		ObjectRegistry							_registry;	///< map of all registered GameObjects. 
 
 	};//end Class
 	typedef shared_ptr<GameObjectManager> p_GameObjectManager;

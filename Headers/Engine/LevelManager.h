@@ -14,17 +14,16 @@ namespace TP = TempestPhysics;
 
 namespace Tempest 
 { 
-///	The holder and controller of the the Level objects. This will act as both a singleton and a state matching controller, where 
-///	each Level will be a state that can be set to active.
-///	For now, all of the states that are to be used will be instantiated during the initialization in the main loop, however later, 
-///	each Level will only be created once it is called, as part of a loading screen. 
+	///	A lazy loader for Levels. If there is a need to cache a Level in memory, it can be registered with the LevelManager
+	/// and recalled later. This is far more simple then it used to be. For histories sake, at one point this class was used
+	/// to control the rendering and updating of objects. 
 	class LevelManager
 	{
 	public:
-///	No implementation. 
+		///	No implementation. 
 		TEMPEST_API ~LevelManager(void);
 
-///	Singleton fucntion. Returns the global pointer used to access the manager. 
+		///	Singleton fucntion. Returns the global pointer used to access the manager. 
 		TEMPEST_API static LevelManager* Instance();
 
 //==========================================================================================================================
@@ -32,19 +31,19 @@ namespace Tempest
 //Accessors
 //
 //========================================================================================================================== 
-///	Adds a Level into the state machine that can then be set to active to be in use. 
-///	\param level is added into the database, with Level::GetID used to index.  
+		///	Register a Level with the manager.
+		///	\param level is added into the database, with Level::GetID used to index.  
 		TEMPEST_API void Add(p_Level level);
 		
-///	Removes Level from database. 
-///	\param levelID is the index to delete.  
+		///	Removes Level from database. 
+		///	\param levelID is the index to delete.  
 		TEMPEST_API void Remove(U32 levelID);
 
-///	Returns a pointer to the active Level state. 
+		///	Returns a pointer to Level with \param levelID if it exists.
 		TEMPEST_API p_Level GetLevel(U32 levelID);
 
 	protected: 
-///	Sets active Level state to a nullptr.  
+		///	Singleton constructor. 
 		LevelManager(void);
 
 	private:
