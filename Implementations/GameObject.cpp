@@ -60,33 +60,7 @@ GameObject::~GameObject(void)
 //==========================================================================================================================
 //v_Render
 //==========================================================================================================================
-void GameObject::DefaultRender(void)
-{
-	_shader->Use(true);
-	_mesh->BindVAO(true);
 
-	if(_texture != nullptr)
-	{
-		BindTexture(true);
-	}
-
-	if(_isSprite)
-	{
-		_shader->SetUniform("sprite_color", _color);
-	}
-		
-	_shader->SetUniform("model", GetModelMatrix());
-
-	_mesh->v_Render();
-
-	_shader->Use(false);
-	_mesh->BindVAO(false);
-
-	if(_texture != nullptr)
-	{
-		BindTexture(false);
-	}
-}
 
 //==========================================================================================================================
 //
@@ -148,6 +122,39 @@ void GameObject::MakeSprite(void)
 //Protected
 //==========================================================================================================================
 void GameObject::DefaultAwake(void)
+{
+	UpdateInternals();
+}
+
+void GameObject::DefaultRender(void)
+{
+	_shader->Use(true);
+	_mesh->BindVAO(true);
+
+	if(_texture != nullptr)
+	{
+		BindTexture(true);
+	}
+
+	if(_isSprite)
+	{
+		_shader->SetUniform("sprite_color", _color);
+	}
+
+	_shader->SetUniform("model", GetModelMatrix());
+
+	_mesh->v_Render();
+
+	_shader->Use(false);
+	_mesh->BindVAO(false);
+
+	if(_texture != nullptr)
+	{
+		BindTexture(false);
+	}
+}
+
+void GameObject::DefaultUpdate(void)
 {
 	UpdateInternals();
 }

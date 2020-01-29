@@ -478,6 +478,9 @@ namespace Tempest
 		/// Default code to Render the Object.
 		TEMPEST_API void DefaultRender(void);
 
+		/// Default behavior that should be considered when calling Update on an GameObject. This calls UpdateInternals.
+		TEMPEST_API void DefaultUpdate(void);
+
 //==========================================================================================================================
 //
 //Protected Data
