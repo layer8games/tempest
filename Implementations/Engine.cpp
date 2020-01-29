@@ -44,6 +44,7 @@ void Engine::Update(void)
 	
 	GameObjectManager::Instance()->UpdateObjects();
 
+	_activeLevel->UpdateLevel();
 	_activeLevel->v_Update();
 
 	//If User indicated they want to close they Game

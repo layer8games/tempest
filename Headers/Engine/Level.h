@@ -348,6 +348,10 @@ namespace Tempest
 ///	Returns GameObject with ID.
 ///	\param id is the ID of the object to get. Should coorespond to GameObject::_ID. 
 		TEMPEST_API p_GameObject GetGameObject(U32 id);
+
+	protected:
+
+		TEMPEST_API void DefaultRender(void);
 		
 	private:
 //==========================================================================================================================

@@ -41,7 +41,9 @@ namespace Tempest
 //==========================================================================================================================
 ///	Needed virtual function from GameObject. Empty implementation.
 		void v_Update(void) final
-		{  }
+		{
+			DefaultUpdate();
+		}
 
 
 ///	Initializes the Glyph as a sprite, sets Glyph shader. 

@@ -37,7 +37,7 @@ Level::~Level(void)
 //==========================================================================================================================
 void Level::v_Render(void)
 { 
-	RenderObjects(); 
+	DefaultRender();
 }
 
 void Level::DefaultEnter(void)
@@ -55,6 +55,14 @@ void Level::DefaultEnter(void)
 void Level::UpdateLevel(void)
 {
 	_forceRegistry.UpdateForces();
+
+	for(auto obj : _localGameObjects)
+	{
+		if(obj.second->GetActiveUpdate())
+		{
+			obj.second->v_Update();
+		}
+	}
 }
 
 void Level::AddObjectToLevel(const GameObject& obj)
@@ -178,4 +186,9 @@ shared_ptr<GameObject> Level::GetGameObject(U32 id)
 	}
 
 	return obj;
+}
+
+void Level::DefaultRender(void)
+{
+	RenderObjects();
 }

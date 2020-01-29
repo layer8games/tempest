@@ -54,6 +54,7 @@ namespace Tempest
 		inline void SetActiveLevel(p_Level level)
 		{
 			_activeLevel = level;
+			_activeLevel->v_Enter();
 		}
 
 /// Wrapper for steps needed update steps. Calls the following in order.

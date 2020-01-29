@@ -137,6 +137,7 @@ void Text::_UpdatePositions(void)
 			CharacterData data = _font->GetCharacterData(_characterList[i]->GetCharacter());
 			//_characterList[i]->SetPosition(currentPos[0] + data.bearingX, currentPos[1] - (data.height + data.bearingY));
 			_characterList[i]->SetPosition(currentPos);
+			_characterList[i]->v_Update();
 
 			currentPos[0] += data.xAdvance + size;
 		}	
