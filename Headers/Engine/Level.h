@@ -17,6 +17,9 @@
 namespace TM = TempestMath;
 namespace TP = TempestPhysics;
 
+//===== Third party includes =====
+#include <rapidxml.hpp>
+
 //=====STL includes=====
 #include <map>
 #include <vector>
@@ -89,7 +92,7 @@ namespace Tempest
 
 //==========================================================================================================================
 //
-//Camera Functions
+//Functions
 //
 //==========================================================================================================================
 
@@ -147,7 +150,6 @@ namespace Tempest
 		///	if they are active for rendering. 
 		TEMPEST_API void RenderObjects(void);
 
- 
 		///	Loops over all GameObjects and KillerPhysics::RigidBody2D that have bee added to the level and calls GameObject::SetUniform for the
 		///	type that is passed in. This is a template function. 
 		///	\param name is the name of the uniform to set. This must match what is found in the shader. 
@@ -160,6 +162,8 @@ namespace Tempest
 				i.second->GetShader()->SetUniform(name, type);
 			}
 		}
+
+		TEMPEST_API void ImportTMXMapData(string filepath);
 
 //==========================================================================================================================
 //
@@ -347,15 +351,19 @@ namespace Tempest
 		{
 			return _ID;
 		}
- 
-		///	Returns GameObject with ID.
-		///	\param id is the ID of the object to get. Should coorespond to GameObject::_ID. 
-		TEMPEST_API p_GameObject GetGameObject(U32 id);
 
 	protected:
+		struct TileData
+		{
+			U32 gridX;
+			U32 gridY;
+		};
+		
 		/// Default actions to take if no other rendering steps are needed. Loops over all local GameObjects calling
 		/// GameObject::v_Render for each.
 		TEMPEST_API void DefaultRender(void);
+
+		TEMPEST_API TileData _ConvertIndexToTileData(U32 index, U32 width, U32 height);
 		
 	private:
 //==========================================================================================================================

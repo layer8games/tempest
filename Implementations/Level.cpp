@@ -175,20 +175,56 @@ void Level::RenderObjects(void)
 	}	
 }
 
-shared_ptr<GameObject> Level::GetGameObject(U32 id)
+// Consider instead of making a void return, to return an array of tile data to create?
+
+// TODO:: Look into this warning about using too much memory here. This could be an issue.s
+void Level::ImportTMXMapData(string filepath)
 {
-	shared_ptr<GameObject> obj = _localGameObjects[id];
-
-	if(obj == nullptr)
+	if(filepath.find(".tmx") != std::string::npos)
 	{
-		//ErrorManager::Instance()->SetError(ENGINE, "Level::GetGameObject ln 233, unable to find object with id " + id);
-		return nullptr;
-	}
+		std::ifstream file(filepath);
 
-	return obj;
+		if(!file)
+		{
+			ErrorManager::Instance()->SetError(ENGINE, "Level::ImportTMXMapData Unable to open file at " + filepath);
+		}
+
+		std::vector<char> buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+		//xml file must be 0 terminating
+		buffer.push_back('\0');
+
+		file.close();
+
+		rapidxml::xml_document<char> doc;
+		doc.parse<0>(&buffer[0]);
+
+		// Set root node
+		rapidxml::xml_node<> * root_node = doc.first_node("map");
+		
+		// Get Tile set file
+
+			// Parse tile set file for objects to create
+
+		// Get layers and layer data
+
+			// Search for indices > 0, match with tile set data, convert coords for placement
+	}
+	else
+	{
+		ErrorManager::Instance()->SetError(ENGINE, "Level::ImportTMXMaqData: Invalid file type!");
+	}
 }
 
 void Level::DefaultRender(void)
 {
 	RenderObjects();
+}
+
+Level::TileData Level::_ConvertIndexToTileData(U32 index, U32 width, U32 height)
+{
+	TileData data;
+	data.gridX = index % width;
+	data.gridY = height - (index / height);
+
+	return data;
 }

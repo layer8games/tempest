@@ -8,6 +8,8 @@ using namespace Tempest;
 //
 //==========================================================================================================================		
 Engine::Engine(void) 
+	:
+	_activeLevel(nullptr)
 {  }
 
 //==========================================================================================================================
@@ -34,6 +36,17 @@ void Engine::Init(const S32 width, const S32 height, const string title, const b
 //=======================================================================================================
 //Update
 //=======================================================================================================
+void Engine::SetActiveLevel(p_Level level)
+{
+		if(_activeLevel != nullptr)
+		{
+			_activeLevel->v_Exit();
+		}
+
+		_activeLevel = level;
+		_activeLevel->v_Enter();
+}
+
 void Engine::Update(void) 
 {
 	GameWindow::Instance()->Update();
@@ -59,9 +72,9 @@ void Engine::Update(void)
 //=======================================================================================================
 void Engine::Render(void) 
 {
-	GameObjectManager::Instance()->RenderObjects();
-
 	_activeLevel->v_Render();
+
+	GameObjectManager::Instance()->RenderObjects();
 
 	GameWindow::Instance()->BufferSwap();
 	

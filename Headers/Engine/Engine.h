@@ -51,12 +51,7 @@ namespace Tempest
 
 		/// Changes the currently updating and active level. Exit is called, then Enter is called. Must call v_Init before passing. 
 		/// \param level is the pointer to set active
-		inline void SetActiveLevel(p_Level level)
-		{
-			_activeLevel->v_Exit();
-			_activeLevel = level;
-			_activeLevel->v_Enter();
-		}
+		TEMPEST_API void SetActiveLevel(p_Level level);
 
 		/// Wrapper for steps needed update steps. Calls the following in order.
 		/// - GameWindow::ProcessWndEvents()
