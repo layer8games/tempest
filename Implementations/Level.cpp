@@ -198,16 +198,33 @@ void Level::ImportTMXMapData(string filepath)
 		rapidxml::xml_document<char> doc;
 		doc.parse<0>(&buffer[0]);
 
-		// Set root node
-		rapidxml::xml_node<> * root_node = doc.first_node("map");
+		rapidxml::xml_node<>* map_node = doc.first_node("map");
+		rapidxml::xml_node<>* tileset_node = map_node->first_node("tileset");
 		
-		// Get Tile set file
 
-			// Parse tile set file for objects to create
+		U32 mapWidth = std::stoul(map_node->first_attribute("width")->value());
+		U32 mapHeight = std::stoul(map_node->first_attribute("height")->value());
+		U32 tileWidth = std::stoul(map_node->first_attribute("tilewidth")->value());
+		U32 tileHeight = std::stoul(map_node->first_attribute("tileheight")->value());
 
-		// Get layers and layer data
+		string tileSetFilePath = tileset_node->first_attribute("source")->value();
 
-			// Search for indices > 0, match with tile set data, convert coords for placement
+		typedef std::vector<U32> data_array;
+		std::vector<data_array> layer_data;
+
+		// l == layer_node
+		for(rapidxml::xml_node<>* l=map_node->first_node("layer"); l; l=l->next_sibling("layer"))
+		{
+			// Create split function to get rid of the commas
+			// save the data in value() to a data_array
+			// push the saved data onto layer_data
+		}
+
+
+		// Open tileset
+		// Create tile data for each tile in the set. IDs must match data_array entries
+
+		// Create array of tile_data to be created by a factory at run time, maybe this is what gets returned.		
 	}
 	else
 	{
