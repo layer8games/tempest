@@ -366,6 +366,12 @@ namespace Tempest
 		TEMPEST_API TileData _ConvertIndexToTileData(U32 index, U32 width, U32 height);
 		
 	private:
+		/// Helper function to split a list of numbers apart. This is intended to be used with a list of numbers separated by a 
+		/// standard character, for instance, a list of space or comma separated numbers. The numbers are read as strings and
+		/// converted into U32 types.
+		/// \param text is string to break apart. It should be numbers separated by a common character.
+		/// \param delim is the character that separates each number in list.
+		std::vector<U32> _SplitU32(string text, char delim) const;
 //==========================================================================================================================
 //
 //Data

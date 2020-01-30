@@ -209,22 +209,30 @@ void Level::ImportTMXMapData(string filepath)
 
 		string tileSetFilePath = tileset_node->first_attribute("source")->value();
 
-		typedef std::vector<U32> data_array;
-		std::vector<data_array> layer_data;
+		typedef std::vector<U32> U32Array;
+		std::vector<U32Array> data_array;
 
-		// l == layer_node
 		for(rapidxml::xml_node<>* l=map_node->first_node("layer"); l; l=l->next_sibling("layer"))
 		{
-			// Create split function to get rid of the commas
-			// save the data in value() to a data_array
-			// push the saved data onto layer_data
+			data_array.push_back(_SplitU32(l->first_node("data")->value(), ','));
 		}
 
+		if(tileSetFilePath.find(".tsx") != std::string::npos)
+		{
+			std::ifstream tilesetFile(tileSetFilePath);
 
-		// Open tileset
-		// Create tile data for each tile in the set. IDs must match data_array entries
+			if(!tilesetFile)
+			{
+				ErrorManager::Instance()->SetError(ENGINE, "Level::ImportTMXMapData could not open file " + tileSetFilePath);
+			}
+			// Parse tileset and create tileData by ID
+		}
+		else
+		{
+			ErrorManager::Instance()->SetError(ENGINE, "Level::ImportTMXMapData no valid tileset found in tmx file");
+		}
 
-		// Create array of tile_data to be created by a factory at run time, maybe this is what gets returned.		
+		// Parse data_array, create array of tileData for each object that needs to be created. The level will handle this
 	}
 	else
 	{
@@ -242,6 +250,20 @@ Level::TileData Level::_ConvertIndexToTileData(U32 index, U32 width, U32 height)
 	TileData data;
 	data.gridX = index % width;
 	data.gridY = height - (index / height);
+
+	return data;
+}
+
+std::vector<U32> Level::_SplitU32(string text, char delim) const
+{
+	std::vector<U32> data;
+	std::stringstream stream(text);
+	string item;
+
+	while(std::getline(stream, item, delim))
+	{
+		data.push_back(std::stoul(item.c_str()));
+	}
 
 	return data;
 }
