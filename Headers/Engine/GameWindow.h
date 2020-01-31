@@ -164,7 +164,7 @@ namespace Tempest
 		}
 
 ///	Returns the current Camera.
-		inline const p_Camera GetCamera(void)
+		inline p_Camera GetCamera(void)
 		{
 			return _camera;
 		}

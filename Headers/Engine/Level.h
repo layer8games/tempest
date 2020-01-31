@@ -13,6 +13,7 @@
 #include <Engine/ForceRegistry.h>
 #include <Engine/Text.h>
 #include <Engine/RigidBody2D.h>
+#include <Engine/Point.h>
 
 namespace TM = TempestMath;
 namespace TP = TempestPhysics;
@@ -162,8 +163,6 @@ namespace Tempest
 				i.second->GetShader()->SetUniform(name, type);
 			}
 		}
-
-		TEMPEST_API void ImportTMXMapData(string filepath);
 
 //==========================================================================================================================
 //
@@ -356,19 +355,26 @@ namespace Tempest
 		struct TileData
 		{
 			U32 id;
-			U32 gridX;
-			U32 gridY;
 			U32 imageWidth;
 			U32 imageHeight;
 			string type;
 			string imageFilePath;
+			TM::Point pos;
+		};
+
+		struct GridPos
+		{
+			U32 x;
+			U32 y;
 		};
 		
 		/// Default actions to take if no other rendering steps are needed. Loops over all local GameObjects calling
 		/// GameObject::v_Render for each.
 		TEMPEST_API void DefaultRender(void);
 
-		TEMPEST_API TileData _ConvertIndexToTileData(U32 index, U32 width, U32 height);
+		TEMPEST_API GridPos _ConvertIndexToTileData(U32 index, U32 width, U32 height);
+
+		TEMPEST_API std::vector<TileData> _ImportTMXMapData(string filepath);
 		
 	private:
 		/// Helper function to split a list of numbers apart. This is intended to be used with a list of numbers separated by a 
