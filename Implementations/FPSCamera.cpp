@@ -1,5 +1,7 @@
 #include <Engine/FPSCamera.h>
 
+#include <iostream>
+
 using namespace Tempest;
 //==========================================================================================================================
 //
@@ -40,6 +42,7 @@ FPSCamera::~FPSCamera(void)
 //==========================================================================================================================
 void FPSCamera::v_Update(void)
 {
+	std::cout << "fps update called\n";
 	TM::Point mouseCoord = Controller::Instance()->GetMouseCoord();
 	S32 width = GameWindow::Instance()->GetWidth();
 	S32 height = GameWindow::Instance()->GetHeight();
@@ -68,6 +71,7 @@ void FPSCamera::v_Rotate(void)
 
 void FPSCamera::v_Move(const TM::Vector4& offset)
 {
+	std::cout << "fps move called\n";
 	_position += offset * _moveSpeed * TM::Timer::Instance()->DeltaTime();
 	_v_UpdateCameraVector4s();
 }

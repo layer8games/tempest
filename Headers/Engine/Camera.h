@@ -9,6 +9,8 @@
 #include <Engine/Controller.h>
 #include <Engine/Timer.h>
 
+#include <iostream>
+
 #include <vector>
 
 namespace TM = TempestMath;
@@ -52,7 +54,9 @@ namespace Tempest
 
 /// No implemenations. This is meant to overloaded.				
 		inline virtual void v_Move(const TM::Vector4& offset)
-		{  }
+		{
+			std::cout << "default move called\n";
+		}
 
 //==========================================================================================================================
 //

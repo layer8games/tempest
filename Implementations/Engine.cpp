@@ -44,6 +44,7 @@ void Engine::SetActiveLevel(p_Level level)
 		}
 
 		_activeLevel = level;
+		
 		_activeLevel->v_Enter();
 }
 
