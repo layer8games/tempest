@@ -217,6 +217,9 @@
     <Filter Include="Source Code\Engine\Managers\GameObjectManager">
       <UniqueIdentifier>{5206c94d-8318-46c4-b163-86b7c385ba74}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\Camera\Camera2D">
+      <UniqueIdentifier>{bacd54b1-e7e7-425d-ade9-52c152d008f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -387,6 +390,9 @@
     <ClInclude Include="..\..\Headers\Engine\GameObjectManager.h">
       <Filter>Source Code\Engine\Managers\GameObjectManager</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Camera2D.h">
+      <Filter>Source Code\Engine\Camera\Camera2D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -541,6 +547,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObjectManager.cpp">
       <Filter>Source Code\Engine\Managers\GameObjectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Camera2D.cpp">
+      <Filter>Source Code\Engine\Camera\Camera2D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

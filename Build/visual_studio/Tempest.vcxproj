@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Headers\Engine\Camera2D.h" />
     <ClInclude Include="..\..\Headers\Engine\AnchoredSpring.h">
       <SubType>
       </SubType>
@@ -280,6 +281,7 @@
     <ClInclude Include="..\..\Headers\Engine\LevelManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Implementations\Camera2D.cpp" />
     <ClCompile Include="..\..\Implementations\AABB.cpp">
       <SubType>
       </SubType>
