@@ -1,5 +1,4 @@
 #include <Engine/Level.h>
-#include <iostream>
 
 using namespace Tempest;
 
@@ -286,8 +285,6 @@ std::vector<Level::TileData> Level::_ImportTMXMapData(string filepath)
 		{
 			ErrorManager::Instance()->SetError(ENGINE, "Level::ImportTMXMapData no valid tileset found in tmx file");
 		}
-
-		std::cout << "tiles now has " << tiles[1].imageFilePath << " and " << tiles[2].imageFilePath << "... etc..." << std::endl;
 
 		for(auto data : data_array)
 		{
