@@ -195,12 +195,14 @@ void Level::ImportTMXMapData(string filepath)
 
 		file.close();
 
-		rapidxml::xml_document<char> doc;
-		doc.parse<0>(&buffer[0]);
+		typedef rapidxml::xml_node<>* xmlNode;
+		typedef rapidxml::xml_document<char> xmlDoc;
 
-		rapidxml::xml_node<>* map_node = doc.first_node("map");
-		rapidxml::xml_node<>* tileset_node = map_node->first_node("tileset");
+		xmlDoc doc;
+		doc.parse<0>(&buffer[0]);	
 		
+		xmlNode map_node = doc.first_node("map");
+		xmlNode tileset_node = map_node->first_node("tileset");
 
 		U32 mapWidth = std::stoul(map_node->first_attribute("width")->value());
 		U32 mapHeight = std::stoul(map_node->first_attribute("height")->value());
@@ -212,11 +214,13 @@ void Level::ImportTMXMapData(string filepath)
 		typedef std::vector<U32> U32Array;
 		std::vector<U32Array> data_array;
 
-		for(rapidxml::xml_node<>* l=map_node->first_node("layer"); l; l=l->next_sibling("layer"))
+		for(xmlNode l=map_node->first_node("layer"); l; l=l->next_sibling("layer"))
 		{
 			data_array.push_back(_SplitU32(l->first_node("data")->value(), ','));
 		}
 
+		std::vector<TileData> tiles;
+		
 		if(tileSetFilePath.find(".tsx") != std::string::npos)
 		{
 			std::ifstream tilesetFile(tileSetFilePath);
@@ -225,7 +229,46 @@ void Level::ImportTMXMapData(string filepath)
 			{
 				ErrorManager::Instance()->SetError(ENGINE, "Level::ImportTMXMapData could not open file " + tileSetFilePath);
 			}
-			// Parse tileset and create tileData by ID
+			
+			std::vector<char> tile_buffer((std::istreambuf_iterator<char>(tilesetFile)), std::istreambuf_iterator<char>());
+			
+			//xml file must be 0 terminating
+			tile_buffer.push_back('\0');
+
+			tilesetFile.close();
+			
+			xmlDoc tile_doc;
+			tile_doc.parse<0>(&tile_buffer[0]);
+
+			// t == tile node
+			for(xmlNode t=tile_doc.first_node("tileset")->first_node("tile"); t; t=t->next_sibling("tile"))
+			{
+				TileData data;
+				data.id = std::stoul(t->first_attribute("id")->value());
+				//// add 1, for 0 indexing
+				data.id += 1;
+
+				// child nodes of the tile
+				xmlNode child = t->first_node("properties");
+				if(child)
+				{
+					for(child=child->first_node("property"); child; child=child->next_sibling("property"))
+					{
+						string name = child->first_attribute("name")->value();
+						if(name == "type")
+						{
+							data.type = child->first_attribute("value")->value();
+						}
+					}
+				}
+
+				child = t->first_node("image");
+				data.imageWidth = std::stoul(child->first_attribute("width")->value());
+				data.imageHeight = std::stoul(child->first_attribute("height")->value());
+				data.imageFilePath = child->first_attribute("source")->value();
+
+				tiles.push_back(data);
+			}
 		}
 		else
 		{

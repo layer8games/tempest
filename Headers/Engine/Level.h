@@ -355,8 +355,13 @@ namespace Tempest
 	protected:
 		struct TileData
 		{
+			U32 id;
 			U32 gridX;
 			U32 gridY;
+			U32 imageWidth;
+			U32 imageHeight;
+			string type;
+			string imageFilePath;
 		};
 		
 		/// Default actions to take if no other rendering steps are needed. Loops over all local GameObjects calling
