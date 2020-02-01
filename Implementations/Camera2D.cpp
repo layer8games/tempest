@@ -10,7 +10,11 @@ using namespace Tempest;
 Camera2D::Camera2D(void)
 	:
 	_moveSpeed(1.0f)
-{  }
+{
+	_position = 0.0f;
+	_yaw = R_PI;
+	_pitch = 0.0f;
+}
 
 Camera2D::~Camera2D(void)
 {  }
@@ -25,4 +29,5 @@ void Camera2D::v_Move(F32 xVal, F32 yVal)
 	F32 delta = TM::Timer::Instance()->DeltaTime();
 	_position[x] += xVal * _moveSpeed * delta;
 	_position[y] += yVal * _moveSpeed * delta;
+	_v_UpdateCameraVectors();
 }

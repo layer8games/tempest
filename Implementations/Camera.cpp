@@ -16,6 +16,7 @@ _bgColor(1.0f),
 _projection(1.0f),
 _position(0.0f),
 _target(0.0f, 0.0f, -1.0f),
+_worldUp(0.0f, 1.0f, 0.0f),
 _up(0.0f, 1.0f, 0.0f),
 _look(0.0f),
 _right(0.0f),
@@ -50,4 +51,23 @@ void Camera::SetPerspective(F32 fov, F32 aspect, F32 nearPlane, F32 farPlane)
 void Camera::SetDefaultMatrix4(void)
 {
 	_projection.MakeIdentity();
+}
+
+void Camera::DefaultUpdateCameraVectors(void)
+{
+	//Using spherical to cartesian
+	//Calculate the view direction
+	_look[0] = cos(_pitch) * sin(_yaw);
+	_look[1] = sin(_pitch);
+	_look[2] = cos(_pitch) * cos(_yaw);
+	_look.Normalize();
+
+	//Re-calculate the right and up Vector4s
+	_right = _look.CrossProduct(_worldUp);
+	_right.Normalize();
+
+	_up = _right.CrossProduct(_look);
+	_up.Normalize();
+
+	_target = _position + _look;
 }

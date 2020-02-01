@@ -402,11 +402,10 @@ namespace Tempest
 			return _fov;
 		}
 
+	
+
 	private:
-	/// Updates the internal vectors of the Camera based on changes or input. For instance, if Right changes, then Up may have to 
-	/// adjust to match it. TODO:: This should maybe be moved to Protected. Currently there is no implementation.
-		inline virtual void _v_UpdateCameraVectors(void)
-		{  }
+	
 
 //==========================================================================================================================
 //
@@ -417,8 +416,18 @@ namespace Tempest
 		TM::Matrix4 					_projection;				///< Projection Matrix4 (Orthographic or Perspective). Not used 
 		
 	protected:
+		/// Updates the internal vectors of the Camera based on changes or input. For instance, if Right changes, then Up may have to 
+	/// adjust to match it. TODO:: This should maybe be moved to Protected. Currently there is no implementation.
+		inline virtual void _v_UpdateCameraVectors(void)
+		{
+			DefaultUpdateCameraVectors();
+		}
+
+		TEMPEST_API void DefaultUpdateCameraVectors(void);
+		
 		TM::Point  						_position;				///< Position of Camera in world space.
 		TM::Point 						_target;				///< Position the Camera should be aware of. Can be used for many purposes.
+		TM::Vector4						_worldUp;			/// Direction of Up in the world or Level.
 		TM::Vector4 					_up;					///< Direction, in world space, of up for the Camera.
 		TM::Vector4 					_look;					///< Direction, in world space, that the Camear should point, or "look" at.
 		TM::Vector4 					_right;					///< Direction, in world space, that is perpendicular, to the right.

@@ -299,6 +299,7 @@ std::vector<Level::TileData> Level::_ImportTMXMapData(string filepath)
 
 					TileData object = tiles[data[i]];
 					object.pos = cartPos;
+					object.type = tiles[data[i]].type;
 
 					objects.push_back(object);
 				}

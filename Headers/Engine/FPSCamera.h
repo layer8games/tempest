@@ -35,14 +35,16 @@ namespace Tempest
 //==========================================================================================================================
 /// Called once per frame, this will get the latest mouse coordinates, the screen dimensions and it will update the rotation 
 /// of the view port based on these values.
-		TEMPEST_API virtual void v_Update(void) final;
+		TEMPEST_API void v_Update(void) final;
 
 /// Uses the values set in Update to actually move the Camera based on the current values of position, yaw and pitch.		
-		TEMPEST_API virtual void v_Rotate(void) final;
+		TEMPEST_API void v_Rotate(void) final;
 
 /// Updates the position of the Camera based on the param. 
 /// \param offset is how much the camera should move. This is a unit Vector. (verify, if its not, it should be).
-		TEMPEST_API virtual void v_Move(const TM::Vector4& offset) final;
+		TEMPEST_API void v_Move(const TM::Vector4& offset) final;
+
+		TEMPEST_API void v_Move(F32 xVal, F32 yVal) final;
 
 //==========================================================================================================================
 //
@@ -96,14 +98,13 @@ namespace Tempest
 
 	private:
 /// Updates all the Vectors for the Camera. This is a more expensive operation.
-		virtual void _v_UpdateCameraVector4s(void);
+		//virtual void _v_UpdateCameraVector4s(void);
 
 //==========================================================================================================================
 //
 //Data
 //
 //==========================================================================================================================
-		TM::Vector4 _worldUp;			/// Direction of Up in the world or Level.
 		F64 	    _zoomSensitivity;	/// How far zoomed in the Camera is.
 		F32 	    _moveSpeed;			/// How fast the Camera can v_Move.
 		F32		    _deadZone;			/// The Dead zone used for sensitivity of rotation.
