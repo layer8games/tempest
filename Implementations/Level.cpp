@@ -1,5 +1,7 @@
 #include <Engine/Level.h>
 
+#include <iostream>
+
 using namespace Tempest;
 
 //==========================================================================================================================
@@ -286,20 +288,21 @@ std::vector<Level::TileData> Level::_ImportTMXMapData(string filepath)
 			ErrorManager::Instance()->SetError(ENGINE, "Level::ImportTMXMapData no valid tileset found in tmx file");
 		}
 
-		for(auto data : data_array)
+		// This counts down. The layers in tiled are in reverse order for rendering
+		for(U32 j = data_array.size(); j-- != 0;)
 		{
-			for(U32 i = 0; i < data.size(); ++i)
+			for(U32 i = 0; i < data_array[j].size(); ++i)
 			{
-				if(data[i] > 0)
+				if(data_array[j][i] > 0)
 				{
 					Level::GridPos pos = _ConvertIndexToTileData(i, mapWidth, mapHeight);
 					TM::Point cartPos{ };
 					cartPos[x] = pos.x * static_cast<F32>(tileWidth);
 					cartPos[y] = pos.y * static_cast<F32>(tileHeight);
 
-					TileData object = tiles[data[i]];
+					TileData object = tiles[data_array[j][i]];
 					object.pos = cartPos;
-					object.type = tiles[data[i]].type;
+					object.type = tiles[data_array[j][i]].type;
 
 					objects.push_back(object);
 				}
