@@ -65,6 +65,12 @@ namespace TempestMath
 ///	\param v is the Point to copy. 
 		TEMPEST_API Point(const Point& p);
 
+		/// Convert a Vector3 into a Point
+		TEMPEST_API Point(const Vector3& v);
+
+		/// Convert a Vector4 into a Point
+		TEMPEST_API Point(const Vector4& v);
+
 ///	Destructor. It does not do anything. 	
 		TEMPEST_API ~Point(void);
 
@@ -119,6 +125,15 @@ namespace TempestMath
 /// Gives the distance from this to another Point. Creates a Point and calls Mag.
 /// \param other is the Point we are getting the distance to. 
 		TEMPEST_API F32 Distance(const Point& p) const;
+
+		/// Return the distance between two points, without calling sqrt.
+		TEMPEST_API F32 DistanceSquared(const Point& p) const;
+
+		/// Return the distance between this Point and a Vector3, without calling sqrt.
+		TEMPEST_API F32 DistanceSquared(const Vector3& v) const;
+
+		/// Return the distance between this Point and a Vector34, without calling sqrt.
+		TEMPEST_API F32 DistanceSquared(const Vector4& v) const;
 
 //===== Math Helper Functions =====
 ///	Adds a Point scaled by a value to this Point. 
@@ -228,6 +243,12 @@ namespace TempestMath
 ///	Point subtraction. This is done componentwise. 2D check done before z is changed. 
 ///	\param point is the Point subtracted from the new Point.
 		TEMPEST_API Point operator-(const Point& point) const;
+
+		/// Subtract a Vector3 from this Point, return result.
+		TEMPEST_API Point operator-(const Vector3& vec) const;
+
+		/// Subtract a Vector4 from this Point, return result.
+		TEMPEST_API Point operator-(const Vector4& vec) const;
 
 ///	Point subtraction. This is done componenetwise. 2D check done before z is changed. 
 ///	\param point is the Pointed subtractd from this Point.

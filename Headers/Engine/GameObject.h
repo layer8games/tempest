@@ -488,6 +488,7 @@ namespace Tempest
 //==========================================================================================================================		
 		p_Shader				_shader;				///< Shader used for rendering. Should come from the ShaderManager. Set to null by default.
 		p_Mesh					_mesh;					///< Collection of vertices that make up the body of the rendered object.
+		TC::AABB				_boundingBox;			///< Collision bounding box for the object. Is active and set up by default.
 
 	private:
 		/// Creates a data cache of the model to world transformation matrix. This can help with objects that use their matrix a lot.		
@@ -505,7 +506,6 @@ namespace Tempest
 		TM::Quaternion			_orientation;			///< Orientation of the object in world space. Untested.
 		Color 					_color;					///< Color that should be used to tint the object. How it affects the object depends on what shader you are using.
 		p_Texture				_texture;				///< Texture used when rendering the object. Set to null by default.
-		TC::AABB				_boundingBox;			///< Collision bounding box for the object. Is active and set up by default.
 		bool					_activeUpdate;			///< State of the object in the update loop. If true, v_Update will be called. 
 		bool					_activeRender;			///< State of the object in the render loop. If true, v_Render will be called.
 		bool 					_isSprite;				///< Helper flag to let the engine know if this object is a 2D sprite vs a 3D model.

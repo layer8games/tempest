@@ -47,3 +47,23 @@ bool AABB::TestCollision(const AABB& other) const
 
 	return true;
 }
+
+bool AABB::TestCollision(const TM::Point& other) const
+{
+	if(real_abs(_center[x] - other[x]) > _halfScale[x])
+	{
+		return false;	
+	}
+
+	if(real_abs(_center[y] - other[y]) > _halfScale[y])
+	{
+		return false;
+	}
+
+	if(real_abs(_center[z] - other[z]) > _halfScale[z])
+	{
+		return false;
+	}
+	
+	return true;
+}

@@ -375,6 +375,19 @@ namespace Tempest
 		TEMPEST_API GridPos _ConvertIndexToTileData(U32 index, U32 width, U32 height);
 
 		TEMPEST_API std::vector<TileData> _ImportTMXMapData(string filepath);
+
+		/// Return count of how many objects have been registered
+		inline U32 GetObjectCount(void)
+		{
+			return _localGameObjects.size();
+		}
+
+		//==========================================================================================================================
+		//
+		//Protected data
+		//
+		//==========================================================================================================================		
+		std::map<U32, p_GameObject>	  _localGameObjects; ///< List of all GameObjects included in the Level. This is protected, levels should have access to their registered objects
 		
 	private:
 		/// Helper function to split a list of numbers apart. This is intended to be used with a list of numbers separated by a 
@@ -399,7 +412,6 @@ namespace Tempest
 		S32 	_farBorder;										///< Optional far border of the Level.
 		Color   _bgColor;										///< Color used for the background of the rendering window.
 		U32     _ID;											///< ID used in the LevelManager.
-		std::map<U32, p_GameObject>	  _localGameObjects;		///< List of all GameObjects included in the Level.
 		TP::ForceRegistry _forceRegistry; 						///< KillerPhysics::ForceRegistry used to allow physics forces to be applied.
 	};
 	typedef shared_ptr<Level> p_Level;

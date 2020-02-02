@@ -43,6 +43,18 @@ _2D(v.Is2D()),
 _data{v[x], v[y], v[z], v[w]}
 {  }
 
+Point::Point(const Vector3& v)
+	:
+	_2D(v.Is2D()),
+	_data{v[x], v[y], v[z], v[w]}
+{  }
+
+Point::Point(const Vector4& v)
+	:
+	_2D(v.Is2D()),
+	_data{v[x], v[y], v[z], v[w]}
+{  }
+
 Point::~Point(void)
 {  }
 
@@ -74,12 +86,13 @@ Point Point::CrossProduct(const Point& point) const
 
 F32 Point::Magnitude(void)
 {
-	return sqrt(_data[x] * _data[x] + _data[y] * _data[y] + _data[z] * _data[z]);
+	F32 totals = (_data[x] * _data[x]) + (_data[y] * _data[y]) + (_data[z] * _data[z]);
+	return sqrt(totals);
 }
 
 F32 Point::SqrMagnitude(void)
 {
-	return _data[x] * _data[x] + _data[y] * _data[y] + _data[z] * _data[z];
+	return (_data[x] * _data[x]) + (_data[y] * _data[y]) + (_data[z] * _data[z]);
 }
 
 void Point::Normalize(void)
@@ -104,6 +117,24 @@ F32 Point::Distance(const Point& p) const
 {
 	Point length = *this - p;
 	return length.Magnitude();
+}
+
+F32 Point::DistanceSquared(const Point& p) const
+{
+	Point length = *this - p;
+	return length.SqrMagnitude();
+}
+
+F32 Point::DistanceSquared(const Vector3& v) const
+{
+	Point length = *this - v;
+	return length.SqrMagnitude();
+}
+
+F32 Point::DistanceSquared(const Vector4& v) const
+{
+	Point length = *this - v;
+	return length.SqrMagnitude();
 }
 
 //===== Math Helper Functions =====
@@ -301,6 +332,32 @@ Point Point::operator-(const Point& point) const
 	return Point( _data[x] - point[x],
 				  _data[y] - point[y],
 				  _data[z] - point[z] );
+}
+
+Point Point::operator-(const Vector3& vec) const
+{
+	if(_2D)
+	{
+		return Point(_data[x] - vec[x],
+					  _data[y] - vec[y]);
+	}
+
+	return Point(_data[x] - vec[x],
+				  _data[y] - vec[y],
+				  _data[z] - vec[z]);
+}
+
+Point Point::operator-(const Vector4& vec) const
+{
+	if(_2D)
+	{
+		return Point(_data[x] - vec[x],
+					  _data[y] - vec[y]);
+	}
+
+	return Point(_data[x] - vec[x],
+				  _data[y] - vec[y],
+				  _data[z] - vec[z]);
 }
 
 Point& Point::operator-=(const Point& point)

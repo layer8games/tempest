@@ -231,6 +231,30 @@ Vector4 Matrix4::TransformInverse(const Vector4& vec) const
 	};
 }
 
+Point Matrix4::TransformInverse(const Point& vec) const
+{
+	Point tmp = vec;
+
+	tmp[x] -= _data[3][x];
+	tmp[y] -= _data[3][y];
+	tmp[z] -= _data[3][z];
+
+	return Point
+	{
+		tmp[x] * _data[0][x] +
+		tmp[y] * _data[0][y] +
+		tmp[z] * _data[0][z],
+
+		tmp[x] * _data[1][x] +
+		tmp[y] * _data[1][y] +
+		tmp[z] * _data[1][z],
+
+		tmp[x] * _data[2][x] +
+		tmp[y] * _data[2][y] +
+		tmp[z] * _data[2][z]
+	};
+}
+
 //==========================================================================================================================
 //Scaling
 //==========================================================================================================================

@@ -143,6 +143,8 @@ namespace Tempest
 		{
 			_position[0] = x;
 			_position[1] = y;
+
+			_v_UpdateCameraVectors();
 		}
 
 	/// Set the position of the Camera along the x, y and z axis in world space.
@@ -154,6 +156,8 @@ namespace Tempest
 			_position[0] = x;
 			_position[1] = y;
 			_position[2] = z;
+
+			_v_UpdateCameraVectors();
 		}
 
 	/// Set the position of the Camera to a Point in world space.
@@ -161,6 +165,8 @@ namespace Tempest
 		inline void SetPosition(const TM::Point& point)
 		{
 			_position = point;
+
+			_v_UpdateCameraVectors();
 		}
 
 	/// Set the position of the Camera in world space scaled by a value.
@@ -170,6 +176,8 @@ namespace Tempest
 		inline void ScalePosition(F32 x, F32 y, F32 scale)
 		{
 			_position.AddScaledPoint(TM::Point(x, y), scale);
+
+			_v_UpdateCameraVectors();
 		}
 
 	/// Set the position of the Camera in world space scaled by a value.
@@ -180,6 +188,8 @@ namespace Tempest
 		inline void ScalePosition(F32 x, F32 y, F32 z, F32 scale)
 		{
 			_position.AddScaledPoint(TM::Point(x, y, z), scale);
+
+			_v_UpdateCameraVectors();
 		}
 
 	/// Set the position of the Camera in world space scaled by a value.
@@ -188,6 +198,8 @@ namespace Tempest
 		inline void ScalePosition(const TM::Point& point, F32 scale)
 		{
 			_position.AddScaledPoint(point, scale);
+
+			_v_UpdateCameraVectors();
 		}
 
 	/// Return the current position of the Camera in world space.

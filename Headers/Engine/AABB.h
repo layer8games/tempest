@@ -46,6 +46,10 @@ namespace TempestCollisions
 ///	\param other is another AABB that we are testing against.
 		TEMPEST_API bool TestCollision(const AABB& other) const;
 
+		/// Test if this and other are colliding. This uses an arbitrary point.
+		/// \param other is a point in world space to test with
+		TEMPEST_API bool TestCollision(const TM::Point& other) const;
+
 //==========================================================================================================================
 //
 //Accessors

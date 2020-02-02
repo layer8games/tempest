@@ -142,6 +142,10 @@ namespace TempestMath
 ///	\param vec is the vectored used to performed the transformation.
 		TEMPEST_API Vector4 TransformInverse(const Vector4& vec) const;
 
+		/// Returns a Point transformed by the Inverse of this Matrix
+		/// \param vec is the point to transform.
+		TEMPEST_API Point TransformInverse(const Point& vec) const;
+
 //==========================================================================================================================
 //Scaling
 //==========================================================================================================================
