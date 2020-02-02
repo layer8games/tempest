@@ -1,7 +1,5 @@
 #include <Engine/Level.h>
 
-#include <iostream>
-
 using namespace Tempest;
 
 //==========================================================================================================================
@@ -226,8 +224,6 @@ std::vector<Level::TileData> Level::_ImportTMXMapData(string filepath)
 		F32 halfMapWidthInPixels = static_cast<F32>(mapWidth * tileWidth)  / 2.0f;
 		F32 halfMapHeightInPixels = static_cast<F32>(mapHeight * tileHeight) / 2.0f;
 
-		std::cout << "half dimensions in pixels: " << halfMapWidthInPixels << "," << halfMapHeightInPixels << std::endl;
-
 		string tileSetFilePath = tileset_node->first_attribute("source")->value();
 
 		typedef std::vector<U32> U32Array;
@@ -303,8 +299,6 @@ std::vector<Level::TileData> Level::_ImportTMXMapData(string filepath)
 					TM::Point cartPos{ };
 					cartPos[x] = (pos.x * static_cast<F32>(tileWidth)) - halfMapWidthInPixels;
 					cartPos[y] = (pos.y * static_cast<F32>(tileHeight)) - halfMapHeightInPixels;
-
-					std::cout << "final pos = " << cartPos[x] << "," << cartPos[y] << std::endl;
 
 					TileData object = tiles[data_array[j][i]];
 					object.pos = cartPos;
