@@ -223,6 +223,10 @@ std::vector<Level::TileData> Level::_ImportTMXMapData(string filepath)
 		U32 mapHeight = std::stoul(map_node->first_attribute("height")->value());
 		U32 tileWidth = std::stoul(map_node->first_attribute("tilewidth")->value());
 		U32 tileHeight = std::stoul(map_node->first_attribute("tileheight")->value());
+		F32 halfMapWidthInPixels = static_cast<F32>(mapWidth * tileWidth)  / 2.0f;
+		F32 halfMapHeightInPixels = static_cast<F32>(mapHeight * tileHeight) / 2.0f;
+
+		std::cout << "half dimensions in pixels: " << halfMapWidthInPixels << "," << halfMapHeightInPixels << std::endl;
 
 		string tileSetFilePath = tileset_node->first_attribute("source")->value();
 
@@ -287,7 +291,7 @@ std::vector<Level::TileData> Level::_ImportTMXMapData(string filepath)
 		{
 			ErrorManager::Instance()->SetError(ENGINE, "Level::ImportTMXMapData no valid tileset found in tmx file");
 		}
-
+		
 		// This counts down. The layers in tiled are in reverse order for rendering
 		for(U32 j = data_array.size(); j-- != 0;)
 		{
@@ -297,8 +301,10 @@ std::vector<Level::TileData> Level::_ImportTMXMapData(string filepath)
 				{
 					Level::GridPos pos = _ConvertIndexToTileData(i, mapWidth, mapHeight);
 					TM::Point cartPos{ };
-					cartPos[x] = pos.x * static_cast<F32>(tileWidth);
-					cartPos[y] = pos.y * static_cast<F32>(tileHeight);
+					cartPos[x] = (pos.x * static_cast<F32>(tileWidth)) - halfMapWidthInPixels;
+					cartPos[y] = (pos.y * static_cast<F32>(tileHeight)) - halfMapHeightInPixels;
+
+					std::cout << "final pos = " << cartPos[x] << "," << cartPos[y] << std::endl;
 
 					TileData object = tiles[data_array[j][i]];
 					object.pos = cartPos;

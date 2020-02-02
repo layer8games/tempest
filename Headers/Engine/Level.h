@@ -364,8 +364,8 @@ namespace Tempest
 
 		struct GridPos
 		{
-			U32 x;
-			U32 y;
+			S32 x;
+			S32 y;
 		};
 		
 		/// Default actions to take if no other rendering steps are needed. Loops over all local GameObjects calling
