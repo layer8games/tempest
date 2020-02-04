@@ -2,12 +2,11 @@
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
-#include <Engine/State.h>
 
 namespace Tempest
 {
 	template <class GameObjectType>
-	class StateMachine
+	class State
 	{
 	public:
 		//==========================================================================================================================
@@ -15,9 +14,9 @@ namespace Tempest
 		//Constructors	 	
 		//
 		//==========================================================================================================================
-		StateMachine(void);
+		State(void);
 
-		~StateMachine(void);
+		~State(void);
 
 		//==========================================================================================================================
 		//
@@ -25,8 +24,6 @@ namespace Tempest
 		//
 		//==========================================================================================================================
 	private:
-		shared_ptr<GameObjectType> _owner;
-		shared_ptr<State> _currentState;
 
 	};//end Class
 }
