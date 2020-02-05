@@ -263,6 +263,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\State.h" />
     <ClInclude Include="..\..\Headers\Engine\StateMachine.h">
       <SubType>
       </SubType>
@@ -393,10 +394,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ShaderManager.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\StateMachin.cpp">
       <SubType>
       </SubType>
     </ClCompile>

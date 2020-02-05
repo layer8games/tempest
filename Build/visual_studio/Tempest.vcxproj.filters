@@ -223,6 +223,9 @@
     <Filter Include="Source Code\Engine\StateMachine">
       <UniqueIdentifier>{58be49b7-0131-48b3-9ea4-d00486acbec4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\State">
+      <UniqueIdentifier>{27d23c2a-bcb7-43b3-bfec-01907420e78a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -399,6 +402,9 @@
     <ClInclude Include="..\..\Headers\Engine\StateMachine.h">
       <Filter>Source Code\Engine\StateMachine</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\State.h">
+      <Filter>Source Code\Engine\State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -556,9 +562,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Camera2D.cpp">
       <Filter>Source Code\Engine\Camera\Camera2D</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\StateMachin.cpp">
-      <Filter>Source Code\Engine\StateMachine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
