@@ -16,7 +16,7 @@ namespace Tempest
 		//Constructors	 	
 		//
 		//==========================================================================================================================
-		StateMachine(shared_ptr<GameObjectType> owner)
+		StateMachine(GameObjectType* owner)
 			:
 			_owner(owner),
 			_currentState(nullptr),
@@ -45,7 +45,7 @@ namespace Tempest
 			}
 		}
 
-		void ChangeState(p_State<GameObjectType> newState)
+		void ChangeState(State<GameObjectType>* newState)
 		{
 			if(newState == nullptr)
 			{
@@ -53,10 +53,13 @@ namespace Tempest
 				return;
 			}
 
-			_previousState = _currentState;
+			if(_currentState != nullptr)
+			{
+				_currentState->v_Exit(_owner);
 
-			_currentState->v_Exit(_owner);
-
+				_previousState = _currentState;
+			}
+			
 			_currentState = newState;
 
 			_currentState->v_Enter(_owner);
@@ -74,43 +77,41 @@ namespace Tempest
 		//Accessors
 		//
 		//==========================================================================================================================
-		void SetCurrentState(p_State<GameObjectType> state)
+		void SetCurrentState(State<GameObjectType>* state)
 		{
 			_currentState = state;
 		}
 
-		p_State<GameObjectType> GetCurrentState(void) const
+		State<GameObjectType>* GetCurrentState(void) const
 		{
 			return _currentState;
 		}
 
-		void SetPreviousState(p_State<GameObjectType> state)
+		void SetPreviousState(State<GameObjectType>* state)
 		{
 			_previousState = state;
 		}
 
-		p_State<GameObjectType> GetPreviousState(void) const
+		State<GameObjectType>* GetPreviousState(void) const
 		{
 			return _previousState;
 		}
 
-		void SetGlobalState(p_State<GameObjectType> state)
+		void SetGlobalState(State<GameObjectType>* state)
 		{
 			_globalState = state;
 		}
 
-		p_State<GameObjectType> GetGlobalState(void) const
+		State<GameObjectType>* GetGlobalState(void) const
 		{
 			return _globalState;
 		}
 	
 	private:
-		shared_ptr<GameObjectType> _owner;
-		p_State<GameObjectType> _currentState;
-		p_State<GameObjectType> _previousState;
-		p_State<GameObjectType> _globalState;
+		GameObjectType* _owner;
+		State<GameObjectType>* _currentState;
+		State<GameObjectType>* _previousState;
+		State<GameObjectType>* _globalState;
 
 	};//end Class
-	template <class GameObjectType>
-	using p_StateMachine = shared_ptr<StateMachine<GameObjectType>>;
 }
