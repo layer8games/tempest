@@ -226,6 +226,15 @@
     <Filter Include="Source Code\Engine\State">
       <UniqueIdentifier>{9d92a882-1571-4505-bd84-dd6f320dfd52}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\Event">
+      <UniqueIdentifier>{43e2decc-fc6e-486f-8f26-9c5b55919a48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Managers\EventManager">
+      <UniqueIdentifier>{01bb0344-1d15-4aa5-bb15-d6b0983aacb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Event\Base">
+      <UniqueIdentifier>{91de4a07-3667-4ea5-a6ba-141069c91220}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -405,6 +414,12 @@
     <ClInclude Include="..\..\Headers\Engine\State.h">
       <Filter>Source Code\Engine\State</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\EventManager.h">
+      <Filter>Source Code\Engine\Managers\EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Event.h">
+      <Filter>Source Code\Engine\Event\Base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -562,6 +577,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Camera2D.cpp">
       <Filter>Source Code\Engine\Camera\Camera2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\EventManager.cpp">
+      <Filter>Source Code\Engine\Managers\EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Event.cpp">
+      <Filter>Source Code\Engine\Event\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
