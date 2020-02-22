@@ -24,13 +24,6 @@ namespace Tempest
 		Event(string type, U32 sender, U32 reciever, F64 dispatchTime);
 
 		~Event(void);
-		
-		//==========================================================================================================================
-		//
-		//Functions
-		//
-		//==========================================================================================================================
-		void SetType(string type);
 
 		//==========================================================================================================================
 		//
@@ -40,10 +33,8 @@ namespace Tempest
 		U32 SenderID;
 		U32 ReceiverID;
 		F64 DispatchTime;
+		string Type;
 
-	private:
-		U32 _type;
-		std::hash<string> _hasher;
 	};//end Class
 	typedef shared_ptr<Event> p_Event;
 }
