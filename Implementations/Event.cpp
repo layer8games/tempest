@@ -12,7 +12,8 @@ Event::Event(void)
     SenderID(0),
     ReceiverID(0),
     DispatchTime(0.0),
-    Type()
+    Type(),
+    Data()
 {  }
 
 Event::Event(string type)
@@ -20,15 +21,18 @@ Event::Event(string type)
     SenderID(0),
     ReceiverID(0),
     DispatchTime(0.0),
-    Type()
+    Type(type),
+    Data()
 {  }
 
-Event::Event(string type, U32 sender, U32 reciever, F64 dispatchTime)
+//Event::Event(string type, U32 sender, U32 reciever, F64 dispatchTime, void* data)
+Event::Event(string type, U32 sender, U32 reciever, F64 dispatchTime, std::any data)
     :
-    SenderID(0),
-    ReceiverID(0),
-    DispatchTime(0.0),
-    Type()
+    SenderID(sender),
+    ReceiverID(reciever),
+    DispatchTime(dispatchTime),
+    Type(type),
+    Data(data)
 {  }
 
 Event::~Event(void)

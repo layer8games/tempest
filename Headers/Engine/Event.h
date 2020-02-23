@@ -5,7 +5,7 @@
 #include <Engine/GameObject.h>
 
 //===== STL includes =====
-#include <functional>
+#include <any>
 
 namespace Tempest
 {
@@ -17,13 +17,14 @@ namespace Tempest
 		//Constructors	 	
 		//
 		//==========================================================================================================================
-		Event(void);
+		TEMPEST_API Event(void);
 		
-		Event(string type);
+		TEMPEST_API Event(string type);
 
-		Event(string type, U32 sender, U32 reciever, F64 dispatchTime);
+		//TEMPEST_API Event(string type, U32 sender, U32 reciever, F64 dispatchTime, void* data);
+		TEMPEST_API Event(string type, U32 sender, U32 reciever, F64 dispatchTime, std::any data);
 
-		~Event(void);
+		TEMPEST_API ~Event(void);
 
 		//==========================================================================================================================
 		//
@@ -34,6 +35,8 @@ namespace Tempest
 		U32 ReceiverID;
 		F64 DispatchTime;
 		string Type;
+		//void* Data;
+		std::any Data;
 
 	};//end Class
 	typedef shared_ptr<Event> p_Event;
