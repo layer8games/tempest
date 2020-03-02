@@ -417,7 +417,7 @@
     <ClInclude Include="..\..\Headers\Engine\EventManager.h">
       <Filter>Source Code\Engine\Managers\EventManager</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Event.h">
+    <ClInclude Include="..\..\Headers\Engine\Event.hpp">
       <Filter>Source Code\Engine\Event\Base</Filter>
     </ClInclude>
   </ItemGroup>
@@ -580,9 +580,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\EventManager.cpp">
       <Filter>Source Code\Engine\Managers\EventManager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Event.cpp">
-      <Filter>Source Code\Engine\Event\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

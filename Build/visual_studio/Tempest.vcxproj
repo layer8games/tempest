@@ -175,7 +175,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Event.h">
+    <ClInclude Include="..\..\Headers\Engine\Event.hpp">
       <SubType>
       </SubType>
     </ClInclude>
@@ -343,10 +343,6 @@
     <ClCompile Include="..\..\Implementations\Camera.cpp" />
     <ClCompile Include="..\..\Implementations\Controller.cpp" />
     <ClCompile Include="..\..\Implementations\ErrorManager.cpp" />
-    <ClCompile Include="..\..\Implementations\Event.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\EventManager.cpp">
       <SubType>
       </SubType>

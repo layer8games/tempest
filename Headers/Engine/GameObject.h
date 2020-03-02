@@ -15,6 +15,7 @@
 #include <Engine/AABB.h>
 #include <Engine/Mesh.h>
 #include <Engine/BufferData.h>
+#include <Engine/Event.hpp>
 
 namespace TM = TempestMath;
 namespace TC = TempestCollisions;
@@ -63,6 +64,11 @@ namespace Tempest
 		{
 			DefaultAwake();
 		}
+
+		/// Handle an event that is passed to this object. This behavior is to be defined by each GameObject that is made. 
+		/// The default behavior is to ignore the Event.
+		virtual void v_OnEvent(Event event)
+		{  }
 
 //==========================================================================================================================
 //
