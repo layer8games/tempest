@@ -31,7 +31,7 @@ p_EventManager EventManager::Instance(void)
 
 void EventManager::AddEvent(Event event)
 {
-	if(event.DispatchTime = 0.0)
+	if(event.DispatchTime == 0.0)
 	{
 		DispatchNow(event);
 		return;
