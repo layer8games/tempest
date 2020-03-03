@@ -1,4 +1,4 @@
-.TH "Tempest::Glyph" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "Tempest::Glyph" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -29,9 +29,6 @@ Inherits \fBTempest::GameObject\fP\&.
 .RI "void \fBv_Update\fP (void) final"
 .br
 .RI "Needed virtual function from \fBGameObject\fP\&. Empty implementation\&. "
-.ti -1c
-.RI "TEMPEST_API void \fBv_Render\fP (void) final"
-.br
 .ti -1c
 .RI "TEMPEST_API void \fBInit\fP (void)"
 .br
@@ -67,12 +64,25 @@ Inherits \fBTempest::GameObject\fP\&.
 .SH "Detailed Description"
 .PP 
 A sprite based UI character to be rendered at run time\&. It gets its data from a \fBFont\fP, which informs it of its size and its texture\&. 
+.br
+ 
 .SH "Member Function Documentation"
 .PP 
+.SS "void Tempest::Glyph::SetCharacter (char character, const \fBCharacterData\fP & characterData)\fC [inline]\fP"
+Partial set up of the \fBGlyph\fP \fBCharacterData\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcharacter\fP is the raw character this \fBGlyph\fP is\&. 
+.br
+\fIcharacterData\fP comes from the \fBFont\fP and stores various data the character needs\&. 
+.RE
+.PP
+
 .SS "void Tempest::Glyph::SetCharacter (char character, shared_ptr< \fBTexture\fP > tex, const \fBCharacterData\fP & characterData)\fC [inline]\fP"
 Sets up the \fBCharacterData\fP that the \fBGlyph\fP will represent\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIcharacter\fP is the raw character this \fBGlyph\fP is\&. 
 .br
@@ -82,21 +92,6 @@ Sets up the \fBCharacterData\fP that the \fBGlyph\fP will represent\&.
 .RE
 .PP
 
-.SS "void Tempest::Glyph::SetCharacter (char character, const \fBCharacterData\fP & characterData)\fC [inline]\fP"
-Partial set up of the \fBGlyph\fP \fBCharacterData\fP\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIcharacter\fP is the raw character this \fBGlyph\fP is\&. 
-.br
-\fIcharacterData\fP comes from the \fBFont\fP and stores various data the character needs\&. 
-.RE
-.PP
-
-.SS "void Glyph::v_Render (void)\fC [final]\fP, \fC [virtual]\fP"
-Provides specific Rendering calls\&. This sets a \fBGlyph\fP specific uniform called sprite_color\&. No special behavior other than that\&. 
-.PP
-Reimplemented from \fBTempest::GameObject\fP\&.
 
 .SH "Author"
 .PP 

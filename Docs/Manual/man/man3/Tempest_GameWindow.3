@@ -1,4 +1,4 @@
-.TH "Tempest::GameWindow" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "Tempest::GameWindow" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -15,6 +15,59 @@ Tempest::GameWindow
 .RI "TEMPEST_API \fB~GameWindow\fP (void)"
 .br
 .RI "No behavior\&. "
+.ti -1c
+.RI "TEMPEST_API void \fBInit\fP (\fBS32\fP width, \fBS32\fP height, string wndName, bool isFullScreen, bool initDefaultCam=true)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBUpdate\fP (void)"
+.br
+.RI "Processes all commands needed to run each frame\&. "
+.ti -1c
+.RI "TEMPEST_API void \fBProcessEvents\fP (void)"
+.br
+.RI "Wrapper around glfwPollEvents\&. This polls any pending events\&. Used to capture user Input\&. "
+.ti -1c
+.RI "TEMPEST_API void \fBBufferSwap\fP (void)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBDisplayFPS\fP (void)"
+.br
+.RI "Toggle that allows the frames per second to be displayed in the title of the window\&. "
+.ti -1c
+.RI "TEMPEST_API void \fBToggleWireFrame\fP (void)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBResetMouseCursor\fP (void)"
+.br
+.RI "Moves the mouse cursor to the center of the program window\&. "
+.ti -1c
+.RI "TEMPEST_API void \fBEnableMouseCursor\fP (void)"
+.br
+.RI "Toggles the mouse cursor to be displayed\&. 
+.br
+ "
+.ti -1c
+.RI "TEMPEST_API void \fBDisableMouseCursor\fP (void)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBHideMouseCursor\fP (void)"
+.br
+.RI "Toggles the mouse cursor to not be displayed in the program window\&. Outside of the program window it will behave as normal\&. "
+.ti -1c
+.RI "const TEMPEST_API \fBTM::Point\fP \fBGetMousePos\fP (void)"
+.br
+.RI "Returns the position of the mouse cursor with the origin in the top left of the program window, ranging from 0 to 1\&. "
+.ti -1c
+.RI "const TEMPEST_API \fBTM::Point\fP \fBGetMousePosInScreen\fP (void)"
+.br
+.ti -1c
+.RI "\fBF64\fP \fBGetTime\fP (void)"
+.br
+.RI "Wrapper around glfwGetTime\&. Used to find out how long the program has been running in miliseconds\&. Used by the KillerMath::Timer\&. "
+.ti -1c
+.RI "TEMPEST_API void \fBResetCamera\fP (void)"
+.br
+.RI "Reset to \fBCamera\fP to a default, orthographic projection based \fBCamera\fP object\&. "
 .ti -1c
 .RI "void \fBEndRunning\fP (void)"
 .br
@@ -48,51 +101,13 @@ Tempest::GameWindow
 .br
 .RI "Returns half the height negative, repsrenting the bottom most boundary of the program window\&. "
 .ti -1c
-.RI "void \fBSetBackgroundColor\fP (const \fBColor\fP &c)"
+.RI "void \fBSetCamera\fP (p_Camera cam)"
 .br
+.RI "Sets the camera to a new \fBCamera\fP pointer, allowing you to change the \fBCamera\fP at run time\&. "
 .ti -1c
-.RI "TEMPEST_API void \fBInit\fP (\fBS32\fP width, \fBS32\fP height, string wndName, bool isFullScreen)"
+.RI "p_Camera \fBGetCamera\fP (void)"
 .br
-.ti -1c
-.RI "TEMPEST_API void \fBProcessEvents\fP (void)"
-.br
-.RI "Wrapper around glfwPollEvents\&. This polls any pending events\&. Used to capture user Input\&. "
-.ti -1c
-.RI "TEMPEST_API void \fBBufferSwap\fP (void)"
-.br
-.ti -1c
-.RI "TEMPEST_API void \fBDisplayFPS\fP (void)"
-.br
-.RI "Toggle that allows the frames per second to be displayed in the title of the window\&. "
-.ti -1c
-.RI "TEMPEST_API void \fBToggleWireFrame\fP (void)"
-.br
-.ti -1c
-.RI "TEMPEST_API void \fBResetMouseCursor\fP (void)"
-.br
-.RI "Moves the mouse cursor to the center of the program window\&. "
-.ti -1c
-.RI "TEMPEST_API void \fBEnableMouseCursor\fP (void)"
-.br
-.RI "Toggles the mouse cursor to be displayed\&. "
-.ti -1c
-.RI "TEMPEST_API void \fBDisableMouseCursor\fP (void)"
-.br
-.ti -1c
-.RI "TEMPEST_API void \fBHideMouseCursor\fP (void)"
-.br
-.RI "Toggles the mouse cursor to not be displayed in the program window\&. Outside of the program window it will behave as normal\&. "
-.ti -1c
-.RI "TEMPEST_API const \fBTM::Point\fP \fBGetMousePos\fP (void)"
-.br
-.RI "Returns the position of the mouse cursor with the origin in the top left of the program window, ranging from 0 to 1\&. "
-.ti -1c
-.RI "TEMPEST_API const \fBTM::Point\fP \fBGetMousePosInScreen\fP (void)"
-.br
-.ti -1c
-.RI "\fBF64\fP \fBGetTime\fP (void)"
-.br
-.RI "Wrapper around glfwGetTime\&. Used to find out how long the program has been running in miliseconds\&. Used by the KillerMath::Timer\&. "
+.RI "Returns the current \fBCamera\fP\&. "
 .in -1c
 .SS "Static Public Member Functions"
 
@@ -123,7 +138,9 @@ Tempest::GameWindow
 .ti -1c
 .RI "\fBGameWindow\fP (void)"
 .br
-.RI "By default, sets all numeric values to 0, all bools to false, the _wndName to 'Killer Engine' and _window to a null pointer\&. "
+.RI "By default, sets all numeric values to 0, all bools to false, the _wndName to 'Killer Engine' and _window to a null pointer\&. 
+.br
+ "
 .in -1c
 .SS "Private Attributes"
 
@@ -139,7 +156,7 @@ Tempest::GameWindow
 .ti -1c
 .RI "bool \fB_wireFrame\fP"
 .br
-.RI "State of wireframe based rendering\&. True means render in wireframe mode, false means normal rendering\&. "
+.RI "\fBState\fP of wireframe based rendering\&. True means render in wireframe mode, false means normal rendering\&. "
 .ti -1c
 .RI "\fBF32\fP \fB_right\fP"
 .br
@@ -161,13 +178,12 @@ Tempest::GameWindow
 .br
 .RI "Title used for the window\&. "
 .ti -1c
-.RI "\fBColor\fP \fB_bgColor\fP"
-.br
-.RI "Background color OpenGL will use in rendering for the window\&. "
-.ti -1c
 .RI "GLFWwindow * \fB_window\fP"
 .br
 .RI "Pointer to the glfw window instance\&. "
+.ti -1c
+.RI "p_Camera \fB_camera\fP"
+.br
 .in -1c
 .SS "Static Private Attributes"
 
@@ -187,30 +203,36 @@ Tempest::GameWindow
 .in -1c
 .SH "Detailed Description"
 .PP 
-Framework that will open a window in the designated operating system which will be where the renderer will draw what it needs to for the game to be a game\&. There will be system specific code in this section which will be how the game will run on each system that is supported\&.
-.PP
-Supported system: Windows 
+Framework that will open a window in the designated operating system which will be where the renderer will draw what it needs to for the game to be a game\&. There will be system specific code in this section which will be how the game will run on each system that is supported\&. Supported system: Windows 
+.br
+ 
 .SH "Member Function Documentation"
 .PP 
 .SS "void GameWindow::BufferSwap (void)"
 Wrapper around glfwSwapBuffers and glClear\&. Swap buffers will place the back buffer, that has been getting drawn to, as the active buffer, and glClear will set the background color, setting up the next frame to be drawn\&. 
+.br
+ 
 .SS "Keys GameWindow::ConvertKeyCodes (int key)\fC [static]\fP"
 Converts the glfw key codes into a key code that the engine can understand\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIkey\fP is the glfw key code to be converted\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void GameWindow::DisableMouseCursor (void)"
 Toggles the mouse cursor to no longer be displayed\&. This is true both inside and outside the program window, meaning that if you call this, your mouse will no longer work, until you either close the program or re-enable it using \fBEnableMouseCursor()\fP\&. 
+.br
+ 
 .SS "const \fBTM::Point\fP GameWindow::GetMousePosInScreen (void)"
 Returns the position of the mouse cursor in pixels with the origin in the center of the program window, randing from the program windows up - down - left - right values\&. Very important, this is in Screen Space, not world space\&. 
-.SS "void GameWindow::Init (\fBS32\fP width, \fBS32\fP height, string wndName, bool isFullScreen)"
+.SS "void GameWindow::Init (\fBS32\fP width, \fBS32\fP height, string wndName, bool isFullScreen, bool initDefaultCam = \fCtrue\fP)"
 Sets up program window\&. Makes all calls needed to start up a window\&. This is a helper function that takes are of all the glfw calls needed\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIwidth\fP of created window 
 .br
@@ -219,13 +241,15 @@ Sets up program window\&. Makes all calls needed to start up a window\&. This is
 \fIwndName\fP title of window 
 .br
 \fIisFullScreen\fP sets if the system makes the window fullscreen 
+.br
+ 
 .RE
 .PP
 
 .SS "void GameWindow::OnKey (GLFWwindow * window, int key, int scancode, int action, int mods)\fC [static]\fP"
 Callback function for glfw\&. Controls what happens when a key is pressed\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIwindow\fP is the pointer to the glfw window instance we are checking\&. 
 .br
@@ -242,7 +266,9 @@ Callback function for glfw\&. Controls what happens when a key is pressed\&.
 .SS "void GameWindow::OnMouseClick (GLFWwindow * window, int button, int action, int mods)\fC [static]\fP"
 Callback function for glfw\&. Controls what happens when a mouse click happens (right, left, middle or any other)\&. Currently, only right and left clicks are considered\&. 
 .br
-\fBParameters:\fP
+ 
+.PP
+\fBParameters\fP
 .RS 4
 \fIwindow\fP is the pointer to the glfw window instance we are changing\&. 
 .br
@@ -257,20 +283,24 @@ Callback function for glfw\&. Controls what happens when a mouse click happens (
 .SS "void GameWindow::OnMouseMove (GLFWwindow * window, \fBF64\fP posX, \fBF64\fP posY)\fC [static]\fP"
 Callback function for glfw\&. Controls what happens when the mouse is detected to move\&. Currently not implemented\&. 
 .br
-\fBParameters:\fP
+ 
+.PP
+\fBParameters\fP
 .RS 4
 \fIwindow\fP is the pointer to the glfw window instance we are changing\&. 
 .br
 \fIposX\fP stores the x position value 
 .br
 \fIposY\fP stores the y posiition value\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void GameWindow::OnResize (GLFWwindow * window, int width, int height)\fC [static]\fP"
 Callback function for glfw\&. Controls what happens when the screen is resized by the user (in the operating system)\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIwindow\fP is the pointer to the glfw window instance we are changing\&. 
 .br
@@ -280,17 +310,10 @@ Callback function for glfw\&. Controls what happens when the screen is resized b
 .RE
 .PP
 
-.SS "void Tempest::GameWindow::SetBackgroundColor (const \fBColor\fP & c)\fC [inline]\fP"
-Sets the color OpenGL will use to color the background of the program window\&. This includes the call to actually change that color state in OpenGL\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIc\fP is the new color that will be set\&. 
-.RE
-.PP
-
 .SS "void GameWindow::ToggleWireFrame (void)"
 Toggle that changes the rendering to only use wireframes, drawing the lines the represent edges in a mesh instead of filling in the faces\&. Used for debugging\&. 
+.br
+ 
 
 .SH "Author"
 .PP 

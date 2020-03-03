@@ -1,4 +1,4 @@
-.TH "TempestMath::Matrix4" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "TempestMath::Matrix4" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -31,7 +31,7 @@ TempestMath::Matrix4
 .RI "TEMPEST_API \fBMatrix4\fP (const \fBMatrix4\fP &M)"
 .br
 .ti -1c
-.RI "TEMPEST_API const std::vector< \fBF32\fP > \fBGetElems\fP (void) const"
+.RI "const TEMPEST_API std::vector< \fBF32\fP > \fBGetElems\fP (void) const"
 .br
 .RI "Return the array containing all the elements\&. "
 .ti -1c
@@ -60,6 +60,9 @@ TempestMath::Matrix4
 .br
 .ti -1c
 .RI "TEMPEST_API \fBVector4\fP \fBTransformInverse\fP (const \fBVector4\fP &vec) const"
+.br
+.ti -1c
+.RI "TEMPEST_API \fBPoint\fP \fBTransformInverse\fP (const \fBPoint\fP &vec) const"
 .br
 .ti -1c
 .RI "TEMPEST_API void \fBSetScale\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
@@ -237,7 +240,7 @@ The \fBMatrix4\fP is a 4x4 Matrix meant to be mathematically sound\&. The functi
 .SS "Matrix4::Matrix4 (\fBF32\fP m00, \fBF32\fP m01, \fBF32\fP m02, \fBF32\fP m03, \fBF32\fP m10, \fBF32\fP m11, \fBF32\fP m12, \fBF32\fP m13, \fBF32\fP m20, \fBF32\fP m21, \fBF32\fP m22, \fBF32\fP m23, \fBF32\fP m30, \fBF32\fP m31, \fBF32\fP m32, \fBF32\fP m33)"
 All value constructor\&. Takes a list of values and turns them into a \fBMatrix4\fP of the same mapping\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIm00\fP is the value for element m00\&. 
 .br
@@ -270,15 +273,19 @@ All value constructor\&. Takes a list of values and turns them into a \fBMatrix4
 \fIm32\fP is the value for element m32 
 .br
 \fIm33\fP is the value for element m33\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "Matrix4::Matrix4 (const \fBMatrix4\fP & M)"
 Copy Constructor\&. Calls \fBMatrix4\fP::[] to, which will copy the \fBVector4\fP from each colume of M into this Matrix\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIM\fP is the matrix to copy into this one\&. 
+.br
+ 
 .RE
 .PP
 
@@ -287,7 +294,7 @@ Copy Constructor\&. Calls \fBMatrix4\fP::[] to, which will copy the \fBVector4\f
 .SS "\fBF32\fP Matrix4::_Cofactor (const \fBVector4\fP & col1, const \fBVector4\fP & col2, const \fBVector4\fP & col3) const\fC [private]\fP"
 Returns the cofactor for the sub matrix made up of the 3 \fBVector4\fP passed in\&. This is used in Matrix4::Inverse as part of what is called a Classic Adjoint\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIcol1\fP is the first column of the sub matrix\&. 
 .br
@@ -305,7 +312,7 @@ Creates rotation around the x axis without resetting other values\&.
 Completely untested and probably not working at all\&. 
 .RE
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIx\fP Degree of rotation around x axis\&. Calls \fBRADIAN()\fP\&. 
 .RE
@@ -319,9 +326,11 @@ Creates rotation around the y axis without resetting other values\&.
 Completely untested and probably not working at all\&. 
 .RE
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIy\fP Degree of rotation around y axis\&. Calls \fBRADIAN()\fP 
+.br
+ 
 .RE
 .PP
 
@@ -333,9 +342,11 @@ Creates rotation around the z axis without resetting other values\&.
 Completely untested and probably not working at all\&. 
 .RE
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIz\fP Degree of rotation around z axis\&. Calls \fBRADIAN()\fP 
+.br
+ 
 .RE
 .PP
 
@@ -347,88 +358,100 @@ Creates rotation around the x, y and z axis, in that order, without resetting ot
 Not working at all\&. The math is wrong, and rotations are not working in general\&. 
 .RE
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIx\fP Degree of rotation around the x axis\&. Calls \fBRADIAN()\fP 
 .br
 \fIy\fP Degree of rotation around the y axis\&. Calls \fBRADIAN()\fP 
 .br
 \fIz\fP Degree of rotation around the z axis\&. Calls \fBRADIAN()\fP 
-.RE
-.PP
-
-.SS "void Matrix4::AddScale (\fBF32\fP xVal, \fBF32\fP yVal)"
-Increases the scaling translation in 2D\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIx\fP Value of scale on x axis\&. 
 .br
-\fIy\fP Value of scale on y axis\&. 
-.RE
-.PP
-
-.SS "void Matrix4::AddScale (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
-Increases the scaling translation in 3D\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIx\fP Value of scale on x axis\&. 
-.br
-\fIy\fP Value of scale on y axis\&. 
-.br
-\fIz\fP Value of scale on z axis\&. 
+ 
 .RE
 .PP
 
 .SS "void Matrix4::AddScale (const \fBVector4\fP & vec)"
 Increases the scaling translation equal to the x y and z values in a \fBVector4\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIvec\fP contains the values that will increase the scale\&. 
 .RE
 .PP
 
-.SS "void Matrix4::AddTranslate (\fBF32\fP xVal, \fBF32\fP yVal)"
-Increases the current translation of this matrix\&. 
+.SS "void Matrix4::AddScale (\fBF32\fP xVal, \fBF32\fP yVal)"
+Increases the scaling translation in 2D\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
-\fIx\fP is the value of x axis translation\&. 
+\fIx\fP Value of scale on x axis\&. 
 .br
-\fIy\fP is the value of y axis translation\&. 
+\fIy\fP Value of scale on y axis\&. 
+.br
+ 
 .RE
 .PP
 
-.SS "void Matrix4::AddTranslate (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
-Increases the current translation of this matrix\&. 
+.SS "void Matrix4::AddScale (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
+Increases the scaling translation in 3D\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
-\fIx\fP is the value of x axis translation\&. 
+\fIx\fP Value of scale on x axis\&. 
 .br
-\fIy\fP is the value of y axis translation\&. 
+\fIy\fP Value of scale on y axis\&. 
 .br
-\fIz\fP is the value of z axis translation\&. 
+\fIz\fP Value of scale on z axis\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Matrix4::AddTranslate (const \fBVector4\fP & vec)"
 Increases the current translation of this matrix equal to the x y and z values in a \fBVector4\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIvec\fP contains the values that will be used for the translation\&. 
+.RE
+.PP
+
+.SS "void Matrix4::AddTranslate (\fBF32\fP xVal, \fBF32\fP yVal)"
+Increases the current translation of this matrix\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP is the value of x axis translation\&. 
+.br
+\fIy\fP is the value of y axis translation\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "void Matrix4::AddTranslate (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
+Increases the current translation of this matrix\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP is the value of x axis translation\&. 
+.br
+\fIy\fP is the value of y axis translation\&. 
+.br
+\fIz\fP is the value of z axis translation\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Matrix4::ComponentMulti (const \fBMatrix4\fP & M)"
 Also known as a straight multiplication\&. Multiplies each value of this \fBMatrix4\fP by the matching value of M\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIM\fP \fBMatrix4\fP&\&. Right hand value to multiply by\&. 
+.br
+ 
 .RE
 .PP
 
@@ -437,7 +460,9 @@ Returns the determinate of this matrix\&. This has many uses, and if you are not
 .SS "\fBMatrix4\fP Matrix4::FPSView (const \fBVector4\fP & cameraPos, \fBF32\fP pitch, \fBF32\fP yaw)\fC [static]\fP"
 Similar to \fBMatrix4::LookAt\fP, this function will create a matrix that can be used to translate entities such that they appear as if to have moved according to a position, pitch and yaw\&. This is usually cached for the camera to be used in the graphica computations\&. Euler angles are assumed when setting the matrix up\&. 
 .br
-\fBParameters:\fP
+ 
+.PP
+\fBParameters\fP
 .RS 4
 \fIcameraPos\fP is the position of the camera in world space\&. 
 .br
@@ -450,20 +475,22 @@ Similar to \fBMatrix4::LookAt\fP, this function will create a matrix that can be
 .SS "\fBMatrix4\fP Matrix4::LookAt (const \fBPoint\fP & cameraPos, const \fBPoint\fP & target, const \fBVector4\fP & up)\fC [static]\fP"
 Returns a matrix that can translate other entities so that they appear as if they were looking down a target axis from a target position\&. This is used mostly with the camera\&. A right handed coordinate system is assumed\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIcameraPos\fP is the position of the camera in world space\&. This will be the 'location' of the camera for the look at\&. 
 .br
 \fItarget\fP is the axis down which the camera should look\&. You can also think of this as the target in space the camera should face\&. 
 .br
 \fIup\fP is the direction considered to be up for the camera\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Matrix4::MakeOrthographic (\fBF32\fP left, \fBF32\fP right, \fBF32\fP bottom, \fBF32\fP top, \fBF32\fP nearPlane, \fBF32\fP farPlane)"
 Resets the \fBMatrix4\fP, then sets the values up as an Orthographic projection\&. Calls MakeIdentiy()\&. The viewport values are usually based on the dimensions of the window, but could be made smaller\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIleft\fP represents the number of pixels from the center to the left boundary of the view frustum\&. 
 .br
@@ -476,13 +503,15 @@ Resets the \fBMatrix4\fP, then sets the values up as an Orthographic projection\
 \fInearPlane\fP represents the number of pixels from the center to the nearest boundary of the view frustum\&. 
 .br
 \fIfarPlane\fP represents the number of pixels from the center to the furthest boundary of the view furstum\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Matrix4::MakePerspective (\fBF32\fP fieldOfView, \fBF32\fP aspectRatio, \fBF32\fP nearPlane, \fBF32\fP farPlane)"
 Resets the \fBMatrix4\fP, then sets the values up as a Perspective \fBMatrix4\fP\&. Instead of using the dimensions of the viewport, this version uses slightly differently ideas\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIfieldOfview\fP is the angle of the fields of view\&. Good values include 90 or 120\&. Will change the skew of the view\&. 
 .br
@@ -491,112 +520,158 @@ Resets the \fBMatrix4\fP, then sets the values up as a Perspective \fBMatrix4\fP
 \fInearPlane\fP represents the number of pixels from the center to the nearest boundary of the view frustum\&. 
 .br
 \fIfarPlane\fP represents the number of pixels from the center to the furthest boundary of the view furstum\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "\fBMatrix4\fP Matrix4::operator* (const \fBMatrix4\fP & mat) const"
 Performs a \fBMatrix4\fP style multiplication\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fImat\fP is the matrix that is multiplied by this matrix\&. 
-.RE
-.PP
-
-.SS "\fBVector4\fP Matrix4::operator* (const \fBVector4\fP & vec) const"
-Performs \fBMatrix4\fP multiplication with \fBVector4\fP\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIvec\fP is the vector that is multiplied by this matrix\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "\fBPoint\fP Matrix4::operator* (const \fBPoint\fP & point) const"
 Performs \fBMatrix4\fP multiplication with \fBPoint\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the vector that is multiplied by this matrix\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "\fBVector4\fP Matrix4::operator* (const \fBVector4\fP & vec) const"
+Performs \fBMatrix4\fP multiplication with \fBVector4\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvec\fP is the vector that is multiplied by this matrix\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "\fBMatrix4\fP & Matrix4::operator/= (\fBF32\fP val)"
 Divides each element of this matrix, setting it to the results\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is the value that this matrix is divided by\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "\fBMatrix4\fP & Matrix4::operator= (const \fBMatrix4\fP & mat)"
 Assigns this matrix to be equal to the values of another\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fImat\fP is the matrix that is copied\&. 
-.RE
-.PP
-
-.SS "const \fBVector4\fP& TempestMath::Matrix4::operator[] (int i) const\fC [inline]\fP"
-Used to access the ith column of the \fBMatrix4\fP\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIi\fP is the index to return\&. Cannot be greater than 3\&. There are only 4 columns\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "\fBVector4\fP& TempestMath::Matrix4::operator[] (int i)\fC [inline]\fP"
 Used to access the ith column of the \fBMatrix4\fP\&. This version allows you to edit the values in the column\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIi\fP is the index to return\&. Cannot be greater than 3\&. There are only 4 columns\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "const \fBVector4\fP& TempestMath::Matrix4::operator[] (int i) const\fC [inline]\fP"
+Used to access the ith column of the \fBMatrix4\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIi\fP is the index to return\&. Cannot be greater than 3\&. There are only 4 columns\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Matrix4::Reset (\fBF32\fP val = \fC0\&.0f\fP)"
 Sets all the values of the \fBMatrix4\fP to 0, with the diagnal set to val\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP Value of the diagnal of the \fBMatrix4\fP\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "\fBMatrix4\fP Matrix4::RotateX (\fBF32\fP val)\fC [static]\fP"
 Creates a matrix that will perform a rotation around the x axis\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is the angle to rotate in degrees\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "\fBMatrix4\fP Matrix4::RotateY (\fBF32\fP val)\fC [static]\fP"
 Creates a matrix that will perform a rotation around the y axis\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is the angle to rotate in degrees\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "\fBMatrix4\fP Matrix4::RotateZ (\fBF32\fP val)\fC [static]\fP"
 Creates a matrix that will perform a rotation around the z axis\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is the angle to rotate in degrees\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "\fBMatrix4\fP Matrix4::Scale (const \fBVector3\fP & vec)\fC [static]\fP"
+Creates a matrix that will perform a scaling translation equal to the x y and z values in a \fBVector3\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvec\fP contains the values used in the scaling\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "\fBMatrix4\fP Matrix4::Scale (const \fBVector4\fP & vec)\fC [static]\fP"
+Creates a matrix that will perform a scaling translation equal to the x y and z values in a \fBVector4\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvec\fP contains the values used in the scaling\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "\fBMatrix4\fP Matrix4::Scale (\fBF32\fP xVal, \fBF32\fP yVal)\fC [static]\fP"
 Creates a matrix that will perform a scaling transformation in 2D\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIxVal\fP is the amount to scale in the x axis\&. 
 .br
@@ -607,97 +682,95 @@ Creates a matrix that will perform a scaling transformation in 2D\&.
 .SS "\fBMatrix4\fP Matrix4::Scale (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)\fC [static]\fP"
 Creates a matrix that will perform a scaling transformation in 3D\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIxVal\fP is the amount to scale in the x axis\&. 
 .br
 \fIyVal\fP is the amount to scale in the y axis\&. 
 .br
 \fIzVal\fP is the amount to scale in the z axis\&. 
-.RE
-.PP
-
-.SS "\fBMatrix4\fP Matrix4::Scale (const \fBVector4\fP & vec)\fC [static]\fP"
-Creates a matrix that will perform a scaling translation equal to the x y and z values in a \fBVector4\fP\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIvec\fP contains the values used in the scaling\&. 
-.RE
-.PP
-
-.SS "\fBMatrix4\fP Matrix4::Scale (const \fBVector3\fP & vec)\fC [static]\fP"
-Creates a matrix that will perform a scaling translation equal to the x y and z values in a \fBVector3\fP\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIvec\fP contains the values used in the scaling\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Matrix4::SetAsInverse (const \fBMatrix4\fP & mat)"
 Changes this matrix to equal the inverse of another\&. Warning, very expsenive function to call\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fImat\fP inverse will be set to this matrix\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Matrix4::SetFPSView (const \fBVector4\fP & cameraPos, \fBF32\fP pitch, \fBF32\fP yaw)"
 Similar to \fBMatrix4::LookAt\fP, this function will set this matrix so that it can be used to translate entities such that they appear as if to have moved according to a position, pitch and yaw\&. This is usually cached for the camera to be used in the graphica computations\&. Euler angles are assumed when setting the matrix up\&. 
 .br
-\fBParameters:\fP
+ 
+.PP
+\fBParameters\fP
 .RS 4
 \fIcameraPos\fP is the position of the camera in world space\&. 
 .br
 \fIpitch\fP is the up/down pitch of the camera in degrees\&. -90 < pitch < 90\&. 
 .br
 \fIyas\fP is the right/left yaw of the camera in degress\&. 0 < yaw < 360\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Matrix4::SetLookAt (const \fBVector4\fP & cameraPos, const \fBVector4\fP & target, const \fBVector4\fP & up)"
 Sets this matrix to translate other entities so that they appear as if they were looking down a target axis from a target position\&. This is used mostly with the camera\&. A right handed coordinate system is assumed\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIcameraPos\fP is the position of the camera in world space\&. This will be the 'location' of the camera for the look at\&. 
 .br
 \fItarget\fP is the axis down which the camera should look\&. You can also think of this as the target in space the camera should face\&. 
 .br
 \fIup\fP is the direction considered to be up for the camera\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Matrix4::SetOrientation (const \fBQuaternion\fP & q)"
 Sets the rotational transform of the matrix equal to the orientation contained in teh \fBQuaternion\fP\&. This is currently untested\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIq\fP conatins the orientation to set\&. 
-.RE
-.PP
-
-.SS "void Matrix4::SetOrientationAndPosition (const \fBQuaternion\fP & q, const \fBVector4\fP & v)"
-A helper functions that will set the rotational transform and position at the same time\&. This is currently untested\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIq\fP contains the orientation to set\&. 
 .br
-\fIv\fP contains the position to set, as a translation\&. 
+ 
 .RE
 .PP
 
 .SS "void Matrix4::SetOrientationAndPosition (const \fBQuaternion\fP & q, const \fBPoint\fP & p)"
 A helper functions that will set the rotational transform and position at the same time\&. This is currently untested\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIq\fP contains the orientation to set\&. 
 .br
 \fIp\fP contains the position to set, as a translation\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "void Matrix4::SetOrientationAndPosition (const \fBQuaternion\fP & q, const \fBVector4\fP & v)"
+A helper functions that will set the rotational transform and position at the same time\&. This is currently untested\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIq\fP contains the orientation to set\&. 
+.br
+\fIv\fP contains the position to set, as a translation\&. 
+.br
+ 
 .RE
 .PP
 
@@ -709,13 +782,15 @@ Resets the \fBMatrix4\fP and creates an \fBMatrix4\fP which will perform a rotat
 Not working at all\&. The math is wrong, and rotations are not working in general\&. 
 .RE
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIx\fP Degree of rotation around the x axis\&. Calls \fBRADIAN()\fP 
 .br
 \fIy\fP Degree of rotation around the y axis\&. Calls \fBRADIAN()\fP 
 .br
 \fIz\fP Degree of rotation around the z axis\&. Calls \fBRADIAN()\fP 
+.br
+ 
 .RE
 .PP
 
@@ -727,9 +802,11 @@ Resets \fBMatrix4\fP and creates rotation around the x axis\&. Call MakeIdentiy(
 This is not working at all\&. 
 .RE
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIx\fP Degree of rotation around x axis\&. Calls \fBRADIAN()\fP 
+.br
+ 
 .RE
 .PP
 
@@ -741,9 +818,11 @@ Resets \fBMatrix4\fP and creates rotation around the y axis\&. Call MakeIdentiy(
 This is not working at all\&. 
 .RE
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIy\fP Degree of rotation around y axis\&. Calls \fBRADIAN()\fP 
+.br
+ 
 .RE
 .PP
 
@@ -755,16 +834,29 @@ Resets \fBMatrix4\fP and creates rotation around the z axis\&. Call MakeIdentiy(
 This is not working at all\&. 
 .RE
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIz\fP Degree of rotation around z axis\&. Calls \fBRADIAN()\fP 
+.br
+ 
+.RE
+.PP
+
+.SS "void Matrix4::SetScale (const \fBVector4\fP & vec)"
+Sets this matrix to perform a scaling translation equal to the x y and z values in a \fBVector4\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvec\fP contains the values used in the scaling\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Matrix4::SetScale (\fBF32\fP xVal, \fBF32\fP yVal)"
 Sets this matrix to perform a scaling transformation in 2D\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIxVal\fP is the amount to scale in the x axis\&. 
 .br
@@ -775,62 +867,61 @@ Sets this matrix to perform a scaling transformation in 2D\&.
 .SS "void Matrix4::SetScale (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
 Sets this matrix to perform a scaling transformation in 3D\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIxVal\fP is the amount to scale in the x axis\&. 
 .br
 \fIyVal\fP is the amount to scale in the y axis\&. 
 .br
 \fIzVal\fP is the amount to scale in the z axis\&. 
-.RE
-.PP
-
-.SS "void Matrix4::SetScale (const \fBVector4\fP & vec)"
-Sets this matrix to perform a scaling translation equal to the x y and z values in a \fBVector4\fP\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIvec\fP contains the values used in the scaling\&. 
-.RE
-.PP
-
-.SS "void Matrix4::SetTranslate (\fBF32\fP xVal, \fBF32\fP yVal)"
-Sets a 2D translation for this matrix\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIx\fP is the value of x axis translation\&. 
 .br
-\fIy\fP is the value of y axis translation\&. 
-.RE
-.PP
-
-.SS "void Matrix4::SetTranslate (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
-Sets a 3D translation for this matrix\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIx\fP is the value of x axis translation\&. 
-.br
-\fIy\fP is the value of y axis translation\&. 
-.br
-\fIz\fP is the value of z axis translation\&. 
+ 
 .RE
 .PP
 
 .SS "void Matrix4::SetTranslate (const \fBVector4\fP & vec)"
 Sets a translation for this matrix equal to the x y and z values in a \fBVector4\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIvec\fP contains the values that will be used for the translation\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "void Matrix4::SetTranslate (\fBF32\fP xVal, \fBF32\fP yVal)"
+Sets a 2D translation for this matrix\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP is the value of x axis translation\&. 
+.br
+\fIy\fP is the value of y axis translation\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "void Matrix4::SetTranslate (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)"
+Sets a 3D translation for this matrix\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP is the value of x axis translation\&. 
+.br
+\fIy\fP is the value of y axis translation\&. 
+.br
+\fIz\fP is the value of z axis translation\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "\fBMatrix4\fP Matrix4::Transform3x3 (const \fBMatrix4\fP & mat) const"
 Helper function that will return the transformed version of a matrix by the affine transformation of this matrix\&. This means that it will not include any translation\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fImat\fP is transformed\&. 
 .RE
@@ -839,25 +930,47 @@ Helper function that will return the transformed version of a matrix by the affi
 .SS "\fBVector4\fP Matrix4::Transform3x3 (const \fBVector4\fP & vec) const"
 Helper function that will return the transformed version of a vector by the affine transformation fo this matrix\&. This means that it will not include any translation\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIvec\fP is transformed\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "\fBPoint\fP Matrix4::TransformInverse (const \fBPoint\fP & vec) const"
+Returns a \fBPoint\fP transformed by the Inverse of this Matrix 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvec\fP is the point to transform\&. 
 .RE
 .PP
 
 .SS "\fBVector4\fP Matrix4::TransformInverse (const \fBVector4\fP & vec) const"
 Returns a \fBVector4\fP transformed by the inverse of this matrix\&. Warning, this is a costly call\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIvec\fP is the vectored used to performed the transformation\&. 
+.RE
+.PP
+
+.SS "\fBMatrix4\fP Matrix4::Translate (const \fBVector4\fP & vec)\fC [static]\fP"
+Creates a translation matrix equal to the x y and z values in the \fBVector4\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvec\fP contains the values that will be used for the translation\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "\fBMatrix4\fP Matrix4::Translate (\fBF32\fP xVal, \fBF32\fP yVal)\fC [static]\fP"
 Creates a 2D translation matrix\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIxVal\fP is the amount to translate on the x axis\&. 
 .br
@@ -868,22 +981,15 @@ Creates a 2D translation matrix\&.
 .SS "\fBMatrix4\fP Matrix4::Translate (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)\fC [static]\fP"
 Creates a 3D translation Matrix\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIxVal\fP is the amount to translate on the x axis\&. 
 .br
 \fIyVal\fP is the amount to translate on the y axis\&. 
 .br
 \fIzVal\fP is the amount to translate on the z axis\&. 
-.RE
-.PP
-
-.SS "\fBMatrix4\fP Matrix4::Translate (const \fBVector4\fP & vec)\fC [static]\fP"
-Creates a translation matrix equal to the x y and z values in the \fBVector4\fP\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIvec\fP contains the values that will be used for the translation\&. 
+.br
+ 
 .RE
 .PP
 

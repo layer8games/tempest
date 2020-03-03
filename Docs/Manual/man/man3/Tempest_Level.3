@@ -1,4 +1,4 @@
-.TH "Tempest::Level" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "Tempest::Level" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -8,6 +8,16 @@ Tempest::Level
 .PP
 .PP
 \fC#include <Level\&.h>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBGridPos\fP"
+.br
+.ti -1c
+.RI "struct \fBTileData\fP"
+.br
+.in -1c
 .SS "Public Member Functions"
 
 .in +1c
@@ -29,6 +39,16 @@ Tempest::Level
 .RI "virtual TEMPEST_API void \fBv_Render\fP (void)"
 .br
 .RI "Wrapper around \fBLevel::RenderObjects\fP\&. It is virtual to allow for optional customization\&. "
+.ti -1c
+.RI "virtual TEMPEST_API void \fBv_Enter\fP (void)"
+.br
+.ti -1c
+.RI "virtual TEMPEST_API void \fBv_Exit\fP (void)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBDefaultEnter\fP (void)"
+.br
+.RI "Default behavior for a standard awake\&. Behavior: Calls \fBGameWindow::ResetCamera\fP\&. "
 .ti -1c
 .RI "TEMPEST_API void \fBUpdateLevel\fP (void)"
 .br
@@ -142,11 +162,15 @@ Tempest::Level
 .ti -1c
 .RI "\fBS32\fP \fBGetNearBorder\fP (void)"
 .br
-.RI "Returns the near border of the play area\&. "
+.RI "Returns the near border of the play area\&. 
+.br
+ "
 .ti -1c
 .RI "\fBS32\fP \fBGetFarBorder\fP (void)"
 .br
-.RI "Returns the far border of the play area\&. "
+.RI "Returns the far border of the play area\&. 
+.br
+ "
 .ti -1c
 .RI "void \fBSetID\fP (\fBU32\fP id)"
 .br
@@ -155,23 +179,37 @@ Tempest::Level
 .RI "\fBU32\fP \fBGetID\fP (void) const"
 .br
 .RI "Returns the \fBLevel\fP ID\&. This will only match the \fBLevelManager\fP ID if you set it correctly\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
 .ti -1c
-.RI "void \fBSetCamera\fP (\fBCamera\fP *cam)"
-.br
-.RI "Sets the camera to a new \fBCamera\fP pointer, allowing you to change the \fBCamera\fP at run time\&. "
-.ti -1c
-.RI "const \fBCamera\fP * \fBGetCamera\fP (void)"
-.br
-.RI "Returns the current \fBCamera\fP\&. "
-.ti -1c
-.RI "void \fBSetCameraOrthographic\fP (void)"
-.br
-.RI "Wrapper around \fBCamera::SetOrthographic\fP\&. "
-.ti -1c
-.RI "void \fBSetCameraOrthographic\fP (\fBF32\fP left, \fBF32\fP right, \fBF32\fP bottom, \fBF32\fP top, \fBF32\fP nearPlane, \fBF32\fP farPlane)"
+.RI "TEMPEST_API void \fBDefaultRender\fP (void)"
 .br
 .ti -1c
-.RI "TEMPEST_API p_GameObject \fBGetGameObject\fP (\fBU32\fP id)"
+.RI "TEMPEST_API \fBGridPos\fP \fB_ConvertIndexToTileData\fP (\fBU32\fP index, \fBU32\fP width, \fBU32\fP height)"
+.br
+.ti -1c
+.RI "TEMPEST_API std::vector< \fBTileData\fP > \fB_ImportTMXMapData\fP (string filepath)"
+.br
+.ti -1c
+.RI "\fBU32\fP \fBGetObjectCount\fP (void)"
+.br
+.RI "Return count of how many objects have been registered\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::map< \fBU32\fP, p_GameObject > \fB_localGameObjects\fP"
+.br
+.RI "List of all GameObjects included in the \fBLevel\fP\&. This is protected, levels should have access to their registered objects\&. "
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "std::vector< \fBU32\fP > \fB_SplitU32\fP (string text, char delim) const"
 .br
 .in -1c
 .SS "Private Attributes"
@@ -222,14 +260,6 @@ Tempest::Level
 .br
 .RI "ID used in the \fBLevelManager\fP\&. "
 .ti -1c
-.RI "\fBCamera\fP * \fB_camera\fP"
-.br
-.RI "Pointer to a \fBCamera\fP object\&. "
-.ti -1c
-.RI "std::map< \fBU32\fP, p_GameObject > \fB_gameObjects\fP"
-.br
-.RI "List of all GameObjects included in the \fBLevel\fP\&. "
-.ti -1c
 .RI "\fBTP::ForceRegistry\fP \fB_forceRegistry\fP"
 .br
 .RI "KillerPhysics::ForceRegistry used to allow physics forces to be applied\&. "
@@ -237,12 +267,25 @@ Tempest::Level
 .SH "Detailed Description"
 .PP 
 The \fBLevel\fP is the building block for game project\&. It holds all of the objects that will be rendered to the screen and controls what the update logic is\&. The \fBLevel\fP itself is an abstract class, intended to be implemented on the user end\&. Some engines will call this a scene or a world\&. 
+.br
+ 
 .SH "Member Function Documentation"
 .PP 
+.SS "std::vector< \fBU32\fP > Level::_SplitU32 (string text, char delim) const\fC [private]\fP"
+Helper function to split a list of numbers apart\&. This is intended to be used with a list of numbers separated by a standard character, for instance, a list of space or comma separated numbers\&. The numbers are read as strings and converted into U32 types\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItext\fP is string to break apart\&. It should be numbers separated by a common character\&. 
+.br
+\fIdelim\fP is the character that separates each number in list\&. 
+.RE
+.PP
+
 .SS "void Level::AddObjectToLevel (const \fBGameObject\fP & obj)"
 Converts the ref to a smart_ptr and adds the \fBGameObject\fP to the \fBLevel\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIobj\fP is the object to be added\&. 
 .RE
@@ -251,7 +294,7 @@ Converts the ref to a smart_ptr and adds the \fBGameObject\fP to the \fBLevel\fP
 .SS "void Level::AddObjectToLevel (p_GameObject obj)"
 Adds \fBGameObject\fP pointer to the \fBLevel\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIobj\fP is the pointer to be added\&. 
 .RE
@@ -260,7 +303,7 @@ Adds \fBGameObject\fP pointer to the \fBLevel\fP\&.
 .SS "void Level::AddTextToLevel (const \fBText\fP & text)"
 Adds the Glyphs in a \fBText\fP to the \fBLevel\fP as GameObjects\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fItext\fP is the \fBText\fP to get the Glyphs from\&. 
 .RE
@@ -269,25 +312,18 @@ Adds the Glyphs in a \fBText\fP to the \fBLevel\fP as GameObjects\&.
 .SS "void Level::AddTextToLevel (shared_ptr< \fBText\fP > text)"
 Adds the Glyphs in a \fBText\fP to the \fBLevel\fP as GameObjects\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fItext\fP is shared pointer \fBText\fP to get the Glyphs from\&. 
 .RE
 .PP
 
-.SS "shared_ptr< \fBGameObject\fP > Level::GetGameObject (\fBU32\fP id)"
-Returns \fBGameObject\fP with ID\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIid\fP is the ID of the object to get\&. Should coorespond to \fBGameObject::_ID\fP\&. 
-.RE
-.PP
-
+.SS "void Level::DefaultRender (void)\fC [protected]\fP"
+Default actions to take if no other rendering steps are needed\&. Loops over all local GameObjects calling \fBGameObject::v_Render\fP for each\&. 
 .SS "void Tempest::Level::RegisterRigidBody2DForce (TP::p_RigidBody2D body, TP::p_ForceGenerator generator)\fC [inline]\fP"
 Registers a KillerPhysics::RigidBody2D with a KillerPhysics::ForcerGenerator\&. This only works because they are pointers\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIRigidBody2D\fP is the pointer that needs to be registered with the generator\&. 
 .br
@@ -298,7 +334,7 @@ Registers a KillerPhysics::RigidBody2D with a KillerPhysics::ForcerGenerator\&. 
 .SS "void Level::RemoveObjectFromLevel (\fBU32\fP id)"
 Removes the \fBGameObject\fP with id from the \fBLevel\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIid\fP of the \fBGameObject\fP to remove\&. 
 .RE
@@ -307,7 +343,7 @@ Removes the \fBGameObject\fP with id from the \fBLevel\fP\&.
 .SS "void Level::RemoveTextFromLevel (const \fBText\fP & text)"
 Removes the Glyphs in a \fBText\fP from the \fBLevel\fP based on their \fBGameObject::_ID\fP 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fItext\fP is the \fBText\fP that contains the Glyphs to remove 
 .RE
@@ -315,10 +351,12 @@ Removes the Glyphs in a \fBText\fP from the \fBLevel\fP based on their \fBGameOb
 
 .SS "void Level::RenderObjects (void)"
 Loops over all of the \fBGameObject\fP and KillerPhysics::RigidBody2D that have been added to the \fBLevel\fP, and calls \fBGameObject::v_Render\fP if they are active for rendering\&. 
+.br
+ 
 .SS "void Tempest::Level::SetBorders (\fBS32\fP top, \fBS32\fP bottom, \fBS32\fP right, \fBS32\fP left)\fC [inline]\fP"
 Helper function to set all borders of the play area of the \fBLevel\fP at the same time\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fItop\fP is the top border\&. 
 .br
@@ -333,35 +371,16 @@ Helper function to set all borders of the play area of the \fBLevel\fP at the sa
 .SS "void Tempest::Level::SetBottomBorder (\fBS32\fP bottom)\fC [inline]\fP"
 Set the bottom bounds\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIbottom\fP is the new border\&. 
-.RE
-.PP
-
-.SS "void Tempest::Level::SetCameraOrthographic (\fBF32\fP left, \fBF32\fP right, \fBF32\fP bottom, \fBF32\fP top, \fBF32\fP nearPlane, \fBF32\fP farPlane)\fC [inline]\fP"
-Wrapper around \fBCamera::SetOrthographic\fP with the same arguments\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIleft\fP is the left boundary of the projection\&. 
-.br
-\fIright\fP is the right boundary of the projection\&. 
-.br
-\fIbottom\fP is the bottom boundary of the projection\&. 
-.br
-\fItop\fP is the uppder boundary of the projection\&. 
-.br
-\fInearPlane\fP is the close boundary of the projection\&. 
-.br
-\fIfarPlane\fP is the distant boundary of the projection\&. 
 .RE
 .PP
 
 .SS "void Tempest::Level::SetHeight (\fBS32\fP h)\fC [inline]\fP"
 Changes the height of the play area of the \fBLevel\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIh\fP is the new height\&. 
 .RE
@@ -370,27 +389,29 @@ Changes the height of the play area of the \fBLevel\fP\&.
 .SS "void Tempest::Level::SetLeftBorder (\fBS32\fP left)\fC [inline]\fP"
 Set the left bounds\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIleft\fP is the new border\&. 
 .RE
 .PP
 
 .SS "template<class T > void Tempest::Level::SetObjectUniforms (string name, const T & type)\fC [inline]\fP"
-Loops over all GameObjects and KillerPhysics::RigidBody2D that have bee added to the level and calls \fBGameObject::SetUniform\fP for the type that is passed in\&. This is a template function\&. 
+Loops over all GameObjects and KillerPhysics::RigidBody2D that have bee added to the level and calls GameObject::SetUniform for the type that is passed in\&. This is a template function\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIname\fP is the name of the uniform to set\&. This must match what is found in the shader\&. 
 .br
 \fItype\fP is the dynamic type that is passed into the shader\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Tempest::Level::SetRightBorder (\fBS32\fP right)\fC [inline]\fP"
 Set the right bounds\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIright\fP is the new border\&. 
 .RE
@@ -399,7 +420,7 @@ Set the right bounds\&.
 .SS "void Tempest::Level::SetTopBorder (\fBS32\fP top)\fC [inline]\fP"
 Set the top bounds\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fItop\fP is the new border\&. 
 .RE
@@ -408,7 +429,7 @@ Set the top bounds\&.
 .SS "void Tempest::Level::SetWidth (\fBS32\fP w)\fC [inline]\fP"
 Changes the width of the play area of the \fBLevel\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIw\fP is the new width\&. 
 .RE
@@ -416,10 +437,12 @@ Changes the width of the play area of the \fBLevel\fP\&.
 
 .SS "void Level::UpdateObjects (void)"
 Loops over all of the \fBGameObject\fP and KillerPhysics::RigidBody2D that have been added to the \fBLevel\fP, and calls \fBGameObject::v_Update\fP if they are active for updates\&. 
+.br
+ 
 .SS "void Level::UpdateText (\fBText\fP & text, string updatedCharacters)"
 Update \fBText\fP to display new Glyphs\&. This is a wrapper around RemoveTextFromLevel and AddTextToLevel\&. This will edit the existing \fBText\fP object to have the new string that is passed in\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fItext\fP is the \fBText\fP that contains the Glyphs to update 
 .br
@@ -427,16 +450,22 @@ Update \fBText\fP to display new Glyphs\&. This is a wrapper around RemoveTextFr
 .RE
 .PP
 
+.SS "virtual TEMPEST_API void Tempest::Level::v_Enter (void)\fC [inline]\fP, \fC [virtual]\fP"
+Called when the \fBLevel\fP is made active, this defines a series of actions to be taken in order for this\&. \fBLevel\fP to be up and going\&. 
+.SS "virtual TEMPEST_API void Tempest::Level::v_Exit (void)\fC [inline]\fP, \fC [virtual]\fP"
+Called when the \fBLevel\fP is about to be deactivated\&. This is a clean up chance, to dump anything that needs to be dumped and clean up anything that needs to be cleaned up\&. Right now, this is stubbed out and unimplemented\&. 
 .SS "virtual TEMPEST_API void Tempest::Level::v_Init (void)\fC [pure virtual]\fP"
 Abstract function\&. Used to Initialize the default values, instantiate any objects that will be used and generally get things ready to go\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIid\fP is the ID used in the \fBLevelManager\fP\&. 
 .br
 \fIw\fP is the width of the \fBLevel\fP\&. 
 .br
 \fIh\fP is the height of the \fBLevel\fP\&. 
+.br
+ 
 .RE
 .PP
 

@@ -1,4 +1,4 @@
-.TH "rapidxml::xml_document< Ch >" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "rapidxml::xml_document< Ch >" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -111,7 +111,7 @@ Inherits \fBrapidxml::xml_node< Ch >\fP, and \fBrapidxml::memory_pool< Ch >\fP\&
 class rapidxml::xml_document< Ch >"
 This class represents root of the DOM hierarchy\&. It is also an \fBxml_node\fP and a \fBmemory_pool\fP through public inheritance\&. Use \fBparse()\fP function to build a DOM tree from a zero-terminated XML text string\&. \fBparse()\fP function allocates memory for nodes and attributes by using functions of \fBxml_document\fP, which are inherited from \fBmemory_pool\fP\&. To access root node of the document, use the document itself, as if it was an \fBxml_node\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fICh\fP Character type to use\&. 
 .RE
@@ -132,7 +132,7 @@ Parses zero-terminated XML string according to given flags\&. Passed string will
 .br
  Document can be parsed into multiple times\&. Each new call to parse removes previous nodes and attributes (if any), but does not clear memory pool\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fItext\fP XML data to parse; pointer is non-const to denote fact that this data may be modified by the parser\&. 
 .RE

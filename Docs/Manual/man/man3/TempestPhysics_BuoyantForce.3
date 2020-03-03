@@ -1,4 +1,4 @@
-.TH "TempestPhysics::BuoyantForce" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "TempestPhysics::BuoyantForce" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -75,7 +75,7 @@ A spring-like force that creates a bobbing effect, like the one experienced by a
 .SS "TEMPEST_API TempestPhysics::BuoyantForce::BuoyantForce::BuoyantForce (\fBreal\fP maxDepth, \fBreal\fP objVolume, \fBreal\fP liquidHeight, \fBreal\fP liquidDensity = \fC1000\&.0f\fP)"
 Sets the values of the force\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fImaxDepth\fP is the value for the depth the object is able to reach\&. 
 .br
@@ -90,18 +90,22 @@ Sets the values of the force\&.
 .SS "void BuoyantForce::v_UpdateForce (shared_ptr< \fBRigidBody2D\fP > RigidBody2D)"
 The y value of the position of the object is checked against the max depth\&. If the object has reached the max depth, then it is given a +y force, scaled by the density and volume, until it reaches the height\&. Untested\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fI\fBRigidBody2D\fP\fP is the pointer to the object that will have the force affect it\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void BuoyantForce::v_UpdateForce (shared_ptr< \fBRigidBody3D\fP > body)\fC [final]\fP"
 The y value of the position of the object is checked against the max depth\&. If the object has reached the max depth, then it is given a +y force, scaled by the density and volume, until it reaches the height\&. Untested\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIbody\fP is the pointer to the object that will have the force affect it\&. 
+.br
+ 
 .RE
 .PP
 

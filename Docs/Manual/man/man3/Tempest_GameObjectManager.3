@@ -1,0 +1,124 @@
+.TH "Tempest::GameObjectManager" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tempest::GameObjectManager
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <GameObjectManager\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "TEMPEST_API \fB~GameObjectManager\fP (void)"
+.br
+.RI "No implementation\&. "
+.ti -1c
+.RI "TEMPEST_API void \fBAdd\fP (p_GameObject obj)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBRemove\fP (\fBU32\fP id)"
+.br
+.RI "Remove the \fBGameObject\fP with\&. "
+.ti -1c
+.RI "TEMPEST_API p_GameObject \fBGetGameObject\fP (\fBU32\fP id)"
+.br
+.RI "Return pointer to \fBGameObject\fP with\&. "
+.ti -1c
+.RI "\fBU32\fP \fBCount\fP (void)"
+.br
+.RI "Return a count of all the GameObjects that have been registered with the manager\&. "
+.ti -1c
+.RI "TEMPEST_API void \fBUpdateObjects\fP (void)"
+.br
+.RI "Loop over all registered GameObjects calling \fBGameObject::v_Update\fP\&. "
+.ti -1c
+.RI "TEMPEST_API void \fBRenderObjects\fP (void)"
+.br
+.RI "Loop over all registered GameObjects calling \fBGameObject::v_Render\fP\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static TEMPEST_API shared_ptr< \fBGameObjectManager\fP > \fBInstance\fP (void)"
+.br
+.RI "Singleton pattern used for Global nature of the Manager\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "TEMPEST_API \fBGameObjectManager\fP (void)"
+.br
+.RI "Protected constructor part of the Singleton pattern\&. "
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "typedef std::map< \fBU32\fP, p_GameObject > \fBObjectRegistry\fP"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "ObjectRegistry \fB_registry\fP"
+.br
+.RI "map of all registered GameObjects\&. "
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static shared_ptr< \fBGameObjectManager\fP > \fB_instance\fP = nullptr"
+.br
+.RI "Singleton pattern global instance\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A general manager class for all \fBGameObject\fP that are created\&. In the past, there have been a lot of issues with the way that GameObjects are stored\&. In the past, this was done in the \fBLevel\fP, but this creates issues with persistence and ownership\&. The purpose of this manager is to simplify this by registering all GameObjects in the \fBGameObjectManager\fP, using their ID as their lookup key\&. The \fBLevel\fP will then store just the ID of the GameObjects that it cares about, or that it registered, and will look these up for rendering and updating\&. Only persisten, multilevel objects should be registered in this way\&. 
+.br
+ 
+.SH "Member Function Documentation"
+.PP 
+.SS "void GameObjectManager::Add (p_GameObject obj)"
+Add a \fBGameObject\fP to the Manager\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIobj\fP calls \fBGameObject::GetID\fP, then attempts to insert \fBGameObject\fP into the map\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "p_GameObject GameObjectManager::GetGameObject (\fBU32\fP id)"
+
+.PP
+Return pointer to \fBGameObject\fP with\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP if it exists\&. 
+.RE
+.PP
+
+.SS "void GameObjectManager::Remove (\fBU32\fP id)"
+
+.PP
+Remove the \fBGameObject\fP with\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP from the Manager, if it exists\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Tempest from the source code\&.

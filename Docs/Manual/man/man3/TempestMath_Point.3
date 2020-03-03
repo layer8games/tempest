@@ -1,4 +1,4 @@
-.TH "TempestMath::Point" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "TempestMath::Point" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -14,7 +14,9 @@ TempestMath::Point
 .ti -1c
 .RI "TEMPEST_API \fBPoint\fP (void)"
 .br
-.RI "Default construtor\&. Sets all values to 0, and _2D to false\&. "
+.RI "Default construtor\&. Sets all values to 0, and _2D to false\&. 
+.br
+ "
 .ti -1c
 .RI "TEMPEST_API \fBPoint\fP (\fBF32\fP val)"
 .br
@@ -31,9 +33,19 @@ TempestMath::Point
 .RI "TEMPEST_API \fBPoint\fP (const \fBPoint\fP &p)"
 .br
 .ti -1c
+.RI "TEMPEST_API \fBPoint\fP (const \fBVector3\fP &v)"
+.br
+.RI "Convert a \fBVector3\fP into a \fBPoint\fP\&. "
+.ti -1c
+.RI "TEMPEST_API \fBPoint\fP (const \fBVector4\fP &v)"
+.br
+.RI "Convert a \fBVector4\fP into a \fBPoint\fP\&. "
+.ti -1c
 .RI "TEMPEST_API \fB~Point\fP (void)"
 .br
-.RI "Destructor\&. It does not do anything\&. "
+.RI "Destructor\&. It does not do anything\&. 
+.br
+ "
 .ti -1c
 .RI "void \fBMake2D\fP (bool state=true)"
 .br
@@ -43,7 +55,9 @@ TempestMath::Point
 .ti -1c
 .RI "bool \fBIs2D\fP (void) const"
 .br
-.RI "Returns that 2D state of the \fBPoint\fP stored in _2D;\&. "
+.RI "Returns that 2D state of the \fBPoint\fP stored in _2D; 
+.br
+ "
 .ti -1c
 .RI "TEMPEST_API \fBF32\fP \fBDot\fP (const \fBPoint\fP &point) const"
 .br
@@ -68,6 +82,18 @@ TempestMath::Point
 .ti -1c
 .RI "TEMPEST_API \fBF32\fP \fBDistance\fP (const \fBPoint\fP &p) const"
 .br
+.ti -1c
+.RI "TEMPEST_API \fBF32\fP \fBDistanceSquared\fP (const \fBPoint\fP &p) const"
+.br
+.RI "Return the distance between two points, without calling sqrt\&. "
+.ti -1c
+.RI "TEMPEST_API \fBF32\fP \fBDistanceSquared\fP (const \fBVector3\fP &v) const"
+.br
+.RI "Return the distance between this \fBPoint\fP and a \fBVector3\fP, without calling sqrt\&. "
+.ti -1c
+.RI "TEMPEST_API \fBF32\fP \fBDistanceSquared\fP (const \fBVector4\fP &v) const"
+.br
+.RI "Return the distance between this \fBPoint\fP and a Vector34, without calling sqrt\&. "
 .ti -1c
 .RI "TEMPEST_API void \fBAddScaledPoint\fP (const \fBPoint\fP &point, \fBF32\fP scale)"
 .br
@@ -130,6 +156,14 @@ TempestMath::Point
 .RI "TEMPEST_API \fBPoint\fP \fBoperator\-\fP (const \fBPoint\fP &point) const"
 .br
 .ti -1c
+.RI "TEMPEST_API \fBPoint\fP \fBoperator\-\fP (const \fBVector3\fP &vec) const"
+.br
+.RI "Subtract a \fBVector3\fP from this \fBPoint\fP, return result\&. "
+.ti -1c
+.RI "TEMPEST_API \fBPoint\fP \fBoperator\-\fP (const \fBVector4\fP &vec) const"
+.br
+.RI "Subtract a \fBVector4\fP from this \fBPoint\fP, return result\&. "
+.ti -1c
 .RI "TEMPEST_API \fBPoint\fP & \fBoperator\-=\fP (const \fBPoint\fP &point)"
 .br
 .ti -1c
@@ -139,19 +173,27 @@ TempestMath::Point
 .ti -1c
 .RI "\fBPoint\fP & \fBoperator++\fP (void)"
 .br
-.RI "Prefix, Adds 1 to each element of the \fBPoint\fP\&. If 2D, z is ignored\&. w is always ignored\&. "
+.RI "Prefix, Adds 1 to each element of the \fBPoint\fP\&. If 2D, z is ignored\&. w is always ignored\&. 
+.br
+ "
 .ti -1c
 .RI "\fBPoint\fP \fBoperator++\fP (int)"
 .br
-.RI "Postfix, Adds 1 to each element of the \fBPoint\fP\&. If 2D, z is ignored\&. w is always ignored\&. "
+.RI "Postfix, Adds 1 to each element of the \fBPoint\fP\&. If 2D, z is ignored\&. w is always ignored\&. 
+.br
+ "
 .ti -1c
 .RI "\fBPoint\fP & \fBoperator\-\-\fP (void)"
 .br
-.RI "Prefix, Subtracts 1 to each element of the \fBPoint\fP\&. If 2D, z is ignored\&. w is always ignored\&. "
+.RI "Prefix, Subtracts 1 to each element of the \fBPoint\fP\&. If 2D, z is ignored\&. w is always ignored\&. 
+.br
+ "
 .ti -1c
 .RI "\fBPoint\fP \fBoperator\-\-\fP (int)"
 .br
-.RI "Postfix, Subtracts 1 to each element of the \fBPoint\fP\&. If 2D, z is ignored\&. w is always ignored\&. "
+.RI "Postfix, Subtracts 1 to each element of the \fBPoint\fP\&. If 2D, z is ignored\&. w is always ignored\&. 
+.br
+ "
 .ti -1c
 .RI "TEMPEST_API \fBPoint\fP \fBoperator\-\fP (\fBF32\fP val) const"
 .br
@@ -218,21 +260,25 @@ TempestMath::Point
 .SH "Detailed Description"
 .PP 
 A custom \fBPoint\fP class writen for the Killer Engine\&. The \fBPoint\fP is a 4 element 3D \fBPoint\fP\&. The \fBPoint\fP consists of an x, y, z and w component represented by an array of F32 values\&. They are refered as x, y, z and w through through documentation\&. In code, you would have to refered to them as their index in the array (0 - 3)\&. There is an alias set up in the \fBPoint\fP, and enum, that lets you use x, y, z and w to represent the indices natively\&. This is private to the \fBPoint\fP\&. The w element is what separates a \fBVector4\fP from a \fBPoint\fP\&. A \fBPoint\fP is meant to represent a point in space\&. This can also be thought of as a displayment from the origin of the planes\&. This is expressed mathematically by always having the w component be 1, which allows the \fBPoint\fP to be transformed by a Matrix with transformation values added\&. 
+.br
+ 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "Point::Point (\fBF32\fP val)\fC [explicit]\fP"
 Single input conversion constructor\&. It will set the x, y and z components to the input\&. _2D is false\&. W is set to 0\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP F32: Input value for x, y and z\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "Point::Point (\fBF32\fP x, \fBF32\fP y)"
 Two input constructor\&. Set's x and y accordingly\&. Z is set to 0\&.0f\&. W is set to 0\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIx\fP is the value for x\&. 
 .br
@@ -243,7 +289,7 @@ Two input constructor\&. Set's x and y accordingly\&. Z is set to 0\&.0f\&. W is
 .SS "Point::Point (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)"
 Three input constructor\&. W is set to 0\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIx\fP is the value for x\&. 
 .br
@@ -256,7 +302,7 @@ Three input constructor\&. W is set to 0\&.
 .SS "Point::Point (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z, \fBF32\fP w)"
 Four input constructor\&. W variable in this constructor\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIx\fP is the value for x\&. 
 .br
@@ -271,9 +317,11 @@ Four input constructor\&. W variable in this constructor\&.
 .SS "Point::Point (const \fBPoint\fP & p)"
 Copy Constructor\&. It explicitly copies all data into new \fBPoint\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIv\fP is the \fBPoint\fP to copy\&. 
+.br
+ 
 .RE
 .PP
 
@@ -282,7 +330,7 @@ Copy Constructor\&. It explicitly copies all data into new \fBPoint\fP\&.
 .SS "void Point::AddScaledPoint (const \fBPoint\fP & point, \fBF32\fP scale)"
 Adds a \fBPoint\fP scaled by a value to this \fBPoint\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the \fBPoint\fP that will be added to this one\&. 
 .br
@@ -293,47 +341,59 @@ Adds a \fBPoint\fP scaled by a value to this \fBPoint\fP\&.
 .SS "\fBPoint\fP Point::CrossProduct (const \fBPoint\fP & point) const"
 Performs a Cross or \fBPoint\fP production in the order of this % other\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the left hand argument in the operation\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "\fBF32\fP Point::Distance (const \fBPoint\fP & p) const"
 Gives the distance from this to another \fBPoint\fP\&. Creates a \fBPoint\fP and calls Mag\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIother\fP is the \fBPoint\fP we are getting the distance to\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "\fBF32\fP Point::Dot (const \fBPoint\fP & point) const"
 Performs a Dot or Scalar product in the order of this * other\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the left hand argument in the operation\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void TempestMath::Point::Make2D (bool state = \fCtrue\fP)\fC [inline]\fP"
 Sets the \fBPoint\fP to act like a 2D \fBPoint\fP instead of a 3D \fBPoint\fP by setting _2D to true\&. This means that the z value wont be copied or used in operations\&. 
+.br
+ 
 .SS "void TempestMath::Point::Make3D (bool state = \fCfalse\fP)\fC [inline]\fP"
 Sets the \fBPoint\fP to act like a 3D \fBPoint\fP instead of a 3D \fBPoint\fP by settings _2D to true\&. This means that the z value will be copied and used in operations\&. 
+.br
+ 
 .SS "bool Point::operator!= (const \fBPoint\fP & point) const"
 False equality comparison\&. 2D is used as an early out\&. 2D is also checked before z is compared\&. Only true if all elements of this are not equal to all elements of other \fBPoint\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the \fBPoint\fP this \fBPoint\fP will be compared against\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "\fBPoint\fP Point::operator* (const \fBPoint\fP point) const"
 \fBPoint\fP multiplication\&. This is a componentwise multiplication, scaling one \fBPoint\fP by another\&. 2D check done before z is changed\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the \fBPoint\fP multiplied by the new \fBPoint\fP\&. 
 .RE
@@ -342,7 +402,7 @@ False equality comparison\&. 2D is used as an early out\&. 2D is also checked be
 .SS "\fBPoint\fP Point::operator* (\fBF32\fP val) const"
 Scalar multiplication\&. This is a componentwise multiplication, scaling the \fBPoint\fP by the scalar\&. 2D check done before z is changed\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is the scalar multiplied by the new \fBPoint\fP\&. 
 .RE
@@ -351,7 +411,7 @@ Scalar multiplication\&. This is a componentwise multiplication, scaling the \fB
 .SS "\fBPoint\fP & Point::operator*= (const \fBPoint\fP point)"
 \fBPoint\fP multiplication\&. This is a componentwise multiplication, scaling one \fBPoint\fP by another\&. 2D check done before z is changed\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the \fBPoint\fP multiplied by this \fBPoint\fP\&. 
 .RE
@@ -360,7 +420,7 @@ Scalar multiplication\&. This is a componentwise multiplication, scaling the \fB
 .SS "\fBPoint\fP & Point::operator*= (\fBF32\fP val)"
 Scalar multiplication\&. This is a componentwise multiplication, scaling the \fBPoint\fP by the scalar\&. 2D check done before z is changed\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is the scalar multiplied by this \fBPoint\fP\&. 
 .RE
@@ -369,34 +429,34 @@ Scalar multiplication\&. This is a componentwise multiplication, scaling the \fB
 .SS "\fBPoint\fP Point::operator+ (const \fBPoint\fP & point) const"
 \fBPoint\fP addtion\&. This is done componentwise\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the \fBPoint\fP to add into a new \fBPoint\fP\&. 
-.RE
-.PP
-
-.SS "\fBPoint\fP Point::operator+ (const \fBVector4\fP & vec) const"
-\fBPoint\fP addtion\&. This is done componentwise\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIvec\fP is added into a new \fBPoint\fP\&. 
 .RE
 .PP
 
 .SS "\fBPoint\fP Point::operator+ (const \fBVector3\fP & vec) const"
 \fBPoint\fP addtion\&. This is done componentwise\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIved\fP is added into a new \fBPoint\fP\&. 
+.RE
+.PP
+
+.SS "\fBPoint\fP Point::operator+ (const \fBVector4\fP & vec) const"
+\fBPoint\fP addtion\&. This is done componentwise\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvec\fP is added into a new \fBPoint\fP\&. 
 .RE
 .PP
 
 .SS "\fBPoint\fP Point::operator+ (\fBF32\fP val) const"
 Scalar addition\&. Each value is added into\&. 2D check done before z is changed\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is added into the elements of a new \fBPoint\fP\&. 
 .RE
@@ -405,7 +465,7 @@ Scalar addition\&. Each value is added into\&. 2D check done before z is changed
 .SS "\fBPoint\fP Point::operator+ (shared_ptr< \fBPoint\fP > point) const"
 Shared Pointer addition\&. A helper to allow arithmetic with shared_ptr<Point>\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the shared_ptr<Point> that is added into each element of a new \fBPoint\fP\&. 
 .RE
@@ -414,25 +474,25 @@ Shared Pointer addition\&. A helper to allow arithmetic with shared_ptr<Point>\&
 .SS "\fBPoint\fP & Point::operator+= (const \fBPoint\fP & point)"
 \fBPoint\fP addition equal\&. This is done componentwise\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the \fBPoint\fP to add into this \fBPoint\fP\&. 
-.RE
-.PP
-
-.SS "\fBPoint\fP & Point::operator+= (const \fBVector4\fP & vec)"
-\fBPoint\fP addition equal\&. This is done componentwise\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIvec\fP is the \fBVector4\fP to add into this \fBPoint\fP\&. 
 .RE
 .PP
 
 .SS "\fBPoint\fP & Point::operator+= (const \fBVector3\fP & vec)"
 \fBPoint\fP addition equal\&. This is done componentwise\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
+.RS 4
+\fIvec\fP is the \fBVector4\fP to add into this \fBPoint\fP\&. 
+.RE
+.PP
+
+.SS "\fBPoint\fP & Point::operator+= (const \fBVector4\fP & vec)"
+\fBPoint\fP addition equal\&. This is done componentwise\&. 
+.PP
+\fBParameters\fP
 .RS 4
 \fIvec\fP is the \fBVector4\fP to add into this \fBPoint\fP\&. 
 .RE
@@ -441,7 +501,7 @@ Shared Pointer addition\&. A helper to allow arithmetic with shared_ptr<Point>\&
 .SS "\fBPoint\fP & Point::operator+= (\fBF32\fP val)"
 Scalar addition\&. Each value is added into\&. 2D check done before z is changed\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is added into each element of this \fBPoint\fP\&. 
 .RE
@@ -450,7 +510,7 @@ Scalar addition\&. Each value is added into\&. 2D check done before z is changed
 .SS "\fBPoint\fP Point::operator\- (const \fBPoint\fP & point) const"
 \fBPoint\fP subtraction\&. This is done componentwise\&. 2D check done before z is changed\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the \fBPoint\fP subtracted from the new \fBPoint\fP\&. 
 .RE
@@ -459,7 +519,7 @@ Scalar addition\&. Each value is added into\&. 2D check done before z is changed
 .SS "\fBPoint\fP Point::operator\- (\fBF32\fP val) const"
 Scalar subtraction\&. 2D check is done before z is changed\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is the scalar subtracted from the new \fBPoint\fP\&. 
 .RE
@@ -468,7 +528,7 @@ Scalar subtraction\&. 2D check is done before z is changed\&.
 .SS "\fBPoint\fP & Point::operator\-= (const \fBPoint\fP & point)"
 \fBPoint\fP subtraction\&. This is done componenetwise\&. 2D check done before z is changed\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the Pointed subtractd from this \fBPoint\fP\&. 
 .RE
@@ -477,7 +537,7 @@ Scalar subtraction\&. 2D check is done before z is changed\&.
 .SS "\fBPoint\fP & Point::operator\-= (\fBF32\fP val)"
 Sclara subtraction\&. 2D check is done before z is changed\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is the scalar subtracted from each element of this \fBPoint\fP\&. 
 .RE
@@ -486,7 +546,7 @@ Sclara subtraction\&. 2D check is done before z is changed\&.
 .SS "\fBPoint\fP Point::operator/ (\fBF32\fP val) const"
 Scalar division\&. This is done componentwise\&. 2D check done before z is changed\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is the scalar the new \fBPoint\fP is divided by\&. 
 .RE
@@ -495,7 +555,7 @@ Scalar division\&. This is done componentwise\&. 2D check done before z is chang
 .SS "\fBPoint\fP & Point::operator/= (\fBF32\fP val)"
 Scalar division\&. This is done componentwise\&. 2D check done before z is changed\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is the scalar this \fBPoint\fP is divided by\&. 
 .RE
@@ -504,7 +564,7 @@ Scalar division\&. This is done componentwise\&. 2D check done before z is chang
 .SS "bool Point::operator< (const \fBPoint\fP & point) const"
 Less than comparison\&. 2D is used as an early out\&. 2D is also checked before z is compared\&. Only true if all elements of this are less than all elements of the other \fBPoint\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the \fBPoint\fP this \fBPoint\fP will be compared against\&. 
 .RE
@@ -513,7 +573,7 @@ Less than comparison\&. 2D is used as an early out\&. 2D is also checked before 
 .SS "bool Point::operator<= (const \fBPoint\fP & point) const"
 Less than or equal to comparison\&. 2D is used as an early out\&. 2D is also checked before z is compared\&. Only true if all elements of this are less than or equal to all elements of the other \fBPoint\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the \fBPoint\fP this \fBPoint\fP will be compared against\&. 
 .RE
@@ -522,7 +582,7 @@ Less than or equal to comparison\&. 2D is used as an early out\&. 2D is also che
 .SS "\fBPoint\fP & Point::operator= (const \fBPoint\fP & point)"
 Copy assignment from \fBPoint\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the \fBPoint\fP to copy into this \fBPoint\fP\&. 
 .RE
@@ -531,7 +591,7 @@ Copy assignment from \fBPoint\fP\&.
 .SS "\fBPoint\fP & Point::operator= (\fBF32\fP val)"
 Copy assignment from scalar\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is the value all elements will be set to\&. w is not affect\&. 2D check is done before z is changed\&. 
 .RE
@@ -540,16 +600,18 @@ Copy assignment from scalar\&.
 .SS "bool Point::operator== (const \fBPoint\fP & point) const"
 Equality comparison\&. 2D is used as an early out\&. 2D is also checked before z is compared\&. Only true if all elements of this are equal to all elements of other \fBPoint\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the \fBPoint\fP this \fBPoint\fP will be compared against\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "bool Point::operator> (const \fBPoint\fP & point) const"
 Greater than comparison\&. 2D is used as an early out\&. 2D is also checked before z is compared\&. Only true if all elements of this are greater than all elements of the other \fBPoint\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the \fBPoint\fP this \fBPoint\fP will be compared against\&. 
 .RE
@@ -558,34 +620,34 @@ Greater than comparison\&. 2D is used as an early out\&. 2D is also checked befo
 .SS "bool Point::operator>= (const \fBPoint\fP & point) const"
 Greater than or equal to comparison\&. 2D is used as an early out\&. 2D is also checked before z is compared\&. Only true if all elements of this are greater than or equal to all elements of the other \fBPoint\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpoint\fP is the \fBPoint\fP this \fBPoint\fP will be compared against\&. 
-.RE
-.PP
-
-.SS "const \fBF32\fP& TempestMath::Point::operator[] (int i) const\fC [inline]\fP"
-Allows you to index into the \fBPoint\fP to read the value\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIi\fP is the index you wish to read\&. 0 = x, 1 = y, 2 = z, 3 = w\&. 
 .RE
 .PP
 
 .SS "\fBF32\fP& TempestMath::Point::operator[] (int i)\fC [inline]\fP"
 Allows you to index into the \fBPoint\fP to change the value\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIi\fP is the index you wish to change\&. 0 = x, 1 = y, 2 = z, 3 = w\&. 
+.RE
+.PP
+
+.SS "const \fBF32\fP& TempestMath::Point::operator[] (int i) const\fC [inline]\fP"
+Allows you to index into the \fBPoint\fP to read the value\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIi\fP is the index you wish to read\&. 0 = x, 1 = y, 2 = z, 3 = w\&. 
 .RE
 .PP
 
 .SS "void Point::Reset (\fBF32\fP val = \fC0\&.0f\fP)"
 Sets all values to input\&. Does not check for _2D before changing z\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is the value x, y and z will get\&. w is set to 1\&.0f\&. Default value is 0\&.0f\&. 
 .RE
@@ -594,13 +656,15 @@ Sets all values to input\&. Does not check for _2D before changing z\&.
 .SS "void TempestMath::Point::Set (\fBF32\fP xVal, \fBF32\fP yVal, \fBF32\fP zVal)\fC [inline]\fP"
 A helper function to allow to quickly set x, y and z to different values\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIxVal\fP is the value for x\&. 
 .br
 \fIyVal\fP is the vlaue for y\&. 
 .br
 \fIzVal\fP is the value for z\&. 
+.br
+ 
 .RE
 .PP
 

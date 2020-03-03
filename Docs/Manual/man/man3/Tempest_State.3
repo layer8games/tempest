@@ -1,0 +1,71 @@
+.TH "Tempest::State< GameObjectType >" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tempest::State< GameObjectType >
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <State\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBState\fP (void)"
+.br
+.RI "No implementation\&. "
+.ti -1c
+.RI "virtual \fB~State\fP (void)"
+.br
+.RI "No implementation\&. "
+.ti -1c
+.RI "virtual void \fBv_Enter\fP (GameObjectType *object)=0"
+.br
+.ti -1c
+.RI "virtual void \fBv_Execute\fP (GameObjectType *object)=0"
+.br
+.ti -1c
+.RI "virtual void \fBv_Exit\fP (GameObjectType *object)=0"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class GameObjectType>
+.br
+class Tempest::State< GameObjectType >"
+A \fBState\fP is used in a \fBStateMachine\fP to define behavior at run time\&. This is based on the pattern that is well established as a good way to control what an object is going, given a certain context\&. These States should be used to express how a \fBGameObject\fP should behave, given a certain context\&. This is an abstract class\&. It is also templated\&. This is so that any type of object can have states added to it, and any of their functions can be called\&. Without this, only the functions located in the \fBGameObject\fP base could be called, and this would not do\&. This class also uses what is called an alias declaration template\&. This allowed me to declare a shared_ptr to the template \fBState\fP\&. Very useful\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class GameObjectType> virtual void \fBTempest::State\fP< GameObjectType >::v_Enter (GameObjectType * object)\fC [pure virtual]\fP"
+Called when the \fBState\fP is made active by the \fBStateMachine\fP\&. Abstract, but be implemented for use\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIobject\fP type is a defined \fBGameObject\fP which functions can and probably should be called on\&. 
+.RE
+.PP
+
+.SS "template<class GameObjectType> virtual void \fBTempest::State\fP< GameObjectType >::v_Execute (GameObjectType * object)\fC [pure virtual]\fP"
+Called when the \fBState\fP is executed during the Update loop, by the \fBStateMachine\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIobject\fP type is a defined \fBGameObject\fP which functions can and probably should be called on\&. 
+.RE
+.PP
+
+.SS "template<class GameObjectType> virtual void \fBTempest::State\fP< GameObjectType >::v_Exit (GameObjectType * object)\fC [pure virtual]\fP"
+Called when the \fBState\fP is finished\&. This could define what the next state is\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIobject\fP type is a defined \fBGameObject\fP which functions can and probably should be called on\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Tempest from the source code\&.

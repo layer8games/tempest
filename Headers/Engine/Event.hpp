@@ -13,7 +13,8 @@ namespace Tempest
 	/// Event types, so be careful! Anything goes. This was carefully thought over. In the end, I opted to let each defined object
 	/// decide what to do with the Events as they are sent to it. This allows for the flexibilty I am looking for. In the future
 	/// a data base of event types could be a very good thing. std::strcmp should be used to see if the type matches. Test carefully
-	/// since the compiler isn't going to help out as much as it probably should. I just couldn't find a better way than this. 
+	/// since the compiler isn't going to help out as much as it probably should. I just couldn't find a better way than this.
+	/// Comparison operators are overloaded, but for some reason doxygen isn't documenting them. See source file for details.
 	struct Event
 	{
 	public:

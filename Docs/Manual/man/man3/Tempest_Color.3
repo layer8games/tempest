@@ -1,4 +1,4 @@
-.TH "Tempest::Color" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "Tempest::Color" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -70,13 +70,15 @@ Tempest::Color \- A structure to hold basic colors for all Sprites to sent to OG
 .PP 
 A structure to hold basic colors for all Sprites to sent to OGL in order to render things\&. 
 
-There will be 4 values per color so that it can be sent to a vec4 in OGL before it is used to actually control the colors of anything in the shader\&. This is stored in an array for convience of passing the whole array out when the time comes\&. Where values are set, they are required to be normalized, that is between 0\&.0f and 1\&.0f\&. This is because the colors need to be represented this for OpenGL\&. Asserts are used at compile time to make sure that this is true\&. 
+There will be 4 values per color so that it can be sent to a vec4 in OGL before it is used to actually control the colors of anything in the shader\&. This is stored in an array for convience of passing the whole array out when the time comes\&. 
+.br
+ Where values are set, they are required to be normalized, that is between 0\&.0f and 1\&.0f\&. This is because the colors need to be represented this for OpenGL\&. Asserts are used at compile time to make sure that this is true\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "Color::Color (\fBF32\fP col)\fC [explicit]\fP"
 Single Value Constructor\&. Sets Red, Green and Blue to value\&. The value needs to be between 0\&.0f and 1\&.0f\&. Alpha is set to 1\&.0f by default\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIcol\fP F32: value used to set RGB values\&. 
 .RE
@@ -85,7 +87,7 @@ Single Value Constructor\&. Sets Red, Green and Blue to value\&. The value needs
 .SS "Color::Color (\fBF32\fP red, \fBF32\fP green, \fBF32\fP blue)"
 Three value Constructor\&. Sets Red, Green and Blue accordingly\&. Values need to be between 0\&.0f and 1\&.0f\&. Alpha is set to 1\&.0f by default\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIred\fP F32: value for Red\&. 
 .br
@@ -98,7 +100,7 @@ Three value Constructor\&. Sets Red, Green and Blue accordingly\&. Values need t
 .SS "Color::Color (\fBF32\fP red, \fBF32\fP green, \fBF32\fP blue, \fBF32\fP alpha)"
 Four value Constructor\&. Sets Red, Green and Blue accordingly\&. Values need to be between 0\&.0f and 1\&.0f by default\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIred\fP F32: value for Red\&. 
 .br
@@ -113,7 +115,7 @@ Four value Constructor\&. Sets Red, Green and Blue accordingly\&. Values need to
 .SS "Color::Color (const \fBColor\fP & c)"
 Copy constructor\&. Calls Color::GetRed Color::GetGreen Color::GetBlue Color::GetAlpha to set values\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIc\fP = \fBColor\fP&: color to copy 
 .RE
@@ -124,7 +126,7 @@ Copy constructor\&. Calls Color::GetRed Color::GetGreen Color::GetBlue Color::Ge
 .SS "void Tempest::Color::Set (\fBF32\fP val)\fC [inline]\fP"
 Set all values in the color to a single value\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is the value to set rgb to\&. 
 .RE
@@ -133,9 +135,11 @@ Set all values in the color to a single value\&.
 .SS "void Tempest::Color::UseAlpha (bool state)\fC [inline]\fP"
 Sets if the alpha channel should be considered for this \fBColor\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIstate\fP is the new state that will be set\&. 
+.br
+ 
 .RE
 .PP
 

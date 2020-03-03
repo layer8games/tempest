@@ -408,17 +408,17 @@
     <ClInclude Include="..\..\Headers\Engine\Camera2D.h">
       <Filter>Source Code\Engine\Camera\Camera2D</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\StateMachine.h">
-      <Filter>Source Code\Engine\StateMachine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\State.h">
-      <Filter>Source Code\Engine\State</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\EventManager.h">
       <Filter>Source Code\Engine\Managers\EventManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Event.hpp">
       <Filter>Source Code\Engine\Event\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\State.hpp">
+      <Filter>Source Code\Engine\State</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\StateMachine.hpp">
+      <Filter>Source Code\Engine\StateMachine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

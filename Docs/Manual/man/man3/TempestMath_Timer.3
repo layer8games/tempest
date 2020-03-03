@@ -1,4 +1,4 @@
-.TH "TempestMath::Timer" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "TempestMath::Timer" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -122,7 +122,11 @@ TempestMath::Timer
 .in -1c
 .SH "Detailed Description"
 .PP 
-The high precision timer for the Killer1 Engine\&. At the time of writting this the timer is windows specific, but cross platform functionality is planned in the future\&. It uses the GLFW function glfwGetTime, located in the GameWindow to get the total time that the glfw window has been open\&. It used to have a customer frequency timer, but this turned out to be too eratic, and was removed\&. 
+The high precision timer for the Killer1 Engine\&. At the time of writting this the timer is windows specific, but cross platform functionality is planned in the future\&. 
+.br
+ It uses the GLFW function glfwGetTime, located in the GameWindow to get the total time that the glfw window has been open\&. It used to have a customer frequency timer, but this turned out to be too eratic, and was removed\&. 
+.br
+ 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "Timer::Timer (void)\fC [protected]\fP"
@@ -133,10 +137,12 @@ Default Constructor, sets _deltaTime and _totalTime to 0, _timeScale to 1, _past
 Wrapper around QueryPerformanceFrequency\&. This will check the processor for how many cycles have passed, saving it into the time keeping variables of the instance\&. 
 .SS "shared_ptr< \fBTimer\fP > Timer::Instance (void)\fC [static]\fP"
 Singleton pattern function\&. Returns a pointer to the globabl version of the timer\&. This is the only way to use the timer, ensuring that there will only ever be 1 version of it running\&. 
+.br
+ 
 .SS "void TempestMath::Timer::SetClamp (bool state)\fC [inline]\fP"
 Sets the \fBTimer\fP to be clamped\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIstate\fP sets the clamp flag\&. 
 .RE
@@ -145,7 +151,7 @@ Sets the \fBTimer\fP to be clamped\&.
 .SS "void TempestMath::Timer::SetPaused (bool paused)\fC [inline]\fP"
 Sets the state of the _paused flag\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpaused\fP is the state to set\&. 
 .RE
@@ -154,7 +160,7 @@ Sets the state of the _paused flag\&.
 .SS "void TempestMath::Timer::SetTimeScale (\fBF32\fP scale)\fC [inline]\fP"
 Sets the _timeScale variable\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIis\fP the new value for _timeScale\&. 
 .RE

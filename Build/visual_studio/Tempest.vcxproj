@@ -271,11 +271,11 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\State.h">
+    <ClInclude Include="..\..\Headers\Engine\State.hpp">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\StateMachine.h">
+    <ClInclude Include="..\..\Headers\Engine\StateMachine.hpp">
       <SubType>
       </SubType>
     </ClInclude>

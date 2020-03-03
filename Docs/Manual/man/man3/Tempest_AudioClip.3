@@ -1,4 +1,4 @@
-.TH "Tempest::AudioClip" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "Tempest::AudioClip" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -84,18 +84,20 @@ A wrapper around an OpenAL audio buffer\&. This stores a clip of audio that, aft
 .SS "\fBU32\fP AudioClip::_ConvertToInt (char * buffer, int len)\fC [private]\fP"
 Converts a bit buffer of a set length into its integar equivalent\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIbuffer\fP are the bits to convert\&. 
 .br
 \fIlen\fP is the size of the buffer\&. This must match what you are expecting! 
+.br
+ 
 .RE
 .PP
 
 .SS "void AudioClip::_GetIndexRange (char * source, char * dest, int offset, int len)\fC [private]\fP"
 An ad hoc solution to array slicing\&. It returns into the destination the elements of the source array from an offset by a set amount\&. For example, if source is an array with 100 elements, and offset is 10, with len being 10, then dest will be source elements 10 through 20\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIsource\fP is the original array we are slicing into\&. 
 .br
@@ -112,7 +114,7 @@ Used to test how the bits of an int are arranged in the internal format of the m
 .SS "void AudioClip::LoadWAV2 (string filename)"
 Reads a \&.wav file from the hard drive\&. Parses over the file extracting needed information from the headers, then saves the audio file in a buffer that is registered with OpenAL\&. This is used later to actually play back the file\&. This is where all the magic happens\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIfilename\fP is the path to the file to be read\&. Should live in \&.\&./Assets/Audio by convention\&. 
 .RE

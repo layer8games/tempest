@@ -1,0 +1,78 @@
+.TH "Tempest::Event" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tempest::Event
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Event\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEvent\fP (void)"
+.br
+.RI "No implemenation change\&. "
+.ti -1c
+.RI "\fBEvent\fP (string type)"
+.br
+.RI "Set just the type of the \fBEvent\fP\&. "
+.ti -1c
+.RI "\fBEvent\fP (string type, \fBU32\fP sender, \fBU32\fP reciever, \fBF64\fP dispatchTime, std::any data)"
+.br
+.RI "Fully construct an \fBEvent\fP inline\&. "
+.ti -1c
+.RI "\fB~Event\fP (void)"
+.br
+.RI "Not implemented\&. "
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBEvent\fP &event) const"
+.br
+.RI "Overloaded so that the set can order the events correctly\&. Only matches on DispatchTime\&. "
+.ti -1c
+.RI "bool \fBoperator>\fP (const \fBEvent\fP &event) const"
+.br
+.RI "Overloaded so that the set can order the events correctly\&. Only matches on DispatchTime\&. "
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBEvent\fP &event) const"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBU32\fP \fBSenderID\fP"
+.br
+.RI "ID of the sender of the \fBEvent\fP\&. "
+.ti -1c
+.RI "\fBU32\fP \fBReceiverID\fP"
+.br
+.RI "ID of the receiver of the \fBEvent\fP\&. "
+.ti -1c
+.RI "\fBF64\fP \fBDispatchTime\fP"
+.br
+.RI "The total or current time when the \fBEvent\fP should be sent\&. Should be in the future\&. "
+.ti -1c
+.RI "string \fBType\fP"
+.br
+.RI "\fBEvent\fP Type\&. Used to let the object know what to do with the event\&. "
+.ti -1c
+.RI "std::any \fBData\fP"
+.br
+.RI "Random data to be sent with the \fBEvent\fP\&. The object must use std::any_cast to use this, so it has to know the type to expect\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Message or Command that can be sent to a \fBGameObject\fP by \fBEvent\fP Type or by ID\&. In order for an \fBEvent\fP to be dispatched to an object, the object must be registered with the \fBEventManager\fP\&. Type is defined as a string\&. There is no data base of valid \fBEvent\fP types, so be careful! Anything goes\&. This was carefully thought over\&. In the end, I opted to let each defined object decide what to do with the Events as they are sent to it\&. This allows for the flexibilty I am looking for\&. In the future a data base of event types could be a very good thing\&. std::strcmp should be used to see if the type matches\&. Test carefully since the compiler isn't going to help out as much as it probably should\&. I just couldn't find a better way than this\&. Comparison operators are overloaded, but for some reason doxygen isn't documenting them\&. See source file for details\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Tempest::Event::operator== (const \fBEvent\fP & event) const\fC [inline]\fP"
+Overloaded so that the set can order the events correctly\&. Matches on everything but Data\&. This means that if the DispatchTime, SenderID, ReceiverID and Type are all the same, it will not be added to the event queue, since it will be seen as a duplicate\&. 
+.br
+ 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Tempest from the source code\&.

@@ -1,4 +1,4 @@
-.TH "Tempest::Controller" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "Tempest::Controller" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -27,11 +27,11 @@ Tempest::Controller \- Two enums are defined\&.
 .RI "TEMPEST_API void \fBKeyUp\fP (Keys k)"
 .br
 .ti -1c
-.RI "TEMPEST_API const \fBTM::Point\fP \fBGetMouseCoord\fP (void)"
+.RI "const TEMPEST_API \fBTM::Point\fP \fBGetMouseCoord\fP (void)"
 .br
 .RI "Returns the raw mouse coordinates from the \fBGameWindow\fP\&. This is with the origin in the top left corner of the screen\&. "
 .ti -1c
-.RI "TEMPEST_API const \fBTM::Point\fP \fBGetMouseCoordInScreen\fP (void)"
+.RI "const TEMPEST_API \fBTM::Point\fP \fBGetMouseCoordInScreen\fP (void)"
 .br
 .RI "Returns the mouse coordinates in screen space, with the origin in the center of the screen\&. Wrapper around \fBGameWindow\fP\&. "
 .ti -1c
@@ -106,22 +106,28 @@ Tempest::Controller \- Two enums are defined\&.
 .PP 
 Two enums are defined\&. 
 
-Human input device controller\&. Abstract Keyboard input is received through a system all found in the *Program class\&. For example, in \fBGameWindow\fP, when windows gets a key input message for a key down even, \fBKeyDown(Keys k)\fP is called\&.KeyStates represents all the possible states that a key can have\&. KEY_RELEASED means that the key is not pressed\&. KEY_UP means that the key was released this frame\&. Keys represents all the supported keys\&. Update handles the logic of changing they key states, with two KeyState arrays holding the current key states, that is the key states of this frame and the past key states, that is the key states from last frame\&. 
+Human input device controller\&. Abstract Keyboard input is received through a system all found in the *Program class\&. For example, in \fBGameWindow\fP, when windows gets a key input message for a key down even, \fBKeyDown(Keys k)\fP is called\&. KeyStates represents all the possible states that a key can have\&. KEY_RELEASED means that the key is not pressed\&. KEY_UP means that the key was released this frame\&. 
+.br
+ Keys represents all the supported keys\&. Update handles the logic of changing they key states, with two KeyState arrays holding the current key states, that is the key states of this frame and the past key states, that is the key states from last frame\&. 
+.br
+ 
 .SH "Member Function Documentation"
 .PP 
 .SS "bool Controller::GetKeyDown (Keys k)"
 Returns true if k has been pressed down this frame\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIk\fP Keys: Desired keycode\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "bool Controller::GetKeyHeld (Keys k)"
 Returns true if k has been held down longer than 1 frame\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIk\fP Keys: Desired keycode 
 .RE
@@ -130,29 +136,35 @@ Returns true if k has been held down longer than 1 frame\&.
 .SS "bool Controller::GetKeyReleased (Keys k)"
 Returns true if k is not being pressed during this frame 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIk\fP Keys: Desired keycode 
 .RE
 .PP
 
 .SS "bool Controller::GetKeyUp (Keys k)"
-Returns true if k has been released this frame\&.  k Keys: Desired keycode 
+Returns true if k has been released this frame\&. \\params k Keys: Desired keycode 
+.br
+ 
 .SS "void Controller::KeyDown (Keys k)"
 Used by \fBGameWindow\fP to set when a key is pressed down, based on system signals\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIk\fP Keys: Keycode for key that has been pressed down\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Controller::KeyUp (Keys k)"
 Used by \fBGameWindow\fP to set when a key is no longer detected to be held down\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIk\fP Keys: Keycode for key that has been released\&. 
+.br
+ 
 .RE
 .PP
 

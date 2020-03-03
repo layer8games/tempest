@@ -1,4 +1,4 @@
-.TH "Tempest::AudioManager" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "Tempest::AudioManager" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -121,6 +121,8 @@ Global manager to hold cached AudioSources and AudioClips\&. It can start and st
 .PP 
 .SS "AudioManager::~AudioManager (void)"
 Sets the \fBAudioListener\fP pointer to nullptr, clears out all AudioClips and AudioSources, and deletes the OpenAL context and device\&. 
+.br
+ 
 .SS "AudioManager::AudioManager (void)\fC [protected]\fP"
 Created the OpenAL device handle and context handle\&. Also contains commented out code that would return a list of available devices, if it is ever desired to allow a user to select which device they would like the audio to play on\&. 
 .SH "Member Function Documentation"
@@ -128,7 +130,7 @@ Created the OpenAL device handle and context handle\&. Also contains commented o
 .SS "void AudioManager::AddClip (\fBU32\fP id, shared_ptr< \fBAudioClip\fP > clip)"
 Registers an \fBAudioClip\fP with an ID to the manager\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIid\fP is the unique ID for this clip\&. 
 .br
@@ -139,7 +141,7 @@ Registers an \fBAudioClip\fP with an ID to the manager\&.
 .SS "void AudioManager::AddClipToSource (\fBU32\fP clipID, \fBU32\fP sourceID)"
 Assigns a registered \fBAudioClip\fP to a registered \fBAudioSource\fP in the manager\&. This is a helper function for better abstract operations\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIclipID\fP is the ID of the clip that is assigned\&. 
 .br
@@ -150,7 +152,7 @@ Assigns a registered \fBAudioClip\fP to a registered \fBAudioSource\fP in the ma
 .SS "void AudioManager::AddSource (\fBU32\fP id, shared_ptr< \fBAudioSource\fP > source)"
 Registers an \fBAudioSource\fP with ID to the manager\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIid\fP is the unique ID for this source\&. 
 .br
@@ -161,7 +163,7 @@ Registers an \fBAudioSource\fP with ID to the manager\&.
 .SS "string AudioManager::GetALCerror (ALCenum error)"
 Helper function that returns a string version of an OpenAL error\&. Used any time that you need to convert and OpenAL error code into a string\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIerror\fP is the OpenAL error code returned by alGetError()\&. 
 .RE
@@ -170,7 +172,7 @@ Helper function that returns a string version of an OpenAL error\&. Used any tim
 .SS "p_AudioClip AudioManager::GetClip (\fBU32\fP id)"
 Returns the registered \fBAudioClip\fP with the given ID\&. If no clip is found with the ID, a nullptr is returned\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIid\fP is the unique ID for the desired clip\&. 
 .RE
@@ -181,7 +183,7 @@ Returns a pointer to the current listener\&. Note, this is NOT const\&. This was
 .SS "p_AudioSource AudioManager::GetSource (\fBU32\fP id)"
 Returns the registered \fBAudioSource\fP wit h the given ID\&. If no source is found with the ID, a nullptr is returned\&. \\ 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIid\fP is the unique ID for the desired source\&. 
 .RE
@@ -190,7 +192,7 @@ Returns the registered \fBAudioSource\fP wit h the given ID\&. If no source is f
 .SS "void AudioManager::LoadClip (\fBU32\fP id, string filepath)"
 Experimental function\&. It needs to be tested if this created memory issues\&. It created a new pointer to an \fBAudioClip\fP, and calls AudioClip::LoadWAV, then registers this with the manager\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIid\fP is the unique ID used to register the clip after creation\&. 
 .br
@@ -201,16 +203,18 @@ Experimental function\&. It needs to be tested if this created memory issues\&. 
 .SS "void AudioManager::LoadSource (\fBU32\fP id)"
 Experimental function\&. This created a new \fBAudioSource\fP pointer that is then registered with the manager for later use\&. It needs to be test if this creates any memory issues\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIid\fP is the unique ID used to register the new source 
+.br
+ 
 .RE
 .PP
 
 .SS "void AudioManager::PauseSource (\fBU32\fP id)"
 Calls \fBAudioSource::Pause\fP on the source with the given ID\&. No check is done in the manager to make sure this works, it relies on the source to do any checking\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIid\fP is the unique ID of the source to Pause\&. 
 .RE
@@ -219,7 +223,7 @@ Calls \fBAudioSource::Pause\fP on the source with the given ID\&. No check is do
 .SS "void AudioManager::PlaySource (\fBU32\fP id)"
 Calls \fBAudioSource::Play\fP on the source with the given ID\&. No check is done in the manager to make sure this works, it relies on the source to do any checking\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIid\fP is the unique ID of the source to play\&. 
 .RE
@@ -228,16 +232,18 @@ Calls \fBAudioSource::Play\fP on the source with the given ID\&. No check is don
 .SS "void AudioManager::RemoveClip (\fBU32\fP id)"
 Unregisters an \fBAudioClip\fP from the manager\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIid\fP is the unique ID for the clip that is to be unregistered\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void AudioManager::RemoveSource (\fBU32\fP id)"
 Unregisters an \fBAudioSource\fP from the manager\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIid\fP is the unique ID of the source to unregister from the manager\&. 
 .RE
@@ -246,7 +252,7 @@ Unregisters an \fBAudioSource\fP from the manager\&.
 .SS "void AudioManager::RestartSource (\fBU32\fP id)"
 Calls \fBAudioSource::Restart\fP on the source with the given ID\&. No check is done in the manager to make sure this works, it relies on the source to do any checking\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIid\fP is the unique ID of the source to Restart\&. 
 .RE
@@ -255,7 +261,7 @@ Calls \fBAudioSource::Restart\fP on the source with the given ID\&. No check is 
 .SS "void Tempest::AudioManager::SetListener (shared_ptr< \fBAudioListener\fP > listener)\fC [inline]\fP"
 Sets the listener to the given pointer\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIlistener\fP is the new pointer that will be used\&. 
 .RE
@@ -264,7 +270,7 @@ Sets the listener to the given pointer\&.
 .SS "void AudioManager::StopSource (\fBU32\fP id)"
 Calls \fBAudioSource::Stop\fP on the source with the given ID\&. No check is done in the manager to make sure this works, it relies on the source to do any checking\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIid\fP is the unique ID of the source to Stop\&. 
 .RE

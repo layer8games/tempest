@@ -1,4 +1,4 @@
-.TH "Tempest::Menu" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "Tempest::Menu" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -173,6 +173,8 @@ A basic menu class to help create in game menus\&. These are similar to Doom sty
 It could use an active state, so that it can be toggled on and off\&.
 .IP "2." 4
 AddItem could use a parameter to allow to set a new position for an item\&. For example, add a new item to the top or middle of the list instead of just the end\&. 
+.br
+ 
 .PP
 
 .SH "Member Function Documentation"
@@ -180,20 +182,26 @@ AddItem could use a parameter to allow to set a new position for an item\&. For 
 .SS "void Menu::AddItem (\fBMenuItem\fP item)"
 Adds a new \fBMenuItem\fP to the bottom of the list\&. If no MenuItems are present yet, it sets the first item below the title, if one is present\&. It also set up the selector position, if it hasn't been set yet\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIitem\fP is the new item to add to the list\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Menu::MoveSelectorDown (void)"
 Moves the selector down one position on the list\&. If it reaches the bottom, it will either stop or wrap, based on the configuration\&. 
+.br
+ 
 .SS "void Menu::MoveSelectorUp (void)"
 Moves the selector up one position on the list\&. If it reaches the top, it will either stop, or wrap, based on the configuration\&. 
+.br
+ 
 .SS "void Menu::RemoveItem (\fBU32\fP index)"
 Removes item given the position from the list\&. The rest of the list is rearranged to suppor this\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIindex\fP is the item to remove\&. These are 0 indexed\&. 
 .RE
@@ -202,7 +210,7 @@ Removes item given the position from the list\&. The rest of the list is rearran
 .SS "void Menu::SetActive (bool state)"
 Sets the \fBMenu\fP and all its items to the given state, true = active, false = not active 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIstate\fP is the new state you wish to set\&. 
 .RE
@@ -211,85 +219,101 @@ Sets the \fBMenu\fP and all its items to the given state, true = active, false =
 .SS "void Tempest::Menu::SetItemOffset (const \fBTM::Point\fP & offset)\fC [inline]\fP"
 Sets the offset of each item from the one above it\&. Calls \fBMenu::_UpdateItemPositions\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIoffset\fP is the offset\&. This is added to the \fBMenuItem::pos\fP, so it should be negative to go left or down, and positive to go right or up\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Tempest::Menu::SetItemOffset (\fBF32\fP xPos, \fBF32\fP yPos)\fC [inline]\fP"
 Sets the offset of each item from the one before it\&. Calls \fBMenu::_UpdateItemPositions\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIxPos\fP is the offset\&. Should be negative to go left or positive to go right\&. 
 .br
 \fIyPos\fP is the offset\&. Should be negative to down or positive to go up\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Tempest::Menu::SetPosition (const \fBTM::Point\fP & pos)\fC [inline]\fP"
 Updates the position of the \fBMenu\fP, the title and all the items\&. Calls \fBMenu::_UpdateItemPositions\fP 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpos\fP is the new position of the whole \fBMenu\fP\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Tempest::Menu::SetPosition (\fBF32\fP xPos, \fBF32\fP yPos)\fC [inline]\fP"
 Updates the position of the \fBMenu\fP, the title and all the items\&. Calls \fBMenu::_UpdateItemPositions\fP 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIxPos\fP is the x coodinate position\&. 
 .br
 \fIyPos\fP is the y coodinate position\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Tempest::Menu::SetSelector (shared_ptr< \fBGameObject\fP > obj)\fC [inline]\fP"
 Sets the selector for the \fBMenu\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIobj\fP is a pointer to the \fBGameObject\fP type that will act as the selector\&. If itemList is not empty, it will set the selector to the first position\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Tempest::Menu::SetSelectorOffset (const \fBTM::Point\fP & offset)\fC [inline]\fP"
 Sets the offset for the selector from the item it is next to\&. Calls \fBMenu::_UpdateItemPositions\fP 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIoffset\fP is the offset\&. Should be positive to move it right or up, and negative to move it left or down\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Tempest::Menu::SetSelectorOffset (\fBF32\fP xPos, \fBF32\fP yPos)\fC [inline]\fP"
 Sets the offset for the selector from the item it is next to\&. Calls \fBMenu::_UpdateItemPositions\fP 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIxPos\fP is the offset\&. Should be negative to go left or positive to go right\&. 
 .br
 \fIyPos\fP is the offset\&. Should be negative to down or positive to go up\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Menu::SetSelectorPosition (\fBU32\fP index)"
 Manually sets the selector to a given position in the list\&. If the index is out of range, nothing happens\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIindex\fP is the 0 indexed position to set the selector to\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Tempest::Menu::SetTitle (const \fBText\fP & text)\fC [inline]\fP"
 Sets the title for the menu\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fItext\fP is the title\&. It will be converted to a shared_ptr<Text>\&. 
 .RE
@@ -298,7 +322,7 @@ Sets the title for the menu\&.
 .SS "void Tempest::Menu::SetTitle (shared_ptr< \fBText\fP > text)\fC [inline]\fP"
 Sets the title for the menu\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fItext\fP is the title\&. 
 .RE
@@ -307,29 +331,35 @@ Sets the title for the menu\&.
 .SS "void Tempest::Menu::SetTitleOffset (const \fBTM::Point\fP & pos)\fC [inline]\fP"
 Sets the offset for the first item in the list from the title\&. Calls \fBMenu::_UpdateItemPositions\fP 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpos\fP is the offset from the title\&. Should be positive to move it up or right, negative for down or left\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Tempest::Menu::SetTitleOffset (\fBF32\fP xPos, \fBF32\fP yPos)\fC [inline]\fP"
 Sets the offset for the first item in the list from the title\&. Calls \fBMenu::_UpdateItemPositions\fP 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIxPos\fP is the offset\&. Should be negative to go left or positive to go right\&. 
 .br
 \fIyPos\fP is the offset\&. Should be negative to down or positive to go up\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Tempest::Menu::SetWrap (bool state)\fC [inline]\fP"
 Sets if the menu selector should wrap when it reaches the top or bottom\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIstate\fP configures the options\&. True for wrapping, false for no wrapping\&. 
+.br
+ 
 .RE
 .PP
 

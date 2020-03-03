@@ -1,0 +1,251 @@
+.TH "Tempest::Mesh" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tempest::Mesh
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "TEMPEST_API \fBMesh\fP (const \fBMesh\fP &mesh)"
+.br
+.ti -1c
+.RI "virtual TEMPEST_API void \fBv_Render\fP (void)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBDefaultRender\fP (void)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBInitOpenGLData\fP (void)"
+.br
+.ti -1c
+.RI "TEMPEST_API bool \fBLoadOBJ\fP (string filepath)"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBLoadMesh\fP (string filepath)"
+.br
+.ti -1c
+.RI "GLuint \fBGetVAO\fP (void) const"
+.br
+.RI "Return the currently used \fBVertex\fP Array Object for the \fBGameObject\fP\&. Used for rendering by OpenGL 
+.br
+ "
+.ti -1c
+.RI "void \fBBindVAO\fP (bool state=true)"
+.br
+.ti -1c
+.RI "void \fBBindVBO\fP (BufferData buffer)"
+.br
+.ti -1c
+.RI "\fBU32\fP \fBGetNumVertices\fP (void)"
+.br
+.RI "Return the number of vertices this GameObjects mesh has\&. 
+.br
+ "
+.ti -1c
+.RI "void \fBAddVertex\fP (const \fBVertex\fP &vert)"
+.br
+.ti -1c
+.RI "void \fBSetVertices\fP (std::vector< \fBVertex\fP > vertices)"
+.br
+.ti -1c
+.RI "std::vector< \fBVertex\fP > \fBGetVertices\fP (void) const"
+.br
+.RI "Return the mesh of vertices the \fBGameObject\fP has\&. 
+.br
+ "
+.ti -1c
+.RI "void \fBAddIndex\fP (\fBU32\fP index)"
+.br
+.ti -1c
+.RI "void \fBSetIndices\fP (std::vector< \fBU32\fP > indices)"
+.br
+.ti -1c
+.RI "std::vector< \fBU32\fP > \fBGetIndices\fP (void) const"
+.br
+.RI "Return the array of indices used for the \fBGameObject\fP\&. 
+.br
+ "
+.ti -1c
+.RI "std::vector< \fBF32\fP > \fBGetUVList\fP (void) const"
+.br
+.RI "Return the UV index list saved for this object\&. 
+.br
+ "
+.ti -1c
+.RI "void \fBSetUVList\fP (std::vector< \fBF32\fP > list)"
+.br
+.ti -1c
+.RI "void \fBAddUV\fP (\fBF32\fP val)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "std::vector< \fBU32\fP > \fB_SplitU32\fP (string text, char delim) const"
+.br
+.ti -1c
+.RI "std::vector< \fBF32\fP > \fB_SplitF32\fP (string text, char delim) const"
+.br
+.ti -1c
+.RI "std::vector< string > \fB_SplitString\fP (string text, char delim) const"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< \fBVertex\fP > \fB_vertices\fP"
+.br
+.RI "Array of vertices used for rendering\&. This is the mesh of the object\&. "
+.ti -1c
+.RI "std::vector< \fBU32\fP > \fB_indices\fP"
+.br
+.RI "Rendering optimization\&. An array of indices used to help render the mesh without duplicated vertices\&. "
+.ti -1c
+.RI "std::vector< \fBF32\fP > \fB_uvList\fP"
+.br
+.RI "Array of UV pair values, used to render a texture on the mesh\&. "
+.ti -1c
+.RI "GLuint \fB_vao\fP"
+.br
+.RI "\fBVertex\fP Array Object, used in OpenGL\&. See OGL documentation for details\&. "
+.ti -1c
+.RI "GLuint \fB_vbo\fP [NUM_VBO]"
+.br
+.RI "\fBVertex\fP Buffer Object, used in OpenGL\&. See OGL documentation for details\&. "
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "std::vector< \fBF32\fP > Mesh::_SplitF32 (string text, char delim) const\fC [private]\fP"
+Helper function to split a list of numbers apart\&. This is intended to be used with a list of numbers separated by a standard character, for instance, a list of space or comma separated numbers\&. The numbers are read as strings and converted into F32 types\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItext\fP is string to break apart\&. It should be numbers separated by a common character\&. 
+.br
+\fIdelim\fP is the character that separates each number in list\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "std::vector< string > Mesh::_SplitString (string text, char delim) const\fC [private]\fP"
+Helper function to split a list of numbers apart\&. This is intended to be used with a list of characters separated by a standard character, for instance, a list of space or comma separated numbers\&. The numbers are read as strings and converted into string types\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItext\fP is string to break apart\&. It should be characters separated by a common character\&. 
+.br
+\fIdelim\fP is the character that separates each number in list\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "std::vector< \fBU32\fP > Mesh::_SplitU32 (string text, char delim) const\fC [private]\fP"
+Helper function to split a list of numbers apart\&. This is intended to be used with a list of numbers separated by a standard character, for instance, a list of space or comma separated numbers\&. The numbers are read as strings and converted into U32 types\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItext\fP is string to break apart\&. It should be numbers separated by a common character\&. 
+.br
+\fIdelim\fP is the character that separates each number in list\&. 
+.RE
+.PP
+
+.SS "void Tempest::Mesh::AddIndex (\fBU32\fP index)\fC [inline]\fP"
+Manually add a single index for the mesh, used for rendering 
+.PP
+\fBParameters\fP
+.RS 4
+\fIindex\fP is added\&. 
+.RE
+.PP
+
+.SS "void Tempest::Mesh::AddUV (\fBF32\fP val)\fC [inline]\fP"
+Manually add a single UV to the UV list\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIval\fP is the single value to be added\&. 
+.RE
+.PP
+
+.SS "void Tempest::Mesh::AddVertex (const \fBVertex\fP & vert)\fC [inline]\fP"
+Manually add a single vertex to the GameObjects mesh\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvert\fP is the vertice to manually add\&. 
+.RE
+.PP
+
+.SS "void Tempest::Mesh::BindVAO (bool state = \fCtrue\fP)\fC [inline]\fP"
+The \fBVertex\fP Array Object needs to be bound before OpenGL can render this object\&. This is what sets the vertices for this object on the video card\&. This is part of the magic\&. 
+.SS "void Mesh::BindVBO (BufferData buffer)"
+Bind the \fBVertex\fP Buffer Object\&. This is needed before the vertices can be added to the buffer\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIbuffer\fP contains the data to be sent into the buffer\&. 
+.br
+\fIstate\fP is an optional value\&. This is currently unused\&. 
+.RE
+.PP
+
+.SS "void Mesh::LoadMesh (string filepath)"
+Loads model from a \&.dae file\&. This does not work at all\&. I have considered removing it completely\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilepath\fP is the file to be loaded\&. 
+.RE
+.PP
+
+.SS "bool Mesh::LoadOBJ (string filepath)"
+Loads a model from a wavefront object (\&.obj file)\&. I would call this a hacked version of file processing, but it does work\&. 
+.br
+ 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilepath\fP is the path to the model to be loaded\&. 
+.RE
+.PP
+
+.SS "void Tempest::Mesh::SetIndices (std::vector< \fBU32\fP > indices)\fC [inline]\fP"
+Set indices to be used in rendering\&. These are used as an optimization in rendering\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIindices\fP is an array of indices to be added\&. 
+.RE
+.PP
+
+.SS "void Tempest::Mesh::SetUVList (std::vector< \fBF32\fP > list)\fC [inline]\fP"
+Change the UV index list for this object\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIlist\fP is an array of UV's or this objects texture rendering\&. 
+.RE
+.PP
+
+.SS "void Tempest::Mesh::SetVertices (std::vector< \fBVertex\fP > vertices)\fC [inline]\fP"
+Set the vertices previously created for the \fBGameObject\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvertices\fP is an array of vertices that will act as the mesh for the \fBGameObject\fP\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Tempest from the source code\&.

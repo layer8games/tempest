@@ -1,4 +1,4 @@
-.TH "Tempest::Text" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "Tempest::Text" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -39,9 +39,6 @@ Tempest::Text
 .br
 .ti -1c
 .RI "TEMPEST_API void \fBSetTextColor\fP (const \fBColor\fP &col)"
-.br
-.ti -1c
-.RI "TEMPEST_API void \fBSetUniforms\fP (string name, const \fBTM::Matrix4\fP &Matrix4)"
 .br
 .ti -1c
 .RI "string \fBGetText\fP (void)"
@@ -125,7 +122,9 @@ Tempest::Text
 .ti -1c
 .RI "void \fB_CreateCharacterList\fP (void)"
 .br
-.RI "Creates or Recreates the character list, forcing it to match with the text\&. "
+.RI "Creates or Recreates the character list, forcing it to match with the text\&. 
+.br
+ "
 .in -1c
 .SS "Private Attributes"
 
@@ -166,32 +165,38 @@ Tempest::Text
 .SH "Detailed Description"
 .PP 
 This class will hold all the data for a string of text that will be drawn to the screen\&. It will use the font class and the texture manager to keep track of all the character data and the texture for the font\&. There are a lot of things that can be done to optimize this class and these ideas\&. It probably needs a second pass very badly\&. For example, \fBAddText()\fP creates as many \fBGlyph\fP characters as there are characters in the string that is passed in\&. This means that there is no shared re-use of the \fBGlyph\fP\&. This is because each one needs a unique position\&. There could be some clever wasy to get around this using instancing, but this will require more work, and I wanted to just get the class working\&. 
+.br
+ 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "Text::Text (string text)\fC [explicit]\fP"
 String to \fBText\fP conversion function\&. Calls \fBText::AddText\fP to set up the class\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fItext\fP is the string that will be used to create the \fBText\fP\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "Text::Text (string text, p_Font font)"
 Creates a \fBText\fP with Glyphs for each character in a string with a given \fBFont\fP\&. Calls \fBText::AddText\fP to set up everything\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fItext\fP are the desires characters\&. 
 .br
 \fIfont\fP is the given \fBFont\fP\&. Should come from the \fBFontManager\fP\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "Text::Text (string text, \fBFont\fP & font)"
 Creates a \fBText\fP with Glyphs for each character in a string with a given \fBFont\fP\&. Calls \fBText::AddText\fP to set up everything\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fItext\fP are the desires characters\&. 
 .br
@@ -204,27 +209,48 @@ Creates a \fBText\fP with Glyphs for each character in a string with a given \fB
 .SS "void Text::_UpdateGlyphData (\fBU32\fP index)\fC [private]\fP"
 Updates a \fBGlyph\fP\&. This sets the data, the sprite, color, scale and other values based on the font\&. If the \fBGlyph\fP has been added to the characterList already, it will update and edit the existing \fBGlyph\fP, other wise a new one will be created and added to the list\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIindex\fP is the character number in the _text\&. This should coorespond the index in _characterList\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Text::AddText (string text)"
 This does not so much add additional text to the \fBText\fP as set's what string of Glpyhs will be set\&. This does incure the cost of creating all of the \fBGlyph\fP characters in the \fBText\fP\&. This creates a unique \fBGlyph\fP for each character in the \fBText\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fItext\fP is the string that will be turned into Glyphs\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "string Tempest::Text::GetText (void)\fC [inline]\fP"
+
+.PP
+Returns a string version of the current text represented by Glyphs (if the Glyphs have been generated with a font)\&. A wrapper function that calls GameObject::SetUniform on each \fBGlyph\fP using the input\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP is the name of the uniform that will be set\&. 
+.br
+\fIMatrix4\fP is the transformation Matrix4 to be used by each \fBGlyph\fP\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "\fBF32\fP Tempest::Text::GetWidth (void)\fC [inline]\fP"
 Returns the total width of all the Glyphs including the xAdvance values\&. This means that this width represents how much screen space the \fBText\fP is going to take up on the x axis\&. 
+.br
+ 
 .SS "void Tempest::Text::SetActive (bool state)\fC [inline]\fP"
 Sets the active state of each \fBGlyph\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIstate\fP is the new state each \fBGlyph\fP will get\&. 
 .RE
@@ -233,38 +259,44 @@ Sets the active state of each \fBGlyph\fP\&.
 .SS "void Tempest::Text::SetColor (const \fBColor\fP & c)\fC [inline]\fP"
 Sets the \fBColor\fP for the \fBText\fP and each \fBGlyph\fP that has been added\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIc\fP is the \fBColor\fP that will be used\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Tempest::Text::SetColor (\fBF32\fP r, \fBF32\fP g, \fBF32\fP b)\fC [inline]\fP"
 Sets the \fBColor\fP for the \fBText\fP and each \fBGlyph\fP that has been added\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIr\fP is the Red value that will be used\&. 
 .br
 \fIg\fP is the Green value that will be used\&. 
 .br
 \fIb\fP is the Blue value that will be used\&. 
-.RE
-.PP
-
-.SS "void Text::SetFont (p_Font font)"
-Sets the font for the \fBText\fP and all of the Glyphs, if there are any\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIfont\fP is the new \fBFont\fP that will be saved in this \fBText\fP\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void Tempest::Text::SetFont (\fBFont\fP & font)\fC [inline]\fP"
 Sets the font for the \fBText\fP and all of the Glyphs, if there are any\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
+.RS 4
+\fIfont\fP is the new \fBFont\fP that will be saved in this \fBText\fP\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "void Text::SetFont (p_Font font)"
+Sets the font for the \fBText\fP and all of the Glyphs, if there are any\&. 
+.PP
+\fBParameters\fP
 .RS 4
 \fIfont\fP is the new \fBFont\fP that will be saved in this \fBText\fP\&. 
 .RE
@@ -273,7 +305,7 @@ Sets the font for the \fBText\fP and all of the Glyphs, if there are any\&.
 .SS "void Tempest::Text::SetPosition (const \fBTM::Point\fP & pos)\fC [inline]\fP"
 Updates the position of each \fBGlyph\fP in the \fBText\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIpos\fP is the new position that will be used to start the update of each \fBGlyph\fP\&. 
 .RE
@@ -282,7 +314,7 @@ Updates the position of each \fBGlyph\fP in the \fBText\fP\&.
 .SS "void Tempest::Text::SetPosition (\fBF32\fP x, \fBF32\fP y)\fC [inline]\fP"
 Updates the position of each \fBGlyph\fP in the \fBText\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIx\fP sets the first coordinate\&. 
 .br
@@ -293,7 +325,7 @@ Updates the position of each \fBGlyph\fP in the \fBText\fP\&.
 .SS "void Tempest::Text::SetScale (const \fBTM::Vector3\fP & s)\fC [inline]\fP"
 Sets the scale of the \fBText\fP and updates any Glyphs\&. Calls \fBGameObject::SetScale()\fP 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIs\fP is the Vector4 used as the scale\&. 
 .RE
@@ -302,7 +334,7 @@ Sets the scale of the \fBText\fP and updates any Glyphs\&. Calls \fBGameObject::
 .SS "void Tempest::Text::SetScale (\fBF32\fP xScale, \fBF32\fP yScale)\fC [inline]\fP"
 Sets the scale of the \fBText\fP and updates any Glyphs\&. Calls \fBGameObject::SetScale()\fP 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIxScale\fP is the scale to set on the x axis\&. 
 .br
@@ -313,20 +345,11 @@ Sets the scale of the \fBText\fP and updates any Glyphs\&. Calls \fBGameObject::
 .SS "void Text::SetTextColor (const \fBColor\fP & col)"
 Sets the color of each \fBGlyph\fP in the \fBText\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIcol\fP is the \fBColor\fP each \fBGlyph\fP is set to\&. 
-.RE
-.PP
-
-.SS "void Text::SetUniforms (string name, const \fBTM::Matrix4\fP & Matrix4)"
-A wrapper function that calls \fBGameObject::SetUniform\fP on each \fBGlyph\fP using the input\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIname\fP is the name of the uniform that will be set\&. 
 .br
-\fIMatrix4\fP is the transformation Matrix4 to be used by each \fBGlyph\fP\&. 
+ 
 .RE
 .PP
 

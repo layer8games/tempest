@@ -1,4 +1,4 @@
-.TH "Tempest::FPSCamera" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "Tempest::FPSCamera" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -16,7 +16,9 @@ Inherits \fBTempest::Camera\fP\&.
 .ti -1c
 .RI "TEMPEST_API \fBFPSCamera\fP (void)"
 .br
-.RI "Sets the initial position to 0, yaw to R_PIE and pitch to 0\&. "
+.RI "Sets the initial position to 0, yaw to R_PIE and pitch to 0\&. 
+.br
+ "
 .ti -1c
 .RI "TEMPEST_API \fBFPSCamera\fP (const \fBTM::Point\fP &position, \fBF32\fP yaw, \fBF32\fP pitch)"
 .br
@@ -25,14 +27,19 @@ Inherits \fBTempest::Camera\fP\&.
 .br
 .RI "No implementation\&. "
 .ti -1c
-.RI "virtual TEMPEST_API void \fBv_Update\fP (void) final"
+.RI "TEMPEST_API void \fBv_Update\fP (void) final"
 .br
 .ti -1c
-.RI "virtual TEMPEST_API void \fBv_Rotate\fP (void) final"
+.RI "TEMPEST_API void \fBv_Rotate\fP (void) final"
 .br
-.RI "Uses the values set in Update to actually move the \fBCamera\fP based on the current values of position, yaw and pitch\&. "
+.RI "Uses the values set in Update to actually move the \fBCamera\fP based on the current values of position, yaw and pitch\&. 
+.br
+ "
 .ti -1c
-.RI "virtual TEMPEST_API void \fBv_Move\fP (const \fBTM::Vector4\fP &offset) final"
+.RI "TEMPEST_API void \fBv_Move\fP (const \fBTM::Vector4\fP &offset) final"
+.br
+.ti -1c
+.RI "TEMPEST_API void \fBv_Move\fP (\fBF32\fP xVal, \fBF32\fP yVal) final"
 .br
 .ti -1c
 .RI "void \fBSetWorldUp\fP (const \fBTM::Vector4\fP vec)"
@@ -60,24 +67,13 @@ Inherits \fBTempest::Camera\fP\&.
 .br
 .RI "Sets up the size of a dead zone for input\&. This helps to stop stuttering and will change how sensitive the \fBCamera\fP is\&. "
 .in -1c
-.SS "Private Member Functions"
-
-.in +1c
-.ti -1c
-.RI "virtual void \fB_v_UpdateCameraVector4s\fP (void)"
-.br
-.RI "Updates all the Vectors for the \fBCamera\fP\&. This is a more expensive operation\&. "
-.in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
-.RI "\fBTM::Vector4\fP \fB_worldUp\fP"
-.br
-.ti -1c
 .RI "\fBF64\fP \fB_zoomSensitivity\fP"
 .br
-.RI "Direction of Up in the world or \fBLevel\fP\&. "
+.RI "Updates all the Vectors for the \fBCamera\fP\&. This is a more expensive operation\&. "
 .ti -1c
 .RI "\fBF32\fP \fB_moveSpeed\fP"
 .br
@@ -91,12 +87,14 @@ Inherits \fBTempest::Camera\fP\&.
 .SH "Detailed Description"
 .PP 
 First Person \fBCamera\fP\&. This is your standard fps mode of moving\&. It will follow the mouse as you move it across the screen resetting the position of the mouse to the center of the screen each frame\&. 
+.br
+ 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "FPSCamera::FPSCamera (const \fBTM::Point\fP & position, \fBF32\fP yaw, \fBF32\fP pitch)"
 Sets up the initial values for the position, yaw and pitch of the camera\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIposition\fP is the initial position of the \fBCamera\fP\&. 
 .br
@@ -111,7 +109,7 @@ Sets up the initial values for the position, yaw and pitch of the camera\&.
 .SS "void Tempest::FPSCamera::SetMoveSpeed (\fBF32\fP val)\fC [inline]\fP"
 Set the speed at which v_Move will update the \fBCamera\fP\&. I don't know if this should be here, or in the game logic\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is the new max rate of change of the position\&. 
 .RE
@@ -120,7 +118,7 @@ Set the speed at which v_Move will update the \fBCamera\fP\&. I don't know if th
 .SS "void Tempest::FPSCamera::SetWorldUp (const \fBTM::Vector4\fP vec)\fC [inline]\fP"
 Sets the Up vector for the \fBLevel\fP or World that the \fBCamera\fP is in\&. This is used for v_Rotate\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIvec\fP is the new Up Vector\&. 
 .RE
@@ -129,16 +127,18 @@ Sets the Up vector for the \fBLevel\fP or World that the \fBCamera\fP is in\&. T
 .SS "void Tempest::FPSCamera::SetZoom (\fBF64\fP val)\fC [inline]\fP"
 Untested, this will zoom the view of the camera forward\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIval\fP is the amount to zoom the camear\&. Can be negative or positive, in theory\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void FPSCamera::v_Move (const \fBTM::Vector4\fP & offset)\fC [final]\fP, \fC [virtual]\fP"
 Updates the position of the \fBCamera\fP based on the param\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIoffset\fP is how much the camera should move\&. This is a unit Vector\&. (verify, if its not, it should be)\&. 
 .RE

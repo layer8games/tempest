@@ -1,4 +1,4 @@
-.TH "TempestMath::Random" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "TempestMath::Random" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -44,7 +44,9 @@ TempestMath::Random
 .ti -1c
 .RI "static TEMPEST_API shared_ptr< \fBRandom\fP > \fBInstance\fP (void)"
 .br
-.RI "Basic Singleton pattern\&. Allows access to global copy\&. Not required for use\&. "
+.RI "Basic Singleton pattern\&. Allows access to global copy\&. Not required for use\&. 
+.br
+ "
 .in -1c
 .SS "Private Attributes"
 
@@ -70,7 +72,7 @@ TempestMath::Random
 .SS "\fBF64\fP Random::RandomDouble (\fBF64\fP min, \fBF64\fP max)"
 Returns a 64 bit floating point between min and max 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fImin\fP is the floor value\&. 
 .br
@@ -81,7 +83,7 @@ Returns a 64 bit floating point between min and max
 .SS "\fBF32\fP Random::RandomFloat (\fBF32\fP min, \fBF32\fP max)"
 Returns a random 32 bit floating point between min and max 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fImin\fP is the floor value\&. 
 .br
@@ -92,7 +94,7 @@ Returns a random 32 bit floating point between min and max
 .SS "\fBS32\fP Random::RandomInt (\fBS32\fP min, \fBS32\fP max)"
 Returns a 32 bit signed it between min and max\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fImin\fP is the floor value\&. 
 .br
@@ -103,7 +105,7 @@ Returns a 32 bit signed it between min and max\&.
 .SS "\fBS64\fP Random::RandomLong (\fBS64\fP min, \fBS64\fP max)"
 Returns a 64 bit signed it between min and max\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fImin\fP is the floor value\&. 
 .br
@@ -114,7 +116,7 @@ Returns a 64 bit signed it between min and max\&.
 .SS "\fBQuaternion\fP Random::RandomQuaternion (\fBF32\fP min, \fBF32\fP max)"
 Returns a \fBQuaternion\fP with w,x,y and z between min and max 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fImin\fP is the floor value\&. 
 .br
@@ -125,7 +127,7 @@ Returns a \fBQuaternion\fP with w,x,y and z between min and max
 .SS "\fBVector4\fP Random::RandomVector4 (\fBF32\fP min, \fBF32\fP max, bool is2d = \fCfalse\fP)"
 Returns a \fBVector4\fP with x, y and z (depending on flag) between min and max 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fImin\fP is the floor value\&. 
 .br

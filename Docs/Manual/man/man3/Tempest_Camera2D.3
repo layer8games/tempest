@@ -1,0 +1,53 @@
+.TH "Tempest::Camera2D" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tempest::Camera2D
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBTempest::Camera\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "TEMPEST_API void \fBv_Move\fP (const \fBTM::Vector4\fP &offset) final"
+.br
+.RI "No implemenations\&. This is meant to overloaded\&. 
+.br
+ "
+.ti -1c
+.RI "TEMPEST_API void \fBv_Move\fP (\fBF32\fP xVal, \fBF32\fP yVal)"
+.br
+.ti -1c
+.RI "void \fBSetMoveSpeed\fP (\fBF32\fP val)"
+.br
+.ti -1c
+.RI "\fBF32\fP \fBGetMoveSpeed\fP (void)"
+.br
+.RI "Returns the current speed of the \fBCamera\fP\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBF32\fP \fB_moveSpeed\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Member Function Documentation"
+.PP 
+.SS "void Tempest::Camera2D::SetMoveSpeed (\fBF32\fP val)\fC [inline]\fP"
+Set the speed at which v_Move will update the \fBCamera\fP\&. I don't know if this should be here, or in the game logic\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIval\fP is the new max rate of change of the position\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Tempest from the source code\&.

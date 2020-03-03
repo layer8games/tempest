@@ -1,4 +1,4 @@
-.TH "TempestCollisions::AABB" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "TempestCollisions::AABB" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -24,6 +24,9 @@ TempestCollisions::AABB
 .RI "No implemenation\&. "
 .ti -1c
 .RI "TEMPEST_API bool \fBTestCollision\fP (const \fBAABB\fP &other) const"
+.br
+.ti -1c
+.RI "TEMPEST_API bool \fBTestCollision\fP (const \fBTM::Point\fP &other) const"
 .br
 .ti -1c
 .RI "void \fBSetCenter\fP (const \fBTM::Point\fP &c)"
@@ -97,7 +100,9 @@ TempestCollisions::AABB
 .ti -1c
 .RI "\fBTM::Vector3\fP \fB_halfScale\fP"
 .br
-.RI "The half sizes of the bounding volume along the 3 axies, x, y and z\&. "
+.RI "The half sizes of the bounding volume along the 3 axies, x, y and z\&. 
+.br
+ "
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -107,7 +112,7 @@ An Axis Alligned Bounding Box used to do rough collission detection\&. It used a
 .SS "AABB::AABB (const \fBTM::Point\fP & center, \fBF32\fP w, \fBF32\fP h, \fBF32\fP d)"
 Sets the center up and the dimensions\&. Dimensions are sent in as full, and then halved\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIcenter\fP is the location of the center of the \fBAABB\fP\&. 
 .br
@@ -116,6 +121,8 @@ Sets the center up and the dimensions\&. Dimensions are sent in as full, and the
 \fIh\fP is the full height of the \fBAABB\fP\&. It is divided by 2 to get the half height that is stored\&. 
 .br
 \fId\fP is the full depth of the \fBAABB\fP\&. It is divided by 2 to get the half depth that is stored\&. 
+.br
+ 
 .RE
 .PP
 
@@ -123,14 +130,20 @@ Sets the center up and the dimensions\&. Dimensions are sent in as full, and the
 .PP 
 .SS "\fBF32\fP TempestCollisions::AABB::GetDepth (void) const\fC [inline]\fP"
 Returns the full depth extent of the \fBAABB\fP\&. Because internally this is stored as a half, it is multiplied before it is returned\&. 
+.br
+ 
 .SS "\fBF32\fP TempestCollisions::AABB::GetHeight (void) const\fC [inline]\fP"
 Returns the full height extent of the \fBAABB\fP\&. Because internally it is stored as a half height, it is multiplied by 2 before it is returned\&. 
+.br
+ 
 .SS "\fBF32\fP TempestCollisions::AABB::GetWidth (void) const\fC [inline]\fP"
 Returns the full width of the \fBAABB\fP\&. Because this is stored as a half width, it is multiplied by 2 before it is returned\&. 
+.br
+ 
 .SS "void TempestCollisions::AABB::SetCenter (const \fBTM::Point\fP & c)\fC [inline]\fP"
 Sets the location of the center of the sphere\&. This is the position in local space for the object it encompasses\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIc\fP is the new center\&. The w component is set to 0\&. 
 .RE
@@ -139,100 +152,118 @@ Sets the location of the center of the sphere\&. This is the position in local s
 .SS "void TempestCollisions::AABB::SetCenter (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)\fC [inline]\fP"
 Sets the location of the center of the sphere\&. This is the position in local space for the object it encompasses\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIx\fP is the new x value of the center\&. 
 .br
 \fIy\fP is the new y value of the center\&. 
 .br
 \fIz\fP is the new z value of the center\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void TempestCollisions::AABB::SetDepth (\fBF32\fP d)\fC [inline]\fP"
 Sets the full depth of the extent of the \fBAABB\fP\&. Because this is internally stored as a half depth, it is divided before it is set\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fId\fP is the new full depth extent\&. 
-.RE
-.PP
-
-.SS "void TempestCollisions::AABB::SetDimensions (\fBF32\fP w, \fBF32\fP h, \fBF32\fP d)\fC [inline]\fP"
-Sets all of the full extents of the \fBAABB\fP\&. Because these are all stored as halves, each one is divided by 2 before they are set\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIw\fP is the new full width extent\&. 
 .br
-\fIh\fP is the new full height extent\&. 
-.br
-\fId\fP is the new full depth extent\&. 
+ 
 .RE
 .PP
 
 .SS "void TempestCollisions::AABB::SetDimensions (const \fBTM::Vector3\fP & scale)\fC [inline]\fP"
 Sets the extent of the \fBAABB\fP\&. Because these are half values, the input is divided by half\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIscale\fP is the new extent\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "void TempestCollisions::AABB::SetDimensions (\fBF32\fP w, \fBF32\fP h, \fBF32\fP d)\fC [inline]\fP"
+Sets all of the full extents of the \fBAABB\fP\&. Because these are all stored as halves, each one is divided by 2 before they are set\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIw\fP is the new full width extent\&. 
+.br
+\fIh\fP is the new full height extent\&. 
+.br
+\fId\fP is the new full depth extent\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void TempestCollisions::AABB::SetHalfDepth (\fBF32\fP d)\fC [inline]\fP"
 Sets the half depth extent of the \fBAABB\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fId\fP is the new half depth extent\&. 
-.RE
-.PP
-
-.SS "void TempestCollisions::AABB::SetHalfDimensions (\fBF32\fP w, \fBF32\fP h, \fBF32\fP d)\fC [inline]\fP"
-Sets all of the half extents of the \fBAABB\fP\&. 
-.PP
-\fBParameters:\fP
-.RS 4
-\fIw\fP is the new half width extent\&. 
 .br
-\fIh\fP is the new half height extent\&. 
-.br
-\fId\fP is the new half depth extent\&. 
+ 
 .RE
 .PP
 
 .SS "void TempestCollisions::AABB::SetHalfDimensions (const \fBTM::Vector3\fP & scale)\fC [inline]\fP"
 Sets the new half extent of the \fBAABB\fP 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIscale\fP is the new extent to be used\&. 
+.br
+ 
+.RE
+.PP
+
+.SS "void TempestCollisions::AABB::SetHalfDimensions (\fBF32\fP w, \fBF32\fP h, \fBF32\fP d)\fC [inline]\fP"
+Sets all of the half extents of the \fBAABB\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIw\fP is the new half width extent\&. 
+.br
+\fIh\fP is the new half height extent\&. 
+.br
+\fId\fP is the new half depth extent\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void TempestCollisions::AABB::SetHalfHeight (\fBF32\fP h)\fC [inline]\fP"
 Sets the half height extent of the \fBAABB\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIh\fP is the new half height\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void TempestCollisions::AABB::SetHalfWidth (\fBF32\fP w)\fC [inline]\fP"
 Sets the half width extent of the \fBAABB\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIw\fP is the new half width\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void TempestCollisions::AABB::SetHeight (\fBF32\fP h)\fC [inline]\fP"
 Sets the full height extent of the \fBAABB\fP\&. Because this is internally stored as a half width, it is divided by 2 when it is set\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIh\fP is the new full height\&. 
 .RE
@@ -241,7 +272,7 @@ Sets the full height extent of the \fBAABB\fP\&. Because this is internally stor
 .SS "void TempestCollisions::AABB::SetWidth (\fBF32\fP w)\fC [inline]\fP"
 Sets the full width extent of the \fBAABB\fP\&. Because this is internally stored as a half width, it is divided by 2 when it is set\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIw\fP is the new full width\&. 
 .RE
@@ -250,9 +281,18 @@ Sets the full width extent of the \fBAABB\fP\&. Because this is internally store
 .SS "bool AABB::TestCollision (const \fBAABB\fP & other) const"
 Test if this and other are colliding or not\&. Two \fBAABB\fP's must overlap on all 3 axis\&. This is tested by comparing the difference between the position on an axis with the sum of the length of the coorespoding axis\&. For example, for the x axis, (a\&.center\&.x - b\&.center\&.x) > (a\&.halfWidth + b\&.halfWidth)\&. If this is true, we can move onto the next axis\&. If any axis if false, then they do not intersect\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIother\fP is another \fBAABB\fP that we are testing against\&. 
+.RE
+.PP
+
+.SS "bool AABB::TestCollision (const \fBTM::Point\fP & other) const"
+Test if this and other are colliding\&. This uses an arbitrary point\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP is a point in world space to test with 
 .RE
 .PP
 

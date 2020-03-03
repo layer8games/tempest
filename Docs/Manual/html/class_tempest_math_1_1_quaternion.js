@@ -18,14 +18,14 @@ var class_tempest_math_1_1_quaternion =
     [ "Magnitude", "class_tempest_math_1_1_quaternion.html#aa560fa1eda8726e22cbe8cc1739204ca", null ],
     [ "Negate", "class_tempest_math_1_1_quaternion.html#acee1e1c18aefd86f0c3569015cb971f2", null ],
     [ "Normalize", "class_tempest_math_1_1_quaternion.html#a4499cb212b359d1590f8cc97ab0cbd24", null ],
-    [ "operator*", "class_tempest_math_1_1_quaternion.html#ae8879c62e14462df937fa5dd551ea227", null ],
     [ "operator*", "class_tempest_math_1_1_quaternion.html#a0365e07d08d9c5cfaee902cf3b224d1d", null ],
-    [ "operator*=", "class_tempest_math_1_1_quaternion.html#af47abd91880cbc71c7f6bcc945616d75", null ],
+    [ "operator*", "class_tempest_math_1_1_quaternion.html#ae8879c62e14462df937fa5dd551ea227", null ],
     [ "operator*=", "class_tempest_math_1_1_quaternion.html#ac26e84e47a848102def4d4b8b9cddee4", null ],
+    [ "operator*=", "class_tempest_math_1_1_quaternion.html#af47abd91880cbc71c7f6bcc945616d75", null ],
     [ "operator/", "class_tempest_math_1_1_quaternion.html#a9d131d99e89806c24a839a888748fc2b", null ],
     [ "operator/=", "class_tempest_math_1_1_quaternion.html#a95c203a29038de4aa9d8e77d663b4aa2", null ],
-    [ "operator[]", "class_tempest_math_1_1_quaternion.html#a5d4ba3b7eafa6c454761c25e88261496", null ],
     [ "operator[]", "class_tempest_math_1_1_quaternion.html#abb77cf9f2e9ebf8496ebc60170b66f32", null ],
+    [ "operator[]", "class_tempest_math_1_1_quaternion.html#a5d4ba3b7eafa6c454761c25e88261496", null ],
     [ "Opposite", "class_tempest_math_1_1_quaternion.html#a0b2c87f482fda6a06321a7d04c99e0b4", null ],
     [ "_data", "class_tempest_math_1_1_quaternion.html#ae17baca20e50c4345c5a1100a6dbe41b", null ]
 ];

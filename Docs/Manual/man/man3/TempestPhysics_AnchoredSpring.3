@@ -1,4 +1,4 @@
-.TH "TempestPhysics::AnchoredSpring" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "TempestPhysics::AnchoredSpring" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -59,12 +59,14 @@ Inherits \fBTempestPhysics::ForceGenerator\fP\&.
 .SH "Detailed Description"
 .PP 
 A spring-like force that is anchored to a specific point\&. This can act like a chain, or a rubber band like force\&. It uses Hooks law to generate the amount of force based on the distance that the spring is extended\&. The base equation is: f = -k * delta * l Where delta is the distance that the spring has been moved and k is what is known as the 'spring constant', a value that represents the 'stiffness' of the spring\&. For our terms, the equation will look like this: f = -k(l - l^0) Where l is the location of the end of the spring, and l^0 is the reseting position of the spring\&. Since this is a Vector4 force, the Vector4 version of the law looks like this: f = -l(|d| - l^0)^d Where |d| is the magnitude or length of d, which is distance away from l^0 our spring now is, and ^d is a unit Vector4 version of d\&. Also: d = xA - xB Where xA is the position of the spring attached to our object, and xB is the end of the spring\&. Usage: The force generator cannot be re-used\&. For each unique spring-like force we need to have its own Spring like force\&. Each spring-like force is created with a pointer to the object at the other end of the spring, the length of the spring, and the spring constant\&. This then must be registered with a ForceRegistry*\&. To set an Anchored Spring Force Generator, simple give it an object that cannot be moved\&. This can be enforced in the GameObject using physics or something\&. May need to be figured out later\&. 
+.br
+ 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "AnchoredSpring::AnchoredSpring (const \fBTM::Point\fP & anchor, \fBreal\fP springConstant, \fBreal\fP restLength)"
 Sets up the default values of the spring\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIanchor\fP is the location of the anchor point\&. 
 .br
@@ -79,7 +81,7 @@ Sets up the default values of the spring\&.
 .SS "void TempestPhysics::AnchoredSpring::SetAnchor (const \fBTM::Point\fP & anchor)\fC [inline]\fP"
 Changes the location of the other end of the spring\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIend\fP is the new opposite end of the spring\&. 
 .RE
@@ -88,7 +90,7 @@ Changes the location of the other end of the spring\&.
 .SS "void TempestPhysics::AnchoredSpring::SetRestLength (\fBreal\fP length)\fC [inline]\fP"
 Changes the length of the invisible spring\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIlength\fP is the new value for the rest length\&. 
 .RE
@@ -97,16 +99,18 @@ Changes the length of the invisible spring\&.
 .SS "void TempestPhysics::AnchoredSpring::SetSpringConstant (\fBreal\fP constant)\fC [inline]\fP"
 Changes the 'striffness' of the spring\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIconstant\fP is the new value for the spring constant\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void AnchoredSpring::v_UpdateForce (p_RigidBody2D body)\fC [final]\fP, \fC [virtual]\fP"
 Adds a force to a \fBRigidBody2D\fP in relation to the objects position and the anchor point\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fI\fBRigidBody2D\fP\fP is the object that will recieve the force\&. 
 .RE
@@ -117,7 +121,7 @@ Implements \fBTempestPhysics::ForceGenerator\fP\&.
 .SS "void AnchoredSpring::v_UpdateForce (p_RigidBody3D body)\fC [final]\fP, \fC [virtual]\fP"
 Adds a force to a \fBRigidBody3D\fP in relation to the objects position and the anchor point\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIbody\fP is the object that will recieve the force\&. 
 .RE

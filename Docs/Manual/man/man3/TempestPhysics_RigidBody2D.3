@@ -1,4 +1,4 @@
-.TH "TempestPhysics::RigidBody2D" 3 "Wed Jan 8 2020" "Tempest" \" -*- nroff -*-
+.TH "TempestPhysics::RigidBody2D" 3 "Mon Mar 2 2020" "Tempest" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -103,7 +103,7 @@ TempestPhysics::RigidBody2D
 .RI "bool \fBHasFiniteMass\fP (void)"
 .br
 .ti -1c
-.RI "TEMPEST_API const \fBreal\fP \fBGetMass\fP (void)"
+.RI "const TEMPEST_API \fBreal\fP \fBGetMass\fP (void)"
 .br
 .RI "Returns the actual Mass of the \fBRigidBody2D\fP object\&. "
 .ti -1c
@@ -156,6 +156,8 @@ TempestPhysics::RigidBody2D
 .SH "Detailed Description"
 .PP 
 The \fBRigidBody2D\fP class reprsents a point mass\&. This means that we pretend that it has no area, that it is a single point in space, but that it has a mass\&. It can be acted on by forces, and most of this magic happens in the Integrate\&. Most of the math and ideas were taken from Game Physics Programming by Ian Millington, but have been tweeked by me as I have experiemented with what works in the framework of the KillerEngine\&. It inherits from the GameObject, but it is not an abstract class itself\&. It can be inherited from, but this should be done sparingly\&. I attempted to make this a class that would use componsition to work, but it needed to have direct access to the position of GameObject, while the GameObject can handle all of the rendering logic\&. It was was simplier to go with this inheritance schema\&. 
+.br
+ 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "RigidBody2D::RigidBody2D (void)"
@@ -165,22 +167,26 @@ Default Constructor\&. All data values are set to 0, except for _inverseMass, wh
 .SS "void TempestPhysics::RigidBody2D::AddScaledAcceleration (const \fBTM::Vector4\fP & acc, \fBF32\fP scale)\fC [inline]\fP"
 Directly add a scaled Vector4y into the current acceleration\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIvec\fP is the Vector4 to be added\&. 
 .br
 \fIscale\fP is the F32 that vec will be scaled by before it is added into the acceleration\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void TempestPhysics::RigidBody2D::AddScaledVelocity (const \fBTM::Vector4\fP & vec, \fBF32\fP scale)\fC [inline]\fP"
 Directly add a scaled Vector4y into the current velocity\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIvec\fP is the Vector4 to be added\&. 
 .br
 \fIscale\fP is the F32 that vec will be scaled by before it is added into the velocity\&. 
+.br
+ 
 .RE
 .PP
 
@@ -191,7 +197,7 @@ Integrate is where the physical poperties of a point mass are simulated\&. An al
 .SS "void TempestPhysics::RigidBody2D::SetAcceleration (const \fBTM::Vector4\fP & acc)\fC [inline]\fP"
 Directly set the acceleration of the \fBRigidBody2D\fP without regards to physics or the current value of the acceleration\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIacc\fP is the new value of the acceleration\&. 
 .RE
@@ -200,7 +206,7 @@ Directly set the acceleration of the \fBRigidBody2D\fP without regards to physic
 .SS "void TempestPhysics::RigidBody2D::SetAcceleration (\fBF32\fP x, \fBF32\fP y)\fC [inline]\fP"
 Directly set the acceleration of the \fBRigidBody2D\fP without regards to physics or the current value of the acceleration\&. The z value is not affected\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIx\fP is the value for the x element of the acceleration\&. 
 .br
@@ -211,7 +217,7 @@ Directly set the acceleration of the \fBRigidBody2D\fP without regards to physic
 .SS "void TempestPhysics::RigidBody2D::SetAcceleration (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)\fC [inline]\fP"
 Directly set the acceleration of the \fBRigidBody2D\fP without regards to physics or the current value of the acceleration\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIx\fP is the value for the x element of the acceleration\&. 
 .br
@@ -224,7 +230,7 @@ Directly set the acceleration of the \fBRigidBody2D\fP without regards to physic
 .SS "void TempestPhysics::RigidBody2D::SetDamping (\fBreal\fP damp)\fC [inline]\fP"
 Sets the damping value for the \fBRigidBody2D\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIdamp\fP is the new value for damping\&. 
 .RE
@@ -233,7 +239,7 @@ Sets the damping value for the \fBRigidBody2D\fP\&.
 .SS "void TempestPhysics::RigidBody2D::SetGravityForce (const \fBTM::Vector4\fP & grav)\fC [inline]\fP"
 Sets the cached value that represents the force of gravity on this \fBRigidBody2D\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIgrav\fP is the value that the gravity force will be set to\&. 
 .RE
@@ -242,7 +248,7 @@ Sets the cached value that represents the force of gravity on this \fBRigidBody2
 .SS "void TempestPhysics::RigidBody2D::SetInverseMass (\fBreal\fP inverseMass)\fC [inline]\fP"
 Sets the Inverse Mass of this \fBRigidBody2D\fP\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIinverseMass\fP is the new value for the inverse mass\&. 
 .RE
@@ -251,40 +257,46 @@ Sets the Inverse Mass of this \fBRigidBody2D\fP\&.
 .SS "void TempestPhysics::RigidBody2D::SetMass (\fBreal\fP mass)\fC [inline]\fP"
 Sets the actual Mass of the \fBRigidBody2D\fP object\&. Because Mass is stored as the inverse, that is 1/mass, this involves some math to set up the inverse\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fImass\fP is the value that will be transformed into the inverse mass\&. Cannot be set to 0\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void TempestPhysics::RigidBody2D::SetVelocity (const \fBTM::Vector4\fP & vel)\fC [inline]\fP"
 Directly sets the velocity of the \fBRigidBody2D\fP, ignoring acceleration and physics\&. This can be viewed as an impulse, but permanent\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIvel\fP is the value set for the velocity\&. Disregards what the velocity was\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void TempestPhysics::RigidBody2D::SetVelocity (\fBF32\fP x, \fBF32\fP y)\fC [inline]\fP"
 Directly sets the velocity of the \fBRigidBody2D\fP, ignoring acceleration and physics\&. This can be viewed as an impulse, but permanent\&. Does not change the z value of the velocity\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIx\fP is the value for the x part of the velocity\&. 
 .br
 \fIy\fP is the value for the y part of the velocity\&. 
+.br
+ 
 .RE
 .PP
 
 .SS "void TempestPhysics::RigidBody2D::SetVelocity (\fBF32\fP x, \fBF32\fP y, \fBF32\fP z)\fC [inline]\fP"
 Directly sets the velocity of the \fBRigidBody2D\fP, ignoring acceleration and physics\&. This can be viewed as an impulse, but permanent\&. 
 .PP
-\fBParameters:\fP
+\fBParameters\fP
 .RS 4
 \fIx\fP is the value for the x part of the velocity\&. 
 .br
-\fIy\fP is the value for the y part of the velocity\&.  z is the value for the z part of the velocity\&. 
+\fIy\fP is the value for the y part of the velocity\&. \\parar z is the value for the z part of the velocity\&. 
 .RE
 .PP
 
