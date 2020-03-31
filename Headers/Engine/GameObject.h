@@ -386,7 +386,7 @@ namespace Tempest
 		/// Update to orientation by a Vector4 value scaled. This called Quaternion::AddScaledVector
 		/// \param vec is a converted value to scale the orientation by. 
 		/// \param scale is the value to scale the orientation by.
-		inline void AddScaledOrientation(const TM::Vector4 vec, F32 scale)
+		inline void AddScaledOrientation(const TM::Vector3 vec, F32 scale)
 		{
 			_orientation.AddScaledVector(vec, scale);
 		}

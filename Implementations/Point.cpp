@@ -13,25 +13,25 @@ _2D(false),
 _data{0.0f, 0.0f, 0.0f, 1.0f}
 {  }
 
-Point::Point(F32 val)
+Point::Point(real val)
 :
 _2D(false),
 _data{val, val, val, 1.0f}
 {  }
 
-Point::Point(F32 x, F32 y)
+Point::Point(real x, real y)
 :
 _2D(true),
 _data{x, y, 0.0, 1.0f}
 {  }
 
-Point::Point(F32 x, F32 y, F32 z)
+Point::Point(real x, real y, real z)
 :
 _2D(false),
 _data{x, y, z, 1.0f}
 {  }
 
-Point::Point(F32 x, F32 y, F32 z, F32 w)
+Point::Point(real x, real y, real z, real w)
 :
 _2D(false),
 _data{x, y, z, w}
@@ -64,7 +64,7 @@ Point::~Point(void)
 //
 //==========================================================================================================================
 //===== Point Special functions =====
-F32 Point::Dot(const Point& point) const
+real Point::Dot(const Point& point) const
 {
 	return _data[x] * point[x] +
 		   _data[y] * point[y] +
@@ -84,20 +84,20 @@ Point Point::CrossProduct(const Point& point) const
 				  _data[x] * point[y] - _data[y] * point[x] );
 }
 
-F32 Point::Magnitude(void)
+real Point::Magnitude(void)
 {
-	F32 totals = (_data[x] * _data[x]) + (_data[y] * _data[y]) + (_data[z] * _data[z]);
+	real totals = (_data[x] * _data[x]) + (_data[y] * _data[y]) + (_data[z] * _data[z]);
 	return sqrt(totals);
 }
 
-F32 Point::SqrMagnitude(void)
+real Point::SqrMagnitude(void)
 {
 	return (_data[x] * _data[x]) + (_data[y] * _data[y]) + (_data[z] * _data[z]);
 }
 
 void Point::Normalize(void)
 {
-	F32 mag = Magnitude();
+	real mag = Magnitude();
 
 	if(mag > 0 && mag != 1.0f)
 	{
@@ -105,7 +105,7 @@ void Point::Normalize(void)
 	}
 }
 
-void Point::Reset(F32 val)
+void Point::Reset(real val)
 {
 	_data[x] = val;
 	_data[y] = val;
@@ -113,32 +113,32 @@ void Point::Reset(F32 val)
 	_data[w] = 1.0f;
 }
 
-F32 Point::Distance(const Point& p) const
+real Point::Distance(const Point& p) const
 {
 	Point length = *this - p;
 	return length.Magnitude();
 }
 
-F32 Point::DistanceSquared(const Point& p) const
+real Point::DistanceSquared(const Point& p) const
 {
 	Point length = *this - p;
 	return length.SqrMagnitude();
 }
 
-F32 Point::DistanceSquared(const Vector3& v) const
+real Point::DistanceSquared(const Vector3& v) const
 {
 	Point length = *this - v;
 	return length.SqrMagnitude();
 }
 
-F32 Point::DistanceSquared(const Vector4& v) const
+real Point::DistanceSquared(const Vector4& v) const
 {
 	Point length = *this - v;
 	return length.SqrMagnitude();
 }
 
 //===== Math Helper Functions =====
-void Point::AddScaledPoint(const Point& point, F32 scale)
+void Point::AddScaledPoint(const Point& point, real scale)
 {
 	_data[x] += point[x] * scale;
 	_data[y] += point[y] * scale;
@@ -149,7 +149,7 @@ void Point::AddScaledPoint(const Point& point, F32 scale)
 	}
 }
 
-void Point::AddScaledVector(const Vector3& vec, F32 scale)
+void Point::AddScaledVector(const Vector3& vec, real scale)
 {
 	_data[x] += vec[x] * scale;
 	_data[y] += vec[y] * scale;
@@ -160,7 +160,7 @@ void Point::AddScaledVector(const Vector3& vec, F32 scale)
 	}	
 }
 
-void Point::AddScaledVector(const Vector4& vec, F32 scale)
+void Point::AddScaledVector(const Vector4& vec, real scale)
 {
 	_data[x] += vec[x] * scale;
 	_data[y] += vec[y] * scale;
@@ -186,7 +186,7 @@ Point& Point::operator=(const Point& point)
 	return *this;
 }
 
-Point& Point::operator=(F32 val)
+Point& Point::operator=(real val)
 {
 	_data[x] = val;
 	_data[y] = val;
@@ -280,7 +280,7 @@ Point& Point::operator+=(const Vector3& vec)
 
 Point Point::operator+(shared_ptr<Point> point) const
 {
-	const F32* vals = point->GetElems();
+	const real* vals = point->GetElems();
 
 	if(_2D)
 	{
@@ -294,7 +294,7 @@ Point Point::operator+(shared_ptr<Point> point) const
 }
 
 //===== Add by scalar =====
-Point Point::operator+(F32 val) const
+Point Point::operator+(real val) const
 {
 	if(_2D)
 	{
@@ -307,7 +307,7 @@ Point Point::operator+(F32 val) const
 				  _data[z] + val );
 }
 
-Point& Point::operator+=(F32 val)
+Point& Point::operator+=(real val)
 {
 	_data[x] += val;
 	_data[y] += val;
@@ -374,7 +374,7 @@ Point& Point::operator-=(const Point& point)
 }
 
 //===== Subtract by scalar =====
-Point Point::operator-(F32 val) const
+Point Point::operator-(real val) const
 {
 	if(_2D)
 	{
@@ -387,7 +387,7 @@ Point Point::operator-(F32 val) const
 				  _data[z] - val );
 }
 
-Point& Point::operator-=(F32 val)
+Point& Point::operator-=(real val)
 {
 	_data[x] -= val;
 	_data[y] -= val;
@@ -428,7 +428,7 @@ Point& Point::operator*=(const Point point)
 }
 
 //===== Mutliply by Scalar =====
-Point Point::operator*(F32 val) const
+Point Point::operator*(real val) const
 {
 	if(_2D)
 	{
@@ -441,7 +441,7 @@ Point Point::operator*(F32 val) const
 				  _data[z] * val );
 }
 
-Point& Point::operator*=(F32 val)
+Point& Point::operator*=(real val)
 {
 	_data[x] *= val;
 	_data[y] *= val;
@@ -455,7 +455,7 @@ Point& Point::operator*=(F32 val)
 }
 
 //===== Divide by scalar =====
-Point Point::operator/(F32 val) const
+Point Point::operator/(real val) const
 {
 	assert(val != 0.0f);
 
@@ -470,7 +470,7 @@ Point Point::operator/(F32 val) const
 				  _data[z] / val );
 }
 
-Point& Point::operator/=(F32 val)
+Point& Point::operator/=(real val)
 {
 	assert(val != 0.0f);
 

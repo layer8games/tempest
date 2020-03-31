@@ -112,12 +112,12 @@ namespace TempestPhysics
 		}
 
 //===== Rotation =====
-		inline const TM::Vector4& GetRotation(void) const
+		inline const TM::Vector3& GetRotation(void) const
 		{
 			return _rotation;
 		}
 
-		inline void SetRotation(const TM::Vector4& vec)
+		inline void SetRotation(const TM::Vector3& vec)
 		{
 			_rotation = vec;
 		}
@@ -251,7 +251,7 @@ namespace TempestPhysics
 		TM::Matrix4 _inverseInertiaTensorInWorld;
 		TM::Vector4 _velocity;
 		TM::Vector4 _acceleration;
-		TM::Vector4 _rotation;
+		TM::Vector3 _rotation;
 		TM::Vector4 _forceAccum;
 		TM::Vector4 _torqueAccum;
 			

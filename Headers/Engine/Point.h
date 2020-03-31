@@ -14,65 +14,65 @@ namespace TE = Tempest;
 
 namespace TempestMath
 {
-	class Vector4;
-	class Vector3;
+    class Vector4;
+    class Vector3;
 
 //==========================================================================================================================
 //Documentation
 //========================================================================================================================== 
 ///	A custom Point class writen for the Killer Engine.
-///	The Point is a 4 element 3D Point. The Point consists of an x, y, z and w component represented by an array of F32 values. 
+///	The Point is a 4 element 3D Point. The Point consists of an x, y, z and w component represented by an array of real values. 
 ///	They are refered as x, y, z and w through through documentation. In code, you would have to refered to them as their index 
 ///	in the array (0 - 3). There is an alias set up in the Point, and enum, that lets you use x, y, z and w to represent the 
 ///	indices natively. This is private to the Point. 
 ///	The w element is what separates a Vector4 from a Point. A Point is meant to represent a point in space. This can also be 
 ///	thought of as a displayment from the origin of the planes. This is expressed mathematically by always having the w 
 ///	component be 1, which allows the Point to be transformed by a Matrix with transformation values added. 
-	class Point
-	{
-	public:
+    class Point
+    {
+    public:
 //==========================================================================================================================
 //
 //Constructors
 //
 //========================================================================================================================== 
 ///	Default construtor. Sets all values to 0, and _2D to false.		
-		TEMPEST_API Point(void);
+        TEMPEST_API Point(void);
 
 ///	Single input conversion constructor. It will set the x, y and z components to the input. _2D is false. W is set to 0.
-///	\param val F32: Input value for x, y and z.	
-		TEMPEST_API explicit Point(F32 val);
+///	\param val real: Input value for x, y and z.	
+        TEMPEST_API explicit Point(real val);
 
 ///	Two input constructor. Set's x and y accordingly. Z is set to 0.0f. W is set to 0.
 ///	\param x is the value for x.
 ///	\param y is the value for y.
-		TEMPEST_API Point(F32 x, F32 y);
+        TEMPEST_API Point(real x, real y);
 
 ///	Three input constructor. W is set to 0.
 ///	\param x is the value for x.
 ///	\param y is the value for y.
 ///	\param z is the value for z.
-		TEMPEST_API Point(F32 x, F32 y, F32 z);
+        TEMPEST_API Point(real x, real y, real z);
 
 ///	Four input constructor. W variable in this constructor.
 ///	\param x is the value for x.
 ///	\param y is the value for y.
 ///	\param z is the value for z.
 ///	\param w is the value for w.
-		TEMPEST_API Point(F32 x, F32 y, F32 z, F32 w);
+        TEMPEST_API Point(real x, real y, real z, real w);
  
 ///	Copy Constructor. It explicitly copies all data into new Point. 
 ///	\param v is the Point to copy. 
-		TEMPEST_API Point(const Point& p);
+        TEMPEST_API Point(const Point& p);
 
-		/// Convert a Vector3 into a Point
-		TEMPEST_API Point(const Vector3& v);
+        /// Convert a Vector3 into a Point
+        TEMPEST_API Point(const Vector3& v);
 
-		/// Convert a Vector4 into a Point
-		TEMPEST_API Point(const Vector4& v);
+        /// Convert a Vector4 into a Point
+        TEMPEST_API Point(const Vector4& v);
 
 ///	Destructor. It does not do anything. 	
-		TEMPEST_API ~Point(void);
+        TEMPEST_API ~Point(void);
 
 //==========================================================================================================================
 //
@@ -82,68 +82,68 @@ namespace TempestMath
 //===== 2D checks =====		
 ///	Sets the Point to act like a 2D Point instead of a 3D Point by setting _2D to true. This means that the z value wont 
 ///	be copied or used in operations. 	
-		inline void Make2D(bool state=true)
-		{
-			_2D = state;
-		}
+        inline void Make2D(bool state=true)
+        {
+            _2D = state;
+        }
 
 ///	Sets the Point to act like a 3D Point instead of a 3D Point by settings _2D to true. This means that the z value will
 ///	be copied and used in operations.	
-		inline void Make3D(bool state=false)
-		{
-			_2D = state;
-		}
+        inline void Make3D(bool state=false)
+        {
+            _2D = state;
+        }
  
 ///	Returns that 2D state of the Point stored in _2D;	
-		inline bool Is2D(void) const
-		{
-			return _2D;
-		}
+        inline bool Is2D(void) const
+        {
+            return _2D;
+        }
 
 //===== Point Special functions =====
 ///	Performs a Dot or Scalar product in the order of this * other.
 ///	\param point is the left hand argument in the operation.	
-		TEMPEST_API F32 Dot(const Point& point) const;
+        TEMPEST_API real Dot(const Point& point) const;
 
 ///	Performs a Cross or Point production in the order of this % other.
 ///	\param point is the left hand argument in the operation.				
-		TEMPEST_API Point CrossProduct(const Point& point) const;
+        TEMPEST_API Point CrossProduct(const Point& point) const;
 
 ///	Returns the length of the Point. Caution, this uses the square root function.
-		TEMPEST_API F32 Magnitude(void);
+        TEMPEST_API real Magnitude(void);
 
 ///	Returns the squard length of the Point. It avoids the cost of the square root function.
-		TEMPEST_API F32 SqrMagnitude(void);
+        TEMPEST_API real SqrMagnitude(void);
 
 ///	Changes the Point into a unit Point by converting its magnitude to exaclty 1.0. This is an expensive operation.
-		TEMPEST_API void Normalize(void);
+        TEMPEST_API void Normalize(void);
 
 ///	Sets all values to input. Does not check for _2D before changing z. 
 ///	\param val is the value x, y and z will get. w is set to 1.0f. Default value is 0.0f.
-		TEMPEST_API void Reset(F32 val=0.0f);
+        TEMPEST_API void Reset(real val=0.0f);
 
 /// Gives the distance from this to another Point. Creates a Point and calls Mag.
 /// \param other is the Point we are getting the distance to. 
-		TEMPEST_API F32 Distance(const Point& p) const;
+        TEMPEST_API real Distance(const Point& p) const;
 
-		/// Return the distance between two points, without calling sqrt.
-		TEMPEST_API F32 DistanceSquared(const Point& p) const;
+        /// Return the distance between two points, without calling sqrt.
+        TEMPEST_API real DistanceSquared(const Point& p) const;
 
-		/// Return the distance between this Point and a Vector3, without calling sqrt.
-		TEMPEST_API F32 DistanceSquared(const Vector3& v) const;
+        /// Return the distance between this Point and a Vector3, without calling sqrt.
+        TEMPEST_API real DistanceSquared(const Vector3& v) const;
 
-		/// Return the distance between this Point and a Vector34, without calling sqrt.
-		TEMPEST_API F32 DistanceSquared(const Vector4& v) const;
+        /// Return the distance between this Point and a Vector34, without calling sqrt.
+        TEMPEST_API real DistanceSquared(const Vector4& v) const;
 
 //===== Math Helper Functions =====
 ///	Adds a Point scaled by a value to this Point. 
 ///	\param point is the Point that will be added to this one. 
 ///	\param scale is the amount the added Point will be scaled by.
-		TEMPEST_API void AddScaledPoint(const Point& point, F32 scale);
+        TEMPEST_API void AddScaledPoint(const Point& point, real scale);
 
-		TEMPEST_API void AddScaledVector(const Vector3& vec, F32 scale);
+        TEMPEST_API void AddScaledVector(const Vector3& vec, real scale);
 
-		TEMPEST_API void AddScaledVector(const Vector4& vec, F32 scale);
+        TEMPEST_API void AddScaledVector(const Vector4& vec, real scale);
 
 //==========================================================================================================================
 //
@@ -151,27 +151,27 @@ namespace TempestMath
 //
 //==========================================================================================================================
 ///	Returns the raw data for the Point.
-		inline const F32* GetElems(void) const
-		{
-			return _data;
-		}
+        inline const real* GetElems(void) const
+        {
+            return _data;
+        }
 
 ///	A helper function to allow to quickly set x, y and z to different values.
 ///	\param xVal is the value for x.
 ///	\param yVal is the vlaue for y.
 ///	\param zVal is the value for z. 
-		inline void Set(F32 xVal, F32 yVal, F32 zVal)
-		{
-			_data[x] = xVal;
-			_data[y] = yVal;
-			_data[z] = zVal;
-		}
+        inline void Set(real xVal, real yVal, real zVal)
+        {
+            _data[x] = xVal;
+            _data[y] = yVal;
+            _data[z] = zVal;
+        }
 
-		inline void Set(F32 xVal, F32 yVal)
-		{
-			_data[x] = xVal;
-			_data[y] = yVal;
-		}
+        inline void Set(real xVal, real yVal)
+        {
+            _data[x] = xVal;
+            _data[y] = yVal;
+        }
 
 //==========================================================================================================================
 //
@@ -180,214 +180,214 @@ namespace TempestMath
 //==========================================================================================================================
 ///	Allows you to index into the Point to read the value.
 ///	\param i is the index you wish to read. 0 = x, 1 = y, 2 = z, 3 = w.
-		inline const F32& operator[](int i) const
-		{
-			return _data[i];
-		}
+        inline const real& operator[](int i) const
+        {
+            return _data[i];
+        }
 
 ///	Allows you to index into the Point to change the value.
 ///	\param i is the index you wish to change. 0 = x, 1 = y, 2 = z, 3 = w.
-		inline F32& operator[](int i)
-		{
-			return _data[i];
-		}
+        inline real& operator[](int i)
+        {
+            return _data[i];
+        }
 
 //===== Copy Assignment =====		
 ///	Copy assignment from Point.
 ///	\param point is the Point to copy into this Point.
-		TEMPEST_API Point& operator=(const Point& point);
+        TEMPEST_API Point& operator=(const Point& point);
 
 ///	Copy assignment from scalar.
 ///	\param val is the value all elements will be set to. w is not affect. 2D check is done before z is changed.
-		TEMPEST_API Point& operator=(F32 val);
+        TEMPEST_API Point& operator=(real val);
 
 //===== Add by Point =====
 ///	Point addtion. This is done componentwise.
 ///	\param point is the Point to add into a new Point.
-		TEMPEST_API Point operator+(const Point& point) const;
+        TEMPEST_API Point operator+(const Point& point) const;
 
 ///	Point addtion. This is done componentwise.
 ///	\param vec is added into a new Point.
-		TEMPEST_API Point operator+(const Vector4& vec) const;
+        TEMPEST_API Point operator+(const Vector4& vec) const;
 
 /// Point addtion. This is done componentwise.
 /// \param ved is added into a new Point.
-		TEMPEST_API Point operator+(const Vector3& vec) const;
+        TEMPEST_API Point operator+(const Vector3& vec) const;
 
 ///	Point addition equal. This is done componentwise.
 ///	\param point is the Point to add into this Point.
-		TEMPEST_API Point& operator+=(const Point& point);
+        TEMPEST_API Point& operator+=(const Point& point);
 
 ///	Point addition equal. This is done componentwise.
 ///	\param vec is the Vector4 to add into this Point.
-		TEMPEST_API Point& operator+=(const Vector4& vec);
+        TEMPEST_API Point& operator+=(const Vector4& vec);
 
 /// Point addition equal. This is done componentwise.
 /// \param vec is the Vector4 to add into this Point.
-		TEMPEST_API Point& operator+=(const Vector3& vec);
+        TEMPEST_API Point& operator+=(const Vector3& vec);
 
 //===== Add by scalar =====
 ///	Scalar addition. Each value is added into. 2D check done before z is changed.
 ///	\param val is added into the elements of a new Point.
-		TEMPEST_API Point operator+(F32 val) const;
+        TEMPEST_API Point operator+(real val) const;
 
 ///	Scalar addition. Each value is added into. 2D check done before z is changed.
 ///	\param val is added into each element of this Point.
-		TEMPEST_API Point& operator+=(F32 val);
+        TEMPEST_API Point& operator+=(real val);
 
 ///	Shared Pointer addition. A helper to allow arithmetic with shared_ptr<Point>.
 ///	\param point is the shared_ptr<Point> that is added into each element of a new Point.
-		TEMPEST_API Point operator+(shared_ptr<Point> point) const;
+        TEMPEST_API Point operator+(shared_ptr<Point> point) const;
 
 //===== Subtract by Point =====
 ///	Point subtraction. This is done componentwise. 2D check done before z is changed. 
 ///	\param point is the Point subtracted from the new Point.
-		TEMPEST_API Point operator-(const Point& point) const;
+        TEMPEST_API Point operator-(const Point& point) const;
 
-		/// Subtract a Vector3 from this Point, return result.
-		TEMPEST_API Point operator-(const Vector3& vec) const;
+        /// Subtract a Vector3 from this Point, return result.
+        TEMPEST_API Point operator-(const Vector3& vec) const;
 
-		/// Subtract a Vector4 from this Point, return result.
-		TEMPEST_API Point operator-(const Vector4& vec) const;
+        /// Subtract a Vector4 from this Point, return result.
+        TEMPEST_API Point operator-(const Vector4& vec) const;
 
 ///	Point subtraction. This is done componenetwise. 2D check done before z is changed. 
 ///	\param point is the Pointed subtractd from this Point.
-		TEMPEST_API Point& operator-=(const Point& point);
+        TEMPEST_API Point& operator-=(const Point& point);
 
 //===== Negation and increment ===== 
 ///	Changes the sign of each element of the Point. If 2D, z is not changed. w is also ignored. 
-		inline Point operator-(void)
-		{
-			if(_2D)
-			{
-				return Point(-_data[x], -_data[y]);
-			}
+        inline Point operator-(void)
+        {
+            if(_2D)
+            {
+                return Point(-_data[x], -_data[y]);
+            }
 
-			return Point(-_data[x], -_data[y], -_data[z]);
-		}
+            return Point(-_data[x], -_data[y], -_data[z]);
+        }
 
 ///	Prefix, Adds 1 to each element of the Point. If 2D, z is ignored. w is always ignored.  
-		inline Point& operator++(void)
-		{
-			++_data[x];
-			++_data[y];
+        inline Point& operator++(void)
+        {
+            ++_data[x];
+            ++_data[y];
 
-			if(!_2D)
-			{
-				++_data[z];
-			}
+            if(!_2D)
+            {
+                ++_data[z];
+            }
 
-			return *this;
-		}
+            return *this;
+        }
 
 ///	Postfix, Adds 1 to each element of the Point. If 2D, z is ignored. w is always ignored.  
-		inline Point operator++(int)
-		{
-			Point temp = *this;
-			++*this;
-			return temp;
-		}
+        inline Point operator++(int)
+        {
+            Point temp = *this;
+            ++*this;
+            return temp;
+        }
  
 ///	Prefix, Subtracts 1 to each element of the Point. If 2D, z is ignored. w is always ignored.  
-		inline Point& operator--(void)
-		{
-			--_data[x];
-			--_data[y];
+        inline Point& operator--(void)
+        {
+            --_data[x];
+            --_data[y];
 
-			if(!_2D)
-			{
-				--_data[z];
-			}
+            if(!_2D)
+            {
+                --_data[z];
+            }
 
-			return *this;
-		}
+            return *this;
+        }
 
 ///	Postfix, Subtracts 1 to each element of the Point. If 2D, z is ignored. w is always ignored.   
-		inline Point operator--(int)
-		{
-			Point temp = *this;
-			--*this;
-			return temp;
-		}
+        inline Point operator--(int)
+        {
+            Point temp = *this;
+            --*this;
+            return temp;
+        }
 
 //===== Subtract by scalar =====
 ///	Scalar subtraction. 2D check is done before z is changed. 
 ///	\param val is the scalar subtracted from the new Point.
-		TEMPEST_API Point operator-(F32 val) const;
+        TEMPEST_API Point operator-(real val) const;
 
 ///	Sclara subtraction. 2D check is done before z is changed. 
 ///	\param val is the scalar subtracted from each element of this Point.
-		TEMPEST_API Point& operator-=(F32 val);
+        TEMPEST_API Point& operator-=(real val);
 
 //===== Component-wise multiply by Point =====
 ///	Point multiplication. This is a componentwise multiplication, scaling one Point by another. 2D check done before z is changed.
 ///	\param point is the Point multiplied by the new Point.
-		TEMPEST_API Point operator*(const Point point) const;
+        TEMPEST_API Point operator*(const Point point) const;
 
 ///	Point multiplication. This is a componentwise multiplication, scaling one Point by another. 2D check done before z is changed.
 ///	\param point is the Point multiplied by this Point.
-		TEMPEST_API Point& operator*=(const Point point);
+        TEMPEST_API Point& operator*=(const Point point);
 
 //===== Mutliply by Scalar =====
 ///	Scalar multiplication. This is a componentwise multiplication, scaling the Point by the scalar. 2D check done before z is changed.
 ///	\param val is the scalar multiplied by the new Point.
-		TEMPEST_API Point operator*(F32 val) const;
+        TEMPEST_API Point operator*(real val) const;
 
 ///	Scalar multiplication. This is a componentwise multiplication, scaling the Point by the scalar. 2D check done before z is changed.
 ///	\param val is the scalar multiplied by this Point.
-		TEMPEST_API Point& operator*=(F32 val);
+        TEMPEST_API Point& operator*=(real val);
 
 //===== Divide by scalar =====
 ///	Scalar division. This is done componentwise. 2D check done before z is changed. 
 ///	\param val is the scalar the new Point is divided by.
-		TEMPEST_API Point operator/(F32 val) const;
+        TEMPEST_API Point operator/(real val) const;
 
 ///	Scalar division. This is done componentwise. 2D check done before z is changed. 
 ///	\param val is the scalar this Point is divided by.
-		TEMPEST_API Point& operator/=(F32 val);
+        TEMPEST_API Point& operator/=(real val);
 
 //===== Comparison =====
 ///	Greater than comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of this are greater than all elements of the other Point.
 ///	\param point is the Point this Point will be compared against.
-		TEMPEST_API bool operator>(const Point& point) const;
+        TEMPEST_API bool operator>(const Point& point) const;
 
 ///	Less than comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of this are less than all elements of the other Point.
 ///	\param point is the Point this Point will be compared against.
-		TEMPEST_API bool operator<(const Point& point) const;
+        TEMPEST_API bool operator<(const Point& point) const;
 
 ///	Greater than or equal to comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of this are greater than or equal to all elements of the other Point.
 ///	\param point is the Point this Point will be compared against.
-		TEMPEST_API bool operator>=(const Point& point) const;
+        TEMPEST_API bool operator>=(const Point& point) const;
 
 ///	Less than or equal to comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of this are less than or equal to all elements of the other Point.
 ///	\param point is the Point this Point will be compared against.
-		TEMPEST_API bool operator<=(const Point& point) const;
+        TEMPEST_API bool operator<=(const Point& point) const;
 
 ///	Equality comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of this are equal to all elements of other Point. 
 ///	\param point is the Point this Point will be compared against. 
-		TEMPEST_API bool operator==(const Point& point) const;
+        TEMPEST_API bool operator==(const Point& point) const;
 
 ///	False equality comparison. 2D is used as an early out. 2D is also checked before z is compared. Only true if all elements of this are not equal to all elements of other Point. 
 ///	\param point is the Point this Point will be compared against. 
-		TEMPEST_API bool operator!=(const Point& point) const;
+        TEMPEST_API bool operator!=(const Point& point) const;
 
-	private:
+    private:
 ///	Alias set up to allow a refernce to each element that is more human readable in the code.
-		enum 
-		{
-			x = 0,
-			y = 1,
-			z = 2,
-			w = 3
-		};
+        enum 
+        {
+            x = 0,
+            y = 1,
+            z = 2,
+            w = 3
+        };
 
-		bool _2D;		///< Used to decide whether to use 2D or 3D logic in operators.
-		F32  _data[4];	///< Array that stores the values for each element.
-		//This is an idea for later. 
-		//Find a value that you can invalidate if 
-		//x y or z changes, that allows you to cache 
-		//the mag and save on the sqrt call
-		//F32  _magCache;
-	};// end class
-	typedef shared_ptr<Point> p_Point;
+        bool _2D;		///< Used to decide whether to use 2D or 3D logic in operators.
+        real  _data[4];	///< Array that stores the values for each element.
+        //This is an idea for later. 
+        //Find a value that you can invalidate if 
+        //x y or z changes, that allows you to cache 
+        //the mag and save on the sqrt call
+        //real  _magCache;
+    };// end class
+    typedef shared_ptr<Point> p_Point;
 }// end namespace

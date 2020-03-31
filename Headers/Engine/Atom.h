@@ -1,17 +1,3 @@
-/*========================================================================
-
-Call Atom because it is the most basic include file. This is the file
-to be included with all other files that are made. This contains the 
-type definitions that will be the atomic variable types for the Killer1
-Engine (as suggested by Jason Gregory in Game Engine Architecture 2nd 
-Edition). It will also contain the basic header files that every other 
-class or file will need. 
-
-This is not free to use, and cannot be used without the express permission
-of KillerWave.
-
-Written by Maxwell Miller
-========================================================================*/
 #pragma once
 
 #ifdef TEMPEST_EXPORTS
@@ -19,9 +5,6 @@ Written by Maxwell Miller
 #else
 #define TEMPEST_API __declspec(dllimport)
 #endif
-
-//Includes. These will be the files that everything will need to have access to
-//=====Killer1 Engine Includes=====
 
 //=====Windows Includes=====
 #include <Windows.h>
@@ -31,8 +14,6 @@ Written by Maxwell Miller
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-
-
 //=====STD Includes=====
 #include <string>
 #include <memory>
@@ -40,19 +21,14 @@ using std::shared_ptr;
 using std::weak_ptr;
 using std::make_shared;
 
-/*!
-	@file Atom.h
-	Called Atom because it is the most basic include file. This is the file to be included with all other 
-	files that are made. This contains the type definitions that will be the atomic variable types for the 
-	KillerEngine (as suggested by Jason Gregory in Game Engine Architecture 2nd Edition). It will also 
-	contain the basic header files that every other class or file will need. 
-*/
-
-//=====Global usings=====
-//template<typename T>
-//using shared_prt = std::shared_prt<T>;
-
-
+/// @file Atom.h
+///	Called Atom because it is the most basic include file. This is the file to be included with all other 
+///	files that are made. This contains the type definitions that will be the atomic variable types for the 
+///	KillerEngine (as suggested by Jason Gregory in Game Engine Architecture 2nd Edition). It will also 
+///	contain the basic header files that every other class or file will need. 
+/// If any of the alias for real where to ever change from a float to a double, all of the functions that 
+/// end in f would have to be changed to their double version. For instance, cosf would change to cos, sinf
+/// would change to sin, etc. 
 
 //===== Signed typedefs =====
 
@@ -101,25 +77,25 @@ typedef float real;
 #define REAL_MAX FLT_MAX
 
 /// Alias for the sqrt function.
-#define real_sqrt sqrt	
+#define real_sqrt sqrtf	
 
 /// Alias for the fabsf function.
 #define real_abs fabsf
 
 /// Alias for the sin function.
-#define real_sin sin
+#define real_sin sinf
 
 // Alias for the cos funtion.
-#define real_cos cos
+#define real_cos cosf
 
 /// Alias for the tan function. 
-#define real_tan tan
+#define real_tan tanf
 
 /// Alias for the exp function.
-#define real_exp exp
+#define real_exp expf
 
 /// Alias for the pow function. 
-#define real_pow pow
+#define real_pow powf
 
 /// Alias for fmod4 function.
 #define real_fmod fmod4
@@ -134,62 +110,62 @@ const real R_PI = static_cast<real>(3.14159265358979);
 //Global Helper functions
 //==========================================================================================================================
 /*!
-	Returns the value squared.
-	\param x is the value.
+    Returns the value squared.
+    \param x is the value.
 */
 inline real REAL_SQR(real x)
 {
- 	return x * x;
+    return x * x;
 }
 
 /*!
-	Converts an angle to a radian.
-	\param angle is the value to convert.
+    Converts an angle to a radian.
+    \param angle is the value to convert.
 */
 inline F32 RADIAN(F32 angle)
 {
-	return static_cast<F32>(angle * R_PI / 180.0f);
+    return static_cast<F32>(angle * R_PI / 180.0f);
 }
 
 /*!
-	Converts a radian to an angle. 
-	\param radian is the value to convert. 
+    Converts a radian to an angle. 
+    \param radian is the value to convert. 
 */
 inline F32 DEGREE(F32 radian)
 {
-	return static_cast<F32>(radian * 180.0f / R_PI);
+    return static_cast<F32>(radian * 180.0f / R_PI);
 }
 
 /*!
-	Clamps a value to a set min and max. 
-	\param val is the value to clamp. 
-	\param min is the floor.
-	\param max is the ceiling.
+    Clamps a value to a set min and max. 
+    \param val is the value to clamp. 
+    \param min is the floor.
+    \param max is the ceiling.
 */
 inline F32 FLOAT_CLAMP(F32 val, F32 min, F32 max)
 {
-	if(val < min)
-	{
-		return min;
-	}
-	else if(val > max)
-	{
-		return max;
-	}
-	else
-	{
-		return val;
-	}
+    if(val < min)
+    {
+        return min;
+    }
+    else if(val > max)
+    {
+        return max;
+    }
+    else
+    {
+        return val;
+    }
 }
 
 /*!
-	Alias set up to allow a refernce to each element of a Vector, Matrix, Quaternion and any
-	other type of object that uses an x, y, z and w value. 
+    Alias set up to allow a refernce to each element of a Vector, Matrix, Quaternion and any
+    other type of object that uses an x, y, z and w value. 
 */
 enum 
 {
-	x = 0,
-	y = 1,
-	z = 2,
-	w = 3
+    x = 0,
+    y = 1,
+    z = 2,
+    w = 3,
 };
