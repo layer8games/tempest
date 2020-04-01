@@ -360,35 +360,38 @@ namespace Tempest
 			_orientation = q;
 		}
 
-		/// Set the orienation of the GameObject to a single value
-		/// \pararm val is the value all 4 components of the orientation will be set to.
-		inline void SetOrientation(F32 val)
+		/// Set the orientation of the GameObject with an Euler Angle. The Vector3 is treated as 
+		/// an Euler Angle in this context. 
+		/// \param vec is the new orientation represent as an Euler Angle.
+		inline void SetOrientation(const TM::Vector3& vec)
 		{
-			_orientation[0] = val;
-			_orientation[1] = val;
-			_orientation[2] = val;
-			_orientation[3] = val;
+			_orientation.RotateByEuler(vec);
 		}
 
-		/// Set the orientation of the GameObject without having to create a Quaternion
-		/// \param wVal sets the w component.
-		/// \param xVal sets the x component.
-		/// \param yVal sets the y component.
-		/// \param zVal sets the z component.
-		inline void SetOrientation(F32 wVal, F32 xVal, F32 yVal, F32 zVal)
+		/// Set the orientation of the GameObject with an Euler Angle.
+		/// \param yaw
+		/// \param pitch
+		/// \param roll
+		inline void SetOrientation(real yaw, real pitch, real roll)
 		{
-			_orientation[0] = wVal;
-			_orientation[1] = xVal;
-			_orientation[2] = yVal;
-			_orientation[3] = zVal;
+			_orientation.RotateByEuler(yaw, pitch, roll);
 		}
 
-		/// Update to orientation by a Vector4 value scaled. This called Quaternion::AddScaledVector
-		/// \param vec is a converted value to scale the orientation by. 
-		/// \param scale is the value to scale the orientation by.
-		inline void AddScaledOrientation(const TM::Vector3 vec, F32 scale)
+		/// Add an Euler Angle to the current orientation. Vector3 is treated as an Euler Angle 
+		/// in this context. 
+		/// \param vec is an Euler Angle.
+		inline void AddOrientation(const TM::Vector3& vec)
 		{
-			_orientation.AddScaledVector(vec, scale);
+			_orientation.AddEuler(vec);
+		}
+
+		/// Add an Euler Angle to the current orientation. 
+		/// \param yaw
+		/// \param pitch 
+		/// \param roll
+		inline void AddOrientation(real yaw, real pitch, real roll)
+		{
+			_orientation.AddEuler(yaw, pitch, roll);
 		}
 
 		/// Changes the length of the orientation to be 1.0. Calls Quaternion::Normalize.

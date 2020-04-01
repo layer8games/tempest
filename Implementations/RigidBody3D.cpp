@@ -51,7 +51,8 @@ void RigidBody3D::Integrate(void)
 	//assert(delta > 0.0f);
 
 	_obj->AddScaledPosition(_velocity, delta);
-	_obj->AddScaledOrientation(_rotation, delta);
+	// TODO: Needs to be converted to Euler Angle
+	//_obj->AddScaledOrientation(_rotation, delta);
 
 	TM::Vector4 resultingAcc = _acceleration;
 

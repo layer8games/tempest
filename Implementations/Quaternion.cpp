@@ -154,21 +154,90 @@ void Quaternion::Normalize(void)
     *this /= Magnitude();
 }
 
-void Quaternion::AddScaledVector(const Vector3& vec, F32 scale)
+void Quaternion::RotateByEuler(const Vector3& vec)
 {
-    Quaternion q {vec[0] * scale,
-                  vec[1] * scale,
-                  vec[2] * scale,
-                  0.0f};
-    q *= *this;
-    _data[x] += q[x] * ((real)0.5f);
-    _data[y] += q[y] * ((real)0.5f);
-    _data[z] += q[z] * ((real)0.5f);
-    _data[w] += q[w] * ((real)0.5f);
+    // c = cos, s = sin, y = yaw, p = pitch, r = roll
+    real cy = real_cos(vec[x] / 2.0f);
+    real sy = real_sin(vec[x] / 2.0f);
+    real cp = real_cos(vec[y] / 2.0f);
+    real sp = real_sin(vec[y] / 2.0f);
+    real cr = real_cos(vec[z] / 2.0f);
+    real sr = real_sin(vec[z] / 2.0f);
+
+    _data[x] = cy * cp * sr - sy * sp * cr;
+    _data[y] = sy * cp * sr + cy * sp * cr;
+    _data[z] = sy * cp * cr - cy * sp * sr;
+    _data[w] = cy * cp * cr + sy * sp * sr;
 }
 
-void Quaternion::RotateByVector(const Vector3& vec)
+void Quaternion::RotateByEuler(real yaw, real pitch, real roll)
 {
-    Quaternion q {vec[x], vec[y], vec[z], 0.0f};
+    // c = cos, s = sin, y = yaw, p = pitch, r = roll
+    real cy = real_cos(yaw / 2.0f);
+    real sy = real_sin(yaw / 2.0f);
+    real cp = real_cos(pitch / 2.0f);
+    real sp = real_sin(pitch / 2.0f);
+    real cr = real_cos(roll / 2.0f);
+    real sr = real_sin(roll / 2.0f);
+
+    _data[x] = cy * cp * sr - sy * sp * cr;
+    _data[y] = sy * cp * sr + cy * sp * cr;
+    _data[z] = sy * cp * cr - cy * sp * sr;
+    _data[w] = cy * cp * cr + sy * sp * sr;
+}
+
+void Quaternion::AddEuler(const Vector3& vec)
+{
+    // If this quaternion is at 0, and we want to add a rotation,
+    // just add it.
+    if(_data[x] == 0.0f && _data[y] == 0.0f &&
+       _data[z] == 0.0f && _data[w] == 0.0f)
+    {
+        RotateByEuler(vec);
+        return;
+    }
+        
+    real cy = real_cos(vec[x] / 2.0f);
+    real sy = real_sin(vec[x] / 2.0f);
+    real cp = real_cos(vec[y] / 2.0f);
+    real sp = real_sin(vec[y] / 2.0f);
+    real cr = real_cos(vec[z] / 2.0f);
+    real sr = real_sin(vec[z] / 2.0f);
+    
+    real qx = cy * cp * sr - sy * sp * cr;
+    real qy = sy * cp * sr + cy * sp * cr;
+    real qz = sy * cp * cr - cy * sp * sr;
+    real qw = cy * cp * cr + sy * sp * sr;
+
+    Quaternion q {qx, qy, qz, qw};
+
+    (*this) *= q;
+}
+
+void Quaternion::AddEuler(real yaw, real pitch, real roll)
+{
+// If this quaternion is at 0, and we want to add a rotation,
+    // just add it.
+    if(_data[x] == 0.0f && _data[y] == 0.0f &&
+       _data[z] == 0.0f && _data[w] == 0.0f)
+    {
+        RotateByEuler(yaw, pitch, roll);
+        return;
+    }
+
+    real cy = real_cos(yaw / 2.0f);
+    real sy = real_sin(yaw / 2.0f);
+    real cp = real_cos(pitch / 2.0f);
+    real sp = real_sin(pitch / 2.0f);
+    real cr = real_cos(roll / 2.0f);
+    real sr = real_sin(roll / 2.0f);
+
+    real qx = cy * cp * sr - sy * sp * cr;
+    real qy = sy * cp * sr + cy * sp * cr;
+    real qz = sy * cp * cr - cy * sp * sr;
+    real qw = cy * cp * cr + sy * sp * sr;
+
+    Quaternion q{qx, qy, qz, qw};
+
     (*this) *= q;
 }

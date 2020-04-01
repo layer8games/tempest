@@ -87,7 +87,7 @@ Point Point::CrossProduct(const Point& point) const
 real Point::Magnitude(void)
 {
 	real totals = (_data[x] * _data[x]) + (_data[y] * _data[y]) + (_data[z] * _data[z]);
-	return sqrt(totals);
+	return real_sqrt(totals);
 }
 
 real Point::SqrMagnitude(void)

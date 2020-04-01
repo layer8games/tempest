@@ -81,7 +81,7 @@ Vector4 Vector4::CrossProduct(const Vector4& vec) const
 
 real Vector4::Magnitude(void)
 {
-    return sqrt(_data[x] * _data[x] + _data[y] * _data[y] + _data[z] * _data[z]);
+    return real_sqrt(_data[x] * _data[x] + _data[y] * _data[y] + _data[z] * _data[z]);
 }
 
 real Vector4::SqrMagnitude(void)

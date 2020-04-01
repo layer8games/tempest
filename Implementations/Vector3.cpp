@@ -74,7 +74,7 @@ Vector3 Vector3::CrossProduct(const Vector3& vec) const
 
 real Vector3::Magnitude(void)
 {
-    return sqrt(_data[x] * _data[x] + _data[y] * _data[y] + _data[z] * _data[z]);
+    return real_sqrt(_data[x] * _data[x] + _data[y] * _data[y] + _data[z] * _data[z]);
 }
 
 real Vector3::SqrMagnitude(void)
