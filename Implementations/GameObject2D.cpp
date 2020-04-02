@@ -1,4 +1,4 @@
-#include <Engine/GameObject.h>
+#include <Engine/GameObject2D.h>
 #include <iostream>
 
 using namespace Tempest;
@@ -8,14 +8,14 @@ using namespace Tempest;
 //Static Member
 //
 //==========================================================================================================================
-U32 GameObject::_nextID = 1;
+U32 GameObject2D::_nextID = 1;
 
 //==========================================================================================================================
 //
 //Constructors
 //
 //==========================================================================================================================
-GameObject::GameObject(void)
+GameObject2D::GameObject2D(void)
 	:
 	_modelTOWorldCache(),
 	_position(0.0f),
@@ -28,13 +28,12 @@ GameObject::GameObject(void)
 	_mesh(make_shared<Mesh>()),
 	_activeUpdate(true),
 	_activeRender(true),
-	_isSprite(false),
 	_ID(_nextID)
 {
-	++_nextID;	
+	++_nextID;
 }
 
-GameObject::GameObject(const GameObject& obj)
+GameObject2D::GameObject2D(const GameObject2D& obj)
 	:
 	_modelTOWorldCache(obj.GetModelMatrix()),
 	_position(obj.GetPosition()),
@@ -45,35 +44,14 @@ GameObject::GameObject(const GameObject& obj)
 	_shader(obj.GetShader()),
 	_activeUpdate(obj.GetActiveUpdate()),
 	_activeRender(obj.GetActiveRender()),
-	_isSprite(obj.IsSprite()),
 	_ID(obj.GetID())
 {  }
 
-GameObject::~GameObject(void)
+GameObject2D::~GameObject2D(void)
 {  }
 
-//==========================================================================================================================
-//
-//Virtual Functions
-//
-//==========================================================================================================================
-//==========================================================================================================================
-//v_Render
-//==========================================================================================================================
-
-
-//==========================================================================================================================
-//
-//Functions
-//==========================================================================================================================
-void GameObject::UpdateInternals(void)
+void GameObject2D::Init(void)
 {
-	_CalculateCachedData();
-}
-
-void GameObject::MakeSprite(void)
-{
-	_isSprite = true;
 	_position.Make2D();
 
 	TM::Point topRight(1.0f, 1.0f, 0.0f);
@@ -83,24 +61,24 @@ void GameObject::MakeSprite(void)
 
 	TM::Point top(0.0f, 0.5f);
 
-	TexCoord uvTopLeft {0.0f, 0.0f};
-	TexCoord uvTopRight {1.0f, 0.0f};
-	TexCoord uvBottomLeft {0.0f, 1.0f};
+	TexCoord uvTopLeft{0.0f, 0.0f};
+	TexCoord uvTopRight{1.0f, 0.0f};
+	TexCoord uvBottomLeft{0.0f, 1.0f};
 	TexCoord uvBottomRight(1.0f, 1.0f);
 
-	Vertex one { };
+	Vertex one{ };
 	one.position = topLeft;
 	one.texCoord = uvTopLeft;
-	
-	Vertex two { };
+
+	Vertex two{ };
 	two.position = topRight;
 	two.texCoord = uvTopRight;
-	
-	Vertex three { };
+
+	Vertex three{ };
 	three.position = bottomRight;
 	three.texCoord = uvBottomRight;
 
-	Vertex four { };
+	Vertex four{ };
 	four.position = bottomLeft;
 	four.texCoord = uvBottomLeft;
 
@@ -119,14 +97,33 @@ void GameObject::MakeSprite(void)
 }
 
 //==========================================================================================================================
+//
+//Virtual Functions
+//
+//==========================================================================================================================
+//==========================================================================================================================
+//v_Render
+//==========================================================================================================================
+
+
+//==========================================================================================================================
+//
+//Functions
+//==========================================================================================================================
+void GameObject2D::UpdateInternals(void)
+{
+	_CalculateCachedData();
+}
+
+//==========================================================================================================================
 //Protected
 //==========================================================================================================================
-void GameObject::DefaultAwake(void)
+void GameObject2D::DefaultAwake(void)
 {
 	UpdateInternals();
 }
 
-void GameObject::DefaultRender(void)
+void GameObject2D::DefaultRender(void)
 {
 	_shader->Use(true);
 	_mesh->BindVAO(true);
@@ -136,11 +133,7 @@ void GameObject::DefaultRender(void)
 		BindTexture(true);
 	}
 
-	if(_isSprite)
-	{
-		_shader->SetUniform("sprite_color", _color);
-	}
-
+	_shader->SetUniform("sprite_color", _color);
 	_shader->SetUniform("model", GetModelMatrix());
 
 	_mesh->v_Render();
@@ -154,7 +147,7 @@ void GameObject::DefaultRender(void)
 	}
 }
 
-void GameObject::DefaultUpdate(void)
+void GameObject2D::DefaultUpdate(void)
 {
 	UpdateInternals();
 }
@@ -162,7 +155,7 @@ void GameObject::DefaultUpdate(void)
 //==========================================================================================================================
 //Private
 //==========================================================================================================================
-void GameObject::_CalculateCachedData(void)
+void GameObject2D::_CalculateCachedData(void)
 {
 	//_modelTOWorldCache =  TM::Matrix4::Translate(_position) * TM::Matrix4::Scale(_scale);
 

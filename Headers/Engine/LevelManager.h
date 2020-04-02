@@ -4,7 +4,6 @@
 #include <Engine/Atom.h>
 #include <Engine/Level.h>
 #include <Engine/GameWindow.h>
-#include <Engine/GameObject.h>
 #include <Engine/ErrorManager.h>
 
 namespace TP = TempestPhysics;

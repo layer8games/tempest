@@ -3,7 +3,7 @@
 //===Killer1 includes===
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
-#include <Engine/GameObject.h>
+#include <Engine/GameObject2D.h>
 #include <Engine/GameWindow.h>
 #include <Engine/TextureManager.h>
 #include <Engine/EnvironmentObject.h>
@@ -103,12 +103,12 @@ namespace Tempest
 
 		///	Converts the ref to a smart_ptr and adds the GameObject to the Level.
 		///	\param obj is the object to be added.
-		TEMPEST_API void AddObjectToLevel(const GameObject& obj);
+		TEMPEST_API void AddObjectToLevel(const GameObject2D& obj);
 
 
 		///	Adds GameObject pointer to the Level.
 		///	\param obj is the pointer to be added.
-		TEMPEST_API void AddObjectToLevel(p_GameObject obj);
+		TEMPEST_API void AddObjectToLevel(p_GameObject2D obj);
 
 
 		///	Registers a KillerPhysics::RigidBody2D with a KillerPhysics::ForcerGenerator. This only works because they are pointers. 
@@ -387,7 +387,7 @@ namespace Tempest
 		//Protected data
 		//
 		//==========================================================================================================================		
-		std::map<U32, p_GameObject>	  _localGameObjects; ///< List of all GameObjects included in the Level. This is protected, levels should have access to their registered objects
+		std::map<U32, p_GameObject2D>	  _localGameObjects; ///< List of all GameObjects included in the Level. This is protected, levels should have access to their registered objects
 		
 	private:
 		/// Helper function to split a list of numbers apart. This is intended to be used with a list of numbers separated by a 

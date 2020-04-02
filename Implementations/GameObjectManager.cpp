@@ -8,8 +8,9 @@ using namespace Tempest;
 //
 //==========================================================================================================================
 GameObjectManager::GameObjectManager(void)
-	:
-	_registry()
+    :
+    _registry2D(),
+    _registry3D()
 {  }
 
 GameObjectManager::~GameObjectManager(void)
@@ -24,76 +25,134 @@ p_GameObjectManager GameObjectManager::_instance = nullptr;
 
 p_GameObjectManager GameObjectManager::Instance(void)
 {
-	if(_instance == nullptr)
-	{
-		_instance = p_GameObjectManager(new GameObjectManager());
-	}
+    if(_instance == nullptr)
+    {
+        _instance = p_GameObjectManager(new GameObjectManager());
+    }
 
-	return _instance;
+    return _instance;
 }
 
-void GameObjectManager::Add(p_GameObject obj)
+void GameObjectManager::Add(p_GameObject2D obj)
 {	
-	if(_registry.count(obj->GetID()) == 0)
-	{
-		_registry.insert({obj->GetID(), obj});
-		
-		if(_registry.find(obj->GetID()) == _registry.end())
-		{
-			ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject to level.");
-		}
-	}
-	else
-	{
-		ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::Add attempted to add ID that already exists. ID = " + obj->GetID());
-	}
-	
+    if(_registry2D.count(obj->GetID()) == 0)
+    {
+        _registry2D.insert({obj->GetID(), obj});
+        
+        if(_registry2D.find(obj->GetID()) == _registry2D.end())
+        {
+            ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject2D to level.");
+        }
+    }
+    else
+    {
+        ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::Add attempted to add ID that already exists. ID = " + obj->GetID());
+    }
 }
 
-void GameObjectManager::Remove(U32 id)
+void GameObjectManager::Add(p_GameObject3D obj)
 {
-	if(_registry.count(id) == 1)
-	{
-		_registry.erase(id);
-	}
-	else
-	{
-		ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::Remove: no object found with id= " + id);
-	}
+    if(_registry3D.count(obj->GetID()) == 0)
+    {
+        _registry3D.insert({obj->GetID(), obj});
+
+        if(_registry3D.find(obj->GetID()) == _registry3D.end())
+        {
+            ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject3D to level.");
+        }
+    }
+    else
+    {
+        ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::Add attempted to add ID that already exists. ID = " + obj->GetID());
+    }
 }
 
-p_GameObject GameObjectManager::GetGameObject(U32 id)
+void GameObjectManager::Remove2D(U32 id)
 {
-	if(_registry.count(id) == 1)
-	{
-		return _registry[id];
-	}
-	else
-	{
-		ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::GetGameObject: no object found with id= " + id);
-		return nullptr;
-	}
+    if(_registry2D.count(id) == 1)
+    {
+        _registry2D.erase(id);
+    }
+    else
+    {
+        ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::Remove: no object found with id= " + id);
+    }
+}
+
+void GameObjectManager::Remove3D(U32 id)
+{
+    if(_registry3D.count(id) == 1)
+    {
+        _registry3D.erase(id);
+    }
+    else
+    {
+        ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::Remove: no object found with id= " + id);
+    }
+}
+
+p_GameObject2D GameObjectManager::GetGameObject2D(U32 id)
+{
+    if(_registry2D.count(id) == 1)
+    {
+        return _registry2D[id];
+    }
+    else
+    {
+        ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::GetGameObject: no object found with id= " + id);
+        return nullptr;
+    }
+}
+
+p_GameObject3D GameObjectManager::GetGameObject3D(U32 id)
+{
+    if(_registry3D.count(id) == 1)
+    {
+        return _registry3D[id];
+    }
+    else
+    {
+        ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::GetGameObject: no object found with id= " + id);
+        return nullptr;
+    }
 }
 
 void GameObjectManager::UpdateObjects(void)
 {
-	for(auto obj : _registry)
-	{
-		if(obj.second->GetActiveUpdate())
-		{
-			obj.second->v_Update();
-		}
-	}
+    for(auto obj : _registry2D)
+    {
+        if(obj.second->GetActiveUpdate())
+        {
+            obj.second->v_Update();
+        }
+    }
+
+    for(auto obj : _registry3D)
+    {
+        if(obj.second->GetActiveUpdate())
+        {
+            obj.second->v_Update();
+        }
+    }
 }
 
 void GameObjectManager::RenderObjects(void)
 {
-	for(auto obj : _registry)
-	{
-		if(obj.second->GetActiveRender())
-		{
-			obj.second->GetShader()->SetUniform("view", GameWindow::Instance()->GetCamera()->GetViewMatrix4());
-			obj.second->v_Render();
-		}
-	}
+    for(auto obj : _registry2D)
+    {
+        if(obj.second->GetActiveRender())
+        {
+            obj.second->GetShader()->SetUniform("view", GameWindow::Instance()->GetCamera()->GetViewMatrix4());
+            obj.second->v_Render();
+        }
+    }
+
+    for(auto obj : _registry3D)
+    {
+        if(obj.second->GetActiveRender())
+        {
+            obj.second->GetShader()->SetUniform("view", GameWindow::Instance()->GetCamera()->GetViewMatrix4());
+            obj.second->v_Render();
+        }
+    }
 }

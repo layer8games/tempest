@@ -1,5 +1,4 @@
 #include <Engine/Glyph.h>
-#include <iostream>
 
 using namespace Tempest;
 
@@ -16,22 +15,13 @@ _characterData()
 
 Glyph::Glyph(const Glyph& glyph)
 :
-GameObject(glyph),
+GameObject2D(glyph),
 _character(glyph.GetCharacter()),
 _characterData(glyph.GetCharacterData())
 {  }
 
 Glyph::~Glyph(void)
 {  }
-
-/*
-Glyph& Glyph::operator=(const Glyph& glyph)
-{
-	GameObject = glyph;
-	_character = glyph.GetCharacter(),
-	_characterDatar = glyph.GetCharacterData();
-}
-*/
 
 //==========================================================================================================================
 //
@@ -40,7 +30,6 @@ Glyph& Glyph::operator=(const Glyph& glyph)
 //==========================================================================================================================
 void Glyph::Init(void)
 {
-	GameObject::MakeSprite();
-
-	GameObject::SetShader(ShaderManager::Instance()->GetShader(GLYPH));
+    GameObject2D::Init();
+    SetShader(ShaderManager::Instance()->GetShader(GLYPH));
 }

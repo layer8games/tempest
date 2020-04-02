@@ -8,6 +8,9 @@ using namespace Tempest;
 //
 //==========================================================================================================================
 EventManager::EventManager(void)
+    :
+    _2DListeners(),
+    _3DListeners()
 {  }
 
 EventManager::~EventManager(void)
@@ -40,10 +43,16 @@ void EventManager::AddEvent(Event event)
     _priorityQueue.insert(event);
 }
 
-void EventManager::AddListener(p_GameObject obj, string type)
+void EventManager::AddListener(p_GameObject2D obj, string type)
 {
-    ListenerRegistration reg(obj, type);
-    _listeners.push_back(reg);
+    ListenerRegistration2D reg(obj, type);
+    _2DListeners.push_back(reg);
+}
+
+void EventManager::AddListener(p_GameObject3D obj, string type)
+{
+    ListenerRegistration3D reg(obj, type);
+    _3DListeners.push_back(reg);
 }
 
 void EventManager::Dispatch(void)
@@ -52,7 +61,14 @@ void EventManager::Dispatch(void)
 
         while((_priorityQueue.size() > 0) && (_priorityQueue.begin()->DispatchTime < currentTime) && (_priorityQueue.begin()->DispatchTime > 0.0f))
         {            
-            for(auto listener : _listeners)
+            for(auto listener : _2DListeners)
+            {
+                if(std::strcmp(listener.interestType.c_str(), _priorityQueue.begin()->Type.c_str()) == 0)
+                {
+                    listener.listener->v_OnEvent(*_priorityQueue.begin());
+                }
+            }
+            for(auto listener : _3DListeners)
             {
                 if(std::strcmp(listener.interestType.c_str(), _priorityQueue.begin()->Type.c_str()) == 0)
                 {
@@ -65,7 +81,16 @@ void EventManager::Dispatch(void)
 
 void EventManager::DispatchNow(Event event)
 {
-    for(auto listener : _listeners)
+    for(auto listener : _2DListeners)
+    {
+        if(event.ReceiverID == listener.listener->GetID())
+        {
+            listener.listener->v_OnEvent(event);
+            return;
+        }
+    }
+
+    for(auto listener : _3DListeners)
     {
         if(event.ReceiverID == listener.listener->GetID())
         {

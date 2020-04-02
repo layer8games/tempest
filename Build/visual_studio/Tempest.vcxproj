@@ -175,6 +175,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\EnvironmentObject.h" />
     <ClInclude Include="..\..\Headers\Engine\Event.hpp">
       <SubType>
       </SubType>
@@ -191,7 +192,11 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\GameObject.h" />
+    <ClInclude Include="..\..\Headers\Engine\GameObject2D.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\GameObject3D.h" />
     <ClInclude Include="..\..\Headers\Engine\EngineFactory.h">
       <SubType>
       </SubType>
@@ -251,7 +256,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\EnvironmentObject.h" />
     <ClInclude Include="..\..\Headers\Engine\Camera.h" />
     <ClInclude Include="..\..\Headers\Engine\Color.h" />
     <ClInclude Include="..\..\Headers\Engine\Controller.h" />
@@ -339,9 +343,9 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\dllmain.cpp" />
-    <ClCompile Include="..\..\Implementations\EnvironmentObject.cpp" />
     <ClCompile Include="..\..\Implementations\Camera.cpp" />
     <ClCompile Include="..\..\Implementations\Controller.cpp" />
+    <ClCompile Include="..\..\Implementations\EnvironmentObject.cpp" />
     <ClCompile Include="..\..\Implementations\ErrorManager.cpp" />
     <ClCompile Include="..\..\Implementations\EventManager.cpp">
       <SubType>
@@ -356,7 +360,11 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\GameObject.cpp" />
+    <ClCompile Include="..\..\Implementations\GameObject2D.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\GameObject3D.cpp" />
     <ClCompile Include="..\..\Implementations\EngineFactory.cpp">
       <SubType>
       </SubType>

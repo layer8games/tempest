@@ -64,9 +64,9 @@ void Level::UpdateLevel(void)
 	}
 }
 
-void Level::AddObjectToLevel(const GameObject& obj)
+void Level::AddObjectToLevel(const GameObject2D& obj)
 {
-	_localGameObjects.insert({ obj.GetID(), shared_ptr<GameObject>(const_cast<GameObject*>(&obj)) });
+	_localGameObjects.insert({ obj.GetID(), shared_ptr<GameObject2D>(const_cast<GameObject2D*>(&obj)) });
 	_localGameObjects[obj.GetID()]->GetShader()->SetUniform("projection", GameWindow::Instance()->GetCamera()->GetProjectionMatrix4());
 
 	if(_localGameObjects.find(obj.GetID()) == _localGameObjects.end())
@@ -75,7 +75,7 @@ void Level::AddObjectToLevel(const GameObject& obj)
 	}
 }
 
-void Level::AddObjectToLevel(p_GameObject obj)
+void Level::AddObjectToLevel(p_GameObject2D obj)
 {
 	obj->GetShader()->SetUniform("projection", GameWindow::Instance()->GetCamera()->GetProjectionMatrix4());
 

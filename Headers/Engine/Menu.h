@@ -4,7 +4,7 @@
 #include <Engine/Atom.h>
 #include <Engine/Point.h>
 #include <Engine/Text.h>
-#include <Engine/GameObject.h>
+#include <Engine/GameObject2D.h>
 
 namespace TM = TempestMath;
 
@@ -238,7 +238,7 @@ namespace Tempest
 ///	Sets the selector for the Menu. 
 ///	\param obj is a pointer to the GameObject type that will act as the selector. If itemList is not empty, it will set
 ///	the selector to the first position. 
-		inline void SetSelector(shared_ptr<GameObject> obj)
+		inline void SetSelector(p_GameObject2D obj)
 		{
 			_selector = obj;
 
@@ -270,9 +270,9 @@ namespace Tempest
 		TM::Point 		 		_itemOffset;		///< Offset of each MenuItem from the one before it. 
 		TM::Point 				_selectorOffset;	///< Offset of the selector from the MenuItem it is next to. 
 		TM::Point 				_offsetFromTitle;	///< Offset of the first MenuItem from the title. 
-		shared_ptr<Text>		_title;				///< Pointer to the a Text title. 
+		p_Text					_title;				///< Pointer to the a Text title. 
 		std::vector<MenuItem> 	_itemList;			///< Internal list of all MenuItems. 
-		shared_ptr<GameObject>	_selector;			///< Selector to move and activate MenuItems. 
+		p_GameObject2D			_selector;			///< Selector to move and activate MenuItems. 
 		
 	};//end Class
 	typedef shared_ptr<Menu> p_Menu;

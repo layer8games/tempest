@@ -64,9 +64,6 @@
     <Filter Include="Source Code\Engine\GameObjects">
       <UniqueIdentifier>{5c9e9e45-d24d-478b-867f-8057a804f074}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Engine\GameObjects\EnvironmentObj">
-      <UniqueIdentifier>{e34428c4-21e7-40f7-9fe0-9eb037b1e2e4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Engine\GameObjects\Glyph">
       <UniqueIdentifier>{22c25915-f8de-4ccd-b648-edfd4f055e14}</UniqueIdentifier>
     </Filter>
@@ -235,6 +232,21 @@
     <Filter Include="Source Code\Engine\Event\Base">
       <UniqueIdentifier>{91de4a07-3667-4ea5-a6ba-141069c91220}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\GameObjects\Base\2D">
+      <UniqueIdentifier>{b7412f6d-d1fd-42a9-9fb3-dbb378f08598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\GameObjects\Base\3D">
+      <UniqueIdentifier>{e1c3682f-23dc-44b5-b325-502678fff30f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\GameObjects\StaticGameObject">
+      <UniqueIdentifier>{e34428c4-21e7-40f7-9fe0-9eb037b1e2e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\GameObjects\StaticGameObject\2D">
+      <UniqueIdentifier>{7ac4976a-97b9-4c6f-8e95-a4c59e796f0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\GameObjects\StaticGameObject\3D">
+      <UniqueIdentifier>{bab7e9c8-c59a-4353-b1bc-4a91eedf3525}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -254,9 +266,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Timer.h">
       <Filter>Source Code\Math\Timer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\EnvironmentObject.h">
-      <Filter>Source Code\Engine\GameObjects\EnvironmentObj</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Quaternion.h">
       <Filter>Source Code\Math\Quaternion</Filter>
@@ -281,9 +290,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Shader.h">
       <Filter>Source Code\Engine\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\GameObject.h">
-      <Filter>Source Code\Engine\GameObjects\Base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Text.h">
       <Filter>Source Code\Engine\Text</Filter>
@@ -420,6 +426,15 @@
     <ClInclude Include="..\..\Headers\Engine\StateMachine.hpp">
       <Filter>Source Code\Engine\StateMachine</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\GameObject3D.h">
+      <Filter>Source Code\Engine\GameObjects\Base\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\GameObject2D.h">
+      <Filter>Source Code\Engine\GameObjects\Base\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\EnvironmentObject.h">
+      <Filter>Source Code\Engine\GameObjects\StaticGameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -436,9 +451,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Timer.cpp">
       <Filter>Source Code\Math\Timer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\EnvironmentObject.cpp">
-      <Filter>Source Code\Engine\GameObjects\EnvironmentObj</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Quaternion.cpp">
       <Filter>Source Code\Math\Quaternion</Filter>
@@ -463,9 +475,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Shader.cpp">
       <Filter>Source Code\Engine\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\GameObject.cpp">
-      <Filter>Source Code\Engine\GameObjects\Base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Text.cpp">
       <Filter>Source Code\Engine\Text</Filter>
@@ -580,6 +589,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\EventManager.cpp">
       <Filter>Source Code\Engine\Managers\EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\GameObject3D.cpp">
+      <Filter>Source Code\Engine\GameObjects\Base\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\GameObject2D.cpp">
+      <Filter>Source Code\Engine\GameObjects\Base\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\EnvironmentObject.cpp">
+      <Filter>Source Code\Engine\GameObjects\StaticGameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
