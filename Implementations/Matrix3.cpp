@@ -138,11 +138,7 @@ void Matrix3::SetScale(const Vector3& vec)
 
     _data[0][x] = vec[x];
     _data[1][y] = vec[y];
-    
-    if(!vec.Is2D()) 
-    {
-        _data[2][z] = vec[z];
-    }
+    _data[2][z] = vec[z];
 }
 
 void Matrix3::SetScale(const Vector4& vec)
@@ -151,11 +147,7 @@ void Matrix3::SetScale(const Vector4& vec)
 
     _data[0][x] = vec[x];
     _data[1][y] = vec[y];
-    
-    if(!vec.Is2D()) 
-    {
-        _data[2][z] = vec[z];
-    }
+    _data[2][z] = vec[z];
 }
 
 void Matrix3::AddScale(real xVal, real yVal)
@@ -175,22 +167,14 @@ void Matrix3::AddScale(const Vector3& vec)
 {
     _data[0][x] += vec[x];
     _data[1][y] += vec[y];
-    
-    if(!vec.Is2D()) 
-    {
-        _data[2][z] += vec[z];
-    }
+    _data[2][z] += vec[z];
 }
 
 void Matrix3::AddScale(const Vector4& vec)
 {
     _data[0][x] += vec[x];
     _data[1][y] += vec[y];
-    
-    if(!vec.Is2D()) 
-    {
-        _data[2][z] += vec[z];
-    }
+    _data[2][z] += vec[z];
 }
 
 //==========================================================================================================================
@@ -493,8 +477,9 @@ Matrix3 Matrix3::Transform(const Matrix3& mat) const
 Vector4 Matrix3::Transform(const Vector4& vec) const
 {
     return Vector4( _data[0][x] * vec[x] + _data[1][x] * vec[y] + _data[2][x] * vec[z],
-                   _data[0][y] * vec[x] + _data[1][y] * vec[y] + _data[2][y] * vec[z],
-                   _data[0][z] * vec[x] + _data[1][z] + vec[y] + _data[2][z] * vec[z] );
+                    _data[0][y] * vec[x] + _data[1][y] * vec[y] + _data[2][y] * vec[z],
+                    _data[0][z] * vec[x] + _data[1][z] + vec[y] + _data[2][z] * vec[z],
+                   0.0f);
 }
 
 //==========================================================================================================================
@@ -551,7 +536,8 @@ Vector4 Matrix3::operator*(const Vector4& vec) const
 {
     return Vector4( _data[0][x] * vec[x] + _data[1][x] * vec[y] + _data[2][x] * vec[z],
                     _data[0][y] * vec[x] + _data[1][y] * vec[y] + _data[2][y] * vec[z],
-                    _data[0][z] * vec[x] + _data[1][z] + vec[y] + _data[2][z] * vec[z] );
+                    _data[0][z] * vec[x] + _data[1][z] + vec[y] + _data[2][z] * vec[z],
+                   0.0f);
 }
 
 Matrix3& Matrix3::operator/=(real val)

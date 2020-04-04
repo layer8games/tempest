@@ -142,9 +142,9 @@ namespace TempestMath
 ///	\param vec is the vectored used to performed the transformation.
         TEMPEST_API Vector4 TransformInverse(const Vector4& vec) const;
 
-        /// Returns a Point transformed by the Inverse of this Matrix
-        /// \param vec is the point to transform.
-        TEMPEST_API Point TransformInverse(const Point& vec) const;
+        /// Returns a Point4 transformed by the Inverse of this Matrix
+        /// \param vec is the point4 to transform.
+        TEMPEST_API Point4 TransformInverse(const Point4& vec) const;
 
 //==========================================================================================================================
 //Scaling
@@ -271,7 +271,7 @@ namespace TempestMath
 ///	A helper functions that will set the rotational transform and position at the same time. This is currently untested. 
 ///	\param q contains the orientation to set. 
 ///	\param p contains the position to set, as a translation. 
-        TEMPEST_API void SetOrientationAndPosition(const Quaternion& q, const Point& p);
+        TEMPEST_API void SetOrientationAndPosition(const Quaternion& q, const Point4& p);
 
 //==========================================================================================================================
 //Inverse
@@ -327,7 +327,7 @@ namespace TempestMath
 ///	\param cameraPos is the position of the camera in world space. This will be the "location" of the camera for the look at. 
 ///	\param target is the axis down which the camera should look. You can also think of this as the target in space the camera should face.
 ///	\param up is the direction considered to be up for the camera. 
-        TEMPEST_API static Matrix4 LookAt(const Point& cameraPos, const Point& target, const Vector4& up);
+        TEMPEST_API static Matrix4 LookAt(const Point4& cameraPos, const Point4& target, const Vector4& up);
 
 ///	Sets this matrix to translate other entities so that they appear as if they were looking down a target axis from a target position. 
 ///	This is used mostly with the camera. A right handed coordinate system is assumed. 
@@ -387,9 +387,9 @@ namespace TempestMath
 ///	\param vec is the vector that is multiplied by this matrix. 
         TEMPEST_API Vector4 operator*(const Vector4& vec) const;
 
-///	Performs Matrix4 multiplication with Point.
-///	\param point is the vector that is multiplied by this matrix. 
-        TEMPEST_API Point operator*(const Point& point) const;
+///	Performs Matrix4 multiplication with Point4.
+///	\param point4 is the vector that is multiplied by this matrix. 
+        TEMPEST_API Point4 operator*(const Point4& point) const;
 
 ///	Divides each element of this matrix, setting it to the results. 
 ///	\param val is the value that this matrix is divided by. 

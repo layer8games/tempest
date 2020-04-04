@@ -3,7 +3,7 @@
 //===== Killer Includes =====
 #include <Engine/Atom.h>
 #include <Engine/Vector4.h>
-#include <Engine/Point.h>
+#include <Engine/Point4.h>
 
 
 //===== Stnadard inlcudes =====
@@ -12,7 +12,7 @@
 namespace TempestMath
 {
     class Vector4;
-    class Point;
+    class Point4;
 
 //==========================================================================================================================
 //Documentation
@@ -21,7 +21,7 @@ namespace TempestMath
 ///	The Vector3 is a 3 element 3D Vector. The Vector3 consists of an x, y, and z component represented by an array of real values. 
 ///	They are refered as x, y, and z through documentation. In code, you can refere to them by x, y and z, due to an enum defined
 ///	in  Atom.h.  
-///	Unlike the Vector4, there is no w, so there is no difference between a position and a direction, like in the Point vs Vector4
+///	Unlike the Vector4, there is no w, so there is no difference between a position and a direction, like in the Point4 vs Vector4
 ///	classes. This class exists for when something doesn't need that extra data that comes with the w element. This can save on 
 ///	memory and computation. The Matrix3 class uses it, for example.
     class Vector3
@@ -39,11 +39,6 @@ namespace TempestMath
 ///	\param val real: Input value for x, y and z.	
         TEMPEST_API explicit Vector3(real val);
 
-///	Two input constructor. Set's x and y accordingly. Z is set to 0.
-///	\param x is the value for x.
-///	\param y is the value for y.
-        TEMPEST_API Vector3(real x, real y);
-
 ///	Three input constructor.
 ///	\param x is the value for x.
 ///	\param y is the value for y.
@@ -55,9 +50,9 @@ namespace TempestMath
         //Add explicit key word and fix errors
         TEMPEST_API Vector3(const Vector3& v);
 
-/// Copy Constructor. It explicitely copies all data into new Vector3 from a Point
-/// \param p is the Point to copy.
-        TEMPEST_API Vector3(const Point& p);
+/// Copy Constructor. It explicitely copies all data into new Vector3 from a Point4
+/// \param p is the Point4 to copy.
+        TEMPEST_API Vector3(const Point4& p);
 
 ///	Convert a Vector4 into a Vector3.
 ///	\param v is the Vector4 to convert.
@@ -71,27 +66,6 @@ namespace TempestMath
 //Functions
 //
 //==========================================================================================================================
-//===== 2D checks =====		 
-///	Sets the Vector3 to act like a 2D Vector3 instead of a 3D Vector3 by setting _2D to true. This means that the z value wont 
-///	be copied or used in operations. 	
-        inline void Make2D(bool state=true)
-        {
-            _2D = state;
-        }
-
-///	Sets the Vector3 to act like a 3D Vector3 instead of a 3D Vector3 by settings _2D to true. This means that the z value will
-///	be copied and used in operations.	
-        inline void Make3D(bool state=false)
-        {
-            _2D = state;
-        }
- 
-///	Returns that 2D state of the Vector3 stored in _2D;	
-        inline bool Is2D(void) const
-        {
-            return _2D;
-        }
-
 //===== Vector3 Special functions =====
 ///	Performs a Dot or Scalar product in the order of this * other.
 ///	\param vec is the left hand argument in the operation.	
@@ -122,7 +96,7 @@ namespace TempestMath
 
         TEMPEST_API void AddScaledVector(const Vector4& vec, real scale);
 
-        TEMPEST_API void AddScaledVector(const Point& point, real scale);
+        TEMPEST_API void AddScaledVector(const Point4& point, real scale);
 
 //==========================================================================================================================
 //
@@ -210,11 +184,6 @@ namespace TempestMath
 ///	Changes the sign of each element of the Vector3. If 2D, z is not changed.
         inline Vector3 operator-(void)
         {
-            if(_2D)
-            {
-                return Vector3(-_data[x], -_data[y]);
-            }
-
             return Vector3(-_data[x], -_data[y], -_data[z]);
         }
  
@@ -223,23 +192,14 @@ namespace TempestMath
         {
             ++_data[x];
             ++_data[y];
-
-            if(!_2D)
-            {
-                ++_data[z];
-            }
-
+            ++_data[z];
+            
             return *this;
         }
 
 ///	Postfix, Adds 1 to each element of the Vector3. If 2D, z is ignored. 
         inline Vector3 operator++(int)
         {
-            if(_2D)
-            {
-                return Vector3(++_data[x], ++_data[y]);
-            }
-
             return Vector3(++_data[x], ++_data[y], ++_data[z]);
         }
  
@@ -248,11 +208,7 @@ namespace TempestMath
         {
             --_data[x];
             --_data[y];
-
-            if(!_2D)
-            {
-                --_data[z];
-            }
+            --_data[z];
 
             return *this;
         }
@@ -260,11 +216,6 @@ namespace TempestMath
 ///	Postfix, Subtracts 1 to each element of the Vector3. If 2D, z is ignored.  
         inline Vector3 operator--(int)
         {
-            if(_2D)
-            {
-                return Vector3(--_data[x], --_data[y]);
-            }
-
             return Vector3(--_data[x], --_data[y], --_data[z]);
         }
 
@@ -342,7 +293,6 @@ namespace TempestMath
 //Data
 //
 //==========================================================================================================================
-        bool _2D;		///< Used to decide whether to use 2D or 3D logic in operators.
         real  _data[3];	///< Array that stores the values for each element.
     };// end class
     typedef shared_ptr<Vector3> p_Vector3;

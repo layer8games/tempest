@@ -333,9 +333,6 @@
     <ClInclude Include="..\..\Headers\Engine\Matrix3.h">
       <Filter>Source Code\Math\LinearAlgebra\Matrix</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Point.h">
-      <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vector4.h">
       <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
     </ClInclude>
@@ -435,6 +432,18 @@
     <ClInclude Include="..\..\Headers\Engine\EnvironmentObject.h">
       <Filter>Source Code\Engine\GameObjects\StaticGameObject</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Vector2.h">
+      <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Point4.h">
+      <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Point2.h">
+      <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Point3.h">
+      <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -518,9 +527,6 @@
     <ClCompile Include="..\..\Implementations\Matrix3.cpp">
       <Filter>Source Code\Math\LinearAlgebra\Matrix</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Point.cpp">
-      <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector4.cpp">
       <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
     </ClCompile>
@@ -598,6 +604,18 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\EnvironmentObject.cpp">
       <Filter>Source Code\Engine\GameObjects\StaticGameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Vector2.cpp">
+      <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Point4.cpp">
+      <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Point3.cpp">
+      <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Point2.cpp">
+      <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

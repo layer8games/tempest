@@ -3,7 +3,7 @@
 //===== Killer Includes =====
 #include <Engine/Atom.h>
 #include <Engine/Vector3.h>
-#include <Engine/Point.h>
+#include <Engine/Point4.h>
 
 
 //===== Stnadard inlcudes =====
@@ -12,7 +12,7 @@
 namespace TempestMath
 {
     class Vector3;
-    class Point;
+    class Point4;
 //==========================================================================================================================
 //Documentation
 //========================================================================================================================== 
@@ -40,17 +40,6 @@ namespace TempestMath
 ///	\param val real: Input value for x, y and z.		
         TEMPEST_API explicit Vector4(real val);
 
-///	Two input constructor. Set's x and y accordingly. Z is set to 0.0f. W is set to 1.
-///	\param x is the value for x.
-///	\param y is the value for y.
-        TEMPEST_API Vector4(real x, real y);
-
-///	Three input constructor. W is set to 1.
-///	\param x is the value for x.
-///	\param y is the value for y.
-///	\param z is the value for z.
-        TEMPEST_API Vector4(real x, real y, real z);
-
 ///	Four input constructor.
 ///	\param x is the value for x.
 ///	\param y is the value for y.
@@ -62,9 +51,9 @@ namespace TempestMath
 ///	\param v is the Vector4 to copy. 
         TEMPEST_API Vector4(const Vector4& v);
 
-///	Copy a Point into a Vector4. W is set to 0.
+///	Copy a Point4 into a Vector4. W is set to 0.
 ///	\param  p will be converted into a Vector4.
-        TEMPEST_API explicit Vector4(const Point& p);
+        TEMPEST_API explicit Vector4(const Point4& p);
  
 ///	Destructor. It does not do anything. 	
         TEMPEST_API ~Vector4(void);
@@ -74,35 +63,14 @@ namespace TempestMath
 //Functions
 //
 //==========================================================================================================================
-//===== 2D checks =====		 
-///	Sets the Vector4 to act like a 2D Vector4 instead of a 3D Vector4 by setting _2D to true. This means that the z value wont 
-///	be copied or used in operations. 	
-        inline void Make2D(bool state=true)
-        {
-            _2D = state;
-        }
-
-///	Sets the Vector4 to act like a 3D Vector4 instead of a 3D Vector4 by settings _2D to true. This means that the z value will
-///	be copied and used in operations.	
-        inline void Make3D(bool state=false)
-        {
-            _2D = state;
-        }
-
-///	Returns that 2D state of the Vector4 stored in _2D;	
-        inline bool Is2D(void) const
-        {
-            return _2D;
-        }
-
 //===== Vector4 Special functions =====
 ///	Performs a Dot or Scalar product in the order of this * other.
 ///	\param vec is the left hand argument in the operation.	
         TEMPEST_API real Dot(const Vector4& vec) const;
 
 ///	Performs a Dot or Scalar product in the order of this * other.
-///	\param point is the left hand argument in the operation.	
-        TEMPEST_API real Dot(const Point& point) const;
+///	\param point4 is the left hand argument in the operation.	
+        TEMPEST_API real Dot(const Point4& point) const;
 
 ///	Performs a Cross or Vector4 production in the order of this % other.
 ///	\param vec is the left hand argument in the operation.			
@@ -135,7 +103,7 @@ namespace TempestMath
 ///	Adds a Point scaled by a value to this Vector4. 
 ///	\param point is the Point that will be added to this one. 
 ///	\param scale is the amount the added Vector4 will be scaled by.
-        TEMPEST_API void AddScaledPoint(const Point& point, real scale);
+        TEMPEST_API void AddScaledPoint(const Point4& point, real scale);
 
 //==========================================================================================================================
 //
@@ -183,7 +151,7 @@ namespace TempestMath
 ///	\param vec is the Vector4 to copy into this Vector4.
         TEMPEST_API Vector4& operator=(const Vector4& vec);
 
-        TEMPEST_API Vector4& operator=(const Point& point);
+        TEMPEST_API Vector4& operator=(const Point4& point);
 
         TEMPEST_API Vector4& operator=(const Vector3& vec);
 
@@ -210,11 +178,11 @@ namespace TempestMath
 
 ///	Point addtion. This is done componentwise.
 ///	\param vec is the Point to add into a new Vector4.
-        TEMPEST_API Vector4 operator+(const Point& Point) const;
+        TEMPEST_API Vector4 operator+(const Point4& Point) const;
 
 ///	Point addition equal. This is done componentwise.
 ///	\param vec is the Point to add into this Vector4.
-        TEMPEST_API Vector4& operator+=(const Point& vec);
+        TEMPEST_API Vector4& operator+=(const Point4& vec);
 
 //===== Add by scalar =====
 ///	Scalar addition. Each value is added into. 2D check done before z is changed.
@@ -248,22 +216,17 @@ namespace TempestMath
 
 ///	Point subtraction. This is done componentwise. 2D check done before z is changed. 
 ///	\param vec is the Point subtracted from the new Vector4.
-        TEMPEST_API Vector4 operator-(const Point& vec) const;
+        TEMPEST_API Vector4 operator-(const Point4& vec) const;
 
 ///	Point subtraction. This is done componenetwise. 2D check done before z is changed. 
 ///	\param vec is the Point subtracted from this Vector4.
-        TEMPEST_API Vector4& operator-=(const Point& vec);
+        TEMPEST_API Vector4& operator-=(const Point4& vec);
 
 //===== Negation and increment =====
 ///	Changes the sign of each element of the Vector4. If 2D, z is not changed. w is also ignored. 
         inline Vector4 operator-(void)
         {
-            if(_2D)
-            {
-                return Vector4(-_data[x], -_data[y]);
-            }
-
-            return Vector4(-_data[x], -_data[y], -_data[z]);
+            return Vector4(-_data[x], -_data[y], -_data[z], 0.0f);
         }
  
 ///	Prefix, Adds 1 to each element of the Vector4. If 2D, z is ignored. w is always ignored.  
@@ -271,11 +234,7 @@ namespace TempestMath
         {
             ++_data[x];
             ++_data[y];
-
-            if(!_2D)
-            {
-                ++_data[z];
-            }
+            ++_data[z];
 
             return *this;
         }
@@ -283,12 +242,7 @@ namespace TempestMath
 ///	Postfix, Adds 1 to each element of the Vector4. If 2D, z is ignored. w is always ignored.  
         inline Vector4 operator++(int)
         {
-            if(_2D)
-            {
-                return Vector4(++_data[x], ++_data[y]);
-            }
-
-            return Vector4(++_data[x], ++_data[y], ++_data[z]);
+            return Vector4(++_data[x], ++_data[y], ++_data[z], 0.0f);
         }
 
 ///	Prefix, Subtracts 1 to each element of the Vector4. If 2D, z is ignored. w is always ignored.  
@@ -296,11 +250,7 @@ namespace TempestMath
         {
             --_data[x];
             --_data[y];
-
-            if(!_2D)
-            {
-                --_data[z];
-            }
+            --_data[z];
 
             return *this;
         }
@@ -308,12 +258,7 @@ namespace TempestMath
 ///	Postfix, Subtracts 1 to each element of the Vector4. If 2D, z is ignored. w is always ignored.   
         inline Vector4 operator--(int)
         {
-            if(_2D)
-            {
-                return Vector4(--_data[x], --_data[y]);
-            }
-
-            return Vector4(--_data[x], --_data[y], --_data[z]);
+            return Vector4(--_data[x], --_data[y], --_data[z], 0.0f);
         }
 
 //===== Subtract by scalar =====
@@ -383,7 +328,6 @@ namespace TempestMath
 //Data
 //
 //==========================================================================================================================
-        bool _2D;		///< Used to decide whether to use 2D or 3D logic in operators.
         real  _data[4];	///< Array that stores the values for each element.
         //This is an idea for later. 
         //Find a value that you can invalidate if 

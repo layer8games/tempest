@@ -8,45 +8,29 @@ using namespace TempestMath;
 //
 //==========================================================================================================================
 Vector4::Vector4(void)
-:
-_2D(false),
-_data{0.0f, 0.0f, 0.0f, 0.0f}
+    :
+    _data{0.0f, 0.0f, 0.0f, 0.0f}
 {  }
 
 Vector4::Vector4(real val)
-:
-_2D(false),
-_data{val, val, val, 0.0f}
+    :
+    _data{val, val, val, 0.0f}
 {  }
 
-Vector4::Vector4(real x, real y)
-:
-_2D(true),
-_data{x, y, 0.0, 0.0f}
-{  }
-
-Vector4::Vector4(real x, real y, real z)
-:
-_2D(false),
-_data{x, y, z, 0.0f}
-{  }
 
 Vector4::Vector4(real x, real y, real z, real w)
-:
-_2D(false),
-_data{x, y, z, w}
+    :
+    _data{x, y, z, w}
 {  }
 
 Vector4::Vector4(const Vector4& v)
-:
-_2D(v.Is2D()),
-_data{v[x], v[y], v[z], v[w]}
+    :
+    _data{v[x], v[y], v[z], v[w]}
 {  }
 
-Vector4::Vector4(const Point& p)
-:
-_2D(p.Is2D()),
-_data{p[x], p[y], p[z], 0.0f}
+Vector4::Vector4(const Point4& p)
+    :
+    _data{p[x], p[y], p[z], 0.0f}
 {  }
 
 Vector4::~Vector4(void)
@@ -65,7 +49,7 @@ real Vector4::Dot(const Vector4& vec) const
            _data[z] * vec[z];
 }
 
-real Vector4::Dot(const Point& point) const
+real Vector4::Dot(const Point4& point) const
 {
     return _data[x] * point[x] +
            _data[y] * point[y] +
@@ -74,9 +58,10 @@ real Vector4::Dot(const Point& point) const
 
 Vector4 Vector4::CrossProduct(const Vector4& vec) const
 {
-    return Vector4( _data[y] * vec[z] - _data[z] * vec[y],
+    return Vector4(_data[y] * vec[z] - _data[z] * vec[y],
                    _data[z] * vec[x] - _data[x] * vec[z],
-                   _data[x] * vec[y] - _data[y] * vec[x] );
+                   _data[x] * vec[y] - _data[y] * vec[x],
+                   0.0f);
 }
 
 real Vector4::Magnitude(void)
@@ -112,33 +97,21 @@ void Vector4::AddScaledVector(const Vector4& vec, real scale)
 {
     _data[x] += vec[x] * scale;
     _data[y] += vec[y] * scale;
-
-    if(!_2D)
-    {
-        _data[z] += vec[z] * scale;
-    }
+    _data[z] += vec[z] * scale;
 }
 
 void Vector4::AddScaledVector(const Vector3& vec, real scale)
 {
     _data[x] += vec[x] * scale;
     _data[y] += vec[y] * scale;
-
-    if(!_2D)
-    {
-        _data[z] += vec[z] * scale;
-    }
+    _data[z] += vec[z] * scale;
 }
 
-void Vector4::AddScaledPoint(const Point& point, real scale)
+void Vector4::AddScaledPoint(const Point4& point, real scale)
 {
     _data[x] += point[x] * scale;
     _data[y] += point[y] * scale;
-
-    if(!_2D)
-    {
-        _data[z] += point[z] * scale;
-    }
+    _data[z] += point[z] * scale;
 }
 //==========================================================================================================================
 //
@@ -156,7 +129,7 @@ Vector4& Vector4::operator=(const Vector4& vec)
     return *this;
 }
 
-Vector4& Vector4::operator=(const Point& point)
+Vector4& Vector4::operator=(const Point4& point)
 {
     _data[x] = point[x];
     _data[y] = point[y];
@@ -180,11 +153,7 @@ Vector4& Vector4::operator=(real val)
 {
     _data[x] = val;
     _data[y] = val;
-    
-    if(!_2D) 
-    {
-        _data[z] = val;
-    }
+    _data[z] = val;
 
     return *this;
 }
@@ -192,78 +161,51 @@ Vector4& Vector4::operator=(real val)
 //===== Add by Vector4 =====
 Vector4 Vector4::operator+(const Vector4& vec) const
 {
-    if(_2D)
-    {
-        return Vector4(_data[x] + vec[x],
-                       _data[y] + vec[y]);
-    }
-
     return Vector4(_data[x] + vec[x],
                    _data[y] + vec[y],
-                   _data[z] + vec[z]);
+                   _data[z] + vec[z],
+                   0.0f);
 }
 
 Vector4& Vector4::operator+=(const Vector4& vec)
 {
     _data[x] += vec[x];
     _data[y] += vec[y];
-    
-    if(!_2D) 
-    {
-        _data[z] += vec[z];
-    }
+    _data[z] += vec[z];
 
     return *this;
 }
 
 Vector4 Vector4::operator+(const Vector3& vec) const
 {
-    if(_2D)
-    {
-        return Vector4(_data[x] + vec[x],
-                       _data[y] + vec[y]);
-    }
-
     return Vector4(_data[x] + vec[x],
                    _data[y] + vec[y],
-                   _data[z] + vec[z]);
+                   _data[z] + vec[z],
+                   0.0f);
 }
 
-Vector4& Vector4::operator+=(const Point& vec)
+Vector4& Vector4::operator+=(const Point4& vec)
 {
     _data[x] += vec[x];
     _data[y] += vec[y];
-    
-    if(!_2D) 
-    {
-        _data[z] += vec[z];
-    }
+    _data[z] += vec[z];
 
     return *this;
 }
 
-Vector4 Vector4::operator+(const Point& vec) const
+Vector4 Vector4::operator+(const Point4& vec) const
 {
-    if(_2D)
-    {
-        return Vector4(_data[x] + vec[x],
-                       _data[y] + vec[y]);
-    }
-
     return Vector4(_data[x] + vec[x],
                    _data[y] + vec[y],
-                   _data[z] + vec[z]);
+                   _data[z] + vec[z],
+                   0.0f);
 }
 
 Vector4& Vector4::operator+=(const Vector3& vec)
 {
     _data[x] += vec[x];
     _data[y] += vec[y];
-    
-    if(!_2D) 
-    {
-        _data[z] += vec[z];
-    }
+    _data[z] += vec[z];
 
     return *this;
 }
@@ -272,40 +214,26 @@ Vector4 Vector4::operator+(shared_ptr<Vector4> vec) const
 {
     const real* vals = vec->GetElems();
 
-    if(_2D)
-    {
-        return Vector4( _data[x] + vals[x],
-                       _data[y] + vals[y] );
-    }
-
-    return Vector4( _data[x] + vals[x],
+    return Vector4(_data[x] + vals[x],
                    _data[y] + vals[y],
-                   _data[z] + vals[z] );
+                   _data[z] + vals[z],
+                   0.0f);
 }
 
 //===== Add by scalar =====
 Vector4 Vector4::operator+(real val) const
 {
-    if(_2D)
-    {
-        return Vector4( _data[x] + val,
-                       _data[y] + val );
-    }
-
-    return Vector4( _data[x] + val,
+    return Vector4(_data[x] + val,
                    _data[y] + val,
-                   _data[z] + val );
+                   _data[z] + val,
+                   0.0f);
 }
 
 Vector4& Vector4::operator+=(real val)
 {
     _data[x] += val;
     _data[y] += val;
-    
-    if(!_2D) 
-    {
-        _data[z] += val;
-    }
+    _data[z] += val;
 
     return *this;
 }
@@ -313,78 +241,51 @@ Vector4& Vector4::operator+=(real val)
 //===== Subtract by Vector4 =====
 Vector4 Vector4::operator-(const Vector4& vec) const
 {
-    if(_2D)
-    {
-        return Vector4(_data[x] - vec[x],
-                       _data[y] - vec[y]);
-    }
-
     return Vector4(_data[x] - vec[x],
                    _data[y] - vec[y],
-                   _data[z] - vec[z]);
+                   _data[z] - vec[z],
+                   0.0f);
 }
 
 Vector4& Vector4::operator-=(const Vector4& vec)
 {
     _data[x] -= vec[x];
     _data[y] -= vec[y];
-    
-    if(!_2D) 
-    {
-        _data[z] -= vec[z];
-    }
+    _data[z] -= vec[z];
 
     return *this;
 }
 
 Vector4 Vector4::operator-(const Vector3& vec) const
 {
-    if(_2D)
-    {
-        return Vector4(_data[x] - vec[x],
-                       _data[y] - vec[y]);
-    }
-
     return Vector4(_data[x] - vec[x],
                    _data[y] - vec[y],
-                   _data[z] - vec[z]);
+                   _data[z] - vec[z],
+                   0.0f);
 }
 
 Vector4& Vector4::operator-=(const Vector3& vec)
 {
     _data[x] -= vec[x];
     _data[y] -= vec[y];
-    
-    if(!_2D) 
-    {
-        _data[z] -= vec[z];
-    }
+    _data[z] -= vec[z];
 
     return *this;
 }
 
-Vector4 Vector4::operator-(const Point& vec) const
+Vector4 Vector4::operator-(const Point4& vec) const
 {
-    if(_2D)
-    {
-        return Vector4(_data[x] - vec[x],
-                       _data[y] - vec[y]);
-    }
-
     return Vector4(_data[x] - vec[x],
                    _data[y] - vec[y],
-                   _data[z] - vec[z]);
+                   _data[z] - vec[z],
+                   0.0f);
 }
 
-Vector4& Vector4::operator-=(const Point& vec)
+Vector4& Vector4::operator-=(const Point4& vec)
 {
     _data[x] -= vec[x];
     _data[y] -= vec[y];
-    
-    if(!_2D) 
-    {
-        _data[z] -= vec[z];
-    }
+    _data[z] -= vec[z];
 
     return *this;
 }
@@ -392,26 +293,17 @@ Vector4& Vector4::operator-=(const Point& vec)
 //===== Subtract by scalar =====
 Vector4 Vector4::operator-(real val) const
 {
-    if(_2D)
-    {
-        return Vector4( _data[x] - val,
-                       _data[y] - val );
-    }
-
-    return Vector4( _data[x] - val,
+    return Vector4(_data[x] - val,
                    _data[y] - val,
-                   _data[z] - val );
+                   _data[z] - val,
+                   0.0f);
 }
 
 Vector4& Vector4::operator-=(real val)
 {
     _data[x] -= val;
     _data[y] -= val;
-    
-    if(!_2D) 
-    {
-        _data[z] -= val;
-    }
+    _data[z] -= val;
 
     return *this;
 }
@@ -419,26 +311,17 @@ Vector4& Vector4::operator-=(real val)
 //===== Component-wise multiply by Vector4 =====
 Vector4 Vector4::operator*(const Vector4 vec) const
 {
-    if(_2D)
-    {
-        return Vector4( _data[x] * vec[x],
-                       _data[y] * vec[y] );
-    }
-
-    return Vector4( _data[x] * vec[x],
+    return Vector4(_data[x] * vec[x],
                    _data[y] * vec[y],
-                   _data[z] * vec[z] );
+                   _data[z] * vec[z],
+                   0.0f);
 }
 
 Vector4& Vector4::operator*=(const Vector4 vec)
 {
     _data[x] *= vec[x];
     _data[y] *= vec[y];
-    
-    if(!_2D) 
-    {
-        _data[z] *= vec[z];
-    }
+    _data[z] *= vec[z];
 
     return *this;
 }
@@ -446,26 +329,17 @@ Vector4& Vector4::operator*=(const Vector4 vec)
 //===== Mutliply by Scalar =====
 Vector4 Vector4::operator*(real val) const
 {
-    if(_2D)
-    {
-        return Vector4( _data[x] * val,
-                       _data[y] * val );
-    }
-
-    return Vector4( _data[x] * val,
+    return Vector4(_data[x] * val,
                    _data[y] * val,
-                   _data[z] * val );
+                   _data[z] * val,
+                   0.0f);
 }
 
 Vector4& Vector4::operator*=(real val)
 {
     _data[x] *= val;
     _data[y] *= val;
-
-    if(!_2D)
-    {
-        _data[z] *= val;
-    }
+    _data[z] *= val;
 
     return *this;
 }
@@ -475,15 +349,10 @@ Vector4 Vector4::operator/(real val) const
 {
     assert(val != 0.0f);
 
-    if(_2D)
-    {
-        return Vector4( _data[x] / val,
-                       _data[y] / val );
-    }
-
-    return Vector4( _data[x] / val,
+    return Vector4(_data[x] / val,
                    _data[y] / val,
-                   _data[z] / val );
+                   _data[z] / val,
+                   0.0f);
 }
 
 Vector4& Vector4::operator/=(real val)
@@ -492,11 +361,7 @@ Vector4& Vector4::operator/=(real val)
 
     _data[x] /= val;
     _data[y] /= val;
-
-    if(!_2D)
-    {
-        _data[z] /= val;
-    }
+    _data[z] /= val;
 
     return *this;
 }
@@ -504,114 +369,60 @@ Vector4& Vector4::operator/=(real val)
 //===== Comparison =====
 bool Vector4::operator>(const Vector4& vec) const
 {
-    if(_2D != vec.Is2D())
-    {
-        return false;
-    }
-
     bool state = _data[x] > vec[x] && 
-                 _data[y] > vec[y] && 
+                 _data[y] > vec[y] &&
+                 _data[z] > vec[z] &&
                  _data[w] >= vec[w];
     
-    if(!_2D)
-    {
-        state = state && _data[z] > vec[z];
-    }
-
     return state;
 }
 
 bool Vector4::operator<(const Vector4& vec) const
 {
-    if(_2D != vec.Is2D())
-    {
-        return false;
-    }
-
     bool state = _data[x] < vec[x] && 
-                 _data[y] < vec[y] && 
+                 _data[y] < vec[y] &&
+                 _data[z] < vec[z] &&
                  _data[w] <= vec[w];
     
-    if(!_2D)
-    {
-        state = state && _data[z] < vec[z];
-    }
-
     return state;
 }
 
 bool Vector4::operator>=(const Vector4& vec) const
 {
-    if(_2D != vec.Is2D())
-    {
-        return false;
-    }
-
-    bool state = _data[x] >= vec[x] && 
-                 _data[y] >= vec[y] && 
-                 _data[w] >= vec[w];
+   bool state = _data[x] >= vec[x] && 
+                _data[y] >= vec[y] &&
+                _data[z] >= vec[z] &&
+                _data[w] >= vec[w];
     
-    if(!_2D)
-    {
-        state = state && _data[z] >= vec[z];
-    }
-
     return state;
 }
 
 bool Vector4::operator<=(const Vector4& vec) const
 {
-    if(_2D != vec.Is2D())
-    {
-        return false;
-    }
-
-    bool state = _data[x] <= vec[x] && 
-                 _data[y] <= vec[y] && 
-                 _data[w] <= vec[w];
+   bool state = _data[x] <= vec[x] && 
+                _data[y] <= vec[y] &&
+                _data[z] <= vec[z] &&
+                _data[w] <= vec[w];
     
-    if(!_2D)
-    {
-        state = state && _data[z] <= vec[z];
-    }
-
     return state;
 }
 
 bool Vector4::operator==(const Vector4& vec) const
 {
-    if(_2D != vec.Is2D())
-    {
-        return false;
-    }
-
-    bool state = _data[x] == vec[x] && 
-                 _data[y] == vec[y] && 
-                 _data[w] == vec[w];
+   bool state = _data[x] == vec[x] && 
+                _data[y] == vec[y] &&
+                _data[z] == vec[z] &&
+                _data[w] == vec[w];
     
-    if(!_2D)
-    {
-        state = state && _data[z] == vec[z];
-    }
-
     return state;
 }
 
 bool Vector4::operator!=(const Vector4& vec) const
 {
-    if(_2D != vec.Is2D())
-    {
-        return false;
-    }
-
     bool state = _data[x] != vec[x] && 
-                 _data[y] != vec[y] && 
+                 _data[y] != vec[y] &&
+                 _data[z] != vec[z] &&
                  _data[w] != vec[w];
     
-    if(!_2D)
-    {
-        state = state && _data[z] != vec[z];
-    }
-
     return state;
 }
