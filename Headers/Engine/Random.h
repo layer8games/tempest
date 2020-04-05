@@ -68,7 +68,7 @@ namespace TempestMath
 ///	\param min is the floor value. 
 ///	\param max is the ceiling value.
 ///	\param is2d determins if the z value should be set. false by default, it will be set to 0 unless true.
-        TEMPEST_API Vector4 RandomVector4(real min, real max, bool is2d=false);
+        TEMPEST_API Vector4 RandomVector4(real min, real max);
 
 ///	Returns a Quaternion with w,x,y and z between min and max
 ///	\param min is the floor value. 

@@ -3,7 +3,7 @@
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/ForceGenerator.h>
-#include <Engine/Vector4.h>
+#include <Engine/Point3.h>
 
 namespace TM = TempestMath;
 
@@ -44,7 +44,7 @@ namespace TempestPhysics
 ///	\param anchor is the location of the anchor point.
 ///	\param springConstant is the "stiffness" of the spring.
 ///	\param restLength is the length of the spring.
-		TEMPEST_API AnchoredSpring(const TM::Point& anchor, real springConstant, real restLength);
+		TEMPEST_API AnchoredSpring(const TM::Point3& anchor, real springConstant, real restLength);
 
 ///	No implementation.
 		TEMPEST_API ~AnchoredSpring(void);
@@ -69,7 +69,7 @@ namespace TempestPhysics
 //==========================================================================================================================
 ///	Changes the location of the other end of the spring.
 ///	\param end is the new opposite end of the spring.
-		inline void SetAnchor(const TM::Point& anchor)
+		inline void SetAnchor(const TM::Point3& anchor)
 		{
 			_anchor = anchor;
 		}
@@ -89,7 +89,7 @@ namespace TempestPhysics
 		}
 
 	private:
-		TM::Point	_anchor;			///< The location of the anchor point of the spring.
+		TM::Point3	_anchor;			///< The location of the anchor point of the spring.
 		real 		_springConstant;	///< Determines the "stiffness" of the spring. The higher this value is, the more force the spring can make.
 		real		_restLength;		///< Length of the spring at rest. When an object reaches this length, a force will be acted on it. 
 	};//end AnchoredSpring

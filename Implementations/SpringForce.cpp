@@ -37,7 +37,7 @@ SpringForce::~SpringForce(void)
 void SpringForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 {
 //=====Calculate Vector4 of the spring=====
-	TM::Vector4 force {};
+	TM::Vector2 force {};
 	force = RigidBody2D->GetPosition();
 	force -= _otherEnd->GetPosition();
 
@@ -57,26 +57,4 @@ void SpringForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 	force *= static_cast<F32>(-magnitude);
 
 	RigidBody2D->AddForce(force);
-}
-
-//TODO: Implement
-void SpringForce::v_UpdateForce(shared_ptr<RigidBody3D> body)
-{
-	TM::Vector4 force {};
-	force = body->GetPosition();
-	force -= _otherEnd->GetPosition();
-
-	real magnitude = force.Magnitude();
-
-	if(_isBungie && magnitude <= _restLength)
-	{
-		return;
-	}
-
-	magnitude = real_abs(magnitude - _restLength) * _springConstant;
-
-	force.Normalize();
-	force *= static_cast<F32>(-magnitude);
-
-	body->AddForce(force);
 }

@@ -32,6 +32,11 @@ Vector2::Vector2(const Vector4& v)
     _data{v[x], v[y]}
 {  }
 
+Vector2::Vector2(const Point2& p)
+    :
+    _data{p[x], p[y]}
+{  }
+
 Vector2::Vector2(const Point4& p)
     :
     _data{p[x], p[y]}
@@ -164,6 +169,22 @@ Vector2 Vector2::operator-(const Vector2& vec) const
 }
 
 Vector2& Vector2::operator-=(const Vector2& vec)
+{
+    _data[x] -= vec[x];
+    _data[y] -= vec[y];
+
+    return *this;
+}
+
+Vector2& Vector2::operator-=(const Point2& vec)
+{
+    _data[x] -= vec[x];
+    _data[y] -= vec[y];
+
+    return *this;
+}
+
+Vector2& Vector2::operator-=(const Point3& vec)
 {
     _data[x] -= vec[x];
     _data[y] -= vec[y];

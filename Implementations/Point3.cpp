@@ -139,6 +139,15 @@ void Point3::AddScaledVector(const Vector4& vec, real scale)
 //
 //==========================================================================================================================
 //===== Copy Assignment =====		
+Point3& Point3::operator=(const Point2& point)
+{
+    _data[x] = point[x];
+    _data[y] = point[y];
+    _data[z] = 0.0f;
+
+    return *this;
+}
+
 Point3& Point3::operator=(const Point3& point)
 {
     _data[x] = point[x];

@@ -76,7 +76,7 @@ void Text::AddText(string text)
 	_text = text;
 	_CreateCharacterList();
 
-	TM::Point currentPos = _pos;
+	TM::Point2 currentPos = _pos;
 
 	if(_font != nullptr)
 	{
@@ -126,7 +126,7 @@ void Text::SetTextColor(const Color& col)
 
 void Text::_UpdatePositions(void)
 {
-	TM::Point currentPos = _pos;
+	TM::Point2 currentPos = _pos;
 	
 	if(_font != nullptr)
 	{

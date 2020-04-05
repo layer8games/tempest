@@ -2,7 +2,7 @@
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
-#include <Engine/Point.h>
+#include <Engine/Point2.h>
 #include <Engine/Text.h>
 #include <Engine/GameObject2D.h>
 
@@ -16,7 +16,7 @@ namespace Tempest
 ///	A struct to hold all the information needed for an item in a Menu. 
 	struct MenuItem
 	{
-		TM::Point 		  pos;	///< Position of the Text. Used for quick reference, useful even though its duplicated. 
+		TM::Point2 		  pos;	///< Position of the Text. Used for quick reference, useful even though its duplicated. 
 		shared_ptr<Text>  text;	///< Pointer a Text, used for the look of the item in the Menu. Call Level::AddTextToLevel first. 
 
 ///	Callback function used when the item is activated. Must use the same signature. 
@@ -112,7 +112,7 @@ namespace Tempest
 
 ///	Updates the position of the Menu, the title and all the items. Calls Menu::_UpdateItemPositions
 ///	\param pos is the new position of the whole Menu. 
-		inline void SetPosition(const TM::Point& pos)
+		inline void SetPosition(const TM::Point2& pos)
 		{
 			_menuPos = pos;
 			_UpdateItemPositions();
@@ -121,7 +121,7 @@ namespace Tempest
 ///	Updates the position of the Menu, the title and all the items. Calls Menu::_UpdateItemPositions
 ///	\param xPos is the x coodinate position. 
 ///	\param yPos is the y coodinate position. 
-		inline void SetPosition(F32 xPos, F32 yPos)
+		inline void SetPosition(real xPos, real yPos)
 		{
 			_menuPos[x] = xPos;
 			_menuPos[y] = yPos;
@@ -129,7 +129,7 @@ namespace Tempest
 		}
 
 ///	Returns the position of the Menu. 
-		inline const TM::Point& GetPosition(void)
+		inline const TM::Point2& GetPosition(void)
 		{
 			return _menuPos;
 		}
@@ -137,7 +137,7 @@ namespace Tempest
 ///	 Sets the offset of each item from the one above it. Calls Menu::_UpdateItemPositions. 
 ///	 \param offset is the offset. This is added to the MenuItem::pos, so it should be negative to go left or 
 ///	 down, and positive to go right or up. 
-		inline void SetItemOffset(const TM::Point& offset)
+		inline void SetItemOffset(const TM::Point2& offset)
 		{
 			_itemOffset = offset;
 			_UpdateItemPositions();
@@ -146,7 +146,7 @@ namespace Tempest
 ///	 Sets the offset of each item from the one before it. Calls Menu::_UpdateItemPositions. 
 ///	 \param xPos is the offset. Should be negative to go left or positive to go right. 
 ///	 \param yPos is the offset. Should be negative to down or positive to go up. 
-		inline void SetItemOffset(F32 xPos, F32 yPos)
+		inline void SetItemOffset(real xPos, real yPos)
 		{
 			_itemOffset[x] = xPos;
 			_itemOffset[y] = yPos;
@@ -154,14 +154,14 @@ namespace Tempest
 		}
 
 ///	Returns the current offset of each time to the one before it.
-		inline const TM::Point& GetItemOffset(void)
+		inline const TM::Point2& GetItemOffset(void)
 		{
 			return _itemOffset;
 		}
 
 ///	Sets the offset for the selector from the item it is next to. Calls Menu::_UpdateItemPositions 
 ///	\param offset is the offset. Should be positive to move it right or up, and negative to move it left or down. 
-		inline void SetSelectorOffset(const TM::Point& offset)
+		inline void SetSelectorOffset(const TM::Point2& offset)
 		{
 			_selectorOffset = offset;
 			_UpdateItemPositions();
@@ -170,7 +170,7 @@ namespace Tempest
 ///	 Sets the offset for the selector from the item it is next to. Calls Menu::_UpdateItemPositions
 ///	 \param xPos is the offset. Should be negative to go left or positive to go right. 
 ///	 \param yPos is the offset. Should be negative to down or positive to go up. 
-		inline void SetSelectorOffset(F32 xPos, F32 yPos)
+		inline void SetSelectorOffset(real xPos, real yPos)
 		{
 			_selectorOffset[x] = xPos;
 			_selectorOffset[y] = yPos;
@@ -178,14 +178,14 @@ namespace Tempest
 		}
 
 ///	Returns the offset for the selector from the item it is next to.
-		inline const TM::Point& GetSelectorOffset(void)
+		inline const TM::Point2& GetSelectorOffset(void)
 		{
 			return _selectorOffset;
 		}
 
 ///	 Sets the offset for the first item in the list from the title. Calls Menu::_UpdateItemPositions
 ///	 \param pos is the offset from the title. Should be positive to move it up or right, negative for down or left. 
-		inline void SetTitleOffset(const TM::Point& pos)
+		inline void SetTitleOffset(const TM::Point2& pos)
 		{
 			_offsetFromTitle = pos;
 			_UpdateItemPositions();
@@ -194,7 +194,7 @@ namespace Tempest
 ///	 Sets the offset for the first item in the list from the title. Calls Menu::_UpdateItemPositions
 ///	 \param xPos is the offset. Should be negative to go left or positive to go right. 
 ///	 \param yPos is the offset. Should be negative to down or positive to go up. 
-		inline void SetTitleOffset(F32 xPos, F32 yPos)
+		inline void SetTitleOffset(real xPos, real yPos)
 		{
 			_offsetFromTitle[x] = xPos;
 			_offsetFromTitle[y] = yPos;
@@ -202,7 +202,7 @@ namespace Tempest
 		}
 
 ///	Returns the current offset for the first item from the title. 
-		inline const TM::Point& GetTitleOffset(void)
+		inline const TM::Point2& GetTitleOffset(void)
 		{
 			return _offsetFromTitle;
 		}
@@ -266,10 +266,10 @@ namespace Tempest
 		bool					_active;			///< Sets if the menu and all its items are active for rendering and update.
 		bool					_wrap;				///< Configures if the selector should wrap around the Menu or not. True == wrap, false == Don't wrap.
 		U32 					_selectorPosIndex;	///< Index that tracks the location of the selector in relation to _itemList.
-		TM::Point 				_menuPos;			///< Position of the Menu. Used to update everything in Menu::_UpdateItemPositions
-		TM::Point 		 		_itemOffset;		///< Offset of each MenuItem from the one before it. 
-		TM::Point 				_selectorOffset;	///< Offset of the selector from the MenuItem it is next to. 
-		TM::Point 				_offsetFromTitle;	///< Offset of the first MenuItem from the title. 
+		TM::Point2 				_menuPos;			///< Position of the Menu. Used to update everything in Menu::_UpdateItemPositions
+		TM::Point2 		 		_itemOffset;		///< Offset of each MenuItem from the one before it. 
+		TM::Point2 				_selectorOffset;	///< Offset of the selector from the MenuItem it is next to. 
+		TM::Point2 				_offsetFromTitle;	///< Offset of the first MenuItem from the title. 
 		p_Text					_title;				///< Pointer to the a Text title. 
 		std::vector<MenuItem> 	_itemList;			///< Internal list of all MenuItems. 
 		p_GameObject2D			_selector;			///< Selector to move and activate MenuItems. 

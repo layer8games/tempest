@@ -3,6 +3,7 @@
 //===== Killer Includes =====
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
+#include <Engine/Point2.h>
 #include <Engine/Vector4.h>
 #include <Engine/Vector3.h>
 
@@ -14,6 +15,7 @@ namespace TE = Tempest;
 
 namespace TempestMath
 {
+    class Point2;
     class Vector4;
     class Vector3;
 
@@ -161,6 +163,10 @@ namespace TempestMath
         }
 
 //===== Copy Assignment =====		
+///	Copy assignment from Point3.
+///	\param Point3 is the Point3 to copy into this Point3.
+        TEMPEST_API Point3& operator=(const Point2& point);
+
 ///	Copy assignment from Point3.
 ///	\param Point3 is the Point3 to copy into this Point3.
         TEMPEST_API Point3& operator=(const Point3& point);

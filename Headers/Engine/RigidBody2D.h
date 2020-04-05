@@ -4,8 +4,8 @@
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Timer.h>
-#include <Engine/Vector4.h>
-#include <Engine/Point.h>
+#include <Engine/Vector2.h>
+#include <Engine/Point2.h>
 #include <Engine/GameObject2D.h>
 
 //===== Standard includes =====
@@ -59,7 +59,10 @@ namespace TempestPhysics
         TEMPEST_API void ClearAccumulator(void);
 
 ///	Adds a force that will act upon this RigidBody2D. This is done by adding the combined forces into the acceleration of the RigidBody2D.
-        TEMPEST_API void AddForce(const TM::Vector4 force);
+        TEMPEST_API void AddForce(real xVal, real yVal);
+
+///	Adds a force that will act upon this RigidBody2D. This is done by adding the combined forces into the acceleration of the RigidBody2D.
+        TEMPEST_API void AddForce(const TM::Vector2 force);
 
 //==========================================================================================================================
 //
@@ -78,18 +81,18 @@ namespace TempestPhysics
             _obj = obj;
         }
 
-        const TM::Point& GetPosition(void) const;
+        const TM::Point2& GetPosition(void) const;
 
 //===== Velocity =====
 ///	Returns the current velocity of the RigidBody2D.
-        inline const TM::Vector4& GetVelocity(void) const
+        inline const TM::Vector2& GetVelocity(void) const
         {
             return _velocity;
         }
 
 ///	 Directly sets the velocity of the RigidBody2D, ignoring acceleration and physics. This can be viewed as an impulse, but permanent.
 ///	 \param vel is the value set for the velocity. Disregards what the velocity was. 
-        inline void SetVelocity(const TM::Vector4& vel)
+        inline void SetVelocity(const TM::Vector2& vel)
         {
             _velocity = vel;
         }
@@ -115,24 +118,24 @@ namespace TempestPhysics
             _velocity[2] = z;
         }
     
-///	Directly add a scaled Vector4y into the current velocity. 
-///	\param vec is the Vector4 to be added. 
+///	Directly add a scaled Vector2y into the current velocity. 
+///	\param vec is the Vector2 to be added. 
 ///	\param scale is the F32 that vec will be scaled by before it is added into the velocity. 
-        inline void AddScaledVelocity(const TM::Vector4& vec, F32 scale)
+        inline void AddScaledVelocity(const TM::Vector2& vec, F32 scale)
         {
             _velocity.AddScaledVector(vec, scale);
         }
 
 //===== Accleration =====
 ///	Returns the current acceleration of the RigidBody2D. 
-        inline const TM::Vector4& GetAcceleration(void) const
+        inline const TM::Vector2& GetAcceleration(void) const
         {
             return _acceleration;
         }
 
 ///	Directly set the acceleration of the RigidBody2D without regards to physics or the current value of the acceleration. 
 ///	\param acc is the new value of the acceleration.
-        inline void SetAcceleration(const TM::Vector4& acc)
+        inline void SetAcceleration(const TM::Vector2& acc)
         {
             _acceleration = acc;
         }
@@ -158,31 +161,31 @@ namespace TempestPhysics
             _acceleration[2] = z;
         }
 
-///	Directly add a scaled Vector4y into the current acceleration. 
-///	\param vec is the Vector4 to be added. 
+///	Directly add a scaled Vector2y into the current acceleration. 
+///	\param vec is the Vector2 to be added. 
 ///	\param scale is the F32 that vec will be scaled by before it is added into the acceleration. 	
-        inline void AddScaledAcceleration(const TM::Vector4& acc, F32 scale)
+        inline void AddScaledAcceleration(const TM::Vector2& acc, F32 scale)
         {
             _acceleration.AddScaledVector(acc, scale);
         }
 
 //===== Froces =====
 ///	Returns the total amount of all the forces applied to this RigidBody2D for this frame added together.
-        inline const TM::Vector4& GetForces(void) const
+        inline const TM::Vector2& GetForces(void) const
         {
             return _forceAccum;
         }
 
 //===== Gravity =====
 ///	Returns the value cached to represent the force of gravity on this RigidBody2D.
-        inline const TM::Vector4& GetGravityForce(void) const
+        inline const TM::Vector2& GetGravityForce(void) const
         {
             return _gravityForce;
         }
 
 ///	Sets the cached value that represents the force of gravity on this RigidBody2D.
 ///	\param grav is the value that the gravity force will be set to.
-        inline void SetGravityForce(const TM::Vector4& grav)
+        inline void SetGravityForce(const TM::Vector2& grav)
         {
             _gravityForce = grav;
         }
@@ -244,10 +247,10 @@ namespace TempestPhysics
         real 	   		    _inverseMass;	///< The inverse mass of the object, written like 1/mass. This is an optimization to avoid uneeded operations. 
         real 	   		    _damping;		///< Damping is a substitute for friction. It represents the rate of acceleration decay. 0.0f means heavy friction, close to 1 means almost none. Do not set to 1. A good value for no decay is 0.999f.
         TE::GameObject2D*	_obj;			///< Pointer to the GameObject that owns this Rigid Body. This allows the RigidBody2D to chagne the position of GameObject.
-        TM::Vector4 	    _velocity;		///< Represents the rate of change, otherwise known as the first differential of the position.
-        TM::Vector4 	    _acceleration;	///< Reprsent the rate of change of the velocity, otherwise known as the second differential of the position.
-        TM::Vector4 	    _forceAccum;	///< Using D'Lambert's principal, this reprsents the combined forces that will as on this RigidBody2D for exactly 1 frame.
-        TM::Vector4 	    _gravityForce;	///< An optimization, gravity does not have to be treated like other forces, it can permanately be cached. 
+        TM::Vector2 	    _velocity;		///< Represents the rate of change, otherwise known as the first differential of the position.
+        TM::Vector2 	    _acceleration;	///< Reprsent the rate of change of the velocity, otherwise known as the second differential of the position.
+        TM::Vector2 	    _forceAccum;	///< Using D'Lambert's principal, this reprsents the combined forces that will as on this RigidBody2D for exactly 1 frame.
+        TM::Vector2 	    _gravityForce;	///< An optimization, gravity does not have to be treated like other forces, it can permanately be cached. 
 
     };// end class
     typedef shared_ptr<RigidBody2D> p_RigidBody2D;

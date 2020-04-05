@@ -13,7 +13,7 @@
 #include <Engine/ForceRegistry.h>
 #include <Engine/Text.h>
 #include <Engine/RigidBody2D.h>
-#include <Engine/Point.h>
+#include <Engine/Point2.h>
 
 namespace TM = TempestMath;
 namespace TP = TempestPhysics;
@@ -359,7 +359,7 @@ namespace Tempest
 			U32 imageHeight;
 			string type;
 			string imageFilePath;
-			TM::Point pos;
+			TM::Point2 pos;
 		};
 
 		struct GridPos

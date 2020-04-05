@@ -14,7 +14,7 @@ _springConstant(1),
 _restLength(1)
 {  }
 
-AnchoredSpring::AnchoredSpring(const TM::Point& anchor, real springConstant, real restLength)
+AnchoredSpring::AnchoredSpring(const TM::Point3& anchor, real springConstant, real restLength)
 :
 _anchor(anchor),
 _springConstant(springConstant),
@@ -27,8 +27,8 @@ AnchoredSpring::~AnchoredSpring(void)
 void AnchoredSpring::v_UpdateForce(p_RigidBody2D RigidBody2D)
 {
 	//Calculate the Vector4 of the spring
-	TM::Vector4 force {};
-	force = RigidBody2D->GetPosition();
+	TM::Vector2 force {};
+	force = RigidBody2D->GetPosition() - _anchor;
 	force -= _anchor;
 
 	//Calculate the magnitude of the force

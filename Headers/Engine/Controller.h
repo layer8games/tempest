@@ -5,7 +5,7 @@
 #include <Engine/GameWindow.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Matrix4.h>
-#include <Engine/Point.h>
+#include <Engine/Point2.h>
 #include <Engine/Keys.h>
 
 namespace TM = TempestMath;
@@ -69,19 +69,19 @@ namespace Tempest
 		TEMPEST_API void KeyUp(Keys k);
 
 /// Returns the raw mouse coordinates from the GameWindow. This is with the origin in the top left corner of the screen. 
-		TEMPEST_API const TM::Point GetMouseCoord(void);
+		TEMPEST_API const TM::Point2 GetMouseCoord(void);
 
 /// Returns the mouse coordinates in screen space, with the origin in the center of the screen. Wrapper around GameWindow. 
-		TEMPEST_API const TM::Point GetMouseCoordInScreen(void);
+		TEMPEST_API const TM::Point2 GetMouseCoordInScreen(void);
 
 /// Returns the raw coordinates of a Left Click in screen space. 
-		inline const TM::Point GetLeftMouseCoord(void) const
+		inline const TM::Point2 GetLeftMouseCoord(void) const
 		{ 
 			return _leftClickCoordinates; 
 		}
 
 /// Returns the raw coordinates of a Right click in screen space 
-		inline const TM::Point GetRightMouseCoord(void) const
+		inline const TM::Point2 GetRightMouseCoord(void) const
 		{ 
 			return _rightClickCoordinates; 
 		}
@@ -116,10 +116,10 @@ namespace Tempest
 		KeyStates 	_keyStates[TOTAL_KEYS];			///< Array of states for each key, indexed by ID.
 		bool 		_pastActiveKeys[TOTAL_KEYS];	///< Array of keys in a pressed state as of last frame, indexed by ID.
 		bool		_curActiveKeys[TOTAL_KEYS];		///< Array of keys in a pressed state as of this frame, indexed by ID.
-		TM::Point 	_leftClickCoordinates;			///< Coordinates of last left click. Unused. 
-		TM::Point	_rightClickCoordinates;			///< Coordinates of last right click. Unused.
-		TM::Point 	_leftClickCoordInScreen;		///< Cached value of last left click in screen space. Unused. 
-		TM::Point 	_rightClickCoordInScreen;		///< Cached value of last right click in screen space. Unused. 
+		TM::Point2 	_leftClickCoordinates;			///< Coordinates of last left click. Unused. 
+		TM::Point2	_rightClickCoordinates;			///< Coordinates of last right click. Unused.
+		TM::Point2 	_leftClickCoordInScreen;		///< Cached value of last left click in screen space. Unused. 
+		TM::Point2 	_rightClickCoordInScreen;		///< Cached value of last right click in screen space. Unused. 
 	};
 	typedef shared_ptr<Controller> p_Controller;
 }//End namespace

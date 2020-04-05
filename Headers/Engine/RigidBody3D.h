@@ -5,7 +5,7 @@
 #include <Engine/ErrorManager.h>
 #include <Engine/Timer.h>
 #include <Engine/Vector4.h>
-#include <Engine/Point.h>
+#include <Engine/Point3.h>
 #include <Engine/Quaternion.h>
 #include <Engine/Matrix4.h>
 #include <Engine/GameObject3D.h>
@@ -52,7 +52,7 @@ namespace TempestPhysics
         TEMPEST_API bool GetActive(void) const;
 
 //===== Object Position =====
-        const TM::Point& GetPosition(void);
+        const TM::Point3& GetPosition(void);
 
 //===== Inertia Tensor =====
         inline const TM::Matrix4& GetInverseInertiaTensor(void) const
@@ -66,7 +66,7 @@ namespace TempestPhysics
         }
 
 //===== Velocity =====		
-        inline const TM::Vector4& GetVelocity(void) const
+        inline const TM::Vector3& GetVelocity(void) const
         {
             return _velocity;
         }
@@ -89,7 +89,7 @@ namespace TempestPhysics
         }
 
 //===== Acceleration =====
-        inline const TM::Vector4& GetAcceleration(void) const
+        inline const TM::Vector3& GetAcceleration(void) const
         {
             return _acceleration;
         }
@@ -129,29 +129,29 @@ namespace TempestPhysics
             _rotation[2] = z;
         }
 
-        inline void AddScaledRotation(const TM::Vector4& vec, F32 scale)
+        inline void AddScaledRotation(const TM::Vector3& vec, F32 scale)
         {
             _rotation.AddScaledVector(vec, scale);
         }
 
 //===== Forces =====
-        inline const TM::Vector4& GetForces(void) const
+        inline const TM::Vector3& GetForces(void) const
         {
             return _forceAccum;
         }
 
-        inline void AddForce(const TM::Vector4& force)
+        inline void AddForce(const TM::Vector3& force)
         {
             _forceAccum += force;
             _isAwake = true;
         }
 
-        inline const TM::Vector4& GetTorque(void) const
+        inline const TM::Vector3& GetTorque(void) const
         {
             return _torqueAccum;
         }
 
-        inline void AddTorque(const TM::Vector4& torque)
+        inline void AddTorque(const TM::Vector3& torque)
         {
             _torqueAccum += torque;
         }
@@ -163,10 +163,10 @@ namespace TempestPhysics
         }
 
         //Given in world space coordinates
-        TEMPEST_API void AddForceAtPoint(const TM::Vector4& force, const TM::Vector4& point);
+        TEMPEST_API void AddForceAtPoint(const TM::Vector3& force, const TM::Point3& point);
 
         //Force given in world space, point given in local space
-        TEMPEST_API void AddForceAtLocalPoint(const TM::Vector4& force, const TM::Vector4& point);
+        TEMPEST_API void AddForceAtLocalPoint(const TM::Vector3& force, const TM::Point3& point);
 
 //===== Mass =====
         inline real GetInverseMass(void) const
@@ -249,11 +249,11 @@ namespace TempestPhysics
         TE::GameObject3D*   _obj;
         TM::Matrix4         _inverseInertiaTensor;
         TM::Matrix4         _inverseInertiaTensorInWorld;
-        TM::Vector4         _velocity;
-        TM::Vector4         _acceleration;
+        TM::Vector3         _velocity;
+        TM::Vector3         _acceleration;
         TM::Vector3         _rotation;
-        TM::Vector4         _forceAccum;
-        TM::Vector4         _torqueAccum;
+        TM::Vector3         _forceAccum;
+        TM::Vector3         _torqueAccum;
             
 
     };//end Class

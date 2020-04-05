@@ -3,6 +3,10 @@
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/Camera.h>
+#include <Engine/Point3.h>
+#include <Engine/Vector3.h>
+
+namespace TM = TempestMath;
 
 namespace Tempest
 {
@@ -23,7 +27,7 @@ namespace Tempest
 /// \param position is the initial position of the Camera. 
 /// \param yaw is the rotation along the y axis. The left/right look.
 /// \param pitch is the rotation along the x axis. The up/down look.
-		TEMPEST_API FPSCamera(const TM::Point& position, F32 yaw, F32 pitch);
+		TEMPEST_API FPSCamera(const TM::Point3& position, F32 yaw, F32 pitch);
 
 /// No implementation.
 		TEMPEST_API ~FPSCamera(void);
@@ -59,7 +63,7 @@ namespace Tempest
 		}
 
 /// Returns the current Up Vector for the world or Level the camera is in. 
-		inline const TM::Vector4& GetWorldUp(void)
+		inline const TM::Vector3& GetWorldUp(void)
 		{
 			return _worldUp;
 		}

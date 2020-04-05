@@ -13,7 +13,7 @@ _center(0.0f, 0.0f, 0.0f),
 _halfScale(0.0f, 0.0f, 0.0f)
 {  }
 
-AABB::AABB(const TM::Point& center, F32 w, F32 h, F32 d)
+AABB::AABB(const TM::Point3& center, F32 w, F32 h, F32 d)
 :
 _center(center),
 _halfScale(w / 2.0f, h / 2.0f, d / 2.0f)
@@ -48,7 +48,7 @@ bool AABB::TestCollision(const AABB& other) const
 	return true;
 }
 
-bool AABB::TestCollision(const TM::Point& other) const
+bool AABB::TestCollision(const TM::Point3& other) const
 {
 	if(real_abs(_center[x] - other[x]) > _halfScale[x])
 	{

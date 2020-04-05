@@ -53,7 +53,7 @@ namespace TempestMath
 
 ///	Copy a Point4 into a Vector4. W is set to 0.
 ///	\param  p will be converted into a Vector4.
-        TEMPEST_API explicit Vector4(const Point4& p);
+        TEMPEST_API Vector4(const Point4& p);
  
 ///	Destructor. It does not do anything. 	
         TEMPEST_API ~Vector4(void);

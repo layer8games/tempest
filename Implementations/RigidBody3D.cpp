@@ -80,7 +80,7 @@ void RigidBody3D::CalculateDerivedData(void)
 //Point Forces
 //==========================================================================================================================
 //Given in world space coordinates
-void RigidBody3D::AddForceAtPoint(const TM::Vector4& force, const TM::Vector4& point)
+void RigidBody3D::AddForceAtPoint(const TM::Vector3& force, const TM::Point3& point)
 {
     if(_obj == nullptr)
     {
@@ -88,7 +88,7 @@ void RigidBody3D::AddForceAtPoint(const TM::Vector4& force, const TM::Vector4& p
         return;
     }
 
-    TM::Vector4 pt {};
+    TM::Vector3 pt {};
     pt -= _obj->GetPosition();
 
     _forceAccum += force; 
@@ -98,7 +98,7 @@ void RigidBody3D::AddForceAtPoint(const TM::Vector4& force, const TM::Vector4& p
 }	
 
 //Force given in world space, point given in local space
-void RigidBody3D::AddForceAtLocalPoint(const TM::Vector4& force, const TM::Vector4& point)
+void RigidBody3D::AddForceAtLocalPoint(const TM::Vector3& force, const TM::Point3& point)
 {
     if(_obj == nullptr)
     {
@@ -106,7 +106,7 @@ void RigidBody3D::AddForceAtLocalPoint(const TM::Vector4& force, const TM::Vecto
         return;
     }
     
-    TM::Vector4 pt = _obj->GetModelMatrixRot() * point;
+    TM::Vector3 pt = _obj->GetModelMatrixRot() * point;
     AddForceAtPoint(force, pt);
 }
 
@@ -135,13 +135,13 @@ bool RigidBody3D::GetActive(void) const
     return _active;
 }
 
-const TM::Point& RigidBody3D::GetPosition(void)
+const TM::Point3& RigidBody3D::GetPosition(void)
 {
     if(_obj != nullptr)
     {
         return _obj->GetPosition();
     }
-    return TM::Point(0.0f);
+    return TM::Point3(0.0f);
 }
 
 /*

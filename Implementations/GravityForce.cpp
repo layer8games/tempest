@@ -12,7 +12,7 @@ GravityForce::GravityForce(void)
 _gravityAcc(0.0f, -1.0f, 0.0f)
 {  }
 
-GravityForce::GravityForce(const TM::Vector4& gravity) 
+GravityForce::GravityForce(const TM::Vector3& gravity) 
 : 
 _gravityAcc(gravity)
 {  }
@@ -32,7 +32,9 @@ void GravityForce::v_UpdateForce(p_RigidBody2D body)
 		return;
 	}
 
-	body->AddForce(_gravityAcc * body->GetMass());
+	real mass = body->GetMass();
+	
+	body->AddForce(_gravityAcc[x] * mass, _gravityAcc[y] * mass);
 }
 
 void GravityForce::v_UpdateForce(p_RigidBody3D body)

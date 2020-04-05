@@ -56,11 +56,6 @@ namespace TempestPhysics
 ///	\param RigidBody2D is the object that will be acted on by the spring.
 		TEMPEST_API void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D) final;
 
-///	Calculate the length of the spring, then creates a force to pull the object towards the other end if it is far enough 
-///	away. This has been implemented but not tested. 
-///	\param body is the object that will be acted on by the spring.
-		TEMPEST_API void v_UpdateForce(shared_ptr<RigidBody3D> body) final;
-
 //==========================================================================================================================
 //
 //Class Functions

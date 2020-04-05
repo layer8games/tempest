@@ -22,6 +22,16 @@ Vector3::Vector3(real x, real y, real z)
     _data{x, y, z}
 {  }
 
+Vector3::Vector3(const Point3& p)
+    :
+    _data{p[x], p[y], p[z]}
+{  }
+
+Vector3::Vector3(const Point4& p)
+    :
+    _data{p[x], p[y], p[z]}
+{  }
+
 Vector3::Vector3(const Vector3& v)
     :
     _data{v[x], v[y], v[z]}
@@ -32,10 +42,6 @@ Vector3::Vector3(const Vector4& v)
     _data{v[x], v[y], v[z]}
 {  }
 
-Vector3::Vector3(const Point4& p)
-    :
-    _data{p[x], p[y], p[z]}
-{  }
 
 Vector3::~Vector3(void)
 {  }

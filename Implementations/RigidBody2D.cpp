@@ -18,12 +18,7 @@ _velocity(0.0f),
 _acceleration(0.0f),
 _forceAccum(0.0f),
 _gravityForce(0.0f)
-{
-    _velocity.Make2D();
-    _acceleration.Make2D();
-    _forceAccum.Make2D();
-    _gravityForce.Make2D();
-}
+{  }
 
 RigidBody2D::RigidBody2D(const RigidBody2D* RigidBody2D)
 :
@@ -71,7 +66,7 @@ void RigidBody2D::Integrate(void)
 
     _obj->AddScaledPosition(_velocity, delta);
 
-    TM::Vector4 resultingAcc = _acceleration;
+    TM::Vector2 resultingAcc = _acceleration;
     
     resultingAcc += _gravityForce;
 
@@ -89,7 +84,13 @@ void RigidBody2D::ClearAccumulator(void)
     _forceAccum.Reset();
 }
 
-void RigidBody2D::AddForce(const TM::Vector4 force)
+void RigidBody2D::AddForce(real xVal, real yVal)
+{
+    _forceAccum[x] += xVal;
+    _forceAccum[y] += yVal;
+}
+
+void RigidBody2D::AddForce(const TM::Vector2 force)
 {
     _forceAccum += force;
 }
@@ -109,13 +110,13 @@ bool RigidBody2D::GetActive(void) const
     return _active;
 }
 
-const TM::Point& RigidBody2D::GetPosition(void) const
+const TM::Point2& RigidBody2D::GetPosition(void) const
 {
     if(_obj != nullptr)
     {
         return _obj->GetPosition();
     }
-    return TM::Point(0.0f);
+    return TM::Point2(0.0f);
 }
 
 const real RigidBody2D::GetMass(void)

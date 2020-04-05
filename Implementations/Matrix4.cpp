@@ -81,7 +81,7 @@ const std::vector<real> Matrix4::GetElems(void) const
 //==========================================================================================================================
 //Projections
 //==========================================================================================================================
-void Matrix4::MakeOrthographic(real left, real right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)
+void Matrix4::MakeOrthographic(real left, real right, real bottom, real top, real nearPlane, real farPlane)
 {
     //Reset Matrix4
     MakeIdentity();
@@ -102,11 +102,11 @@ void Matrix4::MakeOrthographic(real left, real right, F32 bottom, F32 top, F32 n
     _data[3][z] = -(farPlane + nearPlane) / (farPlane - nearPlane);
 }
 
-void Matrix4::MakePerspective(F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F32 farPlane)
+void Matrix4::MakePerspective(real fieldOfView, real aspectRatio, real nearPlane, real farPlane)
 {
     assert(nearPlane - farPlane != 0.0f);
 
-    F32 S = 1.0f / real_tan(RADIAN(0.5f * fieldOfView));
+    real S = 1.0f / real_tan(RADIAN(0.5f * fieldOfView));
 
     //Reset Matrix4 
     MakeIdentity();
@@ -121,7 +121,7 @@ void Matrix4::MakePerspective(F32 fieldOfView, F32 aspectRatio, F32 nearPlane, F
 //==========================================================================================================================
 //Translations
 //==========================================================================================================================
-Matrix4 Matrix4::Translate(F32 xVal, F32 yVal)
+Matrix4 Matrix4::Translate(real xVal, real yVal)
 {
     Matrix4 mat{1.0f};
 
@@ -131,7 +131,7 @@ Matrix4 Matrix4::Translate(F32 xVal, F32 yVal)
     return mat;
 }
 
-Matrix4 Matrix4::Translate(F32 xVal, F32 yVal, F32 zVal)
+Matrix4 Matrix4::Translate(real xVal, real yVal, real zVal)
 {
     Matrix4 mat{1.0f};
 
@@ -153,7 +153,7 @@ Matrix4 Matrix4::Translate(const Vector4& vec)
     return mat;	
 }
 
-void Matrix4::SetTranslate(F32 xVal, F32 yVal)
+void Matrix4::SetTranslate(real xVal, real yVal)
 {
     MakeIdentity();
 
@@ -161,7 +161,7 @@ void Matrix4::SetTranslate(F32 xVal, F32 yVal)
     _data[3][y] = yVal;
 }
 
-void Matrix4::SetTranslate(F32 xVal, F32 yVal, F32 zVal)
+void Matrix4::SetTranslate(real xVal, real yVal, real zVal)
 {
     MakeIdentity();			
 
@@ -179,13 +179,13 @@ void Matrix4::SetTranslate(const Vector4& vec)
     _data[3][z] = vec[z];
 }
 
-void Matrix4::AddTranslate(F32 xVal, F32 yVal)
+void Matrix4::AddTranslate(real xVal, real yVal)
 {
     _data[3][x] += xVal;
     _data[3][y] += yVal;
 }
 
-void Matrix4::AddTranslate(F32 xVal, F32 yVal, F32 zVal)
+void Matrix4::AddTranslate(real xVal, real yVal, real zVal)
 {
     _data[3][x] += xVal; 
     _data[3][y] += yVal; 
@@ -254,7 +254,7 @@ Point4 Matrix4::TransformInverse(const Point4& vec) const
 //==========================================================================================================================
 //Scaling
 //==========================================================================================================================
-Matrix4 Matrix4::Scale(F32 xVal, F32 yVal)
+Matrix4 Matrix4::Scale(real xVal, real yVal)
 {
     Matrix4 mat{1.0f};
 
@@ -264,7 +264,7 @@ Matrix4 Matrix4::Scale(F32 xVal, F32 yVal)
     return mat;
 }
 
-Matrix4 Matrix4::Scale(F32 xVal, F32 yVal, F32 zVal)
+Matrix4 Matrix4::Scale(real xVal, real yVal, real zVal)
 {
     Matrix4 mat{1.0f};
 
@@ -297,7 +297,18 @@ Matrix4 Matrix4::Scale(const Vector3& vec)
     return mat;
 }
 
-void Matrix4::SetScale(F32 xVal, F32 yVal)
+Matrix4 Matrix4::Scale(const Vector2& vec)
+{
+    Matrix4 mat{1.0f};
+
+    mat[0][x] = vec[x];
+    mat[1][y] = vec[y];
+    mat[2][z] = 0.0f;
+
+    return mat;
+}
+
+void Matrix4::SetScale(real xVal, real yVal)
 {
     MakeIdentity();
 
@@ -305,7 +316,7 @@ void Matrix4::SetScale(F32 xVal, F32 yVal)
     _data[1][y] = yVal;
 }
 
-void Matrix4::SetScale(F32 xVal, F32 yVal, F32 zVal)
+void Matrix4::SetScale(real xVal, real yVal, real zVal)
 {
     MakeIdentity();
 
@@ -323,13 +334,13 @@ void Matrix4::SetScale(const Vector4& vec)
     _data[2][z] = vec[z];
 }
 
-void Matrix4::AddScale(F32 xVal, F32 yVal)
+void Matrix4::AddScale(real xVal, real yVal)
 {
     _data[0][x] += xVal;
     _data[1][y] += yVal;
 }
 
-void Matrix4::AddScale(F32 xVal, F32 yVal, F32 zVal)
+void Matrix4::AddScale(real xVal, real yVal, real zVal)
 {
     _data[0][x] += xVal;
     _data[1][y] += yVal;
@@ -514,6 +525,24 @@ void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Vector4& v)
     _data[3][x] = v[x];
     _data[3][y] = v[y];
     _data[3][z] = v[z];
+}
+
+void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Point2& p)
+{
+    SetOrientation(q);
+    
+    _data[3][x] = p[x];
+    _data[3][y] = p[y];
+    _data[3][z] = 0.0f;
+}
+
+void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Point3& p)
+{
+    SetOrientation(q);
+    
+    _data[3][x] = p[x];
+    _data[3][y] = p[y];
+    _data[3][z] = p[z];
 }
 
 void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Point4& p)
@@ -752,7 +781,6 @@ Vector4 Matrix4::Transform3x3(const Vector4& vec) const
 //Look At Matrices
 //
 //==========================================================================================================================
-
 Matrix4 Matrix4::LookAt(const Point4& cameraPos, const Point4& target, const Vector4& up)
 {
     Matrix4 mat{1.0f};
@@ -764,6 +792,39 @@ Matrix4 Matrix4::LookAt(const Point4& cameraPos, const Point4& target, const Vec
     xAxis.Normalize();
 
     Vector4 yAxis = zAxis.CrossProduct(xAxis);
+    yAxis.Normalize();
+
+    mat[0][0] = xAxis[0];
+    mat[0][1] = yAxis[0];
+    mat[0][2] = zAxis[0];
+    mat[0][3] = 0.0f;
+
+    mat[1][0] = xAxis[1];
+    mat[1][1] = yAxis[1];
+    mat[1][2] = zAxis[1];
+    mat[1][3] = 0.0f;
+
+    mat[2][0] = xAxis[2];
+    mat[2][1] = yAxis[2];
+    mat[2][2] = zAxis[2];
+    mat[2][3] = 0.0f;
+
+    mat[3] = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);
+
+    return mat;
+}
+
+Matrix4 Matrix4::LookAt(const Point3& cameraPos, const Point3& target, const Vector3& up)
+{
+    Matrix4 mat{1.0f};
+
+    Vector3 zAxis = Vector3(cameraPos - target);
+    zAxis.Normalize();
+
+    Vector3 xAxis = up.CrossProduct(zAxis);
+    xAxis.Normalize();
+
+    Vector3 yAxis = zAxis.CrossProduct(xAxis);
     yAxis.Normalize();
 
     mat[0][0] = xAxis[0];
@@ -957,12 +1018,26 @@ Matrix4 Matrix4::operator*(const Matrix4& mat) const
     return Matrix4(xCol, yCol, zCol, wCol);
 }
 
+Vector3 Matrix4::operator*(const Vector3& vec) const
+{
+    return Vector3(_data[0][x] * vec[x] + _data[1][x] * vec[y] + _data[2][x] * vec[z] + _data[3][x],
+                   _data[0][y] * vec[x] + _data[1][y] * vec[y] + _data[2][y] * vec[z] + _data[3][y],
+                   _data[0][z] * vec[x] + _data[1][z] + vec[y] + _data[2][z] * vec[z] + _data[3][z]);
+}
+
 Vector4 Matrix4::operator*(const Vector4& vec) const
 {
     return Vector4(_data[0][x] * vec[x] + _data[1][x] * vec[y] + _data[2][x] * vec[z] + _data[3][x] * vec[w],
                    _data[0][y] * vec[x] + _data[1][y] * vec[y] + _data[2][y] * vec[z] + _data[3][y] * vec[w],
                    _data[0][z] * vec[x] + _data[1][z] + vec[y] + _data[2][z] * vec[z] + _data[3][z] * vec[w],
                    _data[0][w] * vec[x] + _data[1][w] + vec[y] + _data[2][w] + vec[z] + _data[3][w] * vec[w]);
+}
+
+Point3 Matrix4::operator*(const Point3& point) const
+{
+    return Point3(_data[0][x] * point[x] + _data[1][x] * point[y] + _data[2][x] * point[z] + _data[3][x],
+                  _data[0][y] * point[x] + _data[1][y] * point[y] + _data[2][y] * point[z] + _data[3][y],
+                  _data[0][z] * point[x] + _data[1][z] + point[y] + _data[2][z] * point[z] + _data[3][z]);
 }
 
 Point4 Matrix4::operator*(const Point4& point) const

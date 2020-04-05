@@ -4,7 +4,7 @@
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Shader.h>
-#include <Engine/Point.h>
+#include <Engine/Point3.h>
 #include <Engine/Vector3.h>
 #include <Engine/Vector4.h>
 #include <Engine/Matrix4.h>
@@ -206,14 +206,14 @@ namespace Tempest
     
 //===== Position =====
         /// Returns the current position of the GameObject3D in world space.		
-        inline const TM::Point& GetPosition(void) const
+        inline const TM::Point3& GetPosition(void) const
         {
             return _position;
         }
 
         /// Set the position of the GameObject3D in world space. The bounding boxes center location is also updated.
         /// \param pos is the new position for the object and bounding box.
-        inline void SetPosition(const TM::Point& pos)
+        inline void SetPosition(const TM::Point3& pos)
         {
             _position = pos;
             _boundingBox.SetCenter(_position);
@@ -276,7 +276,7 @@ namespace Tempest
         /// Set the Position of the GameObject3D scaled by a factor. Point::AddScaledVector is called. Bounding Box is updated. 
         /// \param pos is the new position for the object.
         /// \param scale is the factor that the pos is scaled by.		
-        inline void AddScaledPosition(const TM::Point& point, F32 scale)
+        inline void AddScaledPosition(const TM::Point3& point, F32 scale)
         {
             _position.AddScaledPoint(point, scale);
             _boundingBox.SetCenter(_position);
@@ -487,7 +487,7 @@ namespace Tempest
 //==========================================================================================================================		
         static U32				_nextID;				///< This is an early attempt to ensure that all ID as unique. This is a flawed approach.	
         TM::Matrix4 			_modelTOWorldCache;		///< Cache of the model to world transformation matrix. 
-        TM::Point 				_position;				///< Position of the object in world space.
+        TM::Point3 				_position;				///< Position of the object in world space.
         TM::Vector3				_scale;					///< Scale of the object in world space.
         TM::Quaternion			_orientation;			///< Orientation of the object in world space. Untested.
         Color 					_color;					///< Color that should be used to tint the object. How it affects the object depends on what shader you are using.

@@ -17,7 +17,7 @@ _deadZone(0.01f)
 	_pitch = 0.0f;
 }
 
-FPSCamera::FPSCamera(const TM::Point& position, F32 yaw, F32 pitch)
+FPSCamera::FPSCamera(const TM::Point3& position, F32 yaw, F32 pitch)
 :
 _zoomSensitivity(1.0f),
 _moveSpeed(1.0f),

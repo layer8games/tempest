@@ -331,25 +331,15 @@ void GameWindow::HideMouseCursor(void)
     glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 }
 
-const TM::Point GameWindow::GetMousePos(void)
+const TM::Point2 GameWindow::GetMousePos(void)
 {
     F64 mouseX, mouseY;
-    glfwGetCursorPos(_window, &mouseX, &mouseY);
+    glfwGetCursorPos(_window, &mouseX, &mouseY); 
 
-    //Flips y, sets origin at bottom left of screen
-   // mouseY = _totalHeight - mouseY;
-    
-    //Moves coords to be relative to middle. 
-   // mouseX = mouseX + _left;
-   // mouseY = mouseY + _bottom;
-
-    //TODO:: This should probably be done through a Matrix4 transform
-    //but for now, this seems way easier. 
-
-    return TM::Point(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
+    return TM::Point2(static_cast<real>(mouseX), static_cast<real>(mouseY));
 }
 
-const TM::Point GameWindow::GetMousePosInScreen(void)
+const TM::Point2 GameWindow::GetMousePosInScreen(void)
 {
     F64 mouseX, mouseY;
     glfwGetCursorPos(_window, &mouseX, &mouseY);
@@ -364,7 +354,7 @@ const TM::Point GameWindow::GetMousePosInScreen(void)
     //TODO:: This should probably be done through a Matrix4 transform
     //but for now, this seems way easier. 
 
-    return TM::Point(static_cast<F32>(mouseX), static_cast<F32>(mouseY));
+    return TM::Point2(static_cast<real>(mouseX), static_cast<real>(mouseY));
 }
 
 void GameWindow::ResetCamera(void)

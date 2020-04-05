@@ -4,9 +4,8 @@
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Shader.h>
-#include <Engine/Point.h>
-#include <Engine/Vector3.h>
-#include <Engine/Vector4.h>
+#include <Engine/Point2.h>
+#include <Engine/Vector2.h>
 #include <Engine/Matrix4.h>
 #include <Engine/Color.h>
 #include <Engine/Quaternion.h>
@@ -208,14 +207,14 @@ namespace Tempest
 
 //===== Position =====
         /// Returns the current position of the GameObject2D in world space.		
-        inline const TM::Point& GetPosition(void) const
+        inline const TM::Point2& GetPosition(void) const
         {
             return _position;
         }
 
         /// Set the position of the GameObject2D in world space. The bounding boxes center location is also updated.
         /// \param pos is the new position for the object and bounding box.
-        inline void SetPosition(const TM::Point& pos)
+        inline void SetPosition(const TM::Point2& pos)
         {
             _position = pos;
             _boundingBox.SetCenter(_position);
@@ -250,7 +249,7 @@ namespace Tempest
         /// Set the Position of the GameObject2D scaled by a factor. Vector4::AddScaledVector is called. Bounding Box is updated. 
         /// \param pos is the new position for the object.
         /// \param scale is the factor that the pos is scaled by.
-        inline void AddScaledPosition(const TM::Vector4& pos, F32 scale)
+        inline void AddScaledPosition(const TM::Vector2& pos, F32 scale)
         {
             _position.AddScaledVector(pos, scale);
             _boundingBox.SetCenter(_position);
@@ -268,7 +267,7 @@ namespace Tempest
         /// Set the Position of the GameObject2D scaled by a factor. Point::AddScaledVector is called. Bounding Box is updated. 
         /// \param pos is the new position for the object.
         /// \param scale is the factor that the pos is scaled by.		
-        inline void AddScaledPosition(const TM::Point& point, F32 scale)
+        inline void AddScaledPosition(const TM::Point2& point, F32 scale)
         {
             _position.AddScaledPoint(point, scale);
             _boundingBox.SetCenter(_position);
@@ -276,14 +275,14 @@ namespace Tempest
 
 //===== Scale =====
         /// Return the current scale factor for the GameObject2D.		
-        inline const TM::Vector3& GetScale(void) const
+        inline const TM::Vector2& GetScale(void) const
         {
             return _scale;
         }
 
         /// Sets a new scale factor for the GameObject2D. Bounding Box is updated.
         /// \param scale is set as the new scale. No matrix is updated.
-        inline void SetScale(const TM::Vector3& scale)
+        inline void SetScale(const TM::Vector2& scale)
         {
             _scale = scale;
             _boundingBox.SetHalfDimensions(_scale);
@@ -470,8 +469,8 @@ namespace Tempest
 //==========================================================================================================================		
         static U32				_nextID;				///< This is an early attempt to ensure that all ID as unique. This is a flawed approach.	
         TM::Matrix4 			_modelTOWorldCache;		///< Cache of the model to world transformation matrix. 
-        TM::Point 				_position;				///< Position of the object in world space.
-        TM::Vector3				_scale;					///< Scale of the object in world space.
+        TM::Point2 				_position;				///< Position of the object in world space.
+        TM::Vector2				_scale;					///< Scale of the object in world space.
         TM::Quaternion			_orientation;			///< Orientation of the object in world space. Untested.
         Color 					_color;					///< Color that should be used to tint the object. How it affects the object depends on what shader you are using.
         p_Texture				_texture;				///< Texture used when rendering the object. Set to null by default.

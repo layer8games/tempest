@@ -4,7 +4,7 @@
 #include <Engine/Atom.h>
 #include <Engine/Matrix4.h>
 #include <Engine/Vector4.h>
-#include <Engine/Point.h>
+#include <Engine/Point3.h>
 #include <Engine/Color.h>
 #include <Engine/Controller.h>
 #include <Engine/Timer.h>
@@ -162,20 +162,9 @@ namespace Tempest
 
 	/// Set the position of the Camera to a Point in world space.
 	/// \param point is the new position.
-		inline void SetPosition(const TM::Point& point)
+		inline void SetPosition(const TM::Point3& point)
 		{
 			_position = point;
-
-			_v_UpdateCameraVectors();
-		}
-
-	/// Set the position of the Camera in world space scaled by a value.
-	/// \param x is the new position along the x axis.
-	/// \param y is the new position along the y axis.
-	/// \param scale is the value to scale the positions by
-		inline void ScalePosition(F32 x, F32 y, F32 scale)
-		{
-			_position.AddScaledPoint(TM::Point(x, y), scale);
 
 			_v_UpdateCameraVectors();
 		}
@@ -187,7 +176,7 @@ namespace Tempest
 	/// \param scale is the value to scale the positions by		
 		inline void ScalePosition(F32 x, F32 y, F32 z, F32 scale)
 		{
-			_position.AddScaledPoint(TM::Point(x, y, z), scale);
+			_position.AddScaledPoint(TM::Point3(x, y, z), scale);
 
 			_v_UpdateCameraVectors();
 		}
@@ -195,7 +184,7 @@ namespace Tempest
 	/// Set the position of the Camera in world space scaled by a value.
 	/// \param point is the new position.
 	/// \param scale is the value to scale the positions by
-		inline void ScalePosition(const TM::Point& point, F32 scale)
+		inline void ScalePosition(const TM::Point3& point, F32 scale)
 		{
 			_position.AddScaledPoint(point, scale);
 
@@ -203,7 +192,7 @@ namespace Tempest
 		}
 
 	/// Return the current position of the Camera in world space.
-		inline const TM::Point& GetPosition(void) const
+		inline const TM::Point3& GetPosition(void) const
 		{
 			return _position;
 		}
@@ -213,7 +202,7 @@ namespace Tempest
 //==========================================================================================================================
 	/// Set a pointer to a target Point in world space. This can be used for many different things. Point is set and stored by 
 	/// value, not ref or pointer.
-		inline void SetTarget(const TM::Point& target)
+		inline void SetTarget(const TM::Point3& target)
 		{
 			_target = target;
 		}
@@ -240,7 +229,7 @@ namespace Tempest
 		}
 
 	/// Return the current target point in world space.
-		inline const TM::Point& GetTarget(void)
+		inline const TM::Point3& GetTarget(void)
 		{
 			return _target;
 		}
@@ -274,7 +263,7 @@ namespace Tempest
 		}
 
 	/// Return the current value of the Up Vector.
-		inline const TM::Vector4& GetUpVector(void) const
+		inline const TM::Vector3& GetUpVector(void) const
 		{
 			return _up;
 		}
@@ -317,7 +306,7 @@ namespace Tempest
 		}
 
 	/// Return the current value of Look.
-		inline const TM::Vector4& GetLookVector(void) const
+		inline const TM::Vector3& GetLookVector(void) const
 		{
 			return _look;
 		}
@@ -360,7 +349,7 @@ namespace Tempest
 		}
 
 	/// Return the current direction of the Right Vector.
-		inline const TM::Vector4& GetRightVector(void) const
+		inline const TM::Vector3& GetRightVector(void) const
 		{
 			return _right;
 		}
@@ -437,14 +426,14 @@ namespace Tempest
 
 		TEMPEST_API void DefaultUpdateCameraVectors(void);
 		
-		TM::Point  						_position;				///< Position of Camera in world space.
-		TM::Point 						_target;				///< Position the Camera should be aware of. Can be used for many purposes.
-		TM::Vector4						_worldUp;			/// Direction of Up in the world or Level.
-		TM::Vector4 					_up;					///< Direction, in world space, of up for the Camera.
-		TM::Vector4 					_look;					///< Direction, in world space, that the Camear should point, or "look" at.
-		TM::Vector4 					_right;					///< Direction, in world space, that is perpendicular, to the right.
-		TM::Point 						_currentMouseCoords;	///< Current position of the mouse cursor in screen space. Not currently used.
-		TM::Point 						_lastMouseCoords;		///< Last known position of the mouse cursor in screen space. Not currently used.
+		TM::Point3  						_position;				///< Position of Camera in world space.
+		TM::Point3 						_target;				///< Position the Camera should be aware of. Can be used for many purposes.
+		TM::Vector3						_worldUp;			/// Direction of Up in the world or Level.
+		TM::Vector3 					_up;					///< Direction, in world space, of up for the Camera.
+		TM::Vector3 					_look;					///< Direction, in world space, that the Camear should point, or "look" at.
+		TM::Vector3 					_right;					///< Direction, in world space, that is perpendicular, to the right.
+		TM::Point3 						_currentMouseCoords;	///< Current position of the mouse cursor in screen space. Not currently used.
+		TM::Point3 						_lastMouseCoords;		///< Last known position of the mouse cursor in screen space. Not currently used.
 		F32								_mouseSensitivity;		///< Scaling factor used to make the mouse movments more drastice or pronounced. Not used in the default Camera.
 		F32 							_yaw;					///< Yaw, or y orientation value.
 		F32 							_pitch;					///< Pitch, or x orientation value.

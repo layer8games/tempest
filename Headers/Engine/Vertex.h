@@ -3,7 +3,7 @@
 //=====Engine Includes=====
 #include <Engine/Atom.h>
 #include <Engine/Vector4.h>
-#include <Engine/Point.h>
+#include <Engine/Point3.h>
 #include <Engine/Color.h>
 
 namespace TM = TempestMath;
@@ -32,7 +32,7 @@ namespace Tempest
 ///	Helper structure to keep track of all the value OpenGL needs for a vertex for rendering.
     struct Vertex
     {
-        TM::Point position;	///< Position of the vertex, in model space.
+        TM::Point3 position;	///< Position of the vertex, in model space.
         TM::Vector4 normal;		///< The normal of the vertext in model space.
         TexCoord   texCoord;	///< If there is an attached texture, this holds its information.
         Color 	   color;		///< Color values for the vertext.
@@ -44,14 +44,14 @@ namespace Tempest
 
 ///	Sets up the position, everything else is set to 0. 
 ///	\param pos is the starting position for the vertext. Should be in model space. 
-        Vertex(TM::Point pos)
+        Vertex(TM::Point3 pos)
         : position(pos), normal(0.0f), texCoord(0.0f, 0.0f), color()
         {  }
 
 ///	Sets up the starting position and color. Everything else is set to 0. 
 ///	\param pos is the starting position in model space. 
 ///	\param color is the starting color. 
-        Vertex(const TM::Point& pos, Color col)
+        Vertex(const TM::Point3& pos, Color col)
         : position(pos), normal(0.0f), texCoord(0.0f, 0.0f), color(col)
         {  }
 
@@ -59,14 +59,14 @@ namespace Tempest
 ///	\param pos is the starting position, in model space. 
 ///	\param u sets the u value in a texture coord.
 ///	\param v sets the v value in a texture coord. 
-        Vertex(const TM::Point& pos, F32 u, F32 v)
+        Vertex(const TM::Point3& pos, F32 u, F32 v)
         : position(pos), normal(0.0f), texCoord(u, v), color()
         {  }
 
 ///	Sets the position and surface normal, in model space. 
 ///	\param pos is the starting position in model space. 
 ///	\param norm is the surface normal. Should be normalized, in model space.  
-        Vertex(const TM::Point& pos, const TM::Vector4& norm)
+        Vertex(const TM::Point3& pos, const TM::Vector4& norm)
         : position(pos), normal(norm), texCoord(0.0f, 0.0f), color()
         {  }
 
@@ -75,7 +75,7 @@ namespace Tempest
 ///	\param norm is the surface normal. Should be normalized, in model space. 
 ///	\param u sets the u value in a texture coord. 
 ///	\param v sets the v values in a texture coord.  
-        Vertex(const TM::Point& pos, const TM::Vector4& norm, F32 u, F32 v)
+        Vertex(const TM::Point3& pos, const TM::Vector4& norm, F32 u, F32 v)
         : position(pos), normal(norm), texCoord(u, v), color()
         {  }	
     };

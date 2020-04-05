@@ -2,7 +2,7 @@
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
-#include <Engine/Point.h>
+#include <Engine/Point3.h>
 
 namespace TM = TempestMath;
 
@@ -27,7 +27,7 @@ namespace TempestCollisions
 ///	Sets center and radius to args.
 ///	\param center is the value for center. 
 ///	\param radius is the value for radius. 
-		TEMPEST_API BoundingSphere(const TM::Point& center, real radius);
+		TEMPEST_API BoundingSphere(const TM::Point3& center, real radius);
 
 ///	Special constructor that combines the volumes of 2 BoundingSpheres into one sphere that emcompasses both volumes. 
 ///	\param one is the first sphere.
@@ -60,11 +60,6 @@ namespace TempestCollisions
 			return static_cast<real>(1.333333) * R_PI * _radius * _radius * _radius;
 		}
 
-		inline void Make2D(bool state=true)
-		{
-			_center.Make2D(state);
-		}
-
 //==========================================================================================================================
 //
 //Accessors
@@ -72,7 +67,7 @@ namespace TempestCollisions
 //========================================================================================================================== 
 ///	Set new center.
 ///	\param pos is the new location of the center.
-		inline void SetCenter(const TM::Point& pos)
+		inline void SetCenter(const TM::Point3& pos)
 		{
 			_center = pos;
 		}
@@ -89,7 +84,7 @@ namespace TempestCollisions
 		}
 
 ///	Get the location of the center. 
-		inline const TM::Point& GetCenter(void) const
+		inline const TM::Point3& GetCenter(void) const
 		{
 			return _center;
 		}
@@ -113,7 +108,7 @@ namespace TempestCollisions
 //Data
 //
 //==========================================================================================================================	
-		TM::Point _center; 	///< Center of the sphere.
+		TM::Point3 _center; 	///< Center of the sphere.
 		real 	  _radius;	///< Radius of the sphere.
 
 	};//end Class

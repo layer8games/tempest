@@ -52,14 +52,12 @@ GameObject2D::~GameObject2D(void)
 
 void GameObject2D::Init(void)
 {
-    _position.Make2D();
+    TM::Point2 topRight(1.0f, 1.0f);
+    TM::Point2 topLeft(-1.0f, 1.0f);
+    TM::Point2 bottomRight(1.0f, -1.0f);
+    TM::Point2 bottomLeft(-1.0f, -1.0f);
 
-    TM::Point topRight(1.0f, 1.0f, 0.0f);
-    TM::Point topLeft(-1.0f, 1.0f, 0.0f);
-    TM::Point bottomRight(1.0f, -1.0f, 0.0f);
-    TM::Point bottomLeft(-1.0f, -1.0f, 0.0);
-
-    TM::Point top(0.0f, 0.5f);
+    TM::Point2 top(0.0f, 0.5f);
 
     TexCoord uvTopLeft{0.0f, 0.0f};
     TexCoord uvTopRight{1.0f, 0.0f};

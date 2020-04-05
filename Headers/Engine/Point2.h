@@ -3,8 +3,9 @@
 //===== Killer Includes =====
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
-#include <Engine/Vector4.h>
+#include <Engine/Vector2.h>
 #include <Engine/Vector3.h>
+#include <Engine/Vector4.h>
 
 namespace TE = Tempest;
 
@@ -14,8 +15,9 @@ namespace TE = Tempest;
 
 namespace TempestMath
 {
-    class Vector4;
+    class Vector2;
     class Vector3;
+    class Vector4;
 
 //==========================================================================================================================
 //Documentation
@@ -105,6 +107,8 @@ namespace TempestMath
 ///	\param scale is the amount the added Point2 will be scaled by.
         TEMPEST_API void AddScaledPoint(const Point2& point, real scale);
 
+        TEMPEST_API void AddScaledVector(const Vector2& vec, real scale);
+        
         TEMPEST_API void AddScaledVector(const Vector3& vec, real scale);
 
         TEMPEST_API void AddScaledVector(const Vector4& vec, real scale);

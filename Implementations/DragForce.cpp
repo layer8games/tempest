@@ -29,7 +29,7 @@ DragForce::~DragForce(void)
 //==========================================================================================================================
 void DragForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 {
-	TM::Vector4 force = RigidBody2D->GetVelocity();
+	TM::Vector2 force = RigidBody2D->GetVelocity();
 
 	real dragCoeff = force.Magnitude();
 	dragCoeff = _drag * dragCoeff  + _dragSqr * dragCoeff * dragCoeff;
@@ -42,7 +42,7 @@ void DragForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 
 void DragForce::v_UpdateForce(shared_ptr<RigidBody3D> body)
 {
-	TM::Vector4 force = body->GetVelocity();
+	TM::Vector3 force = body->GetVelocity();
 
 	real dragCoeff = force.Magnitude();
 	dragCoeff = _drag * dragCoeff  + _dragSqr * dragCoeff * dragCoeff;

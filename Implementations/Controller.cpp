@@ -72,12 +72,12 @@ void Controller::KeyUp(Keys k)
 
 }
 
-const TM::Point Controller::GetMouseCoord(void)
+const TM::Point2 Controller::GetMouseCoord(void)
 {
 	return GameWindow::Instance()->GetMousePos();
 }
 
-const TM::Point Controller::GetMouseCoordInScreen(void)
+const TM::Point2 Controller::GetMouseCoordInScreen(void)
 {
 	return GameWindow::Instance()->GetMousePosInScreen();
 }

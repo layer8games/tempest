@@ -296,7 +296,7 @@ std::vector<Level::TileData> Level::_ImportTMXMapData(string filepath)
 				if(data_array[j][i] > 0)
 				{
 					Level::GridPos pos = _ConvertIndexToTileData(i, mapWidth, mapHeight);
-					TM::Point cartPos{ };
+					TM::Point2 cartPos{ };
 					cartPos[x] = (pos.x * static_cast<F32>(tileWidth)) - halfMapWidthInPixels;
 					cartPos[y] = (pos.y * static_cast<F32>(tileHeight)) - halfMapHeightInPixels;
 

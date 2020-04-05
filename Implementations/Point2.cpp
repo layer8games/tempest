@@ -110,6 +110,12 @@ void Point2::AddScaledPoint(const Point2& point, real scale)
     _data[y] += point[y] * scale;
 }
 
+void Point2::AddScaledVector(const Vector2& vec, real scale)
+{
+    _data[x] += vec[x] * scale;
+    _data[y] += vec[y] * scale;	
+}
+
 void Point2::AddScaledVector(const Vector3& vec, real scale)
 {
     _data[x] += vec[x] * scale;
