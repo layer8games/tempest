@@ -179,26 +179,6 @@ void Matrix4::SetTranslate(const Vector4& vec)
     _data[3][z] = vec[z];
 }
 
-void Matrix4::AddTranslate(real xVal, real yVal)
-{
-    _data[3][x] += xVal;
-    _data[3][y] += yVal;
-}
-
-void Matrix4::AddTranslate(real xVal, real yVal, real zVal)
-{
-    _data[3][x] += xVal; 
-    _data[3][y] += yVal; 
-    _data[3][z] += zVal;
-}
-
-void Matrix4::AddTranslate(const Vector4& vec)
-{
-    _data[3][x] += vec[x];
-    _data[3][y] += vec[y];
-    _data[3][z] += vec[z];
-}
-
 Vector4 Matrix4::TransformInverse(const Vector4& vec) const
 {
     Vector4 tmp = vec;
@@ -325,7 +305,15 @@ void Matrix4::SetScale(real xVal, real yVal, real zVal)
     _data[2][z] = zVal;
 }
 
-void Matrix4::SetScale(const Vector4& vec)
+void Matrix4::SetScale(const Vector2& vec)
+{
+    MakeIdentity();
+
+    _data[0][x] = vec[x];
+    _data[1][y] = vec[y];
+}
+
+void Matrix4::SetScale(const Vector3& vec)
 {
     MakeIdentity();
 
@@ -334,24 +322,13 @@ void Matrix4::SetScale(const Vector4& vec)
     _data[2][z] = vec[z];
 }
 
-void Matrix4::AddScale(real xVal, real yVal)
+void Matrix4::SetScale(const Vector4& vec)
 {
-    _data[0][x] += xVal;
-    _data[1][y] += yVal;
-}
+    MakeIdentity();
 
-void Matrix4::AddScale(real xVal, real yVal, real zVal)
-{
-    _data[0][x] += xVal;
-    _data[1][y] += yVal;
-    _data[2][z] += zVal;
-}
-
-void Matrix4::AddScale(const Vector4& vec)
-{
-    _data[0][x] += vec[x];
-    _data[1][y] += vec[y];
-    _data[2][z] += vec[z];
+    _data[0][x] = vec[x];
+    _data[1][y] = vec[y];
+    _data[2][z] = vec[z];
 }
 
 //==========================================================================================================================

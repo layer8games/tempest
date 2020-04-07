@@ -5,6 +5,7 @@
 #include <Engine/Point2.h>
 #include <Engine/Point3.h>
 #include <Engine/Point4.h>
+#include <Engine/Vector2.h>
 #include <Engine/Vector3.h>
 #include <Engine/Vector4.h>
 #include <Engine/Quaternion.h>
@@ -126,21 +127,6 @@ namespace TempestMath
         ///	Sets a translation for this matrix equal to the x y and z values in a Vector4.
         ///	\param vec contains the values that will be used for the translation. 
         TEMPEST_API void SetTranslate(const Vector4& vec);
- 
-        ///	Increases the current translation of this matrix.
-        ///	\param x is the value of x axis translation.
-        ///	\param y is the value of y axis translation. 	
-        TEMPEST_API void AddTranslate(real xVal, real yVal);
-
-        ///	Increases the current translation of this matrix.
-        ///	\param x is the value of x axis translation.
-        ///	\param y is the value of y axis translation.
-        ///	\param z is the value of z axis translation. 
-        TEMPEST_API void AddTranslate(real xVal, real yVal, real zVal);
-
-        ///	Increases the current translation of this matrix equal to the x y and z values in a Vector4.
-        ///	\param vec contains the values that will be used for the translation.
-        TEMPEST_API void AddTranslate(const Vector4& vec);
 
         ///	Returns a Vector4 transformed by the inverse of this matrix. Warning, this is a costly call. 
         ///	\param vec is the vectored used to performed the transformation.
@@ -189,23 +175,15 @@ namespace TempestMath
 
         ///	Sets this matrix to perform a scaling translation equal to the x y and z values in a Vector4.
         ///	\param vec contains the values used in the scaling.  
+        TEMPEST_API void SetScale(const Vector2& vec);
+
+        ///	Sets this matrix to perform a scaling translation equal to the x y and z values in a Vector4.
+        ///	\param vec contains the values used in the scaling.  
+        TEMPEST_API void SetScale(const Vector3& vec);
+        
+        ///	Sets this matrix to perform a scaling translation equal to the x y and z values in a Vector4.
+        ///	\param vec contains the values used in the scaling.  
         TEMPEST_API void SetScale(const Vector4& vec);
-
-        ///	Increases the scaling translation in 2D.
-        ///	\param x Value of scale on x axis.
-        ///	\param y Value of scale on y axis. 
-        TEMPEST_API void AddScale(real xVal, real yVal);
-
-        ///	Increases the scaling translation in 3D.
-        ///	\param x Value of scale on x axis.
-        ///	\param y Value of scale on y axis.
-        ///	\param z Value of scale on z axis. 
-        TEMPEST_API void AddScale(real xVal, real yVal, real zVal);
-
-
-        ///	Increases the scaling translation equal to the x y and z values in a Vector4.
-        ///	\param vec contains the values that will increase the scale.
-        TEMPEST_API void AddScale(const Vector4& vec);
 
 //==========================================================================================================================
 //Rotations

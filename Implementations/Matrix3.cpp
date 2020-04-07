@@ -132,6 +132,15 @@ void Matrix3::SetScale(real xVal, real yVal, real zVal)
     _data[2][z] = zVal;
 }
 
+void Matrix3::SetScale(const Vector2& vec)
+{
+    MakeIdentity();
+
+    _data[0][x] = vec[x];
+    _data[1][y] = vec[y];
+    _data[2][z] = 1.0f;
+}
+
 void Matrix3::SetScale(const Vector3& vec)
 {
     MakeIdentity();
@@ -148,33 +157,6 @@ void Matrix3::SetScale(const Vector4& vec)
     _data[0][x] = vec[x];
     _data[1][y] = vec[y];
     _data[2][z] = vec[z];
-}
-
-void Matrix3::AddScale(real xVal, real yVal)
-{
-    _data[0][x] += xVal;
-    _data[1][y] += yVal;
-}
-
-void Matrix3::AddScale(real xVal, real yVal, real zVal)
-{
-    _data[0][x] += xVal;
-    _data[1][y] += yVal;
-    _data[2][z] += zVal;
-}
-
-void Matrix3::AddScale(const Vector3& vec)
-{
-    _data[0][x] += vec[x];
-    _data[1][y] += vec[y];
-    _data[2][z] += vec[z];
-}
-
-void Matrix3::AddScale(const Vector4& vec)
-{
-    _data[0][x] += vec[x];
-    _data[1][y] += vec[y];
-    _data[2][z] += vec[z];
 }
 
 //==========================================================================================================================

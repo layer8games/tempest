@@ -56,6 +56,13 @@ real Vector4::Dot(const Point4& point) const
            _data[z] * point[z];
 }
 
+real Vector4::Dot(const Point3& point) const
+{
+    return _data[x] * point[x] +
+           _data[y] * point[y] +
+           _data[z] * point[z];
+}
+
 Vector4 Vector4::CrossProduct(const Vector4& vec) const
 {
     return Vector4(_data[y] * vec[z] - _data[z] * vec[y],
