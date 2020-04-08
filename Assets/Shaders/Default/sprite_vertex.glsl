@@ -13,6 +13,5 @@ void main()
 {
 	fs_texCoord = texCoord;
 
-	gl_Position = projection * view * model * vec4(position, 0.0, 0.0);
-	//gl_Position = projection * view * model * position;
+	gl_Position = projection * view * model * vec4(position, 0.0, 1.0);
 }
