@@ -148,7 +148,7 @@ void Mesh::BindVBO(BufferData buffer)
 bool Mesh::LoadOBJ(string filepath)
 {
     std::vector<U32> vertexIndices, uvIndices, normalIndices;
-    std::vector<TM::Point3> tempVertices;
+    std::vector<TM::Point4> tempVertices;
     std::vector<TM::Vector4> tempNormals;
     std::vector<TexCoord> tempUVs;
 
@@ -171,7 +171,7 @@ bool Mesh::LoadOBJ(string filepath)
 
             if(command == "v")
             {
-                TM::Point3 vertex;
+                TM::Point4 vertex;
                 S32 dimension = 0;
 
                 while(dimension < 3 && ss >> vertex[dimension])
@@ -346,7 +346,7 @@ void Mesh::LoadMesh(string filepath)
             for(U32 i = 0; i < vertexData.size(); i += 3)
             {
                 //vertices.push_back(Vertex(TM::Vector4(vertexData[i], vertexData[i+1], vertexData[i+2])));
-                AddVertex(Vertex(TM::Point3(vertexData[i], vertexData[i + 1], vertexData[i + 2])));
+                AddVertex(Vertex(TM::Point4(vertexData[i], vertexData[i + 1], vertexData[i + 2], 1.0f)));
             }
         }
         else if(std::regex_match(attrib, match, uvRegex))

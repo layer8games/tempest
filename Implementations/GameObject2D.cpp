@@ -52,10 +52,10 @@ GameObject2D::~GameObject2D(void)
 
 void GameObject2D::Init(void)
 {
-    TM::Point2 topRight(1.0f, 1.0f);
-    TM::Point2 topLeft(-1.0f, 1.0f);
-    TM::Point2 bottomRight(1.0f, -1.0f);
-    TM::Point2 bottomLeft(-1.0f, -1.0f);
+    TM::Point4 topRight(1.0f, 1.0f, 0.0f, 1.0f);
+    TM::Point4 topLeft(-1.0f, 1.0f, 0.0f, 1.0f);
+    TM::Point4 bottomRight(1.0f, -1.0f, 0.0f, 1.0f);
+    TM::Point4 bottomLeft(-1.0f, -1.0f, 0.0f, 1.0f);
 
     TM::Point2 top(0.0f, 0.5f);
 
