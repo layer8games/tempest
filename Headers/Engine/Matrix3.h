@@ -53,7 +53,7 @@ namespace TempestMath
  
         ///	Copy Constructor. Calls Matrix3::[] to, which will copy the Vector4 from each colume of M into this Matrix.
         ///	\param M is the matrix to copy into this one.	
-        TEMPEST_API Matrix3(const Matrix3& M);
+        TEMPEST_API Matrix3(const Matrix3& otherMatrix);
 
 //==========================================================================================================================
 //

@@ -8,42 +8,48 @@ using namespace TempestMath;
 //
 //==========================================================================================================================
 Matrix3::Matrix3(void)
-:
-_data{ Vector3(1.0f, 0.0f, 0.0f),
-       Vector3(0.0f, 1.0f, 0.0f),
-       Vector3(0.0f, 0.0f, 1.0f) }
+    :
+    column1(1.0f, 0.0f, 0.0f),
+    column2(0.0f, 1.0f, 0.0f),
+    column3(0.0f, 0.0f, 1.0f)
 {  }
 
 Matrix3::Matrix3(const Vector3& x, const Vector3& y, const Vector3& z)
-:
-_data{x, y, z}
+    :    
+    column1(x),
+    column2(y),
+    column3(z)
 {  }
 
 Matrix3::Matrix3(const Vector4& x, const Vector4& y, const Vector4& z)
-:
-_data{Vector3(x), Vector3(y), Vector3(z)}
+    :
+    column1(x), 
+    column2(y),
+    column3(z)
 {  }
 
 
 Matrix3::Matrix3(const real val)
-:
-_data{ Vector3(val, 0.0f, 0.0f),
-       Vector3(0.0f, val, 0.0f),
-       Vector3(0.0f, 0.0f, val) }
+    :
+    column1(val, 0.0f, 0.0f),
+    column2(0.0f, val, 0.0f),
+    column3(0.0f, 0.0f, val)
 {  }
 
 Matrix3::Matrix3( real m00, real m01, real m02,
                   real m10, real m11, real m12,
                   real m20, real m21, real m22 )
-:
-_data{Vector3(m00, m01, m02),
-      Vector3(m10, m11, m12),
-      Vector3(m20, m21, m22) }
+    :
+    column1(m00, m01, m02),
+    column2(m10, m11, m12),
+    column3(m20, m21, m22),
 {  }
 
-Matrix3::Matrix3(const Matrix3& M)
-:
-_data{M[0], M[1], M[2]}
+Matrix3::Matrix3(const Matrix3& otherMatrix)
+    :
+    column1(otherMatrix.column1),
+    column2(otherMatrix.column2),
+    column3(otherMatrix.column3)
 {  }
 
 //==========================================================================================================================
