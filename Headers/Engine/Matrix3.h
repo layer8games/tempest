@@ -225,20 +225,6 @@ namespace TempestMath
 //Operator Overloads
 //
 //==========================================================================================================================
-        ///	Used to access the ith column of the Matrix4.
-        ///	\param i is the index to return. Cannot be greater than 3. There are only 4 columns. 
-        inline const Vector3& operator[](int i) const
-        {
-            return _data[i];
-        }
-
-        ///	Used to access the ith column of the Matrix4. This version allows you to edit the values in the column.
-        ///	\param i is the index to return. Cannot be greater than 3. There are only 4 columns. 
-        inline Vector3& operator[](int i)
-        {
-            return _data[i];
-        }
- 
         ///	Assigns this matrix to be equal to the values of another.
         ///	\param mat is the matrix that is copied. 
         TEMPEST_API Matrix3& operator=(const Matrix3& mat);
@@ -254,6 +240,14 @@ namespace TempestMath
         ///	Divides each element of this matrix, setting it to the results. 
         ///	\param val is the value that this matrix is divided by. 
         TEMPEST_API Matrix3& operator/=(real val);
+//==========================================================================================================================
+//
+//Data
+//
+//==========================================================================================================================
+        Vector3 column1;
+        Vector3 column2;
+        Vector3 column3;
 
     private:
 //==========================================================================================================================
@@ -269,12 +263,6 @@ namespace TempestMath
         ///	\param c11 is the second element of the second column of the sub matrix. 
         real _Cofactor(real c00, real c01, real c10, real c11) const;
 
-//==========================================================================================================================
-//
-//Data
-//
-//==========================================================================================================================
-        Vector3 _data[3];		///< The matrix itself, represented by 3 Vector43in an array.
     };
     typedef shared_ptr<Matrix3> p_Matrix3;
 }//End namespace

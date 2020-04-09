@@ -406,7 +406,6 @@ namespace TempestMath
 //Data
 //
 //==========================================================================================================================
-        //Vector4 _data[4];	///< The matrix itself, represented by 4 Vector4 in an array.
         Vector4 column1;
         Vector4 column2;
         Vector4 column3;
@@ -424,7 +423,6 @@ namespace TempestMath
     ///	\param col2 is the second column of the sub matrix.
     ///	\param col3 is the fourth column of the sub matrix.
         real _Cofactor(const Vector4& col1, const Vector4& col2, const Vector4& col3) const;
-
 
     };
     typedef shared_ptr<Matrix4> p_Matrix4;
