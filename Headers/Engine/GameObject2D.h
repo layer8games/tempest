@@ -225,8 +225,8 @@ namespace Tempest
         /// \param yVal is the new y offset.
         inline void SetPosition(F32 xVal, F32 yVal)
         {
-            _position.x = xVal;
-            _position.y = yVal;
+            _position[0] = xVal;
+            _position[1] = yVal;
             _boundingBox.SetCenter(_position);
         }
 
@@ -234,7 +234,7 @@ namespace Tempest
         /// \param xval is the new x offset.
         inline void SetPositionX(F32 xval)
         {
-            _position.x = xval;
+            _position[0] = xval;
             _boundingBox.SetCenter(_position);
         }
 
@@ -242,7 +242,7 @@ namespace Tempest
         /// \param yVal is the new y offset.		
         inline void SetPositionY(F32 yVal)
         {
-            _position.y = yVal;
+            _position[1] = yVal;
             _boundingBox.SetCenter(_position);
         }
 
@@ -300,31 +300,63 @@ namespace Tempest
         /// \pararm yVal is the new scale factor on the y axis.
         inline void SetScale(F32 xVal, F32 yVal)
         {
-            _scale.x = xVal;
-            _scale.y = yVal;
+            _scale[0] = xVal;
+            _scale[1] = yVal;
             _boundingBox.SetHalfDimensions(_scale);
         }
 
 //===== Orientation =====
         /// Returns the current orientation of the GameObject2D		
-        inline const F32 GetOrientation(void) const
+        inline const TM::Quaternion& GetOrientation(void) const
         {
-            return _yAxisOrientation;
+            return _orientation;
         }
 
         /// Set a new orientation for the GameObject2D.
         /// \param q is the new orienation.
-        inline void SetOrientation(const F32 val)
+        inline void SetOrientation(const TM::Quaternion& q)
         {
-            _yAxisOrientation = val;
+            _orientation = q;
+        }
+
+        /// Set the orientation of the GameObject2D with an Euler Angle. The Vector3 is treated as 
+        /// an Euler Angle in this context. 
+        /// \param vec is the new orientation represent as an Euler Angle.
+        inline void SetOrientation(const TM::Vector3& vec)
+        {
+            _orientation.RotateByEuler(vec);
+        }
+
+        /// Set the orientation of the GameObject2D with an Euler Angle.
+        /// \param yaw
+        /// \param pitch
+        /// \param roll
+        inline void SetOrientation(real yaw, real pitch, real roll)
+        {
+            _orientation.RotateByEuler(yaw, pitch, roll);
         }
 
         /// Add an Euler Angle to the current orientation. Vector3 is treated as an Euler Angle 
         /// in this context. 
         /// \param vec is an Euler Angle.
-        inline void AddOrientation(const F32& val)
+        inline void AddOrientation(const TM::Vector3& vec)
         {
-            _yAxisOrientation += val;
+            _orientation.AddEuler(vec);
+        }
+
+        /// Add an Euler Angle to the current orientation. 
+        /// \param yaw
+        /// \param pitch 
+        /// \param roll
+        inline void AddOrientation(real yaw, real pitch, real roll)
+        {
+            _orientation.AddEuler(yaw, pitch, roll);
+        }
+
+        /// Changes the length of the orientation to be 1.0. Calls Quaternion::Normalize.
+        inline void NormalizeOrientation(void)
+        {
+            _orientation.Normalize();
         }
 
 //===== Color =====		
@@ -439,8 +471,7 @@ namespace Tempest
         TM::Matrix4 			_modelTOWorldCache;		///< Cache of the model to world transformation matrix. 
         TM::Point2 				_position;				///< Position of the object in world space.
         TM::Vector2				_scale;					///< Scale of the object in world space.
-        //TM::Quaternion			_orientation;			///< Orientation of the object in world space. Untested.
-        F32			            _yAxisOrientation;			///< Single Value orientation. Represents rotation around the y axis. 
+        TM::Quaternion			_orientation;			///< Orientation of the object in world space. Untested.
         Color 					_color;					///< Color that should be used to tint the object. How it affects the object depends on what shader you are using.
         p_Texture				_texture;				///< Texture used when rendering the object. Set to null by default.
         bool					_activeUpdate;			///< State of the object in the update loop. If true, v_Update will be called. 

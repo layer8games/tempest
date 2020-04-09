@@ -20,7 +20,7 @@ GameObject2D::GameObject2D(void)
     _modelTOWorldCache(),
     _position(0.0f),
     _scale(1.0f),
-    _yAxisOrientation(0.0f),
+    _orientation(0.0f),
     _color(1.0f),
     _boundingBox(),
     _texture(nullptr),
@@ -38,7 +38,7 @@ GameObject2D::GameObject2D(const GameObject2D& obj)
     _modelTOWorldCache(obj.GetModelMatrix()),
     _position(obj.GetPosition()),
     _scale(obj.GetScale()),
-    _yAxisOrientation(obj.GetOrientation()),
+    _orientation(obj.GetOrientation()),
     _color(obj.GetColor()),
     _texture(obj.GetTexture()),
     _shader(obj.GetShader()),
@@ -157,6 +157,6 @@ void GameObject2D::_CalculateCachedData(void)
 {
     //_modelTOWorldCache =  TM::Matrix4::Translate(_position) * TM::Matrix4::Scale(_scale);
 
-    _modelTOWorldCache.SetOrientationAndPosition(_yAxisOrientation, _position);
+    _modelTOWorldCache.SetOrientationAndPosition(_orientation, _position);
     _modelTOWorldCache = _modelTOWorldCache * TM::Matrix4::Scale(_scale);
 }
