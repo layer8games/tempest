@@ -305,10 +305,10 @@ void Matrix3::AddRotation(real xVal, real yVal, real zVal)
 
 void Matrix3::SetOrientation(const Quaternion& q)
 {
-    real q_w = q[0];
-    real q_x = q[1];
-    real q_y = q[2];
-    real q_z = q[3];
+    real q_w = q.x;
+    real q_x = q.y;
+    real q_y = q.z;
+    real q_z = q.w;
 
     _data[0].x = 1.0f - ((2.0f * q_y * q_y) + (2.0f * q_z * q_z));
     _data[0].y = 2.0f * q_x * q_y - 2.0f * q_z * q_w;

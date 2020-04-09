@@ -77,15 +77,15 @@ void Mesh::InitOpenGLData(void)
 
     for(auto i : _vertices)
     {
-        vertPosition.push_back(i.position[0]);
-        vertPosition.push_back(i.position[1]);
-        vertPosition.push_back(i.position[2]);
-        vertPosition.push_back(i.position[3]);
+        vertPosition.push_back(i.position.x);
+        vertPosition.push_back(i.position.y);
+        vertPosition.push_back(i.position.z);
+        vertPosition.push_back(i.position.w);
 
-        vertNormals.push_back(i.normal[0]);
-        vertNormals.push_back(i.normal[1]);
-        vertNormals.push_back(i.normal[2]);
-        vertNormals.push_back(i.normal[3]);
+        vertNormals.push_back(i.normal.x);
+        vertNormals.push_back(i.normal.y);
+        vertNormals.push_back(i.normal.z);
+        vertNormals.push_back(i.normal.w);
 
         vertTexCoords.push_back(i.texCoord.u);
         vertTexCoords.push_back(i.texCoord.v);
@@ -171,13 +171,10 @@ bool Mesh::LoadOBJ(string filepath)
 
             if(command == "v")
             {
-                TM::Point4 vertex;
-                S32 dimension = 0;
-
-                while(dimension < 3 && ss >> vertex[dimension])
-                {
-                    ++dimension;
-                }
+                TM::Point4 vertex{0.0f};
+                ss >> vertex.x;
+                ss >> vertex.y;
+                ss >> vertex.z;
 
                 tempVertices.push_back(vertex);
             }
@@ -192,15 +189,11 @@ bool Mesh::LoadOBJ(string filepath)
             }
             else if(command == "vn")
             {
-                TM::Vector4 normal;
-                S32 dimension = 0;
+                TM::Vector4 normal{0.0f};
+                ss >> normal.x;
+                ss >> normal.y;
+                ss >> normal.z;
 
-                while(dimension < 3 && ss >> normal[dimension])
-                {
-                    ++dimension;
-                }
-
-                normal[3] = 0.0f;
                 normal.Normalize();
 
                 tempNormals.push_back(normal);

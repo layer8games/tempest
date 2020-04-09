@@ -225,8 +225,8 @@ namespace Tempest
         /// \param yVal is the new y offset.
         inline void SetPosition(F32 xVal, F32 yVal)
         {
-            _position[0] = xVal;
-            _position[1] = yVal;
+            _position.x = xVal;
+            _position.y = yVal;
             _boundingBox.SetCenter(_position);
         }
 
@@ -234,7 +234,7 @@ namespace Tempest
         /// \param xval is the new x offset.
         inline void SetPositionX(F32 xval)
         {
-            _position[0] = xval;
+            _position.x = xval;
             _boundingBox.SetCenter(_position);
         }
 
@@ -242,7 +242,7 @@ namespace Tempest
         /// \param yVal is the new y offset.		
         inline void SetPositionY(F32 yVal)
         {
-            _position[1] = yVal;
+            _position.y = yVal;
             _boundingBox.SetCenter(_position);
         }
 
@@ -300,8 +300,8 @@ namespace Tempest
         /// \pararm yVal is the new scale factor on the y axis.
         inline void SetScale(F32 xVal, F32 yVal)
         {
-            _scale[0] = xVal;
-            _scale[1] = yVal;
+            _scale.x = xVal;
+            _scale.y = yVal;
             _boundingBox.SetHalfDimensions(_scale);
         }
 

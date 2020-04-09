@@ -310,9 +310,9 @@ namespace Tempest
         /// \pararm zVal is the new scale factor on the z axis.
         inline void SetScale(F32 xVal, F32 yVal, F32 zVal)
         {
-            _scale[0] = xVal;
-            _scale[1] = yVal;
-            _scale[2] = zVal;
+            _scale.x = xVal;
+            _scale.y = yVal;
+            _scale.z = zVal;
             _boundingBox.SetHalfDimensions(_scale);
         }
 

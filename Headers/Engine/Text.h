@@ -71,8 +71,8 @@ namespace Tempest
 ///	 \param y sets the second coordinate.
         inline void SetPosition(F32 x, F32 y)
         {
-            _pos[0] = x;
-            _pos[1] = y;
+            _pos.x = x;
+            _pos.y = y;
             _UpdatePositions();
         }
  
@@ -174,8 +174,8 @@ namespace Tempest
 /// \param yScale is the scale to set on the y axis.
         inline void SetScale(F32 xScale, F32 yScale)
         {
-            _scale[0] = xScale;
-            _scale[1] = yScale;
+            _scale.x = xScale;
+            _scale.y = yScale;
             _UpdateScales();
         }
 

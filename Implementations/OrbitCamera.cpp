@@ -41,14 +41,14 @@ void OrbitCamera::v_Update(void)
 
 void OrbitCamera::Orbit(void)
 {
-	Camera::_deltaYaw -= (Camera::_currentMouseCoords[0] - Camera::_lastMouseCoords[0]) * Camera::_mouseSensitivity;
-	Camera::_deltaPitch += (Camera::_currentMouseCoords[1] - Camera::_lastMouseCoords[1]) * Camera::_mouseSensitivity;
+	Camera::_deltaYaw -= (Camera::_currentMouseCoords.x - Camera::_lastMouseCoords.x) * Camera::_mouseSensitivity;
+	Camera::_deltaPitch += (Camera::_currentMouseCoords.y - Camera::_lastMouseCoords.y) * Camera::_mouseSensitivity;
 }
 
 void OrbitCamera::Zoom(void)
 {
-	F32 dx = 0.01f * (Camera::_currentMouseCoords[0] - Camera::_lastMouseCoords[0]);
-	F32 dy = 0.01f * (Camera::_currentMouseCoords[1] - Camera::_lastMouseCoords[1]);
+	F32 dx = 0.01f * (Camera::_currentMouseCoords.x - Camera::_lastMouseCoords.x);
+	F32 dy = 0.01f * (Camera::_currentMouseCoords.y - Camera::_lastMouseCoords.y);
 	_radius += dx - dy;
 }
 

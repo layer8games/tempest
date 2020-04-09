@@ -60,8 +60,8 @@ Vector2::~Vector2(void)
 //===== Vector2 Special functions =====
 real Vector2::Dot(const Vector2& otherVec) const
 {
-    return x * otherotherVec.x +
-           y * otherotherVec.y;
+    return x * otherVec.x +
+           y * otherVec.y;
 }
 
 real Vector2::Magnitude(void)
@@ -91,13 +91,13 @@ void Vector2::Reset(real val)
 }
 
 //===== Math Helper Functions =====
-void Vector2::AddScaledVector(const Vector2& vec, real scale)
+void Vector2::AddScaledVector(const Vector2& otherVec, real scale)
 {
     x += otherVec.x * scale;
     y += otherVec.y * scale;
 }
 
-void Vector2::AddScaledVector(const Vector4& vec, real scale)
+void Vector2::AddScaledVector(const Vector4& otherVec, real scale)
 {
     x += otherVec.x * scale;
     y += otherVec.y * scale;
@@ -145,12 +145,10 @@ Vector2& Vector2::operator+=(const Vector2& otherVec)
     return *this;
 }
 
-Vector2 Vector2::operator+(shared_ptr<Vector2> vec) const
+Vector2 Vector2::operator+(shared_ptr<Vector2> otherVec) const
 {
-    const real* vals = vec->GetElems();
-
-    return Vector2(x + vals.x,
-                   y + vals.y);
+    return Vector2(x + otherVec->x,
+                   y + otherVec->y);
 }
 
 //===== Add by scalar =====

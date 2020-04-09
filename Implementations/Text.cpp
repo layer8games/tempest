@@ -139,7 +139,7 @@ void Text::_UpdatePositions(void)
 			_characterList[i]->SetPosition(currentPos);
 			_characterList[i]->v_Update();
 
-			currentPos[0] += data.xAdvance + size;
+			currentPos.x += data.xAdvance + size;
 		}	
 	}
 }

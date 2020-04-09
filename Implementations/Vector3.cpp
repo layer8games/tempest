@@ -171,9 +171,9 @@ Vector3& Vector3::operator+=(const Vector3& vec)
 
 Vector3 Vector3::operator+(shared_ptr<Vector3> vec) const
 {
-    return Vector3(x + vec.x,
-                   y + vec.y],
-                   z + vec.z);
+    return Vector3(x + vec->x,
+                   y + vec->y,
+                   z + vec->z);
 }
 
 //===== Add by scalar =====
