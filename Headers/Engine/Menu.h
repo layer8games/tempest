@@ -123,8 +123,8 @@ namespace Tempest
 ///	\param yPos is the y coodinate position. 
 		inline void SetPosition(real xPos, real yPos)
 		{
-			_menuPos[x] = xPos;
-			_menuPos[y] = yPos;
+			_menuPos.x = xPos;
+			_menuPos.y = yPos;
 			_UpdateItemPositions();
 		}
 
@@ -148,8 +148,8 @@ namespace Tempest
 ///	 \param yPos is the offset. Should be negative to down or positive to go up. 
 		inline void SetItemOffset(real xPos, real yPos)
 		{
-			_itemOffset[x] = xPos;
-			_itemOffset[y] = yPos;
+			_itemOffset.x = xPos;
+			_itemOffset.y = yPos;
 			_UpdateItemPositions();
 		}
 
@@ -172,8 +172,8 @@ namespace Tempest
 ///	 \param yPos is the offset. Should be negative to down or positive to go up. 
 		inline void SetSelectorOffset(real xPos, real yPos)
 		{
-			_selectorOffset[x] = xPos;
-			_selectorOffset[y] = yPos;
+			_selectorOffset.x = xPos;
+			_selectorOffset.y = yPos;
 			_UpdateItemPositions();
 		}
 
@@ -196,8 +196,8 @@ namespace Tempest
 ///	 \param yPos is the offset. Should be negative to down or positive to go up. 
 		inline void SetTitleOffset(real xPos, real yPos)
 		{
-			_offsetFromTitle[x] = xPos;
-			_offsetFromTitle[y] = yPos;
+			_offsetFromTitle.x = xPos;
+			_offsetFromTitle.y = yPos;
 			_UpdateItemPositions();
 		}
 

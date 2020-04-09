@@ -78,9 +78,9 @@ namespace TempestPhysics
 
         inline void SetVelocity(F32 x, F32 y, F32 z)
         {
-            _velocity[0] = x;
-            _velocity[1] = y;
-            _velocity[2] = z;
+            _velocity.x = x;
+            _velocity.y = y;
+            _velocity.z = z;
         }
 
         inline void AddScaledVelocity(const TM::Vector4& vec, F32 scale)
@@ -101,9 +101,9 @@ namespace TempestPhysics
 
         inline void SetAcceleration(F32 x, F32 y, F32 z)
         {
-            _acceleration[0] = x; 
-            _acceleration[1] = y;
-            _acceleration[2] = z;
+            _acceleration.x = x; 
+            _acceleration.y = y;
+            _acceleration.z = z;
         }
 
         inline void AddScaledAcceleration(const TM::Vector4& vec, F32 scale)
@@ -124,9 +124,9 @@ namespace TempestPhysics
 
         inline void SetRotation(F32 x, F32 y, F32 z)
         {
-            _rotation[0] = x; 
-            _rotation[1] = y;
-            _rotation[2] = z;
+            _rotation.x = x; 
+            _rotation.y = y;
+            _rotation.z = z;
         }
 
         inline void AddScaledRotation(const TM::Vector3& vec, F32 scale)

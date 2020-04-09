@@ -157,15 +157,3 @@ inline F32 FLOAT_CLAMP(F32 val, F32 min, F32 max)
         return val;
     }
 }
-
-/*!
-    Alias set up to allow a refernce to each element of a Vector, Matrix, Quaternion and any
-    other type of object that uses an x, y, z and w value. 
-*/
-enum 
-{
-    x = 0,
-    y = 1,
-    z = 2,
-    w = 3,
-};

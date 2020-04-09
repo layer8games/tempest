@@ -47,7 +47,7 @@ namespace TempestMath
         ///	\param y is the value for y.
         ///	\param z is the value for z.
         ///	\param w is the value for w.
-        TEMPEST_API Vector4(real x, real y, real z, real w);
+        TEMPEST_API Vector4(real xVal, real yVal, real zVal, real wVal);
 
         ///	Copy Constructor. It explicitly copies all data into new Vector4. 
         ///	\param v is the Vector4 to copy. 
@@ -55,7 +55,7 @@ namespace TempestMath
 
         ///	Copy a Point4 into a Vector4. W is set to 0.
         ///	\param  p will be converted into a Vector4.
-        TEMPEST_API Vector4(const Point4& p);
+        TEMPEST_API explicit Vector4(const Point4& p);
  
         ///	Destructor. It does not do anything. 	
         TEMPEST_API ~Vector4(void);
@@ -116,21 +116,15 @@ namespace TempestMath
 //Accessors
 //
 //==========================================================================================================================
-        ///	Returns the raw data for the Vector4.
-        inline const real* GetElems(void) const
-        {
-            return _data;
-        }
-
         ///	A helper function to allow to quickly set x, y and z to different values.
         ///	\param xVal is the value for x.
         ///	\param yVal is the vlaue for y.
         ///	\param zVal is the value for z. 
         inline void Set(real xVal, real yVal, real zVal)
         {
-            _data[x] = xVal;
-            _data[y] = yVal;
-            _data[z] = zVal;
+            x = xVal;
+            y = yVal;
+            z = zVal;
         }
 
 //==========================================================================================================================
@@ -138,20 +132,6 @@ namespace TempestMath
 //operator Overloads
 //
 //==========================================================================================================================
-        ///	Allows you to index into the Vector4 to read the value.
-        ///	\param i is the index you wish to read. 0 = x, 1 = y, 2 = z, 3 = w.
-        inline const real& operator[](int i) const
-        {
-            return _data[i];
-        }
-
-        ///	Allows you to index into the Vector4 to change the value.
-        ///	\param i is the index you wish to change. 0 = x, 1 = y, 2 = z, 3 = w.
-        inline real& operator[](int i)
-        {
-            return _data[i];
-        }
-
 //===== Copy Assignment =====		
         ///	Copy assignment from Vector4.
         ///	\param vec is the Vector4 to copy into this Vector4.
@@ -188,7 +168,7 @@ namespace TempestMath
 
         ///	Point addition equal. This is done componentwise.
         ///	\param vec is the Point to add into this Vector4.
-        TEMPEST_API Vector4& operator+=(const Point4& vec);
+        TEMPEST_API Vector4& operator+=(const Point4& point);
 
 //===== Add by scalar =====
         ///	Scalar addition. Each value is added into. 2D check done before z is changed.
@@ -198,10 +178,6 @@ namespace TempestMath
         ///	Scalar addition. Each value is added into. 2D check done before z is changed.
         ///	\param val is added into each element of this Vector4.
         TEMPEST_API Vector4& operator+=(real val);
-
-        ///	Shared Pointer addition. A helper to allow arithmetic with shared_ptr<Vector4>.
-        ///	\param vec is the shared_ptr<Vector4> that is added into each element of a new Vector4.
-        TEMPEST_API Vector4 operator+(shared_ptr<Vector4> vec) const;
 
 //===== Subtract by Vector4 =====
         ///	Vector4 subtraction. This is done componentwise. 2D check done before z is changed. 
@@ -232,15 +208,15 @@ namespace TempestMath
         ///	Changes the sign of each element of the Vector4. If 2D, z is not changed. w is also ignored. 
         inline Vector4 operator-(void)
         {
-            return Vector4(-_data[x], -_data[y], -_data[z], 0.0f);
+            return Vector4(-x, -y, -z, 0.0f);
         }
  
         ///	Prefix, Adds 1 to each element of the Vector4. If 2D, z is ignored. w is always ignored.  
         inline Vector4& operator++(void)
         {
-            ++_data[x];
-            ++_data[y];
-            ++_data[z];
+            ++x;
+            ++y;
+            ++z;
 
             return *this;
         }
@@ -248,15 +224,15 @@ namespace TempestMath
         ///	Postfix, Adds 1 to each element of the Vector4. If 2D, z is ignored. w is always ignored.  
         inline Vector4 operator++(int)
         {
-            return Vector4(++_data[x], ++_data[y], ++_data[z], 0.0f);
+            return Vector4(++x, ++y, ++z, 0.0f);
         }
 
         ///	Prefix, Subtracts 1 to each element of the Vector4. If 2D, z is ignored. w is always ignored.  
         inline Vector4& operator--(void)
         {
-            --_data[x];
-            --_data[y];
-            --_data[z];
+            --x;
+            --y;
+            --z;
 
             return *this;
         }
@@ -264,7 +240,7 @@ namespace TempestMath
         ///	Postfix, Subtracts 1 to each element of the Vector4. If 2D, z is ignored. w is always ignored.   
         inline Vector4 operator--(int)
         {
-            return Vector4(--_data[x], --_data[y], --_data[z], 0.0f);
+            return Vector4(--x, --y, --z, 0.0f);
         }
 
 //===== Subtract by scalar =====
@@ -328,13 +304,15 @@ namespace TempestMath
         ///	\param vec is the Vector4 this Vector4 will be compared against. 
         TEMPEST_API bool operator!=(const Vector4& vec) const;
 
-    private:
 //==========================================================================================================================
 //
 //Data
 //
 //==========================================================================================================================
-        real  _data[4];	///< Array that stores the values for each element.
+        real x;
+        real y;
+        real z; 
+        real w;
 
     };
     typedef shared_ptr<Vector4> p_Vector4;

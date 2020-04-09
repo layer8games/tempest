@@ -30,17 +30,17 @@ AABB::~AABB(void)
 bool AABB::TestCollision(const AABB& other) const
 {
 
-	if(real_abs(_center[x] - other.GetCenter()[x]) > (_halfScale[x] + other.GetHalfWidth()))
+	if(real_abs(_center.x - other.GetCenter().x) > (_halfScale.x + other.GetHalfWidth()))
 	{
 		return false;
 	}
 
-	if(real_abs(_center[y] - other.GetCenter()[y]) > (_halfScale[y] + other.GetHalfHeight()))
+	if(real_abs(_center.y - other.GetCenter().y) > (_halfScale.y + other.GetHalfHeight()))
 	{
 		return false;
 	}
 
-	if(real_abs(_center[z] - other.GetCenter()[z]) > (_halfScale[z] + other.GetHalfDepth()))
+	if(real_abs(_center.z - other.GetCenter().z) > (_halfScale.z + other.GetHalfDepth()))
 	{
 		return false;
 	}
@@ -50,17 +50,17 @@ bool AABB::TestCollision(const AABB& other) const
 
 bool AABB::TestCollision(const TM::Point3& other) const
 {
-	if(real_abs(_center[x] - other[x]) > _halfScale[x])
+	if(real_abs(_center.x - other.x) > _halfScale.x)
 	{
 		return false;	
 	}
 
-	if(real_abs(_center[y] - other[y]) > _halfScale[y])
+	if(real_abs(_center.y - other.y) > _halfScale.y)
 	{
 		return false;
 	}
 
-	if(real_abs(_center[z] - other[z]) > _halfScale[z])
+	if(real_abs(_center.z - other.z) > _halfScale.z)
 	{
 		return false;
 	}

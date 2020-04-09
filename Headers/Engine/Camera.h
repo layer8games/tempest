@@ -141,8 +141,8 @@ namespace Tempest
 	/// \param y is the new position along the y axis.
 		inline void SetPosition(F32 x, F32 y)
 		{
-			_position[0] = x;
-			_position[1] = y;
+			_position.x = x;
+			_position.y = y;
 
 			_v_UpdateCameraVectors();
 		}
@@ -153,9 +153,9 @@ namespace Tempest
 	/// \param z is the new position along the z axis.
 		inline void SetPosition(F32 x, F32 y, F32 z)
 		{
-			_position[0] = x;
-			_position[1] = y;
-			_position[2] = z;
+			_position.x = x;
+			_position.y = y;
+			_position.z = z;
 
 			_v_UpdateCameraVectors();
 		}
@@ -212,9 +212,9 @@ namespace Tempest
 	/// \param yVal is the new position along the y axis.
 		inline void SetTarget(F32 xVal, F32 yVal)
 		{
-			_target[0] = xVal;
-			_target[1] = yVal;
-			_target[2] = 0.0f;
+			_target.x = xVal;
+			_target.y = yVal;
+			_target.z = 0.0f;
 		}
 
 	/// Set the position in world space of the target manually.
@@ -223,9 +223,9 @@ namespace Tempest
 	/// \param zVal is the new position along the z axis.
 		inline void SetTarget(F32 xVal, F32 yVal, F32 zVal)
 		{
-			_target[0] = xVal;
-			_target[1] = yVal;
-			_target[2] = zVal;
+			_target.x = xVal;
+			_target.y = yVal;
+			_target.z = zVal;
 		}
 
 	/// Return the current target point in world space.
@@ -241,7 +241,7 @@ namespace Tempest
 	/// \param val is the new direction of just y in the up vector. 
 		inline void SetUpVector(F32 val)
 		{
-			_up[1] = val;
+			_up.y = val;
 		}
 
 	///	Set the direction of Up in world space for the Camera. This is not tested in a way that defines up other than 1.0f.
@@ -250,9 +250,9 @@ namespace Tempest
 	/// \param zVal is the z direction of Up.
 		inline void SetUpVector(F32 xVal, F32 yVal, F32 zVal)
 		{
-			_up[0] = xVal;
-			_up[1] = yVal;
-			_up[2] = zVal;
+			_up.x = xVal;
+			_up.y = yVal;
+			_up.z = zVal;
 		}
 
 	///	Set the direction of Up in world space for the Camera. This is not tested in a way that defines up other than 1.0f.
@@ -283,8 +283,8 @@ namespace Tempest
 	/// \param yVal is the y direction of Up.
 		inline void SetLookVector(F32 xVal, F32 yVal)
 		{
-			_look[0] = xVal;
-			_look[1] = yVal;
+			_look.x = xVal;
+			_look.y = yVal;
 		}
 
 	/// Set the direction of the Look vector.
@@ -293,9 +293,9 @@ namespace Tempest
 	/// \param zVal is the z direction of Up.
 		inline void SetLookVector(F32 xVal, F32 yVal, F32 zVal)
 		{
-			_look[0] = xVal;
-			_look[1] = yVal;
-			_look[2] = zVal;
+			_look.x = xVal;
+			_look.y = yVal;
+			_look.z = zVal;
 		}
 
 	/// Set the direction of the Look vector.
@@ -326,8 +326,8 @@ namespace Tempest
 	/// \param yVal is the y direction of Right.
 		inline void SetRightVector(F32 xVal, F32 yVal)
 		{
-			_right[0] = xVal;
-			_right[1] = yVal;
+			_right.x = xVal;
+			_right.y = yVal;
 		}
 
 	/// Set the value of the Right vector.
@@ -336,9 +336,9 @@ namespace Tempest
 	/// \param zVal is the z direction of Right.
 		inline void SetRightVector(F32 xVal, F32 yVal, F32 zVal)
 		{
-			_right[0] = xVal;
-			_right[1] = yVal;
-			_right[2] = zVal;
+			_right.x = xVal;
+			_right.y = yVal;
+			_right.z = zVal;
 		}
 
 	/// Set the value of the Right vector.

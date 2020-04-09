@@ -73,8 +73,8 @@ void FPSCamera::v_Move(const TM::Vector4& offset)
 void FPSCamera::v_Move(F32 xVal, F32 yVal)
 {
 	F32 delta = TM::Timer::Instance()->DeltaTime();
-	_position[x] += xVal * _moveSpeed * delta;
-	_position[y] += yVal * _moveSpeed * delta;
+	_position.x += xVal * _moveSpeed * delta;
+	_position.y += yVal * _moveSpeed * delta;
 	_v_UpdateCameraVectors();
 }
 

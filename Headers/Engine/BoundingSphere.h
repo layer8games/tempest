@@ -78,9 +78,9 @@ namespace TempestCollisions
 ///	\param z is the value for z.
 		inline void SetCenter(F32 x, F32 y, F32 z)
 		{
-			_center[0] = x;
-			_center[1] = y;
-			_center[2] = z;
+			_center.x = x;
+			_center.y = y;
+			_center.z = z;
 		}
 
 ///	Get the location of the center. 

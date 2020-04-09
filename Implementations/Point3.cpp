@@ -9,32 +9,44 @@ using namespace TempestMath;
 //==========================================================================================================================
 Point3::Point3(void)
     :
-    _data{0.0f, 0.0f, 0.0f}
+    x(0.0f), 
+    y(0.0f),
+    z(0.0f)
 {  }
 
 Point3::Point3(real val)
     :
-    _data{val, val, val}
+    x(val),
+    y(val),
+    z(val)
 {  }
 
-Point3::Point3(real x, real y, real z)
+Point3::Point3(real xVal, real yVal, real zVal)
     :
-    _data{x, y, z}
+    x(xVal),
+    y(yVal),
+    z(zVal)
 {  }
 
 Point3::Point3(const Point3& v)
     :
-    _data{v[x], v[y], v[z]}
+    x(v.x),
+    y(v.y),
+    z(v.z)
 {  }
 
 Point3::Point3(const Vector3& v)
     :
-    _data{v[x], v[y], v[z]}
+    x(v.x),
+    y(v.y),
+    z(v.z)
 {  }
 
 Point3::Point3(const Vector4& v)
     :
-    _data{v[x], v[y], v[z]}
+    x(v.x),
+    y(v.y),
+    z(v.z)
 {  }
 
 Point3::~Point3(void)
@@ -48,27 +60,27 @@ Point3::~Point3(void)
 //===== Point Special functions =====
 real Point3::Dot(const Point3& point) const
 {
-    return _data[x] * point[x] +
-           _data[y] * point[y] +
-           _data[z] * point[z];
+    return x * point.x +
+           y * point.y +
+           z * point.z;
 }
 
 Point3 Point3::CrossProduct(const Point3& point) const
 {
-    return Point3(_data[y] * point[z] - _data[z] * point[y],
-                  _data[z] * point[x] - _data[x] * point[z],
-                  _data[x] * point[y] - _data[y] * point[x]);
+    return Point3(y * point.z - z * point.y,
+                  z * point.x - x * point.z,
+                  x * point.y - y * point.x);
 }
 
 real Point3::Magnitude(void)
 {
-    real totals = (_data[x] * _data[x]) + (_data[y] * _data[y]) + (_data[z] * _data[z]);
+    real totals = (x * x) + (y * y) + (z * z);
     return real_sqrt(totals);
 }
 
 real Point3::SqrMagnitude(void)
 {
-    return (_data[x] * _data[x]) + (_data[y] * _data[y]) + (_data[z] * _data[z]);
+    return (x * x) + (y * y) + (z * z);
 }
 
 void Point3::Normalize(void)
@@ -83,9 +95,9 @@ void Point3::Normalize(void)
 
 void Point3::Reset(real val)
 {
-    _data[x] = val;
-    _data[y] = val;
-    _data[z] = val;
+    x = val;
+    y = val;
+    z = val;
 }
 
 real Point3::Distance(const Point3& p) const
@@ -115,23 +127,23 @@ real Point3::DistanceSquared(const Vector4& v) const
 //===== Math Helper Functions =====
 void Point3::AddScaledPoint(const Point3& point, real scale)
 {
-    _data[x] += point[x] * scale;
-    _data[y] += point[y] * scale;
-    _data[z] += point[z] * scale;
+    x += point.x * scale;
+    y += point.y * scale;
+    z += point.z * scale;
 }
 
 void Point3::AddScaledVector(const Vector3& vec, real scale)
 {
-    _data[x] += vec[x] * scale;
-    _data[y] += vec[y] * scale;
-    _data[z] += vec[z] * scale;	
+    x += vec.x * scale;
+    y += vec.y * scale;
+    z += vec.z * scale;	
 }
 
 void Point3::AddScaledVector(const Vector4& vec, real scale)
 {
-    _data[x] += vec[x] * scale;
-    _data[y] += vec[y] * scale;
-    _data[z] += vec[z] * scale;
+    x += vec.x * scale;
+    y += vec.y * scale;
+    z += vec.z * scale;
 }
 //==========================================================================================================================
 //
@@ -141,27 +153,27 @@ void Point3::AddScaledVector(const Vector4& vec, real scale)
 //===== Copy Assignment =====		
 Point3& Point3::operator=(const Point2& point)
 {
-    _data[x] = point[x];
-    _data[y] = point[y];
-    _data[z] = 0.0f;
+    x = point.x;
+    y = point.y;
+    z = 0.0f;
 
     return *this;
 }
 
 Point3& Point3::operator=(const Point3& point)
 {
-    _data[x] = point[x];
-    _data[y] = point[y];
-    _data[z] = point[z];
+    x = point.x;
+    y = point.y;
+    z = point.z;
 
     return *this;
 }
 
 Point3& Point3::operator=(real val)
 {
-    _data[x] = val;
-    _data[y] = val;
-    _data[z] = val;
+    x = val;
+    y = val;
+    z = val;
 
     return *this;
 }
@@ -169,74 +181,72 @@ Point3& Point3::operator=(real val)
 //===== Add by Point =====
 Point3 Point3::operator+(const Point3& point) const
 {
-    return Point3(_data[x] + point[x],
-                 _data[y] + point[y],
-                 _data[z] + point[z]);
+    return Point3(x + point.x,
+                 y + point.y,
+                 z + point.z);
 }
 
 Point3 Point3::operator+(const Vector4& vec) const
 {
-    return Point3(_data[x] + vec[x],
-                  _data[y] + vec[y],
-                  _data[z] + vec[z]);
+    return Point3(x + vec.x,
+                  y + vec.y,
+                  z + vec.z);
 }
 
 Point3& Point3::operator+=(const Point3& point)
 {
-    _data[x] += point[x];
-    _data[y] += point[y];
-    _data[z] += point[z];
+    x += point.x;
+    y += point.y;
+    z += point.z;
 
     return *this;
 }
 
 Point3& Point3::operator+=(const Vector4& vec)
 {
-    _data[x] += vec[x];
-    _data[y] += vec[y];
-    _data[z] += vec[z];
+    x += vec.x;
+    y += vec.y;
+    z += vec.z;
 
     return *this;
 }
 
 Point3 Point3::operator+(const Vector3& vec) const
 {
-   return Point3(_data[x] + vec[x],
-                 _data[y] + vec[y],
-                 _data[z] + vec[z]);
+   return Point3(x + vec.x,
+                 y + vec.y,
+                 z + vec.z);
 }
 
 Point3& Point3::operator+=(const Vector3& vec)
 {
-    _data[x] += vec[x];
-    _data[y] += vec[y];
-    _data[z] += vec[z];
+    x += vec.x;
+    y += vec.y;
+    z += vec.z;
 
     return *this;
 }
 
 Point3 Point3::operator+(shared_ptr<Point3> point) const
 {
-    const real* vals = point->GetElems();
-    
-    return Point3(_data[x] + vals[x],
-                  _data[y] + vals[y],
-                  _data[z] + vals[z]);
+    return Point3(x + point->x,
+                  y + point->y,
+                  z + point->z);
 }
 
 //===== Add by scalar =====
 Point3 Point3::operator+(real val) const
 {
-    return Point3(_data[x] + val,
-                  _data[y] + val,
-                  _data[z] + val);
+    return Point3(x + val,
+                  y + val,
+                  z + val);
 }
 
 Point3& Point3::operator+=(real val)
 {
-    _data[x] += val;
-    _data[y] += val;
-    _data[z] += val;
+    x += val;
+    y += val;
+    z += val;
 
     return *this;
 }
@@ -244,30 +254,30 @@ Point3& Point3::operator+=(real val)
 //===== Subtract by Point =====
 Point3 Point3::operator-(const Point3& point) const
 {
-    return Point3(_data[x] - point[x],
-                  _data[y] - point[y],
-                  _data[z] - point[z]);
+    return Point3(x - point.x,
+                  y - point.y,
+                  z - point.z);
 }
 
 Point3 Point3::operator-(const Vector3& vec) const
 {
-    return Point3(_data[x] - vec[x],
-                  _data[y] - vec[y],
-                  _data[z] - vec[z]);
+    return Point3(x - vec.x,
+                  y - vec.y,
+                  z - vec.z);
 }
 
 Point3 Point3::operator-(const Vector4& vec) const
 {
-    return Point3(_data[x] - vec[x],
-                  _data[y] - vec[y],
-                  _data[z] - vec[z]);
+    return Point3(x - vec.x,
+                  y - vec.y,
+                  z - vec.z);
 }
 
 Point3& Point3::operator-=(const Point3& point)
 {
-    _data[x] -= point[x];
-    _data[y] -= point[y];
-    _data[z] -= point[z];
+    x -= point.x;
+    y -= point.y;
+    z -= point.z;
 
     return *this;
 }
@@ -275,16 +285,16 @@ Point3& Point3::operator-=(const Point3& point)
 //===== Subtract by scalar =====
 Point3 Point3::operator-(real val) const
 {
-    return Point3(_data[x] - val,
-                  _data[y] - val,
-                  _data[z] - val);
+    return Point3(x - val,
+                  y - val,
+                  z - val);
 }
 
 Point3& Point3::operator-=(real val)
 {
-    _data[x] -= val;
-    _data[y] -= val;
-    _data[z] -= val;
+    x -= val;
+    y -= val;
+    z -= val;
     
     return *this;
 }
@@ -292,16 +302,16 @@ Point3& Point3::operator-=(real val)
 //===== Component-wise multiply by Point =====
 Point3 Point3::operator*(const Point3 point) const
 {
-    return Point3(_data[x] * point[x],
-                  _data[y] * point[y],
-                  _data[z] * point[z]);
+    return Point3(x * point.x,
+                  y * point.y,
+                  z * point.z);
 }
 
 Point3& Point3::operator*=(const Point3 point)
 {
-    _data[x] *= point[x];
-    _data[y] *= point[y];
-    _data[z] *= point[z];
+    x *= point.x;
+    y *= point.y;
+    z *= point.z;
 
     return *this;
 }
@@ -309,16 +319,16 @@ Point3& Point3::operator*=(const Point3 point)
 //===== Mutliply by Scalar =====
 Point3 Point3::operator*(real val) const
 {
-    return Point3(_data[x] * val,
-                  _data[y] * val,
-                  _data[z] * val);
+    return Point3(x * val,
+                  y * val,
+                  z * val);
 }
 
 Point3& Point3::operator*=(real val)
 {
-    _data[x] *= val;
-    _data[y] *= val;
-    _data[z] *= val;
+    x *= val;
+    y *= val;
+    z *= val;
 
     return *this;
 }
@@ -328,18 +338,18 @@ Point3 Point3::operator/(real val) const
 {
     assert(val != 0.0f);
 
-    return Point3(_data[x] / val,
-                  _data[y] / val,
-                  _data[z] / val);
+    return Point3(x / val,
+                  y / val,
+                  z / val);
 }
 
 Point3& Point3::operator/=(real val)
 {
     assert(val != 0.0f);
 
-    _data[x] /= val;
-    _data[y] /= val;
-    _data[z] /= val;
+    x /= val;
+    y /= val;
+    z /= val;
     
     return *this;
 }
@@ -347,54 +357,54 @@ Point3& Point3::operator/=(real val)
 //===== Comparison =====
 bool Point3::operator>(const Point3& point) const
 {
-    bool state = _data[x] > point[x] && 
-                 _data[y] > point[y] &&
-                 _data[z] > point[z];
+    bool state = x > point.x && 
+                 y > point.y &&
+                 z > point.z;
     
     return state;
 }
 
 bool Point3::operator<(const Point3& point) const
 {
-    bool state = _data[x] < point[x] && 
-                 _data[y] < point[y] &&
-                 _data[z] < point[z];
+    bool state = x < point.x && 
+                 y < point.y &&
+                 z < point.z;
     
     return state;
 }
 
 bool Point3::operator>=(const Point3& point) const
 {
-    bool state = _data[x] >= point[x] && 
-                 _data[y] >= point[y] &&
-                 _data[z] >= point[z];
+    bool state = x >= point.x && 
+                 y >= point.y &&
+                 z >= point.z;
     
     return state;
 }
 
 bool Point3::operator<=(const Point3& point) const
 {
-    bool state = _data[x] <= point[x] && 
-                 _data[y] <= point[y] &&
-                 _data[z] <= point[z];
+    bool state = x <= point.x && 
+                 y <= point.y &&
+                 z <= point.z;
     
     return state;
 }
 
 bool Point3::operator==(const Point3& point) const
 {
-    bool state = _data[x] == point[x] && 
-                 _data[y] == point[y] &&
-                 _data[z] == point[z];
+    bool state = x == point.x && 
+                 y == point.y &&
+                 z == point.z;
     
     return state;
 }
 
 bool Point3::operator!=(const Point3& point) const
 {
-    bool state = _data[x] != point[x] && 
-                 _data[y] != point[y] &&
-                 _data[z] != point[z];
+    bool state = x != point.x && 
+                 y != point.y &&
+                 z != point.z;
     
     return state;
 }

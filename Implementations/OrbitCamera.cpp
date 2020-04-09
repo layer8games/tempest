@@ -59,7 +59,7 @@ void OrbitCamera::Zoom(void)
 //==========================================================================================================================
 void OrbitCamera::_v_UpdateCameraVectors(void)
 {
-	_position[0] = _target[0] + _radius * cos(_pitch) * sin(_yaw);
-	_position[1] = _target[1] + _radius * sin(_pitch);
-	_position[2] = _target[2] + _radius * cos(_pitch) * cos(_yaw);
+	_position.x = _target.x + _radius * cos(_pitch) * sin(_yaw);
+	_position.y = _target.y + _radius * sin(_pitch);
+	_position.z = _target.z + _radius * cos(_pitch) * cos(_yaw);
 }

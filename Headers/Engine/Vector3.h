@@ -46,11 +46,11 @@ namespace TempestMath
         ///	\param x is the value for x.
         ///	\param y is the value for y.
         ///	\param z is the value for z.
-        TEMPEST_API Vector3(real x, real y, real z);
+        TEMPEST_API Vector3(real xVal, real yVal, real zVal);
 
         /// Copy Constructor. It explicitely copies all data into new Vector3 from a Point4
         /// \param p is the Point4 to copy.
-        TEMPEST_API Vector3(const Point3& p);
+        TEMPEST_API explicit Vector3(const Point3& p);
         
         /// Copy Constructor. It explicitely copies all data into new Vector3 from a Point4
         /// \param p is the Point4 to copy.
@@ -109,11 +109,6 @@ namespace TempestMath
 //Accessors
 //
 //==========================================================================================================================
-        ///	Returns the raw data for the Vector3.
-        inline const real* GetElems(void) const
-        {
-            return _data;
-        }
 
         ///	A helper function to allow to quickly set x, y and z to different values. This is useful because it is only one function
         ///	call instead of the 3 it would take to call [] for each element. 
@@ -122,9 +117,9 @@ namespace TempestMath
         ///	\param zVal is the value for z. 
         inline void Set(real xVal, real yVal, real zVal)
         {
-            _data[x] = xVal;
-            _data[y] = yVal;
-            _data[z] = zVal;
+            x = xVal;
+            y = yVal;
+            z = zVal;
         }
 
 //==========================================================================================================================
@@ -132,20 +127,6 @@ namespace TempestMath
 //operator Overloads
 //
 //==========================================================================================================================
-        ///	Allows you to index into the Vector3 to read the value.
-        ///	\param i is the index you wish to read. 0 = x, 1 = y, 2 = z.
-        inline const real& operator[](int i) const
-        {
-            return _data[i];
-        }
-
-        ///	Allows you to index into the Vector3 to change the value.
-        ///	\param i is the index you wish to change. 0 = x, 1 = y, 2 = z.
-        inline real& operator[](int i)
-        {
-            return _data[i];
-        }
-
 //===== Copy Assignment =====		
         ///	Copy assignment from Vector3.
         ///	\param vec is the Vector3 to copy into this Vector3.
@@ -190,15 +171,15 @@ namespace TempestMath
         ///	Changes the sign of each element of the Vector3. If 2D, z is not changed.
         inline Vector3 operator-(void)
         {
-            return Vector3(-_data[x], -_data[y], -_data[z]);
+            return Vector3(-x, -y, -z);
         }
  
         ///	Prefix, Adds 1 to each element of the Vector3. If 2D, z is ignored. 
         inline Vector3& operator++(void)
         {
-            ++_data[x];
-            ++_data[y];
-            ++_data[z];
+            ++x;
+            ++y;
+            ++z;
             
             return *this;
         }
@@ -206,15 +187,15 @@ namespace TempestMath
         ///	Postfix, Adds 1 to each element of the Vector3. If 2D, z is ignored. 
         inline Vector3 operator++(int)
         {
-            return Vector3(++_data[x], ++_data[y], ++_data[z]);
+            return Vector3(++x, ++y, ++z);
         }
  
         ///	Prefix, Subtracts 1 to each element of the Vector3. If 2D, z is ignored. 
         inline Vector3& operator--(void)
         {
-            --_data[x];
-            --_data[y];
-            --_data[z];
+            --x;
+            --y;
+            --z;
 
             return *this;
         }
@@ -222,7 +203,7 @@ namespace TempestMath
         ///	Postfix, Subtracts 1 to each element of the Vector3. If 2D, z is ignored.  
         inline Vector3 operator--(int)
         {
-            return Vector3(--_data[x], --_data[y], --_data[z]);
+            return Vector3(--x, --y, --z);
         }
 
 //===== Subtract by scalar =====
@@ -292,14 +273,14 @@ namespace TempestMath
         ///	\param vec is the Vector3 this Vector3 will be compared against. 
         TEMPEST_API bool operator!=(const Vector3& vec) const;
 
-
-    private:
 //==========================================================================================================================
 //
 //Data
 //
 //==========================================================================================================================
-        real  _data[3];	///< Array that stores the values for each element.
+        real x;
+        real y;
+        real z;
     };// end class
     typedef shared_ptr<Vector3> p_Vector3;
 }//end namespace

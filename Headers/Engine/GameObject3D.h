@@ -225,9 +225,9 @@ namespace Tempest
         /// \param zVal is the new z offset.
         inline void SetPosition(F32 xVal, F32 yVal, F32 zVal)
         {
-            _position[x] = xVal;
-            _position[y] = yVal;
-            _position[z] = zVal;
+            _position.x = xVal;
+            _position.y = yVal;
+            _position.z = zVal;
             _boundingBox.SetCenter(_position);
         }
 
@@ -235,7 +235,7 @@ namespace Tempest
         /// \param xval is the new x offset.
         inline void SetPositionX(F32 xval)
         {
-            _position[x] = xval;
+            _position.x = xval;
             _boundingBox.SetCenter(_position);
         }
 
@@ -243,7 +243,7 @@ namespace Tempest
         /// \param yVal is the new y offset.		
         inline void SetPositionY(F32 yVal)
         {
-            _position[y] = yVal;
+            _position.y = yVal;
             _boundingBox.SetCenter(_position);
         }
 
@@ -251,7 +251,7 @@ namespace Tempest
         /// \param zVal is the new z offset.
         inline void SetPositionZ(F32 zVal)
         {
-            _position[z] = zVal;
+            _position.z = zVal;
             _boundingBox.SetCenter(_position);
         }
 

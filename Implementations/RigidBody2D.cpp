@@ -86,8 +86,8 @@ void RigidBody2D::ClearAccumulator(void)
 
 void RigidBody2D::AddForce(real xVal, real yVal)
 {
-    _forceAccum[x] += xVal;
-    _forceAccum[y] += yVal;
+    _forceAccum.x += xVal;
+    _forceAccum.y += yVal;
 }
 
 void RigidBody2D::AddForce(const TM::Vector2 force)

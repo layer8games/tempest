@@ -9,37 +9,44 @@ using namespace TempestMath;
 //==========================================================================================================================
 Vector2::Vector2(void)
     :
-    _data{0.0f, 0.0f}
+    x(0.0f),
+    y(0.0f)
 {  }
 
 Vector2::Vector2(real val)
     :
-    _data{val, val}
+    x(val),
+    y(val)
 {  }
 
-Vector2::Vector2(real x, real y)
+Vector2::Vector2(real xVal, real yVal)
     :
-    _data{x, y}
+    x(xVal),
+    y(yVal)
 {  }
 
-Vector2::Vector2(const Vector2& v)
+Vector2::Vector2(const Vector2& otherVec)
     :
-    _data{v[x], v[y]}
+    x(otherVec.x),
+    y(otherVec.y)
 {  }
 
-Vector2::Vector2(const Vector4& v)
+Vector2::Vector2(const Vector4& otherVec)
     :
-    _data{v[x], v[y]}
+    x(otherVec.x),
+    y(otherVec.y)
 {  }
 
-Vector2::Vector2(const Point2& p)
+Vector2::Vector2(const Point2& otherVec)
     :
-    _data{p[x], p[y]}
+    x(otherVec.x),
+    y(otherVec.y)
 {  }
 
-Vector2::Vector2(const Point4& p)
+Vector2::Vector2(const Point4& otherVec)
     :
-    _data{p[x], p[y]}
+    x(otherVec.x),
+    y(otherVec.y)
 {  }
 
 Vector2::~Vector2(void)
@@ -51,20 +58,20 @@ Vector2::~Vector2(void)
 //
 //==========================================================================================================================
 //===== Vector2 Special functions =====
-real Vector2::Dot(const Vector2& vec) const
+real Vector2::Dot(const Vector2& otherVec) const
 {
-    return _data[x] * vec[x] +
-           _data[y] * vec[y];
+    return x * otherotherVec.x +
+           y * otherotherVec.y;
 }
 
 real Vector2::Magnitude(void)
 {
-    return real_sqrt(_data[x] * _data[x] + _data[y] * _data[y]);
+    return real_sqrt(x * x + y * y);
 }
 
 real Vector2::SqrMagnitude(void)
 {
-    return _data[x] * _data[x] + _data[y] * _data[y];
+    return x * x + y * y;
 }
 
 void Vector2::Normalize(void)
@@ -79,27 +86,27 @@ void Vector2::Normalize(void)
 
 void Vector2::Reset(real val)
 {
-    _data[x] = val;
-    _data[y] = val;
+    x = val;
+    y = val;
 }
 
 //===== Math Helper Functions =====
 void Vector2::AddScaledVector(const Vector2& vec, real scale)
 {
-    _data[x] += vec[x] * scale;
-    _data[y] += vec[y] * scale;
+    x += otherVec.x * scale;
+    y += otherVec.y * scale;
 }
 
 void Vector2::AddScaledVector(const Vector4& vec, real scale)
 {
-    _data[x] += vec[x] * scale;
-    _data[y] += vec[y] * scale;
+    x += otherVec.x * scale;
+    y += otherVec.y * scale;
 }
 
 void Vector2::AddScaledVector(const Point4& point, real scale)
 {
-    _data[x] += point[x] * scale;
-    _data[y] += point[y] * scale;
+    x += point.x * scale;
+    y += point.y * scale;
 }
 //==========================================================================================================================
 //
@@ -107,33 +114,33 @@ void Vector2::AddScaledVector(const Point4& point, real scale)
 //
 //==========================================================================================================================
 //===== Copy Assignment =====		
-Vector2& Vector2::operator=(const Vector2& vec)
+Vector2& Vector2::operator=(const Vector2& otherVec)
 {
-    _data[x] = vec[x];
-    _data[y] = vec[y];
+    x = otherVec.x;
+    y = otherVec.y;
 
     return *this;
 }
 
 Vector2& Vector2::operator=(real val)
 {
-    _data[x] = val;
-    _data[y] = val;
+    x = val;
+    y = val;
 
     return *this;
 }
 
 //===== Add by Vector2 =====
-Vector2 Vector2::operator+(const Vector2& vec) const
+Vector2 Vector2::operator+(const Vector2& otherVec) const
 {
-    return Vector2(_data[x] + vec[x],
-                   _data[y] + vec[y]);
+    return Vector2(x + otherVec.x,
+                   y + otherVec.y);
 }
 
-Vector2& Vector2::operator+=(const Vector2& vec)
+Vector2& Vector2::operator+=(const Vector2& otherVec)
 {
-    _data[x] += vec[x];
-    _data[y] += vec[y];
+    x += otherVec.x;
+    y += otherVec.y;
 
     return *this;
 }
@@ -142,52 +149,82 @@ Vector2 Vector2::operator+(shared_ptr<Vector2> vec) const
 {
     const real* vals = vec->GetElems();
 
-    return Vector2(_data[x] + vals[x],
-                   _data[y] + vals[y]);
+    return Vector2(x + vals.x,
+                   y + vals.y);
 }
 
 //===== Add by scalar =====
 Vector2 Vector2::operator+(real val) const
 {
-    return Vector2(_data[x] + val,
-                   _data[y] + val);
+    return Vector2(x + val,
+                   y + val);
 }
 
 Vector2& Vector2::operator+=(real val)
 {
-    _data[x] += val;
-    _data[y] += val;
+    x += val;
+    y += val;
 
     return *this;
 }
 
 //===== Subtract by Vector2 =====
-Vector2 Vector2::operator-(const Vector2& vec) const
+Vector2 Vector2::operator-(const Point2& otherVec) const
 {
-    return Vector2(_data[x] - vec[x],
-                   _data[y] - vec[y]);
+    return Vector2(x - otherVec.x,
+                   y - otherVec.y);
 }
 
-Vector2& Vector2::operator-=(const Vector2& vec)
+Vector2 Vector2::operator-(const Point3& otherVec) const
 {
-    _data[x] -= vec[x];
-    _data[y] -= vec[y];
+    return Vector2(x - otherVec.x,
+                   y - otherVec.y);
+}
+
+Vector2 Vector2::operator-(const Point4& otherVec) const
+{
+    return Vector2(x - otherVec.x,
+                   y - otherVec.y);
+}
+
+Vector2 Vector2::operator-(const Vector2& otherVec) const
+{
+    return Vector2(x - otherVec.x,
+                   y - otherVec.y);
+}
+
+Vector2 Vector2::operator-(const Vector3& otherVec) const
+{
+    return Vector2(x - otherVec.x,
+                   y - otherVec.y);
+}
+
+Vector2 Vector2::operator-(const Vector4& otherVec) const
+{
+    return Vector2(x - otherVec.x,
+                   y - otherVec.y);
+}
+
+Vector2& Vector2::operator-=(const Vector2& otherVec)
+{
+    x -= otherVec.x;
+    y -= otherVec.y;
 
     return *this;
 }
 
-Vector2& Vector2::operator-=(const Point2& vec)
+Vector2& Vector2::operator-=(const Point2& otherVec)
 {
-    _data[x] -= vec[x];
-    _data[y] -= vec[y];
+    x -= otherVec.x;
+    y -= otherVec.y;
 
     return *this;
 }
 
-Vector2& Vector2::operator-=(const Point3& vec)
+Vector2& Vector2::operator-=(const Point3& otherVec)
 {
-    _data[x] -= vec[x];
-    _data[y] -= vec[y];
+    x -= otherVec.x;
+    y -= otherVec.y;
 
     return *this;
 }
@@ -195,29 +232,29 @@ Vector2& Vector2::operator-=(const Point3& vec)
 //===== Subtract by scalar =====
 Vector2 Vector2::operator-(real val) const
 {
-    return Vector2(_data[x] - val,
-                   _data[y] - val);
+    return Vector2(x - val,
+                   y - val);
 }
 
 Vector2& Vector2::operator-=(real val)
 {
-    _data[x] -= val;
-    _data[y] -= val;
+    x -= val;
+    y -= val;
 
     return *this;
 }
 
 //===== Component-wise multiply by Vector2 =====
-Vector2 Vector2::operator*(const Vector2 vec) const
+Vector2 Vector2::operator*(const Vector2& otherVec) const
 {
-    return Vector2(_data[x] * vec[x],
-                   _data[y] * vec[y]);
+    return Vector2(x * otherVec.x,
+                   y * otherVec.y);
 }
 
-Vector2& Vector2::operator*=(const Vector2 vec)
+Vector2& Vector2::operator*=(const Vector2& otherVec)
 {
-    _data[x] *= vec[x];
-    _data[y] *= vec[y];
+    x *= otherVec.x;
+    y *= otherVec.y;
 
     return *this;
 }
@@ -225,14 +262,14 @@ Vector2& Vector2::operator*=(const Vector2 vec)
 //===== Mutliply by Scalar =====
 Vector2 Vector2::operator*(real val) const
 {
-    return Vector2(_data[x] * val,
-                   _data[y] * val);
+    return Vector2(x * val,
+                   y * val);
 }
 
 Vector2& Vector2::operator*=(real val)
 {
-    _data[x] *= val;
-    _data[y] *= val;
+    x *= val;
+    y *= val;
 
     return *this;
 }
@@ -241,65 +278,65 @@ Vector2& Vector2::operator*=(real val)
 Vector2 Vector2::operator/(real val) const
 {
     assert(val != 0.0f);
-    return Vector2(_data[x] / val,
-                   _data[y] / val);
+    return Vector2(x / val,
+                   y / val);
 }
 
 Vector2& Vector2::operator/=(real val)
 {
     assert(val != 0.0f);
 
-    _data[x] /= val;
-    _data[y] /= val;
+    x /= val;
+    y /= val;
 
     return *this;
 }
 
 //===== Comparison =====
-bool Vector2::operator>(const Vector2& vec) const
+bool Vector2::operator>(const Vector2& otherVec) const
 {
-    bool state = _data[x] > vec[x] && 
-                 _data[y] > vec[y];
+    bool state = x > otherVec.x && 
+                 y > otherVec.y;
 
     return state;
 }
 
-bool Vector2::operator<(const Vector2& vec) const
+bool Vector2::operator<(const Vector2& otherVec) const
 {
-    bool state = _data[x] < vec[x] &&
-                 _data[y] < vec[y];
+    bool state = x < otherVec.x &&
+                 y < otherVec.y;
 
     return state;;
 }
 
-bool Vector2::operator>=(const Vector2& vec) const
+bool Vector2::operator>=(const Vector2& otherVec) const
 {
-    bool state = _data[x] >= vec[x] &&
-                 _data[y] >= vec[y];
+    bool state = x >= otherVec.x &&
+                 y >= otherVec.y;
 
     return state;
 }
 
-bool Vector2::operator<=(const Vector2& vec) const
+bool Vector2::operator<=(const Vector2& otherVec) const
 {
-    bool state = _data[x] <= vec[x] &&
-                 _data[y] <= vec[y];
+    bool state = x <= otherVec.x &&
+                 y <= otherVec.y;
 
     return state;
 }
 
-bool Vector2::operator==(const Vector2& vec) const
+bool Vector2::operator==(const Vector2& otherVec) const
 {
-    bool state = _data[x] == vec[x] &&
-                 _data[y] == vec[y];
+    bool state = x == otherVec.x &&
+                 y == otherVec.y;
 
     return state;
 }
 
-bool Vector2::operator!=(const Vector2& vec) const
+bool Vector2::operator!=(const Vector2& otherVec) const
 {
-    bool state = _data[x] != vec[x] &&
-                 _data[y] != vec[y];
+    bool state = x != otherVec.x &&
+                 y != otherVec.y;
 
     return state;;
 }

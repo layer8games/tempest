@@ -133,28 +133,28 @@ void Shader::SetUniform(string name, const TM::Vector4& vec)
 {
     Use();
     GLuint location = _GetUniformLocation(name.c_str());
-    glUniform4f(location, vec[x], vec[y], vec[z], vec[w]);
+    glUniform4f(location, vec.x, vec.y, vec.z, vec.w);
 }
 
 void Shader::SetUniform(string name, const TM::Vector3& vec)
 {
     Use();
     GLuint location = _GetUniformLocation(name.c_str());
-    glUniform3f(location, vec[x], vec[y], vec[z]);
+    glUniform3f(location, vec.x, vec.y, vec.z);
 }
 
 void Shader::SetUniform(string name, const TM::Point2& point)
 {
     Use();
     GLuint location = _GetUniformLocation(name.c_str());
-    glUniform2f(location, point[x], point[y]);
+    glUniform2f(location, point.x, point.y);
 }
 
 void Shader::SetUniform(string name, const TM::Point3& point)
 {
     Use();
     GLuint location = _GetUniformLocation(name.c_str());
-    glUniform3f(location, point[x], point[y], point[z]);
+    glUniform3f(location, point.x, point.y, point.z);
 }
 
 void Shader::SetUniform(string name, const TM::Matrix4& mat)

@@ -126,6 +126,14 @@ namespace TempestMath
 
         ///	Sets a translation for this matrix equal to the x y and z values in a Vector4.
         ///	\param vec contains the values that will be used for the translation. 
+        TEMPEST_API void SetTranslate(const Vector2& vec);
+        
+        ///	Sets a translation for this matrix equal to the x y and z values in a Vector4.
+        ///	\param vec contains the values that will be used for the translation. 
+        TEMPEST_API void SetTranslate(const Vector3& vec);
+        
+        ///	Sets a translation for this matrix equal to the x y and z values in a Vector4.
+        ///	\param vec contains the values that will be used for the translation. 
         TEMPEST_API void SetTranslate(const Vector4& vec);
 
         ///	Returns a Vector4 transformed by the inverse of this matrix. Warning, this is a costly call. 
@@ -245,29 +253,34 @@ namespace TempestMath
         ///	\param z Degree of rotation around the z axis. Calls RADIAN() 
         TEMPEST_API void AddRotation(real xVal, real yVal, real zVal);
 
-        ///	Sets the rotational transform of the matrix equal to the orientation contained in teh Quaternion. This is currently untested.
+        ///	Sets the rotational transform of the matrix equal to the orientation contained in the Quaternion.
         ///	\param q conatins the orientation to set. 
         TEMPEST_API void SetOrientation(const Quaternion& q);
 
-        ///	A helper functions that will set the rotational transform and position at the same time. This is currently untested. 
+        ///	A helper functions that will set the rotational transform and position at the same time. 
         ///	\param q contains the orientation to set. 
         ///	\param v contains the position to set, as a translation. 
         TEMPEST_API void SetOrientationAndPosition(const Quaternion& q, const Vector4& v);
 
-        ///	A helper functions that will set the rotational transform and position at the same time. This is currently untested. 
+        ///	A helper functions that will set the rotational transform and position at the same time. 
         ///	\param q contains the orientation to set. 
         ///	\param p contains the position to set, as a translation. 
         TEMPEST_API void SetOrientationAndPosition(const Quaternion& q, const Point2& p);
 
-        ///	A helper functions that will set the rotational transform and position at the same time. This is currently untested. 
+        ///	A helper functions that will set the rotational transform and position at the same time. 
         ///	\param q contains the orientation to set. 
         ///	\param p contains the position to set, as a translation. 
         TEMPEST_API void SetOrientationAndPosition(const Quaternion& q, const Point3& p);
         
-        ///	A helper functions that will set the rotational transform and position at the same time. This is currently untested. 
+        ///	A helper functions that will set the rotational transform and position at the same time. 
         ///	\param q contains the orientation to set. 
         ///	\param p contains the position to set, as a translation. 
         TEMPEST_API void SetOrientationAndPosition(const Quaternion& q, const Point4& p);
+
+        ///	A helper functions that will set the rotational transform and position at the same time. 
+        ///	\param q contains the orientation to set. 
+        ///	\param p contains the position to set, as a translation. 
+        TEMPEST_API void SetOrientationAndPosition(const F32 yAxisRot, const Point4& p);
 
 //==========================================================================================================================
 //Inverse

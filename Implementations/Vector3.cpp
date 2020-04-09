@@ -9,37 +9,51 @@ using namespace TempestMath;
 //==========================================================================================================================
 Vector3::Vector3(void)
     :
-    _data{0.0f, 0.0f, 0.0f}
+    x(0.0f), 
+    y(0.0f), 
+    z(0.0f)
 {  }
 
 Vector3::Vector3(real val)
     :
-    _data{val, val, val}
+    x(val),
+    y(val),
+    z(val)
 {  }
 
-Vector3::Vector3(real x, real y, real z)
+Vector3::Vector3(real xVal, real yVal, real zVal)
     :
-    _data{x, y, z}
+    x(xVal),
+    y(yVal),
+    z(zVal)
 {  }
 
 Vector3::Vector3(const Point3& p)
     :
-    _data{p[x], p[y], p[z]}
+    x(p.x),
+    y(p.y),
+    z(p.z)
 {  }
 
 Vector3::Vector3(const Point4& p)
     :
-    _data{p[x], p[y], p[z]}
+    x(p.x),
+    y(p.y),
+    z(p.z)
 {  }
 
 Vector3::Vector3(const Vector3& v)
     :
-    _data{v[x], v[y], v[z]}
+    x(v.x),
+    y(v.y),
+    z(v.z)
 {  }
 
 Vector3::Vector3(const Vector4& v)
     :
-    _data{v[x], v[y], v[z]}
+    x(v.x),
+    y(v.y),
+    z(v.z)
 {  }
 
 
@@ -54,26 +68,26 @@ Vector3::~Vector3(void)
 //===== Vector3 Special functions =====
 real Vector3::Dot(const Vector3& vec) const
 {
-    return _data[x] * vec[x] +
-           _data[y] * vec[y] +
-           _data[z] * vec[z];
+    return x * vec.x +
+           y * vec.y +
+           z * vec.z;
 }
 
 Vector3 Vector3::CrossProduct(const Vector3& vec) const
 {
-    return Vector3( _data[y] * vec[z] - _data[z] * vec[y],
-                    _data[z] * vec[x] - _data[x] * vec[z],
-                    _data[x] * vec[y] - _data[y] * vec[x] );
+    return Vector3( y * vec.z - z * vec.y,
+                    z * vec.x - x * vec.z,
+                    x * vec.y - y * vec.x );
 }
 
 real Vector3::Magnitude(void)
 {
-    return real_sqrt(_data[x] * _data[x] + _data[y] * _data[y] + _data[z] * _data[z]);
+    return real_sqrt(x * x + y * y + z * z);
 }
 
 real Vector3::SqrMagnitude(void)
 {
-    return _data[x] * _data[x] + _data[y] * _data[y] + _data[z] * _data[z];
+    return x * x + y * y + z * z;
 }
 
 void Vector3::Normalize(void)
@@ -88,31 +102,31 @@ void Vector3::Normalize(void)
 
 void Vector3::Reset(real val)
 {
-    _data[x] = val;
-    _data[y] = val;
-    _data[z] = val;
+    x = val;
+    y = val;
+    z = val;
 }
 
 //===== Math Helper Functions =====
 void Vector3::AddScaledVector(const Vector3& vec, real scale)
 {
-    _data[x] += vec[x] * scale;
-    _data[y] += vec[y] * scale;
-    _data[z] += vec[z] * scale;
+    x += vec.x * scale;
+    y += vec.y * scale;
+    z += vec.z * scale;
 }
 
 void Vector3::AddScaledVector(const Vector4& vec, real scale)
 {
-    _data[x] += vec[x] * scale;
-    _data[y] += vec[y] * scale;
-    _data[z] += vec[z] * scale;
+    x += vec.x * scale;
+    y += vec.y * scale;
+    z += vec.z * scale;
 }
 
 void Vector3::AddScaledVector(const Point4& point, real scale)
 {
-    _data[x] += point[x] * scale;
-    _data[y] += point[y] * scale;
-    _data[z] += point[z] * scale;
+    x += point.x * scale;
+    y += point.y * scale;
+    z += point.z * scale;
 }
 //==========================================================================================================================
 //
@@ -122,18 +136,18 @@ void Vector3::AddScaledVector(const Point4& point, real scale)
 //===== Copy Assignment =====		
 Vector3& Vector3::operator=(const Vector3& vec)
 {
-    _data[x] = vec[x];
-    _data[y] = vec[y];
-    _data[z] = vec[z];
+    x = vec.x;
+    y = vec.y;
+    z = vec.z;
 
     return *this;
 }
 
 Vector3& Vector3::operator=(real val)
 {
-    _data[x] = val;
-    _data[y] = val;
-    _data[z] = val;
+    x = val;
+    y = val;
+    z = val;
 
     return *this;
 }
@@ -141,42 +155,40 @@ Vector3& Vector3::operator=(real val)
 //===== Add by Vector3 =====
 Vector3 Vector3::operator+(const Vector3& vec) const
 {
-    return Vector3(_data[x] + vec[x],
-                   _data[y] + vec[y],
-                   _data[z] + vec[z]);
+    return Vector3(x + vec.x,
+                   y + vec.y,
+                   z + vec.z);
 }
 
 Vector3& Vector3::operator+=(const Vector3& vec)
 {
-    _data[x] += vec[x];
-    _data[y] += vec[y];
-    _data[z] += vec[z];
+    x += vec.x;
+    y += vec.y;
+    z += vec.z;
 
     return *this;
 }
 
 Vector3 Vector3::operator+(shared_ptr<Vector3> vec) const
 {
-    const real* vals = vec->GetElems();
-
-    return Vector3( _data[x] + vals[x],
-                    _data[y] + vals[y],
-                    _data[z] + vals[z] );
+    return Vector3(x + vec.x,
+                   y + vec.y],
+                   z + vec.z);
 }
 
 //===== Add by scalar =====
 Vector3 Vector3::operator+(real val) const
 {
-    return Vector3( _data[x] + val,
-                    _data[y] + val,
-                    _data[z] + val );
+    return Vector3(x + val,
+                   y + val,
+                   z + val);
 }
 
 Vector3& Vector3::operator+=(real val)
 {
-    _data[x] += val;
-    _data[y] += val;
-    _data[z] += val;
+    x += val;
+    y += val;
+    z += val;
 
     return *this;
 }
@@ -184,16 +196,16 @@ Vector3& Vector3::operator+=(real val)
 //===== Subtract by Vector3 =====
 Vector3 Vector3::operator-(const Vector3& vec) const
 {
-    return Vector3( _data[x] - vec[x],
-                    _data[y] - vec[y],
-                    _data[z] - vec[z] );
+    return Vector3( x - vec.x,
+                    y - vec.y,
+                    z - vec.z );
 }
 
 Vector3& Vector3::operator-=(const Vector3& vec)
 {
-    _data[x] -= vec[x];
-    _data[y] -= vec[y];
-    _data[z] -= vec[z];
+    x -= vec.x;
+    y -= vec.y;
+    z -= vec.z;
 
     return *this;
 }
@@ -201,16 +213,16 @@ Vector3& Vector3::operator-=(const Vector3& vec)
 //===== Subtract by scalar =====
 Vector3 Vector3::operator-(real val) const
 {
-    return Vector3( _data[x] - val,
-                    _data[y] - val,
-                    _data[z] - val );
+    return Vector3( x - val,
+                    y - val,
+                    z - val );
 }
 
 Vector3& Vector3::operator-=(real val)
 {
-    _data[x] -= val;
-    _data[y] -= val;
-    _data[z] -= val;
+    x -= val;
+    y -= val;
+    z -= val;
 
     return *this;
 }
@@ -218,16 +230,16 @@ Vector3& Vector3::operator-=(real val)
 //===== Component-wise multiply by Vector3 =====
 Vector3 Vector3::operator*(const Vector3 vec) const
 {
-    return Vector3( _data[x] * vec[x],
-                    _data[y] * vec[y],
-                    _data[z] * vec[z] );
+    return Vector3( x * vec.x,
+                    y * vec.y,
+                    z * vec.z );
 }
 
 Vector3& Vector3::operator*=(const Vector3 vec)
 {
-    _data[x] *= vec[x];
-    _data[y] *= vec[y];
-    _data[z] *= vec[z];
+    x *= vec.x;
+    y *= vec.y;
+    z *= vec.z;
 
     return *this;
 }
@@ -235,16 +247,16 @@ Vector3& Vector3::operator*=(const Vector3 vec)
 //===== Mutliply by Scalar =====
 Vector3 Vector3::operator*(real val) const
 {
-    return Vector3( _data[x] * val,
-                    _data[y] * val,
-                    _data[z] * val );
+    return Vector3( x * val,
+                    y * val,
+                    z * val );
 }
 
 Vector3& Vector3::operator*=(real val)
 {
-    _data[x] *= val;
-    _data[y] *= val;
-    _data[z] *= val;
+    x *= val;
+    y *= val;
+    z *= val;
 
     return *this;
 }
@@ -253,18 +265,18 @@ Vector3& Vector3::operator*=(real val)
 Vector3 Vector3::operator/(real val) const
 {
     assert(val != 0.0f);
-    return Vector3( _data[x] / val,
-                    _data[y] / val,
-                    _data[z] / val );
+    return Vector3( x / val,
+                    y / val,
+                    z / val );
 }
 
 Vector3& Vector3::operator/=(real val)
 {
     assert(val != 0.0f);
 
-    _data[x] /= val;
-    _data[y] /= val;
-    _data[z] /= val;
+    x /= val;
+    y /= val;
+    z /= val;
 
     return *this;
 }
@@ -272,54 +284,54 @@ Vector3& Vector3::operator/=(real val)
 //===== Comparison =====
 bool Vector3::operator>(const Vector3& vec) const
 {
-    bool state = _data[x] > vec[x] && 
-                 _data[y] > vec[y] &&
-                 _data[z] > vec[z];
+    bool state = x > vec.x && 
+                 y > vec.y &&
+                 z > vec.z;
 
     return state;
 }
 
 bool Vector3::operator<(const Vector3& vec) const
 {
-    bool state = _data[x] < vec[x] &&
-                 _data[y] < vec[y] &&
-                 _data[z] < vec[z];
+    bool state = x < vec.x &&
+                 y < vec.y &&
+                 z < vec.z;
 
     return state;;
 }
 
 bool Vector3::operator>=(const Vector3& vec) const
 {
-    bool state = _data[x] >= vec[x] &&
-                 _data[y] >= vec[y] &&
-                 _data[z] >= vec[z];
+    bool state = x >= vec.x &&
+                 y >= vec.y &&
+                 z >= vec.z;
 
     return state;
 }
 
 bool Vector3::operator<=(const Vector3& vec) const
 {
-    bool state = _data[x] <= vec[x] &&
-                 _data[y] <= vec[y] &&
-                 _data[z] <= vec[z];
+    bool state = x <= vec.x &&
+                 y <= vec.y &&
+                 z <= vec.z;
 
     return state;
 }
 
 bool Vector3::operator==(const Vector3& vec) const
 {
-    bool state = _data[x] == vec[x] &&
-                 _data[y] == vec[y] &&
-                 _data[z] == vec[z];
+    bool state = x == vec.x &&
+                 y == vec.y &&
+                 z == vec.z;
 
     return state;
 }
 
 bool Vector3::operator!=(const Vector3& vec) const
 {
-    bool state = _data[x] != vec[x] &&
-                 _data[y] != vec[y] &&
-                 _data[z] != vec[z];
+    bool state = x != vec.x &&
+                 y != vec.y &&
+                 z != vec.z;
 
     return state;;
 }

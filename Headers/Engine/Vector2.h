@@ -45,7 +45,7 @@ namespace TempestMath
         ///	Three input constructor.
         ///	\param x is the value for x.
         ///	\param y is the value for y.
-        TEMPEST_API Vector2(real x, real y);
+        TEMPEST_API Vector2(real xVal, real yVal);
 
         ///	Copy Constructor. It explicitly copies all data into new Vector2. 
         ///	\param v is the Vector2 to copy. 
@@ -54,15 +54,15 @@ namespace TempestMath
 
         /// Copy Constructor. It explicitely copies all data into new Vector2 from a Point4
         /// \param p is the Point4 to copy.
-        TEMPEST_API Vector2(const Point2& p);
+        TEMPEST_API explicit Vector2(const Point2& p);
         
         /// Copy Constructor. It explicitely copies all data into new Vector2 from a Point4
         /// \param p is the Point4 to copy.
-        TEMPEST_API Vector2(const Point4& p);
+        TEMPEST_API explicit Vector2(const Point4& p);
 
         ///	Convert a Vector4 into a Vector2.
         ///	\param v is the Vector4 to convert.
-        TEMPEST_API Vector2(const Vector4& v);
+        TEMPEST_API explicit Vector2(const Vector4& v);
 
         ///	No implementation.	
         TEMPEST_API ~Vector2(void);
@@ -105,12 +105,6 @@ namespace TempestMath
 //Accessors
 //
 //==========================================================================================================================
-        ///	Returns the raw data for the Vector2.
-        inline const real* GetElems(void) const
-        {
-            return _data;
-        }
-
         ///	A helper function to allow to quickly set x, y and z to different values. This is useful because it is only one function
         ///	call instead of the 3 it would take to call [] for each element. 
         ///	\param xVal is the value for x.
@@ -118,8 +112,8 @@ namespace TempestMath
         ///	\param zVal is the value for z. 
         inline void Set(real xVal, real yVal)
         {
-            _data[x] = xVal;
-            _data[y] = yVal;
+            x = xVal;
+            y = yVal;
         }
 
 //==========================================================================================================================
@@ -127,20 +121,6 @@ namespace TempestMath
 //operator Overloads
 //
 //==========================================================================================================================
-        ///	Allows you to index into the Vector2 to read the value.
-        ///	\param i is the index you wish to read. 0 = x, 1 = y, 2 = z.
-        inline const real& operator[](int i) const
-        {
-            return _data[i];
-        }
-
-        ///	Allows you to index into the Vector2 to change the value.
-        ///	\param i is the index you wish to change. 0 = x, 1 = y, 2 = z.
-        inline real& operator[](int i)
-        {
-            return _data[i];
-        }
-
 //===== Copy Assignment =====		
         ///	Copy assignment from Vector2.
         ///	\param vec is the Vector2 to copy into this Vector2.
@@ -172,10 +152,30 @@ namespace TempestMath
         ///	\param vec is the shared_ptr<Vector2> that is added into each element of a new Vector2.
         TEMPEST_API Vector2 operator+(shared_ptr<Vector2> vec) const;
 
-//===== Subtract by Vector2 =====
+//===== Subtract by Vector =====
+        ///	Vector2 subtraction. This is done componentwise.
+        ///	\param vec is the Vector2 subtracted from the new Vector2.
+        TEMPEST_API Vector2 operator-(const Point2& vec) const;
+
+        ///	Vector2 subtraction. This is done componentwise.
+        ///	\param vec is the Vector2 subtracted from the new Vector2.
+        TEMPEST_API Vector2 operator-(const Point3& vec) const;
+
+        ///	Vector2 subtraction. This is done componentwise.
+        ///	\param vec is the Vector2 subtracted from the new Vector2.
+        TEMPEST_API Vector2 operator-(const Point4& vec) const;
+
         ///	Vector2 subtraction. This is done componentwise.
         ///	\param vec is the Vector2 subtracted from the new Vector2.
         TEMPEST_API Vector2 operator-(const Vector2& vec) const;
+
+        ///	Vector2 subtraction. This is done componentwise.
+        ///	\param vec is the Vector2 subtracted from the new Vector2.
+        TEMPEST_API Vector2 operator-(const Vector3& vec) const;
+
+        ///	Vector2 subtraction. This is done componentwise.
+        ///	\param vec is the Vector2 subtracted from the new Vector2.
+        TEMPEST_API Vector2 operator-(const Vector4& vec) const;
 
         ///	Vector2 subtraction. This is done componenetwise.
         ///	\param vec is the Vector2ed subtractd from this Vector2.
@@ -193,14 +193,14 @@ namespace TempestMath
         ///	Changes the sign of each element of the Vector2.
         inline Vector2 operator-(void)
         {
-            return Vector2(-_data[x], -_data[y]);
+            return Vector2(-x, -y);
         }
 
         ///	Prefix, Adds 1 to each element of the Vector2.
         inline Vector2& operator++(void)
         {
-            ++_data[x];
-            ++_data[y];
+            ++x;
+            ++y;
 
             return *this;
         }
@@ -208,14 +208,14 @@ namespace TempestMath
         ///	Postfix, Adds 1 to each element of the Vector2.
         inline Vector2 operator++(int)
         {
-            return Vector2(++_data[x], ++_data[y]);
+            return Vector2(++x, ++y);
         }
 
         ///	Prefix, Subtracts 1 to each element of the Vector2.
         inline Vector2& operator--(void)
         {
-            --_data[x];
-            --_data[y];
+            --x;
+            --y;
 
             return *this;
         }
@@ -223,7 +223,7 @@ namespace TempestMath
         ///	Postfix, Subtracts 1 to each element of the Vector2.
         inline Vector2 operator--(int)
         {
-            return Vector2(--_data[x], --_data[y]);
+            return Vector2(--x, --y);
         }
 
 //===== Subtract by scalar =====
@@ -238,11 +238,11 @@ namespace TempestMath
 //===== Component-wise multiply by Vector2 =====
         ///	Vector2 multiplication. This is a componentwise multiplication, scaling one Vector2 by another.
         ///	\param vec is the Vector2 multiplied by the new Vector2.
-        TEMPEST_API Vector2 operator*(const Vector2 vec) const;
+        TEMPEST_API Vector2 operator*(const Vector2& vec) const;
 
         ///	Vector2 multiplication. This is a componentwise multiplication, scaling one Vector2 by another.
         ///	\param vec is the Vector2 multiplied by this Vector2.
-        TEMPEST_API Vector2& operator*=(const Vector2 vec);
+        TEMPEST_API Vector2& operator*=(const Vector2& vec);
 
 //===== Mutliply by Scalar =====
         ///	Scalar multiplication. This is a componentwise multiplication, scaling the Vector2 by the scalar.
@@ -294,13 +294,13 @@ namespace TempestMath
         TEMPEST_API bool operator!=(const Vector2& vec) const;
 
 
-    private:
 //==========================================================================================================================
 //
 //Data
 //
 //==========================================================================================================================
-        real  _data[2];	///< Array that stores the values for each element.
+        real x;
+        real y;
     };// end class
     typedef shared_ptr<Vector2> p_Vector2;
 }//end namespace

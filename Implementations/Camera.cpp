@@ -57,9 +57,9 @@ void Camera::DefaultUpdateCameraVectors(void)
 {
 	//Using spherical to cartesian
 	//Calculate the view direction
-	_look[0] = cos(_pitch) * sin(_yaw);
-	_look[1] = sin(_pitch);
-	_look[2] = cos(_pitch) * cos(_yaw);
+	_look.x = cos(_pitch) * sin(_yaw);
+	_look.y = sin(_pitch);
+	_look.z = cos(_pitch) * cos(_yaw);
 	_look.Normalize();
 
 	//Re-calculate the right and up Vector4s

@@ -50,7 +50,7 @@ void AudioListener::SetPosition(const TM::Vector3& pos)
 {
 	_position = pos;
 
-	alListener3f(AL_POSITION, _position[x], _position[y], _position[z]);
+	alListener3f(AL_POSITION, _position.x, _position.y, _position.z);
 	
 	ALCenum error = alGetError();
 	if(error != AL_NO_ERROR)
@@ -61,11 +61,11 @@ void AudioListener::SetPosition(const TM::Vector3& pos)
 
 void AudioListener::SetPosition(F32 xVal, F32 yVal, F32 zVal)
 {
-	_position[x] = xVal;
-	_position[y] = yVal;
-	_position[z] = zVal;
+	_position.x = xVal;
+	_position.y = yVal;
+	_position.z = zVal;
 
-	alListener3f(AL_POSITION, _position[x], _position[y], _position[z]);
+	alListener3f(AL_POSITION, _position.x, _position.y, _position.z);
 	
 	ALCenum error = alGetError();
 	if(error != AL_NO_ERROR)
@@ -78,7 +78,7 @@ void AudioListener::SetVelocity(const TM::Vector3 vel)
 {
 	_velocity = vel;
 
-	alListener3f(AL_VELOCITY, _velocity[x], _velocity[y], _velocity[z]);
+	alListener3f(AL_VELOCITY, _velocity.x, _velocity.y, _velocity.z);
 
 	ALCenum error = alGetError();
 	if(error != AL_NO_ERROR)
@@ -89,11 +89,11 @@ void AudioListener::SetVelocity(const TM::Vector3 vel)
 
 void AudioListener::SetVelocity(F32 xVal, F32 yVal, F32 zVal)
 {
-	_velocity[x] = xVal;
-	_velocity[y] = yVal;
-	_velocity[z] = zVal;
+	_velocity.x = xVal;
+	_velocity.y = yVal;
+	_velocity.z = zVal;
 
-	alListener3f(AL_VELOCITY, _velocity[x], _velocity[y], _velocity[z]);
+	alListener3f(AL_VELOCITY, _velocity.x, _velocity.y, _velocity.z);
 
 	ALCenum error = alGetError();
 	if(error != AL_NO_ERROR)

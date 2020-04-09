@@ -35,7 +35,7 @@ BuoyantForce::~BuoyantForce(void)
 void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 {
 //=====Calculate Depth of object=====
-	real depth = RigidBody2D->GetPosition()[1]; //Get the y val
+	real depth = RigidBody2D->GetPosition().y;
 
 	//Out of liquid check
 	if(depth >= _liquidHeight + _maxDepth) 
@@ -43,18 +43,18 @@ void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 		return;
 	}
 	
-	TM::Vector4 force(0.0f);
+	TM::Vector2 force(0.0f);
 
 	//Max Depth check
 	if(depth <= _liquidHeight - _maxDepth)
 	{
-		force[1] = _liquidDensity * _objectVolume;
+		force.y = _liquidDensity * _objectVolume;
 
 		RigidBody2D->AddForce(force);
 	}
 	else
 	{
-		force[1] = _liquidDensity * _objectVolume * (depth - _maxDepth - _liquidHeight) / 2 * _maxDepth;
+		force.y = _liquidDensity * _objectVolume * (depth - _maxDepth - _liquidHeight) / 2 * _maxDepth;
 
 		RigidBody2D->AddForce(force);
 	}	
@@ -63,25 +63,25 @@ void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 //TODO: Implement
 void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody3D> body)
 {
-	real depth = body->GetPosition()[1];
+	real depth = body->GetPosition().y;
 
 	if(depth >= _liquidHeight + _maxDepth) 
 	{
 		return;
 	}
 
-	TM::Vector4 force(0.0f);
+	TM::Vector3 force(0.0f);
 
 	if(depth <= _liquidHeight - _maxDepth)
 	{
-		force[1] = _liquidDensity * _objectVolume;
+		force.y = _liquidDensity * _objectVolume;
 
 		body->AddForce(force);
 		return;
 	}
 	else
 	{
-		force[1] = _liquidDensity * _objectVolume * (depth - _maxDepth - _liquidHeight) / 2 * _maxDepth;
+		force.y = _liquidDensity * _objectVolume * (depth - _maxDepth - _liquidHeight) / 2 * _maxDepth;
 
 		body->AddForce(force);
 	}

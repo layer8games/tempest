@@ -24,11 +24,11 @@ _restLength(restLength)
 AnchoredSpring::~AnchoredSpring(void)
 {  }
 
-void AnchoredSpring::v_UpdateForce(p_RigidBody2D RigidBody2D)
+void AnchoredSpring::v_UpdateForce(p_RigidBody2D otherBody)
 {
-	//Calculate the Vector4 of the spring
+	//Calculate thevector of the spring
 	TM::Vector2 force {};
-	force = RigidBody2D->GetPosition() - _anchor;
+	force = otherBody->GetPosition() - _anchor;
 	force -= _anchor;
 
 	//Calculate the magnitude of the force
@@ -38,7 +38,7 @@ void AnchoredSpring::v_UpdateForce(p_RigidBody2D RigidBody2D)
 	//Calculate the final force and apply it
 	force.Normalize();
 	force *= static_cast<F32>(magnitude);
-	RigidBody2D->AddForce(force);
+	otherBody->AddForce(force);
 }
 
 //TODO: Implement
