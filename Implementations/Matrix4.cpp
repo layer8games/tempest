@@ -58,22 +58,22 @@ const std::vector<real> Matrix4::GetElems(void) const
 {
     std::vector<real> elems;
     
-    elems.push_back(_data[0].x);
-    elems.push_back(_data[0].y);
-    elems.push_back(_data[0].z);
-    elems.push_back(_data[0].w);
-    elems.push_back(_data[1].x);
-    elems.push_back(_data[1].y);
-    elems.push_back(_data[1].z);
-    elems.push_back(_data[1].w);
-    elems.push_back(_data[2].x);
-    elems.push_back(_data[2].y);
-    elems.push_back(_data[2].z);
-    elems.push_back(_data[2].w);
-    elems.push_back(_data[3].x);
-    elems.push_back(_data[3].y);
-    elems.push_back(_data[3].z);
-    elems.push_back(_data[3].w);
+    elems.push_back(_data[0][x]);
+    elems.push_back(_data[0][y]);
+    elems.push_back(_data[0][z]);
+    elems.push_back(_data[0][w]);
+    elems.push_back(_data[1][x]);
+    elems.push_back(_data[1][y]);
+    elems.push_back(_data[1][z]);
+    elems.push_back(_data[1][w]);
+    elems.push_back(_data[2][x]);
+    elems.push_back(_data[2][y]);
+    elems.push_back(_data[2][z]);
+    elems.push_back(_data[2][w]);
+    elems.push_back(_data[3][x]);
+    elems.push_back(_data[3][y]);
+    elems.push_back(_data[3][z]);
+    elems.push_back(_data[3][w]);
 
     return elems;
 }
@@ -91,15 +91,15 @@ void Matrix4::MakeOrthographic(real left, real right, real bottom, real top, rea
     assert(farPlane - nearPlane != 0.0f);
 
     //Diagnal
-    _data[0].x = 2.0f / (right - left);
-    _data[1].y = 2.0f / (top - bottom);
-    _data[2].z = -2.0f / (farPlane - nearPlane);
-    _data[3].w = 1.0f;
+    _data[0][x] = 2.0f / (right - left);
+    _data[1][y] = 2.0f / (top - bottom);
+    _data[2][z] = -2.0f / (farPlane - nearPlane);
+    _data[3][w] = 1.0f;
 
     //Transform "Vector4"
-    _data[3].x = -(right + left) / (right - left);
-    _data[3].y = -(top + bottom) / (top - bottom);
-    _data[3].z = -(farPlane + nearPlane) / (farPlane - nearPlane);
+    _data[3][x] = -(right + left) / (right - left);
+    _data[3][y] = -(top + bottom) / (top - bottom);
+    _data[3][z] = -(farPlane + nearPlane) / (farPlane - nearPlane);
 }
 
 void Matrix4::MakePerspective(real fieldOfView, real aspectRatio, real nearPlane, real farPlane)
@@ -111,11 +111,11 @@ void Matrix4::MakePerspective(real fieldOfView, real aspectRatio, real nearPlane
     //Reset Matrix4 
     MakeIdentity();
 
-    _data[0].x = S / aspectRatio;
-    _data[1].y = S;
-    _data[2].z = (nearPlane + farPlane) / (nearPlane - farPlane);
-    _data[2].w = -1.0f;
-    _data[3].z = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
+    _data[0][x] = S / aspectRatio;
+    _data[1][y] = S;
+    _data[2][z] = (nearPlane + farPlane) / (nearPlane - farPlane);
+    _data[2][w] = -1.0f;
+    _data[3][z] = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
 }
 
 //==========================================================================================================================
@@ -125,8 +125,8 @@ Matrix4 Matrix4::Translate(real xVal, real yVal)
 {
     Matrix4 mat{1.0f};
 
-    mat[3].x = xVal;
-    mat[3].y = yVal;
+    mat[3][x] = xVal;
+    mat[3][y] = yVal;
 
     return mat;
 }
@@ -135,9 +135,9 @@ Matrix4 Matrix4::Translate(real xVal, real yVal, real zVal)
 {
     Matrix4 mat{1.0f};
 
-    mat[3].x = xVal;
-    mat[3].y = yVal;
-    mat[3].z = zVal;
+    mat[3][x] = xVal;
+    mat[3][y] = yVal;
+    mat[3][z] = zVal;
 
     return mat;	
 }
@@ -146,69 +146,60 @@ Matrix4 Matrix4::Translate(const Vector4& vec)
 {
     Matrix4 mat{1.0f};
 
-    mat[3].x = vec.x;
-    mat[3].y = vec.y;
-    mat[3].z = vec.z;
+    mat[3][x] = vec[x];
+    mat[3][y] = vec[y];
+    mat[3][z] = vec[z];
 
     return mat;	
 }
 
 void Matrix4::SetTranslate(real xVal, real yVal)
 {
-    _data[3].x = xVal;
-    _data[3].y = yVal;
+    MakeIdentity();
+
+    _data[3][x] = xVal;
+    _data[3][y] = yVal;
 }
 
 void Matrix4::SetTranslate(real xVal, real yVal, real zVal)
 {
-    _data[3].x = xVal;
-    _data[3].y = yVal;
-    _data[3].z = zVal;
-}
+    MakeIdentity();			
 
-void Matrix4::SetTranslate(const Vector2& vec)
-{
-    _data[3].x = vec.x;
-    _data[3].y = vec.y;
-    _data[3].z = 0.0f;
+    _data[3][x] = xVal;
+    _data[3][y] = yVal;
+    _data[3][z] = zVal;
 }
-
-void Matrix4::SetTranslate(const Vector3 & vec)
-{
-    _data[3].x = vec.x;
-    _data[3].y = vec.y;
-    _data[3].z = vec.z;
-}
-
 
 void Matrix4::SetTranslate(const Vector4& vec)
 {
-    _data[3].x = vec.x;
-    _data[3].y = vec.y;
-    _data[3].z = vec.z;
+    MakeIdentity(); 
+
+    _data[3][x] = vec[x];
+    _data[3][y] = vec[y];
+    _data[3][z] = vec[z];
 }
 
 Vector4 Matrix4::TransformInverse(const Vector4& vec) const
 {
     Vector4 tmp = vec;
 
-    tmp.x -= _data[3].x;
-    tmp.y -= _data[3].y;
-    tmp.z -= _data[3].z;
+    tmp[x] -= _data[3][x];
+    tmp[y] -= _data[3][y];
+    tmp[z] -= _data[3][z];
 
     return Vector4
     {
-        tmp.x * _data[0].x +
-        tmp.y * _data[0].y + 
-        tmp.z * _data[0].z,
+        tmp[x] * _data[0][x] +
+        tmp[y] * _data[0][y] + 
+        tmp[z] * _data[0][z],
 
-        tmp.x * _data[1].x + 
-        tmp.y * _data[1].y + 
-        tmp.z * _data[1].z,
+        tmp[x] * _data[1][x] + 
+        tmp[y] * _data[1][y] + 
+        tmp[z] * _data[1][z],
 
-        tmp.x * _data[2].x +
-        tmp.y * _data[2].y + 
-        tmp.z * _data[2].z, 
+        tmp[x] * _data[2][x] +
+        tmp[y] * _data[2][y] + 
+        tmp[z] * _data[2][z], 
         
         0.0f
     };
@@ -218,23 +209,23 @@ Point4 Matrix4::TransformInverse(const Point4& vec) const
 {
     Point4 tmp = vec;
 
-    tmp.x -= _data[3].x;
-    tmp.y -= _data[3].y;
-    tmp.z -= _data[3].z;
+    tmp[x] -= _data[3][x];
+    tmp[y] -= _data[3][y];
+    tmp[z] -= _data[3][z];
 
     return Point4
     {
-        tmp.x * _data[0].x +
-        tmp.y * _data[0].y +
-        tmp.z * _data[0].z,
+        tmp[x] * _data[0][x] +
+        tmp[y] * _data[0][y] +
+        tmp[z] * _data[0][z],
 
-        tmp.x * _data[1].x +
-        tmp.y * _data[1].y +
-        tmp.z * _data[1].z,
+        tmp[x] * _data[1][x] +
+        tmp[y] * _data[1][y] +
+        tmp[z] * _data[1][z],
 
-        tmp.x * _data[2].x +
-        tmp.y * _data[2].y +
-        tmp.z * _data[2].z,
+        tmp[x] * _data[2][x] +
+        tmp[y] * _data[2][y] +
+        tmp[z] * _data[2][z],
         
         1.0f
     };
@@ -247,8 +238,8 @@ Matrix4 Matrix4::Scale(real xVal, real yVal)
 {
     Matrix4 mat{1.0f};
 
-    mat[0].x = xVal;
-    mat[1].y = yVal;
+    mat[0][x] = xVal;
+    mat[1][y] = yVal;
 
     return mat;
 }
@@ -257,9 +248,9 @@ Matrix4 Matrix4::Scale(real xVal, real yVal, real zVal)
 {
     Matrix4 mat{1.0f};
 
-    mat[0].x = xVal;
-    mat[1].y = yVal;
-    mat[2].z = zVal;
+    mat[0][x] = xVal;
+    mat[1][y] = yVal;
+    mat[2][z] = zVal;
 
     return mat;
 }
@@ -268,9 +259,9 @@ Matrix4 Matrix4::Scale(const Vector4& vec)
 {
     Matrix4 mat{1.0f};
 
-    mat[0].x = vec.x;
-    mat[1].y = vec.y;
-    mat[2].z = vec.z;
+    mat[0][x] = vec[x];
+    mat[1][y] = vec[y];
+    mat[2][z] = vec[z];
 
     return mat;
 }
@@ -279,9 +270,9 @@ Matrix4 Matrix4::Scale(const Vector3& vec)
 {
     Matrix4 mat{1.0f};
 
-    mat[0].x = vec.x;
-    mat[1].y = vec.y;
-    mat[2].z = vec.z;
+    mat[0][x] = vec[x];
+    mat[1][y] = vec[y];
+    mat[2][z] = vec[z];
 
     return mat;
 }
@@ -290,9 +281,9 @@ Matrix4 Matrix4::Scale(const Vector2& vec)
 {
     Matrix4 mat{1.0f};
 
-    mat[0].x = vec.x;
-    mat[1].y = vec.y;
-    mat[2].z = 0.0f;
+    mat[0][x] = vec[x];
+    mat[1][y] = vec[y];
+    mat[2][z] = 0.0f;
 
     return mat;
 }
@@ -301,43 +292,43 @@ void Matrix4::SetScale(real xVal, real yVal)
 {
     MakeIdentity();
 
-    _data[0].x = xVal;
-    _data[1].y = yVal;
+    _data[0][x] = xVal;
+    _data[1][y] = yVal;
 }
 
 void Matrix4::SetScale(real xVal, real yVal, real zVal)
 {
     MakeIdentity();
 
-    _data[0].x = xVal;
-    _data[1].y = yVal;
-    _data[2].z = zVal;
+    _data[0][x] = xVal;
+    _data[1][y] = yVal;
+    _data[2][z] = zVal;
 }
 
 void Matrix4::SetScale(const Vector2& vec)
 {
     MakeIdentity();
 
-    _data[0].x = vec.x;
-    _data[1].y = vec.y;
+    _data[0][x] = vec[x];
+    _data[1][y] = vec[y];
 }
 
 void Matrix4::SetScale(const Vector3& vec)
 {
     MakeIdentity();
 
-    _data[0].x = vec.x;
-    _data[1].y = vec.y;
-    _data[2].z = vec.z;
+    _data[0][x] = vec[x];
+    _data[1][y] = vec[y];
+    _data[2][z] = vec[z];
 }
 
 void Matrix4::SetScale(const Vector4& vec)
 {
     MakeIdentity();
 
-    _data[0].x = vec.x;
-    _data[1].y = vec.y;
-    _data[2].z = vec.z;
+    _data[0][x] = vec[x];
+    _data[1][y] = vec[y];
+    _data[2][z] = vec[z];
 }
 
 //==========================================================================================================================
@@ -348,10 +339,10 @@ Matrix4 Matrix4::RotateX(real val)
     val = RADIAN(val);
     Matrix4 mat{1.0f};
 
-    mat[1].y = real_cos(val);
-    mat[1].z = -real_sin(val);
-    mat[2].y = real_sin(val);
-    mat[2].z = real_cos(val);
+    mat[1][y] = real_cos(val);
+    mat[1][z] = -real_sin(val);
+    mat[2][y] = real_sin(val);
+    mat[2][z] = real_cos(val);
 
     return mat;
 }
@@ -361,10 +352,10 @@ Matrix4 Matrix4::RotateY(real val)
     val = RADIAN(val);
     Matrix4 mat{1.0f};
 
-    mat[0].x = real_cos(val);
-    mat[0].z = real_sin(val);
-    mat[2].x = -real_sin(val);
-    mat[2].z = real_cos(val);
+    mat[0][x] = real_cos(val);
+    mat[0][z] = real_sin(val);
+    mat[2][x] = -real_sin(val);
+    mat[2][z] = real_cos(val);
 
     return mat;
 }
@@ -374,10 +365,10 @@ Matrix4 Matrix4::RotateZ(real val)
     val = RADIAN(val);
     Matrix4 mat{1.0f};
 
-    mat[0].x = real_cos(val);
-    mat[0].y = -real_sin(val);
-    mat[1].x = real_sin(val);
-    mat[1].y = real_cos(val);
+    mat[0][x] = real_cos(val);
+    mat[0][y] = -real_sin(val);
+    mat[1][x] = real_sin(val);
+    mat[1][y] = real_cos(val);
 
     return mat;
 }
@@ -388,20 +379,20 @@ void Matrix4::SetRotateX(real val)
 
     MakeIdentity();
 
-    _data[1].y = real_cos(val);
-    _data[1].z = -real_sin(val);
-    _data[2].y = real_sin(val);
-    _data[2].z = real_cos(val);
+    _data[1][y] = real_cos(val);
+    _data[1][z] = -real_sin(val);
+    _data[2][y] = real_sin(val);
+    _data[2][z] = real_cos(val);
 }
 
 void Matrix4::AddRotateX(real val)
 {
     val = RADIAN(val);
 
-    _data[1].y += real_cos(val);
-    _data[1].z += -real_sin(val);
-    _data[2].y += real_sin(val);
-    _data[2].z += real_cos(val);
+    _data[1][y] += real_cos(val);
+    _data[1][z] += -real_sin(val);
+    _data[2][y] += real_sin(val);
+    _data[2][z] += real_cos(val);
 }
 
 void Matrix4::SetRotateY(real val)
@@ -410,20 +401,20 @@ void Matrix4::SetRotateY(real val)
 
     MakeIdentity();
 
-    _data[0].x = real_cos(val);
-    _data[0].z = real_sin(val);
-    _data[2].x = -real_sin(val);
-    _data[2].z = real_cos(val);
+    _data[0][x] = real_cos(val);
+    _data[0][z] = real_sin(val);
+    _data[2][x] = -real_sin(val);
+    _data[2][z] = real_cos(val);
 }
 
 void Matrix4::AddRotateY(real val)
 {
     val = RADIAN(val);
 
-    _data[0].x += real_cos(val);
-    _data[0].y += real_sin(val);
-    _data[2].x += -real_sin(val);
-    _data[2].y += real_cos(val);	
+    _data[0][x] += real_cos(val);
+    _data[0][y] += real_sin(val);
+    _data[2][x] += -real_sin(val);
+    _data[2][y] += real_cos(val);	
 }
 
 void Matrix4::SetRotateZ(real val)
@@ -432,20 +423,20 @@ void Matrix4::SetRotateZ(real val)
 
     MakeIdentity();
 
-    _data[0].x = real_cos(val);
-    _data[0].y = -real_sin(val);
-    _data[1].x = real_sin(val);
-    _data[1].y = real_cos(val);
+    _data[0][x] = real_cos(val);
+    _data[0][y] = -real_sin(val);
+    _data[1][x] = real_sin(val);
+    _data[1][y] = real_cos(val);
 }
 
 void Matrix4::AddRotateZ(real val)
 {
     val = RADIAN(val);
 
-    _data[0].x += real_cos(val);
-    _data[0].y += -real_sin(val);
-    _data[1].x += real_sin(val);
-    _data[1].y += real_cos(val);
+    _data[0][x] += real_cos(val);
+    _data[0][y] += -real_sin(val);
+    _data[1][x] += real_sin(val);
+    _data[1][y] += real_cos(val);
 }
 
 void Matrix4::SetRotate(real xVal, real yVal, real zVal)
@@ -456,15 +447,15 @@ void Matrix4::SetRotate(real xVal, real yVal, real zVal)
 
     MakeIdentity();
 
-    _data[0].x = real_cos(yVal) * real_cos(zVal);
-    _data[0].y = -real_cos(yVal) * real_sin(zVal);
-    _data[0].z = real_sin(yVal);
-    _data[1].x = real_cos(xVal) * real_sin(zVal) + real_sin(xVal) * real_sin(yVal) * real_cos(zVal);
-    _data[1].y = real_cos(xVal) * real_cos(zVal) - real_sin(xVal) * real_sin(yVal) * real_sin(zVal);
-    _data[1].z = -real_sin(xVal) * real_cos(yVal);
-    _data[2].x = real_sin(xVal) * real_sin(zVal) - real_cos(xVal) * real_sin(yVal) * real_cos(zVal);
-    _data[2].y = real_sin(xVal) * real_cos(zVal) + real_cos(xVal) * real_sin(yVal) * real_sin(zVal);
-    _data[2].z = real_cos(xVal) * real_cos(yVal);
+    _data[0][x] = real_cos(yVal) * real_cos(zVal);
+    _data[0][y] = -real_cos(yVal) * real_sin(zVal);
+    _data[0][z] = real_sin(yVal);
+    _data[1][x] = real_cos(xVal) * real_sin(zVal) + real_sin(xVal) * real_sin(yVal) * real_cos(zVal);
+    _data[1][y] = real_cos(xVal) * real_cos(zVal) - real_sin(xVal) * real_sin(yVal) * real_sin(zVal);
+    _data[1][z] = -real_sin(xVal) * real_cos(yVal);
+    _data[2][x] = real_sin(xVal) * real_sin(zVal) - real_cos(xVal) * real_sin(yVal) * real_cos(zVal);
+    _data[2][y] = real_sin(xVal) * real_cos(zVal) + real_cos(xVal) * real_sin(yVal) * real_sin(zVal);
+    _data[2][z] = real_cos(xVal) * real_cos(yVal);
 }
 
 void Matrix4::AddRotation(real xVal, real yVal, real zVal)
@@ -473,15 +464,15 @@ void Matrix4::AddRotation(real xVal, real yVal, real zVal)
     yVal = RADIAN(yVal);
     zVal = RADIAN(zVal);
 
-    _data[0].x += real_cos(yVal) * real_cos(zVal);
-    _data[0].y += -real_cos(yVal) * real_sin(zVal);
-    _data[0].z += real_sin(yVal);
-    _data[1].x += real_cos(xVal) * real_sin(zVal) + real_sin(xVal) * real_sin(yVal) * real_cos(zVal);
-    _data[1].y += real_cos(xVal) * real_cos(zVal) - real_sin(xVal) * real_sin(yVal) * real_sin(zVal);
-    _data[1].z += -real_sin(xVal) * real_cos(yVal);
-    _data[2].x += real_sin(xVal) * real_sin(zVal) - real_cos(xVal) * real_sin(yVal) * real_cos(zVal);
-    _data[2].y += real_sin(xVal) * real_cos(zVal) + real_cos(xVal) * real_sin(yVal) * real_sin(zVal);
-    _data[2].z += real_cos(xVal) * real_cos(yVal);
+    _data[0][x] += real_cos(yVal) * real_cos(zVal);
+    _data[0][y] += -real_cos(yVal) * real_sin(zVal);
+    _data[0][z] += real_sin(yVal);
+    _data[1][x] += real_cos(xVal) * real_sin(zVal) + real_sin(xVal) * real_sin(yVal) * real_cos(zVal);
+    _data[1][y] += real_cos(xVal) * real_cos(zVal) - real_sin(xVal) * real_sin(yVal) * real_sin(zVal);
+    _data[1][z] += -real_sin(xVal) * real_cos(yVal);
+    _data[2][x] += real_sin(xVal) * real_sin(zVal) - real_cos(xVal) * real_sin(yVal) * real_cos(zVal);
+    _data[2][y] += real_sin(xVal) * real_cos(zVal) + real_cos(xVal) * real_sin(yVal) * real_sin(zVal);
+    _data[2][z] += real_cos(xVal) * real_cos(yVal);
 }
 
 void Matrix4::SetOrientation(const Quaternion& q)
@@ -491,54 +482,53 @@ void Matrix4::SetOrientation(const Quaternion& q)
     real q_y = q[2];
     real q_z = q[3];
 
-    _data[0].x = 1.0f - ((2.0f * q_y * q_y) + (2.0f * q_z * q_z));
-    _data[0].y = 2.0f * q_x * q_y - 2.0f * q_z * q_w;
-    _data[0].z = 2.0f * q_x * q_z + 2.0f * q_y * q_w;
+    _data[0][x] = 1.0f - ((2.0f * q_y * q_y) + (2.0f * q_z * q_z));
+    _data[0][y] = 2.0f * q_x * q_y - 2.0f * q_z * q_w;
+    _data[0][z] = 2.0f * q_x * q_z + 2.0f * q_y * q_w;
 
-    _data[1].x = 2.0f * q_w * q_y + 2.0f * q_z * q_w;
-    _data[1].y = 1.0f - ((2.0f * q_x * q_x) + (2.0f * q_z * q_z));
-    _data[1].z = 2.0f * q_y * q_z - 2.0f * q_x * q_w;
+    _data[1][x] = 2.0f * q_w * q_y + 2.0f * q_z * q_w;
+    _data[1][y] = 1.0f - ((2.0f * q_x * q_x) + (2.0f * q_z * q_z));
+    _data[1][z] = 2.0f * q_y * q_z - 2.0f * q_x * q_w;
 
-    _data[2].x = 2.0f * q_x * q_z - 2.0f * q_y * q_w;
-    _data[2].y = 2.0f * q_y * q_z + 2.0f * q_x * q_w;
-    _data[2].z = 1 - ((2.0f * q_x * q_x) + (2.0f * q_y * q_y));
+    _data[2][x] = 2.0f * q_x * q_z - 2.0f * q_y * q_w;
+    _data[2][y] = 2.0f * q_y * q_z + 2.0f * q_x * q_w;
+    _data[2][z] = 1 - ((2.0f * q_x * q_x) + (2.0f * q_y * q_y));
 }
 
 void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Vector4& v)
 {
     SetOrientation(q);
-    SetTranslate(v);
+    
+    _data[3][x] = v[x];
+    _data[3][y] = v[y];
+    _data[3][z] = v[z];
 }
 
 void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Point2& p)
 {
     SetOrientation(q);
-    SetTranslate(p);
+    
+    _data[3][x] = p[x];
+    _data[3][y] = p[y];
+    _data[3][z] = 0.0f;
 }
 
 void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Point3& p)
 {
     SetOrientation(q);
     
-    SetTranslate(p);
+    _data[3][x] = p[x];
+    _data[3][y] = p[y];
+    _data[3][z] = p[z];
 }
 
 void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Point4& p)
 {
     SetOrientation(q);
     
-    _data[3].x = p.x;
-    _data[3].y = p.y;
-    _data[3].z = p.z;
-}
-
-void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Point4& p)
-{
-    SetOrientation(q);
-    
-    _data[3].x = p.x;
-    _data[3].y = p.y;
-    _data[3].z = p.z;
+    _data[3][x] = p[x];
+    _data[3][y] = p[y];
+    _data[3][z] = p[z];
 }
 
 //==========================================================================================================================
@@ -551,75 +541,75 @@ void Matrix4::SetInverse(void)
 
     if(det == 0.0f) return;
 
-    real c00 = _Cofactor(Vector4(_data[1].y, _data[1].z, _data[1].w, 0.0f),
-                         Vector4(_data.z.y, _data.z.z, _data.z.w, 0.0f),
-                         Vector4(_data.w.y, _data.w.z, _data.w.w, 0.0f));
+    real c00 = _Cofactor(Vector4(_data[y][y], _data[y][z], _data[y][w], 0.0f),
+                         Vector4(_data[z][y], _data[z][z], _data[z][w], 0.0f),
+                         Vector4(_data[w][y], _data[w][z], _data[w][w], 0.0f));
 
-    real c01 = _Cofactor(Vector4(_data[1].x, _data[1].z, _data[1].w, 0.0f),
-                         Vector4(_data.z.x, _data.z.z, _data.z.w, 0.0f),
-                         Vector4(_data.w.x, _data.w.z, _data.w.w, 0.0f));
+    real c01 = _Cofactor(Vector4(_data[y][x], _data[y][z], _data[y][w], 0.0f),
+                         Vector4(_data[z][x], _data[z][z], _data[z][w], 0.0f),
+                         Vector4(_data[w][x], _data[w][z], _data[w][w], 0.0f));
 
-    real c02 = _Cofactor(Vector4(_data[1].x, _data[1].y, _data[1].w, 0.0f),
-                         Vector4(_data.z.x, _data.z.y, _data.z.w, 0.0f),
-                         Vector4(_data.w.x, _data.w.y, _data.w.w, 0.0f));
+    real c02 = _Cofactor(Vector4(_data[y][x], _data[y][y], _data[y][w], 0.0f),
+                         Vector4(_data[z][x], _data[z][y], _data[z][w], 0.0f),
+                         Vector4(_data[w][x], _data[w][y], _data[w][w], 0.0f));
 
-    real c03 = _Cofactor(Vector4(_data[1].x, _data[1].y, _data[1].z, 0.0f),
-                         Vector4(_data.z.x, _data.z.y, _data.z.z, 0.0f),
-                         Vector4(_data.w.x, _data.w.y, _data.w.z, 0.0f));
+    real c03 = _Cofactor(Vector4(_data[y][x], _data[y][y], _data[y][z], 0.0f),
+                         Vector4(_data[z][x], _data[z][y], _data[z][z], 0.0f),
+                         Vector4(_data[w][x], _data[w][y], _data[w][z], 0.0f));
 
     Vector4 colx {c00, -c01, c02, -c03};
 
-    real c10 = _Cofactor(Vector4(_data.x.y, _data.x.z, _data.x.w, 0.0f),
-                         Vector4(_data.z.y, _data.z.z, _data.z.w, 0.0f),
-                         Vector4(_data.w.y, _data.w.z, _data.w.w, 0.0f));
+    real c10 = _Cofactor(Vector4(_data[x][y], _data[x][z], _data[x][w], 0.0f),
+                         Vector4(_data[z][y], _data[z][z], _data[z][w], 0.0f),
+                         Vector4(_data[w][y], _data[w][z], _data[w][w], 0.0f));
 
-    real c11 = _Cofactor(Vector4(_data.x.x, _data.x.z, _data.x.w, 0.0f),
-                         Vector4(_data.z.x, _data.z.z, _data.z.w, 0.0f),
-                         Vector4(_data.w.x, _data.w.z, _data.w.w, 0.0f));
+    real c11 = _Cofactor(Vector4(_data[x][x], _data[x][z], _data[x][w], 0.0f),
+                         Vector4(_data[z][x], _data[z][z], _data[z][w], 0.0f),
+                         Vector4(_data[w][x], _data[w][z], _data[w][w], 0.0f));
 
-    real c12 = _Cofactor(Vector4(_data.x.x, _data.x.y, _data.x.w, 0.0f),
-                         Vector4(_data.z.x, _data.z.y, _data.z.w, 0.0f),
-                         Vector4(_data.w.x, _data.w.y, _data.w.w, 0.0f));
+    real c12 = _Cofactor(Vector4(_data[x][x], _data[x][y], _data[x][w], 0.0f),
+                         Vector4(_data[z][x], _data[z][y], _data[z][w], 0.0f),
+                         Vector4(_data[w][x], _data[w][y], _data[w][w], 0.0f));
 
-    real c13 = _Cofactor(Vector4(_data.x.x, _data.x.y, _data.x.z, 0.0f),
-                         Vector4(_data.z.x, _data.z.y, _data.z.z, 0.0f),
-                         Vector4(_data.w.x, _data.w.y, _data.w.z, 0.0f));
+    real c13 = _Cofactor(Vector4(_data[x][x], _data[x][y], _data[x][z], 0.0f),
+                         Vector4(_data[z][x], _data[z][y], _data[z][z], 0.0f),
+                         Vector4(_data[w][x], _data[w][y], _data[w][z], 0.0f));
 
     Vector4 coly {-c10, c11, -c12, c13};
 
-    real c20 = _Cofactor(Vector4(_data.x.y, _data.x.z, _data.x.w, 0.0f),
-                         Vector4(_data[1].y, _data[1].z, _data[1].w, 0.0f),
-                         Vector4(_data.w.y, _data.w.z, _data.w.w, 0.0f));
+    real c20 = _Cofactor(Vector4(_data[x][y], _data[x][z], _data[x][w], 0.0f),
+                         Vector4(_data[y][y], _data[y][z], _data[y][w], 0.0f),
+                         Vector4(_data[w][y], _data[w][z], _data[w][w], 0.0f));
 
-    real c21 = _Cofactor(Vector4(_data.x.x, _data.x.z, _data.x.w, 0.0f),
-                         Vector4(_data[1].x, _data[1].z, _data[1].w, 0.0f),
-                         Vector4(_data.w.x, _data.w.z, _data.w.w, 0.0f));
+    real c21 = _Cofactor(Vector4(_data[x][x], _data[x][z], _data[x][w], 0.0f),
+                         Vector4(_data[y][x], _data[y][z], _data[y][w], 0.0f),
+                         Vector4(_data[w][x], _data[w][z], _data[w][w], 0.0f));
 
-    real c22 = _Cofactor(Vector4(_data.x.x, _data.x.y, _data.x.w, 0.0f),
-                         Vector4(_data[1].x, _data[1].y, _data[1].w, 0.0f),
-                         Vector4(_data.w.x, _data.w.y, _data.w.w, 0.0f));
+    real c22 = _Cofactor(Vector4(_data[x][x], _data[x][y], _data[x][w], 0.0f),
+                         Vector4(_data[y][x], _data[y][y], _data[y][w], 0.0f),
+                         Vector4(_data[w][x], _data[w][y], _data[w][w], 0.0f));
 
-    real c23 = _Cofactor(Vector4(_data.x.x, _data.x.y, _data.x.z, 0.0f),
-                         Vector4(_data[1].x, _data[1].y, _data[1].z, 0.0f),
-                         Vector4(_data.w.x, _data.w.y, _data.w.z, 0.0f));
+    real c23 = _Cofactor(Vector4(_data[x][x], _data[x][y], _data[x][z], 0.0f),
+                         Vector4(_data[y][x], _data[y][y], _data[y][z], 0.0f),
+                         Vector4(_data[w][x], _data[w][y], _data[w][z], 0.0f));
 
     Vector4 colz {c20, -c21, c22, -c23};
 
-    real c30 = _Cofactor(Vector4(_data.x.y, _data.x.z, _data.x.w, 0.0f),
-                         Vector4(_data[1].y, _data[1].z, _data[1].w, 0.0f),
-                         Vector4(_data.z.y, _data.z.z, _data.z.w, 0.0f));
+    real c30 = _Cofactor(Vector4(_data[x][y], _data[x][z], _data[x][w], 0.0f),
+                         Vector4(_data[y][y], _data[y][z], _data[y][w], 0.0f),
+                         Vector4(_data[z][y], _data[z][z], _data[z][w], 0.0f));
 
-    real c31 = _Cofactor(Vector4(_data.x.x, _data.x.z, _data.x.w, 0.0f),
-                         Vector4(_data[1].x, _data[1].z, _data[1].w, 0.0f),
-                         Vector4(_data.z.x, _data.z.z, _data.z.w, 0.0f));
+    real c31 = _Cofactor(Vector4(_data[x][x], _data[x][z], _data[x][w], 0.0f),
+                         Vector4(_data[y][x], _data[y][z], _data[y][w], 0.0f),
+                         Vector4(_data[z][x], _data[z][z], _data[z][w], 0.0f));
 
-    real c32 = _Cofactor(Vector4(_data.x.x, _data.x.y, _data.x.w, 0.0f),
-                         Vector4(_data[1].x, _data[1].y, _data[1].w, 0.0f),
-                         Vector4(_data.z.x, _data.z.y, _data.z.w, 0.0f));
+    real c32 = _Cofactor(Vector4(_data[x][x], _data[x][y], _data[x][w], 0.0f),
+                         Vector4(_data[y][x], _data[y][y], _data[y][w], 0.0f),
+                         Vector4(_data[z][x], _data[z][y], _data[z][w], 0.0f));
 
-    real c33 = _Cofactor(Vector4(_data.x.x, _data.x.y, _data.x.z, 0.0f),
-                         Vector4(_data[1].x, _data[1].y, _data[1].z, 0.0f),
-                         Vector4(_data.z.x, _data.z.y, _data.z.z, 0.0f));
+    real c33 = _Cofactor(Vector4(_data[x][x], _data[x][y], _data[x][z], 0.0f),
+                         Vector4(_data[y][x], _data[y][y], _data[y][z], 0.0f),
+                         Vector4(_data[z][x], _data[z][y], _data[z][z], 0.0f));
 
     Vector4 colw {-c30, c31, -c32, c33};
 
@@ -690,10 +680,10 @@ void Matrix4::Reset(real val)
 //==========================================================================================================================
 void Matrix4::Transpose(void)
 {
-    Vector4 newCol0 {_data[0].x, _data[1].x, _data[2].x, _data[3].x};
-    Vector4 newCol1 {_data[0].y, _data[1].y, _data[2].y, _data[3].y};
-    Vector4 newCol2 {_data[0].z, _data[1].z, _data[2].z, _data[3].z};
-    Vector4 newCol3 {_data[0].w, _data[1].w, _data[2].w, _data[3].w};
+    Vector4 newCol0 {_data[0][x], _data[1][x], _data[2][x], _data[3][x]};
+    Vector4 newCol1 {_data[0][y], _data[1][y], _data[2][y], _data[3][y]};
+    Vector4 newCol2 {_data[0][z], _data[1][z], _data[2][z], _data[3][z]};
+    Vector4 newCol3 {_data[0][w], _data[1][w], _data[2][w], _data[3][w]};
 
     _data[0] = newCol0;
     _data[1] = newCol1;
@@ -703,50 +693,50 @@ void Matrix4::Transpose(void)
 
 void Matrix4::ComponentMulti(const Matrix4& mat)
 {
-    _data[0].x *= mat[0].x;
-    _data[0].y *= mat[0].y;
-    _data[0].z *= mat[0].z;
-    _data[0].w *= mat[0].w;
+    _data[0][x] *= mat[0][x];
+    _data[0][y] *= mat[0][y];
+    _data[0][z] *= mat[0][z];
+    _data[0][w] *= mat[0][w];
 
-    _data[1].x *= mat[1].x;
-    _data[1].y *= mat[1].y;
-    _data[1].z *= mat[1].z;
-    _data[1].w *= mat[1].w;
+    _data[1][x] *= mat[1][x];
+    _data[1][y] *= mat[1][y];
+    _data[1][z] *= mat[1][z];
+    _data[1][w] *= mat[1][w];
 
-    _data[2].x *= mat[2].x;
-    _data[2].y *= mat[2].y;
-    _data[2].z *= mat[2].z;
-    _data[2].w *= mat[2].w;
+    _data[2][x] *= mat[2][x];
+    _data[2][y] *= mat[2][y];
+    _data[2][z] *= mat[2][z];
+    _data[2][w] *= mat[2][w];
 
-    _data[3].x *= mat[3].x;
-    _data[3].y *= mat[3].y;
-    _data[3].z *= mat[3].z;
-    _data[3].w *= mat[3].w;
+    _data[3][x] *= mat[3][x];
+    _data[3][y] *= mat[3][y];
+    _data[3][z] *= mat[3][z];
+    _data[3][w] *= mat[3][w];
 }
 
 Matrix4 Matrix4::Transform3x3(const Matrix4& mat) const
 {
     Vector4 xCol 
     {
-        _data[0].x * mat[0].x + _data[1].x * mat[0].y + _data[2].x * mat[0].z,
-        _data[0].y * mat[0].x + _data[1].y * mat[0].y + _data[2].y * mat[0].z,
-        _data[0].z * mat[0].x + _data[1].z * mat[0].y + _data[2].z * mat[0].z,
+        _data[0][x] * mat[0][x] + _data[1][x] * mat[0][y] + _data[2][x] * mat[0][z],
+        _data[0][y] * mat[0][x] + _data[1][y] * mat[0][y] + _data[2][y] * mat[0][z],
+        _data[0][z] * mat[0][x] + _data[1][z] * mat[0][y] + _data[2][z] * mat[0][z],
         0.0f
     };
 
     Vector4 yCol
     {
-        _data[0].x * mat[1].x + _data[1].x * mat[1].y + _data[2].x * mat[1].z,
-        _data[0].y * mat[1].x + _data[1].y * mat[1].y + _data[2].y * mat[1].z,
-        _data[0].z * mat[1].x + _data[1].z * mat[1].y + _data[2].z * mat[1].z,
+        _data[0][x] * mat[1][x] + _data[1][x] * mat[1][y] + _data[2][x] * mat[1][z],
+        _data[0][y] * mat[1][x] + _data[1][y] * mat[1][y] + _data[2][y] * mat[1][z],
+        _data[0][z] * mat[1][x] + _data[1][z] * mat[1][y] + _data[2][z] * mat[1][z],
         0.0f
     };
 
     Vector4 zCol
     {
-        _data[0].x * mat[2].x + _data[1].x * mat[2].y + _data[2].x * mat[2].z,
-        _data[0].y * mat[2].x + _data[1].y * mat[2].y + _data[2].y * mat[2].z,
-        _data[0].z * mat[2].x + _data[1].z * mat[2].y + _data[2].z * mat[2].z,
+        _data[0][x] * mat[2][x] + _data[1][x] * mat[2][y] + _data[2][x] * mat[2][z],
+        _data[0][y] * mat[2][x] + _data[1][y] * mat[2][y] + _data[2][y] * mat[2][z],
+        _data[0][z] * mat[2][x] + _data[1][z] * mat[2][y] + _data[2][z] * mat[2][z],
         0.0f
     };
 
@@ -757,10 +747,10 @@ Matrix4 Matrix4::Transform3x3(const Matrix4& mat) const
 
 Vector4 Matrix4::Transform3x3(const Vector4& vec) const
 {
-    return Vector4(_data[0].x * vec.x + _data[1].x * vec.y + _data[2].x * vec.z,
-                   _data[0].y * vec.x + _data[1].y * vec.y + _data[2].y * vec.z,
-                   _data[0].z * vec.x + _data[1].z + vec.y + _data[2].z * vec.z,
-                   _data[0].w * vec.x + _data[1].w + vec.y + _data[2].w + vec.z);
+    return Vector4(_data[0][x] * vec[x] + _data[1][x] * vec[y] + _data[2][x] * vec[z],
+                   _data[0][y] * vec[x] + _data[1][y] * vec[y] + _data[2][y] * vec[z],
+                   _data[0][z] * vec[x] + _data[1][z] + vec[y] + _data[2][z] * vec[z],
+                   _data[0][w] * vec[x] + _data[1][w] + vec[y] + _data[2][w] + vec[z]);
 }
 
 //==========================================================================================================================
@@ -944,25 +934,25 @@ void Matrix4::SetFPSView(const Vector4& cameraPos, real pitch, real yaw)
 //==========================================================================================================================
 Matrix4& Matrix4::operator=(const Matrix4& mat) 
 {
-    _data[0].x = mat[0].x;
-    _data[0].y = mat[0].y;
-    _data[0].z = mat[0].z;
-    _data[0].w = mat[0].w;
+    _data[0][x] = mat[0][x];
+    _data[0][y] = mat[0][y];
+    _data[0][z] = mat[0][z];
+    _data[0][w] = mat[0][w];
 
-    _data[1].x = mat[1].x;
-    _data[1].y = mat[1].y;
-    _data[1].z = mat[1].z;
-    _data[1].w = mat[1].w;
+    _data[1][x] = mat[1][x];
+    _data[1][y] = mat[1][y];
+    _data[1][z] = mat[1][z];
+    _data[1][w] = mat[1][w];
 
-    _data[2].x = mat[2].x;
-    _data[2].y = mat[2].y;
-    _data[2].z = mat[2].z;
-    _data[2].w = mat[2].w;
+    _data[2][x] = mat[2][x];
+    _data[2][y] = mat[2][y];
+    _data[2][z] = mat[2][z];
+    _data[2][w] = mat[2][w];
 
-    _data[3].x = mat[3].x;
-    _data[3].y = mat[3].y;
-    _data[3].z = mat[3].z;
-    _data[3].w = mat[3].w;
+    _data[3][x] = mat[3][x];
+    _data[3][y] = mat[3][y];
+    _data[3][z] = mat[3][z];
+    _data[3][w] = mat[3][w];
 
     return *this;
 }
@@ -971,35 +961,35 @@ Matrix4 Matrix4::operator*(const Matrix4& mat) const
 {
     Vector4 xCol 
     {
-        _data[0].x * mat[0].x + _data[1].x * mat[0].y + _data[2].x * mat[0].z + _data[3].x * mat[0].w,
-        _data[0].y * mat[0].x + _data[1].y * mat[0].y + _data[2].y * mat[0].z + _data[3].y * mat[0].w,
-        _data[0].z * mat[0].x + _data[1].z * mat[0].y + _data[2].z * mat[0].z + _data[3].z * mat[0].w,
-        _data[0].w * mat[0].x + _data[1].w * mat[0].y + _data[2].w * mat[0].z + _data[3].w * mat[0].w,
+        _data[0][x] * mat[0][x] + _data[1][x] * mat[0][y] + _data[2][x] * mat[0][z] + _data[3][x] * mat[0][w],
+        _data[0][y] * mat[0][x] + _data[1][y] * mat[0][y] + _data[2][y] * mat[0][z] + _data[3][y] * mat[0][w],
+        _data[0][z] * mat[0][x] + _data[1][z] * mat[0][y] + _data[2][z] * mat[0][z] + _data[3][z] * mat[0][w],
+        _data[0][w] * mat[0][x] + _data[1][w] * mat[0][y] + _data[2][w] * mat[0][z] + _data[3][w] * mat[0][w],
 
     };
 
     Vector4 yCol
     {
-        _data[0].x * mat[1].x + _data[1].x * mat[1].y + _data[2].x * mat[1].z + _data[3].x * mat[1].w,
-        _data[0].y * mat[1].x + _data[1].y * mat[1].y + _data[2].y * mat[1].z + _data[3].y * mat[1].w,
-        _data[0].z * mat[1].x + _data[1].z * mat[1].y + _data[2].z * mat[1].z + _data[3].z * mat[1].w,
-        _data[0].w * mat[1].x + _data[1].w * mat[1].y + _data[2].w * mat[1].z + _data[3].w * mat[1].w,
+        _data[0][x] * mat[1][x] + _data[1][x] * mat[1][y] + _data[2][x] * mat[1][z] + _data[3][x] * mat[1][w],
+        _data[0][y] * mat[1][x] + _data[1][y] * mat[1][y] + _data[2][y] * mat[1][z] + _data[3][y] * mat[1][w],
+        _data[0][z] * mat[1][x] + _data[1][z] * mat[1][y] + _data[2][z] * mat[1][z] + _data[3][z] * mat[1][w],
+        _data[0][w] * mat[1][x] + _data[1][w] * mat[1][y] + _data[2][w] * mat[1][z] + _data[3][w] * mat[1][w],
     };
 
     Vector4 zCol
     {
-        _data[0].x * mat[2].x + _data[1].x * mat[2].y + _data[2].x * mat[2].z + _data[3].x * mat[2].w,
-        _data[0].y * mat[2].x + _data[1].y * mat[2].y + _data[2].y * mat[2].z + _data[3].y * mat[2].w,
-        _data[0].z * mat[2].x + _data[1].z * mat[2].y + _data[2].z * mat[2].z + _data[3].z * mat[2].w,
-        _data[0].w * mat[2].x + _data[1].w * mat[2].y + _data[2].w * mat[2].z + _data[3].w * mat[2].w,
+        _data[0][x] * mat[2][x] + _data[1][x] * mat[2][y] + _data[2][x] * mat[2][z] + _data[3][x] * mat[2][w],
+        _data[0][y] * mat[2][x] + _data[1][y] * mat[2][y] + _data[2][y] * mat[2][z] + _data[3][y] * mat[2][w],
+        _data[0][z] * mat[2][x] + _data[1][z] * mat[2][y] + _data[2][z] * mat[2][z] + _data[3][z] * mat[2][w],
+        _data[0][w] * mat[2][x] + _data[1][w] * mat[2][y] + _data[2][w] * mat[2][z] + _data[3][w] * mat[2][w],
     };
 
     Vector4 wCol
     {
-        _data[0].x * mat[3].x + _data[1].x * mat[3].y + _data[2].x * mat[3].z + _data[3].x * mat[3].w,
-        _data[0].y * mat[3].x + _data[1].y * mat[3].y + _data[2].y * mat[3].z + _data[3].y * mat[3].w,
-        _data[0].z * mat[3].x + _data[1].z * mat[3].y + _data[2].z * mat[3].z + _data[3].z * mat[3].w,
-        _data[0].w * mat[3].x + _data[1].w * mat[3].y + _data[2].w * mat[3].z + _data[3].w * mat[3].w,
+        _data[0][x] * mat[3][x] + _data[1][x] * mat[3][y] + _data[2][x] * mat[3][z] + _data[3][x] * mat[3][w],
+        _data[0][y] * mat[3][x] + _data[1][y] * mat[3][y] + _data[2][y] * mat[3][z] + _data[3][y] * mat[3][w],
+        _data[0][z] * mat[3][x] + _data[1][z] * mat[3][y] + _data[2][z] * mat[3][z] + _data[3][z] * mat[3][w],
+        _data[0][w] * mat[3][x] + _data[1][w] * mat[3][y] + _data[2][w] * mat[3][z] + _data[3][w] * mat[3][w],
     };
 
     return Matrix4(xCol, yCol, zCol, wCol);
@@ -1007,62 +997,62 @@ Matrix4 Matrix4::operator*(const Matrix4& mat) const
 
 Vector3 Matrix4::operator*(const Vector3& vec) const
 {
-    return Vector3(_data[0].x * vec.x + _data[1].x * vec.y + _data[2].x * vec.z + _data[3].x,
-                   _data[0].y * vec.x + _data[1].y * vec.y + _data[2].y * vec.z + _data[3].y,
-                   _data[0].z * vec.x + _data[1].z + vec.y + _data[2].z * vec.z + _data[3].z);
+    return Vector3(_data[0][x] * vec[x] + _data[1][x] * vec[y] + _data[2][x] * vec[z] + _data[3][x],
+                   _data[0][y] * vec[x] + _data[1][y] * vec[y] + _data[2][y] * vec[z] + _data[3][y],
+                   _data[0][z] * vec[x] + _data[1][z] + vec[y] + _data[2][z] * vec[z] + _data[3][z]);
 }
 
 Vector4 Matrix4::operator*(const Vector4& vec) const
 {
-    return Vector4(_data[0].x * vec.x + _data[1].x * vec.y + _data[2].x * vec.z + _data[3].x * vec.w,
-                   _data[0].y * vec.x + _data[1].y * vec.y + _data[2].y * vec.z + _data[3].y * vec.w,
-                   _data[0].z * vec.x + _data[1].z + vec.y + _data[2].z * vec.z + _data[3].z * vec.w,
-                   _data[0].w * vec.x + _data[1].w + vec.y + _data[2].w + vec.z + _data[3].w * vec.w);
+    return Vector4(_data[0][x] * vec[x] + _data[1][x] * vec[y] + _data[2][x] * vec[z] + _data[3][x] * vec[w],
+                   _data[0][y] * vec[x] + _data[1][y] * vec[y] + _data[2][y] * vec[z] + _data[3][y] * vec[w],
+                   _data[0][z] * vec[x] + _data[1][z] + vec[y] + _data[2][z] * vec[z] + _data[3][z] * vec[w],
+                   _data[0][w] * vec[x] + _data[1][w] + vec[y] + _data[2][w] + vec[z] + _data[3][w] * vec[w]);
 }
 
 Point3 Matrix4::operator*(const Point3& point) const
 {
-    return Point3(_data[0].x * point.x + _data[1].x * point.y + _data[2].x * point.z + _data[3].x,
-                  _data[0].y * point.x + _data[1].y * point.y + _data[2].y * point.z + _data[3].y,
-                  _data[0].z * point.x + _data[1].z + point.y + _data[2].z * point.z + _data[3].z);
+    return Point3(_data[0][x] * point[x] + _data[1][x] * point[y] + _data[2][x] * point[z] + _data[3][x],
+                  _data[0][y] * point[x] + _data[1][y] * point[y] + _data[2][y] * point[z] + _data[3][y],
+                  _data[0][z] * point[x] + _data[1][z] + point[y] + _data[2][z] * point[z] + _data[3][z]);
 }
 
 Point4 Matrix4::operator*(const Point4& point) const
 {
-    return Point4(_data[0].x * point.x + _data[1].x * point.y + _data[2].x * point.z + _data[3].x * point.w,
-                  _data[0].y * point.x + _data[1].y * point.y + _data[2].y * point.z + _data[3].y * point.w,
-                  _data[0].z * point.x + _data[1].z + point.y + _data[2].z * point.z + _data[3].z * point.w,
-                  _data[0].w * point.x + _data[1].w + point.y + _data[2].w + point.z + _data[3].w * point.w);
+    return Point4(_data[0][x] * point[x] + _data[1][x] * point[y] + _data[2][x] * point[z] + _data[3][x] * point[w],
+                  _data[0][y] * point[x] + _data[1][y] * point[y] + _data[2][y] * point[z] + _data[3][y] * point[w],
+                  _data[0][z] * point[x] + _data[1][z] + point[y] + _data[2][z] * point[z] + _data[3][z] * point[w],
+                  _data[0][w] * point[x] + _data[1][w] + point[y] + _data[2][w] + point[z] + _data[3][w] * point[w]);
 }
 
 Matrix4& Matrix4::operator/=(real val)
 {
-    _data.x.x /= val;
-    _data.x.y /= val;
-    _data.x.z /= val;
-    _data.x.w /= val;
+    _data[x][x] /= val;
+    _data[x][y] /= val;
+    _data[x][z] /= val;
+    _data[x][w] /= val;
     
-    _data[1].x /= val;
-    _data[1].y /= val;
-    _data[1].z /= val;
-    _data[1].w /= val;
+    _data[y][x] /= val;
+    _data[y][y] /= val;
+    _data[y][z] /= val;
+    _data[y][w] /= val;
 
-    _data.z.x /= val;
-    _data.z.y /= val;
-    _data.z.z /= val;
-    _data.z.w /= val;
+    _data[z][x] /= val;
+    _data[z][y] /= val;
+    _data[z][z] /= val;
+    _data[z][w] /= val;
 
-    _data.w.x /= val;
-    _data.w.y /= val;
-    _data.w.z /= val;
-    _data.w.w /= val;
+    _data[w][x] /= val;
+    _data[w][y] /= val;
+    _data[w][z] /= val;
+    _data[w][w] /= val;
 
     return *this;
 }
 
 real Matrix4::_Cofactor(const Vector4& col1, const Vector4& col2, const Vector4& col3) const
 {
-    return col1.x * (col2.y * col3.z - col3.y * col2.z)
-         + col2.x * (col3.y * col1.z - col1.y * col3.z)
-         + col3.x * (col1.y * col2.z - col2.y * col1.z);
+    return col1[x] * (col2[y] * col3[z] - col3[y] * col2[z])
+         + col2[x] * (col3[y] * col1[z] - col1[y] * col3[z])
+         + col3[x] * (col1[y] * col2[z] - col2[y] * col1[z]);
 }
