@@ -64,7 +64,7 @@ namespace TempestMath
 
         ///	Copy Constructor. Calls Matrix4::[] to, which will copy the Vector4 from each colume of M into this Matrix.
         ///	\param M is the matrix to copy into this one.	
-        TEMPEST_API Matrix4(const Matrix4& M);
+        TEMPEST_API Matrix4(const Matrix4& otherMatrix);
 
 //==========================================================================================================================
 //
@@ -373,24 +373,6 @@ namespace TempestMath
 //Operator Overloads
 //
 //========================================================================================================================== 
-    ///	Used to access the ith column of the Matrix4.
-    ///	\param i is the index to return. Cannot be greater than 3. There are only 4 columns. 
-        inline const Vector4& operator[](int i) const
-        {
-            //could be a bug here...
-            //assert(i > 0 && i < 4);
-            return _data[i];
-        }
- 
-    ///	Used to access the ith column of the Matrix4. This version allows you to edit the values in the column.
-    ///	\param i is the index to return. Cannot be greater than 3. There are only 4 columns. 
-        inline Vector4& operator[](int i)
-        {
-            //could be a bug here...
-            //assert(i > 0 && i < 4);
-            return _data[i];
-        }
-
     ///	Assigns this matrix to be equal to the values of another.
     ///	\param mat is the matrix that is copied. 
         TEMPEST_API Matrix4& operator=(const Matrix4& mat);
@@ -419,6 +401,17 @@ namespace TempestMath
     ///	\param val is the value that this matrix is divided by. 
         TEMPEST_API Matrix4& operator/=(real val);
 
+//==========================================================================================================================
+//
+//Data
+//
+//==========================================================================================================================
+        //Vector4 _data[4];	///< The matrix itself, represented by 4 Vector4 in an array.
+        Vector4 column1;
+        Vector4 column2;
+        Vector4 column3;
+        Vector4 column4;
+
     private:
 //==========================================================================================================================
 //
@@ -432,12 +425,7 @@ namespace TempestMath
     ///	\param col3 is the fourth column of the sub matrix.
         real _Cofactor(const Vector4& col1, const Vector4& col2, const Vector4& col3) const;
 
-//==========================================================================================================================
-//
-//Data
-//
-//==========================================================================================================================
-        Vector4 _data[4];	///< The matrix itself, represented by 4 Vector4 in an array.
+
     };
     typedef shared_ptr<Matrix4> p_Matrix4;
 }//End namespace

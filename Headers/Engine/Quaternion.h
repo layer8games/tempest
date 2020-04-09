@@ -48,32 +48,10 @@ namespace TempestMath
 //
 //==========================================================================================================================
 //==========================================================================================================================
-//Accessors
-//==========================================================================================================================		
-        ///	Returns the pointer to the array of elements. 
-        inline const real* GetElems(void) const
-        {
-            return _data;
-        }
-//==========================================================================================================================
 //
 //Operators
 //
 //==========================================================================================================================
-        ///	Allows you to index into the Quaternion to read the value.
-        ///	\param i is the index you wish to read. 0 = x, 1 = y, 2 = z, 3 = w.
-        inline const F32& operator[](int i) const
-        {
-            return _data[i];
-        }
-
-        ///	Allows you to index into the Quaternion to change the value.
-        ///	\param i is the index you wish to change. 0 = x, 1 = y, 2 = z, 3 = w.
-        inline F32& operator[](int i)
-        {
-            return _data[i];
-        }
-
         ///	Scalar division. Performs a component wise division
         ///	\param d is the value that all elements of the new Quaternion will be divided by. 
         TEMPEST_API Quaternion operator/(real d);
@@ -150,8 +128,15 @@ namespace TempestMath
         /// \param roll
         TEMPEST_API void AddEuler(real yaw, real pitch, real roll);
         
-    private:
-        real _data[4]; ///< Array that stores the values for each element. Order = i, j, k, r. These are called x, y, z, and w for convience. 
+//==========================================================================================================================
+//
+//Data
+//
+//==========================================================================================================================
+        real w;
+        real x;
+        real y;
+        real z;
     };//end Class
     typedef shared_ptr<Quaternion> p_Quaternion;
 }//end Namespace

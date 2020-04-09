@@ -8,45 +8,54 @@ using namespace TempestMath;
 //
 //==========================================================================================================================
 Matrix4::Matrix4(void)
-:
-_data{Vector4(1.0f, 0.0f, 0.0f, 0.0f),
-      Vector4(0.0f, 1.0f, 0.0f, 0.0f),
-      Vector4(0.0f, 0.0f, 1.0f, 0.0f),
-      Vector4(0.0f, 0.0f, 0.0f, 1.0f)}
+    :
+    column1(1.0f, 0.0f, 0.0f, 0.0f),
+    column2(0.0f, 1.0f, 0.0f, 0.0f),
+    column3(0.0f, 0.0f, 1.0f, 0.0f),
+    column4(0.0f, 0.0f, 0.0f, 1.0f)
 {  }
 
 Matrix4::Matrix4(const Vector4& x, const Vector4& y, const Vector4& z)
-:
-_data{x, y, z, Vector4(0.0f, 0.0f, 0.0f, 1.0f)}
+    :
+    column1(x),
+    column2(y),
+    column3(z), 
+    column4(0.0f, 0.0f, 0.0f, 1.0f)
 {  }
 
 Matrix4::Matrix4(const Vector4& x, const Vector4& y, const Vector4& z, const Vector4& w)
-:
-_data{x, y, z, w}
+    :
+    column1(x), 
+    column2(y),
+    column3(z), 
+    column4(w)
 {  }
 
 Matrix4::Matrix4(const real val)
-:
-_data{Vector4(val, 0.0f, 0.0f, 0.0f),
-      Vector4(0.0f, val, 0.0f, 0.0f),
-      Vector4(0.0f, 0.0f, val, 0.0f),
-      Vector4(0.0f, 0.0f, 0.0f, 1.0f)}
+    :
+    column1(val, 0.0f, 0.0f, 0.0f),
+    column2(0.0f, val, 0.0f, 0.0f),
+    column3(0.0f, 0.0f, val, 0.0f),
+    column4(0.0f, 0.0f, 0.0f, 1.0f)
 {  }
 
 Matrix4::Matrix4( real m00, real m01, real m02, real m03,
                   real m10, real m11, real m12, real m13,
                   real m20, real m21, real m22, real m23,
                   real m30, real m31, real m32, real m33)
-:
-_data{Vector4(m00, m01, m02, m03),
-      Vector4(m10, m11, m12, m13),
-      Vector4(m20, m21, m22, m23),
-      Vector4(m30, m31, m32, m33)}
+    :
+    column1(m00, m01, m02, m03),
+    column2(m10, m11, m12, m13),
+    column3(m20, m21, m22, m23),
+    column4(m30, m31, m32, m33)
 {  }
 
-Matrix4::Matrix4(const Matrix4& M)
-:
-_data{M[0], M[1], M[2], M[3]}
+Matrix4::Matrix4(const Matrix4& otherMatrix)
+    :
+    column1(otherMatrix.column1),
+    column2(otherMatrix.column2),
+    column3(otherMatrix.column3),
+    column4(otherMatrix.column4)
 {  }
 
 //==========================================================================================================================
@@ -58,22 +67,22 @@ const std::vector<real> Matrix4::GetElems(void) const
 {
     std::vector<real> elems;
     
-    elems.push_back(_data[0][x]);
-    elems.push_back(_data[0][y]);
-    elems.push_back(_data[0][z]);
-    elems.push_back(_data[0][w]);
-    elems.push_back(_data[1][x]);
-    elems.push_back(_data[1][y]);
-    elems.push_back(_data[1][z]);
-    elems.push_back(_data[1][w]);
-    elems.push_back(_data[2][x]);
-    elems.push_back(_data[2][y]);
-    elems.push_back(_data[2][z]);
-    elems.push_back(_data[2][w]);
-    elems.push_back(_data[3][x]);
-    elems.push_back(_data[3][y]);
-    elems.push_back(_data[3][z]);
-    elems.push_back(_data[3][w]);
+    elems.push_back(column1.x);
+    elems.push_back(column1.y);
+    elems.push_back(column1.z);
+    elems.push_back(column1.w);
+    elems.push_back(column2.x);
+    elems.push_back(column2.y);
+    elems.push_back(column2.z);
+    elems.push_back(column2.w);
+    elems.push_back(column3.x);
+    elems.push_back(column3.y);
+    elems.push_back(column3.z);
+    elems.push_back(column3.w);
+    elems.push_back(column4.x);
+    elems.push_back(column4.y);
+    elems.push_back(column4.z);
+    elems.push_back(column4.w);
 
     return elems;
 }
@@ -91,15 +100,15 @@ void Matrix4::MakeOrthographic(real left, real right, real bottom, real top, rea
     assert(farPlane - nearPlane != 0.0f);
 
     //Diagnal
-    _data[0][x] = 2.0f / (right - left);
-    _data[1][y] = 2.0f / (top - bottom);
-    _data[2][z] = -2.0f / (farPlane - nearPlane);
-    _data[3][w] = 1.0f;
+    column1.x = 2.0f / (right - left);
+    column2.y = 2.0f / (top - bottom);
+    column3.z = -2.0f / (farPlane - nearPlane);
+    column4.w = 1.0f;
 
     //Transform "Vector4"
-    _data[3][x] = -(right + left) / (right - left);
-    _data[3][y] = -(top + bottom) / (top - bottom);
-    _data[3][z] = -(farPlane + nearPlane) / (farPlane - nearPlane);
+    column4.x = -(right + left) / (right - left);
+    column4.y = -(top + bottom) / (top - bottom);
+    column4.z = -(farPlane + nearPlane) / (farPlane - nearPlane);
 }
 
 void Matrix4::MakePerspective(real fieldOfView, real aspectRatio, real nearPlane, real farPlane)
@@ -111,11 +120,11 @@ void Matrix4::MakePerspective(real fieldOfView, real aspectRatio, real nearPlane
     //Reset Matrix4 
     MakeIdentity();
 
-    _data[0][x] = S / aspectRatio;
-    _data[1][y] = S;
-    _data[2][z] = (nearPlane + farPlane) / (nearPlane - farPlane);
-    _data[2][w] = -1.0f;
-    _data[3][z] = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
+    column1.x = S / aspectRatio;
+    column2.y = S;
+    column3.z = (nearPlane + farPlane) / (nearPlane - farPlane);
+    column3.w = -1.0f;
+    column4.z = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
 }
 
 //==========================================================================================================================
@@ -125,8 +134,8 @@ Matrix4 Matrix4::Translate(real xVal, real yVal)
 {
     Matrix4 mat{1.0f};
 
-    mat[3][x] = xVal;
-    mat[3][y] = yVal;
+    mat.column4.x = xVal;
+    mat.column4.y = yVal;
 
     return mat;
 }
@@ -135,9 +144,9 @@ Matrix4 Matrix4::Translate(real xVal, real yVal, real zVal)
 {
     Matrix4 mat{1.0f};
 
-    mat[3][x] = xVal;
-    mat[3][y] = yVal;
-    mat[3][z] = zVal;
+    mat.column4.x = xVal;
+    mat.column4.y = yVal;
+    mat.column4.z = zVal;
 
     return mat;	
 }
@@ -146,9 +155,9 @@ Matrix4 Matrix4::Translate(const Vector4& vec)
 {
     Matrix4 mat{1.0f};
 
-    mat[3][x] = vec[x];
-    mat[3][y] = vec[y];
-    mat[3][z] = vec[z];
+    mat.column4.x = vec.x;
+    mat.column4.y = vec.y;
+    mat.column4.z = vec.z;
 
     return mat;	
 }
@@ -157,49 +166,49 @@ void Matrix4::SetTranslate(real xVal, real yVal)
 {
     MakeIdentity();
 
-    _data[3][x] = xVal;
-    _data[3][y] = yVal;
+    column4.x = xVal;
+    column4.y = yVal;
 }
 
 void Matrix4::SetTranslate(real xVal, real yVal, real zVal)
 {
     MakeIdentity();			
 
-    _data[3][x] = xVal;
-    _data[3][y] = yVal;
-    _data[3][z] = zVal;
+    column4.x = xVal;
+    column4.y = yVal;
+    column4.z = zVal;
 }
 
 void Matrix4::SetTranslate(const Vector4& vec)
 {
     MakeIdentity(); 
 
-    _data[3][x] = vec[x];
-    _data[3][y] = vec[y];
-    _data[3][z] = vec[z];
+    column4.x = vec.x;
+    column4.y = vec.y;
+    column4.z = vec.z;
 }
 
 Vector4 Matrix4::TransformInverse(const Vector4& vec) const
 {
     Vector4 tmp = vec;
 
-    tmp[x] -= _data[3][x];
-    tmp[y] -= _data[3][y];
-    tmp[z] -= _data[3][z];
+    tmp.x -= column4.x;
+    tmp.y -= column4.y;
+    tmp.z -= column4.z;
 
     return Vector4
     {
-        tmp[x] * _data[0][x] +
-        tmp[y] * _data[0][y] + 
-        tmp[z] * _data[0][z],
+        tmp.x * column1.x +
+        tmp.y * column1.y + 
+        tmp.z * column1.z,
 
-        tmp[x] * _data[1][x] + 
-        tmp[y] * _data[1][y] + 
-        tmp[z] * _data[1][z],
+        tmp.x * column2.x + 
+        tmp.y * column2.y + 
+        tmp.z * column2.z,
 
-        tmp[x] * _data[2][x] +
-        tmp[y] * _data[2][y] + 
-        tmp[z] * _data[2][z], 
+        tmp.x * column3.x +
+        tmp.y * column3.y + 
+        tmp.z * column3.z, 
         
         0.0f
     };
@@ -209,23 +218,23 @@ Point4 Matrix4::TransformInverse(const Point4& vec) const
 {
     Point4 tmp = vec;
 
-    tmp[x] -= _data[3][x];
-    tmp[y] -= _data[3][y];
-    tmp[z] -= _data[3][z];
+    tmp.x -= column4.x;
+    tmp.y -= column4.y;
+    tmp.z -= column4.z;
 
     return Point4
     {
-        tmp[x] * _data[0][x] +
-        tmp[y] * _data[0][y] +
-        tmp[z] * _data[0][z],
+        tmp.x * column1.x +
+        tmp.y * column1.y +
+        tmp.z * column1.z,
 
-        tmp[x] * _data[1][x] +
-        tmp[y] * _data[1][y] +
-        tmp[z] * _data[1][z],
+        tmp.x * column2.x +
+        tmp.y * column2.y +
+        tmp.z * column2.z,
 
-        tmp[x] * _data[2][x] +
-        tmp[y] * _data[2][y] +
-        tmp[z] * _data[2][z],
+        tmp.x * column3.x +
+        tmp.y * column3.y +
+        tmp.z * column3.z,
         
         1.0f
     };
@@ -238,8 +247,8 @@ Matrix4 Matrix4::Scale(real xVal, real yVal)
 {
     Matrix4 mat{1.0f};
 
-    mat[0][x] = xVal;
-    mat[1][y] = yVal;
+    mat.column1.x = xVal;
+    mat.column2.y = yVal;
 
     return mat;
 }
@@ -248,9 +257,9 @@ Matrix4 Matrix4::Scale(real xVal, real yVal, real zVal)
 {
     Matrix4 mat{1.0f};
 
-    mat[0][x] = xVal;
-    mat[1][y] = yVal;
-    mat[2][z] = zVal;
+    mat.column1.x = xVal;
+    mat.column2.y = yVal;
+    mat.column3.z = zVal;
 
     return mat;
 }
@@ -259,9 +268,9 @@ Matrix4 Matrix4::Scale(const Vector4& vec)
 {
     Matrix4 mat{1.0f};
 
-    mat[0][x] = vec[x];
-    mat[1][y] = vec[y];
-    mat[2][z] = vec[z];
+    mat.column1.x = vec.x;
+    mat.column2.y = vec.y;
+    mat.column3.z = vec.z;
 
     return mat;
 }
@@ -270,9 +279,9 @@ Matrix4 Matrix4::Scale(const Vector3& vec)
 {
     Matrix4 mat{1.0f};
 
-    mat[0][x] = vec[x];
-    mat[1][y] = vec[y];
-    mat[2][z] = vec[z];
+    mat.column1.x = vec.x;
+    mat.column2.y = vec.y;
+    mat.column3.z = vec.z;
 
     return mat;
 }
@@ -281,9 +290,9 @@ Matrix4 Matrix4::Scale(const Vector2& vec)
 {
     Matrix4 mat{1.0f};
 
-    mat[0][x] = vec[x];
-    mat[1][y] = vec[y];
-    mat[2][z] = 0.0f;
+    mat.column1.x = vec.x;
+    mat.column2.y = vec.y;
+    mat.column3.z = 0.0f;
 
     return mat;
 }
@@ -292,43 +301,43 @@ void Matrix4::SetScale(real xVal, real yVal)
 {
     MakeIdentity();
 
-    _data[0][x] = xVal;
-    _data[1][y] = yVal;
+    column1.x = xVal;
+    column2.y = yVal;
 }
 
 void Matrix4::SetScale(real xVal, real yVal, real zVal)
 {
     MakeIdentity();
 
-    _data[0][x] = xVal;
-    _data[1][y] = yVal;
-    _data[2][z] = zVal;
+    column1.x = xVal;
+    column2.y = yVal;
+    column3.z = zVal;
 }
 
 void Matrix4::SetScale(const Vector2& vec)
 {
     MakeIdentity();
 
-    _data[0][x] = vec[x];
-    _data[1][y] = vec[y];
+    column1.x = vec.x;
+    column2.y = vec.y;
 }
 
 void Matrix4::SetScale(const Vector3& vec)
 {
     MakeIdentity();
 
-    _data[0][x] = vec[x];
-    _data[1][y] = vec[y];
-    _data[2][z] = vec[z];
+    column1.x = vec.x;
+    column2.y = vec.y;
+    column3.z = vec.z;
 }
 
 void Matrix4::SetScale(const Vector4& vec)
 {
     MakeIdentity();
 
-    _data[0][x] = vec[x];
-    _data[1][y] = vec[y];
-    _data[2][z] = vec[z];
+    column1.x = vec.x;
+    column2.y = vec.y;
+    column3.z = vec.z;
 }
 
 //==========================================================================================================================
@@ -339,10 +348,10 @@ Matrix4 Matrix4::RotateX(real val)
     val = RADIAN(val);
     Matrix4 mat{1.0f};
 
-    mat[1][y] = real_cos(val);
-    mat[1][z] = -real_sin(val);
-    mat[2][y] = real_sin(val);
-    mat[2][z] = real_cos(val);
+    mat.column2.y = real_cos(val);
+    mat.column2.z = -real_sin(val);
+    mat.column3.y = real_sin(val);
+    mat.column3.z = real_cos(val);
 
     return mat;
 }
@@ -352,10 +361,10 @@ Matrix4 Matrix4::RotateY(real val)
     val = RADIAN(val);
     Matrix4 mat{1.0f};
 
-    mat[0][x] = real_cos(val);
-    mat[0][z] = real_sin(val);
-    mat[2][x] = -real_sin(val);
-    mat[2][z] = real_cos(val);
+    mat.column1.x = real_cos(val);
+    mat.column1.z = real_sin(val);
+    mat.column3.x = -real_sin(val);
+    mat.column3.z = real_cos(val);
 
     return mat;
 }
@@ -365,10 +374,10 @@ Matrix4 Matrix4::RotateZ(real val)
     val = RADIAN(val);
     Matrix4 mat{1.0f};
 
-    mat[0][x] = real_cos(val);
-    mat[0][y] = -real_sin(val);
-    mat[1][x] = real_sin(val);
-    mat[1][y] = real_cos(val);
+    mat.column1.x = real_cos(val);
+    mat.column1.y = -real_sin(val);
+    mat.column2.x = real_sin(val);
+    mat.column2.y = real_cos(val);
 
     return mat;
 }
@@ -379,20 +388,20 @@ void Matrix4::SetRotateX(real val)
 
     MakeIdentity();
 
-    _data[1][y] = real_cos(val);
-    _data[1][z] = -real_sin(val);
-    _data[2][y] = real_sin(val);
-    _data[2][z] = real_cos(val);
+    column2.y = real_cos(val);
+    column2.z = -real_sin(val);
+    column3.y = real_sin(val);
+    column3.z = real_cos(val);
 }
 
 void Matrix4::AddRotateX(real val)
 {
     val = RADIAN(val);
 
-    _data[1][y] += real_cos(val);
-    _data[1][z] += -real_sin(val);
-    _data[2][y] += real_sin(val);
-    _data[2][z] += real_cos(val);
+    column2.y += real_cos(val);
+    column2.z += -real_sin(val);
+    column3.y += real_sin(val);
+    column3.z += real_cos(val);
 }
 
 void Matrix4::SetRotateY(real val)
@@ -401,20 +410,20 @@ void Matrix4::SetRotateY(real val)
 
     MakeIdentity();
 
-    _data[0][x] = real_cos(val);
-    _data[0][z] = real_sin(val);
-    _data[2][x] = -real_sin(val);
-    _data[2][z] = real_cos(val);
+    column1.x = real_cos(val);
+    column1.z = real_sin(val);
+    column3.x = -real_sin(val);
+    column3.z = real_cos(val);
 }
 
 void Matrix4::AddRotateY(real val)
 {
     val = RADIAN(val);
 
-    _data[0][x] += real_cos(val);
-    _data[0][y] += real_sin(val);
-    _data[2][x] += -real_sin(val);
-    _data[2][y] += real_cos(val);	
+    column1.x += real_cos(val);
+    column1.y += real_sin(val);
+    column3.x += -real_sin(val);
+    column3.y += real_cos(val);	
 }
 
 void Matrix4::SetRotateZ(real val)
@@ -423,20 +432,20 @@ void Matrix4::SetRotateZ(real val)
 
     MakeIdentity();
 
-    _data[0][x] = real_cos(val);
-    _data[0][y] = -real_sin(val);
-    _data[1][x] = real_sin(val);
-    _data[1][y] = real_cos(val);
+    column1.x = real_cos(val);
+    column1.y = -real_sin(val);
+    column2.x = real_sin(val);
+    column2.y = real_cos(val);
 }
 
 void Matrix4::AddRotateZ(real val)
 {
     val = RADIAN(val);
 
-    _data[0][x] += real_cos(val);
-    _data[0][y] += -real_sin(val);
-    _data[1][x] += real_sin(val);
-    _data[1][y] += real_cos(val);
+    column1.x += real_cos(val);
+    column1.y += -real_sin(val);
+    column2.x += real_sin(val);
+    column2.y += real_cos(val);
 }
 
 void Matrix4::SetRotate(real xVal, real yVal, real zVal)
@@ -447,15 +456,15 @@ void Matrix4::SetRotate(real xVal, real yVal, real zVal)
 
     MakeIdentity();
 
-    _data[0][x] = real_cos(yVal) * real_cos(zVal);
-    _data[0][y] = -real_cos(yVal) * real_sin(zVal);
-    _data[0][z] = real_sin(yVal);
-    _data[1][x] = real_cos(xVal) * real_sin(zVal) + real_sin(xVal) * real_sin(yVal) * real_cos(zVal);
-    _data[1][y] = real_cos(xVal) * real_cos(zVal) - real_sin(xVal) * real_sin(yVal) * real_sin(zVal);
-    _data[1][z] = -real_sin(xVal) * real_cos(yVal);
-    _data[2][x] = real_sin(xVal) * real_sin(zVal) - real_cos(xVal) * real_sin(yVal) * real_cos(zVal);
-    _data[2][y] = real_sin(xVal) * real_cos(zVal) + real_cos(xVal) * real_sin(yVal) * real_sin(zVal);
-    _data[2][z] = real_cos(xVal) * real_cos(yVal);
+    column1.x = real_cos(yVal) * real_cos(zVal);
+    column1.y = -real_cos(yVal) * real_sin(zVal);
+    column1.z = real_sin(yVal);
+    column2.x = real_cos(xVal) * real_sin(zVal) + real_sin(xVal) * real_sin(yVal) * real_cos(zVal);
+    column2.y = real_cos(xVal) * real_cos(zVal) - real_sin(xVal) * real_sin(yVal) * real_sin(zVal);
+    column2.z = -real_sin(xVal) * real_cos(yVal);
+    column3.x = real_sin(xVal) * real_sin(zVal) - real_cos(xVal) * real_sin(yVal) * real_cos(zVal);
+    column3.y = real_sin(xVal) * real_cos(zVal) + real_cos(xVal) * real_sin(yVal) * real_sin(zVal);
+    column3.z = real_cos(xVal) * real_cos(yVal);
 }
 
 void Matrix4::AddRotation(real xVal, real yVal, real zVal)
@@ -464,71 +473,71 @@ void Matrix4::AddRotation(real xVal, real yVal, real zVal)
     yVal = RADIAN(yVal);
     zVal = RADIAN(zVal);
 
-    _data[0][x] += real_cos(yVal) * real_cos(zVal);
-    _data[0][y] += -real_cos(yVal) * real_sin(zVal);
-    _data[0][z] += real_sin(yVal);
-    _data[1][x] += real_cos(xVal) * real_sin(zVal) + real_sin(xVal) * real_sin(yVal) * real_cos(zVal);
-    _data[1][y] += real_cos(xVal) * real_cos(zVal) - real_sin(xVal) * real_sin(yVal) * real_sin(zVal);
-    _data[1][z] += -real_sin(xVal) * real_cos(yVal);
-    _data[2][x] += real_sin(xVal) * real_sin(zVal) - real_cos(xVal) * real_sin(yVal) * real_cos(zVal);
-    _data[2][y] += real_sin(xVal) * real_cos(zVal) + real_cos(xVal) * real_sin(yVal) * real_sin(zVal);
-    _data[2][z] += real_cos(xVal) * real_cos(yVal);
+    column1.x += real_cos(yVal) * real_cos(zVal);
+    column1.y += -real_cos(yVal) * real_sin(zVal);
+    column1.z += real_sin(yVal);
+    column2.x += real_cos(xVal) * real_sin(zVal) + real_sin(xVal) * real_sin(yVal) * real_cos(zVal);
+    column2.y += real_cos(xVal) * real_cos(zVal) - real_sin(xVal) * real_sin(yVal) * real_sin(zVal);
+    column2.z += -real_sin(xVal) * real_cos(yVal);
+    column3.x += real_sin(xVal) * real_sin(zVal) - real_cos(xVal) * real_sin(yVal) * real_cos(zVal);
+    column3.y += real_sin(xVal) * real_cos(zVal) + real_cos(xVal) * real_sin(yVal) * real_sin(zVal);
+    column3.z += real_cos(xVal) * real_cos(yVal);
 }
 
 void Matrix4::SetOrientation(const Quaternion& q)
 {
-    real q_w = q[0];
-    real q_x = q[1];
-    real q_y = q[2];
-    real q_z = q[3];
+    real q_w = q.x;
+    real q_x = q.y;
+    real q_y = q.z;
+    real q_z = q.w;
 
-    _data[0][x] = 1.0f - ((2.0f * q_y * q_y) + (2.0f * q_z * q_z));
-    _data[0][y] = 2.0f * q_x * q_y - 2.0f * q_z * q_w;
-    _data[0][z] = 2.0f * q_x * q_z + 2.0f * q_y * q_w;
+    column1.x = 1.0f - ((2.0f * q_y * q_y) + (2.0f * q_z * q_z));
+    column1.y = 2.0f * q_x * q_y - 2.0f * q_z * q_w;
+    column1.z = 2.0f * q_x * q_z + 2.0f * q_y * q_w;
 
-    _data[1][x] = 2.0f * q_w * q_y + 2.0f * q_z * q_w;
-    _data[1][y] = 1.0f - ((2.0f * q_x * q_x) + (2.0f * q_z * q_z));
-    _data[1][z] = 2.0f * q_y * q_z - 2.0f * q_x * q_w;
+    column2.x = 2.0f * q_w * q_y + 2.0f * q_z * q_w;
+    column2.y = 1.0f - ((2.0f * q_x * q_x) + (2.0f * q_z * q_z));
+    column2.z = 2.0f * q_y * q_z - 2.0f * q_x * q_w;
 
-    _data[2][x] = 2.0f * q_x * q_z - 2.0f * q_y * q_w;
-    _data[2][y] = 2.0f * q_y * q_z + 2.0f * q_x * q_w;
-    _data[2][z] = 1 - ((2.0f * q_x * q_x) + (2.0f * q_y * q_y));
+    column3.x = 2.0f * q_x * q_z - 2.0f * q_y * q_w;
+    column3.y = 2.0f * q_y * q_z + 2.0f * q_x * q_w;
+    column3.z = 1 - ((2.0f * q_x * q_x) + (2.0f * q_y * q_y));
 }
 
 void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Vector4& v)
 {
     SetOrientation(q);
     
-    _data[3][x] = v[x];
-    _data[3][y] = v[y];
-    _data[3][z] = v[z];
+    column4.x = v.x;
+    column4.y = v.y;
+    column4.z = v.z;
 }
 
 void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Point2& p)
 {
     SetOrientation(q);
     
-    _data[3][x] = p[x];
-    _data[3][y] = p[y];
-    _data[3][z] = 0.0f;
+    column4.x = p.x;
+    column4.y = p.y;
+    column4.z = 0.0f;
 }
 
 void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Point3& p)
 {
     SetOrientation(q);
     
-    _data[3][x] = p[x];
-    _data[3][y] = p[y];
-    _data[3][z] = p[z];
+    column4.x = p.x;
+    column4.y = p.y;
+    column4.z = p.z;
 }
 
 void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Point4& p)
 {
     SetOrientation(q);
     
-    _data[3][x] = p[x];
-    _data[3][y] = p[y];
-    _data[3][z] = p[z];
+    column4.x = p.x;
+    column4.y = p.y;
+    column4.z = p.z;
 }
 
 //==========================================================================================================================
@@ -541,75 +550,75 @@ void Matrix4::SetInverse(void)
 
     if(det == 0.0f) return;
 
-    real c00 = _Cofactor(Vector4(_data[y][y], _data[y][z], _data[y][w], 0.0f),
-                         Vector4(_data[z][y], _data[z][z], _data[z][w], 0.0f),
-                         Vector4(_data[w][y], _data[w][z], _data[w][w], 0.0f));
+    real c00 = _Cofactor(Vector4(column2.y, column2.z, column2.w, 0.0f),
+                         Vector4(column3.y, column3.z, column3.w, 0.0f),
+                         Vector4(column4.y, column4.z, column4.w, 0.0f));
 
-    real c01 = _Cofactor(Vector4(_data[y][x], _data[y][z], _data[y][w], 0.0f),
-                         Vector4(_data[z][x], _data[z][z], _data[z][w], 0.0f),
-                         Vector4(_data[w][x], _data[w][z], _data[w][w], 0.0f));
+    real c01 = _Cofactor(Vector4(column2.x, column2.z, column2.w, 0.0f),
+                         Vector4(column3.x, column3.z, column3.w, 0.0f),
+                         Vector4(column4.x, column4.z, column4.w, 0.0f));
 
-    real c02 = _Cofactor(Vector4(_data[y][x], _data[y][y], _data[y][w], 0.0f),
-                         Vector4(_data[z][x], _data[z][y], _data[z][w], 0.0f),
-                         Vector4(_data[w][x], _data[w][y], _data[w][w], 0.0f));
+    real c02 = _Cofactor(Vector4(column2.x, column2.y, column2.w, 0.0f),
+                         Vector4(column3.x, column3.y, column3.w, 0.0f),
+                         Vector4(column4.x, column4.y, column4.w, 0.0f));
 
-    real c03 = _Cofactor(Vector4(_data[y][x], _data[y][y], _data[y][z], 0.0f),
-                         Vector4(_data[z][x], _data[z][y], _data[z][z], 0.0f),
-                         Vector4(_data[w][x], _data[w][y], _data[w][z], 0.0f));
+    real c03 = _Cofactor(Vector4(column2.x, column2.y, column2.z, 0.0f),
+                         Vector4(column3.x, column3.y, column3.z, 0.0f),
+                         Vector4(column4.x, column4.y, column4.z, 0.0f));
 
     Vector4 colx {c00, -c01, c02, -c03};
 
-    real c10 = _Cofactor(Vector4(_data[x][y], _data[x][z], _data[x][w], 0.0f),
-                         Vector4(_data[z][y], _data[z][z], _data[z][w], 0.0f),
-                         Vector4(_data[w][y], _data[w][z], _data[w][w], 0.0f));
+    real c10 = _Cofactor(Vector4(column1.y, column1.z, column1.w, 0.0f),
+                         Vector4(column3.y, column3.z, column3.w, 0.0f),
+                         Vector4(column4.y, column4.z, column4.w, 0.0f));
 
-    real c11 = _Cofactor(Vector4(_data[x][x], _data[x][z], _data[x][w], 0.0f),
-                         Vector4(_data[z][x], _data[z][z], _data[z][w], 0.0f),
-                         Vector4(_data[w][x], _data[w][z], _data[w][w], 0.0f));
+    real c11 = _Cofactor(Vector4(column1.x, column1.z, column1.w, 0.0f),
+                         Vector4(column3.x, column3.z, column3.w, 0.0f),
+                         Vector4(column4.x, column4.z, column4.w, 0.0f));
 
-    real c12 = _Cofactor(Vector4(_data[x][x], _data[x][y], _data[x][w], 0.0f),
-                         Vector4(_data[z][x], _data[z][y], _data[z][w], 0.0f),
-                         Vector4(_data[w][x], _data[w][y], _data[w][w], 0.0f));
+    real c12 = _Cofactor(Vector4(column1.x, column1.y, column1.w, 0.0f),
+                         Vector4(column3.x, column3.y, column3.w, 0.0f),
+                         Vector4(column4.x, column4.y, column4.w, 0.0f));
 
-    real c13 = _Cofactor(Vector4(_data[x][x], _data[x][y], _data[x][z], 0.0f),
-                         Vector4(_data[z][x], _data[z][y], _data[z][z], 0.0f),
-                         Vector4(_data[w][x], _data[w][y], _data[w][z], 0.0f));
+    real c13 = _Cofactor(Vector4(column1.x, column1.y, column1.z, 0.0f),
+                         Vector4(column3.x, column3.y, column3.z, 0.0f),
+                         Vector4(column4.x, column4.y, column4.z, 0.0f));
 
     Vector4 coly {-c10, c11, -c12, c13};
 
-    real c20 = _Cofactor(Vector4(_data[x][y], _data[x][z], _data[x][w], 0.0f),
-                         Vector4(_data[y][y], _data[y][z], _data[y][w], 0.0f),
-                         Vector4(_data[w][y], _data[w][z], _data[w][w], 0.0f));
+    real c20 = _Cofactor(Vector4(column1.y, column1.z, column1.w, 0.0f),
+                         Vector4(column2.y, column2.z, column2.w, 0.0f),
+                         Vector4(column4.y, column4.z, column4.w, 0.0f));
 
-    real c21 = _Cofactor(Vector4(_data[x][x], _data[x][z], _data[x][w], 0.0f),
-                         Vector4(_data[y][x], _data[y][z], _data[y][w], 0.0f),
-                         Vector4(_data[w][x], _data[w][z], _data[w][w], 0.0f));
+    real c21 = _Cofactor(Vector4(column1.x, column1.z, column1.w, 0.0f),
+                         Vector4(column2.x, column2.z, column2.w, 0.0f),
+                         Vector4(column4.x, column4.z, column4.w, 0.0f));
 
-    real c22 = _Cofactor(Vector4(_data[x][x], _data[x][y], _data[x][w], 0.0f),
-                         Vector4(_data[y][x], _data[y][y], _data[y][w], 0.0f),
-                         Vector4(_data[w][x], _data[w][y], _data[w][w], 0.0f));
+    real c22 = _Cofactor(Vector4(column1.x, column1.y, column1.w, 0.0f),
+                         Vector4(column2.x, column2.y, column2.w, 0.0f),
+                         Vector4(column4.x, column4.y, column4.w, 0.0f));
 
-    real c23 = _Cofactor(Vector4(_data[x][x], _data[x][y], _data[x][z], 0.0f),
-                         Vector4(_data[y][x], _data[y][y], _data[y][z], 0.0f),
-                         Vector4(_data[w][x], _data[w][y], _data[w][z], 0.0f));
+    real c23 = _Cofactor(Vector4(column1.x, column1.y, column1.z, 0.0f),
+                         Vector4(column2.x, column2.y, column2.z, 0.0f),
+                         Vector4(column4.x, column4.y, column4.z, 0.0f));
 
     Vector4 colz {c20, -c21, c22, -c23};
 
-    real c30 = _Cofactor(Vector4(_data[x][y], _data[x][z], _data[x][w], 0.0f),
-                         Vector4(_data[y][y], _data[y][z], _data[y][w], 0.0f),
-                         Vector4(_data[z][y], _data[z][z], _data[z][w], 0.0f));
+    real c30 = _Cofactor(Vector4(column1.y, column1.z, column1.w, 0.0f),
+                         Vector4(column2.y, column2.z, column2.w, 0.0f),
+                         Vector4(column3.y, column3.z, column3.w, 0.0f));
 
-    real c31 = _Cofactor(Vector4(_data[x][x], _data[x][z], _data[x][w], 0.0f),
-                         Vector4(_data[y][x], _data[y][z], _data[y][w], 0.0f),
-                         Vector4(_data[z][x], _data[z][z], _data[z][w], 0.0f));
+    real c31 = _Cofactor(Vector4(column1.x, column1.z, column1.w, 0.0f),
+                         Vector4(column2.x, column2.z, column2.w, 0.0f),
+                         Vector4(column3.x, column3.z, column3.w, 0.0f));
 
-    real c32 = _Cofactor(Vector4(_data[x][x], _data[x][y], _data[x][w], 0.0f),
-                         Vector4(_data[y][x], _data[y][y], _data[y][w], 0.0f),
-                         Vector4(_data[z][x], _data[z][y], _data[z][w], 0.0f));
+    real c32 = _Cofactor(Vector4(column1.x, column1.y, column1.w, 0.0f),
+                         Vector4(column2.x, column2.y, column2.w, 0.0f),
+                         Vector4(column3.x, column3.y, column3.w, 0.0f));
 
-    real c33 = _Cofactor(Vector4(_data[x][x], _data[x][y], _data[x][z], 0.0f),
-                         Vector4(_data[y][x], _data[y][y], _data[y][z], 0.0f),
-                         Vector4(_data[z][x], _data[z][y], _data[z][z], 0.0f));
+    real c33 = _Cofactor(Vector4(column1.x, column1.y, column1.z, 0.0f),
+                         Vector4(column2.x, column2.y, column2.z, 0.0f),
+                         Vector4(column3.x, column3.y, column3.z, 0.0f));
 
     Vector4 colw {-c30, c31, -c32, c33};
 
@@ -642,21 +651,21 @@ real Matrix4::Determinate(void) const
     //This equation is very difficult to understand. It was ultimately taking from 3d Math Primer, page 165, Determinate of 
     //4x4 Matrix4 in expanded form.
     //m11 through m41 represent the cofactors of those sections of the Matrix4, which are added together to get the value
-    real m11 = _data[0][0] * ( _data[1][1] * (_data[2][2] * _data[3][3] - _data[3][2] * _data[2][3])
-                             + _data[2][1] * (_data[3][2] * _data[1][3] - _data[1][2] * _data[3][3])
-                             + _data[3][1] * (_data[1][2] * _data[2][3] - _data[2][2] * _data[1][3]) );
+    real m11 = column1.x * ( column2.y * (column3.z * column4.w - column4.z * column3.w)
+                             + column3.y * (column4.z * column2.w - column2.z * column4.w)
+                             + column4.y * (column2.z * column3.w - column3.z * column2.w) );
 
-    real m21 = _data[1][0] * ( _data[0][1] * (_data[2][2] * _data[3][3] - _data[3][2] * _data[2][3])
-                             + _data[2][1] * (_data[3][2] * _data[0][3] - _data[0][2] * _data[3][3])
-                             + _data[3][1] * (_data[0][2] * _data[2][3] - _data[2][2] * _data[0][3]) );
+    real m21 = column2.x * ( column1.y * (column3.z * column4.w - column4.z * column3.w)
+                             + column3.y * (column4.z * column1.w - column1.z * column4.w)
+                             + column4.y * (column1.z * column3.w - column3.z * column1.w) );
 
-    real m31 = _data[2][0] * ( _data[0][1] * (_data[1][2] * _data[3][3] - _data[3][2] * _data[1][3])
-                             + _data[1][1] * (_data[3][2] * _data[0][3] - _data[0][2] * _data[3][3])
-                             + _data[3][1] * (_data[0][2] * _data[1][3] - _data[1][2] * _data[0][3]) );
+    real m31 = column3.x * ( column1.y * (column2.z * column4.w - column4.z * column2.w)
+                             + column2.y * (column4.z * column1.w - column1.z * column4.w)
+                             + column4.y * (column1.z * column2.w - column2.z * column1.w) );
 
-    real m41 = _data[3][0] * ( _data[0][1] * (_data[1][2] * _data[2][3] - _data[2][2] * _data[1][3])
-                             + _data[1][1] * (_data[2][2] * _data[0][3] - _data[0][2] * _data[2][3])
-                             + _data[2][1] * (_data[0][2] * _data[1][3] - _data[1][2] * _data[0][3]) );
+    real m41 = column4.x * ( column1.y * (column2.z * column3.w - column3.z * column2.w)
+                             + column2.y * (column3.z * column1.w - column1.z * column3.w)
+                             + column3.y * (column1.z * column2.w - column2.z * column1.w) );
 
     return m11 - m21 + m31 - m41;
 }
@@ -669,10 +678,10 @@ real Matrix4::Determinate(void) const
 void Matrix4::Reset(real val)
 {
     //Reset Matrix4
-    _data[0] = Vector4(val, 0.0f, 0.0f, 0.0f);
-    _data[1] = Vector4(0.0f, val, 0.0f, 0.0f);
-    _data[2] = Vector4(0.0f, 0.0f, val, 0.0f);
-    _data[3] = Vector4(0.0f, 0.0f, 0.0f, val);
+    column1 = Vector4(val, 0.0f, 0.0f, 0.0f);
+    column2 = Vector4(0.0f, val, 0.0f, 0.0f);
+    column3 = Vector4(0.0f, 0.0f, val, 0.0f);
+    column4 = Vector4(0.0f, 0.0f, 0.0f, val);
 }
 
 //==========================================================================================================================
@@ -680,63 +689,63 @@ void Matrix4::Reset(real val)
 //==========================================================================================================================
 void Matrix4::Transpose(void)
 {
-    Vector4 newCol0 {_data[0][x], _data[1][x], _data[2][x], _data[3][x]};
-    Vector4 newCol1 {_data[0][y], _data[1][y], _data[2][y], _data[3][y]};
-    Vector4 newCol2 {_data[0][z], _data[1][z], _data[2][z], _data[3][z]};
-    Vector4 newCol3 {_data[0][w], _data[1][w], _data[2][w], _data[3][w]};
+    Vector4 newCol0 {column1.x, column2.x, column3.x, column4.x};
+    Vector4 newCol1 {column1.y, column2.y, column3.y, column4.y};
+    Vector4 newCol2 {column1.z, column2.z, column3.z, column4.z};
+    Vector4 newCol3 {column1.w, column2.w, column3.w, column4.w};
 
-    _data[0] = newCol0;
-    _data[1] = newCol1;
-    _data[2] = newCol2;
-    _data[3] = newCol3;
+    column1 = newCol0;
+    column2 = newCol1;
+    column3 = newCol2;
+    column4 = newCol3;
 }
 
 void Matrix4::ComponentMulti(const Matrix4& mat)
 {
-    _data[0][x] *= mat[0][x];
-    _data[0][y] *= mat[0][y];
-    _data[0][z] *= mat[0][z];
-    _data[0][w] *= mat[0][w];
+    column1.x *= mat.column1.x;
+    column1.y *= mat.column1.y;
+    column1.z *= mat.column1.z;
+    column1.w *= mat.column1.w;
 
-    _data[1][x] *= mat[1][x];
-    _data[1][y] *= mat[1][y];
-    _data[1][z] *= mat[1][z];
-    _data[1][w] *= mat[1][w];
+    column2.x *= mat.column2.x;
+    column2.y *= mat.column2.y;
+    column2.z *= mat.column2.z;
+    column2.w *= mat.column2.w;
 
-    _data[2][x] *= mat[2][x];
-    _data[2][y] *= mat[2][y];
-    _data[2][z] *= mat[2][z];
-    _data[2][w] *= mat[2][w];
+    column3.x *= mat.column3.x;
+    column3.y *= mat.column3.y;
+    column3.z *= mat.column3.z;
+    column3.w *= mat.column3.w;
 
-    _data[3][x] *= mat[3][x];
-    _data[3][y] *= mat[3][y];
-    _data[3][z] *= mat[3][z];
-    _data[3][w] *= mat[3][w];
+    column4.x *= mat.column4.x;
+    column4.y *= mat.column4.y;
+    column4.z *= mat.column4.z;
+    column4.w *= mat.column4.w;
 }
 
 Matrix4 Matrix4::Transform3x3(const Matrix4& mat) const
 {
     Vector4 xCol 
     {
-        _data[0][x] * mat[0][x] + _data[1][x] * mat[0][y] + _data[2][x] * mat[0][z],
-        _data[0][y] * mat[0][x] + _data[1][y] * mat[0][y] + _data[2][y] * mat[0][z],
-        _data[0][z] * mat[0][x] + _data[1][z] * mat[0][y] + _data[2][z] * mat[0][z],
+        column1.x * mat.column1.x + column2.x * mat.column1.y + column3.x * mat.column1.z,
+        column1.y * mat.column1.x + column2.y * mat.column1.y + column3.y * mat.column1.z,
+        column1.z * mat.column1.x + column2.z * mat.column1.y + column3.z * mat.column1.z,
         0.0f
     };
 
     Vector4 yCol
     {
-        _data[0][x] * mat[1][x] + _data[1][x] * mat[1][y] + _data[2][x] * mat[1][z],
-        _data[0][y] * mat[1][x] + _data[1][y] * mat[1][y] + _data[2][y] * mat[1][z],
-        _data[0][z] * mat[1][x] + _data[1][z] * mat[1][y] + _data[2][z] * mat[1][z],
+        column1.x * mat.column2.x + column2.x * mat.column2.y + column3.x * mat.column2.z,
+        column1.y * mat.column2.x + column2.y * mat.column2.y + column3.y * mat.column2.z,
+        column1.z * mat.column2.x + column2.z * mat.column2.y + column3.z * mat.column2.z,
         0.0f
     };
 
     Vector4 zCol
     {
-        _data[0][x] * mat[2][x] + _data[1][x] * mat[2][y] + _data[2][x] * mat[2][z],
-        _data[0][y] * mat[2][x] + _data[1][y] * mat[2][y] + _data[2][y] * mat[2][z],
-        _data[0][z] * mat[2][x] + _data[1][z] * mat[2][y] + _data[2][z] * mat[2][z],
+        column1.x * mat.column3.x + column2.x * mat.column3.y + column3.x * mat.column3.z,
+        column1.y * mat.column3.x + column2.y * mat.column3.y + column3.y * mat.column3.z,
+        column1.z * mat.column3.x + column2.z * mat.column3.y + column3.z * mat.column3.z,
         0.0f
     };
 
@@ -747,10 +756,10 @@ Matrix4 Matrix4::Transform3x3(const Matrix4& mat) const
 
 Vector4 Matrix4::Transform3x3(const Vector4& vec) const
 {
-    return Vector4(_data[0][x] * vec[x] + _data[1][x] * vec[y] + _data[2][x] * vec[z],
-                   _data[0][y] * vec[x] + _data[1][y] * vec[y] + _data[2][y] * vec[z],
-                   _data[0][z] * vec[x] + _data[1][z] + vec[y] + _data[2][z] * vec[z],
-                   _data[0][w] * vec[x] + _data[1][w] + vec[y] + _data[2][w] + vec[z]);
+    return Vector4(column1.x * vec.x + column2.x * vec.y + column3.x * vec.z,
+                   column1.y * vec.x + column2.y * vec.y + column3.y * vec.z,
+                   column1.z * vec.x + column2.z + vec.y + column3.z * vec.z,
+                   column1.w * vec.x + column2.w + vec.y + column3.w + vec.z);
 }
 
 //==========================================================================================================================
@@ -771,22 +780,22 @@ Matrix4 Matrix4::LookAt(const Point4& cameraPos, const Point4& target, const Vec
     Vector4 yAxis = zAxis.CrossProduct(xAxis);
     yAxis.Normalize();
 
-    mat[0][0] = xAxis[0];
-    mat[0][1] = yAxis[0];
-    mat[0][2] = zAxis[0];
-    mat[0][3] = 0.0f;
+    mat.column1.x = xAxis.x;
+    mat.column1.y = yAxis.x;
+    mat.column1.z = zAxis.x;
+    mat.column1.w = 0.0f;
 
-    mat[1][0] = xAxis[1];
-    mat[1][1] = yAxis[1];
-    mat[1][2] = zAxis[1];
-    mat[1][3] = 0.0f;
+    mat.column2.x = xAxis.y;
+    mat.column2.y = yAxis.y;
+    mat.column2.z = zAxis.y;
+    mat.column2.w = 0.0f;
 
-    mat[2][0] = xAxis[2];
-    mat[2][1] = yAxis[2];
-    mat[2][2] = zAxis[2];
-    mat[2][3] = 0.0f;
+    mat.column3.x = xAxis.z;
+    mat.column3.y = yAxis.z;
+    mat.column3.z = zAxis.z;
+    mat.column3.w = 0.0f;
 
-    mat[3] = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);
+    mat.column4 = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);
 
     return mat;
 }
@@ -804,22 +813,22 @@ Matrix4 Matrix4::LookAt(const Point3& cameraPos, const Point3& target, const Vec
     Vector3 yAxis = zAxis.CrossProduct(xAxis);
     yAxis.Normalize();
 
-    mat[0][0] = xAxis[0];
-    mat[0][1] = yAxis[0];
-    mat[0][2] = zAxis[0];
-    mat[0][3] = 0.0f;
+    mat.column1.x = xAxis.x;
+    mat.column1.y = yAxis.x;
+    mat.column1.z = zAxis.x;
+    mat.column1.w = 0.0f;
 
-    mat[1][0] = xAxis[1];
-    mat[1][1] = yAxis[1];
-    mat[1][2] = zAxis[1];
-    mat[1][3] = 0.0f;
+    mat.column2.x = xAxis.y;
+    mat.column2.y = yAxis.y;
+    mat.column2.z = zAxis.y;
+    mat.column2.w = 0.0f;
 
-    mat[2][0] = xAxis[2];
-    mat[2][1] = yAxis[2];
-    mat[2][2] = zAxis[2];
-    mat[2][3] = 0.0f;
+    mat.column3.x = xAxis.z;
+    mat.column3.y = yAxis.z;
+    mat.column3.z = zAxis.z;
+    mat.column3.w = 0.0f;
 
-    mat[3] = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);
+    mat.column4 = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);
 
     return mat;
 }
@@ -837,22 +846,22 @@ void Matrix4::SetLookAt(const Vector4& cameraPos, const Vector4& target, const V
     Vector4 yAxis = zAxis.CrossProduct(xAxis);
     yAxis.Normalize();
 
-    _data[0][0] = xAxis[0];
-    _data[0][1] = yAxis[0];
-    _data[0][2] = zAxis[0];
-    _data[0][3] = 0.0f;
+    column1.x = xAxis.x;
+    column1.y = yAxis.x;
+    column1.z = zAxis.x;
+    column1.w = 0.0f;
 
-    _data[1][0] = xAxis[1];
-    _data[1][1] = yAxis[1];
-    _data[1][2] = zAxis[1];
-    _data[1][3] = 0.0f;
+    column2.x = xAxis.y;
+    column2.y = yAxis.y;
+    column2.z = zAxis.y;
+    column2.w = 0.0f;
 
-    _data[2][0] = xAxis[2];
-    _data[2][1] = yAxis[2];
-    _data[2][2] = zAxis[2];
-    _data[2][3] = 0.0f;
+    column3.x = xAxis.z;
+    column3.y = yAxis.z;
+    column3.z = zAxis.z;
+    column3.w = 0.0f;
 
-    _data[3] = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);		
+    column4 = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);		
 }
 
 Matrix4 Matrix4::FPSView(const Vector4& cameraPos, real pitch, real yaw)
@@ -873,22 +882,22 @@ Matrix4 Matrix4::FPSView(const Vector4& cameraPos, real pitch, real yaw)
     Vector4 yAxis{sinYaw * sinPitch, cosPitch, cosYaw * sinPitch, 0.0f};
     Vector4 zAxis{sinYaw * cosPitch, -sinPitch, cosPitch * cosYaw, 0.0f};
 
-    mat[0][0] = xAxis[0];
-    mat[0][1] = yAxis[0];
-    mat[0][2] = zAxis[0];
-    mat[0][3] = 0.0f;
+    mat.column1.x = xAxis.x;
+    mat.column1.y = yAxis.x;
+    mat.column1.z = zAxis.x;
+    mat.column1.w = 0.0f;
 
-    mat[1][0] = xAxis[1];
-    mat[1][1] = yAxis[1];
-    mat[1][2] = zAxis[1];
-    mat[1][3] = 0.0f;
+    mat.column2.x = xAxis.y;
+    mat.column2.y = yAxis.y;
+    mat.column2.z = zAxis.y;
+    mat.column2.w = 0.0f;
 
-    mat[2][0] = xAxis[2];
-    mat[2][1] = yAxis[2];
-    mat[2][2] = zAxis[2];
-    mat[2][3] = 0.0f;
+    mat.column3.x = xAxis.z;
+    mat.column3.y = yAxis.z;
+    mat.column3.z = zAxis.z;
+    mat.column3.w = 0.0f;
 
-    mat[3] = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);
+    mat.column4 = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);
 
     return mat;
 }
@@ -909,22 +918,22 @@ void Matrix4::SetFPSView(const Vector4& cameraPos, real pitch, real yaw)
     Vector4 yAxis{sinYaw * sinPitch, cosPitch, cosYaw * sinPitch, 0.0f};
     Vector4 zAxis{sinYaw * cosPitch, -sinPitch, cosPitch * cosYaw, 0.0f};
 
-    _data[0][0] = xAxis[0];
-    _data[0][1] = yAxis[0];
-    _data[0][2] = zAxis[0];
-    _data[0][3] = 0.0f;
+    column1.x = xAxis.x;
+    column1.y = yAxis.x;
+    column1.z = zAxis.x;
+    column1.w = 0.0f;
 
-    _data[1][0] = xAxis[1];
-    _data[1][1] = yAxis[1];
-    _data[1][2] = zAxis[1];
-    _data[1][3] = 0.0f;
+    column2.x = xAxis.y;
+    column2.y = yAxis.y;
+    column2.z = zAxis.y;
+    column2.w = 0.0f;
 
-    _data[2][0] = xAxis[2];
-    _data[2][1] = yAxis[2];
-    _data[2][2] = zAxis[2];
-    _data[2][3] = 0.0f;
+    column3.x = xAxis.z;
+    column3.y = yAxis.z;
+    column3.z = zAxis.z;
+    column3.w = 0.0f;
 
-    _data[3] = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);	
+    column4 = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);	
 }
 
 //==========================================================================================================================
@@ -934,25 +943,25 @@ void Matrix4::SetFPSView(const Vector4& cameraPos, real pitch, real yaw)
 //==========================================================================================================================
 Matrix4& Matrix4::operator=(const Matrix4& mat) 
 {
-    _data[0][x] = mat[0][x];
-    _data[0][y] = mat[0][y];
-    _data[0][z] = mat[0][z];
-    _data[0][w] = mat[0][w];
+    column1.x = mat.column1.x;
+    column1.y = mat.column1.y;
+    column1.z = mat.column1.z;
+    column1.w = mat.column1.w;
 
-    _data[1][x] = mat[1][x];
-    _data[1][y] = mat[1][y];
-    _data[1][z] = mat[1][z];
-    _data[1][w] = mat[1][w];
+    column2.x = mat.column2.x;
+    column2.y = mat.column2.y;
+    column2.z = mat.column2.z;
+    column2.w = mat.column2.w;
 
-    _data[2][x] = mat[2][x];
-    _data[2][y] = mat[2][y];
-    _data[2][z] = mat[2][z];
-    _data[2][w] = mat[2][w];
+    column3.x = mat.column3.x;
+    column3.y = mat.column3.y;
+    column3.z = mat.column3.z;
+    column3.w = mat.column3.w;
 
-    _data[3][x] = mat[3][x];
-    _data[3][y] = mat[3][y];
-    _data[3][z] = mat[3][z];
-    _data[3][w] = mat[3][w];
+    column4.x = mat.column4.x;
+    column4.y = mat.column4.y;
+    column4.z = mat.column4.z;
+    column4.w = mat.column4.w;
 
     return *this;
 }
@@ -961,35 +970,35 @@ Matrix4 Matrix4::operator*(const Matrix4& mat) const
 {
     Vector4 xCol 
     {
-        _data[0][x] * mat[0][x] + _data[1][x] * mat[0][y] + _data[2][x] * mat[0][z] + _data[3][x] * mat[0][w],
-        _data[0][y] * mat[0][x] + _data[1][y] * mat[0][y] + _data[2][y] * mat[0][z] + _data[3][y] * mat[0][w],
-        _data[0][z] * mat[0][x] + _data[1][z] * mat[0][y] + _data[2][z] * mat[0][z] + _data[3][z] * mat[0][w],
-        _data[0][w] * mat[0][x] + _data[1][w] * mat[0][y] + _data[2][w] * mat[0][z] + _data[3][w] * mat[0][w],
+        column1.x * mat.column1.x + column2.x * mat.column1.y + column3.x * mat.column1.z + column4.x * mat.column1.w,
+        column1.y * mat.column1.x + column2.y * mat.column1.y + column3.y * mat.column1.z + column4.y * mat.column1.w,
+        column1.z * mat.column1.x + column2.z * mat.column1.y + column3.z * mat.column1.z + column4.z * mat.column1.w,
+        column1.w * mat.column1.x + column2.w * mat.column1.y + column3.w * mat.column1.z + column4.w * mat.column1.w,
 
     };
 
     Vector4 yCol
     {
-        _data[0][x] * mat[1][x] + _data[1][x] * mat[1][y] + _data[2][x] * mat[1][z] + _data[3][x] * mat[1][w],
-        _data[0][y] * mat[1][x] + _data[1][y] * mat[1][y] + _data[2][y] * mat[1][z] + _data[3][y] * mat[1][w],
-        _data[0][z] * mat[1][x] + _data[1][z] * mat[1][y] + _data[2][z] * mat[1][z] + _data[3][z] * mat[1][w],
-        _data[0][w] * mat[1][x] + _data[1][w] * mat[1][y] + _data[2][w] * mat[1][z] + _data[3][w] * mat[1][w],
+        column1.x * mat.column2.x + column2.x * mat.column2.y + column3.x * mat.column2.z + column4.x * mat.column2.w,
+        column1.y * mat.column2.x + column2.y * mat.column2.y + column3.y * mat.column2.z + column4.y * mat.column2.w,
+        column1.z * mat.column2.x + column2.z * mat.column2.y + column3.z * mat.column2.z + column4.z * mat.column2.w,
+        column1.w * mat.column2.x + column2.w * mat.column2.y + column3.w * mat.column2.z + column4.w * mat.column2.w,
     };
 
     Vector4 zCol
     {
-        _data[0][x] * mat[2][x] + _data[1][x] * mat[2][y] + _data[2][x] * mat[2][z] + _data[3][x] * mat[2][w],
-        _data[0][y] * mat[2][x] + _data[1][y] * mat[2][y] + _data[2][y] * mat[2][z] + _data[3][y] * mat[2][w],
-        _data[0][z] * mat[2][x] + _data[1][z] * mat[2][y] + _data[2][z] * mat[2][z] + _data[3][z] * mat[2][w],
-        _data[0][w] * mat[2][x] + _data[1][w] * mat[2][y] + _data[2][w] * mat[2][z] + _data[3][w] * mat[2][w],
+        column1.x * mat.column3.x + column2.x * mat.column3.y + column3.x * mat.column3.z + column4.x * mat.column3.w,
+        column1.y * mat.column3.x + column2.y * mat.column3.y + column3.y * mat.column3.z + column4.y * mat.column3.w,
+        column1.z * mat.column3.x + column2.z * mat.column3.y + column3.z * mat.column3.z + column4.z * mat.column3.w,
+        column1.w * mat.column3.x + column2.w * mat.column3.y + column3.w * mat.column3.z + column4.w * mat.column3.w,
     };
 
     Vector4 wCol
     {
-        _data[0][x] * mat[3][x] + _data[1][x] * mat[3][y] + _data[2][x] * mat[3][z] + _data[3][x] * mat[3][w],
-        _data[0][y] * mat[3][x] + _data[1][y] * mat[3][y] + _data[2][y] * mat[3][z] + _data[3][y] * mat[3][w],
-        _data[0][z] * mat[3][x] + _data[1][z] * mat[3][y] + _data[2][z] * mat[3][z] + _data[3][z] * mat[3][w],
-        _data[0][w] * mat[3][x] + _data[1][w] * mat[3][y] + _data[2][w] * mat[3][z] + _data[3][w] * mat[3][w],
+        column1.x * mat.column4.x + column2.x * mat.column4.y + column3.x * mat.column4.z + column4.x * mat.column4.w,
+        column1.y * mat.column4.x + column2.y * mat.column4.y + column3.y * mat.column4.z + column4.y * mat.column4.w,
+        column1.z * mat.column4.x + column2.z * mat.column4.y + column3.z * mat.column4.z + column4.z * mat.column4.w,
+        column1.w * mat.column4.x + column2.w * mat.column4.y + column3.w * mat.column4.z + column4.w * mat.column4.w,
     };
 
     return Matrix4(xCol, yCol, zCol, wCol);
@@ -997,62 +1006,62 @@ Matrix4 Matrix4::operator*(const Matrix4& mat) const
 
 Vector3 Matrix4::operator*(const Vector3& vec) const
 {
-    return Vector3(_data[0][x] * vec[x] + _data[1][x] * vec[y] + _data[2][x] * vec[z] + _data[3][x],
-                   _data[0][y] * vec[x] + _data[1][y] * vec[y] + _data[2][y] * vec[z] + _data[3][y],
-                   _data[0][z] * vec[x] + _data[1][z] + vec[y] + _data[2][z] * vec[z] + _data[3][z]);
+    return Vector3(column1.x * vec.x + column2.x * vec.y + column3.x * vec.z + column4.x,
+                   column1.y * vec.x + column2.y * vec.y + column3.y * vec.z + column4.y,
+                   column1.z * vec.x + column2.z + vec.y + column3.z * vec.z + column4.z);
 }
 
 Vector4 Matrix4::operator*(const Vector4& vec) const
 {
-    return Vector4(_data[0][x] * vec[x] + _data[1][x] * vec[y] + _data[2][x] * vec[z] + _data[3][x] * vec[w],
-                   _data[0][y] * vec[x] + _data[1][y] * vec[y] + _data[2][y] * vec[z] + _data[3][y] * vec[w],
-                   _data[0][z] * vec[x] + _data[1][z] + vec[y] + _data[2][z] * vec[z] + _data[3][z] * vec[w],
-                   _data[0][w] * vec[x] + _data[1][w] + vec[y] + _data[2][w] + vec[z] + _data[3][w] * vec[w]);
+    return Vector4(column1.x * vec.x + column2.x * vec.y + column3.x * vec.z + column4.x * vec.w,
+                   column1.y * vec.x + column2.y * vec.y + column3.y * vec.z + column4.y * vec.w,
+                   column1.z * vec.x + column2.z + vec.y + column3.z * vec.z + column4.z * vec.w,
+                   column1.w * vec.x + column2.w + vec.y + column3.w + vec.z + column4.w * vec.w);
 }
 
 Point3 Matrix4::operator*(const Point3& point) const
 {
-    return Point3(_data[0][x] * point[x] + _data[1][x] * point[y] + _data[2][x] * point[z] + _data[3][x],
-                  _data[0][y] * point[x] + _data[1][y] * point[y] + _data[2][y] * point[z] + _data[3][y],
-                  _data[0][z] * point[x] + _data[1][z] + point[y] + _data[2][z] * point[z] + _data[3][z]);
+    return Point3(column1.x * point.x + column2.x * point.y + column3.x * point.z + column4.x,
+                  column1.y * point.x + column2.y * point.y + column3.y * point.z + column4.y,
+                  column1.z * point.x + column2.z + point.y + column3.z * point.z + column4.z);
 }
 
 Point4 Matrix4::operator*(const Point4& point) const
 {
-    return Point4(_data[0][x] * point[x] + _data[1][x] * point[y] + _data[2][x] * point[z] + _data[3][x] * point[w],
-                  _data[0][y] * point[x] + _data[1][y] * point[y] + _data[2][y] * point[z] + _data[3][y] * point[w],
-                  _data[0][z] * point[x] + _data[1][z] + point[y] + _data[2][z] * point[z] + _data[3][z] * point[w],
-                  _data[0][w] * point[x] + _data[1][w] + point[y] + _data[2][w] + point[z] + _data[3][w] * point[w]);
+    return Point4(column1.x * point.x + column2.x * point.y + column3.x * point.z + column4.x * point.w,
+                  column1.y * point.x + column2.y * point.y + column3.y * point.z + column4.y * point.w,
+                  column1.z * point.x + column2.z + point.y + column3.z * point.z + column4.z * point.w,
+                  column1.w * point.x + column2.w + point.y + column3.w + point.z + column4.w * point.w);
 }
 
 Matrix4& Matrix4::operator/=(real val)
 {
-    _data[x][x] /= val;
-    _data[x][y] /= val;
-    _data[x][z] /= val;
-    _data[x][w] /= val;
+    column1.x /= val;
+    column1.y /= val;
+    column1.z /= val;
+    column1.w /= val;
     
-    _data[y][x] /= val;
-    _data[y][y] /= val;
-    _data[y][z] /= val;
-    _data[y][w] /= val;
+    column2.x /= val;
+    column2.y /= val;
+    column2.z /= val;
+    column2.w /= val;
 
-    _data[z][x] /= val;
-    _data[z][y] /= val;
-    _data[z][z] /= val;
-    _data[z][w] /= val;
+    column3.x /= val;
+    column3.y /= val;
+    column3.z /= val;
+    column3.w /= val;
 
-    _data[w][x] /= val;
-    _data[w][y] /= val;
-    _data[w][z] /= val;
-    _data[w][w] /= val;
+    column4.x /= val;
+    column4.y /= val;
+    column4.z /= val;
+    column4.w /= val;
 
     return *this;
 }
 
 real Matrix4::_Cofactor(const Vector4& col1, const Vector4& col2, const Vector4& col3) const
 {
-    return col1[x] * (col2[y] * col3[z] - col3[y] * col2[z])
-         + col2[x] * (col3[y] * col1[z] - col1[y] * col3[z])
-         + col3[x] * (col1[y] * col2[z] - col2[y] * col1[z]);
+    return col1.x * (col2.y * col3.z - col3.y * col2.z)
+         + col2.x * (col3.y * col1.z - col1.y * col3.z)
+         + col3.x * (col1.y * col2.z - col2.y * col1.z);
 }

@@ -8,23 +8,35 @@ using namespace TempestMath;
 //
 //==========================================================================================================================
 Quaternion::Quaternion(void)
-:
-_data{0.0f, 0.0f, 0.0f, 0.0f}
+    :
+    w(0.0f),
+    x(0.0f),
+    y(0.0f),
+    z(0.0f)
 {  }
 
 Quaternion::Quaternion(real value)
-:
-_data{value, value, value, value}
+    :
+    w(value),
+    x(value),
+    y(value),
+    z(value)
 {  }
 
-Quaternion::Quaternion(real xVal, real yVal, real zVal, real wVal)
-:
-_data{xVal, yVal, zVal, wVal}
+Quaternion::Quaternion(real wVal, real xVal, real yVal, real zVal)
+    :
+    w(wVal),
+    x(xVal),
+    y(yVal),
+    z(zVal)
 {  }
 
 Quaternion::Quaternion(const Quaternion& q)
-:
-_data{q.x, q.y, q.z, q.w}
+    :
+    w(q.w),
+    x(q.x),
+    y(q.y),
+    z(q.z)
 {  }
 
 Quaternion::~Quaternion(void)
@@ -38,65 +50,56 @@ Quaternion Quaternion::operator/ (real d)
 {
     assert(d != 0);
 
-    return Quaternion(_data.x / d, _data.y / d, _data.z / d, _data.w / d);
+    return Quaternion(w / d, x / d, y / d, z / d);
 }
 
 Quaternion& Quaternion::operator/=(real d)
 {
     assert(d != 0);
 
-    _data.x /= d; 
-    _data.y /= d;
-    _data.z /= d; 
-    _data.w /= d;
+    w /= d;
+    x /= d; 
+    y /= d;
+    z /= d; 
 
     return *this;
 }
 
 Quaternion Quaternion::operator*(real m)
 {
-    return Quaternion(_data.x *= m, _data.y *= m, _data.z *= m, _data.w *= m);
+    return Quaternion(w *= m, x *= m, y *= m, z *= m);
 }
 
-Quaternion Quaternion::operator*(const Quaternion& q2)
+Quaternion Quaternion::operator*(const Quaternion& otherQuat)
 {
-    real x2 = q2.x;
-    real y2 = q2.y;
-    real z2 = q2.z;
-    real w2 = q2.w;
-
-    return Quaternion(_data.w * x2 + _data.x * w2 + _data.y * z2 - _data.z * y2,  //x
-                      _data.w * y2 + _data.y * w2 + _data.z * x2 - _data.x * z2,  //y
-                      _data.w * z2 + _data.z * w2 + _data.x * y2 - _data.y * x2,  //z
-                      _data.w * w2 - _data.x * x2 - _data.y * y2 - _data.z * z2); //w
+    return Quaternion(w * otherQuat.w - x * otherQuat.x - y * otherQuat.y - z * otherQuat.z,  //w
+                      w * otherQuat.x + x * otherQuat.w + y * otherQuat.z - z * otherQuat.y,  //x
+                      w * otherQuat.y + y * otherQuat.w + z * otherQuat.x - x * otherQuat.z,  //y
+                      w * otherQuat.z + z * otherQuat.w + x * otherQuat.y - y * otherQuat.x); //z
 }
 
 Quaternion& Quaternion::operator*=(real m)
 {
-    _data.x *= m; 
-    _data.y *= m;
-    _data.z *= m; 
-    _data.w *= m;
+    w *= m;
+    x *= m; 
+    y *= m;
+    z *= m; 
 
     return *this;
 }
 
-Quaternion& Quaternion::operator*=(const Quaternion& q2)
+Quaternion& Quaternion::operator*=(const Quaternion& otherQuat)
 {
-    real x1 = _data.x;
-    real y1 = _data.y;
-    real z1 = _data.z;
-    real w1 = _data.w;
+    // Can't change the values mid operation.
+    real newWVal = w * otherQuat.w - x * otherQuat.x - y * otherQuat.y - z * otherQuat.z;
+    real newXVal = w * otherQuat.x + x * otherQuat.w + y * otherQuat.z - z * otherQuat.y;
+    real newYVal = w * otherQuat.y + y * otherQuat.w + z * otherQuat.x - x * otherQuat.z;
+    real newZVal = w * otherQuat.z + z * otherQuat.w + x * otherQuat.y - y * otherQuat.x;
 
-    real x2 = q2.x;
-    real y2 = q2.y;
-    real z2 = q2.z;
-    real w2 = q2.w;
-
-    _data.x = w1 * x2 + x1 * w2 + y1 * z2 - z1 * y2;  //x
-    _data.y = w1 * y2 + y1 * w2 + z1 * x2 - x1 * z2;  //y
-    _data.z = w1 * z2 + z1 * w2 + x1 * y2 - y1 * x2;  //z
-    _data.w = w1 * w2 - x1 * x2 - y1 * y2 - z1 * z2;  //w
+    w = newWVal;
+    x = newXVal;
+    y = newYVal;
+    z = newZVal;
 
     return *this;
 }
@@ -108,14 +111,14 @@ Quaternion& Quaternion::operator*=(const Quaternion& q2)
 //==========================================================================================================================	
 real Quaternion::Magnitude(void)
 {
-    return real_sqrt(_data.w * _data.w + _data.x * _data.x + _data.y * _data.y + _data.z * _data.z);
+    return real_sqrt(w * w + x * x + y * y + z * z);
 }
 
 Quaternion Quaternion::Conjugate(void)
 {
-    Quaternion Q{_data.x * -1.0f, _data.y * -1.0f, _data.z * -1.0f, _data.w};
+    Quaternion quaternion{w, x * -1.0f, y * -1.0f, z * -1.0f};
 
-    return Q;
+    return quaternion;
 }
 
 Quaternion Quaternion::Inverse(void)
@@ -126,27 +129,27 @@ Quaternion Quaternion::Inverse(void)
     return conjugate / mag;
 }
 
-Quaternion Quaternion::Difference(Quaternion& Q)
+Quaternion Quaternion::Difference(Quaternion& otherQuat)
 {
-    return Q * Inverse();
+    return otherQuat * Inverse();
 }
 
-real Quaternion::Dot(Quaternion& Q)
+real Quaternion::Dot(Quaternion& otherQuat)
 {
-    return _data.w * Q.w + _data.x * Q.x + _data.y * Q.y + _data.z * Q.z;
+    return w * otherQuat.w + x * otherQuat.x + y * otherQuat.y + z * otherQuat.z;
 }
 
 void Quaternion::Negate(void)
 {
-    _data.x *= -1;
-    _data.y *= -1;
-    _data.z *= -1;
-    _data.w *= -1;
+    w *= -1;
+    x *= -1;
+    y *= -1;
+    z *= -1;
 }
 
 Quaternion Quaternion::Opposite(void)
 {
-    return Quaternion(_data.x * -1.0f, _data.y * -1.0f, _data.z * -1.0f, _data.w * -1.0f);
+    return Quaternion(w * -1.0f, x * -1.0f, y * -1.0f, z * -1.0f);
 }
 
 void Quaternion::Normalize(void)
@@ -164,10 +167,10 @@ void Quaternion::RotateByEuler(const Vector3& vec)
     real cr = real_cos(vec.z / 2.0f);
     real sr = real_sin(vec.z / 2.0f);
 
-    _data.x = cy * cp * sr - sy * sp * cr;
-    _data.y = sy * cp * sr + cy * sp * cr;
-    _data.z = sy * cp * cr - cy * sp * sr;
-    _data.w = cy * cp * cr + sy * sp * sr;
+    x = cy * cp * sr - sy * sp * cr;
+    y = sy * cp * sr + cy * sp * cr;
+    z = sy * cp * cr - cy * sp * sr;
+    w = cy * cp * cr + sy * sp * sr;
 }
 
 void Quaternion::RotateByEuler(real yaw, real pitch, real roll)
@@ -180,18 +183,17 @@ void Quaternion::RotateByEuler(real yaw, real pitch, real roll)
     real cr = real_cos(roll / 2.0f);
     real sr = real_sin(roll / 2.0f);
 
-    _data.x = cy * cp * sr - sy * sp * cr;
-    _data.y = sy * cp * sr + cy * sp * cr;
-    _data.z = sy * cp * cr - cy * sp * sr;
-    _data.w = cy * cp * cr + sy * sp * sr;
+    x = cy * cp * sr - sy * sp * cr;
+    y = sy * cp * sr + cy * sp * cr;
+    z = sy * cp * cr - cy * sp * sr;
+    w = cy * cp * cr + sy * sp * sr;
 }
 
 void Quaternion::AddEuler(const Vector3& vec)
 {
     // If this quaternion is at 0, and we want to add a rotation,
     // just add it.
-    if(_data.x == 0.0f && _data.y == 0.0f &&
-       _data.z == 0.0f && _data.w == 0.0f)
+    if(w == 0.0f, x == 0.0f && y == 0.0f && z == 0.0f)
     {
         RotateByEuler(vec);
         return;
@@ -209,7 +211,7 @@ void Quaternion::AddEuler(const Vector3& vec)
     real qz = sy * cp * cr - cy * sp * sr;
     real qw = cy * cp * cr + sy * sp * sr;
 
-    Quaternion q {qx, qy, qz, qw};
+    Quaternion q {qw, qx, qy, qz};
 
     (*this) *= q;
 }
@@ -218,8 +220,7 @@ void Quaternion::AddEuler(real yaw, real pitch, real roll)
 {
 // If this quaternion is at 0, and we want to add a rotation,
     // just add it.
-    if(_data.x == 0.0f && _data.y == 0.0f &&
-       _data.z == 0.0f && _data.w == 0.0f)
+    if(w == 0.0f && x == 0.0f && y == 0.0f && z == 0.0f)
     {
         RotateByEuler(yaw, pitch, roll);
         return;
@@ -237,7 +238,7 @@ void Quaternion::AddEuler(real yaw, real pitch, real roll)
     real qz = sy * cp * cr - cy * sp * sr;
     real qw = cy * cp * cr + sy * sp * sr;
 
-    Quaternion q{qx, qy, qz, qw};
+    Quaternion q{qw, qx, qy, qz};
 
     (*this) *= q;
 }
