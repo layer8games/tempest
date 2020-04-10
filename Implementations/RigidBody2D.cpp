@@ -110,7 +110,7 @@ bool RigidBody2D::GetActive(void) const
     return _active;
 }
 
-const TM::Point2& RigidBody2D::GetPosition(void) const
+const TM::Point2 RigidBody2D::GetPosition(void) const
 {
     if(_obj != nullptr)
    {

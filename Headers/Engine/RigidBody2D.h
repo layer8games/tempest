@@ -81,7 +81,7 @@ namespace TempestPhysics
             _obj = obj;
         }
 
-        const TM::Point2& GetPosition(void) const;
+        const TM::Point2 GetPosition(void) const;
 
 //===== Velocity =====
         ///	Returns the current velocity of the RigidBody2D.
