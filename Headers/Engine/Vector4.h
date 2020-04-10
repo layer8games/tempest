@@ -164,8 +164,16 @@ namespace TempestMath
 
         ///	Point addtion. This is done componentwise.
         ///	\param vec is the Point to add into a new Vector4.
+        TEMPEST_API Vector4 operator+(const Point3& Point) const;
+        
+        ///	Point addtion. This is done componentwise.
+        ///	\param vec is the Point to add into a new Vector4.
         TEMPEST_API Vector4 operator+(const Point4& Point) const;
 
+        ///	Point addition equal. This is done componentwise.
+        ///	\param vec is the Point to add into this Vector4.
+        TEMPEST_API Vector4& operator+=(const Point3& point);
+        
         ///	Point addition equal. This is done componentwise.
         ///	\param vec is the Point to add into this Vector4.
         TEMPEST_API Vector4& operator+=(const Point4& point);
@@ -198,8 +206,16 @@ namespace TempestMath
 
         ///	Point subtraction. This is done componentwise. 2D check done before z is changed. 
         ///	\param vec is the Point subtracted from the new Vector4.
+        TEMPEST_API Vector4 operator-(const Point3& vec) const;
+        
+        ///	Point subtraction. This is done componentwise. 2D check done before z is changed. 
+        ///	\param vec is the Point subtracted from the new Vector4.
         TEMPEST_API Vector4 operator-(const Point4& vec) const;
 
+        ///	Point subtraction. This is done componenetwise. 2D check done before z is changed. 
+        ///	\param vec is the Point subtracted from this Vector4.
+        TEMPEST_API Vector4& operator-=(const Point3& vec);
+        
         ///	Point subtraction. This is done componenetwise. 2D check done before z is changed. 
         ///	\param vec is the Point subtracted from this Vector4.
         TEMPEST_API Vector4& operator-=(const Point4& vec);

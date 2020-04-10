@@ -20,7 +20,7 @@ Vector4::Vector4(real val)
     x(val), 
     y(val), 
     z(val),
-    w(val)
+    w(0.0f)
 {  }
 
 
@@ -206,6 +206,15 @@ Vector4 Vector4::operator+(const Vector3& vec) const
                    0.0f);
 }
 
+Vector4& Vector4::operator+=(const Point3& point)
+{
+    x += point.x;
+    y += point.y;
+    z += point.z;
+
+    return *this;
+}
+
 Vector4& Vector4::operator+=(const Point4& point)
 {
     x += point.x;
@@ -213,6 +222,14 @@ Vector4& Vector4::operator+=(const Point4& point)
     z += point.z;
 
     return *this;
+}
+
+Vector4 Vector4::operator+(const Point3& point) const
+{
+    return Vector4(x + point.x,
+                   y + point.y,
+                   z + point.z,
+                   0.0f);
 }
 
 Vector4 Vector4::operator+(const Point4& point) const
@@ -285,12 +302,29 @@ Vector4& Vector4::operator-=(const Vector3& vec)
     return *this;
 }
 
+Vector4 Vector4::operator-(const Point3& point) const
+{
+    return Vector4(x - point.x,
+                   y - point.y,
+                   z - point.z,
+                   0.0f);
+}
+
 Vector4 Vector4::operator-(const Point4& point) const
 {
     return Vector4(x - point.x,
                    y - point.y,
                    z - point.z,
                    0.0f);
+}
+
+Vector4& Vector4::operator-=(const Point3& point)
+{
+    x -= point.x;
+    y -= point.y;
+    z -= point.z;
+
+    return *this;
 }
 
 Vector4& Vector4::operator-=(const Point4& point)
