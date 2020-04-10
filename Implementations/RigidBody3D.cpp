@@ -50,7 +50,7 @@ void RigidBody3D::Integrate(void)
     _obj->AddScaledPosition(_velocity, delta);    
     _obj->AddOrientation(_rotation * delta);
 
-    TM::Vector4 resultingAcc = _acceleration;
+    TM::Vector3 resultingAcc = _acceleration;
 
     //Optional hard coded gravity should be added here
 
@@ -60,7 +60,7 @@ void RigidBody3D::Integrate(void)
     _velocity *= real_pow(_linearDamping, delta);
 
 
-    TM::Vector4 angularAcc = _inverseInertiaTensorInWorld * _torqueAccum;
+    TM::Vector3 angularAcc = _inverseInertiaTensorInWorld * _torqueAccum;
 
     _rotation.AddScaledVector(angularAcc, delta);
     _rotation *= real_pow(_angularDamping, delta);
@@ -97,18 +97,19 @@ void RigidBody3D::AddForceAtPoint(const TM::Vector3& force, const TM::Point3& po
     _isAwake = true;
 }	
 
+// TODO: This needs to be re-worked and re-thought out in general.
 //Force given in world space, point given in local space
-void RigidBody3D::AddForceAtLocalPoint(const TM::Vector3& force, const TM::Point3& point)
-{
-    if(_obj == nullptr)
-    {
-        TE::ErrorManager::Instance()->SetError(TE::PHYSICS, "RigidBody3D::AddForceAtLocalPoint: object not set!");
-        return;
-    }
-    
-    TM::Vector3 pt = _obj->GetModelMatrixRot() * point;
-    AddForceAtPoint(force, pt);
-}
+//void RigidBody3D::AddForceAtLocalPoint(const TM::Vector3& force, const TM::Point3& point)
+//{
+//    if(_obj == nullptr)
+//    {
+//        TE::ErrorManager::Instance()->SetError(TE::PHYSICS, "RigidBody3D::AddForceAtLocalPoint: object not set!");
+//        return;
+//    }
+//    
+//    TM::Vector3 pt = _obj->GetModelMatrixRot() * point;
+//    AddForceAtPoint(force, pt);
+//}
 
 //==========================================================================================================================
 //Mass
@@ -135,13 +136,17 @@ bool RigidBody3D::GetActive(void) const
     return _active;
 }
 
-const TM::Point3& RigidBody3D::GetPosition(void)
+const TM::Point3 RigidBody3D::GetPosition(void)
 {
-    if(_obj != nullptr)
-    {
+   if(_obj != nullptr)
+   {
         return _obj->GetPosition();
-    }
-    return TM::Point3(0.0f);
+   }
+   else
+   {
+       TE::ErrorManager::Instance()->SetError(TE::PHYSICS, "RigidBody3D::GetPosition Set the GameObject before calling GetPosition");
+       return TM::Point3(0.0f);
+   }
 }
 
 /*

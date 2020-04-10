@@ -113,10 +113,14 @@ bool RigidBody2D::GetActive(void) const
 const TM::Point2& RigidBody2D::GetPosition(void) const
 {
     if(_obj != nullptr)
-    {
+   {
         return _obj->GetPosition();
-    }
-    return TM::Point2(0.0f);
+   }
+   else
+   {
+       TE::ErrorManager::Instance()->SetError(TE::PHYSICS, "RigidBody2D::GetPosition Set the GameObject before calling GetPosition");
+       return TM::Point2(0.0f);
+   }
 }
 
 const real RigidBody2D::GetMass(void)

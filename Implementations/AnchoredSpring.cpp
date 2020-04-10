@@ -44,7 +44,7 @@ void AnchoredSpring::v_UpdateForce(p_RigidBody2D otherBody)
 //TODO: Implement
 void AnchoredSpring::v_UpdateForce(p_RigidBody3D body)
 {
-	TM::Vector4 force {}; 
+	TM::Vector3 force {}; 
 	force = body->GetPosition();
 	force -= _anchor;
 

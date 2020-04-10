@@ -5,6 +5,7 @@
 #include <Engine/Point2.h>
 #include <Engine/Point3.h>
 #include <Engine/Point4.h>
+#include <Engine/Vector2.h>
 #include <Engine/Vector4.h>
 
 
@@ -13,8 +14,10 @@
 
 namespace TempestMath
 {
+    class Point2;
     class Point3;
     class Point4;
+    class Vector2;
     class Vector4;
     
 //==========================================================================================================================
@@ -77,6 +80,10 @@ namespace TempestMath
         ///	\param vec is the left hand argument in the operation.	
         TEMPEST_API real Dot(const Vector3& vec) const;
 
+        ///	Performs a Dot or Scalar product in the order of this * other.
+        ///	\param vec is the left hand argument in the operation.	
+        TEMPEST_API real Dot(const Point3& point) const;
+
         ///	Performs a Cross or Vector3 production in the order of this cross other.
         ///	\param vec is the left hand argument in the operation.				
         TEMPEST_API Vector3 CrossProduct(const Vector3& vec) const;
@@ -129,8 +136,28 @@ namespace TempestMath
 //==========================================================================================================================
 //===== Copy Assignment =====		
         ///	Copy assignment from Vector3.
-        ///	\param vec is the Vector3 to copy into this Vector3.
+        ///	\param vec is copied to this Vector
+        TEMPEST_API Vector3& operator=(const Vector2& vec);
+
+        ///	Copy assignment from Vector3.
+        ///	\param vec is copied to this Vector
         TEMPEST_API Vector3& operator=(const Vector3& vec);
+
+        ///	Copy assignment from Vector3.
+        ///	\param vec is copied to this Vector
+        TEMPEST_API Vector3& operator=(const Vector4& vec);
+
+        ///	Copy assignment from Vector3.
+        ///	\param point is copied to this Vector
+        TEMPEST_API Vector3& operator=(const Point2& point);
+
+        ///	Copy assignment from Vector3.
+        ///	\param point is copied to this Vector
+        TEMPEST_API Vector3& operator=(const Point3& point);
+
+        ///	Copy assignment from Vector3.
+        ///	\param point is copied to this Vector
+        TEMPEST_API Vector3& operator=(const Point4& point);
 
         ///	Copy assignment from scalar.
         ///	\param val is the value all elements will be set to. 2D check is done before z is changed.
@@ -158,7 +185,7 @@ namespace TempestMath
         ///	\param vec is the shared_ptr<Vector3> that is added into each element of a new Vector3.
         TEMPEST_API Vector3 operator+(shared_ptr<Vector3> vec) const;
 
-//===== Subtract by Vector3 =====
+//===== Subtract by Vector =====
         ///	Vector3 subtraction. This is done componentwise. 2D check done before z is changed. 
         ///	\param vec is the Vector3 subtracted from the new Vector3.
         TEMPEST_API Vector3 operator-(const Vector3& vec) const;
@@ -166,6 +193,22 @@ namespace TempestMath
         ///	Vector3 subtraction. This is done componenetwise. 2D check done before z is changed. 
         ///	\param vec is the Vector3ed subtractd from this Vector3.
         TEMPEST_API Vector3& operator-=(const Vector3& vec);
+
+        ///	Vector3 subtraction. This is done componenetwise. 2D check done before z is changed. 
+        ///	\param vec is the Vector3ed subtractd from this Vector3.
+        TEMPEST_API Vector3& operator-=(const Vector4& vec);
+
+        ///	Vector3 subtraction. This is done componenetwise. 2D check done before z is changed. 
+        ///	\param vec is the Vector3ed subtractd from this Vector3.
+        TEMPEST_API Vector3& operator-=(const Point2& point);
+
+        ///	Vector3 subtraction. This is done componenetwise. 2D check done before z is changed. 
+        ///	\param vec is the Vector3ed subtractd from this Vector3.
+        TEMPEST_API Vector3& operator-=(const Point3& point);
+
+        ///	Vector3 subtraction. This is done componenetwise. 2D check done before z is changed. 
+        ///	\param vec is the Vector3ed subtractd from this Vector3.
+        TEMPEST_API Vector3& operator-=(const Point4& point);
 
 //===== Negation and increment =====
         ///	Changes the sign of each element of the Vector3. If 2D, z is not changed.

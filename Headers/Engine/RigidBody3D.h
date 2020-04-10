@@ -52,7 +52,7 @@ namespace TempestPhysics
         TEMPEST_API bool GetActive(void) const;
 
 //===== Object Position =====
-        const TM::Point3& GetPosition(void);
+        const TM::Point3 GetPosition(void);
 
 //===== Inertia Tensor =====
         inline const TM::Matrix4& GetInverseInertiaTensor(void) const

@@ -73,6 +73,13 @@ real Vector3::Dot(const Vector3& vec) const
            z * vec.z;
 }
 
+real Vector3::Dot(const Point3& point) const
+{
+    return x * point.x +
+           y * point.y +
+           z * point.z;
+}
+
 Vector3 Vector3::CrossProduct(const Vector3& vec) const
 {
     return Vector3( y * vec.z - z * vec.y,
@@ -134,11 +141,56 @@ void Vector3::AddScaledVector(const Point4& point, real scale)
 //
 //==========================================================================================================================
 //===== Copy Assignment =====		
+Vector3& Vector3::operator=(const Vector2& vec)
+{
+    x = vec.x;
+    y = vec.y;
+    z = 0.0f;
+
+    return *this;
+}
+
 Vector3& Vector3::operator=(const Vector3& vec)
 {
     x = vec.x;
     y = vec.y;
     z = vec.z;
+
+    return *this;
+}
+
+Vector3& Vector3::operator=(const Vector4& vec)
+{
+    x = vec.x;
+    y = vec.y;
+    z = vec.z;
+
+    return *this;
+}
+
+Vector3& Vector3::operator=(const Point2& point)
+{
+    x = point.x;
+    y = point.y;
+    z = 0.0f;
+
+    return *this;
+}
+
+Vector3& Vector3::operator=(const Point3& point)
+{
+    x = point.x;
+    y = point.y;
+    z = point.z;
+
+    return *this;
+}
+
+Vector3& Vector3::operator=(const Point4& point)
+{
+    x = point.x;
+    y = point.y;
+    z = point.z;
 
     return *this;
 }
@@ -206,6 +258,42 @@ Vector3& Vector3::operator-=(const Vector3& vec)
     x -= vec.x;
     y -= vec.y;
     z -= vec.z;
+
+    return *this;
+}
+
+Vector3& Vector3::operator-=(const Vector4& vec)
+{
+    x -= vec.x;
+    y -= vec.y;
+    z -= vec.z;
+
+    return *this;
+}
+
+Vector3& Vector3::operator-=(const Point2& point)
+{
+    x -= point.x;
+    y -= point.y;
+    z = 0.0f;
+
+    return *this;
+}
+
+Vector3& Vector3::operator-=(const Point3& point)
+{
+    x -= point.x;
+    y -= point.y;
+    z -= point.z;
+
+    return *this;
+}
+
+Vector3& Vector3::operator-=(const Point4& point)
+{
+    x -= point.x;
+    y -= point.y;
+    z -= point.z;
 
     return *this;
 }

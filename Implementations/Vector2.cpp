@@ -130,6 +130,14 @@ Vector2& Vector2::operator=(real val)
     return *this;
 }
 
+Vector2& Vector2::operator=(const Point2& point)
+{
+    x = point.x;
+    y = point.y;
+
+    return *this;
+}
+
 //===== Add by Vector2 =====
 Vector2 Vector2::operator+(const Vector2& otherVec) const
 {

@@ -3,7 +3,9 @@
 //===== Killer Includes =====
 #include <Engine/Atom.h>
 #include <Engine/Point2.h>
+#include <Engine/Point3.h>
 #include <Engine/Point4.h>
+#include <Engine/Vector3.h>
 #include <Engine/Vector4.h>
 
 
@@ -15,6 +17,7 @@ namespace TempestMath
     class Point2;
     class Point3;
     class Point4;
+    class Vector3;
     class Vector4;
 
 //==========================================================================================================================
@@ -129,6 +132,10 @@ namespace TempestMath
         ///	Copy assignment from scalar.
         ///	\param val is the value all elements will be set to. 2D check is done before z is changed.
         TEMPEST_API Vector2& operator=(real val);
+
+        ///	Copy assignment from scalar.
+        ///	\param val is the value all elements will be set to. 2D check is done before z is changed.
+        TEMPEST_API Vector2& operator=(const Point2& point);
 
 //===== Add by Vector2 =====
         ///	Vector2 addtion. This is done componentwise.
