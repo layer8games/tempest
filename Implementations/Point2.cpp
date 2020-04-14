@@ -109,30 +109,6 @@ real Point2::DistanceSquared(const Vector4& v) const
     return length.SqrMagnitude();
 }
 
-//===== Math Helper Functions =====
-void Point2::AddScaledPoint(const Point2& point, real scale)
-{
-    x += point.x * scale;
-    y += point.y * scale;
-}
-
-void Point2::AddScaledVector(const Vector2& vec, real scale)
-{
-    x += vec.x * scale;
-    y += vec.y * scale;	
-}
-
-void Point2::AddScaledVector(const Vector3& vec, real scale)
-{
-    x += vec.x * scale;
-    y += vec.y * scale;	
-}
-
-void Point2::AddScaledVector(const Vector4& vec, real scale)
-{
-    x += vec.x * scale;
-    y += vec.y * scale;
-}
 //==========================================================================================================================
 //
 //Operator overloads
@@ -191,6 +167,14 @@ Point2 Point2::operator+(const Vector3& vec) const
 }
 
 Point2& Point2::operator+=(const Vector3& vec)
+{
+    x += vec.x;
+    y += vec.y;
+
+    return *this;
+}
+
+Point2& Point2::operator+=(const Vector2& vec)
 {
     x += vec.x;
     y += vec.y;

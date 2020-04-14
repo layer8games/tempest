@@ -164,25 +164,40 @@ Matrix4 Matrix4::Translate(const Vector4& vec)
 
 void Matrix4::SetTranslate(real xVal, real yVal)
 {
-    MakeIdentity();
-
     column4.x = xVal;
     column4.y = yVal;
 }
 
 void Matrix4::SetTranslate(real xVal, real yVal, real zVal)
 {
-    MakeIdentity();			
-
     column4.x = xVal;
     column4.y = yVal;
     column4.z = zVal;
 }
 
+void Matrix4::SetTranslate(const Point2& point)
+{
+    column4.x = point.x;
+    column4.y = point.y;
+    column4.z = 0.0f;
+}
+
+void Matrix4::SetTranslate(const Vector2& vec)
+{
+    column4.x = vec.x;
+    column4.y = vec.y;
+    column4.z = 0.0f;
+}
+
+void Matrix4::SetTranslate(const Vector3& vec)
+{
+    column4.x = vec.x;
+    column4.y = vec.y;
+    column4.z = vec.z;
+}
+
 void Matrix4::SetTranslate(const Vector4& vec)
 {
-    MakeIdentity(); 
-
     column4.x = vec.x;
     column4.y = vec.y;
     column4.z = vec.z;
@@ -386,8 +401,6 @@ void Matrix4::SetRotateX(real val)
 {
     val = RADIAN(val);
 
-    MakeIdentity();
-
     column2.y = real_cos(val);
     column2.z = -real_sin(val);
     column3.y = real_sin(val);
@@ -407,8 +420,6 @@ void Matrix4::AddRotateX(real val)
 void Matrix4::SetRotateY(real val)
 {
     val = RADIAN(val);
-
-    MakeIdentity();
 
     column1.x = real_cos(val);
     column1.z = real_sin(val);

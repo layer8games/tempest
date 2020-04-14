@@ -34,7 +34,7 @@ void GravityForce::v_UpdateForce(p_RigidBody2D body)
 
 	real mass = body->GetMass();
 	
-	body->AddForce(_gravityAcc.x * mass, _gravityAcc.y * mass);
+	body->AddForce(TM::Vector2(_gravityAcc * mass));
 }
 
 void GravityForce::v_UpdateForce(p_RigidBody3D body)

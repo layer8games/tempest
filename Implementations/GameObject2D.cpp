@@ -17,7 +17,7 @@ U32 GameObject2D::_nextID = 1;
 //==========================================================================================================================
 GameObject2D::GameObject2D(void)
     :
-    _modelTOWorldCache(),
+    _modelToWorldCache(),
     _position(0.0f),
     _scale(1.0f),
     _orientation(0.0f),
@@ -35,7 +35,7 @@ GameObject2D::GameObject2D(void)
 
 GameObject2D::GameObject2D(const GameObject2D& obj)
     :
-    _modelTOWorldCache(obj.GetModelMatrix()),
+    _modelToWorldCache(obj.GetModelMatrix()),
     _position(obj.GetPosition()),
     _scale(obj.GetScale()),
     _orientation(obj.GetOrientation()),
@@ -155,8 +155,7 @@ void GameObject2D::DefaultUpdate(void)
 //==========================================================================================================================
 void GameObject2D::_CalculateCachedData(void)
 {
-    //_modelTOWorldCache =  TM::Matrix4::Translate(_position) * TM::Matrix4::Scale(_scale);
-
-    _modelTOWorldCache.SetOrientationAndPosition(_orientation, _position);
-    _modelTOWorldCache = _modelTOWorldCache * TM::Matrix4::Scale(_scale);
+    _modelToWorldCache.SetRotateZ(_orientation);
+    _modelToWorldCache.SetTranslate(_position);
+    _modelToWorldCache = _modelToWorldCache * TM::Matrix4::Scale(_scale);
 }

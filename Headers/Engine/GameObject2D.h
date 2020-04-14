@@ -84,7 +84,7 @@ namespace Tempest
         /// rendering.
         inline const TM::Matrix4& GetModelMatrix(void) const
         {
-            return _modelTOWorldCache;
+            return _modelToWorldCache;
         }
 
         //temporary idea. 
@@ -93,7 +93,7 @@ namespace Tempest
         /// work, but it didn't really work out very well. Issue #51 should fix this. 
         inline const TM::Matrix4 GetModelMatrixRot(void) const
         {
-            TM::Matrix4 mat = _modelTOWorldCache;
+            TM::Matrix4 mat = _modelToWorldCache;
             mat.SetTranslate(0.0f, 0.0f, 0.0f);
             return mat;
         }
@@ -246,7 +246,17 @@ namespace Tempest
             _boundingBox.SetCenter(_position);
         }
 
-        /// Set the Position of the GameObject2D scaled by a factor. Vector4::AddScaledVector is called. Bounding Box is updated. 
+        inline void AddPosition(const TM::Point2& newPosition)
+        {
+            _position += newPosition;
+        }
+
+        inline void AddPosition(const TM::Vector2& newPosition)
+        {
+            _position += newPosition;
+        }
+
+      /*  /// Set the Position of the GameObject2D scaled by a factor. Vector4::AddScaledVector is called. Bounding Box is updated. 
         /// \param pos is the new position for the object.
         /// \param scale is the factor that the pos is scaled by.
         inline void AddScaledPosition(const TM::Vector2& pos, F32 scale)
@@ -271,7 +281,7 @@ namespace Tempest
         {
             _position.AddScaledPoint(point, scale);
             _boundingBox.SetCenter(_position);
-        }
+        }*/
 
 //===== Scale =====
         /// Return the current scale factor for the GameObject2D.		
@@ -307,56 +317,23 @@ namespace Tempest
 
 //===== Orientation =====
         /// Returns the current orientation of the GameObject2D		
-        inline const TM::Quaternion& GetOrientation(void) const
+        inline const real GetOrientation(void) const
         {
             return _orientation;
         }
 
         /// Set a new orientation for the GameObject2D.
         /// \param q is the new orienation.
-        inline void SetOrientation(const TM::Quaternion& q)
+        inline void SetOrientation(real angle)
         {
-            _orientation = q;
+            _orientation = angle;
+            _ClampOrientation();
         }
 
-        /// Set the orientation of the GameObject2D with an Euler Angle. The Vector3 is treated as 
-        /// an Euler Angle in this context. 
-        /// \param vec is the new orientation represent as an Euler Angle.
-        inline void SetOrientation(const TM::Vector3& vec)
+        inline void AddOrientation(real angle)
         {
-            _orientation.RotateByEuler(vec);
-        }
-
-        /// Set the orientation of the GameObject2D with an Euler Angle.
-        /// \param yaw
-        /// \param pitch
-        /// \param roll
-        inline void SetOrientation(real yaw, real pitch, real roll)
-        {
-            _orientation.RotateByEuler(yaw, pitch, roll);
-        }
-
-        /// Add an Euler Angle to the current orientation. Vector3 is treated as an Euler Angle 
-        /// in this context. 
-        /// \param vec is an Euler Angle.
-        inline void AddOrientation(const TM::Vector3& vec)
-        {
-            _orientation.AddEuler(vec);
-        }
-
-        /// Add an Euler Angle to the current orientation. 
-        /// \param yaw
-        /// \param pitch 
-        /// \param roll
-        inline void AddOrientation(real yaw, real pitch, real roll)
-        {
-            _orientation.AddEuler(yaw, pitch, roll);
-        }
-
-        /// Changes the length of the orientation to be 1.0. Calls Quaternion::Normalize.
-        inline void NormalizeOrientation(void)
-        {
-            _orientation.Normalize();
+            _orientation += angle;
+            _ClampOrientation();
         }
 
 //===== Color =====		
@@ -462,16 +439,28 @@ namespace Tempest
         /// Creates a data cache of the model to world transformation matrix. This can help with objects that use their matrix a lot.		
         void _CalculateCachedData(void);
 
+        inline void _ClampOrientation(void)
+        {
+            if(_orientation > 360.0f)
+            {
+                _orientation -= 360.0f;
+            }
+            else if(_orientation < -360.0f)
+            {
+                _orientation += 360.0f;
+            }
+        }
+
 //==========================================================================================================================
 //
 //Data
 //
 //==========================================================================================================================		
         static U32				_nextID;				///< This is an early attempt to ensure that all ID as unique. This is a flawed approach.	
-        TM::Matrix4 			_modelTOWorldCache;		///< Cache of the model to world transformation matrix. 
+        TM::Matrix4 			_modelToWorldCache;		///< Cache of the model to world transformation matrix. 
         TM::Point2 				_position;				///< Position of the object in world space.
         TM::Vector2				_scale;					///< Scale of the object in world space.
-        TM::Quaternion			_orientation;			///< Orientation of the object in world space. Untested.
+        real			        _orientation;			///< Orientation of the object in world space. Untested.
         Color 					_color;					///< Color that should be used to tint the object. How it affects the object depends on what shader you are using.
         p_Texture				_texture;				///< Texture used when rendering the object. Set to null by default.
         bool					_activeUpdate;			///< State of the object in the update loop. If true, v_Update will be called. 

@@ -99,17 +99,6 @@ namespace TempestMath
                 /// Return the distance between this Point2 and a Vector34, without calling sqrt.
         TEMPEST_API real DistanceSquared(const Vector4& v) const;
 
-//===== Math Helper Functions =====
-        ///	Adds a Point2 scaled by a value to this Point2. 
-        ///	\param Point2 is the Point2 that will be added to this one. 
-        ///	\param scale is the amount the added Point2 will be scaled by.
-        TEMPEST_API void AddScaledPoint(const Point2& point, real scale);
-
-        TEMPEST_API void AddScaledVector(const Vector2& vec, real scale);
-        
-        TEMPEST_API void AddScaledVector(const Vector3& vec, real scale);
-
-        TEMPEST_API void AddScaledVector(const Vector4& vec, real scale);
 
 //==========================================================================================================================
 //
@@ -170,6 +159,10 @@ namespace TempestMath
         /// Point2 addition equal. This is done componentwise.
         /// \param vec is the Vector4 to add into this Point2.
         TEMPEST_API Point2& operator+=(const Vector3& vec);
+
+         /// Point2 addition equal. This is done componentwise.
+        /// \param vec is the Vector4 to add into this Point2.
+        TEMPEST_API Point2& operator+=(const Vector2& vec);
 
 //===== Add by scalar =====
         ///	Scalar addition. Each value is added into. 2D check done before z is changed.

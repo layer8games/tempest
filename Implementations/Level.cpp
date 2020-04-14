@@ -55,13 +55,7 @@ void Level::UpdateLevel(void)
 {
 	_forceRegistry.UpdateForces();
 
-	for(auto obj : _localGameObjects)
-	{
-		if(obj.second->GetActiveUpdate())
-		{
-			obj.second->v_Update();
-		}
-	}
+	UpdateObjects();
 }
 
 void Level::AddObjectToLevel(const GameObject2D& obj)

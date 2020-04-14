@@ -3,6 +3,7 @@
 //=====Engine includes=====
 #include <Engine/Atom.h>
 #include <Engine/ForceGenerator.h>
+#include <Engine/Vector2.h>
 #include <Engine/Vector3.h>
 
 namespace TM = TempestMath;

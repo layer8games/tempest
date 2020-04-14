@@ -247,6 +247,15 @@
     <Filter Include="Source Code\Engine\GameObjects\StaticGameObject\3D">
       <UniqueIdentifier>{bab7e9c8-c59a-4353-b1bc-4a91eedf3525}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\AI">
+      <UniqueIdentifier>{2c193b6e-7d48-4510-9df6-aaa45effa73a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\AI\SteeringBehaviors">
+      <UniqueIdentifier>{3afa8f4e-c78e-44ed-bd5d-e6b0df2b8159}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\AI\SteeringBehaviors\SteeringOutput">
+      <UniqueIdentifier>{9a05089a-1dd7-4b4f-b64d-ba0fdd95ead7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -443,6 +452,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Point3.h">
       <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\SteeringOutput2D.h">
+      <Filter>Source Code\Engine\AI\SteeringBehaviors\SteeringOutput</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

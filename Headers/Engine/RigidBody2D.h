@@ -7,6 +7,7 @@
 #include <Engine/Vector2.h>
 #include <Engine/Point2.h>
 #include <Engine/GameObject2D.h>
+#include <Engine/SteeringOutput2D.h>
 
 //===== Standard includes =====
 #include <cassert>
@@ -32,7 +33,7 @@ namespace TempestPhysics
 //Constructors
 //
 //==========================================================================================================================
-        ///	Default Constructor. All data values are set to 0, except for _inverseMass, which is set to 1, and _damping, which is set
+        ///	Default Constructor. All data values are set to 0, except for _inverseMass, which is set to 1, and _linearDamping, which is set
         ///	to 0.999f.
         TEMPEST_API RigidBody2D(void);
 
@@ -55,25 +56,37 @@ namespace TempestPhysics
         ///	into account for this update. All forces are cleared at the end of the integration step.
         TEMPEST_API void Integrate(void);
 
+        void UpdateVelocityAndAcceleration(const TE::SteeringOutput2D steering);
+
         ///	Removed all forces that have been applied to the RigidBody2D this frame.
         TEMPEST_API void ClearAccumulator(void);
 
-        ///	Adds a force that will act upon this RigidBody2D. This is done by adding the combined forces into the acceleration of the RigidBody2D.
-        TEMPEST_API void AddForce(real xVal, real yVal);
 
-        ///	Adds a force that will act upon this RigidBody2D. This is done by adding the combined forces into the acceleration of the RigidBody2D.
-        TEMPEST_API void AddForce(const TM::Vector2 force);
 
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================
+        /// Set the rotation amount
+        inline void SetRotation(real euler)
+        {
+            _rotation = euler;
+        }
+
+        /// Return the amount of rotation in radians per second
+        inline real GetRotation(void) const
+        {
+            return _rotation;
+        }
+
+        /// Set the active state of the RigidBody. 
         inline void SetActive(bool state)
         {
             _active = state;
         }
 
+        /// Return the active state of the RigidBody. This takes the GameObject pointer into affect
         TEMPEST_API bool GetActive(void) const;
 
         inline void SetObject(TE::GameObject2D* obj)
@@ -81,6 +94,12 @@ namespace TempestPhysics
             _obj = obj;
         }
 
+        inline TE::GameObject2D* GetGameObject(void) const
+        {
+            return _obj;
+        }
+
+        /// Return the Position of the attached GameObject. 
         const TM::Point2 GetPosition(void) const;
 
 //===== Velocity =====
@@ -105,14 +124,6 @@ namespace TempestPhysics
         {
             _velocity.x = x;
             _velocity.y = y;
-        }
-    
-        ///	Directly add a scaled Vector2y into the current velocity. 
-        ///	\param vec is the Vector2 to be added. 
-        ///	\param scale is the F32 that vec will be scaled by before it is added into the velocity. 
-        inline void AddScaledVelocity(const TM::Vector2& vec, F32 scale)
-        {
-            _velocity.AddScaledVector(vec, scale);
         }
 
 //===== Accleration =====
@@ -139,20 +150,16 @@ namespace TempestPhysics
             _acceleration.y = y;
         }
 
-        ///	Directly add a scaled Vector2y into the current acceleration. 
-        ///	\param vec is the Vector2 to be added. 
-        ///	\param scale is the F32 that vec will be scaled by before it is added into the acceleration. 	
-        inline void AddScaledAcceleration(const TM::Vector2& acc, F32 scale)
-        {
-            _acceleration.AddScaledVector(acc, scale);
-        }
-
 //===== Froces =====
         ///	Returns the total amount of all the forces applied to this RigidBody2D for this frame added together.
         inline const TM::Vector2& GetForces(void) const
         {
             return _forceAccum;
         }
+
+        TEMPEST_API void AddForce(const TM::Vector2& force);
+
+        TEMPEST_API void AddForceAtPoint(const TM::Vector2& force, const TM::Point2 point);
 
 //===== Gravity =====
         ///	Returns the value cached to represent the force of gravity on this RigidBody2D.
@@ -201,19 +208,27 @@ namespace TempestPhysics
             _inverseMass = static_cast<real>(1.0f) / mass;
         }
 
+        TEMPEST_API void SetMomentOfInertia(real inertia);
+
+        TEMPEST_API real GetMomentOfInertia(void) const;
+
 //===== Damping =====
         ///	Returns the current damping for the RigidBody2D.
-        inline const real GetDamping(void) const
+        inline const real GetLinearDamping(void) const
         {
-            return _damping;
+            return _linearDamping;
         }
 
         ///	Sets the damping value for the RigidBody2D. 
         ///	\param damp is the new value for damping.
-        inline void SetDamping(real damp)
+        inline void SetLinearDamping(real damp)
         {
-            _damping = damp;
+            _linearDamping = damp;
         }
+
+        TEMPEST_API void SetAngularDamping(real angularDamping);
+
+        TEMPEST_API real GetAngularDamping(void) const;
 
     private:
 //==========================================================================================================================
@@ -223,7 +238,11 @@ namespace TempestPhysics
 //==========================================================================================================================
         bool 	   		    _active;		///< State of the RigidBody2D. If false, it will not run the Intregrate state.
         real 	   		    _inverseMass;	///< The inverse mass of the object, written like 1/mass. This is an optimization to avoid uneeded operations. 
-        real 	   		    _damping;		///< Damping is a substitute for friction. It represents the rate of acceleration decay. 0.0f means heavy friction, close to 1 means almost none. Do not set to 1. A good value for no decay is 0.999f.
+        real                _inverseMomentOfInertia;
+        real 	   		    _linearDamping;		///< Damping is a substitute for friction. It represents the rate of acceleration decay. 0.0f means heavy friction, close to 1 means almost none. Do not set to 1. A good value for no decay is 0.999f.
+        real                _angularDamping;
+        real                _rotation; ///< Otherwise known as angular velocity, this is the rate of change, in degrees / second stored as an Euler Angle. 
+        real                _torqueAccum;
         TE::GameObject2D*	_obj;			///< Pointer to the GameObject that owns this Rigid Body. This allows the RigidBody2D to chagne the position of GameObject.
         TM::Vector2 	    _velocity;		///< Represents the rate of change, otherwise known as the first differential of the position.
         TM::Vector2 	    _acceleration;	///< Reprsent the rate of change of the velocity, otherwise known as the second differential of the position.

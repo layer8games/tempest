@@ -31,6 +31,12 @@ Vector2::Vector2(const Vector2& otherVec)
     y(otherVec.y)
 {  }
 
+Vector2::Vector2(const Vector3& otherVec)
+    :
+    x(otherVec.x),
+    y(otherVec.y)
+{  }
+
 Vector2::Vector2(const Vector4& otherVec)
     :
     x(otherVec.x),
@@ -90,24 +96,11 @@ void Vector2::Reset(real val)
     y = val;
 }
 
-//===== Math Helper Functions =====
-void Vector2::AddScaledVector(const Vector2& otherVec, real scale)
+Vector2 Vector2::Perpendicular(void)
 {
-    x += otherVec.x * scale;
-    y += otherVec.y * scale;
+    return Vector2(-y, x);
 }
 
-void Vector2::AddScaledVector(const Vector4& otherVec, real scale)
-{
-    x += otherVec.x * scale;
-    y += otherVec.y * scale;
-}
-
-void Vector2::AddScaledVector(const Point4& point, real scale)
-{
-    x += point.x * scale;
-    y += point.y * scale;
-}
 //==========================================================================================================================
 //
 //Operator overloads

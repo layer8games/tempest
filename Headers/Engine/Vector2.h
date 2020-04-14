@@ -63,6 +63,8 @@ namespace TempestMath
         /// \param p is the Point4 to copy.
         TEMPEST_API explicit Vector2(const Point4& p);
 
+        TEMPEST_API explicit Vector2(const Vector3& v);
+        
         ///	Convert a Vector4 into a Vector2.
         ///	\param v is the Vector4 to convert.
         TEMPEST_API explicit Vector2(const Vector4& v);
@@ -93,15 +95,7 @@ namespace TempestMath
         ///	\param val is the value x, y and z will get. Default value is 0.
         TEMPEST_API void Reset(real val=0.0f);
 
-//===== Math Helper Functions =====
-        ///	Adds a Vector2 scaled by a value to this Vector2. 
-        ///	\param vec is the Vector2 that will be added to this one. 
-        ///	\param scale is the amount the added Vector2 will be scaled by.
-        TEMPEST_API void AddScaledVector(const Vector2& vec, real scale);
-
-        TEMPEST_API void AddScaledVector(const Vector4& vec, real scale);
-
-        TEMPEST_API void AddScaledVector(const Point4& point, real scale);
+        TEMPEST_API Vector2 Perpendicular(void);
 
 //==========================================================================================================================
 //

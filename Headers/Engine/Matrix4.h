@@ -124,6 +124,8 @@ namespace TempestMath
         ///	\param z is the value of z axis translation. 	
         TEMPEST_API void SetTranslate(real xVal, real yVal, real zVal);
 
+        TEMPEST_API void SetTranslate(const Point2& point);
+        
         ///	Sets a translation for this matrix equal to the x y and z values in a Vector4.
         ///	\param vec contains the values that will be used for the translation. 
         TEMPEST_API void SetTranslate(const Vector2& vec);
@@ -276,11 +278,6 @@ namespace TempestMath
         ///	\param q contains the orientation to set. 
         ///	\param p contains the position to set, as a translation. 
         TEMPEST_API void SetOrientationAndPosition(const Quaternion& q, const Point4& p);
-
-        ///	A helper functions that will set the rotational transform and position at the same time. 
-        ///	\param q contains the orientation to set. 
-        ///	\param p contains the position to set, as a translation. 
-        TEMPEST_API void SetOrientationAndPosition(const F32 yAxisRot, const Point4& p);
 
 //==========================================================================================================================
 //Inverse
