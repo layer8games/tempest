@@ -206,6 +206,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\KinematicSeek.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Matrix3.h">
       <SubType>
       </SubType>
@@ -288,6 +292,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\StateMachine.hpp">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Steering2D.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -386,6 +394,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObjectManager.cpp" />
+    <ClCompile Include="..\..\Implementations\KinematicSeek.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\Matrix3.cpp">
       <SubType>
       </SubType>
@@ -441,6 +453,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ShaderManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Steering2D.cpp">
       <SubType>
       </SubType>
     </ClCompile>

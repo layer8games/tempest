@@ -56,7 +56,7 @@ void FPSCamera::v_Rotate(void)
 	_yaw += RADIAN(_deltaYaw);
 	_pitch += RADIAN(_deltaPitch);
 
-	_pitch = FLOAT_CLAMP(_pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
+	_pitch = REAL_CLAMP(_pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
 
 	_v_UpdateCameraVectors();
 

@@ -70,12 +70,12 @@ real Vector2::Dot(const Vector2& otherVec) const
            y * otherVec.y;
 }
 
-real Vector2::Magnitude(void)
+real Vector2::Magnitude(void) const
 {
     return real_sqrt(x * x + y * y);
 }
 
-real Vector2::SqrMagnitude(void)
+real Vector2::SqrMagnitude(void) const
 {
     return x * x + y * y;
 }

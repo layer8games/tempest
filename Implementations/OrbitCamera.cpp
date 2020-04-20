@@ -26,7 +26,7 @@ void OrbitCamera::v_Rotate(void)
 	Camera::_yaw = RADIAN(Camera::_deltaYaw);
 	Camera::_pitch = RADIAN(Camera::_deltaPitch);
 
-	Camera::_pitch = FLOAT_CLAMP(Camera::_pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
+	Camera::_pitch = REAL_CLAMP(Camera::_pitch, -R_PI / 2.0f + 0.1f, R_PI / 2.0f - 0.1f);
 
 	_v_UpdateCameraVectors();
 }

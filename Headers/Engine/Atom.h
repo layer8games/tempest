@@ -91,6 +91,9 @@ typedef float real;
 /// Alias for the tan function. 
 #define real_tan tanf
 
+#define real_atan atanf
+#define real_atan2 atan2f
+
 /// Alias for the exp function.
 #define real_exp expf
 
@@ -122,18 +125,18 @@ inline real REAL_SQR(real x)
     Converts an angle to a radian.
     \param angle is the value to convert.
 */
-inline F32 RADIAN(F32 angle)
+inline real RADIAN(real angle)
 {
-    return static_cast<F32>(angle * R_PI / 180.0f);
+    return static_cast<real>(angle * R_PI / 180.0f);
 }
 
 /*!
     Converts a radian to an angle. 
     \param radian is the value to convert. 
 */
-inline F32 DEGREE(F32 radian)
+inline real DEGREE(real radian)
 {
-    return static_cast<F32>(radian * 180.0f / R_PI);
+    return static_cast<real>(radian * 180.0f / R_PI);
 }
 
 /*!
@@ -142,7 +145,7 @@ inline F32 DEGREE(F32 radian)
     \param min is the floor.
     \param max is the ceiling.
 */
-inline F32 FLOAT_CLAMP(F32 val, F32 min, F32 max)
+inline real REAL_CLAMP(real val, real min, real max)
 {
     if(val < min)
     {

@@ -64,7 +64,7 @@ namespace Tempest
 /// \param val is the new radius. It will be clamped to min and max.
 		inline void SetRadius(F32 val)
 		{
-			_radius = FLOAT_CLAMP(val, _minRadius, _maxRadius);
+			_radius = REAL_CLAMP(val, _minRadius, _maxRadius);
 		}
 
 /// Sets the minimum possible Radius. 

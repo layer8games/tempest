@@ -253,8 +253,14 @@
     <Filter Include="Source Code\Engine\AI\SteeringBehaviors">
       <UniqueIdentifier>{3afa8f4e-c78e-44ed-bd5d-e6b0df2b8159}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Engine\AI\SteeringBehaviors\SteeringOutput">
+    <Filter Include="Source Code\Engine\AI\SteeringOutput">
       <UniqueIdentifier>{9a05089a-1dd7-4b4f-b64d-ba0fdd95ead7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\AI\SteeringBehaviors\Base">
+      <UniqueIdentifier>{f2c10e45-0561-47b5-b31f-0401666804f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\AI\SteeringBehaviors\KinematicSeek">
+      <UniqueIdentifier>{05aa8808-41bc-4fa4-af77-b987507d4687}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -454,7 +460,13 @@
       <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\SteeringOutput2D.h">
-      <Filter>Source Code\Engine\AI\SteeringBehaviors\SteeringOutput</Filter>
+      <Filter>Source Code\Engine\AI\SteeringOutput</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Steering2D.h">
+      <Filter>Source Code\Engine\AI\SteeringBehaviors\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\KinematicSeek.h">
+      <Filter>Source Code\Engine\AI\SteeringBehaviors\KinematicSeek</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -628,6 +640,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Point2.cpp">
       <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Steering2D.cpp">
+      <Filter>Source Code\Engine\AI\SteeringBehaviors\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\KinematicSeek.cpp">
+      <Filter>Source Code\Engine\AI\SteeringBehaviors\KinematicSeek</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

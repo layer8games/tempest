@@ -83,10 +83,10 @@ namespace TempestMath
         TEMPEST_API real Dot(const Vector2& vec) const;
 
         ///	Returns the length of the Vector2. Caution, this uses the square root function.
-        TEMPEST_API real Magnitude(void);
+        TEMPEST_API real Magnitude(void) const;
 
         ///	Returns the squard length of the Vector2. It avoids the cost of the square root function.
-        TEMPEST_API real SqrMagnitude(void);
+        TEMPEST_API real SqrMagnitude(void) const;
 
         ///	Changes the Vector2 into a unit Vector2 by converting its magnitude to exaclty 1.0. This is an expensive operation.
         TEMPEST_API void Normalize(void);
