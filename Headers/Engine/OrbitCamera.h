@@ -4,6 +4,7 @@
 #include <Engine/Atom.h>
 #include <Engine/Camera.h>
 #include <Engine/Vector4.h>
+#include <Engine/Controller.h>
 
 namespace TM = TempestMath;
 

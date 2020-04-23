@@ -6,7 +6,6 @@
 #include <Engine/Vector4.h>
 #include <Engine/Point3.h>
 #include <Engine/Color.h>
-#include <Engine/Controller.h>
 #include <Engine/Timer.h>
 
 #include <vector>
@@ -66,7 +65,7 @@ namespace Tempest
 //
 //==========================================================================================================================
 	/// Sets private Matrix4 to use an orthogrphic projection. The params should be sent in game units. For instance, the default 
-	///	version of this function calls the GameWindow dimensions to size the projection size. 
+	///	version of this function calls the OpenGLGameWindow dimensions to size the projection size. 
 	/// \param left is the left border of the view port.
 	/// \param right is the right border of the view port.
 	/// \param bottom is the lower border of the view port

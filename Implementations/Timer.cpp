@@ -63,14 +63,14 @@ shared_ptr<Timer> Timer::Instance(void)
 //===============================================================================
 //Update
 //===============================================================================
-void Timer::Update(void) 
+void Timer::Update(F64 newTime) 
 {
     if(!_paused) 
     {
-        // Original version for getting the time. This currently makes the game run too fast on some systems. The GameWindow
+        // Original version for getting the time. This currently makes the game run too fast on some systems. The OpenGLGameWindow
         // version relies on glfw
         //_currentTime = _QueryCounter();
-        _currentTime = TE::GameWindow::Instance()->GetTime();
+        _currentTime = newTime;
         _deltaTime = static_cast<real>((_currentTime - _pastTime) * _timeScale);
         _pastTime = _currentTime;
 

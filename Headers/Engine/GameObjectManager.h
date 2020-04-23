@@ -2,10 +2,10 @@
 
 //=====Engine Includes=====
 #include <Engine/Atom.h>
+#include <Engine/Engine.h>
 #include <Engine/GameObject2D.h>
 #include <Engine/GameObject3D.h>
 #include <Engine/ErrorManager.h>
-#include <Engine/GameWindow.h>
 
 //===== STL includes =====
 #include <map>
@@ -75,7 +75,9 @@ namespace Tempest
         TEMPEST_API void UpdateObjects(void);
 
         /// Loop over all registered GameObjects2D calling GameObject::v_Render.
-        TEMPEST_API void RenderObjects(void);
+        // TODO:: Need a better way to do this. Can't get the view matrix this way any more. 
+        // Maybe the Level should call GetAllObjects and render them one by one from its update
+        //TEMPEST_API void RenderObjects(void);
 
     protected:
         /// Protected constructor part of the Singleton pattern. 

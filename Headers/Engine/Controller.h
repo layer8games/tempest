@@ -2,7 +2,7 @@
 
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
-#include <Engine/GameWindow.h>
+#include <Engine/Engine.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Matrix4.h>
 #include <Engine/Point2.h>
@@ -28,7 +28,7 @@ namespace Tempest
 //Documentation
 //==========================================================================================================================	 
 /// Human input device controller. Abstract Keyboard input is received through a system all found in the *Program class. 
-/// For example, in GameWindow, when windows gets a key input message for a key down even, KeyDown(Keys k) is called.
+/// For example, in OpenGLGameWindow, when windows gets a key input message for a key down even, KeyDown(Keys k) is called.
 
 /// Two enums are defined. 
 
@@ -60,18 +60,18 @@ namespace Tempest
 /// Sets the new state of each key. 
 		TEMPEST_API void Update(void);
 
-/// Used by GameWindow to set when a key is pressed down, based on system signals.
+/// Used by OpenGLGameWindow to set when a key is pressed down, based on system signals.
 /// \param k Keys: Keycode for key that has been pressed down. 
 		TEMPEST_API void KeyDown(Keys k);
  
-/// Used by GameWindow to set when a key is no longer detected to be held down. 
+/// Used by OpenGLGameWindow to set when a key is no longer detected to be held down. 
 /// \param k Keys: Keycode for key that has been released. 
 		TEMPEST_API void KeyUp(Keys k);
 
-/// Returns the raw mouse coordinates from the GameWindow. This is with the origin in the top left corner of the screen. 
+/// Returns the raw mouse coordinates from the OpenGLGameWindow. This is with the origin in the top left corner of the screen. 
 		TEMPEST_API const TM::Point2 GetMouseCoord(void);
 
-/// Returns the mouse coordinates in screen space, with the origin in the center of the screen. Wrapper around GameWindow. 
+/// Returns the mouse coordinates in screen space, with the origin in the center of the screen. Wrapper around OpenGLGameWindow. 
 		TEMPEST_API const TM::Point2 GetMouseCoordInScreen(void);
 
 /// Returns the raw coordinates of a Left Click in screen space. 

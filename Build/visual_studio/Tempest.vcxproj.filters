@@ -262,6 +262,15 @@
     <Filter Include="Source Code\Engine\AI\SteeringBehaviors\KinematicSeek">
       <UniqueIdentifier>{05aa8808-41bc-4fa4-af77-b987507d4687}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\GameWindow\base">
+      <UniqueIdentifier>{6b2e76e3-63ea-4854-bf18-ab6d05696f33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\GameWindow\OpenGL">
+      <UniqueIdentifier>{0daa4ad0-5018-4001-be51-432663842c60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\GameWindow\DirectX">
+      <UniqueIdentifier>{242c69c2-59e2-493e-9977-a5003448ef6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -393,9 +402,6 @@
     <ClInclude Include="..\..\Headers\Engine\AudioListener.h">
       <Filter>Source Code\Engine\AudioListener</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\GameWindow.h">
-      <Filter>Source Code\Engine\GameWindow</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\EngineFactory.h">
       <Filter>Source Code\Engine\EngineFactory</Filter>
     </ClInclude>
@@ -467,6 +473,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\KinematicSeek.h">
       <Filter>Source Code\Engine\AI\SteeringBehaviors\KinematicSeek</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\OpenGLGameWindow.h">
+      <Filter>Source Code\Engine\GameWindow\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\GameWindow.h">
+      <Filter>Source Code\Engine\GameWindow\base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -587,9 +599,6 @@
     <ClCompile Include="..\..\Implementations\AudioSource.cpp">
       <Filter>Source Code\Engine\AudioSource</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\GameWindow.cpp">
-      <Filter>Source Code\Engine\GameWindow</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\EngineFactory.cpp">
       <Filter>Source Code\Engine\EngineFactory</Filter>
     </ClCompile>
@@ -646,6 +655,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\KinematicSeek.cpp">
       <Filter>Source Code\Engine\AI\SteeringBehaviors\KinematicSeek</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\OpenGLGameWindow.cpp">
+      <Filter>Source Code\Engine\GameWindow\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\GameWindow.cpp">
+      <Filter>Source Code\Engine\GameWindow\base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

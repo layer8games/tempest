@@ -41,7 +41,7 @@ _sources()
 		ErrorManager::Instance()->SetError(AUDIO, "AudioManager::Constructor: Unable to make context current! " + GetALCerror(error));
 	}
 /*
-	TODO: not sure where this code should live. It could possible be put into GameWindow, but maybe it should stay here.
+	TODO: not sure where this code should live. It could possible be put into OpenGLGameWindow, but maybe it should stay here.
 		  This check should happen around here though, or at least before here. This would allow for the user to select
 		  which audio device they want the sound of the game to come through. Not a lot of games do this... maybe its
 		  not something which should be included. This should be called after the device is created, but before the

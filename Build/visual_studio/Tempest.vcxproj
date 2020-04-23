@@ -202,6 +202,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GameObjectManager.h" />
+    <ClInclude Include="..\..\Headers\Engine\GameWindow.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Keys.h">
       <SubType>
       </SubType>
@@ -316,7 +320,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\GameWindow.h" />
+    <ClInclude Include="..\..\Headers\Engine\OpenGLGameWindow.h" />
     <ClInclude Include="..\..\Headers\Engine\Text.h" />
     <ClInclude Include="..\..\Headers\Engine\Texture.h" />
     <ClInclude Include="..\..\Headers\Engine\TextureManager.h" />
@@ -394,6 +398,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObjectManager.cpp" />
+    <ClCompile Include="..\..\Implementations\GameWindow.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\KinematicSeek.cpp">
       <SubType>
       </SubType>
@@ -486,7 +494,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector4.cpp" />
-    <ClCompile Include="..\..\Implementations\GameWindow.cpp" />
+    <ClCompile Include="..\..\Implementations\OpenGLGameWindow.cpp" />
     <ClCompile Include="..\..\Implementations\Text.cpp" />
     <ClCompile Include="..\..\Implementations\TextureManager.cpp" />
     <ClCompile Include="..\..\Implementations\Timer.cpp" />

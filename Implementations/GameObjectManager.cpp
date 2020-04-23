@@ -136,23 +136,24 @@ void GameObjectManager::UpdateObjects(void)
     }
 }
 
-void GameObjectManager::RenderObjects(void)
-{
-    for(auto obj : _registry2D)
-    {
-        if(obj.second->GetActiveRender())
-        {
-            obj.second->GetShader()->SetUniform("view", GameWindow::Instance()->GetCamera()->GetViewMatrix4());
-            obj.second->v_Render();
-        }
-    }
-
-    for(auto obj : _registry3D)
-    {
-        if(obj.second->GetActiveRender())
-        {
-            obj.second->GetShader()->SetUniform("view", GameWindow::Instance()->GetCamera()->GetViewMatrix4());
-            obj.second->v_Render();
-        }
-    }
-}
+// TODO:: Need a better way to get the view matrix
+//void GameObjectManager::RenderObjects(void)
+//{
+//    for(auto obj : _registry2D)
+//    {
+//        if(obj.second->GetActiveRender())
+//        {
+//            obj.second->GetShader()->SetUniform("view", Engine::Instance()->GetCamera()->GetViewMatrix4());
+//            obj.second->v_Render();
+//        }
+//    }
+//
+//    for(auto obj : _registry3D)
+//    {
+//        if(obj.second->GetActiveRender())
+//        {
+//            obj.second->GetShader()->SetUniform("view", Engine::Instance()->GetCamera()->GetViewMatrix4());
+//            obj.second->v_Render();
+//        }
+//    }
+//}

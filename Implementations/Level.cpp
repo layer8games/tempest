@@ -21,7 +21,8 @@ _farBorder(0),
 _bgColor(),
 _ID(0),
 _localGameObjects(),
-_forceRegistry()
+_forceRegistry(),
+_camera()
 {  }
 
 Level::~Level(void)
@@ -41,8 +42,19 @@ void Level::v_Render(void)
 
 void Level::DefaultEnter(void)
 {
-	GameWindow::Instance()->ResetCamera();
+	// TODO: This needs to be moved into the Camera itself. 
+	//Engine::Instance()->ResetCamera();
 	ActivateBackgroundColor();
+}
+
+void Level::DefaultInit(void)
+{
+	F32 left = TE::Engine::Instance()->GetScreenLeft();
+	F32 right = TE::Engine::Instance()->GetScreenRight();
+	F32 bottom = TE::Engine::Instance()->GetScreenBottom();
+	F32 top = TE::Engine::Instance()->GetSCreenTop();
+
+	_camera.SetOrthographic(left, right, bottom, top, -100.0f, 100.0f);
 }
 
 //==========================================================================================================================
@@ -61,7 +73,7 @@ void Level::UpdateLevel(void)
 void Level::AddObjectToLevel(const GameObject2D& obj)
 {
 	_localGameObjects.insert({ obj.GetID(), shared_ptr<GameObject2D>(const_cast<GameObject2D*>(&obj)) });
-	_localGameObjects[obj.GetID()]->GetShader()->SetUniform("projection", GameWindow::Instance()->GetCamera()->GetProjectionMatrix4());
+	_localGameObjects[obj.GetID()]->GetShader()->SetUniform("projection", _camera.GetProjectionMatrix4());
 
 	if(_localGameObjects.find(obj.GetID()) == _localGameObjects.end())
 	{
@@ -71,7 +83,7 @@ void Level::AddObjectToLevel(const GameObject2D& obj)
 
 void Level::AddObjectToLevel(p_GameObject2D obj)
 {
-	obj->GetShader()->SetUniform("projection", GameWindow::Instance()->GetCamera()->GetProjectionMatrix4());
+	obj->GetShader()->SetUniform("projection", _camera.GetProjectionMatrix4());
 
 	_localGameObjects.insert({obj->GetID(), obj});
 
@@ -162,7 +174,7 @@ void Level::RenderObjects(void)
 	{
 		if(i.second->GetActiveRender())
 		{
-			i.second->GetShader()->SetUniform("view", GameWindow::Instance()->GetCamera()->GetViewMatrix4());
+			i.second->GetShader()->SetUniform("view", _camera.GetViewMatrix4());
 			i.second->v_Render();
 		}
 	}	

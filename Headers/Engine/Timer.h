@@ -3,7 +3,7 @@
 //=====Killer1 includes=====
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
-#include <Engine/GameWindow.h>
+
 
 namespace TE = Tempest;
 
@@ -13,7 +13,7 @@ namespace TempestMath
 ///	this the timer is windows specific, but cross platform functionality is
 ///	planned in the future. 
 
-///	It uses the GLFW function glfwGetTime, located in the GameWindow to get
+///	It uses the GLFW function glfwGetTime, located in the OpenGLGameWindow to get
 ///	the total time that the glfw window has been open. It used to have a 
 ///	customer frequency timer, but this turned out to be too eratic, and 
 ///	was removed.  
@@ -39,8 +39,8 @@ namespace TempestMath
 //
 //==========================================================================================================================		
 ///	This updates the _totalTime and _deltaTime values. This is where all of the magic happens. Should be called once per frame.
-///	It called GameWindow::GetTime().
-        TEMPEST_API void Update (void);
+///	It called OpenGLGameWindow::GetTime().
+        TEMPEST_API void Update (F64 newTime);
         
 ///	This will attempt to move _deltaTime forward one single frame, at 60 frames per second. Note: Maybe this should be updated
 ///	to be configurable?

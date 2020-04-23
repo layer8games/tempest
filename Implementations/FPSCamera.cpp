@@ -38,9 +38,10 @@ FPSCamera::~FPSCamera(void)
 //==========================================================================================================================
 void FPSCamera::v_Update(void)
 {
+	// TODO: Refactor and test again 
 	//TM::Point mouseCoord = Controller::Instance()->GetMouseCoord();
-	//S32 width = GameWindow::Instance()->GetWidth();
-	//S32 height = GameWindow::Instance()->GetHeight();
+	//S32 width = OpenGLGameWindow::Instance()->GetWidth();
+	//S32 height = OpenGLGameWindow::Instance()->GetHeight();
 
 	////Set yaw and pitch for rotate
 	//_deltaYaw = static_cast<F32>((width / 2.0f - mouseCoord[0])) * _mouseSensitivity;
@@ -48,7 +49,7 @@ void FPSCamera::v_Update(void)
 
 	//v_Rotate();
 
-	//GameWindow::Instance()->ResetMouseCursor();
+	//OpenGLGameWindow::Instance()->ResetMouseCursor();
 }
 
 void FPSCamera::v_Rotate(void)

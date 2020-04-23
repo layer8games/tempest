@@ -8,7 +8,6 @@
 #include <Engine/CharacterData.h>
 #include <Engine/Color.h>
 #include <Engine/Matrix4.h>
-#include <Engine/GameWindow.h>
 #include <Engine/ShaderManager.h>
 
 namespace TM = TempestMath;

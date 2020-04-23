@@ -34,6 +34,8 @@ void OrbitCamera::v_Rotate(void)
 void OrbitCamera::v_Update(void)
 {
 	Camera::_lastMouseCoords = Camera::_currentMouseCoords;
+	
+	// TODO: DO NOT call controller here. Update should be sent the coords it needs, or another accessor should be created
 	Camera::_currentMouseCoords = Controller::Instance()->GetMouseCoord();
 	
 	v_Rotate();
