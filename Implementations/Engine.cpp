@@ -121,7 +121,7 @@ F32 Engine::GetScreenLeft(void)
     return _window->GetScreenLeft();
 }
 
-F32 Engine::GetSCreenTop(void)
+F32 Engine::GetScreenTop(void)
 {
     return _window->GetScreenTop();
 }

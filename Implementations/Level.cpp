@@ -52,7 +52,7 @@ void Level::DefaultInit(void)
 	F32 left = TE::Engine::Instance()->GetScreenLeft();
 	F32 right = TE::Engine::Instance()->GetScreenRight();
 	F32 bottom = TE::Engine::Instance()->GetScreenBottom();
-	F32 top = TE::Engine::Instance()->GetSCreenTop();
+	F32 top = TE::Engine::Instance()->GetScreenTop();
 
 	_camera.SetOrthographic(left, right, bottom, top, -100.0f, 100.0f);
 }

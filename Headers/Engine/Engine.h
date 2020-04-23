@@ -86,7 +86,7 @@ namespace Tempest
 
         TEMPEST_API F32 GetScreenLeft(void);
 
-        TEMPEST_API F32 GetSCreenTop(void);
+        TEMPEST_API F32 GetScreenTop(void);
 
         TEMPEST_API F32 GetScreenBottom(void);
 
