@@ -68,7 +68,6 @@ namespace Tempest
         ///	\param h is the height of the Level. 
         TEMPEST_API virtual void v_Init(void)=0;
 
-        TEMPEST_API void DefaultInit(void);
 
 
         ///	Abstract function. Used to control what needs to happen during an update. Please note, objects added to the level 
@@ -90,6 +89,8 @@ namespace Tempest
         /// dumped and clean up anything that needs to be cleaned up. Right now, this is stubbed out and unimplemented.
         TEMPEST_API virtual void v_Exit(void)
         {  }
+
+        TEMPEST_API void DefaultInit(void);
 
         /// Default behavior for a standard awake. Behavior: Calls OpenGLGameWindow::ResetCamera
         TEMPEST_API void DefaultEnter(void);

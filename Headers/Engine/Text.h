@@ -133,7 +133,7 @@ namespace Tempest
 ///	screen space the Text is going to take up on the x axis. 
         inline F32 GetWidth(void)
         {
-            return _totalWidth;
+            return _screenWidth;
         }
 
 ///	Sets the font for the Text and all of the Glyphs, if there are any. 
@@ -245,7 +245,7 @@ namespace Tempest
 //
 //==========================================================================================================================
         bool 							_active;			///< Active state of Text and each Glyph.
-        F32 							_totalWidth;		///< Total space the Text will take up on screen.
+        F32 							_screenWidth;		///< Total space the Text will take up on screen.
         TM::Point2 						_pos;				///< Position of the first Glyph in the Text.
         string 	   						_text;				///< The string used to generate each Glyph.
         p_Font							_font;				///< The Font used to generate each Glyph.

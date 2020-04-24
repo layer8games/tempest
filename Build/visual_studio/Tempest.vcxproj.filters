@@ -480,6 +480,9 @@
     <ClInclude Include="..\..\Headers\Engine\GameWindow.h">
       <Filter>Source Code\Engine\GameWindow\base</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\DirectXGameWindow.h">
+      <Filter>Source Code\Engine\GameWindow\DirectX</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -661,6 +664,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GameWindow.cpp">
       <Filter>Source Code\Engine\GameWindow\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\DirectXGameWindow.cpp">
+      <Filter>Source Code\Engine\GameWindow\DirectX</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

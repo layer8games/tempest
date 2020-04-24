@@ -10,7 +10,7 @@ using namespace Tempest;
 Text::Text(void) 
 :
 _active(true),
-_totalWidth(0.0f),
+_screenWidth(0.0f),
 _pos(0.0f),
 _text(), 
 _font(), 
@@ -22,7 +22,7 @@ _color(1.0f)
 Text::Text(string text) 
 :
 _active(true),
-_totalWidth(0.0f),
+_screenWidth(0.0f),
 _pos(0.0f),
 _text(), 
 _font(nullptr), 
@@ -36,7 +36,7 @@ _color(1.0f)
 Text::Text(string text, p_Font font)
 :
 _active(true),
-_totalWidth(0.0f),
+_screenWidth(0.0f),
 _pos(0.0f),
 _text(), 
 _font(font), 
@@ -50,7 +50,7 @@ _color(1.0f)
 Text::Text(string text, Font& font)
 	:
 	_active(true),
-	_totalWidth(0.0f),
+	_screenWidth(0.0f),
 	_pos(0.0f),
 	_text(),
 	_font(),
@@ -181,7 +181,7 @@ void Text::_UpdateGlyphData(U32 index)
 		_characterList[index]->SetColor(_color);
 		_characterList[index]->SetTexture(data.texture);
 		_characterList[index]->SetCharacter(_text[index], data);
-		_totalWidth += data.width;
+		_screenWidth += data.width;
 	}		
 }
 

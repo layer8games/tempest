@@ -1,5 +1,4 @@
 #include <Engine/Engine.h>
-
 using namespace Tempest;
 
 //==========================================================================================================================
@@ -20,12 +19,19 @@ Engine::Engine(void)
 //=======================================================================================================
 //Init
 //=======================================================================================================
-void Engine::Init(const S32 width, const S32 height, const string title, const bool fullscreen) 
+void Engine::Init(S32 width, S32 height, string title, bool fullscreen, bool openGL) 
 {
-    _window = std::unique_ptr<GameWindow>(new OpenGLGameWindow());
+    if(openGL)
+    {
+        _window = std::unique_ptr<GameWindow>(new OpenGLGameWindow());
+        _window->v_Init(width, height, title, fullscreen);
+    }
+    else
+    {
+        _window = std::unique_ptr<GameWindow>(new DirectXGameWindow());
+        _window->v_Init(width, height, title, fullscreen);
+    }
     
-    _window->v_Init(width, height, title, fullscreen);
-   
     if(ErrorManager::Instance()->DisplayErrors())
     {
         End();
@@ -103,12 +109,12 @@ void Engine::EnableMouseCursor(void)
 
 S32 Engine::GetScreenWidth(void)
 {
-    return _window->GetWidth();
+    return _window->GetScreenWidth();
 }
 
 S32 Engine::GetScreenHeight(void)
 {
-    return _window->GetHeight();
+    return _window->GetScreenHeight();
 }
 
 F32 Engine::GetScreenRight(void)

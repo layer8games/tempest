@@ -13,25 +13,10 @@ Timer::Timer()
     _paused(false),
     _deltaTime(0.0),
     _timeScale(1.0),
-    _pcFreq(0.0),
     _totalTime(0.0),
     _pastTime(0.0),
-    _currentTime(_pastTime),
-    _counterStart(0)
-{
-    LARGE_INTEGER li;
-    if(!QueryPerformanceFrequency(&li))
-    {
-        TE::ErrorManager::Instance()->SetError(TE::MATH, "Timer::_QueryCounter:: Call to QueryPerformanceFrequency failed. This is a really bad thing!");
-    }
-
-    _pcFreq = static_cast<F64>(li.QuadPart) / 1000.0;
-
-    QueryPerformanceCounter(&li);
-    _counterStart = li.QuadPart;
-
-    _pastTime = _QueryCounter();
-}
+    _currentTime(_pastTime)
+{  }
 
 Timer::~Timer(void)
 {  }
@@ -67,9 +52,6 @@ void Timer::Update(F64 newTime)
 {
     if(!_paused) 
     {
-        // Original version for getting the time. This currently makes the game run too fast on some systems. The OpenGLGameWindow
-        // version relies on glfw
-        //_currentTime = _QueryCounter();
         _currentTime = newTime;
         _deltaTime = static_cast<real>((_currentTime - _pastTime) * _timeScale);
         _pastTime = _currentTime;
@@ -94,11 +76,4 @@ void Timer::SingleStep(void)
 
         _totalTime += _deltaTime;
     }
-}
-
-F64 Timer::_QueryCounter(void)
-{
-    LARGE_INTEGER li;
-    QueryPerformanceCounter(&li);
-    return static_cast<F64>(li.QuadPart - _counterStart) / _pcFreq;
 }

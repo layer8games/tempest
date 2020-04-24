@@ -6,6 +6,7 @@
 #include <Engine/Controller.h>
 #include <Engine/GameWindow.h>
 #include <Engine/OpenGLGameWindow.h>
+#include <Engine/DirectXGameWindow.h>
 #include <Engine/Timer.h>
 #include <Engine/Level.h>
 #include <Engine/GameObjectManager.h>
@@ -40,7 +41,7 @@ namespace Tempest
         /// \param height S32: describes height of the window.
         /// \param title string: sent to system to generate title of window.
         /// \param fullscreen bool: tells system to use fullscreen or not. 
-        TEMPEST_API void Init(const S32 width, const S32 height, const string title, const bool fullscreen);
+        TEMPEST_API void Init(S32 width, S32 height, string title, bool fullscreen, bool openGL=true);
         
         // Check if simulation is still running.
         inline bool Running(void) 

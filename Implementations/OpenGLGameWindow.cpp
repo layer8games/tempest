@@ -28,13 +28,13 @@ void OpenGLGameWindow::v_Init(S32 width, S32 height, string wndName, bool isFull
 {
     _running = true;
     _isFullScreen = isFullScreen;
-    _totalWidth = width;
-    _totalHeight = height;
+    _screenWidth = width;
+    _screenHeight = height;
 
-    _right = static_cast<F32>(_totalWidth) / 2.0f;
-    _left = -static_cast<F32>(_totalWidth) / 2.0f;
-    _top = static_cast<F32>(_totalHeight) / 2.0f;
-    _bottom = -static_cast<F32>(_totalHeight) / 2.0f;
+    _right = static_cast<F32>(_screenWidth) / 2.0f;
+    _left = -static_cast<F32>(_screenWidth) / 2.0f;
+    _top = static_cast<F32>(_screenHeight) / 2.0f;
+    _bottom = -static_cast<F32>(_screenHeight) / 2.0f;
 
     if(!glfwInit())
     {
@@ -55,15 +55,15 @@ void OpenGLGameWindow::v_Init(S32 width, S32 height, string wndName, bool isFull
         
         if(vidMode != NULL)
         {
-            _totalWidth = vidMode->width;
-            _totalHeight = vidMode->height;
+            _screenWidth = vidMode->width;
+            _screenHeight = vidMode->height;
             
-            _window = glfwCreateWindow(_totalWidth, _totalHeight, wndName.c_str(), monitor, NULL);
+            _window = glfwCreateWindow(_screenWidth, _screenHeight, wndName.c_str(), monitor, NULL);
         }
     }
     else
     {
-        _window = glfwCreateWindow(_totalWidth, _totalHeight, wndName.c_str(), NULL, NULL);	
+        _window = glfwCreateWindow(_screenWidth, _screenHeight, wndName.c_str(), NULL, NULL);	
     }
     
     if(_window == NULL)
@@ -84,7 +84,7 @@ void OpenGLGameWindow::v_Init(S32 width, S32 height, string wndName, bool isFull
         ErrorManager::Instance()->SetError(OPENGL, "Failed to init glew. OpenGLGameWindow.");
     }
 
-    glViewport(0, 0, _totalWidth, _totalHeight);
+    glViewport(0, 0, _screenWidth, _screenHeight);
     glEnable(GL_DEPTH_TEST);
 }
 
@@ -150,7 +150,7 @@ void OpenGLGameWindow::v_ToggleWireFrame(void)
 
 void OpenGLGameWindow::v_ResetMouseCursor(void)
 {
-    glfwSetCursorPos(_window, _totalWidth / 2.0f, _totalHeight / 2.0f);
+    glfwSetCursorPos(_window, _screenWidth / 2.0f, _screenHeight / 2.0f);
 }
 
 void OpenGLGameWindow::v_EnableMouseCursor(void)
@@ -182,7 +182,7 @@ const TM::Point2 OpenGLGameWindow::v_GetMousePosInScreen(void)
     glfwGetCursorPos(_window, &mouseX, &mouseY);
 
     //Flips y, sets origin at bottom left of screen
-    mouseY = _totalHeight - mouseY;
+    mouseY = _screenHeight - mouseY;
     
     //Moves coords to be relative to middle. 
     mouseX = mouseX + _left;
@@ -220,9 +220,9 @@ void OpenGLGameWindow::OnKey(GLFWwindow* window, int key, int scancode, int acti
 //==========================================================================================================================
 void OpenGLGameWindow::OnResize(GLFWwindow* window, int width, int height)
 {
-    _totalWidth = width;
-    _totalHeight = height;
-    glViewport(0, 0, _totalWidth, _totalHeight);
+    _screenWidth = width;
+    _screenHeight = height;
+    glViewport(0, 0, _screenWidth, _screenHeight);
 }
 
 //==========================================================================================================================

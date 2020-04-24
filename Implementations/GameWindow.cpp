@@ -6,8 +6,8 @@ using namespace Tempest;
 //Constructors
 //
 //==========================================================================================================================   
-S32 GameWindow::_totalWidth = 0;
-S32 GameWindow::_totalHeight = 0;
+S32 GameWindow::_screenWidth = 0;
+S32 GameWindow::_screenHeight = 0;
 GameWindow::GameWindow(void) 
     : 
     _isFullScreen(false),

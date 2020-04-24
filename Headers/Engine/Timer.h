@@ -113,21 +113,15 @@ namespace TempestMath
         Timer(void);
 
     private:
-        static shared_ptr<Timer> _instance; ///< Internal reference to self, used in Singleton Pattern.
-
-/// Wrapper around QueryPerformanceFrequency. This will check the processor for how many cycles have passed, saving it into the 
-/// time keeping variables of the instance.
-        F64 _QueryCounter(void);
+        static shared_ptr<Timer> _instance; ///< Internal reference to self, used in Singleton Pattern.       
 
         bool _clamp;		///< If clamped, the timer will be forced to lock the framerate at 60 fps.
         bool _paused;		///< If paused, the Update loop will not run, allowing the timer to stop. 
         real _deltaTime;	///< The time that the last frame took to run. 
         real _timeScale;	///< A scale factor that is applied to the delta time.
-        F64  _pcFreq;		///< The frequency of the processor. Used in determining the total time. 
         F64  _totalTime;	///< The total time that the program has been running. 
         F64  _pastTime;		///< The time stamp of the last frame. 
         F64  _currentTime;	///< The time stamp of this frame. 
-        S64	 _counterStart; ///< This is the starting point of the counter.
         
     };// end class
 }//end namespace

@@ -31,9 +31,9 @@ namespace Tempest
 //GameWindow Functions
 //
 //==========================================================================================================================
-        TEMPEST_API virtual void v_Init(S32 width, S32 height, string wndName, bool isFullScreen)=0;
-
         TEMPEST_API void Update(void);
+
+        TEMPEST_API virtual void v_Init(S32 width, S32 height, string wndName, bool isFullScreen)=0;
 
         TEMPEST_API virtual void v_ProcessEvents(void)=0;
 
@@ -57,26 +57,26 @@ namespace Tempest
 
         TEMPEST_API virtual F64 v_GetTime(void)=0;
         
+        TEMPEST_API virtual void v_EndRunning(void)=0;
 //==========================================================================================================================
 //
 //Accessors
 //
 //==========================================================================================================================
-        TEMPEST_API virtual void v_EndRunning(void)=0;
         
         inline bool GetRunning(void) 
         { 
             return _running;
         }
  
-        inline S32 GetWidth(void)
+        inline S32 GetScreenWidth(void)
         { 
-            return _totalWidth; 
+            return _screenWidth; 
         }
  
-        inline S32 GetHeight(void)
+        inline S32 GetScreenHeight(void)
         { 
-            return _totalHeight; 
+            return _screenHeight; 
         }
          
         inline F32 GetScreenRight(void)
@@ -111,8 +111,8 @@ namespace Tempest
         bool _isFullScreen;		
         bool _running;			
         bool _wireFrame;		
-        TEMPEST_API static S32  _totalWidth;		
-        TEMPEST_API static S32  _totalHeight;		
+        TEMPEST_API static S32  _screenWidth;		
+        TEMPEST_API static S32  _screenHeight;		
         F32  _right;			
         F32  _left;				
         F32  _top;				
