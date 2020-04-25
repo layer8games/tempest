@@ -19,6 +19,10 @@ namespace TM = TempestMath;
 #include <fstream>
 #include <sstream>
 
+//===== OpenGL includes =====
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 using std::map;
 
 namespace Tempest

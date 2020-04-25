@@ -194,6 +194,21 @@ const TM::Point2 OpenGLGameWindow::v_GetMousePosInScreen(void)
     return TM::Point2(static_cast<real>(mouseX), static_cast<real>(mouseY));
 }
 
+F64 OpenGLGameWindow::v_GetTime(void)
+{
+    return glfwGetTime();
+}
+
+void OpenGLGameWindow::v_EndRunning(void)
+{
+    _running = false;
+    glfwSetWindowShouldClose(_window, GL_TRUE);
+}
+
+void OpenGLGameWindow::v_SetScreenColor(const Color& col)
+{
+    glClearColor(col[0], col[1], col[2], col[3]);
+}
 
 //==========================================================================================================================
 //

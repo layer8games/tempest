@@ -58,6 +58,8 @@ namespace Tempest
         TEMPEST_API virtual F64 v_GetTime(void)=0;
         
         TEMPEST_API virtual void v_EndRunning(void)=0;
+
+        TEMPEST_API virtual void v_SetScreenColor(const Color& color)=0;
 //==========================================================================================================================
 //
 //Accessors

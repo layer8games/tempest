@@ -16,6 +16,10 @@ namespace TM = TempestMath;
 //===== STL Includes =====
 #include <sstream>
 
+//=====OGL includes=====
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 namespace Tempest 
 {
     class GameWindow;
@@ -88,17 +92,11 @@ namespace Tempest
         TEMPEST_API const TM::Point2 v_GetMousePosInScreen(void) final;
 
 ///	Wrapper around glfwGetTime. Used to find out how long the program has been running in miliseconds. Used by the KillerMath::Timer. 
-        inline F64 v_GetTime(void) final
-        {
-            return glfwGetTime();
-        }
-
+        TEMPEST_API F64 v_GetTime(void) final;
         ///	Closes down the OpenGLGameWindow and ends the program. 
-        inline void v_EndRunning(void) final
-        { 
-            _running = false;
-            glfwSetWindowShouldClose(_window, GL_TRUE);
-        }
+        TEMPEST_API void v_EndRunning(void) final;
+
+        TEMPEST_API void v_SetScreenColor(const Color& col) final;
 //==========================================================================================================================
 //
 //Callback Functions

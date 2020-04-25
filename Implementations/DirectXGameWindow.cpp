@@ -163,7 +163,10 @@ void DirectXGameWindow::v_EndRunning(void)
     
 }
 
+void DirectXGameWindow::v_SetScreenColor(const Color& color)
+{
 
+}
 
 void DirectXGameWindow::_InitializeWindows(int&, int&)
 {

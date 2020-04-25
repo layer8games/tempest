@@ -7,6 +7,10 @@
 //===== Image Library =====
 #include <SOIL/SOIL.h>
 
+//===== OpenGL Includes =====
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 namespace Tempest 
 {
 ///	The Texture class is used to save and hold information about a texture that has already been loaded into memory. It used

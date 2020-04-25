@@ -49,10 +49,10 @@ void Level::DefaultEnter(void)
 
 void Level::DefaultInit(void)
 {
-	F32 left = TE::Engine::Instance()->GetScreenLeft();
-	F32 right = TE::Engine::Instance()->GetScreenRight();
-	F32 bottom = TE::Engine::Instance()->GetScreenBottom();
-	F32 top = TE::Engine::Instance()->GetScreenTop();
+	F32 left = Engine::Instance()->GetScreenLeft();
+	F32 right = Engine::Instance()->GetScreenRight();
+	F32 bottom = Engine::Instance()->GetScreenBottom();
+	F32 top = Engine::Instance()->GetScreenTop();
 
 	_camera.SetOrthographic(left, right, bottom, top, -100.0f, 100.0f);
 }
@@ -178,6 +178,11 @@ void Level::RenderObjects(void)
 			i.second->v_Render();
 		}
 	}	
+}
+
+void Level::ActivateBackgroundColor(void)
+{
+	Engine::Instance()->SetScreenColor(_bgColor); 
 }
 
 void Level::DefaultRender(void)

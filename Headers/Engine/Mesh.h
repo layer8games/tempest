@@ -19,6 +19,10 @@ namespace TM = TempestMath;
 #include <regex>
 #include <stdlib.h>
 
+//===== OpenGL Includes =====
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 namespace Tempest
 {
     class Mesh

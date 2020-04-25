@@ -182,10 +182,7 @@ namespace Tempest
         
 
         ///	Forces the current background color to be activated in OpenGL.
-        inline void ActivateBackgroundColor(void) 
-        { 
-            _camera.SetColor(_bgColor); 
-        }
+        TEMPEST_API void ActivateBackgroundColor(void);
         
 
         ///	Returns the width of the play area of the Level.

@@ -50,6 +50,8 @@ namespace Tempest
         
         TEMPEST_API void v_EndRunning(void) final;
 
+        TEMPEST_API void v_SetScreenColor(const Color& color) final;
+
     private:  
         void _InitializeWindows(int&, int&);
     

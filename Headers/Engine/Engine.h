@@ -12,6 +12,7 @@
 #include <Engine/GameObjectManager.h>
 #include <Engine/Point2.h>
 #include <Engine/Camera.h>
+#include <Engine/Color.h>
 
 namespace TM = TempestMath;
 
@@ -92,6 +93,8 @@ namespace Tempest
         TEMPEST_API F32 GetScreenBottom(void);
 
         TEMPEST_API void DisplayFPS(void);
+
+        TEMPEST_API void SetScreenColor(const Color& col);
 
 //==========================================================================================================================
 //

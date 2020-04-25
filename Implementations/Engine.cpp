@@ -142,6 +142,11 @@ void Engine::DisplayFPS(void)
     _window->v_DisplayFPS();
 }
 
+void Engine::SetScreenColor(const Color& col)
+{
+    _window->v_SetScreenColor(col);
+}
+
 //==========================================================================================================================
 //
 //Singleton functions
