@@ -483,6 +483,9 @@
     <ClInclude Include="..\..\Headers\Engine\DirectXGameWindow.h">
       <Filter>Source Code\Engine\GameWindow\DirectX</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\stdafx.h">
+      <Filter>Source Code\Engine\Atom</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -667,6 +670,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\DirectXGameWindow.cpp">
       <Filter>Source Code\Engine\GameWindow\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\stdafx.cpp">
+      <Filter>Source Code\Engine\Atom</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

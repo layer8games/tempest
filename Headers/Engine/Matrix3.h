@@ -214,11 +214,11 @@ namespace TempestMath
 
         ///	Helper function that will return the transformed version of a matrix.
         ///	\param mat is transformed.
-        TEMPEST_API Matrix3 Matrix3::Transform(const Matrix3& mat) const;
+        TEMPEST_API Matrix3 Transform(const Matrix3& mat) const;
 
         ///	Helper function that will return the transformed version of a vector. 
         ///	\param vec is transformed. 
-        TEMPEST_API Vector4 Matrix3::Transform(const Vector4& vec) const;
+        TEMPEST_API Vector4 Transform(const Vector4& vec) const;
 
 //==========================================================================================================================
 //
