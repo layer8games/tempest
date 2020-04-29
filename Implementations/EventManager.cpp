@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Engine/EventManager.h>
 
 using namespace Tempest;

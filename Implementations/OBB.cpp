@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Engine/OBB.h>
 
 using namespace TempestCollisions;

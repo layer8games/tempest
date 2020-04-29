@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Engine/Color.h>
 
 using namespace Tempest;

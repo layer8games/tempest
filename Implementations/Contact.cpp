@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Engine/Contact.h>
 
 using namespace TempestPhysics;

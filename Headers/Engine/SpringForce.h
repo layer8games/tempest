@@ -1,6 +1,7 @@
 #pragma once
 
 //=====Engine Includes=====
+#include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/ForceGenerator.h>
 #include <Engine/Vector4.h>
@@ -27,25 +28,25 @@ namespace TempestPhysics
 ///	The force generator cannot be re-used. For each unique spring-like force we need to have its own Spring like force. Each 
 ///	spring-like force is created with a pointer to the object at the other end of the spring, the length of the spring, and the 
 ///	spring constant. This then must be registered with a ForceRegistry*.
-	class SpringForce : public ForceGenerator
-	{
-	public:
+    class SpringForce : public ForceGenerator
+    {
+    public:
 //==========================================================================================================================
 //
 //Constructors	 	
 //
 //==========================================================================================================================
 ///	Sets spring constant to 1, rest length to 1, everything else to default or false.
-		TEMPEST_API SpringForce(void);
+        TEMPEST_API SpringForce(void);
 
 ///	Allows you to set up SpringForce in a single call.
 ///	\param otherEnd is the far end of the spring.
 ///	\param springConstant determines the "stiffness" of the spring.
 ///	\param restLength determines how long before the spring "snaps" back.
-		TEMPEST_API SpringForce(shared_ptr<RigidBody2D> otherEnd, real springConstant, real restLength);
+        TEMPEST_API SpringForce(shared_ptr<RigidBody2D> otherEnd, real springConstant, real restLength);
 
 ///	Not implemented.
-		TEMPEST_API ~SpringForce(void);
+        TEMPEST_API ~SpringForce(void);
 //==========================================================================================================================
 //
 //Virtual Functions
@@ -54,7 +55,7 @@ namespace TempestPhysics
 ///	Calculate the length of the spring, then creates a force to pull the object towards the other end if it is far enough 
 ///	away.
 ///	\param RigidBody2D is the object that will be acted on by the spring.
-		TEMPEST_API void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D) final;
+        TEMPEST_API void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D) final;
 
 //==========================================================================================================================
 //
@@ -63,10 +64,10 @@ namespace TempestPhysics
 //==========================================================================================================================		
 ///	Sets state to be bungie-like. This means that it will only produce pull forces. If the rest length is not at full, it will
 ///	not product any force.
-		void MakeBungie(bool state) 
-		{ 
-			_isBungie = state; 
-		}
+        void MakeBungie(bool state) 
+        { 
+            _isBungie = state; 
+        }
 
 //==========================================================================================================================
 //
@@ -75,31 +76,31 @@ namespace TempestPhysics
 //==========================================================================================================================		
 ///	Changes the location of the other end of the spring.
 ///	\param end is the new opposite end of the spring.
-		inline void SetOtherEnd(shared_ptr<RigidBody2D> end) 
-		{ 
-			_otherEnd = end; 
-		}
+        inline void SetOtherEnd(shared_ptr<RigidBody2D> end) 
+        { 
+            _otherEnd = end; 
+        }
 
 ///	Changes the "striffness" of the spring.
 ///	\param constant is the new value for the spring constant. 
-		inline void SetSpringConstant(real constant) 
-		{ 
-			_springConstant = constant; 
-		}
+        inline void SetSpringConstant(real constant) 
+        { 
+            _springConstant = constant; 
+        }
 
 ///	Changes the length of the invisible spring.
 ///	\param length is the new value for the rest length.
-		inline void SetRestLength(real length) 
-		{ 
-			_restLength = length; 
-		}
-	
-	private:
-		shared_ptr<RigidBody2D> _otherEnd;			///< Other end of the spring. Consider changing to a GameObject.
-		real 				 _springConstant;	///< Determines the "stiffness" of the spring. The higher this value is, the more force the spring can make.
-		real 				 _restLength;		///< Length of the spring at rest. When an object reaches this length, a force will be acted on it. 
-		bool				 _isBungie;			///< Changes the state of the spring to use only pull forces, allowing the spring to "scrunch" up.
-		
-	};//end SpringForce	
-	typedef shared_ptr<SpringForce> p_SpringForce;
+        inline void SetRestLength(real length) 
+        { 
+            _restLength = length; 
+        }
+    
+    private:
+        shared_ptr<RigidBody2D> _otherEnd;			///< Other end of the spring. Consider changing to a GameObject.
+        real 				 _springConstant;	///< Determines the "stiffness" of the spring. The higher this value is, the more force the spring can make.
+        real 				 _restLength;		///< Length of the spring at rest. When an object reaches this length, a force will be acted on it. 
+        bool				 _isBungie;			///< Changes the state of the spring to use only pull forces, allowing the spring to "scrunch" up.
+        
+    };//end SpringForce	
+    typedef shared_ptr<SpringForce> p_SpringForce;
 }//end Namespace

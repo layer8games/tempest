@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Engine/Random.h>
 
 using namespace TempestMath;

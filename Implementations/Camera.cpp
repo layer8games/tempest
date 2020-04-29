@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Engine/Camera.h>
 
 using namespace Tempest;
@@ -40,34 +41,34 @@ Camera::~Camera(void)
 //==========================================================================================================================
 void Camera::SetOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)
 {
-	_projection.MakeOrthographic(left, right, bottom, top, nearPlane, farPlane);
+    _projection.MakeOrthographic(left, right, bottom, top, nearPlane, farPlane);
 }
 
 void Camera::SetPerspective(F32 fov, F32 aspect, F32 nearPlane, F32 farPlane)
 {
-	_projection.MakePerspective(fov, aspect, nearPlane, farPlane);
+    _projection.MakePerspective(fov, aspect, nearPlane, farPlane);
 }
 
 void Camera::SetDefaultMatrix4(void)
 {
-	_projection.MakeIdentity();
+    _projection.MakeIdentity();
 }
 
 void Camera::DefaultUpdateCameraVectors(void)
 {
-	//Using spherical to cartesian
-	//Calculate the view direction
-	_look.x = real_cos(_pitch) * real_sin(_yaw);
-	_look.y = real_sin(_pitch);
-	_look.z = real_cos(_pitch) * real_cos(_yaw);
-	_look.Normalize();
+    //Using spherical to cartesian
+    //Calculate the view direction
+    _look.x = real_cos(_pitch) * real_sin(_yaw);
+    _look.y = real_sin(_pitch);
+    _look.z = real_cos(_pitch) * real_cos(_yaw);
+    _look.Normalize();
 
-	//Re-calculate the right and up Vector4s
-	_right = _look.CrossProduct(_worldUp);
-	_right.Normalize();
+    //Re-calculate the right and up Vector4s
+    _right = _look.CrossProduct(_worldUp);
+    _right.Normalize();
 
-	_up = _right.CrossProduct(_look);
-	_up.Normalize();
+    _up = _right.CrossProduct(_look);
+    _up.Normalize();
 
-	_target = _position + _look;
+    _target = _position + _look;
 }

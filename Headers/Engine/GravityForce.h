@@ -1,6 +1,7 @@
 #pragma once
 
 //=====Engine includes=====
+#include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/ForceGenerator.h>
 #include <Engine/Vector2.h>

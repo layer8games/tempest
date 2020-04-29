@@ -1,6 +1,7 @@
 #pragma once
 
 //=====Engine Includes=====
+#include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/ForceGenerator.h>
 #include <Engine/Point3.h>
@@ -29,25 +30,25 @@ namespace TempestPhysics
 ///	spring constant. This then must be registered with a ForceRegistry*.
 ///	To set an Anchored Spring Force Generator, simple give it an object that cannot be moved. This can be enforced in the GameObject 
 ///	using physics or something. May need to be figured out later. 
-	class AnchoredSpring : public ForceGenerator
-	{
-	public:
+    class AnchoredSpring : public ForceGenerator
+    {
+    public:
 //==========================================================================================================================
 //
 //Constructors
 //
 //==========================================================================================================================		
 ///	Sets all values to 1, with anchor at 0.
-		TEMPEST_API AnchoredSpring(void);
+        TEMPEST_API AnchoredSpring(void);
 
 ///	Sets up the default values of the spring.
 ///	\param anchor is the location of the anchor point.
 ///	\param springConstant is the "stiffness" of the spring.
 ///	\param restLength is the length of the spring.
-		TEMPEST_API AnchoredSpring(const TM::Point3& anchor, real springConstant, real restLength);
+        TEMPEST_API AnchoredSpring(const TM::Point3& anchor, real springConstant, real restLength);
 
 ///	No implementation.
-		TEMPEST_API ~AnchoredSpring(void);
+        TEMPEST_API ~AnchoredSpring(void);
 
 //==========================================================================================================================
 //
@@ -56,11 +57,11 @@ namespace TempestPhysics
 //==========================================================================================================================
 ///	Adds a force to a RigidBody2D in relation to the objects position and the anchor point.
 ///	\param RigidBody2D is the object that will recieve the force.
-		TEMPEST_API void v_UpdateForce(p_RigidBody2D body) final;
+        TEMPEST_API void v_UpdateForce(p_RigidBody2D body) final;
 
 ///	Adds a force to a RigidBody3D in relation to the objects position and the anchor point.
 ///	\param body is the object that will recieve the force.
-		TEMPEST_API void v_UpdateForce(p_RigidBody3D body) final;
+        TEMPEST_API void v_UpdateForce(p_RigidBody3D body) final;
 
 //==========================================================================================================================
 //
@@ -69,29 +70,29 @@ namespace TempestPhysics
 //==========================================================================================================================
 ///	Changes the location of the other end of the spring.
 ///	\param end is the new opposite end of the spring.
-		inline void SetAnchor(const TM::Point3& anchor)
-		{
-			_anchor = anchor;
-		}
+        inline void SetAnchor(const TM::Point3& anchor)
+        {
+            _anchor = anchor;
+        }
 
 ///	Changes the "striffness" of the spring.
 ///	\param constant is the new value for the spring constant. 
-		inline void SetSpringConstant(real constant)
-		{
-			_springConstant = constant;
-		}
+        inline void SetSpringConstant(real constant)
+        {
+            _springConstant = constant;
+        }
 
 ///	Changes the length of the invisible spring.
 ///	\param length is the new value for the rest length.
-		inline void SetRestLength(real length)
-		{
-			_restLength = length;
-		}
+        inline void SetRestLength(real length)
+        {
+            _restLength = length;
+        }
 
-	private:
-		TM::Point3	_anchor;			///< The location of the anchor point of the spring.
-		real 		_springConstant;	///< Determines the "stiffness" of the spring. The higher this value is, the more force the spring can make.
-		real		_restLength;		///< Length of the spring at rest. When an object reaches this length, a force will be acted on it. 
-	};//end AnchoredSpring
-	typedef shared_ptr<AnchoredSpring> p_AnchoredSpring;
+    private:
+        TM::Point3	_anchor;			///< The location of the anchor point of the spring.
+        real 		_springConstant;	///< Determines the "stiffness" of the spring. The higher this value is, the more force the spring can make.
+        real		_restLength;		///< Length of the spring at rest. When an object reaches this length, a force will be acted on it. 
+    };//end AnchoredSpring
+    typedef shared_ptr<AnchoredSpring> p_AnchoredSpring;
 }//end Namespace

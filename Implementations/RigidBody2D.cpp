@@ -1,6 +1,5 @@
+#include "stdafx.h"
 #include <Engine/RigidBody2D.h>
-
-
 using namespace TempestPhysics;
 
 //==========================================================================================================================

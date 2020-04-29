@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Engine/Vector4.h>
 
 using namespace TempestMath;

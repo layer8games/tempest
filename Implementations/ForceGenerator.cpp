@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Engine/ForceGenerator.h>
 
 using namespace TempestPhysics;

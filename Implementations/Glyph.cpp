@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Engine/Glyph.h>
 
 using namespace Tempest;

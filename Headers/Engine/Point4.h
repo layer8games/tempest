@@ -1,6 +1,7 @@
 #pragma once
 
 //===== Killer Includes =====
+#include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/Vector4.h>

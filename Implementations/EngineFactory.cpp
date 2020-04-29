@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Engine/EngineFactory.h>
 
 using namespace Tempest;
@@ -16,9 +17,9 @@ P_EngineFactory EngineFactory::_instance = nullptr;
 
 P_EngineFactory EngineFactory::Instance(void)
 {
-	if(_instance == nullptr)
-	{
-		_instance = P_EngineFactory(new EngineFactory());
-	}
-	return _instance;
+    if(_instance == nullptr)
+    {
+        _instance = P_EngineFactory(new EngineFactory());
+    }
+    return _instance;
 }

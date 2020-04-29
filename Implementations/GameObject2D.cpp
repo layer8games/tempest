@@ -1,5 +1,5 @@
+#include "stdafx.h"
 #include <Engine/GameObject2D.h>
-#include <iostream>
 
 using namespace Tempest;
 

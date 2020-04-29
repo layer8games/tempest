@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Engine/SpringForce.h>
 
 using namespace TempestPhysics;
@@ -37,24 +38,24 @@ SpringForce::~SpringForce(void)
 void SpringForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 {
 //=====Calculate Vector4 of the spring=====
-	TM::Vector2 force {};
-	force = RigidBody2D->GetPosition();
-	force -= _otherEnd->GetPosition();
+    TM::Vector2 force {};
+    force = RigidBody2D->GetPosition();
+    force -= _otherEnd->GetPosition();
 
 //=====Calculate magnitude of force=====
-	real magnitude = force.Magnitude();
+    real magnitude = force.Magnitude();
 
-	//=====Bungie Checke=====
-	if(_isBungie && magnitude <= _restLength) 
-	{
-		return;
-	}
+    //=====Bungie Checke=====
+    if(_isBungie && magnitude <= _restLength) 
+    {
+        return;
+    }
 
-	magnitude = real_abs(magnitude - _restLength) * _springConstant;
+    magnitude = real_abs(magnitude - _restLength) * _springConstant;
 
 //=====Calculate final force=====
-	force.Normalize();
-	force *= static_cast<F32>(-magnitude);
+    force.Normalize();
+    force *= static_cast<F32>(-magnitude);
 
-	RigidBody2D->AddForce(force);
+    RigidBody2D->AddForce(force);
 }

@@ -1,3 +1,4 @@
+#include "stdafx.h"
 //#include <Engine/EnvironmentObject.h>
 //
 //using namespace Tempest;

@@ -2,6 +2,7 @@
 #define WIN32_LEAN_AND_MEAN
 
 //=====Engine Includes=====
+#include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/GameWindow.h>
 
@@ -74,27 +75,28 @@ namespace Tempest
     static LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
     {
         switch(umessage)
-	    {
-		    // Check if the window is being destroyed.
-		    case WM_DESTROY:
-		    {
-			    PostQuitMessage(0);
-			    return 0;
-		    }
+        {
+            // Check if the window is being destroyed.
+            case WM_DESTROY:
+            {
+                PostQuitMessage(0);
+                return 0;
+            }
 
-		    // Check if the window is being closed.
-		    case WM_CLOSE:
-		    {
-			    PostQuitMessage(0);		
-			    return 0;
-		    }
+            // Check if the window is being closed.
+            case WM_CLOSE:
+            {
+                PostQuitMessage(0);		
+                return 0;
+            }
 
-		    // All other messages pass to the message handler in the system class.
-		    default:
-		    {
-			    // TODO: When windows message handler is implemented, send a message like this
-			    //return ApplicationHandle->MessageHandler(hwnd, umessage, wparam, lparam);
-		    }
-	    }
+            // All other messages pass to the message handler in the system class.
+            default:
+            {
+                // TODO: When windows message handler is implemented, send a message like this
+                //return ApplicationHandle->MessageHandler(hwnd, umessage, wparam, lparam);
+                return 0;
+            }
+        }
     }
 }

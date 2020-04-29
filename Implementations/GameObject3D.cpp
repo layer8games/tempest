@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Engine/GameObject3D.h>
 
 using namespace Tempest;

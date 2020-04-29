@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Engine/PhysicsFactory.h>
 
 using namespace TempestPhysics;
@@ -16,9 +17,9 @@ P_PhysicsFactory PhysicsFactory::_instance = nullptr;
 
 P_PhysicsFactory PhysicsFactory::Instance(void)
 {
-	if(_instance == nullptr)
-	{
-		_instance = P_PhysicsFactory(new PhysicsFactory());
-	}
-	return _instance;
+    if(_instance == nullptr)
+    {
+        _instance = P_PhysicsFactory(new PhysicsFactory());
+    }
+    return _instance;
 }

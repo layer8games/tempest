@@ -1,6 +1,7 @@
 #pragma once
 
 //=====Engine Includes=====
+#include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/RigidBody2D.h>
 #include <Engine/RigidBody3D.h>
@@ -8,55 +9,55 @@
 
 namespace TempestPhysics
 {
-	class PhysicsFactory
-	{
-	public:
+    class PhysicsFactory
+    {
+    public:
 //==========================================================================================================================
 //
 //Destructor	 	
 //
 //==========================================================================================================================
-		TEMPEST_API ~PhysicsFactory(void);
+        TEMPEST_API ~PhysicsFactory(void);
 
 //==========================================================================================================================
 //
 //Functions
 //
 //==========================================================================================================================
-		inline p_RigidBody2D MakeRigidBody2D(void)
-		{
-			return p_RigidBody2D(new RigidBody2D());
-		}
+        inline p_RigidBody2D MakeRigidBody2D(void)
+        {
+            return p_RigidBody2D(new RigidBody2D());
+        }
 
-		inline p_RigidBody3D MakeRigidBody3D(void)
-		{
-			return p_RigidBody3D(new RigidBody3D());
-		}
+        inline p_RigidBody3D MakeRigidBody3D(void)
+        {
+            return p_RigidBody3D(new RigidBody3D());
+        }
 
-		inline p_GravityForce MakeGravityForce(void)
-		{
-			return p_GravityForce(new GravityForce());
-		}
+        inline p_GravityForce MakeGravityForce(void)
+        {
+            return p_GravityForce(new GravityForce());
+        }
 
 //==========================================================================================================================
 //
 //Singleton Functions
 //
 //==========================================================================================================================
-		TEMPEST_API static shared_ptr<PhysicsFactory> Instance(void);
+        TEMPEST_API static shared_ptr<PhysicsFactory> Instance(void);
 
-	protected:
+    protected:
 //==========================================================================================================================
 //
 //Constructor
 //
 //==========================================================================================================================
-		PhysicsFactory(void);
+        PhysicsFactory(void);
 
-	private:
-		static shared_ptr<PhysicsFactory> _instance;
-		
-	};//end Class
+    private:
+        static shared_ptr<PhysicsFactory> _instance;
+        
+    };//end Class
 
-	typedef shared_ptr<PhysicsFactory> P_PhysicsFactory;
+    typedef shared_ptr<PhysicsFactory> P_PhysicsFactory;
 }//end Namespace

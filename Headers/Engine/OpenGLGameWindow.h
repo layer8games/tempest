@@ -1,6 +1,7 @@
 #pragma once
 
 //=====Killer1 includes=====
+#include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/GameWindow.h>
 #include <Engine/ErrorManager.h>

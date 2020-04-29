@@ -1,5 +1,5 @@
+#include "stdafx.h"
 #include <Engine/Shader.h>
-#include <iostream>
 
 using namespace Tempest;
 //==========================================================================================================================

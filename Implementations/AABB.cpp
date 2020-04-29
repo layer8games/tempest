@@ -1,6 +1,5 @@
+#include "stdafx.h"
 #include <Engine/AABB.h>
-#include <iostream>
-
 using namespace TempestCollisions;
 //==========================================================================================================================
 //
@@ -30,40 +29,40 @@ AABB::~AABB(void)
 bool AABB::TestCollision(const AABB& other) const
 {
 
-	if(real_abs(_center.x - other.GetCenter().x) > (_halfScale.x + other.GetHalfWidth()))
-	{
-		return false;
-	}
+    if(real_abs(_center.x - other.GetCenter().x) > (_halfScale.x + other.GetHalfWidth()))
+    {
+        return false;
+    }
 
-	if(real_abs(_center.y - other.GetCenter().y) > (_halfScale.y + other.GetHalfHeight()))
-	{
-		return false;
-	}
+    if(real_abs(_center.y - other.GetCenter().y) > (_halfScale.y + other.GetHalfHeight()))
+    {
+        return false;
+    }
 
-	if(real_abs(_center.z - other.GetCenter().z) > (_halfScale.z + other.GetHalfDepth()))
-	{
-		return false;
-	}
+    if(real_abs(_center.z - other.GetCenter().z) > (_halfScale.z + other.GetHalfDepth()))
+    {
+        return false;
+    }
 
-	return true;
+    return true;
 }
 
 bool AABB::TestCollision(const TM::Point3& other) const
 {
-	if(real_abs(_center.x - other.x) > _halfScale.x)
-	{
-		return false;	
-	}
+    if(real_abs(_center.x - other.x) > _halfScale.x)
+    {
+        return false;	
+    }
 
-	if(real_abs(_center.y - other.y) > _halfScale.y)
-	{
-		return false;
-	}
+    if(real_abs(_center.y - other.y) > _halfScale.y)
+    {
+        return false;
+    }
 
-	if(real_abs(_center.z - other.z) > _halfScale.z)
-	{
-		return false;
-	}
-	
-	return true;
+    if(real_abs(_center.z - other.z) > _halfScale.z)
+    {
+        return false;
+    }
+    
+    return true;
 }

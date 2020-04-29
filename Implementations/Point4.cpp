@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Engine/Point4.h>
 
 using namespace TempestMath;

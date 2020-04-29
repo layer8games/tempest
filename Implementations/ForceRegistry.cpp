@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Engine/ForceRegistry.h>
 
 using namespace TempestPhysics;
@@ -23,70 +24,70 @@ ForceRegistry::~ForceRegistry(void)
 //==========================================================================================================================	
 void ForceRegistry::Add(p_RigidBody2D RigidBody2D, p_ForceGenerator forceGen)
 {
-	_RigidBody2DForceRegistration registration;
-	registration.RigidBody2D = RigidBody2D;
-	registration.forceGen = forceGen;
+    _RigidBody2DForceRegistration registration;
+    registration.RigidBody2D = RigidBody2D;
+    registration.forceGen = forceGen;
 
-	_body2DRegistrations.push_back(registration);
+    _body2DRegistrations.push_back(registration);
 }
 
 void ForceRegistry::Add(p_RigidBody3D body, p_ForceGenerator forceGen)
 {
-	_RigidBody3DRegistration registration;
-	registration.body = body;
-	registration.forceGen = forceGen;
+    _RigidBody3DRegistration registration;
+    registration.body = body;
+    registration.forceGen = forceGen;
 
-	_body3DRegistrations.push_back(registration);
+    _body3DRegistrations.push_back(registration);
 }
 
 void ForceRegistry::Remove(p_RigidBody2D RigidBody2D, p_ForceGenerator forceGen)
 {
-	_RigidBody2DForceRegistration registration;
-	registration.RigidBody2D = RigidBody2D;
-	registration.forceGen = forceGen;
+    _RigidBody2DForceRegistration registration;
+    registration.RigidBody2D = RigidBody2D;
+    registration.forceGen = forceGen;
 
-	auto it = std::find(_body2DRegistrations.begin(), _body2DRegistrations.end(), registration);
+    auto it = std::find(_body2DRegistrations.begin(), _body2DRegistrations.end(), registration);
 
-	if(it != _body2DRegistrations.end())
-	{
-		_body2DRegistrations.erase(it);
-	}
+    if(it != _body2DRegistrations.end())
+    {
+        _body2DRegistrations.erase(it);
+    }
 }
 
 void ForceRegistry::Remove(p_RigidBody3D body, p_ForceGenerator forceGen)
 {
-	_RigidBody3DRegistration registration;
-	registration.body = body;
-	registration.forceGen = forceGen;
+    _RigidBody3DRegistration registration;
+    registration.body = body;
+    registration.forceGen = forceGen;
 
-	auto it = std::find(_body3DRegistrations.begin(), _body3DRegistrations.end(), registration);
+    auto it = std::find(_body3DRegistrations.begin(), _body3DRegistrations.end(), registration);
 
-	if(it != _body3DRegistrations.end())
-	{
-		_body3DRegistrations.erase(it);
-	}
+    if(it != _body3DRegistrations.end())
+    {
+        _body3DRegistrations.erase(it);
+    }
 }
 
 void ForceRegistry::Clear(void)
 {
-	_body2DRegistrations.clear();
+    _body2DRegistrations.clear();
 }
 
 void ForceRegistry::UpdateForces(void)
 {
-	for(auto i : _body2DRegistrations)
-	{
-		if(i.RigidBody2D->GetActive()) 
-		{
-			i.forceGen->v_UpdateForce(i.RigidBody2D);
-		}
-	}
+    for(auto i : _body2DRegistrations)
+    {
+        if(i.RigidBody2D->GetActive()) 
+        {
+            i.forceGen->v_UpdateForce(i.RigidBody2D);
+        }
+    }
 
-	for(auto i : _body3DRegistrations)
-	{
-		if(i.body->GetActive())
-		{
-			i.forceGen->v_UpdateForce(i.body);
-		}
-	}
+    for(auto i : _body3DRegistrations)
+    {
+        if(i.body->GetActive())
+        {
+            i.forceGen->v_UpdateForce(i.body);
+        }
+    }
 }

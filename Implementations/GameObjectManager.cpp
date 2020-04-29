@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include <Engine/GameObjectManager.h>
 
 using namespace Tempest;

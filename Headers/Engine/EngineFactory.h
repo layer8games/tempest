@@ -1,6 +1,7 @@
 #pragma once
 
 //=====Engine Includes=====
+#include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/Glyph.h>
 #include <Engine/RigidBody2D.h>
@@ -10,55 +11,55 @@ namespace TP = TempestPhysics;
 
 namespace Tempest
 {
-	class EngineFactory
-	{
-	public:
+    class EngineFactory
+    {
+    public:
 //==========================================================================================================================
 //
 //Destructor	 	
 //
 //==========================================================================================================================
-		TEMPEST_API ~EngineFactory(void);
+        TEMPEST_API ~EngineFactory(void);
 
 //==========================================================================================================================
 //
 //Functions
 //
 //==========================================================================================================================
-		inline p_Glyph MakeGlyph(void)
-		{
-			return make_shared<Glyph>();
-		}
+        inline p_Glyph MakeGlyph(void)
+        {
+            return make_shared<Glyph>();
+        }
 
-		inline TP::p_RigidBody2D MakeRigidBody2D(void)
-		{
-			return TP::p_RigidBody2D(new TP::RigidBody2D());
-		}
+        inline TP::p_RigidBody2D MakeRigidBody2D(void)
+        {
+            return TP::p_RigidBody2D(new TP::RigidBody2D());
+        }
 
-		inline TP::p_RigidBody3D MakeRigidBody3D(void)
-		{
-			return TP::p_RigidBody3D(new TP::RigidBody3D());
-		}
+        inline TP::p_RigidBody3D MakeRigidBody3D(void)
+        {
+            return TP::p_RigidBody3D(new TP::RigidBody3D());
+        }
 
 //==========================================================================================================================
 //
 //Singleton Functions
 //
 //==========================================================================================================================
-		TEMPEST_API static shared_ptr<EngineFactory> Instance(void);
+        TEMPEST_API static shared_ptr<EngineFactory> Instance(void);
 
-	protected:
+    protected:
 //==========================================================================================================================
 //
 //Constructor
 //
 //==========================================================================================================================
-		EngineFactory(void);
+        EngineFactory(void);
 
-	private:
-		static shared_ptr<EngineFactory> _instance;
-		
-	};//end Class
+    private:
+        static shared_ptr<EngineFactory> _instance;
+        
+    };//end Class
 
-	typedef shared_ptr<EngineFactory> P_EngineFactory;
+    typedef shared_ptr<EngineFactory> P_EngineFactory;
 }//end Namespace
