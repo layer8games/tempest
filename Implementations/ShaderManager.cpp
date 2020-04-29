@@ -1,12 +1,8 @@
 #include "stdafx.h"
 #include <Engine/ShaderManager.h>
-
 using namespace Tempest;
-//==========================================================================================================================
-//
-//Constructors	 	
-//
-//==========================================================================================================================
+
+shared_ptr<ShaderManager> ShaderManager::_instance = nullptr;
 ShaderManager::ShaderManager(void)
 :
 _loadedShaders()
@@ -18,12 +14,6 @@ _loadedShaders()
 ShaderManager::~ShaderManager(void)
 {  }
 
-//==========================================================================================================================
-//
-//Singleton Function
-//
-//==========================================================================================================================
-shared_ptr<ShaderManager> ShaderManager::_instance = nullptr;
 
 shared_ptr<ShaderManager> ShaderManager::Instance(void) 
 {
@@ -35,11 +25,7 @@ shared_ptr<ShaderManager> ShaderManager::Instance(void)
     return _instance;
 }
 
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================
+
 void ShaderManager::AddShader(U32 id, shared_ptr<Shader> shader)
 {
     _loadedShaders.insert({id, shader});
@@ -84,11 +70,6 @@ shared_ptr<Shader> ShaderManager::GetShader(U32 id)
     }
 }
 
-//==========================================================================================================================
-//
-//Private Functions
-//
-//==========================================================================================================================
 void ShaderManager::_LoadDefaultShaders(void)
 {
     //===== Add Sprite Shader =====

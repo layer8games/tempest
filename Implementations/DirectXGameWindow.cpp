@@ -2,11 +2,6 @@
 #include <Engine/DirectXGameWindow.h>
 using namespace Tempest;
 
-//==========================================================================================================================
-//
-//Constructors	 	
-//
-//==========================================================================================================================
 DirectXGameWindow::DirectXGameWindow(void)
     :
     _applicationName(),
@@ -30,11 +25,6 @@ DirectXGameWindow::DirectXGameWindow(void)
 DirectXGameWindow::~DirectXGameWindow(void)
 {  }
 
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================
 void DirectXGameWindow::v_Init(S32 width, S32 height, string wndName, bool isFullScreen)
 {
     WNDCLASSEX wc;

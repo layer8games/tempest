@@ -1,14 +1,8 @@
 
 #include "stdafx.h"
 #include <Engine/Controller.h>
-
 using namespace Tempest;
 
-//==========================================================================================================================
-//
-//Constructor
-//
-//==========================================================================================================================
 Controller::Controller(void) 
 :
 _keyStates{},
@@ -21,23 +15,14 @@ _rightClickCoordInScreen(0.0f)
 {
     for(int i = 0; i < TOTAL_KEYS; ++i)
     {
-        _curActiveKeys[i] = false;//KeyStates::KEY_RELEASED;
-        _pastActiveKeys[i] = false; //KeyStates::KEY_RELEASED;
+        _curActiveKeys[i] = false;
+        _pastActiveKeys[i] = false;
     }
-//	_transform = 
 }
 
 Controller::~Controller(void)
 {  }
 
-//==========================================================================================================================
-//
-//Singleton Functions
-//
-//==========================================================================================================================
-//=======================================================================================================
-//Instance
-//=======================================================================================================
 shared_ptr<Controller> Controller::_instance = NULL;
 
 shared_ptr<Controller> Controller::Instance(void) 
@@ -49,11 +34,6 @@ shared_ptr<Controller> Controller::Instance(void)
     return _instance;
 }		
 
-//==========================================================================================================================
-//
-//Controller Functions
-//
-//==========================================================================================================================
 void Controller::KeyDown(Keys k)
 { 
     _curActiveKeys[k] = true; 
@@ -109,9 +89,6 @@ void Controller::Update(void)
     }
 }
 
-//=======================================================================================================
-//KeyState Accessors
-//=======================================================================================================
 bool Controller::GetKeyDown(Keys k)
 {
     if(_keyStates[k] == KeyStates::KEY_DOWN) 

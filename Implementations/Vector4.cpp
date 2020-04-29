@@ -1,13 +1,7 @@
 #include "stdafx.h"
 #include <Engine/Vector4.h>
-
 using namespace TempestMath;
 
-//==========================================================================================================================
-//
-//Constructors
-//
-//==========================================================================================================================
 Vector4::Vector4(void)
     :
     x(0.0f), 
@@ -52,12 +46,6 @@ Vector4::Vector4(const Point4& p)
 Vector4::~Vector4(void)
 {  }
 
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================
-//===== Vector4 Special functions =====
 real Vector4::Dot(const Vector4& vec) const
 {
     return x * vec.x +
@@ -115,7 +103,6 @@ void Vector4::Reset(real val)
     w = 0.0f;
 }
 
-//===== Math Helper Functions =====
 void Vector4::AddScaledVector(const Vector4& vec, real scale)
 {
     x += vec.x * scale;
@@ -136,12 +123,6 @@ void Vector4::AddScaledPoint(const Point4& point, real scale)
     y += point.y * scale;
     z += point.z * scale;
 }
-//==========================================================================================================================
-//
-//Operator overloads
-//
-//==========================================================================================================================
-//===== Copy Assignment =====		
 Vector4& Vector4::operator=(const Vector4& vec)
 {
     x = vec.x;
@@ -181,7 +162,6 @@ Vector4& Vector4::operator=(real val)
     return *this;
 }
 
-//===== Add by Vector4 =====
 Vector4 Vector4::operator+(const Vector4& vec) const
 {
     return Vector4(x + vec.x,
@@ -250,7 +230,6 @@ Vector4& Vector4::operator+=(const Vector3& vec)
     return *this;
 }
 
-//===== Add by scalar =====
 Vector4 Vector4::operator+(real val) const
 {
     return Vector4(x + val,
@@ -268,7 +247,6 @@ Vector4& Vector4::operator+=(real val)
     return *this;
 }
 
-//===== Subtract by Vector4 =====
 Vector4 Vector4::operator-(const Vector4& vec) const
 {
     return Vector4(x - vec.x,
@@ -337,7 +315,6 @@ Vector4& Vector4::operator-=(const Point4& point)
     return *this;
 }
 
-//===== Subtract by scalar =====
 Vector4 Vector4::operator-(real val) const
 {
     return Vector4(x - val,
@@ -355,7 +332,6 @@ Vector4& Vector4::operator-=(real val)
     return *this;
 }
 
-//===== Component-wise multiply by Vector4 =====
 Vector4 Vector4::operator*(const Vector4 vec) const
 {
     return Vector4(x * vec.x,
@@ -373,7 +349,6 @@ Vector4& Vector4::operator*=(const Vector4 vec)
     return *this;
 }
 
-//===== Mutliply by Scalar =====
 Vector4 Vector4::operator*(real val) const
 {
     return Vector4(x * val,
@@ -391,7 +366,6 @@ Vector4& Vector4::operator*=(real val)
     return *this;
 }
 
-//===== Divide by scalar =====
 Vector4 Vector4::operator/(real val) const
 {
     assert(val != 0.0f);
@@ -413,7 +387,6 @@ Vector4& Vector4::operator/=(real val)
     return *this;
 }
 
-//===== Comparison =====
 bool Vector4::operator>(const Vector4& vec) const
 {
     bool state = x > vec.x && 

@@ -1,13 +1,7 @@
 #include "stdafx.h"
 #include <Engine/Point3.h>
-
 using namespace TempestMath;
 
-//==========================================================================================================================
-//
-//Constructors
-//
-//==========================================================================================================================
 Point3::Point3(void)
     :
     x(0.0f), 
@@ -53,12 +47,6 @@ Point3::Point3(const Vector4& v)
 Point3::~Point3(void)
 {  }
 
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================
-//===== Point Special functions =====
 real Point3::Dot(const Point3& point) const
 {
     return x * point.x +
@@ -125,7 +113,6 @@ real Point3::DistanceSquared(const Vector4& v) const
     return length.SqrMagnitude();
 }
 
-//===== Math Helper Functions =====
 void Point3::AddScaledPoint(const Point3& point, real scale)
 {
     x += point.x * scale;
@@ -146,12 +133,7 @@ void Point3::AddScaledVector(const Vector4& vec, real scale)
     y += vec.y * scale;
     z += vec.z * scale;
 }
-//==========================================================================================================================
-//
-//Operator overloads
-//
-//==========================================================================================================================
-//===== Copy Assignment =====		
+        
 Point3& Point3::operator=(const Point2& point)
 {
     x = point.x;
@@ -179,7 +161,6 @@ Point3& Point3::operator=(real val)
     return *this;
 }
 
-//===== Add by Point =====
 Point3 Point3::operator+(const Point3& point) const
 {
     return Point3(x + point.x,
@@ -235,7 +216,6 @@ Point3 Point3::operator+(shared_ptr<Point3> point) const
                   z + point->z);
 }
 
-//===== Add by scalar =====
 Point3 Point3::operator+(real val) const
 {
     return Point3(x + val,
@@ -252,7 +232,6 @@ Point3& Point3::operator+=(real val)
     return *this;
 }
 
-//===== Subtract by Point =====
 Point3 Point3::operator-(const Point3& point) const
 {
     return Point3(x - point.x,
@@ -283,7 +262,6 @@ Point3& Point3::operator-=(const Point3& point)
     return *this;
 }
 
-//===== Subtract by scalar =====
 Point3 Point3::operator-(real val) const
 {
     return Point3(x - val,
@@ -300,7 +278,6 @@ Point3& Point3::operator-=(real val)
     return *this;
 }
 
-//===== Component-wise multiply by Point =====
 Point3 Point3::operator*(const Point3 point) const
 {
     return Point3(x * point.x,
@@ -317,7 +294,6 @@ Point3& Point3::operator*=(const Point3 point)
     return *this;
 }
 
-//===== Mutliply by Scalar =====
 Point3 Point3::operator*(real val) const
 {
     return Point3(x * val,
@@ -334,7 +310,6 @@ Point3& Point3::operator*=(real val)
     return *this;
 }
 
-//===== Divide by scalar =====
 Point3 Point3::operator/(real val) const
 {
     assert(val != 0.0f);
@@ -355,7 +330,6 @@ Point3& Point3::operator/=(real val)
     return *this;
 }
 
-//===== Comparison =====
 bool Point3::operator>(const Point3& point) const
 {
     bool state = x > point.x && 

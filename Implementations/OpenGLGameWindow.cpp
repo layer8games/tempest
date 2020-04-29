@@ -1,13 +1,7 @@
 #include "stdafx.h"
 #include <Engine/OpenGLGameWindow.h>
-
 using namespace Tempest;
-
-//==========================================================================================================================
-//
-//Constructors
-//
-//==========================================================================================================================   
+   
 OpenGLGameWindow::OpenGLGameWindow(void) 
     :
     _window(nullptr)
@@ -17,14 +11,7 @@ OpenGLGameWindow::~OpenGLGameWindow(void)
 {
     glfwDestroyWindow(_window);
 }
-//==========================================================================================================================
-//
-//OpenGLGameWindow Functions
-//
-//==========================================================================================================================
-//==========================================================================================================================
-//Init
-//==========================================================================================================================
+
 void OpenGLGameWindow::v_Init(S32 width, S32 height, string wndName, bool isFullScreen) 
 {
     _running = true;
@@ -94,16 +81,11 @@ void OpenGLGameWindow::v_ProcessEvents(void)
     glfwPollEvents();
 }
 
-//=======================================================================================================
-//BufferSwap
-//=======================================================================================================
 void OpenGLGameWindow::v_BufferSwap(void)
 { 
     glfwSwapBuffers(_window);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
-
-
 
 void OpenGLGameWindow::v_DisplayFPS(void)
 {

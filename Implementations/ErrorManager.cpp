@@ -1,14 +1,9 @@
 #include "stdafx.h"
 #include <Engine/ErrorManager.h>
 #include <iostream>
-    
 using namespace Tempest;
 
-//==========================================================================================================================
-//
-//Constructors
-//
-//==========================================================================================================================
+p_ErrorManager ErrorManager::_instance = nullptr;
 ErrorManager::ErrorManager(void) 
 :
 _consoleOut(false),
@@ -20,13 +15,6 @@ _errorMessages()
 ErrorManager::~ErrorManager(void)
 {  }
 
-//==========================================================================================================================
-//
-//Singleton Functions
-//
-//==========================================================================================================================
-p_ErrorManager ErrorManager::_instance = NULL;
-
 p_ErrorManager ErrorManager::Instance(void) 
 {
     if(_instance == NULL) 
@@ -35,15 +23,7 @@ p_ErrorManager ErrorManager::Instance(void)
     }
     return _instance;
 }
-
-//==========================================================================================================================
-//
-//ErrorManager Functions
-//
-//==========================================================================================================================
-//=======================================================================================================
-//SetError
-//=======================================================================================================	
+	
 void ErrorManager::SetError(ErrorCode code, string message) 
 {
     _errorCodes.push_back(code);
@@ -51,9 +31,6 @@ void ErrorManager::SetError(ErrorCode code, string message)
     _numErrors++;
 }
 
-//=======================================================================================================
-//DisplayErrors
-//=======================================================================================================
 bool ErrorManager::DisplayErrors(void) 
 {
     if (_numErrors > 0) 

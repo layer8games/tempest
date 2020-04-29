@@ -21,30 +21,14 @@ namespace TempestPhysics
     class RigidBody3D
     {
     public:
-//==========================================================================================================================
-//
-//Constructors	 	
-//
-//==========================================================================================================================
         TEMPEST_API RigidBody3D(void);
 
         TEMPEST_API ~RigidBody3D(void);
-
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================		
+		
         TEMPEST_API void Integrate(void);
 
         TEMPEST_API void CalculateDerivedData(void);
 
-//==========================================================================================================================
-//
-//Accessors
-//
-//==========================================================================================================================
-//===== Active =====
         inline void SetActive(bool state)
         {
             _active = state;
@@ -52,10 +36,8 @@ namespace TempestPhysics
 
         TEMPEST_API bool GetActive(void) const;
 
-//===== Object Position =====
         const TM::Point3 GetPosition(void);
 
-//===== Inertia Tensor =====
         inline const TM::Matrix4& GetInverseInertiaTensor(void) const
         {
             return _inverseInertiaTensor;
@@ -65,8 +47,7 @@ namespace TempestPhysics
         {
             _inverseInertiaTensor.SetAsInverse(mat);
         }
-
-//===== Velocity =====		
+	
         inline const TM::Vector3& GetVelocity(void) const
         {
             return _velocity;
@@ -89,7 +70,6 @@ namespace TempestPhysics
             _velocity.AddScaledVector(vec, scale);
         }
 
-//===== Acceleration =====
         inline const TM::Vector3& GetAcceleration(void) const
         {
             return _acceleration;
@@ -112,7 +92,6 @@ namespace TempestPhysics
             _acceleration.AddScaledVector(vec, scale);
         }
 
-//===== Rotation =====
         inline const TM::Vector3& GetRotation(void) const
         {
             return _rotation;
@@ -135,7 +114,6 @@ namespace TempestPhysics
             _rotation.AddScaledVector(vec, scale);
         }
 
-//===== Forces =====
         inline const TM::Vector3& GetForces(void) const
         {
             return _forceAccum;
@@ -163,13 +141,10 @@ namespace TempestPhysics
             _torqueAccum.Reset();
         }
 
-        //Given in world space coordinates
         TEMPEST_API void AddForceAtPoint(const TM::Vector3& force, const TM::Point3& point);
 
-        //Force given in world space, point given in local space
         TEMPEST_API void AddForceAtLocalPoint(const TM::Vector3& force, const TM::Point3& point);
 
-//===== Mass =====
         inline real GetInverseMass(void) const
         {
             return _inverseMass;
@@ -193,7 +168,6 @@ namespace TempestPhysics
             _inverseMass = static_cast<real>(1.0f) / mass;
         }
 
-//===== Linear Damping =====
         inline real GetLinearDamping(void) const
         {
             return _linearDamping;
@@ -204,7 +178,6 @@ namespace TempestPhysics
             _linearDamping = val;
         }
 
-//===== Angular Damping =====
         inline real GetAngularDamping(void) const
         {
             return _angularDamping;
@@ -215,48 +188,32 @@ namespace TempestPhysics
             _angularDamping = val;
         }
 
-//===== Awake =====
         inline bool GetIsAwake(void)
         {
             return _isAwake;
         }
 
-//===== GameObject =====
         inline void SetObject(TE::GameObject3D* obj)
         {
             _obj = obj;
         }
 
     private:
-//==========================================================================================================================
-//
-//Private Functions
-//
-//==========================================================================================================================
-
-
         void _TransformInertiaTensor(void);
 
-//==========================================================================================================================
-//
-//Data
-//
-//==========================================================================================================================
-        bool 		        _active;
-        bool 	            _isAwake;
-        real 	            _inverseMass;
-        real 	            _linearDamping;
-        real 	            _angularDamping;
-        TE::GameObject3D*   _obj;
-        TM::Matrix4         _inverseInertiaTensor;
-        TM::Matrix4         _inverseInertiaTensorInWorld;
-        TM::Vector3         _velocity;
-        TM::Vector3         _acceleration;
-        TM::Vector3         _rotation;
-        TM::Vector3         _forceAccum;
-        TM::Vector3         _torqueAccum;
-            
-
+        bool _active;
+        bool _isAwake;
+        real _inverseMass;
+        real _linearDamping;
+        real _angularDamping;
+        TE::GameObject3D* _obj;
+        TM::Matrix4 _inverseInertiaTensor;
+        TM::Matrix4 _inverseInertiaTensorInWorld;
+        TM::Vector3 _velocity;
+        TM::Vector3 _acceleration;
+        TM::Vector3 _rotation;
+        TM::Vector3 _forceAccum;
+        TM::Vector3 _torqueAccum;
     };//end Class
     typedef shared_ptr<RigidBody3D> p_RigidBody3D;
 }//end Namespace

@@ -183,12 +183,6 @@ Point2& Point2::operator+=(const Vector2& vec)
     return *this;
 }
 
-Point2 Point2::operator+(p_Point2 point) const
-{
-    return Point2(x + point->x,
-                  y + point->y);
-}
-
 //===== Add by scalar =====
 Point2 Point2::operator+(real val) const
 {

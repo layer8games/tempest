@@ -1,13 +1,7 @@
 #include "stdafx.h"
 #include <Engine/Point4.h>
-
 using namespace TempestMath;
 
-//==========================================================================================================================
-//
-//Constructors
-//
-//==========================================================================================================================
 Point4::Point4(void)
     :
     x(0.0f), 
@@ -59,12 +53,6 @@ Point4::Point4(const Vector4& v)
 Point4::~Point4(void)
 {  }
 
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================
-//===== Point Special functions =====
 real Point4::Dot(const Point4& point) const
 {
     return x * point.x +
@@ -133,7 +121,6 @@ real Point4::DistanceSquared(const Vector4& v) const
     return length.SqrMagnitude();
 }
 
-//===== Math Helper Functions =====
 void Point4::AddScaledPoint(const Point4& point, real scale)
 {
     x += point.x * scale;
@@ -154,12 +141,6 @@ void Point4::AddScaledVector(const Vector4& vec, real scale)
     y += vec.y * scale;
     z += vec.z * scale;
 }
-//==========================================================================================================================
-//
-//Operator overloads
-//
-//==========================================================================================================================
-//===== Copy Assignment =====		
 Point4& Point4::operator=(const Point4& point)
 {
     x = point.x;
@@ -179,7 +160,6 @@ Point4& Point4::operator=(real val)
     return *this;
 }
 
-//===== Add by Point =====
 Point4 Point4::operator+(const Point4& point) const
 {
     return Point4(x + point.x,
@@ -231,15 +211,6 @@ Point4& Point4::operator+=(const Vector3& vec)
     return *this;
 }
 
-Point4 Point4::operator+(p_Point4 point) const
-{
-    return Point4(x + point->x,
-                  y + point->y,
-                  z + point->z,
-                  1.0f);
-}
-
-//===== Add by scalar =====
 Point4 Point4::operator+(real val) const
 {
     return Point4(x + val,
@@ -257,7 +228,6 @@ Point4& Point4::operator+=(real val)
     return *this;
 }
 
-//===== Subtract by Point =====
 Point4 Point4::operator-(const Point4& point) const
 {
     return Point4(x - point.x,
@@ -291,7 +261,6 @@ Point4& Point4::operator-=(const Point4& point)
     return *this;
 }
 
-//===== Subtract by scalar =====
 Point4 Point4::operator-(real val) const
 {
     return Point4(x - val,
@@ -309,7 +278,6 @@ Point4& Point4::operator-=(real val)
     return *this;
 }
 
-//===== Component-wise multiply by Point =====
 Point4 Point4::operator*(const Point4 point) const
 {
     return Point4(x * point.x,
@@ -327,7 +295,6 @@ Point4& Point4::operator*=(const Point4 point)
     return *this;
 }
 
-//===== Mutliply by Scalar =====
 Point4 Point4::operator*(real val) const
 {
     return Point4(x * val,
@@ -345,7 +312,6 @@ Point4& Point4::operator*=(real val)
     return *this;
 }
 
-//===== Divide by scalar =====
 Point4 Point4::operator/(real val) const
 {
     assert(val != 0.0f);
@@ -367,7 +333,6 @@ Point4& Point4::operator/=(real val)
     return *this;
 }
 
-//===== Comparison =====
 bool Point4::operator>(const Point4& point) const
 {
     bool state = x > point.x && 

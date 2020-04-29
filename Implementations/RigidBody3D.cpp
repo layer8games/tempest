@@ -1,11 +1,7 @@
 #include "stdafx.h"
 #include <Engine/RigidBody3D.h>
 using namespace TempestPhysics;
-//==========================================================================================================================
-//
-//Constructors	 	
-//
-//==========================================================================================================================
+
 RigidBody3D::RigidBody3D(void)
 :
 _active(true),
@@ -28,11 +24,6 @@ RigidBody3D::~RigidBody3D(void)
     _obj = nullptr;
 }
 
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================
 void RigidBody3D::Integrate(void)
 {
     if(_obj == nullptr)
@@ -76,10 +67,7 @@ void RigidBody3D::CalculateDerivedData(void)
 
     _inverseInertiaTensorInWorld = _obj->GetModelMatrix().Transform3x3(_inverseInertiaTensor);
 }
-//==========================================================================================================================
-//Point Forces
-//==========================================================================================================================
-//Given in world space coordinates
+
 void RigidBody3D::AddForceAtPoint(const TM::Vector3& force, const TM::Point3& point)
 {
     if(_obj == nullptr)
@@ -111,9 +99,6 @@ void RigidBody3D::AddForceAtPoint(const TM::Vector3& force, const TM::Point3& po
 //    AddForceAtPoint(force, pt);
 //}
 
-//==========================================================================================================================
-//Mass
-//==========================================================================================================================
 const real RigidBody3D::GetMass(void)
 {
     if(_inverseMass == 0.0f)

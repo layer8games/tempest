@@ -1,13 +1,8 @@
 #include "stdafx.h"
 #include <Engine/EventManager.h>
-
 using namespace Tempest;
 
-//==========================================================================================================================
-//
-//Constructors	 	
-//
-//==========================================================================================================================
+p_EventManager EventManager::_instance = nullptr;
 EventManager::EventManager(void)
     :
     _2DListeners(),
@@ -17,12 +12,6 @@ EventManager::EventManager(void)
 EventManager::~EventManager(void)
 {  }
 
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================
-p_EventManager EventManager::_instance = nullptr;
 
 p_EventManager EventManager::Instance(void)
 {

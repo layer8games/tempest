@@ -363,9 +363,6 @@
     <ClInclude Include="..\..\Headers\Engine\Vector3.h">
       <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Vertex.h">
-      <Filter>Source Code\Math\Vertex</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\CharacterData.h">
       <Filter>Source Code\Engine\CharacterData</Filter>
     </ClInclude>
@@ -485,6 +482,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\stdafx.h">
       <Filter>Source Code\Engine\Atom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Vertex.hpp">
+      <Filter>Source Code\Math\Vertex</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

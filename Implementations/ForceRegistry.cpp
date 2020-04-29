@@ -3,11 +3,6 @@
 
 using namespace TempestPhysics;
 
-//==========================================================================================================================
-//
-//Constructors
-//
-//==========================================================================================================================
 ForceRegistry::ForceRegistry(void)
 :
 _body2DRegistrations(),
@@ -16,16 +11,11 @@ _body3DRegistrations()
 
 ForceRegistry::~ForceRegistry(void)
 {  }
-
-//==========================================================================================================================
-//
-//ForceRegistry functions
-//
-//==========================================================================================================================	
+	
 void ForceRegistry::Add(p_RigidBody2D RigidBody2D, p_ForceGenerator forceGen)
 {
     _RigidBody2DForceRegistration registration;
-    registration.RigidBody2D = RigidBody2D;
+    registration.rigidBody = RigidBody2D;
     registration.forceGen = forceGen;
 
     _body2DRegistrations.push_back(registration);
@@ -43,7 +33,7 @@ void ForceRegistry::Add(p_RigidBody3D body, p_ForceGenerator forceGen)
 void ForceRegistry::Remove(p_RigidBody2D RigidBody2D, p_ForceGenerator forceGen)
 {
     _RigidBody2DForceRegistration registration;
-    registration.RigidBody2D = RigidBody2D;
+    registration.rigidBody = RigidBody2D;
     registration.forceGen = forceGen;
 
     auto it = std::find(_body2DRegistrations.begin(), _body2DRegistrations.end(), registration);
@@ -77,9 +67,9 @@ void ForceRegistry::UpdateForces(void)
 {
     for(auto i : _body2DRegistrations)
     {
-        if(i.RigidBody2D->GetActive()) 
+        if(i.rigidBody->GetActive()) 
         {
-            i.forceGen->v_UpdateForce(i.RigidBody2D);
+            i.forceGen->v_UpdateForce(i.rigidBody);
         }
     }
 

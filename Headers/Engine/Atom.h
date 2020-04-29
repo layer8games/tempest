@@ -11,9 +11,6 @@
 //=====OGL includes=====
 #define GLEW_STATIC
 
-
-
-
 typedef int8_t   S8;
 typedef int16_t  S16;
 typedef int32_t  S32;
@@ -44,39 +41,21 @@ const real R_PI = static_cast<real>(3.14159265358979);
 //==========================================================================================================================
 //Global Helper functions
 //==========================================================================================================================
-/*!
-    Returns the value squared.
-    \param x is the value.
-*/
 inline real REAL_SQR(real x)
 {
     return x * x;
 }
 
-/*!
-    Converts an angle to a radian.
-    \param angle is the value to convert.
-*/
 inline real RADIAN(real angle)
 {
     return static_cast<real>(angle * R_PI / 180.0f);
 }
 
-/*!
-    Converts a radian to an angle. 
-    \param radian is the value to convert. 
-*/
 inline real DEGREE(real radian)
 {
     return static_cast<real>(radian * 180.0f / R_PI);
 }
 
-/*!
-    Clamps a value to a set min and max. 
-    \param val is the value to clamp. 
-    \param min is the floor.
-    \param max is the ceiling.
-*/
 inline real REAL_CLAMP(real val, real min, real max)
 {
     if(val < min)

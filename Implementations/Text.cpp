@@ -1,13 +1,7 @@
 #include "stdafx.h"
 #include <Engine/Text.h>
-
 using namespace Tempest;
-
-//==========================================================================================================================
-//
-//Constructors
-//
-//==========================================================================================================================	
+	
 Text::Text(void) 
 :
 _active(true),
@@ -66,11 +60,6 @@ Text::Text(string text, Font& font)
 Text::~Text(void)
 {  }
 
-//==========================================================================================================================
-//
-//Text Functions
-//
-//==========================================================================================================================
 void Text::AddText(string text)
 {
     _characterList.clear();
@@ -117,14 +106,6 @@ void Text::SetTextColor(const Color& col)
     }
 }
 
-//void Text::SetUniforms(string name, const TM::Matrix4& mat)
-//{
-//	for(auto i : _characterList)
-//	{
-//		i->GetShader()->SetUniform(name, mat);
-//	}
-//}
-
 void Text::_UpdatePositions(void)
 {
     TM::Point2 currentPos = _pos;
@@ -136,7 +117,6 @@ void Text::_UpdatePositions(void)
         for(U32 i = 0; i < _characterList.size(); ++i)
         {
             CharacterData data = _font->GetCharacterData(_characterList[i]->GetCharacter());
-            //_characterList[i]->SetPosition(currentPos[0] + data.bearingX, currentPos[1] - (data.height + data.bearingY));
             _characterList[i]->SetPosition(currentPos);
             _characterList[i]->v_Update();
 

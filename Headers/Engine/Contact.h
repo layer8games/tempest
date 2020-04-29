@@ -1,10 +1,3 @@
-/*
-  This is filler code, likely to never get used. The Game Physics book
-  is very light on the details of what is meant to go into something like
-  this. This is a very vague idea to me because of this. I have ordered
-  a book that will shed some light on this topic, and when it comes, the
-  final version of this code will be writen. 
- */
 #pragma once
 
 //=====Engine Includes=====
@@ -19,27 +12,16 @@ namespace TempestPhysics
     class Contact
     {
     public:
-//==========================================================================================================================
-//
-//Constructors	 	
-//
-//==========================================================================================================================
         TEMPEST_API Contact(void);
 
         TEMPEST_API ~Contact(void);
 
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================
     private:
         TM::Vector4 _contactPoint;
         TM::Vector4 _collissionNormal;
-        real 	    _penetrationDepth;
-        real 	    _collissionRestitution;
-        real 	    _friction;
-        
+        real _penetrationDepth;
+        real _collissionRestitution;
+        real _friction;  
     };//end Class
     typedef shared_ptr<Contact> p_Contact;
 }//end Namespace

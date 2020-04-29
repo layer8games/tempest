@@ -328,7 +328,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vector4.h" />
-    <ClInclude Include="..\..\Headers\Engine\Vertex.h">
+    <ClInclude Include="..\..\Headers\Engine\Vertex.hpp">
       <SubType>
       </SubType>
     </ClInclude>

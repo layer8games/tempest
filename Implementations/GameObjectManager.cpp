@@ -1,13 +1,8 @@
 #include "stdafx.h"
 #include <Engine/GameObjectManager.h>
-
 using namespace Tempest;
 
-//==========================================================================================================================
-//
-//Constructors	 	
-//
-//==========================================================================================================================
+p_GameObjectManager GameObjectManager::_instance = nullptr;
 GameObjectManager::GameObjectManager(void)
     :
     _registry2D(),
@@ -16,13 +11,6 @@ GameObjectManager::GameObjectManager(void)
 
 GameObjectManager::~GameObjectManager(void)
 {  }
-
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================
-p_GameObjectManager GameObjectManager::_instance = nullptr;
 
 p_GameObjectManager GameObjectManager::Instance(void)
 {

@@ -1,13 +1,7 @@
 #include "stdafx.h"
 #include <Engine/TextureManager.h>
-
 using namespace Tempest;
 
-//==========================================================================================================================
-//
-//Constructors
-//
-//==========================================================================================================================
 TextureManager::TextureManager(void) 
 : 
 _loadedTextures()
@@ -18,11 +12,6 @@ TextureManager::~TextureManager(void)
     _loadedTextures.clear();
 }
 
-//==========================================================================================================================
-//
-//Singleton Functions
-//
-//==========================================================================================================================
 shared_ptr<TextureManager> TextureManager::_instance = nullptr;
 
 shared_ptr<TextureManager> TextureManager::Instance(void) 
@@ -35,11 +24,6 @@ shared_ptr<TextureManager> TextureManager::Instance(void)
     return _instance;
 }
 
-//====================================================================================================
-//
-//TextureManager Functions
-//
-//=====================================================================================================
 void TextureManager::LoadTexture(U32 id, string filePath)
 {
     p_Texture texture = make_shared<Texture>(filePath);

@@ -1,14 +1,8 @@
 #include "stdafx.h"
 #include <Engine/BuoyantForce.h>
-
 using namespace TempestPhysics;
 
 
-//==========================================================================================================================
-//
-//Constructors	 	
-//
-//==========================================================================================================================
 BuoyantForce::BuoyantForce(void) 
 : 
 _maxDepth(0), 
@@ -28,17 +22,10 @@ _liquidDensity(liquidDensity)
 BuoyantForce::~BuoyantForce(void) 
 {  }
 
-//==========================================================================================================================
-//
-//Virtual Functions
-//
-//==========================================================================================================================
 void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 {
-//=====Calculate Depth of object=====
     real depth = RigidBody2D->GetPosition().y;
 
-    //Out of liquid check
     if(depth >= _liquidHeight + _maxDepth) 
     {
         return;
@@ -46,7 +33,6 @@ void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
     
     TM::Vector2 force(0.0f);
 
-    //Max Depth check
     if(depth <= _liquidHeight - _maxDepth)
     {
         force.y = _liquidDensity * _objectVolume;

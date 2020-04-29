@@ -1,13 +1,7 @@
 #include "stdafx.h"
 #include <Engine/Vector3.h>
-
 using namespace TempestMath;
 
-//==========================================================================================================================
-//
-//Constructors
-//
-//==========================================================================================================================
 Vector3::Vector3(void)
     :
     x(0.0f), 
@@ -61,12 +55,6 @@ Vector3::Vector3(const Vector4& v)
 Vector3::~Vector3(void)
 {  }
 
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================
-//===== Vector3 Special functions =====
 real Vector3::Dot(const Vector3& vec) const
 {
     return x * vec.x +
@@ -115,7 +103,6 @@ void Vector3::Reset(real val)
     z = val;
 }
 
-//===== Math Helper Functions =====
 void Vector3::AddScaledVector(const Vector3& vec, real scale)
 {
     x += vec.x * scale;
@@ -136,12 +123,6 @@ void Vector3::AddScaledVector(const Point4& point, real scale)
     y += point.y * scale;
     z += point.z * scale;
 }
-//==========================================================================================================================
-//
-//Operator overloads
-//
-//==========================================================================================================================
-//===== Copy Assignment =====		
 Vector3& Vector3::operator=(const Vector2& vec)
 {
     x = vec.x;
@@ -205,7 +186,6 @@ Vector3& Vector3::operator=(real val)
     return *this;
 }
 
-//===== Add by Vector3 =====
 Vector3 Vector3::operator+(const Vector3& vec) const
 {
     return Vector3(x + vec.x,
@@ -229,7 +209,6 @@ Vector3 Vector3::operator+(shared_ptr<Vector3> vec) const
                    z + vec->z);
 }
 
-//===== Add by scalar =====
 Vector3 Vector3::operator+(real val) const
 {
     return Vector3(x + val,
@@ -246,7 +225,6 @@ Vector3& Vector3::operator+=(real val)
     return *this;
 }
 
-//===== Subtract by Vector3 =====
 Vector3 Vector3::operator-(const Vector3& vec) const
 {
     return Vector3( x - vec.x,
@@ -299,7 +277,6 @@ Vector3& Vector3::operator-=(const Point4& point)
     return *this;
 }
 
-//===== Subtract by scalar =====
 Vector3 Vector3::operator-(real val) const
 {
     return Vector3( x - val,
@@ -316,7 +293,6 @@ Vector3& Vector3::operator-=(real val)
     return *this;
 }
 
-//===== Component-wise multiply by Vector3 =====
 Vector3 Vector3::operator*(const Vector3 vec) const
 {
     return Vector3( x * vec.x,
@@ -333,7 +309,6 @@ Vector3& Vector3::operator*=(const Vector3 vec)
     return *this;
 }
 
-//===== Mutliply by Scalar =====
 Vector3 Vector3::operator*(real val) const
 {
     return Vector3( x * val,
@@ -350,7 +325,6 @@ Vector3& Vector3::operator*=(real val)
     return *this;
 }
 
-//===== Divide by scalar =====
 Vector3 Vector3::operator/(real val) const
 {
     assert(val != 0.0f);
@@ -370,7 +344,6 @@ Vector3& Vector3::operator/=(real val)
     return *this;
 }
 
-//===== Comparison =====
 bool Vector3::operator>(const Vector3& vec) const
 {
     bool state = x > vec.x && 

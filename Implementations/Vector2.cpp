@@ -1,13 +1,7 @@
 #include "stdafx.h"
 #include <Engine/Vector2.h>
-
 using namespace TempestMath;
 
-//==========================================================================================================================
-//
-//Constructors
-//
-//==========================================================================================================================
 Vector2::Vector2(void)
     :
     x(0.0f),
@@ -59,12 +53,6 @@ Vector2::Vector2(const Point4& otherVec)
 Vector2::~Vector2(void)
 {  }
 
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================
-//===== Vector2 Special functions =====
 real Vector2::Dot(const Vector2& otherVec) const
 {
     return x * otherVec.x +
@@ -102,12 +90,6 @@ Vector2 Vector2::Perpendicular(void)
     return Vector2(-y, x);
 }
 
-//==========================================================================================================================
-//
-//Operator overloads
-//
-//==========================================================================================================================
-//===== Copy Assignment =====		
 Vector2& Vector2::operator=(const Vector2& otherVec)
 {
     x = otherVec.x;
@@ -132,7 +114,6 @@ Vector2& Vector2::operator=(const Point2& point)
     return *this;
 }
 
-//===== Add by Vector2 =====
 Vector2 Vector2::operator+(const Vector2& otherVec) const
 {
     return Vector2(x + otherVec.x,
@@ -153,7 +134,6 @@ Vector2 Vector2::operator+(shared_ptr<Vector2> otherVec) const
                    y + otherVec->y);
 }
 
-//===== Add by scalar =====
 Vector2 Vector2::operator+(real val) const
 {
     return Vector2(x + val,
@@ -168,7 +148,6 @@ Vector2& Vector2::operator+=(real val)
     return *this;
 }
 
-//===== Subtract by Vector2 =====
 Vector2 Vector2::operator-(const Point2& otherVec) const
 {
     return Vector2(x - otherVec.x,
@@ -229,7 +208,6 @@ Vector2& Vector2::operator-=(const Point3& otherVec)
     return *this;
 }
 
-//===== Subtract by scalar =====
 Vector2 Vector2::operator-(real val) const
 {
     return Vector2(x - val,
@@ -244,7 +222,6 @@ Vector2& Vector2::operator-=(real val)
     return *this;
 }
 
-//===== Component-wise multiply by Vector2 =====
 Vector2 Vector2::operator*(const Vector2& otherVec) const
 {
     return Vector2(x * otherVec.x,
@@ -259,7 +236,6 @@ Vector2& Vector2::operator*=(const Vector2& otherVec)
     return *this;
 }
 
-//===== Mutliply by Scalar =====
 Vector2 Vector2::operator*(real val) const
 {
     return Vector2(x * val,
@@ -274,7 +250,6 @@ Vector2& Vector2::operator*=(real val)
     return *this;
 }
 
-//===== Divide by scalar =====
 Vector2 Vector2::operator/(real val) const
 {
     assert(val != 0.0f);
@@ -292,7 +267,6 @@ Vector2& Vector2::operator/=(real val)
     return *this;
 }
 
-//===== Comparison =====
 bool Vector2::operator>(const Vector2& otherVec) const
 {
     bool state = x > otherVec.x && 

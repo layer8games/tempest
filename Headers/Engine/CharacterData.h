@@ -1,12 +1,3 @@
-/*========================================================================
-The character data from a font file used to give the offset in the texture 
-image for rendering a character in game. 
-
-This is not free to use, and cannot be used without the express permission
-of KillerWave.
-
-Written by Maxwell Miller
-========================================================================*/
 #pragma once
 
 //=====Engine Includes=====

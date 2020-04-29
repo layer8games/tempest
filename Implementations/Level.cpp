@@ -1,13 +1,7 @@
 #include "stdafx.h"
 #include <Engine/Level.h>
-
 using namespace Tempest;
 
-//==========================================================================================================================
-//
-//Constructors
-//
-//==========================================================================================================================
 Level::Level(void) 
 : 
 _width(0),
@@ -31,11 +25,6 @@ Level::~Level(void)
     _localGameObjects.clear();
 }
 
-//==========================================================================================================================
-//
-//Virtual Functions
-//
-//==========================================================================================================================
 void Level::v_Render(void)
 { 
     DefaultRender();
@@ -57,12 +46,6 @@ void Level::DefaultInit(void)
 
     _camera.SetOrthographic(left, right, bottom, top, -100.0f, 100.0f);
 }
-
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================
 
 void Level::UpdateLevel(void)
 {
@@ -134,11 +117,6 @@ void Level::UpdateText(Text& text, string updatedCharacters)
     AddTextToLevel(text);
 }
 
-//=============================================================================
-//
-//RemoveObjectFromLevel
-//
-//=============================================================================
 void Level::RemoveObjectFromLevel(U32 id)
 {
     //Assume that if an ID is not a GameObject, then it could be derived type.
@@ -151,12 +129,7 @@ void Level::RemoveObjectFromLevel(U32 id)
         ErrorManager::Instance()->SetError(ENGINE, "Level::RemoveObjectFromLevel, ln 163, no object found with id " + id);
     }
 }
-
-//==========================================================================================================================
-//
-//Update and Render all objects
-//
-//==========================================================================================================================	
+	
 void Level::UpdateObjects(void)
 {
     for(auto i : _localGameObjects)
