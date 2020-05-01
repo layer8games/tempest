@@ -38,21 +38,17 @@ namespace Tempest
     public:
         TEMPEST_API Level(void);
 
-        TEMPEST_API virtual ~Level(void);
+        TEMPEST_API ~Level(void);
 
-        TEMPEST_API virtual void v_Init(void)=0;
+        TEMPEST_API void Init(void);
 
-        TEMPEST_API virtual void v_Update(void)=0;
+        TEMPEST_API void Update(void);
 
-        TEMPEST_API virtual void v_Render(void);
+        TEMPEST_API void Render(void);
 
-        TEMPEST_API virtual void v_Enter(void)
-        {
-            DefaultEnter();
-        }
+        TEMPEST_API void Enter(void);
 
-        TEMPEST_API virtual void v_Exit(void)
-        {  }
+        TEMPEST_API void Exit(void);
 
         TEMPEST_API void DefaultInit(void);
 
@@ -62,14 +58,9 @@ namespace Tempest
 
         TEMPEST_API void AddObjectToLevel(const GameObject2D& obj);
 
-
         TEMPEST_API void AddObjectToLevel(p_GameObject2D obj);
 
-
-        inline void RegisterRigidBody2DForce(TP::p_RigidBody2D body, TP::p_ForceGenerator generator)
-        {
-            _forceRegistry.Add(body, generator);
-        }
+        TEMPEST_API void RegisterRigidBody2DForce(TP::p_RigidBody2D body, TP::p_ForceGenerator generator);
 
         TEMPEST_API void AddTextToLevel(const Text& text);
 
@@ -84,6 +75,54 @@ namespace Tempest
         TEMPEST_API void UpdateObjects(void);
 
         TEMPEST_API void RenderObjects(void);
+	
+        TEMPEST_API void SetBackgroundColor(const Color& c);
+
+        TEMPEST_API void ActivateBackgroundColor(void);
+
+        TEMPEST_API S32 GetWidth(void) const;
+
+        TEMPEST_API S32 GetHeight(void) const;
+
+        TEMPEST_API void SetWidth(S32 w);
+
+        TEMPEST_API void SetHeight(S32 h);
+
+        TEMPEST_API void SetDimensions(S32 w, S32 h);
+        
+        TEMPEST_API void SetTopBorder(S32 top);
+
+        TEMPEST_API void SetBottomBorder(S32 bottom);
+
+        TEMPEST_API void SetRightBorder(S32 right);
+
+        TEMPEST_API void SetLeftBorder(S32 left);
+
+        TEMPEST_API void SetBorders(S32 top, S32 bottom, S32 right, S32 left);
+ 
+        TEMPEST_API S32 GetTopBorder(void) const;
+
+        TEMPEST_API S32 GetBottomBorder(void) const;
+        
+        TEMPEST_API S32 GetLeftBorder(void) const;
+
+        TEMPEST_API S32 GetRightBorder(void) const;
+ 
+        TEMPEST_API void SetDepth(S32 d);
+
+        TEMPEST_API S32 GetDepth(void);
+
+        TEMPEST_API void SetNearBorder(S32 n);
+ 
+        TEMPEST_API void SetFarBorder(S32 f);
+
+        TEMPEST_API S32 GetNearBorder(void);
+
+        TEMPEST_API S32 GetFarBorder(void);
+
+        TEMPEST_API void SetID(U32 id);
+
+        TEMPEST_API U32 GetID(void) const;
 
         template <class T>
         inline void SetObjectUniforms(string name, const T& type)
@@ -92,130 +131,6 @@ namespace Tempest
             {
                 i.second->GetShader()->SetUniform(name, type);
             }
-        }
-		
-        inline void SetBackgroundColor(const Color& c) 
-        { 
-            _bgColor = c;
-            ActivateBackgroundColor();
-        }       
-
-        TEMPEST_API void ActivateBackgroundColor(void);
-
-        inline S32 GetWidth(void) const 
-        { 
-            return _width; 
-        }
-
-        inline S32 GetHeight(void) const 
-        { 
-            return _height; 
-        }
-
-        inline void SetWidth(S32 w)  
-        { 
-            _width = w; 
-        }
-
-        inline void SetHeight(S32 h) 
-        { 
-            _height = h; 
-        }
-
-        inline void SetDimensions(S32 w, S32 h) 
-        { 
-            _width  = w; 
-            _height = h; 
-        }
-        
-        inline void SetTopBorder(S32 top) 
-        { 
-            _topBorder = top; 
-        }
-
-
-        inline void SetBottomBorder(S32 bottom) 
-        { 
-            _bottomBorder = bottom; 
-        }
-
-
-        inline void SetRightBorder(S32 right) 
-        { 
-            _rightBorder = right;
-        }
-
-        inline void SetLeftBorder(S32 left) 
-        { 
-            _leftBorder = left; 
-        }
-
-        inline void SetBorders(S32 top, S32 bottom, S32 right, S32 left)
-        {
-            _topBorder = top;
-            _bottomBorder = bottom;
-            _leftBorder = left;
-            _rightBorder = right;
-        }
- 
-        inline S32 GetTopBorder(void) const 
-        { 
-            return _topBorder; 
-        }
-
-        inline S32 GetBottomBorder(void) const 
-        { 
-            return _bottomBorder; 
-        }
-        
-        inline S32 GetLeftBorder(void) const 
-        { 
-            return _leftBorder; 
-        }
-
-        inline S32 GetRightBorder(void) const 
-        {
-            return _rightBorder; 
-        }
- 
-        inline void SetDepth(S32 d)
-        {
-            _depth = d;
-        }
-
-        inline S32 GetDepth(void)
-        {
-            return _depth;
-        }
-
-        inline void SetNearBorder(S32 n)
-        {
-            _nearBorder = n;
-        }
- 
-        inline void SetFarBorder(S32 f)
-        {
-            _farBorder = f;
-        }
-
-        inline S32 GetNearBorder(void)
-        {
-            return _nearBorder;
-        }
-
-        inline S32 GetFarBorder(void)
-        {
-            return _farBorder;
-        }
-
-        inline void SetID(U32 id) 
-        { 
-            _ID = id; 
-        }
-
-        inline U32 GetID(void) const
-        {
-            return _ID;
         }
 
     protected:
@@ -241,10 +156,7 @@ namespace Tempest
 
         TEMPEST_API std::vector<TileData> _ImportTMXMapData(string filepath);
 
-        inline U32 GetObjectCount(void)
-        {
-            return _localGameObjects.size();
-        }
+        TEMPEST_API U32 GetObjectCount(void) const;
 		
         std::map<U32, p_GameObject2D>	  _localGameObjects;
         

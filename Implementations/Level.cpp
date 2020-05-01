@@ -25,9 +25,29 @@ Level::~Level(void)
     _localGameObjects.clear();
 }
 
-void Level::v_Render(void)
+void Level::Init(void)
+{
+
+}
+
+void Level::Update(void)
+{
+
+}
+
+void Level::Render(void)
 { 
     DefaultRender();
+}
+
+void Level::Enter(void)
+{
+    DefaultEnter();
+}
+
+void Level::Exit(void)
+{
+
 }
 
 void Level::DefaultEnter(void)
@@ -75,6 +95,11 @@ void Level::AddObjectToLevel(p_GameObject2D obj)
     {
         ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject to level.");
     }
+}
+
+void Level::RegisterRigidBody2DForce(TP::p_RigidBody2D body, TP::p_ForceGenerator generator)
+{
+    _forceRegistry.Add(body, generator);
 }
 
 void Level::AddTextToLevel(const Text& text)
@@ -152,6 +177,12 @@ void Level::RenderObjects(void)
             i.second->v_Render();
         }
     }	
+}
+
+void Level::SetBackgroundColor(const Color& c) 
+{ 
+    _bgColor = c;
+    ActivateBackgroundColor();
 }
 
 void Level::ActivateBackgroundColor(void)
@@ -314,4 +345,122 @@ std::vector<U32> Level::_SplitU32(string text, char delim) const
     }
 
     return data;
+}
+
+S32 Level::GetWidth(void) const 
+{ 
+    return _width; 
+}
+
+S32 Level::GetHeight(void) const 
+{ 
+    return _height; 
+}
+
+void Level::SetWidth(S32 w)  
+{ 
+    _width = w; 
+}
+
+void Level::SetHeight(S32 h) 
+{ 
+    _height = h; 
+}
+
+void Level::SetDimensions(S32 w, S32 h) 
+{ 
+    _width  = w; 
+    _height = h; 
+}
+
+void Level::SetTopBorder(S32 top) 
+{ 
+    _topBorder = top; 
+}
+
+void Level::SetBottomBorder(S32 bottom) 
+{ 
+    _bottomBorder = bottom; 
+}
+
+void Level::SetRightBorder(S32 right) 
+{ 
+    _rightBorder = right;
+}
+
+void Level::SetLeftBorder(S32 left) 
+{ 
+    _leftBorder = left; 
+}
+
+void Level::SetBorders(S32 top, S32 bottom, S32 right, S32 left)
+{
+    _topBorder = top;
+    _bottomBorder = bottom;
+    _leftBorder = left;
+    _rightBorder = right;
+}
+
+S32 Level::GetTopBorder(void) const 
+{ 
+    return _topBorder; 
+}
+
+S32 Level::GetBottomBorder(void) const 
+{ 
+    return _bottomBorder; 
+}
+
+S32 Level::GetLeftBorder(void) const 
+{ 
+    return _leftBorder; 
+}
+
+S32 Level::GetRightBorder(void) const 
+{
+    return _rightBorder; 
+}
+
+void Level::SetDepth(S32 d)
+{
+    _depth = d;
+}
+
+S32 Level::GetDepth(void)
+{
+    return _depth;
+}
+
+void Level::SetNearBorder(S32 n)
+{
+    _nearBorder = n;
+}
+
+void Level::SetFarBorder(S32 f)
+{
+    _farBorder = f;
+}
+
+S32 Level::GetNearBorder(void)
+{
+    return _nearBorder;
+}
+S32 Level::GetFarBorder(void)
+{
+    return _farBorder;
+}
+
+void Level::SetID(U32 id) 
+{ 
+    _ID = id; 
+}
+
+U32 Level::GetID(void) const
+{
+    return _ID;
+}
+
+U32 Level::GetObjectCount(void) const
+{
+    return _localGameObjects.size();
 }
