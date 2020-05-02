@@ -72,7 +72,7 @@ namespace Tempest
         TEMPEST_API void UpdateText(Text& text, string updatedCharacters);
 
         TEMPEST_API void RemoveObjectFromLevel(U32 id);
-	
+    
         TEMPEST_API void SetBackgroundColor(const Color& c);
 
         TEMPEST_API void ActivateBackgroundColor(void);
@@ -164,7 +164,7 @@ namespace Tempest
         TEMPEST_API void _LoadLevel(string filepath);
 
         TEMPEST_API U32 _GetObjectCount(void) const;
-		
+        
         std::map<U32, p_GameObject2D> _localGameObjects;
         
         Camera _camera;
