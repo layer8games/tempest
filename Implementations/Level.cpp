@@ -25,39 +25,12 @@ Level::~Level(void)
     _localGameObjects.clear();
 }
 
-void Level::Init(void)
+void Level::v_Init(string path)
 {
-
+    _DefaultInit();
 }
 
-void Level::Update(void)
-{
-
-}
-
-void Level::Render(void)
-{ 
-    DefaultRender();
-}
-
-void Level::Enter(void)
-{
-    DefaultEnter();
-}
-
-void Level::Exit(void)
-{
-
-}
-
-void Level::DefaultEnter(void)
-{
-    // TODO: This needs to be moved into the Camera itself. 
-    //Engine::Instance()->ResetCamera();
-    ActivateBackgroundColor();
-}
-
-void Level::DefaultInit(void)
+void Level::_DefaultInit(void)
 {
     F32 left = Engine::Instance()->GetScreenLeft();
     F32 right = Engine::Instance()->GetScreenRight();
@@ -67,11 +40,70 @@ void Level::DefaultInit(void)
     _camera.SetOrthographic(left, right, bottom, top, -100.0f, 100.0f);
 }
 
-void Level::UpdateLevel(void)
+void Level::v_Update(void)
+{
+    _DefaultUpdate();
+}
+
+void Level::_DefaultUpdate(void)
 {
     _forceRegistry.UpdateForces();
 
     UpdateObjects();
+}
+
+void Level::UpdateObjects(void)
+{
+    for(auto i : _localGameObjects)
+    {
+        if(i.second->GetActiveUpdate())
+        {
+            i.second->UpdateInternals();
+            i.second->v_Update();
+        }
+    }
+}
+
+void Level::v_Render(void)
+{ 
+    _DefaultRender();
+}
+
+void Level::_DefaultRender(void)
+{
+    RenderObjects();
+}
+
+void Level::RenderObjects(void)
+{
+    for(auto i : _localGameObjects)
+    {
+        if(i.second->GetActiveRender())
+        {
+            i.second->GetShader()->SetUniform("view", _camera.GetViewMatrix4());
+            i.second->v_Render();
+        }
+    }	
+}
+
+void Level::v_Enter(void)
+{
+    _DefaultEnter();
+}
+
+void Level::_DefaultEnter(void)
+{
+    ActivateBackgroundColor();
+}
+
+void Level::v_Exit(void)
+{
+    _DefaultExit();
+}
+
+void Level::_DefaultExit(void)
+{
+
 }
 
 void Level::AddObjectToLevel(const GameObject2D& obj)
@@ -153,31 +185,7 @@ void Level::RemoveObjectFromLevel(U32 id)
     {
         ErrorManager::Instance()->SetError(ENGINE, "Level::RemoveObjectFromLevel, ln 163, no object found with id " + id);
     }
-}
-	
-void Level::UpdateObjects(void)
-{
-    for(auto i : _localGameObjects)
-    {
-        if(i.second->GetActiveUpdate())
-        {
-            i.second->UpdateInternals();
-            i.second->v_Update();
-        }
-    }
-}
-    
-void Level::RenderObjects(void)
-{
-    for(auto i : _localGameObjects)
-    {
-        if(i.second->GetActiveRender())
-        {
-            i.second->GetShader()->SetUniform("view", _camera.GetViewMatrix4());
-            i.second->v_Render();
-        }
-    }	
-}
+}   
 
 void Level::SetBackgroundColor(const Color& c) 
 { 
@@ -187,13 +195,9 @@ void Level::SetBackgroundColor(const Color& c)
 
 void Level::ActivateBackgroundColor(void)
 {
-    Engine::Instance()->SetScreenColor(_bgColor); 
+    Engine::Instance()->SetScreenColor(_bgColor);
 }
 
-void Level::DefaultRender(void)
-{
-    RenderObjects();
-}
 
 Level::GridPos Level::_ConvertIndexToTileData(U32 index, U32 width, U32 height)
 {
@@ -204,31 +208,16 @@ Level::GridPos Level::_ConvertIndexToTileData(U32 index, U32 width, U32 height)
     return pos;
 }
 
-// TODO:: Look into this warning about using too much memory here. This could be an issue.
 std::vector<Level::TileData> Level::_ImportTMXMapData(string filepath)
 {
     std::map<U32, TileData> tiles;
     std::vector<TileData> objects;
     if(filepath.find(".tmx") != std::string::npos)
     {
-        std::ifstream file(filepath);
-
-        if(!file)
-        {
-            ErrorManager::Instance()->SetError(ENGINE, "Level::ImportTMXMapData Unable to open file at " + filepath);
-        }
-
-        std::vector<char> buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
-        //xml file must be 0 terminating
-        buffer.push_back('\0');
-
-        file.close();
-
-        typedef rapidxml::xml_node<>* xmlNode;
-        typedef rapidxml::xml_document<char> xmlDoc;
+        string content = _OpenFile(filepath);
 
         xmlDoc doc;
-        doc.parse<0>(&buffer[0]);
+        doc.parse<0>(const_cast<char*>(content.c_str()));
 
         xmlNode map_node = doc.first_node("map");
         xmlNode tileset_node = map_node->first_node("tileset");
@@ -252,22 +241,10 @@ std::vector<Level::TileData> Level::_ImportTMXMapData(string filepath)
 
         if(tileSetFilePath.find(".tsx") != std::string::npos)
         {
-            std::ifstream tilesetFile(tileSetFilePath);
-
-            if(!tilesetFile)
-            {
-                ErrorManager::Instance()->SetError(ENGINE, "Level::ImportTMXMapData could not open file " + tileSetFilePath);
-            }
-
-            std::vector<char> tile_buffer((std::istreambuf_iterator<char>(tilesetFile)), std::istreambuf_iterator<char>());
-
-            //xml file must be 0 terminating
-            tile_buffer.push_back('\0');
-
-            tilesetFile.close();
+            string tile_buffer = _OpenFile(tileSetFilePath);
 
             xmlDoc tile_doc;
-            tile_doc.parse<0>(&tile_buffer[0]);
+            tile_doc.parse<0>(const_cast<char*>(tile_buffer.c_str()));
 
             // t == tile node
             for(xmlNode t=tile_doc.first_node("tileset")->first_node("tile"); t; t=t->next_sibling("tile"))
@@ -460,7 +437,48 @@ U32 Level::GetID(void) const
     return _ID;
 }
 
-U32 Level::GetObjectCount(void) const
+// TODO: XML doc creates an error about being out of memory.
+void Level::_LoadLevel(string filepath)
+{
+    string content = _OpenFile(filepath);
+    
+    xmlDoc doc;
+    doc.parse<0>(const_cast<char*>(content.c_str()));
+
+    xmlNode objects = doc.first_node("level")->first_node("objects")->first_node("dynamic");
+
+    for(xmlNode i = objects->first_node("obj"); i; i = i->next_sibling("obj"))
+    {
+        string type = i->first_attribute("type")->value();
+        TM::Vector2 pos{std::stof(i->first_attribute("xpos")->value()),
+                        std::stof(i->first_attribute("ypos")->value())};
+        U32 textureID = std::stoi(i->first_attribute("textureID")->value());
+        // Call factory. That still needs to be implemented btw. 
+
+    }
+
+}
+
+U32 Level::_GetObjectCount(void) const
 {
     return _localGameObjects.size();
+}
+
+string Level::_OpenFile(string filepath)
+{
+    std::ifstream file(filepath);
+
+    if(!file)
+    {
+        ErrorManager::Instance()->SetError(ENGINE, "Level::_CreateXMLDoc Unable to open file at " + filepath);
+        return "";
+    }
+
+    string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    //xml file must be 0 terminating
+    content.push_back('\0');
+
+    file.close();
+
+    return content;
 }

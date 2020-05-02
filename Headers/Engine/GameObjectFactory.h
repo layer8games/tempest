@@ -11,10 +11,10 @@ namespace TP = TempestPhysics;
 
 namespace Tempest
 {
-    class EngineFactory
+    class GameObjectFactory
     {
     public:
-        TEMPEST_API ~EngineFactory(void);
+        TEMPEST_API ~GameObjectFactory(void);
 
         inline p_Glyph MakeGlyph(void)
         {
@@ -31,15 +31,15 @@ namespace Tempest
             return TP::p_RigidBody3D(new TP::RigidBody3D());
         }
 
-        TEMPEST_API static shared_ptr<EngineFactory> Instance(void);
+        TEMPEST_API static shared_ptr<GameObjectFactory> Instance(void);
 
     protected:
-        EngineFactory(void);
+        GameObjectFactory(void);
 
     private:
-        static shared_ptr<EngineFactory> _instance;
+        static shared_ptr<GameObjectFactory> _instance;
         
     };//end Class
 
-    typedef shared_ptr<EngineFactory> P_EngineFactory;
+    typedef shared_ptr<GameObjectFactory> P_GameObjectFactory;
 }//end Namespace

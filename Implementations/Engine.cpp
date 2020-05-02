@@ -49,7 +49,6 @@ void Engine::Update(void)
     
     GameObjectManager::Instance()->UpdateObjects();
 
-    _activeLevel->UpdateLevel();
     _activeLevel->v_Update();
 
     if(ErrorManager::Instance()->DisplayErrors())

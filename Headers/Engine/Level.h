@@ -36,25 +36,26 @@ namespace Tempest
     class Level
     {
     public:
+        typedef rapidxml::xml_node<>* xmlNode;
+        typedef rapidxml::xml_document<> xmlDoc;
+
         TEMPEST_API Level(void);
 
         TEMPEST_API ~Level(void);
 
-        TEMPEST_API void Init(void);
+        TEMPEST_API virtual void v_Init(string path);
+    
+        TEMPEST_API virtual void v_Update(void);
+        
+        TEMPEST_API void UpdateObjects(void);
 
-        TEMPEST_API void Update(void);
+        TEMPEST_API virtual void v_Render(void);
+       
+        TEMPEST_API void RenderObjects(void);
+        
+        TEMPEST_API virtual void v_Enter(void);
 
-        TEMPEST_API void Render(void);
-
-        TEMPEST_API void Enter(void);
-
-        TEMPEST_API void Exit(void);
-
-        TEMPEST_API void DefaultInit(void);
-
-        TEMPEST_API void DefaultEnter(void);
-
-        TEMPEST_API void UpdateLevel(void);
+        TEMPEST_API virtual void v_Exit(void);
 
         TEMPEST_API void AddObjectToLevel(const GameObject2D& obj);
 
@@ -71,10 +72,6 @@ namespace Tempest
         TEMPEST_API void UpdateText(Text& text, string updatedCharacters);
 
         TEMPEST_API void RemoveObjectFromLevel(U32 id);
-
-        TEMPEST_API void UpdateObjects(void);
-
-        TEMPEST_API void RenderObjects(void);
 	
         TEMPEST_API void SetBackgroundColor(const Color& c);
 
@@ -150,17 +147,31 @@ namespace Tempest
             S32 y;
         };
         
-        TEMPEST_API void DefaultRender(void);
-
-        TEMPEST_API GridPos _ConvertIndexToTileData(U32 index, U32 width, U32 height);
+        TEMPEST_API void _DefaultInit(void);
+        
+        TEMPEST_API void _DefaultRender(void);
+        
+        TEMPEST_API void _DefaultUpdate(void);
+        
+        TEMPEST_API void _DefaultExit(void);
+        
+        TEMPEST_API void _DefaultEnter(void);
 
         TEMPEST_API std::vector<TileData> _ImportTMXMapData(string filepath);
+        
+        TEMPEST_API GridPos _ConvertIndexToTileData(U32 index, U32 width, U32 height);
 
-        TEMPEST_API U32 GetObjectCount(void) const;
+        TEMPEST_API void _LoadLevel(string filepath);
+
+        TEMPEST_API U32 _GetObjectCount(void) const;
 		
-        std::map<U32, p_GameObject2D>	  _localGameObjects;
+        std::map<U32, p_GameObject2D> _localGameObjects;
+        
+        Camera _camera;
         
     private:
+        string _OpenFile(string filePath);
+        
         std::vector<U32> _SplitU32(string text, char delim) const;		
         S32 _width;										
         S32 _height;									
@@ -174,9 +185,6 @@ namespace Tempest
         Color _bgColor;									
         U32 _ID;										
         TP::ForceRegistry _forceRegistry; 					
-        
-        protected:
-        Camera _camera;
     };
     typedef shared_ptr<Level> p_Level;
 }//End namespace

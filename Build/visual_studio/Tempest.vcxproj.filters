@@ -118,9 +118,6 @@
     <Filter Include="Source Code\Engine\GameWindow">
       <UniqueIdentifier>{381d786c-065e-4c73-9294-7079cbccce17}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Engine\EngineFactory">
-      <UniqueIdentifier>{7e26eddb-1905-4038-b22e-66c0c820e244}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Engine\Main">
       <UniqueIdentifier>{26ec3754-d460-4781-8590-32515faec28f}</UniqueIdentifier>
     </Filter>
@@ -271,6 +268,15 @@
     <Filter Include="Source Code\Engine\GameWindow\DirectX">
       <UniqueIdentifier>{242c69c2-59e2-493e-9977-a5003448ef6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\Factory">
+      <UniqueIdentifier>{206ea920-d751-4e83-874f-ce90e203a187}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Factory\GameObject">
+      <UniqueIdentifier>{7e26eddb-1905-4038-b22e-66c0c820e244}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\Factory\Base">
+      <UniqueIdentifier>{a0fec22c-374d-41e4-91a8-5e7e29f9561b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -399,9 +405,6 @@
     <ClInclude Include="..\..\Headers\Engine\AudioListener.h">
       <Filter>Source Code\Engine\AudioListener</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\EngineFactory.h">
-      <Filter>Source Code\Engine\EngineFactory</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\RigidBody3D.h">
       <Filter>Source Code\Physics\RigidBodies\3D</Filter>
     </ClInclude>
@@ -485,6 +488,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vertex.hpp">
       <Filter>Source Code\Math\Vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\GameObjectFactory.h">
+      <Filter>Source Code\Engine\Factory\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Factory.h">
+      <Filter>Source Code\Engine\Factory\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -605,9 +614,6 @@
     <ClCompile Include="..\..\Implementations\AudioSource.cpp">
       <Filter>Source Code\Engine\AudioSource</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\EngineFactory.cpp">
-      <Filter>Source Code\Engine\EngineFactory</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\RigidBody3D.cpp">
       <Filter>Source Code\Physics\RigidBodies\3D</Filter>
     </ClCompile>
@@ -673,6 +679,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\stdafx.cpp">
       <Filter>Source Code\Engine\Atom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\GameObjectFactory.cpp">
+      <Filter>Source Code\Engine\Factory\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Factory.cpp">
+      <Filter>Source Code\Engine\Factory\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
