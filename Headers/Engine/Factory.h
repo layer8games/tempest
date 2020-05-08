@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/GameObject2D.h>
-#include <Engine/Vector2.h>
+#include <Engine/Point2.h>
 
 namespace TM = TempestMath;
 
@@ -15,9 +15,9 @@ namespace Tempest
     public:
         TEMPEST_API Factory(void);
 
-        TEMPEST_API ~Factory(void);
+        TEMPEST_API virtual ~Factory(void);
 
-        TEMPEST_API virtual p_GameObject2D Create(string type, const TM::Vector2& pos, U32 textureID)=0;
+        TEMPEST_API virtual p_GameObject2D v_Create(string type, const TM::Point2& pos, F32 scalex, F32 scaley, U32 textureID)=0;
 
     private:
 

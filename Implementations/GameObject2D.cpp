@@ -7,7 +7,7 @@ GameObject2D::GameObject2D(void)
     :
     _modelToWorldCache(),
     _position(0.0f),
-    _scale(1.0f),
+    _scale(32.0f),
     _orientation(0.0f),
     _color(1.0f),
     _boundingBox(),

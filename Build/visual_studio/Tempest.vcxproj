@@ -213,10 +213,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GameObject3D.h" />
-    <ClInclude Include="..\..\Headers\Engine\GameObjectFactory.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\GameObjectManager.h" />
     <ClInclude Include="..\..\Headers\Engine\GameWindow.h">
       <SubType>
@@ -418,10 +414,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObject3D.cpp" />
-    <ClCompile Include="..\..\Implementations\GameObjectFactory.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\GameObjectManager.cpp" />
     <ClCompile Include="..\..\Implementations\GameWindow.cpp">
       <SubType>

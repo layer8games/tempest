@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include <Engine/Level.h>
+#include <iostream>
 using namespace Tempest;
 
 Level::Level(void) 
@@ -17,7 +18,8 @@ _bgColor(),
 _ID(0),
 _localGameObjects(),
 _forceRegistry(),
-_camera()
+_camera(),
+_factory(nullptr)
 {  }
 
 Level::~Level(void)
@@ -27,10 +29,15 @@ Level::~Level(void)
 
 void Level::v_Init(string path)
 {
-    _DefaultInit();
+    _DefaultInit(path);
 }
 
-void Level::_DefaultInit(void)
+void Level::_DefaultInit(string filepath)
+{
+   _LoadLevel(filepath);
+}
+
+void Level::_SetUpCamera(void)
 {
     F32 left = Engine::Instance()->GetScreenLeft();
     F32 right = Engine::Instance()->GetScreenRight();
@@ -437,26 +444,61 @@ U32 Level::GetID(void) const
     return _ID;
 }
 
+void Level::SetFactory(p_Factory factory)
+{
+    _factory = factory;
+}
+
 // TODO: XML doc creates an error about being out of memory.
 void Level::_LoadLevel(string filepath)
 {
+    if(_factory == nullptr)
+    {
+        ErrorManager::Instance()->SetError(ENGINE, "Level::_LoadLevel Level::_factory has not been set yet. Set it first, then call v_Init");
+        return;
+    }
+    
     string content = _OpenFile(filepath);
     
     xmlDoc doc;
     doc.parse<0>(const_cast<char*>(content.c_str()));
 
+    xmlNode level = doc.first_node("level");
+
+    SetWidth(std::stoi(level->first_attribute("width")->value()));
+    SetHeight(std::stoi(level->first_attribute("height")->value()));
+
+    F32 red = std::stof(level->first_attribute("red")->value());
+    F32 green = std::stof(level->first_attribute("green")->value());
+    F32 blue = std::stof(level->first_attribute("blue")->value());
+    
+    SetBackgroundColor(Color(red, green, blue));
+    
+    std::cout << "level w and h are " << _width << ":" << _height << std::endl;
+    
+    _SetUpCamera();
+    
     xmlNode objects = doc.first_node("level")->first_node("objects")->first_node("dynamic");
 
     for(xmlNode i = objects->first_node("obj"); i; i = i->next_sibling("obj"))
     {
         string type = i->first_attribute("type")->value();
-        TM::Vector2 pos{std::stof(i->first_attribute("xpos")->value()),
+        
+        TM::Point2 pos{std::stof(i->first_attribute("xpos")->value()),
                         std::stof(i->first_attribute("ypos")->value())};
-        U32 textureID = std::stoi(i->first_attribute("textureID")->value());
-        // Call factory. That still needs to be implemented btw. 
 
+        F32 scalex = std::stof(i->first_attribute("scalex")->value());
+        F32 scaley = std::stof(i->first_attribute("scaley")->value());
+        
+        U32 textureID = std::stoi(i->first_attribute("textureID")->value());
+        
+        p_GameObject2D obj = _factory->v_Create(type, pos, scalex, scaley, textureID);
+        ErrorManager::Instance()->DisplayErrors();
+        AddObjectToLevel(obj);
     }
 
+    //delete(level);
+    doc.clear();
 }
 
 U32 Level::_GetObjectCount(void) const

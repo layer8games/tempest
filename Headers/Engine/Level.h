@@ -16,6 +16,7 @@
 #include <Engine/RigidBody2D.h>
 #include <Engine/Point2.h>
 #include <Engine/Camera.h>
+#include <Engine/Factory.h>
 
 namespace TM = TempestMath;
 namespace TP = TempestPhysics;
@@ -41,7 +42,7 @@ namespace Tempest
 
         TEMPEST_API Level(void);
 
-        TEMPEST_API ~Level(void);
+        TEMPEST_API virtual ~Level(void);
 
         TEMPEST_API virtual void v_Init(string path);
     
@@ -121,6 +122,8 @@ namespace Tempest
 
         TEMPEST_API U32 GetID(void) const;
 
+        TEMPEST_API void SetFactory(p_Factory factory);
+
         template <class T>
         inline void SetObjectUniforms(string name, const T& type)
         {
@@ -147,7 +150,9 @@ namespace Tempest
             S32 y;
         };
         
-        TEMPEST_API void _DefaultInit(void);
+        TEMPEST_API void _DefaultInit(string filepath);
+
+        TEMPEST_API void _SetUpCamera(void);
         
         TEMPEST_API void _DefaultRender(void);
         
@@ -184,7 +189,8 @@ namespace Tempest
         S32 _farBorder;									
         Color _bgColor;									
         U32 _ID;										
-        TP::ForceRegistry _forceRegistry; 					
+        TP::ForceRegistry _forceRegistry;
+        p_Factory _factory;
     };
     typedef shared_ptr<Level> p_Level;
 }//End namespace

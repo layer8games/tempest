@@ -271,9 +271,6 @@
     <Filter Include="Source Code\Engine\Factory">
       <UniqueIdentifier>{206ea920-d751-4e83-874f-ce90e203a187}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Engine\Factory\GameObject">
-      <UniqueIdentifier>{7e26eddb-1905-4038-b22e-66c0c820e244}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Engine\Factory\Base">
       <UniqueIdentifier>{a0fec22c-374d-41e4-91a8-5e7e29f9561b}</UniqueIdentifier>
     </Filter>
@@ -489,9 +486,6 @@
     <ClInclude Include="..\..\Headers\Engine\Vertex.hpp">
       <Filter>Source Code\Math\Vertex</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\GameObjectFactory.h">
-      <Filter>Source Code\Engine\Factory\GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Factory.h">
       <Filter>Source Code\Engine\Factory\Base</Filter>
     </ClInclude>
@@ -679,9 +673,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\stdafx.cpp">
       <Filter>Source Code\Engine\Atom</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\GameObjectFactory.cpp">
-      <Filter>Source Code\Engine\Factory\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Factory.cpp">
       <Filter>Source Code\Engine\Factory\Base</Filter>

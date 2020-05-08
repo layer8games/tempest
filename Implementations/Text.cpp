@@ -137,7 +137,7 @@ void Text::_UpdateScales(void)
 {
     for(U32 i = 0; i < _characterList.size(); ++i)
     {
-        _characterList[i]->SetScale(_scale);
+        _characterList[i]->SetScaleInPixels(_scale.x, _scale.y);
     }
 }
 
@@ -158,7 +158,7 @@ void Text::_UpdateGlyphData(U32 index)
     else
     {
         CharacterData data = _font->GetCharacterData(_text[index]);
-        _characterList[index]->SetScale(static_cast<F32>(data.width), static_cast<F32>(data.height));
+        _characterList[index]->SetScaleInPixels(static_cast<F32>(data.width), static_cast<F32>(data.height));
         _characterList[index]->SetColor(_color);
         _characterList[index]->SetTexture(data.texture);
         _characterList[index]->SetCharacter(_text[index], data);

@@ -187,12 +187,14 @@ namespace Tempest
             _boundingBox.SetHalfDimensions(_scale);
         }
 
-        inline void SetScale(F32 val)
+        inline void SetScaleInPixels(F32 xVal, F32 yVal)
         {
-            _scale = val;
+            _scale.x = xVal;
+            _scale.y = yVal;
             _boundingBox.SetHalfDimensions(_scale);
         }
-
+        // TODO: Create, set and use default pixel size
+        // For instance, 32, then SetScale will take an S32 and will set _scale.x = _default * val
         inline void SetScale(F32 xVal, F32 yVal)
         {
             _scale.x = xVal;

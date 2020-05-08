@@ -45,3 +45,4 @@ using std::make_shared;
 #include <Engine/CharacterData.h>
 #include <Engine/BufferData.h>
 #include <Engine/Vertex.hpp>
+#include <Engine/Factory.h>
