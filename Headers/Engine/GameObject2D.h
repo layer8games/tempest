@@ -176,30 +176,39 @@ namespace Tempest
             _position += newPosition;
         }
         
-        inline const TM::Vector2& GetScale(void) const
+        inline void SetDefaultPixelSize(F32 scale)
+        {
+            _defaultPixelSize = scale;
+        }
+        
+        inline const TM::Vector2& GetScaleInPixels(void) const
+        {
+            return _scaleInPixels;
+        }
+
+        inline F32 GetScale(void) const
         {
             return _scale;
         }
 
-        inline void SetScale(const TM::Vector2& scale)
+        inline void SetScaleInPixels(const TM::Vector2& scale)
         {
-            _scale = scale;
-            _boundingBox.SetHalfDimensions(_scale);
+            _scaleInPixels = scale;
+            _boundingBox.SetHalfDimensions(_scaleInPixels);
         }
 
         inline void SetScaleInPixels(F32 xVal, F32 yVal)
         {
-            _scale.x = xVal;
-            _scale.y = yVal;
-            _boundingBox.SetHalfDimensions(_scale);
+            _scaleInPixels.x = xVal;
+            _scaleInPixels.y = yVal;
+            _boundingBox.SetHalfDimensions(_scaleInPixels);
         }
-        // TODO: Create, set and use default pixel size
-        // For instance, 32, then SetScale will take an S32 and will set _scale.x = _default * val
-        inline void SetScale(F32 xVal, F32 yVal)
+
+        inline void SetScale(F32 val)
         {
-            _scale.x = xVal;
-            _scale.y = yVal;
-            _boundingBox.SetHalfDimensions(_scale);
+            _scale = val;
+            _scaleInPixels = _defaultPixelSize * val;
+            _boundingBox.SetHalfDimensions(_scaleInPixels);
         }
 
         inline const real GetOrientation(void) const
@@ -303,10 +312,12 @@ namespace Tempest
             }
         }
 
-        static U32 _nextID;				
+        static U32 _nextID;
+        F32 _defaultPixelSize;
+        F32 _scale;
         TM::Matrix4	_modelToWorldCache;		
         TM::Point2 _position;				
-        TM::Vector2	_scale;					
+        TM::Vector2	_scaleInPixels;					
         real _orientation;			
         Color _color;					
         p_Texture _texture;				

@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include <Engine/Level.h>
-#include <iostream>
 using namespace Tempest;
 
 Level::Level(void) 
@@ -87,6 +86,7 @@ void Level::RenderObjects(void)
     {
         if(i.second->GetActiveRender())
         {
+            i.second->GetShader()->SetUniform("projection", _camera.GetProjectionMatrix4());
             i.second->GetShader()->SetUniform("view", _camera.GetViewMatrix4());
             i.second->v_Render();
         }
@@ -126,9 +126,10 @@ void Level::AddObjectToLevel(const GameObject2D& obj)
 
 void Level::AddObjectToLevel(p_GameObject2D obj)
 {
-    obj->GetShader()->SetUniform("projection", _camera.GetProjectionMatrix4());
+    //obj->GetShader()->SetUniform("projection", _camera.GetProjectionMatrix4());
 
     _localGameObjects.insert({obj->GetID(), obj});
+    _localGameObjects[obj->GetID()]->GetShader()->SetUniform("projection", _camera.GetProjectionMatrix4());
 
     if(_localGameObjects.find(obj->GetID()) == _localGameObjects.end())
     {
@@ -474,9 +475,9 @@ void Level::_LoadLevel(string filepath)
     
     SetBackgroundColor(Color(red, green, blue));
     
-    std::cout << "level w and h are " << _width << ":" << _height << std::endl;
-    
     _SetUpCamera();
+
+    F32 pixelSize = std::stof(level->first_attribute("pixelsize")->value());
     
     xmlNode objects = doc.first_node("level")->first_node("objects")->first_node("dynamic");
 
@@ -487,12 +488,11 @@ void Level::_LoadLevel(string filepath)
         TM::Point2 pos{std::stof(i->first_attribute("xpos")->value()),
                         std::stof(i->first_attribute("ypos")->value())};
 
-        F32 scalex = std::stof(i->first_attribute("scalex")->value());
-        F32 scaley = std::stof(i->first_attribute("scaley")->value());
+        F32 scale = std::stof(i->first_attribute("scale")->value());
         
         U32 textureID = std::stoi(i->first_attribute("textureID")->value());
         
-        p_GameObject2D obj = _factory->v_Create(type, pos, scalex, scaley, textureID);
+        p_GameObject2D obj = _factory->v_Create(type, pos, scale, pixelSize, textureID);
         ErrorManager::Instance()->DisplayErrors();
         AddObjectToLevel(obj);
     }

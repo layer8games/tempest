@@ -5,9 +5,11 @@ using namespace Tempest;
 U32 GameObject2D::_nextID = 1;
 GameObject2D::GameObject2D(void)
     :
+    _defaultPixelSize(32.0f),
+    _scale(1.0f),
     _modelToWorldCache(),
     _position(0.0f),
-    _scale(32.0f),
+    _scaleInPixels(32.0f, 32.0f),
     _orientation(0.0f),
     _color(1.0f),
     _boundingBox(),
@@ -125,5 +127,5 @@ void GameObject2D::_CalculateCachedData(void)
 {
     _modelToWorldCache.SetRotateZ(_orientation);
     _modelToWorldCache.SetTranslate(_position);
-    _modelToWorldCache = _modelToWorldCache * TM::Matrix4::Scale(_scale);
+    _modelToWorldCache = _modelToWorldCache * TM::Matrix4::Scale(_scaleInPixels);
 }
