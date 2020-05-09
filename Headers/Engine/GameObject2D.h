@@ -35,256 +35,98 @@ namespace Tempest
         
         virtual void v_Update(void)=0;
 
-        inline virtual void v_Render(void)
-        {
-            DefaultRender();
-        }
+        TEMPEST_API virtual void v_Render(void);
         
-        inline virtual void v_Awake(void)
-        {
-            DefaultAwake();
-        }
+        TEMPEST_API virtual void v_Awake(void);
        
-        virtual void v_OnEvent(Event event)
+        void v_OnEvent(Event event)
         {  }
        
         TEMPEST_API void UpdateInternals(void);
         
-        inline const TM::Matrix4& GetModelMatrix(void) const
-        {
-            return _modelToWorldCache;
-        }
+        TEMPEST_API const TM::Matrix4& GetModelMatrix(void) const;
 
-        inline const TM::Matrix4 GetModelMatrixRot(void) const
-        {
-            TM::Matrix4 mat = _modelToWorldCache;
-            mat.SetTranslate(0.0f, 0.0f, 0.0f);
-            return mat;
-        }
+        TEMPEST_API const TM::Matrix4 GetModelMatrixRot(void) const;
         
-        inline const bool GetActive(void) const
-        {
-            return _activeUpdate && _activeRender;
-        }
-
-        inline void SetActive(bool state)
-        {
-            if(!_activeUpdate || !_activeRender)
-            {
-                v_Awake();
-            }
-
-            _activeUpdate = state;
-            _activeRender = state;
-        }
+        TEMPEST_API const bool GetActive(void) const;
         
-        inline void SetActive(void)
-        {
-            v_Awake();
-            _activeUpdate = true;
-            _activeRender = true;
-        }
+        TEMPEST_API void SetActive(bool state);
         
-        inline void SetInactive(void)
-        {
-            _activeUpdate = false;
-            _activeRender = false;
-        }
+        TEMPEST_API void SetActive(void);
         
-        inline const bool GetActiveUpdate(void) const
-        {
-            return _activeUpdate;
-        }
+        TEMPEST_API void SetInactive(void);
         
-        inline void SetActiveUpdate(bool state)
-        {
-            _activeUpdate = state;
-        }
+        TEMPEST_API const bool GetActiveUpdate(void) const;
         
-        inline void SetActiveUpdate(void)
-        {
-            _activeUpdate = true;
-        }
+        TEMPEST_API void SetActiveUpdate(bool state);
         
-        inline void SetInactiveUpdate(void)
-        {
-            _activeUpdate = false;
-        }
-
-        inline const bool GetActiveRender(void) const
-        {
-            return _activeRender;
-        }
-
-        inline void SetActiveRender(bool state)
-        {
-            _activeRender = state;
-        }
-
-        inline void SetActiveRender(void)
-        {
-            _activeRender = true;
-        }
-
-        inline void SetInactiveRender(void)
-        {
-            _activeRender = false;
-        }
-
-        inline const U32 GetID(void) const
-        {
-            return _ID;
-        }
-
-        inline const TM::Point2& GetPosition(void) const
-        {
-            return _position;
-        }
-
-        inline void SetPosition(const TM::Point2& pos)
-        {
-            _position = pos;
-            _boundingBox.SetCenter(_position);
-        }
-
-        inline void SetPosition(F32 xVal, F32 yVal)
-        {
-            _position.x = xVal;
-            _position.y = yVal;
-            _boundingBox.SetCenter(_position);
-        }
-
-        inline void SetPositionX(F32 xval)
-        {
-            _position.x = xval;
-            _boundingBox.SetCenter(_position);
-        }
-
-        inline void SetPositionY(F32 yVal)
-        {
-            _position.y = yVal;
-            _boundingBox.SetCenter(_position);
-        }
-
-        inline void AddPosition(const TM::Point2& newPosition)
-        {
-            _position += newPosition;
-        }
-
-        inline void AddPosition(const TM::Vector2& newPosition)
-        {
-            _position += newPosition;
-        }
+        TEMPEST_API void SetActiveUpdate(void);
         
-        inline void SetDefaultPixelSize(F32 scale)
-        {
-            _defaultPixelSize = scale;
-        }
+        TEMPEST_API void SetInactiveUpdate(void);
+
+        TEMPEST_API const bool GetActiveRender(void) const;
+
+        TEMPEST_API void SetActiveRender(bool state);
+
+        TEMPEST_API void SetActiveRender(void);
+
+        TEMPEST_API void SetInactiveRender(void);
+
+        TEMPEST_API U32 GetID(void) const;
+
+        TEMPEST_API const TM::Point2& GetPosition(void) const;
+
+        TEMPEST_API void SetPosition(const TM::Point2& pos);
+
+        TEMPEST_API void SetPosition(F32 xVal, F32 yVal);
+
+        TEMPEST_API void SetPositionX(F32 xval);
+
+        TEMPEST_API void SetPositionY(F32 yVal);
+
+        TEMPEST_API void AddPosition(const TM::Point2& newPosition);
+
+        TEMPEST_API void AddPosition(const TM::Vector2& newPosition);
         
-        inline const TM::Vector2& GetScaleInPixels(void) const
-        {
-            return _scaleInPixels;
-        }
+        TEMPEST_API void SetDefaultPixelSize(F32 scale);
+        
+        TEMPEST_API const TM::Vector2& GetScaleInPixels(void) const;
 
-        inline F32 GetScale(void) const
-        {
-            return _scale;
-        }
+        TEMPEST_API F32 GetScale(void) const;
 
-        inline void SetScaleInPixels(const TM::Vector2& scale)
-        {
-            _scaleInPixels = scale;
-            _boundingBox.SetHalfDimensions(_scaleInPixels);
-        }
+        TEMPEST_API void SetScaleInPixels(const TM::Vector2& scale);
 
-        inline void SetScaleInPixels(F32 xVal, F32 yVal)
-        {
-            _scaleInPixels.x = xVal;
-            _scaleInPixels.y = yVal;
-            _boundingBox.SetHalfDimensions(_scaleInPixels);
-        }
+        TEMPEST_API void SetScaleInPixels(F32 xVal, F32 yVal);
 
-        inline void SetScale(F32 val)
-        {
-            _scale = val;
-            _scaleInPixels = _defaultPixelSize * val;
-            _boundingBox.SetHalfDimensions(_scaleInPixels);
-        }
+        TEMPEST_API void SetScale(F32 val);
 
-        inline const real GetOrientation(void) const
-        {
-            return _orientation;
-        }
+        TEMPEST_API real GetOrientation(void) const;
 
-        inline void SetOrientation(real angle)
-        {
-            _orientation = angle;
-            _ClampOrientation();
-        }
+        TEMPEST_API void SetOrientation(real angle);
 
-        inline void AddOrientation(real angle)
-        {
-            _orientation += angle;
-            _ClampOrientation();
-        }
+        TEMPEST_API void AddOrientation(real angle);
 
-        inline void SetColor(const Color& col)
-        {
-            _color = col;
-        }
+        TEMPEST_API void SetColor(const Color& col);
 
-        inline void SetColor(F32 red, F32 green, F32 blue)
-        {
-            _color[0] = red;
-            _color[1] = green;
-            _color[2] = blue;
-        }
+        TEMPEST_API void SetColor(F32 red, F32 green, F32 blue);
 
-        inline const Color& GetColor(void) const
-        {
-            return _color;
-        }
+        TEMPEST_API const Color& GetColor(void) const;
 
-        inline bool OverlapCheck(const shared_ptr<GameObject2D> other)
-        {
-            return _boundingBox.TestCollision(other->GetBounding());
-        }
+        TEMPEST_API bool OverlapCheck(const shared_ptr<GameObject2D> other);
 
-        inline const TC::AABB& GetBounding(void) const
-        {
-            return _boundingBox;
-        }
+        TEMPEST_API const TC::AABB& GetBounding(void) const;
 
-        inline void SetTexture(p_Texture texture)
-        {
-            _texture = texture;
-            _shader->SetUniform("has_texture", true);
-        }
+        TEMPEST_API void SetTexture(p_Texture texture);
 
-        inline p_Texture GetTexture(void) const
-        {
-            return _texture;
-        }
+        TEMPEST_API p_Texture GetTexture(void) const;
 
-        inline void BindTexture(bool state=true)
-        {
-            _texture->Bind(state);
-        }
+        TEMPEST_API void BindTexture(bool state=true);
 
-        inline const p_Shader GetShader(void) const
-        {
-            return _shader;
-        }
+        TEMPEST_API const p_Shader GetShader(void) const;
 
-        inline void SetShader(const p_Shader shader)
-        {
-            _shader = shader;
-        }
+        TEMPEST_API void SetShader(const p_Shader shader);
 
-        inline void SetMesh(p_Mesh mesh)
-        {
-            _mesh = mesh;
-        }
+        TEMPEST_API void SetMesh(p_Mesh mesh);
 
     protected:
         TEMPEST_API void DefaultAwake(void);
@@ -300,17 +142,7 @@ namespace Tempest
     private:
         void _CalculateCachedData(void);
 
-        inline void _ClampOrientation(void)
-        {
-            if(_orientation > 360.0f)
-            {
-                _orientation -= 360.0f;
-            }
-            else if(_orientation < -360.0f)
-            {
-                _orientation += 360.0f;
-            }
-        }
+        void _ClampOrientation(void);
 
         static U32 _nextID;
         F32 _defaultPixelSize;
