@@ -5,6 +5,7 @@ using namespace Tempest;
 U32 GameObject2D::_nextID = 1;
 GameObject2D::GameObject2D(void)
     :
+    _name(),
     _defaultPixelSize(32.0f),
     _scale(1.0f),
     _modelToWorldCache(),
@@ -183,6 +184,16 @@ void GameObject2D::SetInactiveRender(void)
 U32 GameObject2D::GetID(void) const
 {
     return _ID;
+}
+
+void GameObject2D::SetName(string name)
+{
+    _name = name;
+}
+
+string GameObject2D::GetName(void) const
+{
+    return _name;
 }
 
 const TM::Point2& GameObject2D::GetPosition(void) const

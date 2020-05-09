@@ -74,6 +74,10 @@ namespace Tempest
 
         TEMPEST_API U32 GetID(void) const;
 
+        TEMPEST_API void SetName(string name);
+
+        TEMPEST_API string GetName(void) const;
+
         TEMPEST_API const TM::Point2& GetPosition(void) const;
 
         TEMPEST_API void SetPosition(const TM::Point2& pos);
@@ -135,6 +139,7 @@ namespace Tempest
 
         TEMPEST_API void DefaultUpdate(void);
 
+        string _name;
         p_Shader				_shader;				
         p_Mesh					_mesh;					
         TC::AABB				_boundingBox;			

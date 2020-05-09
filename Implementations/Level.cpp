@@ -484,6 +484,8 @@ void Level::_LoadLevel(string filepath)
     for(xmlNode i = objects->first_node("obj"); i; i = i->next_sibling("obj"))
     {
         string type = i->first_attribute("type")->value();
+
+        string name = i->first_attribute("name")->value();
         
         TM::Point2 pos{std::stof(i->first_attribute("xpos")->value()),
                         std::stof(i->first_attribute("ypos")->value())};
@@ -493,6 +495,7 @@ void Level::_LoadLevel(string filepath)
         U32 textureID = std::stoi(i->first_attribute("textureID")->value());
         
         p_GameObject2D obj = _factory->v_Create(type, pos, scale, pixelSize, textureID);
+        obj->SetName(name);
         ErrorManager::Instance()->DisplayErrors();
         AddObjectToLevel(obj);
     }
