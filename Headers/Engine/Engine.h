@@ -16,6 +16,7 @@
 #include <Engine/Color.h>
 
 namespace TM = TempestMath;
+namespace TC = TempestCollisions;
 
 namespace Tempest 
 {

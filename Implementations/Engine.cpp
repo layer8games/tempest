@@ -72,6 +72,7 @@ void Engine::Update(void)
         Controller::Instance()->Update();
 
         GameObjectManager::Instance()->UpdateObjects();
+        GameObjectManager::Instance()->CheckCollisions();
 
         _activeLevel->v_Update();
 

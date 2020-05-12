@@ -7,16 +7,20 @@
 #include <Engine/GameObject2D.h>
 #include <Engine/GameObject3D.h>
 #include <Engine/ErrorManager.h>
+#include <Engine/CollisionDetector.h>
+
+namespace TC = TempestCollisions;
 
 //===== STL includes =====
 #include <map>
 
 namespace Tempest
 {
+    typedef	std::map<U32, p_GameObject2D> ObjectRegistry2D;
+    typedef	std::map<U32, p_GameObject3D> ObjectRegistry3D;
+    
     class GameObjectManager
     {
-        typedef	std::map<U32, p_GameObject2D> ObjectRegistry2D;
-        typedef	std::map<U32, p_GameObject3D> ObjectRegistry3D;
 
     public:
         TEMPEST_API ~GameObjectManager(void);
@@ -37,21 +41,19 @@ namespace Tempest
 
         TEMPEST_API p_GameObject3D GetGameObject3D(U32 id);
 
-        inline U32 Count2D(void)
-        {
-            return _registry2D.size();
-        }
+        TEMPEST_API U32 Count2D(void);
 
-        inline U32 Count3D(void)
-        {
-            return _registry3D.size();
-        }
+        TEMPEST_API U32 Count3D(void);
 
         TEMPEST_API void UpdateObjects(void);
+
+        TEMPEST_API void CheckCollisions(void);
 
         // TODO:: Need a better way to do this. Can't get the view matrix this way any more. 
         // Maybe the Level should call GetAllObjects and render them one by one from its update
         TEMPEST_API void RenderObjects(const Camera& camera);
+
+        TEMPEST_API ObjectRegistry2D& Get2DObjects(void);
 
     protected:
         TEMPEST_API GameObjectManager(void);

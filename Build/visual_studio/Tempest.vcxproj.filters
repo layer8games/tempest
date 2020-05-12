@@ -274,6 +274,9 @@
     <Filter Include="Source Code\Engine\Factory\Base">
       <UniqueIdentifier>{a0fec22c-374d-41e4-91a8-5e7e29f9561b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Collision\CollisionDetector">
+      <UniqueIdentifier>{36c55287-39cb-45f9-9e05-3677b91cb6ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -489,6 +492,9 @@
     <ClInclude Include="..\..\Headers\Engine\Factory.h">
       <Filter>Source Code\Engine\Factory\Base</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\CollisionDetector.h">
+      <Filter>Source Code\Collision\CollisionDetector</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\Controller.cpp">
@@ -676,6 +682,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Factory.cpp">
       <Filter>Source Code\Engine\Factory\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\CollisionDetector.cpp">
+      <Filter>Source Code\Collision\CollisionDetector</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

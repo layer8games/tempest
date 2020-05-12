@@ -40,8 +40,9 @@ namespace Tempest
         
         TEMPEST_API virtual void v_Awake(void);
        
-        void v_OnEvent(Event event)
-        {  }
+        TEMPEST_API virtual void v_OnEvent(Event event);
+
+        TEMPEST_API virtual void v_OnCollide(U32 otherObjectID);
        
         TEMPEST_API void UpdateInternals(void);
         
@@ -146,7 +147,6 @@ namespace Tempest
         p_Shader _shader;				
         p_Mesh _mesh;					
         Level* _level;
-        TM::Point2 _position;				
         TC::AABB _boundingBox;			
 
     private:
@@ -159,6 +159,7 @@ namespace Tempest
         F32 _scale;
         TM::Matrix4	_modelToWorldCache;		
         TM::Vector2	_scaleInPixels;					
+        TM::Point2 _position;				
         real _orientation;			
         Color _color;					
         p_Texture _texture;				

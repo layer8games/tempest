@@ -112,6 +112,16 @@ p_GameObject3D GameObjectManager::GetGameObject3D(U32 id)
     }
 }
 
+U32 GameObjectManager::Count2D(void)
+{
+    return _registry2D.size();
+}
+
+U32 GameObjectManager::Count3D(void)
+{
+    return _registry3D.size();
+}
+
 void GameObjectManager::UpdateObjects(void)
 {
     for(auto obj : _registry2D)
@@ -121,6 +131,14 @@ void GameObjectManager::UpdateObjects(void)
             obj.second->UpdateInternals();
             obj.second->v_Update();
         }
+    }
+}
+
+void GameObjectManager::CheckCollisions(void)
+{
+    for(auto i : _registry2D)
+    {
+        TC::CollisionDetector::Instance()->CheckVsDynamic(i.second);
     }
 }
 
@@ -136,4 +154,9 @@ void GameObjectManager::RenderObjects(const Camera& camera)
             obj.second->v_Render();
         }
     }
+}
+
+ObjectRegistry2D& GameObjectManager::Get2DObjects(void)
+{
+    return _registry2D;
 }

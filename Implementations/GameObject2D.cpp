@@ -9,8 +9,8 @@ GameObject2D::GameObject2D(void)
     _defaultPixelSize(32.0f),
     _scale(1.0f),
     _modelToWorldCache(),
-    _position(0.0f),
     _scaleInPixels(32.0f, 32.0f),
+    _position(0.0f),
     _orientation(0.0f),
     _color(1.0f),
     _boundingBox(),
@@ -84,6 +84,16 @@ void GameObject2D::v_Render(void)
 void GameObject2D::v_Awake(void)
 {
     DefaultAwake();
+}
+
+void GameObject2D::v_OnEvent(Event event)
+{
+
+}
+
+void GameObject2D::v_OnCollide(U32 otherObjectID)
+{
+
 }
 
 void GameObject2D::UpdateInternals(void)
@@ -220,11 +230,13 @@ void GameObject2D::SetPositionY(F32 yVal)
 void GameObject2D::AddPosition(const TM::Point2& newPosition)
 {
     _position += newPosition;
+    _boundingBox.SetCenter(_position);
 }
 
 void GameObject2D::AddPosition(const TM::Vector2& newPosition)
 {
     _position += newPosition;
+    _boundingBox.SetCenter(_position);
 }
 
 void GameObject2D::SetDefaultPixelSize(F32 scale)

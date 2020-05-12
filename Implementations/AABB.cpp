@@ -28,7 +28,6 @@ AABB::~AABB(void)
 //==========================================================================================================================
 bool AABB::TestCollision(const AABB& other) const
 {
-
     if(real_abs(_center.x - other.GetCenter().x) > (_halfScale.x + other.GetHalfWidth()))
     {
         return false;
