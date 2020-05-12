@@ -23,6 +23,8 @@ namespace Tempest
 
         TEMPEST_API static shared_ptr<GameObjectManager> Instance(void);
 
+        TEMPEST_API void Shutdown(void);
+
         TEMPEST_API void Add(p_GameObject2D obj);
 
         TEMPEST_API void Add(p_GameObject3D obj);
@@ -49,7 +51,7 @@ namespace Tempest
 
         // TODO:: Need a better way to do this. Can't get the view matrix this way any more. 
         // Maybe the Level should call GetAllObjects and render them one by one from its update
-        //TEMPEST_API void RenderObjects(void);
+        TEMPEST_API void RenderObjects(const Camera& camera);
 
     protected:
         TEMPEST_API GameObjectManager(void);

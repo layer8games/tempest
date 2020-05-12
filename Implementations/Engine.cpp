@@ -33,6 +33,7 @@ void Engine::Init(S32 width, S32 height, string title, bool fullscreen, bool ope
 
 void Engine::ShutDown(void)
 {
+    GameObjectManager::Instance()->Shutdown();
     _activeLevel.reset();
     _window->v_EndRunning();
     //_window.reset();

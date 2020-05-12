@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include <Engine/Level.h>
+#include <iostream>
 using namespace Tempest;
 
 Level::Level(void) 
@@ -23,7 +24,15 @@ _factory(nullptr)
 
 Level::~Level(void)
 {
-    _localGameObjects.clear();
+    //U32 count = 0;
+    ////_localGameObjects.clear();
+    //for(auto i : _localGameObjects)
+    //{
+    //    count += 1;
+    //    std::cout << "count = " << count << std::endl;
+    //    i.second = nullptr;
+    //    _localGameObjects.erase(i.first);
+    //}
 }
 
 void Level::v_Init(string path)
@@ -55,7 +64,8 @@ void Level::_DefaultUpdate(void)
 {
     _forceRegistry.UpdateForces();
 
-    UpdateObjects();
+    GameObjectManager::Instance()->UpdateObjects();
+    //UpdateObjects();
 }
 
 void Level::UpdateObjects(void)
@@ -77,7 +87,8 @@ void Level::v_Render(void)
 
 void Level::_DefaultRender(void)
 {
-    RenderObjects();
+    GameObjectManager::Instance()->RenderObjects(_camera);
+    //RenderObjects();
 }
 
 void Level::RenderObjects(void)
@@ -472,9 +483,10 @@ void Level::_LoadLevel(string filepath)
         
         p_GameObject2D obj = _factory->v_Create(type, pos, scale, pixelSize, textureID);
         obj->SetName(name);
-        obj->SetLevel(p_Level(this));
+        obj->SetLevel(this);
         ErrorManager::Instance()->DisplayErrors();
-        AddObjectToLevel(obj);
+        //AddObjectToLevel(obj);
+        GameObjectManager::Instance()->Add(obj);
     }
 
     doc.clear();

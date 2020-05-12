@@ -30,8 +30,6 @@ namespace Tempest
     public:
         TEMPEST_API GameObject2D(void);
 
-        TEMPEST_API GameObject2D(const GameObject2D& obj);
-
         TEMPEST_API virtual ~GameObject2D(void);
 
         TEMPEST_API void Init(void);
@@ -125,7 +123,7 @@ namespace Tempest
 
         TEMPEST_API void SetTexture(p_Texture texture);
 
-        TEMPEST_API void SetLevel(shared_ptr<Level> level);
+        TEMPEST_API void SetLevel(Level* level);
 
         TEMPEST_API p_Texture GetTexture(void) const;
 
@@ -147,7 +145,7 @@ namespace Tempest
         string _name;
         p_Shader _shader;				
         p_Mesh _mesh;					
-        shared_ptr<Level> _level;
+        Level* _level;
         TM::Point2 _position;				
         TC::AABB _boundingBox;			
 

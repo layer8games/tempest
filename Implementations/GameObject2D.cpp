@@ -17,6 +17,7 @@ GameObject2D::GameObject2D(void)
     _texture(nullptr),
     _shader(nullptr),
     _mesh(make_shared<Mesh>()),
+    _level(nullptr),
     _activeUpdate(true),
     _activeRender(true),
     _ID(_nextID)
@@ -24,25 +25,11 @@ GameObject2D::GameObject2D(void)
     ++_nextID;
 }
 
-GameObject2D::GameObject2D(const GameObject2D& obj)
-    :
-    _modelToWorldCache(obj.GetModelMatrix()),
-    _position(obj.GetPosition()),
-    _scale(obj.GetScale()),
-    _orientation(obj.GetOrientation()),
-    _color(obj.GetColor()),
-    _texture(obj.GetTexture()),
-    _shader(obj.GetShader()),
-    _activeUpdate(obj.GetActiveUpdate()),
-    _activeRender(obj.GetActiveRender()),
-    _ID(obj.GetID())
-{  }
-
 GameObject2D::~GameObject2D(void)
 {
-    _level.reset();
-    _shader.reset();
-    _mesh.reset();
+    _level = nullptr;
+    _shader = nullptr;
+    _mesh = nullptr;
 }
 
 void GameObject2D::Init(void)
@@ -404,7 +391,7 @@ void GameObject2D::_ClampOrientation(void)
     }
 }
 
-void GameObject2D::SetLevel(shared_ptr<Level> level)
+void GameObject2D::SetLevel(Level* level)
 {
     _level = level;
 }

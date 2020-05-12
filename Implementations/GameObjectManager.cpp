@@ -22,6 +22,12 @@ p_GameObjectManager GameObjectManager::Instance(void)
     return _instance;
 }
 
+void GameObjectManager::Shutdown(void)
+{
+    _registry2D.clear();
+    _registry3D.clear();
+}
+
 void GameObjectManager::Add(p_GameObject2D obj)
 {	
     if(_registry2D.count(obj->GetID()) == 0)
@@ -112,37 +118,22 @@ void GameObjectManager::UpdateObjects(void)
     {
         if(obj.second->GetActiveUpdate())
         {
-            obj.second->v_Update();
-        }
-    }
-
-    for(auto obj : _registry3D)
-    {
-        if(obj.second->GetActiveUpdate())
-        {
+            obj.second->UpdateInternals();
             obj.second->v_Update();
         }
     }
 }
 
 // TODO:: Need a better way to get the view matrix
-//void GameObjectManager::RenderObjects(void)
-//{
-//    for(auto obj : _registry2D)
-//    {
-//        if(obj.second->GetActiveRender())
-//        {
-//            obj.second->GetShader()->SetUniform("view", Engine::Instance()->GetCamera()->GetViewMatrix4());
-//            obj.second->v_Render();
-//        }
-//    }
-//
-//    for(auto obj : _registry3D)
-//    {
-//        if(obj.second->GetActiveRender())
-//        {
-//            obj.second->GetShader()->SetUniform("view", Engine::Instance()->GetCamera()->GetViewMatrix4());
-//            obj.second->v_Render();
-//        }
-//    }
-//}
+void GameObjectManager::RenderObjects(const Camera& camera)
+{
+    for(auto obj : _registry2D)
+    {
+        if(obj.second->GetActiveRender())
+        {
+            obj.second->GetShader()->SetUniform("projection", camera.GetProjectionMatrix4());
+            obj.second->GetShader()->SetUniform("view", camera.GetViewMatrix4());
+            obj.second->v_Render();
+        }
+    }
+}

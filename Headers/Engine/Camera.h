@@ -43,12 +43,12 @@ namespace Tempest
     
         TEMPEST_API void SetDefaultMatrix4(void);
     
-        inline const virtual TM::Matrix4 GetViewMatrix4(void)
+        inline const virtual TM::Matrix4 GetViewMatrix4(void) const
         {
             return TM::Matrix4::LookAt(_position, _target, _up);
         }
     
-        inline const TM::Matrix4& GetProjectionMatrix4(void)
+        inline const TM::Matrix4& GetProjectionMatrix4(void) const
         {
             return _projection;
         }    

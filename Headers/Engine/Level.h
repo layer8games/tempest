@@ -168,6 +168,7 @@ namespace Tempest
         string _OpenFile(string filePath);
         
         std::vector<U32> _SplitU32(string text, char delim) const;		
+        
         S32 _width;										
         S32 _height;									
         S32 _topBorder;									
