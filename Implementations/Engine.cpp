@@ -5,7 +5,9 @@ using namespace Tempest;
 p_Engine Engine::_instance = nullptr;
 Engine::Engine(void) 
     :
-    _activeLevel(nullptr)
+    _running(false),
+    _activeLevel(nullptr),
+    _window(nullptr)
 {  }
 
 void Engine::Init(S32 width, S32 height, string title, bool fullscreen, bool openGL) 
@@ -25,7 +27,26 @@ void Engine::Init(S32 width, S32 height, string title, bool fullscreen, bool ope
     {
         End();
     }
-}	
+
+    _running = true;
+}
+
+void Engine::ShutDown(void)
+{
+    _activeLevel.reset();
+    _window->v_EndRunning();
+    //_window.reset();
+}
+
+bool Engine::Running(void) 
+{ 
+    return _running; 
+}
+
+void Engine::End(void) 
+{   
+    _running = false;
+}
 
 void Engine::SetActiveLevel(p_Level level)
 {
@@ -41,35 +62,41 @@ void Engine::SetActiveLevel(p_Level level)
 
 void Engine::Update(void) 
 {
-    _window->Update();
-
-    TM::Timer::Instance()->Update(_window->v_GetTime());
-    
-    Controller::Instance()->Update();
-    
-    GameObjectManager::Instance()->UpdateObjects();
-
-    _activeLevel->v_Update();
-
-    if(ErrorManager::Instance()->DisplayErrors())
+    if(_running)
     {
-        End();
+        _window->Update();
+
+        TM::Timer::Instance()->Update(_window->v_GetTime());
+
+        Controller::Instance()->Update();
+
+        GameObjectManager::Instance()->UpdateObjects();
+
+        _activeLevel->v_Update();
+
+        if(ErrorManager::Instance()->DisplayErrors())
+        {
+            End();
+        }
     }
 }
 
 void Engine::Render(void) 
 {
-    _activeLevel->v_Render();
-
-    // TODO:: Need to refactor this. See GameObjectManager TODO for details
-    //GameObjectManager::Instance()->RenderObjects();
-
-    _window->v_BufferSwap();
-    
-    //If User indicated they want to close they Game
-    if(ErrorManager::Instance()->DisplayErrors())
+    if(_running)
     {
-        End();
+        _activeLevel->v_Render();
+
+        // TODO:: Need to refactor this. See GameObjectManager TODO for details
+        //GameObjectManager::Instance()->RenderObjects();
+
+        _window->v_BufferSwap();
+
+        //If User indicated they want to close they Game
+        if(ErrorManager::Instance()->DisplayErrors())
+        {
+            End();
+        }
     }
 }
 

@@ -39,7 +39,11 @@ GameObject2D::GameObject2D(const GameObject2D& obj)
 {  }
 
 GameObject2D::~GameObject2D(void)
-{  }
+{
+    _level.reset();
+    _shader.reset();
+    _mesh.reset();
+}
 
 void GameObject2D::Init(void)
 {
@@ -321,6 +325,7 @@ void GameObject2D::SetTexture(p_Texture texture)
     _shader->SetUniform("has_texture", true);
 }
 
+
 p_Texture GameObject2D::GetTexture(void) const
 {
     return _texture;
@@ -397,4 +402,9 @@ void GameObject2D::_ClampOrientation(void)
     {
         _orientation += 360.0f;
     }
+}
+
+void GameObject2D::SetLevel(shared_ptr<Level> level)
+{
+    _level = level;
 }

@@ -344,46 +344,22 @@ S32 Level::GetHeight(void) const
 
 void Level::SetWidth(S32 w)  
 { 
-    _width = w; 
+    _width = w;
+    _rightBorder = w / 2;
+    _leftBorder = -w / 2;
 }
 
 void Level::SetHeight(S32 h) 
 { 
-    _height = h; 
+    _height = h;
+    _topBorder = h / 2; 
+    _bottomBorder = -h / 2;
 }
 
 void Level::SetDimensions(S32 w, S32 h) 
 { 
-    _width  = w; 
-    _height = h; 
-}
-
-void Level::SetTopBorder(S32 top) 
-{ 
-    _topBorder = top; 
-}
-
-void Level::SetBottomBorder(S32 bottom) 
-{ 
-    _bottomBorder = bottom; 
-}
-
-void Level::SetRightBorder(S32 right) 
-{ 
-    _rightBorder = right;
-}
-
-void Level::SetLeftBorder(S32 left) 
-{ 
-    _leftBorder = left; 
-}
-
-void Level::SetBorders(S32 top, S32 bottom, S32 right, S32 left)
-{
-    _topBorder = top;
-    _bottomBorder = bottom;
-    _leftBorder = left;
-    _rightBorder = right;
+    SetWidth(w);
+    SetHeight(h);
 }
 
 S32 Level::GetTopBorder(void) const 
@@ -496,11 +472,11 @@ void Level::_LoadLevel(string filepath)
         
         p_GameObject2D obj = _factory->v_Create(type, pos, scale, pixelSize, textureID);
         obj->SetName(name);
+        obj->SetLevel(p_Level(this));
         ErrorManager::Instance()->DisplayErrors();
         AddObjectToLevel(obj);
     }
 
-    //delete(level);
     doc.clear();
 }
 

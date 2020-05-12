@@ -87,16 +87,6 @@ namespace Tempest
         TEMPEST_API void SetHeight(S32 h);
 
         TEMPEST_API void SetDimensions(S32 w, S32 h);
-        
-        TEMPEST_API void SetTopBorder(S32 top);
-
-        TEMPEST_API void SetBottomBorder(S32 bottom);
-
-        TEMPEST_API void SetRightBorder(S32 right);
-
-        TEMPEST_API void SetLeftBorder(S32 left);
-
-        TEMPEST_API void SetBorders(S32 top, S32 bottom, S32 right, S32 left);
  
         TEMPEST_API S32 GetTopBorder(void) const;
 

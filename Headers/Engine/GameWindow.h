@@ -50,11 +50,6 @@ namespace Tempest
         TEMPEST_API virtual void v_EndRunning(void)=0;
 
         TEMPEST_API virtual void v_SetScreenColor(const Color& color)=0;
-        
-        inline bool GetRunning(void) 
-        { 
-            return _running;
-        }
  
         inline S32 GetScreenWidth(void)
         { 
@@ -89,8 +84,7 @@ namespace Tempest
     protected:      
         GameWindow(void);
 
-        bool _isFullScreen;		
-        bool _running;			
+        bool _isFullScreen;				
         bool _wireFrame;		
         TEMPEST_API static S32  _screenWidth;		
         TEMPEST_API static S32  _screenHeight;		

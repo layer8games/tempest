@@ -14,7 +14,6 @@ OpenGLGameWindow::~OpenGLGameWindow(void)
 
 void OpenGLGameWindow::v_Init(S32 width, S32 height, string wndName, bool isFullScreen) 
 {
-    _running = true;
     _isFullScreen = isFullScreen;
     _screenWidth = width;
     _screenHeight = height;
@@ -184,7 +183,6 @@ F64 OpenGLGameWindow::v_GetTime(void)
 
 void OpenGLGameWindow::v_EndRunning(void)
 {
-    _running = false;
     glfwSetWindowShouldClose(_window, GL_TRUE);
 }
 

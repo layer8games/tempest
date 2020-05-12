@@ -7,7 +7,6 @@ S32 GameWindow::_screenHeight = 0;
 GameWindow::GameWindow(void) 
     : 
     _isFullScreen(false),
-    _running(false),
     _wireFrame(false),
     _right(0), 
     _left(0),

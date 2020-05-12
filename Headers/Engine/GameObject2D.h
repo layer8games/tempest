@@ -16,12 +16,15 @@
 #include <Engine/Mesh.h>
 #include <Engine/BufferData.h>
 #include <Engine/Event.hpp>
+#include <Engine/Level.h>
 
 namespace TM = TempestMath;
 namespace TC = TempestCollisions;
 
 namespace Tempest
 {
+    class Level;
+
     class GameObject2D
     {
     public:
@@ -122,6 +125,8 @@ namespace Tempest
 
         TEMPEST_API void SetTexture(p_Texture texture);
 
+        TEMPEST_API void SetLevel(shared_ptr<Level> level);
+
         TEMPEST_API p_Texture GetTexture(void) const;
 
         TEMPEST_API void BindTexture(bool state=true);
@@ -140,9 +145,11 @@ namespace Tempest
         TEMPEST_API void DefaultUpdate(void);
 
         string _name;
-        p_Shader				_shader;				
-        p_Mesh					_mesh;					
-        TC::AABB				_boundingBox;			
+        p_Shader _shader;				
+        p_Mesh _mesh;					
+        shared_ptr<Level> _level;
+        TM::Point2 _position;				
+        TC::AABB _boundingBox;			
 
     private:
         void _CalculateCachedData(void);
@@ -153,7 +160,6 @@ namespace Tempest
         F32 _defaultPixelSize;
         F32 _scale;
         TM::Matrix4	_modelToWorldCache;		
-        TM::Point2 _position;				
         TM::Vector2	_scaleInPixels;					
         real _orientation;			
         Color _color;					

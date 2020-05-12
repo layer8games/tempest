@@ -26,16 +26,12 @@ namespace Tempest
     {
     public:
         TEMPEST_API void Init(S32 width, S32 height, string title, bool fullscreen, bool openGL=true);
+
+        TEMPEST_API void ShutDown(void);
         
-        inline bool Running(void) 
-        { 
-            return _window->GetRunning(); 
-        }
+        TEMPEST_API bool Running(void);
         
-        inline void End(void) 
-        { 
-            _window->v_EndRunning(); 
-        }
+        TEMPEST_API void End(void);
 
         TEMPEST_API void SetActiveLevel(p_Level level);
 
@@ -72,6 +68,7 @@ namespace Tempest
 
     private:
         static shared_ptr<Engine> _instance;	
+        bool _running;
         std::unique_ptr<GameWindow> _window;
         p_Level _activeLevel; 
     };
