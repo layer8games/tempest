@@ -20,9 +20,25 @@ shared_ptr<CollisionDetector> CollisionDetector::Instance(void)
 
 void CollisionDetector::CheckVsDynamic(TE::p_GameObject2D& object)
 {
-    TE::ObjectRegistry2D& dynamicObjects = TE::GameObjectManager::Instance()->Get2DObjects();
+    //TE::ObjectRegistry2D& dynamicObjects = TE::GameObjectManager::Instance()->GetDynamicObjects();
 
-    for(auto i : dynamicObjects)
+    for(auto i : TE::GameObjectManager::Instance()->GetDynamicObjects())
+    {
+        if(i.second->GetID() != object->GetID())
+        {
+            if(object->OverlapCheck(i.second))
+            {
+                object->v_OnCollide(i.second->GetID());
+            }
+        }
+    }
+}
+
+void CollisionDetector::CheckVsStatic(TE::p_GameObject2D& object)
+{
+    TE::ObjectRegistry2D& staticObjects = TE::GameObjectManager::Instance()->GetStaticObjects();
+
+    for(auto i : staticObjects)
     {
         if(i.second->GetID() != object->GetID())
         {

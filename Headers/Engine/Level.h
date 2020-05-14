@@ -6,8 +6,8 @@
 #include <Engine/Engine.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/GameObject2D.h>
+#include <Engine/StaticGameObject2D.h>
 #include <Engine/TextureManager.h>
-#include <Engine/EnvironmentObject.h>
 #include <Engine/Vector4.h>
 #include <Engine/Color.h>
 #include <Engine/Text.h>

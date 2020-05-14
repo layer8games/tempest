@@ -235,15 +235,6 @@
     <Filter Include="Source Code\Engine\GameObjects\Base\3D">
       <UniqueIdentifier>{e1c3682f-23dc-44b5-b325-502678fff30f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Engine\GameObjects\StaticGameObject">
-      <UniqueIdentifier>{e34428c4-21e7-40f7-9fe0-9eb037b1e2e4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\Engine\GameObjects\StaticGameObject\2D">
-      <UniqueIdentifier>{7ac4976a-97b9-4c6f-8e95-a4c59e796f0b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Code\Engine\GameObjects\StaticGameObject\3D">
-      <UniqueIdentifier>{bab7e9c8-c59a-4353-b1bc-4a91eedf3525}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Engine\AI">
       <UniqueIdentifier>{2c193b6e-7d48-4510-9df6-aaa45effa73a}</UniqueIdentifier>
     </Filter>
@@ -271,11 +262,11 @@
     <Filter Include="Source Code\Engine\Factory">
       <UniqueIdentifier>{206ea920-d751-4e83-874f-ce90e203a187}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Engine\Factory\Base">
-      <UniqueIdentifier>{a0fec22c-374d-41e4-91a8-5e7e29f9561b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Collision\CollisionDetector">
       <UniqueIdentifier>{36c55287-39cb-45f9-9e05-3677b91cb6ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\GameObjects\Static">
+      <UniqueIdentifier>{e5592105-f320-4e80-b769-30d5a70adbb7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -450,9 +441,6 @@
     <ClInclude Include="..\..\Headers\Engine\GameObject2D.h">
       <Filter>Source Code\Engine\GameObjects\Base\2D</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\EnvironmentObject.h">
-      <Filter>Source Code\Engine\GameObjects\StaticGameObject</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Vector2.h">
       <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
     </ClInclude>
@@ -489,11 +477,14 @@
     <ClInclude Include="..\..\Headers\Engine\Vertex.hpp">
       <Filter>Source Code\Math\Vertex</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Factory.h">
-      <Filter>Source Code\Engine\Factory\Base</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\CollisionDetector.h">
       <Filter>Source Code\Collision\CollisionDetector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Factory.h">
+      <Filter>Source Code\Engine\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\StaticGameObject2D.h">
+      <Filter>Source Code\Engine\GameObjects\Static</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -647,9 +638,6 @@
     <ClCompile Include="..\..\Implementations\GameObject2D.cpp">
       <Filter>Source Code\Engine\GameObjects\Base\2D</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\EnvironmentObject.cpp">
-      <Filter>Source Code\Engine\GameObjects\StaticGameObject</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector2.cpp">
       <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
     </ClCompile>
@@ -680,11 +668,14 @@
     <ClCompile Include="..\..\Implementations\stdafx.cpp">
       <Filter>Source Code\Engine\Atom</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Factory.cpp">
-      <Filter>Source Code\Engine\Factory\Base</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\CollisionDetector.cpp">
       <Filter>Source Code\Collision\CollisionDetector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Factory.cpp">
+      <Filter>Source Code\Engine\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\StaticGameObject2D.cpp">
+      <Filter>Source Code\Engine\GameObjects\Static</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

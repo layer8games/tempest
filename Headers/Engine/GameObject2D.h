@@ -84,6 +84,8 @@ namespace Tempest
 
         TEMPEST_API void SetPosition(const TM::Point2& pos);
 
+        TEMPEST_API void SetPosition(const TM::Vector2& pos);
+
         TEMPEST_API void SetPosition(F32 xVal, F32 yVal);
 
         TEMPEST_API void SetPositionX(F32 xval);

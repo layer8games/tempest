@@ -1,12 +1,13 @@
 #include "stdafx.h"
 #include <Engine/GameObjectManager.h>
+#include <iostream>
 using namespace Tempest;
 
 p_GameObjectManager GameObjectManager::_instance = nullptr;
 GameObjectManager::GameObjectManager(void)
     :
-    _registry2D(),
-    _registry3D()
+    _dynamicObjects(),
+    _staticObjects()
 {  }
 
 GameObjectManager::~GameObjectManager(void)
@@ -24,17 +25,17 @@ p_GameObjectManager GameObjectManager::Instance(void)
 
 void GameObjectManager::Shutdown(void)
 {
-    _registry2D.clear();
-    _registry3D.clear();
+    _dynamicObjects.clear();
+    _staticObjects.clear();
 }
 
-void GameObjectManager::Add(p_GameObject2D obj)
+void GameObjectManager::AddDynamicObject(p_GameObject2D obj)
 {	
-    if(_registry2D.count(obj->GetID()) == 0)
+    if(_dynamicObjects.count(obj->GetID()) == 0)
     {
-        _registry2D.insert({obj->GetID(), obj});
+        _dynamicObjects.insert({obj->GetID(), obj});
         
-        if(_registry2D.find(obj->GetID()) == _registry2D.end())
+        if(_dynamicObjects.find(obj->GetID()) == _dynamicObjects.end())
         {
             ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject2D to level.");
         }
@@ -45,13 +46,14 @@ void GameObjectManager::Add(p_GameObject2D obj)
     }
 }
 
-void GameObjectManager::Add(p_GameObject3D obj)
+void GameObjectManager::AddStaticObject(p_GameObject2D obj)
 {
-    if(_registry3D.count(obj->GetID()) == 0)
+    if(_staticObjects.count(obj->GetID()) == 0)
     {
-        _registry3D.insert({obj->GetID(), obj});
+        obj->UpdateInternals();
+        _staticObjects.insert({obj->GetID(), obj});
 
-        if(_registry3D.find(obj->GetID()) == _registry3D.end())
+        if(_staticObjects.find(obj->GetID()) == _staticObjects.end())
         {
             ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject3D to level.");
         }
@@ -62,11 +64,11 @@ void GameObjectManager::Add(p_GameObject3D obj)
     }
 }
 
-void GameObjectManager::Remove2D(U32 id)
+void GameObjectManager::RemoveDynamicObject(U32 id)
 {
-    if(_registry2D.count(id) == 1)
+    if(_dynamicObjects.count(id) == 1)
     {
-        _registry2D.erase(id);
+        _dynamicObjects.erase(id);
     }
     else
     {
@@ -74,11 +76,11 @@ void GameObjectManager::Remove2D(U32 id)
     }
 }
 
-void GameObjectManager::Remove3D(U32 id)
+void GameObjectManager::RemoveStaticObject(U32 id)
 {
-    if(_registry3D.count(id) == 1)
+    if(_staticObjects.count(id) == 1)
     {
-        _registry3D.erase(id);
+        _staticObjects.erase(id);
     }
     else
     {
@@ -86,45 +88,33 @@ void GameObjectManager::Remove3D(U32 id)
     }
 }
 
-p_GameObject2D GameObjectManager::GetGameObject2D(U32 id)
+p_GameObject2D GameObjectManager::GetDynamicObject(U32 id)
 {
-    if(_registry2D.count(id) == 1)
+    if(_dynamicObjects.count(id) == 1)
     {
-        return _registry2D[id];
+        return _dynamicObjects[id];
     }
     else
     {
-        ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::GetGameObject: no object found with id= " + id);
         return nullptr;
     }
 }
 
-p_GameObject3D GameObjectManager::GetGameObject3D(U32 id)
+p_GameObject2D GameObjectManager::GetStaticObject(U32 id)
 {
-    if(_registry3D.count(id) == 1)
+    if(_staticObjects.count(id) == 1)
     {
-        return _registry3D[id];
+        return _staticObjects[id];
     }
     else
     {
-        ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::GetGameObject: no object found with id= " + id);
         return nullptr;
     }
-}
-
-U32 GameObjectManager::Count2D(void)
-{
-    return _registry2D.size();
-}
-
-U32 GameObjectManager::Count3D(void)
-{
-    return _registry3D.size();
 }
 
 void GameObjectManager::UpdateObjects(void)
 {
-    for(auto obj : _registry2D)
+    for(auto obj : _dynamicObjects)
     {
         if(obj.second->GetActiveUpdate())
         {
@@ -136,16 +126,27 @@ void GameObjectManager::UpdateObjects(void)
 
 void GameObjectManager::CheckCollisions(void)
 {
-    for(auto i : _registry2D)
+    for(auto i : _dynamicObjects)
     {
         TC::CollisionDetector::Instance()->CheckVsDynamic(i.second);
+        TC::CollisionDetector::Instance()->CheckVsStatic(i.second);
     }
 }
 
 // TODO:: Need a better way to get the view matrix
 void GameObjectManager::RenderObjects(const Camera& camera)
 {
-    for(auto obj : _registry2D)
+    for(auto obj : _dynamicObjects)
+    {
+        if(obj.second->GetActiveRender())
+        {
+            obj.second->GetShader()->SetUniform("projection", camera.GetProjectionMatrix4());
+            obj.second->GetShader()->SetUniform("view", camera.GetViewMatrix4());
+            obj.second->v_Render();
+        }
+    }
+
+    for(auto obj : _staticObjects)
     {
         if(obj.second->GetActiveRender())
         {
@@ -156,7 +157,12 @@ void GameObjectManager::RenderObjects(const Camera& camera)
     }
 }
 
-ObjectRegistry2D& GameObjectManager::Get2DObjects(void)
+ObjectRegistry2D& GameObjectManager::GetDynamicObjects(void)
 {
-    return _registry2D;
+    return _dynamicObjects;
+}
+
+ObjectRegistry2D& GameObjectManager::GetStaticObjects(void)
+{
+    return _staticObjects;
 }

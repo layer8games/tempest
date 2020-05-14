@@ -124,6 +124,14 @@ Point2& Point2::operator=(const Point2& point)
     return *this;
 }
 
+Point2& Point2::operator=(const Vector2& vector)
+{
+    x = vector.x;
+    y = vector.y;
+
+    return *this;
+}
+
 Point2& Point2::operator=(real val)
 {
     x = val;

@@ -486,7 +486,28 @@ void Level::_LoadLevel(string filepath)
         obj->SetLevel(this);
         ErrorManager::Instance()->DisplayErrors();
         //AddObjectToLevel(obj);
-        GameObjectManager::Instance()->Add(obj);
+        GameObjectManager::Instance()->AddDynamicObject(obj);
+    }
+
+    objects = doc.first_node("level")->first_node("objects")->first_node("static");
+
+     for(xmlNode i = objects->first_node("obj"); i; i = i->next_sibling("obj"))
+    {
+        string name = i->first_attribute("name")->value();
+        
+        TM::Point2 pos{std::stof(i->first_attribute("xpos")->value()),
+                        std::stof(i->first_attribute("ypos")->value())};
+
+        F32 scale = std::stof(i->first_attribute("scale")->value());
+        
+        U32 textureID = std::stoi(i->first_attribute("textureID")->value());
+        
+        p_GameObject2D obj = _factory->CreateStaticObject(pos, scale, pixelSize, textureID);
+        obj->SetName(name);
+        obj->SetLevel(this);
+        ErrorManager::Instance()->DisplayErrors();
+        //AddObjectToLevel(obj);
+        GameObjectManager::Instance()->AddStaticObject(obj);
     }
 
     doc.clear();

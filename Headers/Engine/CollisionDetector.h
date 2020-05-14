@@ -22,6 +22,8 @@ namespace TempestCollisions
 
         TEMPEST_API void CheckVsDynamic(TE::p_GameObject2D& object);
 
+        TEMPEST_API void CheckVsStatic(TE::p_GameObject2D& object);
+
     private:
         static shared_ptr<CollisionDetector> _instance;
 

@@ -195,7 +195,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\EnvironmentObject.h" />
     <ClInclude Include="..\..\Headers\Engine\Event.hpp">
       <SubType>
       </SubType>
@@ -319,6 +318,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\StaticGameObject2D.h" />
     <ClInclude Include="..\..\Headers\Engine\Steering2D.h">
       <SubType>
       </SubType>
@@ -402,7 +402,6 @@
     <ClCompile Include="..\..\Implementations\dllmain.cpp" />
     <ClCompile Include="..\..\Implementations\Camera.cpp" />
     <ClCompile Include="..\..\Implementations\Controller.cpp" />
-    <ClCompile Include="..\..\Implementations\EnvironmentObject.cpp" />
     <ClCompile Include="..\..\Implementations\ErrorManager.cpp" />
     <ClCompile Include="..\..\Implementations\EventManager.cpp">
       <SubType>
@@ -493,6 +492,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="..\..\Implementations\StaticGameObject2D.cpp" />
     <ClCompile Include="..\..\Implementations\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

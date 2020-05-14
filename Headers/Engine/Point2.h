@@ -69,6 +69,8 @@ namespace TempestMath
 		
         TEMPEST_API Point2& operator=(const Point2& point);
 
+        TEMPEST_API Point2& operator=(const Vector2& vector);
+
         TEMPEST_API Point2& operator=(real val);
 
         TEMPEST_API Point2 operator+(const Point2& point) const;

@@ -208,6 +208,12 @@ void GameObject2D::SetPosition(const TM::Point2& pos)
     _boundingBox.SetCenter(_position);
 }
 
+void GameObject2D::SetPosition(const TM::Vector2& pos)
+{
+    _position = pos;
+    _boundingBox.SetCenter(_position);
+}
+
 void GameObject2D::SetPosition(F32 xVal, F32 yVal)
 {
     _position.x = xVal;
