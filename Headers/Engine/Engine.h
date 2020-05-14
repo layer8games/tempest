@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/ErrorManager.h>
-#include <Engine/Controller.h>
+#include <Engine/Input.h>
 #include <Engine/GameWindow.h>
 #include <Engine/OpenGLGameWindow.h>
 #include <Engine/DirectXGameWindow.h>

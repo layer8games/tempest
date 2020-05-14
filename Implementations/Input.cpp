@@ -1,9 +1,9 @@
 
 #include "stdafx.h"
-#include <Engine/Controller.h>
+#include <Engine/Input.h>
 using namespace Tempest;
 
-Controller::Controller(void) 
+Input::Input(void) 
 :
 _keyStates{},
 _pastActiveKeys{},
@@ -20,21 +20,21 @@ _rightClickCoordInScreen(0.0f)
     }
 }
 
-Controller::~Controller(void)
+Input::~Input(void)
 {  }
 
-shared_ptr<Controller> Controller::_instance = NULL;
+shared_ptr<Input> Input::_instance = NULL;
 
-shared_ptr<Controller> Controller::Instance(void) 
+shared_ptr<Input> Input::Instance(void) 
 {
     if (_instance == NULL) 
     { 
-        _instance = shared_ptr<Controller>(new Controller()); 
+        _instance = shared_ptr<Input>(new Input()); 
     }
     return _instance;
 }		
 
-void Controller::KeyDown(Keys k)
+void Input::KeyDown(Keys k)
 { 
     _curActiveKeys[k] = true; 
 
@@ -48,23 +48,23 @@ void Controller::KeyDown(Keys k)
     }
 }
 
-void Controller::KeyUp(Keys k)
+void Input::KeyUp(Keys k)
 { 
     _curActiveKeys[k] = false; 
 
 }
 
-const TM::Point2 Controller::GetMouseCoord(void)
+const TM::Point2 Input::GetMouseCoord(void)
 {
     return Engine::Instance()->GetMousePos();
 }
 
-const TM::Point2 Controller::GetMouseCoordInScreen(void)
+const TM::Point2 Input::GetMouseCoordInScreen(void)
 {
     return Engine::Instance()->GetMousePosInScreen();
 }
 
-void Controller::Update(void)
+void Input::Update(void)
 {
     for(int i = 0; i < TOTAL_KEYS; ++i)
     {
@@ -89,7 +89,7 @@ void Controller::Update(void)
     }
 }
 
-bool Controller::GetKeyDown(Keys k)
+bool Input::GetKeyDown(Keys k)
 {
     if(_keyStates[k] == KeyStates::KEY_DOWN) 
     { 
@@ -101,7 +101,7 @@ bool Controller::GetKeyDown(Keys k)
     }
 }
 
-bool Controller::GetKeyHeld(Keys k)
+bool Input::GetKeyHeld(Keys k)
 {
     if(_keyStates[k] == KeyStates::KEY_HELD)
     { 
@@ -113,7 +113,7 @@ bool Controller::GetKeyHeld(Keys k)
     }
 }
 
-bool Controller::GetKeyUp(Keys k)
+bool Input::GetKeyUp(Keys k)
 {
     if(_keyStates[k] == KeyStates::KEY_UP)
     { 
@@ -125,7 +125,7 @@ bool Controller::GetKeyUp(Keys k)
     }
 }
 
-bool Controller::GetKeyReleased(Keys k)
+bool Input::GetKeyReleased(Keys k)
 {
     if(_keyStates[k] == KeyStates::KEY_RELEASED)
     { 

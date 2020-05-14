@@ -293,7 +293,7 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Camera.h" />
     <ClInclude Include="..\..\Headers\Engine\Color.h" />
-    <ClInclude Include="..\..\Headers\Engine\Controller.h" />
+    <ClInclude Include="..\..\Headers\Engine\Input.h" />
     <ClInclude Include="..\..\Headers\Engine\ErrorManager.h" />
     <ClInclude Include="..\..\Headers\Engine\Font.h" />
     <ClInclude Include="..\..\Headers\Engine\Matrix4.h" />
@@ -401,7 +401,7 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\dllmain.cpp" />
     <ClCompile Include="..\..\Implementations\Camera.cpp" />
-    <ClCompile Include="..\..\Implementations\Controller.cpp" />
+    <ClCompile Include="..\..\Implementations\Input.cpp" />
     <ClCompile Include="..\..\Implementations\ErrorManager.cpp" />
     <ClCompile Include="..\..\Implementations\EventManager.cpp">
       <SubType>

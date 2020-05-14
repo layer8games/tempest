@@ -36,7 +36,7 @@ using std::make_shared;
 #include <Engine/Shader.h>
 #include <Engine/GameWindow.h>
 #include <Engine/Font.h>
-#include <Engine/Controller.h>
+#include <Engine/Input.h>
 #include <Engine/Color.h>
 #include <Engine/AudioClip.h>
 #include <Engine/AudioListener.h>

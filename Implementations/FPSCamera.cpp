@@ -30,7 +30,7 @@ FPSCamera::~FPSCamera(void)
 void FPSCamera::v_Update(void)
 {
     // TODO: Refactor and test again 
-    //TM::Point mouseCoord = Controller::Instance()->GetMouseCoord();
+    //TM::Point mouseCoord = Input::Instance()->GetMouseCoord();
     //S32 width = OpenGLGameWindow::Instance()->GetWidth();
     //S32 height = OpenGLGameWindow::Instance()->GetHeight();
 

@@ -21,12 +21,12 @@ namespace Tempest
         KEY_RELEASED
     };
 
-    class Controller
+    class Input
     {
     public:
-        TEMPEST_API static shared_ptr<Controller> Instance();
+        TEMPEST_API static shared_ptr<Input> Instance();
 
-        TEMPEST_API ~Controller(void);
+        TEMPEST_API ~Input(void);
 
         TEMPEST_API void Update(void);
 
@@ -57,10 +57,10 @@ namespace Tempest
         TEMPEST_API bool GetKeyReleased(Keys k);
 
     protected:
-        Controller(void);		
+        Input(void);		
 
     private:
-        static shared_ptr<Controller> _instance;	
+        static shared_ptr<Input> _instance;	
         KeyStates _keyStates[TOTAL_KEYS];			
         bool _pastActiveKeys[TOTAL_KEYS];	
         bool _curActiveKeys[TOTAL_KEYS];		
@@ -69,5 +69,5 @@ namespace Tempest
         TM::Point2 _leftClickCoordInScreen;		
         TM::Point2 _rightClickCoordInScreen;		
     };
-    typedef shared_ptr<Controller> p_Controller;
+    typedef shared_ptr<Input> p_Input;
 }//End namespace

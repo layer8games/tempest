@@ -203,11 +203,11 @@ void OpenGLGameWindow::OnKey(GLFWwindow* window, int key, int scancode, int acti
 {
     if(action == GLFW_PRESS)
     {
-        Controller::Instance()->KeyDown(_ConvertKeyCodes(key));
+        Input::Instance()->KeyDown(_ConvertKeyCodes(key));
     }
     else if(action == GLFW_RELEASE)
     {
-        Controller::Instance()->KeyUp(_ConvertKeyCodes(key));
+        Input::Instance()->KeyUp(_ConvertKeyCodes(key));
     }
 }
 
@@ -228,20 +228,20 @@ void OpenGLGameWindow::OnMouseClick(GLFWwindow* window, int button, int action, 
 {   
     if(button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
     {
-        Controller::Instance()->KeyDown(Keys::LEFT_MOUSE);
+        Input::Instance()->KeyDown(Keys::LEFT_MOUSE);
     }
     else if(button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
     {
-        Controller::Instance()->KeyUp(Keys::LEFT_MOUSE);
+        Input::Instance()->KeyUp(Keys::LEFT_MOUSE);
     }
 
     if(button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
     {
-        Controller::Instance()->KeyDown(Keys::RIGHT_MOUSE);
+        Input::Instance()->KeyDown(Keys::RIGHT_MOUSE);
     }
     else if(button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_RELEASE)
     {
-        Controller::Instance()->KeyUp(Keys::RIGHT_MOUSE);
+        Input::Instance()->KeyUp(Keys::RIGHT_MOUSE);
     }
 }
 
@@ -250,7 +250,7 @@ void OpenGLGameWindow::OnMouseClick(GLFWwindow* window, int button, int action, 
 //==========================================================================================================================
 void OpenGLGameWindow::OnMouseMove(GLFWwindow* window, F64 posX, F64 posY)
 {
-    //Controller::Instance()->SetMouseCoord(TM::Vector4(static_cast<F32>(posX), static_cast<F32>(posY)));
+    //Input::Instance()->SetMouseCoord(TM::Vector4(static_cast<F32>(posX), static_cast<F32>(posY)));
 }
 
 Keys OpenGLGameWindow::_ConvertKeyCodes(int key)

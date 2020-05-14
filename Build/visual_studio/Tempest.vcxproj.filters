@@ -52,9 +52,6 @@
     <Filter Include="Source Code\Engine\Color">
       <UniqueIdentifier>{5d83855b-baf9-4d27-bc54-347079ecb506}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Engine\Controller">
-      <UniqueIdentifier>{949bad72-f361-4e38-b352-64dbb4371cd2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Engine\Engine">
       <UniqueIdentifier>{66fd72d2-3739-4584-a963-04c6b35f6d8d}</UniqueIdentifier>
     </Filter>
@@ -268,13 +265,13 @@
     <Filter Include="Source Code\Engine\GameObjects\Static">
       <UniqueIdentifier>{e5592105-f320-4e80-b769-30d5a70adbb7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\Input">
+      <UniqueIdentifier>{949bad72-f361-4e38-b352-64dbb4371cd2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
       <Filter>Source Code\Engine\Atom</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Controller.h">
-      <Filter>Source Code\Engine\Controller</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\ErrorManager.h">
       <Filter>Source Code\Engine\Managers\ErrorManager</Filter>
@@ -486,11 +483,11 @@
     <ClInclude Include="..\..\Headers\Engine\StaticGameObject2D.h">
       <Filter>Source Code\Engine\GameObjects\Static</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Input.h">
+      <Filter>Source Code\Engine\Input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Implementations\Controller.cpp">
-      <Filter>Source Code\Engine\Controller</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\ErrorManager.cpp">
       <Filter>Source Code\Engine\Managers\ErrorManager</Filter>
     </ClCompile>
@@ -676,6 +673,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\StaticGameObject2D.cpp">
       <Filter>Source Code\Engine\GameObjects\Static</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Input.cpp">
+      <Filter>Source Code\Engine\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

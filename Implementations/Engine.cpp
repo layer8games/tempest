@@ -69,7 +69,7 @@ void Engine::Update(void)
 
         TM::Timer::Instance()->Update(_window->v_GetTime());
 
-        Controller::Instance()->Update();
+        Input::Instance()->Update();
 
         GameObjectManager::Instance()->UpdateObjects();
         GameObjectManager::Instance()->CheckCollisions();
