@@ -32,182 +32,67 @@ namespace Tempest
        
         TEMPEST_API virtual ~GameObject3D(void);
         
+        TEMPEST_API void Init(void);
+        
         virtual void v_Update(void)=0;
 
-        inline virtual void v_Render(void)
-        {
-            DefaultRender();
-        }
+        TEMPEST_API virtual void v_Render(void);
 
-        inline virtual void v_Awake(void)
-        {
-            DefaultAwake();
-        }
+        TEMPEST_API virtual void v_Awake(void);
 
-        virtual void v_OnEvent(Event event)
-        {  }
+        TEMPEST_API virtual void v_OnEvent(Event event);
+
+        TEMPEST_API virtual void v_OnCollide(U32 otherObjectID);
 
         TEMPEST_API void UpdateInternals(void);
 
-        inline const TM::Matrix4& GetModelMatrix(void) const
-        {
-            return _modelTOWorldCache;
-        }
+        TEMPEST_API const TM::Matrix4& GetModelMatrix(void) const;
 
-        inline const TM::Matrix4 GetModelMatrixRot(void) const
-        {
-            TM::Matrix4 mat = _modelTOWorldCache; 
-            mat.SetTranslate(0.0f, 0.0f, 0.0f);
-            return mat;
-        }
+        TEMPEST_API const TM::Matrix4 GetModelMatrixRot(void) const;
         
-        inline const bool GetActive(void) const
-        {
-            return _activeUpdate && _activeRender;
-        }
+        TEMPEST_API bool GetActive(void) const;
 
-        inline void SetActive(bool state)
-        {
-            if(!_activeUpdate || !_activeRender)
-            {
-                v_Awake();
-            }
-            
-            _activeUpdate = state;
-            _activeRender = state;
-        }
+        TEMPEST_API void Activate(void);
 
-        inline void SetActive(void)
-        {
-            v_Awake();
-            _activeUpdate = true;
-            _activeRender = true;
-        }
+        TEMPEST_API void Deactivate(void);
 
-        inline void SetInactive(void)
-        {
-            _activeUpdate = false;
-            _activeRender = false;
-        }
+        TEMPEST_API bool GetRendering(void) const;
+        
+        TEMPEST_API void StartRendering(void);
 
-        inline const bool GetActiveUpdate(void) const
-        {
-            return _activeUpdate;
-        }
+        TEMPEST_API void StopRendering(void);
 
-        inline void SetActiveUpdate(bool state)
-        {
-            _activeUpdate = state;
-        }
-
-        inline void SetActiveUpdate(void)
-        {
-            _activeUpdate = true;
-        }
-
-        inline void SetInactiveUpdate(void)
-        {
-            _activeUpdate = false;
-        }
-
-        inline const bool GetActiveRender(void) const
-        {
-            return _activeRender;
-        }
-
-        inline void SetActiveRender(bool state)
-        {
-            _activeRender = state;
-        }
-
-        inline void SetActiveRender(void)
-        {
-            _activeRender = true;
-        }
-
-        inline void SetInactiveRender(void)
-        {
-            _activeRender = false;
-        }
-
-        inline const U32 GetID(void) const
-        {
-            return _ID;
-        }
+        TEMPEST_API const U32 GetID(void) const;
     
-        inline const TM::Point3& GetPosition(void) const
-        {
-            return _position;
-        }
+        TEMPEST_API const TM::Point3& GetPosition(void) const;
 
-        inline void SetPosition(const TM::Point3& pos)
-        {
-            _position = pos;
-            _boundingBox.SetCenter(_position);
-        }
+        TEMPEST_API void SetPosition(const TM::Point3& pos);
 
-        inline void SetPosition(F32 xVal, F32 yVal, F32 zVal)
-        {
-            _position.x = xVal;
-            _position.y = yVal;
-            _position.z = zVal;
-            _boundingBox.SetCenter(_position);
-        }
+        TEMPEST_API void SetPosition(const TM::Vector3& pos);
 
-        inline void SetPositionX(F32 xval)
-        {
-            _position.x = xval;
-            _boundingBox.SetCenter(_position);
-        }
+        TEMPEST_API void SetPosition(F32 xVal, F32 yVal, F32 zVal);
 
-        inline void SetPositionY(F32 yVal)
-        {
-            _position.y = yVal;
-            _boundingBox.SetCenter(_position);
-        }
+        TEMPEST_API void AddScaledPosition(const TM::Vector4& pos, F32 scale);
 
-        inline void SetPositionZ(F32 zVal)
-        {
-            _position.z = zVal;
-            _boundingBox.SetCenter(_position);
-        }
+        TEMPEST_API void AddScaledPosition(const TM::Vector3& pos, F32 scale);
 
-        inline void AddScaledPosition(const TM::Vector4& pos, F32 scale)
-        {
-            _position.AddScaledVector(pos, scale);
-            _boundingBox.SetCenter(_position);
-        }
+        TEMPEST_API void AddScaledPosition(const TM::Point3& point, F32 scale);
 
-        inline void AddScaledPosition(const TM::Vector3& pos, F32 scale)
-        {
-            _position.AddScaledVector(pos, scale);
-            _boundingBox.SetCenter(_position);
-        }
+        TEMPEST_API const TM::Vector3& GetScale(void) const;
 
-        inline void AddScaledPosition(const TM::Point3& point, F32 scale)
-        {
-            _position.AddScaledPoint(point, scale);
-            _boundingBox.SetCenter(_position);
-        }
-
-        inline const TM::Vector3& GetScale(void) const
-        {
-            return _scale;
-        }
-
-        inline void SetScale(const TM::Vector3& scale)
+        TEMPEST_API void SetScale(const TM::Vector3& scale)
         {
             _scale = scale;
             _boundingBox.SetHalfDimensions(_scale);
         }
 
-        inline void SetScale(F32 val)
+        TEMPEST_API void SetScale(F32 val)
         {
             _scale = val;
             _boundingBox.SetHalfDimensions(_scale);
         }
 
-        inline void SetScale(F32 xVal, F32 yVal, F32 zVal)
+        TEMPEST_API void SetScale(F32 xVal, F32 yVal, F32 zVal)
         {
             _scale.x = xVal;
             _scale.y = yVal;
@@ -215,69 +100,69 @@ namespace Tempest
             _boundingBox.SetHalfDimensions(_scale);
         }
 
-        inline const TM::Quaternion& GetOrientation(void) const
+        TEMPEST_API const TM::Quaternion& GetOrientation(void) const
         {
             return _orientation;
         }
 
-        inline void SetOrientation(const TM::Quaternion& q)
+        TEMPEST_API void SetOrientation(const TM::Quaternion& q)
         {
             _orientation = q;
         }
 
-        inline void SetOrientation(const TM::Vector3& vec)
+        TEMPEST_API void SetOrientation(const TM::Vector3& vec)
         {
             _orientation.RotateByEuler(vec);
         }
 
-        inline void SetOrientation(real yaw, real pitch, real roll)
+        TEMPEST_API void SetOrientation(real yaw, real pitch, real roll)
         {
             _orientation.RotateByEuler(yaw, pitch, roll);
         }
 
-        inline void AddOrientation(const TM::Vector3& vec)
+        TEMPEST_API void AddOrientation(const TM::Vector3& vec)
         {
             _orientation.AddEuler(vec);
         }
 
-        inline void AddOrientation(real yaw, real pitch, real roll)
+        TEMPEST_API void AddOrientation(real yaw, real pitch, real roll)
         {
             _orientation.AddEuler(yaw, pitch, roll);
         }
 
-        inline void NormalizeOrientation(void)
+        TEMPEST_API void NormalizeOrientation(void)
         {
             _orientation.Normalize();
         }
 
-        inline void SetColor(const Color& col)
+        TEMPEST_API void SetColor(const Color& col)
         {
             _color = col;
         }
 
-        inline void SetColor(F32 red, F32 green, F32 blue)
+        TEMPEST_API void SetColor(F32 red, F32 green, F32 blue)
         {
             _color[0] = red;
             _color[1] = green;
             _color[2] = blue;
         }
 
-        inline const Color& GetColor(void) const
+        TEMPEST_API const Color& GetColor(void) const
         {
             return _color;
         }
 
-        inline bool OverlapCheck(const shared_ptr<GameObject3D> other)
+        TEMPEST_API bool OverlapCheck(const shared_ptr<GameObject3D> other)
         {
             return _boundingBox.TestCollision(other->GetBounding());
         }
 
-        inline const TC::AABB& GetBounding(void) const
+        TEMPEST_API const TC::AABB& GetBounding(void) const
         {
             return _boundingBox;
         }
 
-        inline void SetTexture(p_Texture texture)
+        TEMPEST_API void SetTexture(p_Texture texture)
         {
             _texture = texture;
             
@@ -287,12 +172,12 @@ namespace Tempest
             }
         }
 
-        inline p_Texture GetTexture(void) const
+        TEMPEST_API p_Texture GetTexture(void) const
         {
             return _texture;
         }
 
-        inline void BindTexture(bool state=true)
+        TEMPEST_API void BindTexture(bool state=true)
         {
             if(_texture != nullptr)
             {
@@ -300,17 +185,17 @@ namespace Tempest
             }
         }
 
-        inline const p_Shader GetShader(void) const
+        TEMPEST_API const p_Shader GetShader(void) const
         {
             return _shader;
         }
 
-        inline void SetShader(const p_Shader shader)
+        TEMPEST_API void SetShader(const p_Shader shader)
         {
             _shader = shader;
         }
 
-        inline void SetMesh(p_Mesh mesh)
+        TEMPEST_API void SetMesh(p_Mesh mesh)
         {
             _mesh = mesh;
         }
@@ -336,8 +221,8 @@ namespace Tempest
         TM::Quaternion _orientation;			
         Color _color;					
         p_Texture _texture;				
-        bool _activeUpdate;			
-        bool _activeRender;			
+        bool _active;
+        bool _render;			
         U32 _ID;					
     };//End class
     typedef shared_ptr<GameObject3D> p_GameObject3D;
