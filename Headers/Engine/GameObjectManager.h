@@ -49,6 +49,10 @@ namespace Tempest
 
         TEMPEST_API ObjectRegistry2D& GetStaticObjects(void);
 
+        TEMPEST_API U32 GetDynamicObjectCount(void) const;
+
+        TEMPEST_API U32 GetStaticObjectCount(void) const;
+
     protected:
         TEMPEST_API GameObjectManager(void);
 

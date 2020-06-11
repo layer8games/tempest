@@ -166,3 +166,13 @@ ObjectRegistry2D& GameObjectManager::GetStaticObjects(void)
 {
     return _staticObjects;
 }
+
+U32 GameObjectManager::GetDynamicObjectCount(void) const
+{
+    return _dynamicObjects.size();
+}
+
+U32 GameObjectManager::GetStaticObjectCount(void) const
+{
+    return _staticObjects.size();
+}
