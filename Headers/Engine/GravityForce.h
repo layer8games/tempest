@@ -20,11 +20,11 @@ namespace TempestPhysics
         TEMPEST_API GravityForce(const TM::Vector3& gravity);
 
         TEMPEST_API ~GravityForce(void);
-		
+        
         TEMPEST_API void v_UpdateForce(p_RigidBody2D body) final;
 
         TEMPEST_API void v_UpdateForce(p_RigidBody3D body) final;
-		
+        
         inline void Set(TM::Vector3& gravity)
         {
             _gravityAcc = gravity;

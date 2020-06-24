@@ -24,7 +24,7 @@ namespace TempestPhysics
         TEMPEST_API RigidBody3D(void);
 
         TEMPEST_API ~RigidBody3D(void);
-		
+        
         TEMPEST_API void Integrate(void);
 
         TEMPEST_API void CalculateDerivedData(void);
@@ -47,7 +47,7 @@ namespace TempestPhysics
         {
             _inverseInertiaTensor.SetAsInverse(mat);
         }
-	
+    
         inline const TM::Vector3& GetVelocity(void) const
         {
             return _velocity;

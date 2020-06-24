@@ -83,7 +83,7 @@ namespace Tempest
         {
             return _vertices;
         }
-		
+        
         inline void AddIndex(U32 index)
         {
             _indices.push_back(index);

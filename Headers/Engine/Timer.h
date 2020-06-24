@@ -17,7 +17,7 @@ namespace TempestMath
         TEMPEST_API ~Timer(void);		
 
         TEMPEST_API static shared_ptr<Timer> Instance(void);
-		
+        
         TEMPEST_API void Update (F64 newTime);
         
         TEMPEST_API void SingleStep(void);

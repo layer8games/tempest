@@ -35,7 +35,7 @@ namespace TempestMath
         TEMPEST_API Matrix4(const Matrix4& otherMatrix);
 
         TEMPEST_API const std::vector<real> GetElems(void) const;
-		
+        
         TEMPEST_API void MakeOrthographic(real left, real right, real bottom, real top, real nearPlane, real farPlane);
 
         TEMPEST_API void MakePerspective(real fieldOfView, real aspectRatio, real nearPlane, real farPlane);
@@ -113,7 +113,7 @@ namespace TempestMath
         TEMPEST_API void SetOrientationAndPosition(const Quaternion& q, const Point3& p);
         
         TEMPEST_API void SetOrientationAndPosition(const Quaternion& q, const Point4& p);
-		
+        
         TEMPEST_API void SetInverse(void);
 
         TEMPEST_API void SetAsInverse(const Matrix4& mat);
@@ -128,7 +128,7 @@ namespace TempestMath
         }	
 
         TEMPEST_API void Reset(real val=0.0f);
-		
+        
         TEMPEST_API void Transpose(void);
 
         TEMPEST_API void ComponentMulti(const Matrix4& M);

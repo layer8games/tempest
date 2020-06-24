@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include <Engine/Text.h>
 using namespace Tempest;
-	
+    
 Text::Text(void) 
 :
 _active(true),

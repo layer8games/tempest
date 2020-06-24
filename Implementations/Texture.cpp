@@ -44,7 +44,7 @@ Texture::~Texture(void)
     glDeleteTextures(1, &_handle);
 }
 
-	
+    
 Texture& Texture::operator=(const Texture& T) 
 {
     _handle = T.GetHandle();

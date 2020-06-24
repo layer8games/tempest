@@ -20,12 +20,12 @@ namespace TempestPhysics
         TEMPEST_API ~SpringForce(void);
 
         TEMPEST_API void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D) final;
-		
+        
         void MakeBungie(bool state) 
         { 
             _isBungie = state; 
         }
-		
+        
         inline void SetOtherEnd(shared_ptr<RigidBody2D> end) 
         { 
             _otherEnd = end; 

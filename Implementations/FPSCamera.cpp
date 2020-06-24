@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include <Engine/FPSCamera.h>
 using namespace Tempest;
-	
+    
 FPSCamera::FPSCamera(void)
 :
 _zoomSensitivity(1.0f),

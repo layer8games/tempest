@@ -18,7 +18,7 @@ namespace TempestPhysics
         TEMPEST_API ForceGenerator(void);
 
         TEMPEST_API virtual ~ForceGenerator(void);
-	
+    
         virtual void v_UpdateForce(p_RigidBody2D body)=0;
 
         virtual void v_UpdateForce(p_RigidBody3D body)=0;

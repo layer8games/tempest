@@ -19,7 +19,7 @@ namespace TempestPhysics
         TEMPEST_API ForceRegistry(void);
 
         TEMPEST_API ~ForceRegistry(void);
-	
+    
         TEMPEST_API void Add(p_RigidBody2D RigidBody2D, p_ForceGenerator forceGen);
 
         TEMPEST_API void Add(p_RigidBody3D body, p_ForceGenerator forceGen);

@@ -73,7 +73,7 @@ namespace TempestMath
         TEMPEST_API void AddRotation(real xVal, real yVal, real zVal);
 
         TEMPEST_API void SetOrientation(const Quaternion& q);
-	
+    
         TEMPEST_API void SetInverse(void);
 
         TEMPEST_API void SetAsInverse(const Matrix3& mat);
@@ -88,7 +88,7 @@ namespace TempestMath
         }	
 
         TEMPEST_API void Reset(real val=0.0f);
-		 
+         
         TEMPEST_API void Transpose(void);
 
         TEMPEST_API void ComponentMulti(const Matrix3& M);

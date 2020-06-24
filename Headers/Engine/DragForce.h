@@ -22,7 +22,7 @@ namespace TempestPhysics
         TEMPEST_API DragForce(real drag);
 
         TEMPEST_API ~DragForce(void);
-		
+        
         TEMPEST_API void v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D) final;
 
         TEMPEST_API void v_UpdateForce(shared_ptr<RigidBody3D> body) final;

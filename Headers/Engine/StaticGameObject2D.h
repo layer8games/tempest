@@ -7,17 +7,17 @@
 
 namespace Tempest
 {
-	class StaticGameObject2D : public GameObject2D
-	{
-	public:
-		TEMPEST_API StaticGameObject2D(void);
+    class StaticGameObject2D : public GameObject2D
+    {
+    public:
+        TEMPEST_API StaticGameObject2D(void);
 
-		TEMPEST_API ~StaticGameObject2D(void);
+        TEMPEST_API ~StaticGameObject2D(void);
 
-		TEMPEST_API void v_Update(void) final;
+        TEMPEST_API void v_Update(void) final;
 
-	private:
+    private:
 
-	};//end Class
-	typedef shared_ptr<StaticGameObject2D> p_StaticGameObject2D;
+    };//end Class
+    typedef shared_ptr<StaticGameObject2D> p_StaticGameObject2D;
 }

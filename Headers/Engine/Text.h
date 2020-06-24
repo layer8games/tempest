@@ -29,7 +29,7 @@ namespace Tempest
         TEMPEST_API Text(string text, Font& font);
 
         TEMPEST_API ~Text(void);
-		
+        
         inline void SetPosition(const TM::Point2& pos)
         {
             _pos = pos;

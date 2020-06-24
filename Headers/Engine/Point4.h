@@ -73,7 +73,7 @@ namespace TempestMath
             x = xVal;
             y = yVal;
         }
-		
+        
         TEMPEST_API Point4& operator=(const Point4& point);
 
         TEMPEST_API Point4& operator=(real val);

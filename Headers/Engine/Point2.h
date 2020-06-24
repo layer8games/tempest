@@ -66,7 +66,7 @@ namespace TempestMath
             x = xVal;
             y = yVal;
         }
-		
+        
         TEMPEST_API Point2& operator=(const Point2& point);
 
         TEMPEST_API Point2& operator=(const Vector2& vector);
