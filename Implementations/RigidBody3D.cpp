@@ -115,7 +115,7 @@ bool RigidBody3D::GetActive(void) const
 {
     if(_obj != nullptr)
     {
-        return _obj->GetActive() && _active;
+        return _obj->GetActiveUpdate() && _active;
     }
 
     return _active;

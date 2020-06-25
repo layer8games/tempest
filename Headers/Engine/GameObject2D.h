@@ -146,10 +146,10 @@ namespace Tempest
         TEMPEST_API void DefaultUpdate(void);
 
         string _name;
-        p_Shader _shader;				
-        p_Mesh _mesh;					
+        p_Shader _shader;
+        p_Mesh _mesh;
         Level* _level;
-        TC::AABB _boundingBox;			
+        TC::AABB _boundingBox;
 
     private:
         void _CalculateCachedData(void);
@@ -159,15 +159,15 @@ namespace Tempest
         static U32 _nextID;
         F32 _defaultPixelSize;
         F32 _scale;
-        TM::Matrix4	_modelToWorldCache;		
-        TM::Vector2	_scaleInPixels;					
-        TM::Point2 _position;				
-        real _orientation;			
-        Color _color;					
-        p_Texture _texture;				
-        bool _activeUpdate;			
-        bool _activeRender;			
-        U32	_ID;					
+        TM::Matrix4	_modelToWorldCache;
+        TM::Vector2	_scaleInPixels;
+        TM::Point2 _position;
+        real _orientation;
+        Color _color;
+        p_Texture _texture;
+        bool _activeUpdate;
+        bool _activeRender;
+        U32	_ID;
     };//End class
     typedef shared_ptr<GameObject2D> p_GameObject2D;
 }

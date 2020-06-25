@@ -6,35 +6,23 @@ U32 GameObject3D::_nextID = 1;
 
 GameObject3D::GameObject3D(void)
     :
+    _name(),
+    _shader(nullptr),
+    _mesh(),
+    _level(nullptr),
+    _boundingBox(),
+    _activeUpdate(true),
+    _activeRender(true),
+    _ID(_nextID),
+    _scale(1.0f),
     _modelTOWorldCache(),
     _position(0.0f),
-    _scale(1.0f),
     _orientation(0.0f),
     _color(1.0f),
-    _boundingBox(),
-    _texture(nullptr),
-    _shader(nullptr),
-    _mesh(make_shared<Mesh>()),
-    _active(true),
-    _render(true),
-    _ID(_nextID)
+    _texture(nullptr)
 {
     ++_nextID;	
 }
-
-GameObject3D::GameObject3D(const GameObject3D& obj)
-    :
-    _modelTOWorldCache(obj.GetModelMatrix()),
-    _position(obj.GetPosition()),
-    _scale(obj.GetScale()),
-    _orientation(obj.GetOrientation()),
-    _color(obj.GetColor()),
-    _texture(obj.GetTexture()),
-    _shader(obj.GetShader()),
-    _active(obj.GetActive()),
-    _render(obj.GetRendering()),
-    _ID(obj.GetID())
-{  }
 
 GameObject3D::~GameObject3D(void)
 {  }
@@ -77,34 +65,34 @@ const TM::Matrix4 GameObject3D::GetModelMatrixRot(void) const
     return mat;
 }
 
-bool GameObject3D::GetActive(void) const
+const string GameObject3D::GetName(void) const
 {
-    return _active;
+    return _name;
 }
 
-void GameObject3D::Activate(void)
+void GameObject3D::SetName(string name)
 {
-    _active = true;
+    _name = name;
 }
 
-void GameObject3D::Deactivate(void)
+bool GameObject3D::GetActiveUpdate(void) const
 {
-    _active = false;
+    return _activeUpdate;
 }
 
-bool GameObject3D::GetRendering(void) const
+void GameObject3D::SetActiveUpdate(bool state)
 {
-    return _render;
-}
-        
-void GameObject3D::StartRendering(void)
-{
-    _render = true;
+    _activeUpdate = state;
 }
 
-void GameObject3D::StopRendering(void)
+bool GameObject3D::GetActiveRender(void) const
 {
-    _render = false;
+    return _activeRender;
+}
+
+void GameObject3D::SetActiveRender(bool state)
+{
+    _activeRender = state;
 }
 
 const U32 GameObject3D::GetID(void) const
@@ -162,6 +150,131 @@ const TM::Vector3& GameObject3D::GetScale(void) const
     return _scale;
 }
 
+void GameObject3D::SetScale(const TM::Vector3& scale)
+{
+    _scale = scale;
+    _boundingBox.SetHalfDimensions(_scale);
+}
+
+void GameObject3D::SetScale(F32 val)
+{
+    _scale = val;
+    _boundingBox.SetHalfDimensions(_scale);
+}
+
+void GameObject3D::SetScale(F32 xVal, F32 yVal, F32 zVal)
+{
+    _scale.x = xVal;
+    _scale.y = yVal;
+    _scale.z = zVal;
+    _boundingBox.SetHalfDimensions(_scale);
+}
+
+const TM::Quaternion& GameObject3D::GetOrientation(void) const
+{
+    return _orientation;
+}
+
+void GameObject3D::SetOrientation(const TM::Quaternion& q)
+{
+    _orientation = q;
+}
+
+void GameObject3D::SetOrientation(const TM::Vector3& vec)
+{
+    _orientation.RotateByEuler(vec);
+}
+
+void GameObject3D::SetOrientation(real yaw, real pitch, real roll)
+{
+    _orientation.RotateByEuler(yaw, pitch, roll);
+}
+
+void GameObject3D::AddOrientation(const TM::Vector3& vec)
+{
+    _orientation.AddEuler(vec);
+}
+
+void GameObject3D::AddOrientation(real yaw, real pitch, real roll)
+{
+    _orientation.AddEuler(yaw, pitch, roll);
+}
+
+void GameObject3D::NormalizeOrientation(void)
+{
+    _orientation.Normalize();
+}
+
+void GameObject3D::SetColor(const Color& col)
+{
+    _color = col;
+}
+
+void GameObject3D::SetColor(F32 red, F32 green, F32 blue)
+{
+    _color[0] = red;
+    _color[1] = green;
+    _color[2] = blue;
+}
+
+const Color& GameObject3D::GetColor(void) const
+{
+    return _color;
+}
+
+bool GameObject3D::OverlapCheck(const shared_ptr<GameObject3D> other)
+{
+    return _boundingBox.TestCollision(other->GetBounding());
+}
+
+const TC::AABB& GameObject3D::GetBounding(void) const
+{
+    return _boundingBox;
+}
+
+void GameObject3D::SetTexture(p_Texture texture)
+{
+    _texture = texture;
+            
+    if(_shader != nullptr)
+    {
+        _shader->SetUniform("has_texture", true);
+    }
+}
+
+p_Texture GameObject3D::GetTexture(void) const
+{
+    return _texture;
+}
+
+void GameObject3D::BindTexture(bool state)
+{
+    if(_texture != nullptr)
+    {
+        _texture->Bind(state);
+    }
+}
+
+const p_Shader GameObject3D::GetShader(void) const
+{
+    return _shader;
+}
+
+void GameObject3D::SetShader(const p_Shader shader)
+{
+    _shader = shader;
+}
+
+p_Mesh GameObject3D::GetMesh(void) const
+{
+    return _mesh;
+}
+
+void GameObject3D::SetMesh(p_Mesh mesh)
+{
+    _mesh = mesh;
+}
+
 void GameObject3D::DefaultAwake(void)
 {
     UpdateInternals();
@@ -199,4 +312,14 @@ void GameObject3D::_CalculateCachedData(void)
 {
     _modelTOWorldCache.SetOrientationAndPosition(_orientation, _position);
     _modelTOWorldCache = _modelTOWorldCache * TM::Matrix4::Scale(_scale);
+}
+
+Level* GameObject3D::GetLevel(void) const
+{
+    return _level;
+}
+
+void GameObject3D::SetLevel(Level* level)
+{
+    _level = level;
 }

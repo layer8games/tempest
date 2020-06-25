@@ -27,8 +27,6 @@ namespace Tempest
     {
     public:
         TEMPEST_API GameObject3D(void);
-        
-        TEMPEST_API GameObject3D(const GameObject3D& obj);
        
         TEMPEST_API virtual ~GameObject3D(void);
         
@@ -50,17 +48,25 @@ namespace Tempest
 
         TEMPEST_API const TM::Matrix4 GetModelMatrixRot(void) const;
         
-        TEMPEST_API bool GetActive(void) const;
+        TEMPEST_API const string GetName(void) const;
 
-        TEMPEST_API void Activate(void);
+        TEMPEST_API void SetName(string name);
 
-        TEMPEST_API void Deactivate(void);
+        TEMPEST_API p_Mesh GetMesh(void) const;
 
-        TEMPEST_API bool GetRendering(void) const;
-        
-        TEMPEST_API void StartRendering(void);
+        TEMPEST_API void SetMesh(p_Mesh mesh);
 
-        TEMPEST_API void StopRendering(void);
+        TEMPEST_API Level* GetLevel(void) const;
+
+        TEMPEST_API void SetLevel(Level* level);
+
+        TEMPEST_API bool GetActiveUpdate(void) const;
+
+        TEMPEST_API void SetActiveUpdate(bool state);
+
+        TEMPEST_API bool GetActiveRender(void) const;
+
+        TEMPEST_API void SetActiveRender(bool state);
 
         TEMPEST_API const U32 GetID(void) const;
     
@@ -80,125 +86,46 @@ namespace Tempest
 
         TEMPEST_API const TM::Vector3& GetScale(void) const;
 
-        TEMPEST_API void SetScale(const TM::Vector3& scale)
-        {
-            _scale = scale;
-            _boundingBox.SetHalfDimensions(_scale);
-        }
+        TEMPEST_API void SetScale(const TM::Vector3& scale);
 
-        TEMPEST_API void SetScale(F32 val)
-        {
-            _scale = val;
-            _boundingBox.SetHalfDimensions(_scale);
-        }
+        TEMPEST_API void SetScale(F32 val);
 
-        TEMPEST_API void SetScale(F32 xVal, F32 yVal, F32 zVal)
-        {
-            _scale.x = xVal;
-            _scale.y = yVal;
-            _scale.z = zVal;
-            _boundingBox.SetHalfDimensions(_scale);
-        }
+        TEMPEST_API void SetScale(F32 xVal, F32 yVal, F32 zVal);
 
-        TEMPEST_API const TM::Quaternion& GetOrientation(void) const
-        {
-            return _orientation;
-        }
+        TEMPEST_API const TM::Quaternion& GetOrientation(void) const;
 
-        TEMPEST_API void SetOrientation(const TM::Quaternion& q)
-        {
-            _orientation = q;
-        }
+        TEMPEST_API void SetOrientation(const TM::Quaternion& q);
 
-        TEMPEST_API void SetOrientation(const TM::Vector3& vec)
-        {
-            _orientation.RotateByEuler(vec);
-        }
+        TEMPEST_API void SetOrientation(const TM::Vector3& vec);
 
-        TEMPEST_API void SetOrientation(real yaw, real pitch, real roll)
-        {
-            _orientation.RotateByEuler(yaw, pitch, roll);
-        }
+        TEMPEST_API void SetOrientation(real yaw, real pitch, real roll);
 
-        TEMPEST_API void AddOrientation(const TM::Vector3& vec)
-        {
-            _orientation.AddEuler(vec);
-        }
+        TEMPEST_API void AddOrientation(const TM::Vector3& vec);
 
-        TEMPEST_API void AddOrientation(real yaw, real pitch, real roll)
-        {
-            _orientation.AddEuler(yaw, pitch, roll);
-        }
+        TEMPEST_API void AddOrientation(real yaw, real pitch, real roll);
 
-        TEMPEST_API void NormalizeOrientation(void)
-        {
-            _orientation.Normalize();
-        }
+        TEMPEST_API void NormalizeOrientation(void);
 
-        TEMPEST_API void SetColor(const Color& col)
-        {
-            _color = col;
-        }
+        TEMPEST_API void SetColor(const Color& col);
 
-        TEMPEST_API void SetColor(F32 red, F32 green, F32 blue)
-        {
-            _color[0] = red;
-            _color[1] = green;
-            _color[2] = blue;
-        }
+        TEMPEST_API void SetColor(F32 red, F32 green, F32 blue);
 
-        TEMPEST_API const Color& GetColor(void) const
-        {
-            return _color;
-        }
+        TEMPEST_API const Color& GetColor(void) const;
+        
+        TEMPEST_API bool OverlapCheck(const shared_ptr<GameObject3D> other);
+        
+        TEMPEST_API const TC::AABB& GetBounding(void) const;
 
-        TEMPEST_API bool OverlapCheck(const shared_ptr<GameObject3D> other)
-        {
-            return _boundingBox.TestCollision(other->GetBounding());
-        }
+        TEMPEST_API void SetTexture(p_Texture texture);
 
-        TEMPEST_API const TC::AABB& GetBounding(void) const
-        {
-            return _boundingBox;
-        }
+        TEMPEST_API p_Texture GetTexture(void) const;
 
-        TEMPEST_API void SetTexture(p_Texture texture)
-        {
-            _texture = texture;
-            
-            if(_shader != nullptr)
-            {
-                _shader->SetUniform("has_texture", true);
-            }
-        }
+        TEMPEST_API void BindTexture(bool state=true);
 
-        TEMPEST_API p_Texture GetTexture(void) const
-        {
-            return _texture;
-        }
+        TEMPEST_API const p_Shader GetShader(void) const;
 
-        TEMPEST_API void BindTexture(bool state=true)
-        {
-            if(_texture != nullptr)
-            {
-                _texture->Bind(state);
-            }
-        }
+        TEMPEST_API void SetShader(const p_Shader shader);
 
-        TEMPEST_API const p_Shader GetShader(void) const
-        {
-            return _shader;
-        }
-
-        TEMPEST_API void SetShader(const p_Shader shader)
-        {
-            _shader = shader;
-        }
-
-        TEMPEST_API void SetMesh(p_Mesh mesh)
-        {
-            _mesh = mesh;
-        }
 
     protected:
         TEMPEST_API void DefaultAwake(void);
@@ -207,23 +134,26 @@ namespace Tempest
 
         TEMPEST_API void DefaultUpdate(void);
 
-        p_Shader _shader;				
-        p_Mesh _mesh;					
-        TC::AABB _boundingBox;			
+        string _name;
+        p_Shader _shader;
+        p_Mesh _mesh;
+        Level* _level;
+        TC::AABB _boundingBox;
 
     private:
         void _CalculateCachedData(void);
 
-        static U32 _nextID;				
-        TM::Matrix4	_modelTOWorldCache;		
-        TM::Point3 _position;				
-        TM::Vector3 _scale;					
-        TM::Quaternion _orientation;			
-        Color _color;					
-        p_Texture _texture;				
-        bool _active;
-        bool _render;			
-        U32 _ID;					
+        bool _activeUpdate;
+        bool _activeRender;
+        static U32 _nextID;
+        U32 _ID;
+        TM::Matrix4	_modelTOWorldCache;
+        TM::Vector3 _scale;
+        TM::Vector3 _scaleInPixels;
+        TM::Point3 _position;
+        TM::Quaternion _orientation;
+        Color _color;
+        p_Texture _texture;
     };//End class
     typedef shared_ptr<GameObject3D> p_GameObject3D;
 }
