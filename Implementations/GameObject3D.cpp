@@ -310,8 +310,9 @@ void GameObject3D::DefaultUpdate(void)
 
 void GameObject3D::_CalculateCachedData(void)
 {
-    _modelToWorldCache.Translate(_position);
+    // TODO: Actually test this, once rendering is back up and running. 
     _modelToWorldCache.Rotate(_orientation);
+    _modelToWorldCache.Translate(_position);
     _modelToWorldCache.Scale(_scale);
 }
 
