@@ -43,7 +43,7 @@ namespace Tempest
 
         TEMPEST_API void CheckCollisions(void);
 
-        TEMPEST_API void RenderObjects(const Camera& camera);
+        TEMPEST_API void RenderObjects(const Camera* camera);
 
         TEMPEST_API ObjectRegistry2D& GetDynamicObjects(void);
 

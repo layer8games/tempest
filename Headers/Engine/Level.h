@@ -162,7 +162,7 @@ namespace Tempest
         
         std::map<U32, p_GameObject2D> _localGameObjects;
         
-        Camera _camera;
+        Camera* _camera;
         
     private:
         string _OpenFile(string filePath);

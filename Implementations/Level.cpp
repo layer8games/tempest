@@ -18,7 +18,7 @@ _bgColor(),
 _ID(0),
 _localGameObjects(),
 _forceRegistry(),
-_camera(),
+_camera(nullptr),
 _factory(nullptr)
 {  }
 
@@ -33,6 +33,7 @@ Level::~Level(void)
     //    i.second = nullptr;
     //    _localGameObjects.erase(i.first);
     //}
+    delete _camera;
 }
 
 void Level::v_Init(string path)
@@ -42,7 +43,8 @@ void Level::v_Init(string path)
 
 void Level::_DefaultInit(string filepath)
 {
-   _LoadLevel(filepath);
+   _camera = new Camera();
+    _LoadLevel(filepath);
 }
 
 void Level::_SetUpCamera(void)
@@ -52,7 +54,7 @@ void Level::_SetUpCamera(void)
     F32 bottom = Engine::Instance()->GetScreenBottom();
     F32 top = Engine::Instance()->GetScreenTop();
 
-    _camera.SetOrthographic(left, right, bottom, top, -100.0f, 100.0f);
+    _camera->SetOrthographic(left, right, bottom, top, -100.0f, 100.0f);
 }
 
 void Level::v_Update(void)
@@ -97,8 +99,8 @@ void Level::RenderObjects(void)
     {
         if(i.second->GetActiveRender())
         {
-            i.second->GetShader()->SetUniform("projection", _camera.GetProjectionMatrix4());
-            i.second->GetShader()->SetUniform("view", _camera.GetViewMatrix4());
+            i.second->GetShader()->SetUniform("projection", _camera->GetProjectionMatrix4());
+            i.second->GetShader()->SetUniform("view", _camera->GetViewMatrix4());
             i.second->v_Render();
         }
     }	
@@ -127,7 +129,7 @@ void Level::_DefaultExit(void)
 void Level::AddObjectToLevel(const GameObject2D& obj)
 {
     _localGameObjects.insert({ obj.GetID(), shared_ptr<GameObject2D>(const_cast<GameObject2D*>(&obj)) });
-    _localGameObjects[obj.GetID()]->GetShader()->SetUniform("projection", _camera.GetProjectionMatrix4());
+    _localGameObjects[obj.GetID()]->GetShader()->SetUniform("projection", _camera->GetProjectionMatrix4());
 
     if(_localGameObjects.find(obj.GetID()) == _localGameObjects.end())
     {
@@ -140,7 +142,7 @@ void Level::AddObjectToLevel(p_GameObject2D obj)
     //obj->GetShader()->SetUniform("projection", _camera.GetProjectionMatrix4());
 
     _localGameObjects.insert({obj->GetID(), obj});
-    _localGameObjects[obj->GetID()]->GetShader()->SetUniform("projection", _camera.GetProjectionMatrix4());
+    _localGameObjects[obj->GetID()]->GetShader()->SetUniform("projection", _camera->GetProjectionMatrix4());
 
     if(_localGameObjects.find(obj->GetID()) == _localGameObjects.end())
     {

@@ -134,14 +134,14 @@ void GameObjectManager::CheckCollisions(void)
 }
 
 // TODO:: Need a better way to get the view matrix
-void GameObjectManager::RenderObjects(const Camera& camera)
+void GameObjectManager::RenderObjects(const Camera* camera)
 {
     for(auto obj : _dynamicObjects)
     {
         if(obj.second->GetActiveRender())
         {
-            obj.second->GetShader()->SetUniform("projection", camera.GetProjectionMatrix4());
-            obj.second->GetShader()->SetUniform("view", camera.GetViewMatrix4());
+            obj.second->GetShader()->SetUniform("projection", camera->GetProjectionMatrix4());
+            obj.second->GetShader()->SetUniform("view", camera->GetViewMatrix4());
             obj.second->v_Render();
         }
     }
@@ -150,8 +150,8 @@ void GameObjectManager::RenderObjects(const Camera& camera)
     {
         if(obj.second->GetActiveRender())
         {
-            obj.second->GetShader()->SetUniform("projection", camera.GetProjectionMatrix4());
-            obj.second->GetShader()->SetUniform("view", camera.GetViewMatrix4());
+            obj.second->GetShader()->SetUniform("projection", camera->GetProjectionMatrix4());
+            obj.second->GetShader()->SetUniform("view", camera->GetViewMatrix4());
             obj.second->v_Render();
         }
     }
