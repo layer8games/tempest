@@ -35,68 +35,66 @@ namespace TempestMath
         TEMPEST_API Matrix4(const Matrix4& otherMatrix);
 
         TEMPEST_API const std::vector<real> GetElems(void) const;
+
+        TEMPEST_API void Update(const Quaternion& rotation, const Point3& position, const Vector3 scale) const;
         
         TEMPEST_API void MakeOrthographic(real left, real right, real bottom, real top, real nearPlane, real farPlane);
 
         TEMPEST_API void MakePerspective(real fieldOfView, real aspectRatio, real nearPlane, real farPlane);
 
-        TEMPEST_API static Matrix4 Translate(real xVal, real yVal);
+        TEMPEST_API static Matrix4 CreateTranslationMatrix(real xVal, real yVal);
 
-        TEMPEST_API static Matrix4 Translate(real xVal, real yVal, real zVal);
+        TEMPEST_API static Matrix4 CreateTranslationMatrix(real xVal, real yVal, real zVal);
 
-        TEMPEST_API static Matrix4 Translate(const Vector4& vec);
+        TEMPEST_API static Matrix4 CreateTranslationMatrix(const Vector4& vec);
 
-        TEMPEST_API void SetTranslate(real xVal, real yVal);
+        TEMPEST_API void Translate(real xVal, real yVal);
 
-        TEMPEST_API void SetTranslate(real xVal, real yVal, real zVal);
+        TEMPEST_API void Translate(real xVal, real yVal, real zVal);
 
-        TEMPEST_API void SetTranslate(const Point2& point);
+        TEMPEST_API void Translate(const Point2& point);
         
-        TEMPEST_API void SetTranslate(const Vector2& vec);
+        TEMPEST_API void Translate(const Point3& point);
         
-        TEMPEST_API void SetTranslate(const Vector3& vec);
+        TEMPEST_API void Translate(const Vector2& vec);
         
-        TEMPEST_API void SetTranslate(const Vector4& vec);
+        TEMPEST_API void Translate(const Vector3& vec);
+        
+        TEMPEST_API void Translate(const Vector4& vec);
 
         TEMPEST_API Vector4 TransformInverse(const Vector4& vec) const;
 
         TEMPEST_API Point4 TransformInverse(const Point4& vec) const;
 
-        TEMPEST_API static Matrix4 Scale(real xVal, real yVal);
+        TEMPEST_API static Matrix4 CreateScale(real xVal, real yVal);
 
-        TEMPEST_API static Matrix4 Scale(real xVal, real yVal, real zVal);
+        TEMPEST_API static Matrix4 CreateScale(real xVal, real yVal, real zVal);
 
-        TEMPEST_API static Matrix4 Scale(const Vector4& vec);
+        TEMPEST_API static Matrix4 CreateScale(const Vector4& vec);
 
-        TEMPEST_API static Matrix4 Scale(const Vector3& vec);
+        TEMPEST_API static Matrix4 CreateScale(const Vector3& vec);
 
-        TEMPEST_API static Matrix4 Scale(const Vector2& vec);
+        TEMPEST_API static Matrix4 CreateScale(const Vector2& vec);
 
-        TEMPEST_API void SetScale(real xVal, real yVal);
+        TEMPEST_API void Scale(real xVal, real yVal);
 
-        TEMPEST_API void SetScale(real xVal, real yVal, real zVal);
+        TEMPEST_API void Scale(real xVal, real yVal, real zVal);
 
-        TEMPEST_API void SetScale(const Vector2& vec);
+        TEMPEST_API void Scale(const Vector2& vec);
 
-        TEMPEST_API void SetScale(const Vector3& vec);
+        TEMPEST_API void Scale(const Vector3& vec);
         
-        TEMPEST_API void SetScale(const Vector4& vec);
+        TEMPEST_API void Scale(const Vector4& vec);
 
-        TEMPEST_API static Matrix4 RotateX(real val);
-
-        TEMPEST_API static Matrix4 RotateY(real val);
-
-        TEMPEST_API static Matrix4 RotateZ(real val);
-
-        TEMPEST_API void SetRotateX(real val);
+        TEMPEST_API void RotateX(real val);
 
         TEMPEST_API void AddRotateX(real val);
 
-        TEMPEST_API void SetRotateY(real val);
+        TEMPEST_API void RotateY(real val);
 
         TEMPEST_API void AddRotateY(real val);
 
-        TEMPEST_API void SetRotateZ(real val);
+        TEMPEST_API void RotateZ(real val);
 
         TEMPEST_API void AddRotateZ(real val);
 
@@ -104,15 +102,7 @@ namespace TempestMath
 
         TEMPEST_API void AddRotation(real xVal, real yVal, real zVal);
 
-        TEMPEST_API void SetOrientation(const Quaternion& q);
-
-        TEMPEST_API void SetOrientationAndPosition(const Quaternion& q, const Vector4& v);
-
-        TEMPEST_API void SetOrientationAndPosition(const Quaternion& q, const Point2& p);
-
-        TEMPEST_API void SetOrientationAndPosition(const Quaternion& q, const Point3& p);
-        
-        TEMPEST_API void SetOrientationAndPosition(const Quaternion& q, const Point4& p);
+        TEMPEST_API void Rotate(const Quaternion& q);
         
         TEMPEST_API void SetInverse(void);
 

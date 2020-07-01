@@ -109,7 +109,7 @@ const TM::Matrix4& GameObject2D::GetModelMatrix(void) const
 const TM::Matrix4 GameObject2D::GetModelMatrixRot(void) const
 {
     TM::Matrix4 mat = _modelToWorldCache;
-    mat.SetTranslate(0.0f, 0.0f, 0.0f);
+    mat.Translate(0.0f, 0.0f, 0.0f);
     return mat;
 }
 
@@ -392,9 +392,9 @@ void GameObject2D::DefaultUpdate(void)
 
 void GameObject2D::_CalculateCachedData(void)
 {
-    _modelToWorldCache.SetRotateZ(_orientation);
-    _modelToWorldCache.SetTranslate(_position);
-    _modelToWorldCache = _modelToWorldCache * TM::Matrix4::Scale(_scaleInPixels);
+    _modelToWorldCache.RotateZ(_orientation);
+    _modelToWorldCache.Translate(_position);
+    _modelToWorldCache = _modelToWorldCache * TM::Matrix4::CreateScale(_scaleInPixels);
 }
 
 void GameObject2D::_ClampOrientation(void)

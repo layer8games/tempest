@@ -50,21 +50,15 @@ namespace TempestMath
 
         TEMPEST_API void SetScale(const Vector4& vec);
 
-        TEMPEST_API static Matrix3 RotateX(real val);
-
-        TEMPEST_API static Matrix3 RotateY(real val);
-
-        TEMPEST_API static Matrix3 RotateZ(real val);
-
-        TEMPEST_API void SetRotateX(real val);
+        TEMPEST_API void RotateX(real val);
  
         TEMPEST_API void AddRotateX(real val);
 
-        TEMPEST_API void SetRotateY(real val);
+        TEMPEST_API void RotateY(real val);
 
         TEMPEST_API void AddRotateY(real val);
 
-        TEMPEST_API void SetRotateZ(real val);
+        TEMPEST_API void RotateZ(real val);
 
         TEMPEST_API void AddRotateZ(real val);
 

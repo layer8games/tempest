@@ -15,7 +15,7 @@ GameObject3D::GameObject3D(void)
     _activeRender(true),
     _ID(_nextID),
     _scale(1.0f),
-    _modelTOWorldCache(),
+    _modelToWorldCache(),
     _position(0.0f),
     _orientation(0.0f),
     _color(1.0f),
@@ -55,13 +55,13 @@ void GameObject3D::UpdateInternals(void)
 
 const TM::Matrix4& GameObject3D::GetModelMatrix(void) const
 {
-    return _modelTOWorldCache;
+    return _modelToWorldCache;
 }
 
 const TM::Matrix4 GameObject3D::GetModelMatrixRot(void) const
 {
-    TM::Matrix4 mat = _modelTOWorldCache; 
-    mat.SetTranslate(0.0f, 0.0f, 0.0f);
+    TM::Matrix4 mat = _modelToWorldCache; 
+    mat.Translate(0.0f, 0.0f, 0.0f);
     return mat;
 }
 
@@ -310,8 +310,9 @@ void GameObject3D::DefaultUpdate(void)
 
 void GameObject3D::_CalculateCachedData(void)
 {
-    _modelTOWorldCache.SetOrientationAndPosition(_orientation, _position);
-    _modelTOWorldCache = _modelTOWorldCache * TM::Matrix4::Scale(_scale);
+    _modelToWorldCache.Translate(_position);
+    _modelToWorldCache.Rotate(_orientation);
+    _modelToWorldCache.Scale(_scale);
 }
 
 Level* GameObject3D::GetLevel(void) const

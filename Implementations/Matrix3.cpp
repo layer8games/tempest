@@ -152,46 +152,7 @@ void Matrix3::SetScale(const Vector4& vec)
     column3.z = vec.z;
 }
 
-Matrix3 Matrix3::RotateX(real val)
-{
-    val = RADIAN(val);
-    Matrix3 mat{1.0f};
-
-    mat.column2.y = real_cos(val);
-    mat.column2.z = -real_sin(val);
-    mat.column3.y = real_sin(val);
-    mat.column3.z = real_cos(val);
-
-    return mat;
-}
-
-Matrix3 Matrix3::RotateY(real val)
-{
-    val = RADIAN(val);
-    Matrix3 mat{1.0f};
-
-    mat.column1.x = real_cos(val);
-    mat.column1.z = real_sin(val);
-    mat.column3.x = -real_sin(val);
-    mat.column3.z = real_cos(val);
-
-    return mat;
-}
-
-Matrix3 Matrix3::RotateZ(real val)
-{
-    val = RADIAN(val);
-    Matrix3 mat{1.0f};
-
-    mat.column1.x = real_cos(val);
-    mat.column1.y = -real_sin(val);
-    mat.column2.x = real_sin(val);
-    mat.column2.y = real_cos(val);
-
-    return mat;
-}
-
-void Matrix3::SetRotateX(real val)
+void Matrix3::RotateX(real val)
 {
     val = RADIAN(val);
 
@@ -213,7 +174,7 @@ void Matrix3::AddRotateX(real val)
     column3.z += real_cos(val);
 }
 
-void Matrix3::SetRotateY(real val)
+void Matrix3::RotateY(real val)
 {
     val = RADIAN(val);
 
@@ -235,7 +196,7 @@ void Matrix3::AddRotateY(real val)
     column3.y += real_cos(val);	
 }
 
-void Matrix3::SetRotateZ(real val)
+void Matrix3::RotateZ(real val)
 {
     val = RADIAN(val);
 

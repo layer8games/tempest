@@ -77,6 +77,11 @@ const std::vector<real> Matrix4::GetElems(void) const
     return elems;
 }
 
+void Matrix4::Update(const Quaternion& rotation, const Point3& position, const Vector3 scale) const
+{
+
+}
+
 void Matrix4::MakeOrthographic(real left, real right, real bottom, real top, real nearPlane, real farPlane)
 {
     //Reset Matrix4
@@ -114,7 +119,7 @@ void Matrix4::MakePerspective(real fieldOfView, real aspectRatio, real nearPlane
     column4.z = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
 }
 
-Matrix4 Matrix4::Translate(real xVal, real yVal)
+Matrix4 Matrix4::CreateTranslationMatrix(real xVal, real yVal)
 {
     Matrix4 mat{1.0f};
 
@@ -124,7 +129,7 @@ Matrix4 Matrix4::Translate(real xVal, real yVal)
     return mat;
 }
 
-Matrix4 Matrix4::Translate(real xVal, real yVal, real zVal)
+Matrix4 Matrix4::CreateTranslationMatrix(real xVal, real yVal, real zVal)
 {
     Matrix4 mat{1.0f};
 
@@ -135,7 +140,7 @@ Matrix4 Matrix4::Translate(real xVal, real yVal, real zVal)
     return mat;	
 }
 
-Matrix4 Matrix4::Translate(const Vector4& vec)
+Matrix4 Matrix4::CreateTranslationMatrix(const Vector4& vec)
 {
     Matrix4 mat{1.0f};
 
@@ -146,41 +151,48 @@ Matrix4 Matrix4::Translate(const Vector4& vec)
     return mat;	
 }
 
-void Matrix4::SetTranslate(real xVal, real yVal)
+void Matrix4::Translate(real xVal, real yVal)
 {
     column4.x = xVal;
     column4.y = yVal;
 }
 
-void Matrix4::SetTranslate(real xVal, real yVal, real zVal)
+void Matrix4::Translate(real xVal, real yVal, real zVal)
 {
     column4.x = xVal;
     column4.y = yVal;
     column4.z = zVal;
 }
 
-void Matrix4::SetTranslate(const Point2& point)
+void Matrix4::Translate(const Point2& point)
 {
     column4.x = point.x;
     column4.y = point.y;
     column4.z = 0.0f;
 }
 
-void Matrix4::SetTranslate(const Vector2& vec)
+void Matrix4::Translate(const Point3& point)
+{
+    column4.x = point.x;
+    column4.y = point.y;
+    column4.z = point.z;
+}
+
+void Matrix4::Translate(const Vector2& vec)
 {
     column4.x = vec.x;
     column4.y = vec.y;
     column4.z = 0.0f;
 }
 
-void Matrix4::SetTranslate(const Vector3& vec)
+void Matrix4::Translate(const Vector3& vec)
 {
     column4.x = vec.x;
     column4.y = vec.y;
     column4.z = vec.z;
 }
 
-void Matrix4::SetTranslate(const Vector4& vec)
+void Matrix4::Translate(const Vector4& vec)
 {
     column4.x = vec.x;
     column4.y = vec.y;
@@ -239,7 +251,7 @@ Point4 Matrix4::TransformInverse(const Point4& vec) const
     };
 }
 
-Matrix4 Matrix4::Scale(real xVal, real yVal)
+Matrix4 Matrix4::CreateScale(real xVal, real yVal)
 {
     Matrix4 mat{1.0f};
 
@@ -249,7 +261,7 @@ Matrix4 Matrix4::Scale(real xVal, real yVal)
     return mat;
 }
 
-Matrix4 Matrix4::Scale(real xVal, real yVal, real zVal)
+Matrix4 Matrix4::CreateScale(real xVal, real yVal, real zVal)
 {
     Matrix4 mat{1.0f};
 
@@ -260,7 +272,7 @@ Matrix4 Matrix4::Scale(real xVal, real yVal, real zVal)
     return mat;
 }
 
-Matrix4 Matrix4::Scale(const Vector4& vec)
+Matrix4 Matrix4::CreateScale(const Vector4& vec)
 {
     Matrix4 mat{1.0f};
 
@@ -271,7 +283,7 @@ Matrix4 Matrix4::Scale(const Vector4& vec)
     return mat;
 }
 
-Matrix4 Matrix4::Scale(const Vector3& vec)
+Matrix4 Matrix4::CreateScale(const Vector3& vec)
 {
     Matrix4 mat{1.0f};
 
@@ -282,7 +294,7 @@ Matrix4 Matrix4::Scale(const Vector3& vec)
     return mat;
 }
 
-Matrix4 Matrix4::Scale(const Vector2& vec)
+Matrix4 Matrix4::CreateScale(const Vector2& vec)
 {
     Matrix4 mat{1.0f};
 
@@ -293,7 +305,7 @@ Matrix4 Matrix4::Scale(const Vector2& vec)
     return mat;
 }
 
-void Matrix4::SetScale(real xVal, real yVal)
+void Matrix4::Scale(real xVal, real yVal)
 {
     MakeIdentity();
 
@@ -301,7 +313,7 @@ void Matrix4::SetScale(real xVal, real yVal)
     column2.y = yVal;
 }
 
-void Matrix4::SetScale(real xVal, real yVal, real zVal)
+void Matrix4::Scale(real xVal, real yVal, real zVal)
 {
     MakeIdentity();
 
@@ -310,7 +322,7 @@ void Matrix4::SetScale(real xVal, real yVal, real zVal)
     column3.z = zVal;
 }
 
-void Matrix4::SetScale(const Vector2& vec)
+void Matrix4::Scale(const Vector2& vec)
 {
     MakeIdentity();
 
@@ -318,16 +330,7 @@ void Matrix4::SetScale(const Vector2& vec)
     column2.y = vec.y;
 }
 
-void Matrix4::SetScale(const Vector3& vec)
-{
-    MakeIdentity();
-
-    column1.x = vec.x;
-    column2.y = vec.y;
-    column3.z = vec.z;
-}
-
-void Matrix4::SetScale(const Vector4& vec)
+void Matrix4::Scale(const Vector3& vec)
 {
     MakeIdentity();
 
@@ -336,46 +339,16 @@ void Matrix4::SetScale(const Vector4& vec)
     column3.z = vec.z;
 }
 
-Matrix4 Matrix4::RotateX(real val)
+void Matrix4::Scale(const Vector4& vec)
 {
-    val = RADIAN(val);
-    Matrix4 mat{1.0f};
+    MakeIdentity();
 
-    mat.column2.y = real_cos(val);
-    mat.column2.z = -real_sin(val);
-    mat.column3.y = real_sin(val);
-    mat.column3.z = real_cos(val);
-
-    return mat;
+    column1.x = vec.x;
+    column2.y = vec.y;
+    column3.z = vec.z;
 }
 
-Matrix4 Matrix4::RotateY(real val)
-{
-    val = RADIAN(val);
-    Matrix4 mat{1.0f};
-
-    mat.column1.x = real_cos(val);
-    mat.column1.z = real_sin(val);
-    mat.column3.x = -real_sin(val);
-    mat.column3.z = real_cos(val);
-
-    return mat;
-}
-
-Matrix4 Matrix4::RotateZ(real val)
-{
-    val = RADIAN(val);
-    Matrix4 mat{1.0f};
-
-    mat.column1.x = real_cos(val);
-    mat.column1.y = -real_sin(val);
-    mat.column2.x = real_sin(val);
-    mat.column2.y = real_cos(val);
-
-    return mat;
-}
-
-void Matrix4::SetRotateX(real val)
+void Matrix4::RotateX(real val)
 {
     val = RADIAN(val);
 
@@ -395,7 +368,7 @@ void Matrix4::AddRotateX(real val)
     column3.z += real_cos(val);
 }
 
-void Matrix4::SetRotateY(real val)
+void Matrix4::RotateY(real val)
 {
     val = RADIAN(val);
 
@@ -415,7 +388,7 @@ void Matrix4::AddRotateY(real val)
     column3.y += real_cos(val);	
 }
 
-void Matrix4::SetRotateZ(real val)
+void Matrix4::RotateZ(real val)
 {
     val = RADIAN(val);
 
@@ -473,7 +446,7 @@ void Matrix4::AddRotation(real xVal, real yVal, real zVal)
     column3.z += real_cos(xVal) * real_cos(yVal);
 }
 
-void Matrix4::SetOrientation(const Quaternion& q)
+void Matrix4::Rotate(const Quaternion& q)
 {
     real q_w = q.x;
     real q_x = q.y;
@@ -491,42 +464,6 @@ void Matrix4::SetOrientation(const Quaternion& q)
     column3.x = 2.0f * q_x * q_z - 2.0f * q_y * q_w;
     column3.y = 2.0f * q_y * q_z + 2.0f * q_x * q_w;
     column3.z = 1 - ((2.0f * q_x * q_x) + (2.0f * q_y * q_y));
-}
-
-void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Vector4& v)
-{
-    SetOrientation(q);
-    
-    column4.x = v.x;
-    column4.y = v.y;
-    column4.z = v.z;
-}
-
-void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Point2& p)
-{
-    SetOrientation(q);
-    
-    column4.x = p.x;
-    column4.y = p.y;
-    column4.z = 0.0f;
-}
-
-void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Point3& p)
-{
-    SetOrientation(q);
-    
-    column4.x = p.x;
-    column4.y = p.y;
-    column4.z = p.z;
-}
-
-void Matrix4::SetOrientationAndPosition(const Quaternion& q, const Point4& p)
-{
-    SetOrientation(q);
-    
-    column4.x = p.x;
-    column4.y = p.y;
-    column4.z = p.z;
 }
 
 void Matrix4::SetInverse(void)

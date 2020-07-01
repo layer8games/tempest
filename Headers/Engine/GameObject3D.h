@@ -147,7 +147,7 @@ namespace Tempest
         bool _activeRender;
         static U32 _nextID;
         U32 _ID;
-        TM::Matrix4	_modelTOWorldCache;
+        TM::Matrix4	_modelToWorldCache;
         TM::Vector3 _scale;
         TM::Vector3 _scaleInPixels;
         TM::Point3 _position;
