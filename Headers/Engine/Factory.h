@@ -19,7 +19,9 @@ namespace Tempest
 
         TEMPEST_API virtual ~Factory(void);
 
-        TEMPEST_API virtual p_GameObject2D v_Create(string type, const TM::Point2& pos, F32 scale, F32 pixelSize, U32 textureID)=0;
+        TEMPEST_API virtual p_GameObject2D v_Create2D(string type, const TM::Point2& pos, F32 scale, F32 pixelSize, U32 textureID) { return nullptr; };
+
+        TEMPEST_API virtual p_GameObject3D v_Create3D(string type, const TM::Point3& pos, F32 scale, F32 pixelSize, U32 textureID) { return nullptr; };
 
         TEMPEST_API p_GameObject2D CreateStaticObject(const TM::Point2& pos, F32 scale, F32 pixelSize, U32 textureID);
 

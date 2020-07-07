@@ -57,7 +57,7 @@ namespace Tempest
         TEMPEST_API GameObjectManager(void);
 
     private:
-        static shared_ptr<GameObjectManager>	_instance;	   
+        static shared_ptr<GameObjectManager> _instance;
         ObjectRegistry2D _dynamicObjects;
         ObjectRegistry2D _staticObjects;
 

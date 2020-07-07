@@ -2,7 +2,6 @@
 #include <Engine/GameObject2D.h>
 using namespace Tempest;
 
-U32 GameObject2D::_nextID = 1;
 GameObject2D::GameObject2D(void)
     :
     _name(),
@@ -19,11 +18,8 @@ GameObject2D::GameObject2D(void)
     _mesh(make_shared<Mesh>()),
     _level(nullptr),
     _activeUpdate(true),
-    _activeRender(true),
-    _ID(_nextID)
-{
-    ++_nextID;
-}
+    _activeRender(true)
+{  }
 
 GameObject2D::~GameObject2D(void)
 {
@@ -180,11 +176,6 @@ void GameObject2D::SetActiveRender(void)
 void GameObject2D::SetInactiveRender(void)
 {
     _activeRender = false;
-}
-
-U32 GameObject2D::GetID(void) const
-{
-    return _ID;
 }
 
 void GameObject2D::SetName(string name)

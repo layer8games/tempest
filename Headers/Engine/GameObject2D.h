@@ -74,8 +74,6 @@ namespace Tempest
 
         TEMPEST_API void SetInactiveRender(void);
 
-        TEMPEST_API U32 GetID(void) const;
-
         TEMPEST_API void SetName(string name);
 
         TEMPEST_API string GetName(void) const;
@@ -156,7 +154,6 @@ namespace Tempest
 
         void _ClampOrientation(void);
 
-        static U32 _nextID;
         F32 _defaultPixelSize;
         F32 _scale;
         TM::Matrix4	_modelToWorldCache;
@@ -167,7 +164,6 @@ namespace Tempest
         p_Texture _texture;
         bool _activeUpdate;
         bool _activeRender;
-        U32	_ID;
     };//End class
     typedef shared_ptr<GameObject2D> p_GameObject2D;
 }

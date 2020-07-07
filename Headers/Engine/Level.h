@@ -6,6 +6,7 @@
 #include <Engine/Engine.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/GameObject2D.h>
+#include <Engine/GameObject3D.h>
 #include <Engine/StaticGameObject2D.h>
 #include <Engine/TextureManager.h>
 #include <Engine/Vector4.h>
@@ -49,30 +50,12 @@ namespace Tempest
         TEMPEST_API virtual void v_Update(void);
         
         TEMPEST_API void UpdateObjects(void);
-
-        TEMPEST_API virtual void v_Render(void);
-       
-        TEMPEST_API void RenderObjects(void);
         
         TEMPEST_API virtual void v_Enter(void);
 
         TEMPEST_API virtual void v_Exit(void);
-
-        TEMPEST_API void AddObjectToLevel(const GameObject2D& obj);
-
-        TEMPEST_API void AddObjectToLevel(p_GameObject2D obj);
-
+        
         TEMPEST_API void RegisterRigidBody2DForce(TP::p_RigidBody2D body, TP::p_ForceGenerator generator);
-
-        TEMPEST_API void AddTextToLevel(const Text& text);
-
-        TEMPEST_API void AddTextToLevel(shared_ptr<Text> text);
-
-        TEMPEST_API void RemoveTextFromLevel(const Text& text);
-
-        TEMPEST_API void UpdateText(Text& text, string updatedCharacters);
-
-        TEMPEST_API void RemoveObjectFromLevel(U32 id);
     
         TEMPEST_API void SetBackgroundColor(const Color& c);
 
@@ -144,8 +127,6 @@ namespace Tempest
 
         TEMPEST_API void _SetUpCamera(void);
         
-        TEMPEST_API void _DefaultRender(void);
-        
         TEMPEST_API void _DefaultUpdate(void);
         
         TEMPEST_API void _DefaultExit(void);
@@ -157,10 +138,6 @@ namespace Tempest
         TEMPEST_API GridPos _ConvertIndexToTileData(U32 index, U32 width, U32 height);
 
         TEMPEST_API void _LoadLevel(string filepath);
-
-        TEMPEST_API U32 _GetObjectCount(void) const;
-        
-        std::map<U32, p_GameObject2D> _localGameObjects;
         
         Camera* _camera;
         
@@ -169,17 +146,17 @@ namespace Tempest
         
         std::vector<U32> _SplitU32(string text, char delim) const;		
         
-        S32 _width;										
-        S32 _height;									
-        S32 _topBorder;									
-        S32 _bottomBorder;								
-        S32 _rightBorder;								
-        S32 _leftBorder;								
-        S32 _depth; 									
-        S32	_nearBorder;								
-        S32 _farBorder;									
-        Color _bgColor;									
-        U32 _ID;										
+        S32 _width;
+        S32 _height;
+        S32 _topBorder;
+        S32 _bottomBorder;
+        S32 _rightBorder;
+        S32 _leftBorder;
+        S32 _depth;
+        S32	_nearBorder;
+        S32 _farBorder;
+        Color _bgColor;
+        U32 _ID;
         TP::ForceRegistry _forceRegistry;
         p_Factory _factory;
     };

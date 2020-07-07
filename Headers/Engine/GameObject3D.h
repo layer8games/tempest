@@ -67,8 +67,6 @@ namespace Tempest
         TEMPEST_API bool GetActiveRender(void) const;
 
         TEMPEST_API void SetActiveRender(bool state);
-
-        TEMPEST_API const U32 GetID(void) const;
     
         TEMPEST_API const TM::Point3& GetPosition(void) const;
 
@@ -145,8 +143,6 @@ namespace Tempest
 
         bool _activeUpdate;
         bool _activeRender;
-        static U32 _nextID;
-        U32 _ID;
         TM::Matrix4	_modelToWorldCache;
         TM::Vector3 _scale;
         TM::Vector3 _scaleInPixels;

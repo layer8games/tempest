@@ -2,8 +2,6 @@
 #include <Engine/GameObject3D.h>
 using namespace Tempest;
 
-U32 GameObject3D::_nextID = 1;
-
 GameObject3D::GameObject3D(void)
     :
     _name(),
@@ -13,16 +11,13 @@ GameObject3D::GameObject3D(void)
     _boundingBox(),
     _activeUpdate(true),
     _activeRender(true),
-    _ID(_nextID),
     _scale(1.0f),
     _modelToWorldCache(),
     _position(0.0f),
     _orientation(0.0f),
     _color(1.0f),
     _texture(nullptr)
-{
-    ++_nextID;	
-}
+{  }
 
 GameObject3D::~GameObject3D(void)
 {  }
@@ -93,11 +88,6 @@ bool GameObject3D::GetActiveRender(void) const
 void GameObject3D::SetActiveRender(bool state)
 {
     _activeRender = state;
-}
-
-const U32 GameObject3D::GetID(void) const
-{
-    return _ID;
 }
 
 const TM::Point3& GameObject3D::GetPosition(void) const

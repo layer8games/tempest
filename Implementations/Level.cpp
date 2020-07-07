@@ -16,7 +16,6 @@ _nearBorder(0),
 _farBorder(0),
 _bgColor(),
 _ID(0),
-_localGameObjects(),
 _forceRegistry(),
 _camera(nullptr),
 _factory(nullptr)
@@ -24,15 +23,6 @@ _factory(nullptr)
 
 Level::~Level(void)
 {
-    //U32 count = 0;
-    ////_localGameObjects.clear();
-    //for(auto i : _localGameObjects)
-    //{
-    //    count += 1;
-    //    std::cout << "count = " << count << std::endl;
-    //    i.second = nullptr;
-    //    _localGameObjects.erase(i.first);
-    //}
     delete _camera;
 }
 
@@ -65,45 +55,6 @@ void Level::v_Update(void)
 void Level::_DefaultUpdate(void)
 {
     _forceRegistry.UpdateForces();
-
-    GameObjectManager::Instance()->UpdateObjects();
-    //UpdateObjects();
-}
-
-void Level::UpdateObjects(void)
-{
-    for(auto i : _localGameObjects)
-    {
-        if(i.second->GetActiveUpdate())
-        {
-            i.second->UpdateInternals();
-            i.second->v_Update();
-        }
-    }
-}
-
-void Level::v_Render(void)
-{ 
-    _DefaultRender();
-}
-
-void Level::_DefaultRender(void)
-{
-    GameObjectManager::Instance()->RenderObjects(_camera);
-    //RenderObjects();
-}
-
-void Level::RenderObjects(void)
-{
-    for(auto i : _localGameObjects)
-    {
-        if(i.second->GetActiveRender())
-        {
-            i.second->GetShader()->SetUniform("projection", _camera->GetProjectionMatrix4());
-            i.second->GetShader()->SetUniform("view", _camera->GetViewMatrix4());
-            i.second->v_Render();
-        }
-    }	
 }
 
 void Level::v_Enter(void)
@@ -126,87 +77,10 @@ void Level::_DefaultExit(void)
 
 }
 
-void Level::AddObjectToLevel(const GameObject2D& obj)
-{
-    _localGameObjects.insert({ obj.GetID(), shared_ptr<GameObject2D>(const_cast<GameObject2D*>(&obj)) });
-    _localGameObjects[obj.GetID()]->GetShader()->SetUniform("projection", _camera->GetProjectionMatrix4());
-
-    if(_localGameObjects.find(obj.GetID()) == _localGameObjects.end())
-    {
-        ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject to level.");
-    }
-}
-
-void Level::AddObjectToLevel(p_GameObject2D obj)
-{
-    //obj->GetShader()->SetUniform("projection", _camera.GetProjectionMatrix4());
-
-    _localGameObjects.insert({obj->GetID(), obj});
-    _localGameObjects[obj->GetID()]->GetShader()->SetUniform("projection", _camera->GetProjectionMatrix4());
-
-    if(_localGameObjects.find(obj->GetID()) == _localGameObjects.end())
-    {
-        ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject to level.");
-    }
-}
-
 void Level::RegisterRigidBody2DForce(TP::p_RigidBody2D body, TP::p_ForceGenerator generator)
 {
     _forceRegistry.Add(body, generator);
 }
-
-void Level::AddTextToLevel(const Text& text)
-{
-    //text->SetUniforms("projection", _camera->GetProjectionMatrix4());
-
-    //_textList.push_back(text);
-    std::vector<p_Glyph> v = text.GetCharacterList();
-    for(auto i : v)
-    {
-        AddObjectToLevel(i);
-    }
-}
-
-void Level::AddTextToLevel(shared_ptr<Text> text)
-{
-    std::vector<p_Glyph> v = text->GetCharacterList();
-    for(auto i : v)
-    {
-        AddObjectToLevel(i);
-    }
-}
-
-void Level::RemoveTextFromLevel(const Text& text)
-{
-    std::vector<p_Glyph> v = text.GetCharacterList();
-
-    for(auto i : v)
-    {
-        RemoveObjectFromLevel(i->GetID());
-    }
-}
-
-void Level::UpdateText(Text& text, string updatedCharacters)
-{
-    RemoveTextFromLevel(text);
-
-    text.AddText(updatedCharacters);
-
-    AddTextToLevel(text);
-}
-
-void Level::RemoveObjectFromLevel(U32 id)
-{
-    //Assume that if an ID is not a GameObject, then it could be derived type.
-    if(_localGameObjects.find(id) != _localGameObjects.end())
-    {
-        _localGameObjects.erase(id);
-    }
-    else
-    {
-        ErrorManager::Instance()->SetError(ENGINE, "Level::RemoveObjectFromLevel, ln 163, no object found with id " + id);
-    }
-}   
 
 void Level::SetBackgroundColor(const Color& c) 
 { 
@@ -218,7 +92,6 @@ void Level::ActivateBackgroundColor(void)
 {
     Engine::Instance()->SetScreenColor(_bgColor);
 }
-
 
 Level::GridPos Level::_ConvertIndexToTileData(U32 index, U32 width, U32 height)
 {
@@ -483,7 +356,7 @@ void Level::_LoadLevel(string filepath)
         
         U32 textureID = std::stoi(i->first_attribute("textureID")->value());
         
-        p_GameObject2D obj = _factory->v_Create(type, pos, scale, pixelSize, textureID);
+        p_GameObject2D obj = _factory->v_Create2D(type, pos, scale, pixelSize, textureID);
         obj->SetName(name);
         obj->SetLevel(this);
         ErrorManager::Instance()->DisplayErrors();
@@ -513,11 +386,6 @@ void Level::_LoadLevel(string filepath)
     }
 
     doc.clear();
-}
-
-U32 Level::_GetObjectCount(void) const
-{
-    return _localGameObjects.size();
 }
 
 string Level::_OpenFile(string filepath)
