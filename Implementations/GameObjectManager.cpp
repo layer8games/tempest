@@ -6,8 +6,8 @@ using namespace Tempest;
 p_GameObjectManager GameObjectManager::_instance = nullptr;
 GameObjectManager::GameObjectManager(void)
     :
-    _dynamicObjects(),
-    _staticObjects()
+    _dynamicObjects2D(),
+    _staticObjects2D()
 {  }
 
 GameObjectManager::~GameObjectManager(void)
@@ -25,50 +25,50 @@ p_GameObjectManager GameObjectManager::Instance(void)
 
 void GameObjectManager::Shutdown(void)
 {
-    _dynamicObjects.clear();
-    _staticObjects.clear();
+    _dynamicObjects2D.clear();
+    _staticObjects2D.clear();
 }
 
 void GameObjectManager::AddDynamicObject(p_GameObject2D obj)
 {	
-    if(_dynamicObjects.count(obj->GetID()) == 0)
+    if(_dynamicObjects2D.count(obj->GetName()) == 0)
     {
-        _dynamicObjects.insert({obj->GetID(), obj});
+        _dynamicObjects2D.insert({obj->GetName(), obj});
         
-        if(_dynamicObjects.find(obj->GetID()) == _dynamicObjects.end())
+        if(_dynamicObjects2D.find(obj->GetName()) == _dynamicObjects2D.end())
         {
             ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject2D to level.");
         }
     }
     else
     {
-        ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::Add attempted to add ID that already exists. ID = " + obj->GetID());
+        ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::Add attempted to add ID that already exists. ID = " + obj->GetName());
     }
 }
 
 void GameObjectManager::AddStaticObject(p_GameObject2D obj)
 {
-    if(_staticObjects.count(obj->GetID()) == 0)
+    if(_staticObjects2D.count(obj->GetName()) == 0)
     {
         obj->UpdateInternals();
-        _staticObjects.insert({obj->GetID(), obj});
+        _staticObjects2D.insert({obj->GetName(), obj});
 
-        if(_staticObjects.find(obj->GetID()) == _staticObjects.end())
+        if(_staticObjects2D.find(obj->GetName()) == _staticObjects2D.end())
         {
             ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject3D to level.");
         }
     }
     else
     {
-        ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::Add attempted to add ID that already exists. ID = " + obj->GetID());
+        ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::Add attempted to add ID that already exists. ID = " + obj->GetName());
     }
 }
 
-void GameObjectManager::RemoveDynamicObject(U32 id)
+void GameObjectManager::RemoveDynamicObject(string id)
 {
-    if(_dynamicObjects.count(id) == 1)
+    if(_dynamicObjects2D.count(id) == 1)
     {
-        _dynamicObjects.erase(id);
+        _dynamicObjects2D.erase(id);
     }
     else
     {
@@ -76,11 +76,11 @@ void GameObjectManager::RemoveDynamicObject(U32 id)
     }
 }
 
-void GameObjectManager::RemoveStaticObject(U32 id)
+void GameObjectManager::RemoveStaticObject(string id)
 {
-    if(_staticObjects.count(id) == 1)
+    if(_staticObjects2D.count(id) == 1)
     {
-        _staticObjects.erase(id);
+        _staticObjects2D.erase(id);
     }
     else
     {
@@ -88,11 +88,11 @@ void GameObjectManager::RemoveStaticObject(U32 id)
     }
 }
 
-p_GameObject2D GameObjectManager::GetDynamicObject(U32 id)
+p_GameObject2D GameObjectManager::GetDynamicObject(string id)
 {
-    if(_dynamicObjects.count(id) == 1)
+    if(_dynamicObjects2D.count(id) == 1)
     {
-        return _dynamicObjects[id];
+        return _dynamicObjects2D[id];
     }
     else
     {
@@ -100,11 +100,11 @@ p_GameObject2D GameObjectManager::GetDynamicObject(U32 id)
     }
 }
 
-p_GameObject2D GameObjectManager::GetStaticObject(U32 id)
+p_GameObject2D GameObjectManager::GetStaticObject(string id)
 {
-    if(_staticObjects.count(id) == 1)
+    if(_staticObjects2D.count(id) == 1)
     {
-        return _staticObjects[id];
+        return _staticObjects2D[id];
     }
     else
     {
@@ -114,7 +114,7 @@ p_GameObject2D GameObjectManager::GetStaticObject(U32 id)
 
 void GameObjectManager::UpdateObjects(void)
 {
-    for(auto obj : _dynamicObjects)
+    for(auto obj : _dynamicObjects2D)
     {
         if(obj.second->GetActiveUpdate())
         {
@@ -126,7 +126,7 @@ void GameObjectManager::UpdateObjects(void)
 
 void GameObjectManager::CheckCollisions(void)
 {
-    for(auto i : _dynamicObjects)
+    for(auto i : _dynamicObjects2D)
     {
         TC::CollisionDetector::Instance()->CheckVsDynamic(i.second);
         TC::CollisionDetector::Instance()->CheckVsStatic(i.second);
@@ -136,7 +136,7 @@ void GameObjectManager::CheckCollisions(void)
 // TODO:: Need a better way to get the view matrix
 void GameObjectManager::RenderObjects(const Camera* camera)
 {
-    for(auto obj : _dynamicObjects)
+    for(auto obj : _dynamicObjects2D)
     {
         if(obj.second->GetActiveRender())
         {
@@ -146,7 +146,7 @@ void GameObjectManager::RenderObjects(const Camera* camera)
         }
     }
 
-    for(auto obj : _staticObjects)
+    for(auto obj : _staticObjects2D)
     {
         if(obj.second->GetActiveRender())
         {
@@ -159,20 +159,20 @@ void GameObjectManager::RenderObjects(const Camera* camera)
 
 ObjectRegistry2D& GameObjectManager::GetDynamicObjects(void)
 {
-    return _dynamicObjects;
+    return _dynamicObjects2D;
 }
 
 ObjectRegistry2D& GameObjectManager::GetStaticObjects(void)
 {
-    return _staticObjects;
+    return _staticObjects2D;
 }
 
 U32 GameObjectManager::GetDynamicObjectCount(void) const
 {
-    return _dynamicObjects.size();
+    return _dynamicObjects2D.size();
 }
 
 U32 GameObjectManager::GetStaticObjectCount(void) const
 {
-    return _staticObjects.size();
+    return _staticObjects2D.size();
 }

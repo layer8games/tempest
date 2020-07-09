@@ -24,11 +24,11 @@ void CollisionDetector::CheckVsDynamic(TE::p_GameObject2D& object)
 
     for(auto i : TE::GameObjectManager::Instance()->GetDynamicObjects())
     {
-        if(i.second->GetID() != object->GetID())
+        if(i.second->GetName() != object->GetName())
         {
             if(object->OverlapCheck(i.second))
             {
-                object->v_OnCollide(i.second->GetID());
+                object->v_OnCollide(i.second->GetName());
             }
         }
     }
@@ -40,11 +40,11 @@ void CollisionDetector::CheckVsStatic(TE::p_GameObject2D& object)
 
     for(auto i : staticObjects)
     {
-        if(i.second->GetID() != object->GetID())
+        if(i.second->GetName() != object->GetName())
         {
             if(object->OverlapCheck(i.second))
             {
-                object->v_OnCollide(i.second->GetID());
+                object->v_OnCollide(i.second->GetName());
             }
         }
     }

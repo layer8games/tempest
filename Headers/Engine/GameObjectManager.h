@@ -15,7 +15,8 @@ namespace TC = TempestCollisions;
 
 namespace Tempest
 {
-    typedef	std::map<U32, p_GameObject2D> ObjectRegistry2D;
+    typedef	std::map<string, p_GameObject2D> ObjectRegistry2D;
+    typedef	std::map<string, p_GameObject3D> ObjectRegistry3D;
     
     class GameObjectManager
     {
@@ -31,13 +32,13 @@ namespace Tempest
 
         TEMPEST_API void AddStaticObject(p_GameObject2D obj);
 
-        TEMPEST_API void RemoveDynamicObject(U32 id);
+        TEMPEST_API void RemoveDynamicObject(string id);
 
-        TEMPEST_API void RemoveStaticObject(U32 id);
+        TEMPEST_API void RemoveStaticObject(string id);
 
-        TEMPEST_API p_GameObject2D GetDynamicObject(U32 id);
+        TEMPEST_API p_GameObject2D GetDynamicObject(string id);
 
-        TEMPEST_API p_GameObject2D GetStaticObject(U32 id);
+        TEMPEST_API p_GameObject2D GetStaticObject(string id);
 
         TEMPEST_API void UpdateObjects(void);
 
@@ -53,13 +54,51 @@ namespace Tempest
 
         TEMPEST_API U32 GetStaticObjectCount(void) const;
 
+        template <class T>
+        inline void SetDyanmicGameObject2DUniforms(string name, const T& type)
+        {
+            for(auto i : _dynamicObjects2D)
+            {
+                i.second->GetShader()->SetUniform(name, type);
+            }
+        }
+
+        template <class T>
+        inline void SetStaticGameObject2DUniforms(string name, const T& type)
+        {
+            for(auto i : _staticObjects2D)
+            {
+                i.second->GetShader()->SetUniform(name, type);
+            }
+        }
+
+        template <class T>
+        inline void SetDyanmicGameObject3DUniforms(string name, const T& type)
+        {
+            for(auto i : _dynamicObjects3D)
+            {
+                i.second->GetShader()->SetUniform(name, type);
+            }
+        }
+
+        template <class T>
+        inline void SetStaticGameObject3DUniforms(string name, const T& type)
+        {
+            for(auto i : _staticObjects3D)
+            {
+                i.second->GetShader()->SetUniform(name, type);
+            }
+        }
+
     protected:
         TEMPEST_API GameObjectManager(void);
 
     private:
         static shared_ptr<GameObjectManager> _instance;
-        ObjectRegistry2D _dynamicObjects;
-        ObjectRegistry2D _staticObjects;
+        ObjectRegistry2D _dynamicObjects2D;
+        ObjectRegistry2D _staticObjects2D;
+        ObjectRegistry3D _dynamicObjects3D;
+        ObjectRegistry3D _staticObjects3D;
 
     };//end Class
     typedef shared_ptr<GameObjectManager> p_GameObjectManager;

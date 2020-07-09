@@ -307,6 +307,11 @@ U32 Level::GetID(void) const
     return _ID;
 }
 
+Camera* Level::GetCamera(void) const
+{
+    return _camera;
+}
+
 void Level::SetFactory(p_Factory factory)
 {
     _factory = factory;

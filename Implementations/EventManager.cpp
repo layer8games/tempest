@@ -73,7 +73,7 @@ void EventManager::DispatchNow(Event event)
 {
     for(auto listener : _2DListeners)
     {
-        if(event.ReceiverID == listener.listener->GetID())
+        if(event.Receiver == listener.listener->GetName())
         {
             listener.listener->v_OnEvent(event);
             return;
@@ -82,7 +82,7 @@ void EventManager::DispatchNow(Event event)
 
     for(auto listener : _3DListeners)
     {
-        if(event.ReceiverID == listener.listener->GetID())
+        if(event.Receiver == listener.listener->GetName())
         {
             listener.listener->v_OnEvent(event);
             return;

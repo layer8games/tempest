@@ -42,7 +42,7 @@ namespace Tempest
        
         TEMPEST_API virtual void v_OnEvent(Event event);
 
-        TEMPEST_API virtual void v_OnCollide(U32 otherObjectID);
+        TEMPEST_API virtual void v_OnCollide(string otherObjectID);
        
         TEMPEST_API void UpdateInternals(void);
         

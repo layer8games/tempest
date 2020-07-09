@@ -49,8 +49,6 @@ namespace Tempest
     
         TEMPEST_API virtual void v_Update(void);
         
-        TEMPEST_API void UpdateObjects(void);
-        
         TEMPEST_API virtual void v_Enter(void);
 
         TEMPEST_API virtual void v_Exit(void);
@@ -95,16 +93,9 @@ namespace Tempest
 
         TEMPEST_API U32 GetID(void) const;
 
-        TEMPEST_API void SetFactory(p_Factory factory);
+        TEMPEST_API Camera* GetCamera(void) const;
 
-        template <class T>
-        inline void SetObjectUniforms(string name, const T& type)
-        {
-            for(auto i : _localGameObjects)
-            {
-                i.second->GetShader()->SetUniform(name, type);
-            }
-        }
+        TEMPEST_API void SetFactory(p_Factory factory);
 
     protected:
         struct TileData

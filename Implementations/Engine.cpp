@@ -87,10 +87,7 @@ void Engine::Render(void)
 {
     if(_running)
     {
-        _activeLevel->v_Render();
-
-        // TODO:: Need to refactor this. See GameObjectManager TODO for details
-        //GameObjectManager::Instance()->RenderObjects();
+        GameObjectManager::Instance()->RenderObjects(_activeLevel->GetCamera());
 
         _window->v_BufferSwap();
 

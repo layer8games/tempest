@@ -87,7 +87,7 @@ void GameObject2D::v_OnEvent(Event event)
 
 }
 
-void GameObject2D::v_OnCollide(U32 otherObjectID)
+void GameObject2D::v_OnCollide(string otherObjectID)
 {
 
 }

@@ -12,16 +12,16 @@ namespace Tempest
     struct Event
     {
     public:
-        U32 SenderID;		
-        U32 ReceiverID;		
-        F64 DispatchTime;	
-        string Type;		
-        std::any Data;		
+        string Sender;
+        string Receiver;
+        F64 DispatchTime;
+        string Type;
+        std::any Data;
         
         Event(void)
             :
-            SenderID(0),
-            ReceiverID(0),
+            Sender(),
+            Receiver(),
             DispatchTime(0.0),
             Type(),
             Data()
@@ -29,17 +29,17 @@ namespace Tempest
 
         Event(string type)
             :
-            SenderID(0),
-            ReceiverID(0),
+            Sender(),
+            Receiver(),
             DispatchTime(0.0),
             Type(type),
             Data()
         {  }
 
-        Event(string type, U32 sender, U32 reciever, F64 dispatchTime, std::any data)
+        Event(string type, string sender, string reciever, F64 dispatchTime, std::any data)
             :
-            SenderID(sender),
-            ReceiverID(reciever),
+            Sender(sender),
+            Receiver(reciever),
             DispatchTime(dispatchTime),
             Type(type),
             Data(data)
@@ -76,8 +76,8 @@ namespace Tempest
         {
             if( std::strcmp(event.Type.c_str(), Type.c_str()) == 0 && 
                 event.DispatchTime == DispatchTime &&
-                event.ReceiverID == ReceiverID &&
-                event.SenderID == SenderID
+                event.Receiver == Receiver &&
+                event.Sender == Sender
                )
             {
                 return true;
