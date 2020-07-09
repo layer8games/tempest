@@ -259,14 +259,17 @@
     <Filter Include="Source Code\Collision\CollisionDetector">
       <UniqueIdentifier>{36c55287-39cb-45f9-9e05-3677b91cb6ae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Engine\GameObjects\Static">
-      <UniqueIdentifier>{e5592105-f320-4e80-b769-30d5a70adbb7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Engine\Input">
       <UniqueIdentifier>{949bad72-f361-4e38-b352-64dbb4371cd2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Code\Engine\Driver">
       <UniqueIdentifier>{66fd72d2-3739-4584-a963-04c6b35f6d8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\GameObjects\Static2D">
+      <UniqueIdentifier>{e5592105-f320-4e80-b769-30d5a70adbb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Engine\GameObjects\Static3D">
+      <UniqueIdentifier>{0b2bd217-48f0-40be-967d-dad7f2c4f4db}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -478,13 +481,16 @@
       <Filter>Source Code\Engine\Factory</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\StaticGameObject2D.h">
-      <Filter>Source Code\Engine\GameObjects\Static</Filter>
+      <Filter>Source Code\Engine\GameObjects\Static2D</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Input.h">
       <Filter>Source Code\Engine\Input</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Driver.h">
       <Filter>Source Code\Engine\Driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\StaticGameObject3D.h">
+      <Filter>Source Code\Engine\GameObjects\Static3D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -669,13 +675,16 @@
       <Filter>Source Code\Engine\Factory</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\StaticGameObject2D.cpp">
-      <Filter>Source Code\Engine\GameObjects\Static</Filter>
+      <Filter>Source Code\Engine\GameObjects\Static2D</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Input.cpp">
       <Filter>Source Code\Engine\Input</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Driver.cpp">
       <Filter>Source Code\Engine\Driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\StaticGameObject3D.cpp">
+      <Filter>Source Code\Engine\GameObjects\Static3D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

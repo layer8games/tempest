@@ -319,6 +319,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\StaticGameObject2D.h" />
+    <ClInclude Include="..\..\Headers\Engine\StaticGameObject3D.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Steering2D.h">
       <SubType>
       </SubType>
@@ -494,6 +498,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\StaticGameObject2D.cpp" />
+    <ClCompile Include="..\..\Implementations\StaticGameObject3D.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="..\..\Implementations\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
