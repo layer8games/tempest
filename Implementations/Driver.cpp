@@ -1,16 +1,16 @@
 #include "stdafx.h"
-#include <Engine/Engine.h>
+#include <Engine/Driver.h>
 using namespace Tempest;
 
-p_Engine Engine::_instance = nullptr;
-Engine::Engine(void) 
+p_Driver Driver::_instance = nullptr;
+Driver::Driver(void) 
     :
     _running(false),
     _activeLevel(nullptr),
     _window(nullptr)
 {  }
 
-void Engine::Init(S32 width, S32 height, string title, bool fullscreen, bool openGL) 
+void Driver::Init(S32 width, S32 height, string title, bool fullscreen, bool openGL) 
 {
     if(openGL)
     {
@@ -31,7 +31,7 @@ void Engine::Init(S32 width, S32 height, string title, bool fullscreen, bool ope
     _running = true;
 }
 
-void Engine::ShutDown(void)
+void Driver::ShutDown(void)
 {
     GameObjectManager::Instance()->Shutdown();
     _activeLevel.reset();
@@ -39,17 +39,17 @@ void Engine::ShutDown(void)
     //_window.reset();
 }
 
-bool Engine::Running(void) 
+bool Driver::Running(void) 
 { 
     return _running; 
 }
 
-void Engine::End(void) 
+void Driver::End(void) 
 {   
     _running = false;
 }
 
-void Engine::SetActiveLevel(p_Level level)
+void Driver::SetActiveLevel(p_Level level)
 {
         if(_activeLevel != nullptr)
         {
@@ -61,7 +61,7 @@ void Engine::SetActiveLevel(p_Level level)
         _activeLevel->v_Enter();
 }
 
-void Engine::Update(void) 
+void Driver::Update(void) 
 {
     if(_running)
     {
@@ -83,7 +83,7 @@ void Engine::Update(void)
     }
 }
 
-void Engine::Render(void) 
+void Driver::Render(void) 
 {
     if(_running)
     {
@@ -99,66 +99,66 @@ void Engine::Render(void)
     }
 }
 
-TM::Point2 Engine::GetMousePos(void)
+TM::Point2 Driver::GetMousePos(void)
 {
     return _window->v_GetMousePos();
 }
 
-TM::Point2 Engine::GetMousePosInScreen(void)
+TM::Point2 Driver::GetMousePosInScreen(void)
 {
     return _window->v_GetMousePosInScreen();
 }
 
-void Engine::EnableMouseCursor(void)
+void Driver::EnableMouseCursor(void)
 {
     _window->v_EnableMouseCursor();
 }
 
-S32 Engine::GetScreenWidth(void)
+S32 Driver::GetScreenWidth(void)
 {
     return _window->GetScreenWidth();
 }
 
-S32 Engine::GetScreenHeight(void)
+S32 Driver::GetScreenHeight(void)
 {
     return _window->GetScreenHeight();
 }
 
-F32 Engine::GetScreenRight(void)
+F32 Driver::GetScreenRight(void)
 {
     return _window->GetScreenRight();
 }
 
-F32 Engine::GetScreenLeft(void)
+F32 Driver::GetScreenLeft(void)
 {
     return _window->GetScreenLeft();
 }
 
-F32 Engine::GetScreenTop(void)
+F32 Driver::GetScreenTop(void)
 {
     return _window->GetScreenTop();
 }
 
-F32 Engine::GetScreenBottom(void)
+F32 Driver::GetScreenBottom(void)
 {
     return _window->GetScreenBottom();
 }
 
-void Engine::DisplayFPS(void)
+void Driver::DisplayFPS(void)
 {
     _window->v_DisplayFPS();
 }
 
-void Engine::SetScreenColor(const Color& col)
+void Driver::SetScreenColor(const Color& col)
 {
     _window->v_SetScreenColor(col);
 }
 
-p_Engine Engine::Instance(void) 
+p_Driver Driver::Instance(void) 
 {
     if(_instance == NULL) 
     { 
-        _instance = shared_ptr<Engine>(new Engine()); 
+        _instance = shared_ptr<Driver>(new Driver()); 
     }
 
     return _instance;

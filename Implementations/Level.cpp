@@ -39,10 +39,10 @@ void Level::_DefaultInit(string filepath)
 
 void Level::_SetUpCamera(void)
 {
-    F32 left = Engine::Instance()->GetScreenLeft();
-    F32 right = Engine::Instance()->GetScreenRight();
-    F32 bottom = Engine::Instance()->GetScreenBottom();
-    F32 top = Engine::Instance()->GetScreenTop();
+    F32 left = Driver::Instance()->GetScreenLeft();
+    F32 right = Driver::Instance()->GetScreenRight();
+    F32 bottom = Driver::Instance()->GetScreenBottom();
+    F32 top = Driver::Instance()->GetScreenTop();
 
     _camera->SetOrthographic(left, right, bottom, top, -100.0f, 100.0f);
 }
@@ -90,7 +90,7 @@ void Level::SetBackgroundColor(const Color& c)
 
 void Level::ActivateBackgroundColor(void)
 {
-    Engine::Instance()->SetScreenColor(_bgColor);
+    Driver::Instance()->SetScreenColor(_bgColor);
 }
 
 Level::GridPos Level::_ConvertIndexToTileData(U32 index, U32 width, U32 height)

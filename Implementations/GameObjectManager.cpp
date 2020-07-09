@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include <Engine/GameObjectManager.h>
-#include <iostream>
 using namespace Tempest;
 
 p_GameObjectManager GameObjectManager::_instance = nullptr;

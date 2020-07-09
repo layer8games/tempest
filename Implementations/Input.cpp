@@ -40,11 +40,11 @@ void Input::KeyDown(Keys k)
 
     if(k == LEFT_MOUSE)
     {
-        _leftClickCoordinates = Engine::Instance()->GetMousePos();
+        _leftClickCoordinates = Driver::Instance()->GetMousePos();
     }
     else if(k == RIGHT_MOUSE)
     {
-        _rightClickCoordinates = Engine::Instance()->GetMousePos();
+        _rightClickCoordinates = Driver::Instance()->GetMousePos();
     }
 }
 
@@ -56,12 +56,12 @@ void Input::KeyUp(Keys k)
 
 const TM::Point2 Input::GetMouseCoord(void)
 {
-    return Engine::Instance()->GetMousePos();
+    return Driver::Instance()->GetMousePos();
 }
 
 const TM::Point2 Input::GetMouseCoordInScreen(void)
 {
-    return Engine::Instance()->GetMousePosInScreen();
+    return Driver::Instance()->GetMousePosInScreen();
 }
 
 void Input::Update(void)

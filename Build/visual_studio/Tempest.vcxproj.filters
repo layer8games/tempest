@@ -52,9 +52,6 @@
     <Filter Include="Source Code\Engine\Color">
       <UniqueIdentifier>{5d83855b-baf9-4d27-bc54-347079ecb506}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Engine\Engine">
-      <UniqueIdentifier>{66fd72d2-3739-4584-a963-04c6b35f6d8d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Engine\Font">
       <UniqueIdentifier>{8ee5872e-c61d-47ce-889d-c375d165cfae}</UniqueIdentifier>
     </Filter>
@@ -268,6 +265,9 @@
     <Filter Include="Source Code\Engine\Input">
       <UniqueIdentifier>{949bad72-f361-4e38-b352-64dbb4371cd2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\Driver">
+      <UniqueIdentifier>{66fd72d2-3739-4584-a963-04c6b35f6d8d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -302,9 +302,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Random.h">
       <Filter>Source Code\Math\Random</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Engine.h">
-      <Filter>Source Code\Engine\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Shader.h">
       <Filter>Source Code\Engine\Shader</Filter>
@@ -486,6 +483,9 @@
     <ClInclude Include="..\..\Headers\Engine\Input.h">
       <Filter>Source Code\Engine\Input</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Driver.h">
+      <Filter>Source Code\Engine\Driver</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\ErrorManager.cpp">
@@ -517,9 +517,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Random.cpp">
       <Filter>Source Code\Math\Random</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Engine.cpp">
-      <Filter>Source Code\Engine\Engine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Shader.cpp">
       <Filter>Source Code\Engine\Shader</Filter>
@@ -676,6 +673,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Input.cpp">
       <Filter>Source Code\Engine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Driver.cpp">
+      <Filter>Source Code\Engine\Driver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

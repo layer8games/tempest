@@ -23,7 +23,7 @@ namespace Tempest
     class Level;
     typedef shared_ptr<Level> p_Level;
 
-    class Engine
+    class Driver
     {
     public:
         TEMPEST_API void Init(S32 width, S32 height, string title, bool fullscreen, bool openGL=true);
@@ -62,16 +62,16 @@ namespace Tempest
 
         TEMPEST_API void SetScreenColor(const Color& col);
         
-        TEMPEST_API static shared_ptr<Engine> Instance();
+        TEMPEST_API static shared_ptr<Driver> Instance();
 
     protected:        
-        Engine(void);
+        Driver(void);
 
     private:
-        static shared_ptr<Engine> _instance;	
+        static shared_ptr<Driver> _instance;	
         bool _running;
         std::unique_ptr<GameWindow> _window;
         p_Level _activeLevel; 
     };
-    typedef shared_ptr<Engine> p_Engine;
+    typedef shared_ptr<Driver> p_Driver;
 }//End namespace
