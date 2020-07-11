@@ -30,7 +30,9 @@ namespace Tempest
        
         TEMPEST_API virtual ~GameObject3D(void);
         
-        TEMPEST_API void Init(void);
+        TEMPEST_API void Init(string filepath);
+
+        TEMPEST_API void Init(string filepath, U32 shaderID);
         
         virtual void v_Update(void)=0;
 

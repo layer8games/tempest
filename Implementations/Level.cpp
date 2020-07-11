@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include <Engine/Level.h>
-#include <iostream>
 using namespace Tempest;
 
 Level::Level(void) 
@@ -365,8 +364,7 @@ void Level::_LoadLevel(string filepath)
         obj->SetName(name);
         obj->SetLevel(this);
         ErrorManager::Instance()->DisplayErrors();
-        //AddObjectToLevel(obj);
-        GameObjectManager::Instance()->AddDynamicObject(obj);
+        GameObjectManager::Instance()->AddDynamicObject2D(obj);
     }
 
     objects = doc.first_node("level")->first_node("objects")->first_node("static");
@@ -382,12 +380,11 @@ void Level::_LoadLevel(string filepath)
         
         U32 textureID = std::stoi(i->first_attribute("textureID")->value());
         
-        p_GameObject2D obj = _factory->CreateStaticObject(pos, scale, pixelSize, textureID);
+        p_StaticGameObject2D obj = _factory->CreateStaticObject(pos, scale, pixelSize, textureID);
         obj->SetName(name);
         obj->SetLevel(this);
         ErrorManager::Instance()->DisplayErrors();
-        //AddObjectToLevel(obj);
-        GameObjectManager::Instance()->AddStaticObject(obj);
+        GameObjectManager::Instance()->AddStaticObject2D(obj);
     }
 
     doc.clear();

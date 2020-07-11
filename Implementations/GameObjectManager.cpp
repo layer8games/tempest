@@ -28,7 +28,7 @@ void GameObjectManager::Shutdown(void)
     _staticObjects2D.clear();
 }
 
-void GameObjectManager::AddDynamicObject(p_GameObject2D obj)
+void GameObjectManager::AddDynamicObject2D(p_GameObject2D obj)
 {	
     if(_dynamicObjects2D.count(obj->GetName()) == 0)
     {
@@ -45,7 +45,24 @@ void GameObjectManager::AddDynamicObject(p_GameObject2D obj)
     }
 }
 
-void GameObjectManager::AddStaticObject(p_GameObject2D obj)
+void GameObjectManager::AddDynamicObject3D(p_GameObject3D obj)
+{	
+    if(_dynamicObjects3D.count(obj->GetName()) == 0)
+    {
+        _dynamicObjects3D.insert({obj->GetName(), obj});
+        
+        if(_dynamicObjects3D.find(obj->GetName()) == _dynamicObjects3D.end())
+        {
+            ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject2D to level.");
+        }
+    }
+    else
+    {
+        ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::Add attempted to add ID that already exists. ID = " + obj->GetName());
+    }
+}
+
+void GameObjectManager::AddStaticObject2D(p_StaticGameObject2D obj)
 {
     if(_staticObjects2D.count(obj->GetName()) == 0)
     {
@@ -53,6 +70,24 @@ void GameObjectManager::AddStaticObject(p_GameObject2D obj)
         _staticObjects2D.insert({obj->GetName(), obj});
 
         if(_staticObjects2D.find(obj->GetName()) == _staticObjects2D.end())
+        {
+            ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject3D to level.");
+        }
+    }
+    else
+    {
+        ErrorManager::Instance()->SetError(ENGINE, "GameObjectManager::Add attempted to add ID that already exists. ID = " + obj->GetName());
+    }
+}
+
+void GameObjectManager::AddStaticObject3D(p_StaticGameObject3D obj)
+{
+    if(_staticObjects3D.count(obj->GetName()) == 0)
+    {
+        obj->UpdateInternals();
+        _staticObjects3D.insert({obj->GetName(), obj});
+
+        if(_staticObjects3D.find(obj->GetName()) == _staticObjects3D.end())
         {
             ErrorManager::Instance()->SetError(ENGINE, "Level::AddObjectToLevel Unable to add GameObject3D to level.");
         }

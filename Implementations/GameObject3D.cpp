@@ -22,9 +22,17 @@ GameObject3D::GameObject3D(void)
 GameObject3D::~GameObject3D(void)
 {  }
 
-void GameObject3D::Init(void)
+void GameObject3D::Init(string filepath)
 {
+    // TODO: Create default 3D shader, add to ShaderManager
+    //SetShader(TE::ShaderManager::Instance()->GetShader(_defaultShaderID));
+    _mesh->LoadOBJ(filepath);
+}
 
+void GameObject3D::Init(string filepath, U32 shaderID)
+{
+    SetShader(ShaderManager::Instance()->GetShader(shaderID));
+    _mesh->LoadOBJ(filepath);
 }
 
 void GameObject3D::v_Render(void)

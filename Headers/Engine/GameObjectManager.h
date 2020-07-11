@@ -5,7 +5,9 @@
 #include <Engine/Atom.h>
 #include <Engine/Driver.h>
 #include <Engine/GameObject2D.h>
+#include <Engine/StaticGameObject2D.h>
 #include <Engine/GameObject3D.h>
+#include <Engine/StaticGameObject3D.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/CollisionDetector.h>
 
@@ -29,9 +31,13 @@ namespace Tempest
 
         TEMPEST_API void Shutdown(void);
 
-        TEMPEST_API void AddDynamicObject(p_GameObject2D obj);
+        TEMPEST_API void AddDynamicObject2D(p_GameObject2D obj);
 
-        TEMPEST_API void AddStaticObject(p_GameObject2D obj);
+        TEMPEST_API void AddDynamicObject3D(p_GameObject3D obj);
+
+        TEMPEST_API void AddStaticObject2D(p_StaticGameObject2D obj);
+
+        TEMPEST_API void AddStaticObject3D(p_StaticGameObject3D obj);
 
         TEMPEST_API void RemoveDynamicObject(string id);
 
