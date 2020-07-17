@@ -30,15 +30,15 @@ FPSCamera::~FPSCamera(void)
 void FPSCamera::v_Update(void)
 {
     // TODO: Refactor and test again 
-    //TM::Point mouseCoord = Input::Instance()->GetMouseCoord();
-    //S32 width = OpenGLGameWindow::Instance()->GetWidth();
-    //S32 height = OpenGLGameWindow::Instance()->GetHeight();
+    TM::Point2 mouseCoord = Input::Instance()->GetMouseCoord();
+    S32 width = Driver::Instance()->GetScreenWidth();
+    S32 height = Driver::Instance()->GetScreenHeight();
 
     ////Set yaw and pitch for rotate
-    //_deltaYaw = static_cast<F32>((width / 2.0f - mouseCoord[0])) * _mouseSensitivity;
-    //_deltaPitch = static_cast<F32>((height / 2.0f - mouseCoord[1])) * _mouseSensitivity;
+    _deltaYaw = static_cast<F32>((width / 2.0f - mouseCoord.x)) * _mouseSensitivity;
+    _deltaPitch = static_cast<F32>((height / 2.0f - mouseCoord.y)) * _mouseSensitivity;
 
-    //v_Rotate();
+    v_Rotate();
 
     //OpenGLGameWindow::Instance()->ResetMouseCursor();
 }
@@ -56,7 +56,7 @@ void FPSCamera::v_Rotate(void)
     _deltaPitch = 0.0f;
 }
 
-void FPSCamera::v_Move(const TM::Vector4& offset)
+void FPSCamera::v_Move(const TM::Vector3& offset)
 {
     _position += offset * _moveSpeed * TM::Timer::Instance()->DeltaTime();
     _v_UpdateCameraVectors();
@@ -70,21 +70,21 @@ void FPSCamera::v_Move(F32 xVal, F32 yVal)
     _v_UpdateCameraVectors();
 }
 
-//void FPSCamera::_v_UpdateCameraVector4s(void)
-//{
-//	//Using spherical to cartesian
-//	//Calculate the view direction
-//	_look[0] = cos(_pitch) * sin(_yaw);
-//	_look[1] = sin(_pitch);
-//	_look[2] = cos(_pitch) * cos(_yaw);
-//	_look.Normalize();
-//
-//	//Re-calculate the right and up Vector4s
-//	_right = _look.CrossProduct(_worldUp);
-//	_right.Normalize();
-//
-//	_up = _right.CrossProduct(_look);
-//	_up.Normalize();
-//
-//	_target = _position + _look;
-//}
+void FPSCamera::_v_UpdateCameraVectors(void)
+{
+	//Using spherical to cartesian
+	//Calculate the view direction
+	_look.x = cos(_pitch) * sin(_yaw);
+	_look.y = sin(_pitch);
+	_look.z = cos(_pitch) * cos(_yaw);
+	_look.Normalize();
+
+	//Re-calculate the right and up Vector4s
+	_right = _look.CrossProduct(_worldUp);
+	_right.Normalize();
+
+	_up = _right.CrossProduct(_look);
+	_up.Normalize();
+
+	_target = _position + _look;
+}

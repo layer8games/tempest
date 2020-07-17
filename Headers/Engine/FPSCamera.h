@@ -24,9 +24,11 @@ namespace Tempest
 
         TEMPEST_API void v_Rotate(void) final;
 
-        TEMPEST_API void v_Move(const TM::Vector4& offset) final;
+        TEMPEST_API void v_Move(const TM::Vector3& offset) final;
 
         TEMPEST_API void v_Move(F32 xVal, F32 yVal) final;
+
+        TEMPEST_API void _v_UpdateCameraVectors(void) final;
 
         inline void SetWorldUp(const TM::Vector4 vec)
         {

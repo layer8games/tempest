@@ -3,9 +3,9 @@
 using namespace Tempest;
 
 Shader::Shader(void)
-:
-_uniformLocations(),
-_shaderProgram(0)
+    :
+    _uniformLocations(),
+    _shaderProgram(0)
 {
     _shaderProgram = glCreateProgram();
 }
@@ -24,7 +24,8 @@ void Shader::LoadShader(std::vector<ShaderData> shaders)
         return;
     }
 
-    GLuint vertexProgram, fragmentProgram = 0;
+    GLuint vertexProgram = 0; 
+    GLuint fragmentProgram = 0;
     GLint shaderSize;
 
     for(auto i : shaders)
@@ -39,7 +40,7 @@ void Shader::LoadShader(std::vector<ShaderData> shaders)
             glShaderSource(vertexProgram, 1, &vertexSource, (GLint*)&shaderSize);
             glCompileShader(vertexProgram);
 
-            if(!_CheckCompileErrors(vertexProgram))
+            if(!_CheckCompileStatus(vertexProgram))
             {
                 glDeleteProgram(vertexProgram);
                 return;
@@ -55,7 +56,7 @@ void Shader::LoadShader(std::vector<ShaderData> shaders)
             glShaderSource(fragmentProgram, 1, &fragmentSource, (GLint*)&shaderSize);
             glCompileShader(fragmentProgram);
             
-            if(!_CheckCompileErrors(fragmentProgram))
+            if(!_CheckCompileStatus(fragmentProgram))
             {
                 glDeleteProgram(fragmentProgram);
                 return;
@@ -71,24 +72,7 @@ void Shader::LoadShader(std::vector<ShaderData> shaders)
     glAttachShader(_shaderProgram, fragmentProgram);
     glLinkProgram(_shaderProgram);
 
-    //===== Error checking =====
-    GLint isLinked = 0; 
-    glGetProgramiv(_shaderProgram, GL_LINK_STATUS, &isLinked);
-
-    if(isLinked == GL_FALSE)
-    {
-        GLint length = 0;
-        glGetProgramiv(_shaderProgram, GL_INFO_LOG_LENGTH, &length);
-
-        //The length includes the NULL character
-        string errorLog(length, ' ');
-        glGetProgramInfoLog(_shaderProgram, length, &length, &errorLog[0]);
-
-        ErrorManager::Instance()->SetError(SHADER, "Compile Error in shader\n" + errorLog);
-
-        //The program is useless now. So delete it.
-        glDeleteProgram(_shaderProgram);
-    }
+    _CheckLinkStatus();
 
     //===== clean up =====
     glDeleteProgram(vertexProgram);
@@ -181,9 +165,28 @@ void Shader::SetUniformVec3(string name, const Color& col)
     glUniform3f(location, col[0], col[1], col[2]);
 }
 
+GLuint Shader::GetProgram(void) const
+{
+    return _shaderProgram;
+}
+
+void Shader::SetProgram(GLuint program)
+{
+    _shaderProgram = program;
+}
+
+map<string, GLuint> Shader::GetUniformLocations(void) const
+{
+    return _uniformLocations;
+}
+ 
+void Shader::SetUniformLocations(map<string, GLuint> uniforms)
+{
+    _uniformLocations = uniforms;
+}
+
 Shader& Shader::operator=(const Shader& shader)
 {
-    //_uniformLocations = shader.GetUniformLocations();
     _shaderProgram = shader.GetProgram();
 
     return *this;
@@ -208,7 +211,7 @@ string Shader::_GetFileString(string path)
     return shaderData.str();
 }
 
-bool Shader::_CheckCompileErrors(GLuint shader)
+bool Shader::_CheckCompileStatus(GLuint shader)
 {
     GLint status = 0;
     glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
@@ -219,7 +222,7 @@ bool Shader::_CheckCompileErrors(GLuint shader)
         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
 
         //The length includes the NULL character
-        string errorLog(length, ' ');	
+        string errorLog(length, ' ');
         glGetProgramInfoLog(shader, length, &length, &errorLog[0]);
 
         ErrorManager::Instance()->SetError(SHADER, "Compile Error in shader\n" + errorLog);
@@ -228,6 +231,26 @@ bool Shader::_CheckCompileErrors(GLuint shader)
     }
 
     return true;
+}
+
+void Shader::_CheckLinkStatus(void)
+{
+    GLint isLinked = 0; 
+    glGetProgramiv(_shaderProgram, GL_LINK_STATUS, &isLinked);
+
+    if(isLinked == GL_FALSE)
+    {
+        GLint length = 0;
+        glGetProgramiv(_shaderProgram, GL_INFO_LOG_LENGTH, &length);
+
+        //The length includes the NULL character
+        string errorLog(length, ' ');
+        glGetProgramInfoLog(_shaderProgram, length, &length, &errorLog[0]);
+
+        ErrorManager::Instance()->SetError(SHADER, "Compile Error in shader\n" + errorLog);
+
+        glDeleteProgram(_shaderProgram);
+    }
 }
 
 GLuint Shader::_GetUniformLocation(const GLchar* name)

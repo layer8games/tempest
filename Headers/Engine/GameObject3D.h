@@ -84,6 +84,10 @@ namespace Tempest
 
         TEMPEST_API void AddScaledPosition(const TM::Point3& point, F32 scale);
 
+        TEMPEST_API void SetPixelScale(const TM::Vector3& size);
+
+        TEMPEST_API const TM::Vector3& GetPixelScale(void) const;
+        
         TEMPEST_API const TM::Vector3& GetScale(void) const;
 
         TEMPEST_API void SetScale(const TM::Vector3& scale);
@@ -147,7 +151,7 @@ namespace Tempest
         bool _activeRender;
         TM::Matrix4	_modelToWorldCache;
         TM::Vector3 _scale;
-        TM::Vector3 _scaleInPixels;
+        TM::Vector3 _pixelScale;
         TM::Point3 _position;
         TM::Quaternion _orientation;
         Color _color;

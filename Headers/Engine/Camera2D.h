@@ -14,7 +14,7 @@ namespace Tempest
 
         TEMPEST_API ~Camera2D(void) final;
 
-        TEMPEST_API void v_Move(const TM::Vector4& offset) final;
+        TEMPEST_API void v_Move(const TM::Vector3& offset) final;
         
         TEMPEST_API void v_Move(F32 xVal, F32 yVal);
         

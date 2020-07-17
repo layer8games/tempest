@@ -69,32 +69,22 @@ namespace Tempest
  
         TEMPEST_API void SetUniformVec3(string name, const Color& col);
 
-        inline GLuint GetProgram(void) const
-        {
-            return _shaderProgram;
-        }
+        TEMPEST_API GLuint GetProgram(void) const;
 
-        inline void SetProgram(GLuint program)
-        {
-            _shaderProgram = program;
-        }
+        TEMPEST_API void SetProgram(GLuint program);
 
-        inline map<string, GLuint> GetUniformLocations(void) const
-        {
-            return _uniformLocations;
-        }
+        TEMPEST_API map<string, GLuint> GetUniformLocations(void) const;
  
-        inline void SetUniformLocations(map<string, GLuint> uniforms)
-        {
-            _uniformLocations = uniforms;
-        }
+        TEMPEST_API void SetUniformLocations(map<string, GLuint> uniforms);
     
         TEMPEST_API Shader& operator=(const Shader& shader);
     
     private:
         string _GetFileString(string path);
         
-        bool _CheckCompileErrors(GLuint shader);
+        bool _CheckCompileStatus(GLuint shader);
+
+        void _CheckLinkStatus(void);
 
         GLuint _GetUniformLocation(const GLchar* name);
                     

@@ -71,10 +71,12 @@ void Driver::Update(void)
 
         Input::Instance()->Update();
 
+        _activeLevel->GetCamera()->v_Update();
+        _activeLevel->v_Update();
+        
         GameObjectManager::Instance()->UpdateObjects();
         GameObjectManager::Instance()->CheckCollisions();
 
-        _activeLevel->v_Update();
 
         if(ErrorManager::Instance()->DisplayErrors())
         {

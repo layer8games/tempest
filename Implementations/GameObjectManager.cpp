@@ -156,6 +156,15 @@ void GameObjectManager::UpdateObjects(void)
             obj.second->v_Update();
         }
     }
+    
+    for(auto obj : _dynamicObjects3D)
+    {
+        if(obj.second->GetActiveUpdate())
+        {
+            obj.second->UpdateInternals();
+            obj.second->v_Update();
+        }
+    }
 }
 
 void GameObjectManager::CheckCollisions(void)
@@ -184,6 +193,27 @@ void GameObjectManager::RenderObjects(const Camera* camera)
     {
         if(obj.second->GetActiveRender())
         {
+            obj.second->GetShader()->SetUniform("projection", camera->GetProjectionMatrix4());
+            obj.second->GetShader()->SetUniform("view", camera->GetViewMatrix4());
+            obj.second->v_Render();
+        }
+    }
+
+    for(auto obj : _dynamicObjects3D)
+    {
+        if(obj.second->GetActiveRender())
+        {
+            obj.second->GetShader()->SetUniform("projection", camera->GetProjectionMatrix4());
+            obj.second->GetShader()->SetUniform("view", camera->GetViewMatrix4());
+            obj.second->v_Render();
+        }
+    }
+
+    for(auto obj : _staticObjects3D)
+    {
+        if(obj.second->GetActiveRender())
+        {
+            obj.second->UpdateInternals();
             obj.second->GetShader()->SetUniform("projection", camera->GetProjectionMatrix4());
             obj.second->GetShader()->SetUniform("view", camera->GetViewMatrix4());
             obj.second->v_Render();

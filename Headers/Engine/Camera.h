@@ -28,7 +28,7 @@ namespace Tempest
         inline virtual void v_Update(void)
         {  }
 
-        inline virtual void v_Move(const TM::Vector4& offset)
+        inline virtual void v_Move(const TM::Vector3& offset)
         {  }
 
         inline virtual void v_Move(F32 xVal, F32 yVal)
@@ -240,20 +240,20 @@ namespace Tempest
 
         TEMPEST_API void DefaultUpdateCameraVectors(void);
         
-        TM::Point3 _position;				
-        TM::Point3 _target;				
-        TM::Vector3 _worldUp;			
-        TM::Vector3 _up;					
-        TM::Vector3 _look;					
-        TM::Vector3 _right;					
-        TM::Point3 _currentMouseCoords;	
-        TM::Point3 _lastMouseCoords;		
-        F32 _mouseSensitivity;		
-        F32 _yaw;					
-        F32 _pitch;					
-        F32 _deltaYaw;				
-        F32 _deltaPitch;			
-        F32 _fov;					
+        TM::Point3 _position;
+        TM::Point3 _target;
+        TM::Vector3 _worldUp;
+        TM::Vector3 _up;
+        TM::Vector3 _look;
+        TM::Vector3 _right;
+        TM::Point3 _currentMouseCoords;
+        TM::Point3 _lastMouseCoords;
+        F32 _mouseSensitivity;
+        F32 _yaw;
+        F32 _pitch;
+        F32 _deltaYaw;
+        F32 _deltaPitch;
+        F32 _fov;
     };//end Camera
     typedef shared_ptr<Camera> p_Camera;
 }//end namespace

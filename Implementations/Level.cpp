@@ -22,7 +22,8 @@ _factory(nullptr)
 
 Level::~Level(void)
 {
-    delete _camera;
+    // TODO: Fix this memory leak
+    // delete _camera;
 }
 
 void Level::v_Init(string path)
@@ -30,10 +31,20 @@ void Level::v_Init(string path)
     _DefaultInit(path);
 }
 
+void Level::v_Init(void)
+{
+    _camera = new Camera();
+}
+
 void Level::_DefaultInit(string filepath)
 {
    _camera = new Camera();
     _LoadLevel(filepath);
+}
+
+void Level::_DefaultInit(void)
+{
+    _camera = new Camera();
 }
 
 void Level::_SetUpCamera(void)
@@ -380,7 +391,7 @@ void Level::_LoadLevel(string filepath)
         
         U32 textureID = std::stoi(i->first_attribute("textureID")->value());
         
-        p_StaticGameObject2D obj = _factory->CreateStaticObject(pos, scale, pixelSize, textureID);
+        p_StaticGameObject2D obj = _factory->CreateStaticObject2D(pos, scale, pixelSize, textureID);
         obj->SetName(name);
         obj->SetLevel(this);
         ErrorManager::Instance()->DisplayErrors();

@@ -248,7 +248,7 @@ bool Mesh::LoadOBJ(string filepath)
                 meshVertex.normal = tempNormals[normalIndices[i] - 1];
             }
 
-            AddVertex(meshVertex);
+            _vertices.push_back(meshVertex);
         }
 
         InitOpenGLData();

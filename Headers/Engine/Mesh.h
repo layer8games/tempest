@@ -69,7 +69,7 @@ namespace Tempest
             return _vertices.size();
         }
 
-        inline void AddVertex(const Vertex& vert)
+        inline void AddVertex(const Vertex vert)
         {
             _vertices.push_back(vert);
         }
@@ -121,11 +121,11 @@ namespace Tempest
 
         std::vector<string> _SplitString(string text, char delim) const;
 
-        std::vector<Vertex> 	_vertices;	
-        std::vector<U32> 		_indices;	
-        std::vector<F32> 		_uvList;	
-        GLuint 					_vao;		
-        GLuint 					_vbo[NUM_VBO];
+        std::vector<Vertex> _vertices;
+        std::vector<U32> _indices;
+        std::vector<F32> _uvList;
+        GLuint _vao;
+        GLuint _vbo[NUM_VBO];
 
     };//end Class
     typedef shared_ptr<Mesh> p_Mesh;

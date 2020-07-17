@@ -14,7 +14,7 @@ Camera2D::Camera2D(void)
 Camera2D::~Camera2D(void)
 {  }
 
-void Camera2D::v_Move(const TM::Vector4& offset)
+void Camera2D::v_Move(const TM::Vector3& offset)
 {
     _position += offset * _moveSpeed * TM::Timer::Instance()->DeltaTime();
     _v_UpdateCameraVectors();

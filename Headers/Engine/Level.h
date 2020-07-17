@@ -46,6 +46,8 @@ namespace Tempest
         TEMPEST_API virtual ~Level(void);
 
         TEMPEST_API virtual void v_Init(string path);
+
+        TEMPEST_API virtual void v_Init(void);
     
         TEMPEST_API virtual void v_Update(void);
         
@@ -116,6 +118,8 @@ namespace Tempest
         
         TEMPEST_API void _DefaultInit(string filepath);
 
+        TEMPEST_API void _DefaultInit(void);
+
         TEMPEST_API void _SetUpCamera(void);
         
         TEMPEST_API void _DefaultUpdate(void);
@@ -131,6 +135,7 @@ namespace Tempest
         TEMPEST_API void _LoadLevel(string filepath);
         
         Camera* _camera;
+        p_Factory _factory;
         
     private:
         string _OpenFile(string filePath);
@@ -149,7 +154,6 @@ namespace Tempest
         Color _bgColor;
         U32 _ID;
         TP::ForceRegistry _forceRegistry;
-        p_Factory _factory;
     };
     typedef shared_ptr<Level> p_Level;
 }//End namespace
