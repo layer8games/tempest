@@ -71,7 +71,7 @@ void Driver::Update(void)
 
         Input::Instance()->Update();
 
-        _activeLevel->GetCamera()->v_Update();
+        CameraController::Instance()->UpdateCamera();
         _activeLevel->v_Update();
         
         GameObjectManager::Instance()->UpdateObjects();
@@ -89,7 +89,7 @@ void Driver::Render(void)
 {
     if(_running)
     {
-        GameObjectManager::Instance()->RenderObjects(_activeLevel->GetCamera());
+        GameObjectManager::Instance()->RenderObjects();
 
         _window->v_BufferSwap();
 

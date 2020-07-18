@@ -271,6 +271,9 @@
     <Filter Include="Source Code\Engine\GameObjects\Static3D">
       <UniqueIdentifier>{0b2bd217-48f0-40be-967d-dad7f2c4f4db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\CameraController">
+      <UniqueIdentifier>{93b07449-c17f-4d83-b90a-4d91a7694e5d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -492,6 +495,9 @@
     <ClInclude Include="..\..\Headers\Engine\StaticGameObject3D.h">
       <Filter>Source Code\Engine\GameObjects\Static3D</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\CameraController.h">
+      <Filter>Source Code\Engine\CameraController</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\ErrorManager.cpp">
@@ -685,6 +691,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\StaticGameObject3D.cpp">
       <Filter>Source Code\Engine\GameObjects\Static3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\CameraController.cpp">
+      <Filter>Source Code\Engine\CameraController</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

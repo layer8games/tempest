@@ -16,15 +16,11 @@ _farBorder(0),
 _bgColor(),
 _ID(0),
 _forceRegistry(),
-_camera(nullptr),
 _factory(nullptr)
 {  }
 
 Level::~Level(void)
-{
-    // TODO: Fix this memory leak
-    // delete _camera;
-}
+{  }
 
 void Level::v_Init(string path)
 {
@@ -33,28 +29,18 @@ void Level::v_Init(string path)
 
 void Level::v_Init(void)
 {
-    _camera = new Camera();
-}
-
-void Level::_DefaultInit(string filepath)
-{
-   _camera = new Camera();
-    _LoadLevel(filepath);
+    _DefaultInit();
 }
 
 void Level::_DefaultInit(void)
 {
-    _camera = new Camera();
+    CameraController::Instance()->SetOrthographicCamera();
 }
 
-void Level::_SetUpCamera(void)
+void Level::_DefaultInit(string filepath)
 {
-    F32 left = Driver::Instance()->GetScreenLeft();
-    F32 right = Driver::Instance()->GetScreenRight();
-    F32 bottom = Driver::Instance()->GetScreenBottom();
-    F32 top = Driver::Instance()->GetScreenTop();
-
-    _camera->SetOrthographic(left, right, bottom, top, -100.0f, 100.0f);
+    CameraController::Instance()->SetOrthographicCamera();
+    _LoadLevel(filepath);
 }
 
 void Level::v_Update(void)
@@ -317,11 +303,6 @@ U32 Level::GetID(void) const
     return _ID;
 }
 
-Camera* Level::GetCamera(void) const
-{
-    return _camera;
-}
-
 void Level::SetFactory(p_Factory factory)
 {
     _factory = factory;
@@ -351,8 +332,6 @@ void Level::_LoadLevel(string filepath)
     F32 blue = std::stof(level->first_attribute("blue")->value());
     
     SetBackgroundColor(Color(red, green, blue));
-    
-    _SetUpCamera();
 
     F32 pixelSize = std::stof(level->first_attribute("pixelsize")->value());
     

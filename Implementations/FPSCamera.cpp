@@ -62,29 +62,22 @@ void FPSCamera::v_Move(const TM::Vector3& offset)
     _v_UpdateCameraVectors();
 }
 
-void FPSCamera::v_Move(F32 xVal, F32 yVal)
-{
-    F32 delta = TM::Timer::Instance()->DeltaTime();
-    _position.x += xVal * _moveSpeed * delta;
-    _position.y += yVal * _moveSpeed * delta;
-    _v_UpdateCameraVectors();
-}
-
 void FPSCamera::_v_UpdateCameraVectors(void)
 {
 	//Using spherical to cartesian
 	//Calculate the view direction
-	_look.x = cos(_pitch) * sin(_yaw);
-	_look.y = sin(_pitch);
-	_look.z = cos(_pitch) * cos(_yaw);
-	_look.Normalize();
+	_lookDirection.x = cos(_pitch) * sin(_yaw);
+	_lookDirection.y = sin(_pitch);
+	_lookDirection.z = cos(_pitch) * cos(_yaw);
+	_lookDirection.Normalize();
 
 	//Re-calculate the right and up Vector4s
-	_right = _look.CrossProduct(_worldUp);
+	_right = _lookDirection.CrossProduct(_worldUp);
 	_right.Normalize();
 
-	_up = _right.CrossProduct(_look);
+	_up = _right.CrossProduct(_lookDirection);
 	_up.Normalize();
 
-	_target = _position + _look;
+	_target = _position + _lookDirection;
+    _UpdateLookMatrix();
 }

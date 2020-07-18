@@ -8,7 +8,6 @@
 #include <Engine/Color.h>
 #include <Engine/Timer.h>
 #include <Engine/Point2.h>
-#include <Engine/Camera.h>
 #include <Engine/Input.h>
 #include <Engine/Keys.h>
 

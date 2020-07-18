@@ -16,6 +16,7 @@
 #include <Engine/Text.h>
 #include <Engine/RigidBody2D.h>
 #include <Engine/Point2.h>
+#include <Engine/CameraController.h>
 #include <Engine/Camera.h>
 #include <Engine/Factory.h>
 
@@ -95,8 +96,6 @@ namespace Tempest
 
         TEMPEST_API U32 GetID(void) const;
 
-        TEMPEST_API Camera* GetCamera(void) const;
-
         TEMPEST_API void SetFactory(p_Factory factory);
 
     protected:
@@ -119,8 +118,6 @@ namespace Tempest
         TEMPEST_API void _DefaultInit(string filepath);
 
         TEMPEST_API void _DefaultInit(void);
-
-        TEMPEST_API void _SetUpCamera(void);
         
         TEMPEST_API void _DefaultUpdate(void);
         
@@ -133,8 +130,7 @@ namespace Tempest
         TEMPEST_API GridPos _ConvertIndexToTileData(U32 index, U32 width, U32 height);
 
         TEMPEST_API void _LoadLevel(string filepath);
-        
-        Camera* _camera;
+       
         p_Factory _factory;
         
     private:

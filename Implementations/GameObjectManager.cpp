@@ -177,14 +177,14 @@ void GameObjectManager::CheckCollisions(void)
 }
 
 // TODO:: Need a better way to get the view matrix
-void GameObjectManager::RenderObjects(const Camera* camera)
+void GameObjectManager::RenderObjects(void)
 {
     for(auto obj : _dynamicObjects2D)
     {
         if(obj.second->GetActiveRender())
         {
-            obj.second->GetShader()->SetUniform("projection", camera->GetProjectionMatrix4());
-            obj.second->GetShader()->SetUniform("view", camera->GetViewMatrix4());
+            obj.second->GetShader()->SetUniform("projection", CameraController::Instance()->GetProjectionMatrix());
+            obj.second->GetShader()->SetUniform("view", CameraController::Instance()->GetViewMatrix());
             obj.second->v_Render();
         }
     }
@@ -193,8 +193,8 @@ void GameObjectManager::RenderObjects(const Camera* camera)
     {
         if(obj.second->GetActiveRender())
         {
-            obj.second->GetShader()->SetUniform("projection", camera->GetProjectionMatrix4());
-            obj.second->GetShader()->SetUniform("view", camera->GetViewMatrix4());
+            obj.second->GetShader()->SetUniform("projection", CameraController::Instance()->GetProjectionMatrix());
+            obj.second->GetShader()->SetUniform("view", CameraController::Instance()->GetViewMatrix());
             obj.second->v_Render();
         }
     }
@@ -203,8 +203,8 @@ void GameObjectManager::RenderObjects(const Camera* camera)
     {
         if(obj.second->GetActiveRender())
         {
-            obj.second->GetShader()->SetUniform("projection", camera->GetProjectionMatrix4());
-            obj.second->GetShader()->SetUniform("view", camera->GetViewMatrix4());
+            obj.second->GetShader()->SetUniform("projection", CameraController::Instance()->GetProjectionMatrix());
+            obj.second->GetShader()->SetUniform("view", CameraController::Instance()->GetViewMatrix());
             obj.second->v_Render();
         }
     }
@@ -214,8 +214,8 @@ void GameObjectManager::RenderObjects(const Camera* camera)
         if(obj.second->GetActiveRender())
         {
             obj.second->UpdateInternals();
-            obj.second->GetShader()->SetUniform("projection", camera->GetProjectionMatrix4());
-            obj.second->GetShader()->SetUniform("view", camera->GetViewMatrix4());
+            obj.second->GetShader()->SetUniform("projection", CameraController::Instance()->GetProjectionMatrix());
+            obj.second->GetShader()->SetUniform("view", CameraController::Instance()->GetViewMatrix());
             obj.second->v_Render();
         }
     }

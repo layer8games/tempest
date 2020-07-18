@@ -31,6 +31,12 @@ void ErrorManager::SetError(ErrorCode code, string message)
     _numErrors++;
 }
 
+void ErrorManager::ThrowError(ErrorCode code, string message)
+{
+    SetError(code, message);
+    DisplayErrors();
+}
+
 bool ErrorManager::DisplayErrors(void) 
 {
     if (_numErrors > 0) 
@@ -44,7 +50,7 @@ bool ErrorManager::DisplayErrors(void)
             {
                 case NOT_ERROR:
                     //TODO::Need to log these some how
-                break;					 
+                break;
                 case UNKNOWN_ERROR: 
                     if(_consoleOut) 
                     {
@@ -109,7 +115,7 @@ bool ErrorManager::DisplayErrors(void)
                     if(_MessageBox(_errorMessages[i], "WINDOWS Found"))
                     {
                         return true;
-                    }				
+                    }
                 break;
                 case OPENGL: 
                     if(_consoleOut)
@@ -200,6 +206,11 @@ bool ErrorManager::DisplayErrors(void)
     }
 
     return false;
+}
+
+void ErrorManager::SetConsoleOut(bool state)
+{
+    _consoleOut = state;
 }
 
 bool ErrorManager::_MessageBox(string errorMessage, string errorCode)

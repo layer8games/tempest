@@ -131,7 +131,7 @@ namespace TempestMath
 
         TEMPEST_API static Matrix4 LookAt(const Point3& cameraPos, const Point3& target, const Vector3& up);
 
-        TEMPEST_API void SetLookAt(const Vector4& cameraPos, const Vector4& target, const Vector4& up);
+        TEMPEST_API void SetLookAt(const Point3& cameraPos, const Point3& target, const Vector3& up);
 
         TEMPEST_API static Matrix4 FPSView(const Vector4& cameraPos, real pitch, real yaw);
 

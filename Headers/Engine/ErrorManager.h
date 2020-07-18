@@ -36,12 +36,11 @@ namespace Tempest
 
         TEMPEST_API void SetError(ErrorCode code, string message);
 
+        TEMPEST_API void ThrowError(ErrorCode code, string message);
+
         TEMPEST_API bool DisplayErrors(void);
 
-        inline void SetConsoleOut(bool state)
-        {
-            _consoleOut = state;
-        }
+        TEMPEST_API void SetConsoleOut(bool state);
 
     protected:
         ErrorManager(void);

@@ -742,17 +742,18 @@ Matrix4 Matrix4::LookAt(const Point3& cameraPos, const Point3& target, const Vec
     return mat;
 }
 
-void Matrix4::SetLookAt(const Vector4& cameraPos, const Vector4& target, const Vector4& up)
+void Matrix4::SetLookAt(const Point3& cameraPos, const Point3& target, const Vector3& up)
 {
     MakeIdentity();
 
-    Vector4 zAxis = cameraPos - target;
+    Vector3 zAxis{};
+    zAxis = cameraPos - target;
     zAxis.Normalize();
 
-    Vector4 xAxis = up.CrossProduct(zAxis);
+    Vector3 xAxis = up.CrossProduct(zAxis);
     xAxis.Normalize();
 
-    Vector4 yAxis = zAxis.CrossProduct(xAxis);
+    Vector3 yAxis = zAxis.CrossProduct(xAxis);
     yAxis.Normalize();
 
     column1.x = xAxis.x;
@@ -770,7 +771,7 @@ void Matrix4::SetLookAt(const Vector4& cameraPos, const Vector4& target, const V
     column3.z = zAxis.z;
     column3.w = 0.0f;
 
-    column4 = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);		
+    column4 = Vector4(-xAxis.Dot(cameraPos), -yAxis.Dot(cameraPos), -zAxis.Dot(cameraPos), 1.0f);
 }
 
 Matrix4 Matrix4::FPSView(const Vector4& cameraPos, real pitch, real yaw)

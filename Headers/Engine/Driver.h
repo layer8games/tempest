@@ -12,7 +12,7 @@
 #include <Engine/Level.h>
 #include <Engine/GameObjectManager.h>
 #include <Engine/Point2.h>
-#include <Engine/Camera.h>
+#include <Engine/CameraController.h>
 #include <Engine/Color.h>
 
 namespace TM = TempestMath;

@@ -10,6 +10,7 @@
 #include <Engine/StaticGameObject3D.h>
 #include <Engine/ErrorManager.h>
 #include <Engine/CollisionDetector.h>
+#include <Engine/CameraController.h>
 
 namespace TC = TempestCollisions;
 
@@ -51,7 +52,7 @@ namespace Tempest
 
         TEMPEST_API void CheckCollisions(void);
 
-        TEMPEST_API void RenderObjects(const Camera* camera);
+        TEMPEST_API void RenderObjects(void);
 
         TEMPEST_API ObjectRegistry2D& GetDynamicObjects(void);
 
