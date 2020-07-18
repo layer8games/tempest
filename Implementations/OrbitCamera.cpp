@@ -50,4 +50,5 @@ void OrbitCamera::_v_UpdateCameraVectors(void)
     _position.x = _target.x + _radius * cos(_pitch) * sin(_yaw);
     _position.y = _target.y + _radius * sin(_pitch);
     _position.z = _target.z + _radius * cos(_pitch) * cos(_yaw);
+    _UpdateLookMatrix();
 }
