@@ -52,9 +52,10 @@ void Camera::SetOrthographic(void)
                                        Driver::Instance()->GetScreenRight(),
                                        Driver::Instance()->GetScreenBottom(),
                                        Driver::Instance()->GetScreenTop(),
-                                       0.1f,
+                                       -100.0f,
                                        100.0f
     );
+    _DefaultUpdateCameraVectors();
 }
 
 void Camera::SetOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane)

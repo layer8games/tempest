@@ -176,7 +176,6 @@ void GameObjectManager::CheckCollisions(void)
     }
 }
 
-// TODO:: Need a better way to get the view matrix
 void GameObjectManager::RenderObjects(void)
 {
     for(auto obj : _dynamicObjects2D)
