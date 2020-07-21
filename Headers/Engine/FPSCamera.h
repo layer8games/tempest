@@ -28,45 +28,24 @@ namespace Tempest
 
         TEMPEST_API void _v_UpdateCameraVectors(void) final;
 
-        inline void SetWorldUp(const TM::Vector4 vec)
-        {
-            _worldUp = vec;
-        }
+        TEMPEST_API void SetWorldUp(const TM::Vector4 vec);
 
-        inline const TM::Vector3& GetWorldUp(void)
-        {
-            return _worldUp;
-        }
+        TEMPEST_API const TM::Vector3& GetWorldUp(void) const;
 
-        inline void SetZoom(F64 val)
-        {
-            _zoomSensitivity = val;
-        }
+        TEMPEST_API void SetZoom(F64 val);
 
-        inline F64 GetZoom(void)
-        {
-            return _zoomSensitivity;
-        }
+        TEMPEST_API F64 GetZoom(void) const;
 
-        inline void SetMoveSpeed(F32 val)
-        {
-            _moveSpeed = val;
-        }
+        TEMPEST_API void SetMoveSpeed(F32 val);
 
-        inline F32 GetMoveSpeed(void)
-        {
-            return _moveSpeed;
-        }
+        TEMPEST_API F32 GetMoveSpeed(void) const;
 
-        inline void SetDeadZone(F32 val)
-        {
-            _deadZone = val;
-        }
+        TEMPEST_API void SetDeadZone(F32 val);
 
     private:
-        F64 _zoomSensitivity;	
-        F32 _moveSpeed;			
-        F32 _deadZone;			
+        F64 _zoomSensitivity;
+        F32 _moveSpeed;
+        F32 _deadZone;
 
     };//end FPSCamera
     typedef shared_ptr<FPSCamera> p_FPSCamera;

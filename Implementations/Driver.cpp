@@ -165,3 +165,20 @@ p_Driver Driver::Instance(void)
 
     return _instance;
 }
+
+void Driver::ResetMouseCursor(void)
+{
+    _window->v_ResetMouseCursor();
+}
+
+void Driver::ToggleMouseCursor(bool state)
+{
+    if(state)
+    {
+        _window->v_EnableMouseCursor();
+    }
+    else
+    {
+        _window->v_DisableMouseCursor();
+    }
+}

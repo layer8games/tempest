@@ -64,6 +64,10 @@ namespace Tempest
         
         TEMPEST_API static shared_ptr<Driver> Instance();
 
+        TEMPEST_API void ResetMouseCursor(void);
+
+        TEMPEST_API void ToggleMouseCursor(bool state);
+
     protected:        
         Driver(void);
 
