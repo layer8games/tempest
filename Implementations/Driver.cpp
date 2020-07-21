@@ -182,3 +182,8 @@ void Driver::ToggleMouseCursor(bool state)
         _window->v_DisableMouseCursor();
     }
 }
+
+void Driver::ToggleWireFrame(void)
+{
+    _window->v_ToggleWireFrame();
+}

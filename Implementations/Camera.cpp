@@ -63,6 +63,15 @@ void Camera::SetOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearP
     _projectionMatrix.MakeOrthographic(left, right, bottom, top, nearPlane, farPlane);
 }
 
+void Camera::SetPerspective(void)
+{
+    _projectionMatrix.MakePerspective(45.0f,
+                                      static_cast<F32>(TE::Driver::Instance()->GetScreenWidth()) / static_cast<F32>(TE::Driver::Instance()->GetScreenHeight()), 
+                                      0.1f, 
+                                      100.0f
+    );
+}
+
 void Camera::SetPerspective(F32 fov, F32 aspect, F32 nearPlane, F32 farPlane)
 {
     _projectionMatrix.MakePerspective(fov, aspect, nearPlane, farPlane);

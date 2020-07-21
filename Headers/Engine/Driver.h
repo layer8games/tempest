@@ -68,6 +68,8 @@ namespace Tempest
 
         TEMPEST_API void ToggleMouseCursor(bool state);
 
+        TEMPEST_API void ToggleWireFrame(void);
+
     protected:        
         Driver(void);
 

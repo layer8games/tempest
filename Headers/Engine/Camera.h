@@ -33,6 +33,8 @@ namespace Tempest
 
         TEMPEST_API void SetOrthographic(F32 left, F32 right, F32 bottom, F32 top, F32 nearPlane, F32 farPlane);
     
+        TEMPEST_API void SetPerspective(void);
+        
         TEMPEST_API void SetPerspective(F32 fov, F32 aspect, F32 nearPlane, F32 farPlane);
     
         TEMPEST_API const TM::Matrix4& GetViewMatrix(void) const;
