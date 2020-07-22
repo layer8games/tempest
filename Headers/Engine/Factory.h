@@ -27,7 +27,7 @@ namespace Tempest
 
         TEMPEST_API p_StaticGameObject2D CreateStaticObject2D(const TM::Point2& pos, F32 scale, F32 pixelSize, U32 textureID);
 
-        TEMPEST_API p_StaticGameObject3D CreateStaticObject3D(string filePath, const TM::Point3& pos, const TM::Vector3& scale, const TM::Vector3& pixelSize, U32 textureID);
+        TEMPEST_API p_StaticGameObject3D CreateStaticObject3D(string filePath, U32 shaderID, const TM::Point3& pos, const TM::Vector3& scale, const TM::Vector3& pixelSize, U32 textureID);
 
     private:
 

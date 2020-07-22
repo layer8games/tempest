@@ -25,50 +25,7 @@ GameObject3D::~GameObject3D(void)
 
 void GameObject3D::Init(string filepath)
 {
-    // TODO: Create default 3D shader, add to ShaderManager
-    //SetShader(TE::ShaderManager::Instance()->GetShader(_defaultShaderID));
     _mesh->LoadOBJ(filepath);
-
-    /*TM::Point4 topRight(1.0f, 1.0f, 0.0f, 1.0f);
-    TM::Point4 topLeft(-1.0f, 1.0f, 0.0f, 1.0f);
-    TM::Point4 bottomRight(1.0f, -1.0f, 0.0f, 1.0f);
-    TM::Point4 bottomLeft(-1.0f, -1.0f, 0.0f, 1.0f);
-
-    TM::Point2 top(0.0f, 0.5f);
-
-    TexCoord uvTopLeft{0.0f, 0.0f};
-    TexCoord uvTopRight{1.0f, 0.0f};
-    TexCoord uvBottomLeft{0.0f, 1.0f};
-    TexCoord uvBottomRight(1.0f, 1.0f);
-
-    Vertex one{ };
-    one.position = topLeft;
-    one.texCoord = uvTopLeft;
-
-    Vertex two{ };
-    two.position = topRight;
-    two.texCoord = uvTopRight;
-
-    Vertex three{ };
-    three.position = bottomRight;
-    three.texCoord = uvBottomRight;
-
-    Vertex four{ };
-    four.position = bottomLeft;
-    four.texCoord = uvBottomLeft;
-
-
-    _mesh->AddVertex(one);
-    _mesh->AddVertex(two);
-    _mesh->AddVertex(three);
-
-    _mesh->AddVertex(one);
-    _mesh->AddVertex(three);
-    _mesh->AddVertex(four);
-
-    _mesh->InitOpenGLData();
-
-    _shader = ShaderManager::Instance()->GetShader(SPRITE);*/
 }
 
 void GameObject3D::Init(string filepath, U32 shaderID)
@@ -343,9 +300,9 @@ void GameObject3D::DefaultRender(void)
     }
 
     // Remove later
-    _shader->SetUniform("sprite_color", _color);
+    _shader->SetUniform("color", _color);
     //
-    _shader->SetUniform("model", GetModelMatrix());
+    _shader->SetUniform("world_transform", GetModelMatrix());
 
     _mesh->v_Render();
 

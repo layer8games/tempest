@@ -362,8 +362,8 @@ void GameObject2D::DefaultRender(void)
         BindTexture(true);
     }
 
-    _shader->SetUniform("sprite_color", _color);
-    _shader->SetUniform("model", GetModelMatrix());
+    _shader->SetUniform("color", _color);
+    _shader->SetUniform("world_transform", GetModelMatrix());
 
     _mesh->v_Render();
 

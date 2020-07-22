@@ -553,10 +553,12 @@
     <ClCompile Include="..\..\Implementations\LevelManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Assets\Shaders\Default\glyph_fragment.glsl" />
-    <None Include="..\..\Assets\Shaders\Default\glyph_vertex.glsl" />
-    <None Include="..\..\Assets\Shaders\Default\sprite_fragment.glsl" />
-    <None Include="..\..\Assets\Shaders\Default\sprite_vertex.glsl" />
+    <None Include="..\..\Assets\Shaders\default_model_fragment.glsl" />
+    <None Include="..\..\Assets\Shaders\default_model_vertex.glsl" />
+    <None Include="..\..\Assets\Shaders\default_sprite_fragment.glsl" />
+    <None Include="..\..\Assets\Shaders\default_sprite_vertex.glsl" />
+    <None Include="..\..\Assets\Shaders\glyph_fragment.glsl" />
+    <None Include="..\..\Assets\Shaders\glyph_vertex.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

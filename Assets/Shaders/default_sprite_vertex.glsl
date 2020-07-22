@@ -3,7 +3,7 @@
 layout (location = 0) in vec4 position; // in local space
 layout (location = 1) in vec2 texCoord;
 
-uniform mat4 model;
+uniform mat4 world_transform;
 uniform mat4 view;
 uniform mat4 projection;
 
@@ -13,5 +13,5 @@ void main()
 {
     fs_texCoord = texCoord;
 
-    gl_Position = projection * view * model * position;
+    gl_Position = projection * view * world_transform * position;
 }

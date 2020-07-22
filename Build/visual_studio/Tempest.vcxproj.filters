@@ -274,6 +274,15 @@
     <Filter Include="Source Code\Engine\CameraController">
       <UniqueIdentifier>{93b07449-c17f-4d83-b90a-4d91a7694e5d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\Shaders\model">
+      <UniqueIdentifier>{ccb285fe-df0a-419f-bb79-bdc3be3285f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Shaders\sprite">
+      <UniqueIdentifier>{95feba0f-e0cd-4f55-833a-8e1e2ecfe8de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Shaders\glyph">
+      <UniqueIdentifier>{5336eae1-2003-4c66-b328-aefdb1a131bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -697,17 +706,23 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Assets\Shaders\Default\sprite_vertex.glsl">
-      <Filter>Assets\Shaders</Filter>
+    <None Include="..\..\Assets\Shaders\default_model_fragment.glsl">
+      <Filter>Assets\Shaders\model</Filter>
     </None>
-    <None Include="..\..\Assets\Shaders\Default\sprite_fragment.glsl">
-      <Filter>Assets\Shaders</Filter>
+    <None Include="..\..\Assets\Shaders\default_model_vertex.glsl">
+      <Filter>Assets\Shaders\model</Filter>
     </None>
-    <None Include="..\..\Assets\Shaders\Default\glyph_fragment.glsl">
-      <Filter>Assets\Shaders</Filter>
+    <None Include="..\..\Assets\Shaders\glyph_fragment.glsl">
+      <Filter>Assets\Shaders\glyph</Filter>
     </None>
-    <None Include="..\..\Assets\Shaders\Default\glyph_vertex.glsl">
-      <Filter>Assets\Shaders</Filter>
+    <None Include="..\..\Assets\Shaders\glyph_vertex.glsl">
+      <Filter>Assets\Shaders\glyph</Filter>
+    </None>
+    <None Include="..\..\Assets\Shaders\default_sprite_fragment.glsl">
+      <Filter>Assets\Shaders\sprite</Filter>
+    </None>
+    <None Include="..\..\Assets\Shaders\default_sprite_vertex.glsl">
+      <Filter>Assets\Shaders\sprite</Filter>
     </None>
   </ItemGroup>
 </Project>

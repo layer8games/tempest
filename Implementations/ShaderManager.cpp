@@ -26,7 +26,7 @@ shared_ptr<ShaderManager> ShaderManager::Instance(void)
 }
 
 
-void ShaderManager::AddShader(U32 id, shared_ptr<Shader> shader)
+void ShaderManager::AddShader(U32 id, p_Shader shader)
 {
     _loadedShaders.insert({id, shader});
 
@@ -46,7 +46,7 @@ void ShaderManager::LoadShader(U32 id, std::vector<ShaderData> data)
         return;
     }
 
-    shared_ptr<Shader> shader(new Shader());
+    p_Shader shader(new Shader());
     shader->LoadShader(data);
 
     _loadedShaders.insert({id, shader});
@@ -57,7 +57,7 @@ void ShaderManager::LoadShader(U32 id, std::vector<ShaderData> data)
     }
 }
 
-shared_ptr<Shader> ShaderManager::GetShader(U32 id)
+p_Shader ShaderManager::GetShader(U32 id)
 {
     if(_loadedShaders.find(id) != _loadedShaders.end())
     {
@@ -70,39 +70,33 @@ shared_ptr<Shader> ShaderManager::GetShader(U32 id)
     }
 }
 
-void ShaderManager::_LoadDefaultShaders(void)
+p_Shader ShaderManager::LoadShader(U32 id, string vertexFilepath, string fragmentFilepath)
 {
-    //===== Add Sprite Shader =====
-    shared_ptr<Shader> spriteShader(new Shader());
+    p_Shader shader(new Shader());
     std::vector<ShaderData> shaderData;
     ShaderData vs;
     ShaderData fs;
-    
-    vs.filePath = "./Assets/Shaders/Default/sprite_vertex.glsl";
+
+    vs.filePath = vertexFilepath;
     vs.type = ShaderType::VERTEX;
     shaderData.push_back(vs);
 
-    fs.filePath = "./Assets/Shaders/Default/sprite_fragment.glsl";
+    fs.filePath = fragmentFilepath;
     fs.type = ShaderType::FRAGMENT;
     shaderData.push_back(fs);
 
-    spriteShader->LoadShader(shaderData);
+    shader->LoadShader(shaderData);
 
-    AddShader(SPRITE, spriteShader);
+    AddShader(id, shader);
 
-    //===== Add Glyph Shader =====
-    shared_ptr<Shader> glyphShader(new Shader());
-    shaderData.clear();
+    return shader;
+}
 
-    vs.filePath = "./Assets/Shaders/Default/glyph_vertex.glsl";
-    vs.type = ShaderType::VERTEX;
-    shaderData.push_back(vs);
+void ShaderManager::_LoadDefaultShaders(void)
+{
+    LoadShader(SPRITE, "./Assets/Shaders/default_sprite_vertex.glsl", "./Assets/Shaders/default_sprite_fragment.glsl");
 
-    fs.filePath = "./Assets/Shaders/Default/glyph_fragment.glsl";
-    fs.type = ShaderType::FRAGMENT;
-    shaderData.push_back(fs);
+    LoadShader(GLYPH, "./Assets/Shaders/glyph_vertex.glsl", "./Assets/Shaders/glyph_fragment.glsl");
 
-    glyphShader->LoadShader(shaderData);
-
-    AddShader(GLYPH, glyphShader);
+    LoadShader(MODEL, "./Assets/Shaders/default_model_vertex.glsl", "./Assets/Shaders/default_model_fragment.glsl");
 }

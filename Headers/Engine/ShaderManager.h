@@ -15,21 +15,24 @@ namespace Tempest
 	enum TEMPEST_API DefaultShaderID
 	{
 		SPRITE = 0,
-		GLYPH = 1  
+		GLYPH = 1,
+		MODEL = 2
 	};
 
 	class ShaderManager
 	{
-	public:		
+	public:
 		TEMPEST_API ~ShaderManager(void);
 
 		TEMPEST_API static shared_ptr<ShaderManager> Instance(void);
 
-		TEMPEST_API void AddShader(U32 id, shared_ptr<Shader> shader);
+		TEMPEST_API void AddShader(U32 id, p_Shader shader);
 
 		TEMPEST_API void LoadShader(U32 id, std::vector<ShaderData> data);
 
-		TEMPEST_API shared_ptr<Shader> GetShader(U32 id);
+		TEMPEST_API p_Shader GetShader(U32 id);
+
+		TEMPEST_API p_Shader LoadShader(U32 id, string vertexFilepath, string fragmentFilepath);
 
 	protected:
 		ShaderManager(void);
