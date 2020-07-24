@@ -213,8 +213,6 @@ void GameObjectManager::RenderObjects(void)
         if(obj.second->GetActiveRender())
         {
             obj.second->UpdateInternals();
-            obj.second->GetShader()->SetUniform("projection", CameraController::Instance()->GetProjectionMatrix());
-            obj.second->GetShader()->SetUniform("view", CameraController::Instance()->GetViewMatrix());
             obj.second->v_Render();
         }
     }

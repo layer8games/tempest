@@ -62,7 +62,7 @@ const TM::Matrix4& GameObject3D::GetModelMatrix(void) const
 
 const TM::Matrix4 GameObject3D::GetModelMatrixRot(void) const
 {
-    TM::Matrix4 mat = _modelToWorldCache; 
+    TM::Matrix4 mat = _modelToWorldCache;
     mat.Translate(0.0f, 0.0f, 0.0f);
     return mat;
 }
@@ -301,8 +301,10 @@ void GameObject3D::DefaultRender(void)
 
     // Remove later
     _shader->SetUniform("color", _color);
-    //
-    _shader->SetUniform("world_transform", GetModelMatrix());
+
+    TM::Matrix4 MVPTransform = CameraController::Instance()->GetProjectionMatrix() * CameraController::Instance()->GetViewMatrix() * GetModelMatrix();
+    _shader->SetUniform("mvp_transform", MVPTransform);
+    _shader->SetUniform("model_transform", GetModelMatrix());
 
     _mesh->v_Render();
 
