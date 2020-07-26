@@ -67,7 +67,7 @@ namespace Tempest
 
         TEMPEST_API void SetUniform(string name, const Color& col);
  
-        TEMPEST_API void SetUniformVec3(string name, const Color& col);
+        TEMPEST_API void SetUniformColorAsVec3(string name, const Color& col);
 
         TEMPEST_API GLuint GetProgram(void) const;
 

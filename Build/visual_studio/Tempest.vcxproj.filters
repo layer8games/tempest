@@ -283,6 +283,9 @@
     <Filter Include="Assets\Shaders\glyph">
       <UniqueIdentifier>{5336eae1-2003-4c66-b328-aefdb1a131bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Engine\Light">
+      <UniqueIdentifier>{6f620ba1-77f6-4d1f-8e4b-707ef6e1537f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -507,6 +510,9 @@
     <ClInclude Include="..\..\Headers\Engine\CameraController.h">
       <Filter>Source Code\Engine\CameraController</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Light.h">
+      <Filter>Source Code\Engine\Light</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\ErrorManager.cpp">
@@ -703,6 +709,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\CameraController.cpp">
       <Filter>Source Code\Engine\CameraController</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Light.cpp">
+      <Filter>Source Code\Engine\Light</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

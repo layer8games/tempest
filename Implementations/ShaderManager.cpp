@@ -92,6 +92,14 @@ p_Shader ShaderManager::LoadShader(U32 id, string vertexFilepath, string fragmen
     return shader;
 }
 
+void ShaderManager::SetAllUnformsColorAsVec3(string name, const Color& color)
+{
+    for(auto i : _loadedShaders)
+    {
+        i.second->SetUniformColorAsVec3(name, color);
+    }
+}
+
 void ShaderManager::_LoadDefaultShaders(void)
 {
     LoadShader(SPRITE, "./Assets/Shaders/default_sprite_vertex.glsl", "./Assets/Shaders/default_sprite_fragment.glsl");

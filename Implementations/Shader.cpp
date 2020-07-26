@@ -158,7 +158,7 @@ void Shader::SetUniform(string name, const Color& col)
     }
 }
 
-void Shader::SetUniformVec3(string name, const Color& col)
+void Shader::SetUniformColorAsVec3(string name, const Color& col)
 {
     Use();
     GLuint location = _GetUniformLocation(name.c_str());
