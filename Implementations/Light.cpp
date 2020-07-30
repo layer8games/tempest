@@ -18,3 +18,27 @@ Light::Light(void)
 
 Light::~Light(void)
 {  }
+
+void Light::SetAmbientColor(const Color& color)
+{
+    _ambientColor = color;
+    ShaderManager::Instance()->SetAllUnformsColorAsVec3("ambient_light_color", _ambientColor);
+}
+
+void Light::SetPosition(const TM::Vector3& pos)
+{
+    _position = pos;
+    ShaderManager::Instance()->SetAllUniforms("directional_light_position", _position);
+}
+
+void Light::SetSpecularFactor(F32 factor)
+{
+    _specularFactor = factor;
+    ShaderManager::Instance()->SetAllUniforms("specular_factor", _specularFactor);
+}
+
+void Light::SetSpecularShine(F32 shine)
+{
+    _specularShine = shine;
+    ShaderManager::Instance()->SetAllUniforms("specular_shine", shine);
+}
