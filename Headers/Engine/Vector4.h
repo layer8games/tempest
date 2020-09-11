@@ -1,21 +1,17 @@
 #pragma once
 
-//===== Killer Includes =====
 #include "stdafx.h"
 #include <Engine/Atom.h>
 #include <Engine/Vector3.h>
-#include <Engine/Point3.h>
-#include <Engine/Point4.h>
 
+#include <glm/vec4.hpp>
 
-//===== Stnadard inlcudes =====
 #include <cassert>
 
 namespace TempestMath
 {
     class Vector3;
-    class Point3;
-    class Point4;
+
     class Vector4
     {
     public:
@@ -59,6 +55,14 @@ namespace TempestMath
             y = yVal;
             z = zVal;
         }
+
+        TEMPEST_API glm::vec4 GetRawData(void) const;
+
+        TEMPEST_API F32 GetX() const;
+        
+        TEMPEST_API F32 GetY() const;
+        
+        TEMPEST_API F32 GetZ() const;
 
         TEMPEST_API Vector4& operator=(const Vector4& vec);
 
@@ -170,6 +174,11 @@ namespace TempestMath
         real z; 
         real w;
 
+        private:
+            glm::vec4 _data;
+
     };
     typedef shared_ptr<Vector4> p_Vector4;
+    typedef Vector4 Point4;
+    typedef shared_ptr<Point4> p_Point4;
 }

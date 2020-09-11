@@ -17,9 +17,6 @@ using std::make_shared;
 #include <Engine/Vector2.h>
 #include <Engine/Vector3.h>
 #include <Engine/Vector4.h>
-#include <Engine/Point2.h>
-#include <Engine/Point3.h>
-#include <Engine/Point4.h>
 #include <Engine/Quaternion.h>
 #include <Engine/Matrix3.h>
 #include <Engine/Matrix4.h>

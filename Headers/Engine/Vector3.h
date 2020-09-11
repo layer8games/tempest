@@ -3,21 +3,16 @@
 //===== Killer Includes =====
 #include "stdafx.h"
 #include <Engine/Atom.h>
-#include <Engine/Point2.h>
-#include <Engine/Point3.h>
-#include <Engine/Point4.h>
 #include <Engine/Vector2.h>
 #include <Engine/Vector4.h>
 
+#include <glm/vec3.hpp>
 
 //===== Stnadard inlcudes =====
 #include <cassert>
 
 namespace TempestMath
 {
-    class Point2;
-    class Point3;
-    class Point4;
     class Vector2;
     class Vector4;
     
@@ -67,6 +62,14 @@ namespace TempestMath
             y = yVal;
             z = zVal;
         }
+
+        TEMPEST_API glm::vec3 GetRawData(void) const;
+        
+        TEMPEST_API F32 GetX() const;
+        
+        TEMPEST_API F32 GetY() const;
+        
+        TEMPEST_API F32 GetZ() const;
 
         TEMPEST_API Vector3& operator=(const Vector2& vec);
 
@@ -168,6 +171,11 @@ namespace TempestMath
         real x;
         real y;
         real z;
+
+        glm::vec3 _data;
+
     };// end class
     typedef shared_ptr<Vector3> p_Vector3;
+    typedef Vector3 Point3;
+    typedef shared_ptr<Point3> p_Point3;
 }//end namespace

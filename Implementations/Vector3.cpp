@@ -123,6 +123,27 @@ void Vector3::AddScaledVector(const Point4& point, real scale)
     y += point.y * scale;
     z += point.z * scale;
 }
+
+glm::vec3 Vector3::GetRawData(void) const
+{
+    return _data;
+}
+
+F32 Vector3::GetX() const
+{
+    return x;
+}
+        
+F32 Vector3::GetY() const
+{
+    return y;
+}
+        
+F32 Vector3::GetZ() const
+{
+    return z;
+}
+
 Vector3& Vector3::operator=(const Vector2& vec)
 {
     x = vec.x;

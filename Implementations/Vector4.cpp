@@ -123,6 +123,27 @@ void Vector4::AddScaledPoint(const Point4& point, real scale)
     y += point.y * scale;
     z += point.z * scale;
 }
+
+glm::vec4 Vector4::GetRawData(void) const
+{
+    return _data;
+}
+
+F32 Vector4::GetX() const
+{
+    return x;
+}
+        
+F32 Vector4::GetY() const
+{
+    return y;
+}
+        
+F32 Vector4::GetZ() const
+{
+    return z;
+}
+
 Vector4& Vector4::operator=(const Vector4& vec)
 {
     x = vec.x;

@@ -377,9 +377,7 @@ void GameObject2D::DefaultRender(void)
 }
 
 void GameObject2D::DefaultUpdate(void)
-{
-    UpdateInternals();
-}
+{  }
 
 void GameObject2D::_CalculateCachedData(void)
 {

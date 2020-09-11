@@ -127,9 +127,6 @@
     <Filter Include="Source Code\Math\LinearAlgebra\Matrix">
       <UniqueIdentifier>{b47791cc-1241-40a1-9bf3-9df0eb96250c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Code\Math\LinearAlgebra\Point">
-      <UniqueIdentifier>{78f25389-9b6a-4fa7-9efc-4b9cde25a36f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Code\Math\Timer">
       <UniqueIdentifier>{d95a6a48-7e2e-4741-b39d-f6a1c763e14d}</UniqueIdentifier>
     </Filter>
@@ -286,6 +283,15 @@
     <Filter Include="Source Code\Engine\Light">
       <UniqueIdentifier>{6f620ba1-77f6-4d1f-8e4b-707ef6e1537f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Math\LinearAlgebra\Vector\2">
+      <UniqueIdentifier>{98098c16-d3b3-4acb-9652-b2a48a2e2e01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Math\LinearAlgebra\Vector\3">
+      <UniqueIdentifier>{8f600850-5e85-43cb-a20c-090b93b1c311}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Math\LinearAlgebra\Vector\4">
+      <UniqueIdentifier>{cbc674ab-9386-4cf7-a126-8c69943437f3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -365,12 +371,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Matrix3.h">
       <Filter>Source Code\Math\LinearAlgebra\Matrix</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Vector4.h">
-      <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Vector3.h">
-      <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\CharacterData.h">
       <Filter>Source Code\Engine\CharacterData</Filter>
@@ -453,18 +453,6 @@
     <ClInclude Include="..\..\Headers\Engine\GameObject2D.h">
       <Filter>Source Code\Engine\GameObjects\Base\2D</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Vector2.h">
-      <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Point4.h">
-      <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Point2.h">
-      <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Point3.h">
-      <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\SteeringOutput2D.h">
       <Filter>Source Code\Engine\AI\SteeringOutput</Filter>
     </ClInclude>
@@ -512,6 +500,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\stdafx.h">
       <Filter>Source Code\Engine\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Vector2.h">
+      <Filter>Source Code\Math\LinearAlgebra\Vector\2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Vector3.h">
+      <Filter>Source Code\Math\LinearAlgebra\Vector\3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Vector4.h">
+      <Filter>Source Code\Math\LinearAlgebra\Vector\4</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -590,12 +587,6 @@
     <ClCompile Include="..\..\Implementations\Matrix3.cpp">
       <Filter>Source Code\Math\LinearAlgebra\Matrix</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Vector4.cpp">
-      <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Vector3.cpp">
-      <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Camera.cpp">
       <Filter>Source Code\Engine\Camera\Default</Filter>
     </ClCompile>
@@ -659,18 +650,6 @@
     <ClCompile Include="..\..\Implementations\GameObject2D.cpp">
       <Filter>Source Code\Engine\GameObjects\Base\2D</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Vector2.cpp">
-      <Filter>Source Code\Math\LinearAlgebra\Vector</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Point4.cpp">
-      <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Point3.cpp">
-      <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Point2.cpp">
-      <Filter>Source Code\Math\LinearAlgebra\Point</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Steering2D.cpp">
       <Filter>Source Code\Engine\AI\SteeringBehaviors\Base</Filter>
     </ClCompile>
@@ -712,6 +691,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\stdafx.cpp">
       <Filter>Source Code\Engine\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Vector2.cpp">
+      <Filter>Source Code\Math\LinearAlgebra\Vector\2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Vector3.cpp">
+      <Filter>Source Code\Math\LinearAlgebra\Vector\3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Vector4.cpp">
+      <Filter>Source Code\Math\LinearAlgebra\Vector\4</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

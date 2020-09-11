@@ -266,20 +266,12 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Point2.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Point3.h">
+    <ClInclude Include="..\..\Headers\Engine\Vector2.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\RigidBody2D.h" />
     <ClInclude Include="..\..\Headers\Engine\ForceRegistry.h" />
-    <ClInclude Include="..\..\Headers\Engine\Point4.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\Random.h">
       <SubType>
       </SubType>
@@ -336,10 +328,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\SteeringOutput2D.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Vector2.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -479,11 +467,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="..\..\Implementations\Point2.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Point3.cpp">
+    <ClCompile Include="..\..\Implementations\Vector2.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -493,10 +477,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\ForceRegistry.cpp" />
-    <ClCompile Include="..\..\Implementations\Point4.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="..\..\Implementations\Random.cpp">
       <SubType>
       </SubType>
@@ -541,10 +521,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Glyph.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Vector2.cpp">
       <SubType>
       </SubType>
     </ClCompile>
