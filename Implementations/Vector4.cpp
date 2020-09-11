@@ -1,88 +1,48 @@
 #include "stdafx.h"
-#include <Engine/Vector4.h>
+#include "Engine/Vector4.h"
 using namespace TempestMath;
 
 Vector4::Vector4(void)
     :
-    x(0.0f), 
-    y(0.0f), 
-    z(0.0f),
-    w(0.0f)
+    _data(0.0f)
 {  }
 
 Vector4::Vector4(real val)
     :
-    x(val), 
-    y(val), 
-    z(val),
-    w(0.0f)
+    _data(0.0f)
 {  }
-
 
 Vector4::Vector4(real xVal, real yVal, real zVal, real wVal)
     :
-    x(xVal), 
-    y(yVal), 
-    z(zVal),
-    w(wVal)
+    _data(xVal, yVal, zVal, wVal)
 {  }
 
-Vector4::Vector4(const Vector4& v)
+Vector4::Vector4(const Vector4& vector)
     :
-    x(v.x), 
-    y(v.y), 
-    z(v.z),
-    w(v.w)
+    _data(vector.GetRawData())
 {  }
 
-Vector4::Vector4(const Point4& p)
+Vector4::Vector4(glm::vec4 vector)
     :
-    x(p.x), 
-    y(p.y), 
-    z(p.z),
-    w(0.0f)
+    _data(vector)
 {  }
 
 Vector4::~Vector4(void)
 {  }
 
-real Vector4::Dot(const Vector4& vec) const
+real Vector4::Dot(const Vector4& vector) const
 {
-    return x * vec.x +
-           y * vec.y +
-           z * vec.z;
-}
-
-real Vector4::Dot(const Point4& point) const
-{
-    return x * point.x +
-           y * point.y +
-           z * point.z;
-}
-
-real Vector4::Dot(const Point3& point) const
-{
-    return x * point.x +
-           y * point.y +
-           z * point.z;
-}
-
-Vector4 Vector4::CrossProduct(const Vector4& vec) const
-{
-    return Vector4(y * vec.z - z * vec.y,
-                   z * vec.x - x * vec.z,
-                   x * vec.y - y * vec.x,
-                   0.0f);
+    return glm::dot(_data, vector.GetRawData());
 }
 
 real Vector4::Magnitude(void)
 {
-    return real_sqrt(x * x + y * y + z * z);
+    return glm::length(_data);
 }
 
 real Vector4::SqrMagnitude(void)
 {
-    return x * x + y * y + z * z;
+    return glm::length2(_data);
 }
 
 void Vector4::Normalize(void)
@@ -97,31 +57,22 @@ void Vector4::Normalize(void)
 
 void Vector4::Reset(real val)
 {
-    x = val;
-    y = val;
-    z = val;
-    w = 0.0f;
+    _data = glm::vec4(val);
 }
 
-void Vector4::AddScaledVector(const Vector4& vec, real scale)
+void Vector4::AddScaledVector(const Vector4& vector, real scale)
 {
-    x += vec.x * scale;
-    y += vec.y * scale;
-    z += vec.z * scale;
+    _data += vector.GetRawData() * scale;
 }
 
-void Vector4::AddScaledVector(const Vector3& vec, real scale)
+void Vector4::AddScaledVector(const Vector3& vector, real scale)
 {
-    x += vec.x * scale;
-    y += vec.y * scale;
-    z += vec.z * scale;
+    _data += vector.GetRawData() * scale;
 }
 
-void Vector4::AddScaledPoint(const Point4& point, real scale)
+void Vector4::Set(real xVal, real yVal, real zVal, real wVal)
 {
-    x += point.x * scale;
-    y += point.y * scale;
-    z += point.z * scale;
+    _data = glm::vec4(xVal, yVal, zVal, wVal);
 }
 
 glm::vec4 Vector4::GetRawData(void) const
@@ -131,339 +82,205 @@ glm::vec4 Vector4::GetRawData(void) const
 
 F32 Vector4::GetX() const
 {
-    return x;
+    return _data.x;
 }
         
 F32 Vector4::GetY() const
 {
-    return y;
+    return _data.y;
 }
         
 F32 Vector4::GetZ() const
 {
-    return z;
+    return _data.z;
 }
 
-Vector4& Vector4::operator=(const Vector4& vec)
+Vector4& Vector4::operator=(const Vector4& vector)
 {
-    x = vec.x;
-    y = vec.y;
-    z = vec.z;
-    w = vec.w;
+    _data = vector.GetRawData();
 
     return *this;
 }
 
-Vector4& Vector4::operator=(const Point4& point)
+Vector4& Vector4::operator=(const Vector3& vector)
 {
-    x = point.x;
-    y = point.y;
-    z = point.z;
-    w = 0.0f;
-
-    return *this;
-}
-
-Vector4& Vector4::operator=(const Vector3& vec)
-{
-    x = vec.x;
-    y = vec.y;
-    z = vec.z;
-    w = 0.0f;
+    _data.x = vector.GetX();
+    _data.y = vector.GetY();
+    _data.z = vector.GetZ();
 
     return *this;
 }
 
 Vector4& Vector4::operator=(real val)
 {
-    x = val;
-    y = val;
-    z = val;
+    _data = glm::vec4(val);
 
     return *this;
 }
 
-Vector4 Vector4::operator+(const Vector4& vec) const
+Vector4 Vector4::operator+(const Vector4& vector) const
 {
-    return Vector4(x + vec.x,
-                   y + vec.y,
-                   z + vec.z,
-                   0.0f);
+    return Vector4(_data + vector.GetRawData());
 }
 
-Vector4& Vector4::operator+=(const Vector4& vec)
+Vector4& Vector4::operator+=(const Vector4& vector)
 {
-    x += vec.x;
-    y += vec.y;
-    z += vec.z;
-
-    return *this;
-}
-
-Vector4 Vector4::operator+(const Vector3& vec) const
-{
-    return Vector4(x + vec.x,
-                   y + vec.y,
-                   z + vec.z,
-                   0.0f);
-}
-
-Vector4& Vector4::operator+=(const Point3& point)
-{
-    x += point.x;
-    y += point.y;
-    z += point.z;
-
-    return *this;
-}
-
-Vector4& Vector4::operator+=(const Point4& point)
-{
-    x += point.x;
-    y += point.y;
-    z += point.z;
-
-    return *this;
-}
-
-Vector4 Vector4::operator+(const Point3& point) const
-{
-    return Vector4(x + point.x,
-                   y + point.y,
-                   z + point.z,
-                   0.0f);
-}
-
-Vector4 Vector4::operator+(const Point4& point) const
-{
-    return Vector4(x + point.x,
-                   y + point.y,
-                   z + point.z,
-                   0.0f);
-}
-
-Vector4& Vector4::operator+=(const Vector3& vec)
-{
-    x += vec.x;
-    y += vec.y;
-    z += vec.z;
+    _data += vector.GetRawData();
 
     return *this;
 }
 
 Vector4 Vector4::operator+(real val) const
 {
-    return Vector4(x + val,
-                   y + val,
-                   z + val,
-                   0.0f);
+    return Vector4(_data + val);
 }
 
 Vector4& Vector4::operator+=(real val)
 {
-    x += val;
-    y += val;
-    z += val;
+    _data += val;
 
     return *this;
 }
 
-Vector4 Vector4::operator-(const Vector4& vec) const
+Vector4 Vector4::operator-(const Vector4& vector) const
 {
-    return Vector4(x - vec.x,
-                   y - vec.y,
-                   z - vec.z,
-                   0.0f);
+    return Vector4(_data - vector.GetRawData());
 }
 
-Vector4& Vector4::operator-=(const Vector4& vec)
+Vector4& Vector4::operator-=(const Vector4& vector)
 {
-    x -= vec.x;
-    y -= vec.y;
-    z -= vec.z;
+    _data -= vector.GetRawData();
 
     return *this;
 }
 
-Vector4 Vector4::operator-(const Vector3& vec) const
+Vector4 Vector4::operator-(void) const
 {
-    return Vector4(x - vec.x,
-                   y - vec.y,
-                   z - vec.z,
-                   0.0f);
+    return Vector4(-_data);
 }
 
-Vector4& Vector4::operator-=(const Vector3& vec)
+Vector4& Vector4::operator++(void)
 {
-    x -= vec.x;
-    y -= vec.y;
-    z -= vec.z;
+    _data++;
 
     return *this;
 }
 
-Vector4 Vector4::operator-(const Point3& point) const
+Vector4 Vector4::operator++(int)
 {
-    return Vector4(x - point.x,
-                   y - point.y,
-                   z - point.z,
-                   0.0f);
+    return Vector4(++_data);
 }
 
-Vector4 Vector4::operator-(const Point4& point) const
+Vector4& Vector4::operator--(void)
 {
-    return Vector4(x - point.x,
-                   y - point.y,
-                   z - point.z,
-                   0.0f);
-}
-
-Vector4& Vector4::operator-=(const Point3& point)
-{
-    x -= point.x;
-    y -= point.y;
-    z -= point.z;
+    _data--;
 
     return *this;
 }
 
-Vector4& Vector4::operator-=(const Point4& point)
+Vector4 Vector4::operator--(int)
 {
-    x -= point.x;
-    y -= point.y;
-    z -= point.z;
-
-    return *this;
+    return Vector4(--_data);
 }
 
 Vector4 Vector4::operator-(real val) const
 {
-    return Vector4(x - val,
-                   y - val,
-                   z - val,
-                   0.0f);
+    return Vector4(_data - val);
 }
 
 Vector4& Vector4::operator-=(real val)
 {
-    x -= val;
-    y -= val;
-    z -= val;
+    _data -= val;
 
     return *this;
 }
 
-Vector4 Vector4::operator*(const Vector4 vec) const
+Vector4 Vector4::operator*(const Vector4 vector) const
 {
-    return Vector4(x * vec.x,
-                   y * vec.y,
-                   z * vec.z,
-                   0.0f);
+    return Vector4(_data * vector.GetRawData());
 }
 
-Vector4& Vector4::operator*=(const Vector4 vec)
+Vector4& Vector4::operator*=(const Vector4 vector)
 {
-    x *= vec.x;
-    y *= vec.y;
-    z *= vec.z;
+    _data *= vector.GetRawData();
 
     return *this;
 }
 
 Vector4 Vector4::operator*(real val) const
 {
-    return Vector4(x * val,
-                   y * val,
-                   z * val,
-                   0.0f);
+    return Vector4(_data * val);
 }
 
 Vector4& Vector4::operator*=(real val)
 {
-    x *= val;
-    y *= val;
-    z *= val;
+    _data *= val;
 
     return *this;
 }
 
 Vector4 Vector4::operator/(real val) const
 {
-    assert(val != 0.0f);
-
-    return Vector4(x / val,
-                   y / val,
-                   z / val,
-                   0.0f);
+    return Vector4(_data / val);
 }
 
 Vector4& Vector4::operator/=(real val)
 {
-    assert(val != 0.0f);
-
-    x /= val;
-    y /= val;
-    z /= val;
+    _data /= val;
 
     return *this;
 }
 
-bool Vector4::operator>(const Vector4& vec) const
+bool Vector4::operator>(const Vector4& vector) const
 {
-    bool state = x > vec.x && 
-                 y > vec.y &&
-                 z > vec.z &&
-                 w >= vec.w;
-    
+    bool state = _data.x > vector.GetX() && 
+                 _data.y > vector.GetY() &&
+                 _data.z > vector.GetZ();
+
     return state;
 }
 
-bool Vector4::operator<(const Vector4& vec) const
+bool Vector4::operator<(const Vector4& vector) const
 {
-    bool state = x < vec.x && 
-                 y < vec.y &&
-                 z < vec.z &&
-                 w <= vec.w;
-    
+    bool state = _data.x < vector.GetX() &&
+                 _data.y < vector.GetY() &&
+                 _data.z < vector.GetZ();
+
+    return state;;
+}
+
+bool Vector4::operator>=(const Vector4& vector) const
+{
+    bool state = _data.x >= vector.GetX() &&
+                 _data.y >= vector.GetY() &&
+                 _data.z >= vector.GetZ();
+
     return state;
 }
 
-bool Vector4::operator>=(const Vector4& vec) const
+bool Vector4::operator<=(const Vector4& vector) const
 {
-   bool state = x >= vec.x && 
-                y >= vec.y &&
-                z >= vec.z &&
-                w >= vec.w;
-    
+    bool state = _data.x <= vector.GetX() &&
+                 _data.y <= vector.GetY() &&
+                 _data.z <= vector.GetZ();
+
     return state;
 }
 
-bool Vector4::operator<=(const Vector4& vec) const
+bool Vector4::operator==(const Vector4& vector) const
 {
-   bool state = x <= vec.x && 
-                y <= vec.y &&
-                z <= vec.z &&
-                w <= vec.w;
-    
+    bool state = _data.x == vector.GetX() &&
+                 _data.y == vector.GetY() &&
+                 _data.z == vector.GetZ();
+
     return state;
 }
 
-bool Vector4::operator==(const Vector4& vec) const
+bool Vector4::operator!=(const Vector4& vector) const
 {
-   bool state = x == vec.x && 
-                y == vec.y &&
-                z == vec.z &&
-                w == vec.w;
-    
-    return state;
-}
+    bool state = _data.x != vector.GetX() &&
+                 _data.y != vector.GetY() &&
+                 _data.z != vector.GetZ();
 
-bool Vector4::operator!=(const Vector4& vec) const
-{
-    bool state = x != vec.x && 
-                 y != vec.y &&
-                 z != vec.z &&
-                 w != vec.w;
-    
-    return state;
+    return state;;
 }

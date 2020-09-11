@@ -120,13 +120,6 @@ F32 Vector2::GetY(void) const
     return static_cast<F32>(_data.y);
 }
 
-Vector2& Vector2::operator=(const Vector2& point)
-{
-    _data = point.GetRawData();
-
-    return *this;
-}
-
 Vector2& Vector2::operator=(const Vector2& vector)
 {
     _data = vector.GetRawData();
@@ -196,11 +189,6 @@ Vector2 Vector2::operator-(const Vector2& vector) const
     return Vector2(_data - vector.GetRawData());
 }
 
-Vector2 Vector2::operator-(const Vector2& vector) const
-{
-    return Vector2(_data - vector.GetRawData());
-}
-
 Vector2 Vector2::operator-(const Vector3& vector) const
 {
     return Vector2(_data - glm::vec2(vector.GetRawData()));
@@ -249,12 +237,12 @@ Vector2 Vector2::operator--(int)
 
 Vector2 Vector2::operator-(real val) const
 {
-    return Vector2(_data - glm::vec2(val));
+    return Vector2(_data - val);
 }
 
 Vector2& Vector2::operator-=(real val)
 {
-    _data -= glm::vec2(val);
+    _data -= val;
     
     return *this;
 }
@@ -273,7 +261,7 @@ Vector2& Vector2::operator*=(const Vector2 vector)
 
 Vector2 Vector2::operator*(real val) const
 {
-    return Vector2(_data * glm::vec2(val));
+    return Vector2(_data * val);
 }
 
 Vector2& Vector2::operator*=(real val)
@@ -286,12 +274,12 @@ Vector2& Vector2::operator*=(real val)
 //===== Divide by scalar =====
 Vector2 Vector2::operator/(real val) const
 {
-    return Vector2(_data / glm::vec2(val));
+    return Vector2(_data / val);
 }
 
 Vector2& Vector2::operator/=(real val)
 {
-    _data /= glm::vec2(val);
+    _data /= val;
     
     return *this;
 }

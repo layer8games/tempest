@@ -85,8 +85,6 @@ namespace TempestMath
         TEMPEST_API Vector2& operator+=(real val);
 
         TEMPEST_API Vector2 operator-(const Vector2& vector) const;
-
-        TEMPEST_API Vector2 operator-(const Vector2& vector) const;
         
         TEMPEST_API Vector2 operator-(const Vector3& vector) const;
 
