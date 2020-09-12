@@ -292,6 +292,12 @@
     <Filter Include="Source Code\Math\LinearAlgebra\Vector\4">
       <UniqueIdentifier>{cbc674ab-9386-4cf7-a126-8c69943437f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Code\Math\LinearAlgebra\Matrix\3">
+      <UniqueIdentifier>{2bef03df-07ed-4d06-be6f-93cce7feb13b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Code\Math\LinearAlgebra\Matrix\4">
+      <UniqueIdentifier>{f9d072aa-29d8-4112-b094-ae230f099e30}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Headers\Engine\Atom.h">
@@ -365,12 +371,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\DragForce.h">
       <Filter>Source Code\Physics\Forces\Drag</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Matrix4.h">
-      <Filter>Source Code\Math\LinearAlgebra\Matrix</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Headers\Engine\Matrix3.h">
-      <Filter>Source Code\Math\LinearAlgebra\Matrix</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Headers\Engine\CharacterData.h">
       <Filter>Source Code\Engine\CharacterData</Filter>
@@ -510,6 +510,12 @@
     <ClInclude Include="..\..\Headers\Engine\Vector4.h">
       <Filter>Source Code\Math\LinearAlgebra\Vector\4</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Matrix3.h">
+      <Filter>Source Code\Math\LinearAlgebra\Matrix\3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Headers\Engine\Matrix4.h">
+      <Filter>Source Code\Math\LinearAlgebra\Matrix\4</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Implementations\ErrorManager.cpp">
@@ -580,12 +586,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\DragForce.cpp">
       <Filter>Source Code\Physics\Forces\Drag</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Matrix4.cpp">
-      <Filter>Source Code\Math\LinearAlgebra\Matrix</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Implementations\Matrix3.cpp">
-      <Filter>Source Code\Math\LinearAlgebra\Matrix</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Camera.cpp">
       <Filter>Source Code\Engine\Camera\Default</Filter>
@@ -700,6 +700,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Implementations\Vector4.cpp">
       <Filter>Source Code\Math\LinearAlgebra\Vector\4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Matrix3.cpp">
+      <Filter>Source Code\Math\LinearAlgebra\Matrix\3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Implementations\Matrix4.cpp">
+      <Filter>Source Code\Math\LinearAlgebra\Matrix\4</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,78 +1,50 @@
 #include "stdafx.h"
-#include <Engine/Matrix3.h>
+#include "Engine/Matrix3.h"
 using namespace TempestMath;
 
 Matrix3::Matrix3(void)
     :
-    column1(1.0f, 0.0f, 0.0f),
-    column2(0.0f, 1.0f, 0.0f),
-    column3(0.0f, 0.0f, 1.0f)
+    _data(1.0f)
 {  }
 
 Matrix3::Matrix3(const Vector3& x, const Vector3& y, const Vector3& z)
     :    
-    column1(x),
-    column2(y),
-    column3(z)
+    _data(x.GetRawData(), y.GetRawData(), z.GetRawData())
 {  }
 
 Matrix3::Matrix3(const Vector4& x, const Vector4& y, const Vector4& z)
     :
-    column1(x), 
-    column2(y),
-    column3(z)
+    _data(x.GetRawData(), y.GetRawData(), z.GetRawData())
 {  }
 
 
 Matrix3::Matrix3(const real val)
     :
-    column1(val, 0.0f, 0.0f),
-    column2(0.0f, val, 0.0f),
-    column3(0.0f, 0.0f, val)
+    _data(val)
 {  }
 
 Matrix3::Matrix3( real m00, real m01, real m02,
                   real m10, real m11, real m12,
                   real m20, real m21, real m22 )
     :
-    column1(m00, m01, m02),
-    column2(m10, m11, m12),
-    column3(m20, m21, m22)
+    _data(m00, m01, m02,
+          m10, m11, m12,
+          m20, m21, m22)
 {  }
 
 Matrix3::Matrix3(const Matrix3& otherMatrix)
     :
-    column1(otherMatrix.column1),
-    column2(otherMatrix.column2),
-    column3(otherMatrix.column3)
+    _data(otherMatrix.GetRawData())
 {  }
 
-const std::vector<real> Matrix3::GetElems(void) const
-{
-    std::vector<real> elems;
-    
-    elems.push_back(column1.x);
-    elems.push_back(column1.y);
-    elems.push_back(column1.z);
-    elems.push_back(column2.x);
-    elems.push_back(column2.y);
-    elems.push_back(column2.z);
-    elems.push_back(column3.x);
-    elems.push_back(column3.y);
-    elems.push_back(column3.z);
-
-    return elems;
-}
-
+Matrix3::Matrix3(glm::mat3 matrix)
+    :
+    _data(matrix)
+{  }
 
 Matrix3 Matrix3::Scale(real xVal, real yVal)
 {
-    Matrix3 mat{1.0f};
-
-    mat.column1.x = xVal;
-    mat.column2.y = yVal;
-
-    return mat;
+    return Matrix3();
 }
 
 Matrix3 Matrix3::Scale(real xVal, real yVal, real zVal)
@@ -338,6 +310,11 @@ real Matrix3::Determinate(void) const
          + column3.x * (column1.y * column2.z - column2.y * column1.z);
 }
 
+void Matrix3::MakeIdentity(void)
+{
+    Reset(1.0f);
+}
+
 void Matrix3::Reset(real val)
 {
     //Reset Matrix3
@@ -474,6 +451,11 @@ Matrix3& Matrix3::operator/=(real val)
     column3.z /= val;
 
     return *this;
+}
+
+glm::mat3 Matrix3::GetRawData(void) const
+{
+    return _data;
 }
 
 real Matrix3::_Cofactor(real c00, real c01, real c10, real c11) const

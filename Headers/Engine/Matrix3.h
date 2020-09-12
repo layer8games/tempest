@@ -1,12 +1,15 @@
 #pragma once
 
-//=====Killer1 includes=====
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/Vector2.h>
-#include <Engine/Vector3.h>
-#include <Engine/Vector4.h>
-#include <Engine/Quaternion.h>
+#include "Engine/Atom.h"
+#include "Engine/Vector2.h"
+#include "Engine/Vector3.h"
+#include "Engine/Vector4.h"
+#include "Engine/Quaternion.h"
+
+#include "glm/mat3x3.hpp"
+#include "glm/geometric.hpp"
+#include "glm/gtx/norm.hpp"
 
 #include <vector>
 #include <cassert>
@@ -29,8 +32,6 @@ namespace TempestMath
                              real m20, real m21, real m22 );
  
         TEMPEST_API Matrix3(const Matrix3& otherMatrix);
- 
-        TEMPEST_API const std::vector<real> GetElems(void) const;
 
         TEMPEST_API static Matrix3 Scale(real xVal, real yVal);
 
@@ -76,10 +77,7 @@ namespace TempestMath
 
         TEMPEST_API real Determinate(void) const;
 
-        void MakeIdentity(void)
-        {
-            Reset(1.0f);
-        }	
+        TEMPEST_API void MakeIdentity(void);
 
         TEMPEST_API void Reset(real val=0.0f);
          
@@ -99,12 +97,14 @@ namespace TempestMath
 
         TEMPEST_API Matrix3& operator/=(real val);
 
-        Vector3 column1;
-        Vector3 column2;
-        Vector3 column3;
+        TEMPEST_API glm::mat3 GetRawData(void) const;
 
     private:
+        Matrix3(glm::mat3 matrix);
+        
         real _Cofactor(real c00, real c01, real c10, real c11) const;
+        
+        glm::mat3 _data;
 
     };
     typedef shared_ptr<Matrix3> p_Matrix3;
