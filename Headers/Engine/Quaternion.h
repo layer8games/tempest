@@ -5,6 +5,8 @@
 #include <Engine/Atom.h>
 #include <Engine/Vector4.h>
 
+#include "glm/gtx/quaternion.hpp"
+
 #include <assert.h>
 
 namespace TempestMath
@@ -21,6 +23,8 @@ namespace TempestMath
         TEMPEST_API Quaternion(const Quaternion& q);
 
         TEMPEST_API ~Quaternion(void);
+        
+        TEMPEST_API glm::quat GetRawData(void) const;
         
         TEMPEST_API Quaternion operator/(real d);
  
@@ -62,6 +66,10 @@ namespace TempestMath
         real x;
         real y;
         real z;
+
+    private:
+        glm::quat _data;
+
     };//end Class
     typedef shared_ptr<Quaternion> p_Quaternion;
 }//end Namespace

@@ -7,7 +7,8 @@ Quaternion::Quaternion(void)
     w(0.0f),
     x(0.0f),
     y(0.0f),
-    z(0.0f)
+    z(0.0f),
+    _data()
 {  }
 
 Quaternion::Quaternion(real value)
@@ -36,6 +37,11 @@ Quaternion::Quaternion(const Quaternion& q)
 
 Quaternion::~Quaternion(void)
 {  }
+
+glm::quat Quaternion::GetRawData(void) const
+{
+    return _data;
+}
 
 Quaternion Quaternion::operator/ (real d)
 {

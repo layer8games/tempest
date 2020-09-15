@@ -4,151 +4,54 @@ using namespace TempestMath;
 
 Matrix4::Matrix4(void)
     :
-    column1(1.0f, 0.0f, 0.0f, 0.0f),
-    column2(0.0f, 1.0f, 0.0f, 0.0f),
-    column3(0.0f, 0.0f, 1.0f, 0.0f),
-    column4(0.0f, 0.0f, 0.0f, 1.0f)
-{  }
-
-Matrix4::Matrix4(const Vector4& x, const Vector4& y, const Vector4& z)
-    :
-    column1(x),
-    column2(y),
-    column3(z), 
-    column4(0.0f, 0.0f, 0.0f, 1.0f)
-{  }
-
-Matrix4::Matrix4(const Vector4& x, const Vector4& y, const Vector4& z, const Vector4& w)
-    :
-    column1(x), 
-    column2(y),
-    column3(z), 
-    column4(w)
+    _data(1.0f)
 {  }
 
 Matrix4::Matrix4(const real val)
     :
-    column1(val, 0.0f, 0.0f, 0.0f),
-    column2(0.0f, val, 0.0f, 0.0f),
-    column3(0.0f, 0.0f, val, 0.0f),
-    column4(0.0f, 0.0f, 0.0f, 1.0f)
-{  }
-
-Matrix4::Matrix4( real m00, real m01, real m02, real m03,
-                  real m10, real m11, real m12, real m13,
-                  real m20, real m21, real m22, real m23,
-                  real m30, real m31, real m32, real m33)
-    :
-    column1(m00, m01, m02, m03),
-    column2(m10, m11, m12, m13),
-    column3(m20, m21, m22, m23),
-    column4(m30, m31, m32, m33)
+    _data(val)
 {  }
 
 Matrix4::Matrix4(const Matrix4& otherMatrix)
     :
-    column1(otherMatrix.column1),
-    column2(otherMatrix.column2),
-    column3(otherMatrix.column3),
-    column4(otherMatrix.column4)
+    _data(otherMatrix.GetRawData())
 {  }
 
-const std::vector<real> Matrix4::GetElems(void) const
+Matrix4::Matrix4(glm::mat4 matrix)
+    :
+    _data(matrix)
+{  }
+
+glm::mat4 Matrix4::GetRawData(void) const
 {
-    std::vector<real> elems;
-    
-    elems.push_back(column1.x);
-    elems.push_back(column1.y);
-    elems.push_back(column1.z);
-    elems.push_back(column1.w);
-    elems.push_back(column2.x);
-    elems.push_back(column2.y);
-    elems.push_back(column2.z);
-    elems.push_back(column2.w);
-    elems.push_back(column3.x);
-    elems.push_back(column3.y);
-    elems.push_back(column3.z);
-    elems.push_back(column3.w);
-    elems.push_back(column4.x);
-    elems.push_back(column4.y);
-    elems.push_back(column4.z);
-    elems.push_back(column4.w);
-
-    return elems;
-}
-
-void Matrix4::Update(const Quaternion& rotation, const Point3& position, const Vector3 scale) const
-{
-
+    return _data;
 }
 
 void Matrix4::MakeOrthographic(real left, real right, real bottom, real top, real nearPlane, real farPlane)
 {
-    //Reset Matrix4
-    MakeIdentity();
-
-    assert(right - left != 0.0f);
-    assert(top - bottom != 0.0f);
-    assert(farPlane - nearPlane != 0.0f);
-
-    //Diagnal
-    column1.x = 2.0f / (right - left);
-    column2.y = 2.0f / (top - bottom);
-    column3.z = -2.0f / (farPlane - nearPlane);
-    column4.w = 1.0f;
-
-    //Transform "Vector4"
-    column4.x = -(right + left) / (right - left);
-    column4.y = -(top + bottom) / (top - bottom);
-    column4.z = -(farPlane + nearPlane) / (farPlane - nearPlane);
+    _data = glm::ortho(left, right, bottom, top, nearPlane, farPlane);
 }
 
 void Matrix4::MakePerspective(real fieldOfView, real aspectRatio, real nearPlane, real farPlane)
 {
-    assert(nearPlane - farPlane != 0.0f);
-
-    real S = 1.0f / real_tan(RADIAN(0.5f * fieldOfView));
-
-    //Reset Matrix4 
-    MakeIdentity();
-
-    column1.x = S / aspectRatio;
-    column2.y = S;
-    column3.z = (nearPlane + farPlane) / (nearPlane - farPlane);
-    column3.w = -1.0f;
-    column4.z = (2.0f * nearPlane * farPlane) / (nearPlane - farPlane);
+   _data = glm::perspective(fieldOfView, aspectRatio, nearPlane, farPlane);
 }
 
 Matrix4 Matrix4::CreateTranslationMatrix(real xVal, real yVal)
 {
-    Matrix4 mat{1.0f};
-
-    mat.column4.x = xVal;
-    mat.column4.y = yVal;
+    Matrix4 mat{glm::translate(glm::mat4(1.0f), glm::vec3(xVal, yVal, 1.0f))};
 
     return mat;
 }
 
 Matrix4 Matrix4::CreateTranslationMatrix(real xVal, real yVal, real zVal)
 {
-    Matrix4 mat{1.0f};
-
-    mat.column4.x = xVal;
-    mat.column4.y = yVal;
-    mat.column4.z = zVal;
-
-    return mat;	
+    return Matrix4(glm::translate(glm::vec3(xVal, yVal, zVal)));
 }
 
-Matrix4 Matrix4::CreateTranslationMatrix(const Vector4& vec)
+Matrix4 Matrix4::CreateTranslationMatrix(const Vector3& vec)
 {
-    Matrix4 mat{1.0f};
-
-    mat.column4.x = vec.x;
-    mat.column4.y = vec.y;
-    mat.column4.z = vec.z;
-
-    return mat;	
+    return Matrix4(glm::translate(glm::vec3(vec.GetRawData())));
 }
 
 void Matrix4::Translate(real xVal, real yVal)
@@ -590,6 +493,11 @@ real Matrix4::Determinate(void) const
                              + column3.y * (column1.z * column2.w - column2.z * column1.w) );
 
     return m11 - m21 + m31 - m41;
+}
+
+void Matrix4::MakeIdentity(void)
+{
+    Reset(1.0f);
 }
 
 void Matrix4::Reset(real val)
