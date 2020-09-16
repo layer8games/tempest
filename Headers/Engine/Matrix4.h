@@ -43,10 +43,6 @@ namespace TempestMath
 
         TEMPEST_API void Translate(real xVal, real yVal, real zVal);
 
-        TEMPEST_API void Translate(const Point2& point);
-
-        TEMPEST_API void Translate(const Point3& point);
-
         TEMPEST_API void Translate(const Vector2& vec);
 
         TEMPEST_API void Translate(const Vector3& vec);
@@ -101,15 +97,7 @@ namespace TempestMath
 
         TEMPEST_API void Transpose(void);
 
-        TEMPEST_API void ComponentMulti(const Matrix4& M);
-
-        TEMPEST_API Matrix4 Transform3x3(const Matrix4& mat) const;
-
-        TEMPEST_API Vector4 Transform3x3(const Vector4& vec) const;
-
-        TEMPEST_API static Matrix4 LookAt(const Vector3& cameraPos, const Point4& target, const Vector4& up);
-
-        TEMPEST_API static Matrix4 LookAt(const Point3& cameraPos, const Point3& target, const Vector3& up);
+        TEMPEST_API Matrix4 LookAt(const Point3& cameraPos, const Point3& target, const Vector3& up);
 
         TEMPEST_API void SetLookAt(const Point3& cameraPos, const Point3& target, const Vector3& up);
 
@@ -121,24 +109,16 @@ namespace TempestMath
 
         TEMPEST_API Matrix4 operator*(const Matrix4& mat) const;
  
-        TEMPEST_API Vector3 operator*(const Vector2& vec) const;
+        TEMPEST_API Vector2 operator*(const Vector2& vec) const;
 
         TEMPEST_API Vector3 operator*(const Vector3& vec) const;
 
         TEMPEST_API Vector4 operator*(const Vector4& vec) const;
 
-        TEMPEST_API Point3 operator*(const Point2& point) const;
-
-        TEMPEST_API Point3 operator*(const Point3& point) const;
-
-        TEMPEST_API Point4 operator*(const Point4& point) const;
-
         TEMPEST_API Matrix4& operator/=(real val);
 
     private:
         Matrix4(glm::mat4 matrix);
-
-        real _Cofactor(const Vector4& col1, const Vector4& col2, const Vector4& col3) const;
 
         glm::mat4 _data;
 
