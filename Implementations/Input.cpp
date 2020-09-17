@@ -1,6 +1,6 @@
 
 #include "stdafx.h"
-#include <Engine/Input.h>
+#include "Engine/Input.h"
 using namespace Tempest;
 
 Input::Input(void) 
@@ -62,6 +62,16 @@ const TM::Point2 Input::GetMouseCoord(void)
 const TM::Point2 Input::GetMouseCoordInScreen(void)
 {
     return Driver::Instance()->GetMousePosInScreen();
+}
+
+const TM::Point2 Input::GetLeftMouseCoord(void) const
+{ 
+    return _leftClickCoordinates; 
+}
+
+const TM::Point2 Input::GetRightMouseCoord(void) const
+{ 
+    return _rightClickCoordinates; 
 }
 
 void Input::Update(void)

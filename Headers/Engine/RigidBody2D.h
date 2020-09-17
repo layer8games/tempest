@@ -1,16 +1,13 @@
 #pragma once
 
-//===== Engine Includes =====
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/ErrorManager.h>
-#include <Engine/Timer.h>
-#include <Engine/Vector2.h>
-#include <Engine/Point2.h>
-#include <Engine/GameObject2D.h>
-#include <Engine/SteeringOutput2D.h>
+#include "Engine/Atom.h"
+#include "Engine/ErrorManager.h"
+#include "Engine/Timer.h"
+#include "Engine/Vector2.h"
+#include "Engine/GameObject2D.h"
+#include "Engine/SteeringOutput2D.h"
 
-//===== Standard includes =====
 #include <cassert>
 
 namespace TM = TempestMath;
@@ -157,15 +154,15 @@ namespace TempestPhysics
         TEMPEST_API real GetAngularDamping(void) const;
 
     private:
-        bool _active;	
+        bool _active;
         real _inverseMass;
         real _inverseMomentOfInertia;
-        real _linearDamping;	
+        real _linearDamping;
         real _angularDamping;
         real _rotation;
         real _torqueAccum;
-        TE::GameObject2D* _obj;		
-        TM::Vector2 _velocity;	
+        TE::GameObject2D* _obj;
+        TM::Vector2 _velocity;
         TM::Vector2 _acceleration;
         TM::Vector2 _forceAccum;
         TM::Vector2 _gravityForce;

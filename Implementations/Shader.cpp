@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include <Engine/Shader.h>
+#include "Engine/Shader.h"
 using namespace Tempest;
 
 Shader::Shader(void)
@@ -98,39 +98,44 @@ void Shader::SetUniform(string name, const F32 val)
     glUniform1f(location, val);
 }
 
-void Shader::SetUniform(string name, const TM::Vector4& vec)
+
+void Shader::SetUniform(string name, const TM::Vector2& point)
 {
     Use();
     GLuint location = _GetUniformLocation(name.c_str());
-    glUniform4f(location, vec.x, vec.y, vec.z, vec.w);
+    glUniform2f(location, point.GetX(), point.GetY());
 }
 
 void Shader::SetUniform(string name, const TM::Vector3& vec)
 {
     Use();
     GLuint location = _GetUniformLocation(name.c_str());
-    glUniform3f(location, vec.x, vec.y, vec.z);
+    glUniform3f(location, vec.GetX(), vec.GetY(), vec.GetZ());
 }
 
-void Shader::SetUniform(string name, const TM::Point2& point)
+void Shader::SetUniform(string name, const TM::Vector4& vec)
 {
     Use();
     GLuint location = _GetUniformLocation(name.c_str());
-    glUniform2f(location, point.x, point.y);
-}
+    glUniform4f(location, vec.GetX(), vec.GetY(), vec.GetZ(), vec.GetW());
 
-void Shader::SetUniform(string name, const TM::Point3& point)
-{
-    Use();
-    GLuint location = _GetUniformLocation(name.c_str());
-    glUniform3f(location, point.x, point.y, point.z);
+    // TODO:: Swap this out to use gml to its fullest. Apply to the rest of the file as well.
+    /*
+        new way: 
+        glUniform4fv(location, &vec.GetRawData()[0]);
+
+        or
+
+        glm::vec4 values = vec.GetRawData();
+        glUniform4fv(location, &values[0]);
+    */
 }
 
 void Shader::SetUniform(string name, const TM::Matrix4& mat)
 {
     Use();
     GLuint location = _GetUniformLocation(name.c_str());
-    glUniformMatrix4fv(location, 1, GL_FALSE, &mat.GetElems()[0]);
+    glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(mat.GetRawData()[0]));
 }
 
 void Shader::SetUniformSampler(string name, S32 texSlot)

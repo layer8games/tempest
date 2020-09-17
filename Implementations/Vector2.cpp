@@ -120,6 +120,16 @@ F32 Vector2::GetY(void) const
     return static_cast<F32>(_data.y);
 }
 
+void Vector2::SetX(F32 val)
+{
+    _data.x = val;
+}
+
+void Vector2::SetY(F32 val)
+{
+    _data.y = val;
+}
+
 Vector2& Vector2::operator=(const Vector2& vector)
 {
     _data = vector.GetRawData();

@@ -51,6 +51,16 @@ namespace TempestMath
         
         TEMPEST_API F32 GetZ() const;
 
+        TEMPEST_API F32 GetW() const;
+
+        TEMPEST_API void SetX(F32 val);
+
+        TEMPEST_API void SetY(F32 val);
+
+        TEMPEST_API void SetZ(F32 val);
+
+        TEMPEST_API void SetW(F32 val);
+
         TEMPEST_API Vector4& operator=(const Vector4& vector);
 
         TEMPEST_API Vector4& operator=(const Vector3& vec);

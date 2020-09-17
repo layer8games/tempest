@@ -1,18 +1,15 @@
 #pragma once
 
-//=====Engine includes=====
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/ErrorManager.h>
-#include <Engine/Font.h>
-#include <Engine/Point2.h>
-#include <Engine/Vector2.h>
-#include <Engine/Glyph.h>
-#include <Engine/Color.h>
+#include "Engine/Atom.h"
+#include "Engine/ErrorManager.h"
+#include "Engine/Font.h"
+#include "Engine/Vector2.h"
+#include "Engine/Glyph.h"
+#include "Engine/Color.h"
 
 namespace TM = TempestMath;
 
-//=====STL includes=====
 #include <vector>
 
 namespace Tempest
@@ -38,8 +35,7 @@ namespace Tempest
  
         inline void SetPosition(F32 x, F32 y)
         {
-            _pos.x = x;
-            _pos.y = y;
+            _pos.Set(x, y);
             _UpdatePositions();
         }
  
@@ -107,8 +103,7 @@ namespace Tempest
 
         inline void SetScale(F32 xScale, F32 yScale)
         {
-            _scale.x = xScale;
-            _scale.y = yScale;
+            _scale.Set(xScale, yScale);
             _UpdateScales();
         }
 

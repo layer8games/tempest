@@ -64,6 +64,10 @@ namespace TempestMath
 
         TEMPEST_API F32 GetY(void) const;
 
+        TEMPEST_API void SetX(F32 val);
+
+        TEMPEST_API void SetY(F32 val);
+
         TEMPEST_API Vector2& operator=(const Vector2& vector);
 
         TEMPEST_API Vector2& operator=(real val);

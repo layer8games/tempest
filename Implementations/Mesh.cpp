@@ -67,15 +67,15 @@ void Mesh::InitOpenGLData(void)
 
     for(auto i : _vertices)
     {
-        vertPosition.push_back(i.position.x);
-        vertPosition.push_back(i.position.y);
-        vertPosition.push_back(i.position.z);
-        vertPosition.push_back(i.position.w);
+        vertPosition.push_back(i.position.GetX());
+        vertPosition.push_back(i.position.GetY());
+        vertPosition.push_back(i.position.GetZ());
+        vertPosition.push_back(i.position.GetW());
 
-        vertNormals.push_back(i.normal.x);
-        vertNormals.push_back(i.normal.y);
-        vertNormals.push_back(i.normal.z);
-        vertNormals.push_back(i.normal.w);
+        vertNormals.push_back(i.normal.GetX());
+        vertNormals.push_back(i.normal.GetY());
+        vertNormals.push_back(i.normal.GetZ());
+        vertNormals.push_back(i.normal.GetW());
 
         vertTexCoords.push_back(i.texCoord.u);
         vertTexCoords.push_back(i.texCoord.v);
@@ -135,6 +135,56 @@ void Mesh::BindVBO(BufferData buffer)
     }
 }
 
+U32 Mesh::GetNumVertices(void)
+{
+    return _vertices.size();
+}
+
+void Mesh::AddVertex(const Vertex vert)
+{
+    _vertices.push_back(vert);
+}
+
+void Mesh::SetVertices(std::vector<Vertex> vertices)
+{
+    _vertices = vertices;
+}
+
+std::vector<Vertex> Mesh::GetVertices(void) const
+{
+    return _vertices;
+}
+
+void Mesh::AddIndex(U32 index)
+{
+    _indices.push_back(index);
+}
+
+void Mesh::SetIndices(std::vector<U32> indices)
+{
+    _indices = indices;
+}
+
+std::vector<U32> Mesh::GetIndices(void) const
+{
+    return _indices;
+}
+
+std::vector<F32> Mesh::GetUVList(void) const
+{
+    return _uvList;
+}
+
+void Mesh::SetUVList(std::vector<F32> list)
+{
+    _uvList = list;
+}
+
+void Mesh::AddUV(F32 val)
+{
+    _uvList.push_back(val);
+}
+
 bool Mesh::LoadOBJ(string filepath)
 {
     std::vector<U32> vertexIndices, uvIndices, normalIndices;
@@ -161,10 +211,15 @@ bool Mesh::LoadOBJ(string filepath)
 
             if(command == "v")
             {
-                TM::Point4 vertex{0.0f};
-                ss >> vertex.x;
-                ss >> vertex.y;
-                ss >> vertex.z;
+                float tempX;
+                float tempY;
+                float tempZ;
+
+                ss >> tempX;
+                ss >> tempY;
+                ss >> tempZ;
+
+                TM::Point4 vertex{tempX, tempY, tempZ, 1.0f};
 
                 tempVertices.push_back(vertex);
             }
@@ -179,10 +234,15 @@ bool Mesh::LoadOBJ(string filepath)
             }
             else if(command == "vn")
             {
-                TM::Vector4 normal{0.0f};
-                ss >> normal.x;
-                ss >> normal.y;
-                ss >> normal.z;
+                float tempX;
+                float tempY;
+                float tempZ;
+
+                ss >> tempX;
+                ss >> tempY;
+                ss >> tempZ;
+                
+                TM::Vector4 normal{tempX, tempY, tempZ, 0.0f};
 
                 normal.Normalize();
 
@@ -446,6 +506,23 @@ void Mesh::LoadMesh(string filepath)
         //SetIndices(vertexIndices);
     }
 }//end LoadMesh
+
+GLuint Mesh::GetVAO(void) const
+{
+    return _vao;
+}
+
+void Mesh::BindVAO(bool state=true)
+{
+    if(state)
+    {
+        glBindVertexArray(_vao);
+    }
+    else
+    {
+        glBindVertexArray(0);
+    }
+}
 
 std::vector<U32> Mesh::_SplitU32(string text, char delim) const
 {

@@ -1,28 +1,25 @@
 #pragma once
 
-//=====Engine Includes=====
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/ErrorManager.h>
-#include <Engine/Color.h>
-#include <Engine/Point2.h>
-#include <Engine/Point3.h>
-#include <Engine/Vector3.h>
-#include <Engine/Vector4.h>
-#include <Engine/Matrix4.h>
-#include <Engine/Texture.h>
+#include "Engine/Atom.h"
+#include "Engine/ErrorManager.h"
+#include "Engine/Color.h"
+#include "Engine/Vector2.h"
+#include "Engine/Vector3.h"
+#include "Engine/Vector4.h"
+#include "Engine/Matrix4.h"
+#include "Engine/Texture.h"
 
 namespace TM = TempestMath;
 
-//=====STL includes=====
 #include <vector>
 #include <map>
 #include <fstream>
 #include <sstream>
 
-//===== OpenGL includes =====
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+#include "GL/glew.h"
+#include "GLFW/glfw3.h"
+#include "glm/gtc/type_ptr.hpp"
 
 using std::map;
 
@@ -53,13 +50,11 @@ namespace Tempest
          
         TEMPEST_API void SetUniform(string name, const F32 val);
 
-        TEMPEST_API void SetUniform(string name, const TM::Vector4& vec);
-
-        TEMPEST_API void SetUniform(string name, const TM::Vector3& vec);
-
-        TEMPEST_API void SetUniform(string name, const TM::Point2& point);
+        TEMPEST_API void SetUniform(string name, const TM::Vector2& point);
         
-        TEMPEST_API void SetUniform(string name, const TM::Point3& point);
+        TEMPEST_API void SetUniform(string name, const TM::Vector3& vec);
+        
+        TEMPEST_API void SetUniform(string name, const TM::Vector4& vec);
 
         TEMPEST_API void SetUniform(string name, const TM::Matrix4& mat);
  
@@ -88,8 +83,8 @@ namespace Tempest
 
         GLuint _GetUniformLocation(const GLchar* name);
                     
-        map<string, GLuint> 	_uniformLocations;
-        GLuint 					_shaderProgram;	
+        map<string, GLuint> _uniformLocations;
+        GLuint _shaderProgram;
 
     };//end Class
     typedef shared_ptr<Shader> p_Shader;

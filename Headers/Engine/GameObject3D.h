@@ -1,22 +1,20 @@
 #pragma once
 
-//===== Engine Includes =====
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/ErrorManager.h>
-#include <Engine/Shader.h>
-#include <Engine/Point3.h>
-#include <Engine/Vector3.h>
-#include <Engine/Vector4.h>
-#include <Engine/Matrix4.h>
-#include <Engine/Color.h>
-#include <Engine/Quaternion.h>
-#include <Engine/Texture.h>
-#include <Engine/ShaderManager.h>
-#include <Engine/AABB.h>
-#include <Engine/Mesh.h>
-#include <Engine/BufferData.h>
-#include <Engine/Event.hpp>
+#include "Engine/Atom.h"
+#include "Engine/ErrorManager.h"
+#include "Engine/Shader.h"
+#include "Engine/Vector3.h"
+#include "Engine/Vector4.h"
+#include "Engine/Matrix4.h"
+#include "Engine/Color.h"
+#include "Engine/Quaternion.h"
+#include "Engine/Texture.h"
+#include "Engine/ShaderManager.h"
+#include "Engine/AABB.h"
+#include "Engine/Mesh.h"
+#include "Engine/BufferData.h"
+#include "Engine/Event.hpp"
 
 namespace TM = TempestMath;
 namespace TC = TempestCollisions;
@@ -72,8 +70,6 @@ namespace Tempest
     
         TEMPEST_API const TM::Point3& GetPosition(void) const;
 
-        TEMPEST_API void SetPosition(const TM::Point3& pos);
-
         TEMPEST_API void SetPosition(const TM::Vector3& pos);
 
         TEMPEST_API void SetPosition(F32 xVal, F32 yVal, F32 zVal);
@@ -81,8 +77,6 @@ namespace Tempest
         TEMPEST_API void AddScaledPosition(const TM::Vector4& pos, F32 scale);
 
         TEMPEST_API void AddScaledPosition(const TM::Vector3& pos, F32 scale);
-
-        TEMPEST_API void AddScaledPosition(const TM::Point3& point, F32 scale);
 
         TEMPEST_API void SetPixelScale(const TM::Vector3& size);
 

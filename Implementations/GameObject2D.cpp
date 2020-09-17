@@ -193,12 +193,6 @@ const TM::Point2& GameObject2D::GetPosition(void) const
     return _position;
 }
 
-void GameObject2D::SetPosition(const TM::Point2& pos)
-{
-    _position = pos;
-    _boundingBox.SetCenter(_position);
-}
-
 void GameObject2D::SetPosition(const TM::Vector2& pos)
 {
     _position = pos;
@@ -207,26 +201,19 @@ void GameObject2D::SetPosition(const TM::Vector2& pos)
 
 void GameObject2D::SetPosition(F32 xVal, F32 yVal)
 {
-    _position.x = xVal;
-    _position.y = yVal;
+    _position.Set(xVal, yVal);
     _boundingBox.SetCenter(_position);
 }
 
-void GameObject2D::SetPositionX(F32 xval)
+void GameObject2D::SetPositionX(F32 xVal)
 {
-    _position.x = xval;
+    _position.SetX(xVal);
     _boundingBox.SetCenter(_position);
 }
 
 void GameObject2D::SetPositionY(F32 yVal)
 {
-    _position.y = yVal;
-    _boundingBox.SetCenter(_position);
-}
-
-void GameObject2D::AddPosition(const TM::Point2& newPosition)
-{
-    _position += newPosition;
+    _position.SetY(yVal);
     _boundingBox.SetCenter(_position);
 }
 
@@ -259,8 +246,7 @@ void GameObject2D::SetScaleInPixels(const TM::Vector2& scale)
 
 void GameObject2D::SetScaleInPixels(F32 xVal, F32 yVal)
 {
-    _scaleInPixels.x = xVal;
-    _scaleInPixels.y = yVal;
+    _scaleInPixels.Set(xVal, yVal);
     _boundingBox.SetHalfDimensions(_scaleInPixels);
 }
 

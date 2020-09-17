@@ -95,6 +95,31 @@ F32 Vector4::GetZ() const
     return _data.z;
 }
 
+F32 Vector4::GetW() const
+{
+    return _data.w;
+}
+
+void Vector4::SetX(F32 val)
+{
+    _data.x = val;
+}
+
+void Vector4::SetY(F32 val)
+{
+    _data.y = val;
+}
+
+void Vector4::SetZ(F32 val)
+{
+    _data.z = val;
+}
+
+void Vector4::SetW(F32 val)
+{
+    _data.w = val;
+}
+
 Vector4& Vector4::operator=(const Vector4& vector)
 {
     _data = vector.GetRawData();

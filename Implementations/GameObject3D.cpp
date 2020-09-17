@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include <Engine/GameObject3D.h>
+#include "Engine/GameObject3D.h"
 using namespace Tempest;
 
 GameObject3D::GameObject3D(void)
@@ -102,25 +102,15 @@ const TM::Point3& GameObject3D::GetPosition(void) const
     return _position;
 }
 
-void GameObject3D::SetPosition(const TM::Point3& pos)
+void GameObject3D::SetPosition(const TM::Vector3& pos)
 {
     _position = pos;
     _boundingBox.SetCenter(_position);
 }
 
-void GameObject3D::SetPosition(const TM::Vector3& pos)
-{
-    _position.x = pos.x;
-    _position.y = pos.y;
-    _position.z = pos.z;
-    _boundingBox.SetCenter(_position);
-}
-
 void GameObject3D::SetPosition(F32 xVal, F32 yVal, F32 zVal)
 {
-    _position.x = xVal;
-    _position.y = yVal;
-    _position.z = zVal;
+    _position.Set(xVal, yVal, zVal);
     _boundingBox.SetCenter(_position);
 }
 
@@ -133,12 +123,6 @@ void GameObject3D::AddScaledPosition(const TM::Vector4& pos, F32 scale)
 void GameObject3D::AddScaledPosition(const TM::Vector3& pos, F32 scale)
 {
     _position.AddScaledVector(pos, scale);
-    _boundingBox.SetCenter(_position);
-}
-
-void GameObject3D::AddScaledPosition(const TM::Point3& point, F32 scale)
-{
-    _position.AddScaledPoint(point, scale);
     _boundingBox.SetCenter(_position);
 }
 
@@ -173,9 +157,9 @@ void GameObject3D::SetScale(F32 val)
 
 void GameObject3D::SetScale(F32 xVal, F32 yVal, F32 zVal)
 {
-    _scale.x = xVal * _pixelScale.x;
-    _scale.y = yVal * _pixelScale.y;
-    _scale.z = zVal * _pixelScale.z;
+    _scale.SetX(xVal * _pixelScale.GetX());
+    _scale.SetY(yVal * _pixelScale.GetY());
+    _scale.SetZ(zVal * _pixelScale.GetZ());
     _boundingBox.SetHalfDimensions(_scale);
 }
 

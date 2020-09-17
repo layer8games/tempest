@@ -27,9 +27,11 @@ namespace TempestMath
 
         TEMPEST_API Vector3(real xVal, real yVal, real zVal);
  
-        TEMPEST_API Vector3(const Vector3& v);
+        TEMPEST_API explicit Vector3(const Vector2& vector);
 
-        TEMPEST_API Vector3(const Vector4& v);
+        TEMPEST_API Vector3(const Vector3& vector);
+
+        TEMPEST_API explicit Vector3(const Vector4& vector);
 
         TEMPEST_API ~Vector3(void);
 
@@ -58,6 +60,12 @@ namespace TempestMath
         TEMPEST_API F32 GetY() const;
         
         TEMPEST_API F32 GetZ() const;
+
+        TEMPEST_API void SetX(F32 val);
+
+        TEMPEST_API void SetY(F32 val);
+
+        TEMPEST_API void SetZ(F32 val);
 
         TEMPEST_API Vector3& operator=(const Vector2& vector);
 

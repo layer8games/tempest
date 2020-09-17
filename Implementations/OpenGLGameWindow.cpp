@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include <Engine/OpenGLGameWindow.h>
+#include "Engine/OpenGLGameWindow.h"
 using namespace Tempest;
    
 OpenGLGameWindow::OpenGLGameWindow(void) 
@@ -191,14 +191,6 @@ void OpenGLGameWindow::v_SetScreenColor(const Color& col)
     glClearColor(col[0], col[1], col[2], col[3]);
 }
 
-//==========================================================================================================================
-//
-//Callback Functions
-//
-//==========================================================================================================================
-//=======================================================================================================
-//OnKey
-//=======================================================================================================    
 void OpenGLGameWindow::OnKey(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     if(action == GLFW_PRESS)
@@ -211,9 +203,6 @@ void OpenGLGameWindow::OnKey(GLFWwindow* window, int key, int scancode, int acti
     }
 }
 
-//==========================================================================================================================
-//OnResize
-//==========================================================================================================================
 void OpenGLGameWindow::OnResize(GLFWwindow* window, int width, int height)
 {
     _screenWidth = width;
@@ -221,9 +210,6 @@ void OpenGLGameWindow::OnResize(GLFWwindow* window, int width, int height)
     glViewport(0, 0, _screenWidth, _screenHeight);
 }
 
-//==========================================================================================================================
-//OnMouseMove
-//==========================================================================================================================
 void OpenGLGameWindow::OnMouseClick(GLFWwindow* window, int button, int action, int mods)
 {   
     if(button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
@@ -245,9 +231,6 @@ void OpenGLGameWindow::OnMouseClick(GLFWwindow* window, int button, int action, 
     }
 }
 
-//==========================================================================================================================
-//OnMouseMove
-//==========================================================================================================================
 void OpenGLGameWindow::OnMouseMove(GLFWwindow* window, F64 posX, F64 posY)
 {
     //Input::Instance()->SetMouseCoord(TM::Vector4(static_cast<F32>(posX), static_cast<F32>(posY)));

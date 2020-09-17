@@ -17,19 +17,24 @@ Vector3::Vector3(real xVal, real yVal, real zVal)
     _data(xVal, yVal, zVal)
 {  }
 
-Vector3::Vector3(const Vector3& v)
+Vector3::Vector3(const Vector2& vector)
     :
-    _data(v.GetX(), v.GetY(), v.GetZ())
+    _data(vector.GetX(), vector.GetY(), 0.0f)
 {  }
 
-Vector3::Vector3(const Vector4& v)
+Vector3::Vector3(const Vector3& vector)
     :
-    _data(v.GetRawData())
+    _data(vector.GetX(), vector.GetY(), vector.GetZ())
 {  }
 
-Vector3::Vector3(glm::vec3 v)
+Vector3::Vector3(const Vector4& vector)
     :
-    _data(v)
+    _data(vector.GetRawData())
+{  }
+
+Vector3::Vector3(glm::vec3 vector)
+    :
+    _data(vector)
 {  }
 
 Vector3::~Vector3(void)
@@ -98,6 +103,21 @@ F32 Vector3::GetY() const
 F32 Vector3::GetZ() const
 {
     return _data.z;
+}
+
+void Vector3::SetX(F32 val)
+{
+    _data.x = val;
+}
+
+void Vector3::SetY(F32 val)
+{
+    _data.y = val;
+}
+
+void Vector3::SetZ(F32 val)
+{
+    _data.z = val;
 }
 
 Vector3& Vector3::operator=(const Vector2& vector)

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include <Engine/Camera.h>
+#include "Engine/Camera.h"
 
 using namespace Tempest;
 
@@ -79,17 +79,15 @@ void Camera::SetPerspective(F32 fov, F32 aspect, F32 nearPlane, F32 farPlane)
 
 void Camera::SetPosition(F32 x, F32 y)
 {
-    _position.x = x;
-    _position.y = y;
+    _position.SetX(x);
+    _position.SetY(y);
 
     _v_UpdateCameraVectors();
 }
 
 void Camera::SetPosition(F32 x, F32 y, F32 z)
 {
-    _position.x = x;
-    _position.y = y;
-    _position.z = z;
+    _position.Set(x, y, z);
 
     _v_UpdateCameraVectors();
 }
@@ -103,14 +101,14 @@ void Camera::SetPosition(const TM::Point3& point)
 
 void Camera::ScalePosition(F32 x, F32 y, F32 z, F32 scale)
 {
-    _position.AddScaledPoint(TM::Point3(x, y, z), scale);
+    _position.AddScaledVector(TM::Point3(x, y, z), scale);
 
     _v_UpdateCameraVectors();
 }
 
 void Camera::ScalePosition(const TM::Point3& point, F32 scale)
 {
-    _position.AddScaledPoint(point, scale);
+    _position.AddScaledVector(point, scale);
 
     _v_UpdateCameraVectors();
 }
@@ -199,9 +197,10 @@ void Camera::_DefaultUpdateCameraVectors(void)
 {
     //Using spherical to cartesian
     //Calculate the view direction
-    _lookDirection.x = real_cos(_pitch) * real_sin(_yaw);
-    _lookDirection.y = real_sin(_pitch);
-    _lookDirection.z = real_cos(_pitch) * real_cos(_yaw);
+    _lookDirection.Set(real_cos(_pitch) * real_sin(_yaw),
+                       real_sin(_pitch),
+                       real_cos(_pitch) * real_cos(_yaw));
+
     _lookDirection.Normalize();
 
 

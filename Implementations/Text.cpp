@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include <Engine/Text.h>
+#include "Engine/Text.h"
 using namespace Tempest;
     
 Text::Text(void) 
@@ -120,8 +120,8 @@ void Text::_UpdatePositions(void)
             _characterList[i]->SetPosition(currentPos);
             _characterList[i]->v_Update();
 
-            currentPos.x += data.xAdvance + size;
-        }	
+            currentPos.SetX(currentPos.GetX() + data.xAdvance + size);
+        }
     }
 }
 
@@ -137,7 +137,7 @@ void Text::_UpdateScales(void)
 {
     for(U32 i = 0; i < _characterList.size(); ++i)
     {
-        _characterList[i]->SetScaleInPixels(_scale.x, _scale.y);
+        _characterList[i]->SetScaleInPixels(_scale.GetX(), _scale.GetY());
     }
 }
 
