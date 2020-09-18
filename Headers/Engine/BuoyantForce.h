@@ -1,10 +1,9 @@
 #pragma once
 
-//=====Engine Includes=====
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/ForceGenerator.h>
-#include <Engine/Vector4.h>
+#include "Engine/Atom.h"
+#include "Engine/ForceGenerator.h"
+#include "Engine/Vector4.h"
 
 namespace TM = TempestMath;
 
@@ -23,30 +22,18 @@ namespace TempestPhysics
 
         TEMPEST_API void v_UpdateForce(shared_ptr<RigidBody3D> body) final;
 
-        inline void SetMaxDepth(real depth) 
-        { 
-            _maxDepth = depth; 
-        }
+        TEMPEST_API void SetMaxDepth(real depth);
 
-        inline void SetObjectVolume(real volume) 
-        { 
-            _objectVolume = volume; 
-        }
+        TEMPEST_API void SetObjectVolume(real volume);
 
-        inline void SetLiquidHeight(real hieght) 
-        { 
-            _liquidHeight = hieght; 
-        }
+        TEMPEST_API void SetLiquidHeight(real hieght);
 
-        inline void SetLiquidDensity(real density) 
-        { 
-            _liquidDensity = density; 
-        }
+        TEMPEST_API void SetLiquidDensity(real density);
     
     private:
-        real _maxDepth;		
-        real _objectVolume;	
-        real _liquidHeight;	
+        real _maxDepth;
+        real _objectVolume;
+        real _liquidHeight;
         real _liquidDensity;
     };//end BuoyantForce
     typedef shared_ptr<BuoyantForce> p_BuoyantForce;

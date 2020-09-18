@@ -3,7 +3,7 @@
 //=====Engine Includes=====
 #include "stdafx.h"
 #include <Engine/Atom.h>
-#include <Engine/Point2.h>
+#include <Engine/Vector2.h>
 #include <Engine/Text.h>
 #include <Engine/GameObject2D.h>
 
@@ -73,8 +73,7 @@ namespace Tempest
 
         inline void SetPosition(real xPos, real yPos)
         {
-            _menuPos.x = xPos;
-            _menuPos.y = yPos;
+            _menuPos.Set(xPos, yPos);
             _UpdateItemPositions();
         }
 
@@ -91,8 +90,7 @@ namespace Tempest
 
         inline void SetItemOffset(real xPos, real yPos)
         {
-            _itemOffset.x = xPos;
-            _itemOffset.y = yPos;
+            _itemOffset.Set(xPos, yPos);
             _UpdateItemPositions();
         }
 
@@ -109,8 +107,7 @@ namespace Tempest
 
         inline void SetSelectorOffset(real xPos, real yPos)
         {
-            _selectorOffset.x = xPos;
-            _selectorOffset.y = yPos;
+            _selectorOffset.Set(xPos, yPos);
             _UpdateItemPositions();
         }
 
@@ -127,8 +124,7 @@ namespace Tempest
 
         inline void SetTitleOffset(real xPos, real yPos)
         {
-            _offsetFromTitle.x = xPos;
-            _offsetFromTitle.y = yPos;
+            _offsetFromTitle.Set(xPos, yPos);
             _UpdateItemPositions();
         }
 

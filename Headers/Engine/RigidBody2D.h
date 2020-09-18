@@ -28,126 +28,63 @@ namespace TempestPhysics
 
         TEMPEST_API void Integrate(void);
 
-        void UpdateVelocityAndAcceleration(const TE::SteeringOutput2D steering);
+        TEMPEST_API void UpdateVelocityAndAcceleration(const TE::SteeringOutput2D steering);
 
         TEMPEST_API void ClearAccumulator(void);
 
-        inline void SetRotation(real euler)
-        {
-            _rotation = euler;
-        }
+        TEMPEST_API void SetRotation(real euler);
 
-        inline real GetRotation(void) const
-        {
-            return _rotation;
-        }
+        TEMPEST_API real GetRotation(void) const;
 
-        inline void SetActive(bool state)
-        {
-            _active = state;
-        }
+        TEMPEST_API void SetActive(bool state);
 
         TEMPEST_API bool GetActive(void) const;
 
-        inline void SetObject(TE::GameObject2D* obj)
-        {
-            _obj = obj;
-        }
+        TEMPEST_API void SetObject(TE::GameObject2D* obj);
 
-        inline TE::GameObject2D* GetGameObject(void) const
-        {
-            return _obj;
-        }
+        TEMPEST_API TE::GameObject2D* GetGameObject(void) const;
 
-        const TM::Point2 GetPosition(void) const;
+        TEMPEST_API const TM::Point2 GetPosition(void) const;
 
-        inline const TM::Vector2& GetVelocity(void) const
-        {
-            return _velocity;
-        }
+        TEMPEST_API const TM::Vector2& GetVelocity(void) const;
 
-        inline void SetVelocity(const TM::Vector2& vel)
-        {
-            _velocity = vel;
-        }
+        TEMPEST_API void SetVelocity(const TM::Vector2& vel);
 
-        inline void SetVelocity(F32 x, F32 y)
-        {
-            _velocity.x = x;
-            _velocity.y = y;
-        }
+        TEMPEST_API void SetVelocity(F32 x, F32 y);
 
-        inline const TM::Vector2& GetAcceleration(void) const
-        {
-            return _acceleration;
-        }
+        TEMPEST_API const TM::Vector2& GetAcceleration(void) const;
 
-        inline void SetAcceleration(const TM::Vector2& acc)
-        {
-            _acceleration = acc;
-        }
+        TEMPEST_API void SetAcceleration(const TM::Vector2& acc);
 
-        inline void SetAcceleration(F32 x, F32 y)
-        {
-            _acceleration.x = x;
-            _acceleration.y = y;
-        }
+        TEMPEST_API void SetAcceleration(F32 x, F32 y);
 
-        inline const TM::Vector2& GetForces(void) const
-        {
-            return _forceAccum;
-        }
+        TEMPEST_API const TM::Vector2& GetForces(void) const;
 
         TEMPEST_API void AddForce(const TM::Vector2& force);
 
         TEMPEST_API void AddForceAtPoint(const TM::Vector2& force, const TM::Point2 point);
 
-        inline const TM::Vector2& GetGravityForce(void) const
-        {
-            return _gravityForce;
-        }
+        TEMPEST_API const TM::Vector2& GetGravityForce(void) const;
 
-        inline void SetGravityForce(const TM::Vector2& grav)
-        {
-            _gravityForce = grav;
-        }
+        TEMPEST_API void SetGravityForce(const TM::Vector2& grav);
 
-        inline const real GetInverseMass(void) const
-        {
-            return _inverseMass;
-        }
+        TEMPEST_API const real GetInverseMass(void) const;
 
-        inline void SetInverseMass(real inverseMass)
-        {
-            _inverseMass = inverseMass;
-        }
+        TEMPEST_API void SetInverseMass(real inverseMass);
 
-        inline bool HasFiniteMass(void)
-        {
-            return _inverseMass >= 0.0f;
-        }
+        TEMPEST_API bool HasFiniteMass(void);
 
         TEMPEST_API const real GetMass(void);
 
-        inline void SetMass(real mass)
-        {
-            assert(mass != 0.0f);
-            _inverseMass = static_cast<real>(1.0f) / mass;
-        }
+        TEMPEST_API void SetMass(real mass);
 
         TEMPEST_API void SetMomentOfInertia(real inertia);
 
         TEMPEST_API real GetMomentOfInertia(void) const;
 
-        inline const real GetLinearDamping(void) const
-        {
-            return _linearDamping;
-        }
+        TEMPEST_API const real GetLinearDamping(void) const;
 
-        inline void SetLinearDamping(real damp)
-        {
-            _linearDamping = damp;
-        }
+        TEMPEST_API void SetLinearDamping(real damp);
 
         TEMPEST_API void SetAngularDamping(real angularDamping);
 

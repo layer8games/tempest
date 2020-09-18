@@ -65,11 +65,6 @@ void Vector4::AddScaledVector(const Vector4& vector, real scale)
     _data += vector.GetRawData() * scale;
 }
 
-void Vector4::AddScaledVector(const Vector3& vector, real scale)
-{
-    _data += vector.GetRawData() * scale;
-}
-
 void Vector4::Set(real xVal, real yVal, real zVal, real wVal)
 {
     _data = glm::vec4(xVal, yVal, zVal, wVal);

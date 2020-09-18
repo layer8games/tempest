@@ -1,9 +1,8 @@
 #pragma once
 
-//=====Engine Includes=====
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/Point3.h>
+#include "Engine/Atom.h"
+#include "Engine/Vector3.h"
 
 namespace TM = TempestMath;
 
@@ -13,11 +12,6 @@ namespace TempestCollisions
     {
 
     public:
-//==========================================================================================================================
-//
-//Constructors	 	
-//
-//==========================================================================================================================
         TEMPEST_API BoundingSphere(void);
 
         TEMPEST_API BoundingSphere(const TM::Point3& center, real radius);
@@ -26,60 +20,25 @@ namespace TempestCollisions
 
         TEMPEST_API ~BoundingSphere(void);
 
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================
         TEMPEST_API bool TestCollision(const BoundingSphere& other) const;
 
         TEMPEST_API real GetGrowth(BoundingSphere& other) const;
 
-        inline real GetSize(void) const
-        {
-            return static_cast<real>(1.333333) * R_PI * _radius * _radius * _radius;
-        }
+        TEMPEST_API real GetSize(void) const;
 
-//==========================================================================================================================
-//
-//Accessors
-//
-//========================================================================================================================== 
-        inline void SetCenter(const TM::Point3& pos)
-        {
-            _center = pos;
-        }
+        TEMPEST_API void SetCenter(const TM::Point3& pos);
 
-        inline void SetCenter(F32 x, F32 y, F32 z)
-        {
-            _center.x = x;
-            _center.y = y;
-            _center.z = z;
-        }
+        TEMPEST_API void SetCenter(F32 x, F32 y, F32 z);
 
-        inline const TM::Point3& GetCenter(void) const
-        {
-            return _center;
-        }
+        TEMPEST_API const TM::Point3& GetCenter(void) const;
 
-        inline void SetRadius(real r)
-        {
-            _radius = r;
-        }
+        TEMPEST_API void SetRadius(real r);
 
-        inline real GetRadius(void) const
-        {
-            return _radius;
-        }
+        TEMPEST_API real GetRadius(void) const;
 
     private:
-//==========================================================================================================================
-//
-//Data
-//
-//==========================================================================================================================	
-        TM::Point3 _center; 	
-        real 	  _radius;	
+        TM::Point3 _center; 
+        real _radius;
 
     };//end Class
     typedef shared_ptr<BoundingSphere> p_BoundingSphere;

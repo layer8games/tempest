@@ -1,11 +1,7 @@
 #include "stdafx.h"
-#include <Engine/BoundingSphere.h>
+#include "Engine/BoundingSphere.h"
 using namespace TempestCollisions;
-//==========================================================================================================================
-//
-//Constructors	 	
-//
-//==========================================================================================================================
+
 BoundingSphere::BoundingSphere(void)
 :
 _center(0.0f), 
@@ -59,11 +55,6 @@ _radius(0.0f)
 BoundingSphere::~BoundingSphere(void)
 {  }
 
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================
 bool BoundingSphere::TestCollision(const BoundingSphere& other) const
 {
     TM::Point3 distance = _center - other.GetCenter();
@@ -82,4 +73,34 @@ real BoundingSphere::GetGrowth(BoundingSphere& other) const
 
     //return value proportional to the change in surface area of the new sphere
     return newSphere.GetRadius() * newSphere.GetRadius() - _radius * _radius;
+}
+
+real BoundingSphere::GetSize(void) const
+{
+    return static_cast<real>(1.333333) * R_PI * _radius * _radius * _radius;
+}
+
+void BoundingSphere::SetCenter(const TM::Point3& pos)
+{
+    _center = pos;
+}
+
+void BoundingSphere::SetCenter(F32 x, F32 y, F32 z)
+{
+    _center.Set(x, y, z);
+}
+
+const TM::Point3& BoundingSphere::GetCenter(void) const
+{
+    return _center;
+}
+
+void BoundingSphere::SetRadius(real r)
+{
+    _radius = r;
+}
+
+real BoundingSphere::GetRadius(void) const
+{
+    return _radius;
 }

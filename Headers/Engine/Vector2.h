@@ -40,9 +40,9 @@ namespace TempestMath
 
         TEMPEST_API real Dot(const Vector2& point) const;
 
-        TEMPEST_API real Magnitude(void);
+        TEMPEST_API real Magnitude(void) const;
 
-        TEMPEST_API real SqrMagnitude(void);
+        TEMPEST_API real SqrMagnitude(void) const;
 
         TEMPEST_API void Normalize(void);
 
@@ -95,6 +95,8 @@ namespace TempestMath
         TEMPEST_API Vector2 operator-(const Vector4& vector) const;
 
         TEMPEST_API Vector2& operator-=(const Vector2& vector);
+        
+        TEMPEST_API Vector2& operator-=(const Vector3& vector);
  
         TEMPEST_API Vector2 operator-(void);
 

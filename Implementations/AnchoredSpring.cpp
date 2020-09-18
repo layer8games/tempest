@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include <Engine/AnchoredSpring.h>
+#include "Engine/AnchoredSpring.h"
 using namespace TempestPhysics;
 
 AnchoredSpring::AnchoredSpring(void)
@@ -49,4 +49,19 @@ void AnchoredSpring::v_UpdateForce(p_RigidBody3D body)
     force.Normalize();
     force *= static_cast<F32>(magnitude);
     body->AddForce(force);
+}
+
+void AnchoredSpring::SetAnchor(const TM::Point3& anchor)
+{
+    _anchor = anchor;
+}
+
+void AnchoredSpring::SetSpringConstant(real constant)
+{
+    _springConstant = constant;
+}
+
+void AnchoredSpring::SetRestLength(real length)
+{
+    _restLength = length;
 }

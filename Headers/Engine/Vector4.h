@@ -39,8 +39,6 @@ namespace TempestMath
 
         TEMPEST_API void AddScaledVector(const Vector4& vector, real scale);
 
-        TEMPEST_API void AddScaledVector(const Vector3& vec, real scale);
-
         TEMPEST_API void Set(real xVal, real yVal, real zVal, real wVal);
 
         TEMPEST_API glm::vec4 GetRawData(void) const;

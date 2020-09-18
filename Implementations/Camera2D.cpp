@@ -20,10 +20,12 @@ void Camera2D::v_Move(const TM::Vector3& offset)
     _v_UpdateCameraVectors();
 }
 
-void Camera2D::v_Move(F32 xVal, F32 yVal)
+void Camera2D::SetMoveSpeed(F32 val)
 {
-    F32 delta = TM::Timer::Instance()->DeltaTime();
-    _position.x += xVal * _moveSpeed * delta;
-    _position.y += yVal * _moveSpeed * delta;
-    _v_UpdateCameraVectors();
+    _moveSpeed = val;
+}
+
+F32 Camera2D::GetMoveSpeed(void)
+{
+    return _moveSpeed;
 }

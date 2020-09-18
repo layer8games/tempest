@@ -512,7 +512,7 @@ GLuint Mesh::GetVAO(void) const
     return _vao;
 }
 
-void Mesh::BindVAO(bool state=true)
+void Mesh::BindVAO(bool state)
 {
     if(state)
     {

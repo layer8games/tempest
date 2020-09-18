@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include <Engine/FPSCamera.h>
+#include "Engine/FPSCamera.h"
 using namespace Tempest;
     
 FPSCamera::FPSCamera(void)
@@ -34,8 +34,8 @@ void FPSCamera::v_Update(void)
     S32 height = Driver::Instance()->GetScreenHeight();
 
     ////Set yaw and pitch for rotate
-    _deltaYaw = static_cast<F32>((width / 2.0f - mouseCoord.x)) * _mouseSensitivity;
-    _deltaPitch = static_cast<F32>((height / 2.0f - mouseCoord.y)) * _mouseSensitivity;
+    _deltaYaw = static_cast<F32>((width / 2.0f - mouseCoord.GetX())) * _mouseSensitivity;
+    _deltaPitch = static_cast<F32>((height / 2.0f - mouseCoord.GetY())) * _mouseSensitivity;
 
     v_Rotate();
 
@@ -65,9 +65,9 @@ void FPSCamera::_v_UpdateCameraVectors(void)
 {
     //Using spherical to cartesian
     //Calculate the view direction
-    _lookDirection.x = cos(_pitch) * sin(_yaw);
-    _lookDirection.y = sin(_pitch);
-    _lookDirection.z = cos(_pitch) * cos(_yaw);
+    _lookDirection.SetX(cos(_pitch) * sin(_yaw));
+    _lookDirection.SetY(sin(_pitch));
+    _lookDirection.SetZ(cos(_pitch) * cos(_yaw));
     _lookDirection.Normalize();
 
     //Re-calculate the right and up Vector4s

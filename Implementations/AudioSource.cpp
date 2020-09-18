@@ -1,12 +1,7 @@
 #include "stdafx.h"
-#include <Engine/AudioSource.h>
-
+#include "Engine/AudioSource.h"
 using namespace Tempest;
-//==========================================================================================================================
-//
-//Constructors	 	
-//
-//==========================================================================================================================
+
 AudioSource::AudioSource(void)
 :
 _looping(false),
@@ -47,11 +42,6 @@ AudioSource::~AudioSource(void)
     alDeleteSources(1, &_sourceID);
 }
 
-//==========================================================================================================================
-//
-//Functions
-//
-//==========================================================================================================================
 bool AudioSource::GetPlaying(void) const
 {
     ALint state = _GetPlayState();
@@ -144,11 +134,6 @@ void AudioSource::AddClip(shared_ptr<AudioClip> clip)
     }
 }
 
-//==========================================================================================================================
-//
-//Accessors
-//
-//==========================================================================================================================
 void AudioSource::SetLooping(bool state)
 {
     _looping = state;
@@ -159,6 +144,16 @@ void AudioSource::SetLooping(bool state)
     {
         ErrorManager::Instance()->SetError(AUDIO, "AudioManager::Constructor: There was an error setting source looping! " + AudioManager::Instance()->GetALCerror(error));
     }
+}
+
+bool AudioSource::GetLooping(void) const
+{
+    return _looping;
+}
+
+const U32 AudioSource::GetSourceID(void) const
+{
+    return _sourceID;
 }
 
 void AudioSource::SetPitch(F32 pitch)
@@ -173,6 +168,11 @@ void AudioSource::SetPitch(F32 pitch)
     }
 }
 
+F32 AudioSource::GetPitch(void) const
+{
+    return _pitch;
+}
+
 void AudioSource::SetGain(F32 gain)
 {
     _gain = gain;
@@ -185,10 +185,15 @@ void AudioSource::SetGain(F32 gain)
     }
 }
 
+F32 AudioSource::GetGain(void) const
+{
+    return _gain;
+}
+
 void AudioSource::SetPosition(const TM::Vector3& pos)
 {
     _position = pos;
-    alSource3f(_sourceID, AL_POSITION, _position.x, _position.y, _position.z);
+    alSource3f(_sourceID, AL_POSITION, _position.GetX(), _position.GetY(), _position.GetZ());
 
     ALCenum error = alGetError();
     if(error != AL_NO_ERROR)
@@ -199,10 +204,8 @@ void AudioSource::SetPosition(const TM::Vector3& pos)
 
 void AudioSource::SetPosition(F32 xVal, F32 yVal, F32 zVal)
 {
-    _position.x = xVal;
-    _position.y = yVal;
-    _position.z = zVal;
-    alSource3f(_sourceID, AL_POSITION, _position.x, _position.y, _position.z);
+    _position.Set(xVal, yVal, zVal);
+    alSource3f(_sourceID, AL_POSITION, _position.GetX(), _position.GetY(), _position.GetZ());
 
     ALCenum error = alGetError();
     if(error != AL_NO_ERROR)
@@ -211,10 +214,15 @@ void AudioSource::SetPosition(F32 xVal, F32 yVal, F32 zVal)
     }
 }
 
+const TM::Vector3& AudioSource::GetPosition(void) const
+{
+    return _position;
+}
+
 void AudioSource::SetVelocity(const TM::Vector3& vel)
 {
     _velocity = vel;
-    alSource3f(_sourceID, AL_VELOCITY, _velocity.x, _velocity.y, _velocity.z);
+    alSource3f(_sourceID, AL_VELOCITY, _velocity.GetX(), _velocity.GetY(), _velocity.GetZ());
 
     ALCenum error = alGetError();
     if(error != AL_NO_ERROR)
@@ -225,16 +233,24 @@ void AudioSource::SetVelocity(const TM::Vector3& vel)
 
 void AudioSource::SetVelocity(F32 xVal, F32 yVal, F32 zVal)
 {
-    _velocity.x = xVal;
-    _velocity.y = yVal;
-    _velocity.z = zVal;
-    alSource3f(_sourceID, AL_VELOCITY, _velocity.x, _velocity.y, _velocity.z);
+    _velocity.Set(xVal, yVal, zVal);
+    alSource3f(_sourceID, AL_VELOCITY, _velocity.GetX(), _velocity.GetY(), _velocity.GetZ());
 
     ALCenum error = alGetError();
     if(error != AL_NO_ERROR)
     {
         ErrorManager::Instance()->SetError(AUDIO, "AudioManager::Constructor: There was an error setting source velocity! " + AudioManager::Instance()->GetALCerror(error));
     }
+}
+
+const TM::Vector3& AudioSource::GetVelocity(void) const
+{
+    return _velocity;
+}
+
+const p_AudioClip AudioSource::GetClip(void) const
+{
+    return _clip;
 }
 
 ALint AudioSource::_GetPlayState(void) const

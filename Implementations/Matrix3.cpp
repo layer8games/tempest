@@ -72,7 +72,7 @@ void Matrix3::RotateX(real val)
 void Matrix3::AddRotateX(real val)
 {
     val = RADIAN(val);
-    _data += glm::rotate(val, glm::vec3(1.0f, 0.0f, 0.0f));
+    _data += glm::mat3(glm::rotate(val, glm::vec3(1.0f, 0.0f, 0.0f)));
 }
 
 void Matrix3::RotateY(real val)
@@ -84,19 +84,19 @@ void Matrix3::RotateY(real val)
 void Matrix3::AddRotateY(real val)
 {
     val = RADIAN(val);
-    _data += glm::rotate(val, glm::vec3(0.0f, 1.0f, 0.0f));
+    _data += glm::mat3(glm::rotate(val, glm::vec3(0.0f, 1.0f, 0.0f)));
 }
 
 void Matrix3::RotateZ(real val)
 {
     val = RADIAN(val);
-    _data = glm::rotate(val, glm::vec3(0.0f, 0.0f, 1.0f));
+    _data = glm::mat3(glm::rotate(val, glm::vec3(0.0f, 0.0f, 1.0f)));
 }
 
 void Matrix3::AddRotateZ(real val)
 {
     val = RADIAN(val);
-    _data += glm::rotate(val, glm::vec3(0.0f, 0.0f, 1.0f));
+    _data += glm::mat3(glm::rotate(val, glm::vec3(0.0f, 0.0f, 1.0f)));
 }
 
 void Matrix3::SetOrientation(const Quaternion& q)

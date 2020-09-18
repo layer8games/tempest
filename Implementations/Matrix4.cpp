@@ -51,7 +51,7 @@ Matrix4 Matrix4::CreateTranslationMatrix(real xVal, real yVal, real zVal)
 
 Matrix4 Matrix4::CreateTranslationMatrix(const Vector3& vec)
 {
-    return Matrix4(glm::translate(glm::vec3(vec.GetRawData())));
+    return Matrix4(glm::translate(vec.GetRawData()));
 }
 
 void Matrix4::Translate(real xVal, real yVal)

@@ -57,12 +57,12 @@ real Vector2::Dot(const Vector2& point) const
     return glm::dot(_data, point.GetRawData());
 }
 
-real Vector2::Magnitude(void)
+real Vector2::Magnitude(void) const
 {
     return glm::length(_data);
 }
 
-real Vector2::SqrMagnitude(void)
+real Vector2::SqrMagnitude(void) const
 {
     return glm::length2(_data);
 }
@@ -165,7 +165,7 @@ Vector2& Vector2::operator+=(const Vector2& point)
 
 Vector2& Vector2::operator+=(const Vector4& vec)
 {
-    _data += vec.GetRawData();
+    _data += glm::vec2(vec.GetRawData());
 
     return *this;
 }
@@ -177,7 +177,7 @@ Vector2 Vector2::operator+(const Vector3& vec) const
 
 Vector2& Vector2::operator+=(const Vector3& vec)
 {
-    _data += vec.GetRawData();
+    _data += glm::vec2(vec.GetRawData());
 
     return *this;
 }
@@ -212,6 +212,13 @@ Vector2 Vector2::operator-(const Vector4& vector) const
 Vector2& Vector2::operator-=(const Vector2& point)
 {
     _data -= point.GetRawData();
+
+    return *this;
+}
+
+Vector2& Vector2::operator-=(const Vector3& point)
+{
+    _data -= glm::vec2(point.GetRawData());
 
     return *this;
 }
