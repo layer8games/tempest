@@ -321,5 +321,6 @@ Vector4 Matrix4::operator*(const Vector4& vec) const
 
 Matrix4& Matrix4::operator/=(real val)
 {
-   return Matrix4(_data / val);
+   _data /= val;
+   return *this;
 }
