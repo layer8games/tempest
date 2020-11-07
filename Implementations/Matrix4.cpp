@@ -82,7 +82,7 @@ void Matrix4::Update(const Quaternion& rotation, const Point3& position, const V
 
 }
 
-void Matrix4::MakeOrthographic(real left, real right, real bottom, real top, real nearPlane, real farPlane)
+void Matrix4::MakeOrthographic(real right, real left, real bottom, real top, real nearPlane, real farPlane)
 {
     //Reset Matrix4
     MakeIdentity();
