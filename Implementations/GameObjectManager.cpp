@@ -152,8 +152,8 @@ void GameObjectManager::UpdateObjects(void)
     {
         if(obj.second->GetActiveUpdate())
         {
-            obj.second->UpdateInternals();
             obj.second->v_Update();
+            obj.second->UpdateInternals();
         }
     }
     
@@ -161,8 +161,8 @@ void GameObjectManager::UpdateObjects(void)
     {
         if(obj.second->GetActiveUpdate())
         {
-            obj.second->UpdateInternals();
             obj.second->v_Update();
+            obj.second->UpdateInternals();
         }
     }
 }

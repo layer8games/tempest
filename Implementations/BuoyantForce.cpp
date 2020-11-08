@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include <Engine/BuoyantForce.h>
+#include "Engine/BuoyantForce.h"
 using namespace TempestPhysics;
 
 
@@ -24,7 +24,7 @@ BuoyantForce::~BuoyantForce(void)
 
 void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 {
-    real depth = RigidBody2D->GetPosition().y;
+    real depth = RigidBody2D->GetPosition().GetY();
 
     if(depth >= _liquidHeight + _maxDepth) 
     {
@@ -35,13 +35,13 @@ void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 
     if(depth <= _liquidHeight - _maxDepth)
     {
-        force.y = _liquidDensity * _objectVolume;
+        force.SetY(_liquidDensity * _objectVolume);
 
         RigidBody2D->AddForce(force);
     }
     else
     {
-        force.y = _liquidDensity * _objectVolume * (depth - _maxDepth - _liquidHeight) / 2 * _maxDepth;
+        force.SetY(_liquidDensity * _objectVolume * (depth - _maxDepth - _liquidHeight) / 2 * _maxDepth);
 
         RigidBody2D->AddForce(force);
     }	
@@ -50,7 +50,7 @@ void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody2D> RigidBody2D)
 //TODO: Implement
 void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody3D> body)
 {
-    real depth = body->GetPosition().y;
+    real depth = body->GetPosition().GetY();
 
     if(depth >= _liquidHeight + _maxDepth) 
     {
@@ -61,16 +61,36 @@ void BuoyantForce::v_UpdateForce(shared_ptr<RigidBody3D> body)
 
     if(depth <= _liquidHeight - _maxDepth)
     {
-        force.y = _liquidDensity * _objectVolume;
+        force.SetY(_liquidDensity * _objectVolume);
 
         body->AddForce(force);
         return;
     }
     else
     {
-        force.y = _liquidDensity * _objectVolume * (depth - _maxDepth - _liquidHeight) / 2 * _maxDepth;
+        force.SetY(_liquidDensity * _objectVolume * (depth - _maxDepth - _liquidHeight) / 2 * _maxDepth);
 
         body->AddForce(force);
     }
 
+}
+
+void BuoyantForce::SetMaxDepth(real depth) 
+{ 
+    _maxDepth = depth; 
+}
+
+void BuoyantForce::SetObjectVolume(real volume) 
+{ 
+    _objectVolume = volume; 
+}
+
+void BuoyantForce::SetLiquidHeight(real hieght) 
+{ 
+    _liquidHeight = hieght; 
+}
+
+void BuoyantForce::SetLiquidDensity(real density) 
+{ 
+    _liquidDensity = density; 
 }

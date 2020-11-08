@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include <Engine/OrbitCamera.h>
+#include "Engine/OrbitCamera.h"
 using namespace Tempest;
 
 OrbitCamera::OrbitCamera(void)
@@ -34,21 +34,21 @@ void OrbitCamera::v_Update(void)
 
 void OrbitCamera::Orbit(void)
 {
-    Camera::_deltaYaw -= (Camera::_currentMouseCoords.x - Camera::_lastMouseCoords.x) * Camera::_mouseSensitivity;
-    Camera::_deltaPitch += (Camera::_currentMouseCoords.y - Camera::_lastMouseCoords.y) * Camera::_mouseSensitivity;
+    Camera::_deltaYaw -= (Camera::_currentMouseCoords.GetX() - Camera::_lastMouseCoords.GetX()) * Camera::_mouseSensitivity;
+    Camera::_deltaPitch += (Camera::_currentMouseCoords.GetY() - Camera::_lastMouseCoords.GetY()) * Camera::_mouseSensitivity;
 }
 
 void OrbitCamera::Zoom(void)
 {
-    F32 dx = 0.01f * (Camera::_currentMouseCoords.x - Camera::_lastMouseCoords.x);
-    F32 dy = 0.01f * (Camera::_currentMouseCoords.y - Camera::_lastMouseCoords.y);
+    F32 dx = 0.01f * (Camera::_currentMouseCoords.GetX() - Camera::_lastMouseCoords.GetX());
+    F32 dy = 0.01f * (Camera::_currentMouseCoords.GetY() - Camera::_lastMouseCoords.GetY());
     _radius += dx - dy;
 }
 
 void OrbitCamera::_v_UpdateCameraVectors(void)
 {
-    _position.x = _target.x + _radius * cos(_pitch) * sin(_yaw);
-    _position.y = _target.y + _radius * sin(_pitch);
-    _position.z = _target.z + _radius * cos(_pitch) * cos(_yaw);
+    _position.SetX(_target.GetX() + _radius * cos(_pitch) * sin(_yaw));
+    _position.SetY(_target.GetY() + _radius * sin(_pitch));
+    _position.SetZ(_target.GetZ() + _radius * cos(_pitch) * cos(_yaw));
     _UpdateLookMatrix();
 }

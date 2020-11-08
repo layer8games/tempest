@@ -32,9 +32,7 @@ namespace TempestPhysics
 
         inline void Set(F32 xVal, F32 yVal, F32 zVal)
         {
-            _gravityAcc.x = xVal;
-            _gravityAcc.y = yVal;
-            _gravityAcc.z = zVal;
+            _gravityAcc.Set(xVal, yVal, zVal);
         }
 
     private:

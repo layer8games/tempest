@@ -1,19 +1,18 @@
 #pragma once
 
-//=====Engine includes=====
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/ErrorManager.h>
-#include <Engine/Input.h>
-#include <Engine/GameWindow.h>
-#include <Engine/OpenGLGameWindow.h>
-#include <Engine/DirectXGameWindow.h>
-#include <Engine/Timer.h>
-#include <Engine/Level.h>
-#include <Engine/GameObjectManager.h>
-#include <Engine/Point2.h>
-#include <Engine/CameraController.h>
-#include <Engine/Color.h>
+#include "Engine/Atom.h"
+#include "Engine/ErrorManager.h"
+#include "Engine/Input.h"
+#include "Engine/GameWindow.h"
+#include "Engine/OpenGLGameWindow.h"
+#include "Engine/DirectXGameWindow.h"
+#include "Engine/Timer.h"
+#include "Engine/Level.h"
+#include "Engine/GameObjectManager.h"
+#include "Engine/Vector2.h"
+#include "Engine/CameraController.h"
+#include "Engine/Color.h"
 
 namespace TM = TempestMath;
 namespace TC = TempestCollisions;
@@ -70,11 +69,11 @@ namespace Tempest
 
         TEMPEST_API void ToggleWireFrame(void);
 
-    protected:        
+    protected:
         Driver(void);
 
     private:
-        static shared_ptr<Driver> _instance;	
+        static shared_ptr<Driver> _instance;
         bool _running;
         std::unique_ptr<GameWindow> _window;
         p_Level _activeLevel; 

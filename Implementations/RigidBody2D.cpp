@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include <Engine/RigidBody2D.h>
+#include "Engine/RigidBody2D.h"
 using namespace TempestPhysics;
 
 
@@ -89,6 +89,107 @@ void RigidBody2D::ClearAccumulator(void)
     _torqueAccum = 0.0f;
 }
 
+TE::GameObject2D* RigidBody2D::GetGameObject(void) const
+{
+    return _obj;
+}
+
+const TM::Vector2& RigidBody2D::GetVelocity(void) const
+{
+    return _velocity;
+}
+
+void RigidBody2D::SetVelocity(const TM::Vector2& vel)
+{
+    _velocity = vel;
+}
+
+void RigidBody2D::SetVelocity(F32 x, F32 y)
+{
+    _velocity.Set(x, y);
+}
+
+const TM::Vector2& RigidBody2D::GetAcceleration(void) const
+{
+    return _acceleration;
+}
+
+void RigidBody2D::SetAcceleration(const TM::Vector2& acc)
+{
+    _acceleration = acc;
+}
+
+void RigidBody2D::SetAcceleration(F32 x, F32 y)
+{
+    _acceleration.Set(x, y);
+}
+
+const TM::Vector2& RigidBody2D::GetForces(void) const
+{
+    return _forceAccum;
+}
+
+const TM::Vector2& RigidBody2D::GetGravityForce(void) const
+{
+    return _gravityForce;
+}
+
+void RigidBody2D::SetGravityForce(const TM::Vector2& grav)
+{
+    _gravityForce = grav;
+}
+
+const real RigidBody2D::GetInverseMass(void) const
+{
+    return _inverseMass;
+}
+
+void RigidBody2D::SetInverseMass(real inverseMass)
+{
+    _inverseMass = inverseMass;
+}
+
+bool RigidBody2D::HasFiniteMass(void)
+{
+    return _inverseMass >= 0.0f;
+}
+
+void RigidBody2D::SetMass(real mass)
+{
+    assert(mass != 0.0f);
+    _inverseMass = static_cast<real>(1.0f) / mass;
+}
+
+const real RigidBody2D::GetLinearDamping(void) const
+{
+    return _linearDamping;
+}
+
+void RigidBody2D::SetLinearDamping(real damp)
+{
+    _linearDamping = damp;
+}
+
+void RigidBody2D::SetActive(bool state)
+{
+    _active = state;
+}
+
+void RigidBody2D::SetObject(TE::GameObject2D* obj)
+{
+    _obj = obj;
+}
+
+void RigidBody2D::SetRotation(real euler)
+{
+    _rotation = euler;
+}
+
+real RigidBody2D::GetRotation(void) const
+{
+    return _rotation;
+}
+
 void RigidBody2D::UpdateVelocityAndAcceleration(const TE::SteeringOutput2D steering)
 {
     _velocity += steering.linear * TM::Timer::Instance()->DeltaTime();
@@ -139,7 +240,7 @@ void RigidBody2D::AddForce(const TM::Vector2& force)
 void RigidBody2D::AddForceAtPoint(const TM::Vector2& force, const TM::Point2 point)
 {
     _forceAccum += force;
-    _torqueAccum = point.x * force.y - point.y * force.x;
+    _torqueAccum = point.GetX() * force.GetY() - point.GetY() * force.GetX();
 }
 
 void RigidBody2D::SetMomentOfInertia(real inertia)

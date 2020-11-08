@@ -22,7 +22,7 @@ real Steering2D::GetNewOrientation(real currentOrientation, const TM::Vector2& v
 {
     if(velocity.SqrMagnitude() > 0.0f)
     {
-        real orienationInRadians = real_atan2(-velocity.x, velocity.y);
+        real orienationInRadians = real_atan2(-velocity.GetX(), velocity.GetY());
         return DEGREE(orienationInRadians);
     }
     else

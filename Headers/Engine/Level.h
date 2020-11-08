@@ -1,32 +1,29 @@
 #pragma once
 
-//===Killer1 includes===
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/Driver.h>
-#include <Engine/ErrorManager.h>
-#include <Engine/GameObject2D.h>
-#include <Engine/GameObject3D.h>
-#include <Engine/StaticGameObject2D.h>
-#include <Engine/TextureManager.h>
-#include <Engine/Vector4.h>
-#include <Engine/Color.h>
-#include <Engine/Text.h>
-#include <Engine/ForceRegistry.h>
-#include <Engine/Text.h>
-#include <Engine/RigidBody2D.h>
-#include <Engine/Point2.h>
-#include <Engine/CameraController.h>
-#include <Engine/Camera.h>
-#include <Engine/Factory.h>
+#include "Engine/Atom.h"
+#include "Engine/Driver.h"
+#include "Engine/ErrorManager.h"
+#include "Engine/GameObject2D.h"
+#include "Engine/GameObject3D.h"
+#include "Engine/StaticGameObject2D.h"
+#include "Engine/TextureManager.h"
+#include "Engine/Vector4.h"
+#include "Engine/Color.h"
+#include "Engine/Text.h"
+#include "Engine/ForceRegistry.h"
+#include "Engine/Text.h"
+#include "Engine/RigidBody2D.h"
+#include "Engine/Vector2.h"
+#include "Engine/CameraController.h"
+#include "Engine/Camera.h"
+#include "Engine/Factory.h"
 
 namespace TM = TempestMath;
 namespace TP = TempestPhysics;
 
-//===== Third party includes =====
-#include <rapidxml.hpp>
+#include "rapidxml.hpp"
 
-//=====STL includes=====
 #include <map>
 #include <vector>
 #include <fstream>

@@ -1,15 +1,14 @@
 #pragma once
 
-//=====Engine Includes=====
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/ErrorManager.h>
-#include <Engine/Timer.h>
-#include <Engine/Vector4.h>
-#include <Engine/Point3.h>
-#include <Engine/Quaternion.h>
-#include <Engine/Matrix4.h>
-#include <Engine/GameObject3D.h>
+#include "Engine/Atom.h"
+#include "Engine/ErrorManager.h"
+#include "Engine/Timer.h"
+#include "Engine/Vector3.h"
+#include "Engine/Vector4.h"
+#include "Engine/Quaternion.h"
+#include "Engine/Matrix4.h"
+#include "Engine/GameObject3D.h"
 
 namespace TM = TempestMath;
 namespace TE = Tempest;
@@ -29,174 +28,73 @@ namespace TempestPhysics
 
         TEMPEST_API void CalculateDerivedData(void);
 
-        inline void SetActive(bool state)
-        {
-            _active = state;
-        }
+        TEMPEST_API void SetActive(bool state);
 
         TEMPEST_API bool GetActive(void) const;
 
-        const TM::Point3 GetPosition(void);
+        TEMPEST_API const TM::Point3 GetPosition(void);
 
-        inline const TM::Matrix4& GetInverseInertiaTensor(void) const
-        {
-            return _inverseInertiaTensor;
-        }
+        TEMPEST_API const TM::Matrix4& GetInverseInertiaTensor(void) const;
 
-        void SetInverseInertiaTensor(const TM::Matrix4& mat)
-        {
-            _inverseInertiaTensor.SetAsInverse(mat);
-        }
+        TEMPEST_API void SetInverseInertiaTensor(const TM::Matrix4& mat);
     
-        inline const TM::Vector3& GetVelocity(void) const
-        {
-            return _velocity;
-        }
+        TEMPEST_API const TM::Vector3& GetVelocity(void) const;
 
-        inline void SetVelocity(const TM::Vector4& vec)
-        {
-            _velocity = vec; 
-        }
+        TEMPEST_API void SetVelocity(const TM::Vector4& vec);
 
-        inline void SetVelocity(F32 x, F32 y, F32 z)
-        {
-            _velocity.x = x;
-            _velocity.y = y;
-            _velocity.z = z;
-        }
+        TEMPEST_API void SetVelocity(F32 x, F32 y, F32 z);
 
-        inline void AddScaledVelocity(const TM::Vector4& vec, F32 scale)
-        {
-            _velocity.AddScaledVector(vec, scale);
-        }
+        TEMPEST_API void AddScaledVelocity(const TM::Vector4& vec, F32 scale);
 
-        inline const TM::Vector3& GetAcceleration(void) const
-        {
-            return _acceleration;
-        }
+        TEMPEST_API const TM::Vector3& GetAcceleration(void) const;
 
-        inline void SetAcceleration(const TM::Vector4& vec)
-        {
-            _acceleration = vec;
-        }
+        TEMPEST_API void SetAcceleration(const TM::Vector4& vec);
 
-        inline void SetAcceleration(F32 x, F32 y, F32 z)
-        {
-            _acceleration.x = x; 
-            _acceleration.y = y;
-            _acceleration.z = z;
-        }
+        TEMPEST_API void SetAcceleration(F32 x, F32 y, F32 z);
 
-        inline void AddScaledAcceleration(const TM::Vector4& vec, F32 scale)
-        {
-            _acceleration.AddScaledVector(vec, scale);
-        }
+        TEMPEST_API void AddScaledAcceleration(const TM::Vector4& vec, F32 scale);
 
-        inline const TM::Vector3& GetRotation(void) const
-        {
-            return _rotation;
-        }
+        TEMPEST_API const TM::Vector3& GetRotation(void) const;
 
-        inline void SetRotation(const TM::Vector3& vec)
-        {
-            _rotation = vec;
-        }
+        TEMPEST_API void SetRotation(const TM::Vector3& vec);
 
-        inline void SetRotation(F32 x, F32 y, F32 z)
-        {
-            _rotation.x = x; 
-            _rotation.y = y;
-            _rotation.z = z;
-        }
+        TEMPEST_API void SetRotation(F32 x, F32 y, F32 z);
 
-        inline void AddScaledRotation(const TM::Vector3& vec, F32 scale)
-        {
-            _rotation.AddScaledVector(vec, scale);
-        }
+        TEMPEST_API void AddScaledRotation(const TM::Vector3& vec, F32 scale);
 
-        inline const TM::Vector3& GetForces(void) const
-        {
-            return _forceAccum;
-        }
+        TEMPEST_API const TM::Vector3& GetForces(void) const;
 
-        inline void AddForce(const TM::Vector3& force)
-        {
-            _forceAccum += force;
-            _isAwake = true;
-        }
+        TEMPEST_API void AddForce(const TM::Vector3& force);
 
-        inline const TM::Vector3& GetTorque(void) const
-        {
-            return _torqueAccum;
-        }
+        TEMPEST_API const TM::Vector3& GetTorque(void) const;
 
-        inline void AddTorque(const TM::Vector3& torque)
-        {
-            _torqueAccum += torque;
-        }
+        TEMPEST_API void AddTorque(const TM::Vector3& torque);
 
-        inline void ClearAccumulators(void)
-        {
-            _forceAccum.Reset();
-            _torqueAccum.Reset();
-        }
+        TEMPEST_API void ClearAccumulators(void);
 
         TEMPEST_API void AddForceAtPoint(const TM::Vector3& force, const TM::Point3& point);
 
-        TEMPEST_API void AddForceAtLocalPoint(const TM::Vector3& force, const TM::Point3& point);
+        TEMPEST_API real GetInverseMass(void) const;
 
-        inline real GetInverseMass(void) const
-        {
-            return _inverseMass;
-        }
+        TEMPEST_API void SetInverseMass(real val);
 
-        inline void SetInverseMass(real val)
-        {
-            _inverseMass = val;
-        }
-
-        inline bool HasFiniteMass(void) const
-        {
-            return _inverseMass >= 0.0f;
-        }
+        TEMPEST_API bool HasFiniteMass(void) const;
 
         TEMPEST_API const real GetMass(void);
 
-        inline void SetMass(real mass)
-        {
-            assert(mass != 0.0f);
-            _inverseMass = static_cast<real>(1.0f) / mass;
-        }
+        TEMPEST_API void SetMass(real mass);
 
-        inline real GetLinearDamping(void) const
-        {
-            return _linearDamping;
-        }
+        TEMPEST_API real GetLinearDamping(void) const;
 
-        inline void SetLinearDamping(real val)
-        {
-            _linearDamping = val;
-        }
+        TEMPEST_API void SetLinearDamping(real val);
 
-        inline real GetAngularDamping(void) const
-        {
-            return _angularDamping;
-        }
+        TEMPEST_API real GetAngularDamping(void) const;
 
-        inline void SetAngularDamping(real val)
-        {
-            _angularDamping = val;
-        }
+        TEMPEST_API void SetAngularDamping(real val);
 
-        inline bool GetIsAwake(void)
-        {
-            return _isAwake;
-        }
+        TEMPEST_API bool GetIsAwake(void);
 
-        inline void SetObject(TE::GameObject3D* obj)
-        {
-            _obj = obj;
-        }
+        TEMPEST_API void SetObject(TE::GameObject3D* obj);
 
     private:
         void _TransformInertiaTensor(void);

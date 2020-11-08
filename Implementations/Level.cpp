@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include <Engine/Level.h>
+#include "Engine/Level.h"
 using namespace Tempest;
 
 Level::Level(void) 
@@ -180,8 +180,8 @@ std::vector<Level::TileData> Level::_ImportTMXMapData(string filepath)
                 {
                     Level::GridPos pos = _ConvertIndexToTileData(i, mapWidth, mapHeight);
                     TM::Point2 cartPos{ };
-                    cartPos.x = (pos.x * static_cast<F32>(tileWidth)) - halfMapWidthInPixels;
-                    cartPos.y = (pos.y * static_cast<F32>(tileHeight)) - halfMapHeightInPixels;
+                    cartPos.SetX((pos.x * static_cast<F32>(tileWidth)) - halfMapWidthInPixels);
+                    cartPos.SetY((pos.y * static_cast<F32>(tileHeight)) - halfMapHeightInPixels);
 
                     TileData object = tiles[data_array[j][i]];
                     object.pos = cartPos;

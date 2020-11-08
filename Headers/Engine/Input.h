@@ -1,13 +1,12 @@
 #pragma once
 
-//=====Killer1 includes=====
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/Driver.h>
-#include <Engine/ErrorManager.h>
-#include <Engine/Matrix4.h>
-#include <Engine/Point2.h>
-#include <Engine/Keys.h>
+#include "Engine/Atom.h"
+#include "Engine/Driver.h"
+#include "Engine/ErrorManager.h"
+#include "Engine/Matrix4.h"
+#include "Engine/Vector2.h"
+#include "Engine/Keys.h"
 
 namespace TM = TempestMath;
 
@@ -38,15 +37,9 @@ namespace Tempest
 
         TEMPEST_API const TM::Point2 GetMouseCoordInScreen(void);
 
-        inline const TM::Point2 GetLeftMouseCoord(void) const
-        { 
-            return _leftClickCoordinates; 
-        }
+        TEMPEST_API const TM::Point2 GetLeftMouseCoord(void) const;
 
-        inline const TM::Point2 GetRightMouseCoord(void) const
-        { 
-            return _rightClickCoordinates; 
-        }
+        TEMPEST_API const TM::Point2 GetRightMouseCoord(void) const;
 
         TEMPEST_API bool GetKeyDown(Keys k);
 
@@ -57,17 +50,17 @@ namespace Tempest
         TEMPEST_API bool GetKeyReleased(Keys k);
 
     protected:
-        Input(void);		
+        Input(void);
 
     private:
-        static shared_ptr<Input> _instance;	
-        KeyStates _keyStates[TOTAL_KEYS];			
-        bool _pastActiveKeys[TOTAL_KEYS];	
-        bool _curActiveKeys[TOTAL_KEYS];		
-        TM::Point2 _leftClickCoordinates;			
-        TM::Point2 _rightClickCoordinates;			
-        TM::Point2 _leftClickCoordInScreen;		
-        TM::Point2 _rightClickCoordInScreen;		
+        static shared_ptr<Input> _instance;
+        KeyStates _keyStates[TOTAL_KEYS];
+        bool _pastActiveKeys[TOTAL_KEYS];
+        bool _curActiveKeys[TOTAL_KEYS];
+        TM::Point2 _leftClickCoordinates;
+        TM::Point2 _rightClickCoordinates;
+        TM::Point2 _leftClickCoordInScreen;
+        TM::Point2 _rightClickCoordInScreen;
     };
     typedef shared_ptr<Input> p_Input;
 }//End namespace

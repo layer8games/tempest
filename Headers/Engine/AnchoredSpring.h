@@ -1,10 +1,9 @@
 #pragma once
 
-//=====Engine Includes=====
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/ForceGenerator.h>
-#include <Engine/Point3.h>
+#include "Engine/Atom.h"
+#include "Engine/ForceGenerator.h"
+#include "Engine/Vector3.h"
 
 namespace TM = TempestMath;
 
@@ -23,23 +22,14 @@ namespace TempestPhysics
 
         TEMPEST_API void v_UpdateForce(p_RigidBody3D body) final;
 
-        inline void SetAnchor(const TM::Point3& anchor)
-        {
-            _anchor = anchor;
-        }
+        TEMPEST_API void SetAnchor(const TM::Point3& anchor);
 
-        inline void SetSpringConstant(real constant)
-        {
-            _springConstant = constant;
-        }
+        TEMPEST_API void SetSpringConstant(real constant);
 
-        inline void SetRestLength(real length)
-        {
-            _restLength = length;
-        }
+        TEMPEST_API void SetRestLength(real length);
 
     private:
-        TM::Point3	_anchor;	
+        TM::Point3 _anchor;
         real _springConstant;
         real _restLength;
     };//end AnchoredSpring

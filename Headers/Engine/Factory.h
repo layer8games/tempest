@@ -1,14 +1,13 @@
 #pragma once
 
-//=====Engine Includes=====
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/GameObject2D.h>
-#include <Engine/StaticGameObject2D.h>
-#include <Engine/GameObject3D.h>
-#include <Engine/StaticGameObject3D.h>
-#include <Engine/TextureManager.h>
-#include <Engine/Point2.h>
+#include "Engine/Atom.h"
+#include "Engine/GameObject2D.h"
+#include "Engine/StaticGameObject2D.h"
+#include "Engine/GameObject3D.h"
+#include "Engine/StaticGameObject3D.h"
+#include "Engine/TextureManager.h"
+#include "Engine/Vector2.h"
 
 namespace TM = TempestMath;
 

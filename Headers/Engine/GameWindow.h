@@ -1,17 +1,15 @@
 #pragma once
 
-//=====Tempest includes=====
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/ErrorManager.h>
-#include <Engine/Color.h>
-#include <Engine/Timer.h>
-#include <Engine/Point2.h>
-#include <Engine/Keys.h>
+#include "Engine/Atom.h"
+#include "Engine/ErrorManager.h"
+#include "Engine/Color.h"
+#include "Engine/Timer.h"
+#include "Engine/Vector2.h"
+#include "Engine/Keys.h"
 
 namespace TM = TempestMath; 
 
-//===== STL Includes =====
 #include <sstream>
 
 namespace Tempest 
@@ -51,48 +49,30 @@ namespace Tempest
 
         TEMPEST_API virtual void v_SetScreenColor(const Color& color)=0;
  
-        inline S32 GetScreenWidth(void)
-        { 
-            return _screenWidth; 
-        }
+        TEMPEST_API S32 GetScreenWidth(void);
  
-        inline S32 GetScreenHeight(void)
-        { 
-            return _screenHeight; 
-        }
+        TEMPEST_API S32 GetScreenHeight(void);
          
-        inline F32 GetScreenRight(void)
-        { 
-            return _right; 
-        }
+        TEMPEST_API F32 GetScreenRight(void);
        
-        inline F32 GetScreenLeft(void)
-        { 
-            return _left; 
-        }
-        
-        inline F32 GetScreenTop(void)
-        { 
-            return _top; 
-        }
-      
-        inline F32 GetScreenBottom(void)
-        { 
-            return _bottom; 
-        }
+        TEMPEST_API F32 GetScreenLeft(void);
 
-    protected:      
+        TEMPEST_API F32 GetScreenTop(void);
+      
+        TEMPEST_API F32 GetScreenBottom(void);
+
+    protected:
         GameWindow(void);
 
-        bool _isFullScreen;				
-        bool _wireFrame;		
-        TEMPEST_API static S32  _screenWidth;		
-        TEMPEST_API static S32  _screenHeight;		
-        F32  _right;			
-        F32  _left;				
-        F32  _top;				
-        F32  _bottom;			
-        string _wndName;			
+        bool _isFullScreen;
+        bool _wireFrame;
+        TEMPEST_API static S32 _screenWidth;
+        TEMPEST_API static S32 _screenHeight;
+        F32  _right;
+        F32  _left;
+        F32  _top;
+        F32  _bottom;
+        string _wndName;
     };
     typedef shared_ptr<GameWindow> p_GameWindow;
 }//End namespace

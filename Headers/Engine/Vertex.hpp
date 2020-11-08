@@ -1,11 +1,9 @@
 #pragma once
 
-//=====Engine Includes=====
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/Vector4.h>
-#include <Engine/Point4.h>
-#include <Engine/Color.h>
+#include "Engine/Atom.h"
+#include "Engine/Vector4.h"
+#include "Engine/Color.h"
 
 namespace TM = TempestMath;
 

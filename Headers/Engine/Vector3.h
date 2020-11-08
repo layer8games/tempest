@@ -3,21 +3,18 @@
 //===== Killer Includes =====
 #include "stdafx.h"
 #include <Engine/Atom.h>
-#include <Engine/Point2.h>
-#include <Engine/Point3.h>
-#include <Engine/Point4.h>
 #include <Engine/Vector2.h>
 #include <Engine/Vector4.h>
 
+#include <glm/vec3.hpp>
+#include <glm/geometric.hpp>
+#include <glm/gtx/norm.hpp>
 
 //===== Stnadard inlcudes =====
 #include <cassert>
 
 namespace TempestMath
 {
-    class Point2;
-    class Point3;
-    class Point4;
     class Vector2;
     class Vector4;
     
@@ -29,22 +26,18 @@ namespace TempestMath
         TEMPEST_API explicit Vector3(real val);
 
         TEMPEST_API Vector3(real xVal, real yVal, real zVal);
-
-        TEMPEST_API explicit Vector3(const Point3& p);
-        
-        TEMPEST_API Vector3(const Point4& p);
  
-        TEMPEST_API Vector3(const Vector3& v);
+        TEMPEST_API explicit Vector3(const Vector2& vector);
 
-        TEMPEST_API Vector3(const Vector4& v);
+        TEMPEST_API Vector3(const Vector3& vector);
+
+        TEMPEST_API explicit Vector3(const Vector4& vector);
 
         TEMPEST_API ~Vector3(void);
 
-        TEMPEST_API real Dot(const Vector3& vec) const;
+        TEMPEST_API real Dot(const Vector3& vector) const;
 
-        TEMPEST_API real Dot(const Point3& point) const;
-
-        TEMPEST_API Vector3 CrossProduct(const Vector3& vec) const;
+        TEMPEST_API Vector3 CrossProduct(const Vector3& vector) const;
 
         TEMPEST_API real Magnitude(void);
 
@@ -54,88 +47,59 @@ namespace TempestMath
 
         TEMPEST_API void Reset(real val=0.0f);
 
-        TEMPEST_API void AddScaledVector(const Vector3& vec, real scale);
+        TEMPEST_API void AddScaledVector(const Vector3& vector, real scale);
 
         TEMPEST_API void AddScaledVector(const Vector4& vec, real scale);
 
-        TEMPEST_API void AddScaledVector(const Point4& point, real scale);
+        TEMPEST_API void Set(real xVal, real yVal, real zVal);
 
+        TEMPEST_API glm::vec3 GetRawData(void) const;
+        
+        TEMPEST_API F32 GetX() const;
+        
+        TEMPEST_API F32 GetY() const;
+        
+        TEMPEST_API F32 GetZ() const;
 
-        inline void Set(real xVal, real yVal, real zVal)
-        {
-            x = xVal;
-            y = yVal;
-            z = zVal;
-        }
+        TEMPEST_API void SetX(F32 val);
 
-        TEMPEST_API Vector3& operator=(const Vector2& vec);
+        TEMPEST_API void SetY(F32 val);
 
-        TEMPEST_API Vector3& operator=(const Vector3& vec);
+        TEMPEST_API void SetZ(F32 val);
 
-        TEMPEST_API Vector3& operator=(const Vector4& vec);
+        TEMPEST_API Vector3& operator=(const Vector2& vector);
 
-        TEMPEST_API Vector3& operator=(const Point2& point);
+        TEMPEST_API Vector3& operator=(const Vector3& vector);
 
-        TEMPEST_API Vector3& operator=(const Point3& point);
-
-        TEMPEST_API Vector3& operator=(const Point4& point);
+        TEMPEST_API Vector3& operator=(const Vector4& vector);
 
         TEMPEST_API Vector3& operator=(real val);
 
-        TEMPEST_API Vector3 operator+(const Vector3& vec) const;
+        TEMPEST_API Vector3 operator+(const Vector3& vector) const;
 
-        TEMPEST_API Vector3& operator+=(const Vector3& vec);
+        TEMPEST_API Vector3& operator+=(const Vector3& vector);
 
         TEMPEST_API Vector3 operator+(real val) const;
 
         TEMPEST_API Vector3& operator+=(real val);
 
-        TEMPEST_API Vector3 operator+(shared_ptr<Vector3> vec) const;
+        TEMPEST_API Vector3 operator+(shared_ptr<Vector3> vector) const;
 
-        TEMPEST_API Vector3 operator-(const Vector3& vec) const;
+        TEMPEST_API Vector3 operator-(const Vector3& vector) const;
 
-        TEMPEST_API Vector3& operator-=(const Vector3& vec);
+        TEMPEST_API Vector3& operator-=(const Vector3& vector);
 
-        TEMPEST_API Vector3& operator-=(const Vector4& vec);
+        TEMPEST_API Vector3& operator-=(const Vector4& vector);
 
-        TEMPEST_API Vector3& operator-=(const Point2& point);
-
-        TEMPEST_API Vector3& operator-=(const Point3& point);
-
-        TEMPEST_API Vector3& operator-=(const Point4& point);
-
-        inline Vector3 operator-(void)
-        {
-            return Vector3(-x, -y, -z);
-        }
+        TEMPEST_API Vector3 operator-(void) const;
  
-        inline Vector3& operator++(void)
-        {
-            ++x;
-            ++y;
-            ++z;
-            
-            return *this;
-        }
+        TEMPEST_API Vector3& operator++(void);
 
-        inline Vector3 operator++(int)
-        {
-            return Vector3(++x, ++y, ++z);
-        }
+        TEMPEST_API Vector3 operator++(int);
  
-        inline Vector3& operator--(void)
-        {
-            --x;
-            --y;
-            --z;
-
-            return *this;
-        }
+        TEMPEST_API Vector3& operator--(void);
     
-        inline Vector3 operator--(int)
-        {
-            return Vector3(--x, --y, --z);
-        }
+        TEMPEST_API Vector3 operator--(int);
 
         TEMPEST_API Vector3 operator-(real val) const;
 
@@ -153,21 +117,25 @@ namespace TempestMath
 
         TEMPEST_API Vector3& operator/=(real val);
 
-        TEMPEST_API bool operator>(const Vector3& vec) const;
+        TEMPEST_API bool operator>(const Vector3& vector) const;
 
-        TEMPEST_API bool operator<(const Vector3& vec) const;
+        TEMPEST_API bool operator<(const Vector3& vector) const;
 
-        TEMPEST_API bool operator>=(const Vector3& vec) const;
+        TEMPEST_API bool operator>=(const Vector3& vector) const;
 
-        TEMPEST_API bool operator<=(const Vector3& vec) const;
+        TEMPEST_API bool operator<=(const Vector3& vector) const;
 
-        TEMPEST_API bool operator==(const Vector3& vec) const;
+        TEMPEST_API bool operator==(const Vector3& vector) const;
 
-        TEMPEST_API bool operator!=(const Vector3& vec) const;
+        TEMPEST_API bool operator!=(const Vector3& vector) const;
 
-        real x;
-        real y;
-        real z;
+    private:
+        Vector3(glm::vec3);
+
+        glm::vec3 _data;
+
     };// end class
     typedef shared_ptr<Vector3> p_Vector3;
+    typedef Vector3 Point3;
+    typedef shared_ptr<Point3> p_Point3;
 }//end namespace

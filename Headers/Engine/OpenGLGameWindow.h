@@ -1,24 +1,21 @@
 #pragma once
 
-//=====Killer1 includes=====
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/GameWindow.h>
-#include <Engine/ErrorManager.h>
-#include <Engine/Color.h>
-#include <Engine/Timer.h>
-#include <Engine/Point2.h>
-#include <Engine/Input.h>
-#include <Engine/Keys.h>
+#include "Engine/Atom.h"
+#include "Engine/GameWindow.h"
+#include "Engine/ErrorManager.h"
+#include "Engine/Color.h"
+#include "Engine/Timer.h"
+#include "Engine/Vector2.h"
+#include "Engine/Input.h"
+#include "Engine/Keys.h"
 
 namespace TM = TempestMath; 
 
-//===== STL Includes =====
 #include <sstream>
 
-//=====OGL includes=====
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+#include "GL/glew.h"
+#include "GLFW/glfw3.h"
 
 namespace Tempest 
 {
@@ -53,6 +50,7 @@ namespace Tempest
         TEMPEST_API const TM::Point2 v_GetMousePosInScreen(void) final;
 
         TEMPEST_API F64 v_GetTime(void) final;
+        
         TEMPEST_API void v_EndRunning(void) final;
 
         TEMPEST_API void v_SetScreenColor(const Color& col) final;

@@ -1,28 +1,25 @@
 #pragma once
 
-//=====Engine Includes=====
 #include "stdafx.h"
-#include <Engine/Atom.h>
-#include <Engine/BufferData.h>
-#include <Engine/ErrorManager.h>
-#include <Engine/Vertex.hpp>
-#include <Engine/Point4.h>
+#include "Engine/Atom.h"
+#include "Engine/BufferData.h"
+#include "Engine/ErrorManager.h"
+#include "Engine/Vertex.hpp"
+#include "Engine/Vector4.h"
 
 namespace TM = TempestMath;
 
-#include <rapidxml.hpp>
+#include "rapidxml.hpp"
 
-//===== STL inludes =====
-#include <vector>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <regex>
-#include <stdlib.h>
+#include "vector"
+#include "fstream"
+#include "sstream"
+#include "algorithm"
+#include "regex"
+#include "stdlib.h"
 
-//===== OpenGL Includes =====
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+#include "GL/glew.h"
+#include "GLFW/glfw3.h"
 
 namespace Tempest
 {
@@ -45,74 +42,31 @@ namespace Tempest
 
         TEMPEST_API void LoadMesh(string filepath);
 
-        inline GLuint GetVAO(void) const
-        {
-            return _vao;
-        }
+        TEMPEST_API GLuint GetVAO(void) const;
 
-        inline void BindVAO(bool state=true)
-        {
-            if(state)
-            {
-                glBindVertexArray(_vao);
-            }
-            else
-            {
-                glBindVertexArray(0);
-            }
-        }
+        TEMPEST_API void BindVAO(bool state=true);
 
-        void BindVBO(BufferData buffer);
+        TEMPEST_API void BindVBO(BufferData buffer);
 
-        inline U32 GetNumVertices(void)
-        {
-            return _vertices.size();
-        }
+        TEMPEST_API U32 GetNumVertices(void);
 
-        inline void AddVertex(const Vertex vert)
-        {
-            _vertices.push_back(vert);
-        }
+        TEMPEST_API void AddVertex(const Vertex vert);
 
-        inline void SetVertices(std::vector<Vertex> vertices)
-        {
-            _vertices = vertices;
-        }
+        TEMPEST_API void SetVertices(std::vector<Vertex> vertices);
 
-        inline std::vector<Vertex> GetVertices(void) const
-        {
-            return _vertices;
-        }
+        TEMPEST_API std::vector<Vertex> GetVertices(void) const;
         
-        inline void AddIndex(U32 index)
-        {
-            _indices.push_back(index);
-        }
+        TEMPEST_API void AddIndex(U32 index);
 
-        inline void SetIndices(std::vector<U32> indices)
-        {
-            _indices = indices;
-        }
+        TEMPEST_API void SetIndices(std::vector<U32> indices);
 
-        inline std::vector<U32> GetIndices(void) const
-        {
-            return _indices;
-        }
+        TEMPEST_API std::vector<U32> GetIndices(void) const;
 
-        inline std::vector<F32> GetUVList(void) const
-        {
-            return _uvList;
-        }
+        TEMPEST_API std::vector<F32> GetUVList(void) const;
 
-        inline void SetUVList(std::vector<F32> list)
-        {
-            _uvList = list;
-        }
+        TEMPEST_API void SetUVList(std::vector<F32> list);
 
-        inline void AddUV(F32 val)
-        {
-            _uvList.push_back(val);
-        }
+        TEMPEST_API void AddUV(F32 val);
 
     private:
         std::vector<U32> _SplitU32(string text, char delim) const;
