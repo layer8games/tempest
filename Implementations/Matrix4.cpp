@@ -27,8 +27,11 @@ glm::mat4 Matrix4::GetRawData(void) const
     return _data;
 }
 
-void Matrix4::MakeOrthographic(real left, real right, real bottom, real top, real nearPlane, real farPlane)
+#include <iostream>
+
+void Matrix4::MakeOrthographic(real right, real left, real bottom, real top, real nearPlane, real farPlane)
 {
+    std::cout << "left: " << left << " | right: " << right << std::endl;
     _data = glm::ortho(left, right, bottom, top, nearPlane, farPlane);
 }
 
