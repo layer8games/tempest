@@ -48,8 +48,11 @@ const TM::Matrix4& Camera::GetProjectionMatrix(void) const
 
 void Camera::SetOrthographic(void)
 {
-    _projectionMatrix.MakeOrthographic(Driver::Instance()->GetScreenLeft(),
-                                       Driver::Instance()->GetScreenRight(),
+    // TODO
+    // Reversed right and left. This is a temporary fix. Review tutorial here to fix: 
+    // https://learnopengl.com/Getting-started/Camera
+    _projectionMatrix.MakeOrthographic(Driver::Instance()->GetScreenRight(),
+                                       Driver::Instance()->GetScreenLeft(),
                                        Driver::Instance()->GetScreenBottom(),
                                        Driver::Instance()->GetScreenTop(),
                                        -100.0f,
