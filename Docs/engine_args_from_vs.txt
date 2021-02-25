@@ -1,0 +1,36 @@
+/JMC 
+/Yu"stdafx.h" 
+/ifcOutput "${workspaceFolder}\Temp\Tempest_Debug\" 
+/GS 
+/analyze- 
+/W1 
+/Zc:wchar_t 
+/I"H:\Projects\Tempest\Build\visual_studio\..\..\Lib\Headers\" 
+/I"H:\Projects\Tempest\Build\visual_studio\..\..\Headers\" 
+/ZI 
+/Gm- 
+/Od 
+/Fd"Tempest" 
+/Zc:inline 
+/fp:precise 
+/D "TEMPEST_EXPORTS" 
+/D "_WINDLL" 
+/D "_MBCS" 
+/errorReport:prompt 
+/WX- 
+/Zc:forScope 
+/RTC1 
+/Gd 
+/Oy- 
+/MDd 
+/std:c++17 
+/FC 
+/Fa"H:\Projects\Tempest\Build\visual_studio\..\..\Temp\Tempest_Debug\" 
+/EHsc 
+/nologo 
+/Fo"H:\Projects\Tempest\Build\visual_studio\..\..\Temp\Tempest_Debug\" 
+/Fp"H:\Projects\Tempest\Build\visual_studio\..\..\Temp\Tempest_Debug\Tempest_Win32_Debug.pch" 
+/diagnostics:column 
+
+Linker:
+/OUT:"H:\Projects\Tempest\Build\visual_studio\..\..\Bin\Tempest_Win32_Debug.dll" /MANIFEST /NXCOMPAT /PDB:"H:\Projects\Tempest\Build\visual_studio\..\..\Bin\Tempest_Win32_Debug.pdb" /DYNAMICBASE "OpenGL32.lib" "GL3W.lib" "SOIL.lib" "freetype.lib" "OpenAL32.lib" "glfw3.lib" "glew32s.lib" "kernel32.lib" "user32.lib" "gdi32.lib" "winspool.lib" "comdlg32.lib" "advapi32.lib" "shell32.lib" "ole32.lib" "oleaut32.lib" "uuid.lib" "odbc32.lib" "odbccp32.lib" /IMPLIB:"H:\Projects\Tempest\Build\visual_studio\..\..\Bin\Tempest_Win32_Debug.lib" /DEBUG:FASTLINK /DLL /MACHINE:X86 /INCREMENTAL /PGD:"H:\Projects\Tempest\Build\visual_studio\..\..\Bin\Tempest_Win32_Debug.pgd" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /ManifestFile:"H:\Projects\Tempest\Build\visual_studio\..\..\Temp\Tempest_Debug\Tempest_Win32_Debug.dll.intermediate.manifest" /ERRORREPORT:PROMPT /NOLOGO /LIBPATH:"H:\Projects\Tempest\Build\visual_studio\..\..\Lib\" /TLBID:1 
