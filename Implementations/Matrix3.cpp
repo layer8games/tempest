@@ -170,7 +170,7 @@ Matrix3& Matrix3::operator/=(real val)
     return *this;
 }
 
-glm::mat3 Matrix3::GetRawData(void) const
+const glm::mat3 Matrix3::GetRawData(void) const
 {
     return _data;
 }

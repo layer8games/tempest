@@ -81,10 +81,11 @@ namespace TempestMath
 
         TEMPEST_API Matrix3& operator/=(real val);
 
-        TEMPEST_API glm::mat3 GetRawData(void) const;
+        TEMPEST_API const glm::mat3 GetRawData(void) const;
 
     private:
         Matrix3(glm::mat3 matrix);
+
 
         glm::mat3 _data;
 
