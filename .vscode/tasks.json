@@ -1,96 +1,19 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "cppbuild",
-			"label": "Tempest Win32 Debug",
-			"command": "cl.exe",
-			"args": [
-				"/JMC",
-				"/Y-",
-				"/LDd",
-				"./Implementations/*.cpp",
-				"/Zi",
-				"/ifcOutput",
-				"${workspaceFolder}\\Temp\\Tempest_Debug\\",
-				"/GS",
-				"/analyze-",
-				"/W1",
-				"/Zc:wchar_t",
-				"/I${workspaceFolder}\\Lib\\Headers",
-				"/I${workspaceFolder}\\Headers",
-				"/Od",
-				"/Ot",
-				"/Fd'Tempest'",
-				"/Zc:inline",
-				"/fp:precise",
-				"/D",
-				"TEMPEST_EXPORTS",
-				"/D",
-				"_WINDLL",
-				"/D",
-				"_MBCS",
-				"/errorReport:prompt",
-				"/WX",
-				"/Zc:forScope",
-				"/RTC1",
-				"/Gd",
-				"/Oy-",
-				"/std:c++17",
-				"/FC",
-				"/EHsc",
-				"/nologo",
-				"/diagnostics:column",
-				"/link",
-				"/OUT:${workspaceFolder}\\Bin\\Tempest_Debug.dll",
-				"/MANIFEST",
-				"/NXCOMPAT",
-				"/PDB:${workspaceFolder}\\Bin\\Tempest_Win32_Debug.pdb",
-				"/DYNAMICBASE",
-				"OpenGL32.lib",
-				"GL3W.lib",
-				"SOIL.lib",
-				"freetype.lib",
-				"OpenAL32.lib",
-				"glfw3.lib",
-				"glew32s.lib",
-				"kernel32.lib",
-				"user32.lib",
-				"gdi32.lib",
-				"winspool.lib",
-				"comdlg32.lib",
-				"advapi32.lib",
-				"shell32.lib",
-				"ole32.lib",
-				"oleaut32.lib",
-				"uuid.lib",
-				"odbc32.lib",
-				"odbccp32.lib",
-				"/IMPLIB:${workspaceFolder}\\Bin\\Tempest_Win32_Debug.lib",
-				"/DEBUG:FASTLINK",
-				"/DLL",
-				"/MACHINE:X86",
-				"/INCREMENTAL",
-				"/PGD:${workspaceFolder}\\Bin\\Tempest_Win32_Debug.pgd",
-				"/MANIFESTUAC:",
-				"level='asInvoker' uiAccess='false'",
-				"/ManifestFile:${workspaceFolder}\\Temp\\Tempest_Debug\\Tempest_Win32_Debug.dll.intermediate.manifest",
-				"/ERRORREPORT:PROMPT",
-				"/NOLOGO",
-				"/LIBPATH:${workspaceFolder}\\Lib\\",
-				"/TLBID:1"
-			],
-			"options": {
-				"cwd": "${workspaceFolder}"
-			},
-			"problemMatcher": [
-				"$msCompile"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"detail": "compiler: cl.exe"
-		}
-	]
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Tempest Debug Win32",
+            "type": "shell",
+            "command": "msbuild",
+            "args": [
+                "Build\\visual_studio\\Tempest.vcxproj",
+                "/p:configuration=debug"
+            ],
+            "group": "build",
+            // Use the standard MS compiler pattern to detect errors, warnings and infos
+            "problemMatcher": "$msCompile"
+        }
+    ]
 }
